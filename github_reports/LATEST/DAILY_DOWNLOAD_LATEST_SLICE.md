@@ -1,12 +1,11 @@
 # DAILY_DOWNLOAD_LATEST_SLICE
 
-- total_entries: 36
+- total_entries: 37
 - slice_tail: 30
 - log_ssot: E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl
 
 | # | ts | phase | final_status | message |
 |---|---|---|---|---|
-| 7 | 2026-07-12T06:05:22.021266+00:00 | P4_etf_1m_raw_none_seal | PASS | 【1m封板】PASS/DOWNLOAD_LAYER_SEAL_READY。恒等式3817+2205+511+1=6534；still_downloadable=0 api_error=0。缺口分类：pre_listing=2205 meta |
 | 8 | 2026-07-12T06:21:00+00:00 | P4_etf_30m_raw_none_authorization | AUTHORIZED | 用户明确授权 P4 ETF 30m raw_none 新任务。5m/1m 永久禁止 relaunch。允许启动 30m fq=None canary；canary PASS 后允许 30m 全量。仍禁止自动启动 60m、禁止改 HAND_D |
 | 9 | 2026-07-12T08:00:38.080411+00:00 | P4_etf_30m_raw_none_seal | PASS | 【30m封板】PASS/DOWNLOAD_LAYER_SEAL_READY。恒等式3820+2392+755+1=6968；still_downloadable=0 api_error=0。5条retryable已probe：4 lande |
 | 10 | 2026-07-12T08:09:12.574862+00:00 | P4_etf_60m_raw_none_canary | PASS | P4 ETF 60m canary PASS：fq不复权实测通过，token raw_none__v2，9分区落盘校验PASS，允许全量。 |
@@ -36,4 +35,5 @@
 | 34 | 2026-07-12T22:01:52.881103+00:00 | P4B_open_fund_full_download | PASS | open_fund full done=46020 |
 | 35 | 2026-07-12T22:02:31.222967+00:00 | P4B_open_fund_seal | PASS | open_fund seal PASS landed=76648/76674 |
 | 36 | 2026-07-12T22:03:07.834579+00:00 | P4B_open_fund_seal | PASS | open_fund missing-only 续跑 full+seal PASS：landed=76648/76674，metadata_block=26，quota_spare≈1.79e8；current_stage→WAITING_H |
+| 37 | 2026-07-12T22:07:25.387594+00:00 | P4B_QDII_hand_authorization | AUTHORIZED | 用户授权独立启动 P4b QDII。open_fund 已 PASS 封板保持不变；A股 5M 系统性 FQ 风险继续保留，未授权重建；P4 ETF 主轨封板保持不变；未放行 other、清洗、回测、QMT、实盘。 |
 
