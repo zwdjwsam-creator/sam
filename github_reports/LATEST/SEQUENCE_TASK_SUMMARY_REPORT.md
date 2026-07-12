@@ -1,6 +1,6 @@
 # BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1 — 任务总结报告
 
-- generated_at: 2026-07-12T14:11:00+08:00
+- generated_at: 2026-07-12T14:21:00+08:00
 - authority: **DAILY_DOWNLOAD_CONTINUITY.jsonl** entry #4 + #7 · `acceptance/P4_etf_1m/MANIFEST.json`
 - task_dir: `E:\BLACKBOX\任务\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1`
 - scope: 仅 `E:\BLACKBOX\数据\原始只读`；`fq=None` raw_none 独立层；不覆盖 legacy pre；不碰 QMT/交易/HAND_DECISION
@@ -16,9 +16,9 @@
 | P4 ETF 5m raw_none 全量 + 封板 | **PASS** | 3823+3145=6968 · SEAL_READY |
 | P4 ETF 1m raw_none 全量 + 封板 | **PASS** | 3817+2205+511+1=6534 · SEAL_READY |
 
-**当前阶段**: `P4_etf_download_layer_sealed`（5m+1m 双封板）  
-**序列 final_status**: **PASS**（下载层；metadata_review_debt 清洗前复核）  
-**still_downloadable**: **0** — **禁止 relaunch 1m/5m launcher**
+**当前阶段**: `P4_etf_30m_raw_none_authorized`（5m+1m 已封板；**30m 用户授权启动**）  
+**序列 final_status**: **PASS**（5m/1m 下载层封板）  
+**still_downloadable（5m/1m）**: **0** — **永久禁止 relaunch 1m/5m**
 
 ---
 
@@ -60,11 +60,26 @@
 
 验收：`acceptance/P4_etf_1m/MANIFEST.json` · `REPORT.md` · `FULL_*` 缺口导出
 
-**禁止 relaunch 1m / 5m / 30m**
+**永久禁止 relaunch 1m / 5m**
 
 ---
 
-## 四、历史收工记录（已被封板取代，勿作当前态）
+## 四、P4 ETF 30m raw_none — 用户授权（2026-07-12）
+
+> 原「禁止启动 30m」仅为**上一阶段序列自动推进保护**；5m/1m 封板后，用户已**明确授权**本新任务。
+
+| 项 | 口径 |
+|---|---|
+| 授权范围 | **P4 ETF 30m** `raw_none` / `fq=None`（**非** P7 A股 30m，彼已 PASS） |
+| 允许 | 启动 **30m fq=None canary** |
+| canary PASS 后 | 允许继续 **30m 全量** 下载 |
+| 仍禁止 | **自动启动 60m** |
+| 仍禁止 | 手改 `HAND_DECISION.json` |
+| 与封板关系 | **不影响** 5m/1m 封板；**永久禁止** relaunch 5m/1m |
+
+---
+
+## 五、历史收工记录（已被封板取代，勿作当前态）
 
 | 日期 | 1m 落盘 | 状态 |
 |---|---|---|
@@ -76,33 +91,41 @@
 
 ---
 
-## 五、硬边界（固定禁止）
+## 六、硬边界
 
+### 永久禁止
+- [ ] **禁止** relaunch 1m / 5m（封板后永久）
+- [ ] **禁止** 自动启动 **60m**
+- [ ] **禁止** 手改 HAND_DECISION
+- [ ] **禁止** 清洗 / 回测 / QMT / 实盘（metadata_review_debt 须先复核）
+
+### 用户授权允许
+- [x] **允许** 启动 P4 ETF **30m raw_none canary**（fq=None）
+- [x] canary PASS 后 **允许** 30m 全量
+
+### 已完成的封板
 - [x] 5m + 1m raw_none 下载层 **PASS 封板**
 - [x] legacy pre 层未覆盖
-- [x] 未修改 HAND_DECISION
-- [x] 未触 QMT / 交易 / 实盘
-- [ ] **禁止** relaunch 1m / 5m launcher
-- [ ] **禁止** 启动 30m / 60m
-- [ ] **禁止** 清洗 / 回测（metadata_review_debt 须先复核）
 
 ---
 
-## 六、下一步
+## 七、下一步
 
-1. **不启动** 1m/5m launcher（still_downloadable=0）
-2. 30m 尚未启动 — 等 HAND 决策
-3. metadata_review_debt：5m=752 · 1m=511 — **清洗前须 HAND/人工复核**
-4. 全量缺口清单：`acceptance/P4_etf_1m/FULL_PRE_LISTING_R1.csv` · `FULL_METADATA_BLOCK_R1.csv`
+1. **不启动** 1m/5m launcher（永久）
+2. **启动** P4 ETF 30m raw_none **canary**（用户授权）
+3. canary PASS → 30m 全量
+4. **60m 不自动启动**
+5. metadata_review_debt：5m=752 · 1m=511 — 清洗前复核
 
 ---
 
-## 七、final_status 判定
+## 八、final_status 判定
 
 | 子任务 | final_status |
 |---|---|
 | P7 30m/60m/收口 | **PASS** |
 | P4 ETF 5m 封板 | **PASS** |
 | P4 ETF 1m 封板 | **PASS** |
-| 序列下载层 | **PASS** |
+| P4 ETF 30m raw_none | **待启动 canary**（用户授权） |
+| 序列 5m/1m 下载层 | **PASS** |
 | 清洗层 | **未放行**（metadata_review_debt） |
