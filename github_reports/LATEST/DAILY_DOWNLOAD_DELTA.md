@@ -1,7 +1,8 @@
 # DAILY_DOWNLOAD_DELTA
 
-- generated_at: 2026-07-12T16:20:00+08:00
+- generated_at: 2026-07-12T16:26:00+08:00
 - authority: **DAILY_DOWNLOAD_CONTINUITY.jsonl**（entry #9 30m 封板 + #10/#11 60m）
+- current_phase: **P4_etf_60m_raw_none_full_download**
 - log_ssot: `E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl`
 - total_entries: **11**
 
@@ -22,6 +23,7 @@
 | canary | **PASS**（entry 10，9 分区校验） |
 | 全量 | **IN_PROGRESS**（entry 11，三池 launcher） |
 | 目标 | 6968 分区 missing-only raw_none__v2 |
+| 禁止 | 自动进入后续阶段 |
 
 ---
 
