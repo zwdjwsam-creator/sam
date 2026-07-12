@@ -2,9 +2,10 @@
 黑盒状态7.4
 BLACKBOX 状态整合报告 — DAILY_LOG 权威顶部
 ================================================================================
-生成方式: 每日下载日志对齐
-生成时间: 2026-07-12T16:20:00+08:00
+生成方式: 每日下载日志对齐（经验卡 LOG_REPORT_CROSS_FILE_ALIGNMENT_BEFORE_GITHUB_UPLOAD_R1）
+生成时间: 2026-07-12T16:26:00+08:00
 权威: DAILY_DOWNLOAD_CONTINUITY.jsonl（11 条，尾段 #9/#10/#11）
+当前阶段: P4_etf_60m_raw_none_full_download
 
 ================================================================================
 【每日下载权威 — DAILY_LOG_SSOT】
@@ -27,9 +28,10 @@ BLACKBOX 状态整合报告 — DAILY_LOG 权威顶部
 --- 4. P4 ETF 60m — 进行中（entry 10 + 11）---
   canary PASS → 全量 IN_PROGRESS
   三池 launcher，目标 6968 分区
+  禁止自动进入后续阶段
 
 --- 5. 当前真实状态 ---
-  5m+1m+30m 三封板 PASS | 60m 全量进行中
+  5m+1m+30m 三封板 PASS | 60m canary PASS | 60m 全量 IN_PROGRESS
 
 ================================================================================
 1. 给新对话框先读的最终固定口径
@@ -46,8 +48,9 @@ BLACKBOX 状态整合报告 — DAILY_LOG 权威顶部
 | 5m 封板 | PASS |
 | 1m 封板 | PASS |
 | 30m 封板 | PASS |
-| 60m | IN_PROGRESS（canary 已 PASS） |
+| 60m canary | PASS |
+| 60m 全量 | IN_PROGRESS |
 
-下一步: 续跑 60m 全量 | 永久禁 relaunch 5m/1m/30m
+下一步: 续跑 60m 全量 | 永久禁 relaunch 5m/1m/30m | HAND_DECISION 未改
 
 5m+1m+30m PASS封板 | 60m IN_PROGRESS | 权威=DAILY_LOG
