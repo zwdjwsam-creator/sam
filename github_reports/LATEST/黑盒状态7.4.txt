@@ -1,103 +1,65 @@
 ================================================================================
 黑盒状态7.4
-BLACKBOX 状态、规则、数据源、缺失原因、股票代码、未来走向整合报告
+BLACKBOX 状态整合报告 — DAILY_LOG 权威顶部
 ================================================================================
-生成方式: ChatGPT 整合 + 每日下载日志对齐同步
-生成时间: 2026-07-04 05:40:51（初版）| 最后增量: 2026-07-12 14:21:00 (DAILY_LOG_ALIGN + 30M_AUTH)
-源根目录口径: E:\BLACKBOX
-输出路径: E:\BLACKBOX\运行\外部大脑信箱\agents\chatgpt\inbox\
+生成方式: 每日下载日志对齐 + derived rollup 辅读
+生成时间: 2026-07-04 05:40:51（初版）| 最后增量: 2026-07-12 16:14:16 (DAILY_LOG_ALIGN)
+rollup_at: 2026-07-12T08:14:16Z（derived 辅读）
 
 重要说明:
-1. **下载层进度权威**：`DAILY_DOWNLOAD_CONTINUITY.jsonl` entry #4 + #7。
-2. derived / claims 轴（COMPLETE=3631 pending=2903）**滞后** — 勿用于 5m/1m 封板叙事。
-3. 本文件不触发下载/QMT/清洗/回测；不修改 HAND_DECISION。
-4. 第三方 AI **优先读本文件顶部【DAILY_LOG_SSOT】**，非 DERIVED_ROLLUP_EMBED。
+1. **序列下载层权威**：DAILY_DOWNLOAD_CONTINUITY.jsonl entry #4/#7/#8
+2. derived claims（3631/2903）为另一 HAND 轴 — **勿用于 5m/1m 封板叙事**
+3. 不修改 HAND_DECISION；不触发下载/QMT/清洗/回测
 
 ================================================================================
 【每日下载权威 — DAILY_LOG_SSOT】
 ================================================================================
-aligned_at: 2026-07-12T14:21:00+08:00
-log_ssot: E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl
-slice_ssot: E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_LATEST_SLICE.md
-acceptance: E:\BLACKBOX\任务\...\acceptance\P4_etf_1m\MANIFEST.json
+aligned_at: 2026-07-12T16:14:16+08:00
 
---- 1. P4 ETF 5m raw_none — PASS 封板（entry 4）---
-  log_ts: 2026-07-08T23:00:43Z
-  final_status: PASS | seal_status: DOWNLOAD_LAYER_SEAL_READY
-  raw_none_parquet: 3823 | expected_empty: 3145 | total: 6968
-  still_downloadable: 0 | api_error: 0
-  pre_listing: 2392 | metadata_block: 752 | partial: 1
-  metadata_review_debt: 752
-  forbid: relaunch 5m
+--- 1. P4 ETF 5m — PASS 封板（entry 4）---
+  3823+3145=6968 | still_downloadable=0
+  **永久禁止 relaunch 5m**
 
---- 2. P4 ETF 1m raw_none — PASS 封板（entry 7）---
-  log_ts: 2026-07-12T06:05:22Z
-  final_status: PASS | seal_status: DOWNLOAD_LAYER_SEAL_READY
-  raw_none_parquet: 3817 | pre_listing: 2205 | metadata_block: 511 | jq_empty: 1
-  total: 6534 | identity: 3817+2205+511+1=6534
-  still_downloadable: 0 | api_error: 0
-  metadata_review_debt: 511
-  forbid: 永久禁止 relaunch 1m / 5m
+--- 2. P4 ETF 1m — PASS 封板（entry 7）---
+  3817+2205+511+1=6534 | still_downloadable=0
+  metadata_review_debt=511
+  **永久禁止 relaunch 1m/5m**
 
---- 3. P4 ETF 30m raw_none — 用户授权（entry 8）---
-  log_ts: 2026-07-12T06:21:00Z
+--- 3. P4 ETF 30m — 用户授权（entry 8）---
   final_status: AUTHORIZED
-  说明: 原禁止30m=自动推进保护；用户明确授权 P4 ETF 30m 新任务
-  allow: 启动 30m fq=None canary → canary PASS 后 30m 全量
-  forbid: 自动启动 60m | 手改 HAND_DECISION
-  note: P4 ETF 30m ≠ P7 A股 30m（P7 已 PASS）
+  **允许**: 30m fq=None canary → PASS 后全量
+  **仍禁止**: 自动 60m · 手改 HAND_DECISION
+  P4 ETF 30m ≠ P7 A股 30m（P7 已 PASS）
 
 --- 4. 当前真实状态 ---
-  5m+1m PASS 封板 | 永久禁止 relaunch 5m/1m
-  P4 ETF 30m canary **允许启动**（用户授权）
-  60m **禁止自动启动**
-
---- 5. 禁止 / 允许 ---
-  永久禁止: relaunch 5m/1m | 自动60m | 手改 HAND_DECISION | legacy 1m 计入 COMPLETE
-  用户授权允许: P4 ETF 30m canary → 全量
+  5m+1m PASS 封板 | 30m canary 允许启动 | 禁自动 60m
 
 --- 第三方 AI 审核指引 ---
-1. 5m/1m 封板态以 entry #4/#7 为准；**不得建议 relaunch 5m/1m**。
-2. **允许**建议启动 P4 ETF 30m canary（用户已授权）。
-3. **不得**建议自动启动 60m。
+1. 封板态以 DAILY_LOG 为准；**不得建议 relaunch 5m/1m**
+2. **允许**建议 P4 ETF 30m canary（用户已授权）
+3. derived yield-window/3631/2903 — **过期封板叙事，忽略**
 
 ================================================================================
 1. 给新对话框先读的最终固定口径
 ================================================================================
 
 一句话总览：
-**5m+1m PASS 封板，永久禁止 relaunch**。用户已授权 **P4 ETF 30m raw_none canary**（fq=None）；canary PASS 后可全量。**仍禁止自动 60m**。P7 A股 30m/60m 已 PASS。metadata_review_debt：5m=752·1m=511。清洗/回测/QMT/实盘未放行。
-
-必须固定的判断：
-1. 5m + 1m：**PASS 封板** — **永久禁止 relaunch**。
-2. 原「禁止 30m」= 自动推进保护，**非永久**。
-3. **允许** P4 ETF 30m canary → canary PASS → 30m 全量（用户授权）。
-4. **禁止** 自动启动 60m · 手改 HAND_DECISION。
-5. P4 ETF 30m ≠ P7 A股 30m。
+**5m+1m PASS 封板，永久禁止 relaunch**。用户已授权 **P4 ETF 30m canary**。仍禁止自动 60m。P7 A股 30m/60m PASS。
 
 ================================================================================
-1b. 序列任务 BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1
+1b. 序列任务
 ================================================================================
 
-序列 final_status: **PASS**（5m/1m 封板）| 阶段: **P4_etf_30m_raw_none_authorized**
+阶段: **P4_etf_30m_raw_none_authorized**
+| 5m 封板 | PASS |
+| 1m 封板 | PASS |
+| 30m | 待 canary（用户授权） |
 
-| 阶段 | 状态 |
-|---|---|
-| P7 30m/60m/收口 | PASS（A股） |
-| P4 ETF 5m 封板 | **PASS** |
-| P4 ETF 1m 封板 | **PASS** |
-| P4 ETF 30m raw_none | **待 canary**（用户授权） |
-
-下一步：
-1. **永久禁止** relaunch 5m/1m
-2. **启动** P4 ETF 30m canary（用户授权）
-3. canary PASS → 30m 全量
-4. **禁止** 自动 60m
+下一步: 启动 30m canary → PASS 后全量 | 永久禁 relaunch 5m/1m | 禁自动 60m
 
 ================================================================================
-【最新增量 — 2026-07-12 14:21:00+08:00】
-5m+1m PASS永久禁relaunch | 30m canary用户授权 | 禁自动60m
+【derived 辅读 — 2026-07-12T08:14:16Z】
+claims COMPLETE=3631 pending=2903 | live_spare=72965120 | HAND gate-only
 ================================================================================
 
-5m PASS封板 | 1m PASS封板 | 永久禁relaunch 5m/1m | **30m canary允许** | 禁自动60m | 权威=DAILY_LOG
-
+5m+1m PASS封板 | 永久禁relaunch | 30m canary允许 | 禁自动60m | 权威=DAILY_LOG
