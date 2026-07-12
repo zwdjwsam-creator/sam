@@ -1,7 +1,8 @@
 # DAILY_DOWNLOAD_LATEST_SLICE
 
-- generated_at: 2026-07-12T16:20:00+08:00
+- generated_at: 2026-07-12T16:26:00+08:00
 - authority: **DAILY_DOWNLOAD_CONTINUITY.jsonl** entry #4 + #7 + #9 + #10 + #11
+- current_phase: **P4_etf_60m_raw_none_full_download**
 - log_ssot: `E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl`
 - total_entries: 11
 
@@ -39,12 +40,13 @@
 
 - entry 10: `P4_etf_60m_raw_none_canary` → **PASS**（9 分区校验通过，允许全量）
 - entry 11: `P4_etf_60m_raw_none_full_download` → **IN_PROGRESS**（三池 launcher 已启动，目标 6968 分区）
+- **禁止自动进入后续阶段**
 
 ---
 
 ## 当前真实状态（一句话）
 
-**5m + 1m + 30m 三封板 PASS，永久禁止 relaunch；60m 全量下载 IN_PROGRESS。**
+**5m + 1m + 30m 三封板 PASS，永久禁止 relaunch；60m canary PASS，全量 IN_PROGRESS。**
 
 ---
 
@@ -54,4 +56,4 @@
 |---|---|
 | 永久禁止 relaunch | 5m · 1m · 30m |
 | 进行中 | P4 ETF 60m 全量（canary 已 PASS） |
-| 仍禁止 | 手改 HAND_DECISION · 清洗/回测/QMT/实盘 |
+| 仍禁止 | 手改 HAND_DECISION · 清洗/回测/QMT/易宽/实盘 · 自动进入后续阶段 |
