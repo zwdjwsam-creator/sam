@@ -1,16 +1,51 @@
 # DAILY_DOWNLOAD_LATEST_SLICE
 
-- total_entries: 7
-- slice_tail: 7
-- log_ssot: E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl
+- generated_at: 2026-07-12T14:21:00+08:00
+- authority: **DAILY_DOWNLOAD_CONTINUITY.jsonl** entry #4 + #7 + #8
+- log_ssot: `E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl`
 
-| # | ts | phase | final_status | message |
-|---|---|---|---|---|
-| 1 | 2026-07-08T12:12:21.153321+00:00 | P4_etf_5m_raw_none_full_download | IN_PROGRESS | 联动测试：P4 ETF 5m raw_none 延续日志首条 |
-| 2 | 2026-07-08T12:16:59.664200+00:00 | P4_etf_5m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 5m raw_none 本轮收工：额度归零，launcher PARTIAL_PASS，落盘 3446/6968，missing_downloadable=3522；P7 30m/60m 已 PASS |
-| 3 | 2026-07-08T22:58:21.791774+00:00 | P4_etf_1m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 1m raw_none 今日收工：额度归零停止。5m已封板PASS(3823/6968)。1m三线POOL_A/B/C完成本轮：done=878 fail=1773 skip=204，落盘1083/6534；A=329/633 |
-| 4 | 2026-07-08T23:00:43.506919+00:00 | P4_etf_5m_raw_none_seal | PASS | 【5m封板补记】PASS/DOWNLOAD_LAYER_SEAL_READY。恒等式3823+3145=6968；still_downloadable=0 api_error=0。3145非缺口：pre_listing=2392 metad |
-| 5 | 2026-07-09T17:04:27.402468+00:00 | P4_etf_1m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 1m 额度归零收工：落盘2113/6534；done/fail/skip=1030/2669/1082；5m封板PASS不变。明日续跑launcher。详见P4_ETF_1M_QUOTA_ZERO_SHUTDOWN_REPOR |
-| 6 | 2026-07-10T17:48:53.487978+00:00 | P4_etf_1m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 1m 额度归零收工：落盘3056/6534；done/fail/skip=943/2727/2113；5m封板PASS不变。明日续跑launcher。详见P4_ETF_1M_QUOTA_ZERO_SHUTDOWN_REPORT |
-| 7 | 2026-07-12T06:05:22.021266+00:00 | P4_etf_1m_raw_none_seal | PASS | 【1m封板】PASS/DOWNLOAD_LAYER_SEAL_READY。恒等式3817+2205+511+1=6534；still_downloadable=0 api_error=0。缺口分类：pre_listing=2205 meta |
+---
 
+## 封板 1：P4 ETF 5m raw_none（entry 4）
+
+- final_status: **PASS** | seal_status: **DOWNLOAD_LAYER_SEAL_READY**
+- 3823 + 3145 = 6968 | still_downloadable: **0**
+- **永久禁止 relaunch 5m**
+
+---
+
+## 封板 2：P4 ETF 1m raw_none（entry 7）
+
+- final_status: **PASS** | seal_status: **DOWNLOAD_LAYER_SEAL_READY**
+- 3817 + 2205 + 511 + 1 = 6534 | still_downloadable: **0**
+- metadata_review_debt: **511**
+- **永久禁止 relaunch 1m / 5m**
+
+---
+
+## 授权 3：P4 ETF 30m raw_none（entry 8 — 用户明确授权）
+
+- ts: 2026-07-12T06:21:00+00:00
+- phase: `P4_etf_30m_raw_none_authorization`
+- final_status: **AUTHORIZED**
+- 说明: 原「禁止 30m」仅为上一阶段**自动推进保护**；现用户授权新任务
+- **允许**: 启动 P4 ETF **30m fq=None canary**
+- **canary PASS 后**: 允许 30m 全量
+- **仍禁止**: 自动启动 **60m** · 手改 HAND_DECISION
+- 区分: 此为 **P4 ETF 30m**（非 P7 A股 30m，彼已 PASS）
+
+---
+
+## 当前真实状态（一句话）
+
+**5m+1m 双封板 PASS，永久禁止 relaunch；P4 ETF 30m canary 已用户授权可启动。**
+
+---
+
+## 禁止 / 允许（固定）
+
+| 项 | 口径 |
+|---|---|
+| 永久禁止 relaunch | 5m · 1m |
+| 允许（用户授权） | P4 ETF 30m canary → canary PASS 后全量 |
+| 仍禁止 | 自动启动 60m · 手改 HAND_DECISION · 清洗/回测/QMT/实盘 |
