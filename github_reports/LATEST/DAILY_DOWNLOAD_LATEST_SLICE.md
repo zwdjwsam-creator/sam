@@ -1,59 +1,39 @@
 # DAILY_DOWNLOAD_LATEST_SLICE
 
-- generated_at: 2026-07-12T16:26:00+08:00
-- authority: **DAILY_DOWNLOAD_CONTINUITY.jsonl** entry #4 + #7 + #9 + #10 + #11
-- current_phase: **P4_etf_60m_raw_none_full_download**
-- log_ssot: `E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl`
-- total_entries: 11
+- total_entries: 36
+- slice_tail: 30
+- log_ssot: E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl
 
----
+| # | ts | phase | final_status | message |
+|---|---|---|---|---|
+| 7 | 2026-07-12T06:05:22.021266+00:00 | P4_etf_1m_raw_none_seal | PASS | 【1m封板】PASS/DOWNLOAD_LAYER_SEAL_READY。恒等式3817+2205+511+1=6534；still_downloadable=0 api_error=0。缺口分类：pre_listing=2205 meta |
+| 8 | 2026-07-12T06:21:00+00:00 | P4_etf_30m_raw_none_authorization | AUTHORIZED | 用户明确授权 P4 ETF 30m raw_none 新任务。5m/1m 永久禁止 relaunch。允许启动 30m fq=None canary；canary PASS 后允许 30m 全量。仍禁止自动启动 60m、禁止改 HAND_D |
+| 9 | 2026-07-12T08:00:38.080411+00:00 | P4_etf_30m_raw_none_seal | PASS | 【30m封板】PASS/DOWNLOAD_LAYER_SEAL_READY。恒等式3820+2392+755+1=6968；still_downloadable=0 api_error=0。5条retryable已probe：4 lande |
+| 10 | 2026-07-12T08:09:12.574862+00:00 | P4_etf_60m_raw_none_canary | PASS | P4 ETF 60m canary PASS：fq不复权实测通过，token raw_none__v2，9分区落盘校验PASS，允许全量。 |
+| 11 | 2026-07-12T08:09:28.321895+00:00 | P4_etf_60m_raw_none_full_download | IN_PROGRESS | P4 ETF 60m 全量下载 IN_PROGRESS：三池 launcher 已启动，missing-only raw_none__v2，目标6968分区。5m/1m/30m封板PASS禁止relaunch。 |
+| 12 | 2026-07-12T09:29:15.400288+00:00 | P4_etf_60m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 60m pool_done：落盘3820/6968；done/fail/skip=3820/3148/0；quota_spare=45799608；stop_reason=pool_done |
+| 13 | 2026-07-12T09:29:17.051743+00:00 | P4_etf_60m_raw_none_retry | IN_PROGRESS | P4 ETF 60m retry：retryable=3 api_error=0 |
+| 14 | 2026-07-12T09:29:24.585869+00:00 | P4_etf_60m_raw_none_seal | PASS | P4 ETF 60m 封板：PASS；落盘3822/6968；quota_spare=45799608 |
+| 15 | 2026-07-12T09:29:24.862008+00:00 | P4_etf_60m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 60m pool_done收工：落盘3822/6968；done/fail/skip=3820/3148/0；额度剩余45789932；不关机。详见P4_ETF_60M_POOL_DONE_REPORT.md |
+| 16 | 2026-07-12T10:30:26.973150+00:00 | P4_fund_etf_nav_seal | REVIEW_REQUIRED | fund_etf_nav seal REVIEW_REQUIRED landed=105/6968 |
+| 17 | 2026-07-12T10:53:49.269023+00:00 | P4_fund_etf_nav_seal | PASS | fund_etf_nav seal PASS landed=5976/6968 |
+| 18 | 2026-07-12T10:58:01.642633+00:00 | P4_fund_etf_nav_seal | REVIEW_REQUIRED | fund_etf_nav seal REVIEW_REQUIRED landed=5679/6968 |
+| 19 | 2026-07-12T10:58:53.552351+00:00 | P4_fund_etf_share_seal | REVIEW_REQUIRED | fund_etf_share seal REVIEW_REQUIRED landed=3769/6968 |
+| 20 | 2026-07-12T10:59:34.734221+00:00 | P4_fund_etf_share_seal | REVIEW_REQUIRED | fund_etf_share seal REVIEW_REQUIRED landed=3828/6968 |
+| 21 | 2026-07-12T10:59:57.775297+00:00 | P4_fund_etf_share_seal | PASS | share seal PASS |
+| 22 | 2026-07-12T11:00:11.527809+00:00 | P4_etf_main_track_closure | REVIEW_REQUIRED | P4 ETF 主轨封板 REVIEW_REQUIRED |
+| 23 | 2026-07-12T11:00:33.636112+00:00 | P4_fund_etf_nav_seal | PASS | fund_etf_nav seal PASS landed=5976/6968 |
+| 24 | 2026-07-12T11:00:44.808646+00:00 | P4_etf_main_track_closure | PASS | P4 ETF 主轨封板 PASS |
+| 25 | 2026-07-12T11:01:54.642795+00:00 | P4_fund_etf_nav_seal | PASS | fund_etf_nav seal PASS landed=5976/6968 |
+| 26 | 2026-07-12T11:18:53.558526+00:00 | P7_stock_minute_fq_audit | FAIL | A股FQ审计 BLOCKED_SYSTEMIC_FQ_RISK |
+| 27 | 2026-07-12T11:28:22.664527+00:00 | P4B_open_fund_hand_authorization | AUTHORIZED | 用户授权独立启动 P4b open_fund。A股 5M 系统性 FQ 风险继续保留，未授权重建；P4 ETF 主轨封板保持不变；未放行清洗、回测、QMT、实盘。 |
+| 28 | 2026-07-12T11:39:48.415825+00:00 | P4B_open_fund_canary | PASS | open_fund canary PASS |
+| 29 | 2026-07-12T12:16:38.789013+00:00 | P4B_open_fund_full_download | REVIEW_REQUIRED | open_fund full done=30628 |
+| 30 | 2026-07-12T12:16:40.159877+00:00 | P4B_open_fund_full_download | REVIEW_REQUIRED | open_fund full done=0 |
+| 31 | 2026-07-12T12:16:58.127159+00:00 | P4_etf_30m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 30m 额度归零收工：落盘3820/6968；done/fail/skip=3816/3152/0；5m/1m封板PASS不变。明日续跑launcher 30m。详见P4_ETF_30M_QUOTA_ZERO_SHUTDOWN |
+| 32 | 2026-07-12T12:17:31.313550+00:00 | P4_etf_1m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 1m 额度归零收工：落盘3817/6534；done/fail/skip=526/1814/2017；5m封板PASS不变。明日续跑launcher。详见P4_ETF_1M_QUOTA_ZERO_SHUTDOWN_REPORT |
+| 33 | 2026-07-12T12:17:37.773515+00:00 | P4B_open_fund_full_download | REVIEW_REQUIRED | open_fund full done=0 |
+| 34 | 2026-07-12T22:01:52.881103+00:00 | P4B_open_fund_full_download | PASS | open_fund full done=46020 |
+| 35 | 2026-07-12T22:02:31.222967+00:00 | P4B_open_fund_seal | PASS | open_fund seal PASS landed=76648/76674 |
+| 36 | 2026-07-12T22:03:07.834579+00:00 | P4B_open_fund_seal | PASS | open_fund missing-only 续跑 full+seal PASS：landed=76648/76674，metadata_block=26，quota_spare≈1.79e8；current_stage→WAITING_H |
 
-## 封板 1：P4 ETF 5m raw_none（entry 4）
-
-- final_status: **PASS** | seal_status: **DOWNLOAD_LAYER_SEAL_READY**
-- 3823 + 3145 = 6968 | still_downloadable: **0**
-- **永久禁止 relaunch 5m**
-
----
-
-## 封板 2：P4 ETF 1m raw_none（entry 7）
-
-- final_status: **PASS** | seal_status: **DOWNLOAD_LAYER_SEAL_READY**
-- 3817 + 2205 + 511 + 1 = 6534 | still_downloadable: **0**
-- metadata_review_debt: **511**
-- **永久禁止 relaunch 1m / 5m**
-
----
-
-## 封板 3：P4 ETF 30m raw_none（entry 9）
-
-- ts: 2026-07-12T08:00:38+00:00
-- phase: `P4_etf_30m_raw_none_seal`
-- final_status: **PASS** | seal_status: **DOWNLOAD_LAYER_SEAL_READY**
-- 3820 + 2392 + 755 + 1 = 6968 | still_downloadable: **0**
-- metadata_review_debt: **755**
-- **永久禁止 relaunch 30m / 1m / 5m**
-
----
-
-## 60m 进展（entry 10 + 11）
-
-- entry 10: `P4_etf_60m_raw_none_canary` → **PASS**（9 分区校验通过，允许全量）
-- entry 11: `P4_etf_60m_raw_none_full_download` → **IN_PROGRESS**（三池 launcher 已启动，目标 6968 分区）
-- **禁止自动进入后续阶段**
-
----
-
-## 当前真实状态（一句话）
-
-**5m + 1m + 30m 三封板 PASS，永久禁止 relaunch；60m canary PASS，全量 IN_PROGRESS。**
-
----
-
-## 禁止 / 允许（固定）
-
-| 项 | 口径 |
-|---|---|
-| 永久禁止 relaunch | 5m · 1m · 30m |
-| 进行中 | P4 ETF 60m 全量（canary 已 PASS） |
-| 仍禁止 | 手改 HAND_DECISION · 清洗/回测/QMT/易宽/实盘 · 自动进入后续阶段 |
