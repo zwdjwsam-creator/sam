@@ -1,76 +1,63 @@
 # DAILY_DOWNLOAD_DELTA
 
-- generated_at: 2026-07-09T07:09:00+08:00
-- mode: aligned_to_continuity_jsonl
-- authority: **DAILY_DOWNLOAD_CONTINUITY.jsonl** + **DAILY_DOWNLOAD_LATEST_SLICE.md**
+- generated_at: 2026-07-12T14:11:00+08:00
+- mode: aligned_to_continuity_jsonl_entry_7
+- authority: **DAILY_DOWNLOAD_CONTINUITY.jsonl**（7 条；**entry #7 为最新封板权威**）
 - log_ssot: `E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl`
 
-## 权威最新态（读此即可，勿用旧 derived 5m IN_PROGRESS 口径）
+## 权威最新态
 
-### P4 ETF 5m raw_none — 已封板 PASS
+### P4 ETF 5m — PASS 封板（entry 4）
 
 | 字段 | 值 |
 |---|---|
 | final_status | **PASS** |
 | seal_status | **DOWNLOAD_LAYER_SEAL_READY** |
 | raw_none_parquet | 3823 |
-| expected_empty_or_no_return | 3145 |
+| expected_empty | 3145 |
 | total | 6968 |
 | still_downloadable | 0 |
-| api_error | 0 |
-| pre_listing | 2392 |
-| metadata_block | 752 |
-| partial_pre_listing_jq_empty | 1 |
 | metadata_review_debt | 752 |
-| 禁止 | **relaunch 5m** |
+| 禁止 | relaunch 5m |
 
-### P4 ETF 1m raw_none full — 今日收工 REVIEW_REQUIRED
+### P4 ETF 1m — PASS 封板（entry 7）
 
 | 字段 | 值 |
 |---|---|
-| final_status | **REVIEW_REQUIRED** |
-| reason | quota_zero_stop |
-| landed_parquet | 1083/6534 |
-| done | 878 |
-| fail | 1773 |
-| skip | 204 |
-| quota_spare | 0 |
-| 下一步 | 明日额度恢复后继续 1m launcher / missing-only |
+| final_status | **PASS** |
+| seal_status | **DOWNLOAD_LAYER_SEAL_READY** |
+| raw_none_parquet | 3817 |
+| pre_listing | 2205 |
+| metadata_block | 511 |
+| jq_persistent_empty | 1 |
+| total | 6534 |
+| still_downloadable | 0 |
+| metadata_review_debt | 511 |
+| 禁止 | relaunch 1m / 5m / 30m |
+
+**下一步：不应再启动 1m/5m launcher；30m 尚未启动。**
 
 ---
 
-## 日志全条目（4 条）
+## 日志全条目（7 条）
 
-### 2026-07-08T12:12:21Z | P4_etf_5m_raw_none_full_download | IN_PROGRESS
+| # | ts | phase | status |
+|---|---|---|---|
+| 1 | 2026-07-08T12:12:21Z | P4_etf_5m_full | IN_PROGRESS |
+| 2 | 2026-07-08T12:16:59Z | P4_etf_5m_full | REVIEW_REQUIRED (3446/6968) |
+| 3 | 2026-07-08T22:58:21Z | P4_etf_1m_full | REVIEW_REQUIRED (1083/6534) |
+| 4 | 2026-07-08T23:00:43Z | **P4_etf_5m_seal** | **PASS** |
+| 5 | 2026-07-09T17:04:27Z | P4_etf_1m_full | REVIEW_REQUIRED (2113/6534) |
+| 6 | 2026-07-10T17:48:53Z | P4_etf_1m_full | REVIEW_REQUIRED (3056/6534) |
+| 7 | 2026-07-12T06:05:22Z | **P4_etf_1m_seal** | **PASS** |
 
-联动测试：P4 ETF 5m raw_none 延续日志首条
-
-metrics: parquet_count=3172, quota_spare=72965120
-
-### 2026-07-08T12:16:59Z | P4_etf_5m_raw_none_full_download | REVIEW_REQUIRED
-
-P4 ETF 5m raw_none 本轮收工：额度归零，launcher PARTIAL_PASS，落盘 3446/6968，missing_downloadable=3522
-
-metrics: parquet_count=3446, quota_spare=0
-
-### 2026-07-08T22:58:21Z | P4_etf_1m_raw_none_full_download | REVIEW_REQUIRED
-
-P4 ETF 1m raw_none 今日收工：额度归零停止。5m已封板PASS(3823/6968)。1m三线POOL完成：done=878 fail=1773 skip=204，落盘1083/6534。明日续跑launcher，禁止relaunch 5m/启动30m。
-
-metrics: parquet_count=1083, quota_spare=0
-
-### 2026-07-08T23:00:43Z | P4_etf_5m_raw_none_seal | PASS
-
-【5m封板补记】PASS/DOWNLOAD_LAYER_SEAL_READY。恒等式3823+3145=6968；still_downloadable=0 api_error=0。3145非缺口：pre_listing=2392 metadata_block=752 partial=1。752 metadata_review_debt不阻断封板。
-
-metrics: parquet_count=3823, quota_spare=0
+条目 3/5/6 为历史收工记录，已被 entry 7 封板取代。
 
 ---
 
-## 禁止事项
+## 权威顺序
 
-- 不得重跑 5m
-- 不得启动 30m/60m
-- 不得清洗/回测/QMT/实盘
-- 不得把 legacy 1m parquet 计入 raw_none COMPLETE
-- 不得手改 HAND_DECISION
+1. `DAILY_DOWNLOAD_CONTINUITY.jsonl`
+2. `DAILY_DOWNLOAD_LATEST_SLICE.md`
+3. `acceptance/P4_etf_1m/MANIFEST.json` / `REPORT.md`
+4. sequence / 7.4 / derived — **须与本日志对齐，否则视为旧**
