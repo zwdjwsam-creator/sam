@@ -1,56 +1,178 @@
 ================================================================================
 黑盒状态7.4
-BLACKBOX 状态整合报告 — DAILY_LOG 权威顶部
+BLACKBOX 状态、规则、数据源、缺失原因、股票代码、未来走向整合报告
 ================================================================================
-生成方式: 每日下载日志对齐（经验卡 LOG_REPORT_CROSS_FILE_ALIGNMENT_BEFORE_GITHUB_UPLOAD_R1）
-生成时间: 2026-07-12T16:26:00+08:00
-权威: DAILY_DOWNLOAD_CONTINUITY.jsonl（11 条，尾段 #9/#10/#11）
-当前阶段: P4_etf_60m_raw_none_full_download
+生成方式: ChatGPT 整合 + derived rollup 自动同步顶部
+生成时间: 2026-07-04 05:40:51（初版）| 最后增量: 2026-07-15 08:54:09 (DERIVED_ROLLUP_AUTO)
+源根目录口径: E:\BLACKBOX
+输出路径: E:\BLACKBOX\运行\外部大脑信箱\agents\chatgpt\inbox\（--write 直接覆盖，不写桌面）
+
+重要说明:
+1. 本文件用于给新的对话框/模型快速理解 BLACKBOX 当前状态。
+2. 上半部分为 derived rollup 固定口径 + 执行判定快照；不含历史 8000 行附录（附录仅在旧桌面副本中保留）。
+3. 如与运行态 JSON 出现细节差异，以 claims SSOT 与最新 derived rollup 为准。
+4. 本文件只做文本整合，不代表执行命令，不修改 HAND_DECISION，不触发下载/QMT/清洗/回测。
+5. 用户口令「黑盒报告更新」或「更新黑盒状态」→ Agent 自动执行 --write 写入 HUB 信箱。
+6. 顶部【执行判定快照 — DERIVED_ROLLUP_EMBED】含四源 path/sha256/关键字段；第三方 AI 审核优先看本段。
+7. 同步命令: E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p4_main_derived_state_refresh.py --write
 
 ================================================================================
-【每日下载权威 — DAILY_LOG_SSOT】
+【执行判定快照 — DERIVED_ROLLUP_EMBED】
 ================================================================================
+rollup_generated_at: 2026-07-15T00:54:09.404998+00:00
+primary_download_command: E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p7_p4_launcher.py --run-raw-v2-yield-window --stage fund_etf_price_1m --plan E:\BLACKBOX\运行\P4_main\queue_claims\fund_etf_price_1m_raw_none_v2_yield_plan.json --limit 50
+canary_command (legacy): E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p7_p4_launcher.py --run-raw-v2-canary --stage fund_etf_price_1m --limit 3
 
---- 1. P4 ETF 5m — PASS 封板（entry 4）---
-  3823+3145=6968 | still_downloadable=0
-  **永久禁止 relaunch 5m**
+--- A. P4_MAIN_DERIVED_STATE.json ---
+  path: E:\BLACKBOX\运行\P4_MAIN_DERIVED_STATE.json
+  sha256: f8f10aba43922fe33a49154124fd107183bf3befa72c0fc6847d2804584a9c47
+  generated_at: 2026-07-15T00:54:09.404998+00:00
+  current_download_layer: FQ_REMEDIATION_1M
+  current_domain: stock_1m_replacement
+  active_axis: raw_none__v2
+  selected_option: B_rebuild_raw
+  raw_rebuild_version: raw_none__v2
+  raw_complete: 3631
+  raw_v2_pending: 2903
+  frozen_fq_pre_count: 4840
+  progress_ssot: E:\BLACKBOX\运行\P4_main\queue_claims\fund_etf_price_1m_raw_none_v2_claims.json
+  claims_ledger_mismatch: True
+  canary_entry_ready: True
+  download_mode: yield_window
+  primary_download_command: E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p7_p4_launcher.py --run-raw-v2-yield-window --stage fund_etf_price_1m --plan E:\BLACKBOX\运行\P4_main\queue_claims\fund_etf_price_1m_raw_none_v2_yield_plan.json --limit 50
+  seal_allowed: False
+  next_action_download_ag: live_spare>0 后优先 yield-window limit 50 (HIGH=496 NORMAL=845; skip LIKELY_ZERO=218)
 
---- 2. P4 ETF 1m — PASS 封板（entry 7）---
-  3817+2205+511+1=6534 | still_downloadable=0
-  metadata_review_debt=511
-  **永久禁止 relaunch 1m/5m**
+--- B. P4_LIVE_QUOTA_SNAPSHOT.json ---
+  path: E:\BLACKBOX\运行\P4_main\quota\P4_LIVE_QUOTA_SNAPSHOT.json
+  sha256: 5ef55324471accb71d1756be5d735b106aaf4344f0180d4357598313b68ad74c
+  generated_at: 2026-07-06T19:21:22.164203+00:00
+  live_spare: 72965120
+  allow_download_execution: True
+  block_reason: QUOTA_SSOT_MISMATCH
+  quota_authority: launcher_worker_realtime_preflight_live_spare
+  note: realtime preflight still required before execution
 
---- 3. P4 ETF 30m — PASS 封板（entry 9）---
-  3820+2392+755+1=6968 | still_downloadable=0
-  metadata_review_debt=755
-  **永久禁止 relaunch 30m/1m/5m**
+--- C. HAND_DECISION.json ---
+  path: E:\BLACKBOX\运行\HAND_DECISION.json
+  sha256: a662953a6339aaa90e70417ea8926b0f3b7aaa45e57acee45465817d78fd71a9
+  generated_at: 2026-07-14T22:16:15+00:00
+  hand_release_allowed: True
+  current_download_layer: FQ_REMEDIATION_1M
+  current_domain: stock_1m_replacement
+  p4_execution_allowed: False
+  cleaning_allowed: False
+  data_ready_for_backtest: False
+  formal_backtest_allowed: False
+  note: HAND_DECISION is gate-only, not full narrative
 
---- 4. P4 ETF 60m — 进行中（entry 10 + 11）---
-  canary PASS → 全量 IN_PROGRESS
-  三池 launcher，目标 6968 分区
-  禁止自动进入后续阶段
+--- D. BLACKBOX_RUNTIME_NARRATIVE_CURRENT.md ---
+  path: E:\BLACKBOX\运行\BLACKBOX_RUNTIME_NARRATIVE_CURRENT.md
+  sha256: e0916904f48edf7215fb95f834a5587b81af9150d36d6caaf54a5c6519b579a6
+  generated_at: 2026-07-15T00:54:09.404998+00:00
+  one_line_status: P4 stock_1m_replacement raw_none__v2 pending=2903 RAW_COMPLETE=3631 live_spare=72965120 → QUOTA_SSOT_MISMATCH
+  next_action: live_spare>0 后优先 yield-window limit 50 (HIGH=496 NORMAL=845; skip LIKELY_ZERO=218)
+  note: narrative authority, not HAND release
 
---- 5. 当前真实状态 ---
-  5m+1m+30m 三封板 PASS | 60m canary PASS | 60m 全量 IN_PROGRESS
+--- 第三方 AI 审核指引 ---
+1. 第三方 AI 做状态审核，可以优先看本文件（黑盒状态7.4.txt）顶部本段。
+2. 若判断「是否现在执行」，必须确认本段 rollup_generated_at 与各源 generated_at 足够新；
+   否则要求本地重新运行：
+   E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p4_main_derived_state_refresh.py --write
+3. 真正执行下载前，launcher/worker 仍必须实时 preflight live_spare。
+4. 本文件（7.4）不替代 HAND_DECISION，不替代 live preflight；不得把 7.4 作为 HAND 放行依据。
+
+================================================================================
+0. 源文件清单与完整性
+================================================================================
+- 黑盒状7.3.TXT
+  描述: BLACKBOX 黑盒状态报告，顶部分类全文嵌入 + 数据下载摘要
+  size_bytes: 294286
+  line_count: 8114
+  sha256: 511cf7d63247ca763799bc81974eecffbbbcdec922ced610b07a56bc844c747c
+- 数据下载状况1.txt
+  描述: BLACKBOX 数据下载链路总汇报
+  size_bytes: 10271
+  line_count: 306
+  sha256: 047c232ef7e4d7503f4e5e0d9098a66326ddc076f9dd36818efdcf0346d1fb1e
+- 下载数据源封板及数据缺失原因.txt
+  描述: P1/P2 中间缺口记录说明
+  size_bytes: 4074
+  line_count: 109
+  sha256: db16cbad4b78c60962016ba098b064cc9e8ab8eed503203f390b7a8106622af7
+- 缺失股票代码.txt
+  描述: P1/P7 股票分钟线历史缺口代码清单说明
+  size_bytes: 5032
+  line_count: 85
+  sha256: debfca86e4b41f1f72d7f1bb5325934e1b9a971ff245ddc47c0888412e8ff04a
+
 
 ================================================================================
 1. 给新对话框先读的最终固定口径
 ================================================================================
 
 一句话总览：
-**5m+1m+30m 三封板 PASS，永久禁止 relaunch。60m canary PASS，全量 IN_PROGRESS。**
+**序列任务进行中**：P4_etf_60m_raw_none_full_download | ETF 5m raw_none 3823/? (?) | 序列=?。P7 30m/60m raw_none **PASS**（missing=0）。P4 ETF 5m legacy pre 冻结；**新层 raw_none 全量进行中**。P4 ETF 1m raw_none__v2 claims COMPLETE=3631 pending=2903 **待 HAND 不自动启动**。live_spare=72965120 → QUOTA_SSOT_MISMATCH。清洗/回测/QMT/实盘未放行。
+
+必须固定的判断：
+1. 当前序列阶段：P4_etf_60m_raw_none_full_download（HAND gate domain 仍为 stock_1m_replacement）。
+2. P7 30m+60m raw_none 已 PASS 可封；legacy pre 层未动。
+3. P4 ETF 5m：legacy `none_adj__v1`=实际 **pre** 已冻结；新层 `P4_fund_etf_raw_none` raw_none__v2 正在下（3823/?）。
+4. P4 ETF 1m raw_none__v2：**禁止自动启动**，等 HAND。
+5. **1m 进度 SSOT = claims.json**；claims_ledger_mismatch=True。
+6. raw v2 1m：COMPLETE=3631 pending=2903。
+7. quota SSOT: launcher_worker_realtime_preflight_live_spare；live_spare=72965120。
+8. 序列 next: 序列 P4_etf_60m_raw_none_full_download: ETF 5m raw_none 3823/? (?); 1m 待 HAND 不自动启动。
+9. derived narrative: E:\BLACKBOX\运行\BLACKBOX_RUNTIME_NARRATIVE_CURRENT.md
+10. 清洗层仍冻结；data_ready_for_backtest=false。
+
 
 ================================================================================
-1b. 序列任务
+1b. 序列任务 BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1
 ================================================================================
 
-阶段: **P4_etf_60m_raw_none_full_download**
-| 5m 封板 | PASS |
-| 1m 封板 | PASS |
-| 30m 封板 | PASS |
-| 60m canary | PASS |
-| 60m 全量 | IN_PROGRESS |
+序列 final_status: **?** | 当前阶段: **P4_etf_60m_raw_none_full_download**
+summary: `E:\BLACKBOX\任务\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\SEQUENCE_TASK_SUMMARY_REPORT.md`
 
-下一步: 续跑 60m 全量 | 永久禁 relaunch 5m/1m/30m | HAND_DECISION 未改
+| 阶段 | 状态 |
+|---|---|
+| P7 30m raw_none | PASS（11711 parquet, missing=0） |
+| P7 60m raw_none | ?（11702 parquet, gap_retry 69, missing=0） |
+| P7 收口 | ? |
+| P4 ETF 5m fq 复查 | ?（legacy=pre，none_adj__v1 误导名） |
+| P4 ETF 5m canary | ? |
+| P4 ETF 5m 全量 raw_none | **?** 3823/?（?） |
+| P4 ETF 1m raw_none__v2 | **待 HAND**（禁止自动启动） |
 
-5m+1m+30m PASS封板 | 60m IN_PROGRESS | 权威=DAILY_LOG
+双层 5m：legacy `P4_fund_etf/`（pre 冻结）| 新层 `P4_fund_etf_raw_none/`（raw_none__v2, fq=None）
+sidecar：fq_policy=none, raw_unadjusted=true, confidence=measured
+额度快照：~? 万（summary 时间 2026-07-12T16:26:00+08:00）
+
+下一步：
+1. 等额度归零或 launcher 结束 → 跑 acceptance
+2. 缺口 → 额度恢复后 relaunch missing-only
+3. ETF 5m PASS 后 → ETF 1m 等 HAND
+
+================================================================================
+【最新增量状态 — DERIVED_ROLLUP_AUTO — 2026-07-15 08:54:09+08:00】
+来源: p4_main_derived_state_refresh.py --write
+运行/P4_MAIN_DERIVED_STATE.json generated_at: 2026-07-15T00:54:09.404998+00:00
+
+--- derived 快照 ---
+active_axis: raw_none__v2 | raw_v2_pending: 2903 | frozen_fq_pre: 4840
+RAW_COMPLETE: 3631 | live_spare: 72965120 | block: QUOTA_SSOT_MISMATCH
+canary_entry_ready: True | last_canary: QUOTA_ZERO_BLOCK
+seal_allowed: False
+HAND_DECISION: gate-only 未改 | derived narrative 非 HAND release
+
+--- HUB 信箱 ---
+黑盒汇总汇报.txt / 黑盒状态7.4.top.txt / SEQUENCE_TASK_SUMMARY_REPORT.md 已同步
+sequence: P4_etf_60m_raw_none_full_download | final=?
+================================================================================
+
+================================================================================
+9. 给其他对话框的最短可复制摘要
+================================================================================
+
+P4 HAND domain=stock_1m_replacement | 序列阶段=P4_etf_60m_raw_none_full_download | ETF5m raw_none 3823/? | 1m claims COMPLETE=3631 pending=2903 **待HAND** | live_spare=72965120 | 快读: HUB/黑盒汇总汇报.txt | HAND gate-only
+
