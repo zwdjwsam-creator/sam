@@ -1,29 +1,147 @@
 ================================================================================
 黑盒汇总汇报
-BLACKBOX — DAILY_LOG 对齐（5m+1m+30m 三封板 · 60m 进行中）
+BLACKBOX derived runtime narrative — HUB 信箱副本
 ================================================================================
-生成时间: 2026-07-12T16:26:00+08:00
-当前阶段: P4_etf_60m_raw_none_full_download
-权威 SSOT: DAILY_DOWNLOAD_CONTINUITY.jsonl（entry #9/#10/#11）
-GitHub: https://github.com/zwdjwsam-creator/sam/tree/main/github_reports/LATEST
+生成时间: 2026-07-15T00:54:09.404998+00:00
+源 SSOT: E:\BLACKBOX\运行\BLACKBOX_RUNTIME_NARRATIVE_CURRENT.md
+HUB 信箱: E:\BLACKBOX\运行\外部大脑信箱\agents\chatgpt\inbox
+刷新命令: E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p4_main_derived_state_refresh.py --write
+
+【写入规则 — 口令: 黑盒报告更新 / 更新黑盒状态】
+1. 说「黑盒报告更新」或「更新黑盒状态」→ 自动执行本脚本 --write（无需再确认）。
+2. **仅** 写入 HUB 信箱 inbox；**不** 写入桌面 TXT。
+3. 黑盒汇总汇报.txt = 当前态快读（本文件全文）。
+4. 黑盒状态7.4.top.txt = 完整顶部；黑盒状态7.4.snapshot.txt = 前 350 行摘要。
+5. HAND_DECISION.json 仍为 gate-only；HUB 文件均不是 HAND 放行依据。
+6. 下载放行以 launcher/worker 实时 preflight live_spare 为准。
+
+【权威源路径】
+- E:\BLACKBOX\运行\BLACKBOX_RUNTIME_NARRATIVE_CURRENT.md
+- E:\BLACKBOX\运行\P4_MAIN_DERIVED_STATE.json
+- E:\BLACKBOX\运行\外部大脑信箱\agents\chatgpt\inbox\
 
 ================================================================================
-【三封板态 — 5m + 1m + 30m】
-================================================================================
-5m PASS: 3823+3145=6968
-1m PASS: 3817+2205+511+1=6534
-30m PASS: 3820+2392+755+1=6968
-still_downloadable=0（各层）
-**永久禁止 relaunch 5m / 1m / 30m**
+【执行判定快照 — 快读摘要】
+rollup_at: 2026-07-15T00:54:09.404998+00:00
+A derived: COMPLETE=3631 pending=2903 frozen=4840
+yield: HIGH=496 NORMAL=845 mode=yield_window
+B quota: live_spare=72965120 block=QUOTA_SSOT_MISMATCH
+C HAND: p4_exec=False hand_release=True (gate-only)
+D narrative: P4 stock_1m_replacement raw_none__v2 pending=2903 RAW_COMPLETE=3631 live_spare=72965120 → QUOTA_SSOT_MISMATCH
+primary: E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p7_p4_launcher.py --run-raw-v2-yield-window --stage fund_etf_price_1m --plan E:\BLACKBOX\运行\P4_main\queue_claims\fund_etf_price_1m_raw_none_v2_yield_plan.json --limit 50
+canary(legacy): E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p7_p4_launcher.py --run-raw-v2-canary --stage fund_etf_price_1m --limit 3
+刷新: E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p4_main_derived_state_refresh.py --write
 
 ================================================================================
-【60m 进展 — entry 10 + 11】
-================================================================================
-canary: PASS（9 分区校验）
-全量: IN_PROGRESS（三池 launcher，目标 6968 分区）
-禁止自动进入后续阶段
 
 ================================================================================
-【仍禁止】
+正文
 ================================================================================
-手改 HAND_DECISION · 清洗/回测/QMT/易宽/实盘
+
+# BLACKBOX_RUNTIME_NARRATIVE_CURRENT
+
+**generated_at:** 2026-07-15T00:54:09.404998+00:00  
+**schema_version:** 1.0.0
+
+> HAND_DECISION.json remains **gate-only**. This file is **state understanding authority** for humans and new AG sessions.
+
+## Bootstrap 预读顺序
+
+1. `运行/外部大脑信箱/agents/chatgpt/inbox/黑盒状态7.4.top.txt`（HUB 信箱 SSOT）
+2. `运行/外部大脑信箱/agents/chatgpt/inbox/黑盒汇总汇报.txt`
+3. `BLACKBOX_RUNTIME_NARRATIVE_CURRENT.json` / `.md`
+4. `P4_MAIN_DERIVED_STATE.json` / `.md`
+5. `P4_LIVE_QUOTA_SNAPSHOT.json`
+6. `HAND_DECISION.json` (gate only)
+7. `LOCAL_HAND_RELEASE_DECISION.md`
+8. Latest task REPORT under `任务/`
+9. Cursor / HAND rules
+
+---
+
+# P4_MAIN_DERIVED_STATE
+
+**generated_at:** 2026-07-15T00:54:09.404998+00:00  
+**authority:** state understanding only — **NOT** HAND release / **NOT** download gate
+
+## 一句话状态
+
+P4 `fund_etf_price_1m` 处于 **B_rebuild_raw / raw_none__v2** 轴；claims SSOT：`RAW_COMPLETE=3631` / `pending=2903`；`live_spare=72965120` → QUOTA_SSOT_MISMATCH。
+
+## Progress SSOT
+
+- **progress_ssot:** `E:\BLACKBOX\运行\P4_main\queue_claims\fund_etf_price_1m_raw_none_v2_claims.json`
+- **claims_ledger_mismatch:** True
+- **ledger (reference only):** RAW_COMPLETE=0 PENDING=6534
+
+## Active domain
+
+- **current_download_layer:** FQ_REMEDIATION_1M
+- **current_domain:** stock_1m_replacement
+- **active_axis:** raw_none__v2
+- **selected_option:** B_rebuild_raw
+
+## raw v2 轴
+
+| 字段 | 值 |
+|---|---|
+| raw_rebuild_version | raw_none__v2 |
+| fq_policy_target | None |
+| raw_v2_pending | 2903 |
+| frozen_fq_pre_count | 4840 |
+| expected_empty_excluded | 190 |
+| metadata_gap_excluded | 244 |
+| seal_allowed | False |
+
+## quota 口径
+
+- **SSOT:** `launcher_worker_realtime_preflight_live_spare`
+- **live_spare:** 72965120 (from snapshot)
+- **HAND quota_left snapshot:** 51352887 — reference only, must not alone authorize download
+- **block_reason:** QUOTA_SSOT_MISMATCH
+
+## canary / yield download
+
+- **download_mode:** yield_window
+- **canary_entry_ready:** True
+- **last_canary_status:** QUOTA_ZERO_BLOCK
+- **primary command (yield-window):**
+
+```powershell
+E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p7_p4_launcher.py --run-raw-v2-yield-window --stage fund_etf_price_1m --plan E:\BLACKBOX\运行\P4_main\queue_claims\fund_etf_price_1m_raw_none_v2_yield_plan.json --limit 50
+```
+
+- **canary (legacy smoke):**
+
+```powershell
+E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\P4_main\p7_p4_launcher.py --run-raw-v2-canary --stage fund_etf_price_1m --limit 3
+```
+
+## yield plan
+
+| bucket | count |
+|---|---|
+| HIGH_YIELD_FIRST | 496 |
+| NORMAL_YIELD | 845 |
+| LIKELY_ZERO_OR_PRE_LISTING | 218 |
+| REVIEW_REQUIRED | 1992 |
+
+## 禁止项
+
+- derived narrative **不得**替代 HAND gate
+- **不得**用 HAND quota_left 单独放行下载
+- **不得**把 legacy fq_pre claim 当成 raw COMPLETE
+- cleaning / backtest / QMT / live trade: 均未放行
+
+## stale source 警告
+
+- E:\BLACKBOX\运行\HAND_DECISION.json: generated_at stale for narrative; gate-only authority
+- E:\BLACKBOX\运行\LOCAL_HAND_RELEASE_DECISION.md: may lack raw v2 axis; use derived narrative first
+- E:\BLACKBOX\运行\AG_SESSION_HANDOFF_CURRENT.md: was stale P7 5m until this rollup refresh
+- E:\BLACKBOX\运行\P4_main\gate\P4_1M_RAW_NONE_V2_SEAL_LEDGER_DRAFT.json: ledger stale vs claims SSOT; narrative uses claims
+
+## 下一步
+
+- **人类:** Read derived narrative first; HAND_DECISION for gate only.
+- **下载 AG:** live_spare>0 后优先 yield-window limit 50 (HIGH=496 NORMAL=845; skip LIKELY_ZERO=218)
+
