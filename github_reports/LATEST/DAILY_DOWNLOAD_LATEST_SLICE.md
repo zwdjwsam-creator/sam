@@ -1,39 +1,39 @@
 # DAILY_DOWNLOAD_LATEST_SLICE
 
-- total_entries: 37
+- total_entries: 73
 - slice_tail: 30
 - log_ssot: E:\BLACKBOX\运行\每日下载日志\DAILY_DOWNLOAD_CONTINUITY.jsonl
 
 | # | ts | phase | final_status | message |
 |---|---|---|---|---|
-| 8 | 2026-07-12T06:21:00+00:00 | P4_etf_30m_raw_none_authorization | AUTHORIZED | 用户明确授权 P4 ETF 30m raw_none 新任务。5m/1m 永久禁止 relaunch。允许启动 30m fq=None canary；canary PASS 后允许 30m 全量。仍禁止自动启动 60m、禁止改 HAND_D |
-| 9 | 2026-07-12T08:00:38.080411+00:00 | P4_etf_30m_raw_none_seal | PASS | 【30m封板】PASS/DOWNLOAD_LAYER_SEAL_READY。恒等式3820+2392+755+1=6968；still_downloadable=0 api_error=0。5条retryable已probe：4 lande |
-| 10 | 2026-07-12T08:09:12.574862+00:00 | P4_etf_60m_raw_none_canary | PASS | P4 ETF 60m canary PASS：fq不复权实测通过，token raw_none__v2，9分区落盘校验PASS，允许全量。 |
-| 11 | 2026-07-12T08:09:28.321895+00:00 | P4_etf_60m_raw_none_full_download | IN_PROGRESS | P4 ETF 60m 全量下载 IN_PROGRESS：三池 launcher 已启动，missing-only raw_none__v2，目标6968分区。5m/1m/30m封板PASS禁止relaunch。 |
-| 12 | 2026-07-12T09:29:15.400288+00:00 | P4_etf_60m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 60m pool_done：落盘3820/6968；done/fail/skip=3820/3148/0；quota_spare=45799608；stop_reason=pool_done |
-| 13 | 2026-07-12T09:29:17.051743+00:00 | P4_etf_60m_raw_none_retry | IN_PROGRESS | P4 ETF 60m retry：retryable=3 api_error=0 |
-| 14 | 2026-07-12T09:29:24.585869+00:00 | P4_etf_60m_raw_none_seal | PASS | P4 ETF 60m 封板：PASS；落盘3822/6968；quota_spare=45799608 |
-| 15 | 2026-07-12T09:29:24.862008+00:00 | P4_etf_60m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 60m pool_done收工：落盘3822/6968；done/fail/skip=3820/3148/0；额度剩余45789932；不关机。详见P4_ETF_60M_POOL_DONE_REPORT.md |
-| 16 | 2026-07-12T10:30:26.973150+00:00 | P4_fund_etf_nav_seal | REVIEW_REQUIRED | fund_etf_nav seal REVIEW_REQUIRED landed=105/6968 |
-| 17 | 2026-07-12T10:53:49.269023+00:00 | P4_fund_etf_nav_seal | PASS | fund_etf_nav seal PASS landed=5976/6968 |
-| 18 | 2026-07-12T10:58:01.642633+00:00 | P4_fund_etf_nav_seal | REVIEW_REQUIRED | fund_etf_nav seal REVIEW_REQUIRED landed=5679/6968 |
-| 19 | 2026-07-12T10:58:53.552351+00:00 | P4_fund_etf_share_seal | REVIEW_REQUIRED | fund_etf_share seal REVIEW_REQUIRED landed=3769/6968 |
-| 20 | 2026-07-12T10:59:34.734221+00:00 | P4_fund_etf_share_seal | REVIEW_REQUIRED | fund_etf_share seal REVIEW_REQUIRED landed=3828/6968 |
-| 21 | 2026-07-12T10:59:57.775297+00:00 | P4_fund_etf_share_seal | PASS | share seal PASS |
-| 22 | 2026-07-12T11:00:11.527809+00:00 | P4_etf_main_track_closure | REVIEW_REQUIRED | P4 ETF 主轨封板 REVIEW_REQUIRED |
-| 23 | 2026-07-12T11:00:33.636112+00:00 | P4_fund_etf_nav_seal | PASS | fund_etf_nav seal PASS landed=5976/6968 |
-| 24 | 2026-07-12T11:00:44.808646+00:00 | P4_etf_main_track_closure | PASS | P4 ETF 主轨封板 PASS |
-| 25 | 2026-07-12T11:01:54.642795+00:00 | P4_fund_etf_nav_seal | PASS | fund_etf_nav seal PASS landed=5976/6968 |
-| 26 | 2026-07-12T11:18:53.558526+00:00 | P7_stock_minute_fq_audit | FAIL | A股FQ审计 BLOCKED_SYSTEMIC_FQ_RISK |
-| 27 | 2026-07-12T11:28:22.664527+00:00 | P4B_open_fund_hand_authorization | AUTHORIZED | 用户授权独立启动 P4b open_fund。A股 5M 系统性 FQ 风险继续保留，未授权重建；P4 ETF 主轨封板保持不变；未放行清洗、回测、QMT、实盘。 |
-| 28 | 2026-07-12T11:39:48.415825+00:00 | P4B_open_fund_canary | PASS | open_fund canary PASS |
-| 29 | 2026-07-12T12:16:38.789013+00:00 | P4B_open_fund_full_download | REVIEW_REQUIRED | open_fund full done=30628 |
-| 30 | 2026-07-12T12:16:40.159877+00:00 | P4B_open_fund_full_download | REVIEW_REQUIRED | open_fund full done=0 |
-| 31 | 2026-07-12T12:16:58.127159+00:00 | P4_etf_30m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 30m 额度归零收工：落盘3820/6968；done/fail/skip=3816/3152/0；5m/1m封板PASS不变。明日续跑launcher 30m。详见P4_ETF_30M_QUOTA_ZERO_SHUTDOWN |
-| 32 | 2026-07-12T12:17:31.313550+00:00 | P4_etf_1m_raw_none_full_download | REVIEW_REQUIRED | P4 ETF 1m 额度归零收工：落盘3817/6534；done/fail/skip=526/1814/2017；5m封板PASS不变。明日续跑launcher。详见P4_ETF_1M_QUOTA_ZERO_SHUTDOWN_REPORT |
-| 33 | 2026-07-12T12:17:37.773515+00:00 | P4B_open_fund_full_download | REVIEW_REQUIRED | open_fund full done=0 |
-| 34 | 2026-07-12T22:01:52.881103+00:00 | P4B_open_fund_full_download | PASS | open_fund full done=46020 |
-| 35 | 2026-07-12T22:02:31.222967+00:00 | P4B_open_fund_seal | PASS | open_fund seal PASS landed=76648/76674 |
-| 36 | 2026-07-12T22:03:07.834579+00:00 | P4B_open_fund_seal | PASS | open_fund missing-only 续跑 full+seal PASS：landed=76648/76674，metadata_block=26，quota_spare≈1.79e8；current_stage→WAITING_H |
-| 37 | 2026-07-12T22:07:25.387594+00:00 | P4B_QDII_hand_authorization | AUTHORIZED | 用户授权独立启动 P4b QDII。open_fund 已 PASS 封板保持不变；A股 5M 系统性 FQ 风险继续保留，未授权重建；P4 ETF 主轨封板保持不变；未放行 other、清洗、回测、QMT、实盘。 |
+| 44 | 2026-07-12T22:23:20.738322+00:00 | P4B_other_full_download | PASS | other full done=169 |
+| 45 | 2026-07-12T22:23:21.865087+00:00 | P4B_other_seal | PASS | other seal PASS landed=169/195 |
+| 46 | 2026-07-12T22:51:24.830018+00:00 | P4_P4B_total_closure_hand | AUTHORIZED | 用户授权 P4/P4b 总封板；P4b 三域 PASS 保留；A股 FQ 阻断保留。 |
+| 47 | 2026-07-12T22:53:18.223427+00:00 | security_master | PASS | security_master direct download PASS |
+| 48 | 2026-07-12T23:10:25.876586+00:00 | index_components | PASS | index_components seal PASS landed=104 |
+| 49 | 2026-07-12T23:10:36.477980+00:00 | index_weights | PASS | index_weights seal PASS landed=104 |
+| 50 | 2026-07-12T23:12:42.841717+00:00 | fund_tracking_index_mapping | PASS | fund_tracking PASS |
+| 51 | 2026-07-12T23:12:45.180863+00:00 | stock_ohlcv_daily | PASS | daily seal landed=480 |
+| 52 | 2026-07-12T23:12:50.980110+00:00 | stock_limit_pause_status | PASS | stock_limit_pause_status PASS |
+| 53 | 2026-07-12T23:13:26.450345+00:00 | valuation | PASS | valuation PASS |
+| 54 | 2026-07-12T23:14:04.001924+00:00 | fundamentals_pit | PASS | fundamentals_pit PASS |
+| 55 | 2026-07-12T23:20:50.708547+00:00 | billboard | PASS | billboard PASS |
+| 56 | 2026-07-12T23:20:53.883633+00:00 | industry_concept | PASS | industry_concept PASS |
+| 57 | 2026-07-12T23:20:55.483588+00:00 | industry_concept_events | PASS | p5_events PASS |
+| 58 | 2026-07-12T23:21:54.852352+00:00 | stock_st_status | PASS | stock_st_status PASS |
+| 59 | 2026-07-12T23:21:57.368193+00:00 | adjust_factor | PASS | adjust_factor PASS |
+| 60 | 2026-07-12T23:22:14.216220+00:00 | P7_stock_minute_fq_audit | FAIL | A股FQ审计 BLOCKED_SYSTEMIC_FQ_RISK |
+| 61 | 2026-07-12T23:22:30.717174+00:00 | P7_stock_minute_fq_audit | FAIL | A股FQ审计 BLOCKED_SYSTEMIC_FQ_RISK |
+| 62 | 2026-07-13T00:11:34.216072+00:00 | A_SHARE_FQ_5m_rebuild_hand_authorization | AUTHORIZED | 用户授权 A股 5m fq=None replacement 重建。系统性 FQ 污染事实继续保留（BLOCKED_SYSTEMIC_FQ_RISK）；legacy 层已冻结未删除；direct_download 13/13 PASS 不变 |
+| 63 | 2026-07-13T01:52:15.668970+00:00 | a_share_5m_replacement | REVIEW_REQUIRED | 5m replacement landed=3703 missing=8021 stop=quota_zero |
+| 64 | 2026-07-13T17:21:32.739304+00:00 | a_share_5m_replacement | REVIEW_REQUIRED | 5m replacement landed=7703 missing=4021 stop=quota_zero |
+| 65 | 2026-07-13T17:21:33.943735+00:00 | a_share_5m_replacement | REVIEW_REQUIRED | 5m replacement 无人值守收工：landed=7703/11724 missing=4021 quota=0 |
+| 66 | 2026-07-14T17:40:51.132324+00:00 | a_share_5m_replacement | PASS | 5m replacement landed=11724 missing=0 stop=done |
+| 67 | 2026-07-14T17:41:54.087526+00:00 | a_share_1m_fq_domain_audit | REVIEW_REQUIRED | A股1m全域FQ审计 REMEDIATION_REQUIRED pre=1 none=8 years=1/13 |
+| 68 | 2026-07-14T17:41:55.208075+00:00 | a_share_5m_replacement | PASS | 5m replacement 收工：landed=11724/11724 sealed=True missing=0 quota=11927504 shutdown=False / 1m_audit=REMEDIATION_REQUIRED |
+| 69 | 2026-07-14T17:43:35.715230+00:00 | a_share_1m_fq_domain_audit | FAIL | A股1m全域FQ审计 BLOCKED_SYSTEMIC_FQ_RISK pre=31 none=54 years=13/13 |
+| 70 | 2026-07-14T22:13:16.684779+00:00 | A_SHARE_FQ_1m_rebuild_hand_authorization | AUTHORIZED | 用户授权 A股 1m fq=None replacement 重建（与 5m 同时放行）。系统性 FQ 污染事实继续保留（BLOCKED_SYSTEMIC_FQ_RISK）；legacy 层已冻结未删除；direct_download 13 |
+| 71 | 2026-07-14T22:16:15.833063+00:00 | P7_A_share_1m_replacement_hand_authorization | AUTHORIZED | 用户授权 A股 1m fq=None 全域 replacement。5m 已封板 PASS；1m 审计 BLOCKED_SYSTEMIC_FQ_RISK(pre=31/175)；旧层冻结未删；30m/60m 未放行。 |
+| 72 | 2026-07-14T22:29:20.764054+00:00 | P7_A_share_1m_raw_none_full_download | REVIEW_REQUIRED | A股 1m replacement 首轮：landed=47/11727 done=43 api_error=3 quota=0 stop=quota_zero。实际消耗 245K/partition，预计全量约14天。 |
+| 73 | 2026-07-15T00:44:06.151991+00:00 | P7_A_share_fq_rebuild_status_summary | REVIEW_REQUIRED | 【A股FQ重建进度汇总】5M: SEALED 11724/11724 fq=None replacement PASS，旧层冻结未删。1M: 旧层冻结 PASS（11727分区/13945文件/62.9GB，标记FROZEN_MIXED_F |
 
