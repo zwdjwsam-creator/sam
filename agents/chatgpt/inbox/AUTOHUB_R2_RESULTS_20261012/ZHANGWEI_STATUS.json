@@ -1,0 +1,48 @@
+{
+  "hostname": "ZHANGWEI",
+  "identity": "DESKTOP",
+  "task_id": "AUTOHUB_R2_PROTOCOL_REPAIR_20261012",
+  "scope": "COMMUNICATION_ONLY",
+  "status": "DESKTOP_REVERSE_LEG_COMPLETE",
+  "ROUTE_MATCHED": true,
+  "canonical_outbox": "agents/chatgpt/outbox/AUTOHUB_R2_PROTOCOL_REPAIR_20261012.md",
+  "compat_cursor_inbox_pointer": "agents/cursor/inbox/AUTOHUB_R2_ROUTE_POINTER_20261012.md",
+  "hard_gate": "ALLOWED_PENDING_HUMAN",
+  "DESKTOP_WATCHER_AUTOSTART": "PARTIAL",
+  "DESKTOP_WATCHER_DETAIL": "User scheduled task AUTOHUB_R2_COMM_TEST_RECEIVER_ZHANGWEI created (minute/Ready/365d). Run-once OK. Boot-autostart not separately proven.",
+  "NOTEBOOK_WATCHER_AUTOSTART": "NOT_TESTED_ON_DESKTOP",
+  "DESKTOP_AUTO_RECEIVE": "VERIFIED_POWERSHELL_RECEIVER",
+  "NOTEBOOK_AUTO_RECEIVE": "WAITING_SAM_ACK_OF_ZHANGWEI_PING",
+  "TWO_WAY_PING_ACK": {
+    "SAM_TO_ZHANGWEI": {
+      "ping": "agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/PING_SAM_TO_ZHANGWEI_20261011T234504Z.json",
+      "ack_from_desktop": "agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/ACK_ZHANGWEI_FOR_PING_SAM_TO_ZHANGWEI_20261011T234504Z.json",
+      "status": "ACKED"
+    },
+    "ZHANGWEI_TO_SAM": {
+      "ping": "agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/PING_ZHANGWEI_TO_SAM_20261011T235542Z.json",
+      "ack_from_notebook": "WAITING_FOR_SAM",
+      "status": "PING_PUBLISHED"
+    }
+  },
+  "CURSOR_AGENT_AUTO_WAKE": "NOT_SUPPORTED_OR_UNPROVEN",
+  "CURSOR_AGENT_AUTO_WAKE_DETAIL": "cursor.cmd present; reverse leg via user HUB prompt + PowerShell receiver, not background Agent wake",
+  "CHATGPT_WEB_AUTOMATION": "NOT_TESTED",
+  "WORK_PR_EVENT_TRIGGER": "UNVERIFIED",
+  "R9_HOLD_UNCHANGED": true,
+  "COPY_AUTHORIZED": false,
+  "FULL_MIGRATION": false,
+  "r9_sample_present": {
+    "dest_presence": "present",
+    "volume_serial_hex": "806508DF",
+    "untouched": true
+  },
+  "STILL_NEEDS_HUMAN_STEP": [
+    "SAM should ACK ZHANGWEI ping",
+    "ChatGPT browser one-shot still NOT_TESTED on desktop",
+    "Do not treat as R9 copy authorization"
+  ],
+  "FAILED_CHECKS": [],
+  "NEXT_SAFE_ACTION": "Wait SAM ACK; keep R9 HOLD",
+  "completed_utc": "2026-10-11T23:56:53.529887Z"
+}
