@@ -1,10 +1,8 @@
-# INBOX_FOR_CHATGPT — R9 Pilot Fix Package (20261011T032356Z)
+# INBOX_FOR_CHATGPT — R9FIX2b patch + desktop BLOCKED (20261011T033225Z)
 
-Cursor 已将 R9 结论与修复后 PY 报告推送到 HUB 子目录。
+**主目录**: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011
+**最新汇报**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2B_TASK_REPORT.md
 
-**主目录（请从此读）**: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011
-**README**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/README.md
-
-硬状态：R9FIX2 已更新本目录三份 PY + 测试；未执行 1GiB 复制；D 完整性未证实；历史 READY 不可复用；合成测 16/16。
-
-请从 R9_CODE_FIX_DELIVERY.md 与 R9FIX2_LEAN_TEST_FULL.json 审核，勿假设已复制成功。
+R9FIX2b：walk_errors→DEST_WALK_ENUM_ERROR；proc check fail-closed（Stop/空输出/空list/命令行不可读/不可skip）。
+C盘补丁测 10/10；lean 16/16。
+**台式机预检/1GiB 未执行**：当前主机 SAM≠ZHANGWEI，未放宽条件。
