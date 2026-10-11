@@ -1,8 +1,9 @@
-# INBOX_FOR_CHATGPT — R9FIX2b patch + desktop BLOCKED (20261011T033225Z)
+# INBOX_FOR_CHATGPT — R9 ZHANGWEI preflight (20261011T040915Z)
 
 **主目录**: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011
-**最新汇报**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2B_TASK_REPORT.md
+**ZHANGWEI 汇报**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ZHANGWEI_PREFLIGHT_REPORT.md
+**预检 JSON**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_PREFLIGHT_ZHANGWEI.json
+**UNC 探测 JSON**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_UNC_PROBE_ZHANGWEI.json
 
-R9FIX2b：walk_errors→DEST_WALK_ENUM_ERROR；proc check fail-closed（Stop/空输出/空list/命令行不可读/不可skip）。
-C盘补丁测 10/10；lean 16/16。
-**台式机预检/1GiB 未执行**：当前主机 SAM≠ZHANGWEI，未放宽条件。
+主机 ZHANGWEI。预检 FAIL：`PROC_CMDLINE_UNREADABLE`（sshd→cmd 空命令行）。
+UNC 探测 PASS（662 / 1,064,950,668）。**1GiB 复制未启动**。
