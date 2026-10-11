@@ -104,17 +104,19 @@ def t_r8_legacy_proc_rejected():
             r"-RunId 20261010_173201_R8_3B85D677",
         }
     ]
-    # env skip must NOT apply when allow_env_skip=False (copy path)
+    # env skip must NOT PASS even when allow_env_skip=True
     os.environ["R9_SKIP_PROC_CHECK"] = "1"
     r = C.live_r8_process_check(allow_env_skip=False, proc_snapshot=snap)
     assert r["ok"] is False and r["reason"] == "R8_LEGACY_TASK_STILL_RUNNING"
-    # skip only when explicitly allowed
     r2 = C.live_r8_process_check(allow_env_skip=True, proc_snapshot=snap)
-    assert r2.get("skipped") is True
-    # clean snapshot ok
+    assert r2["ok"] is False and r2["reason"] == "PROC_CHECK_SKIP_NOT_ALLOWED"
+    # clean non-empty snapshot ok (no sensitive unreadble shells)
     r3 = C.live_r8_process_check(
         allow_env_skip=False,
-        proc_snapshot=[{"ProcessId": 1, "Name": "idle", "CommandLine": "C:\\Windows\\System32\\idle"}],
+        proc_snapshot=[
+            {"ProcessId": 1, "Name": "idle", "CommandLine": "C:\\Windows\\System32\\idle"},
+            {"ProcessId": 2, "Name": "notepad.exe", "CommandLine": "C:\\Windows\\notepad.exe"},
+        ],
     )
     assert r3["ok"] is True
 
@@ -390,13 +392,10 @@ def t_enable_copy_ignores_skip_env():
         }
     ]
     os.environ["R9_SKIP_PROC_CHECK"] = "1"
-    with mock.patch.object(C, "live_r8_process_check", wraps=C.live_r8_process_check) as wrapped:
-        # direct: skip ignored
-        r = C.live_r8_process_check(allow_env_skip=False, proc_snapshot=snap)
-        assert r["ok"] is False
-        # with allow True would skip — prove asymmetry
-        r2 = C.live_r8_process_check(allow_env_skip=True, proc_snapshot=snap)
-        assert r2.get("skipped") is True
+    r = C.live_r8_process_check(allow_env_skip=False, proc_snapshot=snap)
+    assert r["ok"] is False and r["reason"] == "R8_LEGACY_TASK_STILL_RUNNING"
+    r2 = C.live_r8_process_check(allow_env_skip=True, proc_snapshot=snap)
+    assert r2["ok"] is False and r2["reason"] == "PROC_CHECK_SKIP_NOT_ALLOWED"
 
 
 def main():
