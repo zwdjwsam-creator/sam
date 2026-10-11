@@ -1,0 +1,67 @@
+--- before/r9_pilot_common_r9fix.py
++++ after/r9_pilot_common_r9fix.py
+@@ -298,4 +298,10 @@
+ 
+ 
++# Win32 codes used by GetFileAttributesW / CreateFileW (also appear in OSError.errno
++# when raised as OSError(win32_code, msg) from this module).
++ERROR_FILE_NOT_FOUND = 2
++ERROR_PATH_NOT_FOUND = 3
++
++
+ def get_attrs(path: str) -> int:
+     attrs = GetFileAttributesW(to_win_long_path(path))
+@@ -304,4 +310,53 @@
+         raise OSError(err, f"GetFileAttributesW failed path={path} winerror={err}")
+     return int(attrs)
++
++
++def win32_error_code(exc: BaseException) -> int | None:
++    """Read Win32 code from OSError; get_attrs stores it in errno (not only winerror)."""
++    if not isinstance(exc, OSError):
++        return None
++    for attr in ("winerror", "errno"):
++        v = getattr(exc, attr, None)
++        if isinstance(v, int) and v > 0:
++            return v
++    return None
++
++
++def strip_win_long_prefix(path: str) -> str:
++    """Inverse of to_win_long_path for local/UNC; no other string mutation."""
++    if path.startswith("\\\\?\\UNC\\"):
++        return "\\\\" + path[8:]
++    if path.startswith("\\\\?\\"):
++        return path[4:]
++    return path
++
++
++def relative_under_root(path: str | Path, root: str | Path) -> str:
++    """Relative path under root using comparable non-prefixed forms; enforce boundary."""
++    p = strip_win_long_prefix(str(path)).replace("/", "\\")
++    r = strip_win_long_prefix(str(root)).replace("/", "\\").rstrip("\\")
++    pref = r + "\\"
++    if p.rstrip("\\").lower() == r.lower():
++        raise ValueError(f"PATH_IS_ROOT:{path}")
++    if not p.lower().startswith(pref.lower()):
++        raise ValueError(f"DEST_OUTSIDE_ROOT:{path}")
++    return p[len(pref) :]
++
++
++def classify_path_presence(path: str) -> str:
++    """Return 'present' or 'missing'. Other attr/API failures raise OSError."""
++    try:
++        get_attrs(path)
++        return "present"
++    except OSError as e:
++        code = win32_error_code(e)
++        if code in (ERROR_FILE_NOT_FOUND, ERROR_PATH_NOT_FOUND):
++            return "missing"
++        raise
++
++
++def path_exists_win(path: str) -> bool:
++    """Long-path-aware existence; missing => False; other errors raise."""
++    return classify_path_presence(path) == "present"
+ 
+ 
