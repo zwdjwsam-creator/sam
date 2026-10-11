@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-10-11T14:11:09+0800",
+  "task_id": "R9_NOTEBOOK_SELECTED_MANIFEST_20261011_1354",
+  "config_sha256": "b9dd8c323e68bab7dc032f1efbb8a0d1574a4c699c57391639d7b79a4dc312cd",
+  "manifest_db": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_SELECTED_MANIFEST\\SELECTED_D_MANIFEST.sqlite",
+  "manifest_db_sha256": "787b14d267b3b167b37695adbdffaba96c719ed50bf64659ba4ba3828f630d39",
+  "source_volume_serial": "3187598165",
+  "stop_reason": "QUEUE_EMPTY",
+  "elapsed_sec": 198.36,
+  "processed_dirs": 10637,
+  "queue_pending": 0,
+  "queue_error": 0,
+  "dir_enum_done": 10637,
+  "dir_enum_error": 0,
+  "dir_enum_changed": 0,
+  "nodes": 45398,
+  "files_identity_ok": 34745,
+  "files_identity_unresolved": 0,
+  "diffs": 3370,
+  "unique_entities": 45381,
+  "unique_bytes": 8186614545,
+  "enumeration_complete": true,
+  "SELECTED_SCOPE_COVERAGE_PROVEN": false,
+  "D_GLOBAL_COVERAGE_PROVEN": false,
+  "FULL_MIGRATION": false,
+  "schema": {
+    "tables": [
+      "meta",
+      "nodes",
+      "dir_enum",
+      "queue",
+      "diffs",
+      "checkpoints"
+    ],
+    "nodes_columns": [
+      "path",
+      "parent",
+      "name",
+      "is_dir",
+      "is_reparse",
+      "attrs",
+      "logical_size",
+      "volume_serial",
+      "file_id",
+      "nlinks",
+      "mtime_ft",
+      "mtime_iso",
+      "identity_err",
+      "access_err",
+      "object_class"
+    ]
+  },
+  "diff_attribution": {
+    "counts": {
+      "SIZE_DRIFT": 3370
+    },
+    "SIZE_DRIFT_dirs_old0_nonsemantic": 3370,
+    "SIZE_DRIFT_files": 0,
+    "note": "Directory logical_size from ByHandle often non-zero vs old inventory 0; not content drift. File size drifts would block provenance."
+  },
+  "e_to_d_targets_uncovered_by_enum_roots": [],
+  "unknown_dependency_boundary_open": true,
+  "unauthorized_boundaries": [
+    {
+      "path": "D:\\MIN_sandbox",
+      "status": "UNAUTHORIZED_FULL_TREE",
+      "reason": "would require full-tree scan to close unknown deps; not authorized this round"
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE",
+      "status": "UNAUTHORIZED_FULL_TREE",
+      "reason": "only explicit E→D pit_products targets authorized, not whole archive"
+    },
+    {
+      "path": "D:\\国金证券QMT交易端",
+      "status": "UNRESOLVED_NOT_ENUMERATED",
+      "reason": "no explicit link proof this round"
+    }
+  ],
+  "enumeration_complete_selected_roots": true,
+  "SELECTED_SCOPE_COVERAGE_PROVEN_reason": "Selected roots ENUM_DONE + pending=0 + file identities OK, but unauthorized/unresolved dependency boundaries remain (full MIN_sandbox / CURSOR_TASK_ARCHIVE / QMT); task requires overall false until unknown deps closed. Dir SIZE_DRIFT vs old=0 attributed nonsemantic."
+}
