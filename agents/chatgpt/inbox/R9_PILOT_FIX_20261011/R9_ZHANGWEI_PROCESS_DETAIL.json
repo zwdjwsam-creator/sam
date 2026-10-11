@@ -1,0 +1,92 @@
+﻿{
+    "checked_at":  "2026-10-11T12:18:09+08:00",
+    "hostname":  "ZHANGWEI",
+    "pid_20440":  {
+                      "exists":  true,
+                      "pid":  20440,
+                      "name":  "cmd.exe",
+                      "ppid":  3348,
+                      "CommandLine":  null,
+                      "ExecutablePath":  null,
+                      "CreationDate":  "10/10/2026 17:33:54",
+                      "Owner":  "\\",
+                      "Path":  null,
+                      "StartTime":  null,
+                      "Handles":  107,
+                      "WS_MB":  7.1
+                  },
+    "parent_3348":  {
+                        "exists":  true,
+                        "pid":  3348,
+                        "name":  "sshd.exe",
+                        "ppid":  28700,
+                        "CommandLine":  null,
+                        "ExecutablePath":  null,
+                        "CreationDate":  "10/10/2026 17:33:54",
+                        "Owner":  "\\",
+                        "Path":  null,
+                        "StartTime":  null,
+                        "Handles":  141,
+                        "WS_MB":  10.9
+                    },
+    "grandparent":  {
+                        "exists":  true,
+                        "pid":  28700,
+                        "name":  "sshd.exe",
+                        "ppid":  5892,
+                        "CommandLine":  null,
+                        "ExecutablePath":  null,
+                        "CreationDate":  "10/10/2026 17:33:54",
+                        "Owner":  "\\",
+                        "Path":  null,
+                        "StartTime":  null,
+                        "Handles":  134,
+                        "WS_MB":  10.6
+                    },
+    "children_of_20440":  [
+                              {
+                                  "exists":  true,
+                                  "pid":  8488,
+                                  "name":  "conhost.exe",
+                                  "ppid":  20440,
+                                  "CommandLine":  null,
+                                  "ExecutablePath":  null,
+                                  "CreationDate":  "10/10/2026 17:33:54",
+                                  "Owner":  "\\",
+                                  "Path":  null,
+                                  "StartTime":  null,
+                                  "Handles":  133,
+                                  "WS_MB":  10.2
+                              },
+                              {
+                                  "exists":  true,
+                                  "pid":  34324,
+                                  "name":  "findstr.exe",
+                                  "ppid":  20440,
+                                  "CommandLine":  null,
+                                  "ExecutablePath":  null,
+                                  "CreationDate":  "10/10/2026 17:33:54",
+                                  "Owner":  "\\",
+                                  "Path":  null,
+                                  "StartTime":  null,
+                                  "Handles":  73,
+                                  "WS_MB":  5.3
+                              }
+                          ],
+    "preflight_suspicious_row":  {
+                                     "ProcessId":  20440,
+                                     "ParentProcessId":  3348,
+                                     "Name":  "cmd.exe",
+                                     "CreationDate":  "/Date(1791624834780)/",
+                                     "CommandLine":  null
+                                 },
+    "same_pid_still_present":  true,
+    "cmdline_still_null":  true,
+    "r8_marker_hits_now":  0,
+    "ln_running":  false,
+    "interpretation_notes":  [
+                                 "CommandLine null under sshd parent is consistent with OpenSSH session helper visibility limits, not proof of R8 activity.",
+                                 "No readable cmdline contains RUN_ID or BLACKBOX_R8_E_COPY_* scripts.",
+                                 "Cannot kill sshd/cmd per task; gate must remain fail-closed → PROC_CMDLINE_UNREADABLE / UNKNOWN until ChatGPT narrows policy."
+                             ]
+}
