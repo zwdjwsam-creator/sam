@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-10-11T14:27:52+0800",
+  "task_id": "R9_NOTEBOOK_MANIFEST_REPAIR_20261011_1415",
+  "config_sha256": "50769adf29c5cdf1889d7bef0b43a6cbb0b67560795f84603a88cd7a340f2eb5",
+  "manifest_db": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_SELECTED_MANIFEST\\SELECTED_D_MANIFEST_REPAIRED.sqlite",
+  "manifest_snapshot_sha256": "e3e0f653114782067fcc1df1d5e6d9a6c0f2d2f992f6c93649dae5831b3977a7",
+  "stop_reason": "QUEUE_EMPTY",
+  "elapsed_sec": 0.0,
+  "queue": {
+    "pending": 0,
+    "in_progress": 0,
+    "done": 10637,
+    "error": 0
+  },
+  "dir_enum": {
+    "ENUM_DONE": 10637,
+    "ERROR": 0,
+    "PENDING_CHANGED": 0
+  },
+  "roots_all_enum_done": true,
+  "enumeration_complete": true,
+  "identity_complete": true,
+  "dependency_closure_closed": true,
+  "runtime_dependency_blockers": [],
+  "SELECTED_SCOPE_COVERAGE_PROVEN": true,
+  "filesystem_coverage_selected_roots": true,
+  "application_runtime_independence": "unknown",
+  "D_GLOBAL_COVERAGE_PROVEN": false,
+  "FULL_MIGRATION": false,
+  "content_stats": {
+    "file_path_count": 34745,
+    "dir_count": 10637,
+    "reparse_count": 16,
+    "unique_file_entities": 34744,
+    "unique_content_bytes": 8163480337,
+    "logical_path_bytes": 8163565504,
+    "fid_size_or_mtime_conflicts": 0,
+    "sql_note": "unique_content_bytes = sum distinct (volume_serial,file_id) over normal files only; directories excluded"
+  },
+  "nodes": 45398,
+  "generator": "selected_manifest_enumerator_r2",
+  "original_db": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_SELECTED_MANIFEST\\SELECTED_D_MANIFEST.sqlite",
+  "original_db_sha256": "787b14d267b3b167b37695adbdffaba96c719ed50bf64659ba4ba3828f630d39",
+  "repaired_db": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_SELECTED_MANIFEST\\SELECTED_D_MANIFEST_REPAIRED.sqlite",
+  "repaired_db_bytes": 48635904,
+  "unique_file_entities": 34744,
+  "unique_content_bytes": 8163480337,
+  "dependency_map_sha256": "1bd356b8e69ed2df1138866835908d1072a72530dee770211ee4ca391dfaafaa",
+  "dependency_counts": {
+    "fs_links": 40,
+    "E_TO_D": 24,
+    "D_TO_E": 16,
+    "D_TO_E_in_E_BLACKBOX_scope": 16,
+    "E_TO_D_in_selected_roots": 24,
+    "selected_reparse_nodes": 16,
+    "inventory_junctions_out_of_scope_listed": 6,
+    "runtime_dependency_blockers": 0
+  },
+  "repair_tests": {
+    "passed": 9,
+    "failed": 0,
+    "total": 9
+  },
+  "ready_for_formal_executor_input": true,
+  "remaining_runtime_blockers": []
+}
