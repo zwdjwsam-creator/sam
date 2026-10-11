@@ -25,7 +25,13 @@ DEFAULT_MANIFEST = Path(r"C:\LAN_SHARE_REPORT\BLACKBOX_R9_MANIFEST\PILOT_1G_MANI
 def walk_dest_extra(dest_root: Path, expected_rels: set[str]) -> dict:
     extras = []
     reparses = []
-    for root, dirs, files in os.walk(str(dest_root)):
+    walk_errors: list[str] = []
+
+    def _onerror(err: BaseException) -> None:
+        # Directory enumeration failure is an acceptance deficit (not silent skip).
+        walk_errors.append(f"WALK_ONERROR:{type(err).__name__}:{err}")
+
+    for root, dirs, files in os.walk(str(dest_root), onerror=_onerror):
         # detect reparse dirs without following
         keep = []
         for d in dirs:
@@ -36,6 +42,7 @@ def walk_dest_extra(dest_root: Path, expected_rels: set[str]) -> dict:
                     continue  # do not descend
             except OSError as e:
                 reparses.append(f"ATTR_FAIL:{p}:{e}")
+                walk_errors.append(f"DIR_ATTR_FAIL:{p}:{e}")
                 continue
             keep.append(d)
         dirs[:] = keep
@@ -46,10 +53,15 @@ def walk_dest_extra(dest_root: Path, expected_rels: set[str]) -> dict:
                     reparses.append(str(fp))
             except OSError as e:
                 reparses.append(f"ATTR_FAIL:{fp}:{e}")
+                walk_errors.append(f"FILE_ATTR_FAIL:{fp}:{e}")
             rel = str(fp.relative_to(dest_root)).replace("/", "\\")
             if rel not in expected_rels:
                 extras.append(rel)
-    return {"extra_files": extras, "unexpected_reparse": reparses}
+    return {
+        "extra_files": extras,
+        "unexpected_reparse": reparses,
+        "walk_errors": walk_errors,
+    }
 
 
 def main(argv=None) -> int:
@@ -159,6 +171,13 @@ def main(argv=None) -> int:
             con.close()
             return finish("FAIL_DEST_MISSING", 2)
 
+        try:
+            C.ensure_no_reparse_ancestors(args.dest, stop_at=Path(str(args.dest.anchor) or "E:\\"))
+        except Exception as e:
+            report["deficits"].append(f"DEST_REPARSE_OR_ATTR:{e}")
+            con.close()
+            return finish("FAIL_DEST_REPARSE", 2)
+
         if not args.copy_record or not Path(args.copy_record).exists():
             report["deficits"].append("COPY_RECORD_REQUIRED")
             con.close()
@@ -178,6 +197,17 @@ def main(argv=None) -> int:
         if str(crec.get("dest", "")).rstrip("\\").lower() != str(args.dest).rstrip("\\").lower():
             report["deficits"].append("COPY_RECORD_DEST_MISMATCH")
 
+        expected_eids = {int(e["entity_id"]) for e in ents}
+        # Full pilot ⇒ exact entity set + space/run_id/sha integrity (no soft skip).
+        rec_deficits = C.validate_copy_record_integrity(
+            crec,
+            expected_eids,
+            require_full_pilot_counts=not report["partial"],
+        )
+        report["deficits"].extend(rec_deficits)
+        if len(ents) != C.EXPECTED_ENTITY_COUNT and not report["partial"]:
+            report["deficits"].append("ACCEPTANCE_ENTITY_SET_INCOMPLETE")
+
         try:
             live_vol = C.get_volume_identity("E:\\")
             report["binding"]["dest_volume_live"] = live_vol
@@ -190,6 +220,7 @@ def main(argv=None) -> int:
             report["deficits"].append(f"DEST_VOLUME_QUERY_FAIL:{e}")
 
         report["bytes"]["volume_free_before"] = crec.get("volume_free_before")
+        report["bytes"]["volume_free_after_record"] = crec.get("volume_free_after")
         try:
             free_now = C.volume_free_bytes("E:\\")
             report["bytes"]["volume_free_after"] = free_now
@@ -198,19 +229,10 @@ def main(argv=None) -> int:
         except OSError as e:
             report["deficits"].append(f"FREE_SPACE_MEASURE_FAIL:{e}")
 
-        if not report["partial"]:
-            if len(crec.get("entities", [])) != C.EXPECTED_ENTITY_COUNT:
-                report["deficits"].append(
-                    f"COPY_RECORD_ENTITY_COUNT={len(crec.get('entities', []))} expected={C.EXPECTED_ENTITY_COUNT}"
-                )
-            if crec.get("path_count") != C.EXPECTED_PATH_COUNT:
-                report["deficits"].append(f"COPY_RECORD_PATH_COUNT={crec.get('path_count')}")
-            if crec.get("unique_bytes") != C.EXPECTED_UNIQUE_BYTES:
-                report["deficits"].append(f"COPY_RECORD_UNIQUE={crec.get('unique_bytes')}")
-            if len(ents) != C.EXPECTED_ENTITY_COUNT:
-                report["deficits"].append("ACCEPTANCE_ENTITY_SET_INCOMPLETE")
-
-        sha_by_eid = {int(x["entity_id"]): x["sha256"] for x in crec.get("entities", [])}
+        sha_by_eid: dict[int, str] = {}
+        for x in crec.get("entities") or []:
+            if isinstance(x, dict) and "entity_id" in x:
+                sha_by_eid[int(x["entity_id"])] = x.get("sha256")  # type: ignore[assignment]
         eid_by_dest_key: dict[tuple[str, str], int] = {}
         allocated_by_key: dict[tuple[str, str], int] = {}
         content_by_key: dict[tuple[str, str], int] = {}
@@ -332,38 +354,66 @@ def main(argv=None) -> int:
             "free-space delta also reflects metadata/cluster rounding."
         )
 
-        content_link_ok = not any(
-            d
-            in {
-                "MISSING_DEST_PATHS",
-                "CONTENT_HASH_OR_SIZE_FAIL",
-                "LINK_ACCEPTANCE_FAIL",
-                "CROSS_ENTITY_MERGE",
-                "EXTRA_FILES_OUTSIDE_MANIFEST",
-                "UNEXPECTED_REPARSE_IN_DEST",
-                "COPY_RECORD_REQUIRED",
-                "COPY_RECORD_MANIFEST_SHA_MISMATCH",
-                "COPY_RECORD_VS_LIVE_MANIFEST_SHA_MISMATCH",
-                "COPY_RECORD_DEST_MISMATCH",
-                "DEST_VOLUME_DRIFT_VS_COPY_RECORD",
-                "DEST_VOLUME_NOT_EXPECTED_DESKTOP_E",
-                "DEST_MISSING",
-                "EMPTY_ENTITY_SET",
-                "ACCEPTANCE_ENTITY_SET_INCOMPLETE",
-            }
-            or d.startswith("HASH_COVERAGE")
-            or d.startswith("PATH_IDENTITY_COVERAGE")
-            or d.startswith("COPY_RECORD_")
-            or d.startswith("DEST_VOLUME_")
-            for d in report["deficits"]
-        )
+        hard_fail_tokens = {
+            "MISSING_DEST_PATHS",
+            "CONTENT_HASH_OR_SIZE_FAIL",
+            "LINK_ACCEPTANCE_FAIL",
+            "CROSS_ENTITY_MERGE",
+            "EXTRA_FILES_OUTSIDE_MANIFEST",
+            "UNEXPECTED_REPARSE_IN_DEST",
+            "DEST_WALK_ENUM_ERROR",
+            "COPY_RECORD_REQUIRED",
+            "COPY_RECORD_MANIFEST_SHA_MISMATCH",
+            "COPY_RECORD_VS_LIVE_MANIFEST_SHA_MISMATCH",
+            "COPY_RECORD_DEST_MISMATCH",
+            "COPY_RECORD_RUN_ID_MISSING",
+            "COPY_RECORD_ENTITIES_MISSING",
+            "COPY_RECORD_ENTITY_ID_DUPLICATE",
+            "DEST_VOLUME_DRIFT_VS_COPY_RECORD",
+            "DEST_VOLUME_NOT_EXPECTED_DESKTOP_E",
+            "DEST_MISSING",
+            "EMPTY_ENTITY_SET",
+            "ACCEPTANCE_ENTITY_SET_INCOMPLETE",
+            "ALLOC_MEASURE_FAIL",
+        }
+
+        def _is_hard_deficit(d: str) -> bool:
+            if d in hard_fail_tokens:
+                return True
+            return any(
+                d.startswith(p)
+                for p in (
+                    "HASH_COVERAGE",
+                    "PATH_IDENTITY_COVERAGE",
+                    "COPY_RECORD_",
+                    "DEST_VOLUME_",
+                    "DEST_REPARSE",
+                    "FREE_SPACE_",
+                )
+            )
+
+        content_link_ok = not any(_is_hard_deficit(d) for d in report["deficits"])
         report["content_link_pass"] = content_link_ok and not report["partial"]
 
+        space_ok = (
+            crec.get("volume_free_before") is not None
+            and crec.get("volume_free_after") is not None
+            and "FREE_SPACE_MEASURE_FAIL" not in report["deficits"]
+            and not any(str(d).startswith("COPY_RECORD_SPACE_EVIDENCE") for d in report["deficits"])
+        )
         if alloc_sum is None or report["bytes"]["dest_unique_content_bytes"] is None:
             report["deficits"].append("ALLOC_MEASURE_FAIL")
             report["occupancy_pass"] = False
-        elif "FREE_SPACE_MEASURE_FAIL" in report["deficits"]:
+        elif not space_ok:
             report["occupancy_pass"] = False
+            if "COPY_RECORD_SPACE_EVIDENCE_MISSING:volume_free_before" not in report["deficits"] and crec.get(
+                "volume_free_before"
+            ) is None:
+                report["deficits"].append("COPY_RECORD_SPACE_EVIDENCE_MISSING:volume_free_before")
+            if "COPY_RECORD_SPACE_EVIDENCE_MISSING:volume_free_after" not in report["deficits"] and crec.get(
+                "volume_free_after"
+            ) is None:
+                report["deficits"].append("COPY_RECORD_SPACE_EVIDENCE_MISSING:volume_free_after")
         else:
             report["occupancy_pass"] = True
             delta = report["bytes"].get("volume_free_delta")
@@ -371,11 +421,13 @@ def main(argv=None) -> int:
                 report["deficits"].append("FREE_SPACE_INCREASED_UNEXPECTED")
                 report["occupancy_pass"] = False
 
+        # Any necessary evidence deficit ⇒ overall_pass cannot be TRUE
         report["overall_pass"] = bool(
             report["content_link_pass"]
             and report["occupancy_pass"]
             and not report["deficits"]
             and not report["partial"]
+            and not any(_is_hard_deficit(d) for d in report["deficits"])
         )
         con.close()
         if report["partial"]:
