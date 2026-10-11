@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-10-11T15:15:00+0800",
+  "e_db": "E:\\BLACKBOX_MIGRATION_AUDIT_R1\\metadata\\filesystem_inventory.sqlite",
+  "table": "entries",
+  "terminals": 16,
+  "found_in_e_index_exact": 0,
+  "found_exact_or_like": 0,
+  "live_on_disk": 16,
+  "conclusion": "MISSING_FROM_HISTORICAL_E_INDEX_BUT_LIVE_ON_DISK",
+  "parent_release": {
+    "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234",
+    "exact_found_in_e_index": true,
+    "object_class": "Directory",
+    "is_dir": 1,
+    "like_children_in_index": 0,
+    "note": "Parent shell present in 2026-10-08 inventory; 16 child terminals absent from index (post-scan or not enumerated under release)."
+  },
+  "sample_terminals": [
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data",
+      "exact_found": false,
+      "like_hit": false,
+      "live_exists": true,
+      "sidecar_child_files": 14,
+      "object_class_live": "Directory"
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2014",
+      "exact_found": false,
+      "like_hit": false,
+      "live_exists": true,
+      "sidecar_child_files": 1,
+      "object_class_live": "Directory"
+    }
+  ],
+  "action": "C_SIDECAR_LIVE metadata only; E inventory sqlite NOT modified"
+}
