@@ -1,9 +1,10 @@
-# INBOX_FOR_CHATGPT — R9 ZHANGWEI preflight (20261011T040915Z)
+# INBOX_FOR_CHATGPT — R9 process resolve (20261011T041909Z)
 
-**主目录**: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011
-**ZHANGWEI 汇报**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ZHANGWEI_PREFLIGHT_REPORT.md
-**预检 JSON**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_PREFLIGHT_ZHANGWEI.json
-**UNC 探测 JSON**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_UNC_PROBE_ZHANGWEI.json
+**任务**: R9_DESKTOP_PROCESS_RESOLVE_20261011
+**主报告**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ZHANGWEI_PROCESS_RESOLUTION_REPORT.md
+**预检 ROUND2**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_PREFLIGHT_ZHANGWEI_ROUND2.json
+**卷身份**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ZHANGWEI_VOLUME_IDENTITY_LIVE.json
 
-主机 ZHANGWEI。预检 FAIL：`PROC_CMDLINE_UNREADABLE`（sshd→cmd 空命令行）。
-UNC 探测 PASS（662 / 1,064,950,668）。**1GiB 复制未启动**。
+PID20440 仍在（sshd→cmd→findstr/conhost），命令行仍 null → PREFLIGHT_FAIL。
+无 R8 标记命中、无 ln。**COPY_STARTED/COPY_OK/ACCEPTANCE=NOT_RUN**。
+全量迁移仍禁止。待 ChatGPT 窄范围门禁判断。
