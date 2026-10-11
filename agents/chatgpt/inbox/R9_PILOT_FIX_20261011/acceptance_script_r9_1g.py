@@ -31,30 +31,38 @@ def walk_dest_extra(dest_root: Path, expected_rels: set[str]) -> dict:
         # Directory enumeration failure is an acceptance deficit (not silent skip).
         walk_errors.append(f"WALK_ONERROR:{type(err).__name__}:{err}")
 
-    for root, dirs, files in os.walk(str(dest_root), onerror=_onerror):
+    # Enumerate via \\?\ extended root so paths > MAX_PATH are visible.
+    walk_root = C.to_win_long_path(str(dest_root).rstrip("\\"))
+    for root, dirs, files in os.walk(walk_root, onerror=_onerror):
         # detect reparse dirs without following
         keep = []
         for d in dirs:
-            p = str(Path(root) / d)
+            p = root.rstrip("\\") + "\\" + d
             try:
                 if C.is_reparse_path(p):
-                    reparses.append(p)
+                    reparses.append(C.strip_win_long_prefix(p))
                     continue  # do not descend
             except OSError as e:
-                reparses.append(f"ATTR_FAIL:{p}:{e}")
-                walk_errors.append(f"DIR_ATTR_FAIL:{p}:{e}")
+                shown = C.strip_win_long_prefix(p)
+                reparses.append(f"ATTR_FAIL:{shown}:{e}")
+                walk_errors.append(f"DIR_ATTR_FAIL:{shown}:{e}")
                 continue
             keep.append(d)
         dirs[:] = keep
         for fn in files:
-            fp = Path(root) / fn
+            fp = root.rstrip("\\") + "\\" + fn
             try:
-                if C.is_reparse_path(str(fp)):
-                    reparses.append(str(fp))
+                if C.is_reparse_path(fp):
+                    reparses.append(C.strip_win_long_prefix(fp))
             except OSError as e:
-                reparses.append(f"ATTR_FAIL:{fp}:{e}")
-                walk_errors.append(f"FILE_ATTR_FAIL:{fp}:{e}")
-            rel = str(fp.relative_to(dest_root)).replace("/", "\\")
+                shown = C.strip_win_long_prefix(fp)
+                reparses.append(f"ATTR_FAIL:{shown}:{e}")
+                walk_errors.append(f"FILE_ATTR_FAIL:{shown}:{e}")
+            try:
+                rel = C.relative_under_root(fp, dest_root)
+            except ValueError as e:
+                walk_errors.append(f"REL_BOUND:{e}")
+                continue
             if rel not in expected_rels:
                 extras.append(rel)
     return {
@@ -166,10 +174,15 @@ def main(argv=None) -> int:
                 return finish("PARTIAL", 0)
             return finish("STRUCTURE_DRY_OK_NO_COPY_ACCEPTANCE", 0)
 
-        if not args.dest.exists():
-            report["deficits"].append("DEST_MISSING")
+        try:
+            if C.classify_path_presence(str(args.dest)) != "present":
+                report["deficits"].append("DEST_MISSING")
+                con.close()
+                return finish("FAIL_DEST_MISSING", 2)
+        except OSError as e:
+            report["deficits"].append(f"DEST_ATTR_FAIL:{e}")
             con.close()
-            return finish("FAIL_DEST_MISSING", 2)
+            return finish("FAIL_DEST_ATTR", 2)
 
         try:
             C.ensure_no_reparse_ancestors(args.dest, stop_at=Path(str(args.dest.anchor) or "E:\\"))
@@ -178,7 +191,7 @@ def main(argv=None) -> int:
             con.close()
             return finish("FAIL_DEST_REPARSE", 2)
 
-        if not args.copy_record or not Path(args.copy_record).exists():
+        if not args.copy_record or not C.path_exists_win(str(Path(args.copy_record))):
             report["deficits"].append("COPY_RECORD_REQUIRED")
             con.close()
             return finish("FAIL_NO_COPY_RECORD", 2)
@@ -237,6 +250,7 @@ def main(argv=None) -> int:
         allocated_by_key: dict[tuple[str, str], int] = {}
         content_by_key: dict[tuple[str, str], int] = {}
         missing = []
+        path_attr_fail = []
         content_fail = []
         link_fail = []
         merge_fail = []
@@ -254,7 +268,12 @@ def main(argv=None) -> int:
             )
             dest_paths = [C.dest_under_root(args.dest, r["source_relative_path"]) for r in rows]
 
-            if not dest_paths[0].exists():
+            try:
+                presence0 = C.classify_path_presence(str(dest_paths[0]))
+            except OSError as ex:
+                path_attr_fail.append({"entity_id": eid, "path": str(dest_paths[0]), "error": str(ex)})
+                continue
+            if presence0 == "missing":
                 missing.append(str(dest_paths[0]))
                 continue
             h = None
@@ -284,7 +303,12 @@ def main(argv=None) -> int:
 
             keys = set()
             for dp in dest_paths:
-                if not dp.exists():
+                try:
+                    presence = C.classify_path_presence(str(dp))
+                except OSError as ex:
+                    path_attr_fail.append({"entity_id": eid, "path": str(dp), "error": str(ex)})
+                    continue
+                if presence == "missing":
                     missing.append(str(dp))
                     continue
                 h2 = None
@@ -326,6 +350,9 @@ def main(argv=None) -> int:
         if missing:
             report["deficits"].append("MISSING_DEST_PATHS")
             report["missing_sample"] = missing[:20]
+        if path_attr_fail:
+            report["deficits"].append("PATH_ATTR_OR_ACCESS_FAIL")
+            report["path_attr_fail_sample"] = path_attr_fail[:10]
         if content_fail:
             report["deficits"].append("CONTENT_HASH_OR_SIZE_FAIL")
             report["content_fail_sample"] = content_fail[:10]
@@ -359,6 +386,7 @@ def main(argv=None) -> int:
 
         hard_fail_tokens = {
             "MISSING_DEST_PATHS",
+            "PATH_ATTR_OR_ACCESS_FAIL",
             "CONTENT_HASH_OR_SIZE_FAIL",
             "LINK_ACCEPTANCE_FAIL",
             "CROSS_ENTITY_MERGE",
