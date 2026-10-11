@@ -1,0 +1,1384 @@
+{
+  "generated_at": "2026-10-11T14:07:22+0800",
+  "task_id": "R9_NOTEBOOK_SELECTED_MANIFEST_20261011_1354",
+  "hostname": "sam",
+  "ed_db": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_FULL_INVENTORY\\ED_CROSS_VOLUME_LINKS.sqlite",
+  "ed_links_recheck_exists": true,
+  "ed_links_recheck_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_FULL_INVENTORY\\ED_LINKS_RECHECK.json",
+  "counts": {
+    "fs_links_total": 40,
+    "E_TO_D": 24,
+    "D_TO_E": 16,
+    "E_TO_D_live_alive": 24,
+    "D_TO_E_live_alive": 16
+  },
+  "links": [
+    {
+      "id": 1,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233\\STOCK_TRADEABILITY_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233\\STOCK_TRADEABILITY_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 2,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233\\INDEX_WEIGHT_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233\\INDEX_WEIGHT_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 3,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 4,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 5,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907\\STOCK_TRADEABILITY_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907\\STOCK_TRADEABILITY_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 6,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907\\INDEX_WEIGHT_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907\\INDEX_WEIGHT_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 7,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 8,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 9,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260923_20260924_191940\\STOCK_TRADEABILITY_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260923_20260924_191940\\STOCK_TRADEABILITY_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 10,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260923_20260924_191940\\INDEX_WEIGHT_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260923_20260924_191940\\INDEX_WEIGHT_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 11,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260923_20260924_191940\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260923_20260924_191940\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 12,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260923_20260924_191940\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260923_20260924_191940\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 13,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260922_20260924_182115\\STOCK_TRADEABILITY_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260922_20260924_182115\\STOCK_TRADEABILITY_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 14,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260922_20260924_182115\\INDEX_WEIGHT_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260922_20260924_182115\\INDEX_WEIGHT_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 15,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260922_20260924_182115\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260922_20260924_182115\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 16,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260922_20260924_182115\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260922_20260924_182115\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 17,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260921_20260924_171753\\STOCK_TRADEABILITY_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260921_20260924_171753\\STOCK_TRADEABILITY_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 18,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260921_20260924_171753\\INDEX_WEIGHT_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260921_20260924_171753\\INDEX_WEIGHT_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 19,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260921_20260924_171753\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260921_20260924_171753\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 20,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260921_20260924_171753\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260921_20260924_171753\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 21,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260918_20260924_161853\\STOCK_TRADEABILITY_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260918_20260924_161853\\STOCK_TRADEABILITY_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 22,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260918_20260924_161853\\INDEX_WEIGHT_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260918_20260924_161853\\INDEX_WEIGHT_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 23,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260918_20260924_161853\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260918_20260924_161853\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 24,
+      "direction": "E_TO_D",
+      "link_type": "Junction",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260918_20260924_161853\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "evidence": "external_junctions_r2.csv+exists_check",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "recorded_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+        "alive": true,
+        "cycle_or_escape": null,
+        "errors": []
+      },
+      "target_in_migration_scope": true,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": null,
+        "new_link_suggestion": {
+          "link_path_on_E": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260918_20260924_161853\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "new_target_on_E": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232"
+        }
+      },
+      "content_included": true,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": true,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 25,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 26,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 27,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 28,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 29,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2014",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2014",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2014",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 30,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2015",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2015",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2015",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 31,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2016",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2016",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2016",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 32,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2017",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2017",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2017",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 33,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2018",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2018",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2018",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 34,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2019",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2019",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2019",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 35,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2020",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2020",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2020",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 36,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2021",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2021",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2021",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 37,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2022",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2022",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2022",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 38,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2023",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2023",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2023",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 39,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2024",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2024",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2024",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    },
+    {
+      "id": 40,
+      "direction": "D_TO_E",
+      "link_type": "Junction",
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2025",
+      "recorded_target": null,
+      "evidence": "pit_products_reparse_walk_nofollow",
+      "db_verified_alive": true,
+      "live": {
+        "source_exists": true,
+        "source_is_reparse": true,
+        "resolved_target": "\\\\?\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2025",
+        "recorded_target": null,
+        "alive": true,
+        "cycle_or_escape": "POSSIBLE_ESCAPE_OR_OTHER_VOLUME",
+        "errors": []
+      },
+      "target_in_migration_scope": false,
+      "proposed_post_migrate": {
+        "layout": "PROPOSED",
+        "note": "Desktop E: MarketData 806508DF; do not use old F: maps in exec config",
+        "source_compat_keep_d_abs": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2025",
+        "new_link_suggestion": null
+      },
+      "content_included": false,
+      "link_exists_vs_content_included": {
+        "link_alive": true,
+        "content_in_selected_enum": false,
+        "note": "alive link ≠ content closed into selected manifest"
+      }
+    }
+  ],
+  "explicit_deps": [
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "reason": "E_TO_D_EXPLICIT_TARGET",
+      "enumerate_separately": true
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "reason": "E_TO_D_EXPLICIT_TARGET",
+      "enumerate_separately": true
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+      "reason": "E_TO_D_EXPLICIT_TARGET",
+      "enumerate_separately": true
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+      "reason": "E_TO_D_EXPLICIT_TARGET",
+      "enumerate_separately": true
+    }
+  ],
+  "unauthorized_or_unresolved_boundaries": [
+    {
+      "path": "D:\\MIN_sandbox",
+      "status": "UNAUTHORIZED_FULL_TREE",
+      "reason": "would require full-tree scan to close unknown deps; not authorized this round"
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE",
+      "status": "UNAUTHORIZED_FULL_TREE",
+      "reason": "only explicit E→D pit_products targets authorized, not whole archive"
+    },
+    {
+      "path": "D:\\国金证券QMT交易端",
+      "status": "UNRESOLVED_NOT_ENUMERATED",
+      "reason": "no explicit link proof this round"
+    }
+  ],
+  "desktop_target_facts": {
+    "hostname_required": "ZHANGWEI",
+    "volume": "E:",
+    "fs": "NTFS",
+    "label": "MarketData",
+    "serial": "806508DF",
+    "unique_id": "\\\\?\\Volume{b8545ee8-e403-48c6-9d3f-09afd3e0349f}\\",
+    "status": "FROM_PRIOR_DESKTOP_EVIDENCE_PROPOSED_ONLY"
+  },
+  "proposed_layout": {
+    "status": "PROPOSED",
+    "E_BLACKBOX": "E:\\BLACKBOX",
+    "E_BLACKBOX_ENGINES": "E:\\BLACKBOX_ENGINES",
+    "old_F_maps": "DO_NOT_USE_IN_EXEC_CONFIG"
+  },
+  "ed_links_recheck_sha256": "8b966977b14d5fee8242052a58c7a2167995aebb628b70fb8775e0ac4319c20e"
+}
