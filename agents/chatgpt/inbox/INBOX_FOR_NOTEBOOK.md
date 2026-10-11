@@ -1,111 +1,112 @@
-# 给笔记本 AI（SAM）｜修复清单统计与恢复，闭合40条链接映射
+# 给笔记本 AI（SAM）｜补齐E清单包含证据，冻结正式E+D输入包
 
-任务ID：R9_NOTEBOOK_MANIFEST_REPAIR_20261011_1415
+任务ID：R9_NOTEBOOK_FREEZE_ED_INPUT_20261011_1438
 状态：待执行。
-取代：R9_NOTEBOOK_SELECTED_MANIFEST_20261011_1354（已回传，有实质成果但未通过代码审核）。
-执行方：笔记本SAM。台式机ZHANGWEI仍保留1GiB样本待命。
-本轮在C盘修代码/清单副本、做合成测试和必要定点只读核验；不复制业务数据，不重做1GiB，不扩大全D/E扫描。
+取代：R9_NOTEBOOK_MANIFEST_REPAIR_20261011_1415（修复成果已收，本轮完成实际正式输入准备）。
+执行方：笔记本SAM。台式机ZHANGWEI继续保留1GiB样本待命。
+本轮只读源E/D，代码/输入包写C盘和HUB；不复制业务数据，不全E/D重扫。
 
-## 1. ChatGPT已审核的事实
+## 1. 已认可的成果，直接复用
 
-选定12根已报告10637目录枚举完成，普通文件身份OK=34745，节点45398。
-现有DB与逐条40链接材料有价值，全部保留，不从零重建。
-但45381实体/8186614545字节不能当普通文件内容总量；SQL把目录一起按File ID计入。
-报告把MIN_sandbox/全ARCHIVE/QMT尚未扫描自动当作选定运行范围阻塞，也缺证据。
-本轮目标是修真实代码缺陷并取得可用于正式执行器的清单，不继续抽样，不把可选资料扩大成无限核查。
+文件内容统计已排除目录：34745文件路径、34744唯一普通文件实体、
+8163480337唯一内容字节，逻辑路径8163565504；10637目录、16重解析。
+原D清单与修复副本均有价值，保留。核心in_progress恢复、返回状态映射和配置canonical SHA已补上。
+9项本机合成测是Cursor回传，不是ChatGPT在Windows现场重新执行；报告“ChatGPT复现修复验证”请改为“Cursor针对ChatGPT提出案例的验证”。
+不为重复测试再扫12根，不重做1GiB，不扩展MIN_sandbox/全ARCHIVE/QMT等可选资料。
 
-ChatGPT本地运行了你上传的enumerator源代码，使用临时SQLite和模拟身份输入（非Windows现场测试），复现：
-A. 只有1项in_progress、pending=0、dir_enum_done=0时，run_batch返回QUEUE_EMPTY、enumeration_complete=true，且in_progress未恢复。
-B. 一个目录logical_size=4096和一个普通文件size=100，当前unique_bytes SQL输出4196，正确文件内容应为100。
-因此当前“4/4合成测试”未覆盖这些失败点，不能关闭问题。
+## 2. 本轮仍有一个真实阻塞：依赖闭合判定缺乏实际清单证据
 
-现有重要依据：
-R9_SAM_SELECTED_MANIFEST_REPORT.md / SUMMARY.json
-selected_manifest_enumerator.py / export_dependency_map.py / run_selected_manifest_synth_tests.py
-R9_SAM_DEPENDENCY_MAP.json
-R9_SAM_SELECTED_RESUME_STATE_HUB.json（10637队列项都标done）
-原DB SHA：787b14d267b3b167b37695adbdffaba96c719ed50bf64659ba4ba3828f630d39。
+ChatGPT读了R2全部代码、40条链接、配置和测试。
+16条D_TO_E的e_inventory_evidence.in_e_inventory全部为null，
+说明尚未从真实E索引/迁移清单证明内容包含；路径位于E:\BLACKBOX下且live_exists=true只能证明范围意图/当前存在。
+export_dependency_map_r2.dep_closed仅检查in_scope与映射字符串，没检查alive/errors/E清单包含证据或链式解析。
+ChatGPT提取并执行该实际判定表达式复现：
+把一条D_TO_E设alive=false、errors=[CURRENT_TARGET_NOT_OPENABLE]，dep_closed仍true。
+所以当前dependency_closure_closed=true及ready_for_formal_executor_input=true暂不采纳；不用再做全D覆盖来解决。
 
-## 2. 修复内容统计（优先直接查询现有DB）
+先定位实际E R2索引/全量清单（从已有报告/meta/文件名schema读），
+不要只试一个假定路径E_VOLUME_FILESYSTEM_INVENTORY.sqlite，不存在就自动降级PASS。
+记录实际文件路径、SHA/快照、源主机/卷、source_root、索引asof、schema、文件/目录/重解析/实体统计、
+既有覆盖依据与已知缺口。复用已有E索引，不重建180万文件扫描。
+若E索引材料确实缺失或完整性无法判定，给具体材料路径/缺什么，不用整个D完整性替代解释。
 
-内容实体及字节只统计普通文件：
-is_dir=0 AND is_reparse=0，并要求有效volume_serial、file_id、size，identity_err/access_err无错误。
-目录数、链接数、文件路径数、唯一普通文件实体数、逻辑路径字节、去重内容字节分别列。
-目录ByHandle“size”没有文件内容意义，不能加进unique_content_bytes。
-同卷+File ID组的size/mtime若不一致要标冲突，不能用max(size)隐藏错误。
-给出实际SQL、分组一致性检查与修正后的真实总量；不能沿用8186614545或45381冒充文件指标。
-按源卷+File ID去重；不同卷不合并。同卷范围外硬链接不强制迁移，但所有范围内路径必须完整列出。
+## 3. 修正40条链接的证据门槛
 
-## 3. 一次修完恢复与完成状态
+逐条保留source/readlink/current目标/最终目标、相对路径、映射和关联证据：
+- 当前源是期望类型重解析，目标可实际按目录句柄/属性安全打开；存在性不能代替可读性。
+- 真实链式跳转（含祖先重解析）按路径图解析，标出终端内容路径；识别真正环/缺失/越界，不能把跨D/E往返本身当循环。
+- E→D的24条：真实终端D内容在本次选定D文件/目录清单中，全部路径/实体有依据。
+- D→E的16条：真实终端E内容在将迁移的E索引/清单中。
+  每个目标导出exact目录记录及不跟重解析的内容覆盖摘要，包含索引/清单SHA、记录类型、子树文件/实体数和内容字节；
+  若目标本身或其祖先为重解析，继续到终端后证明纳入，不可只见目录壳就PASS。
+  对索引缺项只允许针对这16个目标做必要的定点元数据补核，不全E扫描。
+- 选定D的16个重解析全部须匹配明确的目标/处理方式；旧库存其余6条已列OUT_OF_SCOPE可保持。
+- 标题分清target_under_planned_root、target_in_actual_manifest、target_content_coverage_proven、alive、mapping_complete。
+  缺项/错误/未知均阻止dependency_closure_closed，不用旧recorded target顶替现场结果。
+- 修正normalize/path_under对..、相对/盘符相对路径的处理：正式映射只能规范绝对路径，出现路径穿越则拒绝，不按文本前缀放行。
+- 实际dependency_map规范化摘要要重新计算并核验（明确排除自身digest字段的canonical规则）；配置与清单绑定此digest。
+  生成summary必须读取并验证对应依赖文件，而非只相信cfg.dependency_closure_closed=true。
+- 依赖检查使用非空已知scope及明确预期清单。空links/只剩一部分行不能all([])=>PASS；
+  40条是本轮现场基线，变化需列差异和归因，不为凑数伪造。
 
-在原DB独立副本上迁移schema/修复状态，保留原版SHA，不直接覆盖历史。
+必要测试只围绕这个缺口：
+正常实际清单覆盖通过；目标存在但未入E清单失败；
+悬空/不可读或readlink失败、真正环、目录越界失败；
+空依赖表/删必需行失败；依赖文件内容变更却保留旧digest失败。
+运行实际闭合函数，不只测试normalize helper或手写最终布尔值。
+不用重复旧内容计数、pilot、抽样测试。
 
-具体缺陷与要求：
-1. 启动恢复把上次in_progress恢复成pending；完成计算统计pending/in_progress/error/changed全部状态。非空根配置逐根有完整账本才能完成。
-2. 当前run_batch忽略enum_one_dir返回值，ERROR和PENDING_CHANGED也被queue标done。改为明确映射；错误/变化保留未解决状态，不能QUEUE_EMPTY=>完成。
-3. 目录前/后稳定身份、类型、mtime读取任何失败均不算稳定ENUM_DONE；文件属性/身份失败要独立记录。全局枚举完成、身份完整、依赖闭合分字段计算，再由程序统一生成summary，禁止事后手工改proven字段。
-4. 真正中断发生在scandir中途或子项处理中也须可恢复，不仅预算到后重启。未完成目录可从头重枚举，事务保证幂等且不漏子项。
-5. 重新枚举不会清除nodes中已删除的旧子项。用枚举generation/实际child集合在完整成功后刷新该目录的当前视图；历史删除另记diff，不能残留成当前文件。未完成时不能把部分节点误当当前完整结果。
-6. 旧对账需比较精确path、普通文件/目录/重解析类型、卷+File ID、size、mtime；mtime旧ISO与新FILETIME按实际精度规范化。重复批次diff幂等，不无限重复计数。
-7. 不改只读旧inventory的journal_mode。新清单数据库使用SQLite一致性快照/backup，提交并正确处理WAL后再计算SHA；不能给会受WAL改变的主DB文件单独哈希当完整快照。
-8. 当前export把含自身hash的配置连续hash两次，run只相信JSON里的config_sha256。改为明确规范：对去掉config_sha256的规范化配置计算并核验，或者实际文件SHA存sidecar；不能信任自报字段。依赖表digest也核验，配置改根但保留旧hash必须拒绝恢复。
-9. source_host和实际源卷绑定必须核验，不仅覆盖写meta。生产源卷UNKNOWN/主机不符停止；合成测试按合成根卷绑定，不能硬查D盘当C盘测试绑定。所有路径用声明源根/主机，选定根边界严格验证。
-10. 预算包括初始化/对账/报告，目录内也有检查点；最多30分钟，异常退出须有可续接状态。失败/未完成CLI返回非成功码，不能main固定0掩盖结果。
+## 4. 冻结可供台式机开发的正式E+D输入包
 
-数据处置：
-先审计现有DB的queue/dir_enum/nodes是否存在in_progress、错误、缺身份、类型不确定、残留节点等具体风险。
-现有成功枚举成果复用，不全树再扫。只对审计发现的目录或确需验证修复的数据做定点只读重枚举。
-若没有现场中断/残留异常，可直接用现有节点修正统计、补账本验证和快照，不为了测试而重跑全部12根。
+以E实际R2索引+已认可选定D文件数据构建统一、只读的迁移输入（新C盘SQLite或可靠adapter；禁止把清单记录补进源业务目录）。
+至少包含：
+source_roots：主机SAM、源卷身份、E/D实际根与UNC入口（D共享路径若未知如实标待台式机只读核验）；
+entities：普通文件实体，源卷+File ID、size、mtime、范围内代表路径；
+paths：每个实体所有纳入路径及唯一目标相对路径；
+directories：普通目录（含空目录）；
+reparse_links：当前类型/终端目标证据和拟本地目标映射；
+meta：源索引、D输入、配置、依赖图快照摘要/时间/覆盖边界；
+保持E/D卷身份区分，不能仅按file_id合并，不同源实体同大小同hash也不能自动合并。
 
-## 4. 修正链接闭包：当前确实未完成的是D→E映射
+目标仅方案：
+台式机ZHANGWEI E: NTFS MarketData、serial806508DF、
+GUID Volume{b8545ee8-e403-48c6-9d3f-09afd3e0349f}。
+E BLACKBOX映射到E:\BLACKBOX；
+D选定根映射到E:\BLACKBOX_ENGINES下明确子目录，40链接用同一映射规则。
+旧F路径不进入配置。检查目标相对路径冲突、大小写冲突、逃逸及链接目录与内容目录重叠。
+正式复制前台式机须重核卷/UNC/容量与源漂移；今日旧索引asof不等于冻结业务文件内容。
 
-依赖JSON的16条D_TO_E（id25–40）已读到真实目标：
-均为\\?\E:\BLACKBOX\数据\回测缓存\releases\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\... 下目录。
-它们被写成target_in_migration_scope=false、new_link_suggestion=null，
-又因未规范化\\?\前缀而标POSSIBLE_ESCAPE_OR_OTHER_VOLUME。
-这是导出实现缺口，不是证明存在16个真正逃逸。
+给正式输入的精确总计：
+E/D分别与合并后的文件路径/实体/普通目录/链接数、唯一内容字节、逻辑路径字节、容量余量建议。
+E索引仍有未证明项则标PARTIAL，正式输入ready=false并列精确差距，不编造总量。
 
-要求：
-- 规范化本地/UNC扩展前缀与大小写，再以精确目录边界判包含。不能用“包含CURSOR_TASK_ARCHIVE文字”充当允许范围或循环检测。
-- 区分recorded_target/current_readlink_target/final_resolved_target；readlink失败只能UNKNOWN/错误，不能用旧记录当已核验目标。
-- 链接alive需源确为期望重解析类型、当前目标能实际解析打开；lexists仅说明入口存在，不能证明悬空链目标可访问。当前目标错误时也不能OR旧目标存在而PASS。
-- 24条E→D映射到E:\BLACKBOX_ENGINES\CURSOR_TASK_ARCHIVE\...；
-  16条D→E链接位置也按同一D根映射到台式机E:\BLACKBOX_ENGINES\...，目标按E BLACKBOX相对路径映射到台式机E:\BLACKBOX\...。
-  全部只写方案，不创建链接，不保留笔记本UNC作为新目标。
-- 利用E既有索引精确查16个目标及其实体/重解析记录，证明目标属于将迁移的E清单；缺失只对这些目标定点核验，不全E重扫。
-- 检查真实路径图中的链式跳转/祖先重解析和最终内容是否纳入，不能把“跨卷回来”当循环，也不能只看D/E盘符就排除循环。
-- 查新选定清单所有is_reparse=1节点（报告45398节点与10637目录计数推测17个重解析，实际以SQL为准），对每个节点有链接类型/目标/迁移后映射。也处理D旧库存22条中的其余6条：不在选定范围可标OUT_OF_SCOPE，不能遗漏已纳入节点。
-- 依赖闭包针对当前E BLACKBOX+选定D范围；未知资料是否保存与运行闭包分开。
+快照绑定修正：
+当前合同manifest_db指REPAIRED.sqlite，SHA实际来自REPAIRED.snapshot.sqlite；
+finalize又在快照之后修改working DB meta，二者不能混用。
+正式合同明确input_snapshot_path + 该文件实际SHA，生成后不再写它。
+先完成meta/绑定与验证，再sqlite backup得到一致性独立快照，PRAGMA integrity_check和文件SHA。
+summary另存sidecar，不能为写自身摘要再次改变被签名输入。
+只读打开快照复算统计/完整性/依赖绑定与之前一致，明确snapshot字节SHA vs canonical JSON SHA两种口径。
+旧snapshot e3e0f...保留历史，不把它配给后来更新的working DB。
+固定production required_hostname=SAM；读取源根现场卷身份并比较既有绑定，UNKNOWN或不符失败。
+本轮不调用重新全树枚举来取得主机/卷身份。
 
-## 5. 不再用“没扫描可选目录”制造运行阻塞
+枚举工具R2尚有局限（每次seed roots会把done重排，删除子目录只删目录节点不清子树、目录内预算无检查）：
+本次冻结优先复用已有数据，不能拿R2继续从头重扫。
+若确需定点重枚举，先修该定点流程的当前子树视图/事务和预算，再仅处理实际缺口；
+否则记录工具局限即可，不能让这些通用工具问题无限阻塞已审的静态输入。
 
-MIN_sandbox、整棵ARCHIVE、QMT安装树未纳入本轮明确配置，并不自动导致已选定范围coverage=false。
-只有存在具体入口/配置/实际链接引用而目标未纳入，才列运行依赖阻塞：source_path、引用类型、target_path、证据一条条给出。
-没有引用证据的候选列“可选研究存档/待决定”，不能声称已证明无关，也不能自动删掉。
-文件系统覆盖通过≠应用运行独立性通过；分别给字段，未知就unknown，不把目录名猜测写成硬阻塞。
-复用已有启动/配置资料做有界精确路径检索；最多10分钟，不遍历所有业务内容、凭证或全E。
-不要求本轮证明整个D完整；D_GLOBAL_COVERAGE_PROVEN仍false。
+## 5. HUB交付后停，下一执行阶段转台式机
 
-## 6. 验证必须覆盖实际失败模式
-
-C盘独立合成目录，直接调用修订run_batch/实际CLI和真实SQLite：
-- 目录有非零ByHandle size、同组多硬链接：文件内容总量准确，目录不入内容实体。
-- 保留in_progress的异常退出后恢复完整；测试须实际制造中断，不用“1秒可能没停”代替。
-- scandir/目录前后身份失败及mtime变化不会完成或静默done。
-- 文件删除后重枚举无需测试脚本手动DELETE nodes，当前视图自动去掉并保留删除diff。
-- 修改roots但保留旧自报hash、源卷UNKNOWN/不符必须失败。
-- 合法\\?\E:\BLACKBOX反向目标纳入且映射正确；真正环/悬空/边界逃逸继续拒绝。
-原>40项/深度>2/不跟junction用例保留，不重复无关pilot测试。
-提交源码、逐项实际输入/计数/verdict。测试不能先手改DB删除节点来绕过被测缺陷。
-
-## 7. HUB回传与结束
-
-新增而非覆盖原报告：
-- R9_SAM_MANIFEST_REPAIR_REPORT.md：各项修复、修正文件实体/字节、当前是否可用于正式执行器、真实剩余阻塞。
-- R9_SAM_MANIFEST_REPAIR_SUMMARY.json：自动生成，覆盖/身份/依赖分字段，原版与新快照SHA。
-- 修订enumerator/export程序、代码diff、修复测试源码和逐项结果。
-- 修订依赖图、配置、快照schema/SQL、resume HUB摘要。
-大SQLite留本机，上传路径/SHA及完整状态计数。旧DB和原报告保留。
-若补核超预算上传PARTIAL与完整队列，停止，不从零再扫。
-更新INBOX_FOR_CHATGPT.md，FULL_MIGRATION=false。
-修复后可给正式执行器输入契约与精确参数草案；本轮不改r9_1g、不开始正式复制、不启用P7。
+新增：
+- R9_SAM_ED_INPUT_PACKAGE_REPORT.md
+- R9_SAM_ED_INPUT_CONTRACT.json（精确快照路径/SHA、schema、统计、源/目标映射、真实remaining blockers）
+- R9_SAM_DEPENDENCY_CLOSURE_EVIDENCE.json（16目标的E清单证据、40行状态、终端解析、绑定摘要）
+- R9_DEPENDENCY_GATE_TEST_RESULTS.json与实际程序/测试源码/diff
+- 规范化依赖图/配置、输入包adapter或构建程序
+大SQLite留本机，只上传schema/统计/路径/SHA；不上传业务文件和凭证。
+运行及报告合计最多30分钟；预算到或材料缺失就上传可审阅PARTIAL，不从头再扫。
+INPUT_READY只能据完整快照+精确统计+依赖证据共同计算。
+若通过，交付台式机正式执行器开发参数（开发+预演，不是实际复制授权）；
+若不通过，剩余阻塞精确到文件/目标/记录，不再泛称MIN_sandbox未扫描。
+FULL_MIGRATION=false；原报告保留；更新INBOX_FOR_CHATGPT.md后等待调度。
