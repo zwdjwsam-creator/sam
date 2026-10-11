@@ -624,6 +624,11 @@ def parse_r8_stop_report(path: Path) -> dict:
     return {"ok": True, "fields": {k: True for k in R8_REQUIRED_STOP_FIELDS}, "path": str(path)}
 
 
+_R8_CMDLINE_REQUIRED_NAMES = frozenset(
+    {"ln.exe", "powershell.exe", "pwsh.exe", "cmd.exe"}
+)
+
+
 def live_r8_process_check(
     *,
     allow_env_skip: bool = False,
@@ -632,23 +637,31 @@ def live_r8_process_check(
     """Reject if legacy R8 RUN_ID / freeze scripts / ln wrapper still live in cmdline.
 
     Uses Win32_Process CommandLine + CreationDate + ParentProcessId (not process-name-only).
-    Does not stop processes. Actual copy must call with allow_env_skip=False so
-    R9_SKIP_PROC_CHECK cannot bypass.
-    proc_snapshot: optional injected CIM-like rows for tests.
+    Fail-closed: query errors, empty/non-list data, malformed rows, or unreadable
+    CommandLine on ln/powershell/pwsh/cmd ⇒ ok=false (UNKNOWN), never "no old task".
+    R9_SKIP_PROC_CHECK / forged empty snapshot cannot pass the gate.
+    proc_snapshot: test injection only; same validation rules apply (non-empty list).
     """
+    import subprocess
+
+    # Skip is never a PASS — copy preflight must call allow_env_skip=False; even if
+    # env is set, returning ok=true would forge a clean process plane.
     if allow_env_skip and os.environ.get("R9_SKIP_PROC_CHECK") == "1":
-        return {"ok": True, "suspicious": [], "skipped": True}
+        return {
+            "ok": False,
+            "reason": "PROC_CHECK_SKIP_NOT_ALLOWED",
+            "suspicious": [],
+            "skipped": True,
+        }
+
     suspicious: list[dict[str, Any]] = []
     try:
         if proc_snapshot is not None:
             data = proc_snapshot
         else:
-            import subprocess
-
-            # CIM CommandLine inspection — not Get-Process Name filtering.
             ps = (
-                "$ErrorActionPreference='SilentlyContinue'; "
-                "Get-CimInstance Win32_Process | "
+                "$ErrorActionPreference='Stop'; "
+                "Get-CimInstance Win32_Process -ErrorAction Stop | "
                 "Select-Object ProcessId,ParentProcessId,Name,CommandLine,CreationDate | "
                 "ConvertTo-Json -Compress -Depth 3"
             )
@@ -658,13 +671,68 @@ def live_r8_process_check(
                 errors="replace",
                 timeout=45,
             )
-            data = json.loads(out) if out.strip() else []
+            if not (out or "").strip():
+                return {
+                    "ok": False,
+                    "reason": "PROC_CHECK_EMPTY_OUTPUT",
+                    "suspicious": [],
+                }
+            try:
+                data = json.loads(out)
+            except json.JSONDecodeError as e:
+                return {
+                    "ok": False,
+                    "reason": f"PROC_CHECK_JSON_FAIL:{e}",
+                    "suspicious": [],
+                }
             if isinstance(data, dict):
                 data = [data]
+
+        if not isinstance(data, list) or len(data) == 0:
+            return {
+                "ok": False,
+                "reason": "PROC_CHECK_EMPTY_OR_NOT_LIST",
+                "suspicious": [],
+                "detail": f"type={type(data).__name__}",
+            }
+
         markers = tuple(m.lower() for m in R8_PROC_CMDLINE_MARKERS)
-        for proc in data or []:
-            cmd = proc.get("CommandLine") or ""
-            name = (proc.get("Name") or "").lower()
+        for proc in data:
+            if not isinstance(proc, dict):
+                return {
+                    "ok": False,
+                    "reason": "PROC_CHECK_MALFORMED_ROW",
+                    "suspicious": [],
+                }
+            name_raw = proc.get("Name")
+            if name_raw is None or not str(name_raw).strip():
+                return {
+                    "ok": False,
+                    "reason": "PROC_CHECK_MALFORMED_ROW",
+                    "suspicious": [],
+                    "detail": "missing Name",
+                }
+            name = str(name_raw).lower()
+            cmd_raw = proc.get("CommandLine")
+            # Sensitive shells/tools: unreadble cmdline ⇒ UNKNOWN, not clean.
+            if name in _R8_CMDLINE_REQUIRED_NAMES:
+                if cmd_raw is None or (isinstance(cmd_raw, str) and not cmd_raw.strip()):
+                    return {
+                        "ok": False,
+                        "reason": "PROC_CMDLINE_UNREADABLE",
+                        "status": "UNKNOWN",
+                        "suspicious": [
+                            {
+                                "ProcessId": proc.get("ProcessId"),
+                                "ParentProcessId": proc.get("ParentProcessId"),
+                                "Name": proc.get("Name"),
+                                "CreationDate": str(proc.get("CreationDate") or ""),
+                                "CommandLine": None,
+                            }
+                        ],
+                    }
+
+            cmd = str(cmd_raw) if cmd_raw is not None else ""
             low = cmd.lower()
             hit = None
             for mk in markers:
@@ -672,12 +740,10 @@ def live_r8_process_check(
                     hit = mk
                     break
             if hit is None and name == "ln.exe":
-                # ln.exe only suspicious when cmdline references BLACKBOX / RUN_ID / freeze paths
                 if "blackbox" in low or R8_LEGACY_RUN_ID.lower() in low or "freeze" in low:
                     hit = "ln.exe+blackbox_context"
             if hit is None:
                 continue
-            # Ignore this checker itself if present
             if "live_r8_process_check" in low or "_hub_upload_r9" in low:
                 continue
             if "run_r9fix_lean_tests" in low or "r9_pilot_common_r9fix" in low:
