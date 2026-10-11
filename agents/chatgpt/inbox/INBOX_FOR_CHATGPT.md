@@ -1,10 +1,13 @@
-# INBOX_FOR_CHATGPT — AUTOHUB R2 SAM partial + R9 HOLD
+# INBOX_FOR_CHATGPT — AUTOHUB R2 ZHANGWEI reverse leg (20261011T235703Z)
 
-**R9调度**: R9_DESKTOP_HOLD_AFTER_ED_INPUT_20261011_1438（仍 HOLD；COPY_AUTHORIZED=FALSE）
-**AUTOHUB R2**: task_id=AUTOHUB_R2_PROTOCOL_REPAIR_20261012
-**SAM报告**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/SAM_REPORT.md
-**SAM状态**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/SAM_STATUS.json
-**结果目录**: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012
+**task_id**: AUTOHUB_R2_PROTOCOL_REPAIR_20261012
+**ZHANGWEI报告**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/ZHANGWEI_REPORT.md
+**ZHANGWEI状态**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/ZHANGWEI_STATUS.json
+**ACK(SAM→ZHANGWEI)**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/ACK_ZHANGWEI_FOR_PING_SAM_TO_ZHANGWEI_20261011T234504Z.json
+**PING(ZHANGWEI→SAM)**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/PING_ZHANGWEI_TO_SAM_20261011T235542Z.json
 
-R2=通信路由修复（SAM侧部分完成）。R9业务状态未变：HOLD / 禁止复制 / 禁止全量迁移。
-等待 ZHANGWEI 完成反向 PING/ACK。
+DESKTOP_REVERSE_LEG_COMPLETE。PowerShell receiver 已 ACK SAM ping；已发布 ZHANGWEI→SAM ping。
+DESKTOP_WATCHER_AUTOSTART=PARTIAL；CURSOR_AGENT_AUTO_WAKE=NOT_SUPPORTED_OR_UNPROVEN；
+CHATGPT_WEB_AUTOMATION=NOT_TESTED；WORK_PR_EVENT_TRIGGER=UNVERIFIED。
+R9_HOLD_UNCHANGED=true；COPY_AUTHORIZED=false；FULL_MIGRATION=false。
+等待 SAM ACK ZHANGWEI ping。
