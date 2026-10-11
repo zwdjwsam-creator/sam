@@ -1,0 +1,82 @@
+{
+  "task_id": "R9_NOTEBOOK_MANIFEST_REPAIR_20261011_1415",
+  "synthetic": false,
+  "required_hostname": null,
+  "source_root": "D:\\",
+  "budget_sec": 1800,
+  "checkpoint_every_sec": 300,
+  "enum_roots": [
+    {
+      "path": "D:\\backtest_lab",
+      "role": "FIXED_REQUIRED_FAMILY",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\backtest_lab_backups",
+      "role": "FIXED_REQUIRED_FAMILY",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\backtest_lab_candidate_releases",
+      "role": "FIXED_REQUIRED_FAMILY",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\backtest_lab_shadow_experiments",
+      "role": "FIXED_REQUIRED_FAMILY",
+      "shadow_not_runtime_claim": true
+    },
+    {
+      "path": "D:\\blackbox_data",
+      "role": "FIXED_REQUIRED_FAMILY",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\JQ",
+      "role": "FIXED_REQUIRED_FAMILY",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\BLACKBOX_DESKTOP_INIT_R1",
+      "role": "FIXED_REQUIRED_FAMILY",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\BLACKBOX_REMOTE_LINK_R1",
+      "role": "FIXED_REQUIRED_FAMILY",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "role": "EXPLICIT_E_TO_D_TARGET",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      "role": "EXPLICIT_E_TO_D_TARGET",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231",
+      "role": "EXPLICIT_E_TO_D_TARGET",
+      "shadow_not_runtime_claim": false
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230",
+      "role": "EXPLICIT_E_TO_D_TARGET",
+      "shadow_not_runtime_claim": false
+    }
+  ],
+  "dependency_map_sha256": "1bd356b8e69ed2df1138866835908d1072a72530dee770211ee4ca391dfaafaa",
+  "dependency_closure_closed": true,
+  "runtime_dependency_blockers": [],
+  "rules": [
+    "enumerate all direct children of normal dirs; recurse all normal subdirs",
+    "no 40-cap / depth-2 cap",
+    "record reparse, do not follow",
+    "long-path WinAPI for attrs/identity",
+    "write only under C:\\LAN_SHARE_REPORT",
+    "read-only on E/D"
+  ],
+  "config_sha256": "50769adf29c5cdf1889d7bef0b43a6cbb0b67560795f84603a88cd7a340f2eb5"
+}
