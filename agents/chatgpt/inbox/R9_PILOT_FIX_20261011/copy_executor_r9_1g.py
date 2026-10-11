@@ -43,12 +43,14 @@ def preflight_copy(args, manifest_info: dict) -> dict:
     if not host_ok:
         issues.append(f"WRONG_HOST:{host}")
     vol = {"ok": False, "issues": ["SKIPPED_WRONG_HOST"], "live": None, "expected": C.EXPECTED_DEST_VOLUME}
+    # Actual copy preflight must never honor R9_SKIP_PROC_CHECK.
+    allow_proc_skip = bool(getattr(args, "allow_proc_check_skip", False))
     proc = {"ok": True, "suspicious": [], "skipped": True}
     if host_ok:
         vol = check_dest_volume_live()
         if not vol["ok"]:
             issues.append("DEST_VOLUME_MISMATCH:" + ",".join(vol["issues"]))
-        proc = C.live_r8_process_check()
+        proc = C.live_r8_process_check(allow_env_skip=allow_proc_skip)
         if not proc.get("ok"):
             issues.append(f"R8_LIVE_PROC:{proc.get('reason')}")
     r8 = C.parse_r8_stop_report(Path(args.r8_stopped_evidence)) if args.r8_stopped_evidence else {
@@ -56,7 +58,9 @@ def preflight_copy(args, manifest_info: dict) -> dict:
         "reason": "R8_PATH_REQUIRED",
     }
     if not r8.get("ok"):
-        issues.append(f"R8_STOP_FAIL:{r8.get('reason')}:{r8.get('falsy') or r8.get('missing')}")
+        issues.append(
+            f"R8_STOP_FAIL:{r8.get('reason')}:{r8.get('falsy') or r8.get('missing') or r8.get('conflicts')}"
+        )
     if str(args.confirm_dest).rstrip("\\").lower() != str(C.ALLOWED_DEST).rstrip("\\").lower():
         issues.append(f"CONFIRM_DEST_MISMATCH:{args.confirm_dest}")
     # dest must NOT exist
@@ -119,6 +123,8 @@ def plan_and_optionally_copy(args) -> int:
 
         pre = None
         if enable or args.preflight_only:
+            # enable_copy ⇒ proc check skip forbidden even if env set
+            args.allow_proc_check_skip = False if enable else bool(getattr(args, "allow_proc_check_skip", False))
             pre = preflight_copy(args, minfo)
             log["desktop_preflight"] = pre
             if args.preflight_only:
@@ -204,24 +210,29 @@ def plan_and_optionally_copy(args) -> int:
                         return stop("SMB_STABLE_READ_UNAVAILABLE", str(ex))
                     raise
                 ident = C.handle_identity(h)
-                if ident["file_id"] != str(e["file_id"]):
-                    return stop(
-                        "SOURCE_IDENTITY_DRIFT",
-                        f"entity={eid} manifest_fid={e['file_id']} live_fid={ident['file_id']}",
+                try:
+                    C.compare_identity_vol_fid_size(
+                        manifest_volume_serial=e["volume_serial"],
+                        manifest_file_id=e["file_id"],
+                        manifest_size=expect,
+                        live=ident,
+                        label=f"entity={eid}",
                     )
-                if ident["size"] != expect:
-                    return stop("SOURCE_SIZE_DRIFT", f"entity={eid} manifest={expect} live={ident['size']}")
-                if str(e["source_last_write_time"]).isdigit():
-                    if ident["mtime_ft"] != str(e["source_last_write_time"]):
-                        return stop("SOURCE_MTIME_DRIFT", str(eid))
+                    C.compare_mtime_manifest_vs_handle(e["source_last_write_time"], ident["mtime_ft"])
+                except RuntimeError as ex:
+                    return stop(str(ex).split(":", 1)[0], str(ex))
 
                 for rel, unc in unc_paths[1:]:
                     h2 = None
                     try:
                         h2 = C.open_source_stable(unc)
                         id2 = C.handle_identity(h2)
-                        if id2["file_id"] != ident["file_id"] or id2["size"] != expect:
-                            return stop("HL_SPLIT_OR_SIZE", f"entity={eid} path={unc}")
+                        try:
+                            C.compare_hardlink_sibling_identity(ident, id2, unc)
+                            if int(id2["size"]) != expect:
+                                return stop("HL_SIZE_DRIFT", f"entity={eid} path={unc}")
+                        except RuntimeError as ex:
+                            return stop("HL_SPLIT", f"entity={eid}:{ex}")
                     finally:
                         C.safe_close(h2)
 
@@ -327,12 +338,17 @@ def plan_and_optionally_copy(args) -> int:
             copy_record["volume_free_before"] = free_before
             copy_record["volume_free_after"] = free_after
             copy_record["generated_at"] = C.now_iso()
-            if len(copy_record["entities"]) != C.EXPECTED_ENTITY_COUNT:
-                return stop("COPY_ENTITY_COUNT_MISMATCH", str(len(copy_record["entities"])))
-            if copy_record["path_count"] != C.EXPECTED_PATH_COUNT:
-                return stop("COPY_PATH_COUNT_MISMATCH", str(copy_record["path_count"]))
-            if copy_record["unique_bytes"] != C.EXPECTED_UNIQUE_BYTES:
-                return stop("COPY_BYTE_MISMATCH", str(copy_record["unique_bytes"]))
+            # Self-check record integrity before persist (same rules acceptance will enforce)
+            expected_ids = set(int(x) for x in entity_ids)
+            rec_deficits = C.validate_copy_record_integrity(
+                copy_record, expected_ids, require_full_pilot_counts=True
+            )
+            if rec_deficits:
+                log["copy_record_deficits"] = rec_deficits
+                return stop("COPY_RECORD_INCOMPLETE", ",".join(rec_deficits))
+            for ent in copy_record["entities"]:
+                if not C.is_valid_sha256_hex(ent.get("sha256")):
+                    return stop("COPY_SHA_INVALID", str(ent.get("entity_id")))
             rec_path.write_text(json.dumps(copy_record, ensure_ascii=False, indent=2), encoding="utf-8")
             log["copy_record"] = str(rec_path)
             return stop("COPY_OK", f"entities={len(copy_record['entities'])} unique={copy_record['unique_bytes']}")
