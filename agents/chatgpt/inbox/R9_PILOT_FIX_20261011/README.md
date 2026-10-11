@@ -66,3 +66,10 @@ uploaded_at_utc: 2026-10-11T04:09:11Z
 本轮改为确认执行权限并通过正常用户授权进行只读管理员诊断，不再重复相同权限查询。
 
 清理记录：删除 R9FIX_LEAN_TEST_RESULTS.json、R9FIX2_LEAN_TEST_STDOUT.txt、R9FIX2B_PATCH_TEST_STDOUT.txt。重复结果以 R9FIX2_LEAN_TEST_FULL.json 为准；控制台输出对应的完整JSON和测试源码保留，历史仍可从Git查看。不要重传冗余副本。
+
+## 12:27后最新任务
+
+管理员诊断确认是旧findstr日志查询及cmd外壳残留，非ln复制。
+当前执行方仍为台式机ZHANGWEI，任务ID R9_DESKTOP_FINISH_STALE_QUERY_20261011_1227，见[台式机邮箱](../INBOX_FOR_DESKTOP.md)。
+先重核身份后定点结束残留查询；原普通上下文预检通过后接续单次1GiB实测。笔记本待命。复制尚无完成证据。
+诊断材料保留，不恢复已删除的冗余测试输出。
