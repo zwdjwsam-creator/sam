@@ -34,9 +34,6 @@ uploaded_at_utc: 2026-10-11T04:09:11Z
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/run_r9fix2b_patch_tests.py
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2B_PATCH_TEST_FULL.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2_LEAN_TEST_FULL.json
-- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX_LEAN_TEST_RESULTS.json
-- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2B_PATCH_TEST_STDOUT.txt
-- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2_LEAN_TEST_STDOUT.txt
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/PILOT_1G_SUMMARY.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/PILOT_VERIFY_R9.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/PILOT_1G_SCHEMA_AND_SAMPLES.json
@@ -61,3 +58,11 @@ uploaded_at_utc: 2026-10-11T04:09:11Z
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_UNC_PROBE_ZHANGWEI.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/BLACKBOX_R9_OLD_JOB_STOP_REPORT.md
 
+
+## 最新调度（2026-10-11 12:20后）
+
+当前任务：[给台式机AI](../INBOX_FOR_DESKTOP.md)。笔记本待命。
+12:18现场：卷身份成立，进程命令行不可读，复制NOT_RUN。详见 R9_ZHANGWEI_PROCESS_RESOLUTION_REPORT.md。
+本轮改为确认执行权限并通过正常用户授权进行只读管理员诊断，不再重复相同权限查询。
+
+清理记录：删除 R9FIX_LEAN_TEST_RESULTS.json、R9FIX2_LEAN_TEST_STDOUT.txt、R9FIX2B_PATCH_TEST_STDOUT.txt。重复结果以 R9FIX2_LEAN_TEST_FULL.json 为准；控制台输出对应的完整JSON和测试源码保留，历史仍可从Git查看。不要重传冗余副本。
