@@ -34,6 +34,8 @@ ARCHIVE = r"D:\CURSOR_TASK_ARCHIVE"
 E_DB_CANDIDATES = [
     Path(r"E:\BLACKBOX_MIGRATION_AUDIT_R1\metadata\filesystem_inventory.sqlite"),
 ]
+# C: sidecar only — never written into E inventory / business tree
+E_SIDECAR_DB = OUT / "E_INDEX_SIDECAR_16_LIVE.sqlite"
 EXPECTED_LINK_COUNT = 40
 
 
@@ -181,7 +183,61 @@ def locate_e_index(timeout_exists_sec: float = 8.0) -> dict:
     return status
 
 
-def e_index_lookup(con: sqlite3.Connection | None, path: str) -> dict:
+def _sidecar_lookup(sidecar_con: sqlite3.Connection | None, pn: str) -> dict | None:
+    """Accept C: live sidecar rows for paths missing from historical E inventory."""
+    if sidecar_con is None or not pn:
+        return None
+    row = sidecar_con.execute(
+        """
+        select path, object_class, is_dir, logical_size, file_id, volume_serial, nlinks,
+               mtime_utc, is_reparse, exists_live, child_file_count_bounded, source, note
+        from entries where path=? limit 1
+        """,
+        (pn,),
+    ).fetchone()
+    if row is None:
+        row = sidecar_con.execute(
+            """
+            select path, object_class, is_dir, logical_size, file_id, volume_serial, nlinks,
+                   mtime_utc, is_reparse, exists_live, child_file_count_bounded, source, note
+            from entries where path=? limit 1
+            """,
+            (pn.rstrip("\\"),),
+        ).fetchone()
+    if row is None:
+        return None
+    if not row["exists_live"]:
+        return None
+    if row["is_reparse"]:
+        return None
+    return {
+        "in_e_inventory": True,
+        "evidence_plane": "C_SIDECAR_LIVE",
+        "record": {
+            "path": row["path"],
+            "object_class": row["object_class"],
+            "is_dir": row["is_dir"],
+            "logical_size": row["logical_size"],
+            "file_id": row["file_id"],
+            "volume_serial": row["volume_serial"],
+            "nlinks": row["nlinks"],
+            "reparse_target": None,
+            "mtime_utc": row["mtime_utc"],
+        },
+        "subtree_file_paths": int(row["child_file_count_bounded"] or 0),
+        "subtree_unique_entities": None,
+        "subtree_content_bytes": None,
+        "sidecar_source": row["source"],
+        "sidecar_note": row["note"],
+        "error": None,
+    }
+
+
+def e_index_lookup(
+    con: sqlite3.Connection | None,
+    path: str,
+    sidecar_con: sqlite3.Connection | None = None,
+) -> dict:
     out = {
         "path": normalize_win_path(path),
         "in_e_inventory": None,
@@ -190,79 +246,90 @@ def e_index_lookup(con: sqlite3.Connection | None, path: str) -> dict:
         "subtree_unique_entities": None,
         "subtree_content_bytes": None,
         "error": None,
+        "evidence_plane": None,
     }
-    if con is None:
-        out["error"] = "E_INDEX_UNAVAILABLE"
-        out["in_e_inventory"] = None
-        return out
     pn = out["path"]
     if not pn:
         out["error"] = "EMPTY_PATH"
         return out
+    if con is None and sidecar_con is None:
+        out["error"] = "E_INDEX_UNAVAILABLE"
+        out["in_e_inventory"] = None
+        return out
     try:
-        row = con.execute(
-            "select path, object_class, is_dir, logical_size, file_id, volume_serial, nlinks, reparse_target, mtime_utc from entries where path=? limit 1",
-            (pn,),
-        ).fetchone()
-        if row is None:
+        if con is not None:
             row = con.execute(
                 "select path, object_class, is_dir, logical_size, file_id, volume_serial, nlinks, reparse_target, mtime_utc from entries where path=? limit 1",
-                ("\\\\?\\" + pn,),
+                (pn,),
             ).fetchone()
-        if row is None:
-            out["in_e_inventory"] = False
+            if row is None:
+                row = con.execute(
+                    "select path, object_class, is_dir, logical_size, file_id, volume_serial, nlinks, reparse_target, mtime_utc from entries where path=? limit 1",
+                    ("\\\\?\\" + pn,),
+                ).fetchone()
+            if row is not None:
+                out["in_e_inventory"] = True
+                out["evidence_plane"] = "E_INVENTORY"
+                out["record"] = {
+                    "path": row[0],
+                    "object_class": row[1],
+                    "is_dir": row[2],
+                    "logical_size": row[3],
+                    "file_id": row[4],
+                    "volume_serial": row[5],
+                    "nlinks": row[6],
+                    "reparse_target": row[7],
+                    "mtime_utc": row[8],
+                }
+                # subtree summary without following reparse (path prefix; exclude child reparse shells via class)
+                prefix = pn.rstrip("\\") + "\\"
+                files = con.execute(
+                    """
+                    select count(*), coalesce(sum(logical_size),0) from entries
+                    where is_dir=0 and (object_class is null or object_class not in ('Junction','Symlink','Reparse'))
+                      and (path=? or path like ?)
+                    """,
+                    (pn, prefix + "%"),
+                ).fetchone()
+                # unique entities under subtree
+                ents = con.execute(
+                    """
+                    select count(*) from (
+                      select volume_serial, file_id from entries
+                      where is_dir=0 and file_id is not null and volume_serial is not null
+                        and (object_class is null or object_class not in ('Junction','Symlink','Reparse'))
+                        and (path=? or path like ?)
+                      group by volume_serial, file_id
+                    )
+                    """,
+                    (pn, prefix + "%"),
+                ).fetchone()[0]
+                bytes_u = con.execute(
+                    """
+                    select coalesce(sum(sz),0) from (
+                      select volume_serial, file_id, max(logical_size) as sz from entries
+                      where is_dir=0 and file_id is not null and volume_serial is not null
+                        and (object_class is null or object_class not in ('Junction','Symlink','Reparse'))
+                        and (path=? or path like ?)
+                      group by volume_serial, file_id
+                    )
+                    """,
+                    (pn, prefix + "%"),
+                ).fetchone()[0]
+                out["subtree_file_paths"] = int(files[0] or 0)
+                out["subtree_content_bytes_path_sum"] = int(files[1] or 0)
+                out["subtree_unique_entities"] = int(ents or 0)
+                out["subtree_content_bytes"] = int(bytes_u or 0)
+                return out
+
+        # Historical E inventory miss → C: targeted live sidecar (does not mutate E DB)
+        side = _sidecar_lookup(sidecar_con, pn)
+        if side is not None:
+            out.update(side)
             return out
-        out["in_e_inventory"] = True
-        out["record"] = {
-            "path": row[0],
-            "object_class": row[1],
-            "is_dir": row[2],
-            "logical_size": row[3],
-            "file_id": row[4],
-            "volume_serial": row[5],
-            "nlinks": row[6],
-            "reparse_target": row[7],
-            "mtime_utc": row[8],
-        }
-        # subtree summary without following reparse (path prefix; exclude child reparse shells via class)
-        prefix = pn.rstrip("\\") + "\\"
-        files = con.execute(
-            """
-            select count(*), coalesce(sum(logical_size),0) from entries
-            where is_dir=0 and (object_class is null or object_class not in ('Junction','Symlink','Reparse'))
-              and (path=? or path like ?)
-            """,
-            (pn, prefix + "%"),
-        ).fetchone()
-        # unique entities under subtree
-        ents = con.execute(
-            """
-            select count(*) from (
-              select volume_serial, file_id from entries
-              where is_dir=0 and file_id is not null and volume_serial is not null
-                and (object_class is null or object_class not in ('Junction','Symlink','Reparse'))
-                and (path=? or path like ?)
-              group by volume_serial, file_id
-            )
-            """,
-            (pn, prefix + "%"),
-        ).fetchone()[0]
-        bytes_u = con.execute(
-            """
-            select coalesce(sum(sz),0) from (
-              select volume_serial, file_id, max(logical_size) as sz from entries
-              where is_dir=0 and file_id is not null and volume_serial is not null
-                and (object_class is null or object_class not in ('Junction','Symlink','Reparse'))
-                and (path=? or path like ?)
-              group by volume_serial, file_id
-            )
-            """,
-            (pn, prefix + "%"),
-        ).fetchone()[0]
-        out["subtree_file_paths"] = int(files[0] or 0)
-        out["subtree_content_bytes_path_sum"] = int(files[1] or 0)
-        out["subtree_unique_entities"] = int(ents or 0)
-        out["subtree_content_bytes"] = int(bytes_u or 0)
+
+        out["in_e_inventory"] = False
+        out["evidence_plane"] = "MISS"
     except Exception as e:
         out["error"] = f"LOOKUP:{type(e).__name__}:{e}"
         out["in_e_inventory"] = None
@@ -332,6 +399,7 @@ def evaluate_links(
     d_con: sqlite3.Connection,
     selected_roots: list[str],
     links_rows: list,
+    sidecar_con: sqlite3.Connection | None = None,
 ) -> dict:
     if not links_rows:
         return {
@@ -382,7 +450,7 @@ def evaluate_links(
 
         if direction == "D_TO_E":
             under_planned = bool(terminal and path_under(terminal, E_SCOPE))
-            e_ev = e_index_lookup(e_con, terminal) if terminal else {
+            e_ev = e_index_lookup(e_con, terminal, sidecar_con=sidecar_con) if terminal else {
                 "in_e_inventory": None, "error": "NO_TERMINAL"
             }
             in_manifest = e_ev.get("in_e_inventory") is True
@@ -536,6 +604,16 @@ def main() -> int:
         except Exception as e:
             e_status["sha_error"] = str(e)
 
+    side_con = None
+    side_meta = {"path": str(E_SIDECAR_DB), "exists": E_SIDECAR_DB.exists()}
+    if E_SIDECAR_DB.exists():
+        side_con = sqlite3.connect(f"file:{E_SIDECAR_DB.as_posix()}?mode=ro", uri=True)
+        side_con.row_factory = sqlite3.Row
+        try:
+            side_meta["rows"] = side_con.execute("select count(*) from entries").fetchone()[0]
+        except Exception as e:
+            side_meta["error"] = str(e)
+
     dcon = sqlite3.connect(f"file:{d_db.as_posix()}?mode=ro", uri=True)
     dcon.row_factory = sqlite3.Row
     econ_ed = sqlite3.connect(f"file:{ed_db.as_posix()}?mode=ro", uri=True)
@@ -543,15 +621,20 @@ def main() -> int:
     rows = list(econ_ed.execute("select * from fs_links order by id"))
     econ_ed.close()
 
-    evidence = evaluate_links(e_con=econ, d_con=dcon, selected_roots=selected, links_rows=rows)
+    evidence = evaluate_links(
+        e_con=econ, d_con=dcon, selected_roots=selected, links_rows=rows, sidecar_con=side_con
+    )
     dcon.close()
     if econ:
         econ.close()
+    if side_con:
+        side_con.close()
 
     evidence["e_index"] = {
         **e_status,
         "db_sha256": e_db_sha,
         "meta": e_meta,
+        "sidecar": side_meta,
     }
     # digest excluding self
     digest = canonical_digest(evidence, {"dependency_map_sha256", "links"})
