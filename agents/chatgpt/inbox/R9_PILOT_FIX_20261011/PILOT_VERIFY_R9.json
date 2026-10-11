@@ -1,0 +1,775 @@
+{
+  "schema": {
+    "tables": [
+      "entities",
+      "hardlink_paths",
+      "meta"
+    ],
+    "entities": [
+      [
+        0,
+        "entity_id",
+        "INTEGER",
+        0,
+        null,
+        1
+      ],
+      [
+        1,
+        "volume_serial",
+        "TEXT",
+        1,
+        null,
+        0
+      ],
+      [
+        2,
+        "file_id",
+        "TEXT",
+        1,
+        null,
+        0
+      ],
+      [
+        3,
+        "representative_source_relative_path",
+        "TEXT",
+        1,
+        null,
+        0
+      ],
+      [
+        4,
+        "unique_file_bytes",
+        "INTEGER",
+        1,
+        null,
+        0
+      ],
+      [
+        5,
+        "source_file_size",
+        "INTEGER",
+        1,
+        null,
+        0
+      ],
+      [
+        6,
+        "source_attributes",
+        "INTEGER",
+        0,
+        null,
+        0
+      ],
+      [
+        7,
+        "source_last_write_time",
+        "TEXT",
+        0,
+        null,
+        0
+      ],
+      [
+        8,
+        "nlinks_index",
+        "INTEGER",
+        0,
+        null,
+        0
+      ],
+      [
+        9,
+        "sibling_count",
+        "INTEGER",
+        0,
+        null,
+        0
+      ],
+      [
+        10,
+        "cross_release",
+        "INTEGER",
+        0,
+        null,
+        0
+      ],
+      [
+        11,
+        "is_hardlink_group",
+        "INTEGER",
+        0,
+        null,
+        0
+      ],
+      [
+        12,
+        "verify_ok",
+        "INTEGER",
+        0,
+        null,
+        0
+      ]
+    ],
+    "hardlink_paths": [
+      [
+        0,
+        "entity_id",
+        "INTEGER",
+        1,
+        null,
+        1
+      ],
+      [
+        1,
+        "source_relative_path",
+        "TEXT",
+        1,
+        null,
+        2
+      ],
+      [
+        2,
+        "source_absolute_path",
+        "TEXT",
+        1,
+        null,
+        0
+      ]
+    ],
+    "meta_keys": [
+      [
+        "EXPECTED_SAVINGS_BYTES"
+      ],
+      [
+        "PILOT_ENTITY_COUNT"
+      ],
+      [
+        "PILOT_EXTRA_LINK_PATHS"
+      ],
+      [
+        "PILOT_HARDLINK_GROUPS"
+      ],
+      [
+        "PILOT_LOGICAL_EXPANDED_BYTES"
+      ],
+      [
+        "PILOT_PATH_COUNT"
+      ],
+      [
+        "PILOT_UNIQUE_BYTES"
+      ],
+      [
+        "generated_at"
+      ],
+      [
+        "index_validity"
+      ],
+      [
+        "junction_follow"
+      ],
+      [
+        "max_unique_bytes"
+      ],
+      [
+        "source_inventory_db"
+      ],
+      [
+        "source_root"
+      ],
+      [
+        "task"
+      ],
+      [
+        "verify"
+      ]
+    ]
+  },
+  "meta": {
+    "task": "BLACKBOX_R9_PILOT_1G_MANIFEST",
+    "generated_at": "2026-10-11T08:16:33+0800",
+    "source_root": "E:\\BLACKBOX",
+    "source_inventory_db": "E:\\BLACKBOX_MIGRATION_AUDIT_R1\\metadata\\filesystem_inventory.sqlite",
+    "index_validity": "{\"INDEX_SCAN_ASOF\": \"2026-10-08T11:30:26+0800\", \"INDEX_SOURCE_ROOT\": \"E:\\\\BLACKBOX\", \"INDEX_FIELDS_OK\": true, \"INDEX_FIELDS\": [\"volume_serial\", \"file_id\", \"path\", \"nlinks\", \"logical_size\", \"attrs\", \"mtime_utc\", \"reparse_target\", \"object_class\"], \"FOLLOW_DIRECTORY_REPARSE\": \"false\", \"FULL_LIBRARY_RESCAN\": false, \"SPOT_CHECK_OK\": 30, \"SPOT_CHECK_MISSING\": 0, \"SPOT_CHECK_DRIFT\": [], \"SPOT_CHECK_DRIFT_COUNT\": 0, \"INDEX_VALIDITY\": \"REUSE_VALID_FOR_PILOT_WITH_LIVE_VERIFY\", \"NOTE\": \"R2 full inventory asof 2026-10-08; not claimed as fresh full recount today.\"}",
+    "junction_follow": "False",
+    "max_unique_bytes": "1073741824",
+    "verify": "{\"verified_ok\": 48, \"verified_fail\": 0, \"ok\": [{\"index\": 0, \"file_id\": \"844424930955235\", \"siblings\": 57, \"size\": 3695535, \"live_nlinks\": 57}, {\"index\": 13, \"file_id\": \"844424930955304\", \"siblings\": 57, \"size\": 3312477, \"live_nlinks\": 57}, {\"index\": 26, \"file_id\": \"844424930955288\", \"siblings\": 57, \"size\": 3098385, \"live_nlinks\": 57}, {\"index\": 39, \"file_id\": \"844424930955269\", \"siblings\": 57, \"size\": 2899320, \"live_nlinks\": 57}, {\"index\": 52, \"file_id\": \"844424930955216\", \"siblings\": 57, \"size\": 2738173, \"live_nlinks\": 57}, {\"index\": 65, \"file_id\": \"844424930955259\", \"siblings\": 57, \"size\": 2586312, \"live_nlinks\": 57}, {\"index\": 78, \"file_id\": \"844424930955323\", \"siblings\": 57, \"size\": 2453027, \"live_nlinks\": 57}, {\"index\": 91, \"file_id\": \"844424930955322\", \"siblings\": 57, \"size\": 2282453, \"live_nlinks\": 57}, {\"index\": 104, \"file_id\": \"844424930955369\", \"siblings\": 57, \"size\": 1742284, \"live_nlinks\": 57}, {\"index\": 117, \"file_id\": \"844424930955349\", \"siblings\": 57, \"size\": 1332923, \"live_nlinks\": 57}, {\"index\": 130, \"file_id\": \"844424930955319\", \"siblings\": 57, \"size\": 151733, \"live_nlinks\": 57}, {\"index\": 143, \"file_id\": \"844424930955315\", \"siblings\": 57, \"size\": 42342, \"live_nlinks\": 57}, {\"index\": 156, \"file_id\": \"844424930955224\", \"siblings\": 57, \"size\": 7287, \"live_nlinks\": 57}, {\"index\": 169, \"file_id\": \"562949954320953\", \"siblings\": 56, \"size\": 73229, \"live_nlinks\": 56}, {\"index\": 182, \"file_id\": \"281474977989532\", \"siblings\": 53, \"size\": 10579, \"live_nlinks\": 53}, {\"index\": 195, \"file_id\": \"562949953715763\", \"siblings\": 48, \"size\": 232230, \"live_nlinks\": 48}, {\"index\": 208, \"file_id\": \"281474979247749\", \"siblings\": 42, \"size\": 9276, \"live_nlinks\": 42}, {\"index\": 221, \"file_id\": \"562949954244409\", \"siblings\": 41, \"size\": 22617, \"live_nlinks\": 41}, {\"index\": 234, \"file_id\": \"562949954244462\", \"siblings\": 41, \"size\": 15853, \"live_nlinks\": 41}, {\"index\": 247, \"file_id\": \"562949954244490\", \"siblings\": 41, \"size\": 11099, \"live_nlinks\": 41}, {\"index\": 260, \"file_id\": \"562949954244478\", \"siblings\": 41, \"size\": 10187, \"live_nlinks\": 41}, {\"index\": 273, \"file_id\": \"562949954244438\", \"siblings\": 41, \"size\": 7661, \"live_nlinks\": 41}, {\"index\": 286, \"file_id\": \"562949954244505\", \"siblings\": 41, \"size\": 5305, \"live_nlinks\": 41}, {\"index\": 299, \"file_id\": \"562949954244456\", \"siblings\": 41, \"size\": 4309, \"live_nlinks\": 41}, {\"index\": 312, \"file_id\": \"562949954244423\", \"siblings\": 41, \"size\": 4229, \"live_nlinks\": 41}, {\"index\": 325, \"file_id\": \"562949954244286\", \"siblings\": 40, \"size\": 637435, \"live_nlinks\": 40}, {\"index\": 338, \"file_id\": \"562949954244289\", \"siblings\": 40, \"size\": 9036, \"live_nlinks\": 40}, {\"index\": 351, \"file_id\": \"844424930955010\", \"siblings\": 40, \"size\": 4924, \"live_nlinks\": 40}, {\"index\": 364, \"file_id\": \"844424930955026\", \"siblings\": 40, \"size\": 3803, \"live_nlinks\": 40}, {\"index\": 377, \"file_id\": \"844424930955017\", \"siblings\": 40, \"size\": 3736, \"live_nlinks\": 40}, {\"index\": 390, \"file_id\": \"844424930954988\", \"siblings\": 40, \"size\": 3289, \"live_nlinks\": 40}, {\"index\": 403, \"file_id\": \"844424930955053\", \"siblings\": 40, \"size\": 2838, \"live_nlinks\": 40}, {\"index\": 416, \"file_id\": \"844424930954973\", \"siblings\": 40, \"size\": 2702, \"live_nlinks\": 40}, {\"index\": 429, \"file_id\": \"844424930955002\", \"siblings\": 40, \"size\": 2684, \"live_nlinks\": 40}, {\"index\": 438, \"file_id\": \"844424930954995\", \"siblings\": 40, \"size\": 814, \"live_nlinks\": 40}, {\"index\": 442, \"file_id\": \"844424930954991\", \"siblings\": 40, \"size\": 814, \"live_nlinks\": 40}, {\"index\": 455, \"file_id\": \"281474980843408\", \"siblings\": 28, \"size\": 9274, \"live_nlinks\": 28}, {\"index\": 468, \"file_id\": \"281474979574624\", \"siblings\": 23, \"size\": 506106, \"live_nlinks\": 23}, {\"index\": 474, \"file_id\": \"1407374885736057\", \"siblings\": 1, \"size\": 20335127, \"live_nlinks\": 1}, {\"index\": 481, \"file_id\": \"281474979872360\", \"siblings\": 20, \"size\": 456386, \"live_nlinks\": 20}, {\"index\": 494, \"file_id\": \"562949954940573\", \"siblings\": 1, \"size\": 18483122, \"live_nlinks\": 1}, {\"index\": 507, \"file_id\": \"10977524093233405\", \"siblings\": 1, \"size\": 14392962, \"live_nlinks\": 1}, {\"index\": 520, \"file_id\": \"562949959164638\", \"siblings\": 15, \"size\": 32997, \"live_nlinks\": 15}, {\"index\": 533, \"file_id\": \"281474982709918\", \"siblings\": 11, \"size\": 309506, \"live_nlinks\": 11}, {\"index\": 546, \"file_id\": \"281474983095898\", \"siblings\": 1, \"size\": 7554952, \"live_nlinks\": 1}, {\"index\": 559, \"file_id\": \"562949959594073\", \"siblings\": 8, \"size\": 37091, \"live_nlinks\": 8}, {\"index\": 572, \"file_id\": \"281474983087897\", \"siblings\": 1, \"size\": 3292583, \"live_nlinks\": 1}, {\"index\": 585, \"file_id\": \"281474983075748\", \"siblings\": 1, \"size\": 3273074, \"live_nlinks\": 1}], \"failed\": []}",
+    "PILOT_UNIQUE_BYTES": "1064950668",
+    "PILOT_LOGICAL_EXPANDED_BYTES": "19786558967",
+    "PILOT_HARDLINK_GROUPS": "546",
+    "PILOT_EXTRA_LINK_PATHS": "22336",
+    "EXPECTED_SAVINGS_BYTES": "18721608299",
+    "PILOT_ENTITY_COUNT": "662",
+    "PILOT_PATH_COUNT": "22998"
+  },
+  "counts": {
+    "entities": 662,
+    "paths": 22998,
+    "sum_unique_file_bytes": 1064950668
+  },
+  "manifest_file": {
+    "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_MANIFEST\\PILOT_1G_MANIFEST.sqlite",
+    "size": 23670784,
+    "sha256": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+    "csv_sha256": null
+  },
+  "content_hash_status": "NOT_COMPUTED",
+  "spot_check_25": {
+    "checked": 25,
+    "mismatches": 25,
+    "samples": [
+      {
+        "entity_id": 1,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3695535,
+        "live_size": 15872201966223417,
+        "live_fid": 3535904840876032
+      },
+      {
+        "entity_id": 2,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3645275,
+        "live_size": 15656336909926457,
+        "live_fid": 3536269913096192
+      },
+      {
+        "entity_id": 3,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3598978,
+        "live_size": 15457492809023545,
+        "live_fid": 3536209783554048
+      },
+      {
+        "entity_id": 4,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3566482,
+        "live_size": 15317923551772729,
+        "live_fid": 3536501841330176
+      },
+      {
+        "entity_id": 5,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3556532,
+        "live_size": 15275188627177529,
+        "live_fid": 3536192603684864
+      },
+      {
+        "entity_id": 6,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3476520,
+        "live_size": 14931539703889977,
+        "live_fid": 3536196898652160
+      },
+      {
+        "entity_id": 7,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3474206,
+        "live_size": 14921601149567033,
+        "live_fid": 3536506136297472
+      },
+      {
+        "entity_id": 8,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3433492,
+        "live_size": 14746735851077689,
+        "live_fid": 3535900545908736
+      },
+      {
+        "entity_id": 9,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3432451,
+        "live_size": 14742264790122553,
+        "live_fid": 3536274208063488
+      },
+      {
+        "entity_id": 10,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3344709,
+        "live_size": 14365415769636921,
+        "live_fid": 3536123884208128
+      },
+      {
+        "entity_id": 11,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3343080,
+        "live_size": 14358419267911737,
+        "live_fid": 3536188308717568
+      },
+      {
+        "entity_id": 12,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3336449,
+        "live_size": 14329939339771961,
+        "live_fid": 3536497546362880
+      },
+      {
+        "entity_id": 13,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3323912,
+        "live_size": 14276093334782009,
+        "live_fid": 3536493251395584
+      },
+      {
+        "entity_id": 14,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3312477,
+        "live_size": 14226980383752249,
+        "live_fid": 3536201193619456
+      },
+      {
+        "entity_id": 15,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3298951,
+        "live_size": 14168886656106553,
+        "live_fid": 3536454596689920
+      },
+      {
+        "entity_id": 16,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3282896,
+        "live_size": 14099930956169273,
+        "live_fid": 3536184013750272
+      },
+      {
+        "entity_id": 17,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3273165,
+        "live_size": 14058136629411897,
+        "live_fid": 3536059459698688
+      },
+      {
+        "entity_id": 18,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3264564,
+        "live_size": 14021195615699001,
+        "live_fid": 3536068049633280
+      },
+      {
+        "entity_id": 19,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3235081,
+        "live_size": 13894567094911033,
+        "live_fid": 3536145359044608
+      },
+      {
+        "entity_id": 20,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3202664,
+        "live_size": 13755337140076601,
+        "live_fid": 3536488956428288
+      },
+      {
+        "entity_id": 21,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3190083,
+        "live_size": 13701302156525625,
+        "live_fid": 3536136769110016
+      },
+      {
+        "entity_id": 22,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3172382,
+        "live_size": 13625276940419129,
+        "live_fid": 3536063754665984
+      },
+      {
+        "entity_id": 23,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3157132,
+        "live_size": 13559778689155129,
+        "live_fid": 3536085229502464
+      },
+      {
+        "entity_id": 24,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3153994,
+        "live_size": 13546301081780281,
+        "live_fid": 3536025099960320
+      },
+      {
+        "entity_id": 25,
+        "n_paths": 57,
+        "mismatch": true,
+        "reasons": [
+          "size_mismatch_vs_manifest",
+          "file_id_mismatch_vs_manifest",
+          "vol_mismatch_vs_manifest"
+        ],
+        "manifest_size": 3109915,
+        "live_size": 13356983218339897,
+        "live_fid": 3536080934535168
+      }
+    ]
+  },
+  "hl_completeness_15": [
+    {
+      "entity_id": 1,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 2,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 3,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 4,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 5,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 6,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 7,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 8,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 9,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 10,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 11,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 12,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 13,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 14,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    },
+    {
+      "entity_id": 15,
+      "manifest_paths": 57,
+      "live_nlinks": 196608,
+      "inventory_paths_same_fid": 0,
+      "missing_in_manifest_count": 0,
+      "missing_sample": [],
+      "live_ok": true
+    }
+  ],
+  "prior_audit": {},
+  "sample_entities": [
+    {
+      "entity_id": 1,
+      "volume_serial": "2387166462",
+      "file_id": "844424930955235",
+      "representative_source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R1_ASOF_20260729_20260730_110329\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "unique_file_bytes": 3695535,
+      "source_file_size": 3695535,
+      "source_attributes": 32,
+      "source_last_write_time": "2026-07-30T03:35:36Z",
+      "nlinks_index": 57,
+      "sibling_count": 57,
+      "cross_release": 1,
+      "is_hardlink_group": 1,
+      "verify_ok": 1
+    },
+    {
+      "entity_id": 2,
+      "volume_serial": "2387166462",
+      "file_id": "844424930955320",
+      "representative_source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R1_ASOF_20260729_20260730_110329\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_5__2025__none_adj__v1__20260612_183025.parquet",
+      "unique_file_bytes": 3645275,
+      "source_file_size": 3645275,
+      "source_attributes": 32,
+      "source_last_write_time": "2026-07-30T03:35:46Z",
+      "nlinks_index": 57,
+      "sibling_count": 57,
+      "cross_release": 1,
+      "is_hardlink_group": 1,
+      "verify_ok": 0
+    },
+    {
+      "entity_id": 3,
+      "volume_serial": "2387166462",
+      "file_id": "844424930955306",
+      "representative_source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R1_ASOF_20260729_20260730_110329\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_4__2025__none_adj__v1__20260612_183025.parquet",
+      "unique_file_bytes": 3598978,
+      "source_file_size": 3598978,
+      "source_attributes": 32,
+      "source_last_write_time": "2026-07-30T03:35:45Z",
+      "nlinks_index": 57,
+      "sibling_count": 57,
+      "cross_release": 1,
+      "is_hardlink_group": 1,
+      "verify_ok": 0
+    }
+  ],
+  "sample_paths": [
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R11_ASOF_20260806_20260807_111824\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R11_ASOF_20260806_20260807_111824\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R12_ASOF_20260807_20260808_004052\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R12_ASOF_20260807_20260808_004052\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R13_ASOF_20260807_20260808_010337\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R13_ASOF_20260807_20260808_010337\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R14_ASOF_20260807_20260809_082152\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R14_ASOF_20260807_20260809_082152\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R15_ASOF_20260810_20260811_005733\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R15_ASOF_20260810_20260811_005733\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R16_ASOF_20260811_20260811_233835\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R16_ASOF_20260811_20260811_233835\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R1_ASOF_20260729_20260730_110329\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R1_ASOF_20260729_20260730_110329\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    }
+  ]
+}
