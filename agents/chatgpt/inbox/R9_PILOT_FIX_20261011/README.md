@@ -1,4 +1,22 @@
-# R9 1GiB Pilot — 结论 + 修复后 PY（给 ChatGPT）
+# R9 Pilot — 当前状态与历史证据
+
+## 当前结论（2026-10-11 13:30后调度）
+
+**真实1GiB样本已复制并复验通过；全量迁移尚未授权。**
+662/662实体SHA、22998/22998路径身份通过；唯一内容1064950668字节，目标去重分配1066270720字节。
+主报告：[长路径修复与复验](R9_ZHANGWEI_LONGPATH_ACCEPTANCE_REPORT.md)。
+原始复验：[PASS JSON](ACCEPTANCE_R9_PILOT_ZHANGWEI_LONGPATH.json)。
+ChatGPT审核依据为回传证据与代码差异，并非在本环境重新执行Windows测试。
+
+**下一执行方：笔记本SAM**，任务 R9_NOTEBOOK_SCOPE_CLOSURE_20261011_1330，见[笔记本邮箱](../INBOX_FOR_NOTEBOOK.md)。
+整理D覆盖缺口、迁移范围和E/D依赖，只做有界只读补核与方案；台式机[保留样本待命](../INBOX_FOR_DESKTOP.md)。
+D全局完整性仍未证实，历史R8 READY不可复用。8项长路径回归通过不等于正式全量执行器认证。
+
+清理：本轮保留有效验收、代码差异及历史失败证据，没有新增删除。下文是历史快照，“未复制/待执行”等旧状态不代表当前调度。
+
+---
+
+## 历史：修复准备阶段
 
 uploaded_at_utc: 2026-10-11T04:09:11Z
 
