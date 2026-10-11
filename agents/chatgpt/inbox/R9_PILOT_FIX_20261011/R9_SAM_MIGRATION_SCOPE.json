@@ -1,0 +1,235 @@
+{
+  "generated_at": "2026-10-11T13:45:00+0800",
+  "task_id": "R9_NOTEBOOK_SCOPE_CLOSURE_20261011_1330",
+  "hostname": "sam",
+  "FULL_MIGRATION": false,
+  "dedupe_basis": "volume_serial + file_id (exclusive bucket assignment; cross_bucket_entities=0 in last classify)",
+  "inventory_baseline": {
+    "D_VOLUME_FILESYSTEM_INVENTORY_sha256": "f71e65e7f3673232e5bf57986ef809d3cd50722b719a239f6bda9c277b383741",
+    "global_unique_bytes": 59483635771,
+    "global_unique_entities": 217140,
+    "status": "PARTIAL_COVERAGE_EVIDENCE",
+    "D_GLOBAL_COVERAGE_PROVEN": false,
+    "SELECTED_SCOPE_COVERAGE_PROVEN": false,
+    "note": "Old totals are historical baseline; do not treat as formally proven full-D."
+  },
+  "pilot_e_sample_done": {
+    "manifest_sha256": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+    "run_id": "2026-10-11T1230430800",
+    "unique_content_bytes": 1064950668,
+    "acceptance": "PASS_ON_EXISTING_SAMPLE_ONLY",
+    "source": "E:\\BLACKBOX via UNC on ZHANGWEI",
+    "not": "D-volume migration authorization"
+  },
+  "exclusive_buckets_bytes": {
+    "REQUIRED": 8161681208,
+    "RELATED_CANDIDATE": 48753459290,
+    "UNKNOWN": 748307234,
+    "UNRELATED_WITH_BASIS": 1820188039,
+    "RELATED_PLUS_UNKNOWN": 49501766524
+  },
+  "scope_decisions": [
+    {
+      "root": "D:\\backtest_lab",
+      "bucket": "REQUIRED",
+      "unique_bytes_per_top_overlap_ok": 7160892638,
+      "files_entries": 19663,
+      "recommend": "INCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "engine lab; REQUIRED heuristic + desktop path map to F:\\BLACKBOX_ENGINES\\backtest_lab\\",
+      "target_layout": "F:\\BLACKBOX_ENGINES\\backtest_lab\\"
+    },
+    {
+      "root": "D:\\backtest_lab_backups",
+      "bucket": "REQUIRED",
+      "unique_bytes_per_top_overlap_ok": 356994230,
+      "files_entries": 7720,
+      "recommend": "INCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "sealed engine backups alongside lab",
+      "target_layout": "F:\\BLACKBOX_ENGINES\\backtest_lab_backups\\"
+    },
+    {
+      "root": "D:\\backtest_lab_shadow_experiments",
+      "bucket": "REQUIRED",
+      "unique_bytes_per_top_overlap_ok": 263488000,
+      "files_entries": 6042,
+      "recommend": "INCLUDE_WITH_REVIEW",
+      "confidence": "MEDIUM",
+      "needs_user_decision": true,
+      "basis": "classified REQUIRED by name/family; confirm whether shadow experiments are runtime-critical",
+      "target_layout": "F:\\BLACKBOX_ENGINES\\backtest_lab_shadow_experiments\\"
+    },
+    {
+      "root": "D:\\backtest_lab_candidate_releases",
+      "bucket": "REQUIRED",
+      "files_entries": 22,
+      "recommend": "INCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "release candidates tied to lab",
+      "target_layout": "F:\\BLACKBOX_ENGINES\\backtest_lab_candidate_releases\\"
+    },
+    {
+      "root": "D:\\blackbox_data",
+      "bucket": "REQUIRED",
+      "unique_bytes_per_top_overlap_ok": 171467019,
+      "files_entries": 1133,
+      "recommend": "INCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "BLACKBOX data plane on D",
+      "target_layout": "F:\\BLACKBOX_ENGINES\\blackbox_data\\"
+    },
+    {
+      "root": "D:\\JQ",
+      "bucket": "REQUIRED",
+      "unique_bytes_per_top_overlap_ok": 11518210,
+      "files_entries": 118,
+      "recommend": "INCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "JQ-related local package",
+      "target_layout": "F:\\BLACKBOX_ENGINES\\JQ\\"
+    },
+    {
+      "root": "D:\\BLACKBOX_DESKTOP_INIT_R1",
+      "bucket": "REQUIRED",
+      "files_entries": 14,
+      "recommend": "INCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "desktop init artifacts",
+      "target_layout": "F:\\BLACKBOX_DESKTOP_INIT_R1\\"
+    },
+    {
+      "root": "D:\\BLACKBOX_REMOTE_LINK_R1",
+      "bucket": "REQUIRED",
+      "files_entries": 15,
+      "recommend": "INCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "remote link package",
+      "target_layout": "F:\\BLACKBOX_REMOTE_LINK_R1\\"
+    },
+    {
+      "root": "D:\\CURSOR_TASK_ARCHIVE",
+      "bucket": "RELATED_CANDIDATE",
+      "unique_bytes_per_top_overlap_ok": 27686214978,
+      "files_entries": 43897,
+      "recommend": "PARTIAL_INCLUDE",
+      "confidence": "MEDIUM",
+      "needs_user_decision": true,
+      "basis": "archive; pit_products subset referenced by D→E reparse (16); do not default-include entire ~27.7GB top",
+      "suggested_subset": "**/pit_products/** and other paths proven by live config/link targets",
+      "target_layout": "F:\\CURSOR_TASK_ARCHIVE\\...\\pit_products\\ (subset)"
+    },
+    {
+      "root": "D:\\MIN_sandbox",
+      "bucket": "RELATED_CANDIDATE",
+      "unique_bytes_per_top_overlap_ok": 16351713544,
+      "files_entries": 99265,
+      "recommend": "EXCLUDE_DEFAULT",
+      "confidence": "MEDIUM",
+      "needs_user_decision": true,
+      "basis": "name heuristic only; ~16.4GB; no REQUIRED proof from root name",
+      "target_layout": null
+    },
+    {
+      "root": "D:\\国金证券QMT交易端",
+      "bucket": "RELATED_CANDIDATE",
+      "unique_bytes_per_top_overlap_ok": 4393840689,
+      "files_entries": 36727,
+      "recommend": "USER_DECIDE",
+      "confidence": "LOW",
+      "needs_user_decision": true,
+      "basis": "broker terminal install tree; may be reinstallable; not proven BLACKBOX runtime dependency",
+      "target_layout": null
+    },
+    {
+      "root": "D:\\Weixin",
+      "bucket": "UNRELATED_WITH_BASIS",
+      "recommend": "EXCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "WeChat client data"
+    },
+    {
+      "root": "D:\\微信聊天记录",
+      "bucket": "UNRELATED_WITH_BASIS",
+      "recommend": "EXCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "personal chat archives"
+    },
+    {
+      "root": "D:\\System Volume Information",
+      "bucket": "SYSTEM",
+      "recommend": "EXCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "OS protected; identity errno=5"
+    },
+    {
+      "root": "D:\\$RECYCLE.BIN",
+      "bucket": "SYSTEM",
+      "recommend": "EXCLUDE",
+      "confidence": "HIGH",
+      "needs_user_decision": false,
+      "basis": "recycle; S-1-5-18 identity errno=5"
+    }
+  ],
+  "user_decision_checklist": [
+    {
+      "id": "DEC_SHADOW",
+      "item": "Include D:\\backtest_lab_shadow_experiments ?",
+      "conservative_default": "INCLUDE_WITH_REVIEW then confirm"
+    },
+    {
+      "id": "DEC_ARCHIVE_SUBSET",
+      "item": "Which CURSOR_TASK_ARCHIVE subtrees beyond pit_products?",
+      "conservative_default": "only paths with proven references"
+    },
+    {
+      "id": "DEC_MIN_SANDBOX",
+      "item": "Include MIN_sandbox (~16.4GB)?",
+      "conservative_default": "EXCLUDE"
+    },
+    {
+      "id": "DEC_GJ_QMT",
+      "item": "Include 国金证券QMT交易端 (~4.4GB)?",
+      "conservative_default": "EXCLUDE_or_reinstall_on_desktop"
+    },
+    {
+      "id": "DEC_REMAINING_UNKNOWN",
+      "item": "UNKNOWN bucket ~0.75GB across small tops (Palantir/SixM/speedin/策略/…)",
+      "conservative_default": "EXCLUDE unless path reference found"
+    }
+  ],
+  "ed_dependency_links": {
+    "source_evidence": "ED_LINKS_RECHECK.json",
+    "E_TO_D": {"total": 24, "alive": 24, "changed_or_dead": [], "delta_vs_baseline": 0},
+    "D_TO_E_pit_reparse_dirs": 16,
+    "rules": [
+      "Do not replace cross-volume junctions with hardlinks",
+      "Do not create/repair links in this round",
+      "Missing/cycle/escape targets remain blockers when formal migrate starts"
+    ],
+    "mapping_policy": "After migrate: recreate junctions to new F:/E: targets from recorded source→target table; verify alive before cutover"
+  },
+  "capacity_planning_unique_not_logical": {
+    "required_candidate_unique_bytes": 8161681208,
+    "related_unknown_awaiting_decision_bytes": 49501766524,
+    "unrelated_exclude_bytes": 1820188039,
+    "alloc_estimate_note": "Use AllocationSize at copy time; do not use logical path-byte expansion; add metadata/slack separately",
+    "pilot_reference": {
+      "unique_content": 1064950668,
+      "dest_unique_allocated": 1066270720,
+      "copy_wall_sec_approx": 953,
+      "acceptance_reread_sec_approx": 2,
+      "do_not_use_reread_as_network_speed": true
+    }
+  }
+}
