@@ -1,0 +1,54 @@
+{
+    "hostname":  "SAM",
+    "identity":  "NOTEBOOK",
+    "task_id":  "AUTOHUB_R2_PROTOCOL_REPAIR_20261012",
+    "scope":  "COMMUNICATION_ONLY",
+    "status":  "SAM_PARTIAL_COMPLETE",
+    "ROUTE_MATCHED":  true,
+    "canonical_outbox":  "agents/chatgpt/outbox/AUTOHUB_R2_PROTOCOL_REPAIR_20261012.md",
+    "compat_cursor_inbox_pointer":  "agents/cursor/inbox/AUTOHUB_R2_ROUTE_POINTER_20261012.md",
+    "hard_gate":  "ALLOWED_PENDING_HUMAN",
+    "hard_block_hits":  [
+
+                        ],
+    "DESKTOP_WATCHER_AUTOSTART":  "NOT_TESTED",
+    "NOTEBOOK_WATCHER_AUTOSTART":  "PARTIAL",
+    "NOTEBOOK_WATCHER_DETAIL":  "User scheduled task AUTOHUB_R2_COMM_TEST_RECEIVER_SAM created (minute); Ready; Run once OK. Boot-autostart not separately proven this session.",
+    "DESKTOP_AUTO_RECEIVE":  "WAITING_FOR_ZHANGWEI",
+    "NOTEBOOK_AUTO_RECEIVE":  "VERIFIED_POWERSHELL_RECEIVER",
+    "TWO_WAY_PING_ACK":  {
+                             "SAM_RECEIVER_SELFTEST":  {
+                                                           "note":  "Proves SAM PowerShell receiver only; not desktop-\u003enotebook official leg",
+                                                           "ack":  "https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/ACK_SAM_FOR_PING_SELFTEST_TO_SAM_20261011T234534Z.json",
+                                                           "ping":  "https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/PING_SELFTEST_TO_SAM_20261011T234534Z.json"
+                                                       },
+                             "SAM_TO_ZHANGWEI":  {
+                                                     "ping":  "https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/PING_SAM_TO_ZHANGWEI_20261011T234504Z.json",
+                                                     "ack_from_desktop":  "WAITING_FOR_ZHANGWEI"
+                                                 },
+                             "ZHANGWEI_TO_SAM":  {
+                                                     "ping":  "MISSING",
+                                                     "status":  "WAITING_FOR_ZHANGWEI"
+                                                 }
+                         },
+    "CURSOR_AGENT_AUTO_WAKE":  "NOT_SUPPORTED_OR_UNPROVEN",
+    "CURSOR_AGENT_AUTO_WAKE_DETAIL":  "cursor.cmd present (3.17.8); no standalone agent CLI; no background Agent wake proof this session",
+    "CHATGPT_WEB_AUTOMATION":  "NOT_TESTED",
+    "WORK_PR_EVENT_TRIGGER":  "UNVERIFIED",
+    "STILL_NEEDS_HUMAN_STEP":  [
+                                   "On ZHANGWEI desktop: say HUB / run receiver; ACK SAM ping; publish PING target=SAM",
+                                   "Desktop primary should complete ChatGPT browser one-shot if authorized",
+                                   "Do not treat this as R9 copy authorization"
+                               ],
+    "R9_HOLD_UNCHANGED":  true,
+    "COPY_AUTHORIZED":  false,
+    "FULL_MIGRATION":  false,
+    "FAILED_CHECKS":  [
+                          "TWO_WAY official ZHANGWEI\u003c-\u003eSAM incomplete (desktop not present on this host)",
+                          "CURSOR_AGENT_AUTO_WAKE unproven",
+                          "CHATGPT_WEB_AUTOMATION not tested on SAM"
+                      ],
+    "NEXT_SAFE_ACTION":  "Wait ZHANGWEI HUB poll to complete reverse PING/ACK; keep R9 HOLD",
+    "local_report_dir":  "C:\\LAN_SHARE_REPORT\\AUTOHUB_R2_NOTEBOOK",
+    "completed_utc":  "2026-10-11T23:46:59.3768345Z"
+}
