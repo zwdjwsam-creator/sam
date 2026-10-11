@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-10-11T11:34:57+0800",
+  "dry_run": true,
+  "enable_copy": false,
+  "source_root_mapped": "\\\\192.168.100.2\\E_DRIVE\\BLACKBOX",
+  "dest": "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G",
+  "manifest_sha_pinned": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+  "events": [],
+  "status": "PREFLIGHT_FAIL",
+  "manifest": {
+    "sha256": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+    "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_MANIFEST\\PILOT_1G_MANIFEST.sqlite",
+    "ok": true,
+    "issues": [],
+    "entity_count": 662,
+    "path_count": 22998,
+    "unique_bytes": 1064950668
+  },
+  "desktop_preflight": {
+    "ok": false,
+    "issues": [
+      "R8_LIVE_PROC:PROC_CMDLINE_UNREADABLE"
+    ],
+    "hostname": "ZHANGWEI",
+    "volume": {
+      "ok": true,
+      "live": {
+        "root": "E:\\",
+        "VolumeSerialNumber_dword": 2154105055,
+        "VolumeSerialNumber_hex": "806508DF",
+        "FileSystem": "NTFS",
+        "VolumeName": "MarketData"
+      },
+      "expected": {
+        "VolumeSerialNumber_hex": "806508DF",
+        "VolumeSerialNumber_dword": 2154105055,
+        "UniqueId": "\\\\?\\Volume{b8545ee8-e403-48c6-9d3f-09afd3e0349f}\\",
+        "FileSystem": "NTFS",
+        "FileSystemLabel": "MarketData"
+      },
+      "issues": []
+    },
+    "r8": {
+      "ok": true,
+      "fields": {
+        "OLD_LN_STOPPED": true,
+        "OLD_WRAPPER_STOPPED": true,
+        "OLD_MONITORS_INACTIVE": true
+      },
+      "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_OLD_JOB_STOP_REPORT.md"
+    },
+    "r8_process": {
+      "ok": false,
+      "reason": "PROC_CMDLINE_UNREADABLE",
+      "status": "UNKNOWN",
+      "suspicious": [
+        {
+          "ProcessId": 20440,
+          "ParentProcessId": 3348,
+          "Name": "cmd.exe",
+          "CreationDate": "/Date(1791624834780)/",
+          "CommandLine": null
+        }
+      ]
+    },
+    "manifest_sha256": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+    "note": "Notebook dry-run must not be treated as desktop copy preflight PASS."
+  },
+  "detail": "R8_LIVE_PROC:PROC_CMDLINE_UNREADABLE",
+  "finished_at": "2026-10-11T11:34:58+0800"
+}
