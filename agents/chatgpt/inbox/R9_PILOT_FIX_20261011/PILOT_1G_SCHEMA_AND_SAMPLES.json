@@ -1,0 +1,164 @@
+{
+  "schema": {
+    "entities": [
+      "entity_id",
+      "volume_serial",
+      "file_id",
+      "representative_source_relative_path",
+      "unique_file_bytes",
+      "source_file_size",
+      "source_attributes",
+      "source_last_write_time",
+      "nlinks_index",
+      "sibling_count",
+      "cross_release",
+      "is_hardlink_group",
+      "verify_ok"
+    ],
+    "hardlink_paths": [
+      "entity_id",
+      "source_relative_path",
+      "source_absolute_path"
+    ],
+    "meta_keys": [
+      "EXPECTED_SAVINGS_BYTES",
+      "PILOT_ENTITY_COUNT",
+      "PILOT_EXTRA_LINK_PATHS",
+      "PILOT_HARDLINK_GROUPS",
+      "PILOT_LOGICAL_EXPANDED_BYTES",
+      "PILOT_PATH_COUNT",
+      "PILOT_UNIQUE_BYTES",
+      "generated_at",
+      "index_validity",
+      "junction_follow",
+      "max_unique_bytes",
+      "source_inventory_db",
+      "source_root",
+      "task",
+      "verify"
+    ]
+  },
+  "meta": {
+    "task": "BLACKBOX_R9_PILOT_1G_MANIFEST",
+    "generated_at": "2026-10-11T08:16:33+0800",
+    "source_root": "E:\\BLACKBOX",
+    "source_inventory_db": "E:\\BLACKBOX_MIGRATION_AUDIT_R1\\metadata\\filesystem_inventory.sqlite",
+    "index_validity": "{\"INDEX_SCAN_ASOF\": \"2026-10-08T11:30:26+0800\", \"INDEX_SOURCE_ROOT\": \"E:\\\\BLACKBOX\", \"INDEX_FIELDS_OK\": true, \"INDEX_FIELDS\": [\"volume_serial\", \"file_id\", \"path\", \"nlinks\", \"logical_size\", \"attrs\", \"mtime_utc\", \"reparse_target\", \"object_class\"], \"FOLLOW_DIRECTORY_REPARSE\": \"false\", \"FULL_LIBRARY_RESCAN\": false, \"SPOT_CHECK_OK\": 30, \"SPOT_CHECK_MISSING\": 0, \"SPOT_CHECK_DRIFT\": [], \"SPOT_CHECK_DRIFT...(truncated)",
+    "junction_follow": "False",
+    "max_unique_bytes": "1073741824",
+    "verify": "{\"verified_ok\": 48, \"verified_fail\": 0, \"ok\": [{\"index\": 0, \"file_id\": \"844424930955235\", \"siblings\": 57, \"size\": 3695535, \"live_nlinks\": 57}, {\"index\": 13, \"file_id\": \"844424930955304\", \"siblings\": 57, \"size\": 3312477, \"live_nlinks\": 57}, {\"index\": 26, \"file_id\": \"844424930955288\", \"siblings\": 57, \"size\": 3098385, \"live_nlinks\": 57}, {\"index\": 39, \"file_id\": \"844424930955269\", \"siblings\": 57, \"si...(truncated)",
+    "PILOT_UNIQUE_BYTES": "1064950668",
+    "PILOT_LOGICAL_EXPANDED_BYTES": "19786558967",
+    "PILOT_HARDLINK_GROUPS": "546",
+    "PILOT_EXTRA_LINK_PATHS": "22336",
+    "EXPECTED_SAVINGS_BYTES": "18721608299",
+    "PILOT_ENTITY_COUNT": "662",
+    "PILOT_PATH_COUNT": "22998"
+  },
+  "sample_entities": [
+    {
+      "entity_id": 1,
+      "volume_serial": "2387166462",
+      "file_id": "844424930955235",
+      "representative_source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R1_ASOF_20260729_20260730_110329\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "unique_file_bytes": 3695535,
+      "source_file_size": 3695535,
+      "source_attributes": 32,
+      "source_last_write_time": "2026-07-30T03:35:36Z",
+      "nlinks_index": 57,
+      "sibling_count": 57,
+      "cross_release": 1,
+      "is_hardlink_group": 1,
+      "verify_ok": 1
+    },
+    {
+      "entity_id": 2,
+      "volume_serial": "2387166462",
+      "file_id": "844424930955320",
+      "representative_source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R1_ASOF_20260729_20260730_110329\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_5__2025__none_adj__v1__20260612_183025.parquet",
+      "unique_file_bytes": 3645275,
+      "source_file_size": 3645275,
+      "source_attributes": 32,
+      "source_last_write_time": "2026-07-30T03:35:46Z",
+      "nlinks_index": 57,
+      "sibling_count": 57,
+      "cross_release": 1,
+      "is_hardlink_group": 1,
+      "verify_ok": 0
+    },
+    {
+      "entity_id": 563,
+      "volume_serial": "2387166462",
+      "file_id": "281474981831447",
+      "representative_source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260828_20260829_043126\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet",
+      "unique_file_bytes": 463893,
+      "source_file_size": 463893,
+      "source_attributes": 32,
+      "source_last_write_time": "2026-08-28T20:20:34Z",
+      "nlinks_index": 5,
+      "sibling_count": 5,
+      "cross_release": 1,
+      "is_hardlink_group": 1,
+      "verify_ok": 0
+    }
+  ],
+  "sample_paths_entity_1": [
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R11_ASOF_20260806_20260807_111824\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R11_ASOF_20260806_20260807_111824\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R12_ASOF_20260807_20260808_004052\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R12_ASOF_20260807_20260808_004052\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R13_ASOF_20260807_20260808_010337\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R13_ASOF_20260807_20260808_010337\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    },
+    {
+      "entity_id": 1,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R14_ASOF_20260807_20260809_082152\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R14_ASOF_20260807_20260809_082152\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet"
+    }
+  ],
+  "sample_paths_small_multi": [
+    {
+      "entity_id": 563,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260828_20260829_043126\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260828_20260829_043126\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet"
+    },
+    {
+      "entity_id": 563,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260831_20260831_164223\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260831_20260831_164223\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet"
+    },
+    {
+      "entity_id": 563,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260901_20260901_172742\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260901_20260901_172742\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet"
+    },
+    {
+      "entity_id": 563,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet"
+    },
+    {
+      "entity_id": 563,
+      "source_relative_path": "数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R40_DAILY_TIP_ASOF_20260903_20260904_004118\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet",
+      "source_absolute_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R40_DAILY_TIP_ASOF_20260903_20260904_004118\\standard\\reference\\valuation\\valuation__incremental_20260828__20260829_042034.parquet"
+    }
+  ],
+  "counts": {
+    "entities": 662,
+    "paths": 22998,
+    "sum_unique": 1064950668
+  }
+}
