@@ -1,23 +1,25 @@
 # R9 Pilot — 当前状态与历史证据
 
-## 当前结论（2026-10-11 13:54后调度）
+## 当前结论（2026-10-11 14:15后调度）
 
-**真实1GiB样本已复制并复验通过；全量迁移尚未授权。**
-662/662实体SHA、22998/22998路径身份通过；唯一内容1064950668字节，目标去重分配1066270720字节。
-主报告：[长路径修复与复验](R9_ZHANGWEI_LONGPATH_ACCEPTANCE_REPORT.md)；[PASS JSON](ACCEPTANCE_R9_PILOT_ZHANGWEI_LONGPATH.json)。
+**真实1GiB样本验收通过；正式全量迁移尚未授权。**
+662实体SHA / 22998路径身份通过，样本唯一内容1064950668字节。
+[样本主报告](R9_ZHANGWEI_LONGPATH_ACCEPTANCE_REPORT.md) / [PASS JSON](ACCEPTANCE_R9_PILOT_ZHANGWEI_LONGPATH.json)。
 
-笔记本上一轮[范围报告](R9_SAM_SCOPE_CLOSURE_REPORT.md)已收到：
-255目录抽样无差异，D全局和选定范围完整性均未证实。
-抽样程序的空queue并非完整续核状态；逐条依赖映射尚缺，旧F盘方案尚需更正。
-ChatGPT审核依据为HUB回传证据与源码，未在此环境执行Windows核验。
+笔记本已交[选定D清单报告](R9_SAM_SELECTED_MANIFEST_REPORT.md)，10637目录枚举与34745普通文件身份记录有价值，保留。
+ChatGPT源码审核发现：
+- 原8186614545字节 / 45381实体的SQL包含目录，不能作为文件内容总量。
+- in_progress不恢复、枚举ERROR/CHANGED也可能被queue写done；本地SQLite+模拟身份复现了进行中目录被跳过却返回enumeration_complete。
+- D→E的16条实际目标已读出，扩展前缀被错误标逃逸且反向拟映射为空；需要补齐E清单包含证据。
+- 未扫描MIN_sandbox/全ARCHIVE/QMT不能自动当运行阻塞，须有具体依赖引用。
 
-**下一执行方：笔记本SAM**，任务 R9_NOTEBOOK_SELECTED_MANIFEST_20261011_1354，见[笔记本邮箱](../INBOX_FOR_NOTEBOOK.md)。
-本轮建立选定D范围完整元数据清单和逐条依赖映射，运行一个最多30分钟批次，完整保存进度。
-台式机[保留样本待命](../INBOX_FOR_DESKTOP.md)。
-不重做1GiB、不全E重扫、不开始全量迁移；D全局完整性仍未证实。
-历史R8 READY不可复用，旧F路径不得作为已核验目标配置。
+**下一执行方：笔记本SAM**，任务 R9_NOTEBOOK_MANIFEST_REPAIR_20261011_1415，见[笔记本邮箱](../INBOX_FOR_NOTEBOOK.md)。
+修复已有清单统计、恢复/完成状态、配置绑定及反向链接映射；复用已枚举成果，不从零再扫。
+台式机[保留样本待命](../INBOX_FOR_DESKTOP.md)。D全局完整性仍未证实，历史R8 READY不可复用。
+修复完成再审核正式执行器输入，不重复1GiB，不启动全量迁移。
+本次审核与本地复现不等于Windows现场重跑。
 
-清理：本轮新证据有价值，保留。旧摘要中的READY/COMPLETE须以最新报告为准；下文仅为历史阶段记录。
+清理：本轮新清单、依赖及失败模式证据有价值，全部保留；下文仅为历史记录。
 
 ---
 
