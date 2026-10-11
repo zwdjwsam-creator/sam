@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-10-11T11:22:40+0800",
+  "hostname": "sam",
+  "suite": "R9FIX2_LEAN",
+  "passed": 16,
+  "failed": 0,
+  "results": [
+    {
+      "name": "unc",
+      "pass": true
+    },
+    {
+      "name": "rel",
+      "pass": true
+    },
+    {
+      "name": "r8_ok_and_rejects",
+      "pass": true
+    },
+    {
+      "name": "r8_legacy_proc_rejected",
+      "pass": true
+    },
+    {
+      "name": "host_blocks_copy",
+      "pass": true
+    },
+    {
+      "name": "identity_wrong_vol_and_mtime",
+      "pass": true
+    },
+    {
+      "name": "same_handle_copy_hash",
+      "pass": true
+    },
+    {
+      "name": "eof_probe_readfile_fail",
+      "pass": true
+    },
+    {
+      "name": "hl_distinct",
+      "pass": true
+    },
+    {
+      "name": "copy_record_integrity_rejects",
+      "pass": true
+    },
+    {
+      "name": "walk_onerror_deficit",
+      "pass": true
+    },
+    {
+      "name": "empty_manifest",
+      "pass": true
+    },
+    {
+      "name": "partial_acc",
+      "pass": true
+    },
+    {
+      "name": "manifest_bind",
+      "pass": true
+    },
+    {
+      "name": "dry_run",
+      "pass": true
+    },
+    {
+      "name": "enable_copy_ignores_skip_env",
+      "pass": true
+    }
+  ],
+  "notes": [
+    "D coverage integrity still unproven",
+    "Historical R8 READY must not be reused as stop evidence",
+    "Desktop UniqueId / UNC stable read remain on-site checks",
+    "No real 1GiB copy executed in this suite"
+  ],
+  "desktop_still_required": [
+    "Hostname ZHANGWEI",
+    "E: serial 806508DF + UniqueId live match",
+    "UNC \\\\192.168.100.2\\E_DRIVE\\BLACKBOX stable share-read",
+    "Real R8 stop report with OLD_LN/WRAPPER/MONITORS all TRUE (no conflict)",
+    "No live cmdline hosting 20261010_173201_R8_3B85D677 / freeze monitors / ln wrapper",
+    "Fresh E:\\BLACKBOX_MANIFEST_PILOT_R9_1G create + full 662 copy/accept"
+  ]
+}
