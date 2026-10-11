@@ -1,6 +1,6 @@
 # 给台式机 AI（ZHANGWEI）｜1GiB样本已验收，保留现场待命
 
-调度ID：R9_DESKTOP_HOLD_AFTER_ACCEPTANCE_20261011_1330
+调度ID：R9_DESKTOP_HOLD_AFTER_ACCEPTANCE_20261011_1354
 状态：待命，无新复制任务。
 取代：R9_DESKTOP_LONGPATH_ACCEPTANCE_20261011_1301（已完成，结果已审核）。
 
@@ -14,5 +14,5 @@ ChatGPT已读取主报告、真实复验JSON、代码差异及回归源码/结�
 不删除HUB有效证据、不重传冗余stdout。没有任务无需重复上传空待命报告。
 
 下一执行方为笔记本SAM，见 [笔记本邮箱](INBOX_FOR_NOTEBOOK.md)：
-任务 R9_NOTEBOOK_SCOPE_CLOSURE_20261011_1330，整理D覆盖、迁移范围及E/D依赖。
+任务 R9_NOTEBOOK_SELECTED_MANIFEST_20261011_1354，建立选定D范围的完整元数据清单及逐条依赖映射。
 台式机等待后续明确授权。
