@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-10-11T13:07:01+0800",
+  "dest": "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G",
+  "dry_structure_only": false,
+  "partial": false,
+  "deficits": [],
+  "overall_pass": true,
+  "content_link_pass": true,
+  "occupancy_pass": true,
+  "manifest": {
+    "sha256": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+    "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_MANIFEST\\PILOT_1G_MANIFEST.sqlite",
+    "ok": true,
+    "issues": [],
+    "entity_count": 662,
+    "path_count": 22998,
+    "unique_bytes": 1064950668
+  },
+  "bytes": {
+    "manifest_unique_content_bytes": 1064950668,
+    "dest_unique_content_bytes": 1064950668,
+    "dest_unique_allocated_bytes": 1066270720,
+    "logical_path_bytes": 19786558967,
+    "volume_free_before": 4000538427392,
+    "volume_free_after": 3999439306752,
+    "volume_free_delta": 1099120640,
+    "compressed_or_sparse_seen": false,
+    "volume_free_after_record": 3999439306752,
+    "note": "dest_unique_allocated_bytes = sum FILE_STANDARD_INFO.AllocationSize over distinct (dest_volume_serial, file_id). Never use file length as allocated. If compressed/sparse seen, AllocationSize is the authoritative on-disk measure; free-space delta also reflects metadata/cluster rounding."
+  },
+  "binding": {
+    "run_id": "2026-10-11T1230430800",
+    "manifest_sha256": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+    "dest": "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G",
+    "dest_volume_record": {
+      "root": "E:\\",
+      "VolumeSerialNumber_dword": 2154105055,
+      "VolumeSerialNumber_hex": "806508DF",
+      "FileSystem": "NTFS",
+      "VolumeName": "MarketData"
+    },
+    "dest_volume_live": {
+      "root": "E:\\",
+      "VolumeSerialNumber_dword": 2154105055,
+      "VolumeSerialNumber_hex": "806508DF",
+      "FileSystem": "NTFS",
+      "VolumeName": "MarketData"
+    }
+  },
+  "checks_done": {
+    "entities_hashed": 662,
+    "paths_identity_checked": 22998,
+    "expected_entities": 662,
+    "expected_paths": 22998
+  },
+  "verdict": "PASS",
+  "finished_at": "2026-10-11T13:07:03+0800"
+}
