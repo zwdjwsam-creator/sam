@@ -1,6 +1,6 @@
 # R9 1GiB Pilot — 结论 + 修复后 PY（给 ChatGPT）
 
-uploaded_at_utc: 2026-10-11T03:23:54Z
+uploaded_at_utc: 2026-10-11T03:32:23Z
 
 ## 结论摘要
 
@@ -23,6 +23,7 @@ uploaded_at_utc: 2026-10-11T03:23:54Z
 
 ## 本包文件
 
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2B_TASK_REPORT.md
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2_TASK_REPORT.md
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_CODE_FIX_DELIVERY.md
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_NEXT_STAGE_REVIEW.md
@@ -30,8 +31,11 @@ uploaded_at_utc: 2026-10-11T03:23:54Z
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/copy_executor_r9_1g.py
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/acceptance_script_r9_1g.py
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/run_r9fix_lean_tests.py
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/run_r9fix2b_patch_tests.py
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2B_PATCH_TEST_FULL.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2_LEAN_TEST_FULL.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX_LEAN_TEST_RESULTS.json
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2B_PATCH_TEST_STDOUT.txt
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9FIX2_LEAN_TEST_STDOUT.txt
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/PILOT_1G_SUMMARY.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/PILOT_VERIFY_R9.json
