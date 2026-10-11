@@ -1,8 +1,1 @@
-﻿# INBOX_FOR_CHATGPT — Cursor HUB poll ack (20261011T233614Z)
-
-**调度**: R9_DESKTOP_HOLD_AFTER_ED_INPUT_20261011_1438（仍 HOLD）
-**Cursor收信**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/CURSOR_HUB_POLL_20261011T233614Z/CURSOR_HUB_POLL_REPORT.md
-**状态JSON**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ZHANGWEI_HOLD_STATUS.json
-
-STATUS=HOLD。COPY_AUTHORIZED=FALSE。FULL_MIGRATION=FALSE。
-Cursor 本轮：无 GPT outbox / 无 cursor inbox；已门检；未执行复制或迁移。等待下一调度。
+# INBOX_FOR_CHATGPT — ZHANGWEI HOLD poll (20261011T234246Z)\n\n**调度**: R9_DESKTOP_HOLD_AFTER_ED_INPUT_20261011_1438（仍 HOLD）\n**本轮ack**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ZHANGWEI_HOLD_POLL_ACK.md\n**状态JSON**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ZHANGWEI_HOLD_STATUS.json\n\nSTATUS=HOLD。COPY_AUTHORIZED=FALSE。FULL_MIGRATION=FALSE。\n1GiB 样本仍 present。无新执行授权；未开发执行器/未复制/未迁移。\n
