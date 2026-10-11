@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-10-11T12:46:46+0800",
+  "dest": "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G",
+  "dry_structure_only": false,
+  "partial": false,
+  "deficits": [
+    "HASH_COVERAGE=650",
+    "PATH_IDENTITY_COVERAGE=22082",
+    "MISSING_DEST_PATHS"
+  ],
+  "overall_pass": false,
+  "content_link_pass": false,
+  "occupancy_pass": true,
+  "manifest": {
+    "sha256": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+    "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_MANIFEST\\PILOT_1G_MANIFEST.sqlite",
+    "ok": true,
+    "issues": [],
+    "entity_count": 662,
+    "path_count": 22998,
+    "unique_bytes": 1064950668
+  },
+  "bytes": {
+    "manifest_unique_content_bytes": 1064950668,
+    "dest_unique_content_bytes": 1064153681,
+    "dest_unique_allocated_bytes": 1065459712,
+    "logical_path_bytes": 19786558967,
+    "volume_free_before": 4000538427392,
+    "volume_free_after": 3999439306752,
+    "volume_free_delta": 1099120640,
+    "compressed_or_sparse_seen": false,
+    "volume_free_after_record": 3999439306752,
+    "note": "dest_unique_allocated_bytes = sum FILE_STANDARD_INFO.AllocationSize over distinct (dest_volume_serial, file_id). Never use file length as allocated. If compressed/sparse seen, AllocationSize is the authoritative on-disk measure; free-space delta also reflects metadata/cluster rounding."
+  },
+  "binding": {
+    "run_id": "2026-10-11T1230430800",
+    "manifest_sha256": "cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041",
+    "dest": "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G",
+    "dest_volume_record": {
+      "root": "E:\\",
+      "VolumeSerialNumber_dword": 2154105055,
+      "VolumeSerialNumber_hex": "806508DF",
+      "FileSystem": "NTFS",
+      "VolumeName": "MarketData"
+    },
+    "dest_volume_live": {
+      "root": "E:\\",
+      "VolumeSerialNumber_dword": 2154105055,
+      "VolumeSerialNumber_hex": "806508DF",
+      "FileSystem": "NTFS",
+      "VolumeName": "MarketData"
+    }
+  },
+  "checks_done": {
+    "entities_hashed": 650,
+    "paths_identity_checked": 22082,
+    "expected_entities": 662,
+    "expected_paths": 22998
+  },
+  "missing_sample": [
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHE__DAILY__2026-07-03__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-03.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHE__DAILY__2026-07-06__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-06.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHE__DAILY__2026-07-10__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-10.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHE__DAILY__2026-07-09__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-09.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHE__DAILY__2026-07-07__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-07.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHE__DAILY__2026-07-08__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-08.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHG__DAILY__2026-07-03__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-03.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHG__DAILY__2026-07-06__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-06.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHG__DAILY__2026-07-10__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-10.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHG__DAILY__2026-07-08__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-08.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHG__DAILY__2026-07-07__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-07.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R10_ASOF_20260806_20260806_235802\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__XSHG__DAILY__2026-07-09__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-09.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146\\standard\\reference\\security_master\\security_master__security_master__open_fund__2014-01-01_2026-07-12__none_adj__v1__20260713_065316.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R23_SECURITY_STATE_ASOF_20260812_20260813_003511\\standard\\reference\\security_master\\security_master__security_master__open_fund__2014-01-01_2026-07-12__none_adj__v1__20260713_065316.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_012957\\standard\\reference\\security_master\\security_master__security_master__open_fund__2014-01-01_2026-07-12__none_adj__v1__20260713_065316.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444\\standard\\reference\\security_master\\security_master__security_master__open_fund__2014-01-01_2026-07-12__none_adj__v1__20260713_065316.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R22_FINANCE_ASOF_20260812_20260812_230237\\standard\\reference\\stock_limit_pause_status\\stock_limit_pause_status__stock_limit_pause__incremental_gap_20260713_20260730__20260729_170725.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146\\standard\\reference\\stock_limit_pause_status\\stock_limit_pause_status__stock_limit_pause__incremental_gap_20260713_20260730__20260729_170725.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R23_SECURITY_STATE_ASOF_20260812_20260813_003511\\standard\\reference\\stock_limit_pause_status\\stock_limit_pause_status__stock_limit_pause__incremental_gap_20260713_20260730__20260729_170725.parquet",
+    "E:\\BLACKBOX_MANIFEST_PILOT_R9_1G\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R24_AUX_ASOF_20260812_20260813_005143\\standard\\reference\\stock_limit_pause_status\\stock_limit_pause_status__stock_limit_pause__incremental_gap_20260713_20260730__20260729_170725.parquet"
+  ],
+  "verdict": "FAIL_DEFICITS_PRESENT",
+  "finished_at": "2026-10-11T12:46:48+0800"
+}
