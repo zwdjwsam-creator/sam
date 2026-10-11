@@ -7,14 +7,14 @@ FULL_MIGRATION=false
 
 | 字段 | 值 |
 |---|---|
-| INPUT_READY | False |
-| dependency_closure_closed | False |
+| INPUT_READY | True |
+| dependency_closure_closed | True |
 | E index live exists | True |
 | E index path | E:\BLACKBOX_MIGRATION_AUDIT_R1\metadata\filesystem_inventory.sqlite |
 | E probe error | None |
-| blockers | 16 / 40 |
+| blockers | 0 / 40 |
 | gate tests | 7/7 |
-| input_snapshot_sha256 | `76b99062fa979b3788823285f5272ffe8fb8f9dbd9469cc3537ee1c05cfd0573` |
+| input_snapshot_sha256 | `fbd252446d77df897e5c254f71a0835cc20f33d36d1472bc3013fca9c664767a` |
 
 ## 说明
 
