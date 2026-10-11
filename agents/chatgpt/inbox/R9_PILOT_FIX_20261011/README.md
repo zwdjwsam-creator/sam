@@ -1,18 +1,23 @@
 # R9 Pilot — 当前状态与历史证据
 
-## 当前结论（2026-10-11 13:30后调度）
+## 当前结论（2026-10-11 13:54后调度）
 
 **真实1GiB样本已复制并复验通过；全量迁移尚未授权。**
 662/662实体SHA、22998/22998路径身份通过；唯一内容1064950668字节，目标去重分配1066270720字节。
-主报告：[长路径修复与复验](R9_ZHANGWEI_LONGPATH_ACCEPTANCE_REPORT.md)。
-原始复验：[PASS JSON](ACCEPTANCE_R9_PILOT_ZHANGWEI_LONGPATH.json)。
-ChatGPT审核依据为回传证据与代码差异，并非在本环境重新执行Windows测试。
+主报告：[长路径修复与复验](R9_ZHANGWEI_LONGPATH_ACCEPTANCE_REPORT.md)；[PASS JSON](ACCEPTANCE_R9_PILOT_ZHANGWEI_LONGPATH.json)。
 
-**下一执行方：笔记本SAM**，任务 R9_NOTEBOOK_SCOPE_CLOSURE_20261011_1330，见[笔记本邮箱](../INBOX_FOR_NOTEBOOK.md)。
-整理D覆盖缺口、迁移范围和E/D依赖，只做有界只读补核与方案；台式机[保留样本待命](../INBOX_FOR_DESKTOP.md)。
-D全局完整性仍未证实，历史R8 READY不可复用。8项长路径回归通过不等于正式全量执行器认证。
+笔记本上一轮[范围报告](R9_SAM_SCOPE_CLOSURE_REPORT.md)已收到：
+255目录抽样无差异，D全局和选定范围完整性均未证实。
+抽样程序的空queue并非完整续核状态；逐条依赖映射尚缺，旧F盘方案尚需更正。
+ChatGPT审核依据为HUB回传证据与源码，未在此环境执行Windows核验。
 
-清理：本轮保留有效验收、代码差异及历史失败证据，没有新增删除。下文是历史快照，“未复制/待执行”等旧状态不代表当前调度。
+**下一执行方：笔记本SAM**，任务 R9_NOTEBOOK_SELECTED_MANIFEST_20261011_1354，见[笔记本邮箱](../INBOX_FOR_NOTEBOOK.md)。
+本轮建立选定D范围完整元数据清单和逐条依赖映射，运行一个最多30分钟批次，完整保存进度。
+台式机[保留样本待命](../INBOX_FOR_DESKTOP.md)。
+不重做1GiB、不全E重扫、不开始全量迁移；D全局完整性仍未证实。
+历史R8 READY不可复用，旧F路径不得作为已核验目标配置。
+
+清理：本轮新证据有价值，保留。旧摘要中的READY/COMPLETE须以最新报告为准；下文仅为历史阶段记录。
 
 ---
 
