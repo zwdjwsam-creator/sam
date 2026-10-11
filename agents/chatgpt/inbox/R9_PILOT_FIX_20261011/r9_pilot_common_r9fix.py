@@ -37,6 +37,24 @@ EXPECTED_DEST_VOLUME = {
     "FileSystemLabel": "MarketData",
 }
 
+# Historical R8 freeze run — live cmdline must not still host these writers/monitors.
+R8_LEGACY_RUN_ID = "20261010_173201_R8_3B85D677"
+R8_REQUIRED_STOP_FIELDS = (
+    "OLD_LN_STOPPED",
+    "OLD_WRAPPER_STOPPED",
+    "OLD_MONITORS_INACTIVE",
+)
+R8_PROC_CMDLINE_MARKERS = (
+    R8_LEGACY_RUN_ID,
+    "BLACKBOX_R8_SOURCE_FREEZE_MONITOR",
+    "BLACKBOX_R8_SOURCE_FREEZE_MONITOR_V2",
+    "BLACKBOX_R8_SOURCE_FREEZE_FINALIZE",
+    "BLACKBOX_R8_FREEZE_STATE_REPAIR",
+    "BLACKBOX_R8_SOURCE_FREEZE_T0_COLLECT",
+)
+SHA256_HEX_RE = re.compile(r"^[0-9a-fA-F]{64}$")
+FILETIME_EPOCH_UTC = datetime(1601, 1, 1, tzinfo=timezone.utc)
+
 GENERIC_READ = 0x80000000
 GENERIC_WRITE = 0x40000000
 FILE_SHARE_READ = 0x00000001
@@ -403,11 +421,14 @@ def read_exact_hash(h, expect_size: int) -> tuple[bytes, str]:
         hsh.update(data)
         total += read.value
         remaining -= read.value
-    # probe one more byte — must be EOF
+    # probe one more byte — must be EOF; ReadFile failure ≠ EOF success
     probe = ctypes.create_string_buffer(1)
     read2 = wintypes.DWORD(0)
     ok2 = ReadFile(h, probe, 1, ctypes.byref(read2), None)
-    if ok2 and read2.value != 0:
+    if not ok2:
+        err = ctypes.get_last_error()
+        raise OSError(err, f"EOF_PROBE_ReadFile_fail winerror={err}")
+    if read2.value != 0:
         raise RuntimeError(f"SOURCE_GREW_OR_LONGER expect={expect_size}")
     return b"", hsh.hexdigest()  # content not retained; hash only
 
@@ -453,7 +474,11 @@ def copy_bounded(src_h, dest_path: str, expect_size: int, unique_budget_left: in
             remaining -= read.value
         probe = ctypes.create_string_buffer(1)
         read2 = wintypes.DWORD(0)
-        if ReadFile(src_h, probe, 1, ctypes.byref(read2), None) and read2.value != 0:
+        ok2 = ReadFile(src_h, probe, 1, ctypes.byref(read2), None)
+        if not ok2:
+            err = ctypes.get_last_error()
+            raise OSError(err, f"EOF_PROBE_ReadFile_fail winerror={err}")
+        if read2.value != 0:
             raise RuntimeError("SOURCE_LONGER_THAN_MANIFEST")
         if not FlushFileBuffers(dh):
             err = ctypes.get_last_error()
@@ -518,85 +543,349 @@ def hostname_ok() -> tuple[bool, str]:
     return name.upper() == REQUIRED_HOSTNAME.upper(), name
 
 
+def _normalize_r8_token(v: Any) -> str:
+    if v is True or v is False:
+        return "TRUE" if v is True else "FALSE"
+    if isinstance(v, (int, float)) and v in (0, 1):
+        return "TRUE" if int(v) == 1 else "FALSE"
+    if isinstance(v, str):
+        s = v.strip().upper()
+        if s in ("TRUE", "1", "YES"):
+            return "TRUE"
+        if s in ("FALSE", "0", "NO"):
+            return "FALSE"
+        if s in ("UNKNOWN", "NULL", "NONE", ""):
+            return "UNKNOWN"
+        return s
+    return "UNKNOWN"
+
+
 def parse_r8_stop_report(path: Path) -> dict:
-    """Require OLD_LN_STOPPED / OLD_WRAPPER_STOPPED / OLD_MONITORS_INACTIVE all TRUE."""
+    """Require OLD_LN/WRAPPER/MONITORS fields complete, conflict-free, exactly TRUE.
+
+    Accepts JSON object or KEY=VALUE / KEY: VALUE text (real report styles).
+    Historical READY / DESKTOP_READY / WRITERS_STOPPED alone is NEVER sufficient.
+    Duplicate keys with conflicting values → reject.
+    """
     if not path.exists():
         return {"ok": False, "reason": "MISSING_FILE", "fields": {}}
     text = path.read_text(encoding="utf-8", errors="replace")
-    fields: dict[str, Any] = {}
-    # JSON object?
+    collected: dict[str, list[str]] = {k: [] for k in R8_REQUIRED_STOP_FIELDS}
+
     try:
         obj = json.loads(text)
         if isinstance(obj, dict):
-            for k in ("OLD_LN_STOPPED", "OLD_WRAPPER_STOPPED", "OLD_MONITORS_INACTIVE"):
-                if k in obj and obj[k] is not None:
-                    fields[k] = obj[k]
+            for k in R8_REQUIRED_STOP_FIELDS:
+                if k in obj:
+                    collected[k].append(_normalize_r8_token(obj[k]))
     except json.JSONDecodeError:
         pass
-    for k in ("OLD_LN_STOPPED", "OLD_WRAPPER_STOPPED", "OLD_MONITORS_INACTIVE"):
-        if k in fields:
+
+    for k in R8_REQUIRED_STOP_FIELDS:
+        for m in re.finditer(
+            rf"(?im)^\s*{re.escape(k)}\s*[=:]\s*([A-Za-z0-9_]+)\s*$",
+            text,
+        ):
+            collected[k].append(_normalize_r8_token(m.group(1)))
+        # markdown / bullet: **OLD_LN_STOPPED** = `TRUE` or - OLD_LN_STOPPED: TRUE
+        for m in re.finditer(
+            rf"(?im){re.escape(k)}\s*[=:]\s*`?(TRUE|FALSE|UNKNOWN|1|0)`?",
+            text,
+        ):
+            collected[k].append(_normalize_r8_token(m.group(1)))
+
+    fields: dict[str, str] = {}
+    conflicts = []
+    missing = []
+    for k in R8_REQUIRED_STOP_FIELDS:
+        vals = collected[k]
+        if not vals:
+            missing.append(k)
             continue
-        m = re.search(rf"{k}\s*[=:]\s*(TRUE|FALSE|true|false|1|0)", text)
-        if m:
-            fields[k] = m.group(1)
+        uniq = sorted(set(vals))
+        if len(uniq) > 1:
+            conflicts.append({"field": k, "values": uniq})
+            continue
+        fields[k] = uniq[0]
 
-    def is_true(v) -> bool:
-        if v is True:
-            return True
-        if isinstance(v, str) and v.strip().upper() in ("TRUE", "1"):
-            return True
-        return False
-
-    # Legacy token R8_STOPPED alone is NEVER sufficient (incl. R8_STOPPED=FALSE).
-    required = ("OLD_LN_STOPPED", "OLD_WRAPPER_STOPPED", "OLD_MONITORS_INACTIVE")
-    missing = [k for k in required if k not in fields]
+    if conflicts:
+        return {"ok": False, "reason": "FIELD_VALUE_CONFLICT", "conflicts": conflicts, "fields": fields}
     if missing:
         return {"ok": False, "reason": "FIELDS_MISSING", "missing": missing, "fields": fields}
-    falsy = [k for k in required if not is_true(fields[k])]
-    if falsy:
-        return {"ok": False, "reason": "NOT_ALL_TRUE", "falsy": falsy, "fields": fields}
-    return {"ok": True, "fields": {k: True for k in required}, "path": str(path)}
+    bad = [k for k, v in fields.items() if v != "TRUE"]
+    if bad:
+        return {
+            "ok": False,
+            "reason": "NOT_ALL_TRUE",
+            "falsy": bad,
+            "fields": fields,
+            "note": "FALSE/UNKNOWN/other rejected; historical READY alone insufficient",
+        }
+    return {"ok": True, "fields": {k: True for k in R8_REQUIRED_STOP_FIELDS}, "path": str(path)}
 
 
-def live_r8_process_check() -> dict:
-    """Brief check: look for known R8 freeze monitor process names. Do not stop them."""
-    if os.environ.get("R9_SKIP_PROC_CHECK") == "1":
+def live_r8_process_check(
+    *,
+    allow_env_skip: bool = False,
+    proc_snapshot: list | None = None,
+) -> dict:
+    """Reject if legacy R8 RUN_ID / freeze scripts / ln wrapper still live in cmdline.
+
+    Uses Win32_Process CommandLine + CreationDate + ParentProcessId (not process-name-only).
+    Does not stop processes. Actual copy must call with allow_env_skip=False so
+    R9_SKIP_PROC_CHECK cannot bypass.
+    proc_snapshot: optional injected CIM-like rows for tests.
+    """
+    if allow_env_skip and os.environ.get("R9_SKIP_PROC_CHECK") == "1":
         return {"ok": True, "suspicious": [], "skipped": True}
-    suspicious = []
+    suspicious: list[dict[str, Any]] = []
     try:
-        import subprocess
+        if proc_snapshot is not None:
+            data = proc_snapshot
+        else:
+            import subprocess
 
-        # Prefer PowerShell Get-Process with hard timeout; avoid hanging tasklist.
-        out = subprocess.check_output(
-            [
-                "powershell",
-                "-NoProfile",
-                "-Command",
-                "Get-Process -ErrorAction SilentlyContinue | "
-                "Where-Object { $_.ProcessName -match 'BLACKBOX_R8|BLACKBOX_FREEZE|powershell|pwsh' } | "
-                "Select-Object -ExpandProperty ProcessName",
-            ],
-            text=True,
-            errors="replace",
-            timeout=12,
-        )
-        for line in out.splitlines():
-            name = line.strip()
-            if not name:
+            # CIM CommandLine inspection — not Get-Process Name filtering.
+            ps = (
+                "$ErrorActionPreference='SilentlyContinue'; "
+                "Get-CimInstance Win32_Process | "
+                "Select-Object ProcessId,ParentProcessId,Name,CommandLine,CreationDate | "
+                "ConvertTo-Json -Compress -Depth 3"
+            )
+            out = subprocess.check_output(
+                ["powershell", "-NoProfile", "-Command", ps],
+                text=True,
+                errors="replace",
+                timeout=45,
+            )
+            data = json.loads(out) if out.strip() else []
+            if isinstance(data, dict):
+                data = [data]
+        markers = tuple(m.lower() for m in R8_PROC_CMDLINE_MARKERS)
+        for proc in data or []:
+            cmd = proc.get("CommandLine") or ""
+            name = (proc.get("Name") or "").lower()
+            low = cmd.lower()
+            hit = None
+            for mk in markers:
+                if mk in low:
+                    hit = mk
+                    break
+            if hit is None and name == "ln.exe":
+                # ln.exe only suspicious when cmdline references BLACKBOX / RUN_ID / freeze paths
+                if "blackbox" in low or R8_LEGACY_RUN_ID.lower() in low or "freeze" in low:
+                    hit = "ln.exe+blackbox_context"
+            if hit is None:
                 continue
-            low = name.lower()
-            if "blackbox_r8" in low or "blackbox_freeze" in low:
-                suspicious.append(name)
-            # wrapper monitors often live as powershell hosting the script — desktop
-            # should pass --r8-stopped-evidence that already asserts monitors inactive;
-            # here we only flag explicit freeze process names.
+            # Ignore this checker itself if present
+            if "live_r8_process_check" in low or "_hub_upload_r9" in low:
+                continue
+            if "run_r9fix_lean_tests" in low or "r9_pilot_common_r9fix" in low:
+                continue
+            suspicious.append(
+                {
+                    "ProcessId": proc.get("ProcessId"),
+                    "ParentProcessId": proc.get("ParentProcessId"),
+                    "Name": proc.get("Name"),
+                    "CreationDate": str(proc.get("CreationDate") or ""),
+                    "marker": hit,
+                    "CommandLine": cmd[:500],
+                }
+            )
     except subprocess.TimeoutExpired:
         return {"ok": False, "reason": "PROC_CHECK_TIMEOUT", "suspicious": []}
     except Exception as e:
         return {"ok": False, "reason": f"PROC_CHECK_FAIL:{e}", "suspicious": []}
     if suspicious:
-        return {"ok": False, "reason": "R8_PROCESS_STILL_PRESENT", "suspicious": suspicious}
-    return {"ok": True, "suspicious": []}
+        return {
+            "ok": False,
+            "reason": "R8_LEGACY_TASK_STILL_RUNNING",
+            "run_id": R8_LEGACY_RUN_ID,
+            "suspicious": suspicious,
+        }
+    return {"ok": True, "suspicious": [], "run_id": R8_LEGACY_RUN_ID}
+
+
+def is_valid_sha256_hex(value: Any) -> bool:
+    return isinstance(value, str) and bool(SHA256_HEX_RE.fullmatch(value))
+
+
+def filetime_to_utc_datetime(mtime_ft: int | str) -> datetime:
+    ft = int(mtime_ft)
+    if ft < 0:
+        raise ValueError("NEG_FILETIME")
+    # 100-ns intervals → microseconds (floor)
+    return FILETIME_EPOCH_UTC + timedelta(microseconds=ft // 10)
+
+
+def parse_manifest_last_write_time(raw: Any) -> datetime:
+    """Parse manifest source_last_write_time (ISO UTC text). Unparseable → raise."""
+    if raw is None:
+        raise ValueError("MTIME_NONE")
+    s = str(raw).strip()
+    if not s:
+        raise ValueError("MTIME_EMPTY")
+    if s.isdigit():
+        # Rare numeric FILETIME form — still accepted if present
+        return filetime_to_utc_datetime(s)
+    if s.endswith("Z"):
+        s = s[:-1] + "+00:00"
+    try:
+        dt = datetime.fromisoformat(s)
+    except ValueError as e:
+        raise ValueError(f"MTIME_UNPARSEABLE:{raw!r}") from e
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
+def manifest_mtime_precision_seconds(raw: Any) -> int:
+    """Infer compare precision from textual form (default seconds for ...Z / no fraction)."""
+    s = str(raw).strip()
+    if s.isdigit():
+        return 0  # full FILETIME tick compare via exact int equality elsewhere
+    # fractional seconds after '.' before tz
+    m = re.search(r"\.(\d+)", s)
+    if not m:
+        return 0  # whole seconds
+    return min(len(m.group(1)), 6)
+
+
+def compare_mtime_manifest_vs_handle(manifest_raw: Any, mtime_ft: int | str) -> None:
+    """Compare at manifest precision; raise RuntimeError on drift / unparseable."""
+    try:
+        m_dt = parse_manifest_last_write_time(manifest_raw)
+    except ValueError as e:
+        raise RuntimeError(f"SOURCE_MTIME_UNPARSEABLE:{e}") from e
+    s = str(manifest_raw).strip()
+    if s.isdigit():
+        if str(int(mtime_ft)) != str(int(s)):
+            raise RuntimeError(
+                f"SOURCE_MTIME_DRIFT manifest_ft={s} live_ft={mtime_ft}"
+            )
+        return
+    live_dt = filetime_to_utc_datetime(mtime_ft)
+    frac = manifest_mtime_precision_seconds(manifest_raw)
+    if frac <= 0:
+        if m_dt.replace(microsecond=0) != live_dt.replace(microsecond=0):
+            raise RuntimeError(
+                f"SOURCE_MTIME_DRIFT manifest={m_dt.strftime('%Y-%m-%dT%H:%M:%SZ')} "
+                f"live={live_dt.strftime('%Y-%m-%dT%H:%M:%SZ')}"
+            )
+    else:
+        # truncate both to frac decimal digits of seconds
+        scale = 10 ** (6 - frac)
+        m_us = (m_dt.microsecond // scale) * scale
+        l_us = (live_dt.microsecond // scale) * scale
+        if m_dt.replace(microsecond=m_us) != live_dt.replace(microsecond=l_us):
+            raise RuntimeError(
+                f"SOURCE_MTIME_DRIFT manifest={m_dt.isoformat()} live={live_dt.isoformat()}"
+            )
+
+
+def norm_vol_serial(v: Any) -> str:
+    if v is None:
+        raise ValueError("VOL_NONE")
+    s = str(v).strip()
+    if not s:
+        raise ValueError("VOL_EMPTY")
+    if re.fullmatch(r"[0-9]+", s):
+        return str(int(s))
+    if re.fullmatch(r"[0-9a-fA-F]+", s):
+        return str(int(s, 16))
+    raise ValueError(f"VOL_BAD:{v!r}")
+
+
+def compare_identity_vol_fid_size(
+    *,
+    manifest_volume_serial: Any,
+    manifest_file_id: Any,
+    manifest_size: Any,
+    live: dict,
+    label: str = "source",
+) -> None:
+    try:
+        mv = norm_vol_serial(manifest_volume_serial)
+        lv = norm_vol_serial(live.get("volume_serial_dword", live.get("volume_serial")))
+    except ValueError as e:
+        raise RuntimeError(f"IDENTITY_VOL_PARSE:{label}:{e}") from e
+    mf = str(manifest_file_id).strip()
+    lf = str(live.get("file_id")).strip()
+    ms = int(manifest_size)
+    ls = int(live.get("size"))
+    if mv != lv or mf != lf or ms != ls:
+        raise RuntimeError(
+            f"SOURCE_IDENTITY_DRIFT:{label} "
+            f"manifest=(vol={mv},fid={mf},size={ms}) live=(vol={lv},fid={lf},size={ls})"
+        )
+
+
+def compare_hardlink_sibling_identity(primary: dict, sibling: dict, path: str) -> None:
+    try:
+        pv = norm_vol_serial(primary.get("volume_serial_dword", primary.get("volume_serial")))
+        sv = norm_vol_serial(sibling.get("volume_serial_dword", sibling.get("volume_serial")))
+    except ValueError as e:
+        raise RuntimeError(f"HL_VOL_PARSE:{path}:{e}") from e
+    if pv != sv or str(primary.get("file_id")) != str(sibling.get("file_id")):
+        raise RuntimeError(
+            f"HL_SPLIT path={path} primary=(vol={pv},fid={primary.get('file_id')}) "
+            f"sib=(vol={sv},fid={sibling.get('file_id')})"
+        )
+
+
+def validate_copy_record_integrity(
+    crec: dict,
+    expected_entity_ids: set[int],
+    *,
+    require_full_pilot_counts: bool = True,
+) -> list[str]:
+    """Acceptance binding: unique entity_id set match, SHA256, run_id, space evidence."""
+    deficits: list[str] = []
+    run_id = crec.get("run_id")
+    if run_id is None or (isinstance(run_id, str) and not run_id.strip()) or run_id == "":
+        deficits.append("COPY_RECORD_RUN_ID_MISSING")
+    for key in ("volume_free_before", "volume_free_after"):
+        v = crec.get(key)
+        if v is None or not isinstance(v, (int, float)) or isinstance(v, bool):
+            deficits.append(f"COPY_RECORD_SPACE_EVIDENCE_MISSING:{key}")
+        elif int(v) < 0:
+            deficits.append(f"COPY_RECORD_SPACE_EVIDENCE_INVALID:{key}")
+    ents = crec.get("entities")
+    if not isinstance(ents, list) or not ents:
+        deficits.append("COPY_RECORD_ENTITIES_MISSING")
+        return deficits
+    ids: list[int] = []
+    for i, e in enumerate(ents):
+        if not isinstance(e, dict) or "entity_id" not in e:
+            deficits.append(f"COPY_RECORD_ENTITY_MALFORMED:{i}")
+            continue
+        try:
+            eid = int(e["entity_id"])
+        except (TypeError, ValueError):
+            deficits.append(f"COPY_RECORD_ENTITY_ID_BAD:{i}")
+            continue
+        ids.append(eid)
+        sha = e.get("sha256")
+        if not is_valid_sha256_hex(sha):
+            deficits.append(f"COPY_RECORD_SHA_INVALID:entity={eid}")
+    if len(ids) != len(set(ids)):
+        deficits.append("COPY_RECORD_ENTITY_ID_DUPLICATE")
+    id_set = set(ids)
+    if id_set != set(expected_entity_ids):
+        missing = sorted(set(expected_entity_ids) - id_set)
+        extra = sorted(id_set - set(expected_entity_ids))
+        if missing:
+            deficits.append(f"COPY_RECORD_ENTITY_MISSING:{len(missing)}")
+        if extra:
+            deficits.append(f"COPY_RECORD_ENTITY_EXTRA:{len(extra)}")
+    if require_full_pilot_counts:
+        if len(id_set) != EXPECTED_ENTITY_COUNT:
+            deficits.append(f"COPY_RECORD_ENTITY_COUNT={len(id_set)} expected={EXPECTED_ENTITY_COUNT}")
+        if crec.get("path_count") != EXPECTED_PATH_COUNT:
+            deficits.append(f"COPY_RECORD_PATH_COUNT={crec.get('path_count')}")
+        if crec.get("unique_bytes") != EXPECTED_UNIQUE_BYTES:
+            deficits.append(f"COPY_RECORD_UNIQUE={crec.get('unique_bytes')}")
+    return deficits
 
 
 def validate_manifest_structure(con: sqlite3.Connection) -> dict:
