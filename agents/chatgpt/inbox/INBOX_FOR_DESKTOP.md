@@ -1,61 +1,81 @@
-# 给台式机 AI（ZHANGWEI）｜核实权限可见性，停止重复普通权限查询
+# 给台式机 AI（ZHANGWEI）｜结束已识别的挂起日志查询，再做单次1GiB实测
 
-任务ID：R9_DESKTOP_AUTHORIZED_VISIBILITY_20261011_1220
-取代：R9_DESKTOP_PROCESS_RESOLVE_20261011（已消费并完成回执）
-唯一执行方：台式机 Cursor；笔记本 SAM 待命。
-状态：待执行。此任务通过HUB发布，用户不必转述技术内容。
+任务ID：R9_DESKTOP_FINISH_STALE_QUERY_20261011_1227
+取代：R9_DESKTOP_AUTHORIZED_VISIBILITY_20261011_1220（诊断完成，不重复）
+执行方：台式机 Cursor。笔记本 SAM 待命。
+状态：待执行。
 
-## 已审结论
+## 审核依据与本轮授权
 
-12:18报告及原始JSON已审：卷serial/NTFS和现场Volume GUID成立，目标不存在；662实体UNC探测已通过；尚未真实复制。
-当前唯一阻塞：sshd→cmd PID20440→findstr/conhost，命令行、路径、Owner都不可见。
-该树创建于2026-10-10 17:33:54，接近旧R8的17:32运行时间，不能以“sshd子进程”认定无关。
-保持UNKNOWN，不批准按PID/父进程名豁免，不修改门禁。也不再原样重复上一轮查询。
+ChatGPT已读取管理员进程原始JSON和管理员预检：
+- cmd PID20440，StartTime=2026-10-10T17:33:54.7809759+08:00，
+  Windows system32 cmd.exe，Owner=ZHANGWEI\Admin，父PID3348（sshd）。
+- findstr PID34324，StartTime=2026-10-10T17:33:54.8014005+08:00，
+  父PID20440，Windows system32 findstr.exe，Owner=ZHANGWEI\Admin。
+- 命令行为 findstr 查询
+  C:\LAN_SHARE_REPORT\BLACKBOX_MIGRATION_RUN_20261010_173201_R8_3B85D677\DESKTOP_PREFLIGHT.json，
+  含DESKTOP_READY/RUN_ID，现有引号异常可能使其等待输入；不能把“实际已读完文件”当事实。
+- 这是挂起的旧日志查询，不是ln复制/wrapper/watchdog；现有门禁因RUN_ID匹配拦截。
+本轮在重新核对身份后，允许结束这一个废弃日志查询及其cmd外壳。不是全局进程清理授权。
+先前仅只读的任务已完成；本任务明确新增上述限定停止动作，不允许绕过Windows权限或把旧只读UAC当作本次停止批准。
 
-## 1. 先确定当前执行权限
+## 1. 定点结束：先子后父，保留证据
 
-记录本地当前用户名、是否管理员组成员、当前进程是否真正提升（组成员不等于已提升）。
-只判断权限状态，不导出凭证或完整环境变量。
-如果已有用户授权、已提升的本地会话，使用它执行下面只读查询。
-如果当前未提升：
-- 先在C:\LAN_SHARE_REPORT准备一份小型、可审阅的只读诊断脚本。
-- 脚本仅查询进程/身份/当前原预检，并写C盘报告，不杀进程、不复制、不修改权限。
-- 通过正常Windows UAC请求用户批准这一次管理员只读诊断，明确用途；不得自动确认UAC、绕过权限、使用保存凭证或创建SYSTEM计划任务。
-- 无法发起正常UAC或用户未批准时，回传 WAITING_FOR_LOCAL_UAC 和准备好的脚本/启动方法。不要再生成一份同权限查询的重复FAIL。
+1. 在C盘保存一个小型、可审阅的处理脚本，脚本名用 R9_FINISH_STALE_QUERY.ps1，不把旧RUN_ID放入启动命令行，避免当前预检把本次工具误认作R8。
+2. 若停止操作需要提升，通过正常Windows UAC请求用户批准：
+   “结束已确认挂起的旧findstr日志查询及其cmd外壳，不停止SSH服务，不删除文件。”
+   不静默提升、不自动点UAC、不使用凭证/SYSTEM任务绕过限制。
+3. 在执行停止的同一上下文，重新读取并核对：
+   PID、精确创建时间、可执行路径、Owner、父子关系及完整命令行，
+   与 R9_ZHANGWEI_ADMIN_PROCESS_DETAIL.json 一致。
+   PID已不存在则记录已退出；PID复用、身份不同、出现额外业务子进程则停止该动作并报告，不沿用历史PID盲杀。
+4. 仅对身份匹配的findstr PID34324定点停止。短暂等待cmd自然退出（最多数秒）。
+   若cmd PID20440仍在，再次核对其同一身份及子进程状态；确认仍是同一个旧 /c findstr 外壳才定点停止它。
+5. 不使用 /T 扩大进程树停止；不按进程名批量杀。
+   不主动终止sshd PID3348/28700/5892或其他SSH/Cursor/PowerShell，
+   不主动终止conhost，允许其随旧外壳自行退出。
+6. 保存停止前快照、执行动作、退出码/错误与停止后复核。不要删除原日志、源文件或实验目录。
+   如需用户批准而未获批准：WAITING_FOR_LOCAL_UAC，结束本轮等待，不反复弹窗。
 
-## 2. 授权后的单次只读核验
+## 2. 普通本地会话重跑原预检
 
-从获准的本地管理员会话查询当前PID20440（核对创建时间防PID复用），父链及子进程的完整命令行、路径、Owner。
-查全部ln与旧R8 RUN_ID/复制wrapper/watchdog/observer/exit_waiter，保存识别依据。
-不关闭sshd会话，不终止cmd/findstr，不重启，不改三份迁移PY。
-在同一会话运行现有 --preflight-only；此处不得带复制双开关。
-上传证据脱敏，不上传任何token/口令。
+停止脚本退出后，从台式机普通本地Cursor会话执行原 --preflight-only，
+不带复制开关，不设置skip，不修改门禁代码。
+检查旧RUN_ID命中/ln/监控残留，记录真实结果。
+若仍失败，报告具体新阻塞；不得继续扩大停止范围或改成白名单。
+若只有管理员会话可以预检通过，本次停止UAC不自动授权管理员复制；回报上下文差异。
 
-分支：
-- 若进程已退出或现在命令行可读，且原门禁实际PASS：报告其用途及PASS来源。
-- 若确认仍有旧R8关联任务：回传具体身份，本任务不扩大授权停止它。
-- 若已提升仍不可读：停止，报告实际权限、失败API及错误，保留UNKNOWN；不自行豁免。
-- 若发现原脚本有其他实质问题：报告，不为了PASS调整判断。
+## 3. 普通上下文原预检通过后，接续单次1GiB实测
 
-## 3. 后续复制边界
+此前已授权的普通上下文单次隔离实验继续有效，不需要重复向ChatGPT申请同一阶段。
+执行前简短核对：
+- ZHANGWEI；E NTFS serial806508DF；
+  Volume GUID b8545ee8-e403-48c6-9d3f-09afd3e0349f。
+- 固定目标 E:\BLACKBOX_MANIFEST_PILOT_R9_1G 不存在且路径检查通过。
+- 三份PY为HUB FIX2b，记录文件哈希，不修改逻辑。
+- 清单SHA=cfb831ecc0a85fec0137b74a12162e169828d708ff57961df906deffb185c041。
+- 662实体 / 22998路径 / 1064950668唯一字节，上限1073741824。
+- 源仅 \\192.168.100.2\E_DRIVE\BLACKBOX；真实旧停止报告及当前进程预检通过。
 
-若当前普通本地执行上下文也能通过原预检，可继续先前授权的单次隔离实验。
-若只有管理员上下文能通过：本轮管理员授权仅用于只读诊断，回传PASS证据与“复制需要在该上下文运行”的具体说明，由用户明确授权该执行上下文；不把只读UAC授权扩大为管理员写入复制。
+不重复已完成的662实体UNC全文探测。
+运行copy_executor_r9_1g.py，带现有 --enable-copy --i-accept-pilot-copy、
+固定 --confirm-dest、本机真实 --r8-stopped-evidence，不带limit。
+代码内实时源卷/文件ID/大小/mtime/稳定句柄检查全部保留。
+COPY_OK后，使用本次copy-record运行完整acceptance，不用结构或局部模式。
 
-普通上下文原预检全PASS时，仍需主机ZHANGWEI、目标E serial806508DF/NTFS/Volume{b8545ee8-e403-48c6-9d3f-09afd3e0349f}、固定目标 E:\BLACKBOX_MANIFEST_PILOT_R9_1G 不存在、清单SHA和662/22998/1064950668全部匹配。
-源仅 \\192.168.100.2\E_DRIVE\BLACKBOX。
-不重复全量UNC探测；实际复制保留实时身份/mtime/稳定句柄检查。
-只执行一次，COPY_OK后用本次copy-record完整验收。失败保留现场，不自动重试/删除。
-全量迁移、重扫E/D、网络变更均不在本轮范围。
+任何失败立即停止，保留现场，不自动重试、不覆盖、不清理；全量迁移、重扫E/D、网络调整、格式化均禁止。
 
-## 4. 回传与去重
+## 4. HUB交付
 
-提交 R9_ZHANGWEI_VISIBILITY_AUTH_REPORT.md、权限状态、脱敏诊断及预检结果到原R9包，
-更新INBOX_FOR_CHATGPT.md，明确 WAITING_FOR_LOCAL_UAC / DIAGNOSIS_DONE / COPY_NOT_RUN 等真实状态。
-不要将上传成功标成迁移成功，不在同一任务ID下反复执行。
+提交 R9_ZHANGWEI_STALE_QUERY_STOP_AND_PILOT_REPORT.md 到原R9包。
+包含：
+- 精确停止身份、动作和结果；SSH服务/其他会话未被主动停止。
+- 普通上下文预检。
+- COPY_STARTED / COPY_OK / ACCEPTANCE_PASS / FULL_MIGRATION=FALSE。
+- 若完成复制：本次copy-record、复制日志、完整验收JSON，内容与链接检查计数、
+  唯一内容字节、实际分配空间、卷空闲差、耗时。
+更新INBOX_FOR_CHATGPT.md指向新报告。
+未执行项明确NOT_RUN，上传成功不等于复制成功。
 
-ChatGPT本轮会清理3个冗余HUB副本：
-R9FIX_LEAN_TEST_RESULTS.json（内容与R9FIX2_LEAN_TEST_FULL.json相同）、
-R9FIX2_LEAN_TEST_STDOUT.txt、R9FIX2B_PATCH_TEST_STDOUT.txt。
-完整JSON、测试源码、当前脚本、全部现场运行证据保留；无需重新上传这些已清理的冗余副本。
-不删除本机源数据、实验目录、凭证文件或其他项目文件。
+本轮新增管理员诊断证据有保留价值，不删除。
+之前清理的3个重复测试输出无需重传。
