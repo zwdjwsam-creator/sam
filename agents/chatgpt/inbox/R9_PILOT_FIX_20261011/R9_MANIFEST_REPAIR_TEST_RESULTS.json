@@ -1,0 +1,65 @@
+{
+  "task_id": "R9_NOTEBOOK_MANIFEST_REPAIR_20261011_1415",
+  "results": [
+    {
+      "name": "A_in_progress_resume",
+      "pass": true,
+      "done": 2,
+      "nodes": 4
+    },
+    {
+      "name": "B_unique_bytes_files_only",
+      "pass": true,
+      "unique_content_bytes": 100,
+      "dir_logical_size": 4096,
+      "dir_size_injected": true,
+      "summary_unique": 100
+    },
+    {
+      "name": "hardlink_dedupe",
+      "pass": true,
+      "file_path_count": 2,
+      "dir_count": 1,
+      "reparse_count": 0,
+      "unique_file_entities": 1,
+      "unique_content_bytes": 50,
+      "logical_path_bytes": 100,
+      "fid_size_or_mtime_conflicts": 0,
+      "sql_note": "unique_content_bytes = sum distinct (volume_serial,file_id) over normal files only; directories excluded"
+    },
+    {
+      "name": "mid_budget_resume",
+      "pass": true,
+      "stop1": "BUDGET_REACHED",
+      "stop2": "QUEUE_EMPTY"
+    },
+    {
+      "name": "delete_reenum_auto_removes",
+      "pass": true,
+      "deleted_diff": 1
+    },
+    {
+      "name": "config_sha_tamper_fails",
+      "pass": true,
+      "returncode": 2
+    },
+    {
+      "name": "normalize_e_blackbox_in_scope",
+      "pass": true,
+      "normalized": "E:\\BLACKBOX\\数据\\回测缓存\\x"
+    },
+    {
+      "name": "mtime_change_not_complete",
+      "pass": true,
+      "enumeration_complete": false
+    },
+    {
+      "name": "cli_nonzero_on_incomplete",
+      "pass": true,
+      "returncode": 3
+    }
+  ],
+  "passed": 9,
+  "failed": 0,
+  "total": 9
+}
