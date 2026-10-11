@@ -337,6 +337,9 @@ def main(argv=None) -> int:
             report["merge_fail_sample"] = merge_fail[:10]
 
         extra = walk_dest_extra(args.dest, expected_rels)
+        if extra["walk_errors"]:
+            report["deficits"].append("DEST_WALK_ENUM_ERROR")
+            report["walk_error_sample"] = extra["walk_errors"][:20]
         if extra["extra_files"]:
             report["deficits"].append("EXTRA_FILES_OUTSIDE_MANIFEST")
             report["extra_sample"] = extra["extra_files"][:20]
