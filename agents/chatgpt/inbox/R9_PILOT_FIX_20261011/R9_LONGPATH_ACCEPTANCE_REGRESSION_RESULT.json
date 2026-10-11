@@ -1,0 +1,207 @@
+{
+  "root": "C:\\LAN_SHARE_REPORT\\R9_LONGPATH_REGRESSION_20261011_1301",
+  "path_lengths": {
+    "len_a1": 417,
+    "len_a2": 417,
+    "len_a3": 493
+  },
+  "cases": [
+    {
+      "case": "LONGPATH_PRESENT_CONTENT_LINK_PASS",
+      "expect_pass": true,
+      "got_pass": true,
+      "ok": true,
+      "deficits": [],
+      "detail": {
+        "entities_hashed": 2,
+        "paths_checked": 4,
+        "extra": {
+          "extra_files": [],
+          "unexpected_reparse": [],
+          "walk_errors": []
+        },
+        "missing_sample": [],
+        "content_fail_sample": [],
+        "link_fail_sample": [],
+        "merge_fail_sample": []
+      }
+    },
+    {
+      "case": "DELETE_ONE_PATH_FAIL",
+      "expect_pass": false,
+      "got_pass": false,
+      "ok": true,
+      "deficits": [
+        "MISSING_DEST_PATHS"
+      ],
+      "detail": {
+        "entities_hashed": 2,
+        "paths_checked": 3,
+        "extra": {
+          "extra_files": [],
+          "unexpected_reparse": [],
+          "walk_errors": []
+        },
+        "missing_sample": [
+          "C:\\LAN_SHARE_REPORT\\R9_LONGPATH_REGRESSION_20261011_1301\\数据\\清洗成品\\长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长\\路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路\\径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径\\releases\\sample_group\\链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链链_a2.bin"
+        ],
+        "content_fail_sample": [],
+        "link_fail_sample": [],
+        "merge_fail_sample": []
+      }
+    },
+    {
+      "case": "CORRUPT_CONTENT_FAIL",
+      "expect_pass": false,
+      "got_pass": false,
+      "ok": true,
+      "deficits": [
+        "CONTENT_HASH_OR_SIZE_FAIL"
+      ],
+      "detail": {
+        "entities_hashed": 2,
+        "paths_checked": 4,
+        "extra": {
+          "extra_files": [],
+          "unexpected_reparse": [],
+          "walk_errors": []
+        },
+        "missing_sample": [],
+        "content_fail_sample": [
+          {
+            "entity_id": 2,
+            "error": "sha_mismatch"
+          }
+        ],
+        "link_fail_sample": [],
+        "merge_fail_sample": []
+      }
+    },
+    {
+      "case": "INJECT_WALK_ENUM_ERROR_FAIL",
+      "expect_pass": false,
+      "got_pass": false,
+      "ok": true,
+      "deficits": [
+        "DEST_WALK_ENUM_ERROR"
+      ],
+      "detail": {
+        "entities_hashed": 2,
+        "paths_checked": 4,
+        "extra": {
+          "extra_files": [],
+          "unexpected_reparse": [],
+          "walk_errors": [
+            "WALK_ONERROR:OSError:[Errno 5] injected walk enumeration error"
+          ]
+        },
+        "missing_sample": [],
+        "content_fail_sample": [],
+        "link_fail_sample": [],
+        "merge_fail_sample": []
+      }
+    },
+    {
+      "case": "EXTRA_LONGPATH_FILE_FAIL",
+      "expect_pass": false,
+      "got_pass": false,
+      "ok": true,
+      "deficits": [
+        "EXTRA_FILES_OUTSIDE_MANIFEST"
+      ],
+      "detail": {
+        "entities_hashed": 2,
+        "paths_checked": 4,
+        "extra": {
+          "extra_files": [
+            "数据\\清洗成品\\长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长\\路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路\\径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径径\\releases\\sample_group\\外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外外_EXTRA.bin"
+          ],
+          "unexpected_reparse": [],
+          "walk_errors": []
+        },
+        "missing_sample": [],
+        "content_fail_sample": [],
+        "link_fail_sample": [],
+        "merge_fail_sample": []
+      }
+    },
+    {
+      "case": "HARDLINK_SPLIT_FAIL",
+      "expect_pass": false,
+      "got_pass": false,
+      "ok": true,
+      "deficits": [
+        "LINK_ACCEPTANCE_FAIL"
+      ],
+      "detail": {
+        "entities_hashed": 2,
+        "paths_checked": 4,
+        "extra": {
+          "extra_files": [],
+          "unexpected_reparse": [],
+          "walk_errors": []
+        },
+        "missing_sample": [],
+        "content_fail_sample": [],
+        "link_fail_sample": [
+          {
+            "entity_id": 1,
+            "error": "dest_hl_not_same_entity",
+            "keys": [
+              [
+                "184497532",
+                "844424930270333"
+              ],
+              [
+                "184497532",
+                "1125899906980997"
+              ]
+            ]
+          }
+        ],
+        "merge_fail_sample": []
+      }
+    },
+    {
+      "case": "CROSS_GROUP_MERGE_FAIL",
+      "expect_pass": false,
+      "got_pass": false,
+      "ok": true,
+      "deficits": [
+        "CROSS_ENTITY_MERGE"
+      ],
+      "detail": {
+        "entities_hashed": 2,
+        "paths_checked": 4,
+        "extra": {
+          "extra_files": [],
+          "unexpected_reparse": [],
+          "walk_errors": []
+        },
+        "missing_sample": [],
+        "content_fail_sample": [],
+        "link_fail_sample": [],
+        "merge_fail_sample": [
+          {
+            "a": 1,
+            "b": 2
+          }
+        ]
+      }
+    },
+    {
+      "case": "PATH_EXISTS_VS_LONGPATH_HELPER",
+      "expect_pass": true,
+      "got_pass": true,
+      "ok": true,
+      "deficits": [],
+      "detail": {
+        "Path.exists": false,
+        "path_exists_win": true,
+        "path_len": 493
+      }
+    }
+  ],
+  "all_ok": true,
+  "note": "C: only; E: pilot dest untouched"
+}
