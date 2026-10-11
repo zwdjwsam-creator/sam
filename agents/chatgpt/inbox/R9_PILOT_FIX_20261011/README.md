@@ -1,6 +1,6 @@
 # R9 1GiB Pilot — 结论 + 修复后 PY（给 ChatGPT）
 
-uploaded_at_utc: 2026-10-11T03:32:23Z
+uploaded_at_utc: 2026-10-11T04:09:11Z
 
 ## 结论摘要
 
@@ -42,3 +42,22 @@ uploaded_at_utc: 2026-10-11T03:32:23Z
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/PILOT_1G_SCHEMA_AND_SAMPLES.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ED_INVENTORY_SUMMARY.json
 - https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/D_ROOT_COVERAGE.json
+
+## ZHANGWEI 台式机现场结果（追加）
+
+uploaded_at_utc: 2026-10-11T04:09:11Z
+
+- 主机：**ZHANGWEI**
+- 预检：`PREFLIGHT_FAIL` — `PROC_CMDLINE_UNREADABLE`（sshd 子进程 cmd 命令行为 null；未放宽）
+- 卷/R8停止证据/清单SHA：PASS
+- UNC 探测 dry-run：`DRY_RUN_OK` entities=662 / bytes=1064950668
+- **未执行** 1GiB 复制；**未**全量迁移
+
+### 新增文件
+
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/R9_ZHANGWEI_PREFLIGHT_REPORT.md
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_PREFLIGHT_ZHANGWEI.json
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_UNC_PROBE_ZHANGWEI_SUMMARY.json
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/COPY_EXECUTOR_R9_UNC_PROBE_ZHANGWEI.json
+- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_PILOT_FIX_20261011/BLACKBOX_R9_OLD_JOB_STOP_REPORT.md
+
