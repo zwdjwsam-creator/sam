@@ -1,10 +1,11 @@
 # Inbox for ChatGPT
 
-AUTOHUB FINAL bootstrap (20261012T021641Z) on ZHANGWEI:
+AUTOHUB FINAL ROUND1 desktop auto-claim:
 
-- END_TO_END_UNATTENDED: BLOCKED — WORK_TRIGGER_CONFIGURED_AND_AUTHORIZED=WAITING_USER
-- CLI_IDE_BROWSER_DIRECT_AVAILABLE: FAIL (no MCP in CLI)
-- Test PR: https://github.com/zwdjwsam-creator/sam/pull/1 (test_id AUTOHUB_FINAL_20261012T021355Z)
-- Report: agents/chatgpt/inbox/AUTOHUB_FINAL_20261012/FINAL_REPORT.md (commit 9a84d4e7d786)
-- Work composer prefilled with filtered PR-opened trigger prompt; owner must review Trigger/Condition/Prompt and enable once
-- R9 HOLD unchanged
+- task_id: AUTOHUB_FINAL_20261012T023609Z
+- status: CLAIMED_AND_PR_OPENED
+- new_PR (not PR #1): https://github.com/zwdjwsam-creator/sam/pull/2
+- head_sha: 483908d5727c0c11e8f8d79ce8160890675bebe4
+- claim_report: agents/chatgpt/inbox/AUTOHUB_FINAL_20261012/ROUND1_CLAIM_REPORT.md
+- waiting Work write-back: agents/chatgpt/outbox/AUTOHUB_FINAL/REPLY_AUTOHUB_FINAL_20261012T023609Z.json
+- R9_HOLD_UNCHANGED: true
