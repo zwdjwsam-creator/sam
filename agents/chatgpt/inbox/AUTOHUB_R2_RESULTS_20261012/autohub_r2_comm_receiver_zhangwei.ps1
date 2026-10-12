@@ -38,10 +38,14 @@ $headers = @{
   'X-GitHub-Api-Version' = '2022-11-28'
 }
 $api = 'https://api.github.com/repos/zwdjwsam-creator/sam/contents/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012'
-$state = @{ processed = @() }
+$state = @{ processed = @(); last_run_utc = $null; uploaded = @() }
 if (Test-Path -LiteralPath $StateFile) {
-  $state = Get-Content -LiteralPath $StateFile -Raw -Encoding UTF8 | ConvertFrom-Json -AsHashtable
-  if (-not $state.processed) { $state.processed = @() }
+  $obj = Get-Content -LiteralPath $StateFile -Raw -Encoding UTF8 | ConvertFrom-Json
+  $processed = @()
+  if ($obj.processed) { $processed = @($obj.processed) }
+  $uploaded = @()
+  if ($obj.uploaded) { $uploaded = @($obj.uploaded) }
+  $state = @{ processed = $processed; uploaded = $uploaded; last_run_utc = $obj.last_run_utc }
 }
 $list = Invoke-RestMethod -Uri $api -Headers $headers -Method Get
 $acks = @()
@@ -75,9 +79,42 @@ foreach ($item in $list) {
   $acks += $ackPath
   $state.processed += $item.name
 }
+
+function Publish-HubFile {
+  param([string]$RelPath, [string]$LocalPath, [string]$Message)
+  $url = "https://api.github.com/repos/zwdjwsam-creator/sam/contents/$RelPath"
+  $sha = $null
+  try {
+    $cur = Invoke-RestMethod -Uri $url -Headers $headers -Method Get
+    if ($cur.sha) { $sha = $cur.sha }
+  } catch {
+    # 404 = new file
+  }
+  $bytes = [System.IO.File]::ReadAllBytes($LocalPath)
+  $b64 = [Convert]::ToBase64String($bytes)
+  $body = @{ message = $Message; content = $b64; branch = 'main' }
+  if ($sha) { $body.sha = $sha }
+  $json = $body | ConvertTo-Json -Compress
+  Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $json -ContentType 'application/json; charset=utf-8' | Out-Null
+}
+
+$uploadedNow = @()
+Get-ChildItem -LiteralPath $OutDir -Filter 'ACK_*.json' -ErrorAction SilentlyContinue | ForEach-Object {
+  if ($state.uploaded -contains $_.Name) { return }
+  $rel = "agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/$($_.Name)"
+  try {
+    Publish-HubFile -RelPath $rel -LocalPath $_.FullName -Message ("AUTOHUB auto ACK upload: " + $_.Name)
+    $state.uploaded += $_.Name
+    $uploadedNow += $_.Name
+  } catch {
+    Write-Output ("UPLOAD_FAIL=" + $_.Name + ":" + $_.Exception.Message)
+  }
+}
+
 $state.last_run_utc = (Get-Date).ToUniversalTime().ToString('o')
 ($state | ConvertTo-Json -Depth 6) | Set-Content -LiteralPath $StateFile -Encoding utf8
 Write-Output ("ACKS=" + ($acks -join ';'))
+Write-Output ("UPLOADED=" + ($uploadedNow -join ';'))
 # clear token from process env if present
 Remove-Item Env:GITHUB_TOKEN -ErrorAction SilentlyContinue
 Remove-Item Env:GH_TOKEN -ErrorAction SilentlyContinue
