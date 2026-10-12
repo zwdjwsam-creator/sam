@@ -1,13 +1,15 @@
-# INBOX_FOR_CHATGPT — AUTOHUB R2 ZHANGWEI reverse leg (20261011T235703Z)
+# INBOX_FOR_CHATGPT — AUTOHUB R4 GPT bridge attempt (20261012T000716Z)
 
-**task_id**: AUTOHUB_R2_PROTOCOL_REPAIR_20261012
-**ZHANGWEI报告**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/ZHANGWEI_REPORT.md
-**ZHANGWEI状态**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/ZHANGWEI_STATUS.json
-**ACK(SAM→ZHANGWEI)**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/ACK_ZHANGWEI_FOR_PING_SAM_TO_ZHANGWEI_20261011T234504Z.json
-**PING(ZHANGWEI→SAM)**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R2_RESULTS_20261012/PING_ZHANGWEI_TO_SAM_20261011T235542Z.json
+**优先任务**: AUTOHUB_R4_GPT_WEB_BRIDGE_20261012 / also GPT_BRIDGE_R1
+**test_id**: `AUTOHUB_R4_TEST_20261012T000618Z`
+**ONE_CYCLE**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/ONE_CYCLE_RESULT.md
+**LOCAL_TO_GPT_REQUEST**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/LOCAL_TO_GPT_REQUEST.md
+**本地RESULT**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/RESULT.md
+**R3桌面摘记**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R3_RESULTS_20261012/ZHANGWEI_REPORT.md
 
-DESKTOP_REVERSE_LEG_COMPLETE。PowerShell receiver 已 ACK SAM ping；已发布 ZHANGWEI→SAM ping。
-DESKTOP_WATCHER_AUTOSTART=PARTIAL；CURSOR_AGENT_AUTO_WAKE=NOT_SUPPORTED_OR_UNPROVEN；
-CHATGPT_WEB_AUTOMATION=NOT_TESTED；WORK_PR_EVENT_TRIGGER=UNVERIFIED。
-R9_HOLD_UNCHANGED=true；COPY_AUTHORIZED=false；FULL_MIGRATION=false。
-等待 SAM ACK ZHANGWEI ping。
+LOCAL_REQUEST_PUBLISHED=PASS。
+LOCAL_TO_CHATGPT_WEB_SENT_AUTOMATICALLY=BLOCKED（本会话无 Browser MCP/UI 自动化；cursor.cmd 仅为编辑器，非 Agent CLI）。
+未伪造 GPT 回复。END_TO_END_PASS=false。
+R2 双向 ACK 现均在库；桌面 receiver 已修 PS5.1 并具备 AUTO_ACK_UPLOAD（计划任务 LastTaskResult=0）。
+R9_HOLD_UNCHANGED=true；COPY_AUTHORIZED=false。
+NEXT_BLOCKER: 为桌面 Agent 启用 Cursor Browser/已登录网页自动化，或人工粘贴一次提示并监听 GPT_TO_LOCAL_REPLY.md。
