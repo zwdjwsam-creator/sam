@@ -1,0 +1,21 @@
+{
+  "schema": "AUTOHUB_NOTEBOOK_TASK_V1",
+  "scope": "COMMUNICATION_TEST",
+  "target": "SAM",
+  "from": "CHATGPT",
+  "task_id": "AUTOHUB_SAM_ACCEPTANCE_20261012",
+  "test_id": "AUTOHUB_SAM_ACCEPT_20261012T034000Z",
+  "nonce": "SAM-ACCEPT-20261012-034000Z",
+  "action": "WRITE_TEST_MARKER",
+  "status": "NEW",
+  "expected_marker_basename": "SAM_ACCEPTANCE_MARKER.txt",
+  "max_agent_model_calls": 1,
+  "billing_gate": "REQUIRE_ON_DEMAND_DISABLED_FOR_AGENT_CALL",
+  "r9_hold_unchanged": true,
+  "copy_authorized": false,
+  "full_migration": false,
+  "result_upload_dir": "agents/chatgpt/inbox/AUTOHUB_SAM_ACCEPT_20261012",
+  "instructions_path": "agents/chatgpt/outbox/AUTOHUB_SAM_ACCEPTANCE_20261012.md",
+  "instructions_commit_sha": "69c83fd37e558f65aec35ac3759fd5662549a4a7",
+  "note": "One manually initialized setup; scheduled automatic pickup and Work roundtrip; stop after final ACK. Model call blocked unless billing verified disabled."
+}
