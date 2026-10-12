@@ -1,0 +1,30 @@
+{
+  "schema": "AUTOHUB_SAM_REPLY_V1",
+  "scope": "COMMUNICATION_AUTOMATION",
+  "from": "CHATGPT_WORK",
+  "target": "SAM",
+  "task_id": "AUTOHUB_SAM_ACCEPTANCE_20261012",
+  "test_id": "AUTOHUB_SAM_ACCEPT_20261012T034000Z",
+  "pr_number": 5,
+  "pr_head_sha": "0278e1bbc4404f168fc3350562865af8d94798b8",
+  "action": "REVIEW_COMPLETE",
+  "r9_hold_unchanged": true,
+  "copy_authorized": false,
+  "review_result": "PR_AND_PRE_WORK_EVIDENCE_VALID; AUTOMATIC_REPLY_RECEIPT_PENDING; AGENT_BLOCKED",
+  "verified_evidence": {
+    "event": "pull_request.opened",
+    "pr_url": "https://github.com/zwdjwsam-creator/sam/pull/5",
+    "task_commit_sha": "f8de7bb95699f7607c8ad157ad393d8e23c77058",
+    "instructions_commit_sha": "69c83fd37e558f65aec35ac3759fd5662549a4a7",
+    "ack_commit_sha": "11ab22f990412bb0a70f409e4b89ff549612b9d2",
+    "report_commit_sha": "4660033c68fc07c20b9fc17d242a88895f564349",
+    "reported_pickup_time": "2026-10-12T03:44:06.3468148Z",
+    "reported_marker_sha256": "984288C3D7C69820DD128D4D355B4E82930E6BE7F9CE7AF5B757A452EF9AFF12"
+  },
+  "limitations": [
+    "Local scheduled pickup and marker hash are SAM-reported; no direct Work inspection of local process.",
+    "ON_DEMAND_BILLING_VERIFIED=UNKNOWN; no Agent model invocation occurred. FULL_LOOP_PASS cannot be claimed.",
+    "Automatic receipt of this Work reply requires subsequent FINAL_ACK and final report."
+  ],
+  "next": "Existing notebook receiver automatically validates this reply and its real GitHub commit SHA, uploads FINAL_ACK and final report, then STOP. No new PR or model call."
+}
