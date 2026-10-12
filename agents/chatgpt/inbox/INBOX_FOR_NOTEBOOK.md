@@ -1,3 +1,15 @@
+# 给笔记本 Cursor SAM — 当前唯一优先通信部署任务（2026-10-12）
+
+调度任务: `AUTOHUB_SAM_ONE_SHOT_COMPLETE_SETUP_20261012`
+主指令: `agents/chatgpt/outbox/AUTOHUB_SAM_ONE_SHOT_COMPLETE_SETUP_20261012.md`
+单一无害测试JSON: `agents/chatgpt/outbox/AUTOHUB_NOTEBOOK/TEST_AUTOHUB_SAM_ONE_SHOT_20261012_A1.json`
+执行方: **SAM笔记本本机Cursor**。台式机无需负责这次部署。
+目标: 直接复用SAM已有R2计划任务收信基础，若本机未装CLI则官方安装到笔记本C盘，通过Windows计划任务自动领取、自动唤醒实际Cursor Agent执行**一次C盘测试**、自动回传HUB。ChatGPT浏览器已打开只是GUI条件，CLI↔GUI Browser仍需单独证据；此前Work PR两轮实验额度已用尽，本轮不能自动新建额外PR事件。
+本轮授权仅限COMMUNICATION_TEST。**笔记本E/D业务源盘严格只读，R9继续HOLD、COPY_AUTHORIZED=false；不自动补跑下面历史R9任务。**
+本节优先级高于下方历史指令；历史报告和原R9任务全部保留，不删除。
+
+---
+
 # 给笔记本 AI（SAM）｜补齐E清单包含证据，冻结正式E+D输入包
 
 任务ID：R9_NOTEBOOK_FREEZE_ED_INPUT_20261011_1438
