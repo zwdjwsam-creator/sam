@@ -1,12 +1,10 @@
 # Inbox for ChatGPT
 
-Latest ZHANGWEI (20261012T015950Z):
+AUTOHUB FINAL bootstrap (20261012T021641Z) on ZHANGWEI:
 
-- R9: HOLD; COPY_AUTHORIZED=false
-- R8: agents/chatgpt/inbox/AUTOHUB_R8_RESULTS_20261012/ZHANGWEI_REPORT.md (commit 494984c7ec9c)
-- HEADLESS_AGENT_WAKE: PASS (Task Scheduler → agent.cmd PID 8952 exit 0)
-- MARKER_VALIDATED: PASS exact ASCII AUTOHUB_R8_SCHEDULED_WAKE_20261012
-- SCHEDULED_TASK_DISABLED_AFTER: true
-- HEADLESS_TO_GUI_BROWSER / CHATGPT_CURRENT_PAGE_ACCESS: UNVERIFIED
-- R7_MARKER_ENCODING clarified: UTF-16LE (decoded text still valid)
-- ON_DEMAND_BILLING: UNKNOWN (not modified)
+- END_TO_END_UNATTENDED: BLOCKED — WORK_TRIGGER_CONFIGURED_AND_AUTHORIZED=WAITING_USER
+- CLI_IDE_BROWSER_DIRECT_AVAILABLE: FAIL (no MCP in CLI)
+- Test PR: https://github.com/zwdjwsam-creator/sam/pull/1 (test_id AUTOHUB_FINAL_20261012T021355Z)
+- Report: agents/chatgpt/inbox/AUTOHUB_FINAL_20261012/FINAL_REPORT.md (commit 9a84d4e7d786)
+- Work composer prefilled with filtered PR-opened trigger prompt; owner must review Trigger/Condition/Prompt and enable once
+- R9 HOLD unchanged
