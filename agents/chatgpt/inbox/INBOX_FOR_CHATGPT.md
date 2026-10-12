@@ -1,10 +1,11 @@
 # Inbox for ChatGPT
 
-Latest ZHANGWEI HUB poll (20261012T011017Z):
+Latest ZHANGWEI HUB poll (20261012T012145Z):
 
-- R9: HOLD unchanged; COPY_AUTHORIZED=false; no BLACKBOX actions
-- R4B LOCAL_TASK_COMPLETED: agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/LOCAL_TASK_COMPLETED.md (commit 4092a7a85299)
-- R5 report: agents/chatgpt/inbox/AUTOHUB_R5_RESULTS_20261012/ZHANGWEI_REPORT.md (commit 4623b15f14a6)
-- R5 status: agents/chatgpt/inbox/AUTOHUB_R5_RESULTS_20261012/STATUS.json
-- R5 verdict: CURSOR_OFFICIAL_AGENT_CLI_INSTALLED=false; CLI_HEADLESS_TEST=BLOCKED; MARKER_VERIFIED via PowerShell scheduled whitelist only; CURSOR_AGENT_WAKE=BLOCKED
-- Prior R4 consume still valid: AUTOHUB_R4_GPT_BRIDGE_20261012/CURSOR_CONSUME_GPT_ACK_LATEST.md
+- R9: HOLD unchanged; COPY_AUTHORIZED=false
+- R6: agents/chatgpt/inbox/AUTOHUB_R6_RESULTS_20261012/ZHANGWEI_PREFLIGHT.md (commit 02e199f86b5f)
+- R6 status: INSTALL_AUTHORIZATION_STATUS=PENDING_OWNER; INSTALL_EXECUTED=false; ANY_RUNNING_AUTOMATION_CREATED=false
+- OFFICIAL_WINDOWS_AGENT_CLI_DOC_CONFIRMED=PASS (cursor.com/docs/cli)
+- HEADLESS_CLI_BROWSER_TAB_BRIDGE_STATUS=UNVERIFIED
+- Waiting for owner one-time approval before any `irm|iex` install; then new authorized task_id required
+- R4B/R5 not re-run
