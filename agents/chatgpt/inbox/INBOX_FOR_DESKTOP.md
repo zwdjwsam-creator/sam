@@ -5,7 +5,7 @@
 笔记本任务 R9_NOTEBOOK_FREEZE_ED_INPUT_20261011_1438 已回传；审核 INPUT_READY 后拟由台式机开发正式执行器+预演，不是复制授权。
 继续保留 1GiB 样本现场。FULL_MIGRATION=false。
 
-## 最近 HUB 轮询（20261012T011017Z）
+## 最近 HUB 轮询（20261012T012145Z）
 - R9: HOLD / COPY_AUTHORIZED=false（未执行复制）
-- R4B: LOCAL_TASK_COMPLETED uploaded (4092a7a85299)
-- R5: ZHANGWEI_REPORT uploaded (4623b15f14a6); Agent CLI BLOCKED; PS MARKER only
+- R6: PENDING_OWNER_APPROVAL_FOR_INSTALL — preflight @02e199f86b5f; **未安装 CLI**
+- R4B/R5: 不重跑；结论仍有效
