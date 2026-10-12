@@ -16,7 +16,7 @@ full_migration: false
 **目标**：笔记本 SAM 独立运行轻量HUB轮询，不需要用户每次通知“去HUB看”；发现符合白名单的新测试任务后，按Windows计划任务启动**真正的Cursor Agent CLI**执行本机C盘安全动作，自动提交ACK及完整证据到GitHub；能在断网/重启后恢复，已执行ID不重做。台式机无须作为笔记本的消息中转。
 **ChatGPT连接**：笔记本Cursor已开内置ChatGPT网页，是GUI可登录的基础，**不等于**无人值守CLI可直接调用GUI Browser Tab。只需一次性验证GUI Agent Browser读/写是否可用；无人值守GPT触发优先复用现有经用户授权的GitHub→Work PR事件任务，不能凭聊天网页已开就称全自动。
 **不能谎称**：自动PowerShell ACK≠Agent模型已执行；已打开GPT网页≠GPT事件自动唤醒；Workbench/Work不是当前原聊天页面；已准备触发器≠已启用。
-**业务禁令**：笔记本 `E:\BLACKBOX`、笔记本整个业务D盘严格**不写入**、不修改任何R9冻结状态、索引/manifest/依赖图、Junction/Hard Link、QMT、BLACKBOX缓存或日研任务；P7保持Disabled。台式机E/F业务与1GiB样本不动。禁止一切复制、删除、格式化、交易/资金动作。旧R9保持HOLD，`COPY_AUTHORIZED=false`。允许写**笔记本C盘的全新独立AUTOHUB通信/CLI目录**与公开GitHub脱敏测试材料；不能重启、结束正在进行的BLACKBOX进程来方便试验。
+**业务禁令**：笔记本 `E:\BLACKBOX`、笔记本整个业务D盘严格**不写入**、不修改任何R9冻结状态、索引/manifest/依赖图、Junction/Hard Link、行情客户端、BLACKBOX缓存或日研任务；P7保持Disabled。台式机E/F业务与1GiB样本不动。禁止一切复制、删除、格式化、交易/资金动作。旧R9保持HOLD，`COPY_AUTHORIZED=false`。允许写**笔记本C盘的全新独立AUTOHUB通信/CLI目录**与公开GitHub脱敏测试材料；不能重启、结束正在进行的BLACKBOX进程来方便试验。
 **计费**：不启用Cursor按需额外付费；用户偏好“已禁用”On-Demand，当前实际账户状态尚未在HUB证明。核验后才能进行CLI模型调用；未核实/出现额外付款提示则保持已完成的免费通信部署并报告阻塞。不得把已存在 $40 限额当已禁用。
 
 ## 1. 先审现有成功证据，避免重新发明
