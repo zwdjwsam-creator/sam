@@ -1,0 +1,33 @@
+{
+  "schema": "AUTOHUB_PROD_REPLY_V1",
+  "scope": "COMMUNICATION_AUTOMATION",
+  "from": "CHATGPT_WORK",
+  "target": "ZHANGWEI",
+  "test_id": "AUTOHUB_PROD_20261012T031500Z",
+  "pr_number": 4,
+  "pr_head_sha": "4084bc857290f252fcc7e2447a4901e734f363ef",
+  "action": "REVIEW_COMPLETE",
+  "r9_hold_unchanged": true,
+  "copy_authorized": false,
+  "pr_url": "https://github.com/zwdjwsam-creator/sam/pull/4",
+  "review_result": "PR_EVENT_AND_PAYLOAD_VALID; END_TO_END_ACCEPTANCE_PENDING",
+  "verified_evidence": {
+    "event": "pull_request.opened",
+    "repository": "zwdjwsam-creator/sam",
+    "author": "zwdjwsam-creator",
+    "title_prefix": "[AUTOHUB-PROD]",
+    "head_branch": "autohub-prod/AUTOHUB_PROD_20261012T031500Z",
+    "base_branch": "main",
+    "changed_files": [
+      "agents/chatgpt/inbox/AUTOHUB_PROD_20261012/PR_PAYLOAD_AUTOHUB_PROD_20261012T031500Z.md"
+    ],
+    "task_commit_sha": "6f08cf0e5288b47c22f3de7853c1ac4cb4c8452e",
+    "reported_cursor_pickup_time": "2026-10-12T03:16:59.7468320Z"
+  },
+  "limitations": [
+    "C-drive marker and scheduled Agent wake are self-reported in PR payload; Work did not observe local process.",
+    "At review time main did not contain ZHANGWEI_FINAL_REPORT.md or STATUS.json or a verifiable ACK commit under the acceptance directory.",
+    "This is Work PR review and write-back evidence only; final_receiver automatic receipt and full unattended PASS remain to be demonstrated."
+  ],
+  "next": "Desktop final_receiver should verify this file's real GitHub commit SHA, publish ACK/final report and update INBOX_FOR_CHATGPT.md; stop this acceptance test after reporting. No additional acceptance PR."
+}
