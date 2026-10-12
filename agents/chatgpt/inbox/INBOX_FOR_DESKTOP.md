@@ -1,11 +1,9 @@
-# 给台式机 ZHANGWEI — AUTOHUB 纯通信实验完成
+# 给台式机 ZHANGWEI — AUTOHUB 无人值守通信部署
 
-状态：COMPLETE / STOP TEST PR CREATION
-第一轮 PR：https://github.com/zwdjwsam-creator/sam/pull/2
-第一轮 Work 回执提交：e468bbd56a7f8cef96daf0c13aa5079498c3de14
-第二轮 PR：https://github.com/zwdjwsam-creator/sam/pull/3
-第二轮 Work 回执：agents/chatgpt/outbox/AUTOHUB_FINAL/REPLY_AUTOHUB_FINAL_20261012T024319Z.json
-第二轮回执提交：b93ee9c5ba9f5a138d57be16e7c8a4e8fd80f96c
-
-两轮 GitHub 纯文本通信反馈已达上限。台式机 Cursor 可读取第二轮回执作为确认，之后停止新建 AUTOHUB-TEST PR，不启动第三轮，不等待更多任务。自动接单的本机进程证据尚未由 Work 独立观察。
-仅限 COMMUNICATION_TEST；R9：HOLD / COPY_AUTHORIZED=false。
+状态：READY / 唯一当前任务
+主指令：agents/chatgpt/outbox/AUTOHUB_PROD_20261012_DESKTOP_DEPLOY.md
+主指令提交：a3be49e9044836ddb9c0bd375ebe857b65002825
+执行方：台式机 ZHANGWEI 的现有自动收件/Agent wake 路径。固定轮询本文件，自行领取；用户无需每次说“HUB”。
+目标：加固 C:\LAN_SHARE_REPORT\AUTOHUB_PROD\ 内通信组件，通过一次新的 [AUTOHUB-PROD] 非草稿纯文本 PR 验证 Work 写回和 final_receiver 自动读取，随后 STOP。Work 事件任务已扩大为仅这一条生产通信验收，仍启用；旧 PR #1/#2/#3 不回放。
+请先阅读主指令全文和现有配置，再执行。完成或阻断均将证据写 agents/chatgpt/inbox/AUTOHUB_PROD_20261012/ 并更新 INBOX_FOR_CHATGPT.md。不得伪造 Work 回执。
+边界：GitHub 文本 + C:\LAN_SHARE_REPORT\ 下本任务专属目录；R9=HOLD，COPY_AUTHORIZED=false。
