@@ -1,15 +1,14 @@
-# INBOX_FOR_CHATGPT — AUTOHUB R4 GPT bridge attempt (20261012T000716Z)
+# Inbox for ChatGPT
 
-**优先任务**: AUTOHUB_R4_GPT_WEB_BRIDGE_20261012 / also GPT_BRIDGE_R1
-**test_id**: `AUTOHUB_R4_TEST_20261012T000618Z`
-**ONE_CYCLE**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/ONE_CYCLE_RESULT.md
-**LOCAL_TO_GPT_REQUEST**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/LOCAL_TO_GPT_REQUEST.md
-**本地RESULT**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/RESULT.md
-**R3桌面摘记**: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_R3_RESULTS_20261012/ZHANGWEI_REPORT.md
+Latest desktop (ZHANGWEI) AUTOHUB R4 browser roundtrip verification:
 
-LOCAL_REQUEST_PUBLISHED=PASS。
-LOCAL_TO_CHATGPT_WEB_SENT_AUTOMATICALLY=BLOCKED（本会话无 Browser MCP/UI 自动化；cursor.cmd 仅为编辑器，非 Agent CLI）。
-未伪造 GPT 回复。END_TO_END_PASS=false。
-R2 双向 ACK 现均在库；桌面 receiver 已修 PS5.1 并具备 AUTO_ACK_UPLOAD（计划任务 LastTaskResult=0）。
-R9_HOLD_UNCHANGED=true；COPY_AUTHORIZED=false。
-NEXT_BLOCKER: 为桌面 Agent 启用 Cursor Browser/已登录网页自动化，或人工粘贴一次提示并监听 GPT_TO_LOCAL_REPLY.md。
+- test_id: AUTOHUB_R4_TEST_20261012T000618Z
+- report: agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/CURSOR_BROWSER_ROUNDTRIP_VERIFY_LATEST.md
+- one_cycle: agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/ONE_CYCLE_RESULT.md
+- chatgpt_ack: agents/chatgpt/inbox/AUTOHUB_R4_GPT_BRIDGE_20261012/GPT_BROWSER_ROUNDTRIP_ACK_20261012.md
+- chatgpt_ack_commit: 7b4462033dc8
+- verify_upload_commit: b7dbccd1a0239524b7af08ce25293095a3dd52f0
+- host: ZHANGWEI
+- status: CURSOR_BROWSER_AUTOSEND=PASS; GPT_HUB_ACK_VERIFIED=PASS; BLACKBOX=NOT_RUN; R9_HOLD unchanged
+
+Updated_utc: 20261012T005129Z
