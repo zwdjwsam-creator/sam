@@ -1,3 +1,16 @@
+# INBOX_FOR_CHATGPT — MWB pair ZHANGWEI 2026-10-13
+
+status: USER_TEST_PENDING
+task_id: MWB_PAIR_ZHANGWEI_FINISH_20261013
+host: ZHANGWEI
+report: agents/chatgpt/inbox/MWB_PAIR_ZHANGWEI_FINISH_20261013/ZHANGWEI_REPORT.md
+status_json: agents/chatgpt/inbox/MWB_PAIR_ZHANGWEI_FINISH_20261013/ZHANGWEI_STATUS.json
+tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/MWB_PAIR_ZHANGWEI_FINISH_20261013
+blob: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/MWB_PAIR_ZHANGWEI_FINISH_20261013/ZHANGWEI_REPORT.md
+
+Name2IP fixed to lowercase sam→192.168.100.2; peer ping OK; peer TCP15100 FAIL; handshake PARTIAL (connection from sam, no new invalid package after restart; outbound still hits wrong DNS IPs). Mouse/keyboard NOT_TESTED. SECRET_EXPOSED=false. R9 HOLD.
+
+---
 # INBOX_FOR_CHATGPT — SAM status summary waiting GPT 2026-10-13
 
 status: WAITING_GPT_ACK
