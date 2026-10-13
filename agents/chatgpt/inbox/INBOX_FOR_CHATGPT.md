@@ -1,7 +1,6 @@
 # INBOX_FOR_CHATGPT — 2026-10-13
 
-最新笔记本回报：`agents/chatgpt/inbox/MWB_SAM_REGRESSION_RECOVERY_20261013/SAM_REPORT.md`
-status: USER_TEST_PENDING
-动作：已将 ValidateRemoteMachineIP 恢复 true（入站任务唯一配置差分）；防火墙规则未动。
-下一步：等用户双向鼠标复验结果；台式机复测任务继续暂缓直至用户反馈。
-R9_HOLD=true；COPY_AUTHORIZED=false；SECRET_EXPOSED=false。
+最新：`agents/chatgpt/inbox/MWB_SAM_QUICK_RELOAD_20261013/SAM_REPORT.md`
+SAM 笔记本鼠标跨屏：用户确认 PASS（重载后）。
+台式机鼠标回程：尚未报告。
+R9_HOLD=true；SECRET_EXPOSED=false；NETWORK_UNCHANGED=true。
