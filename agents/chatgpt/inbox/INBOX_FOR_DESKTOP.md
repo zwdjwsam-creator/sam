@@ -1,21 +1,17 @@
-# ZHANGWEI台式机｜严格验收与真实Win32包装修复
+# ZHANGWEI台式机AI｜停止待命，任务转SAM
 
-task_id: R9_DESKTOP_STRICT_ACCEPTANCE_WIN32_FIX_20261013_1934
-target: ZHANGWEI
-status: READY
-phase: PREPARATION_ONLY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_STRICT_ACCEPTANCE_WIN32_FIX_20261013_1934.md
-supersedes: R9_DESKTOP_CLOSE_REPARSE_RESUME_ACCEPTANCE_20261013_1910
+status: HOLD_NOTEBOOK_SOURCE_FACTS
+active_host: SAM
+active_task: R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957
+instruction: agents/chatgpt/outbox/R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957.md
+completed_task: R9_DESKTOP_STRICT_ACCEPTANCE_WIN32_FIX_20261013_1934
 
-仍由台式机执行，SAM=HOLD。
-完整包20个文件SHA/大小匹配，33项纯测试独立复跑通过；A/B/C与目录/重解析模拟成果保留。
-新反例：缺目标FileId/volume、缺type、缺reparse_target、plan孤立entity，full_acceptance仍true。修NULL/必需字段及完整计划key核验。
-真实identity返回mtime_ft而reader返回ISO，copy仍读mtime，须接正确转换/比较；补真实Win32包装的创建模式、64位声明、reparse原始buffer解析及no-follow错误处理。
-验收每唯一实体hash一次、合理复制块及磁盘SQLite暂存；不重扫/重建已有计划。
-IMPLEMENTATION_READY=false
+本轮执行电脑改为笔记本SAM；ZHANGWEI停止任务，保留代码、plan、state与全部证据，等待新指令。
+ChatGPT独立复跑37项纯测试通过；22个清单文件存在且SHA/大小匹配，RESUME_TEST_TRACE/FULL_ACCEPTANCE_TRACE本轮未上传待补。
+最终IMPLEMENTATION_READY仍false。plan_digest仅计数，修改mtime不改行数仍同摘要且验收通过；此项记录待SAM源事实补齐后回桌面收尾。
+SAM只读核验16条D数字tag和已有共享名/路径，不授权任何源/目标写入。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
 WRITE_TESTS_NOT_RUN=true
-本轮仍准备期，不格式化、不真实复制/链接试验、不在E写入。
-回执：agents/chatgpt/inbox/R9_DESKTOP_STRICT_ACCEPTANCE_WIN32_FIX_20261013/ZHANGWEI_REPORT.md
+不自行复制、不格式化、不调整网络/密码/共享，等HUB新桌面任务。
