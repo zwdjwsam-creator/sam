@@ -1,0 +1,108 @@
+{
+  "task_id": "R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957",
+  "host": "sam",
+  "ips": [
+    "192.168.0.62",
+    "100.119.199.3",
+    "192.168.100.2"
+  ],
+  "has_ip_192_168_100_2": true,
+  "observed_at": "2026-10-13T12:15:12.458964+00:00",
+  "smb_query_error": null,
+  "shares_relevant": [
+    {
+      "Name": "BLACKBOX",
+      "Path": "E:\\BLACKBOX",
+      "Description": ""
+    },
+    {
+      "Name": "BLACKBOX_INSTALLERS",
+      "Path": "D:\\BLACKBOX_DESKTOP_INIT_R1\\installers",
+      "Description": ""
+    },
+    {
+      "Name": "D$",
+      "Path": "D:\\",
+      "Description": "Ĭ�Ϲ���"
+    },
+    {
+      "Name": "D_DRIVE",
+      "Path": "D:\\",
+      "Description": ""
+    },
+    {
+      "Name": "E$",
+      "Path": "E:\\",
+      "Description": "Ĭ�Ϲ���"
+    },
+    {
+      "Name": "E_DRIVE",
+      "Path": "E:\\",
+      "Description": ""
+    }
+  ],
+  "E_DRIVE_share": {
+    "Name": "BLACKBOX",
+    "Path": "E:\\BLACKBOX",
+    "Description": ""
+  },
+  "E_SHARE_EXISTS": true,
+  "E_share_covers_E_BLACKBOX": true,
+  "D_shares_covering_selected_paths": [
+    {
+      "Name": "D$",
+      "Path": "D:\\",
+      "Description": "Ĭ�Ϲ���"
+    },
+    {
+      "Name": "D_DRIVE",
+      "Path": "D:\\",
+      "Description": ""
+    }
+  ],
+  "D_SHARE_EXISTS": true,
+  "D_SOURCE_UNC_RESOLVED": true,
+  "unc_mapping_examples": [
+    {
+      "share_name": "D$",
+      "share_local_root": "D:",
+      "source_local": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "unc_hostname": "\\\\sam\\D$\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "unc_ip_192_168_100_2": "\\\\192.168.100.2\\D$\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data"
+    },
+    {
+      "share_name": "D_DRIVE",
+      "share_local_root": "D:",
+      "source_local": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "unc_hostname": "\\\\sam\\D_DRIVE\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "unc_ip_192_168_100_2": "\\\\192.168.100.2\\D_DRIVE\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data"
+    }
+  ],
+  "volume_serials": {
+    "E": {
+      "letter": "E:",
+      "volume_name": "新加卷",
+      "file_system": "NTFS",
+      "volume_serial_dword": 2387166462,
+      "volume_serial_hex": "8E4944FE"
+    },
+    "D": {
+      "letter": "D:",
+      "volume_name": "新加卷",
+      "file_system": "NTFS",
+      "volume_serial_dword": 3187598165,
+      "volume_serial_hex": "BDFEE355"
+    }
+  },
+  "volume_serial_reference_only": {
+    "E_historical": "2387166462",
+    "D_historical": "3187598165"
+  },
+  "DESKTOP_SMB_ACCESS_VERIFIED": false,
+  "errors": [],
+  "notes": [
+    "Local share visibility ≠ desktop authenticated access",
+    "No net use / ACL / password / network changes performed",
+    "WinError1326 not solved this round"
+  ]
+}
