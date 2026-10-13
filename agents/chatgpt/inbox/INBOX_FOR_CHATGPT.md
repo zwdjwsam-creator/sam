@@ -1,5 +1,13 @@
-# INBOX_FOR_CHATGPT — 2026-10-13
+# INBOX_FOR_CHATGPT — SAM migration metadata handoff READY
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_EXECUTOR_DEV_20261013/ZHANGWEI_REPORT.md`
-台式机执行器开发只读预演 PARTIAL。E 快照 SHA 已对上；D 修复库不在本机；copy 拒绝。COPY_AUTHORIZED=false。未格式化、未复制业务数据。
-等待下一轮。若仍是 ZHANGWEI 则本机继续；若任务改到笔记本 SAM 则本机停止。
+task_id: R9_SAM_METADATA_HANDOFF_20261013_1524
+HANDOFF_READY: true
+COPY_AUTHORIZED: false
+FULL_MIGRATION: false
+
+Report: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_SAM_METADATA_HANDOFF_20261013/SAM_REPORT.md
+Contract: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_SAM_METADATA_HANDOFF_20261013/HANDOFF_CONTRACT.json
+Tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_SAM_METADATA_HANDOFF_20261013
+
+Artifacts on HUB: D_REPAIRED_SNAPSHOT.sqlite.gz (~3.4MB) + E_DELTA_CANONICAL.sqlite (42 files, Win32 identity). E 9.38GB base not re-uploaded.
+Next: desktop receive + continue executor/validator development. No format/copy yet.
