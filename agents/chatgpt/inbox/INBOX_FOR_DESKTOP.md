@@ -1,19 +1,17 @@
-# ZHANGWEI 台式机 AI｜迁移执行器开发与只读预演
+# ZHANGWEI 台式机 AI｜本轮停止，等待笔记本交付迁移元数据
 
-task_id: R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507
-target: ZHANGWEI
-status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507.md
+status: HOLD_WAIT_SAM_METADATA
+active_host: SAM
+active_task: R9_SAM_METADATA_HANDOFF_20261013_1524
+instruction: agents/chatgpt/outbox/R9_SAM_METADATA_HANDOFF_20261013_1524.md
+previous_task: R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507（已回传PARTIAL）
 
-本轮唯一新任务：正式执行器开发、输入绑定修正、E base+delta+D选定清单合并和只读计划预演。
-笔记本已回传E只读索引快照及16目标42文件delta；先按指令核验路径/SHA与身份口径。
-所有输出在C盘；不在E盘创建新实验内容，不做真实业务复制/建链，不格式化。
+ChatGPT已审桌面报告与r9_formal_executor.py。
+E快照/delta绑定有实质成果；D修复库缺失及delta身份仍待补齐。
+本轮由SAM把实际D元数据快照+规范42条delta经HUB交付，桌面停止待命，不重复失败共享探测。
+保留C盘现有源码、E索引副本、计划和日志。
+现有CODE_READY仅指准备骨架：真实validate-input、实际E+delta+D计划与链接处理仍待下一开发任务，不能宣称执行器完成。
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
-DESTINATION_FORMAT_BY_USER_PENDING=true
-
-用户明确：正式迁移前由本人格式化台式机E盘。当前仍为准备阶段；
-旧目标卷序列仅作历史，格式化后必须新任务重新识别物理盘/卷再做写入试验及迁移。
-笔记本迁移侧待命，仅供读取已有元数据。输入或共享不足时先完成可独立的开发并列阻塞。
-本任务不改MWB/网络/自动收件器，不重跑旧鼠标键盘修复任务。
-回执：agents/chatgpt/inbox/R9_DESKTOP_EXECUTOR_DEV_20261013/ZHANGWEI_REPORT.md
+用户将自行格式化E盘；本轮不得格式化/删除样本/在E写入试验。
+待SAM交付并经过审核后，由ChatGPT再发桌面接收和继续开发令；不自动续跑旧任务。
