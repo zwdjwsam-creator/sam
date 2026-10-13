@@ -1,0 +1,32 @@
+﻿{
+    "cli_copy_entry":  "refuses before any write even with --copy-authorized --format-done",
+    "accept_on_disk":  {
+                           "module":  "r9_copy_body.py",
+                           "tested":  "record compare",
+                           "disk":  "NOT_RUN",
+                           "implemented":  true
+                       },
+    "remaining_blockers":  [
+                               "SOURCE_LIVE_PREFLIGHT_PENDING WinError 1326",
+                               "user format of desktop E not done",
+                               "no new stage authorization for real copy"
+                           ],
+    "create_local_hardlink":  {
+                                  "module":  "r9_copy_body.py",
+                                  "tested":  "fake link_fn",
+                                  "disk":  "NOT_RUN",
+                                  "implemented":  true
+                              },
+    "write_entity_bytes":  {
+                               "module":  "r9_copy_body.py",
+                               "tested":  "fake IO",
+                               "disk":  "NOT_RUN",
+                               "implemented":  true
+                           },
+    "rebuild_reparse":  {
+                            "module":  "r9_copy_body.py",
+                            "tested":  "fake create_fn",
+                            "disk":  "NOT_RUN",
+                            "implemented":  true
+                        }
+}
