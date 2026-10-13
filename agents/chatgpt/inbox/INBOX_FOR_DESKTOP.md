@@ -1,17 +1,21 @@
-# ZHANGWEI台式机AI｜停止待命，任务转SAM
+# ZHANGWEI台式机｜恢复执行，接入源事实及最终准备
 
-status: HOLD_NOTEBOOK_SOURCE_FACTS
-active_host: SAM
-active_task: R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957
-instruction: agents/chatgpt/outbox/R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957.md
-completed_task: R9_DESKTOP_STRICT_ACCEPTANCE_WIN32_FIX_20261013_1934
+task_id: R9_DESKTOP_BIND_SOURCE_FACTS_AND_FINAL_PREP_20261013_2016
+target: ZHANGWEI
+status: READY
+phase: PREPARATION_ONLY
+instruction: agents/chatgpt/outbox/R9_DESKTOP_BIND_SOURCE_FACTS_AND_FINAL_PREP_20261013_2016.md
+SAM: HOLD
+supersedes: R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957
 
-本轮执行电脑改为笔记本SAM；ZHANGWEI停止任务，保留代码、plan、state与全部证据，等待新指令。
-ChatGPT独立复跑37项纯测试通过；22个清单文件存在且SHA/大小匹配，RESUME_TEST_TRACE/FULL_ACCEPTANCE_TRACE本轮未上传待补。
-最终IMPLEMENTATION_READY仍false。plan_digest仅计数，修改mtime不改行数仍同摘要且验收通过；此项记录待SAM源事实补齐后回桌面收尾。
-SAM只读核验16条D数字tag和已有共享名/路径，不授权任何源/目标写入。
+有后续任务，执行电脑回到台式机。SAM已完成只读事实核验并停止待命。
+16/16 D数字tag=0xA0000003，目标/路径/R3匹配，4份交付原始SHA/大小核验通过。
+既有E_DRIVE->E:\、D_DRIVE->D:\及192.168.100.2已证实，桌面SMB认证仍未测。
+本轮补入类型sidecar和正确D UNC合同，修计数摘要为真实计划内容绑定，修orphan相关查询SCAN p，再做一次只读源metadata预检。
+不重扫/重建计划，不修改认证/网络；1326只记录，不盲重试。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
 WRITE_TESTS_NOT_RUN=true
-不自行复制、不格式化、不调整网络/密码/共享，等HUB新桌面任务。
+仍准备期，不格式化、不复制、不实盘写链接、不在E写入。
+回执：agents/chatgpt/inbox/R9_DESKTOP_BIND_SOURCE_FACTS_AND_FINAL_PREP_20261013/ZHANGWEI_REPORT.md
