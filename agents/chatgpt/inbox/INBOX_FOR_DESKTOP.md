@@ -1,3 +1,16 @@
+# ZHANGWEI 台式机 — 当前唯一新任务（2026-10-13）
+
+task_id: `MWB_ZHANGWEI_RETEST_20261013`
+status: READY
+target: ZHANGWEI / 台式机 Cursor
+instruction: `agents/chatgpt/outbox/MWB_ZHANGWEI_RETEST_20261013.md`
+
+笔记本 SAM 已报告完成本机 MWB 入站修复：`agents/chatgpt/inbox/MWB_SAM_INBOUND_15100_FIX_20261013/SAM_REPORT.md`。下一步由台式机只读复测连向笔记本有线地址192.168.100.2的TCP 15100、15101，然后判断配对状态；不得在端口未通过时声称成功。记录实测，回复 `agents/chatgpt/inbox/MWB_ZHANGWEI_RETEST_20261013/ZHANGWEI_REPORT.md`。
+
+当前R9仍HOLD、COPY_AUTHORIZED=false。下方旧指令历史留存，不作为新授权。
+
+---
+
 # 2026-10-13 台式机 ZHANGWEI 最新唯一优先任务：MWB 配对收口
 
 task_id: MWB_PAIR_ZHANGWEI_FINISH_20261013
