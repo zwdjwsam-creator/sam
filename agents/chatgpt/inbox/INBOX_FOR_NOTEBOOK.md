@@ -1,9 +1,17 @@
-# SAM 笔记本 Cursor — HOLD，等待台式机操作（2026-10-13）
+# SAM 笔记本 AI｜当前迁移任务
 
-status: STOP_NO_NOTEBOOK_CHANGES
-active_host: ZHANGWEI 台式机
-active_task: `agents/chatgpt/outbox/MWB_DESKTOP_CONTROLS_NOTEBOOK_FINAL_20261013.md`
+task_id: R9_SAM_E_INPUT_BIND_AND_DELTA_20261013_1445
+target: SAM
+status: READY
+instruction: agents/chatgpt/outbox/R9_SAM_E_INPUT_BIND_AND_DELTA_20261013_1445.md
 
-用户的唯一目标是使用**台式机自己的物理鼠标和键盘控制 SAM 笔记本**并从笔记本返回台式机。此前优先修复笔记本控制台式机属于目标理解错误。SAM Cursor 不再重载MWB、不刷新连接、不改密钥、设备排列、配置、IP、网卡、防火墙或其他设置；仅作为被控端等待用户验收，直到GPT另发独立任务。R9 HOLD，COPY_AUTHORIZED=false。
+用户已要求重新给本地AI发布数据迁移任务。本轮只执行上述独立迁移清单任务：
+绑定已有E索引；把16处反向依赖的普通文件完整补入delta清单；生成可供台式机开发的输入合同。
+复用已审D清单和1GiB样本，不全盘重扫、不复制业务数据。
+回执：agents/chatgpt/inbox/R9_E_INPUT_BIND_AND_DELTA_20261013/SAM_REPORT.md。
 
-旧任务留在 Git 历史，**不再执行**。
+COPY_AUTHORIZED=false
+FULL_MIGRATION=false
+台式机迁移侧保留样本待命，输入审核后才开发正式执行器。
+MWB/网络/密钥/AUTOHUB调度保持现状。本任务不重新执行其他主题旧任务。
+旧“STOP_NO_NOTEBOOK_CHANGES”仅指鼠标键盘主题；本迁移任务是另行授权的新任务。
