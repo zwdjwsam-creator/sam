@@ -1,0 +1,41 @@
+﻿{
+    "WRITE_TESTS_NOT_RUN":  true,
+    "ACCEPTANCE_IMPLEMENTATION_READY":  true,
+    "accept_batch":  {
+                         "simulated_test":  true,
+                         "implemented":  true
+                     },
+    "scheduler":  {
+                      "module":  "r9_scheduler.py",
+                      "preparation_calls_backend":  0
+                  },
+    "rebuild_reparse":  {
+                            "simulated_test":  true,
+                            "windows_io":  "NOT_RUN",
+                            "implemented":  true
+                        },
+    "stream_copy_handles":  {
+                                "module":  "r9_winio.py",
+                                "windows_io":  "NOT_RUN",
+                                "called_by_tests":  false,
+                                "implemented":  true
+                            },
+    "create_local_hardlink":  {
+                                  "simulated_test":  true,
+                                  "windows_io":  "NOT_RUN",
+                                  "implemented":  true
+                              },
+    "write_entity_bytes":  {
+                               "module":  "r9_copy_body.py",
+                               "simulated_test":  true,
+                               "windows_io":  "NOT_RUN",
+                               "implemented":  true
+                           },
+    "WINDOWS_IO_EXECUTED":  false,
+    "COPY_IMPLEMENTATION_READY":  true,
+    "accept_on_disk":  {
+                           "missing_fields_fail":  true,
+                           "disk_observer":  "NOT_RUN",
+                           "implemented":  true
+                       }
+}
