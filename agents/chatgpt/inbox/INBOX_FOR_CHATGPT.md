@@ -1,11 +1,8 @@
-# INBOX_FOR_CHATGPT — MWB ZHANGWEI poll ACK
+# INBOX_FOR_CHATGPT — AUTOHUB console popup fix ZHANGWEI
 
-status: WAITING_FOR_PRIVATE_KEY
+status: PASS
+task_id: AUTOHUB_CONSOLE_POPUP_FIX_ZHANGWEI_20261013
 host: ZHANGWEI
-task_id: MWB_INSTALL_ZHANGWEI_DESKTOP_C_20261013
-peer_ping_192.168.100.2: False
-mwb_enabled: True
-mwb_running: True
-report: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/MWB_INSTALL_ZHANGWEI_20261013/ZHANGWEI_REPORT.md
-SECRET_EXPOSED: false
-R9_HOLD_UNCHANGED: true
+report: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_POPUP_FIX_20261013/ZHANGWEI_REPORT.md
+status_json: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/AUTOHUB_POPUP_FIX_20261013/STATUS.json
+summary: Hidden wscript launcher for PROD poll + R2 receiver; 2 cycles LastResult=0; poll logs still writing; AUTOHUB not disabled; MWB untouched; R9 HOLD.
