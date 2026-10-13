@@ -1,0 +1,40 @@
+{
+  "missing_file_id_and_volume": {
+    "full_acceptance": false,
+    "reasons": [
+      "MISSING_FIELD",
+      "DEST_VOLUME",
+      "IDENTITY_MISMATCH"
+    ],
+    "content_hash_calls": 1
+  },
+  "missing_object_type": {
+    "full_acceptance": false,
+    "reasons": [
+      "MISSING_FIELD"
+    ],
+    "content_hash_calls": 2
+  },
+  "missing_reparse_target": {
+    "full_acceptance": false,
+    "reasons": [
+      "MISSING_FIELD",
+      "BAD_LINK_TARGET"
+    ],
+    "content_hash_calls": 2
+  },
+  "orphan_entity": {
+    "full_acceptance": false,
+    "reasons": [
+      "PLAN_DIGEST_MISMATCH",
+      "PLAN_ORPHAN_ENTITY",
+      "PATH_COUNT"
+    ],
+    "content_hash_calls": 2
+  },
+  "clean": {
+    "full_acceptance": true,
+    "content_hash_calls": 2,
+    "reasons": []
+  }
+}
