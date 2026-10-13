@@ -1,0 +1,14 @@
+# ZHANGWEI_REPORT — MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013
+
+WIRED_TCP_15100=PASS at 2026-10-13T14:14:38 from 192.168.100.1:63054 to 192.168.100.2:15100 (15101 also PASS).
+ACTUAL_APP_PEER_IP=192.168.0.62 and fe80::…%11 (last timeout 14:11:38). Log has no outbound connect to 192.168.100.2.
+DESKTOP_PEER_COLOR=RED (Error). APP_PATH_MISROUTED.
+LAYOUT=ZHANGWEI | sam, unchanged. Not green, so layout not edited.
+ACTION_TAKEN=none. Name2IP already maps sam to 192.168.100.2. No official option forces that mapping exclusively. Did not rewrite it, refresh, toggle, or change DNS/hosts/NIC/firewall.
+DESKTOP_MOUSE_ENTER=NOT_TESTED
+DESKTOP_MOUSE_RETURN=NOT_TESTED
+DESKTOP_KEYBOARD_TO_SAM=NOT_TESTED
+USER_TEST_PENDING_OR_PASS=NOT_TESTED
+NOTEBOOK_UNTOUCHED=true
+SECRET_EXPOSED_IN_HUB=false
+R9_HOLD=true
