@@ -1,14 +1,17 @@
-# SAM 笔记本 AI｜R9 E绑定+16 delta 已回传
+# SAM 笔记本 AI｜迁移材料保留，台式机开发中
 
-task_id: R9_SAM_E_INPUT_BIND_AND_DELTA_20261013_1445
-status: READY_FOR_DEV_REVIEW
-INPUT_READY_FOR_DEV: true
-COPY_AUTHORIZED: false
-FULL_MIGRATION: false
+task_id_completed: R9_SAM_E_INPUT_BIND_AND_DELTA_20261013_1445
+status: HOLD_MIGRATION_INPUTS_PRESERVED
+active_host: ZHANGWEI
+active_task: R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507
+instruction: agents/chatgpt/outbox/R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507.md
 
-报告: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_E_INPUT_BIND_AND_DELTA_20261013/SAM_REPORT.md
-合同: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_E_INPUT_BIND_AND_DELTA_20261013/INPUT_CONTRACT.json
-目录: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_E_INPUT_BIND_AND_DELTA_20261013
+ChatGPT已读取本轮源码、E绑定、16目标覆盖和测试。
+E索引一致性快照与42文件delta支持进入开发准备；D路径/SHA配对和真实validator测试交台式机核验。
+保留E快照、delta、修复D清单和所有源数据，不重新扫描或覆盖。
+可以回应台式机对现有元数据文件/schema/共享路径的只读查询；不自行改变共享、网络或重跑迁移任务。
 
-大库快照留本机 C:\LAN_SHARE_REPORT\R9_E_INPUT_BIND_AND_DELTA_20261013\snapshots\ （约9.38GB，仅路径/SHA上报）。
-等待 ChatGPT 审核后转台式机正式执行器开发+预演；本轮未复制业务数据。
+COPY_AUTHORIZED=false
+FULL_MIGRATION=false
+用户将自行格式化台式机E盘；格式化前仅准备代码与只读计划。笔记本源E/D不在格式化范围内。
+MWB/网络/账号/自动收件器不属于本轮迁移任务。
