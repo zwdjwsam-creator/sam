@@ -1,0 +1,90 @@
+{
+  "task_id": "R9_SAM_METADATA_HANDOFF_20261013_1524",
+  "generated_at": "2026-10-13T07:34:12.656847+00:00",
+  "hostname": "SAM",
+  "HANDOFF_READY": false,
+  "COPY_AUTHORIZED": false,
+  "FULL_MIGRATION": false,
+  "artifacts": {
+    "D_REPAIRED_SNAPSHOT.sqlite.gz": {
+      "gz_sha256": "d0a17dc4dd76c9d825d01015ffd17cbd207565aceb13faa2c8ad22a72f98d3f3",
+      "gz_bytes": 3589403,
+      "inner_sqlite_sha256": "4c094df43ca348acdc89498a49660ad9120d7ca3ef9bfe21f8b3c9e414257795",
+      "inner_sqlite_bytes": 48635904,
+      "hub_path": "agents/chatgpt/inbox/R9_SAM_METADATA_HANDOFF_20261013/D_REPAIRED_SNAPSHOT.sqlite.gz",
+      "single_file_in_archive": true,
+      "stats": {
+        "file_paths": 34745,
+        "directories": 10637,
+        "reparse": 16,
+        "unique_entities": 34744,
+        "unique_content_bytes": 8163480337,
+        "unresolved_identity_rows": 0
+      },
+      "schema_tables": [
+        "checkpoints",
+        "diffs",
+        "dir_enum",
+        "meta",
+        "nodes",
+        "queue",
+        "sqlite_sequence"
+      ],
+      "table_counts": {
+        "checkpoints": 0,
+        "diffs": 3370,
+        "dir_enum": 10637,
+        "meta": 7,
+        "nodes": 45398,
+        "queue": 10637,
+        "sqlite_sequence": 1
+      },
+      "integrity_check": "ok",
+      "source_db": "C:\\\\LAN_SHARE_REPORT\\\\BLACKBOX_R9_SELECTED_MANIFEST\\\\SELECTED_D_MANIFEST_REPAIRED.sqlite",
+      "note": "Do not validate against unrepaired 787b14... SHA"
+    },
+    "E_DELTA_CANONICAL.sqlite": {
+      "sqlite_sha256": "aa58ed8bd7b22e015a041133007a9b031514eb82baf27d80ace0e48f2a48bd1c",
+      "sqlite_bytes": 86016,
+      "gz_sha256": "c83076fea5d394912ede5c05468a75b0ae4a2816bfdb90af5cf8d668ee59eef4",
+      "gz_bytes": 4920,
+      "hub_path": "agents/chatgpt/inbox/R9_SAM_METADATA_HANDOFF_20261013/E_DELTA_CANONICAL.sqlite",
+      "hub_gz_path": "agents/chatgpt/inbox/R9_SAM_METADATA_HANDOFF_20261013/E_DELTA_CANONICAL.sqlite.gz",
+      "file_rows": 42,
+      "target_rows": 16,
+      "identity": "Win32 volume_serial_dword + 64-bit file_id",
+      "historical_delta_sha256_retained": "9f1a37f945e80682a93190565e553bdef61bf8451b96216c2686c1d3e8887ad6"
+    }
+  },
+  "tests": {
+    "D_ROUNDTRIP_SHA_INTEGRITY": {
+      "pass": true,
+      "integrity": "ok",
+      "sha_match": true
+    },
+    "DELTA_CANONICAL_COUNTS_AND_IDENTITY": {
+      "pass": true,
+      "file_rows": 42,
+      "target_rows": 16,
+      "error_rows": 0,
+      "null_identity_rows": 0,
+      "mismatch": []
+    },
+    "D_BASELINE_SQL_MATCH": {
+      "pass": true,
+      "diffs": {},
+      "computed": {
+        "file_paths": 34745,
+        "directories": 10637,
+        "reparse": 16,
+        "unique_entities": 34744,
+        "unique_content_bytes": 8163480337,
+        "unresolved_identity_rows": 0
+      },
+      "integrity": "ok"
+    }
+  },
+  "local_validation_pass_before_upload": true,
+  "desktop_note": "E 9.38GB snapshot already on desktop; do not re-upload.",
+  "share_readonly_note": "\\\\\\\\192.168.100.2\\\\E_DRIVE previously unreadable — handoff bypasses share"
+}
