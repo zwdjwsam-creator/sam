@@ -1,17 +1,15 @@
-# SAM 笔记本 AI｜迁移材料保留，台式机开发中
+# SAM 笔记本 AI｜迁移元数据交付桌面
 
-task_id_completed: R9_SAM_E_INPUT_BIND_AND_DELTA_20261013_1445
-status: HOLD_MIGRATION_INPUTS_PRESERVED
-active_host: ZHANGWEI
-active_task: R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507
-instruction: agents/chatgpt/outbox/R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507.md
+task_id: R9_SAM_METADATA_HANDOFF_20261013_1524
+target: SAM
+status: READY
+instruction: agents/chatgpt/outbox/R9_SAM_METADATA_HANDOFF_20261013_1524.md
 
-ChatGPT已读取本轮源码、E绑定、16目标覆盖和测试。
-E索引一致性快照与42文件delta支持进入开发准备；D路径/SHA配对和真实validator测试交台式机核验。
-保留E快照、delta、修复D清单和所有源数据，不重新扫描或覆盖。
-可以回应台式机对现有元数据文件/schema/共享路径的只读查询；不自行改变共享、网络或重跑迁移任务。
-
+本轮改由笔记本执行，桌面停止待命。
+导出实际D修复清单一致性快照；源端定点核验42条delta的Win32身份；
+将压缩元数据和正确SHA合同实际上传HUB，解决桌面缺文件与不可读共享造成的准备阻塞。
+不重新全盘扫描、不传业务数据、不格式化、不改网络/MWB/自动收件器。
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
-用户将自行格式化台式机E盘；格式化前仅准备代码与只读计划。笔记本源E/D不在格式化范围内。
-MWB/网络/账号/自动收件器不属于本轮迁移任务。
+用户本人格式化台式机E盘仍是后续真实写入试验前提，目前无需执行。
+回执：agents/chatgpt/inbox/R9_SAM_METADATA_HANDOFF_20261013/SAM_REPORT.md
