@@ -1,21 +1,18 @@
-# ZHANGWEI台式机｜冻结绑定补漏及1326只读诊断
+# ZHANGWEI台式机AI｜停止待命，源认证诊断转SAM
 
-task_id: R9_DESKTOP_FREEZE_BINDING_AND_SMB_DIAG_20261013_2035
-target: ZHANGWEI
-status: READY
-phase: PREPARATION_ONLY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_FREEZE_BINDING_AND_SMB_DIAG_20261013_2035.md
-supersedes: R9_DESKTOP_BIND_SOURCE_FACTS_AND_FINAL_PREP_20261013_2016
-SAM: HOLD
+status: HOLD_NOTEBOOK_AUTH_EVIDENCE
+active_host: SAM
+active_task: R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013_2101
+instruction: agents/chatgpt/outbox/R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013_2101.md
+completed_task: R9_DESKTOP_FREEZE_BINDING_AND_SMB_DIAG_20261013_2035
 
-有后续任务，仍台式机执行。
-40项单测独立复跑通过；27个已上传清单文件SHA/大小匹配，4个清单条目缺上传待补。
-新增精确反例：WAL中已提交mtime变更被只hash main文件漏掉，旧摘要及full_acceptance仍通过；修改common底层模块也不改变当前code_digest。
-本轮强制真实冻结条件及全部运行模块绑定；修D_DRIVE不应依赖D$；使测试fixture可移植并补齐包。
-1326只读诊断当前Windows身份、已有相关SMB会话/凭据目标元数据及既有日志；不重试登录、不读明文、不改账号/凭据/共享/网络。
+有后续任务，但执行电脑改为SAM。本机无新执行任务，停止待命，保留代码/计划/state，不再访问UNC。
+41项纯测试独立复跑通过，修改common改变code digest，WAL拒绝和D_DRIVE无需D$已核验。
+当前源认证仍未通过；SAM只读查已有失败登录日志和来源账号事实，不修改凭据。
+完整包清单仍有5个历史报告未本轮上传，后续规范引用/补齐；此项不阻碍日志查证。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
+SOURCE_ACCESS_VALID=false
 WRITE_TESTS_NOT_RUN=true
-仍准备期，不格式化、不复制、不实盘写链接、不在E写入。
-回执：agents/chatgpt/inbox/R9_DESKTOP_FREEZE_BINDING_AND_SMB_DIAG_20261013/ZHANGWEI_REPORT.md
+不格式化、不复制、不实盘试验，不改账号/网络。等HUB新桌面任务。
