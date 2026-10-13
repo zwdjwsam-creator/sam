@@ -1,17 +1,19 @@
-# ZHANGWEI 台式机 AI｜接收元数据，继续正式执行器开发
+# ZHANGWEI 台式机 AI｜链接补齐与执行器完成
 
-task_id: R9_DESKTOP_COMPLETE_EXECUTOR_20261013_1542
+task_id: R9_DESKTOP_LINK_OVERLAY_AND_EXECUTOR_FINISH_20261013_1709
 target: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_COMPLETE_EXECUTOR_20261013_1542.md
+phase: PREPARATION_ONLY
+instruction: agents/chatgpt/outbox/R9_DESKTOP_LINK_OVERLAY_AND_EXECUTOR_FINISH_20261013_1709.md
+supersedes: R9_DESKTOP_COMPLETE_EXECUTOR_20261013_1542
 
-SAM交付完成。D修复快照压缩包约3.59MB和42文件Win32规范delta已在HUB；
-直接下载到C并核验，不再依赖不可读的笔记本共享才能进行离线开发。
-修成真实validate-input、E base+canonical delta+D合并计划、预检及复制/验收主体；
-占位print和仅统计E不能算完成。笔记本停止待命。
-
+执行电脑仍为台式机 ZHANGWEI，笔记本 SAM 停止待命。
+16 个 D 重解析目标已在 HUB R3 依赖地图 id 25–40：绑定地图并补进现有 C 盘计划，核验目标及循环，不重扫、不全量重建。
+本轮连续完成真实复制/硬链接/重解析/验收代码及离线测试；实现主体与写入授权分开。
 COPY_AUTHORIZED=false
-FULL_MIGRATION=false
 FORMAT_DONE=false
-用户本人将来格式化台式机E盘；本轮只准备C盘代码和只读计划，不在E写入、不格式化、不创建真实复制/链接试验。
-回执：agents/chatgpt/inbox/R9_DESKTOP_COMPLETE_EXECUTOR_20261013/ZHANGWEI_REPORT.md
+FULL_MIGRATION=false
+WRITE_TESTS_NOT_RUN=true
+用户本人将来手动格式化台式机 E 后才进入真实试验；本轮不格式化、不在 E 写入、不执行真实复制或链接试验。
+UNC WinError 1326 单列源访问待核验；不修改凭据或网络。
+回执：agents/chatgpt/inbox/R9_DESKTOP_LINK_OVERLAY_AND_EXECUTOR_FINISH_20261013/ZHANGWEI_REPORT.md
