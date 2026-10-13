@@ -1,3 +1,16 @@
+# SAM 笔记本 — 绿联2.5G网卡驱动安装及验证（最新优先任务 2026-10-13）
+
+task_id: `SAM_UGREEN_2P5G_DRIVER_INSTALL_VERIFY_20261013`
+正式指令：`agents/chatgpt/outbox/SAM_UGREEN_2P5G_DRIVER_INSTALL_VERIFY_20261013.md`
+执行方：**笔记本SAM本机Cursor，非台式机**。
+用户已明确授权：安装绿联USB 2.5GbE网卡可信官方驱动、验证是否工作；仅在安装后真实驱动故障/安装器要求重启且保证没有活跃业务或迁移进程时，允许**笔记本**正常重启一次，重启后检测；条件不满足必须推迟重启。
+仅C盘下载安装和报告；笔记本E/D业务源只读；台式机D/E/F和原SMB链路不动。不要运行旧`外部大脑信箱_fetch_outbox.py`，不可跳过旧`qmt HARD_BLOCK`。R9 HOLD，COPY_AUTHORIZED=false。
+此任务优先于MWB配对，**不取消原MWB已发布任务**；驱动验收完成后再继续MWB。
+报告：`agents/chatgpt/inbox/UGREEN_2P5G_SAM_20261013/SAM_REPORT.md`。
+旧任务和旧报告在下方保留，不能当成新的执行授权。
+
+---
+
 # SAM笔记本当前MWB任务：纠正旧收件脚本错路由（2026-10-13）
 
 【首要指令】`agents/chatgpt/outbox/MWB_SAM_ROUTING_FIX_20261013.md`
