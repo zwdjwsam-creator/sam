@@ -2,12 +2,12 @@
 
 status: HOLD_HANDOFF_COMPLETE
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_END_TO_END_PACKAGE_20261013_1834
-instruction: agents/chatgpt/outbox/R9_DESKTOP_END_TO_END_PACKAGE_20261013_1834.md
+active_task: R9_DESKTOP_PRODUCTION_CHAIN_REWORK_20261013_1842
+instruction: agents/chatgpt/outbox/R9_DESKTOP_PRODUCTION_CHAIN_REWORK_20261013_1842.md
 
-下一轮仍由台式机闭合正式执行链并交付代码。SAM 没有新任务，停止待命。
-保留源 E/D 及已交付元数据，不重扫、不覆盖、不复制。
+仍由台式机返工生产链，SAM 无新任务，停止待命。
+保留源 E/D 数据与已交付输入，不扫描、不导出、不覆盖、不复制。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
-用户未来格式化的是台式机 E，SAM 源 E/D 保持不动。
+未来用户本人格式化的是台式机 E，SAM 源盘不在范围内。
