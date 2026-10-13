@@ -11,6 +11,17 @@ COPY_AUTHORIZED: false
 
 最新笔记本报告 `agents/chatgpt/inbox/MWB_SAM_INBOUND_15100_FIX_20261013/SAM_REPORT.md` 已增加精确入站规则；台式机旧测试 `.2:15100` FAIL 是旧时点的TCP探针，不应覆盖用户的功能实测。端口检测和应用层连接可能因测试时间、监听端口、网络接口及方向不同而出现差异。
 
+## 重要补充：用户再次确认双向跨屏曾成功（2026-10-13）
+
+用户进一步确认，**笔记本 SAM 的鼠标在此前做任务期间，也能跨屏控制台式机 ZHANGWEI**。加上先前“台式机鼠标能移至笔记本”，两方向都曾真实成功过。状态记录：
+- `DESKTOP_TO_NOTEBOOK_MOUSE_PRIOR=USER_OBSERVED_PASS`
+- `NOTEBOOK_TO_DESKTOP_MOUSE_PRIOR=USER_OBSERVED_PASS`
+- `CURRENT_BIDIRECTIONAL_MOUSE=UNKNOWN_UNTIL_USER_RETEST`
+- `CROSS_KEYBOARD_PRIOR=NOT_CONFIRMED`
+- `TRANSPORT_USED_DURING_SUCCESS=NOT_VERIFIED`
+
+**执行策略修正：只读检查和一次当前功能复验为主，禁止将旧的TCP探针失败视为未配对证据；若当前两个方向仍然都好用，MWB鼠标功能直接验收PASS并停止技术修复，不得为了追求“端口15100始终PASS”而破坏可用配置。** 仅用户表示当前无法跨屏时才排查实际连接路径和时序。保留原有key、PowerToys、接口/IP、SMB；键盘是否跨屏由用户另行一次简单验收。不要让用户重复做复杂网络配置或要求其重新配对。
+
 ## 当前唯一执行任务（先保护成功状态）
 1. **禁止破坏已成功的配置**。只读确认PowerToys/MWB进程及状态、设备名称、连接日志，禁止重启MWB、重置key、更新/重装PowerToys、改Name2IP、改防火墙、停Wi-Fi、改IP/路由/DNS/SMB或重置配对。勿重启电脑。
 2. 以用户实际操作为准，只请求一次简单验收（如用户此刻方便）：A 台式机鼠标→笔记本→台式机；B 笔记本鼠标→台式机→笔记本；C 在焦点所在的空白记事本测试跨机键盘。用户已确认的**过去**一次台式机→笔记本成功应独立记录，不能记为此次实时PASS。
