@@ -1,0 +1,128 @@
+{
+  "task_id": "R9_SAM_E_INPUT_BIND_AND_DELTA_20261013_1445",
+  "generated_at": "2026-10-13T06:55:37.921889+00:00",
+  "hostname": "SAM",
+  "INPUT_READY_FOR_DEV": true,
+  "COPY_AUTHORIZED": false,
+  "FULL_MIGRATION": false,
+  "status": "READY_FOR_DEV_REVIEW",
+  "supersedes_false_ready": "R9_NOTEBOOK_FREEZE_ED_INPUT_20261011_1438 INPUT_READY was over-claimed",
+  "preserved_old_snapshot_sha256": "fbd252446d77df897e5c254f71a0835cc20f33d36d1472bc3013fca9c664767a",
+  "preserved_old_snapshot_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_ED_INPUT\\R9_SAM_ED_INPUT_PACKAGE.snapshot.sqlite",
+  "e_base_index": {
+    "live_path": "E:\\BLACKBOX_MIGRATION_AUDIT_R1\\metadata\\filesystem_inventory.sqlite",
+    "live_sha256": null,
+    "live_sha_status": "SKIPPED_DUE_TO_WAL_SHM",
+    "snapshot_path": "C:\\LAN_SHARE_REPORT\\R9_E_INPUT_BIND_AND_DELTA_20261013\\snapshots\\filesystem_inventory.RO_SNAPSHOT.sqlite",
+    "snapshot_sha256": "a5590154ed4da7b45c1ad19dfe82989cd2bb058702aad9b6ea58c2868d0a5572",
+    "snapshot_bytes": 9376645120,
+    "schema_tables": [
+      "entries",
+      "errors",
+      "meta",
+      "progress"
+    ],
+    "meta": {
+      "task": "BLACKBOX_FULL_DATA_MIGRATION_AUDIT_R1",
+      "source_root": "E:\\BLACKBOX",
+      "scan_start": "2026-10-08T08:14:10+0800",
+      "follow_directory_reparse": "false",
+      "collect_identity": "true",
+      "source_volume_serial": "2387166462",
+      "scan_end": "2026-10-08T11:30:26+0800",
+      "scan_elapsed_sec": "11775.9"
+    },
+    "sql_stats": {
+      "file_entries": 8680280,
+      "dir_entries": 227832,
+      "errors": 0
+    },
+    "historical_note": "scan_end 2026-10-08; not a today freeze"
+  },
+  "e_delta": {
+    "path": "C:\\LAN_SHARE_REPORT\\R9_E_INPUT_BIND_AND_DELTA_20261013\\delta\\E_DELTA_16_D_TO_E.sqlite",
+    "sha256": "9f1a37f945e80682a93190565e553bdef61bf8451b96216c2686c1d3e8887ad6",
+    "bytes": 86016,
+    "file_rows": 42,
+    "complete_targets": 16,
+    "sum_unique_content_bytes": 396633511,
+    "adapter": "merged_view = base_snapshot.entries UNION delta.files by path; delta wins on same path; dedupe entity by volume_serial+file_id"
+  },
+  "d_input": {
+    "source_db": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_SELECTED_MANIFEST\\SELECTED_D_MANIFEST_REPAIRED.sqlite",
+    "original_db_sha256": "787b14d267b3b167b37695adbdffaba96c719ed50bf64659ba4ba3828f630d39",
+    "stats": {
+      "file_paths": 34745,
+      "unique_entities": 34744,
+      "unique_content_bytes": 8163480337,
+      "directories": 10637,
+      "reparse_in_d_paths": 16,
+      "logical_path_bytes": 8163565504
+    }
+  },
+  "dependency_16": {
+    "closed_count": 16,
+    "total": 16,
+    "blockers": [],
+    "old_sidecar_directory_shell_rejected": true,
+    "coverage_report": "C:\\LAN_SHARE_REPORT\\R9_E_INPUT_BIND_AND_DELTA_20261013\\reports\\TARGET_16_COVERAGE.json"
+  },
+  "desktop_target_plan": {
+    "host": "ZHANGWEI",
+    "volume_serial": "806508DF",
+    "volume_guid": "{b8545ee8-e403-48c6-9d3f-09afd3e0349f}",
+    "e_blackbox": "E:\\BLACKBOX",
+    "d_selected_under": "E:\\BLACKBOX_ENGINES",
+    "old_F_paths": "DO_NOT_USE",
+    "authorization": "DEV_AND_DRYRUN_ONLY_NOT_COPY"
+  },
+  "tests": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "results": [
+      {
+        "test": "TEST_MERGED_DELTA_FILE_VISIBLE",
+        "pass": true,
+        "detail": "path_in_base=False in_delta=True path=E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet"
+      },
+      {
+        "test": "TEST_NO_NULL_AS_ZERO_WITHOUT_ENUM",
+        "pass": true,
+        "detail": "null_counts=False zero_file_complete_trees=False"
+      },
+      {
+        "test": "TEST_SHA_MISMATCH_DETECTABLE",
+        "pass": true,
+        "detail": "contract must compare live sha"
+      },
+      {
+        "test": "TEST_STATS_PRESENT",
+        "pass": true,
+        "detail": "files=42 empty_dirs=0"
+      }
+    ]
+  },
+  "totals": {
+    "D_unique_entities": 34744,
+    "D_unique_content_bytes": 8163480337,
+    "E_base_file_entries_sql": 8680280,
+    "E_delta_file_rows": 42,
+    "E_delta_unique_content_bytes_sum_targets": 396633511
+  },
+  "next_for_desktop_dev": {
+    "open_ro": [
+      "C:\\LAN_SHARE_REPORT\\R9_E_INPUT_BIND_AND_DELTA_20261013\\snapshots\\filesystem_inventory.RO_SNAPSHOT.sqlite",
+      "C:\\LAN_SHARE_REPORT\\R9_E_INPUT_BIND_AND_DELTA_20261013\\delta\\E_DELTA_16_D_TO_E.sqlite",
+      "C:\\LAN_SHARE_REPORT\\BLACKBOX_R9_SELECTED_MANIFEST\\SELECTED_D_MANIFEST_REPAIRED.sqlite"
+    ],
+    "verify_shas": [
+      "a5590154ed4da7b45c1ad19dfe82989cd2bb058702aad9b6ea58c2868d0a5572",
+      "9f1a37f945e80682a93190565e553bdef61bf8451b96216c2686c1d3e8887ad6",
+      "787b14d267b3b167b37695adbdffaba96c719ed50bf64659ba4ba3828f630d39"
+    ],
+    "COPY_AUTHORIZED": false,
+    "build": "formal executor + dry-run only after ChatGPT review"
+  },
+  "boolean_fix_note": "INPUT_READY_FOR_DEV coerced to bool (prior truthy-and sha bug)"
+}
