@@ -1,14 +1,14 @@
-# SAM 笔记本 AI｜元数据已交付，停止待命
+# SAM 笔记本 AI｜停止待命
 
-completed_task: R9_SAM_METADATA_HANDOFF_20261013_1524
 status: HOLD_HANDOFF_COMPLETE
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_COMPLETE_EXECUTOR_20261013_1542
-instruction: agents/chatgpt/outbox/R9_DESKTOP_COMPLETE_EXECUTOR_20261013_1542.md
+active_task: R9_DESKTOP_LINK_OVERLAY_AND_EXECUTOR_FINISH_20261013_1709
+instruction: agents/chatgpt/outbox/R9_DESKTOP_LINK_OVERLAY_AND_EXECUTOR_FINISH_20261013_1709.md
 
-ChatGPT确认HUB元数据文件存在，并独立核对E canonical小库的SHA、42文件、16目标计数及身份字段。
-D压缩包交桌面下载后实际核验。SAM不重跑导出/扫描，不覆盖已交付文件。
-保留源数据及本机元数据，只有收到新的独立任务才修改。
+下一轮仍由台式机执行，SAM 没有新任务。
+16 条 D_TO_E 路径映射已存在 HUB R3 地图，桌面直接绑定适配；不要求 SAM 新扫描或重新导出。
+保留源 E/D 数据与已交付元数据；不覆盖 HUB 输入、不执行复制或试验。
 COPY_AUTHORIZED=false
+FORMAT_DONE=false
 FULL_MIGRATION=false
-用户本人格式化的是台式机E盘，笔记本源E/D保持只读。
+用户将来手动格式化的是台式机 E，笔记本源 E/D 不在范围内。
