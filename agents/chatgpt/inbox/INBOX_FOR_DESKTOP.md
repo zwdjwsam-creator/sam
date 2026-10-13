@@ -1,12 +1,19 @@
-# ZHANGWEI 台式机 Cursor — 2026-10-13 最新唯一任务
+# ZHANGWEI 台式机 AI｜迁移执行器开发与只读预演
 
-task_id: `MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013`
+task_id: R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507
+target: ZHANGWEI
 status: READY
-instruction: `agents/chatgpt/outbox/MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013.md`
-target: ZHANGWEI台式机 Cursor
-objective: **台式机物理鼠标+键盘控制笔记本SAM，并且鼠标进入SAM后能够返回台式机。**
+instruction: agents/chatgpt/outbox/R9_DESKTOP_EXECUTOR_DEV_DRYRUN_20261013_1507.md
 
-截图新证据：SAM端 ZHANGWEI **绿框**，用户确认SAM功能正常；ZHANGWEI端 sam **红框**。两边密钥截图看似一致，不要再向用户重复索取/核对密钥，密钥不得公开。既有日志显示台式机MWB连接sam时走了错误的Wi-Fi地址192.168.0.62，而预期有线sam=192.168.100.2。首要任务只读确认桌面→SAM有线TCP端口与实际应用目标地址，针对证据处理红框，**不碰笔记本**。截图另显示两端屏幕布局顺序不一致；只有连接恢复后才考虑仅调整台式机布局以匹配真实屏幕方向。不多轮开关、不重装、不改SMB/IP/网卡。R9 HOLD、COPY_AUTHORIZED=false。
+本轮唯一新任务：正式执行器开发、输入绑定修正、E base+delta+D选定清单合并和只读计划预演。
+笔记本已回传E只读索引快照及16目标42文件delta；先按指令核验路径/SHA与身份口径。
+所有输出在C盘；不在E盘创建新实验内容，不做真实业务复制/建链，不格式化。
+COPY_AUTHORIZED=false
+FULL_MIGRATION=false
+DESTINATION_FORMAT_BY_USER_PENDING=true
 
-回报：`agents/chatgpt/inbox/MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013/ZHANGWEI_REPORT.md`。
-旧 `MWB_ZHANGWEI_CONNECT_ONE_SHOT_20261013` 等任务一律STOP，不再作为当前授权。
+用户明确：正式迁移前由本人格式化台式机E盘。当前仍为准备阶段；
+旧目标卷序列仅作历史，格式化后必须新任务重新识别物理盘/卷再做写入试验及迁移。
+笔记本迁移侧待命，仅供读取已有元数据。输入或共享不足时先完成可独立的开发并列阻塞。
+本任务不改MWB/网络/自动收件器，不重跑旧鼠标键盘修复任务。
+回执：agents/chatgpt/inbox/R9_DESKTOP_EXECUTOR_DEV_20261013/ZHANGWEI_REPORT.md
