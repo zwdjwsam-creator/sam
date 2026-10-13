@@ -1,8 +1,8 @@
 {
   "task_id": "R9_SAM_METADATA_HANDOFF_20261013_1524",
-  "generated_at": "2026-10-13T07:34:12.656847+00:00",
+  "generated_at": "2026-10-13T07:37:27.014255+00:00",
   "hostname": "SAM",
-  "HANDOFF_READY": false,
+  "HANDOFF_READY": true,
   "COPY_AUTHORIZED": false,
   "FULL_MIGRATION": false,
   "artifacts": {
@@ -86,5 +86,18 @@
   },
   "local_validation_pass_before_upload": true,
   "desktop_note": "E 9.38GB snapshot already on desktop; do not re-upload.",
-  "share_readonly_note": "\\\\\\\\192.168.100.2\\\\E_DRIVE previously unreadable — handoff bypasses share"
+  "share_readonly_note": "\\\\\\\\192.168.100.2\\\\E_DRIVE previously unreadable — handoff bypasses share",
+  "hub_upload_verified": {
+    "D_REPAIRED_SNAPSHOT.sqlite.gz": {
+      "bytes": 3589403,
+      "sha256": "d0a17dc4dd76c9d825d01015ffd17cbd207565aceb13faa2c8ad22a72f98d3f3",
+      "method": "GET raw contents binary match"
+    },
+    "E_DELTA_CANONICAL.sqlite": {
+      "bytes": 86016,
+      "sha256": "aa58ed8bd7b22e015a041133007a9b031514eb82baf27d80ace0e48f2a48bd1c",
+      "method": "contents API decode match"
+    },
+    "verified_at": "2026-10-13T07:37:27.014255+00:00"
+  }
 }
