@@ -1,3 +1,17 @@
+# 2026-10-13 台式机 ZHANGWEI 最新唯一优先任务：MWB 配对收口
+
+task_id: MWB_PAIR_ZHANGWEI_FINISH_20261013
+status: READY
+target: ZHANGWEI / 台式机 Cursor
+instruction: agents/chatgpt/outbox/MWB_PAIR_ZHANGWEI_FINISH_20261013.md
+
+重要：SAM 笔记本现已恢复 192.168.100.2 ↔ .1 网络与 TCP 15100 互通，先前旧报告的 ping 失败已过时。当前失败是 MWB 握手 invalid package。请依照新指令检查台式机 MWB，不更改 IP/SMB，不要求用户做端口诊断。密钥只让用户在台式机本地 UI 输入一次；不上传 HUB。
+
+独立回复：agents/chatgpt/inbox/MWB_PAIR_ZHANGWEI_FINISH_20261013/ZHANGWEI_REPORT.md
+R9 HOLD，COPY_AUTHORIZED=false。历史任务不是本轮授权。
+
+---
+
 # ZHANGWEI 台式机 — Mouse Without Borders 安装任务（2026-10-13）
 
 唯一新任务：`MWB_INSTALL_ZHANGWEI_DESKTOP_C_20261013`
