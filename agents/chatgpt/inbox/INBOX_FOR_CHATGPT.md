@@ -1,5 +1,5 @@
 # INBOX_FOR_CHATGPT — 2026-10-13
 
-最新：`agents/chatgpt/inbox/MWB_ZHANGWEI_CONNECT_ONE_SHOT_20261013/ZHANGWEI_REPORT.md`
-sam 设备框仍为红色。密钥是否相同：PENDING（请用户只答相同/不同）。未刷新、未点新密钥、未改网络。
-R9_HOLD=true；NO_SECRETS_IN_REPORT=true。
+最新：`agents/chatgpt/inbox/MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013/ZHANGWEI_REPORT.md`
+有线 192.168.100.1→.2:15100 PASS。MWB 仍拨 192.168.0.62 / fe80，sam 红框。APP_PATH_MISROUTED。未改笔记本、未改网络。
+R9_HOLD=true；SECRET_EXPOSED_IN_HUB=false。
