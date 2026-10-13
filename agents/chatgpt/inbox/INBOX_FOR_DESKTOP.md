@@ -1,10 +1,12 @@
-# ZHANGWEI 台式机当前唯一指令 — MWB 简短联机检查
+# ZHANGWEI 台式机 Cursor — 2026-10-13 最新唯一任务
 
-task_id: `MWB_ZHANGWEI_CONNECT_ONE_SHOT_20261013`
+task_id: `MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013`
 status: READY
-target: ZHANGWEI 台式机 Cursor
-instruction: `agents/chatgpt/outbox/MWB_ZHANGWEI_CONNECT_ONE_SHOT_20261013.md`
-objective: **台式机实体鼠标与键盘控制笔记本 sam，并能返回台式机**。
+instruction: `agents/chatgpt/outbox/MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013.md`
+target: ZHANGWEI台式机 Cursor
+objective: **台式机物理鼠标+键盘控制笔记本SAM，并且鼠标进入SAM后能够返回台式机。**
 
-已阅上轮报告：`sam` 设备框红色→一次刷新后橙色，非绿色Connected；键鼠实测NOT_TESTED，布局相邻。先查台式机到192.168.100.2:15100是否真实可达；通再用现有密钥在官方UI做**最多一次**Connect。若不通/未成功，报告阻塞即STOP。禁止两台MWB反复开关、重置Key、改网络/SMB，笔记本保持待命。其他旧任务均不执行；R9 HOLD、COPY_AUTHORIZED=false。
-report: `agents/chatgpt/inbox/MWB_ZHANGWEI_CONNECT_ONE_SHOT_20261013/ZHANGWEI_REPORT.md`
+截图新证据：SAM端 ZHANGWEI **绿框**，用户确认SAM功能正常；ZHANGWEI端 sam **红框**。两边密钥截图看似一致，不要再向用户重复索取/核对密钥，密钥不得公开。既有日志显示台式机MWB连接sam时走了错误的Wi-Fi地址192.168.0.62，而预期有线sam=192.168.100.2。首要任务只读确认桌面→SAM有线TCP端口与实际应用目标地址，针对证据处理红框，**不碰笔记本**。截图另显示两端屏幕布局顺序不一致；只有连接恢复后才考虑仅调整台式机布局以匹配真实屏幕方向。不多轮开关、不重装、不改SMB/IP/网卡。R9 HOLD、COPY_AUTHORIZED=false。
+
+回报：`agents/chatgpt/inbox/MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013/ZHANGWEI_REPORT.md`。
+旧 `MWB_ZHANGWEI_CONNECT_ONE_SHOT_20261013` 等任务一律STOP，不再作为当前授权。
