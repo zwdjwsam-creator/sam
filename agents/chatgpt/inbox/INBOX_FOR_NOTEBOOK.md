@@ -1,13 +1,13 @@
-# SAM 笔记本 AI｜保持待命
+# SAM 笔记本 AI｜继续待命
 
 status: HOLD_HANDOFF_COMPLETE
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_BATCH_RESUME_ACCEPTANCE_20261013_1852
-instruction: agents/chatgpt/outbox/R9_DESKTOP_BATCH_RESUME_ACCEPTANCE_20261013_1852.md
+active_task: R9_DESKTOP_FINISH_BATCHES_AND_VERIFIED_RESUME_20261013_1902
+instruction: agents/chatgpt/outbox/R9_DESKTOP_FINISH_BATCHES_AND_VERIFIED_RESUME_20261013_1902.md
 
-本轮继续台式机开发目录/链接批次、恢复和验收，SAM 无新任务，停止待命。
-保留源 E/D 与已交付元数据，不扫描、不重新导出、不覆盖、不复制。
+仍由台式机完成剩余批次、恢复及验收。SAM无新任务，停止待命。
+保留源E/D及元数据，不扫描、不导出、不覆盖、不复制。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
-用户未来格式化的是台式机 E，源 SAM E/D 不在范围内。
+用户未来格式化台式机E，不涉及SAM源盘。
