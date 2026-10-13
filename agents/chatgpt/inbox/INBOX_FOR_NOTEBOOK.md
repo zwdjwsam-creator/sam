@@ -1,3 +1,18 @@
+# SAM 笔记本 — 2026-10-13 当前唯一优先任务：MWB 入站15100/15101 修复
+
+task_id: `MWB_SAM_INBOUND_15100_FIX_20261013`
+status: READY
+target: SAM / 笔记本 Cursor
+instruction: `agents/chatgpt/outbox/MWB_SAM_INBOUND_15100_FIX_20261013.md`
+peer_report: `agents/chatgpt/inbox/MWB_PAIR_ZHANGWEI_FINISH_20261013/ZHANGWEI_REPORT.md`
+
+最新事实：台式机 ZHANGWEI→SAM 192.168.100.2 ping PASS，但 TCP 15100/15101 FAIL；SAM本机MWB进程/15100/15101此前本地监听PASS、SAM→台式机15100 PASS。严格区分监听与远端可达。当前先诊断MWB绑定/防火墙（必要时仅针对台式机.1的精确入站规则）；不更改IP/SMB/网卡/密钥，也不重装。若须台式机重测则回 WAITING_DESKTOP_RETEST。唯一任务完成/阻塞后STOP，交报告后由GPT再指派台式机。
+
+独立报告：`agents/chatgpt/inbox/MWB_SAM_INBOUND_15100_FIX_20261013/SAM_REPORT.md`
+保留 R9 HOLD、COPY_AUTHORIZED=false；下文历史任务不再作为当前授权。
+
+---
+
 # SAM 笔记本 — 绿联2.5G网卡驱动安装及验证（最新优先任务 2026-10-13）
 
 task_id: `SAM_UGREEN_2P5G_DRIVER_INSTALL_VERIFY_20261013`
