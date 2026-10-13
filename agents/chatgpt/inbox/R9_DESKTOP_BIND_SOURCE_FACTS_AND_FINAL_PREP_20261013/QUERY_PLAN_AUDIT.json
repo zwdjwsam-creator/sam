@@ -1,0 +1,26 @@
+{
+  "index": "ix_entity(is_dir, is_reparse, volume_serial, file_id)",
+  "orphan_with_index_prefix": [
+    "3 0 216 SCAN e",
+    "6 0 0 CORRELATED SCALAR SUBQUERY 1",
+    "10 6 52 SEARCH p USING COVERING INDEX ix_entity (is_dir=? AND is_reparse=? AND volume_serial=? AND file_id=?)"
+  ],
+  "orphan_without_index_prefix": [
+    "3 0 216 SCAN e",
+    "6 0 0 CORRELATED SCALAR SUBQUERY 1",
+    "10 6 213 SCAN p USING COVERING INDEX ix_entity"
+  ],
+  "tag_counts": [
+    {
+      "tag_source": "D_REPARSE_TYPE_OVERLAY",
+      "reparse_tag": 2684354563,
+      "count": 16
+    },
+    {
+      "tag_source": "E_BASE_ENTRIES",
+      "reparse_tag": 2684354563,
+      "count": 4809
+    }
+  ],
+  "null_tags": 0
+}
