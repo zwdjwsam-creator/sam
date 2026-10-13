@@ -1,3 +1,16 @@
+# ZHANGWEI 台式机 — 最新唯一任务：MWB 鼠标返回快速修复（2026-10-13）
+
+task_id: `MWB_ZHANGWEI_QUICK_FIX_20261013`
+status: READY
+target: 台式机 ZHANGWEI Cursor
+instruction: `agents/chatgpt/outbox/MWB_ZHANGWEI_QUICK_FIX_20261013.md`
+
+用户确认**笔记本物理鼠标目前已经恢复双向跨屏**，严禁再修改笔记本。台式机鼠标此前可以进入笔记本却无法返回；请按正式任务在台式机仅对MWB执行一次关闭/开启、确认布局相邻与方向、让用户实测台式机鼠标往返。不再做复杂网络/密钥修复。先前的 `MWB_ZHANGWEI_RETEST_20261013` 及其他历史指令均非当前执行授权。R9 HOLD、COPY_AUTHORIZED=false。
+
+单独回报：`agents/chatgpt/inbox/MWB_ZHANGWEI_QUICK_FIX_20261013/ZHANGWEI_REPORT.md`
+
+---
+
 # 台式机 ZHANGWEI — MWB 暂停双端变更（2026-10-13）
 
 status: WAIT_SAM_REGRESSION_RECOVERY
