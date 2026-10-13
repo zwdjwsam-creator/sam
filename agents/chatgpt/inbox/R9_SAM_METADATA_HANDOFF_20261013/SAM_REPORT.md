@@ -2,7 +2,7 @@
 
 generated_at: 2026-10-13T07:34:12.656847+00:00
 hostname: SAM
-HANDOFF_READY: pending_upload_confirm
+HANDOFF_READY: true
 COPY_AUTHORIZED: false
 FULL_MIGRATION: false
 
@@ -23,3 +23,7 @@ FULL_MIGRATION: false
 
 ## Next
 Desktop pulls HUB artifacts into new C dir; implement real D+E+delta validators. No copy/format.
+
+## HUB verify
+- D gz remote binary SHA matched local d0a17dc4...
+- E delta sqlite remote matched local aa58ed8b...
