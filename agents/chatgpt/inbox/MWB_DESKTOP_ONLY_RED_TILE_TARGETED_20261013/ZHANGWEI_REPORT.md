@@ -1,14 +1,14 @@
-# ZHANGWEI_REPORT — MWB_DESKTOP_ONLY_RED_TILE_TARGETED_20261013
+# ZHANGWEI_REPORT — local fix 2026-10-13T14:20
 
-WIRED_TCP_15100=PASS at 2026-10-13T14:14:38 from 192.168.100.1:63054 to 192.168.100.2:15100 (15101 also PASS).
-ACTUAL_APP_PEER_IP=192.168.0.62 and fe80::…%11 (last timeout 14:11:38). Log has no outbound connect to 192.168.100.2.
-DESKTOP_PEER_COLOR=RED (Error). APP_PATH_MISROUTED.
-LAYOUT=ZHANGWEI | sam, unchanged. Not green, so layout not edited.
-ACTION_TAKEN=none. Name2IP already maps sam to 192.168.100.2. No official option forces that mapping exclusively. Did not rewrite it, refresh, toggle, or change DNS/hosts/NIC/firewall.
-DESKTOP_MOUSE_ENTER=NOT_TESTED
-DESKTOP_MOUSE_RETURN=NOT_TESTED
-DESKTOP_KEYBOARD_TO_SAM=NOT_TESTED
-USER_TEST_PENDING_OR_PASS=NOT_TESTED
+WIRED_TCP_15100=PASS (already). After fix, MWB session Established 192.168.100.1 -> 192.168.100.2:15101.
+ACTUAL_APP_PEER_IP=now uses 192.168.100.2. Before, it dialed 192.168.0.62 and fe80 because the name sam resolved to Wi-Fi.
+DESKTOP_PEER_COLOR=GREEN on the sam tile (second card) after one refresh.
+LAYOUT=ZHANGWEI | sam, not changed.
+ACTION_TAKEN=hosts only: 192.168.100.2 sam sam.local. Backup hosts.before.txt. No NIC, firewall, key, or notebook change. Name2IP left as already set.
+DESKTOP_MOUSE_ENTER=USER_TEST_PENDING
+DESKTOP_MOUSE_RETURN=USER_TEST_PENDING
+DESKTOP_KEYBOARD_TO_SAM=USER_TEST_PENDING
+USER_TEST_PENDING_OR_PASS=USER_TEST_PENDING
 NOTEBOOK_UNTOUCHED=true
 SECRET_EXPOSED_IN_HUB=false
 R9_HOLD=true
