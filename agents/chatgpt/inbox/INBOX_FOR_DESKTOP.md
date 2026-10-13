@@ -1,18 +1,21 @@
-# ZHANGWEI台式机AI｜停止待命，源认证诊断转SAM
+# ZHANGWEI台式机｜原生Windows认证与只读来源核验
 
-status: HOLD_NOTEBOOK_AUTH_EVIDENCE
-active_host: SAM
-active_task: R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013_2101
-instruction: agents/chatgpt/outbox/R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013_2101.md
-completed_task: R9_DESKTOP_FREEZE_BINDING_AND_SMB_DIAG_20261013_2035
+task_id: R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137
+target: ZHANGWEI
+status: READY
+phase: SOURCE_AUTH_INTERACTIVE_READONLY
+instruction: agents/chatgpt/outbox/R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137.md
+SAM: HOLD
 
-有后续任务，但执行电脑改为SAM。本机无新执行任务，停止待命，保留代码/计划/state，不再访问UNC。
-41项纯测试独立复跑通过，修改common改变code digest，WAL拒绝和D_DRIVE无需D$已核验。
-当前源认证仍未通过；SAM只读查已有失败登录日志和来源账号事实，不修改凭据。
-完整包清单仍有5个历史报告未本轮上传，后续规范引用/补齐；此项不阻碍日志查证。
+有后续任务，执行电脑回台式机。
+SAM回执无匹配4625，SMBServer元数据Unauthorized，具体1326根因未证实；已确认SAM\ThinkPad为存在且启用的本地来源账号。
+用HUB现成r9_native_smb_login.py只启动一次Windows原生凭据流程，密码由用户在本机原生窗口输入，不进脚本参数/日志/HUB。
+脚本有语法和假API成功/取消/1326/错卷测试；实际认证只由本轮执行。
+窗口待输入先回传USER_LOCAL_INPUT_PENDING；取消/失败不循环重试、不改密码/Guest/共享/网络。
+成功后E/D来源根及各一个计划文件仅metadata核验，不读业务payload。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
-SOURCE_ACCESS_VALID=false
 WRITE_TESTS_NOT_RUN=true
-不格式化、不复制、不实盘试验，不改账号/网络。等HUB新桌面任务。
+仍准备期，不格式化、不复制、不实盘链接试验、不在E写入。
+回执：agents/chatgpt/inbox/R9_DESKTOP_NATIVE_SMB_LOGIN_20261013/ZHANGWEI_REPORT.md
