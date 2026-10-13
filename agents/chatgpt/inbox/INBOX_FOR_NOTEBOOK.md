@@ -1,15 +1,12 @@
-# SAM笔记本AI｜事实已审核，停止待命
+# SAM笔记本AI｜继续待命
 
-completed_task: R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957
 status: HOLD_SOURCE_FACTS_ACCEPTED
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_BIND_SOURCE_FACTS_AND_FINAL_PREP_20261013_2016
-instruction: agents/chatgpt/outbox/R9_DESKTOP_BIND_SOURCE_FACTS_AND_FINAL_PREP_20261013_2016.md
+active_task: R9_DESKTOP_FREEZE_BINDING_AND_SMB_DIAG_20261013_2035
+instruction: agents/chatgpt/outbox/R9_DESKTOP_FREEZE_BINDING_AND_SMB_DIAG_20261013_2035.md
 
-16项数字tag/目标/R3逐条匹配，4份文件原始SHA及大小已独立核验全部通过。
-任务交回台式机接入sidecar/source合同并完成代码绑定，SAM停止待命。
-保留源E/D及元数据，不再导出/扫描，不修改共享/密码/网络，不复制。
+下一轮仍台式机补代码冻结/运行绑定及只读SMB诊断；SAM无新任务，停止待命。
+保留源E/D和已交付事实，不扫描、不导出、不复制，不改账号/共享/网络。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
-DESKTOP_SMB_ACCESS_VERIFIED=false
