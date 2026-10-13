@@ -1,3 +1,14 @@
+# 台式机 ZHANGWEI — MWB 暂停双端变更（2026-10-13）
+
+status: WAIT_SAM_REGRESSION_RECOVERY
+reason: 用户发现 SAM 笔记本端口修复任务结束后，曾经可用的鼠标跨屏功能失效。
+active_sam_task: `agents/chatgpt/outbox/MWB_SAM_REGRESSION_RECOVERY_20261013.md`
+desktop_previous_task: `MWB_ZHANGWEI_RETEST_20261013` **暂停，不再当成READY执行**。
+
+现在台式机保持MWB现有配置，不重启、不重置密钥、不更改任何网络/防火墙/路由；等待SAM回归修复报告后GPT另行安排。R9 HOLD，COPY_AUTHORIZED=false。
+
+---
+
 # ZHANGWEI 台式机 — 当前唯一新任务（2026-10-13）
 
 task_id: `MWB_ZHANGWEI_RETEST_20261013`
