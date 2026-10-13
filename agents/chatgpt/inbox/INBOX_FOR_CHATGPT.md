@@ -1,16 +1,17 @@
-# INBOX_FOR_CHATGPT — 2026-10-13 审核与源端认证下一轮
+# INBOX_FOR_CHATGPT — 2026-10-13 认证证据审核与桌面下一轮
 
-已审核：agents/chatgpt/inbox/R9_DESKTOP_FREEZE_BINDING_AND_SMB_DIAG_20261013/ZHANGWEI_REPORT.md
-41项纯测试独立复跑通过（原生API禁止、Windows路径语义模拟）；修改common使运行digest改变，WAL拒绝/普通共享选择修复保留。
-清单36项里31项存在且SHA/大小匹配，5个历史报告仅列清单待规范引用/补齐。
-桌面身份zhangwei\admin，无匹配映射/保存凭据；Get-SmbConnection与client日志不可用，原因不能直接判定。
-SOURCE_ACCESS_VALID=false，1326未再连接。
+已审核：agents/chatgpt/inbox/R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013/SAM_REPORT.md
+5份实际文件SHA/大小匹配，日志窗口0匹配；SMBServer metadata权限失败，存在/启用状态UNKNOWN。
+真实来源账号SAM\ThinkPad存在、启用、本地类型；PasswordRequired=false不说明空密码。
+1326具体原因仍未证实，不再对空日志窗口重复扫描。
 
-下一任务：R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013_2101 — **SAM 已回执**
-执行电脑=SAM；ZHANGWEI=HOLD，本机无新执行任务。
-指令：agents/chatgpt/outbox/R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013_2101.md
-回执目录：`agents/chatgpt/inbox/R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013/`（SAM_REPORT.md + JSON + 只读脚本 + FILE_SHA256.json）
-摘要：Security 4625 窗口内 0 条（LogonType=3 过滤后 0）；AUTH_FAILURE_CAUSE=NO_MATCHING_EVENT；SMBServer 通道元数据读取 Unauthorized；E_DRIVE/D_DRIVE Everyone Full（只读摘要）。
+已发布：R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137
+执行电脑=ZHANGWEI；SAM=HOLD。
+指令：agents/chatgpt/outbox/R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137.md
+已提供原生WNet交互脚本并完成语法/假API四场景验证；密码参数NULL，由Windows原生UI接收本地输入。
+等待：agents/chatgpt/inbox/R9_DESKTOP_NATIVE_SMB_LOGIN_20261013/ZHANGWEI_REPORT.md
+本轮允许正常来源认证会话+只读metadata；不修改密码/ACL/Guest策略/网络。
+输入尚未完成时状态USER_LOCAL_INPUT_PENDING，不收HUB/聊天密码。
 
-COPY_AUTHORIZED=false；FORMAT_DONE=false；FULL_MIGRATION=false；实盘NOT_RUN。
-仍准备期，不格式化、不复制。
+COPY_AUTHORIZED=false；FORMAT_DONE=false；FULL_MIGRATION=false；业务实盘写入NOT_RUN。
+仍准备期，不格式化、不复制。认证成功不能自动进入数据迁移。
