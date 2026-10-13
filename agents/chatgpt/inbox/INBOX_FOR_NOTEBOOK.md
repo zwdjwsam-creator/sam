@@ -1,9 +1,15 @@
-# SAM 笔记本 AI｜源链接/共享事实已回传，待命
+# SAM笔记本AI｜事实已审核，停止待命
 
-task_id: R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957
-status: DONE_READONLY
-LINK_TYPES_VERIFIED: true
-DESKTOP_SMB_ACCESS_VERIFIED: false
-report: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013/SAM_REPORT.md
+completed_task: R9_NOTEBOOK_SOURCE_LINK_AND_SHARE_FACTS_20261013_1957
+status: HOLD_SOURCE_FACTS_ACCEPTED
+active_host: ZHANGWEI
+active_task: R9_DESKTOP_BIND_SOURCE_FACTS_AND_FINAL_PREP_20261013_2016
+instruction: agents/chatgpt/outbox/R9_DESKTOP_BIND_SOURCE_FACTS_AND_FINAL_PREP_20261013_2016.md
 
-COPY_AUTHORIZED=false。已停止，等待 ChatGPT 审核后调度台式机。
+16项数字tag/目标/R3逐条匹配，4份文件原始SHA及大小已独立核验全部通过。
+任务交回台式机接入sidecar/source合同并完成代码绑定，SAM停止待命。
+保留源E/D及元数据，不再导出/扫描，不修改共享/密码/网络，不复制。
+COPY_AUTHORIZED=false
+FORMAT_DONE=false
+FULL_MIGRATION=false
+DESKTOP_SMB_ACCESS_VERIFIED=false
