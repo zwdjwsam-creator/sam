@@ -1,15 +1,11 @@
-# SAM笔记本AI｜源账号事实已审核，停止待命
+# SAM笔记本AI｜HOLD
 
-completed_task: R9_NOTEBOOK_SMB_AUTH_EVENT_READONLY_20261013_2101
-status: HOLD_AUTH_FACTS_REVIEWED
+status: HOLD
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137
-instruction: agents/chatgpt/outbox/R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137.md
+active_task: R9_DESKTOP_REUSE_SMB_CREDENTIALS_20261013_2222
+instruction: agents/chatgpt/outbox/R9_DESKTOP_REUSE_SMB_CREDENTIALS_20261013_2222.md
 
-5份日志/账号/建议/脚本SHA及大小已独立核验通过。
-无匹配4625不证明密码错误；SMBServer读取Unauthorized也不证明日志不存在。
-SAM\ThinkPad存在且Enabled，PasswordRequired=false不证明空密码。
-任务交桌面，通过Windows原生窗口让用户本地输入来源凭据；SAM停止待命，不改账号/密码/共享/网络。
+旧手动输入密码任务已被替代。台式机先自动复用既有 SAM 共享会话/相关保存凭据；SAM 暂无新执行任务，继续待命。若桌面确证需笔记本查找相关既存凭据，等待 HUB 单独发令。不得上传秘密，不改账号/密码/共享/网络。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
