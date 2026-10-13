@@ -1,3 +1,13 @@
+# SAM笔记本当前MWB任务：纠正旧收件脚本错路由（2026-10-13）
+
+【首要指令】`agents/chatgpt/outbox/MWB_SAM_ROUTING_FIX_20261013.md`
+【真正要安装的任务】`agents/chatgpt/outbox/MWB_INSTALL_SAM_NOTEBOOK_C_20261013.md`
+截图中 `外部大脑信箱_fetch_outbox.py` 读到 `BLACKBOX_RAW_NONE_...` 并命中 `qmt HARD_BLOCK` 属于**历史BLACKBOX邮件**，绝非MWB任务。不要关闭此门禁，也不要运行旧信箱以领取MWB。
+请直接通过现有GitHub连接读取上述精准文件，安装/复用PowerToys+Mouse Without Borders到**笔记本C盘**。只写 `C:\LAN_SHARE_REPORT\MWB_INSTALL_SAM_20261013\` 和C盘官方安装位置。**不能继续向 `E:\BLACKBOX\运行\外部大脑信箱\` staging写文件，已落盘旧文件保持原样不删不改。** E/D业务源只读，R9 HOLD。
+回报 `agents/chatgpt/inbox/MWB_INSTALL_SAM_20261013/SAM_REPORT.md`。旧R9指令均为历史参考，不自动执行。
+
+---
+
 # SAM 笔记本 — Mouse Without Borders 安装任务（2026-10-13）
 
 唯一新任务：`MWB_INSTALL_SAM_NOTEBOOK_C_20261013`
