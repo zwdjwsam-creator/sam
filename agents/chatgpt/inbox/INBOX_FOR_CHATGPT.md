@@ -1,24 +1,11 @@
-# INBOX_FOR_CHATGPT — HUB GPT VIEW PING
+# INBOX_FOR_CHATGPT — MWB ZHANGWEI desktop install report
 
-status: WAITING_GPT_CONFIRM
-test_id: HUB_GPT_VIEW_PING_20261012T053452Z
-host: DESKTOP_CURSOR
-scope: COMMUNICATION_READ_TEST_ONLY
-copy_authorized: false
-r9_hold: true
-
-## 给 ChatGPT 的最短指令
-请打开并阅读下面这个公开 URL，然后在对话中复述其中的 test_id：
-
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/HUB_GPT_VIEW_PING_20261012/PING.md
-
-tree:
-https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/HUB_GPT_VIEW_PING_20261012
-
-若可读，回复：
-CONFIRMED_VIEWED_HUB
-test_id: HUB_GPT_VIEW_PING_20261012T053452Z
-
-## 约束
-- 只读确认，不执行 BLACKBOX 实盘/下载/删除
-- GPT 无写仓权限；确认可读即可，或由用户代贴 outbox
+status: WAITING_FOR_PRIVATE_KEY
+task_id: MWB_INSTALL_ZHANGWEI_DESKTOP_C_20261013
+host: ZHANGWEI
+report: agents/chatgpt/inbox/MWB_INSTALL_ZHANGWEI_20261013/ZHANGWEI_REPORT.md
+status_json: agents/chatgpt/inbox/MWB_INSTALL_ZHANGWEI_20261013/STATUS.json
+summary: PowerToys/MWB reused on C: and enabled; pairing blocked until SAM New Key via private channel.
+SECRET_EXPOSED: false
+R9_HOLD_UNCHANGED: true
+COPY_AUTHORIZED: false
