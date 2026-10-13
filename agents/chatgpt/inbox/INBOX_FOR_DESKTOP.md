@@ -1,21 +1,15 @@
-# ZHANGWEI台式机｜原生Windows认证与只读来源核验
+# ZHANGWEI台式机｜自动复用历史共享凭据
 
-task_id: R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137
-target: ZHANGWEI
+task_id: R9_DESKTOP_REUSE_SMB_CREDENTIALS_20261013_2222
+execution_host: ZHANGWEI
 status: READY
-phase: SOURCE_AUTH_INTERACTIVE_READONLY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_REUSE_SMB_CREDENTIALS_20261013_2222.md
 SAM: HOLD
+supersedes: R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137
 
-有后续任务，执行电脑回台式机。
-SAM回执无匹配4625，SMBServer元数据Unauthorized，具体1326根因未证实；已确认SAM\ThinkPad为存在且启用的本地来源账号。
-用HUB现成r9_native_smb_login.py只启动一次Windows原生凭据流程，密码由用户在本机原生窗口输入，不进脚本参数/日志/HUB。
-脚本有语法和假API成功/取消/1326/错卷测试；实际认证只由本轮执行。
-窗口待输入先回传USER_LOCAL_INPUT_PENDING；取消/失败不循环重试、不改密码/Guest/共享/网络。
-成功后E/D来源根及各一个计划文件仅metadata核验，不读业务payload。
+用户撤销手动输入要求。先取消旧任务唯一等待窗口/经确认的进程，再查找并自动复用以前使用过的 SAM 相关 SMB 会话和保存凭据。全程非交互，不再等用户输入；秘密只在本机使用，不进入 HUB/聊天/日志。没有可复用记录则精确回报阻塞，不猜密码、不改账号/安全策略。成功后只读分别核验 E/D 来源根及各一个计划文件元数据。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
 WRITE_TESTS_NOT_RUN=true
-仍准备期，不格式化、不复制、不实盘链接试验、不在E写入。
-回执：agents/chatgpt/inbox/R9_DESKTOP_NATIVE_SMB_LOGIN_20261013/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_REUSE_SMB_CREDENTIALS_20261013/ZHANGWEI_REPORT.md
