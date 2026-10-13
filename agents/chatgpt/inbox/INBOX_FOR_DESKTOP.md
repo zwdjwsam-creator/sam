@@ -1,3 +1,14 @@
+# 最新唯一任务：恢复笔记本键鼠跨到台式机（2026-10-13）
+
+task_id: `MWB_RESTORE_SAM_FROM_DESKTOP_REFRESH_20261013`
+status: READY
+target: ZHANGWEI（台式机 Cursor）
+instruction: `agents/chatgpt/outbox/MWB_RESTORE_SAM_FROM_DESKTOP_REFRESH_20261013.md`
+
+重要：用户最新确认，台式机执行MWB关闭/开启后，笔记本SAM原本可正常跨到台式机的鼠标键盘现在都失效。**立即停止上轮 `MWB_ZHANGWEI_QUICK_FIX_20261013`**。本轮只按微软官方在台式机MWB点一次 `Refresh connections`，验证SAM物理鼠标键盘进入台式机。不可再次开关模块、改密钥/网络/屏幕排列、重装；不要继续折腾台式机物理鼠标回程，先恢复SAM已曾成功的功能。报告 `agents/chatgpt/inbox/MWB_RESTORE_SAM_FROM_DESKTOP_REFRESH_20261013/ZHANGWEI_REPORT.md`。R9 HOLD、COPY_AUTHORIZED=false。
+
+---
+
 # ZHANGWEI 台式机 — 最新唯一任务：MWB 鼠标返回快速修复（2026-10-13）
 
 task_id: `MWB_ZHANGWEI_QUICK_FIX_20261013`
