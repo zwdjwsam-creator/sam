@@ -1,0 +1,66 @@
+{
+  "task_id": "R9_DESKTOP_POSTFORMAT_BIND_AND_PILOT_PLAN_20261014_1109",
+  "observation_only": true,
+  "copy_authorized": false,
+  "format_done_user_reported": true,
+  "target_postformat_verified": true,
+  "blocked": false,
+  "context": "zhangwei\\admin unelevated",
+  "physical_disk": {
+    "number": 0,
+    "friendly_name": "WD_BLACK SN850X 4000GB",
+    "unique_id": "eui.E8238FA6BF530001001B448B42E694AE",
+    "unique_id_matches_expected": true,
+    "disk_size_bytes": 4000787030016,
+    "partition_style": "GPT",
+    "operational_status": "Online"
+  },
+  "partition": {
+    "disk_number": 0,
+    "partition_number": 2,
+    "drive_letter": "E",
+    "offset_bytes": 16777216,
+    "size_bytes": 4000769376256,
+    "gpt_type": "{ebd0a0a2-b9e5-4433-87c0-68b6b72699c7}",
+    "guid": "{b8545ee8-e403-48c6-9d3f-09afd3e0349f}",
+    "guid_is_historical_and_not_authorization": true
+  },
+  "volume": {
+    "label": "MarketData",
+    "filesystem": "NTFS",
+    "serial_dword": 3630886530,
+    "serial_hex": "D86AEE82",
+    "historical_serial_hex_not_reused": "806508DF",
+    "serial_differs_from_historical": true,
+    "cluster_bytes": 4096,
+    "bytes_per_sector": 512,
+    "volume_size_bytes": 4000769372160,
+    "free_bytes": 4000538427392,
+    "health": "Healthy",
+    "volume_size_equals_task_capacity_figure": true,
+    "disk_size_is_separate": true
+  },
+  "root_listing_one_level": [
+    {"name": "System Volume Information", "attributes": "Hidden, System, Directory"}
+  ],
+  "business_directories_present": false,
+  "e_pilot_directory_created": false,
+  "sources_rechecked": [
+    {"path": "\\\\192.168.100.2\\E_DRIVE\\BLACKBOX", "volume_serial": 2387166462, "ok": true},
+    {"path": "\\\\192.168.100.2\\D_DRIVE", "volume_serial": 3187598165, "ok": true}
+  ],
+  "ipc_disconnected": false,
+  "plan": {
+    "path": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_EXECUTOR_DEV_20261013\\plan_v2\\MERGED_PLAN.sqlite",
+    "bytes": 6025072640,
+    "wal_bytes": 0,
+    "sha256_reused_from": "FINAL_PLAN_BINDING.json 2026-10-13, file size and empty WAL unchanged, not rehashed",
+    "sha256": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba"
+  },
+  "required_future_identity": {
+    "dest_volume_serial_hex": "D86AEE82",
+    "dest_disk_unique_id": "eui.E8238FA6BF530001001B448B42E694AE",
+    "dest_root_not_created": "E:\\R9_POSTFORMAT_PILOT_20261014",
+    "old_run_state_invalid": true
+  }
+}
