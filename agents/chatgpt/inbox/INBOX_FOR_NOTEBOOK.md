@@ -1,17 +1,19 @@
-# SAM｜只核实234条差异并整理来源交接
+# SAM｜0641退回补齐，只做有限证据与来源patch
 
 task_id: R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641
+followup_id: R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711
 execution_host: SAM
 status: READY
+review_status: PARTIAL_REQUIRED_EVIDENCE_MISSING
 instruction: agents/chatgpt/outbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641.md
-previous_task: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
-previous_status: ENUMERATION_COMPLETE_DELTA_UNDER_REVIEW
+followup: agents/chatgpt/outbox/R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711.md
 ZHANGWEI: HOLD
 
-全范围扫描已03:58结束，8953561路径、队列0、目录错误0。八份交付hash和234条差异已审核。
-本轮不重扫、不重传/重验6GB基线、不测速/复制。仅核实234条：141大小差异中127条显示2字节、13条0字节，先独立只读复核真实大小，不能直接判损坏或正常更新；42缺失集中旧delta链接范围，先判逻辑别名/实体缺失；51新增主要邮箱/规则与一个根目录。代码必须实际上传可读，不仅本机路径。
-若0/2字节属实，不恢复/覆盖，不静默当正确版本迁移，报告事实及阻塞。整理来源计划更新交接后停止。所有新文件在C，来源只读。
-先ACK，回传 agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/SAM_REPORT.md。
+接受主扫描完成、51新增分类，以及42路径现场可访问且存在当前同身份候选；不将42当实体丢失。
+未接受COMPLETE/BLOCK none：140小文件仅给live_size，无双方法/实际读字节SHA/前后身份证据；42表无数值身份绑定和具体普通来源代表。原任务这些要求尚未交齐。
+按followup一次补齐：140小文件只读实读及独立size证明、42实体与链接视图绑定、现有C库字段完整性聚合、机器可读SOURCE_PLAN_PATCH。不得重扫/再传或反复hash6GB基线/测速/复制。140全为92py、23md、17json、7csv、1mdc，旧合计约2.79MB，不把本发现泛化为行情parquet丢失。
+确认0/2属实时保留当前来源事实、标SUSPECT_VERSION，报告原样迁移或先找旧版的待选择项，不自行恢复/覆盖/跳过，不把历史版本恢复扩成新的复制程序开发。
+先ACK本补充；回传仍为 agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/。完成停止。
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
