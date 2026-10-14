@@ -1,0 +1,77 @@
+{
+  "task_id": "R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641",
+  "updated_at": "2026-10-15T06:50:39+0800",
+  "COPY_AUTHORIZED": false,
+  "FULL_MIGRATION": false,
+  "ZHANGWEI": "HOLD",
+  "IMPLEMENTATION_READY": false,
+  "CANDIDATE_EXECUTABLE": false,
+  "full_plan_acceptance": false,
+  "SOURCE_SCAN_STABILITY": "UNPROVEN",
+  "HISTORICAL_CONTENT_MATCH": "UNPROVEN",
+  "parent_status": "COMPLETE_WITH_234_DELTAS",
+  "what_must_change_in_source_plan": [
+    {
+      "topic": "SIZE_MISMATCH_TINY_0_2",
+      "action": "Treat enum current size 0/2 as SUSPICIOUS until dual-method size proof; do NOT accept as correct new version for migration selection",
+      "counts": {
+        "930→1201": 1,
+        "c=2": 127,
+        "c=0": 13
+      },
+      "verdicts": {
+        "PLAUSIBLE_ORDINARY_FILE_GROWTH": 1,
+        "SUSPICIOUS_TINY_CONFIRMED_LIVE_MATCH_ENUM": 140
+      }
+    },
+    {
+      "topic": "SIZE_FIELD_SEMANTICS",
+      "action": "Separate ordinary-file size compare from dir/reparse logical_size field semantics in plan compare rules"
+    },
+    {
+      "topic": "MISSING_FUND_NAV_PIT",
+      "action": "Keep 42 MISSING as unresolved link-view vs ordinary identity under FUND_NAV_PIT release three products; do not authorize delete/recreate from delta alone",
+      "by_verdict": {
+        "LIVE_ORDINARY_PRESENT_ENUM_GAP": 42
+      },
+      "by_product": {
+        "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1": 15,
+        "CORP_SHAREHOLDER_TOP10_PIT_R1": 15,
+        "INDEX_WEIGHT_PIT_R1": 12
+      }
+    },
+    {
+      "topic": "ADDED_MAILBOX_AND_HUB",
+      "action": "Accept ADDED mailbox/HUB-rule/pit_products root as post-baseline workspace growth candidates only after plan update; not migration blockers by themselves",
+      "buckets": {
+        "PIT_PRODUCTS_ROOT": 1,
+        "HUB_RULE": 1,
+        "MAILBOX": 49
+      },
+      "buckets_match_expected": true
+    },
+    {
+      "topic": "NO_AUTO_MIGRATE",
+      "action": "Plan remains metadata candidate only; desktop ZHANGWEI HOLD; no full migration binding"
+    }
+  ],
+  "real_vs_unresolved": {
+    "likely_real_ordinary_changes": [
+      "PLAUSIBLE_ORDINARY_FILE_GROWTH"
+    ],
+    "unresolved_or_suspicious": [
+      "SUSPICIOUS_TINY_CONFIRMED_LIVE_MATCH_ENUM"
+    ],
+    "missing_unresolved_policy": "TRUE_MISSING not proven; alias candidates noted without treating as content identity proof"
+  },
+  "blocks": [],
+  "do_not": [
+    "full tree rescan",
+    "copy/speed tests",
+    "password collection",
+    "desktop E write",
+    "source E/D writes",
+    "auto-accept 0/2-byte as correct",
+    "dispatch ZHANGWEI desktop"
+  ]
+}
