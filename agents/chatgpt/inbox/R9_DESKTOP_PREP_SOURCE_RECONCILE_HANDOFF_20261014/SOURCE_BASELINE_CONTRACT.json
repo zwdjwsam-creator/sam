@@ -1,0 +1,175 @@
+{
+  "task_id": "R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231",
+  "baseline": {
+    "path": "C:\\LAN_SHARE_REPORT\\R9_SOURCE_RECONCILE_HANDOFF_20261014\\share\\SOURCE_BASELINE.sqlite",
+    "sha256": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+    "bytes": 6025072640,
+    "wal_bytes": 0,
+    "journal_bytes": 0,
+    "quick_check": "ok",
+    "source_plan": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_EXECUTOR_DEV_20261013\\plan_v2\\MERGED_PLAN.sqlite",
+    "source_plan_sha256_before": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+    "source_plan_sha256_after": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+    "candidate_sha256_before": "e6c49ecdf925c923351267883db7bfb2cf83ed7e02f2038ec4bd997ef2f43be2",
+    "candidate_sha256_after": "e6c49ecdf925c923351267883db7bfb2cf83ed7e02f2038ec4bd997ef2f43be2",
+    "copied_not_checkpointed": true
+  },
+  "scope_sha256": "e03948d4a23aa2bd63c4d4b7644e3682e06a22c5fa64b1595892bdbcb284607f",
+  "schema": {
+    "paths": [
+      "path",
+      "is_dir",
+      "is_reparse",
+      "logical_size",
+      "alloc_size",
+      "volume_serial",
+      "file_id",
+      "nlinks",
+      "reparse_target",
+      "source"
+    ],
+    "links": [
+      "path",
+      "target",
+      "source",
+      "mapped_dest",
+      "status",
+      "map_id",
+      "original_target",
+      "migrated_link_path",
+      "migrated_target",
+      "map_source",
+      "content_files",
+      "delta_files",
+      "reparse_tag",
+      "tag_source"
+    ],
+    "entities": [
+      "volume_serial",
+      "file_id",
+      "path_count",
+      "min_size",
+      "max_size",
+      "max_nlinks",
+      "d_paths",
+      "delta_paths"
+    ],
+    "index": "ix_entity ON paths(is_dir, is_reparse, volume_serial, file_id)",
+    "mtime_column": false,
+    "content_hash_column": false
+  },
+  "counts": {
+    "files": 8715067,
+    "ordinary_directories": 233660,
+    "reparse_points": 4825,
+    "empty_ordinary_directories": 754,
+    "entities": 1223721,
+    "unique_content_bytes_sum_min_size": 365007198749,
+    "entities_with_min_size_ne_max_size": 0
+  },
+  "volume_serial_rows": {
+    "E_ordinary_files": {
+      "volume_serial": "2387166462",
+      "rows": 8680322
+    },
+    "D_ordinary_files": {
+      "volume_serial": "3187598165",
+      "rows": 34745
+    },
+    "D_ordinary_directories": {
+      "volume_serial": "3187598165",
+      "rows": 10637
+    },
+    "E_ordinary_directories_and_E_reparse_rows": {
+      "stored_volume_serial": "11708076955747828990",
+      "directory_rows": 223023,
+      "reparse_rows": 4809,
+      "low32": 2387166462,
+      "high32": 2725999093,
+      "compare_rule": "The low 32 bits are the E source volume 2387166462. Live no-follow metadata should report that DWORD. Do not record a source change only because the live DWORD differs from the stored 64-bit text. Compare file_id, path, type, and size."
+    },
+    "D_reparse_rows": {
+      "rows": 16,
+      "volume_serial": null,
+      "file_id": null,
+      "compare_rule": "Identity is the links row: path, target, and reparse_tag. Null file identity in paths is how the baseline stored these 16 rows."
+    }
+  },
+  "reparse_tag": {
+    "value": 2684354563,
+    "hex": "0xA0000003",
+    "kind": "junction",
+    "rows": 4825
+  },
+  "path_mapping_for_a_later_copy_executor": {
+    "E_inventory": "E:\\BLACKBOX",
+    "E_unc": "\\\\192.168.100.2\\E_DRIVE\\BLACKBOX",
+    "E_dest": "E:\\BLACKBOX",
+    "D_inventory": "D:\\",
+    "D_unc": "\\\\192.168.100.2\\D_DRIVE",
+    "D_dest": "E:\\BLACKBOX_ENGINES",
+    "do_not_use": [
+      "D$",
+      "an E_DRIVE_share field that is not the share name E_DRIVE"
+    ]
+  },
+  "sam_reconcile_uses_local_drives": {
+    "E": "E:\\BLACKBOX",
+    "D_regular": [
+      "D:\\BLACKBOX_DESKTOP_INIT_R1",
+      "D:\\BLACKBOX_REMOTE_LINK_R1",
+      "D:\\JQ",
+      "D:\\backtest_lab",
+      "D:\\backtest_lab_backups",
+      "D:\\backtest_lab_candidate_releases",
+      "D:\\backtest_lab_shadow_experiments",
+      "D:\\blackbox_data"
+    ],
+    "D_partial": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products",
+    "do_not_scan_from_desktop_over_smb": true
+  },
+  "inputs_for_rebuild_if_the_baseline_file_cannot_be_read": {
+    "use_the_94e6_baseline_if_its_sha_matches": true,
+    "e_base_snapshot": {
+      "recorded_path": "C:\\LAN_SHARE_REPORT\\R9_E_INPUT_BIND_AND_DELTA_20261013\\snapshots\\filesystem_inventory.RO_SNAPSHOT.sqlite",
+      "recorded_sha256": "a5590154ed4da7b45c1ad19dfe82989cd2bb058702aad9b6ea58c2868d0a5572",
+      "recorded_bytes": 9376645120,
+      "present_on_this_desktop": false,
+      "rehashed_this_round": false,
+      "live_index_not_opened": "E:\\BLACKBOX_MIGRATION_AUDIT_R1\\metadata\\filesystem_inventory.sqlite"
+    },
+    "e_delta_canonical": {
+      "path": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_EXECUTOR_DEV_20261013\\input_v2\\E_DELTA_CANONICAL.sqlite",
+      "sha256": "aa58ed8bd7b22e015a041133007a9b031514eb82baf27d80ace0e48f2a48bd1c",
+      "bytes": 86016,
+      "rehashed_this_round": true,
+      "wal_bytes": 0
+    },
+    "e_delta_historical_not_canonical": {
+      "path": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_EXECUTOR_DEV_20261013\\input_from_hub\\E_DELTA_16_D_TO_E.sqlite",
+      "sha256": "9f1a37f945e80682a93190565e553bdef61bf8451b96216c2686c1d3e8887ad6",
+      "bytes": 86016,
+      "note": "Older delta file. The canonical handoff delta is aa58ed8b."
+    },
+    "d_repaired": {
+      "path": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_EXECUTOR_DEV_20261013\\input_v2\\D_REPAIRED_SNAPSHOT.sqlite",
+      "sha256": "4c094df43ca348acdc89498a49660ad9120d7ca3ef9bfe21f8b3c9e414257795",
+      "bytes": 48635904,
+      "gz_sha256": "d0a17dc4dd76c9d825d01015ffd17cbd207565aceb13faa2c8ad22a72f98d3f3",
+      "gz_bytes": 3589403,
+      "wal_bytes": 0,
+      "shm_bytes": 32768,
+      "rehashed_this_round": true,
+      "do_not_use_unrepaired_sha256": "787b14d267b3b167b37695adbdffaba96c719ed50bf64659ba4ba3828f630d39"
+    }
+  },
+  "usn_incremental_anchor": "ABSENT",
+  "code_digest_unchanged": "a1ce1ae5e2d0490d6b6c415917200f7c84bb502d9befb397a38fe974e43e5bfd",
+  "production_code_modified": false,
+  "SOURCE_CURRENT_MATCH": "NOT_RUN",
+  "full_plan_acceptance": false,
+  "COPY_AUTHORIZED": false,
+  "FULL_MIGRATION": false,
+  "IMPLEMENTATION_READY": false,
+  "CANDIDATE_EXECUTABLE": false
+}
