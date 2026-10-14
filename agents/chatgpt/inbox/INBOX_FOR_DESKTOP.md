@@ -1,15 +1,15 @@
-# ZHANGWEI｜修复真实后端与错误验收通过
+# ZHANGWEI｜限定真实小样本试验
 
-task_id: R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014_1147
+task_id: R9_DESKTOP_REAL_BOUNDED_PILOT_20261014_1232
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014_1147.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_BOUNDED_PILOT_20261014_1232.md
+authorization_contract: agents/chatgpt/outbox/R9_DESKTOP_REAL_BOUNDED_PILOT_20261014_1232/PILOT_EXECUTION_CONTRACT.json
 SAM: HOLD
 
-1124包审核仍未通过：runner明确拒绝Win32；现场probe未查物理盘/祖先；accept_pilot对错误hash/size仍通过（独立复现）；Win32无dest_volume且内容hash未实现；合同缺run、mtime非本次现场采集。
-本轮按A-E补齐真实路径、独立验收与不绕过现场函数的测试。仍限定原2实体40路径。C上改码及假OS隔离验证，E不写。
+1147包代码与哈希复核通过；已独立重跑9项限定入口测试。本轮批准真实初次运行+一次正常重跑，仅新卷D86AEE82的E:\R9_POSTFORMAT_PILOT_20261014：2实体9312字节、40普通路径、3目录、38alias、无junction。只用已审code/sample与本任务新run合同；先实时核验目标、确认初始目录/状态不存在。错误即STOP保留证据，成功后待审，不扩容。
+PILOT_WRITE_AUTHORIZED=true (TASK_SCOPE_ONLY)
 COPY_AUTHORIZED=false
-PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-回执：agents/chatgpt/inbox/R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_REAL_BOUNDED_PILOT_20261014/ZHANGWEI_REPORT.md
