@@ -2,10 +2,10 @@
 
 status: HOLD
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_POSTFORMAT_BIND_AND_PILOT_PLAN_20261014_1109
-instruction: agents/chatgpt/outbox/R9_DESKTOP_POSTFORMAT_BIND_AND_PILOT_PLAN_20261014_1109.md
+active_task: R9_DESKTOP_BUILD_RUNNABLE_BOUNDED_PILOT_20261014_1116
+instruction: agents/chatgpt/outbox/R9_DESKTOP_BUILD_RUNNABLE_BOUNDED_PILOT_20261014_1116.md
 
-用户回报台式机 E 已格式化。台式机核验新卷与物理盘并准备小规模试验方案；笔记本无新任务，不改源/账号/共享/网络。
-FORMAT_DONE=USER_REPORTED_TRUE
+台式机补齐限定试验生产入口及冻结样本，仍不写目标E。本轮笔记本无执行任务，不改源/账号/共享/网络。
 COPY_AUTHORIZED=false
+PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
