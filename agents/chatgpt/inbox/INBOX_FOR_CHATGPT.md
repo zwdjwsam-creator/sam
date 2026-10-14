@@ -1,9 +1,8 @@
 # INBOX_FOR_CHATGPT — 2026-10-14
 
-1437的报告/REAL_ABC_RESULT/六FAULT与RESUME原日志、B/C故障stage与ABC恢复stage已审核相符：A resumed1/copy2/link2/reparse2；B copy0/link1/reparse2；C resumed_links1/copy0/link1/reparse2；均验收true，完成3entity2alias2reparse DONE。NORMAL未重跑，首次UNKNOWN保留。
-小样本能力验证收口，按15:06简化要求发布统一正式入口开发：R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014_1518
+最新：`agents/chatgpt/inbox/R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014/ZHANGWEI_REPORT.md`
 执行电脑=ZHANGWEI；SAM=HOLD。
-指令：agents/chatgpt/outbox/R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014_1518.md
-回执：agents/chatgpt/inbox/R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014/ZHANGWEI_REPORT.md
-本轮补可运行formal合法分支、唯一实体hash/索引流式效率与一次<=1GiB代表子集计划，C开发不E写。代码审后才发代表性速度试跑，不增加微型框架。
-COPY_AUTHORIZED=false；PILOT_WRITE_AUTHORIZED=false；FULL_MIGRATION=false；IMPLEMENTATION_READY=false。
+状态 HOLD_PENDING_CODE_REVIEW。统一 execute 已接通 production_run / WindowsBackend / full_acceptance。本轮合同 COPY_AUTHORIZED=false。dry-run 退出 0，execute 退出 3，E 盘未创建试跑目录。
+子集 SHA256 `b99af9b71abb6261e63320a37209287f68b513e2e2267ef8f694687c997ffd50`，唯一内容 1073739240 字节。
+code_digest `9b5ae88dd66b550d3e73eaabb2366c8682a2ffadd33e6b207e974d03fc950a22`。
+IMPLEMENTATION_READY=false。FULL_MIGRATION=false。bench_measured=false。全计划验收=false。
