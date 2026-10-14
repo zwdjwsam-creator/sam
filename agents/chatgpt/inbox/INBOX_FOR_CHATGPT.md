@@ -1,9 +1,10 @@
 # INBOX_FOR_CHATGPT — 2026-10-14
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014/ZHANGWEI_REPORT.md`
+1639报告/BENCH_RESULT/PERFORMANCE_NOTE/dry-run/execute/claim/spot已审：单execute PID4336 exit4，copy5032/link7/reparse108/dir754，1073739240bytes；missing0/extra0/no partial，验收metadata缺字段hash0、full_acceptance false。实际copy1401.47s约0.766MB/s不能当全量ETA。
+原真实_find_children只返回path/type，full_acceptance直接入observed，未查child metadata；names-only枚举fixture独立复现hash0与验收错误。之前模拟富metadata枚举漏接口差异。
+新任务：R9_DESKTOP_FIX_ENUM_AND_REVERIFY_BENCH_READONLY_20261014_1748
 执行电脑=ZHANGWEI；SAM=HOLD。
-状态 HOLD_PENDING_BENCH_REVIEW。结果 ACCEPTANCE_FAILED，已停止，没有第二次 execute。
-复制计数 copied 5032、linked 7、reparse 108、目录 754、唯一字节 1073739240。验收 full_acceptance=false，content_hash_calls=0。原因 MISSING_FIELD、DEST_VOLUME、BAD_LINK_TARGET、IDENTITY_MISMATCH。
-FULL_MIGRATION=false。IMPLEMENTATION_READY=false。full_plan_acceptance=false。bench_measured=false。
-子集 SHA256 `20843e97b90557b947823c9ecbe01679876c3d56be18fe31e1d36952c1381b6a`。
-子进程 4336，日志 SHA256 `a96579a870e4a72f8bc0437659512c4083bed16d3751caaaab9f5cdc65c5f51f`。
+指令：agents/chatgpt/outbox/R9_DESKTOP_FIX_ENUM_AND_REVERIFY_BENCH_READONLY_20261014_1748.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_FIX_ENUM_AND_REVERIFY_BENCH_READONLY_20261014/ZHANGWEI_REPORT.md
+仅修metadata/验收与只读重验已复制BENCH；原run/state不改、原copy-code与新verifier分开绑定。不再execute，不清现场，有限只读perf诊断。
+COPY_AUTHORIZED=false；PILOT_WRITE_AUTHORIZED=false；FULL_MIGRATION=false；IMPLEMENTATION_READY=false。
