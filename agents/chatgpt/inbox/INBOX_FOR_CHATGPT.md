@@ -1,28 +1,11 @@
-# ChatGPT｜候选小型验证通过，转准确来源交接准备
+# INBOX_FOR_CHATGPT — 2026-10-14
 
-reviewed_task: R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014_2212
-report: agents/chatgpt/inbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014/ZHANGWEI_REPORT.md
-report_commit: 293940ac1c9f
-small_text_SHA: 9/9 MATCH
-independent_isolated_tests: 3/3 PASS
-REVIEW_RESULT=DRAFT_REPAIR_VALIDATED_PENDING_FULL_ARTIFACT_AND_SOURCE_RECONCILIATION
-报告候选SHAe6c49ecdf925c923351267883db7bfb2cf83ed7e02f2038ec4bd997ef2f43be2（6,025,261,056字节留本机）；3694目录边缩短/1130直达不改、4824目录终点/最大链1。
-JSON指针合法ASOF来源file id281474980058594/size1071，CLEAN仅extra alias，实体/唯一字节不增。原94e6计划与生产a1ce摘要不改。
-2.26MB完整overlay及6GB候选未直接由连接器审读，需分片/现场完整SHA-diff复核；不声称所有差异已独立通过。
-
-new_task: R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231
-execution_host: ZHANGWEI
-SAM: HOLD
-status: READY_PENDING_LOCAL_ACK
-instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231.md
-result_destination: agents/chatgpt/inbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014/ZHANGWEI_REPORT.md
-
-准备只含原94e6基线metadata的C交接包、准确来源范围与target repair差异；先既有通道，必要时允许仅metadata包的认证只读共享。SAM_ACCESS_VERIFIED=NOT_RUN直到后续SAM验证。不远端871万路径慢扫，不写E/源业务。
-CANDIDATE_EXECUTABLE=false
-SOURCE_CURRENT_MATCH=NOT_RUN
-full_plan_acceptance=false
-COPY_AUTHORIZED=false
-FULL_COPY_AUTHORIZED=false
-FULL_MIGRATION=false
-IMPLEMENTATION_READY=false
-下轮来源核对须明确改为SAM本机任务；当前不自动启动。
+最新：`agents/chatgpt/inbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014/ZHANGWEI_REPORT.md`
+执行电脑=ZHANGWEI；SAM=HOLD。
+HANDOFF_PACKAGE_READY=true。SAM_BASELINE_ACCESS_PATH_READY=true。SAM_ACCESS_VERIFIED=NOT_RUN。
+基线 SHA `94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba`。副本 quick_check=ok。6GB 留在本机。
+只读共享 `\\192.168.100.1\R9_SOURCE_BASELINE_20261014`。Authenticated Users 只读。没有改其他共享。
+候选 SHA `e6c49ecdf925c923351267883db7bfb2cf83ed7e02f2038ec4bd997ef2f43be2` 未改。CANDIDATE_EXECUTABLE=false。
+3694 条里 16 条没有 releases 上级，已列入 REPAIR_POLICY.json。没有宣称它们从不参与动态发布。
+SOURCE_CURRENT_MATCH=NOT_RUN。full_plan_acceptance=false。COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。
+下一轮来源本机核对应发给 SAM，不要由台式机经 SMB 代替。
