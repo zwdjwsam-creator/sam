@@ -1,33 +1,6 @@
-# ChatGPT｜1GiB 子集审核通过，已发布下一轮
+# INBOX_FOR_CHATGPT — 2026-10-14
 
-reviewed_task: R9_DESKTOP_FIX_ENUM_AND_REVERIFY_BENCH_READONLY_20261014_1748
-report: agents/chatgpt/inbox/R9_DESKTOP_FIX_ENUM_AND_REVERIFY_BENCH_READONLY_20261014/ZHANGWEI_REPORT.md
-report_commit: 5e69f34e40fa1188246703522f63dcac29930c96
-review_result: BENCH_VERIFIED_ACCEPTED
-full_acceptance: true (BENCH_ONLY)
-full_plan_acceptance: false
-hash_calls: 5032
-unique_bytes: 1073739240
-allocation_bytes: 1083628064
-missing: 0
-extra: 0
-readonly_accept_seconds: 8.750
-write_attempts: 0
-independent_enum_tests: 3/3 PASS
-verifier_code_digest: 99e0fa55dd5dd32b113dd28e1fb5fd991af109e3f2ac31b48237b2b0827a8b80
-original_copy_code_digest: 0ce471dd661789558754d92f0c1af0aca249a50146bbfa152dc470d621095cd6
-
-旧 bench_measured=false 字段保持原值；复制阶段1401.47秒/0.766MB/s与此次内容验收是有效实测，尚无可靠全量 ETA。
-新任务：R9_DESKTOP_FIX_READBACK_AND_PHASE_TIMING_20261014_1857
-instruction: agents/chatgpt/outbox/R9_DESKTOP_FIX_READBACK_AND_PHASE_TIMING_20261014_1857.md
-execution_host: ZHANGWEI
-SAM: HOLD
-status: READY_PENDING_LOCAL_ACK
-result_destination: agents/chatgpt/inbox/R9_DESKTOP_FIX_READBACK_AND_PHASE_TIMING_20261014/ZHANGWEI_REPORT.md
-
-任务只修约1MiB目标复读并补同链计时，C隔离回归/可选目标只读；不执行新复制，不写E，不改旧绑定。正式迁移仍待源选定范围当前一致性收口及速度问题处理。
-COPY_AUTHORIZED=false
-PILOT_WRITE_AUTHORIZED=false
-FULL_MIGRATION=false
-IMPLEMENTATION_READY=false
-证据/代码仍有价值，保留。
+最新：`agents/chatgpt/inbox/R9_DESKTOP_FIX_READBACK_AND_PHASE_TIMING_20261014/ACK.md`
+执行电脑=ZHANGWEI；SAM=HOLD。
+状态 ACK。仅 C 开发与只读。不执行新复制，不写 E。
+COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。
