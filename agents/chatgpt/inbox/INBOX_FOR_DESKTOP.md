@@ -1,18 +1,16 @@
-# ZHANGWEI｜单次真实源预取1GiB试跑
+# ZHANGWEI｜完整计划只读放行前检查
 
-task_id: R9_DESKTOP_REAL_PREFETCH_BENCH_1G_20261014_2102
+task_id: R9_DESKTOP_FULL_PLAN_RELEASE_CHECK_READONLY_20261014_2123
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_PREFETCH_BENCH_1G_20261014_2102/TASK.md
-authorization_contract: agents/chatgpt/outbox/R9_DESKTOP_REAL_PREFETCH_BENCH_1G_20261014_2102/BENCH_AUTHORIZATION_CONTRACT.json
+instruction: agents/chatgpt/outbox/R9_DESKTOP_FULL_PLAN_RELEASE_CHECK_READONLY_20261014_2123.md
 SAM: HOLD
-COPY_AUTHORIZED=true (BENCH_ONLY_SINGLE_EXECUTE)
+COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
+PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
 
-2049已审：22份SHA/15模块digest一致，独立隔离20/20通过；混合恢复顺序和等待墙钟已修复。
-授权固定5032实体/1073739240字节写新根E:\R9_FORMAL_PREFETCH_BENCH_20261014，source_prefetch_workers=4，源句柄总峰值<=4，顺序复制/提交/校验不变。
-先ACK，核对代码/计划/目标绑定及root/state不存在。新合同一次dry-run通过后只启动一次execute，完整保存PID/claim/输出；失败不重试/恢复，完成停止。所有旧授权不复用、旧现场保留。
-真实速度按entity阶段/完整执行墙钟算；不得用排除了预取的copy_seconds高估速度。
-回传 agents/chatgpt/inbox/R9_DESKTOP_REAL_PREFETCH_BENCH_1G_20261014/ZHANGWEI_REPORT.md。单次execute首次启动即消费BENCH许可，全量未授权。
+2102实测已审：7份SHA、合同原文和日志/结果一致，验收hash5032、missing0/extra0、源峰值4。实体墙钟549.933秒/1.952492MBps，完整runner约比serial快1.7595倍；写授权已消费。速度试验收口，不再测复制。
+本轮基于C冻结全计划检查结构与4825条链接的实际本地映射闭合，明确选定D准确子树（不是一级目录全选），整理来源SAM本地当前一致性核对所需meta/USN锚点和范围。FULL门禁的默认closure.ok不当证明。
+C诊断脚本/报告可写；E和源不写，不远端逐文件重扫，不运行授权execute或改生产代码。先ACK，回传 agents/chatgpt/inbox/R9_DESKTOP_FULL_PLAN_RELEASE_CHECK_READONLY_20261014/ZHANGWEI_REPORT.md 后停止。
