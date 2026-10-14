@@ -1,15 +1,16 @@
-# 台式机 ZHANGWEI｜格式化后核验与试验方案
+# 台式机 ZHANGWEI｜补齐可运行小规模试验入口
 
-task_id: R9_DESKTOP_POSTFORMAT_BIND_AND_PILOT_PLAN_20261014_1109
+task_id: R9_DESKTOP_BUILD_RUNNABLE_BOUNDED_PILOT_20261014_1116
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_POSTFORMAT_BIND_AND_PILOT_PLAN_20261014_1109.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_BUILD_RUNNABLE_BOUNDED_PILOT_20261014_1116.md
 SAM: HOLD
 
-用户已回报台式机 E 格式化。只读核验 E 对应物理磁盘 UniqueId、容量及新卷身份；C 上生成新目标观测绑定与小规模生产链试验方案。旧卷绑定不得复用。本轮不向 E 写入，交付后待审。
+1109 目标新卷与2实体/40普通路径方案已审。容量更正：整盘4000787030016，E卷4000769372160。新卷D86AEE82。
+现有 formal_executor copy 仍是拒绝入口。本轮C上补齐接既有生产链的限定试验CLI、可重建冻结样本与必要模拟测试，提交实际代码/命令待审。不得只改开关或另写简陋复制脚本。不创建E试验目录、不写E。
 FORMAT_DONE=USER_REPORTED_TRUE
-TARGET_POSTFORMAT_VERIFIED=PENDING
 COPY_AUTHORIZED=false
+PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-回执：agents/chatgpt/inbox/R9_DESKTOP_POSTFORMAT_BIND_AND_PILOT_PLAN_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_BUILD_RUNNABLE_BOUNDED_PILOT_20261014/ZHANGWEI_REPORT.md
