@@ -1,0 +1,73 @@
+{
+  "schema": "R9_HUB_PATROL_STATE_V1",
+  "reviewed_at": "2026-10-15T07:25:00+08:00",
+  "review_status": "SOURCE_RECONCILE_EVIDENCE_ACCEPTED",
+  "reviewed_evidence": [
+    {
+      "path": "agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/SAM_REPORT.md",
+      "blob_sha": "c2e947e7cd99955fb8844174e1297bfd58b24340"
+    },
+    {
+      "path": "agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/TINY_140_READ_PROOF.json",
+      "blob_sha": "f69a2712373ce38890559c870ba28ba5c667f4d9"
+    },
+    {
+      "path": "agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/MISSING_42_BINDINGS.json",
+      "blob_sha": "09997386a594252c0167ce31d79401ea7ec16896"
+    },
+    {
+      "path": "agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/CURRENT_FIELD_COMPLETENESS.json",
+      "blob_sha": "15e3ff135b1d1d6e204a687a0912fe38ef929841"
+    },
+    {
+      "path": "agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/SOURCE_PLAN_PATCH.json",
+      "blob_sha": "78d172da46dd585a7a7600c9c43fb0bca603dc66"
+    },
+    {
+      "path": "agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/TINY_140_BACKUP_CLUES.json",
+      "blob_sha": "5df9bba47387e338c4c9fa43c739c0b183c4f8f3"
+    }
+  ],
+  "reviewed_code": {
+    "path": "agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/scripts/complete_required_evidence_0711_r1.py",
+    "blob_sha": "f9671d29aa751742ea7468b8779b0c7d5abc2bc9"
+  },
+  "findings": {
+    "tiny_confirmed": {
+      "CRLF": 127,
+      "EMPTY": 13,
+      "distinct_entities": 140,
+      "old_bytes": 2790949,
+      "current_bytes": 254,
+      "reason": "UNKNOWN"
+    },
+    "logical_views_42": "BOUND_TO_EXISTING_ORDINARY_ENTITIES_NOT_ENTITY_DELETION",
+    "field_completeness": "ACCEPTED"
+  },
+  "active_task": {
+    "task_id": "R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725",
+    "execution_host": "ZHANGWEI",
+    "instruction": "agents/chatgpt/outbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725.md",
+    "status": "PUBLISHED_AWAITING_ACK",
+    "SAM": "HOLD",
+    "scope": "C_METADATA_FINAL_PLAN_AND_EXECUTOR_BINDING_PREP_ONLY"
+  },
+  "pending_user_decisions": [
+    {
+      "id": "TINY_140_VERSION_CHOICE",
+      "selected": null,
+      "options": [
+        "AS_IS_MIGRATE_MARKED",
+        "FIND_OLD_VERSION_FIRST"
+      ],
+      "copy_authorization_implied": false
+    }
+  ],
+  "authorizations": {
+    "COPY_AUTHORIZED": false,
+    "FULL_COPY_AUTHORIZED": false,
+    "PILOT_WRITE_AUTHORIZED": false,
+    "FULL_MIGRATION": false
+  },
+  "patrol_guidance": "Do not reassign SAM same proof. Wait desktop ACK/new report or user decision. Do not treat self-written mailbox changes as new evidence."
+}
