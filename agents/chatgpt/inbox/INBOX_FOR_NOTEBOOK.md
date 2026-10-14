@@ -2,10 +2,10 @@
 
 status: HOLD
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_REUSE_SESSION_RESOLVE_1219_20261014_1041
-instruction: agents/chatgpt/outbox/R9_DESKTOP_REUSE_SESSION_RESOLVE_1219_20261014_1041.md
+active_task: R9_DESKTOP_SOURCE_STABLE_READ_AND_PREP_SUMMARY_20261014_1055
+instruction: agents/chatgpt/outbox/R9_DESKTOP_SOURCE_STABLE_READ_AND_PREP_SUMMARY_20261014_1055.md
 
-台式机处理已有 IPC$ 会话与新账号连接冲突，先复用现有身份进行来源只读核验。笔记本本轮无执行任务，继续待命。不改账号/密码/共享/网络，不上传秘密。
+台式机已有会话来源元数据核验通过，本轮仅来源两小文件稳定只读及准备摘要。笔记本无执行任务，继续待命，不修改源业务数据/共享/账号/网络。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
