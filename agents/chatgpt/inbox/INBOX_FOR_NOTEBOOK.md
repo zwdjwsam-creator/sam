@@ -1,12 +1,20 @@
-# SAM｜HOLD，等待来源基线交接完成
+# SAM｜来源本机核对
 
-status: HOLD
-active_host: ZHANGWEI
-active_task: R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231
-instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231.md
+task_id: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
+execution_host: SAM
+status: READY
+instruction: agents/chatgpt/outbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312.md
+ZHANGWEI: HOLD
 
-本轮台式机准备原来源基线metadata只读交接包。笔记本无执行任务，尚不启动重扫/复制。
-后续本机核对将用原94e6基线，不能把候选计划新增的JSON目标alias当现存源文件。元数据拷入本机C和no-follow核对须等后续明确SAM任务。
-不改源/共享/会话，不要求密码。
+交接文本与五份overlay分片SHA/3694记录已审核。领取原94e6来源基线到SAM的C，验证SHA/quick_check，然后只在SAM本机no-follow枚举SOURCE_SCOPE指定的E:\BLACKBOX、八个D完整根和pit_products子树，比较当前元数据，回传真正delta。不要从台式机经SMB逐路径扫描。
+允许C元数据传递和来源本机只读核对；使用既有会话，不要求密码、不改变凭据/连接/共享。基线无历史mtime/hash/USN，不能凭元数据相同声称历史内容未变。已知volume旧编码、D16缺身份、JSON目标alias均按instruction处理。
+先ACK，长扫描报告RUNNING及PID/进度，继续同一任务。结果回传 agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014/SAM_REPORT.md。
+METADATA_TRANSFER_TO_SAM_C_AUTHORIZED=true
+LOCAL_SOURCE_READONLY_ENUMERATION_AUTHORIZED=true
 COPY_AUTHORIZED=false
+FULL_COPY_AUTHORIZED=false
+PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
+IMPLEMENTATION_READY=false
+CANDIDATE_EXECUTABLE=false
+full_plan_acceptance=false
