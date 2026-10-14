@@ -1,0 +1,39 @@
+{
+  "task_id": "R9_DESKTOP_REAL_ABC_RESUME_ONLY_20261014_1437",
+  "host": "ZHANGWEI",
+  "NORMAL_NOT_RERUN": true,
+  "FIRST_EXECUTION_PROVEN": false,
+  "contract_sha256": "7620ac6073d86d7fb78c4b9d61b37197bd3a6d6e6dae91c47282a13effd4df46",
+  "code_digest": "58e5765a8270a97e9b7cbbefa1178c6c873816419810ea51839f31baa30e3a59",
+  "sample_sha256": "96c42610d94f02a99aacee62b5ad3aa0ae14c1afdfc1a1102bfbcf0b9e23dc10",
+  "runs": [
+    {"phase": "DRY", "scenario": "A", "child_pid": 31020, "exit": 0},
+    {"phase": "DRY", "scenario": "B", "child_pid": 33912, "exit": 0},
+    {"phase": "DRY", "scenario": "C", "child_pid": 35772, "exit": 0},
+    {"phase": "FAULT", "scenario": "A", "child_pid": 20184, "exit": 3, "stdout": "INTERRUPT_A", "win32_write_calls": 27},
+    {"phase": "RESUME", "scenario": "A", "child_pid": 32844, "exit": 0, "copied_count": 2, "linked_count": 2, "reparse_count": 2, "resumed_entities": 1, "acceptance": true},
+    {"phase": "FAULT", "scenario": "B", "child_pid": 11240, "exit": 3, "stdout": "INTERRUPT_B", "win32_write_calls": 34},
+    {"phase": "RESUME", "scenario": "B", "child_pid": 33032, "exit": 0, "copied_count": 0, "linked_count": 1, "reparse_count": 2, "acceptance": true},
+    {"phase": "FAULT", "scenario": "C", "child_pid": 32476, "exit": 3, "stdout": "INTERRUPT_C", "win32_write_calls": 34},
+    {"phase": "RESUME", "scenario": "C", "child_pid": 26968, "exit": 0, "copied_count": 0, "linked_count": 1, "reparse_count": 2, "resumed_links": 1, "acceptance": true}
+  ],
+  "content_sha256": {
+    "e_child": "75535a1645725b202a45d07c634e0d7f349032c8173a37e8cac6b5dbdf198787",
+    "d_child": "b87ab8190dd4f0e3529c1d8a738e56ca3471817fa5bc9028c6e81f82efc890e2",
+    "long": "f1b5e3bfcf220ff36e9b1518ee2208a4e189b6b91d85ba66cb4ea3f79553b575"
+  },
+  "allocation_per_scenario": [8192, 53248, 4096],
+  "allocation_unique_per_scenario": 65536,
+  "unique_bytes_three_scenarios": 172494,
+  "long_dest_chars": 364,
+  "file_ids": {
+    "A": ["281474976710762", "281474976710763", "281474976710764"],
+    "B": ["281474976710790", "281474976710791", "281474976710792"],
+    "C": ["281474976710818", "281474976710819", "281474976710820"]
+  },
+  "normal_file_ids_unchanged": ["281474976710731", "281474976710732", "281474976710733"],
+  "junction_tag": 2684354563,
+  "follow_same_identity_and_sha": true,
+  "resume_directory_api_count": "NOT_IN_SUCCESS_JSON",
+  "limit": "controlled INTERRUPT_A/B/C only, not power loss or a crash inside the temp file"
+}
