@@ -1,23 +1,15 @@
-# SAM｜来源证据已通过审核，HOLD
+# SAM｜本地补齐52条元数据
 
-status: HOLD
+task_id: R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015_0739
 execution_host: SAM
-last_completed_task: R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641
-last_completed_followup: R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711
-review_status: SOURCE_RECONCILE_EVIDENCE_ACCEPTED
-active_host: ZHANGWEI
-active_task: R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725
-instruction: agents/chatgpt/outbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725.md
-
-140小文件的双方法/实读/SHA/前后身份已核验：127 CRLF、13 EMPTY；原因/版本正确性未知。42逻辑路径与普通代表的volume/file id/size已对应，当前字段完整性聚合通过。无需重复核对、重扫或继续找备份。
-用户已选择方案1：140个文件按当前来源原样迁移并保留异常标记，旧版本后续单独处理。不恢复、不跳过、不改源。
+status: READY
+instruction: agents/chatgpt/outbox/R9_REVIEW_0725_AND_FINISH_CANDIDATE_20261015_0739.md
 VERSION_CHOICE: AS_IS_MIGRATE_MARKED
-user_decision: agents/chatgpt/outbox/R9_USER_VERSION_CHOICE_AS_IS_20261015_0727.md
-本轮台式机仅C盘准备最终计划与闭闸执行器绑定；SAM无新执行任务，保持原数据和C证据可用即可。
+ZHANGWEI: PARALLEL_C_PREPARATION_THEN_MERGE
+
+先ACK。直接从SAM本机E/D读取既定51新增+mcp共52条元数据，上传小型JSON与hash，经HUB交台式机。覆盖原HOLD仅限此只读任务；无需UNC/凭据，不扫全盘、不读内容、不复查140/42、不找旧版。完成停止。
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
 PILOT_WRITE_AUTHORIZED=false
 IMPLEMENTATION_READY=false
 full_plan_acceptance=false
-
-台式机继续原0725任务并落实本决定；SAM保持HOLD，无需另起任务或找旧版本。COPY_AUTHORIZED=false。
