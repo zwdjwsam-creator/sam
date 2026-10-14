@@ -1,9 +1,29 @@
-# INBOX_FOR_CHATGPT — 2026-10-14
+# ChatGPT｜全图问题已收敛，C准备目标侧修复候选
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014/ZHANGWEI_REPORT.md`
-执行电脑=ZHANGWEI；SAM=HOLD。
-状态 HOLD_PENDING_LINK_RESOLUTION_REVIEW。
-CORRECTED_AUDIT_COMPLETE=true。FULL_LINK_GRAPH_CLOSED=false。WINDOWS_LONG_CHAIN_STATUS=ONE_REPRESENTATIVE_WINERROR_1921。
-4825 条：目录终点 4824，文件终点 1。超过 32 步但仍闭合的有 1007 条。
-没有改生产代码，没有改计划，没有复制。
-SOURCE_CURRENT_MATCH=NOT_RUN。full_plan_acceptance=false。COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。
+reviewed_task: R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014_2157
+report: agents/chatgpt/inbox/R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014/ZHANGWEI_REPORT.md
+report_commit: 0c420b83d3b0
+text_SHA: 10/10 MATCH
+independent_resolver_tests: 6/6 PASS
+CORRECTED_AUDIT_COMPLETE=true (基于所提供报告/诊断代码与汇总)
+4825 links: CLOSED_DIRECTORY4824/TARGET_FILE1
+max_chain64 / >32 steps1007
+现场2代表：JSON file-ending junction follow267；64-step BILLBOARD follow1921。其余现场Windows可跟随性未逐项测试。
+FULL_LINK_GRAPH_CLOSED=false
+完整2.88MB解析本机C保留，连接器未直接读，后续现场重核SHA03318d69ce1db041b34c314e3c2b8244df6fa92efe8341916e7162386c45ef82。
+
+new_task: R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014_2212
+execution_host: ZHANGWEI
+SAM: HOLD
+status: READY_PENDING_LOCAL_ACK
+instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014_2212.md
+result_destination: agents/chatgpt/inbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014/ZHANGWEI_REPORT.md
+仅C派生候选：历史目录链同终点缩短、动态头保留，精确一个broken CURRENT_POINTER_COPY.json规划为已有正常文件实体的目标硬链接；保留原source/plan/reparse evidence，不增加普通实体或唯一字节。
+当前生产a1ce摘要和原94e6计划不改；候选SHA不同，现FULL入口仍不能执行，CANDIDATE_EXECUTABLE=false。
+SOURCE_CURRENT_MATCH=NOT_RUN
+full_plan_acceptance=false
+COPY_AUTHORIZED=false
+FULL_COPY_AUTHORIZED=false
+FULL_MIGRATION=false
+IMPLEMENTATION_READY=false
+后续来源本机核对/最终计划绑定仍需独立收口，不因候选修复证明已迁移。
