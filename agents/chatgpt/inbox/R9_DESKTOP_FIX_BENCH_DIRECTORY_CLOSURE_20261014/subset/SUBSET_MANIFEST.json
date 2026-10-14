@@ -1,0 +1,139 @@
+{
+  "task_id": "R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014_1616",
+  "source_plan": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_EXECUTOR_DEV_20261013\\plan_v2\\MERGED_PLAN.sqlite",
+  "source_plan_sha": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+  "subset": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014\\subset\\BENCH_SUBSET.sqlite",
+  "subset_sha": "20843e97b90557b947823c9ecbe01679876c3d56be18fe31e1d36952c1381b6a",
+  "budget_bytes": 1073741824,
+  "unique_bytes": 1073739240,
+  "stopped_by": "BUDGET",
+  "classes": {
+    "ordinary": 1,
+    "small": 200,
+    "multi_alias": 1,
+    "long_zh": 1,
+    "d_source": 1,
+    "medium": 1,
+    "fill": 4819,
+    "closure": 8
+  },
+  "examples": {
+    "ordinary": {
+      "volume_serial": "2387166462",
+      "file_id": "10133099161600263",
+      "min_size": 143
+    },
+    "multi_alias": {
+      "volume_serial": "2387166462",
+      "file_id": "281474979282943",
+      "path_count": 8,
+      "min_size": 178
+    },
+    "d_source": {
+      "volume_serial": "3187598165",
+      "file_id": "1125899906861122",
+      "min_size": 2463
+    },
+    "medium": {
+      "volume_serial": "2387166462",
+      "file_id": "10414574138528303",
+      "min_size": 6013213
+    },
+    "long_zh": {
+      "path_chars": 243,
+      "volume_serial": "2387166462",
+      "file_id": "1125899907016177",
+      "min_size": 1166
+    }
+  },
+  "links": {
+    "included": 108,
+    "included_ordinary": 36,
+    "included_link_chain": 72,
+    "excluded_large": 382,
+    "excluded_budget": 712,
+    "excluded_unmapped": 0,
+    "excluded_type": 397,
+    "excluded_link_not_closed": 3226
+  },
+  "stats": {
+    "entities": 5032,
+    "unique_bytes": 1073739240,
+    "file_paths": 5039,
+    "directories": 754,
+    "links": 108,
+    "logical_path_bytes": 1073740486,
+    "allocation_bytes": 1073736777,
+    "e_entities": 5031,
+    "d_entities": 1
+  },
+  "dropped_entities": 0,
+  "d_roots": [
+    {
+      "name": "BLACKBOX_DESKTOP_INIT_R1",
+      "file_paths": 14
+    },
+    {
+      "name": "BLACKBOX_REMOTE_LINK_R1",
+      "file_paths": 15
+    },
+    {
+      "name": "CURSOR_TASK_ARCHIVE",
+      "file_paths": 18
+    },
+    {
+      "name": "JQ",
+      "file_paths": 118
+    },
+    {
+      "name": "backtest_lab",
+      "file_paths": 19663
+    },
+    {
+      "name": "backtest_lab_backups",
+      "file_paths": 7720
+    },
+    {
+      "name": "backtest_lab_candidate_releases",
+      "file_paths": 22
+    },
+    {
+      "name": "backtest_lab_shadow_experiments",
+      "file_paths": 6042
+    },
+    {
+      "name": "blackbox_data",
+      "file_paths": 1133
+    }
+  ],
+  "e_scope": "E:\\BLACKBOX",
+  "e_outside_paths": 0,
+  "dest_roots_not_created": [
+    "E:\\R9_FORMAL_PILOT_1G_20261014\\BLACKBOX",
+    "E:\\R9_FORMAL_PILOT_1G_20261014\\BLACKBOX_ENGINES"
+  ],
+  "dest_existed_before": false,
+  "selection_rules": [
+    "One ordinary E file, path_count=1, size 1..65536, lowest file_id text.",
+    "Up to 200 E files of 1..4096 bytes, or 2MiB, ordered by size then file_id.",
+    "One E multi-alias entity with path_count 2..8 and size <=1MiB.",
+    "One Chinese path of at least 240 characters whose entity is <=8MiB.",
+    "One D-volume entity size <=1MiB, lowest file_id text.",
+    "One medium entity of 1MiB..8MiB.",
+    "Fill with entities of 64KiB..1MiB in (volume_serial, file_id) order until 1GiB or 8000 entities.",
+    "A link whose source target is an ordinary directory is included only when that directory has at most 16 file paths and any missing bytes fit. The directory itself and its parents are written.",
+    "A link whose source target is another link is included only when the chain reaches an ordinary directory without adding file bytes. Otherwise it is excluded. Unknown or file targets are excluded and are not invented as directories.",
+    "Link paths are not also recorded as ordinary directories.",
+    "Destinations are E:\\R9_FORMAL_PILOT_1G_20261014\\BLACKBOX and \\BLACKBOX_ENGINES. This builder does not create them."
+  ],
+  "gaps": [
+    "Plan entities have no mtime column and no content hash. Formal copy records the source-handle mtime and the stream SHA from this run; it does not invent a historical value.",
+    "E scope in the frozen plan is E:\\BLACKBOX. Paths outside E:\\BLACKBOX and D:\\ are counted in e_outside.",
+    "Selected D roots below are the D:\\ first folders present in the frozen plan. They are not proof that the whole D: disk is unchanged or complete.",
+    "Files created, deleted, or rewritten on the source after the frozen plan are outside this subset. SOURCE_CHANGED, short read, unknown target, and acceptance failure stop at that phase.",
+    "This round does not stop source processes and does not rescan either disk.",
+    "Two copied samples do not stand in for the full plan. Full-plan acceptance stays false until a FULL contract is authorized and the run accepts the frozen plan.",
+    "Junctions whose targets contain more than 16 files, or whose missing files do not fit the remaining byte budget, are excluded. A whole release is not copied just to close a link."
+  ],
+  "bench_measured": false
+}
