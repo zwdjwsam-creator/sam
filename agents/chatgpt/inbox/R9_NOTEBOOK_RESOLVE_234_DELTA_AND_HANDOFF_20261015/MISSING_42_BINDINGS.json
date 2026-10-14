@@ -1,0 +1,2751 @@
+{
+  "task_id": "R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641",
+  "followup_id": "R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711",
+  "verified_at": "2026-10-15T07:18:18+0800",
+  "count": 42,
+  "bound": 42,
+  "blocked": 0,
+  "blockers": [],
+  "by_product": {
+    "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1": 15,
+    "CORP_SHAREHOLDER_TOP10_PIT_R1": 15,
+    "INDEX_WEIGHT_PIT_R1": 12
+  },
+  "policy": {
+    "not_true_deletion": true,
+    "link_view_vs_ordinary": true,
+    "no_duplicate_under_reparse": true
+  },
+  "rows": [
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994890",
+        "logical_size": 88886477,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994890",
+        "size": 88886477,
+        "nlinks": 8,
+        "mtime_ft": "134309477335786904",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994890",
+        "logical_size": 88886477,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2014\\part_2014.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994892",
+        "logical_size": 21236065,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994892",
+        "size": 21236065,
+        "nlinks": 8,
+        "mtime_ft": "134309477358981419",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2014\\part_2014.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2014\\part_2014.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2014\\part_2014.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994892",
+        "logical_size": 21236065,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2014\\part_2014.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2015\\part_2015.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994894",
+        "logical_size": 3863827,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994894",
+        "size": 3863827,
+        "nlinks": 8,
+        "mtime_ft": "134309477360409279",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2015\\part_2015.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2015\\part_2015.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2015\\part_2015.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994894",
+        "logical_size": 3863827,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2015\\part_2015.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2016\\part_2016.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994896",
+        "logical_size": 4038129,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994896",
+        "size": 4038129,
+        "nlinks": 8,
+        "mtime_ft": "134309477361876594",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2016\\part_2016.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2016\\part_2016.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2016\\part_2016.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994896",
+        "logical_size": 4038129,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2016\\part_2016.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2017\\part_2017.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994898",
+        "logical_size": 5064728,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994898",
+        "size": 5064728,
+        "nlinks": 8,
+        "mtime_ft": "134309477363521867",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2017\\part_2017.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2017\\part_2017.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2017\\part_2017.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994898",
+        "logical_size": 5064728,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2017\\part_2017.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2018\\part_2018.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994900",
+        "logical_size": 5828693,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994900",
+        "size": 5828693,
+        "nlinks": 8,
+        "mtime_ft": "134309477365488010",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2018\\part_2018.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2018\\part_2018.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2018\\part_2018.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994900",
+        "logical_size": 5828693,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2018\\part_2018.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2019\\part_2019.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994902",
+        "logical_size": 5950241,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994902",
+        "size": 5950241,
+        "nlinks": 8,
+        "mtime_ft": "134309477367500850",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2019\\part_2019.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2019\\part_2019.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2019\\part_2019.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994902",
+        "logical_size": 5950241,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2019\\part_2019.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2020\\part_2020.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994904",
+        "logical_size": 6596423,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994904",
+        "size": 6596423,
+        "nlinks": 8,
+        "mtime_ft": "134309477369591810",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2020\\part_2020.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2020\\part_2020.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2020\\part_2020.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994904",
+        "logical_size": 6596423,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2020\\part_2020.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2021\\part_2021.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994906",
+        "logical_size": 7701115,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994906",
+        "size": 7701115,
+        "nlinks": 8,
+        "mtime_ft": "134309477371862693",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2021\\part_2021.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2021\\part_2021.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2021\\part_2021.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994906",
+        "logical_size": 7701115,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2021\\part_2021.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2022\\part_2022.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994908",
+        "logical_size": 8243613,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994908",
+        "size": 8243613,
+        "nlinks": 8,
+        "mtime_ft": "134309477374295208",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2022\\part_2022.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2022\\part_2022.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2022\\part_2022.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994908",
+        "logical_size": 8243613,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2022\\part_2022.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2023\\part_2023.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994910",
+        "logical_size": 8689918,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994910",
+        "size": 8689918,
+        "nlinks": 8,
+        "mtime_ft": "134309477377172495",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2023\\part_2023.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2023\\part_2023.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2023\\part_2023.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994910",
+        "logical_size": 8689918,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2023\\part_2023.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2024\\part_2024.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994912",
+        "logical_size": 8947930,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994912",
+        "size": 8947930,
+        "nlinks": 8,
+        "mtime_ft": "134309477379898886",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2024\\part_2024.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2024\\part_2024.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2024\\part_2024.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994912",
+        "logical_size": 8947930,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2024\\part_2024.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2025\\part_2025.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994914",
+        "logical_size": 8663540,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994914",
+        "size": 8663540,
+        "nlinks": 8,
+        "mtime_ft": "134309477382678709",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2025\\part_2025.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2025\\part_2025.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2025\\part_2025.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994914",
+        "logical_size": 8663540,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2025\\part_2025.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2026\\part_2026.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994916",
+        "logical_size": 5322877,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994916",
+        "size": 5322877,
+        "nlinks": 8,
+        "mtime_ft": "134309477384197358",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2026\\part_2026.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2026\\part_2026.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2026\\part_2026.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994916",
+        "logical_size": 5322877,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\year=2026\\part_2026.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes\\SHAREHOLDER_FLOATING_TOP10_ASOF_INDEX_R1.parquet",
+      "product_scope": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994918",
+        "logical_size": 5421122,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994918",
+        "size": 5421122,
+        "nlinks": 8,
+        "mtime_ft": "134309478652396315",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246192"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "suffix_under_junction": "indexes\\SHAREHOLDER_FLOATING_TOP10_ASOF_INDEX_R1.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes\\SHAREHOLDER_FLOATING_TOP10_ASOF_INDEX_R1.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes\\SHAREHOLDER_FLOATING_TOP10_ASOF_INDEX_R1.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994918",
+        "logical_size": 5421122,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes\\SHAREHOLDER_FLOATING_TOP10_ASOF_INDEX_R1.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_TOP10_PIT_R1_FULL.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705514",
+        "logical_size": 89325428,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705514",
+        "size": 89325428,
+        "nlinks": 8,
+        "mtime_ft": "134309474007805075",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\STK_SHAREHOLDER_TOP10_PIT_R1_FULL.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_TOP10_PIT_R1_FULL.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_TOP10_PIT_R1_FULL.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705514",
+        "logical_size": 89325428,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_TOP10_PIT_R1_FULL.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2014\\part_2014.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705516",
+        "logical_size": 17556287,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705516",
+        "size": 17556287,
+        "nlinks": 8,
+        "mtime_ft": "134309474034841798",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2014\\part_2014.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2014\\part_2014.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2014\\part_2014.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705516",
+        "logical_size": 17556287,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2014\\part_2014.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2015\\part_2015.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705518",
+        "logical_size": 5100232,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705518",
+        "size": 5100232,
+        "nlinks": 8,
+        "mtime_ft": "134309474036732169",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2015\\part_2015.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2015\\part_2015.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2015\\part_2015.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705518",
+        "logical_size": 5100232,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2015\\part_2015.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2016\\part_2016.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705520",
+        "logical_size": 5379560,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705520",
+        "size": 5379560,
+        "nlinks": 8,
+        "mtime_ft": "134309474038609150",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2016\\part_2016.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2016\\part_2016.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2016\\part_2016.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705520",
+        "logical_size": 5379560,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2016\\part_2016.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2017\\part_2017.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705522",
+        "logical_size": 6067372,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705522",
+        "size": 6067372,
+        "nlinks": 8,
+        "mtime_ft": "134309474040679992",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2017\\part_2017.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2017\\part_2017.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2017\\part_2017.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705522",
+        "logical_size": 6067372,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2017\\part_2017.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2018\\part_2018.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705524",
+        "logical_size": 6244063,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705524",
+        "size": 6244063,
+        "nlinks": 8,
+        "mtime_ft": "134309474042798223",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2018\\part_2018.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2018\\part_2018.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2018\\part_2018.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705524",
+        "logical_size": 6244063,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2018\\part_2018.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2019\\part_2019.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705526",
+        "logical_size": 6552411,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705526",
+        "size": 6552411,
+        "nlinks": 8,
+        "mtime_ft": "134309474045027734",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2019\\part_2019.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2019\\part_2019.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2019\\part_2019.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705526",
+        "logical_size": 6552411,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2019\\part_2019.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2020\\part_2020.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705528",
+        "logical_size": 7773360,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705528",
+        "size": 7773360,
+        "nlinks": 8,
+        "mtime_ft": "134309474047510983",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2020\\part_2020.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2020\\part_2020.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2020\\part_2020.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705528",
+        "logical_size": 7773360,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2020\\part_2020.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2021\\part_2021.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705530",
+        "logical_size": 9071222,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705530",
+        "size": 9071222,
+        "nlinks": 8,
+        "mtime_ft": "134309474050440497",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2021\\part_2021.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2021\\part_2021.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2021\\part_2021.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705530",
+        "logical_size": 9071222,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2021\\part_2021.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2022\\part_2022.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705532",
+        "logical_size": 9231286,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705532",
+        "size": 9231286,
+        "nlinks": 8,
+        "mtime_ft": "134309474053424371",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2022\\part_2022.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2022\\part_2022.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2022\\part_2022.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705532",
+        "logical_size": 9231286,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2022\\part_2022.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2023\\part_2023.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705534",
+        "logical_size": 9405800,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705534",
+        "size": 9405800,
+        "nlinks": 8,
+        "mtime_ft": "134309474056447314",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2023\\part_2023.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2023\\part_2023.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2023\\part_2023.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705534",
+        "logical_size": 9405800,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2023\\part_2023.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2024\\part_2024.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705536",
+        "logical_size": 8949740,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705536",
+        "size": 8949740,
+        "nlinks": 8,
+        "mtime_ft": "134309474059583904",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2024\\part_2024.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2024\\part_2024.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2024\\part_2024.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705536",
+        "logical_size": 8949740,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2024\\part_2024.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2025\\part_2025.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705538",
+        "logical_size": 8889516,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705538",
+        "size": 8889516,
+        "nlinks": 8,
+        "mtime_ft": "134309474062584199",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2025\\part_2025.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2025\\part_2025.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2025\\part_2025.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705538",
+        "logical_size": 8889516,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2025\\part_2025.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2026\\part_2026.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705540",
+        "logical_size": 5619744,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "844424932705540",
+        "size": 5619744,
+        "nlinks": 8,
+        "mtime_ft": "134309474064347339",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "data\\year=2026\\part_2026.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2026\\part_2026.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2026\\part_2026.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "844424932705540",
+        "logical_size": 5619744,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\year=2026\\part_2026.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes\\SHAREHOLDER_TOP10_ASOF_INDEX_R1.parquet",
+      "product_scope": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994886",
+        "logical_size": 6198128,
+        "nlinks": 8,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "562949955994886",
+        "size": 6198128,
+        "nlinks": 8,
+        "mtime_ft": "134309478646798568",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246193"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "suffix_under_junction": "indexes\\SHAREHOLDER_TOP10_ASOF_INDEX_R1.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes\\SHAREHOLDER_TOP10_ASOF_INDEX_R1.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes\\SHAREHOLDER_TOP10_ASOF_INDEX_R1.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "562949955994886",
+        "logical_size": 6198128,
+        "nlinks": 8,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 9,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes\\SHAREHOLDER_TOP10_ASOF_INDEX_R1.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2014\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453785",
+        "logical_size": 50564,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453785",
+        "size": 50564,
+        "nlinks": 1,
+        "mtime_ft": "134314941285228693",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2014\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2014\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2014\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453785",
+        "logical_size": 50564,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2014\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2015\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453790",
+        "logical_size": 59854,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453790",
+        "size": 59854,
+        "nlinks": 1,
+        "mtime_ft": "134314941285411262",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2015\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2015\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2015\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453790",
+        "logical_size": 59854,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2015\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2016\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453794",
+        "logical_size": 61367,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453794",
+        "size": 61367,
+        "nlinks": 1,
+        "mtime_ft": "134314941285602407",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2016\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2016\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2016\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453794",
+        "logical_size": 61367,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2016\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2017\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453798",
+        "logical_size": 65201,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453798",
+        "size": 65201,
+        "nlinks": 1,
+        "mtime_ft": "134314941285783771",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2017\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2017\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2017\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453798",
+        "logical_size": 65201,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2017\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2018\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453802",
+        "logical_size": 65755,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453802",
+        "size": 65755,
+        "nlinks": 1,
+        "mtime_ft": "134314941285981980",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2018\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2018\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2018\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453802",
+        "logical_size": 65755,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2018\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2019\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453806",
+        "logical_size": 66131,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453806",
+        "size": 66131,
+        "nlinks": 1,
+        "mtime_ft": "134314941286175167",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2019\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2019\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2019\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453806",
+        "logical_size": 66131,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2019\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2020\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453810",
+        "logical_size": 67238,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453810",
+        "size": 67238,
+        "nlinks": 1,
+        "mtime_ft": "134314941286374093",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2020\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2020\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2020\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453810",
+        "logical_size": 67238,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2020\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2021\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453814",
+        "logical_size": 70967,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453814",
+        "size": 70967,
+        "nlinks": 1,
+        "mtime_ft": "134314941286557628",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2021\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2021\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2021\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453814",
+        "logical_size": 70967,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2021\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2022\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453818",
+        "logical_size": 74600,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453818",
+        "size": 74600,
+        "nlinks": 1,
+        "mtime_ft": "134314941286773150",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2022\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2022\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2022\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453818",
+        "logical_size": 74600,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2022\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2023\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453822",
+        "logical_size": 76684,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453822",
+        "size": 76684,
+        "nlinks": 1,
+        "mtime_ft": "134314941286972123",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2023\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2023\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2023\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453822",
+        "logical_size": 76684,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2023\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2024\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453826",
+        "logical_size": 78016,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453826",
+        "size": 78016,
+        "nlinks": 1,
+        "mtime_ft": "134314941287182186",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2024\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2024\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2024\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453826",
+        "logical_size": 78016,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2024\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2025\\part_000.parquet",
+      "product_scope": "INDEX_WEIGHT_PIT_R1",
+      "status": "BOUND",
+      "baseline": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453830",
+        "logical_size": 78287,
+        "nlinks": 1,
+        "source": "delta",
+        "is_reparse": 0
+      },
+      "live_follow_identity": {
+        "volume_serial": "2387166462",
+        "file_id": "281474980453830",
+        "size": 78287,
+        "nlinks": 1,
+        "mtime_ft": "134314941287403968",
+        "attrs": 32,
+        "error": null,
+        "open_mode": "FOLLOW"
+      },
+      "ancestor_junctions": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+          "reparse_tag": 2684354563,
+          "normalized_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "raw_target": "\\??\\E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+          "volume_serial": "2387166462",
+          "file_id": "281474982246205"
+        }
+      ],
+      "junction_mapping": {
+        "ancestor_junction_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1",
+        "junction_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1",
+        "suffix_under_junction": "year=2025\\part_000.parquet",
+        "constructed_target_representative": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2025\\part_000.parquet",
+        "reparse_tag": 2684354563
+      },
+      "selected_ordinary_representative": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2025\\part_000.parquet",
+        "volume_serial": "2387166462",
+        "file_id": "281474980453830",
+        "logical_size": 78287,
+        "nlinks": 1,
+        "in_selected_current_enum_scope": true,
+        "ancestors_are_non_junction": true
+      },
+      "logical_view_handling": {
+        "physical_inventory": "USE_ORDINARY_REPRESENTATIVE",
+        "logical_access_path": "RETAIN_VIA_REPAIRED_JUNCTION",
+        "do_not_create_duplicate_hardlink_under_reparse_dir": true,
+        "do_not_delete_from_data_retention": true
+      },
+      "path_count_adjustment": {
+        "baseline_entity_path_count": 2,
+        "action": "KEEP_ENTITY; physical inventory bind to ordinary representative; do NOT add junction-view path as extra ordinary File row; logical access retained via repaired junction",
+        "physical_path_count_delta_vs_baseline_row": "REMOVE_JUNCTION_VIEW_FROM_PHYSICAL_ORDINARY_LISTING_IF_PRESENT_IN_BASELINE"
+      },
+      "operation_recommendation": "物理清单绑定普通实体代表；逻辑访问路径由修复后的 junction 保留；不在重解析目录下额外创建重复实体/硬链接",
+      "reject_notes": [
+        "not_in_current_enum:E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260903_20260904_014329\\INDEX_WEIGHT_PIT_R1\\year=2025\\part_000.parquet"
+      ],
+      "live_matches_baseline_identity": true
+    }
+  ]
+}
