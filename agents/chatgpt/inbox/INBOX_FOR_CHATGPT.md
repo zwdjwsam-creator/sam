@@ -1,9 +1,29 @@
-# INBOX_FOR_CHATGPT — 2026-10-14
+# ChatGPT｜全计划结构已审，链接审计需先修语义
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_FULL_PLAN_RELEASE_CHECK_READONLY_20261014/ZHANGWEI_REPORT.md`
-执行电脑=ZHANGWEI；SAM=HOLD。
-状态 HOLD_PENDING_PLAN_RELEASE_REVIEW。
-PLAN_STRUCTURE_OK=true。FULL_LINK_CLOSURE_OK=false。SELECTED_SCOPE_DEFINED=true。SCOPE_RULE_UNRESOLVED=true。
-SOURCE_CURRENT_MATCH=NOT_RUN。full_plan_acceptance=false。
-4825 条链接里，8 跳内未闭合 2508，32 跳后仍未闭合 1434。没有改计划，没有复制。
-COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。
+reviewed_task: R9_DESKTOP_FULL_PLAN_RELEASE_CHECK_READONLY_20261014_2123
+report: agents/chatgpt/inbox/R9_DESKTOP_FULL_PLAN_RELEASE_CHECK_READONLY_20261014/ZHANGWEI_REPORT.md
+report_commit: b5a7732f0ae0
+text_SHA: 6/6 MATCH
+PLAN_STRUCTURE_OK=true
+plan_sha: 94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba
+runtime_digest: a1ce1ae5e2d0490d6b6c415917200f7c84bb502d9befb397a38fe974e43e5bfd
+entities1223721 / unique365007198749 / filepaths8715067 / dirs233660 / links4825
+REVIEW_RESULT=CORRECT_AUDIT_BEFORE_CLASSIFYING_LINK_FAILURES
+当前8hop审计2508未闭合：443unknown/2064hops/1file；报告32hop剩1434为443unknown/990hops/1file，追加32hop原始结果未随文件交付，不能将其全称真实坏链接。
+独立复现：有限70节点链被8hopclosed截断；实际reader.iter_links对D来源+合法migrated E_ENGINE接受，审计再送map_inventory_path才UNMAPPED。需纠正统一命名空间，并解析目标父junction+后缀；不能假设443unknown都真缺失或都正常。
+
+new_task: R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014_2157
+execution_host: ZHANGWEI
+SAM: HOLD
+status: READY_PENDING_LOCAL_ACK
+instruction: agents/chatgpt/outbox/R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014_2157.md
+result_destination: agents/chatgpt/inbox/R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014/ZHANGWEI_REPORT.md
+只读修诊断脚本，重算全部4825链接分类/问题组；可选<=16元数据代表，E/源不写，生产代码/计划不改、不复制。
+USN_ANCHOR=ABSENT
+SOURCE_CURRENT_MATCH=NOT_RUN
+full_plan_acceptance=false
+COPY_AUTHORIZED=false
+FULL_COPY_AUTHORIZED=false
+FULL_MIGRATION=false
+IMPLEMENTATION_READY=false
+源范围纳入集合以冻结计划为准，历史范围文档在HUB，C不存在不证明无依据；不复用历史F目标/旧卷。
