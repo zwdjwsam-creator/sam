@@ -2,8 +2,9 @@
 
 host: ZHANGWEI
 SAM: HOLD
-state: USER_LOCAL_INPUT_PENDING
+state: AUTH_NOT_COMPLETE
 authenticated: false
+winerror: 1219
 SOURCE_ACCESS_VALID: false
 SOURCE_ROOT_METADATA_OK: false
 SOURCE_LIVE_STABLE_FILE_READ_VALID: NOT_RUN
@@ -12,8 +13,8 @@ FORMAT_DONE: false
 FULL_MIGRATION: false
 WRITE_TESTS_NOT_RUN: true
 
-脚本 SHA256 0a0d2821cec0d923b27b931de0c23197e235f8f3d8daeb99b6ce4155c78f4376 已核对。只启动了一个进程。STATUS.json 为 LOCAL_WINDOWS_INPUT_PENDING。
+用户授权后，用 SAM\ThinkPad 对 \\192.168.100.2\E_DRIVE 做了一次连接。没有保存凭据，没有映射盘符，没有读取业务内容。
 
-请在台式机 Windows 原生窗口填写 SAM\ThinkPad 来源账号密码。不要发到 HUB 或聊天。
+Windows 返回 1219：同一服务器已有另一套会话身份。现有会话是 \\192.168.100.2\IPC$，状态 OK。没有断开该会话，也没有删除已保存凭据。源目录 metadata 没有读取。
 
-密码没有进入脚本参数、环境变量或日志。没有第二次尝试，没有改密码、共享或网络。
+密码没有写入本报告、STATUS 或 HUB。
