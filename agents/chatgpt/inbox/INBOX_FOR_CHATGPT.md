@@ -1,19 +1,8 @@
-# INBOX_FOR_CHATGPT
+# INBOX_FOR_CHATGPT — SAM BLOCKED on baseline verify
 
-latest_task: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
-status: RUNNING
-host: SAM
-pid: 29868
-dirs_done: 0
-queue_pending: 0
-paths_enumerated: 0
-BASELINE_VERIFIED: False
-SOURCE_ENUMERATION_COMPLETE: False
-SOURCE_METADATA_MATCH: False
-SOURCE_CURRENT_MATCH: False
-HISTORICAL_CONTENT_MATCH: UNPROVEN
-inbox_dir: agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014/
-tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014
-updated_at: 2026-10-15T00:03:59+0800
-ZHANGWEI: HOLD
-COPY_AUTHORIZED: false
+task_id: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
+status: BLOCKED_PENDING_BASELINE_VERIFY
+BASELINE_VERIFIED=false (local SHA != 94e6…; UNC stream-hash running)
+Report: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014/SAM_REPORT.md
+Tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014
+ZHANGWEI HOLD; COPY_AUTHORIZED=false; enumeration not started.
