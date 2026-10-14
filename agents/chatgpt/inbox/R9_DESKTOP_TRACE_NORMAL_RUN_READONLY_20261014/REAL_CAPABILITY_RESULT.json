@@ -1,0 +1,35 @@
+{
+  "task_id": "R9_DESKTOP_TRACE_NORMAL_RUN_READONLY_20261014_1417",
+  "CURRENT_TARGET_VERIFIED": true,
+  "FIRST_EXECUTION_PROVEN": false,
+  "FIRST_CREATION_PROVENANCE": "UNKNOWN",
+  "FIRST_EXECUTION_COUNTS": "UNKNOWN",
+  "normal_cli_stdout": {"copied_count": 0, "linked_count": 0, "reparse_count": 0, "acceptance": true, "exit": 0},
+  "normal_stdout_is_not_a_first_create_count": true,
+  "scenarios": {
+    "NORMAL": "OBJECTS_PRESENT_ACCEPTANCE_TRUE_FIRST_COUNTS_UNKNOWN",
+    "A": "NOT_RUN",
+    "B": "NOT_RUN",
+    "C": "NOT_RUN"
+  },
+  "run_bind": {
+    "run_id": "R9_DESKTOP_REAL_CAPABILITY_PILOT_20261014_1345_NORMAL",
+    "plan_digest": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+    "inputs_digest": "96c42610d94f02a99aacee62b5ad3aa0ae14c1afdfc1a1102bfbcf0b9e23dc10",
+    "code_digest": "58e5765a8270a97e9b7cbbefa1178c6c873816419810ea51839f31baa30e3a59",
+    "dest_volume": "3630886530",
+    "dest_root": "E:\\R9_CAPABILITY_PILOT_20261014\\NORMAL"
+  },
+  "stage_counts": {"entity_DONE": 3, "alias_DONE": 2, "reparse_DONE": 2, "dir_DONE": 24},
+  "entities": [
+    {"logical_size": 5768, "allocation_size": 8192, "file_id": "281474976710731", "volume_serial": "3630886530"},
+    {"logical_size": 50564, "allocation_size": 53248, "file_id": "281474976710732", "volume_serial": "3630886530"},
+    {"logical_size": 1166, "allocation_size": 4096, "file_id": "281474976710733", "volume_serial": "3630886530", "dest_chars": 369}
+  ],
+  "allocation_bytes_unique": 65536,
+  "unique_content_bytes_this_scenario": 57498,
+  "junctions": {"count": 2, "tag": 2684354563, "targets_match_scenario_map": true},
+  "long_dest_chars": {"NORMAL": 369, "A": 364, "B": 364, "C": 364},
+  "preserved": {"old_pilot": true, "normal_root": true, "normal_state": true, "deleted_nothing": true, "code_not_modified": true},
+  "proposed_guard": "Before any future execute, create a C: claim file named with the task id and scenario. If it already exists, refuse to start. Record the PID in that file. Do not add that lock in this round."
+}
