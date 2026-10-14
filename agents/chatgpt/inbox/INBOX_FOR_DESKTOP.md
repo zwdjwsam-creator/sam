@@ -1,14 +1,15 @@
-# 台式机 ZHANGWEI｜复用会话及处理 1219
+# 台式机 ZHANGWEI｜来源稳定只读核验
 
-task_id: R9_DESKTOP_REUSE_SESSION_RESOLVE_1219_20261014_1041
+task_id: R9_DESKTOP_SOURCE_STABLE_READ_AND_PREP_SUMMARY_20261014_1055
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_REUSE_SESSION_RESOLVE_1219_20261014_1041.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_SOURCE_STABLE_READ_AND_PREP_SUMMARY_20261014_1055.md
 SAM: HOLD
 
-旧原生登录任务与 2222 自动复用任务统一由本任务替代。先不指定新账号，直接复用现有会话读取 E/D 来源元数据。仅在有可用凭据且确认只有闲置 IPC$ 时允许一次非强制定点解除该连接；禁止全局断连、删除凭据或要求用户输入密码。完整条件见指令。
+1041 元数据回执已审核通过。保持现有会话和未提升上下文，无需重新登录。仅将上一轮 E/D 两个小文件各完整读取两次，在内存计算 SHA256 并核验前后身份/大小/mtime；不保存业务副本。提交准备摘要后停止待审。两文件通过不代表全范围完整或稳定。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
+IMPLEMENTATION_READY=false
 WRITE_TESTS_NOT_RUN=true
-回执：agents/chatgpt/inbox/R9_DESKTOP_REUSE_SESSION_RESOLVE_1219_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_SOURCE_STABLE_READ_AND_PREP_SUMMARY_20261014/ZHANGWEI_REPORT.md
