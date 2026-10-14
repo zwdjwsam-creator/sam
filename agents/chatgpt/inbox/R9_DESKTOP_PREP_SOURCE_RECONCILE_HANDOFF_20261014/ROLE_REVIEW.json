@@ -1,0 +1,24 @@
+{
+  "overlay_sha256": "079537ac33b5b7bc3a9001c32c78eff0788ce5affe6f7d493402dcb8a651ea0e",
+  "overlay_bytes": 2262308,
+  "overlay_records": 3694,
+  "original_file_unchanged": true,
+  "builder_rule": "HISTORICAL_SHORTEN when chain_length>1 and the path string contains ASOF, RELEASE, or PIT_. This review does not treat that substring as proof the directory never participates in a live publish.",
+  "review_rule": "A record meets a concrete historical release placement only when an ancestor directory, or the link directory itself, contains ASOF/PIT_/RELEASE together with a 20xxxxxx date. A version token such as _R<digits> or v<digits>.<digits> without a date is listed separately and is not called a timestamped release. Keyword-only and unmarked records are the ones that do not meet the historical limit.",
+  "class_counts": {
+    "DATED_RELEASE_ANCESTOR": 3694
+  },
+  "meets_dated_component": 3694,
+  "class_name_note": "DATED_RELEASE_ANCESTOR means the strongest ancestor contains ASOF or PIT_ plus a 20xxxxxx date. It does not mean every row has a parent directory named releases.",
+  "under_directory_named_releases": 3678,
+  "dated_without_releases_parent": 16,
+  "dated_without_releases_parent_listed_in": "REPAIR_POLICY.json",
+  "tip_inside_dated_ancestor_count": 1342,
+  "version_token_without_date_count": 0,
+  "keyword_or_unmarked_count": 0,
+  "version_token_without_date": [],
+  "keyword_without_date_or_version": [],
+  "no_dated_or_versioned_release_component": [],
+  "candidate_modified": false,
+  "dynamic_publish_claim": "NOT_MADE"
+}
