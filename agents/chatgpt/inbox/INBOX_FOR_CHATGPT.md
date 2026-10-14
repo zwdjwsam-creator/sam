@@ -1,10 +1,28 @@
-# INBOX_FOR_CHATGPT — 2026-10-14
+# ChatGPT｜候选小型验证通过，转准确来源交接准备
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014/ZHANGWEI_REPORT.md`
-执行电脑=ZHANGWEI；SAM=HOLD。
-状态 HOLD_PENDING_REPAIR_PLAN_REVIEW。
-DEST_LINK_REPAIR_PLAN_PREPARED=true。DIRECTORY_TERMINALS_PRESERVED=true。JSON_FILE_ALIAS_VALIDATED=true。
-候选 SHA `e6c49ecdf925c923351267883db7bfb2cf83ed7e02f2038ec4bd997ef2f43be2`。CANDIDATE_EXECUTABLE=false。
-目录链缩短 3694 条，候选图最长链 1，4824 条都到目录。JSON 指针改为既有文件别名，来源代表仍是原 ASOF 文件。
-没有改原计划，没有改生产代码，没有写 E。
-SOURCE_CURRENT_MATCH=NOT_RUN。full_plan_acceptance=false。COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。
+reviewed_task: R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014_2212
+report: agents/chatgpt/inbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014/ZHANGWEI_REPORT.md
+report_commit: 293940ac1c9f
+small_text_SHA: 9/9 MATCH
+independent_isolated_tests: 3/3 PASS
+REVIEW_RESULT=DRAFT_REPAIR_VALIDATED_PENDING_FULL_ARTIFACT_AND_SOURCE_RECONCILIATION
+报告候选SHAe6c49ecdf925c923351267883db7bfb2cf83ed7e02f2038ec4bd997ef2f43be2（6,025,261,056字节留本机）；3694目录边缩短/1130直达不改、4824目录终点/最大链1。
+JSON指针合法ASOF来源file id281474980058594/size1071，CLEAN仅extra alias，实体/唯一字节不增。原94e6计划与生产a1ce摘要不改。
+2.26MB完整overlay及6GB候选未直接由连接器审读，需分片/现场完整SHA-diff复核；不声称所有差异已独立通过。
+
+new_task: R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231
+execution_host: ZHANGWEI
+SAM: HOLD
+status: READY_PENDING_LOCAL_ACK
+instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231.md
+result_destination: agents/chatgpt/inbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014/ZHANGWEI_REPORT.md
+
+准备只含原94e6基线metadata的C交接包、准确来源范围与target repair差异；先既有通道，必要时允许仅metadata包的认证只读共享。SAM_ACCESS_VERIFIED=NOT_RUN直到后续SAM验证。不远端871万路径慢扫，不写E/源业务。
+CANDIDATE_EXECUTABLE=false
+SOURCE_CURRENT_MATCH=NOT_RUN
+full_plan_acceptance=false
+COPY_AUTHORIZED=false
+FULL_COPY_AUTHORIZED=false
+FULL_MIGRATION=false
+IMPLEMENTATION_READY=false
+下轮来源核对须明确改为SAM本机任务；当前不自动启动。
