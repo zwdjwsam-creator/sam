@@ -1,12 +1,16 @@
-# ZHANGWEI｜HOLD，SAM核实有限差异
+# ZHANGWEI｜准备最终计划，等待版本选择
 
-status: HOLD
+task_id: R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725
 execution_host: ZHANGWEI
-active_host: SAM
-active_task: R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641
-instruction: agents/chatgpt/outbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641.md
+status: READY
+instruction: agents/chatgpt/outbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725.md
+SAM: HOLD
+VERSION_CHOICE: PENDING_USER
 
-当前无新的桌面执行任务。SAM主扫描已完成，本轮仅核实234条差异并整理来源交接，不重扫。保留既有只读metadata共享、基线/候选/试验现场；不再传递/重验6GB基线。不经SMB代扫描、不测速、不复制、不写E、不改授权。等HUB明确桌面任务。
+SAM来源证据已审核收口。140确为127换行+13空文件，全部程序/文档/配置，未授权恢复或默认正确；42为junction逻辑视图，身份/大小和普通代表一致；51新增+mcp需补完整metadata。
+本轮只在C复制现有计划为新候选、应用source patch、调整42物理路径/实体计数、重放既有目标链接/JSON alias修复，并将新SHA/代码digest/磁盘卷绑定接入既有统一执行链。允许最多52条既有来源会话只读metadata探测；禁止全源扫描、新登录、传输大基线、真实复制或再BENCH。
+真实Win32目标写入必须为0，VERSION_CHOICE未定且COPY_AUTHORIZED=false始终闭闸。不能把准备候选当用户已授权迁移。一次写全剩余技术事项，别再拆反复试验。
+先ACK；回传 agents/chatgpt/inbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015/ZHANGWEI_REPORT.md。完成停止等审核与用户选择。
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
