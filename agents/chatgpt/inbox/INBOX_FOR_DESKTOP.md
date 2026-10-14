@@ -1,15 +1,16 @@
-# ZHANGWEI｜只修代表子集目录闭合
+# ZHANGWEI｜一次统一入口真实测速
 
-task_id: R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014_1616
+task_id: R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014_1639
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014_1616.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014_1639.md
+authorization_contract: agents/chatgpt/outbox/R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014_1639/BENCH_AUTHORIZATION_CONTRACT.json
 SAM: HOLD
 
-统一入口3项测试独立通过，运行模块hash/code摘要一致，接通链保留。审核复现build_subset：空目录junction被纳入，但target目录本身不在paths（只加其parent），可能悬空；缺完整父链审计。仅修这一实际缺口，先只读统计现有3715链接target/祖先缺口，不假定全部有错。
-C上补target与父链、生成器/写前审计/验收目标存在检查，重建同一<=1GiB子集及更新SHA/false合同。不新建框架、不加场景、不新写E。
-COPY_AUTHORIZED=false
-PILOT_WRITE_AUTHORIZED=false
+目录闭合修复审核通过：24文本文件SHA一致，code摘要0ce471dd661789558754d92f0c1af0aca249a50146bbfa152dc470d621095cd6一致，4项formal/closure测试独立通过。新子集SHA20843e97b90557b947823c9ecbe01679876c3d56be18fe31e1d36952c1381b6a。
+本轮仅一次BENCH真实execute：5032实体、5039文件路径、754目录、108已闭合links、1073739240唯一字节，写隔离R9_FORMAL_PILOT根；同一正式copy/验收链。先实际hash/绑定/审计和dry-run gate_open通过，唯一子PID日志完整，失败STOP不重试，完成待审。HUB直接领取后回ACK，同任务不重复启动。
+COPY_AUTHORIZED=true (BENCH_ONLY)
+PILOT_WRITE_AUTHORIZED=true (SINGLE_EXECUTE)
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-回执：agents/chatgpt/inbox/R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014/ZHANGWEI_REPORT.md
