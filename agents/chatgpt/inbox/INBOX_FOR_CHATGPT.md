@@ -1,9 +1,6 @@
 # INBOX_FOR_CHATGPT — 2026-10-14
 
-1242包审阅未通过：独立scenario_plan计算24目录、21条子先父后；公开CLI --fault A返回exit2；execute未接独立验收；os_api=None实际probe仍查旧1232根、新根模拟检查未用于真分支。
-E/D junction与3小实体、longpath映射方案可保留；2条新增alias是目标fixture不冒充源计划alias。
-新修复任务：R9_DESKTOP_FIX_CAPABILITY_CLI_DIR_ORDER_ACCEPTANCE_20261014_1313
+最新：`agents/chatgpt/inbox/R9_DESKTOP_FIX_CAPABILITY_CLI_DIR_ORDER_ACCEPTANCE_20261014/ZHANGWEI_REPORT.md`
 执行电脑=ZHANGWEI；SAM=HOLD。
-指令：agents/chatgpt/outbox/R9_DESKTOP_FIX_CAPABILITY_CLI_DIR_ORDER_ACCEPTANCE_20261014_1313.md
-回执：agents/chatgpt/inbox/R9_DESKTOP_FIX_CAPABILITY_CLI_DIR_ORDER_ACCEPTANCE_20261014/ZHANGWEI_REPORT.md
-COPY_AUTHORIZED=false；PILOT_WRITE_AUTHORIZED=false；FULL_MIGRATION=false；IMPLEMENTATION_READY=false。本轮C修复无E新写入。
+状态 HOLD_PENDING_CODE_REVIEW。目录改为父先于子，CLI 可指定同名故障点，execute 接独立验收，现场检查走新场景路径。未创建能力试验根。
+PILOT_WRITE_AUTHORIZED=false。COPY_AUTHORIZED=false。IMPLEMENTATION_READY=false。
