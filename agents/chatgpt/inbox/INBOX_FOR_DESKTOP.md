@@ -1,17 +1,18 @@
-# ZHANGWEI｜准备准确来源基线交接
+# ZHANGWEI｜HOLD，来源核对转交SAM
 
-task_id: R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231
+status: HOLD
 execution_host: ZHANGWEI
-status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231.md
-SAM: HOLD
+active_host: SAM
+active_task: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
+instruction: agents/chatgpt/outbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312.md
+last_completed_task: R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231
+
+桌面交接包准备已审核；当前无新的桌面执行任务。保留 \\192.168.100.1\R9_SOURCE_BASELINE_20261014 的现有认证只读共享及不可变基线副本，供SAM领取；保持机器/该共享可用，无需后台启动扫描或复制。不要删除交接/试验/状态证据，不改会话、凭据、共享或生产代码。
+下一轮由SAM在来源本机只读核对。ZHANGWEI不经SMB代扫描、不测速、不复制、不写E、不自动迁移。SAM回报后等HUB明确任务。
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-
-2212小型证据9份SHA及隔离3/3通过；JSON alias来源代表为正常ASOF，候选报告4824目录终点/最大链1。6GB候选与2.26MB完整overlay尚未直接独立复核；仅作为候选保留，CANDIDATE_EXECUTABLE=false。
-本轮C准备原94e6来源基线副本、准确scope/repair差异及SAM本机核对交接。优先既有只读metadata通道；如无，可按instruction创建仅单独包的认证只读共享，不暴露整个C、不改业务共享/会话/密码。
-拆分overlay小文本供完整审阅。不得用修复后目标alias当来源文件。E/源业务完全不写、生产和候选不改、不再复制测试。
-先ACK，回传 agents/chatgpt/inbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014/ZHANGWEI_REPORT.md，完成停止；SAM本轮HOLD，后续来源本机核对另发明确任务。
+CANDIDATE_EXECUTABLE=false
+full_plan_acceptance=false
