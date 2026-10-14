@@ -1,0 +1,52 @@
+{
+  "task_id": "R9_DESKTOP_TRACE_NORMAL_RUN_READONLY_20261014_1417",
+  "host": "ZHANGWEI",
+  "supersedes": ["R9_DESKTOP_REAL_CAPABILITY_PILOT_20261014_1345", "HUB_WAKE_ZHANGWEI_20261014_140032"],
+  "process_audit_log": "UNKNOWN",
+  "capability_execute_process_at_trace_time": "NONE",
+  "other_python": [
+    {"pid": 23456, "note": "Cursor black formatter, started 10:31 +08, not 1345"},
+    {"pid": 21440, "note": "Cursor isort, started 10:31 +08, not 1345"},
+    {"pid": 33492, "note": "pack upload of the stop package, started 14:08 +08, not an execute"}
+  ],
+  "absence_check": {
+    "source": "agent session tool output, not a Windows audit event",
+    "paths": ["E:\\R9_CAPABILITY_PILOT_20261014", "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_REAL_CAPABILITY_PILOT_20261014\\state\\NORMAL.sqlite"],
+    "recorded_result": "both absent, A/B/C state files absent, old pilot present",
+    "order": "before the four dry-runs and before the only recorded NORMAL execute"
+  },
+  "commands": [
+    {
+      "what": "dry-run NORMAL/A/B/C",
+      "cwd": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_EXECUTOR_DEV_20261013",
+      "time_utc": "2026-10-14T05:58:21Z",
+      "time_cst": "2026-10-14T13:58:21+08:00",
+      "exit": 0,
+      "stdout": "authorized true, entities 3, directories 24, junctions 2, win32_write_calls 0, scenario root not created. long dest chars NORMAL 369, A/B/C 364",
+      "pid": "UNKNOWN"
+    },
+    {
+      "what": "execute --scenario NORMAL",
+      "cwd": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_EXECUTOR_DEV_20261013",
+      "argv": "python -m r9_capability_pilot execute --scenario NORMAL --sample C:\\LAN_SHARE_REPORT\\R9_DESKTOP_PREP_JUNCTION_LONGPATH_RESUME_PILOT_20261014\\CAPABILITY_SAMPLE.json --contract C:\\LAN_SHARE_REPORT\\R9_DESKTOP_REAL_CAPABILITY_PILOT_20261014\\PILOT_EXECUTION_CONTRACT.json",
+      "log": "execute_NORMAL_1.log",
+      "log_ctime_utc": "2026-10-14T05:58:33.2680267Z",
+      "log_mtime_utc": "2026-10-14T05:59:50.4151058Z",
+      "exit": 0,
+      "stdout_exact": "{\"scenario\": \"NORMAL\", \"copied_count\": 0, \"linked_count\": 0, \"reparse_count\": 0, \"resumed_entities\": 0, \"resumed_links\": 0, \"acceptance\": true, \"reasons\": []}",
+      "tool_wrapper_elapsed_ms": 1674,
+      "pid": "UNKNOWN",
+      "retained_stdout_blocks": 1,
+      "copy3_stdout_found": false
+    }
+  ],
+  "object_creation_utc": "2026-10-14T05:58:33Z",
+  "object_creation_cst": "2026-10-14T13:58:33+08:00",
+  "same_second_as_log_create": true,
+  "second_execute_log": "NONE",
+  "code_calls_production_run_once": true,
+  "code_mtime_utc": "2026-10-14T05:27:04Z",
+  "FIRST_CREATION_PROVENANCE": "UNKNOWN",
+  "FIRST_EXECUTION_COUNTS": "UNKNOWN",
+  "note": "The only retained execute stdout is the zero counts. The new root, three files, two aliases, two junctions and the state file were created in the same second as that log, about 12 seconds after dry-run said the scenario root was absent. No separate log contains copied_count 3. A zero count in the current runner means that call skipped existing DONE rows, but this state file's creation time is the same second, so the skip explanation and the creation time are not tied to a retained first-run count."
+}
