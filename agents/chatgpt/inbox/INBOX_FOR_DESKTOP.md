@@ -1,15 +1,14 @@
-# ZHANGWEI台式机｜自动复用历史共享凭据
+# 台式机 ZHANGWEI｜复用会话及处理 1219
 
-task_id: R9_DESKTOP_REUSE_SMB_CREDENTIALS_20261013_2222
+task_id: R9_DESKTOP_REUSE_SESSION_RESOLVE_1219_20261014_1041
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_REUSE_SMB_CREDENTIALS_20261013_2222.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_REUSE_SESSION_RESOLVE_1219_20261014_1041.md
 SAM: HOLD
-supersedes: R9_DESKTOP_NATIVE_SMB_LOGIN_20261013_2137
 
-用户撤销手动输入要求。先取消旧任务唯一等待窗口/经确认的进程，再查找并自动复用以前使用过的 SAM 相关 SMB 会话和保存凭据。全程非交互，不再等用户输入；秘密只在本机使用，不进入 HUB/聊天/日志。没有可复用记录则精确回报阻塞，不猜密码、不改账号/安全策略。成功后只读分别核验 E/D 来源根及各一个计划文件元数据。
+旧原生登录任务与 2222 自动复用任务统一由本任务替代。先不指定新账号，直接复用现有会话读取 E/D 来源元数据。仅在有可用凭据且确认只有闲置 IPC$ 时允许一次非强制定点解除该连接；禁止全局断连、删除凭据或要求用户输入密码。完整条件见指令。
 COPY_AUTHORIZED=false
 FORMAT_DONE=false
 FULL_MIGRATION=false
 WRITE_TESTS_NOT_RUN=true
-回执：agents/chatgpt/inbox/R9_DESKTOP_REUSE_SMB_CREDENTIALS_20261013/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_REUSE_SESSION_RESOLVE_1219_20261014/ZHANGWEI_REPORT.md
