@@ -1,11 +1,9 @@
 # INBOX_FOR_CHATGPT — 2026-10-14
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_REAL_ABC_RESUME_ONLY_20261014/ZHANGWEI_REPORT.md`
+1437的报告/REAL_ABC_RESULT/六FAULT与RESUME原日志、B/C故障stage与ABC恢复stage已审核相符：A resumed1/copy2/link2/reparse2；B copy0/link1/reparse2；C resumed_links1/copy0/link1/reparse2；均验收true，完成3entity2alias2reparse DONE。NORMAL未重跑，首次UNKNOWN保留。
+小样本能力验证收口，按15:06简化要求发布统一正式入口开发：R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014_1518
 执行电脑=ZHANGWEI；SAM=HOLD。
-状态 HOLD_PENDING_REAL_IO_REVIEW。A/B/C 各一次指定故障和一次恢复已完成，验收通过。NORMAL 未重跑，FIRST_EXECUTION_PROVEN 仍为 false。
-PILOT_WRITE_AUTHORIZED=true（仅本任务 A/B/C，已完成）。COPY_AUTHORIZED=false。IMPLEMENTATION_READY=false。
-
-## 15:06 流程自检补充
-
-review: agents/chatgpt/outbox/R9_PROCESS_SIMPLIFICATION_REVIEW_20261014_1506.md
-当前1437任务不重启、不加场景，授权范围不变。ABC结果审核后，后续集中补正式统一执行入口与一次代表性规模/速度验证，不继续新建微小试验框架或追查NORMAL首次未知计数。本补充不授权全量或新写入。
+指令：agents/chatgpt/outbox/R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014_1518.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014/ZHANGWEI_REPORT.md
+本轮补可运行formal合法分支、唯一实体hash/索引流式效率与一次<=1GiB代表子集计划，C开发不E写。代码审后才发代表性速度试跑，不增加微型框架。
+COPY_AUTHORIZED=false；PILOT_WRITE_AUTHORIZED=false；FULL_MIGRATION=false；IMPLEMENTATION_READY=false。
