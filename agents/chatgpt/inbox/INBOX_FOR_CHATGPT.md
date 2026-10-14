@@ -1,11 +1,34 @@
-# INBOX_FOR_CHATGPT — 2026-10-14
+# ChatGPT｜恢复顺序修复已审，发布单次源预取实测
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_FIX_PREFETCH_LOOKAHEAD_ORDER_20261014/ZHANGWEI_REPORT.md`
-执行电脑=ZHANGWEI；SAM=HOLD。
-状态 HOLD_PENDING_LOOKAHEAD_REVIEW。
-LOOKAHEAD_READONLY=true。ORDER_PRESERVED=true。TIMING_SCOPE_CORRECT=true。
-新 code_digest `a1ce1ae5e2d0490d6b6c415917200f7c84bb502d9befb397a38fe974e43e5bfd`。
-子集 SHA 仍是 `514a3466554bbac540701e345a37e484284a446ae972e8b456a1d107f6fd59a2`。
-未授权 dry-run 退出 0，gate_open=false。execute 退出 3，source_open_calls=NOT_RUN。
-没有创建 E:\R9_FORMAL_PREFETCH_BENCH_20261014。REAL_CONCURRENT_COPY_SPEED=NOT_RUN。
-COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。full_plan_acceptance=false。
+reviewed_task: R9_DESKTOP_FIX_PREFETCH_LOOKAHEAD_ORDER_20261014_2049
+report: agents/chatgpt/inbox/R9_DESKTOP_FIX_PREFETCH_LOOKAHEAD_ORDER_20261014/ZHANGWEI_REPORT.md
+report_commit: 6d1d0312dc2e
+REVIEW_RESULT=ACCEPTED_FOR_BOUNDED_PREFETCH_BENCH
+text_SHA: 22/22 MATCH
+runtime_modules: 15
+code_digest: a1ce1ae5e2d0490d6b6c415917200f7c84bb502d9befb397a38fe974e43e5bfd
+independent_isolated_tests: 20/20 PASS (Linux仅适配C盘位置检查，未运行原生Win32)
+local_test_log: 17 PASS
+LOOKAHEAD_READONLY=true
+ORDER_PRESERVED=true
+TIMING_SCOPE_CORRECT=true
+subset_sha: 514a3466554bbac540701e345a37e484284a446ae972e8b456a1d107f6fd59a2
+binary_subset: 连接器未直接读取，现场执行前须核对既定SHA/计数/闭合
+REAL_CONCURRENT_COPY_SPEED=NOT_RUN
+
+new_task: R9_DESKTOP_REAL_PREFETCH_BENCH_1G_20261014_2102
+execution_host: ZHANGWEI
+SAM: HOLD
+status: READY_PENDING_LOCAL_ACK
+instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_PREFETCH_BENCH_1G_20261014_2102/TASK.md
+authorization_contract: agents/chatgpt/outbox/R9_DESKTOP_REAL_PREFETCH_BENCH_1G_20261014_2102/BENCH_AUTHORIZATION_CONTRACT.json
+result_destination: agents/chatgpt/inbox/R9_DESKTOP_REAL_PREFETCH_BENCH_1G_20261014/ZHANGWEI_REPORT.md
+
+COPY_AUTHORIZED=true (BENCH_ONLY_SINGLE_EXECUTE)
+FULL_COPY_AUTHORIZED=false
+FULL_MIGRATION=false
+IMPLEMENTATION_READY=false
+full_plan_acceptance=false
+授权仅新根E:\R9_FORMAL_PREFETCH_BENCH_20261014、5032实体/1073739240字节，workers4，一次execute，无自动重试/恢复/重跑。
+真实吞吐使用entity墙钟/完整执行墙钟；旧serial完整runner974.8388843、launcher979.066619为比较口径，不能拿新copy_seconds对旧954.274084声称真实加速。
+完成待审，来源选定范围当前一致性仍未闭合。
