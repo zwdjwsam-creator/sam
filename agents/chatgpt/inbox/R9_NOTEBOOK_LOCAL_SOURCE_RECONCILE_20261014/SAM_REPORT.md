@@ -1,19 +1,27 @@
-﻿# SAM_REPORT — R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
+# SAM_REPORT — BLOCKED_BASELINE_VERIFY (interim)
 
-- status: RUNNING
-- phase: baseline_exclusive_recopy
-- host: SAM
-- exclusive_recopy_pid: 29780
-- BASELINE_VERIFIED: false
-- root_cause: Concurrent parent robocopy (PID 6864, started 00:27:14) overlapped a completed stream-copy that had already matched SHA 94e6; local file mutated to SHA c8056935... and sqlite quick_check failed.
-- action: exclusive recopy to SOURCE_BASELINE.sqlite.partial then atomic replace after SHA verify; lockfile state\BASELINE_COPY.lock
-- SOURCE_ENUMERATION_COMPLETE: false
-- SOURCE_METADATA_MATCH: false
-- SOURCE_CURRENT_MATCH: false
-- HISTORICAL_CONTENT_MATCH: UNPROVEN
-- SOURCE_SCAN_STABILITY: UNPROVEN
-- COPY_AUTHORIZED: false
-- ZHANGWEI: HOLD
-- scripts: src/recopy_exclusive_r1.py, src/source_reconcile_r1.py, src/reparse_nofollow_r1.py, src/hub_upload_running_r1.py
-- resume after BASELINE_VERIFIED: `E:\BLACKBOX\.venv\Scripts\python.exe -u C:\LAN_SHARE_REPORT\R9_LOCAL_SOURCE_RECONCILE_20261014\src\source_reconcile_r1.py --mode run`
-- work_dir: C:\LAN_SHARE_REPORT\R9_LOCAL_SOURCE_RECONCILE_20261014
+task_id: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
+status: BLOCKED_PENDING_BASELINE_VERIFY
+host: SAM
+updated_at_local: 2026-10-15 01:19:02 +08:00
+
+## Verified OK
+- SAM_ACCESS_VERIFIED=true (UNC \\192.168.100.1\R9_SOURCE_BASELINE_20261014 listable; SOURCE_BASELINE.sqlite bytes=6025072640 on share)
+- Volume serials: E=2387166462 MATCH; D=3187598165 MATCH
+- SOURCE_SCOPE.json SHA=e03948d4… MATCH
+- SOURCE_BASELINE_CONTRACT.json SHA=46655c97… MATCH
+
+## Baseline failure (stop per instruction)
+- expect SHA256=94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba bytes=6025072640
+- local after Copy-Item: f75041f199fc03fb1ea7a4366824b055afbfe38c5ae250a456ed9b404819ef09 (bytes match, SHA mismatch); Copy-Item exit unknown/failed
+- after interrupted robocopy overwrite: c8056935100a1c2eb9d4e8112e17dbb260fbf433116c87e6f0b95e84890e4f9b (still mismatch)
+- UNC stream hash in progress (~1.9 MiB/s over 2.5G link) to distinguish share corruption vs copy corruption
+- BASELINE_VERIFIED=false → enumeration NOT_STARTED (no invented baseline)
+
+## Auth / migration flags
+COPY_AUTHORIZED=false FULL_COPY_AUTHORIZED=false FULL_MIGRATION=false
+ZHANGWEI HOLD — no desktop dispatch from SAM
+
+## Next
+1) Finish UNC SHA; if UNC!=94e6 → desktop must re-publish frozen baseline on share
+2) If UNC==94e6 → clean local recopy then resume no-follow reconcile
