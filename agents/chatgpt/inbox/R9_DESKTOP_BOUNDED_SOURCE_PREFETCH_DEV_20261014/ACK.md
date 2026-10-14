@@ -1,0 +1,10 @@
+# ZHANGWEI ACK
+
+task_id: R9_DESKTOP_BOUNDED_SOURCE_PREFETCH_DEV_20261014_2028
+execution_host: ZHANGWEI
+SAM: HOLD
+status: ACK
+
+已接收。本轮只在 C 开发最多 4 个源句柄的预取，并准备未授权复测包。
+不创建 E:\R9_FORMAL_PREFETCH_BENCH_20261014。不运行真实 UNC 工作池，不复制。
+COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。
