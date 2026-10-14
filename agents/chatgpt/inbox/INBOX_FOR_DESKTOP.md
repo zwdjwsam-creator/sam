@@ -1,16 +1,15 @@
-# ZHANGWEI｜一次统一入口真实测速
+# ZHANGWEI｜修真实枚举接口，只读重验BENCH
 
-task_id: R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014_1639
+task_id: R9_DESKTOP_FIX_ENUM_AND_REVERIFY_BENCH_READONLY_20261014_1748
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014_1639.md
-authorization_contract: agents/chatgpt/outbox/R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014_1639/BENCH_AUTHORIZATION_CONTRACT.json
+instruction: agents/chatgpt/outbox/R9_DESKTOP_FIX_ENUM_AND_REVERIFY_BENCH_READONLY_20261014_1748.md
 SAM: HOLD
 
-目录闭合修复审核通过：24文本文件SHA一致，code摘要0ce471dd661789558754d92f0c1af0aca249a50146bbfa152dc470d621095cd6一致，4项formal/closure测试独立通过。新子集SHA20843e97b90557b947823c9ecbe01679876c3d56be18fe31e1d36952c1381b6a。
-本轮仅一次BENCH真实execute：5032实体、5039文件路径、754目录、108已闭合links、1073739240唯一字节，写隔离R9_FORMAL_PILOT根；同一正式copy/验收链。先实际hash/绑定/审计和dry-run gate_open通过，唯一子PID日志完整，失败STOP不重试，完成待审。HUB直接领取后回ACK，同任务不重复启动。
-COPY_AUTHORIZED=true (BENCH_ONLY)
-PILOT_WRITE_AUTHORIZED=true (SINGLE_EXECUTE)
+1639单次execute已审：copy5032/link7/reparse108完成，missing0/extra0，accept hash0失败；真实_find_children只返path/type，验收未逐child补metadata，已独立复现。旧单次写授权已消费，不再execute、不删现场。
+本轮只修验收/元数据，测试names-only真接口形状；用原run/state/旧copy-code绑定+新verifier摘要只读重验现有1GiB目标，不改run_bind或伪造digest，不放松copy闸门。可以有限只读诊断0.766MB/s，不新复制/测速，不关闭安全软件。
+COPY_AUTHORIZED=false
+PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-回执：agents/chatgpt/inbox/R9_DESKTOP_REAL_FORMAL_BENCH_1G_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_FIX_ENUM_AND_REVERIFY_BENCH_READONLY_20261014/ZHANGWEI_REPORT.md
