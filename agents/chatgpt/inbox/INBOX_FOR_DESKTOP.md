@@ -1,16 +1,18 @@
-# ZHANGWEI｜准备最终计划，等待版本选择
+# ZHANGWEI｜继续最终计划，用户已选原样迁移并标记
 
 task_id: R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725
 execution_host: ZHANGWEI
 status: READY
 instruction: agents/chatgpt/outbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725.md
 SAM: HOLD
-VERSION_CHOICE: PENDING_USER
+VERSION_CHOICE: AS_IS_MIGRATE_MARKED
+VERSION_CHOICE_CONFIRMED: true
+user_decision: agents/chatgpt/outbox/R9_USER_VERSION_CHOICE_AS_IS_20261015_0727.md
 
 SAM来源证据已审核收口。140确为127换行+13空文件，全部程序/文档/配置，未授权恢复或默认正确；42为junction逻辑视图，身份/大小和普通代表一致；51新增+mcp需补完整metadata。
 本轮只在C复制现有计划为新候选、应用source patch、调整42物理路径/实体计数、重放既有目标链接/JSON alias修复，并将新SHA/代码digest/磁盘卷绑定接入既有统一执行链。允许最多52条既有来源会话只读metadata探测；禁止全源扫描、新登录、传输大基线、真实复制或再BENCH。
-真实Win32目标写入必须为0，VERSION_CHOICE未定且COPY_AUTHORIZED=false始终闭闸。不能把准备候选当用户已授权迁移。一次写全剩余技术事项，别再拆反复试验。
-先ACK；回传 agents/chatgpt/inbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015/ZHANGWEI_REPORT.md。完成停止等审核与用户选择。
+真实Win32目标写入必须为0，版本选择已确定为AS_IS_MIGRATE_MARKED，但COPY_AUTHORIZED=false仍闭闸。不能把准备候选当用户已授权迁移。一次写全剩余技术事项，别再拆反复试验。
+先ACK；回传 agents/chatgpt/inbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015/ZHANGWEI_REPORT.md。完成停止等审核；无需再等待版本选择。
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
@@ -18,3 +20,6 @@ FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
 CANDIDATE_EXECUTABLE=false
 full_plan_acceptance=false
+
+## 最新补充：用户选择1已确认
+立即读取 agents/chatgpt/outbox/R9_USER_VERSION_CHOICE_AS_IS_20261015_0727.md 并在原0725任务中继续，不另起重复任务。140个文件全部按当前来源纳入候选，保留异常标记，旧版本后续单独处理。同步侧表、合同和报告的VERSION_CHOICE；如候选SHA改变，重新绑定准确摘要。先ACK此补充；本次不授权真实复制。其余原任务范围不变。
