@@ -1,23 +1,19 @@
-# SAM｜0641退回补齐，只做有限证据与来源patch
+# SAM｜来源证据已通过审核，HOLD
 
-task_id: R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641
-followup_id: R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711
+status: HOLD
 execution_host: SAM
-status: READY
-review_status: PARTIAL_REQUIRED_EVIDENCE_MISSING
-instruction: agents/chatgpt/outbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641.md
-followup: agents/chatgpt/outbox/R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711.md
-ZHANGWEI: HOLD
+last_completed_task: R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641
+last_completed_followup: R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711
+review_status: SOURCE_RECONCILE_EVIDENCE_ACCEPTED
+active_host: ZHANGWEI
+active_task: R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725
+instruction: agents/chatgpt/outbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725.md
 
-接受主扫描完成、51新增分类，以及42路径现场可访问且存在当前同身份候选；不将42当实体丢失。
-未接受COMPLETE/BLOCK none：140小文件仅给live_size，无双方法/实际读字节SHA/前后身份证据；42表无数值身份绑定和具体普通来源代表。原任务这些要求尚未交齐。
-按followup一次补齐：140小文件只读实读及独立size证明、42实体与链接视图绑定、现有C库字段完整性聚合、机器可读SOURCE_PLAN_PATCH。不得重扫/再传或反复hash6GB基线/测速/复制。140全为92py、23md、17json、7csv、1mdc，旧合计约2.79MB，不把本发现泛化为行情parquet丢失。
-确认0/2属实时保留当前来源事实、标SUSPECT_VERSION，报告原样迁移或先找旧版的待选择项，不自行恢复/覆盖/跳过，不把历史版本恢复扩成新的复制程序开发。
-先ACK本补充；回传仍为 agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/。完成停止。
+140小文件的双方法/实读/SHA/前后身份已核验：127 CRLF、13 EMPTY；原因/版本正确性未知。42逻辑路径与普通代表的volume/file id/size已对应，当前字段完整性聚合通过。无需重复核对、重扫或继续找备份。
+用户待选择140的处理方式：原样保留标记迁移 / 先找回旧版本。尚无选择，不恢复、不跳过、不改源。
+本轮台式机仅C盘准备最终计划与闭闸执行器绑定；SAM无新执行任务，保持原数据和C证据可用即可。
 COPY_AUTHORIZED=false
-FULL_COPY_AUTHORIZED=false
-PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
+PILOT_WRITE_AUTHORIZED=false
 IMPLEMENTATION_READY=false
-CANDIDATE_EXECUTABLE=false
 full_plan_acceptance=false
