@@ -1,15 +1,15 @@
-# ZHANGWEI｜修复真实 execute 链
+# ZHANGWEI｜修复真实后端与错误验收通过
 
-task_id: R9_DESKTOP_FIX_ACTUAL_PILOT_EXECUTE_CHAIN_20261014_1124
+task_id: R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014_1147
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_FIX_ACTUAL_PILOT_EXECUTE_CHAIN_20261014_1124.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014_1147.md
 SAM: HOLD
 
-1116代码审核未通过：execute合法授权仍NOT_RELEASED返回3、未调用production_run；runner仅虚拟后端允许；新入口漏代码digest。模拟测试绕过CLI，不代表入口已接通。
-本轮一次补齐实际入口->现场目标绑定->来源稳定检查->生产runner->独立全样本验收，测试必须从真实公开execute入口进入。C上改码/隔离模拟；E不建目录、不写。
+1124包审核仍未通过：runner明确拒绝Win32；现场probe未查物理盘/祖先；accept_pilot对错误hash/size仍通过（独立复现）；Win32无dest_volume且内容hash未实现；合同缺run、mtime非本次现场采集。
+本轮按A-E补齐真实路径、独立验收与不绕过现场函数的测试。仍限定原2实体40路径。C上改码及假OS隔离验证，E不写。
 COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-回执：agents/chatgpt/inbox/R9_DESKTOP_FIX_ACTUAL_PILOT_EXECUTE_CHAIN_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014/ZHANGWEI_REPORT.md
