@@ -1,16 +1,16 @@
-# ZHANGWEI｜暂停实盘，只读查NORMAL来源
+# ZHANGWEI｜仅补做ABC真实恢复
 
-task_id: R9_DESKTOP_TRACE_NORMAL_RUN_READONLY_20261014_1417
+task_id: R9_DESKTOP_REAL_ABC_RESUME_ONLY_20261014_1437
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_TRACE_NORMAL_RUN_READONLY_20261014_1417.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_ABC_RESUME_ONLY_20261014_1437.md
+authorization_contract: agents/chatgpt/outbox/R9_DESKTOP_REAL_ABC_RESUME_ONLY_20261014_1437/PILOT_EXECUTION_CONTRACT.json
 SAM: HOLD
-supersedes: R9_DESKTOP_REAL_CAPABILITY_PILOT_20261014_1345, HUB_WAKE_ZHANGWEI_20261014_140032
 
-已审STOP_UNEXPECTED_NORMAL_COUNTER。HUB旧1345合同已设pilot_write_authorized=false暂停；不要继续旧任务，也不要重复NORMAL或跑ABC。本新任务只读查精确命令/后台记录/领取重试、合同run-state绑定与时间线，保留原合同/日志/E目录/状态。当前目标验收与首次创建证据分开。无证据写UNKNOWN，不删重跑制造首轮。
-用户已要求HUB直接领取执行：请台式机查收并回ACK，避免重复领取同任务进程。
-PILOT_WRITE_AUTHORIZED=false
+1417只读回执已审：NORMAL当前目标SHA/state一致、3身份不同，FIRST_EXECUTION_PROVEN=false保留，首次来源/计数UNKNOWN。不继续追查或重跑NORMAL。
+新授权仅未执行ABC，各一次指定故障+一次恢复，共6execute，172494内容字节。新合同新run/state，旧1345保持撤销。每phase C独占领取、子PID/完整不覆盖日志；工具中断先查PID不自动重启。查收回ACK后仅一个执行者按任务执行。
+PILOT_WRITE_AUTHORIZED=true (ABC_THIS_TASK_ONLY)
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-回执：agents/chatgpt/inbox/R9_DESKTOP_TRACE_NORMAL_RUN_READONLY_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_REAL_ABC_RESUME_ONLY_20261014/ZHANGWEI_REPORT.md
