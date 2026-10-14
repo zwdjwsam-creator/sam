@@ -1,9 +1,9 @@
-# ZHANGWEI｜修正全链接审计后判定真实缺口
+# ZHANGWEI｜只在C准备目标链接修复候选计划
 
-task_id: R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014_2157
+task_id: R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014_2212
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014_2157.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014_2212.md
 SAM: HOLD
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
@@ -11,6 +11,7 @@ PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
 
-2123结构统计/6份SHA已核对，但当前未闭合数不能直接当坏链接数：8/32跳截止是未判定，D16个UNMAPPED是把已迁移E_ENGINE路径二次当源映射造成的审计错误。独立复现实际reader对应D迁移链接可接受；70节点有限链被旧审计截断。
-本轮仅C修审计：统一正式目标命名空间，解析父junction与残余后缀、有限长链和真实循环，再分类4825链接并按真实终点/缺失祖先分组。不修改生产代码、计划、源链接、不复制。
-可选<=16个问题组来源元数据代表探针，不读内容/重扫/改会话。先ACK，按instruction回传 agents/chatgpt/inbox/R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014/ZHANGWEI_REPORT.md，完成停止。
+2157结果已审：10份文本SHA/离线解析6项通过，4824目录终点+1文件终点。64步代表跟随1921、文件型终点junction跟随267均有记录；不把全部1007长链当真实坏链接。
+本轮C准备目标侧修复：历史release目录链指向同一普通目录终点，保留动态发布头语义；唯一失效CURRENT_POINTER_COPY.json拟转为既有正常文件实体的目标硬链接，原源重解析元数据保留。
+派生C候选SQLite与差异/隔离验证，普通实体和唯一数据字节不增、来源代表必须是原正常文件。生产代码/原计划/源/E目标不改，候选仍不可正式执行。
+先ACK，按instruction回传 agents/chatgpt/inbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014/ZHANGWEI_REPORT.md，完成停止；来源当前一致性仍待SAM本机后续任务。
