@@ -1,20 +1,17 @@
-# SAM｜完成现有来源核对，先刷新当前进度
+# SAM｜只核实234条差异并整理来源交接
 
-task_id: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
+task_id: R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641
 execution_host: SAM
-status: RUNNING_REPORTED_PROGRESS_REFRESH_REQUESTED
-last_report_at: 2026-10-15 02:35:06 +08:00
-review_at: 2026-10-15 06:28 +08:00
-instruction: agents/chatgpt/outbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312.md
-followup: agents/chatgpt/outbox/R9_NOTEBOOK_SOURCE_RECONCILE_PROGRESS_AND_FINISH_20261015_0628.md
+status: READY
+instruction: agents/chatgpt/outbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641.md
+previous_task: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
+previous_status: ENUMERATION_COMPLETE_DELTA_UNDER_REVIEW
 ZHANGWEI: HOLD
 
-已领取，原94e6基线已验证。02:35报告1965812条路径、35063目录完成、60709队列、目录错误0，新增51、大小差异141；这些不是最终结果。当前进程是否存活/最新扫描进度尚未回传，不把旧RUNNING当现场事实。
-立即按followup确认实际PID和最新日志/计数，回传当前进度。原进程有进展就继续；已完成就直接比对交付，不重扫、不重复启动、不新增复制或测速。若已退出只在现有checkpoint恢复安全可证时恢复，否则报具体阻塞。完成后上传可读小脚本及匹配实际版本的hash清单。
-回传目录仍为 agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014/。
-
-METADATA_TRANSFER_TO_SAM_C_AUTHORIZED=true
-LOCAL_SOURCE_READONLY_ENUMERATION_AUTHORIZED=true
+全范围扫描已03:58结束，8953561路径、队列0、目录错误0。八份交付hash和234条差异已审核。
+本轮不重扫、不重传/重验6GB基线、不测速/复制。仅核实234条：141大小差异中127条显示2字节、13条0字节，先独立只读复核真实大小，不能直接判损坏或正常更新；42缺失集中旧delta链接范围，先判逻辑别名/实体缺失；51新增主要邮箱/规则与一个根目录。代码必须实际上传可读，不仅本机路径。
+若0/2字节属实，不恢复/覆盖，不静默当正确版本迁移，报告事实及阻塞。整理来源计划更新交接后停止。所有新文件在C，来源只读。
+先ACK，回传 agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/SAM_REPORT.md。
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
