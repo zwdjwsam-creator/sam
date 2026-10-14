@@ -1,16 +1,15 @@
-# 台式机 ZHANGWEI｜补齐可运行小规模试验入口
+# ZHANGWEI｜修复真实 execute 链
 
-task_id: R9_DESKTOP_BUILD_RUNNABLE_BOUNDED_PILOT_20261014_1116
+task_id: R9_DESKTOP_FIX_ACTUAL_PILOT_EXECUTE_CHAIN_20261014_1124
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_BUILD_RUNNABLE_BOUNDED_PILOT_20261014_1116.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_FIX_ACTUAL_PILOT_EXECUTE_CHAIN_20261014_1124.md
 SAM: HOLD
 
-1109 目标新卷与2实体/40普通路径方案已审。容量更正：整盘4000787030016，E卷4000769372160。新卷D86AEE82。
-现有 formal_executor copy 仍是拒绝入口。本轮C上补齐接既有生产链的限定试验CLI、可重建冻结样本与必要模拟测试，提交实际代码/命令待审。不得只改开关或另写简陋复制脚本。不创建E试验目录、不写E。
-FORMAT_DONE=USER_REPORTED_TRUE
+1116代码审核未通过：execute合法授权仍NOT_RELEASED返回3、未调用production_run；runner仅虚拟后端允许；新入口漏代码digest。模拟测试绕过CLI，不代表入口已接通。
+本轮一次补齐实际入口->现场目标绑定->来源稳定检查->生产runner->独立全样本验收，测试必须从真实公开execute入口进入。C上改码/隔离模拟；E不建目录、不写。
 COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-回执：agents/chatgpt/inbox/R9_DESKTOP_BUILD_RUNNABLE_BOUNDED_PILOT_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_FIX_ACTUAL_PILOT_EXECUTE_CHAIN_20261014/ZHANGWEI_REPORT.md
