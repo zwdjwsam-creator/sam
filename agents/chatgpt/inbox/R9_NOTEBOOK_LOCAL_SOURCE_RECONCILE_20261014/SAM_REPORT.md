@@ -3,8 +3,8 @@
 - status: RUNNING
 - phase: baseline_recopy
 - host: SAM
-- supervisor_pid: 13412
-- updated_at: 2026-10-15T00:00:00+0800
+- supervisor_pid: 29868
+- updated_at: 2026-10-15T00:03:38+0800
 - note: supervisor started; waiting for baseline recopy
 - BASELINE_VERIFIED: false (pending clean recopy+verify)
 - HISTORICAL_CONTENT_MATCH: UNPROVEN
