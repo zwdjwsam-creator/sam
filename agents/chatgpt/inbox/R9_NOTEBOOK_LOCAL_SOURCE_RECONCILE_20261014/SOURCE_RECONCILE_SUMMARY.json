@@ -1,19 +1,46 @@
 {
-  "phase": "baseline_exclusive_recopy",
-  "exclusive_recopy_pid": 36024,
-  "HISTORICAL_CONTENT_MATCH": "UNPROVEN",
-  "SOURCE_METADATA_MATCH": false,
-  "twin_killer_pid": 28264,
-  "resume": "Monitor C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\logs\\recopy_exclusive_stdout.log for INSTALLED_OK; then E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\source_reconcile_r1.py --mode run",
-  "status": "RUNNING",
-  "updated_at": "2026-10-15T01:42:28+08:00",
-  "hostname": "SAM",
-  "COPY_AUTHORIZED": false,
-  "note": "UNC ~1MB/s; prior concurrent robocopy/py312 twin corrupted local; exclusive recopy with py312 twin-killer active",
-  "BASELINE_VERIFIED": false,
-  "SOURCE_SCAN_STABILITY": "UNPROVEN",
-  "SOURCE_ENUMERATION_COMPLETE": false,
-  "expect_sha": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
   "task_id": "R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312",
-  "SOURCE_CURRENT_MATCH": false
+  "status": "HARD_BLOCK",
+  "hostname": "SAM",
+  "updated_at": "2026-10-15T01:43:40+0800",
+  "BASELINE_VERIFIED": false,
+  "SOURCE_ENUMERATION_COMPLETE": false,
+  "SOURCE_METADATA_MATCH": false,
+  "SOURCE_CURRENT_MATCH": false,
+  "HISTORICAL_CONTENT_MATCH": "UNPROVEN",
+  "SOURCE_SCAN_STABILITY": "UNPROVEN",
+  "COPY_AUTHORIZED": false,
+  "FULL_MIGRATION": false,
+  "ZHANGWEI": "HOLD",
+  "block": "BASELINE_LOCAL_CORRUPT_AFTER_CONCURRENT_COPY",
+  "block_detail": {
+    "expect_sha": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+    "expect_bytes": 6025072640,
+    "events": [
+      "Stream-copy once achieved sha=94e6 and bytes match, then parent robocopy PID 6864 overlapped and left sha=c805...",
+      "Subsequent exclusive recopies contended with auto-spawned Python312 twins and/or robocopy; twin-killer required",
+      "Local SOURCE_BASELINE.sqlite now truncated/incomplete (see local_bytes); not safe to quick_check or enumerate against"
+    ],
+    "local_bytes": 1509949440,
+    "volumes_previously": "E=2387166462 MATCH; D=3187598165 MATCH",
+    "unc": "\\\\192.168.100.1\\R9_SOURCE_BASELINE_20261014 (reachable earlier; later ~1MB/s / intermittent)"
+  },
+  "scripts_ready": {
+    "recopy_exclusive_r1.py": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\recopy_exclusive_r1.py",
+    "source_reconcile_r1.py": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\source_reconcile_r1.py",
+    "reparse_nofollow_r1.py": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\reparse_nofollow_r1.py",
+    "hub_upload_running_r1.py": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\hub_upload_running_r1.py"
+  },
+  "resume": [
+    "Ensure ZERO competing robocopy/python writers (check Restart Manager on baseline path)",
+    "Delete incomplete local SOURCE_BASELINE.sqlite if size!=6025072640",
+    "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\recopy_exclusive_r1.py",
+    "Verify stdout contains INSTALLED_OK and sha=94e6; PRAGMA quick_check=ok via immutable=1",
+    "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\source_reconcile_r1.py --mode run",
+    "Upload RUNNING periodically then final via hub_upload_running_r1.py"
+  ],
+  "delta_counts": {},
+  "dirs_done": 0,
+  "queue_pending": 0,
+  "paths_enumerated": 0
 }
