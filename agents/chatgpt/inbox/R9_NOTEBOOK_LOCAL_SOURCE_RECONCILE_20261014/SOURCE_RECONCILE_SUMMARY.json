@@ -1,70 +1,185 @@
-﻿{
-    "task_id":  "R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312",
-    "status":  "RUNNING",
-    "hostname":  "sam",
-    "pid":  22336,
-    "updated_at":  "2026-10-15T02:34:50+0800",
-    "BASELINE_VERIFIED":  true,
-    "baseline":  {
-                     "BASELINE_VERIFIED":  true,
-                     "bytes":  6025072640,
-                     "sha256":  "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
-                     "sha_match":  true,
-                     "wal_bytes":  0,
-                     "journal_bytes":  0,
-                     "shm_bytes":  0,
-                     "quick_check":  "ok",
-                     "scope_sha_match":  true,
-                     "contract_sha_match":  true,
-                     "block":  null,
-                     "path_count":  8953552,
-                     "link_count":  4825,
-                     "tables":  [
-                                    "paths",
-                                    "deficits",
-                                    "stats",
-                                    "links",
-                                    "entities",
-                                    "link_overlay_audit"
-                                ]
-                 },
-    "SOURCE_ENUMERATION_COMPLETE":  false,
-    "SOURCE_METADATA_MATCH":  false,
-    "SOURCE_CURRENT_MATCH":  false,
-    "HISTORICAL_CONTENT_MATCH":  "UNPROVEN",
-    "SOURCE_SCAN_STABILITY":  "UNPROVEN",
-    "usn":  {
-                "E:\\":  {
-                             "ok":  true,
-                             "UsnJournalID":  134105894663740175,
-                             "NextUsn":  15112324376,
-                             "FirstUsn":  14994636800
-                         },
-                "D:\\":  {
-                             "ok":  true,
-                             "UsnJournalID":  134105894663740175,
-                             "NextUsn":  971588600,
-                             "FirstUsn":  859832320
-                         }
-            },
-    "dirs_done":  35063,
-    "dirs_error":  0,
-    "queue_pending":  60709,
-    "queue_done":  35063,
-    "paths_enumerated":  1965812,
-    "delta_counts":  {
-                         "ADDED":  51,
-                         "SIZE_MISMATCH":  141
-                     },
-    "delta_mismatch_total":  192,
-    "block":  null,
-    "notes":  [
-                  "processed_batch_dirs=35063",
-                  "log=C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\logs\\reconcile_main.log"
-              ],
-    "COPY_AUTHORIZED":  false,
-    "FULL_MIGRATION":  false,
-    "work_dir":  "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014",
-    "current_db":  "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\db\\CURRENT_ENUM.sqlite",
-    "delta_db":  "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\db\\DELTA.sqlite"
+{
+  "task_id": "R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312",
+  "status": "COMPLETE",
+  "hostname": "sam",
+  "updated_at": "2026-10-15T06:34:16+0800",
+  "SAM_ACCESS_VERIFIED": true,
+  "SAM_ACCESS_EVIDENCE": [
+    "UNC baseline hash match 94e6… via hash_unc_baseline_r1",
+    "live enumeration completed nodes=8953561 dirs_done=233665 queue_pending=0",
+    "E:\\BLACKBOX and D:\\ scoped roots readable during scan (dirs_error=0)"
+  ],
+  "BASELINE_VERIFIED": true,
+  "baseline": {
+    "BASELINE_VERIFIED": true,
+    "bytes": 6025072640,
+    "sha256": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+    "sha_match": true,
+    "wal_bytes": 0,
+    "journal_bytes": 0,
+    "shm_bytes": 0,
+    "quick_check": "ok",
+    "scope_sha_match": true,
+    "contract_sha_match": true,
+    "block": null,
+    "path_count": 8953552,
+    "link_count": 4825,
+    "tables": [
+      "paths",
+      "deficits",
+      "stats",
+      "links",
+      "entities",
+      "link_overlay_audit"
+    ]
+  },
+  "SOURCE_ENUMERATION_COMPLETE": true,
+  "SOURCE_METADATA_MATCH": false,
+  "SOURCE_CURRENT_MATCH": false,
+  "HISTORICAL_CONTENT_MATCH": "UNPROVEN",
+  "SOURCE_SCAN_STABILITY": "UNPROVEN",
+  "usn": null,
+  "usn_note": "USN journal not used/available for this reconcile; SOURCE_SCAN_STABILITY remains UNPROVEN without USN or second-pass stability proof",
+  "dirs_done": 233665,
+  "dirs_error": 0,
+  "queue_pending": 0,
+  "queue_done": 233665,
+  "paths_enumerated": 8953561,
+  "delta_counts": {
+    "ADDED": 51,
+    "MISSING": 42,
+    "SIZE_MISMATCH": 141
+  },
+  "delta_mismatch_total": 234,
+  "per_root_stats": [
+    {
+      "root_id": "D_BLACKBOX_DESKTOP_INIT_R1",
+      "current_nodes": 17,
+      "dirs_enumerated": 3,
+      "delta": {},
+      "delta_total": 0
+    },
+    {
+      "root_id": "D_BLACKBOX_REMOTE_LINK_R1",
+      "current_nodes": 17,
+      "dirs_enumerated": 2,
+      "delta": {},
+      "delta_total": 0
+    },
+    {
+      "root_id": "D_JQ",
+      "current_nodes": 126,
+      "dirs_enumerated": 8,
+      "delta": {},
+      "delta_total": 0
+    },
+    {
+      "root_id": "D_PIT_PRODUCTS",
+      "current_nodes": 47,
+      "dirs_enumerated": 13,
+      "delta": {
+        "ADDED": 1
+      },
+      "delta_total": 1
+    },
+    {
+      "root_id": "D_backtest_lab",
+      "current_nodes": 24524,
+      "dirs_enumerated": 4861,
+      "delta": {
+        "SIZE_MISMATCH": 15
+      },
+      "delta_total": 15
+    },
+    {
+      "root_id": "D_backtest_lab_backups",
+      "current_nodes": 10775,
+      "dirs_enumerated": 3055,
+      "delta": {},
+      "delta_total": 0
+    },
+    {
+      "root_id": "D_backtest_lab_candidate_releases",
+      "current_nodes": 31,
+      "dirs_enumerated": 9,
+      "delta": {},
+      "delta_total": 0
+    },
+    {
+      "root_id": "D_backtest_lab_shadow_experiments",
+      "current_nodes": 8722,
+      "dirs_enumerated": 2680,
+      "delta": {},
+      "delta_total": 0
+    },
+    {
+      "root_id": "D_blackbox_data",
+      "current_nodes": 1140,
+      "dirs_enumerated": 7,
+      "delta": {},
+      "delta_total": 0
+    },
+    {
+      "root_id": "E_BLACKBOX",
+      "current_nodes": 8908162,
+      "dirs_enumerated": 223027,
+      "delta": {
+        "SIZE_MISMATCH": 126,
+        "ADDED": 50,
+        "MISSING": 42
+      },
+      "delta_total": 218
+    }
+  ],
+  "pid_lineage": {
+    "supervisor_or_venv_parent_pid": 20796,
+    "worker_source_reconcile_pid": 22336,
+    "ack_pid_historical": 34236,
+    "reconcile_pid_txt_final": "22336",
+    "note": "venv/parent 20796 spawned worker 22336; worker logged START 2026-10-15T02:14:46+0800 and DONE 2026-10-15T03:58:26+0800; no active source_reconcile at delivery time",
+    "active_source_reconcile_at_delivery": false
+  },
+  "db_on_C": {
+    "CURRENT_ENUM": {
+      "path": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\db\\CURRENT_ENUM.sqlite",
+      "bytes": 9812078592,
+      "sha256": "ffb4caa64c4b95e3fe60a5d071799530e8c32b4a4f80692d79aa976e967a01b6",
+      "quick_check": "ok",
+      "nodes": 8953561,
+      "queue_done": 233665,
+      "queue_pending": 0
+    },
+    "DELTA": {
+      "path": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\db\\DELTA.sqlite",
+      "bytes": 147456,
+      "sha256": "6f68cdb84eee5a70dd67b6fbf008bde79a2a8ea8325b050f8f9b8071a4f0e5d4",
+      "quick_check": "ok",
+      "rows": 234
+    }
+  },
+  "notes": [
+    "COMPLETE from existing CURRENT_ENUM/DELTA; no rescan; no second run started",
+    "HISTORICAL_CONTENT_MATCH=UNPROVEN (baseline has no per-file content hash/mtime plane)",
+    "SOURCE_METADATA_MATCH=false / SOURCE_CURRENT_MATCH=false due to real delta total=234",
+    "SIZE_MISMATCH concentrated on E_BLACKBOX (126) and D_backtest_lab (15); MISSING/ADDED mostly E_BLACKBOX",
+    "COPY_AUTHORIZED=false; FULL_MIGRATION=false; ZHANGWEI HOLD",
+    "DBs remain on C only; not uploaded"
+  ],
+  "COPY_AUTHORIZED": false,
+  "FULL_COPY_AUTHORIZED": false,
+  "PILOT_WRITE_AUTHORIZED": false,
+  "FULL_MIGRATION": false,
+  "IMPLEMENTATION_READY": false,
+  "CANDIDATE_EXECUTABLE": false,
+  "full_plan_acceptance": false,
+  "work_dir": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014",
+  "current_db": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\db\\CURRENT_ENUM.sqlite",
+  "delta_db": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\db\\DELTA.sqlite",
+  "outbox_gate": {
+    "file": "E:\\BLACKBOX\\运行\\外部大脑信箱\\R9_NOTEBOOK_SOURCE_RECONCILE_PROGRESS_AND_FINISH_20261015_0628.md",
+    "decision": "ALLOWED_PENDING_HUMAN",
+    "hard_block_hits": [],
+    "sha256": "3f432f1bc36820085cc75d2922fc49d5d0d93d238d817ba541e1f9fecbe68a80"
+  },
+  "followup_id": "R9_NOTEBOOK_SOURCE_RECONCILE_PROGRESS_AND_FINISH_20261015_0628"
 }
