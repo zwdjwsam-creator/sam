@@ -1,0 +1,126 @@
+{
+  "task_id": "R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231",
+  "authority": "path rows in SOURCE_BASELINE.sqlite, the frozen 94e6 plan copy",
+  "measured_this_round": true,
+  "e_source_root": "E:\\BLACKBOX",
+  "e_outside_blackbox_path_rows": 0,
+  "e_not_included": [
+    "E:\\BLACKBOX_MIGRATION_AUDIT_R1",
+    "any sibling of E:\\BLACKBOX"
+  ],
+  "e_counts": {
+    "files": 8680322,
+    "ordinary_directories": 223023,
+    "reparse_points": 4809,
+    "empty_ordinary_directories": 484
+  },
+  "d_regular_roots": [
+    {
+      "root": "D:\\BLACKBOX_DESKTOP_INIT_R1",
+      "files": 14,
+      "ordinary_directories": 3,
+      "reparse_points": 0,
+      "empty_ordinary_directories": 0,
+      "selection": "ENTIRE_TOP"
+    },
+    {
+      "root": "D:\\BLACKBOX_REMOTE_LINK_R1",
+      "files": 15,
+      "ordinary_directories": 2,
+      "reparse_points": 0,
+      "empty_ordinary_directories": 0,
+      "selection": "ENTIRE_TOP"
+    },
+    {
+      "root": "D:\\JQ",
+      "files": 118,
+      "ordinary_directories": 8,
+      "reparse_points": 0,
+      "empty_ordinary_directories": 0,
+      "selection": "ENTIRE_TOP"
+    },
+    {
+      "root": "D:\\backtest_lab",
+      "files": 19663,
+      "ordinary_directories": 4861,
+      "reparse_points": 0,
+      "empty_ordinary_directories": 262,
+      "selection": "ENTIRE_TOP"
+    },
+    {
+      "root": "D:\\backtest_lab_backups",
+      "files": 7720,
+      "ordinary_directories": 3055,
+      "reparse_points": 0,
+      "empty_ordinary_directories": 6,
+      "selection": "ENTIRE_TOP"
+    },
+    {
+      "root": "D:\\backtest_lab_candidate_releases",
+      "files": 22,
+      "ordinary_directories": 9,
+      "reparse_points": 0,
+      "empty_ordinary_directories": 0,
+      "selection": "ENTIRE_TOP"
+    },
+    {
+      "root": "D:\\backtest_lab_shadow_experiments",
+      "files": 6042,
+      "ordinary_directories": 2680,
+      "reparse_points": 0,
+      "empty_ordinary_directories": 2,
+      "selection": "ENTIRE_TOP"
+    },
+    {
+      "root": "D:\\blackbox_data",
+      "files": 1133,
+      "ordinary_directories": 7,
+      "reparse_points": 0,
+      "empty_ordinary_directories": 0,
+      "selection": "ENTIRE_TOP"
+    }
+  ],
+  "d_partial_root": {
+    "root": "D:\\CURSOR_TASK_ARCHIVE",
+    "included_subtree": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products",
+    "files": 18,
+    "ordinary_directories": 12,
+    "reparse_points": 16,
+    "path_rows": 46,
+    "other_rows_under_archive": 0,
+    "selection": "ONLY_THIS_PIT_PRODUCTS_SUBTREE"
+  },
+  "d_tops_in_baseline_are_exhaustive": [
+    "BLACKBOX_DESKTOP_INIT_R1",
+    "BLACKBOX_REMOTE_LINK_R1",
+    "CURSOR_TASK_ARCHIVE",
+    "JQ",
+    "backtest_lab",
+    "backtest_lab_backups",
+    "backtest_lab_candidate_releases",
+    "backtest_lab_shadow_experiments",
+    "blackbox_data"
+  ],
+  "d_counts": {
+    "files": 34745,
+    "ordinary_directories": 10637,
+    "reparse_points": 16,
+    "empty_ordinary_directories": 270
+  },
+  "totals": {
+    "files": 8715067,
+    "ordinary_directories": 233660,
+    "reparse_points": 4825,
+    "empty_ordinary_directories": 754,
+    "entities": 1223721,
+    "unique_content_bytes_sum_min_size": 365007198749,
+    "entities_with_min_size_ne_max_size": 0
+  },
+  "evidence": [
+    "This round grouped every path row in the frozen baseline. File counts for the eight regular D tops match C:\\LAN_SHARE_REPORT\\R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014\\SCOPE_GAPS.md.",
+    "Historical scope file C:\\LAN_SHARE_REPORT\\R9_DESKTOP_CORRECT_FULL_LINK_RESOLUTION_READONLY_20261014\\HUB_R9_SAM_MIGRATION_SCOPE.json recommended INCLUDE for those eight tops. backtest_lab_shadow_experiments was needs_user_decision there; the frozen plan still contains that entire top. That old flag is not a new exclusion and is not new copy authorization.",
+    "The same historical scope file says CURSOR_TASK_ARCHIVE is partial. The baseline contains only the pit_products subtree named above, 46 path rows, and no other archive row.",
+    "Empty ordinary directories are path rows with is_dir=1, is_reparse=0, and no other path row beneath them."
+  ],
+  "live_disk_not_scanned": true
+}
