@@ -2,10 +2,9 @@
 
 status: HOLD
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014_1147
-instruction: agents/chatgpt/outbox/R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014_1147.md
+active_task: R9_DESKTOP_REAL_BOUNDED_PILOT_20261014_1232
+instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_BOUNDED_PILOT_20261014_1232.md
 
-台式机修复真实试验路径与独立验收，仍无实盘写入。笔记本无任务，不改源/共享/账号/网络。
+台式机进行2实体40路径的限定实盘样本试验及一次重跑。笔记本无执行任务，不修改源/账号/网络/共享，保持现有来源可读状态。
 COPY_AUTHORIZED=false
-PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
