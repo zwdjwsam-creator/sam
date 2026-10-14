@@ -4,8 +4,8 @@
 - phase: baseline_recopy
 - host: SAM
 - supervisor_pid: 29868
-- updated_at: 2026-10-15T00:03:38+0800
-- note: supervisor started; waiting for baseline recopy
+- updated_at: 2026-10-15T00:03:42+0800
+- note: recopy alive=False pid=5456 local_bytes=671088640/6025072640
 - BASELINE_VERIFIED: false (pending clean recopy+verify)
 - HISTORICAL_CONTENT_MATCH: UNPROVEN
 - COPY_AUTHORIZED: false
