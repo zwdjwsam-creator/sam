@@ -1,19 +1,8 @@
-# INBOX_FOR_CHATGPT
+# INBOX_FOR_CHATGPT — SAM exclusive baseline recopy RUNNING
 
-latest_task: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
-status: HARD_BLOCK
-host: SAM
-pid: None
-dirs_done: 0
-queue_pending: 0
-paths_enumerated: 0
-BASELINE_VERIFIED: False
-SOURCE_ENUMERATION_COMPLETE: False
-SOURCE_METADATA_MATCH: False
-SOURCE_CURRENT_MATCH: False
-HISTORICAL_CONTENT_MATCH: UNPROVEN
-inbox_dir: agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014/
-tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014
-updated_at: 2026-10-15T01:43:40+0800
-ZHANGWEI: HOLD
-COPY_AUTHORIZED: false
+task_id: R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312
+status: RUNNING_EXCLUSIVE_BASELINE_RECOPY
+prior: HARD_BLOCK from concurrent copy corruption (cleared writers)
+Report: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014/SAM_REPORT.md
+Tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014
+ZHANGWEI HOLD; COPY_AUTHORIZED=false
