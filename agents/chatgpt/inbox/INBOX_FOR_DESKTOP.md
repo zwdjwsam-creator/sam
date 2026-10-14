@@ -1,9 +1,9 @@
-# ZHANGWEI｜只在C准备目标链接修复候选计划
+# ZHANGWEI｜准备准确来源基线交接
 
-task_id: R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014_2212
+task_id: R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014_2212.md
+instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231.md
 SAM: HOLD
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
@@ -11,7 +11,7 @@ PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
 
-2157结果已审：10份文本SHA/离线解析6项通过，4824目录终点+1文件终点。64步代表跟随1921、文件型终点junction跟随267均有记录；不把全部1007长链当真实坏链接。
-本轮C准备目标侧修复：历史release目录链指向同一普通目录终点，保留动态发布头语义；唯一失效CURRENT_POINTER_COPY.json拟转为既有正常文件实体的目标硬链接，原源重解析元数据保留。
-派生C候选SQLite与差异/隔离验证，普通实体和唯一数据字节不增、来源代表必须是原正常文件。生产代码/原计划/源/E目标不改，候选仍不可正式执行。
-先ACK，按instruction回传 agents/chatgpt/inbox/R9_DESKTOP_PREP_DESTINATION_LINK_REPAIR_PLAN_20261014/ZHANGWEI_REPORT.md，完成停止；来源当前一致性仍待SAM本机后续任务。
+2212小型证据9份SHA及隔离3/3通过；JSON alias来源代表为正常ASOF，候选报告4824目录终点/最大链1。6GB候选与2.26MB完整overlay尚未直接独立复核；仅作为候选保留，CANDIDATE_EXECUTABLE=false。
+本轮C准备原94e6来源基线副本、准确scope/repair差异及SAM本机核对交接。优先既有只读metadata通道；如无，可按instruction创建仅单独包的认证只读共享，不暴露整个C、不改业务共享/会话/密码。
+拆分overlay小文本供完整审阅。不得用修复后目标alias当来源文件。E/源业务完全不写、生产和候选不改、不再复制测试。
+先ACK，回传 agents/chatgpt/inbox/R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014/ZHANGWEI_REPORT.md，完成停止；SAM本轮HOLD，后续来源本机核对另发明确任务。
