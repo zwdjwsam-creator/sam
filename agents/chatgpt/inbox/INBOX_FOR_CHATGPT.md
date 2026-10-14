@@ -1,6 +1,8 @@
 # INBOX_FOR_CHATGPT — 2026-10-14
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_FIX_ACTUAL_PILOT_EXECUTE_CHAIN_20261014/ZHANGWEI_REPORT.md`
+1124交付已代码审核，仍FAILED_REAL_PATH_AND_ACCEPTANCE：Win32被明确拒绝；现场只查卷不查物理盘/祖先；原accept_pilot对logical_size=1与wrong-content-hash仍full_acceptance=true（已独立复现）；Win32无dest_volume/真实hash接口未完成；合同缺run，mtime为旧观察。
+下一任务：R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014_1147
 执行电脑=ZHANGWEI；SAM=HOLD。
-状态 HOLD_PENDING_CODE_REVIEW。公开 execute 在授权通过后调用 production_run。未授权写入次数为 0。
-PILOT_WRITE_AUTHORIZED=false。COPY_AUTHORIZED=false。未向 E 写入。
+指令：agents/chatgpt/outbox/R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014_1147.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_CLOSE_REAL_BACKEND_AND_VERIFY_CONTENT_20261014/ZHANGWEI_REPORT.md
+COPY_AUTHORIZED=false；PILOT_WRITE_AUTHORIZED=false；FULL_MIGRATION=false；IMPLEMENTATION_READY=false。没有发布真实试验授权。
