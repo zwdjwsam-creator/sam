@@ -1,0 +1,144 @@
+{
+  "task_id": "R9_DESKTOP_PREP_SOURCE_RECONCILE_HANDOFF_20261014_2231",
+  "candidate_sha256": "e6c49ecdf925c923351267883db7bfb2cf83ed7e02f2038ec4bd997ef2f43be2",
+  "candidate_bytes": 6025261056,
+  "candidate_executable": false,
+  "candidate_modified_this_round": false,
+  "baseline_sha256": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+  "overlay_sha256": "079537ac33b5b7bc3a9001c32c78eff0788ce5affe6f7d493402dcb8a651ea0e",
+  "overlay_bytes": 2262308,
+  "overlay_records": 3694,
+  "already_direct_edges_not_in_overlay": 1130,
+  "dynamic_leaf_count": 0,
+  "unknown_role_count": 0,
+  "directory_edges_shortened": 3694,
+  "replay_rule": "Apply this overlay only after a source baseline exists. If SAM finds a real source delta, build the new source plan first and replay the same repair. Do not treat the current candidate as proof the source is unchanged.",
+  "what_the_overlay_changes": "For each HISTORICAL_SHORTEN row, the candidate writes migrated_target and mapped_dest to the resolved ordinary directory. The frozen baseline keeps the original target.",
+  "dated_ancestor_rule": "Every shortened row has an ancestor directory whose own name contains ASOF or PIT_ together with a 20xxxxxx date. 3077 use an ASOF-and-date ancestor as the strongest match. 617 use a PIT-and-date ancestor. There were 140 distinct dated ancestor names.",
+  "under_releases_directory": 3678,
+  "not_under_releases_directory_count": 16,
+  "not_under_releases_directory": [
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data",
+      "chain_length": 47,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes",
+      "chain_length": 47,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data",
+      "chain_length": 47,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes",
+      "chain_length": 47,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2014",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2014",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2014",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2015",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2015",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2015",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2016",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2016",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2016",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2017",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2017",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2017",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2018",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2018",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2018",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2019",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2019",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2019",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2020",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2020",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2020",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2021",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2021",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2021",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2022",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2022",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2022",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2023",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2023",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2023",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2024",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2024",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2024",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    },
+    {
+      "dest_link": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2025",
+      "source_link": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2025",
+      "source_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2025",
+      "chain_length": 39,
+      "placement": "DATED_PIT_PRODUCT_DIRECTORY_WITHOUT_RELEASES_PARENT"
+    }
+  ],
+  "tip_inside_dated_ancestor_count": 1342,
+  "dynamic_publish_claim": "NOT_MADE",
+  "placement_note": "A dated directory name does not prove the directory never participates in a later publish. The builder's original basis was a substring search for ASOF, RELEASE, or PIT_. This review did not change the candidate.",
+  "json_pointer": {
+    "source_file_in_baseline": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_ADJFACTOR_PIT_ASOF_20260814_20260816_034243\\CURRENT_POINTER_COPY.json",
+    "baseline_role": "ordinary file, file_id 281474980058594, logical_size 1071, original path_count 1",
+    "reparse_in_baseline": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_ADJFACTOR_PIT_CLEAN_ASOF_20260814_20260816_044000\\CURRENT_POINTER_COPY.json",
+    "candidate_change": "delete that links row and add the broken path as a destination alias of the same file entity, source=dest_repair_alias",
+    "source_compare_rule": "The extra candidate path is not a new source file. Compare the source using the baseline reparse row and the ASOF file row. Do not expect the broken path to be an ordinary file on the source."
+  }
+}
