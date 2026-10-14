@@ -1,0 +1,138 @@
+{
+  "context": "zhangwei\\admin current unelevated process",
+  "plan_sha256": "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+  "plan_sha_matches_frozen_evidence": true,
+  "plan_freeze": {
+    "frozen": true,
+    "wal_bytes": 0,
+    "journal_bytes": 0,
+    "reason": null
+  },
+  "files": [
+    {
+      "kind": "e",
+      "inventory_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R9_ASOF_20260805_20260806_004303\\standard\\fund\\ETF_NAV\\ETF_NAV__fund_etf_nav__150306.XSHE_150310.XSHE__2018__v1__20260712_103337.parquet",
+      "expected_bytes": 6849,
+      "plan_row": {
+        "logical_size": 6849,
+        "volume_serial": "2387166462",
+        "file_id": "10133099161590568"
+      },
+      "reads": [
+        {
+          "ok": true,
+          "before": {
+            "volume_serial": 2387166462,
+            "file_id": "10133099161590568",
+            "logical_size": 6849,
+            "mtime_ft": "134298545883539099",
+            "is_dir": false
+          },
+          "after": {
+            "volume_serial": 2387166462,
+            "file_id": "10133099161590568",
+            "logical_size": 6849,
+            "mtime_ft": "134298545883539099",
+            "is_dir": false
+          },
+          "sha256": "20034905cbe2a5b5af339db345f6edbbba41cd6aac6b2350da677eed80888503",
+          "bytes_read": 6849,
+          "payload_saved": false
+        },
+        {
+          "ok": true,
+          "before": {
+            "volume_serial": 2387166462,
+            "file_id": "10133099161590568",
+            "logical_size": 6849,
+            "mtime_ft": "134298545883539099",
+            "is_dir": false
+          },
+          "after": {
+            "volume_serial": 2387166462,
+            "file_id": "10133099161590568",
+            "logical_size": 6849,
+            "mtime_ft": "134298545883539099",
+            "is_dir": false
+          },
+          "sha256": "20034905cbe2a5b5af339db345f6edbbba41cd6aac6b2350da677eed80888503",
+          "bytes_read": 6849,
+          "payload_saved": false
+        }
+      ],
+      "stable": true,
+      "plan_match": {
+        "logical_size": true,
+        "volume_serial": true,
+        "file_id": true,
+        "plan_has_content_sha": false,
+        "plan_has_mtime": false
+      }
+    },
+    {
+      "kind": "d",
+      "inventory_path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\CN_A_SHARE_FEE_SCHEDULE_R1.json",
+      "expected_bytes": 2463,
+      "plan_row": {
+        "logical_size": 2463,
+        "volume_serial": "3187598165",
+        "file_id": "1125899906861122"
+      },
+      "reads": [
+        {
+          "ok": true,
+          "before": {
+            "volume_serial": 3187598165,
+            "file_id": "1125899906861122",
+            "logical_size": 2463,
+            "mtime_ft": "134315573127171246",
+            "is_dir": false
+          },
+          "after": {
+            "volume_serial": 3187598165,
+            "file_id": "1125899906861122",
+            "logical_size": 2463,
+            "mtime_ft": "134315573127171246",
+            "is_dir": false
+          },
+          "sha256": "6e418795c876eceaeeb8c5fad1fd4e80a7150d22d90ad26271ed11d543684d50",
+          "bytes_read": 2463,
+          "payload_saved": false
+        },
+        {
+          "ok": true,
+          "before": {
+            "volume_serial": 3187598165,
+            "file_id": "1125899906861122",
+            "logical_size": 2463,
+            "mtime_ft": "134315573127171246",
+            "is_dir": false
+          },
+          "after": {
+            "volume_serial": 3187598165,
+            "file_id": "1125899906861122",
+            "logical_size": 2463,
+            "mtime_ft": "134315573127171246",
+            "is_dir": false
+          },
+          "sha256": "6e418795c876eceaeeb8c5fad1fd4e80a7150d22d90ad26271ed11d543684d50",
+          "bytes_read": 2463,
+          "payload_saved": false
+        }
+      ],
+      "stable": true,
+      "plan_match": {
+        "logical_size": true,
+        "volume_serial": true,
+        "file_id": true,
+        "plan_has_content_sha": false,
+        "plan_has_mtime": false
+      }
+    }
+  ],
+  "bytes_read_total": 18624,
+  "scope": "TWO_REPRESENTATIVE_FILES_ONLY",
+  "payload_saved": false,
+  "production_reader_used": false,
+  "note": "probe read passed; production copy body was not called"
+}
