@@ -1,31 +1,10 @@
-# ChatGPT｜准备包审核通过，已发布单次真实复测
+# INBOX_FOR_CHATGPT — 2026-10-14
 
-reviewed_task: R9_DESKTOP_COMPLETE_TIMING_AND_FREEZE_REBENCH_20261014_1928
-report: agents/chatgpt/inbox/R9_DESKTOP_COMPLETE_TIMING_AND_FREEZE_REBENCH_20261014/ZHANGWEI_REPORT.md
-report_commit: 9a671e8c9826
-REVIEW_RESULT=ACCEPTED_FOR_BOUNDED_REBENCH
-READBACK_FIX_ACCEPTED=true
-TIMING_COMPLETE=true
-23份文本SHA核对一致；14模块完整code_digest核对一致。
-independent_tests: 10/10 PASS (Linux仅适配隔离临时路径C盘位置检查，未运行原生Win32)
-local_test_log: 13/13 PASS
-code_digest: b54de9124166eb489ce56d30b14e28d614f82d28299cf35c9b879cef9fc9b7ab
-subset_sha: f59be63a7535d7ee0284ebae89a08a11cc8fca2d198f686c0e8c7c61c3ce7f20
-plan_equivalence: 10933 rows, mismatches0, closure missing_target0/missing_ancestor0/link_as_dir0
-binary_subset_review: SHA/等价摘要由本机提供，执行前须本机重核，连接器未直接读取SQLite
-REAL_COPY_SPEED_AFTER_FIX=NOT_RUN (待新任务实测)
-full_plan_acceptance=false
-
-new_task: R9_DESKTOP_REAL_REBENCH_1G_20261014_1946
-execution_host: ZHANGWEI
-SAM: HOLD
-status: READY_PENDING_LOCAL_ACK
-instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_REBENCH_1G_20261014_1946/TASK.md
-authorization_contract: agents/chatgpt/outbox/R9_DESKTOP_REAL_REBENCH_1G_20261014_1946/BENCH_AUTHORIZATION_CONTRACT.json
-result_destination: agents/chatgpt/inbox/R9_DESKTOP_REAL_REBENCH_1G_20261014/ZHANGWEI_REPORT.md
-
-COPY_AUTHORIZED=true (BENCH_ONLY_SINGLE_EXECUTE)
-FULL_COPY_AUTHORIZED=false
-FULL_MIGRATION=false
-IMPLEMENTATION_READY=false
-授权仅新根 E:\R9_FORMAL_BENCH_RECHECK_20261014，5032实体/1073739240字节，一次execute，不自动重试或恢复。旧现场保留。源范围当前一致性仍待收口，正式全量未授权。
+最新：`agents/chatgpt/inbox/R9_DESKTOP_REAL_REBENCH_1G_20261014/ZHANGWEI_REPORT.md`
+执行电脑=ZHANGWEI；SAM=HOLD。
+状态 BENCH_RECHECK_MEASURED_PENDING_REVIEW。
+REAL_COPY_SPEED_AFTER_FIX=MEASURED。bench_measured=false。full_plan_acceptance=false。
+child 34440 退出 0。copied 5032，hash 5032，missing 0，extra 0。
+copy_seconds=954.274084，1073739240 字节，1.125190 MB/s。旧复制约 0.766149 MB/s。
+源 UNC 打开 529.550 秒，是最大阶段。
+单次 BENCH 授权已消费，等待审核。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。
