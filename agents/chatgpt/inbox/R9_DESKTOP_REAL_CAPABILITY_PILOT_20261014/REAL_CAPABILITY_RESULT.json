@@ -1,0 +1,24 @@
+{
+  "task_id": "R9_DESKTOP_REAL_CAPABILITY_PILOT_20261014_1345",
+  "result": "STOP_UNEXPECTED_NORMAL_COUNTER",
+  "host": "ZHANGWEI",
+  "executed": ["dry-run NORMAL", "dry-run A", "dry-run B", "dry-run C", "execute NORMAL once"],
+  "not_executed": ["NORMAL rerun", "A fault", "A resume", "B fault", "B resume", "C fault", "C resume"],
+  "cli_stdout": {"copied_count": 0, "linked_count": 0, "reparse_count": 0, "acceptance": true, "exit": 0},
+  "required_first_run": {"copied_count": 3, "linked_count": 2, "reparse_count": 2},
+  "state_after": {"entity_DONE": 3, "alias_DONE": 2, "reparse_DONE": 2, "dir_DONE": 24},
+  "observed_files": [
+    {"role": "e_junction_child", "logical_size": 5768, "allocation_size": 8192, "file_id": "281474976710731", "volume_serial": "3630886530", "dest_chars": 138},
+    {"role": "d_junction_child", "logical_size": 50564, "allocation_size": 53248, "file_id": "281474976710732", "volume_serial": "3630886530", "dest_chars": 165},
+    {"role": "long_path", "logical_size": 1166, "allocation_size": 4096, "file_id": "281474976710733", "volume_serial": "3630886530", "dest_chars": 369}
+  ],
+  "junctions_observed": {"tag": 2684354563, "targets_match_scenario": true},
+  "source_mtime_ft": {"e_file": "134310244324421953", "d_file": "134314941285228693", "long": "134257138486181889"},
+  "long_dest_chars": {"NORMAL": 369, "A": 364, "B": 364, "C": 364},
+  "old_pilot_preserved": true,
+  "deleted_nothing": true,
+  "code_changed_after_authorization": false,
+  "contract_sha256": "2bee9b540cfd6acb1e1620427c09ec460d759490ad3ad3a8831af16640a3a9d4",
+  "code_digest": "58e5765a8270a97e9b7cbbefa1178c6c873816419810ea51839f31baa30e3a59",
+  "sample_sha256": "96c42610d94f02a99aacee62b5ad3aa0ae14c1afdfc1a1102bfbcf0b9e23dc10"
+}
