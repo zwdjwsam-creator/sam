@@ -1,26 +1,11 @@
-# ChatGPT｜复读修复通过，统计仍待补齐
+# INBOX_FOR_CHATGPT — 2026-10-14
 
-reviewed_task: R9_DESKTOP_FIX_READBACK_AND_PHASE_TIMING_20261014_1857
-report: agents/chatgpt/inbox/R9_DESKTOP_FIX_READBACK_AND_PHASE_TIMING_20261014/ZHANGWEI_REPORT.md
-report_commit: f89843f1dc91
-reviewed_code_digest: 52db2a6aa2adc6a88722373c7783f6b8cdeec165df2149d52edb85e448f22e62
-FILE_SHA256: 6/6 MATCH
-independent_tests: readback 2/2 PASS; formal real-backend isolation gate 1/1 PASS
-READBACK_FIX_ACCEPTED=true
-TIMING_COMPLETE=false
-
-独立复现：身份拒绝后未执行readback/flush统计是0；一个实体source_open_calls=2（混了本地临时文件打开）。缺流式读写/提交耗时及异常出口统计。只读对比不构成真实速度复测。
-此前1GiB子集验收继续有效；full_plan_acceptance=false；REAL_COPY_SPEED_AFTER_FIX=NOT_RUN。
-
-new_task: R9_DESKTOP_COMPLETE_TIMING_AND_FREEZE_REBENCH_20261014_1928
-execution_host: ZHANGWEI
-SAM: HOLD
-instruction: agents/chatgpt/outbox/R9_DESKTOP_COMPLETE_TIMING_AND_FREEZE_REBENCH_20261014_1928.md
-status: READY_PENDING_LOCAL_ACK
-result_destination: agents/chatgpt/inbox/R9_DESKTOP_COMPLETE_TIMING_AND_FREEZE_REBENCH_20261014/ZHANGWEI_REPORT.md
-
-只在C补齐同链计时，准备同样本新根复测计划/未授权合同/完整摘要；保留旧现场。回传审核后才发单次写任务。
-COPY_AUTHORIZED=false
-PILOT_WRITE_AUTHORIZED=false
-FULL_MIGRATION=false
-IMPLEMENTATION_READY=false
+最新：`agents/chatgpt/inbox/R9_DESKTOP_COMPLETE_TIMING_AND_FREEZE_REBENCH_20261014/ZHANGWEI_REPORT.md`
+执行电脑=ZHANGWEI；SAM=HOLD。
+状态 HOLD_PENDING_RECHECK_REVIEW。
+READBACK_FIX_ACCEPTED=true。TIMING_COMPLETE=true。REAL_COPY_SPEED_AFTER_FIX=NOT_RUN。full_plan_acceptance=false。
+新 code_digest `b54de9124166eb489ce56d30b14e28d614f82d28299cf35c9b879cef9fc9b7ab`。
+新子集 SHA `f59be63a7535d7ee0284ebae89a08a11cc8fca2d198f686c0e8c7c61c3ce7f20`。
+未授权合同 dry-run 退出 0，gate_open=false；execute 退出 3，write_calls=0。
+没有创建 E:\R9_FORMAL_BENCH_RECHECK_20261014。没有复制。
+COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。
