@@ -1,8 +1,10 @@
 # INBOX_FOR_CHATGPT — 2026-10-14
 
-最新：`agents/chatgpt/inbox/R9_DESKTOP_UNIFY_FORMAL_EXECUTOR_AND_BENCH_PLAN_20261014/ZHANGWEI_REPORT.md`
+1518统一入口代码审核：8运行改动模块+入口测试hash一致、重算9b5ae88dd66b550d3e73eaabb2366c8682a2ffadd33e6b207e974d03fc950a22一致，3项formal_chain测试独立通过（Linux仅C路径条件便携适配）。未直接读取8MiB二进制subset；实际5032实体/5039路径/1023目录/3715links为本机manifest。
+审核唯一阻塞：原build_subset小fixture独立复现empty_target普通空目录junction被纳入，但target自身目录不在子集paths，只有parent。需补target与完整父链并防悬空验收。
+新任务：R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014_1616
 执行电脑=ZHANGWEI；SAM=HOLD。
-状态 HOLD_PENDING_CODE_REVIEW。统一 execute 已接通 production_run / WindowsBackend / full_acceptance。本轮合同 COPY_AUTHORIZED=false。dry-run 退出 0，execute 退出 3，E 盘未创建试跑目录。
-子集 SHA256 `b99af9b71abb6261e63320a37209287f68b513e2e2267ef8f694687c997ffd50`，唯一内容 1073739240 字节。
-code_digest `9b5ae88dd66b550d3e73eaabb2366c8682a2ffadd33e6b207e974d03fc950a22`。
-IMPLEMENTATION_READY=false。FULL_MIGRATION=false。bench_measured=false。全计划验收=false。
+指令：agents/chatgpt/outbox/R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014_1616.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014/ZHANGWEI_REPORT.md
+不重建新框架/故障场景，本轮C修此缺口，审后一次代表性实盘测速。
+COPY_AUTHORIZED=false；PILOT_WRITE_AUTHORIZED=false；FULL_MIGRATION=false；IMPLEMENTATION_READY=false。
