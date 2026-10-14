@@ -1,67 +1,69 @@
-# SAM_REPORT — R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641
+# SAM_REPORT — R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711
 
 ## Status
 - **status**: COMPLETE
 - **host**: SAM
-- **updated_at**: 2026-10-15T06:50:39+0800
+- **updated_at**: 2026-10-15T07:20:09+0800
+- **parent_task**: R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641
 - **ZHANGWEI**: HOLD
 - **COPY_AUTHORIZED**: false
 - **FULL_MIGRATION**: false
-- **outbox_gate**: ALLOWED
 
-## Scope obeyed
-- Readonly verify of existing 234 deltas only
-- NO full-tree rescan; NO copy/speed tests; NO password
-- NO desktop E write; NO source E/D writes
-- Work dir: `C:\LAN_SHARE_REPORT\R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015`
+## What was rejected / now filled
+| gap | delivery | result |
+|-----|----------|--------|
+| 140 tiny dual-method+read proof | `TINY_140_READ_PROOF.*` + script | confirmed_tiny=140/140; inconsistent=0 |
+| 42 vol/fid + representative bind | `MISSING_42_BINDINGS.*` | bound=42/42; blocked=0 |
+| C DB field completeness | `CURRENT_FIELD_COMPLETENESS.json` | current ordinary complete=True; D16 hist null identity=16 |
+| executable source plan patch | `SOURCE_PLAN_PATCH.json` | candidates written; not migration auth |
 
-## Parent reconcile (COMPLETE)
-- DELTA.sqlite sha256=6f68cdb84eee5a70dd67b6fbf008bde79a2a8ea8325b050f8f9b8071a4f0e5d4 rows=234
-- CURRENT_ENUM bytes=9812078592 sha(parent receipt)=ffb4caa64c4b95e3fe60a5d071799530e8c32b4a4f80692d79aa976e967a01b6
-- baseline 94e6… bytes=6025072640
+## 140 tiny — conclusion
+- Dual methods: `os.stat/fstat` vs `GetFileSizeEx` (+ FindFirstFileW alt)
+- EOF read bytes + SHA256 + before/after identity
+- If confirmed 0/2: **当前来源确为小文件，原因/版本正确性未知**
+- **NOT** accepted as correct new version
+- content categories: `{"CRLF": 127, "EMPTY": 13}`
+- backup clues found: 0 (known dirs only)
 
-## Classification summary
-| kind | count |
-|------|------:|
-| ADDED | 51 |
-| MISSING | 42 |
-| SIZE_MISMATCH | 141 |
-| **total** | **234** |
+## 42 MISSING — conclusion
+- Not proven entity deletion; link-view via junction → ordinary representative binding
+- Physical inventory uses ordinary representative; logical path retained via repaired junction
+- No duplicate hardlink under reparse dir
 
-### SIZE_MISMATCH 141 — current size buckets
-| bucket | count |
-|--------|------:|
-| c=2 | 127 |
-| c=0 | 13 |
-| 930→1201 | 1 |
-| other | 0 |
+## Field completeness
+- CURRENT nodes access_err=0 identity_err=0
+- Ordinary miss vol/fid/size/mtime = 0 (direct column aggregate, not inferred from DELTA)
+- Baseline historical NULL identity (D16 reparses): 16 — separated; compare_one early-return documented
 
-Verdicts: `{"PLAUSIBLE_ORDINARY_FILE_GROWTH": 1, "SUSPICIOUS_TINY_CONFIRMED_LIVE_MATCH_ENUM": 140}`
+## remaining_decisions
+[
+  {
+    "id": "TINY_140_VERSION_CHOICE",
+    "options": [
+      "AS_IS_MIGRATE_MARKED",
+      "FIND_OLD_VERSION_FIRST"
+    ],
+    "agent_must_not_decide": true
+  }
+]
 
-**Policy**: 0/2-byte current sizes are **NOT** auto-accepted as correct new versions.
+## blockers (technical)
+none
 
-### MISSING 42
-- All in FUND_NAV_PIT release three product scopes: `{"CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1": 15, "CORP_SHAREHOLDER_TOP10_PIT_R1": 15, "INDEX_WEIGHT_PIT_R1": 12}`
-- all_in_fund_nav_pit_three_products: True
-- verdicts: `{"LIVE_ORDINARY_PRESENT_ENUM_GAP": 42}`
-- Link-view vs ordinary identity: evidence recorded; **no invented proof**.
-
-### ADDED 51
-- buckets: `{"PIT_PRODUCTS_ROOT": 1, "HUB_RULE": 1, "MAILBOX": 49}`
-- expected 1 pit_products + 49 mailbox + 1 HUB rule — match=True
-
-## Handoff
-See `SOURCE_PLAN_UPDATE_HANDOFF.json` — metadata candidate updates only; not migration authorization.
+## Flags
+- SOURCE_SCAN_STABILITY=UNPROVEN
+- HISTORICAL_CONTENT_MATCH=UNPROVEN
+- evidence_140_complete=True
+- evidence_42_complete=True
+- evidence_field_completeness_complete=true
+- evidence_source_plan_patch_complete=true
 
 ## Artifacts
-- ACK.md
-- GATE_OUTBOX.json
-- DELTA_CLASSIFIED.csv / .json
-- MISSING_42_RESOLUTION.csv / .json
-- SOURCE_PLAN_UPDATE_HANDOFF.json
-- SCRIPT_REFS.json + scripts/
+- ACK_0711.md
+- TINY_140_READ_PROOF.json / .csv
+- TINY_140_BACKUP_CLUES.json
+- MISSING_42_BINDINGS.json / .csv
+- CURRENT_FIELD_COMPLETENESS.json
+- SOURCE_PLAN_PATCH.json / SOURCE_PLAN_PATCH_42_MAP.csv / SOURCE_PLAN_PATCH_TINY140.csv
+- src/complete_required_evidence_0711_r1.py
 - FILE_SHA256.json
-- SAM_REPORT.md
-
-## BLOCK
-none
