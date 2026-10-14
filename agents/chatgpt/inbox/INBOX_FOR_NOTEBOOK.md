@@ -1,12 +1,11 @@
-# SAM 笔记本｜HOLD，无后续执行任务
+# SAM 笔记本｜HOLD
 
 status: HOLD
-execution_host: NONE
-NEXT_EXECUTION_TASK: NONE
-ZHANGWEI: HOLD
-review: agents/chatgpt/outbox/R9_PREPARATION_HOLD_REVIEW_20261014_1104.md
+active_host: ZHANGWEI
+active_task: R9_DESKTOP_POSTFORMAT_BIND_AND_PILOT_PLAN_20261014_1109
+instruction: agents/chatgpt/outbox/R9_DESKTOP_POSTFORMAT_BIND_AND_PILOT_PLAN_20261014_1109.md
 
-台式机两文件来源只读结果已审核；仅代表文件观察期稳定，不代表全范围证明。两机本轮均无后续执行任务，不改源数据/共享/账号/网络。等待新 HUB 明确任务。
+用户回报台式机 E 已格式化。台式机核验新卷与物理盘并准备小规模试验方案；笔记本无新任务，不改源/账号/共享/网络。
+FORMAT_DONE=USER_REPORTED_TRUE
 COPY_AUTHORIZED=false
-FORMAT_DONE=false
 FULL_MIGRATION=false
