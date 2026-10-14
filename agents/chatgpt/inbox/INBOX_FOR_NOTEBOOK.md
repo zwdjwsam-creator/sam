@@ -10,10 +10,14 @@ active_task: R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725
 instruction: agents/chatgpt/outbox/R9_DESKTOP_BUILD_FINAL_PLAN_PENDING_VERSION_CHOICE_20261015_0725.md
 
 140小文件的双方法/实读/SHA/前后身份已核验：127 CRLF、13 EMPTY；原因/版本正确性未知。42逻辑路径与普通代表的volume/file id/size已对应，当前字段完整性聚合通过。无需重复核对、重扫或继续找备份。
-用户待选择140的处理方式：原样保留标记迁移 / 先找回旧版本。尚无选择，不恢复、不跳过、不改源。
+用户已选择方案1：140个文件按当前来源原样迁移并保留异常标记，旧版本后续单独处理。不恢复、不跳过、不改源。
+VERSION_CHOICE: AS_IS_MIGRATE_MARKED
+user_decision: agents/chatgpt/outbox/R9_USER_VERSION_CHOICE_AS_IS_20261015_0727.md
 本轮台式机仅C盘准备最终计划与闭闸执行器绑定；SAM无新执行任务，保持原数据和C证据可用即可。
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
 PILOT_WRITE_AUTHORIZED=false
 IMPLEMENTATION_READY=false
 full_plan_acceptance=false
+
+台式机继续原0725任务并落实本决定；SAM保持HOLD，无需另起任务或找旧版本。COPY_AUTHORIZED=false。
