@@ -1,31 +1,11 @@
-# ChatGPT｜预取基础回归通过，但混合恢复顺序复现失败
+# INBOX_FOR_CHATGPT — 2026-10-14
 
-reviewed_task: R9_DESKTOP_BOUNDED_SOURCE_PREFETCH_DEV_20261014_2028
-report: agents/chatgpt/inbox/R9_DESKTOP_BOUNDED_SOURCE_PREFETCH_DEV_20261014/ZHANGWEI_REPORT.md
-report_commit: c40edacadb56
-REVIEW_RESULT=FIX_REQUIRED_BEFORE_REAL_PILOT
-text_SHA: 23/23 MATCH
-runtime_code_digest: 2c760ec39455c7973a8b24ad144b04bf808488483595331fa2ec84c42dba986c
-independent_isolated_tests: 16/16 PASS (Linux仅适配C位置检查，未执行原生Win32)
-local_test_log: 17 tests PASS
-additional_mixed_resume_test: FAILED_ORDER
-
-复现：先完成实体1，后按[新实体0,DONE实体1缺alias]运行workers4，实际事件为alias1先、copy0后。填充window调用process_entity(prefetch_probe=True)在DONE/INTENT已有目标分支仍写alias或_finish_entity/commit，分类存在写副作用。
-另：source预取/首次identity/等待在copy_entity计时外，需实体阶段真实墙钟，不能直接用新的copy_seconds对旧954.274084计算真实加速。
-现有源码/摘要/子集证据保留，暂不发真实写授权。
-
-new_task: R9_DESKTOP_FIX_PREFETCH_LOOKAHEAD_ORDER_20261014_2049
-instruction: agents/chatgpt/outbox/R9_DESKTOP_FIX_PREFETCH_LOOKAHEAD_ORDER_20261014_2049.md
-execution_host: ZHANGWEI
-SAM: HOLD
-status: READY_PENDING_LOCAL_ACK
-result_destination: agents/chatgpt/inbox/R9_DESKTOP_FIX_PREFETCH_LOOKAHEAD_ORDER_20261014/ZHANGWEI_REPORT.md
-
-修lookahead只读分类/有序恢复与真实墙钟，C隔离回归；原子集SHA514a3466554bbac540701e345a37e484284a446ae972e8b456a1d107f6fd59a2不变、新根不创建。
-COPY_AUTHORIZED=false
-FULL_COPY_AUTHORIZED=false
-FULL_MIGRATION=false
-IMPLEMENTATION_READY=false
-REAL_CONCURRENT_COPY_SPEED=NOT_RUN
-full_plan_acceptance=false
-目前最后实测仍是1GiB copy954.274084秒/1.125190MBps，尚无可信全量ETA。源选定范围当前一致性仍未闭合。
+最新：`agents/chatgpt/inbox/R9_DESKTOP_FIX_PREFETCH_LOOKAHEAD_ORDER_20261014/ZHANGWEI_REPORT.md`
+执行电脑=ZHANGWEI；SAM=HOLD。
+状态 HOLD_PENDING_LOOKAHEAD_REVIEW。
+LOOKAHEAD_READONLY=true。ORDER_PRESERVED=true。TIMING_SCOPE_CORRECT=true。
+新 code_digest `a1ce1ae5e2d0490d6b6c415917200f7c84bb502d9befb397a38fe974e43e5bfd`。
+子集 SHA 仍是 `514a3466554bbac540701e345a37e484284a446ae972e8b456a1d107f6fd59a2`。
+未授权 dry-run 退出 0，gate_open=false。execute 退出 3，source_open_calls=NOT_RUN。
+没有创建 E:\R9_FORMAL_PREFETCH_BENCH_20261014。REAL_CONCURRENT_COPY_SPEED=NOT_RUN。
+COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。full_plan_acceptance=false。
