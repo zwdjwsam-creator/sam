@@ -1,0 +1,404 @@
+{
+  "task_id": "R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015_0641",
+  "followup_id": "R9_NOTEBOOK_0641_COMPLETE_REQUIRED_EVIDENCE_20261015_0711",
+  "aggregated_at": "2026-10-15T07:20:09+0800",
+  "scope": "existing_C_DBs_only_no_full_tree_rescan",
+  "current_enum": {
+    "db": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\db\\CURRENT_ENUM.sqlite",
+    "bytes": 9812078592,
+    "aggregates": {
+      "n": 8953561,
+      "access_err_n": 0,
+      "identity_err_n": 0,
+      "ordinary_files": 8715071,
+      "ord_miss_vol": 0,
+      "ord_miss_fid": 0,
+      "ord_miss_size": 0,
+      "ord_miss_mtime": 0,
+      "reparse_n": 4825,
+      "reparse_miss_tag": 0,
+      "reparse_miss_tgt": 0,
+      "compared_zero_or_null": 0
+    },
+    "ordinary_missing_identity_paths_sample": [],
+    "reparse_missing_tag_or_target_sample": [],
+    "ordinary_fields_complete": true,
+    "reparse_tag_target_complete": true,
+    "access_err_n": 0,
+    "identity_err_n": 0,
+    "note": "Cannot assert field completeness solely from absence of CURRENT_READ_ERROR in DELTA; this aggregate reads nodes columns directly."
+  },
+  "baseline_historical": {
+    "db": "C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\baseline\\SOURCE_BASELINE.sqlite",
+    "bytes": 6025072640,
+    "aggregates": {
+      "n": 8953552,
+      "miss_vol": 16,
+      "miss_fid": 16,
+      "miss_size": 0,
+      "miss_rtgt": 16,
+      "reparse_n": 4825,
+      "ord_n": 8715067
+    },
+    "d16_or_null_identity_count": 16,
+    "d16_null_identity_paths": [
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2014",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2015",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2016",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2017",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2018",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2019",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2020",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2021",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2022",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2023",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2024",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      },
+      {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2025",
+        "is_dir": 1,
+        "is_reparse": 1,
+        "source": "d",
+        "volume_serial": null,
+        "file_id": null,
+        "reparse_target": null
+      }
+    ],
+    "note": "compare_one D16 reparse branch early-returns; NULL baseline identity is not treated as mismatch. Separated from current missing identity."
+  },
+  "d16_historical_null_vs_current": [
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625194",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625195",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625187",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625188",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2014",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625161",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2014",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2015",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1125899906914506",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2015",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2016",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625163",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2016",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2017",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "2251799813757132",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2017",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2018",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1125899906914509",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2018",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2019",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625166",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2019",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2020",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1688849860335823",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2020",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2021",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625168",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2021",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2022",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1125899906914513",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2022",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2023",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625170",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2023",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2024",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1407374883625171",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2024",
+        "identity_err": null,
+        "access_err": null
+      }
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2025",
+      "baseline_identity": "NULL",
+      "current": {
+        "present": true,
+        "volume_serial": "3187598165",
+        "file_id": "1125899906914516",
+        "reparse_tag": 2684354563,
+        "reparse_target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\INDEX_WEIGHT_PIT_R1\\year=2025",
+        "identity_err": null,
+        "access_err": null
+      }
+    }
+  ],
+  "limited_refetch_needed": false,
+  "limited_refetch_paths": []
+}
