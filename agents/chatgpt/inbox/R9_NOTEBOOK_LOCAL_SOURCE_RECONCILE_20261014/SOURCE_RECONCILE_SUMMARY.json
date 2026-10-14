@@ -1,24 +1,21 @@
-﻿{
-    "resume":  "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\recopy_exclusive_r1.py ; then E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u C:\\LAN_SHARE_REPORT\\R9_LOCAL_SOURCE_RECONCILE_20261014\\src\\source_reconcile_r1.py --mode run",
-    "phase":  "baseline_exclusive_recopy",
-    "notes":  [
-                  "Enumerator+compare scripts ready under src/",
-                  "Do not start second robocopy/copy while BASELINE_COPY.lock held",
-                  "Volumes previously MATCH E=2387166462 D=3187598165"
-              ],
-    "exclusive_recopy_pid":  29780,
-    "BASELINE_VERIFIED":  false,
-    "COPY_AUTHORIZED":  false,
-    "task_id":  "R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312",
-    "HISTORICAL_CONTENT_MATCH":  "UNPROVEN",
-    "SOURCE_METADATA_MATCH":  false,
-    "local_bad_sha":  "c8056935100a1c2eb9d4e8112e17dbb260fbf433116c87e6f0b95e84890e4f9b",
-    "expect_sha":  "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
-    "hostname":  "SAM",
-    "SOURCE_SCAN_STABILITY":  "UNPROVEN",
-    "updated_at":  "2026-10-15T01:17:24+08:00",
-    "status":  "RUNNING",
-    "block_risk":  "Prior concurrent robocopy overlapped a SHA-verified stream copy and left local SHA=c805...; exclusive recopy from UNC restarted",
+{
     "SOURCE_ENUMERATION_COMPLETE":  false,
-    "SOURCE_CURRENT_MATCH":  false
+    "HISTORICAL_CONTENT_MATCH":  "UNPROVEN",
+    "BASELINE_VERIFIED":  false,
+    "volumes":  {
+                    "D":  3187598165,
+                    "E":  2387166462,
+                    "match":  true
+                },
+    "contract_sha_ok":  true,
+    "local_sha_after_copyitem":  "f75041f199fc03fb1ea7a4366824b055afbfe38c5ae250a456ed9b404819ef09",
+    "SOURCE_METADATA_MATCH":  null,
+    "SOURCE_CURRENT_MATCH":  null,
+    "unc_hash_in_progress":  true,
+    "task_id":  "R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014_2312",
+    "status":  "BLOCKED_PENDING_BASELINE_VERIFY",
+    "local_sha_after_robocopy_interrupt":  "c8056935100a1c2eb9d4e8112e17dbb260fbf433116c87e6f0b95e84890e4f9b",
+    "scope_sha_ok":  true,
+    "expect_sha":  "94e6b7a7ec54fe91a5530fa3965926dc6ddcfd5e2861870f5ee370e4db7e98ba",
+    "SAM_ACCESS_VERIFIED":  true
 }
