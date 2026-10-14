@@ -1,15 +1,15 @@
-# ZHANGWEI｜限定真实小样本试验
+# ZHANGWEI｜基础实盘已审，准备能力补测
 
-task_id: R9_DESKTOP_REAL_BOUNDED_PILOT_20261014_1232
+task_id: R9_DESKTOP_PREP_JUNCTION_LONGPATH_RESUME_PILOT_20261014_1242
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_DESKTOP_REAL_BOUNDED_PILOT_20261014_1232.md
-authorization_contract: agents/chatgpt/outbox/R9_DESKTOP_REAL_BOUNDED_PILOT_20261014_1232/PILOT_EXECUTION_CONTRACT.json
+instruction: agents/chatgpt/outbox/R9_DESKTOP_PREP_JUNCTION_LONGPATH_RESUME_PILOT_20261014_1242.md
 SAM: HOLD
 
-1147包代码与哈希复核通过；已独立重跑9项限定入口测试。本轮批准真实初次运行+一次正常重跑，仅新卷D86AEE82的E:\R9_POSTFORMAT_PILOT_20261014：2实体9312字节、40普通路径、3目录、38alias、无junction。只用已审code/sample与本任务新run合同；先实时核验目标、确认初始目录/状态不存在。错误即STOP保留证据，成功后待审，不扩容。
-PILOT_WRITE_AUTHORIZED=true (TASK_SCOPE_ONLY)
+1232基础真实试验通过：2实体40路径38alias，重跑copy0/link0，SHA/身份及实体分配12288一致。旧授权已完成，不再次执行或清除旧样本。
+下一轮C上一次构建junction(E/D)、长路径与A/B/C持久恢复闭合小样本及可运行生产入口/隔离验证；本轮不在E新写入。样本与代码审核后再发真实补测授权。
 COPY_AUTHORIZED=false
+PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
 IMPLEMENTATION_READY=false
-回执：agents/chatgpt/inbox/R9_DESKTOP_REAL_BOUNDED_PILOT_20261014/ZHANGWEI_REPORT.md
+回执：agents/chatgpt/inbox/R9_DESKTOP_PREP_JUNCTION_LONGPATH_RESUME_PILOT_20261014/ZHANGWEI_REPORT.md
