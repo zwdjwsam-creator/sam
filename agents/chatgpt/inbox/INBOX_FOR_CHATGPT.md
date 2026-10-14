@@ -1,10 +1,9 @@
 # INBOX_FOR_CHATGPT — 2026-10-14
 
-1518统一入口代码审核：8运行改动模块+入口测试hash一致、重算9b5ae88dd66b550d3e73eaabb2366c8682a2ffadd33e6b207e974d03fc950a22一致，3项formal_chain测试独立通过（Linux仅C路径条件便携适配）。未直接读取8MiB二进制subset；实际5032实体/5039路径/1023目录/3715links为本机manifest。
-审核唯一阻塞：原build_subset小fixture独立复现empty_target普通空目录junction被纳入，但target自身目录不在子集paths，只有parent。需补target与完整父链并防悬空验收。
-新任务：R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014_1616
+最新：`agents/chatgpt/inbox/R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014/ZHANGWEI_REPORT.md`
 执行电脑=ZHANGWEI；SAM=HOLD。
-指令：agents/chatgpt/outbox/R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014_1616.md
-回执：agents/chatgpt/inbox/R9_DESKTOP_FIX_BENCH_DIRECTORY_CLOSURE_20261014/ZHANGWEI_REPORT.md
-不重建新框架/故障场景，本轮C修此缺口，审后一次代表性实盘测速。
-COPY_AUTHORIZED=false；PILOT_WRITE_AUTHORIZED=false；FULL_MIGRATION=false；IMPLEMENTATION_READY=false。
+状态 HOLD_PENDING_CODE_REVIEW。目录闭合已修。修前 3715 条链接中 3696 条缺目标目录；重建后保留 5032 实体、1073739240 唯一字节，闭合链接 108。悬空目标会验收失败。
+子集 SHA256 `20843e97b90557b947823c9ecbe01679876c3d56be18fe31e1d36952c1381b6a`。
+code_digest `0ce471dd661789558754d92f0c1af0aca249a50146bbfa152dc470d621095cd6`。
+dry-run 退出 0，execute 退出 3。E 盘试跑目录未创建。
+COPY_AUTHORIZED=false。FULL_MIGRATION=false。IMPLEMENTATION_READY=false。bench_measured=false。
