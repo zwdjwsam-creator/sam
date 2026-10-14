@@ -2,10 +2,10 @@
 
 status: HOLD
 active_host: ZHANGWEI
-active_task: R9_DESKTOP_FIX_READBACK_AND_PHASE_TIMING_20261014_1857
-instruction: agents/chatgpt/outbox/R9_DESKTOP_FIX_READBACK_AND_PHASE_TIMING_20261014_1857.md
+active_task: R9_DESKTOP_COMPLETE_TIMING_AND_FREEZE_REBENCH_20261014_1928
+instruction: agents/chatgpt/outbox/R9_DESKTOP_COMPLETE_TIMING_AND_FREEZE_REBENCH_20261014_1928.md
 
-笔记本本轮无执行任务。台式机 1GiB 子集验收已通过，正修复已确认的目标复读效率问题并补阶段计时；不复制。
-源选定范围当前一致性仍待后续任务，不由本轮自行扫描/改动。
-FULL_MIGRATION=false
+本轮执行电脑是台式机 ZHANGWEI：补齐统计并准备同样本复测包，不复制、不写E。
+笔记本本轮无执行任务；源选定范围当前一致性尚待后续收口，不由本轮自行扩扫/改动。
 COPY_AUTHORIZED=false
+FULL_MIGRATION=false
