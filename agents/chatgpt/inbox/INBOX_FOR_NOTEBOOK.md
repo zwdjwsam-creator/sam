@@ -1,13 +1,15 @@
-# SAM｜本地补齐52条元数据
+# SAM｜立即领取原52条本地元数据任务
 
 task_id: R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015_0739
 execution_host: SAM
 status: READY
 instruction: agents/chatgpt/outbox/R9_REVIEW_0725_AND_FINISH_CANDIDATE_20261015_0739.md
+latest_review: agents/chatgpt/outbox/R9_REVIEW_FULL_CHAIN_AND_SESSION_20261015_0800.md
 VERSION_CHOICE: AS_IS_MIGRATE_MARKED
-ZHANGWEI: PARALLEL_C_PREPARATION_THEN_MERGE
 
-先ACK。直接从SAM本机E/D读取既定51新增+mcp共52条元数据，上传小型JSON与hash，经HUB交台式机。覆盖原HOLD仅限此只读任务；无需UNC/凭据，不扫全盘、不读内容、不复查140/42、不找旧版。完成停止。
+唤醒通知：0800审核时未发现本任务ACK/报告/结果目录。请立即领取原任务并先ACK；若已在做，只补现有进度与PID，不重复启动。
+仅本机读取既定51新增+mcp共52条metadata，经HUB交给台式机；不依赖SMB，不读内容，不重扫，不复查140/42，不找备份。完成上传原任务目录的LOCAL_52_METADATA.json、SAM_REPORT.md、hash及读取脚本，通知ZHANGWEI后停止。
+台式机另行修正式D来源映射和FULL审核，不阻塞你这52条本地取数。
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
 PILOT_WRITE_AUTHORIZED=false
