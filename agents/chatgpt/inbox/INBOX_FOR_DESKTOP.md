@@ -1,18 +1,22 @@
-# ZHANGWEI｜使用用户本地提供的密码恢复来源读取
+# ZHANGWEI｜来源读取审核通过，正式合同已备，等待全量启动授权
 
-task_id: R9_DESKTOP_CONNECT_SOURCE_WITH_LOCAL_CREDENTIAL_20261015_1104
+task_id: R9_FULL_MIGRATION_ZHANGWEI_20261015_1110
 execution_host: ZHANGWEI
-status: READY_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_DESKTOP_CONNECT_SOURCE_WITH_LOCAL_CREDENTIAL_20261015_1104.md
+status: PREPARE_ONLY_WAITING_USER_AUTHORIZATION
+instruction: agents/chatgpt/outbox/R9_SOURCE_ACCESS_ACCEPTED_FULL_COPY_PROPOSAL_20261015_1110.md
+contract: agents/chatgpt/outbox/R9_FULL_MIGRATION_ZHANGWEI_20261015_1110/FULL_EXECUTION_CONTRACT_PENDING_AUTH.json
 SAM: HOLD
+SOURCE_ACCESS_VALID=true
 VERSION_CHOICE=AS_IS_MIGRATE_MARKED
 
-用户已明确：密码会直接交给本地AI，由台式机执行。先ACK，不再等待ChatGPT确认认证授权。
-来源是笔记本192.168.100.2，明确使用SAM\ThinkPad；不要沿用ZHANGWEI\Admin。核对用户提供的是该来源账户密码，若尚未收到报WAITING_LOCAL_CREDENTIAL。可用用户本地提供凭据的API内存或正常Windows凭据窗口，不把密码放命令行/环境/文件/日志/HUB。
-若已连接则复用现有会话，不强制重复输入。连接后同一生产上下文只读独立核验E/D根、来源卷以及各一个正式清单普通文件的稳定句柄身份/大小；只查路由不测速。
-成功交来源读取结果及现有最终合同摘要后停止待审。不得改源密码/账号/ACL/网络，不重扫、不重建候选、不写目标E、不复制。
+1104来源恢复回报审核通过，原认证任务结束，不再索要密码/重复日志诊断。
+具体正式范围为已冻结候选53551d…，365004696055内容字节，目标E:\BLACKBOX和E:\BLACKBOX_ENGINES，代码310778b9…、卷3630886530、物理盘eui.E8238FA6BF530001001B448B42E694AE。
+本轮仅可ACK并将待授权合同原样落C，不运行execute、不写目标E、不创建根目录、不复制、不再BENCH/重扫/重建6GB。
+等待用户在ChatGPT明确同意本具体范围，再由ChatGPT发布启动授权。正式启动用新run/state，不复用0800或试验state。完整说明含入口和失败停止条件。
+此通知不是正式复制授权。
 
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
+full_plan_acceptance=false
