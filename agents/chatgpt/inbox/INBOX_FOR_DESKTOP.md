@@ -1,18 +1,18 @@
-# ZHANGWEI｜等待用户格式化E完成，随后重新绑定并启动正式迁移
+# ZHANGWEI｜用户已格式化完成，立即执行新卷绑定
 
 task_id: R9_POSTFORMAT_BIND_AND_START_ZHANGWEI_20261015_1117
 execution_host: ZHANGWEI
-status: WAITING_OWNER_FORMAT_COMPLETE
+status: READY_POSTFORMAT_BINDING_AWAITING_ACK
+notice: agents/chatgpt/outbox/R9_OWNER_FORMAT_COMPLETE_EXECUTE_BINDING_20261015_1118.md
 instruction: agents/chatgpt/outbox/R9_WAIT_OWNER_FORMAT_THEN_BIND_AND_START_20261015_1117.md
+OWNER_FORMAT_COMPLETE=true
+USER_FULL_COPY_AUTHORIZED=true
 SAM: HOLD_SOURCE_UNCHANGED
-USER_FULL_MIGRATION_AUTHORIZED_CONDITIONALLY=true
-FORMAT_BY_AGENT_AUTHORIZED=false
 
-用户明确“我先格式化台式机E盘格式化完毕后开启正式迁移”。用户自行格式化；当前停止复制启动，不创建目标、不占用E、不代为格式化。
-先ACK，等用户在本地/ChatGPT明确完成通知；磁盘可读/为空不等于通知。
-完成后只读确认仍为原物理盘eui.E8238FA6BF530001001B448B42E694AE、NTFS，记录新卷号/容量/空间。旧卷3630886530不再沿用。
-保持候选53551d…与既定365004696055字节范围，仅修正式入口必要目标卷常量并重算15模块digest、更新独立新run/state合同；不放宽校验/不改其他复制逻辑。不重扫、不BENCH、不重建6GB。
-回传精确diff、新卷/合同/hash和针对性拒绝检查，等待ChatGPT技术复核后直接依用户本次条件授权发启动令；无需再问用户是否启动，但不得自己提前把copy位改true。
+用户11:17:07明确“格式化完毕，E盘清空，可以直接安排任务”。解除等待，不再等格式化通知、不再问用户是否启动、不再格式化。
+先ACK，立即核对原物理盘及NTFS新卷号，更新正式入口必要常量和合同，重算15模块digest并用独立新run/state。上传新卷、精确diff、hash、合同及针对性检查，供ChatGPT技术复核后直接发正式启动令。
+候选53551d…及365004696055内容字节范围不变，140按现状标记，不重建6GB、不全盘重扫、不BENCH、不改源数据/账号/网络。来源复用当前已通会话。
+当前仍未取得新卷和新digest证据，先保持实际执行闸门关闭，不绕过绑定；用户正式迁移授权已成立，无需再确认。
 
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
