@@ -1,0 +1,48 @@
+{
+  "identity": "zhangwei\\admin",
+  "port_445_reachable": true,
+  "port_error": null,
+  "existing_smb_connection": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Get-SmbConnection : Access is denied. \nAt line:1 char:1\n+ Get-SmbConnection | Where-Object { $_.ServerName -eq '192.168.100.2'  ...\n+ ~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : PermissionDenied: (MSFT_SMBConnection:ROOT/Microsoft/...T_SMBConnection) [Get-SmbConnect \n   ion], CimException\n    + FullyQualifiedErrorId : Windows System Error 5,Get-SmbConnection\n \n"
+  },
+  "probes": [
+    {
+      "win32_long": {
+        "ok": false,
+        "winerror": 1326,
+        "error": "OPEN_FAILED",
+        "unc": "\\\\?\\UNC\\192.168.100.2\\E_DRIVE\\BLACKBOX\\.cursor\\mcp.json"
+      },
+      "plain_unc": {
+        "path": "E:\\BLACKBOX\\.cursor\\mcp.json",
+        "form": "plain_unc",
+        "unc": "\\\\192.168.100.2\\E_DRIVE\\BLACKBOX\\.cursor\\mcp.json",
+        "ok": false,
+        "winerror": null,
+        "error": "OSError"
+      }
+    },
+    {
+      "win32_long": {
+        "ok": false,
+        "winerror": 1326,
+        "error": "OPEN_FAILED",
+        "unc": "\\\\?\\UNC\\192.168.100.2\\D_DRIVE\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products"
+      },
+      "plain_unc": {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products",
+        "form": "plain_unc",
+        "unc": "\\\\192.168.100.2\\D_DRIVE\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products",
+        "ok": false,
+        "winerror": null,
+        "error": "OSError"
+      }
+    }
+  ],
+  "changed_credentials": false,
+  "new_logon": false,
+  "source_session_restored": false,
+  "conclusion": "EXISTING_SESSION_LOGON_FAILURE_1326"
+}
