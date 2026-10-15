@@ -1,0 +1,101 @@
+{
+  "task_id": "R9_DESKTOP_RESTORE_SOURCE_AUTH_20261015_1005",
+  "host": "ZHANGWEI",
+  "identity": "zhangwei\\admin",
+  "elevated": false,
+  "started": {
+    "local": "2026-10-15T10:19:30+08:00",
+    "utc": "2026-10-15T02:19:30+00:00"
+  },
+  "finished": {
+    "local": "2026-10-15T10:19:32+08:00",
+    "utc": "2026-10-15T02:19:32+00:00"
+  },
+  "port_445_reachable": true,
+  "port_445_is_not_source_read": true,
+  "net_use_exit": 0,
+  "net_use_192_168_100_2": [],
+  "smb_connection_class": "ACCESS_DENIED",
+  "cmdkey_exit": 0,
+  "cmdkey_relevant": [],
+  "credential_enum_ok": false,
+  "credential_enum_winerror": 1168,
+  "relevant_credentials": [],
+  "auth_attempts": [],
+  "checks": {
+    "e_root": {
+      "expected_volume": 2387166462,
+      "is_dir": true,
+      "ok": false,
+      "winerror": 1326,
+      "error": "OPEN_FAILED",
+      "path": "\\\\192.168.100.2\\E_DRIVE\\BLACKBOX",
+      "payload_read": false,
+      "volume_ok": false
+    },
+    "d_root": {
+      "expected_volume": 3187598165,
+      "is_dir": true,
+      "ok": false,
+      "winerror": 1326,
+      "error": "OPEN_FAILED",
+      "path": "\\\\192.168.100.2\\D_DRIVE",
+      "payload_read": false,
+      "volume_ok": false
+    },
+    "e_file": {
+      "expected_volume": 2387166462,
+      "ok": false,
+      "winerror": 1326,
+      "error": "OPEN_FAILED",
+      "path": "\\\\192.168.100.2\\E_DRIVE\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R9_ASOF_20260805_20260806_004303\\standard\\fund\\ETF_NAV\\ETF_NAV__fund_etf_nav__150306.XSHE_150310.XSHE__2018__v1__20260712_103337.parquet",
+      "payload_read": false,
+      "inventory_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R9_ASOF_20260805_20260806_004303\\standard\\fund\\ETF_NAV\\ETF_NAV__fund_etf_nav__150306.XSHE_150310.XSHE__2018__v1__20260712_103337.parquet",
+      "plan": {
+        "present": true,
+        "is_dir": 0,
+        "is_reparse": 0,
+        "logical_size": 6849,
+        "volume_serial": "2387166462",
+        "file_id": "10133099161590568"
+      },
+      "metadata_matches_plan": false
+    },
+    "d_file": {
+      "expected_volume": 3187598165,
+      "ok": false,
+      "winerror": 1326,
+      "error": "OPEN_FAILED",
+      "path": "\\\\192.168.100.2\\D_DRIVE\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\CN_A_SHARE_FEE_SCHEDULE_R1.json",
+      "payload_read": false,
+      "inventory_path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\CN_A_SHARE_FEE_SCHEDULE_R1.json",
+      "plan": {
+        "present": true,
+        "is_dir": 0,
+        "is_reparse": 0,
+        "logical_size": 2463,
+        "volume_serial": "3187598165",
+        "file_id": "1125899906861122"
+      },
+      "metadata_matches_plan": false
+    }
+  },
+  "SOURCE_ACCESS_VALID": false,
+  "COPY_AUTHORIZED": false,
+  "business_payload_read": false,
+  "password_recorded": false,
+  "candidate_modified": false,
+  "code_modified": false,
+  "blocker": "BLOCKED_NO_REUSABLE_CREDENTIAL",
+  "credential_enum_meaning": "ERROR_NOT_FOUND",
+  "checked_scope": [
+    "current identity zhangwei\\admin",
+    "unelevated",
+    "net use for 192.168.100.2",
+    "Get-SmbConnection class only",
+    "cmdkey targets matching 192.168.100.2 or host SAM",
+    "CredEnumerateW"
+  ],
+  "historical_1219_active": false,
+  "auth_attempt_count": 0
+}
