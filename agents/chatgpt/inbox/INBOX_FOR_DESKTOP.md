@@ -1,21 +1,21 @@
-# ZHANGWEI｜用户已格式化完成，立即执行新卷绑定
+# ZHANGWEI｜正式迁移启动令：立即执行一次并回传PID
 
 task_id: R9_POSTFORMAT_BIND_AND_START_ZHANGWEI_20261015_1117
+authorization_id: R9_FULL_COPY_START_AUTH_20261015_1155
 execution_host: ZHANGWEI
-status: READY_POSTFORMAT_BINDING_AWAITING_ACK
-notice: agents/chatgpt/outbox/R9_OWNER_FORMAT_COMPLETE_EXECUTE_BINDING_20261015_1118.md
-instruction: agents/chatgpt/outbox/R9_WAIT_OWNER_FORMAT_THEN_BIND_AND_START_20261015_1117.md
-OWNER_FORMAT_COMPLETE=true
-USER_FULL_COPY_AUTHORIZED=true
+status: READY_EXECUTE_NOW_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_FULL_COPY_START_AUTH_20261015_1155.md
+contract: agents/chatgpt/outbox/R9_FULL_COPY_START_AUTH_20261015_1155/FULL_EXECUTION_CONTRACT_AUTHORIZED.json
 SAM: HOLD_SOURCE_UNCHANGED
 
-用户11:17:07明确“格式化完毕，E盘清空，可以直接安排任务”。解除等待，不再等格式化通知、不再问用户是否启动、不再格式化。
-先ACK，立即核对原物理盘及NTFS新卷号，更新正式入口必要常量和合同，重算15模块digest并用独立新run/state。上传新卷、精确diff、hash、合同及针对性检查，供ChatGPT技术复核后直接发正式启动令。
-候选53551d…及365004696055内容字节范围不变，140按现状标记，不重建6GB、不全盘重扫、不BENCH、不改源数据/账号/网络。来源复用当前已通会话。
-当前仍未取得新卷和新digest证据，先保持实际执行闸门关闭，不绕过绑定；用户正式迁移授权已成立，无需再确认。
+用户全量授权与格式化完成确认已齐，ChatGPT技术复核完成。实际代码仅改新卷常量，15模块digest独立匹配，4项新卷/旧卷/错盘/未授权门控检查通过。
+本轮不再准备或等待审批：先EXECUTION_ACK，按新授权合同用统一execute单实例启动，立即上传真实PID/时间/命令/日志路径；入口预检仍在跑也报PRECHECK_RUNNING，不等复制结束。
+新卷2694002743/A0933837，物理盘eui.E8238FA6BF530001001B448B42E694AE，候选53551d…，code_digest096da332…，365004696055内容字节，目标E:\BLACKBOX与E:\BLACKBOX_ENGINES。
+用1117独立run/state，不复用旧试验state；禁止重复启动，不新BENCH、不再全源扫描、不修改执行器、不重建6GB。现场绑定/源变化/验收失败即停保留证据，不删除源、不格式化、不扩大范围。完整指令含准确命令/进度与完成验收。
+回传原1117目录EXECUTION_ACK.md、STARTED.json、PROGRESS.json、最终执行报告并更新INBOX_FOR_CHATGPT。
 
-COPY_AUTHORIZED=false
-FULL_COPY_AUTHORIZED=false
-FULL_MIGRATION=false
+COPY_AUTHORIZED=true
+FULL_COPY_AUTHORIZED=true
+FULL_MIGRATION_AUTHORIZED=true
 PILOT_WRITE_AUTHORIZED=false
 full_plan_acceptance=false
