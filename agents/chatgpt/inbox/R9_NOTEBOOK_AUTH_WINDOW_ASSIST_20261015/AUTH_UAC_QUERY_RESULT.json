@@ -1,0 +1,52 @@
+{
+    "task_id":  "R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015_1005",
+    "followup_id":  "R9_SAM_AUTH_UAC_ONCE_20261015_1051",
+    "execution_host":  "SAM",
+    "elevated":  true,
+    "identity":  "SAM\\ThinkPad",
+    "reported_at":  "2026-10-15T10:56:41.5718904+08:00",
+    "window_half_open_utc":  "[2026-10-15T02:19:30Z,2026-10-15T02:19:33Z)",
+    "channels":  [
+                     {
+                         "channel":  "Security",
+                         "query_status":  "QUERY_OK",
+                         "error_id":  null,
+                         "matching_event_count":  1,
+                         "events":  [
+                                        {
+                                            "event_id":  4625,
+                                            "time_utc":  "2026-10-15T02:19:30.5609148+00:00",
+                                            "time_shanghai":  "2026-10-15T10:19:30.5609148+08:00",
+                                            "target_user":  "Admin",
+                                            "target_domain":  "ZHANGWEI",
+                                            "workstation":  "ZHANGWEI",
+                                            "source_ip":  "192.168.100.1",
+                                            "client_address":  null,
+                                            "status":  "0xc000006d",
+                                            "substatus":  "0xc0000064",
+                                            "logon_type":  "3"
+                                        }
+                                    ]
+                     },
+                     {
+                         "channel":  "Microsoft-Windows-SMBServer/Security",
+                         "query_status":  "QUERY_OK",
+                         "error_id":  null,
+                         "matching_event_count":  0,
+                         "events":  [
+
+                                    ]
+                     },
+                     {
+                         "channel":  "Microsoft-Windows-SMBServer/Operational",
+                         "query_status":  "NO_EVENTS_RETURNED_BY_QUERY",
+                         "error_id":  "NoMatchingEventsFound,Microsoft.PowerShell.Commands.GetWinEventCommand",
+                         "matching_event_count":  0,
+                         "events":  [
+
+                                    ]
+                     }
+                 ],
+    "copy_authorized":  false,
+    "source_access_valid":  false
+}
