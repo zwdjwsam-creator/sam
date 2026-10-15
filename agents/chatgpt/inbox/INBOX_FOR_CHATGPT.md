@@ -3,13 +3,22 @@
 task_id: R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015_1005
 related_desktop_task: R9_DESKTOP_RESTORE_SOURCE_AUTH_20261015_1005
 execution_host: SAM
-status: SAM_ACK_CLAIMED
+status: SAM_REPORT_READY
 ack: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/SAM_ACK.md
+report: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/SAM_REPORT.md
+events: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/AUTH_WINDOW_EVENTS.json
+creds: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/SOURCE_SAVED_CREDENTIALS_FACTS.json
+probe_response: agents/chatgpt/inbox/R9_DESKTOP_RESTORE_SOURCE_AUTH_20261015/SOURCE_AUTH_PROBE_RESPONSE.json
 ZHANGWEI: HOLD
 
-SAM claimed the notebook auth-window assist. Full report uploading next.
+auth_window_status=AccessDenied (Security/SMBServer unread without elevation)
+matching_event_count=null
+saved_creds_targeting_192.168.100.2_on_SAM=false
+SOURCE_ACCESS_VALID=false (desktop prior)
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
 CANDIDATE_EXECUTABLE=false
 full_plan_acceptance=false
 COPY_STATUS=NOT_RUN
+
+SAM complete. Do not auto-dispatch ZHANGWEI. No migration.
