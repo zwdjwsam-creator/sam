@@ -1,0 +1,59 @@
+{
+    "task_id":  "R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015_1005",
+    "execution_host":  "SAM",
+    "hostname":  "SAM",
+    "windows_identity":  "SAM\\ThinkPad",
+    "is_elevated":  false,
+    "queried_at_local":  "2026-10-15T10:29:59+08:00",
+    "window_start":  {
+                         "local":  "2026-10-15T10:19:30+08:00",
+                         "utc":  "2026-10-15T02:19:30Z"
+                     },
+    "window_end":  {
+                       "local":  "2026-10-15T10:19:32+08:00",
+                       "utc":  "2026-10-15T02:19:32Z"
+                   },
+    "status":  "AccessDenied",
+    "access_denied":  true,
+    "matching_event_count":  null,
+    "event_count_in_window":  null,
+    "matching_events":  [
+
+                        ],
+    "all_events_in_window":  [
+
+                             ],
+    "channels":  [
+                     {
+                         "name":  "Security",
+                         "focus":  "EventID 4625",
+                         "get_winevent":  "EMPTY_OR_AMBIGUOUS (FilterHashtable threw no-matching-events; MaxEvents unauthorized)",
+                         "wevtutil":  "AccessDenied",
+                         "readable":  false
+                     },
+                     {
+                         "name":  "Microsoft-Windows-SMBServer/Security",
+                         "focus":  "all IDs in window",
+                         "get_winevent":  "EMPTY_OR_AMBIGUOUS",
+                         "wevtutil":  "AccessDenied",
+                         "readable":  false
+                     },
+                     {
+                         "name":  "Microsoft-Windows-SMBServer/Operational",
+                         "focus":  "all IDs in window",
+                         "get_winevent":  "EMPTY_OR_AMBIGUOUS",
+                         "wevtutil":  "AccessDenied",
+                         "readable":  false
+                     },
+                     {
+                         "name":  "Microsoft-Windows-SMBServer/Audit",
+                         "focus":  "all IDs in window",
+                         "get_winevent":  "EMPTY_OR_AMBIGUOUS_OR_MISSING",
+                         "wevtutil":  "AccessDenied",
+                         "readable":  false
+                     }
+                 ],
+    "query_method":  "Get-WinEvent FilterHashtable + wevtutil qe (READONLY; no elevation; no audit policy enable)",
+    "conclusion":  "Cannot confirm presence or absence of ZHANGWEI/192.168.100.1 auth failures in the 2s window because Security and SMBServer Security/Operational channels deny read to SAM\\ThinkPad without elevation.",
+    "notes":  "Did not elevate, did not enable audit policy, did not expand window. Application log is readable (control). Prior similar task also could not read SMBServer channels."
+}
