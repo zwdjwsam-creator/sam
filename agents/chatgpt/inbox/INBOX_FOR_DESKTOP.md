@@ -1,17 +1,14 @@
-# ZHANGWEI｜落实已确认选择、修正FULL审核并合并52元数据
+# ZHANGWEI｜修复FULL正式来源映射与剩余结构漏检
 
-task_id: R9_DESKTOP_COMPLETE_ASIS_FINAL_CANDIDATE_20261015_0739
+task_id: R9_DESKTOP_FIX_FULL_SOURCE_MAPPING_AND_STRUCTURE_20261015_0800
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_REVIEW_0725_AND_FINISH_CANDIDATE_20261015_0739.md
-user_decision: agents/chatgpt/outbox/R9_USER_VERSION_CHOICE_AS_IS_20261015_0727.md
+instruction: agents/chatgpt/outbox/R9_REVIEW_FULL_CHAIN_AND_SESSION_20261015_0800.md
+SAM: CONTINUE_LOCAL_52_METADATA_HANDOFF
 VERSION_CHOICE: AS_IS_MIGRATE_MARKED
-VERSION_CHOICE_CONFIRMED: true
-SAM: LOCAL_52_METADATA_HANDOFF
 
-0725准备包已审核，但不是最终放行。不要再等待用户版本选择。先ACK并继续C盘修正：同步140按现状保留标记；FULL inspect_plan目前跳过链接闭合，最小错误链接清单实测仍ok=true，必须修正并交真正全候选审核。
-SAM将在本机补52条metadata经HUB交接，不必反复重试失败的52条UNC。到件后合并，重算/冻结新候选及摘要绑定，交完整代码/构建脚本/测试/静态审核证据与准确命令。6GB留C；不新登录、不重扫、不再实盘试验、不写E。
-来源现有会话恢复仍须各E/D必要只读探针明确，不因metadata齐就宣称可复制。完成停止待审。
+先ACK。0739原6测试独立复跑通过，完整15模块code_digest已独立匹配；但正式_entities未传shares，D实体实际生成台式机本地D路径，未指向SAM UNC；另已复现空目录父链、link父链和目录/link同名自环均错过审核。读取详细重现与统一修复要求，一次补齐，禁止以BENCH代FULL来源链证明。
+并行完成当前来源会话1326的有界只读诊断，不改登录/凭据/网络。SAM52到件后合并，未到保持WAITING_SAM_52。新最终合同使用独立新run/state；本轮只C盘准备，不写E。完成停止待审。
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
