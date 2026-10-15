@@ -1,19 +1,22 @@
-# ZHANGWEI｜正式迁移已停止，修复目标根缺失后准备恢复
+# ZHANGWEI｜目标根修复审核通过，立即恢复正式迁移
 
-task_id: R9_DESKTOP_FIX_MISSING_DEST_ROOT_20261015_1400
+task_id: R9_FULL_RESUME_AFTER_ROOT_FIX_ZHANGWEI_20261015_1400
+authorization_id: R9_FULL_RESUME_ROOT_FIX_AUTH_20261015_1406
 execution_host: ZHANGWEI
-status: READY_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_FIX_MISSING_DEST_ROOT_AND_RESUME_20261015_1400.md
+status: READY_EXECUTE_NOW_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_FULL_RESUME_ROOT_FIX_AUTH_20261015_1406.md
+contract: agents/chatgpt/outbox/R9_FULL_RESUME_ROOT_FIX_AUTH_20261015_1406/FULL_RESUME_CONTRACT_AUTHORIZED.json
 SAM: HOLD_SOURCE_UNCHANGED
-USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID
 
-HUB实况1117目录41后error3停止，实体0，PID15872已退出。旧1155 READY启动令不再重放。
-先ACK并只读核对准确失败路径。ChatGPT已独立复现：FULL目录序列漏E:\BLACKBOX_ENGINES根，直接列其D映射子目录，audit却通过。补正式目标根/父先子序列，并同步严格验收expected；不能递归mkdir绕过清单或忽略extra。
-用父目录必须存在的隔离语义测试完整FULL链及已有目录幂等/冲突拒绝；不做E实盘测试。保留41目录/旧state/日志，不格式化、不删源、不重建6GB。
-新code_digest须配新run/state恢复合同，不能改旧run_bind偷换digest。交代码diff/hash/测试/准确失败路径及暂未授权新合同供ChatGPT技术复核；复核后依原用户授权恢复，不再问用户。
-详细回传路径见instruction。不要擅自重启旧命令或新建重复复制实例。
+15模块原始字节hash及完整digest独立匹配，实际三模块diff已核对，27项隔离测试独立复跑全通过。技术审核完成，原用户授权持续有效，立即按本新授权合同execute，不再等用户/ChatGPT批准。
+code_digest=62aff763e4c12d782039e067ea12985e36d2164af41564453249774c89d84ae3。
+run/state用1400独立绑定，保留旧1117与41目录，不改旧run_bind、不删目录、不格式化。
+先EXECUTION_ACK，确认没有同run进程，只启动一次；马上上传STARTED真实PID/时间/日志，入口检查阶段也及时报告。两个目标根已由正式序列创建，独立验收expected已同步。准确命令/合同与失败停止条件见instruction。
+候选53551d…、365004696055字节预算、卷2694002743/原物理盘不变。禁止重放旧1117合同、重复扫描/新BENCH/继续改码；错误停保留证据。
+回传本1400目录，更新INBOX_FOR_CHATGPT。
 
-COPY_AUTHORIZED=false
-FULL_COPY_AUTHORIZED=false
-FULL_MIGRATION=false
+COPY_AUTHORIZED=true
+FULL_COPY_AUTHORIZED=true
+FULL_MIGRATION_AUTHORIZED=true
+PILOT_WRITE_AUTHORIZED=false
 full_plan_acceptance=false
