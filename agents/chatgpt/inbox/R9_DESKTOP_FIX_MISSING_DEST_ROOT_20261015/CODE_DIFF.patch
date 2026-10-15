@@ -1,0 +1,18 @@
+# CODE_DIFF
+# formal FULL directory order and CreateDirectoryW error text
+# candidate plan bytes were not changed
+
+--- r9_formal_chain.py
+FULL directory generation now calls formal_directory_sequence.
+It inserts the approved roots E:\BLACKBOX and E:\BLACKBOX_ENGINES,
+dedupes by casefold, and orders parents before children.
+audit_full_plan counts any remaining non-root parent gap as missing_parent.
+
+--- r9_acceptance.py
+When run.acceptance_roots names those approved roots, they are added to
+expected directories so the created root is not an EXTRA_OBJECT.
+Unknown extra objects are still refused.
+
+--- r9_winio.py
+Win32 ensure_directory failure now includes the path and the original
+WinError. It still does not create missing parents.
