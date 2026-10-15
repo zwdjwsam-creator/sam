@@ -4,8 +4,7 @@ task_id: R9_POSTFORMAT_BIND_AND_START_ZHANGWEI_20261015_1117
 execution_host: ZHANGWEI
 SAM: HOLD_SOURCE_UNCHANGED
 status: ACK
-authorization_status: WAITING_OWNER_FORMAT_COMPLETE
+owner_format_complete: true
 
-已领取。用户自行格式化台式机 E 盘。本机不代为格式化，不创建目标，不占用 E，不启动复制。
-磁盘可读或为空不算完成通知。等用户在本地或 ChatGPT 明确说格式化完毕后，再只读核对物理盘并更新卷绑定。
-COPY_AUTHORIZED=false。FULL_MIGRATION=false。
+已领取。只读核对格式化后的 E 盘，并只替换正式入口的目标卷常量。
+不代为格式化，不把 copy 位改成 true，不写 E，不复制。
