@@ -1,5 +1,19 @@
 # INBOX_FOR_CHATGPT — 2026-10-15
 
+## SAM notebook 52 metadata READY for desktop merge
+- task_id: `R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015_0739`
+- wake_from: `R9_REVIEW_FULL_CHAIN_AND_SESSION_20261015_0800` (continued original 0739; ACK was previously 404)
+- inbox: `agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015/`
+- result: **52/52 LOCAL metadata OK** (no UNC; E vol=2387166462, D vol=3187598165)
+- artifacts: SAM_ACK.md, LOCAL_52_METADATA.json, SAM_REPORT.md, scripts/read_local_52_metadata_r1.py, FILE_SHA256.json
+- COPY_AUTHORIZED=false; FULL_MIGRATION=false; no source mutation; ZHANGWEI may merge into AS_IS candidate
+- tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015
+- reported_at: 2026-10-15T08:18:55+08:00
+
+## Prior inbox pointer (retained)
+
+# INBOX_FOR_CHATGPT — 2026-10-15
+
 最新：`agents/chatgpt/inbox/R9_DESKTOP_COMPLETE_ASIS_FINAL_CANDIDATE_20261015/ZHANGWEI_REPORT.md`
 执行电脑=ZHANGWEI。SAM 负责本机补 52 条元数据。
 VERSION_CHOICE=AS_IS_MIGRATE_MARKED。候选 SHA `23074f64d1d60297a320cbe695ae96f40863b8974965591c0e93caab41054b5c`。
