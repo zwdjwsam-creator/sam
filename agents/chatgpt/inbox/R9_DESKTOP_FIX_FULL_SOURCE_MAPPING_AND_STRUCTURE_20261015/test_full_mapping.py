@@ -88,6 +88,88 @@ class Mapping(unittest.TestCase):
             self.assertFalse(audit["ok"])
             self.assertGreater(audit["closure"]["missing_parent"], 0)
 
+    def test_casefold_file_and_directory_collide(self):
+        with tempfile.TemporaryDirectory() as folder:
+            plan = Path(folder) / "plan.sqlite"
+            fixtures._write(plan, [(r"E:\BLACKBOX\A", 4)], [r"E:\BLACKBOX\a"], [])
+            audit = chain.inspect_plan(plan, fixtures._contract(plan))
+            self.assertFalse(audit["ok"])
+            self.assertEqual(audit["error"], "LINK_CLOSURE")
+            self.assertGreater(audit["closure"]["collisions"], 0)
+
+    def test_mapped_directory_and_link_collide_through_real_links(self):
+        with tempfile.TemporaryDirectory() as folder:
+            plan = Path(folder) / "plan.sqlite"
+            fixtures._write(
+                plan,
+                [(r"E:\BLACKBOX\one.txt", 4)],
+                [r"D:\data", r"E:\BLACKBOX\real"],
+                [(r"E:\BLACKBOX_ENGINES\data", r"E:\BLACKBOX\real")],
+            )
+            db = sqlite3.connect(plan)
+            db.execute(
+                "UPDATE links SET reparse_tag=?, migrated_link_path=? WHERE path=?",
+                (0xA0000003, r"E:\BLACKBOX_ENGINES\data", r"E:\BLACKBOX_ENGINES\data"),
+            )
+            db.commit()
+            db.close()
+            links = chain._links(plan)
+            self.assertEqual(links[0]["kind"], "junction")
+            self.assertFalse(links[0]["blocked"])
+            audit = chain.inspect_plan(plan, fixtures._contract(plan))
+            self.assertFalse(audit["ok"])
+            self.assertGreater(audit["closure"]["collisions"], 0)
+            self.assertTrue(any(item["kind"] == "link_directory" for item in audit["closure"]["collision_samples"]))
+
+    def test_same_entity_case_alias_is_not_a_collision(self):
+        with tempfile.TemporaryDirectory() as folder:
+            plan = Path(folder) / "plan.sqlite"
+            fixtures._write(plan, [(r"E:\BLACKBOX\A.txt", 4), (r"E:\BLACKBOX\a.txt", 4)], [], [])
+            db = sqlite3.connect(plan)
+            db.execute("UPDATE paths SET file_id='same'")
+            db.execute("DELETE FROM entities")
+            db.execute(
+                "INSERT INTO entities VALUES (?,?,?,?,?,?,0,0)",
+                ("2387166462", "same", 2, 4, 4, 2),
+            )
+            db.commit()
+            db.close()
+            audit = chain.inspect_plan(plan, fixtures._contract(plan))
+            self.assertTrue(audit["ok"], audit)
+            self.assertEqual(audit["closure"]["collisions"], 0)
+
+    def test_different_entities_casefold_to_one_dest(self):
+        with tempfile.TemporaryDirectory() as folder:
+            plan = Path(folder) / "plan.sqlite"
+            fixtures._write(plan, [(r"E:\BLACKBOX\A.txt", 4), (r"E:\BLACKBOX\a.txt", 4)], [], [])
+            audit = chain.inspect_plan(plan, fixtures._contract(plan))
+            self.assertFalse(audit["ok"])
+            self.assertGreater(audit["closure"]["collisions"], 0)
+
+    def test_reparse_row_and_link_row_remain_a_legal_pair(self):
+        with tempfile.TemporaryDirectory() as folder:
+            plan = Path(folder) / "plan.sqlite"
+            fixtures._write(
+                plan,
+                [(r"E:\BLACKBOX\one.txt", 4)],
+                [r"E:\BLACKBOX\real"],
+                [(r"E:\BLACKBOX\link", r"E:\BLACKBOX\real")],
+                reparses=[r"E:\BLACKBOX\link"],
+            )
+            db = sqlite3.connect(plan)
+            db.execute(
+                "UPDATE links SET reparse_tag=?, migrated_link_path=? WHERE path=?",
+                (0xA0000003, r"E:\BLACKBOX\link", r"E:\BLACKBOX\link"),
+            )
+            db.commit()
+            db.close()
+            links = chain._links(plan)
+            self.assertEqual(links[0]["kind"], "junction")
+            self.assertFalse(links[0]["blocked"])
+            audit = chain.inspect_plan(plan, fixtures._contract(plan))
+            self.assertTrue(audit["ok"], audit)
+            self.assertEqual(audit["closure"]["collisions"], 0)
+
     def test_isolated_full_open_source_uses_unc_for_e_and_d(self):
         payload = b"abcd"
         e_source = r"\\192.168.100.2\E_DRIVE\BLACKBOX\alias.txt"
