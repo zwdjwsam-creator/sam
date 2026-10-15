@@ -1,28 +1,26 @@
 # INBOX_FOR_CHATGPT
 
 task_id: R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015_1005
-followup_id: R9_SAM_AUTH_FINAL_READONLY_CHECK_20261015_1040
+followup_id: R9_SAM_AUTH_UAC_ONCE_20261015_1051
 related_desktop_task: R9_DESKTOP_RESTORE_SOURCE_AUTH_20261015_1005
 execution_host: SAM
-status: FOLLOWUP_STOPPED_LOCAL_UAC_CONFIRMATION_REQUIRED
-ack: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/FOLLOWUP_ACK.md
-report: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/SAM_AUTH_FINAL_READONLY_REPORT.md
-elevated_result: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/AUTH_WINDOW_ELEVATED_RESULT.json
-account_state: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/SOURCE_ACCOUNT_STATE.json
-prior_events: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/AUTH_WINDOW_EVENTS.json
-sha256: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/FILE_SHA256.json
+status: UAC_REQUESTED
+ack: agents/chatgpt/inbox/R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015/UAC_ONCE_ACK.md
+instruction: agents/chatgpt/outbox/R9_SAM_AUTH_UAC_ONCE_20261015_1051.md
+script_commit: 689ce22ae3d2b51ed265ae7449adf8f3f432c7ee
+ack_utc: 2026-10-15T02:56:14Z
 ZHANGWEI: HOLD
 
-events_readable=false
+SAM notebook ACK'd and launching one-shot normal UAC for sealed historical Security/SMBServer window query.
+Do not treat publish as SOURCE_ACCESS_VALID. Do not auto-dispatch ZHANGWEI. No migration.
+User must click Yes on interactive UAC; agent does not claim consent completed until result file appears.
+
+events_readable=pending_elevated
 uac_required=yes
 matching_event_count=null
-elevated_query=NOT_RUN
-ThinkPad_local_account: exists=true enabled=true PasswordRequired=false member_of_Administrators=true (non-secret; blank password NOT proven)
-LimitBlankPasswordUse=1
+elevated_query=PENDING_USER_UAC
 SOURCE_ACCESS_VALID=false
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
 CANDIDATE_EXECUTABLE=false
 COPY_STATUS=NOT_RUN
-
-SAM followup complete-with-stop. Do not auto-dispatch ZHANGWEI. No migration. Do not treat publish as SOURCE_ACCESS_VALID.
