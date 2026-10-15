@@ -1,0 +1,66 @@
+{
+    "followup_id":  "R9_SAM_AUTH_FINAL_READONLY_CHECK_20261015_1040",
+    "parent_task_id":  "R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015_1005",
+    "execution_host":  "SAM",
+    "hostname":  "SAM",
+    "windows_identity":  "SAM\\ThinkPad",
+    "queried_at_local":  "2026-10-15T10:46:12+08:00",
+    "window_start":  {
+                         "local":  "2026-10-15T10:19:30+08:00",
+                         "utc":  "2026-10-15T02:19:30Z"
+                     },
+    "window_end":  {
+                       "local":  "2026-10-15T10:19:32+08:00",
+                       "utc":  "2026-10-15T02:19:32Z"
+                   },
+    "window_half_open_utc":  "[2026-10-15T02:19:30Z, 2026-10-15T02:19:33Z)",
+    "status":  "NOT_RUN",
+    "reason":  "LOCAL_UAC_CONFIRMATION_REQUIRED",
+    "access_denied_without_elevation":  true,
+    "matching_event_count":  null,
+    "event_count_in_window":  null,
+    "events_readable":  false,
+    "uac_required":  true,
+    "elevated_query_executed":  false,
+    "already_authorized_admin_channel":  false,
+    "is_elevated_now":  false,
+    "integrity_level":  "Medium Mandatory Level",
+    "thinkpad_in_administrators":  true,
+    "se_security_privilege_present":  false,
+    "channels":  [
+                     {
+                         "get_winevent":  "AccessDenied",
+                         "wevtutil":  "AccessDenied",
+                         "name":  "Security",
+                         "focus":  "EventID 4625",
+                         "readable":  false
+                     },
+                     {
+                         "get_winevent":  "AccessDenied",
+                         "wevtutil":  "AccessDenied",
+                         "name":  "Microsoft-Windows-SMBServer/Security",
+                         "focus":  "window IDs",
+                         "readable":  false
+                     },
+                     {
+                         "get_winevent":  "AccessDenied",
+                         "wevtutil":  "AccessDenied",
+                         "name":  "Microsoft-Windows-SMBServer/Operational",
+                         "focus":  "window IDs",
+                         "readable":  false
+                     }
+                 ],
+    "matching_events":  [
+
+                        ],
+    "notes":  [
+                  "Current session SAM\\ThinkPad is Administrators member but Medium IL (not elevated).",
+                  "No reusable High-IL / already-authorized admin execution channel found for this agent.",
+                  "Interactive UAC confirmation required to obtain readonly Security/SMBServer access; stopped per instruction (no bypass / no task install / no wait loop / no multi-prompt).",
+                  "Did not expand window, create logons, change password/ACL/network, rescan creds, or write E/D.",
+                  "Prior 1005 result AccessDenied / matching_event_count=null remains authoritative until elevated read succeeds."
+              ],
+    "ZHANGWEI":  "HOLD",
+    "COPY_AUTHORIZED":  false,
+    "SOURCE_ACCESS_VALID":  false
+}
