@@ -8,10 +8,12 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import socket
 import sqlite3
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path, PureWindowsPath
 
@@ -462,61 +464,85 @@ def _under_reparse(path: str, reparses: set) -> bool:
     return False
 
 
+def _occupied_dest(path: str, migrated: str | None = None) -> str:
+    """Destination path the reader will create, then case-folded."""
+    if migrated:
+        text = str(migrated).replace("/", "\\").rstrip("\\")
+        return _path_key(text)
+    try:
+        text = reader.map_inventory_path(path)["dest_path"]
+    except ValueError:
+        text = str(path).replace("/", "\\").rstrip("\\")
+    return _path_key(text)
+
+
+def _note_collision(samples: list, kind: str, path: str, dest: str) -> None:
+    if len(samples) < 8:
+        samples.append({"kind": kind, "path": path, "dest": dest})
+
+
 def audit_full_plan(conn: sqlite3.Connection) -> dict:
     """FULL closure. Directory rows are kept; ordinary file rows are streamed."""
     directories = set()
     dest_directories = set()
-    reparses = set()
+    dest_reparses = set()
+    collisions = 0
+    collision_samples: list[dict] = []
     for path, is_dir, is_reparse in conn.execute("SELECT path, is_dir, is_reparse FROM paths"):
+        if not int(is_reparse) and not int(is_dir):
+            continue
         key = _path_key(path)
+        dest = _occupied_dest(path)
         if int(is_reparse):
-            reparses.add(key)
+            if dest in dest_directories or dest in dest_reparses:
+                collisions += 1
+                _note_collision(collision_samples, "reparse_name", path, dest)
+            dest_reparses.add(dest)
         elif int(is_dir):
             directories.add(key)
-            dest_directories.add(_dest_inventory_key(path))
+            if dest in dest_directories or dest in dest_reparses:
+                collisions += 1
+                _note_collision(collision_samples, "directory_name", path, dest)
+            dest_directories.add(dest)
     known_roots = {_path_key(root) for root in ("E:\\BLACKBOX", "E:\\BLACKBOX_ENGINES", "D:")}
     missing_parent = 0
     under_reparse = 0
     for key in directories:
         if _parent_missing(key, directories, known_roots):
             missing_parent += 1
-        if _under_reparse(key, reparses):
+    for dest in dest_directories:
+        if _under_reparse(dest, dest_reparses):
             under_reparse += 1
-    cur = conn.execute("SELECT path FROM paths WHERE is_dir=0 AND is_reparse=0")
-    while True:
-        rows = cur.fetchmany(20000)
-        if not rows:
-            break
-        for (path,) in rows:
-            if _parent_missing(path, directories, known_roots):
-                missing_parent += 1
-            if _under_reparse(path, reparses):
-                under_reparse += 1
-    collisions = 0
     missing_terminal = 0
     cycles = 0
     link_missing_parent = 0
     engines_mapped = 0
     junctions = {}
     link_rows = []
+    link_keys = set()
     for path, target, migrated_link, migrated_target in conn.execute(
         "SELECT path, target, migrated_link_path, migrated_target FROM links"
     ):
         inventory = str(path).replace("/", "\\").rstrip("\\")
         link_path = str(migrated_link or path).replace("/", "\\").rstrip("\\")
         dest = str(migrated_target or target).replace("/", "\\").rstrip("\\")
-        link_rows.append((inventory, link_path, dest))
-        junctions[_path_key(link_path)] = dest
-    for inventory_link, link_path, dest in link_rows:
-        link_key = _path_key(link_path)
-        dest_key = _dest_inventory_key(dest) if dest.upper().startswith("D:\\") else _path_key(dest)
+        link_key = _occupied_dest(path, migrated_link)
+        dest_key = _occupied_dest(target, migrated_target)
+        link_rows.append((inventory, link_path, dest, link_key, dest_key))
+        if link_key in link_keys:
+            collisions += 1
+            _note_collision(collision_samples, "link_name", link_path, link_key)
+        link_keys.add(link_key)
+        junctions[link_key] = dest
+    for inventory_link, link_path, dest, link_key, dest_key in link_rows:
         if _parent_missing(inventory_link, directories, known_roots):
             link_missing_parent += 1
         dest_parent = link_path.rsplit("\\", 1)[0]
         if _path_key(dest_parent) not in dest_directories and _path_key(dest_parent) not in known_roots and len(dest_parent) > 3:
             link_missing_parent += 1
-        if link_key in directories:
+        if link_key in dest_directories:
             collisions += 1
+            _note_collision(collision_samples, "link_directory", link_path, link_key)
             if dest_key == link_key:
                 cycles += 1
             continue
@@ -534,11 +560,11 @@ def audit_full_plan(conn: sqlite3.Connection) -> dict:
                 cyclic = True
                 break
             seen.add(hop_key)
-            mapped = _dest_inventory_key(hop) if hop.upper().startswith("D:\\") else hop_key
-            if mapped in dest_directories and hop_key not in junctions:
+            mapped = _occupied_dest(hop)
+            if mapped in dest_directories and hop_key not in junctions and mapped not in junctions:
                 resolved = True
                 break
-            nxt = junctions.get(hop_key)
+            nxt = junctions.get(hop_key) or junctions.get(mapped)
             if not nxt:
                 break
             hop = nxt
@@ -546,15 +572,61 @@ def audit_full_plan(conn: sqlite3.Connection) -> dict:
             cycles += 1
         elif not resolved:
             missing_terminal += 1
-    link_keys = {_path_key(link_path) for _inventory, link_path, _dest in link_rows}
-    file_cur = conn.execute("SELECT path FROM paths WHERE is_dir=0 AND is_reparse=0")
-    while True:
-        file_rows = file_cur.fetchmany(20000)
-        if not file_rows:
-            break
-        for (path,) in file_rows:
-            if _path_key(path) in link_keys:
-                collisions += 1
+    state_dir = Path(r"C:\LAN_SHARE_REPORT\R9_DESKTOP_FIX_FULL_SOURCE_MAPPING_AND_STRUCTURE_20261015\state")
+    state_dir.mkdir(parents=True, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix="r9dest_", suffix=".sqlite", dir=state_dir)
+    os.close(fd)
+    store = sqlite3.connect(temp_name)
+    try:
+        store.execute("PRAGMA journal_mode=OFF")
+        store.execute("PRAGMA synchronous=OFF")
+        store.execute("CREATE TABLE audit_dest_file (dest_key TEXT, entity_key TEXT, path TEXT)")
+        batch = []
+        cur = conn.execute(
+            "SELECT path, volume_serial, file_id FROM paths WHERE is_dir=0 AND is_reparse=0"
+        )
+        while True:
+            rows = cur.fetchmany(20000)
+            if not rows:
+                break
+            for path, volume, file_id in rows:
+                if _parent_missing(path, directories, known_roots):
+                    missing_parent += 1
+                dest = _occupied_dest(path)
+                if _under_reparse(dest, dest_reparses):
+                    under_reparse += 1
+                if dest in dest_directories or dest in dest_reparses or dest in link_keys:
+                    collisions += 1
+                    _note_collision(collision_samples, "file_name", path, dest)
+                batch.append((dest, f"{volume}|{file_id}", str(path)))
+                if len(batch) >= 20000:
+                    store.executemany("INSERT INTO audit_dest_file VALUES (?,?,?)", batch)
+                    batch.clear()
+        if batch:
+            store.executemany("INSERT INTO audit_dest_file VALUES (?,?,?)", batch)
+        store.execute("CREATE INDEX audit_dest_file_key ON audit_dest_file(dest_key)")
+        distinct_entity = store.execute(
+            """
+            SELECT COUNT(*) FROM (
+                SELECT dest_key FROM audit_dest_file
+                GROUP BY dest_key
+                HAVING COUNT(DISTINCT entity_key) > 1
+            )
+            """
+        ).fetchone()[0]
+        collisions += int(distinct_entity or 0)
+        for dest_key, path in store.execute(
+            """
+            SELECT dest_key, MIN(path) FROM audit_dest_file
+            GROUP BY dest_key
+            HAVING COUNT(DISTINCT entity_key) > 1
+            LIMIT 8
+            """
+        ):
+            _note_collision(collision_samples, "file_entity", path, dest_key)
+    finally:
+        store.close()
+        Path(temp_name).unlink(missing_ok=True)
     missing_parent += link_missing_parent
     error = None
     if missing_terminal or cycles or missing_parent or under_reparse or collisions:
@@ -567,9 +639,10 @@ def audit_full_plan(conn: sqlite3.Connection) -> dict:
         "missing_parent": missing_parent,
         "under_reparse": under_reparse,
         "collisions": collisions,
+        "collision_samples": collision_samples,
         "engines_mapped": engines_mapped,
         "directories": len(directories),
-        "reparses": len(reparses),
+        "reparses": len(dest_reparses),
     }
 
 
