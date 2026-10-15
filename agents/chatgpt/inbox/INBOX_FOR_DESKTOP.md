@@ -1,14 +1,17 @@
-# ZHANGWEI｜修复FULL正式来源映射与剩余结构漏检
+# ZHANGWEI｜补齐目标冲突校验并恢复来源读取
 
-task_id: R9_DESKTOP_FIX_FULL_SOURCE_MAPPING_AND_STRUCTURE_20261015_0800
+task_id: R9_DESKTOP_FINISH_COLLISIONS_AND_RESTORE_SOURCE_20261015_0934
 execution_host: ZHANGWEI
 status: READY
-instruction: agents/chatgpt/outbox/R9_REVIEW_FULL_CHAIN_AND_SESSION_20261015_0800.md
-SAM: CONTINUE_LOCAL_52_METADATA_HANDOFF
-VERSION_CHOICE: AS_IS_MIGRATE_MARKED
+instruction: agents/chatgpt/outbox/R9_REVIEW_0800_AND_RESTORE_SOURCE_20261015_0934.md
+SAM: SOURCE_SESSION_ASSIST
+VERSION_CHOICE=AS_IS_MIGRATE_MARKED
 
-先ACK。0739原6测试独立复跑通过，完整15模块code_digest已独立匹配；但正式_entities未传shares，D实体实际生成台式机本地D路径，未指向SAM UNC；另已复现空目录父链、link父链和目录/link同名自环均错过审核。读取详细重现与统一修复要求，一次补齐，禁止以BENCH代FULL来源链证明。
-并行完成当前来源会话1326的有界只读诊断，不改登录/凭据/网络。SAM52到件后合并，未到保持WAITING_SAM_52。新最终合同使用独立新run/state；本轮只C盘准备，不写E。完成停止待审。
+先ACK。0800来源映射修复认可，52/52已合并；15模块digest独立匹配，18隔离测试在明确平台适配后通过。但Windows大小写折叠的普通file/dir同名仍错放行，详见最小复现。补齐统一目标命名空间审核，不重新扫描或复制6GB候选。
+同时按历史2222已授权范围自动复用现有SMB会话/保存来源凭据，定位普通/提权上下文，恢复同一生产上下文E/D各自只读读取；与SAM配合一次有界认证探测。不再泛称密码错误、不重复无变化的失败尝试、不全局删连接、不传秘密。
+候选SHA=53551d39338d0f45e1cde111391bc9d296d62bd09b08703ecfce177183a24e0d。
+只写C准备与HUB，不向目标E写入；完成回报停止，不自动复制。
+
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
