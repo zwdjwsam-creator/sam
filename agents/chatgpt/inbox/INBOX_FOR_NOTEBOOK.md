@@ -1,15 +1,15 @@
-# SAM｜立即领取原52条本地元数据任务
+# SAM｜来源会话恢复协助
 
-task_id: R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015_0739
+task_id: R9_NOTEBOOK_SOURCE_SESSION_ASSIST_20261015_0934
 execution_host: SAM
 status: READY
-instruction: agents/chatgpt/outbox/R9_REVIEW_0725_AND_FINISH_CANDIDATE_20261015_0739.md
-latest_review: agents/chatgpt/outbox/R9_REVIEW_FULL_CHAIN_AND_SESSION_20261015_0800.md
-VERSION_CHOICE: AS_IS_MIGRATE_MARKED
+instruction: agents/chatgpt/outbox/R9_REVIEW_0800_AND_RESTORE_SOURCE_20261015_0934.md
+ZHANGWEI: FINISH_COLLISIONS_AND_RESTORE_SOURCE
+VERSION_CHOICE=AS_IS_MIGRATE_MARKED
 
-唤醒通知：0800审核时未发现本任务ACK/报告/结果目录。请立即领取原任务并先ACK；若已在做，只补现有进度与PID，不重复启动。
-仅本机读取既定51新增+mcp共52条metadata，经HUB交给台式机；不依赖SMB，不读内容，不重扫，不复查140/42，不找备份。完成上传原任务目录的LOCAL_52_METADATA.json、SAM_REPORT.md、hash及读取脚本，通知ZHANGWEI后停止。
-台式机另行修正式D来源映射和FULL审核，不阻塞你这52条本地取数。
+先ACK。原52元数据已完成且已合入台式机，不重复读取、不扫描、不再等版本选择。
+只读确认分享/卷/账号事实；与ZHANGWEI经HUB协调一次时间戳探测，按详细指令查询短窗口现有认证事件（能读则读、无权限照实），帮助区分1326来源。不开Guest、不改密码/账号/ACL/网络，不上传秘密。回传脱敏报告后停止。
+
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
 PILOT_WRITE_AUTHORIZED=false
