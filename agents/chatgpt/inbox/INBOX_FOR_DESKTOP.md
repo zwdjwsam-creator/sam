@@ -1,21 +1,20 @@
-# ZHANGWEI｜补齐目标冲突校验并恢复来源读取
+# ZHANGWEI｜原0800任务：补目标映射后冲突检查
 
-task_id: R9_DESKTOP_FINISH_COLLISIONS_AND_RESTORE_SOURCE_20261015_0934
+task_id: R9_DESKTOP_FIX_FULL_SOURCE_MAPPING_AND_STRUCTURE_20261015_0800
 execution_host: ZHANGWEI
-status: READY
-instruction: agents/chatgpt/outbox/R9_REVIEW_0800_AND_RESTORE_SOURCE_20261015_0934.md
-SAM: SOURCE_SESSION_ASSIST
-VERSION_CHOICE=AS_IS_MIGRATE_MARKED
+status: FOLLOWUP_READY_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_REVIEW_FULL_CHAIN_AND_SESSION_20261015_0800.md
+required_followup: agents/chatgpt/outbox/R9_DESKTOP_0800_TARGET_COLLISION_FOLLOWUP_20261015.md
+SAM: HOLD_LOCAL_52_COMPLETE
+VERSION_CHOICE: AS_IS_MIGRATE_MARKED
 
-先ACK。0800来源映射修复认可，52/52已合并；15模块digest独立匹配，18隔离测试在明确平台适配后通过。但Windows大小写折叠的普通file/dir同名仍错放行，详见最小复现。补齐统一目标命名空间审核，不重新扫描或复制6GB候选。
-同时按历史2222已授权范围自动复用现有SMB会话/保存来源凭据，定位普通/提权上下文，恢复同一生产上下文E/D各自只读读取；与SAM配合一次有界认证探测。不再泛称密码错误、不重复无变化的失败尝试、不全局删连接、不传秘密。
-候选SHA=53551d39338d0f45e1cde111391bc9d296d62bd09b08703ecfce177183a24e0d。
-只写C准备与HUB，不向目标E写入；完成回报停止，不自动复制。
-
+0800报告已审核，SAM52已到且已报告合并，不再等待SAM。15模块摘要独立匹配，18项隔离复跑通过（Linux系统边界适配见审核）。
+仍复现大小写折叠file/dir与D→目标目录/link冲突漏检；仅补原任务：修目标命名检查、针对性隔离回归、对现有C候选核实际冲突计数。无冲突不重建6GB候选。
+回传原目录TARGET_COLLISION_REVIEW.json、代码/测试/更新合同及ZHANGWEI_FOLLOWUP_REPORT.md。先ACK补充；已在跑则接续，不重复启动。
+来源会话仍1326，另案处理；本轮不重复探测，不改登录/凭据/SMB/网络，不写E、不全盘重扫、不测速、不新增业务复制。
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
-IMPLEMENTATION_READY=false
 CANDIDATE_EXECUTABLE=false
 full_plan_acceptance=false
