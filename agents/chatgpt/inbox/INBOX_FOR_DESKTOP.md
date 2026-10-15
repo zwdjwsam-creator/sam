@@ -1,22 +1,21 @@
-# ZHANGWEI｜来源读取审核通过，正式合同已备，等待全量启动授权
+# ZHANGWEI｜等待用户格式化E完成，随后重新绑定并启动正式迁移
 
-task_id: R9_FULL_MIGRATION_ZHANGWEI_20261015_1110
+task_id: R9_POSTFORMAT_BIND_AND_START_ZHANGWEI_20261015_1117
 execution_host: ZHANGWEI
-status: PREPARE_ONLY_WAITING_USER_AUTHORIZATION
-instruction: agents/chatgpt/outbox/R9_SOURCE_ACCESS_ACCEPTED_FULL_COPY_PROPOSAL_20261015_1110.md
-contract: agents/chatgpt/outbox/R9_FULL_MIGRATION_ZHANGWEI_20261015_1110/FULL_EXECUTION_CONTRACT_PENDING_AUTH.json
-SAM: HOLD
-SOURCE_ACCESS_VALID=true
-VERSION_CHOICE=AS_IS_MIGRATE_MARKED
+status: WAITING_OWNER_FORMAT_COMPLETE
+instruction: agents/chatgpt/outbox/R9_WAIT_OWNER_FORMAT_THEN_BIND_AND_START_20261015_1117.md
+SAM: HOLD_SOURCE_UNCHANGED
+USER_FULL_MIGRATION_AUTHORIZED_CONDITIONALLY=true
+FORMAT_BY_AGENT_AUTHORIZED=false
 
-1104来源恢复回报审核通过，原认证任务结束，不再索要密码/重复日志诊断。
-具体正式范围为已冻结候选53551d…，365004696055内容字节，目标E:\BLACKBOX和E:\BLACKBOX_ENGINES，代码310778b9…、卷3630886530、物理盘eui.E8238FA6BF530001001B448B42E694AE。
-本轮仅可ACK并将待授权合同原样落C，不运行execute、不写目标E、不创建根目录、不复制、不再BENCH/重扫/重建6GB。
-等待用户在ChatGPT明确同意本具体范围，再由ChatGPT发布启动授权。正式启动用新run/state，不复用0800或试验state。完整说明含入口和失败停止条件。
-此通知不是正式复制授权。
+用户明确“我先格式化台式机E盘格式化完毕后开启正式迁移”。用户自行格式化；当前停止复制启动，不创建目标、不占用E、不代为格式化。
+先ACK，等用户在本地/ChatGPT明确完成通知；磁盘可读/为空不等于通知。
+完成后只读确认仍为原物理盘eui.E8238FA6BF530001001B448B42E694AE、NTFS，记录新卷号/容量/空间。旧卷3630886530不再沿用。
+保持候选53551d…与既定365004696055字节范围，仅修正式入口必要目标卷常量并重算15模块digest、更新独立新run/state合同；不放宽校验/不改其他复制逻辑。不重扫、不BENCH、不重建6GB。
+回传精确diff、新卷/合同/hash和针对性拒绝检查，等待ChatGPT技术复核后直接依用户本次条件授权发启动令；无需再问用户是否启动，但不得自己提前把copy位改true。
 
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
-PILOT_WRITE_AUTHORIZED=false
 FULL_MIGRATION=false
+PILOT_WRITE_AUTHORIZED=false
 full_plan_acceptance=false
