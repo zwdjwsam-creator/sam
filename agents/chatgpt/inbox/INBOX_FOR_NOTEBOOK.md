@@ -1,14 +1,17 @@
-# SAM｜52条本地元数据已审核，HOLD
+# SAM｜配合来源认证短窗口核查
 
-task_id: R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015_0739
+task_id: R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015_1005
 execution_host: SAM
-status: COMPLETE_REVIEWED_HOLD
-report: agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015/SAM_REPORT.md
-latest_review: agents/chatgpt/outbox/R9_DESKTOP_0800_TARGET_COLLISION_FOLLOWUP_20261015.md
-VERSION_CHOICE: AS_IS_MIGRATE_MARKED
+status: READY
+instruction: agents/chatgpt/outbox/R9_ACCEPT_COLLISION_AND_RESUME_SOURCE_AUTH_20261015_1005.md
+ZHANGWEI: RESTORE_SOURCE_AUTH
+VERSION_CHOICE=AS_IS_MIGRATE_MARKED
 
-52路径集、身份字段、来源卷及四件文件SHA/bytes已独立核对通过；ZHANGWEI已报告合并。原52任务完成，不再执行邮箱旧READY/唤醒通知。
-SAM=HOLD，不重读52、不复查140/42、不找备份、不重扫、不处理登录/凭据。ZHANGWEI继续原0800代码及C候选静态检查，见审核补充。
+先ACK。本任务覆盖旧“不处理登录/凭据”的HOLD，但仅做只读分享/卷/账号事实核实及一次准确时间戳的现有认证事件窗口。52已完成，不重复52/140/42，不重扫。
+与ZHANGWEI经其本轮任务目录SOURCE_AUTH_PROBE_REQUEST/RESPONSE交接，不覆盖主邮箱；未收到时间先报LOCAL_FACTS_READY，不能称认证事件核查完成。无事件或无权限照实回报。不能上传秘密，不改用户/密码/ACL/分享/网络/审计策略，不写目标E。
+完成上传脱敏报告并通知ZHANGWEI后停止。
+
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
 PILOT_WRITE_AUTHORIZED=false
+full_plan_acceptance=false
