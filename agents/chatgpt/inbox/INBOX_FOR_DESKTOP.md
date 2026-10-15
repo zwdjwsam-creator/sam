@@ -1,16 +1,18 @@
-# ZHANGWEI｜认证账号已定位，等待来源认证方式
+# ZHANGWEI｜使用用户本地提供的密码恢复来源读取
 
-task_id: R9_DESKTOP_RESTORE_SOURCE_AUTH_20261015_1005
-status: HOLD_PENDING_SOURCE_CREDENTIAL_DECISION
-review: agents/chatgpt/outbox/R9_AUTH_USERNAME_CONFIRMED_20261015_1102.md
+task_id: R9_DESKTOP_CONNECT_SOURCE_WITH_LOCAL_CREDENTIAL_20261015_1104
 execution_host: ZHANGWEI
-SAM: COMPLETE_REVIEWED_HOLD
+status: READY_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_DESKTOP_CONNECT_SOURCE_WITH_LOCAL_CREDENTIAL_20261015_1104.md
+SAM: HOLD
+VERSION_CHOICE=AS_IS_MIGRATE_MARKED
 
-SAM管理员事件证实本次失败用了ZHANGWEI\Admin，SubStatus=0xc0000064（账户不存在）。来源应明确使用已确认的SAM\ThinkPad，但没有可复用密码记录，不能声称修复完成。
-用户此前不希望手输，本轮不要自动弹密码窗口/试密码或把.1/admin凭据用于.2。Windows原生本地输入方式已在review准备；等用户选择后才发布明确执行令。密码绝不经聊天/HUB。
-不重复认证探测/扫描/代码更改，不改源账号密码/ACL/网络，不新建账号，不写E、不复制。
+用户已明确：密码会直接交给本地AI，由台式机执行。先ACK，不再等待ChatGPT确认认证授权。
+来源是笔记本192.168.100.2，明确使用SAM\ThinkPad；不要沿用ZHANGWEI\Admin。核对用户提供的是该来源账户密码，若尚未收到报WAITING_LOCAL_CREDENTIAL。可用用户本地提供凭据的API内存或正常Windows凭据窗口，不把密码放命令行/环境/文件/日志/HUB。
+若已连接则复用现有会话，不强制重复输入。连接后同一生产上下文只读独立核验E/D根、来源卷以及各一个正式清单普通文件的稳定句柄身份/大小；只查路由不测速。
+成功交来源读取结果及现有最终合同摘要后停止待审。不得改源密码/账号/ACL/网络，不重扫、不重建候选、不写目标E、不复制。
 
 COPY_AUTHORIZED=false
-FULL_MIGRATION=false
+FULL_COPY_AUTHORIZED=false
 PILOT_WRITE_AUTHORIZED=false
-SOURCE_ACCESS_VALID=false
+FULL_MIGRATION=false
