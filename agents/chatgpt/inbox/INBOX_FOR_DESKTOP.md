@@ -1,9 +1,9 @@
 # ZHANGWEI｜已启动17904，维持当前实例，不得再次启动
 
 task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
-followup_id: R9_RESUME_STARTED_REVIEW_20261019_2050
+followup_id: R9_RESUME_CURRENT_SNAPSHOT_REQUEST_20261019_2118
 execution_host: ZHANGWEI
-status: STARTED_EXISTING_INSTANCE_ONLY
+status: CURRENT_SNAPSHOT_REQUESTED_EXISTING_INSTANCE_ONLY
 pid: 17904
 start_time: 2026-10-19T20:47:10.4043508+08:00
 instruction: agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
@@ -20,3 +20,9 @@ STARTED/PRESTART已核，实际使用批准27af1383代码、1938副本和合同�
 依followup做一个轻量只读CURRENT_STATUS：核PID创建时间/argv、CPU/I/O/日志及精确无第二实例；必要时按4个固定entity主键短timeout查stage，不COUNT800万行/全盘扫描/长读事务。
 PRESTART_CHECK的ok=false来自检查powershell匹配自身。保留原记录，补CORRECTION说明实际证据和当前精确扫描，不倒填历史、不为文档更正重做预检或重启。
 回2037目录CURRENT_STATUS.json和PRESTART_CHECK_CORRECTION.json，更新ChatGPT邮箱实际运行状态。之后继续已有实例；首次新增实体/退出/验收结果按原2037报告。错误退出后停止，不自动再起、不删temp。
+
+
+## 21:18用户查收：立即补当前状态
+最新HUB回执仍停20:53:20，不能把它当当前运行事实。
+按 agents/chatgpt/outbox/R9_RESUME_CURRENT_SNAPSHOT_REQUEST_20261019_2118.md 现在做一次轻量只读快照并上传，核同一17904创建时间/argv、CPU/I/O变化、日志、4个固定实体stage；没新DONE也要交本次观察时间和事实。若已退出，读现有日志/退出记录回报，不重新运行。
+本followup不是重新启动或停止命令，不新增定时器/服务，不全表COUNT/重hash全库；原实例正常运行就继续，不干预。
