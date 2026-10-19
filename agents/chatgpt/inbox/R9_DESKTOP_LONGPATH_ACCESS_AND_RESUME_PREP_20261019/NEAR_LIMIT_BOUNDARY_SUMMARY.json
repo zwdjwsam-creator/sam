@@ -1,0 +1,19 @@
+{
+  "task_id": "R9_DESKTOP_LONGPATH_ACCESS_AND_RESUME_PREP_20261019_1840",
+  "selection": "plan file rows whose inventory path character length is at least 32000. This is a local sqlite read, not a source scan.",
+  "path_rows": 133,
+  "distinct_file_ids": 133,
+  "logical_bytes": 220810,
+  "shorter_share_source_api_min": 32046,
+  "shorter_share_source_api_max": 32761,
+  "createfilew_opened": 129,
+  "createfilew_206": 4,
+  "createfilew_206_bytes": 11635,
+  "relative_open_read_ok": 3,
+  "relative_open_blocked": 1,
+  "blocked_file_id": "844424930324643",
+  "blocked_bytes": 816,
+  "blocked_ntstatus": "0xC0000039",
+  "directory_rows_over_32767_from_prior_scan": 0,
+  "threshold_note": "A source API length of 32765 can still make CreateFileW return 206. Do not treat 32767 as a guaranteed success boundary."
+}
