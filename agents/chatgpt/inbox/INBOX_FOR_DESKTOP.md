@@ -1,21 +1,20 @@
-# ZHANGWEI｜接续1938：修确定阈值bug，完成测试与完整交付
+# ZHANGWEI｜技术复核通过：正式恢复一次，直接执行
 
-task_id: R9_DESKTOP_COMPLETE_1938_BOUNDARY_AND_REGRESSION_20261019_1950
-parent_task_id: R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019_1938
+task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
 execution_host: ZHANGWEI
-status: READY_CONTINUE_TO_COMPLETE_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_DESKTOP_COMPLETE_1938_BOUNDARY_AND_REGRESSION_20261019_1950.md
+status: AUTHORIZED_ONE_START_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
+approved_contract: agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037_CONTRACT.json
 USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID
-SAM: KEEP_R9LP_RO_AVAILABLE
 
-1938报告、已上传helper/state汇总已审，继续原开发任务，不重做源能力/候选/8GB备份，不启动迁移。
-ChatGPT用当前r9_temp_name.py原代码复现：dest API32742/leaf51与32746/leaf50，短temp32718/32723，均因32700硬阈值抛TEMP_STILL_TOO_LONG。修“缩短触发阈值”和“缩短后允许尝试”混用，再以正式backend在C真实测试，不能只改常数称通过。
-立即连续完成：C近限真实完整copy/flush/no-replace/observe/hash/list/独立验收、防覆盖/恢复/alias拒绝测试；原27项回归；失败则在授权C范围继续修。
-交齐实际执行模块全集/diff/ordered哈希清单、新digest、真实state迁移脚本及绑定/比较证据、完整可执行结构但copy=false的正式合同。报告摘要和两个helper不足以独立核digest。
-新run/full_1938副本继续保留；代码digest改变仅在未执行过的C副本按精确旧绑定更新并留provenance，原full_1400/所有DONE/E目标不动。不要为了等下轮指令把尚未跑测试当技术阻塞。
-详细1938缺项与完成条件见instruction。全部通过交齐后通知ChatGPT复核；用户原授权有效，无需用户再确认，当前仍不执行迁移。
-
-COPY_AUTHORIZED=false
-FULL_COPY_AUTHORIZED=false
-FULL_MIGRATION=false
+COPY_AUTHORIZED=true
+FULL_COPY_AUTHORIZED=true
+FULL_MIGRATION=true
 full_plan_acceptance=false
+
+ChatGPT已下载17个实际模块并独立重算全部hash和digest，确认27af138391d66219ebc6d03609cec6933aecfce3aacba48c215d5de9f14b2551。近限Windows实测及79回归结果通过复核；本命令替代1950“不得启动”的阶段限制。
+先ACK，依instruction核现存1938副本绑定/计数、固定代码/合同/plan/目标盘/来源anchor、无第二实例，满足后立即用正式入口启动一次，不再等用户确认。
+使用已批准合同，不修改1950未授权报告当作授权依据。run保持R9_FULL_RESUME_DEEP_SHARE_ZHANGWEI_20261019_1938，state保持full_1938.sqlite。原full_1400/1117和基线代码不改，不新建空state、不重建候选、不清空E。
+source_prefetch_workers固定1；4线程未接alias，不在本授权内。遇残留temp/未知final/校验不符即停，不删不覆盖、不自动第二次启动。
+正式写入仅E:\BLACKBOX与E:\BLACKBOX_ENGINES，预算365004696055，所有既有硬链接/独立验收保护保留。已DONE内容会按原规则重hash，不取消验证。
+回执目录agents/chatgpt/inbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037/：ACK.md、PRESTART_CHECK.json、STARTED.json（真实PID/时间/argv/digest/state/日志）；只在PRECHECK_RUNNING就如实写，首次新增entity DONE有证据再报first_new_entity_copied。未最终验收不能写完成。
