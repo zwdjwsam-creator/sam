@@ -1,14 +1,15 @@
-# SAM｜认证日志审核完成，停止待命
+# SAM｜本地验证最后816B源文件，建立一个深层临时只读共享
 
-task_id: R9_NOTEBOOK_AUTH_WINDOW_ASSIST_20261015_1005
-status: COMPLETE_REVIEWED_HOLD
-review: agents/chatgpt/outbox/R9_AUTH_USERNAME_CONFIRMED_20261015_1102.md
+task_id: R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019_1906
 execution_host: SAM
-ZHANGWEI: HOLD_PENDING_SOURCE_CREDENTIAL_DECISION
+status: READY_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_DEEP_READONLY_SHARE_AND_LOCAL_FILE_PROOF_20261019_1906.md
+ZHANGWEI: CONTINUE_1840_PREP
 
-UAC及原窗口日志读取完成。失败身份ZHANGWEI\Admin，SubStatus=0xc0000064；来源本地有效账号SAM\ThinkPad尚未成功认证。
-不再查日志/凭据，不再弹UAC，不重扫、不试密码、不改账号/密码/ACL/网络。等待用户选定来源认证方式及ChatGPT明确后续任务。
+先ACK，旧1005认证任务已结束，不重做密码/日志。只对指定现存普通深层anchor核身份和来源卷2387166462；本机按file_id844424930324643核816B文件并同句柄读SHA。
+唯一可新建配置是R9LP_RO临时只读share，Path严格为instruction给定并已验证的约205字符anchor，ReadAccess仅SAM\ThinkPad，不改NTFS ACL/账号/密码/安全策略，不写源数据。用正常管理员通道/必要时一次正常UAC，禁止绕过。
+已有同名share核对匹配才复用，不删除覆盖。回传DEEP_SHARE_FACTS及本地文件身份/SHA，指针交台式机1840目录；不上传业务payload到HUB。
+这不是新业务复制任务，不扫全盘、不改名、不跳过文件。详细正常停止条件见instruction。
 
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
-SOURCE_ACCESS_VALID=false
