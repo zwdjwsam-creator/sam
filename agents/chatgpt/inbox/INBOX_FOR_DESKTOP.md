@@ -1,17 +1,17 @@
-# ZHANGWEI｜近32K路径能力验证与保留DONE恢复准备
+# ZHANGWEI｜1840接续：使用经验证的深层只读共享解决最后文件
 
 task_id: R9_DESKTOP_LONGPATH_ACCESS_AND_RESUME_PREP_20261019_1840
+followup_id: R9_DESKTOP_USE_DEEP_READONLY_SHARE_20261019_1906
 execution_host: ZHANGWEI
-status: READY_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_LONGPATH_CAPABILITY_AND_STATE_RESUME_PREP_20261019_1840.md
-SAM: HOLD_UNLESS_TARGETED_SHARE_FACTS_NEEDED
-USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID
+status: READY_CONTINUE_PREP_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_DEEP_READONLY_SHARE_AND_LOCAL_FILE_PROOF_20261019_1906.md
+SAM: DEEP_READONLY_SHARE_PROOF
 
-1826定位已审核，33770是日志解码错数，纠正为源API32765（1166B）及另一32769（816B）；无短实体别名、第一层普通目录非reparse。至少两个文件受影响，不能跳过/改名或称全部风险仅2条。
-先ACK。优先核已有同来源短共享入口，能绑定且实测同volume/fileid/size才用；无现成入口则C开发分段目录句柄只读open并真实读取这两个小源文件作身份/大小/SHA证明。官方支持RootDirectory不等于SMB一定支持，失败报NTSTATUS，不改share/凭据/源目录。
-目标temp不能继续最长basename后追加溢出后缀，最终observe/hash/commit/验收也须覆盖；只C隔离测试，不写真实目标E、不恢复复制。
-保留1083975实体DONE/348928107919唯一DONE字节及全部alias/目录。状态兼容迁移只在一致性备份副本上，原run_bind不动，禁止空state重抄；提交确切兼容证据与新digest合同供技术复核。
-原runner会重hash DONE，保留进度不等于零读取，不私自禁用验证。具体范围、阶段停止与交付见instruction。旧1400命令继续暂停。
+能力回报已审，129短入口可读/3个native可读，最后816B的0xC0000039不能推定损坏，也不能称全部恢复就绪。不要重复同样的SMB失败调用。
+SAM正被指派本地核fileid并建立唯一深层临时只读R9LP_RO，待真实DEEP_SHARE_FACTS到件核anchor身份/卷，再从原候选路径映射该anchor下尾部。四个失败实体均须同句柄identity/size/SHA成功，816B比对SAM本地SHA。
+保持原inventory/dest/entity身份，受限access_alias写进合同，不能任意改来源root或拿其他同名文件代替。
+同时继续原1840目标temp/commit/observe/hash/验收C隔离与保留DONE的状态副本迁移准备，避免又串行等一轮才开发。真实目标E和原state仍不写。
+完成精确代码diff/全部模块digest/测试/真实源能力/状态迁移证据/新合同copy=false后一次交齐待技术复核；不得跳过/截短/改名、不重建6GB、不空state重抄。
 
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
