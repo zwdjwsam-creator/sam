@@ -1,20 +1,22 @@
-# ZHANGWEI｜技术复核通过：正式恢复一次，直接执行
+# ZHANGWEI｜已启动17904，维持当前实例，不得再次启动
 
 task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
+followup_id: R9_RESUME_STARTED_REVIEW_20261019_2050
 execution_host: ZHANGWEI
-status: AUTHORIZED_ONE_START_AWAITING_ACK
+status: STARTED_EXISTING_INSTANCE_ONLY
+pid: 17904
+start_time: 2026-10-19T20:47:10.4043508+08:00
 instruction: agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
-approved_contract: agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037_CONTRACT.json
-USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID
+followup_instruction: agents/chatgpt/outbox/R9_RESUME_STARTED_REVIEW_20261019_2050.md
 
 COPY_AUTHORIZED=true
 FULL_COPY_AUTHORIZED=true
 FULL_MIGRATION=true
 full_plan_acceptance=false
+START_AGAIN_AUTHORIZED=false
 
-ChatGPT已下载17个实际模块并独立重算全部hash和digest，确认27af138391d66219ebc6d03609cec6933aecfce3aacba48c215d5de9f14b2551。近限Windows实测及79回归结果通过复核；本命令替代1950“不得启动”的阶段限制。
-先ACK，依instruction核现存1938副本绑定/计数、固定代码/合同/plan/目标盘/来源anchor、无第二实例，满足后立即用正式入口启动一次，不再等用户确认。
-使用已批准合同，不修改1950未授权报告当作授权依据。run保持R9_FULL_RESUME_DEEP_SHARE_ZHANGWEI_20261019_1938，state保持full_1938.sqlite。原full_1400/1117和基线代码不改，不新建空state、不重建候选、不清空E。
-source_prefetch_workers固定1；4线程未接alias，不在本授权内。遇残留temp/未知final/校验不符即停，不删不覆盖、不自动第二次启动。
-正式写入仅E:\BLACKBOX与E:\BLACKBOX_ENGINES，预算365004696055，所有既有硬链接/独立验收保护保留。已DONE内容会按原规则重hash，不取消验证。
-回执目录agents/chatgpt/inbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037/：ACK.md、PRESTART_CHECK.json、STARTED.json（真实PID/时间/argv/digest/state/日志）；只在PRECHECK_RUNNING就如实写，首次新增entity DONE有证据再报first_new_entity_copied。未最终验收不能写完成。
+STARTED/PRESTART已核，实际使用批准27af1383代码、1938副本和合同。一次启动额度已使用；不要把旧READY邮箱或本followup理解为第二次启动令。保持当前17904，不停止/重启/改代码/并发。
+入口在execute_contract返回后才输出汇总；日志为空不能单独判卡住。当前CPU增长不能确认具体阶段，没有新增entity DONE证据前first_new_entity_copied=false。
+依followup做一个轻量只读CURRENT_STATUS：核PID创建时间/argv、CPU/I/O/日志及精确无第二实例；必要时按4个固定entity主键短timeout查stage，不COUNT800万行/全盘扫描/长读事务。
+PRESTART_CHECK的ok=false来自检查powershell匹配自身。保留原记录，补CORRECTION说明实际证据和当前精确扫描，不倒填历史、不为文档更正重做预检或重启。
+回2037目录CURRENT_STATUS.json和PRESTART_CHECK_CORRECTION.json，更新ChatGPT邮箱实际运行状态。之后继续已有实例；首次新增实体/退出/验收结果按原2037报告。错误退出后停止，不自动再起、不删temp。
