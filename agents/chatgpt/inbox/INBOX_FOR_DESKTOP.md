@@ -1,16 +1,17 @@
-# ZHANGWEI｜206超长路径停止，保留已迁数据并只读定位
+# ZHANGWEI｜近32K路径能力验证与保留DONE恢复准备
 
-task_id: R9_DESKTOP_TRIAGE_OVERLONG_MANIFEST_PATH_20261019_1826
+task_id: R9_DESKTOP_LONGPATH_ACCESS_AND_RESUME_PREP_20261019_1840
 execution_host: ZHANGWEI
-status: READY_READONLY_TRIAGE_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_LONGPATH_STOP_TRIAGE_PRESERVE_DONE_20261019_1826.md
-SAM: HOLD_SOURCE_UNCHANGED
-USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID_WITHIN_ORIGINAL_SCOPE
+status: READY_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_LONGPATH_CAPABILITY_AND_STATE_RESUME_PREP_20261019_1840.md
+SAM: HOLD_UNLESS_TARGETED_SHARE_FACTS_NEEDED
+USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID
 
-旧1400进程32636已停止，不是完成；旧1406启动命令暂停，不能重复启动。已entity DONE1083975、alias6689430、目录233668，累计stream348928107919字节。保留E目标/旧state/run_bind/日志/候选，不重抄、不删、不格式化。
-先ACK，只读精确提取失败实体与实际API路径UTF16长度；查同volume/file_id较短别名是否能打开且身份/大小匹配，分清source和target/alias限制。核实全部目录DONE与33770字符文件路径的关系、manifest_backup嵌套实际原因，不能凭文件名认定重复。
-仅对C候选流式统计风险范围并只读汇总旧state，少量来源/目标metadata，不扫源树、不读payload。提交保留现有108万DONE的最小恢复方案；不改code/plan/state、不跳过异常、不建空state重来。
-完成回传本任务目录及INBOX_FOR_CHATGPT。详细交付和禁止事项见instruction。本轮没有恢复复制授权。
+1826定位已审核，33770是日志解码错数，纠正为源API32765（1166B）及另一32769（816B）；无短实体别名、第一层普通目录非reparse。至少两个文件受影响，不能跳过/改名或称全部风险仅2条。
+先ACK。优先核已有同来源短共享入口，能绑定且实测同volume/fileid/size才用；无现成入口则C开发分段目录句柄只读open并真实读取这两个小源文件作身份/大小/SHA证明。官方支持RootDirectory不等于SMB一定支持，失败报NTSTATUS，不改share/凭据/源目录。
+目标temp不能继续最长basename后追加溢出后缀，最终observe/hash/commit/验收也须覆盖；只C隔离测试，不写真实目标E、不恢复复制。
+保留1083975实体DONE/348928107919唯一DONE字节及全部alias/目录。状态兼容迁移只在一致性备份副本上，原run_bind不动，禁止空state重抄；提交确切兼容证据与新digest合同供技术复核。
+原runner会重hash DONE，保留进度不等于零读取，不私自禁用验证。具体范围、阶段停止与交付见instruction。旧1400命令继续暂停。
 
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
