@@ -1,0 +1,89 @@
+[
+  {
+    "name": "string_32742",
+    "dest_api": 32742,
+    "leaf": 51,
+    "temp": ".r934332d9b2582da7a.partial",
+    "temp_api": 32718,
+    "raised": false
+  },
+  {
+    "name": "string_32746",
+    "dest_api": 32746,
+    "leaf": 50,
+    "temp": ".r97f9b4869b2d4609c.partial",
+    "temp_api": 32723,
+    "raised": false
+  },
+  {
+    "name": "still_too_long",
+    "raised": true,
+    "dest_api": 33007
+  },
+  {
+    "name": "copy_32742",
+    "function": "WindowsBackend.copy_entity",
+    "dest_api": 32742,
+    "temp_api": 32718,
+    "temp_name": ".r98f5f7f441570be77.partial",
+    "sha256": "c5e0dc8966619677049899e83b1be6ca10a2df79a0a91cf7f3ae4d7d321db163",
+    "bytes": 22,
+    "observe_status": "PRESENT",
+    "observe_file_id": "2251799814100240",
+    "content_sha": "c5e0dc8966619677049899e83b1be6ca10a2df79a0a91cf7f3ae4d7d321db163",
+    "list_contains_leaf": true,
+    "payload_match": true
+  },
+  {
+    "name": "copy_32746",
+    "function": "WindowsBackend.copy_entity",
+    "dest_api": 32746,
+    "temp_api": 32723,
+    "temp_name": ".r9a1bb24122a98fbe1.partial",
+    "sha256": "c5e0dc8966619677049899e83b1be6ca10a2df79a0a91cf7f3ae4d7d321db163",
+    "bytes": 22,
+    "observe_status": "PRESENT",
+    "observe_file_id": "2251799814100882",
+    "content_sha": "c5e0dc8966619677049899e83b1be6ca10a2df79a0a91cf7f3ae4d7d321db163",
+    "list_contains_leaf": true,
+    "payload_match": true
+  },
+  {
+    "name": "copy_short",
+    "function": "WindowsBackend.copy_entity",
+    "dest_api": 109,
+    "temp_api": 117,
+    "temp_name": "file.bin.partial",
+    "sha256": "c5e0dc8966619677049899e83b1be6ca10a2df79a0a91cf7f3ae4d7d321db163",
+    "bytes": 22,
+    "observe_status": "PRESENT",
+    "observe_file_id": "2251799814100884",
+    "content_sha": "c5e0dc8966619677049899e83b1be6ca10a2df79a0a91cf7f3ae4d7d321db163",
+    "list_contains_leaf": true,
+    "payload_match": true
+  },
+  {
+    "name": "final_exists_no_replace",
+    "commit_returned": false,
+    "dest_unchanged": true
+  },
+  {
+    "name": "temp_conflict_no_replace",
+    "error": "OSError winerror=80",
+    "temp_unchanged": true
+  },
+  {
+    "name": "interrupt_resume_refuses_existing_temp",
+    "interrupted": true,
+    "temp_api": 121,
+    "temp_payload": true,
+    "second_error": "OSError winerror=80"
+  },
+  {
+    "name": "alias_checks",
+    "bad_tail": true,
+    "outside_unchanged": true,
+    "bad_contract": true,
+    "good_anchor": true
+  }
+]
