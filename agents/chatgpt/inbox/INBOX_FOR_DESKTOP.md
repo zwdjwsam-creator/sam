@@ -1,17 +1,21 @@
-# ZHANGWEI｜1840接续：使用经验证的深层只读共享解决最后文件
+# ZHANGWEI｜四文件已读通：立即完成正式集成和真实state副本
 
-task_id: R9_DESKTOP_LONGPATH_ACCESS_AND_RESUME_PREP_20261019_1840
-followup_id: R9_DESKTOP_USE_DEEP_READONLY_SHARE_20261019_1906
+task_id: R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019_1938
+parent_task_id: R9_DESKTOP_LONGPATH_ACCESS_AND_RESUME_PREP_20261019_1840
 execution_host: ZHANGWEI
-status: READY_CONTINUE_PREP_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_DEEP_READONLY_SHARE_AND_LOCAL_FILE_PROOF_20261019_1906.md
-SAM: DEEP_READONLY_SHARE_PROOF
+status: READY_IMPLEMENT_AND_PREPARE_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019_1938.md
+source_access: FOUR_FILES_PROVEN
+SAM: KEEP_R9LP_RO_AVAILABLE
+USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID
 
-能力回报已审，129短入口可读/3个native可读，最后816B的0xC0000039不能推定损坏，也不能称全部恢复就绪。不要重复同样的SMB失败调用。
-SAM正被指派本地核fileid并建立唯一深层临时只读R9LP_RO，待真实DEEP_SHARE_FACTS到件核anchor身份/卷，再从原候选路径映射该anchor下尾部。四个失败实体均须同句柄identity/size/SHA成功，816B比对SAM本地SHA。
-保持原inventory/dest/entity身份，受限access_alias写进合同，不能任意改来源root或拿其他同名文件代替。
-同时继续原1840目标temp/commit/observe/hash/验收C隔离与保留DONE的状态副本迁移准备，避免又串行等一轮才开发。真实目标E和原state仍不写。
-完成精确代码diff/全部模块digest/测试/真实源能力/状态迁移证据/新合同copy=false后一次交齐待技术复核；不得跳过/截短/改名、不重建6GB、不空state重抄。
+先ACK本task，然后连续完成C集成与真实旧库只读backup副本，不要只ACK等下一条开发命令。
+40ed64a报告和SAM事实已审：固定R9LP_RO锚点2387166462|1688849860437540一致，四文件读通，816B SHA与SAM一致。不重复源能力探索。
+本轮须把受限share映射接入正式链，完成有界temp、近限正式backend C实测、防覆盖提交/恢复/独立验收。
+修复已审准备代码缺口：temp.replace会覆盖，字符串len不是UTF16计数；state指纹漏列且fetchall不适合大库；all_ok漏稳定性/SAM SHA谓词；Git blob SHA不能标内容SHA256。
+明确授权从确定旧full_1400.sqlite只读使用SQLite backup API新建C副本，只在副本绑定新run/digest，逐条比较完整stage和既有表，仅允许副本run_bind两字段变更。原库/旧run/E目标不写，不建空state重抄。
+新run R9_FULL_RESUME_DEEP_SHARE_ZHANGWEI_20261019_1938。原plan、目标物理盘/卷、所有DONE证据保留；确切步骤见instruction。
+一次交齐正式模块/diff/hash/digest、真实C集成测试、真实state副本证明、新合同copy=false及可审启动命令，交原1840目录并通知ChatGPT复核，当前不实际执行迁移。
 
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
