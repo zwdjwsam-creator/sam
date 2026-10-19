@@ -1,0 +1,101 @@
+{
+  "host": "ZHANGWEI",
+  "ok": false,
+  "host_ok": true,
+  "matching_processes": "{\"ProcessId\":17060,\"Name\":\"powershell.exe\",\"CommandLine\":\"powershell -NoProfile -Command \\\"Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match \\u0027r9_formal_executor|full_1400.sqlite|full_1938.sqlite\\u0027 } | Select-Object ProcessId, Name, CommandLine | ConvertTo-Json -Compress\\\"\"}",
+  "old_32636_alive": false,
+  "old_15872_alive": false,
+  "contract_sha256": "ea8ad53f4ea8c6ef9ef3d9116951a38df3f7ab53705cc5cfffe18ee6301d3e23",
+  "contract_flags": {
+    "copy_authorized": true,
+    "full_copy_authorized": true,
+    "full_migration": true,
+    "workers": 1,
+    "code_digest": "27af138391d66219ebc6d03609cec6933aecfce3aacba48c215d5de9f14b2551",
+    "run_code_digest": "27af138391d66219ebc6d03609cec6933aecfce3aacba48c215d5de9f14b2551",
+    "state_path": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019\\state\\full_1938.sqlite"
+  },
+  "code_digest": "27af138391d66219ebc6d03609cec6933aecfce3aacba48c215d5de9f14b2551",
+  "digest_matches_contract": true,
+  "plan_sha": "53551d39338d0f45e1cde111391bc9d296d62bd09b08703ecfce177183a24e0d",
+  "plan_sha_ok": true,
+  "dest_probe": {
+    "ok": true,
+    "reason": null,
+    "volume_serial": "2694002743",
+    "filesystem": "NTFS",
+    "unique_id": "eui.E8238FA6BF530001001B448B42E694AE"
+  },
+  "anchor_ok": true,
+  "state_size": 8033882112,
+  "original_size": 8033882112,
+  "original_mtime_ns": 1792404222444253900,
+  "state_file_id": "108930815987162207",
+  "original_file_id": "3377699720763264",
+  "distinct_files": true,
+  "run_bind": [
+    [
+      "R9_FULL_RESUME_DEEP_SHARE_ZHANGWEI_20261019_1938",
+      "53551d39338d0f45e1cde111391bc9d296d62bd09b08703ecfce177183a24e0d",
+      "53551d39338d0f45e1cde111391bc9d296d62bd09b08703ecfce177183a24e0d",
+      "27af138391d66219ebc6d03609cec6933aecfce3aacba48c215d5de9f14b2551",
+      "2694002743",
+      "E:\\BLACKBOX"
+    ]
+  ],
+  "bind_ok": true,
+  "stage_counts": [
+    [
+      "alias",
+      "DONE",
+      6689430,
+      4674377853287
+    ],
+    [
+      "dir",
+      "DONE",
+      233668,
+      0
+    ],
+    [
+      "entity",
+      "DONE",
+      1083975,
+      348928107919
+    ]
+  ],
+  "stage_total": 8007073,
+  "other_phase_rows": 0,
+  "counts_ok": true,
+  "near_limit_leftovers": [
+    {
+      "file_id": "844424930324628",
+      "dest_api": 32742,
+      "temp_api": 32718,
+      "dest_exists": false,
+      "temp_exists": false
+    },
+    {
+      "file_id": "844424930324634",
+      "dest_api": 32743,
+      "temp_api": 32729,
+      "dest_exists": false,
+      "temp_exists": false
+    },
+    {
+      "file_id": "844424930324640",
+      "dest_api": 32743,
+      "temp_api": 32723,
+      "dest_exists": false,
+      "temp_exists": false
+    },
+    {
+      "file_id": "844424930324643",
+      "dest_api": 32746,
+      "temp_api": 32723,
+      "dest_exists": false,
+      "temp_exists": false
+    }
+  ],
+  "leftovers_clear": true
+}
