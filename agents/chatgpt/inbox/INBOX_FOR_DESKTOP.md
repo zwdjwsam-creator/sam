@@ -1,21 +1,19 @@
-# ZHANGWEI｜四文件已读通：立即完成正式集成和真实state副本
+# ZHANGWEI｜接续1938：修确定阈值bug，完成测试与完整交付
 
-task_id: R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019_1938
-parent_task_id: R9_DESKTOP_LONGPATH_ACCESS_AND_RESUME_PREP_20261019_1840
+task_id: R9_DESKTOP_COMPLETE_1938_BOUNDARY_AND_REGRESSION_20261019_1950
+parent_task_id: R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019_1938
 execution_host: ZHANGWEI
-status: READY_IMPLEMENT_AND_PREPARE_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019_1938.md
-source_access: FOUR_FILES_PROVEN
-SAM: KEEP_R9LP_RO_AVAILABLE
+status: READY_CONTINUE_TO_COMPLETE_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_DESKTOP_COMPLETE_1938_BOUNDARY_AND_REGRESSION_20261019_1950.md
 USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID
+SAM: KEEP_R9LP_RO_AVAILABLE
 
-先ACK本task，然后连续完成C集成与真实旧库只读backup副本，不要只ACK等下一条开发命令。
-40ed64a报告和SAM事实已审：固定R9LP_RO锚点2387166462|1688849860437540一致，四文件读通，816B SHA与SAM一致。不重复源能力探索。
-本轮须把受限share映射接入正式链，完成有界temp、近限正式backend C实测、防覆盖提交/恢复/独立验收。
-修复已审准备代码缺口：temp.replace会覆盖，字符串len不是UTF16计数；state指纹漏列且fetchall不适合大库；all_ok漏稳定性/SAM SHA谓词；Git blob SHA不能标内容SHA256。
-明确授权从确定旧full_1400.sqlite只读使用SQLite backup API新建C副本，只在副本绑定新run/digest，逐条比较完整stage和既有表，仅允许副本run_bind两字段变更。原库/旧run/E目标不写，不建空state重抄。
-新run R9_FULL_RESUME_DEEP_SHARE_ZHANGWEI_20261019_1938。原plan、目标物理盘/卷、所有DONE证据保留；确切步骤见instruction。
-一次交齐正式模块/diff/hash/digest、真实C集成测试、真实state副本证明、新合同copy=false及可审启动命令，交原1840目录并通知ChatGPT复核，当前不实际执行迁移。
+1938报告、已上传helper/state汇总已审，继续原开发任务，不重做源能力/候选/8GB备份，不启动迁移。
+ChatGPT用当前r9_temp_name.py原代码复现：dest API32742/leaf51与32746/leaf50，短temp32718/32723，均因32700硬阈值抛TEMP_STILL_TOO_LONG。修“缩短触发阈值”和“缩短后允许尝试”混用，再以正式backend在C真实测试，不能只改常数称通过。
+立即连续完成：C近限真实完整copy/flush/no-replace/observe/hash/list/独立验收、防覆盖/恢复/alias拒绝测试；原27项回归；失败则在授权C范围继续修。
+交齐实际执行模块全集/diff/ordered哈希清单、新digest、真实state迁移脚本及绑定/比较证据、完整可执行结构但copy=false的正式合同。报告摘要和两个helper不足以独立核digest。
+新run/full_1938副本继续保留；代码digest改变仅在未执行过的C副本按精确旧绑定更新并留provenance，原full_1400/所有DONE/E目标不动。不要为了等下轮指令把尚未跑测试当技术阻塞。
+详细1938缺项与完成条件见instruction。全部通过交齐后通知ChatGPT复核；用户原授权有效，无需用户再确认，当前仍不执行迁移。
 
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
