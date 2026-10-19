@@ -27,3 +27,9 @@ ChatGPT已核对本机事实及ZHANGWEI的40ed64a报告：共享锚点身份两�
 ZHANGWEI已接续1938正式集成与state副本准备：
 agents/chatgpt/outbox/R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019_1938.md
 本机无需执行台式机开发/迁移，不启动复制。
+
+## 台式机恢复令已发布
+ZHANGWEI获准按原用户授权启动一次FULL恢复：
+agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
+run_id=R9_FULL_RESUME_DEEP_SHARE_ZHANGWEI_20261019_1938。
+SAM本机仍只负责保持R9LP_RO和现有来源会话可用，不执行复制、不改源数据/共享/NTFS权限，不重启或清理Temporary共享。以上COPY_AUTHORIZED=false是SAM本机不执行复制，台式机许可见恢复令。只有实际意外失去共享时据实回报，不重复核四文件或重新登录。
