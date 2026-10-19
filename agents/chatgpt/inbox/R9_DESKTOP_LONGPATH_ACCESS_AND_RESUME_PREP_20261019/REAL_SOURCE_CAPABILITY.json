@@ -1,0 +1,50 @@
+{
+  "task_id": "R9_DESKTOP_LONGPATH_ACCESS_AND_RESUME_PREP_20261019_1840",
+  "method": "existing BLACKBOX share was identity-checked, then relative NtCreateFile for the files that still returned 206",
+  "share_root_same_directory": true,
+  "share_volume": "2387166462",
+  "share_file_id": "1125899907016167",
+  "short_share_saves_chars": 8,
+  "short_share_not_sufficient": true,
+  "createfilew_via_blackbox_share": {
+    "path_rows": 133,
+    "opened_and_identity_matched": 129,
+    "still_winerror_206": 4
+  },
+  "relative_ntcreatefile": [
+    {
+      "plan_file_id": "844424930324628",
+      "plan_size": 1166,
+      "ok": true,
+      "matches_plan": true,
+      "sha256": "f1b5e3bfcf220ff36e9b1518ee2208a4e189b6b91d85ba66cb4ea3f79553b575"
+    },
+    {
+      "plan_file_id": "844424930324634",
+      "plan_size": 9095,
+      "ok": true,
+      "matches_plan": true,
+      "sha256": "3fde2b052b555a4e4d2d3a0b86ba004c6fe222fa5d109abed20f3f99c1607883"
+    },
+    {
+      "plan_file_id": "844424930324640",
+      "plan_size": 558,
+      "ok": true,
+      "matches_plan": true,
+      "sha256": "a65ee5d885a1c300a901d3e6cf1c7ea0df96bb2498644a92a2a06b0d07b9c3d5"
+    },
+    {
+      "plan_file_id": "844424930324643",
+      "plan_size": 816,
+      "ok": false,
+      "stage": "file",
+      "ntstatus": "0xC0000039",
+      "ntstatus_name": "STATUS_OBJECT_PATH_INVALID",
+      "winerror": 161,
+      "last_component_chars": 50,
+      "last_component_unusual_codepoints": []
+    }
+  ],
+  "implementation_ready": false,
+  "copy_authorized": false
+}
