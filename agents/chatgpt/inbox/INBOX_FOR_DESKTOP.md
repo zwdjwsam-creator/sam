@@ -1,22 +1,18 @@
-# ZHANGWEI｜目标根修复审核通过，立即恢复正式迁移
+# ZHANGWEI｜206超长路径停止，保留已迁数据并只读定位
 
-task_id: R9_FULL_RESUME_AFTER_ROOT_FIX_ZHANGWEI_20261015_1400
-authorization_id: R9_FULL_RESUME_ROOT_FIX_AUTH_20261015_1406
+task_id: R9_DESKTOP_TRIAGE_OVERLONG_MANIFEST_PATH_20261019_1826
 execution_host: ZHANGWEI
-status: READY_EXECUTE_NOW_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_FULL_RESUME_ROOT_FIX_AUTH_20261015_1406.md
-contract: agents/chatgpt/outbox/R9_FULL_RESUME_ROOT_FIX_AUTH_20261015_1406/FULL_RESUME_CONTRACT_AUTHORIZED.json
+status: READY_READONLY_TRIAGE_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_LONGPATH_STOP_TRIAGE_PRESERVE_DONE_20261019_1826.md
 SAM: HOLD_SOURCE_UNCHANGED
+USER_FULL_MIGRATION_AUTHORIZATION=STILL_VALID_WITHIN_ORIGINAL_SCOPE
 
-15模块原始字节hash及完整digest独立匹配，实际三模块diff已核对，27项隔离测试独立复跑全通过。技术审核完成，原用户授权持续有效，立即按本新授权合同execute，不再等用户/ChatGPT批准。
-code_digest=62aff763e4c12d782039e067ea12985e36d2164af41564453249774c89d84ae3。
-run/state用1400独立绑定，保留旧1117与41目录，不改旧run_bind、不删目录、不格式化。
-先EXECUTION_ACK，确认没有同run进程，只启动一次；马上上传STARTED真实PID/时间/日志，入口检查阶段也及时报告。两个目标根已由正式序列创建，独立验收expected已同步。准确命令/合同与失败停止条件见instruction。
-候选53551d…、365004696055字节预算、卷2694002743/原物理盘不变。禁止重放旧1117合同、重复扫描/新BENCH/继续改码；错误停保留证据。
-回传本1400目录，更新INBOX_FOR_CHATGPT。
+旧1400进程32636已停止，不是完成；旧1406启动命令暂停，不能重复启动。已entity DONE1083975、alias6689430、目录233668，累计stream348928107919字节。保留E目标/旧state/run_bind/日志/候选，不重抄、不删、不格式化。
+先ACK，只读精确提取失败实体与实际API路径UTF16长度；查同volume/file_id较短别名是否能打开且身份/大小匹配，分清source和target/alias限制。核实全部目录DONE与33770字符文件路径的关系、manifest_backup嵌套实际原因，不能凭文件名认定重复。
+仅对C候选流式统计风险范围并只读汇总旧state，少量来源/目标metadata，不扫源树、不读payload。提交保留现有108万DONE的最小恢复方案；不改code/plan/state、不跳过异常、不建空state重来。
+完成回传本任务目录及INBOX_FOR_CHATGPT。详细交付和禁止事项见instruction。本轮没有恢复复制授权。
 
-COPY_AUTHORIZED=true
-FULL_COPY_AUTHORIZED=true
-FULL_MIGRATION_AUTHORIZED=true
-PILOT_WRITE_AUTHORIZED=false
+COPY_AUTHORIZED=false
+FULL_COPY_AUTHORIZED=false
+FULL_MIGRATION=false
 full_plan_acceptance=false
