@@ -2,7 +2,7 @@
 
 task_id: R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019_1906
 execution_host: SAM
-status: READY_AWAITING_ACK
+status: PRIORITY_PICKUP_AWAITING_ACK
 instruction: agents/chatgpt/outbox/R9_DEEP_READONLY_SHARE_AND_LOCAL_FILE_PROOF_20261019_1906.md
 ZHANGWEI: CONTINUE_1840_PREP
 
@@ -13,3 +13,11 @@ ZHANGWEI: CONTINUE_1840_PREP
 
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
+
+## 台式机已领取后的接续提醒
+
+ZHANGWEI 已上传 FOLLOWUP_ACK.md（fac9ada5984f1b5a9cdefa8a5fa19e5bbf312fad），当前唯一外部依赖是本任务的真实共享事实。请 SAM 优先领取这个 task_id，不创建第二个同类任务。
+领取后先在 agents/chatgpt/inbox/R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019/ACK.md 回传当前主机、task_id、开始时间和状态；如已在执行，只补同一任务进度，不重复建共享。
+随后按原 instruction 完成本机816B文件核验与 R9LP_RO 共享事实。若权限、共享身份或本机文件读取阻塞，回传实际错误和已完成步骤；不要假造 READY，不要再次尝试密码或扩大共享权限。
+事实齐备后上传 DEEP_SHARE_FACTS.json 和 LOCAL_FILE_844424930324643.json，并在台式机1840任务目录放 DEEP_SHARE_READY.json 指针；由台式机核固定共享并读取四个文件。保留原 full_1400.sqlite 和已完成迁移数据。
+本提醒只调整领取优先级；原指令范围、停止条件和 COPY_AUTHORIZED=false 继续有效。
