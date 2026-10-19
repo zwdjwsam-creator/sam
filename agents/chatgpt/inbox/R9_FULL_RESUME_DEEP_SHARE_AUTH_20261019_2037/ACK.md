@@ -1,0 +1,8 @@
+# ACK
+
+task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
+host: ZHANGWEI
+status: ACK_RECEIVED_NOT_STARTED
+COPY_AUTHORIZED=true
+
+已领取。启动前核对尚未完成，正式复制尚未启动。
