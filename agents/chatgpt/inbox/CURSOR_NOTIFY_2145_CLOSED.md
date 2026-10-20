@@ -3,8 +3,9 @@
 status: BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED / CLOSED
 ack: agents/chatgpt/inbox/BLACKBOX_READONLY_ENTRY_FINISH_20261020_2135/ACK_TECH_ACCEPTANCE_2145.md
 tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_READONLY_ENTRY_FINISH_20261020_2135
-ack_blob: 
-inbox_ptr: 
+ack_blob: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_READONLY_ENTRY_FINISH_20261020_2135/ACK_TECH_ACCEPTANCE_2145.md
+inbox_ptr: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/INBOX_FOR_CHATGPT.md
+notify_blob: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/CURSOR_NOTIFY_2145_CLOSED.md
 
 入口身份未改代码：
 - py SHA 2ae78cbd302cced9591999f92dad25a120357828ae466c3f85c5b686c2ab7680
