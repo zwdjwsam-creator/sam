@@ -1,0 +1,170 @@
+{
+  "task_id": "BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940",
+  "parent": "BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "code_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940\\code_v2",
+  "tests": {
+    "gate_lost_40_must_reject": {
+      "PASS": true,
+      "publishable": false,
+      "status": "REJECT_COVERAGE_REGRESSION",
+      "lost_count": 40,
+      "reason": "LOST_REQUIRED_PARENT_DATES"
+    },
+    "gate_same_count_changed_date_reject": {
+      "PASS": true,
+      "publishable": false,
+      "status": "REJECT_COVERAGE_REGRESSION",
+      "lost_count": 1,
+      "reason": "LOST_REQUIRED_PARENT_DATES"
+    },
+    "gate_no_loss_allow": {
+      "PASS": true,
+      "publishable": true,
+      "status": "PASS",
+      "lost_count": 0,
+      "reason": null
+    },
+    "gate_parent_missing_reject": {
+      "PASS": true,
+      "publishable": false,
+      "status": "REJECT_COVERAGE_REGRESSION",
+      "lost_count": null,
+      "reason": "PARENT_BASELINE_MISSING"
+    },
+    "gate_both_missing_reject": {
+      "PASS": true,
+      "publishable": false,
+      "status": "REJECT_COVERAGE_REGRESSION",
+      "lost_count": null,
+      "reason": "PARENT_BASELINE_MISSING"
+    },
+    "gate_empty_products_reject": {
+      "PASS": true,
+      "publishable": false,
+      "status": "REJECT_EMPTY_PRODUCTS",
+      "lost_count": null,
+      "reason": null
+    },
+    "extract_bad_partition_unverifiable": {
+      "PASS": true,
+      "status": "UNVERIFIABLE",
+      "mode": "UNKNOWN_STOP",
+      "errors": [
+        "bad.parquet:ArrowInvalid:Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file."
+      ]
+    },
+    "gate_rejects_unverifiable_child": {
+      "PASS": true,
+      "status": "REJECT_OR_UNKNOWN",
+      "reason": "CHILD_UNVERIFIABLE"
+    },
+    "two_dates_not_full_history": {
+      "PASS": true,
+      "mode": "DAILY_HISTORY_PARTIAL"
+    },
+    "unsupported_product_unknown_stop": {
+      "PASS": true,
+      "mode": "UNKNOWN_STOP"
+    },
+    "unsupported_product_extract_refused": {
+      "PASS": true,
+      "status": "UNSUPPORTED_PRODUCT"
+    },
+    "self_test_modes": {
+      "PASS": true,
+      "body": {
+        "PATCH_FULL_HISTORY_GATE_TEST": {
+          "PASS": true,
+          "fat_mode": "FULL_HISTORY",
+          "thin_mode": "INCREMENTAL_PATCH"
+        },
+        "TWO_DATES_NOT_FULL_HISTORY": {
+          "PASS": true,
+          "mode": "DAILY_HISTORY_PARTIAL"
+        },
+        "UNSUPPORTED_PRODUCT_STOP": {
+          "PASS": true
+        }
+      }
+    },
+    "classify_consumer_structure": {
+      "PASS": true,
+      "has_cache_key": true,
+      "has_coverage_mode": true,
+      "root_cause": "ENVELOPE_REVIEW",
+      "download_required": false
+    },
+    "no_true_miss_download_auth": {
+      "PASS": true,
+      "root_cause": "ENVELOPE_REVIEW",
+      "download_required": false
+    },
+    "cross_year_scan": {
+      "PASS": true,
+      "years_scanned": [
+        2024,
+        2025
+      ],
+      "status": "COMPLETE"
+    },
+    "resolver_resolve_product_call": {
+      "PASS": true,
+      "result_status": "READY",
+      "coverage_ready": false,
+      "coverage_mode": "FULL_HISTORY",
+      "missing_trade_days": [
+        "2026-09-01"
+      ],
+      "coverage_error": null,
+      "resolver_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940\\code_v2\\blackbox_data_access_resolver_r1.py"
+    },
+    "calendar_authority_versioned": {
+      "PASS": true,
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet"
+    },
+    "calendar_pure_weekend_empty_ok": {
+      "PASS": true,
+      "days": []
+    },
+    "calendar_outside_coverage_refuse": {
+      "PASS": true
+    },
+    "real_fat_vs_thin": {
+      "PASS": true,
+      "lost_count": 3064,
+      "reason": "LOST_REQUIRED_PARENT_DATES"
+    },
+    "sample_typed_date_filter": {
+      "PASS": true,
+      "n_rows": 7,
+      "dates": [
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10"
+      ]
+    }
+  },
+  "review_points": {
+    "1_gate_set_semantics": true,
+    "2_extract_failure_propagation": true,
+    "3_mode_contract": true,
+    "4_classify_consumer": true,
+    "5_strict_resolver_test": true,
+    "6_calendar_boundaries": true
+  },
+  "status": "CANDIDATE_V2_READY_FOR_REVIEW",
+  "loaded": {
+    "common_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940\\code_v2\\blackbox_data_coverage_common_r1.py",
+    "gate_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940\\code_v2\\blackbox_cache_coverage_non_regression_gate_r1.py",
+    "common_sha256": "78031def8cc4b6caa3a7e824e93fad571bb8676cf6aee53398a7963b5c5963bf",
+    "gate_sha256": "0a5e203551ad3e9a02ee5d80ee12587de2644fce9e7b9d7458370a91672fccfc",
+    "in_code_v2": true
+  },
+  "failed": [],
+  "all_pass": true
+}
