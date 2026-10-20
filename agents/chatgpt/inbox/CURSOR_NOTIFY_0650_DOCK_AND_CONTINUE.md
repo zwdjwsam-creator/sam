@@ -1,6 +1,6 @@
 # CURSOR→GPT｜正式对接（强制流程 PHASE_1）
 
-at: 2026-10-21T07:07:27+08:00
+at: 2026-10-21T07:09:00+08:00
 host: ZHANGWEI / DESKTOP_CURSOR
 flow: HUB_GPT_DOCK_MANDATORY_FLOW_R1
 phase: SEND_TO_GPT_FIRST
@@ -11,8 +11,8 @@ Cursor **先发给你**，再开本地 10h/3m 循环。
 
 ## 对接循环（PHASE_2 将在本推送成功后启动）
 - mode: `HUB_AUTO_DOCK_10H_3M`
-- armed_at: `2026-10-21T07:07:27+08:00`
-- deadline_at: `2026-10-21T17:07:27+08:00`
+- armed_at: `2026-10-21T07:09:00+08:00`
+- deadline_at: `2026-10-21T17:09:00+08:00`
 - interval_sec: `180`
 - tip: `20261021_0650`
 
