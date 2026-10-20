@@ -1,0 +1,44 @@
+# R9 FULL迁移｜ChatGPT最终技术验收通过
+
+review_id: R9_FULL_MIGRATION_TECH_ACCEPTANCE_20261020_1625
+execution_host: ZHANGWEI
+copy_run_id: R9_FULL_RESUME_DEEP_SHARE_ZHANGWEI_20261019_1938
+verification_task_id: R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830
+status: FULL_MIGRATION_TECHNICALLY_ACCEPTED
+full_plan_acceptance: true
+COPY_AUTHORIZED=false
+FULL_COPY_AUTHORIZED=false
+START_AGAIN_AUTHORIZED=false
+
+## 独立复核依据
+ChatGPT已读取HUB最终报告和原始stdout并逐字段程序化比较，内容一致，固定scope/plan/历史copy绑定与verifier绑定均匹配：
+FINAL_FULL_ACCEPTANCE.json Git blob 2e8ce8a8893e2dad6cabd9ff4e01c1ed9578faa9
+verify_existing.stdout.preserved.txt Git blob 934f47dcc48aaaac24ab6ccec38c890cd8537612
+FULL_READONLY_CONTRACT.json Git blob 9bac98650f778a44da1624c5d1f6234cd7d6a966
+证据位于 agents/chatgpt/inbox/R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830/。
+
+正式完整scope为E:\BLACKBOX和E:\BLACKBOX_ENGINES。
+固定候选SHA：53551d39338d0f45e1cde111391bc9d296d62bd09b08703ecfce177183a24e0d
+目标NTFS卷2694002743；物理盘eui.E8238FA6BF530001001B448B42E694AE。
+历史copy digest：27af138391d66219ebc6d03609cec6933aecfce3aacba48c215d5de9f14b2551
+独立verifier digest：9e8c605df4a9cace1d048ffbade85f1b4684571983f88e2c43474058239ecbf0
+
+## 已通过的完整验收
+nested acceptance.full_acceptance=true；reasons=[]；missing=0；extra=0。
+expected_entities=checked_entities=content_hash_calls=1223767。
+content_bytes=365004696055。
+expected_file_paths=8715072；expected_dirs=233668；expected_links=4824。
+前置状态完整性确认alias DONE7491305、全部entity/dir/reparse DONE、INTENT=0、missing_entity_count=0；完整目标验收又核对象集合/内容/身份/硬链接拆分或合并/链接目标，无对应reasons。
+唯一分配空间allocation_bytes=367238961536；分配字节与内容字节不要求相同。
+write_attempts=0；readonly_reverify=true。历史state绑定仍27af，报告mtime保持06:06:43，未为新verifier改写历史绑定。
+本次accept_seconds=27532.20587190002，为7.65小时；这是本机实测结果，不据此承诺以后ETA。
+
+原包装器bench_verified=true、reason=BENCH_VERIFIED、full_plan_acceptance=false是既有BENCH命名/硬编码输出，原文保留不修改。上述真实FULL合同和全项独立验收通过后，本review依据0830事先批准的判定规则确认full_plan_acceptance=true；不是忽略失败项或修改原stdout。
+
+## 结案与边界
+实体复制/本地硬链接和目录链接迁移通过技术验收，不再启动execute/copy/verify-existing，不再重复全盘hash。
+原1117/full_1400/full_1938 state、冻结候选、历史代码、全部日志和证据保留；不清理任何源/目标业务文件或临时文件，不格式化。
+AS_IS_MIGRATE_MARKED按用户既定选择执行；140项版本疑点/空或换行文件仍按原样迁移，验收不把它们升级为内容版本正确。
+此结论是冻结迁移计划完整性/内容和链接结构验收。QMT/Cursor/BLACKBOX实际应用查询及新增数据更新属于后续使用验收，不因本结案声称已经完成应用功能迁移/配置测试。
+
+本次迁移许可关闭，后续新业务写入按新任务范围执行。仅安排源端R9LP_RO专用临时share收尾，移除共享不删除其目录或文件；其他共享、会话、账户/NTFS ACL/网络策略不改。收尾回执不影响本技术验收已通过的事实。
