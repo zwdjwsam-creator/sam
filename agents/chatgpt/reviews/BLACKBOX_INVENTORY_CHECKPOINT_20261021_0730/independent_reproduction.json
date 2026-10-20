@@ -1,0 +1,115 @@
+{
+  "source_sha256_exact_bytes": {
+    "run_inventory_correction_0650_worker.py": "e20bfac7dc79006e62674b1bb4298476c6027f71913acc3507cfee9e49740f56",
+    "run_inventory_continue_0010_worker.py": "06755ff959e29063321bda5036c9dae00ee7b47938a333425da0096656d89cbe",
+    "run_inventory_advance_0712_checkpoint.py": "baae7c3010e288eeab93f1de469519bb85f0ebaa1cd28977d6c81213315bc459"
+  },
+  "relative_dotdot_wrong_resolution": {
+    "original": "../脚本/foo.py",
+    "observed": {
+      "src": "E:\\BLACKBOX\\契约\\x.md",
+      "raw_token": "../脚本/foo.py",
+      "line": 1,
+      "field": "md_link",
+      "edge_status": "BROKEN_CONFIRMED",
+      "edge_type": "PATH_REF",
+      "resolved": "E:\\脚本\\foo.py",
+      "base": "E:\\BLACKBOX\\契约",
+      "checked_candidates": [
+        "E:\\脚本\\foo.py",
+        "E:\\脚本\\foo.py"
+      ]
+    },
+    "correct_normalized_target": "E:\\BLACKBOX\\脚本\\foo.py"
+  },
+  "missing_dot_silently_repaired_as_resolved": {
+    "actual_dot_token": {
+      "src": "E:\\BLACKBOX\\AGENTS.md",
+      "raw_token": ".cursor/rules/gate.mdc",
+      "line": 1,
+      "field": "md_link",
+      "edge_status": "RESOLVED",
+      "edge_type": "PATH_REF",
+      "resolved": "E:\\BLACKBOX\\.cursor\\rules\\gate.mdc",
+      "base": "E:\\BLACKBOX"
+    },
+    "distinct_no_dot_token": {
+      "src": "E:\\BLACKBOX\\AGENTS.md",
+      "raw_token": "cursor/rules/gate.mdc",
+      "line": 1,
+      "field": "md_link",
+      "edge_status": "RESOLVED",
+      "edge_type": "PATH_REF",
+      "resolved": "E:\\BLACKBOX\\.cursor\\rules\\gate.mdc",
+      "base": "E:\\BLACKBOX"
+    }
+  },
+  "fund_nav_day_and_partition_failures": {
+    "fragments_supplied": 2,
+    "fragments_selected": [
+      "E:\\product\\000001\\2014.parquet"
+    ],
+    "observed": {
+      "product_id": "FUND_NAV_OR_ETF",
+      "years_read": [
+        "NA"
+      ],
+      "date_min": "",
+      "date_max": "",
+      "rows_actually_read": 0,
+      "files_checked": 1,
+      "pref": "",
+      "error": "NO_DATE_COL",
+      "columns": [
+        "day",
+        "code",
+        "unit_net_value",
+        "acc_net_value"
+      ]
+    }
+  },
+  "null_filtered_columns_break_row_alignment": {
+    "rows": [
+      [
+        "A",
+        null
+      ],
+      [
+        "B",
+        "2026-01-02"
+      ],
+      [
+        "B",
+        "2026-01-02"
+      ]
+    ],
+    "observed_pairs": [
+      [
+        "A",
+        "2026-01-02"
+      ],
+      [
+        "B",
+        "2026-01-02"
+      ]
+    ],
+    "correct_pairs": [
+      [
+        "B",
+        "2026-01-02"
+      ],
+      [
+        "B",
+        "2026-01-02"
+      ]
+    ],
+    "observed_duplicates": 0,
+    "correct_duplicates": 1
+  },
+  "control_flow_findings": {
+    "0712_main_hardcodes_wait": true,
+    "0650_main_has_no_continuation_while": true,
+    "evidence_limit": "No production data, Windows process state, or business completeness checked here."
+  },
+  "result": "FIVE_FAILURE_MODES_REPRODUCED_FROM_UPLOADED_SOURCE"
+}
