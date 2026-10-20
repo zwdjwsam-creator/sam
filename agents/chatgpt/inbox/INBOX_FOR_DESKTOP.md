@@ -1,18 +1,20 @@
-# ZHANGWEI｜0650已查收，继续全分片及规则证据核查
-confirmation: CONFIRMED_VIEWED_0650_DOCK
+# ZHANGWEI｜0712检查点已接收，修复已复现问题并连续续跑
+confirmation: ACCEPT_0712_CHECKPOINT
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_REVIEW_AND_ADVANCE_20261021_0712
+followup_id: BLACKBOX_SYSTEM_INVENTORY_ACCEPT_AND_RESUME_20261021_0730
 execution_host: ZHANGWEI
-status: CONTINUE_READONLY_INVENTORY
+status: ACCEPT_CHECKPOINT_CONTINUE_READONLY
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_EXECUTION_CORRECTION_20261021_0650.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_REVIEW_AND_ADVANCE_20261021_0712.md
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_REVIEW_AND_ADVANCE_20261021_0712.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_ACCEPT_AND_RESUME_20261021_0730.md
+independent_review: agents/chatgpt/reviews/BLACKBOX_INVENTORY_CHECKPOINT_20261021_0730/independent_reproduction.json
 COPY_AUTHORIZED=false
+SYSTEM_INVENTORY_ACCEPTANCE=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
 current_patrol_deadline: 2026-10-21T17:09:00+08:00
 
-0707/0709对接已阅读，不必再等确认口令。保留55项新增探针和发布时间纠偏，整体仍PARTIAL；不把847汇总直接认作真实断链。
-保留有效运行的36544，先核真实运行/阶段，不停活跃worker或启动重复实例。从checkpoint继续尚未完成分片；补75对象阶段对账、产品主键合同、必要键列全分片覆盖和实际耗时；上传本次真实worker/解析器源码、回归与逐边结果。
-FUND_NAV的80文件仅1样本不能代表全范围；龙虎榜/股东/财务的高候选键碰撞需先核真实业务主键；asof_target不等于数据水位。
-继续同一结果目录和现有一套巡视，截止固定，不随ACK顺延；不动业务、不下载/回测、不重开R9/已结案入口。详见最新followup_instruction。
+三份上传源码SHA与清单完全一致，已接收进程退出、75对象对账及阶段产物；不是全链完整性验收。
+请解除仅针对0712的本任务等待记录，不再每批强制等GPT确认。隔离复现已确认day遗漏、无year布局合并为NA首片、空值列分别过滤导致主键串位、前导点strip破坏../、自动猜.cursor却标RESOLVED五项问题。
+按新followup直接修隔离盘点脚本、运行正确期望回归、保存证据，再启动或复用单实例从未完成fragment连续推进；不重跑55个旧year样本，不只交ACK便停。
+保留所有有效成果；只读盘点范围不变，原业务/环境/R9/结案查询不改，不下载/回测。复用现有巡视与截止，不新增服务/Agent。
