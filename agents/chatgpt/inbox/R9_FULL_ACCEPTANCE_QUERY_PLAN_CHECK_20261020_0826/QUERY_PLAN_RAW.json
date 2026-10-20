@@ -1,0 +1,264 @@
+{
+  "task_id": "R9_FULL_ACCEPTANCE_QUERY_PLAN_CHECK_20261020_0826",
+  "observed_at": "2026-10-20T08:28:55.471559+08:00",
+  "sqlite_version": "3.49.1",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "pid": 17904,
+  "original_sql": "SELECT COUNT(*) FROM plan_entity p\nWHERE NOT EXISTS (\n    SELECT 1 FROM st.stage s WHERE s.kind='entity' AND s.phase='DONE' AND s.parent_key=p.entity_key\n)",
+  "candidate_sql": "SELECT COUNT(*) FROM plan_entity p\nWHERE NOT EXISTS (\n    SELECT 1 FROM st.stage s\n    WHERE s.item_key = 'entity:' || p.entity_key\n      AND s.kind='entity' AND s.phase='DONE' AND s.parent_key=p.entity_key\n)",
+  "count_executed_on_production": false,
+  "process_line": "2026-10-19T20:47:10.4003200+08:00|\"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" C:\\LAN_SHARE_REPORT\\R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019\\code\\r9_formal_executor.py execute --contract C:\\LAN_SHARE_REPORT\\R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037\\FULL_RESUME_CONTRACT.json",
+  "alive": true,
+  "creation_contains_204710": true,
+  "io": {
+    "status": "OBSERVED",
+    "read_transfer_bytes": 828276795357,
+    "write_transfer_bytes": 128133036221,
+    "read_operations": 149854046,
+    "write_operations": 52436435
+  },
+  "stdout_bytes": 0,
+  "stderr_bytes": 0,
+  "production_schema": {
+    "status": "OBSERVED",
+    "sqlite_master": [
+      {
+        "type": "index",
+        "name": "sqlite_autoindex_stage_1",
+        "tbl_name": "stage",
+        "sql": null
+      },
+      {
+        "type": "table",
+        "name": "stage",
+        "tbl_name": "stage",
+        "sql": "CREATE TABLE stage(\n            item_key TEXT PRIMARY KEY,\n            kind TEXT,\n            phase TEXT,\n            dest_path TEXT,\n            sha256 TEXT,\n            file_id TEXT,\n            volume_serial TEXT,\n            object_type TEXT,\n            link_target TEXT,\n            logical_size INTEGER,\n            parent_key TEXT\n        )"
+      }
+    ],
+    "table_info": [
+      {
+        "cid": 0,
+        "name": "item_key",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 1
+      },
+      {
+        "cid": 1,
+        "name": "kind",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 2,
+        "name": "phase",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 3,
+        "name": "dest_path",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 4,
+        "name": "sha256",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 5,
+        "name": "file_id",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 6,
+        "name": "volume_serial",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 7,
+        "name": "object_type",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 8,
+        "name": "link_target",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 9,
+        "name": "logical_size",
+        "type": "INTEGER",
+        "notnull": 0,
+        "pk": 0
+      },
+      {
+        "cid": 10,
+        "name": "parent_key",
+        "type": "TEXT",
+        "notnull": 0,
+        "pk": 0
+      }
+    ],
+    "index_list": [
+      {
+        "seq": 0,
+        "name": "sqlite_autoindex_stage_1",
+        "unique": 1,
+        "origin": "pk",
+        "partial": 0
+      }
+    ],
+    "index_info": {
+      "sqlite_autoindex_stage_1": [
+        {
+          "seqno": 0,
+          "cid": 0,
+          "name": "item_key"
+        }
+      ]
+    }
+  },
+  "query_plans": {
+    "status": "OBSERVED_SYNTHETIC_ONLY",
+    "attach_error": "OperationalError",
+    "original": [
+      {
+        "row": [
+          "3",
+          "0",
+          "213",
+          "SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1"
+        ]
+      },
+      {
+        "row": [
+          "6",
+          "0",
+          "0",
+          "CORRELATED SCALAR SUBQUERY 1"
+        ]
+      },
+      {
+        "row": [
+          "10",
+          "6",
+          "216",
+          "SCAN s"
+        ]
+      }
+    ],
+    "candidate_item_key": [
+      {
+        "row": [
+          "3",
+          "0",
+          "213",
+          "SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1"
+        ]
+      },
+      {
+        "row": [
+          "6",
+          "0",
+          "0",
+          "CORRELATED SCALAR SUBQUERY 1"
+        ]
+      },
+      {
+        "row": [
+          "11",
+          "6",
+          "39",
+          "SEARCH s USING INDEX sqlite_autoindex_stage_1 (item_key=?)"
+        ]
+      }
+    ]
+  },
+  "original_shows_scan_s": true,
+  "original_plan_text": "3 0 213 SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1 | 6 0 0 CORRELATED SCALAR SUBQUERY 1 | 10 6 216 SCAN s",
+  "candidate_plan_text": "3 0 213 SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1 | 6 0 0 CORRELATED SCALAR SUBQUERY 1 | 11 6 39 SEARCH s USING INDEX sqlite_autoindex_stage_1 (item_key=?)",
+  "risk_confirmed": true,
+  "candidate_uses_search": true,
+  "production_explain": {
+    "method": "readonly production connection; outer plan_entity replaced by constant-row subquery; COUNT not executed for result use—EXPLAIN only",
+    "original": [
+      [
+        2,
+        0,
+        0,
+        "CO-ROUTINE p"
+      ],
+      [
+        3,
+        2,
+        0,
+        "SCAN CONSTANT ROW"
+      ],
+      [
+        8,
+        0,
+        16,
+        "SCAN p"
+      ],
+      [
+        12,
+        0,
+        0,
+        "CORRELATED SCALAR SUBQUERY 2"
+      ],
+      [
+        16,
+        12,
+        216,
+        "SCAN s"
+      ]
+    ],
+    "candidate": [
+      [
+        2,
+        0,
+        0,
+        "CO-ROUTINE p"
+      ],
+      [
+        3,
+        2,
+        0,
+        "SCAN CONSTANT ROW"
+      ],
+      [
+        8,
+        0,
+        16,
+        "SCAN p"
+      ],
+      [
+        12,
+        0,
+        0,
+        "CORRELATED SCALAR SUBQUERY 2"
+      ],
+      [
+        17,
+        12,
+        39,
+        "SEARCH s USING INDEX sqlite_autoindex_stage_1 (item_key=?)"
+      ]
+    ]
+  }
+}
