@@ -1,13 +1,13 @@
-# ZHANGWEI｜E历史与HUB通过，Browser补证
-task_id: CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720
-review_id: CURSOR_BLACKBOX_E_SESSION_REVIEW_20261020_1814
+# ZHANGWEI｜当前只执行一轮E工作区对接
+task_id: CURSOR_BLACKBOX_E_DOCKING_HANDSHAKE_20261020_1824
 execution_host: ZHANGWEI
-status: E_HISTORY_HUB_ACCEPTED_BROWSER_FOLLOWUP_REQUIRED
-instruction: agents/chatgpt/outbox/CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720.md
-review_instruction: agents/chatgpt/outbox/CURSOR_BLACKBOX_E_SESSION_REVIEW_20261020_1814.md
+workspace: E:\BLACKBOX
+status: READY
+instruction: agents/chatgpt/outbox/CURSOR_BLACKBOX_E_DOCKING_HANDSHAKE_20261020_1824.md
+held_instruction: CURSOR_BLACKBOX_E_SESSION_REVIEW_20261020_1814
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 COPY_AUTHORIZED=false
 
-已接受17:51真实E GUI Agent的单根工作区、历史检索、HUB收发，不再要求用户重复开E窗口或搬迁。
-17:59 Browser live仍阻塞。请接续原1720，仅核本版本实际设置/命令与当前值、补最小可执行恢复或有证据的UI接续。现报告具体菜单未附本版本观察依据，不能照旧报告猜。
-详见review；回原Browser目录FOLLOWUP_EVIDENCE.md。不重复同样SMB/迁移/全量hash，不动LiteLLM独立问题。
+已收到18:18状态：E历史/HUB通过，Browser曾成功后间歇掉线。
+按用户最新指示1814不执行，LiteLLM不动。当前仅领取1824：HUB ACK写入读回，官方Browser可用则向指定既有GPT会话发一次任务内精确交接消息；失败回HUB，不循环重试或重载，不重复迁移。
+全部操作/一次网页提交授权和结果字段见instruction，回同名inbox目录ACK.json/RESULT.json，更新INBOX_FOR_CHATGPT。未实际收到GPT回执不得称闭环完成。
