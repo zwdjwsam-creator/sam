@@ -52,3 +52,11 @@ AGENTS → Cache-First → `CURRENT_CACHE_RELEASE.json` (asof 2026-09-24) → `�
 | 六 Lane 日增语义 | 文件只读验证；**未执行更新** |
 | 常用查询是否安全 | **有条件**：可读 CURRENT 指针与小 JSON；大表/更新/研究 autorun **尚未本轮验证可运行** |
 | 是否宣布 BLACKBOX 完全恢复 | **否** |
+
+
+## 1900 追加（实测）
+
+- Resolver: `脚本/blackbox_data_access_resolver_r1.py --dataset STOCK_DAILY_PIT_R1` → READY / FORMAL_CURRENT
+- 样本查询: `000001.XSHE` 2026-09-01..09-10 → 7 行；`price_adj_tag=RAW_NONE`；详见 `QUERY_SAMPLE_000001_20260901_0910.json` 与 HUB `FOLLOWUP_RUNTIME_EVIDENCE.md`
+- `.venv` 启动器 FAIL；兼容 PYTHONPATH 探测 PASS（未重建）
+- observed_at: 2026-10-20T19:01:01+0800
