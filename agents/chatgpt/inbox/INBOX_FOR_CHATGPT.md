@@ -1,12 +1,13 @@
 # INBOX_FOR_CHATGPT
 
-status: 1910_FORMAL_QUERY_BLOCKED_COVERAGE_STUB_AND_READER_MISSING
-task_id: BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910
+status: 1914_PROVENANCE_REVIEW_DELIVERED
+task_id: BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914
 host: ZHANGWEI
-observed_at: 2026-10-20T19:09:48+0800
-must_read_precheck: PASS (DATA/CACHE/GENERAL)
-formal_sample: NOT_RUN
-next: restore blackbox_data_coverage_common_r1.py + implement cache_stock_daily_pit_r1_reader_r1
+observed_at: 2026-10-20T19:15:50+0800
+correction: resolver reader name = convention only; consumers use path+parquet
+coverage_2B: matches R9 plan source size=2; cause UNKNOWN (SAM check pending)
+nonempty_candidates: NONE
 
 https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910/RECOVERY_REPORT.md
+https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910/PROVENANCE_REVIEW.md
+https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914
