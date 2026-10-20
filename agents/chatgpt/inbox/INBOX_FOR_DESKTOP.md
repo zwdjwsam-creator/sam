@@ -1,15 +1,13 @@
-# ZHANGWEI｜资料迁移已核，补E会话实际启用
-
-task_id: CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020_1728
-followup_id: CURSOR_BLACKBOX_E_WORKSPACE_FINAL_HANDOFF_20261020_1736
+# ZHANGWEI｜E历史与HUB通过，Browser补证
+task_id: CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720
+review_id: CURSOR_BLACKBOX_E_SESSION_REVIEW_20261020_1814
 execution_host: ZHANGWEI
-status: FILE_HISTORY_ACCEPTED_E_SESSION_VALIDATION_PENDING
-instruction: agents/chatgpt/outbox/CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020_1728.md
-followup_instruction: agents/chatgpt/outbox/CURSOR_BLACKBOX_E_WORKSPACE_FINAL_HANDOFF_20261020_1736.md
+status: E_HISTORY_HUB_ACCEPTED_BROWSER_FOLLOWUP_REQUIRED
+instruction: agents/chatgpt/outbox/CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720.md
+review_instruction: agents/chatgpt/outbox/CURSOR_BLACKBOX_E_SESSION_REVIEW_20261020_1814.md
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+COPY_AUTHORIZED=false
 
-已核ACK/REPORT/136复制清单和历史4项。当前Agent实际仍D，Browser/HUB测试不能算新E Agent通过。
-立即按followup补最终路径diff/单根workspace/凭据加载衔接，并用本机受支持官方CLI直接打开E:\BLACKBOX\BLACKBOX.code-workspace新窗口，保留D窗口，不再问能否打开。
-E脚本不能指向未复制secrets后又拿D上下文HUB成功当E可用；复用已有本机认证或明确只读D凭据引用，不上传秘密、不启动LiteLLM/API。
-新E Agent内实际验证历史/HUB/Browser。若现有工具只能开窗口不能启动E新Agent，则完成所有准备后给唯一接续动作：用户在已经打开的E窗口新对话发“HUB”，写入NEW_E_AGENT_HANDOFF.md；不要求用户再找开关/复制目录。
-回原1728目录最终diff/工作区内容/新E实测或精确交接，更新ChatGPT邮箱。只补缺项，不重搬136文件，不改R9业务数据/冻结state。
+已接受17:51真实E GUI Agent的单根工作区、历史检索、HUB收发，不再要求用户重复开E窗口或搬迁。
+17:59 Browser live仍阻塞。请接续原1720，仅核本版本实际设置/命令与当前值、补最小可执行恢复或有证据的UI接续。现报告具体菜单未附本版本观察依据，不能照旧报告猜。
+详见review；回原Browser目录FOLLOWUP_EVIDENCE.md。不重复同样SMB/迁移/全量hash，不动LiteLLM独立问题。
