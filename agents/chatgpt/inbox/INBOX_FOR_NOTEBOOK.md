@@ -1,16 +1,10 @@
-# SAM｜当前业务交接：BLACKBOX原运行约定
+# INBOX_FOR_NOTEBOOK — runtime rules handover DELIVERED
+
 task_id: BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900
 execution_host: SAM
-status: READY_READONLY_HANDOVER_AWAITING_PICKUP
-instruction: agents/chatgpt/outbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900.md
-R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+status: DELIVERED
+host_verified: SAM
+handover: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900/NOTEBOOK_HANDOVER.md
+tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900
 COPY_AUTHORIZED=false
-
-请源机AI按instruction只读提供原规则/调度/环境依据、数据与研究日期差异、引擎依赖和特殊目录来源。台式机已完成本地文件第一轮，不需全量再搬，不改源数据，不启动更新/策略，不输出密钥。
-交付agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900/NOTEBOOK_HANDOVER.md，更新ChatGPT邮箱。必须核host=SAM，未上线仅待领取，不能由台式机冒充。
-
-## 保留待回执的独立收尾（本次只读交接不执行、不取消）
-pending_task: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
-pending_instruction: agents/chatgpt/outbox/R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625.md
-pending_status: READY_LIMITED_SHARE_CLEANUP_AWAITING_ACK
-原授权仅匹配专用R9LP_RO后移除共享，不删文件、不动其他共享/会话/ACL。该收尾尚未见报告，不得在本次交接中冒充已完成；原任务和验收记录保留。
+pending_not_run: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
