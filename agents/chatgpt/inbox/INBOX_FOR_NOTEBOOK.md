@@ -1,35 +1,14 @@
-# SAM｜本地验证最后816B源文件，建立一个深层临时只读共享
+# SAM｜FULL迁移已验收，仅移除专用临时共享R9LP_RO
 
-task_id: R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019_1906
+task_id: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
 execution_host: SAM
-status: PROOF_REVIEWED_KEEP_SHARE_AVAILABLE
-instruction: agents/chatgpt/outbox/R9_DEEP_READONLY_SHARE_AND_LOCAL_FILE_PROOF_20261019_1906.md
-ack: agents/chatgpt/inbox/R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019/ACK.md
-facts: agents/chatgpt/inbox/R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019/DEEP_SHARE_FACTS.json
-local_file: agents/chatgpt/inbox/R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019/LOCAL_FILE_844424930324643.json
-file_sha256: agents/chatgpt/inbox/R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019/FILE_SHA256.json
-report: agents/chatgpt/inbox/R9_NOTEBOOK_DEEP_READONLY_SHARE_PROOF_20261019/SAM_REPORT.md
-desktop_pointer: agents/chatgpt/inbox/R9_DESKTOP_LONGPATH_ACCESS_AND_RESUME_PREP_20261019/DEEP_SHARE_READY.json
-share: \\192.168.100.2\R9LP_RO
-volume_serial: 2387166462
-file_sha256_value: 62141a61f0f729dd563160b0835fe4af86cba703a470e181fb0b4c9892e8b007
-start_time: 2026-10-19T19:27:27+08:00
-
-SAM 已交付本任务事实。R9LP_RO 已创建且与指定 anchor 一致。台式机可按 DEEP_SHARE_READY.json 核固定共享。
-
+status: READY_LIMITED_SHARE_CLEANUP_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625.md
+technical_acceptance: agents/chatgpt/outbox/R9_FULL_MIGRATION_TECH_ACCEPTANCE_20261020_1625.md
 COPY_AUTHORIZED=false
 FULL_MIGRATION=false
-IMPLEMENTATION_READY=false
 
-## 技术复核与接续
-ChatGPT已核对本机事实及ZHANGWEI的40ed64a报告：共享锚点身份两机一致，四文件全部经R9LP_RO读通，816B SHA与本机一致。本机1906证明任务完成，不重复核文件/凭据或新建共享。
-保持这个临时R9LP_RO共享可用；迁移验收后另发明确移除共享的清理令，当前不删除、不重建、不修改ACL、不主动重启。若共享意外消失据实回报，不悄悄改变入口。
-ZHANGWEI已接续1938正式集成与state副本准备：
-agents/chatgpt/outbox/R9_DESKTOP_INTEGRATE_DEEP_SHARE_AND_STATE_CLONE_20261019_1938.md
-本机无需执行台式机开发/迁移，不启动复制。
-
-## 台式机恢复令已发布
-ZHANGWEI获准按原用户授权启动一次FULL恢复：
-agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
-run_id=R9_FULL_RESUME_DEEP_SHARE_ZHANGWEI_20261019_1938。
-SAM本机仍只负责保持R9LP_RO和现有来源会话可用，不执行复制、不改源数据/共享/NTFS权限，不重启或清理Temporary共享。以上COPY_AUTHORIZED=false是SAM本机不执行复制，台式机许可见恢复令。只有实际意外失去共享时据实回报，不重复核四文件或重新登录。
+台式机FULL数据/内容/身份/链接独立验收已通过，full_plan_acceptance=true。1906临时share现按原约定收尾，本条替代之前“必须保持R9LP_RO”的阶段要求。
+只核本task创建的R9LP_RO Path/卷2387166462/anchor file_id1688849860437540/Temporary和Read配置匹配后移除这一share；已消失报ALREADY_ABSENT，不重建。
+不删任何目录或文件，不动E_DRIVE/D_DRIVE/BLACKBOX/IPC$及其他共享/会话，不改NTFS ACL/账号/密码/网络策略。未知占用或身份配置不符保持现状回报，不强制断开他人会话。
+回agents/chatgpt/inbox/R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020/SHARE_CLEANUP_REPORT.md；缺管理员通道据实报告，不绕过。收尾不影响已通过的迁移技术结论。
