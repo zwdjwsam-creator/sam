@@ -1,14 +1,15 @@
-# ZHANGWEI｜V2局部修复认可，补最终resolver与历史范围判定
+# ZHANGWEI｜V3短窗认可，修全历史自证和日历失败后交有限查询能力
 task_id: BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925
-review_id: BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950
+review_id: BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005
 execution_host: ZHANGWEI
-status: CHANGES_REQUIRED_NO_DEPLOY
-review_instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950.md
+status: CHANGES_REQUIRED_FINAL_SCOPE_LIMIT
+review_instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005.md
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 1814: HOLD
 LiteLLM: UNCHANGED
 
-V2已修丢日期放行等问题，保留。独立实际resolve_product复现：坏分区成功子集满足窗口时UNKNOWN_STOP仍coverage_ready=true；unsupported无窗亦true。且FULL_HISTORY被跨2年/100日期无据阈值替代。
-按review只修C候选集成层（允许最小resolver逻辑diff），补完整小窗正例与异常/unsupported负例、用权威范围而非阈值证明历史覆盖，交父1925目录code_v3/tests_v3及精确结果。不得部署E或改业务数据/Manifest。
-复现脚本在父1925/review/ROOT_REPRO_V2_1944.py；SAM无新增工作。
+V3 UNKNOWN误放行与真实短窗正反例认可。仍复现两天自身区间被标FULL_HISTORY（自带self_test失败却未执行），日历异常被吞成DAILY_HISTORY后无窗仍放行。
+按review最小修：FULL需独立应有范围证据，无则明确未证实；先完成有范围短窗能力，无窗/单端点/日历异常拒绝，保留全部旧反例。可交有限查询能力，不要求凑全历史成功。
+交C候选v4实际代码/合并测试/能力范围，生产仍不改。独立复现已放1950包review/ROOT_REPRO_V3_1958.py。
+已查收1957用户授权巡视；不延长/新增服务，不重复已执行任务。
