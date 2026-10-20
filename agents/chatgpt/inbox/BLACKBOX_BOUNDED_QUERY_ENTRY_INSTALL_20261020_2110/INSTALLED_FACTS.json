@@ -1,0 +1,32 @@
+{
+  "task_id": "BLACKBOX_BOUNDED_QUERY_ENTRY_INSTALL_20261020_2110",
+  "status": "OPS_READONLY_ENTRY_INSTALLED_AWAITING_REVIEW",
+  "host": "ZHANGWEI",
+  "installed_at": "2026-10-20T21:12:00+08:00",
+  "COPY_AUTHORIZED": false,
+  "interpreter": {
+    "path": "D:\\Anaconda3\\envs\\blackbox_bt_py310\\python.exe",
+    "version": "3.10.20",
+    "bits": 64,
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1",
+    "note": "Independent query entry; NOT claiming broken E:\\BLACKBOX\\.venv (3.12.10 ThinkPad path) is fixed"
+  },
+  "runtime_v4_sha256": {
+    "blackbox_data_coverage_common_r1.py": "0c018fb5f4cd31fc6fc05d783bf66f7bc54503e5464825259c462682fb980769",
+    "blackbox_cache_coverage_non_regression_gate_r1.py": "98faa2945ff9b056936ac87b5e39be87a1adf618120805c2f96e269169798fd3",
+    "blackbox_data_access_resolver_r1.py": "5d232abbded4043426a51b57b45afa3d799152c368f7b235a4fff2d9cb26c8d6"
+  },
+  "entry": {
+    "py": "E:\\BLACKBOX\\_OPS\\BLACKBOX_HANDOFF\\READONLY_QUERY\\query_stock_daily_bounded_r1.py",
+    "ps1": "E:\\BLACKBOX\\_OPS\\BLACKBOX_HANDOFF\\READONLY_QUERY\\query_stock_daily_bounded_r1.ps1",
+    "product_first": "STOCK_DAILY_PIT_R1"
+  },
+  "verify": {
+    "pos_0902_0910_rows": 7,
+    "neg_0901_gate_reject": true,
+    "dir": "E:\\BLACKBOX\\_OPS\\BLACKBOX_HANDOFF\\READONLY_QUERY\\verify_2110"
+  },
+  "production_untouched": true,
+  "full_blackbox_restored": false
+}
