@@ -49,3 +49,10 @@ https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_
 - 禁止用 pyarrow 直读当正式 PASS；详见 HUB RECOVERY_REPORT
 - SAM 约定: tip 与 BRIEF 分流程；台式机保留 `E:\BLACKBOX_ENGINES`（源机可无）
 - 报告: `C:\LAN_SHARE_REPORT\BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910\RECOVERY_REPORT.md`
+
+
+## 1914 溯源纠正（2026-10-20T19:15:50+0800）
+
+- Resolver 的 `cache_*_reader_r1` **只是推测名**，不是权威注册；日线消费者实际用 **产品路径 + parquet**（如 morning_selection_validation）。
+- 两 coverage 脚本现为 2B，且 R9 plan 源条目 size 已是 2 → **不断言迁移掏空**；非空 `.py` 候选本机 **NONE**（SAM 另查）。
+- 不要新建同名「正式 reader」替代件。详见 `PROVENANCE_REVIEW.md`。
