@@ -1,13 +1,14 @@
-# ZHANGWEI｜1925候选代码已审：不通过，修复后交v2
+# ZHANGWEI｜V2局部修复认可，补最终resolver与历史范围判定
 task_id: BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925
-review_id: BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940
+review_id: BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950
 execution_host: ZHANGWEI
 status: CHANGES_REQUIRED_NO_DEPLOY
-instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925.md
-review_instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940.md
+review_instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950.md
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+1814: HOLD
+LiteLLM: UNCHANGED
 
-已独立读取代码并复现：100日期丢40仍发布、等量换日期仍发布、基线/双方缺失仍发布、坏分区被忽略后OK/FULL_HISTORY。另有真实consumer结构不兼容，resolver测试未调用实际函数就写PASS。
-1925 all_pass不接受，禁止部署。按review仅修C候选，补严格反例和实际调用验证，交原1925目录v2代码/测试/逐点结果/SHA。不要降低断言或放宽门来凑成功，不改E生产/数据/Manifest，不重下9/1数据。
-审查复现脚本已放1925/review/ROOT_REPRO_1930.py；说明了受控模拟边界。SAM无新增工作，1814 HOLD，LiteLLM不动。
+V2已修丢日期放行等问题，保留。独立实际resolve_product复现：坏分区成功子集满足窗口时UNKNOWN_STOP仍coverage_ready=true；unsupported无窗亦true。且FULL_HISTORY被跨2年/100日期无据阈值替代。
+按review只修C候选集成层（允许最小resolver逻辑diff），补完整小窗正例与异常/unsupported负例、用权威范围而非阈值证明历史覆盖，交父1925目录code_v3/tests_v3及精确结果。不得部署E或改业务数据/Manifest。
+复现脚本在父1925/review/ROOT_REPRO_V2_1944.py；SAM无新增工作。
