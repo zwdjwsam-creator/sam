@@ -1,0 +1,67 @@
+{
+  "task": "BLACKBOX_SYSTEM_INVENTORY_REVIEW_20261020_2345",
+  "status": "PARTIAL_V2_REWORK_IN_PROGRESS",
+  "final_claim": "PARTIAL_METADATA_INVENTORY_REWORK_REQUIRED → V2 artifacts delivered; full per-product logical coverage NOT complete",
+  "started_elapsed_sec": 197.956,
+  "finished_at": "2026-10-20T23:55:56+08:00",
+  "parser_regression_pass": true,
+  "canonical_products": 69,
+  "rules_indexed": 8097,
+  "rule_edges": 1929,
+  "active_shards": {
+    "active_rules": 315,
+    "active_edges": 1929,
+    "broken_confirmed": 72,
+    "shards": [
+      {
+        "name": "RULES_ACTIVE_SHARD_000.jsonl",
+        "n": 200,
+        "sha256": "d14007e6b53f4fa84abae54de9e0e7e57daf1a4eb11a7dead89f82ccde60ed4f"
+      },
+      {
+        "name": "RULES_ACTIVE_SHARD_001.jsonl",
+        "n": 115,
+        "sha256": "e7012d27b2ef5291283aa8b58e517c0ec1efa979f76e12f7084698cbd528bacc"
+      }
+    ],
+    "links_all_sha256": "0fb549bebbfdef774f87468920db3c6cec076eff9fd45888a6d195e91a5e976a",
+    "broken_sha256": "0464b6b971f63b180eebc795f1d03739e28fe3d3c417c96865715fa146158437"
+  },
+  "scan_roots_checked": {
+    "记忆盘": true,
+    "BLACKBOX_ENGINES": true,
+    "hand_hard_rules": true,
+    "data_dictionary": true,
+    "契约": true
+  },
+  "ledger_correction": {
+    "downloaded_items": 70,
+    "misclassified": 1,
+    "summary_conflict": true
+  },
+  "probes_priority": [
+    "STOCK_DAILY_PIT_R1",
+    "STOCK_DAILY_RAW_PIT_R1",
+    "INDEX_DAILY_R1",
+    "ETF_DAILY_PIT_R1",
+    "FUND_NAV_PIT_R1",
+    "ADJUST_FACTOR_PIT_R1",
+    "STOCK_FACTOR_DAILY_R1",
+    "SW_L1_MEMBERSHIP_PIT_R1",
+    "SW_L2_MEMBERSHIP_PIT_R1",
+    "SW_L3_MEMBERSHIP_PIT_R1",
+    "FINANCIAL_INDICATOR_PIT_R1",
+    "MARKET_UNIVERSE_PIT_R1"
+  ],
+  "methods": [
+    "fixed_status_classifier",
+    "line_aware_link_parser",
+    "CACHE_PRODUCT_CATALOG + release_root dirs",
+    "pyarrow sample probes on priority products",
+    "real active-rule shards",
+    "no business mutation",
+    "no download/strategy run"
+  ],
+  "local_v2": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\deliverables",
+  "v1_preserved": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\deliverables"
+}
