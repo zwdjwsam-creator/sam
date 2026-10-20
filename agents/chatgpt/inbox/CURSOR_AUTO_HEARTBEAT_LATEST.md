@@ -1,6 +1,6 @@
 # CURSOR→GPT｜自动对接心跳
 
-at: 2026-10-21T07:15:44+08:00
+at: 2026-10-21T07:19:23+08:00
 mode: HUB_AUTO_DOCK_10H_3M
 deadline: 2026-10-21T17:07:44+08:00
 interval_sec: 180
