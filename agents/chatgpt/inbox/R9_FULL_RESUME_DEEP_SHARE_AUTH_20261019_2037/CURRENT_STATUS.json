@@ -1,7 +1,7 @@
 {
   "task_id": "R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037",
-  "followup_id": "R9_RESUME_CURRENT_SNAPSHOT_REQUEST_20261019_2118",
-  "observed_at": "2026-10-19T21:21:42.983227+08:00",
+  "followup_id": "R9_RESUME_OVERNIGHT_STATUS_AND_EXIT_TRIAGE_20261020_0818",
+  "observed_at": "2026-10-20T08:20:14.468703+08:00",
   "pid": 17904,
   "alive": true,
   "creation_time": "2026-10-19T20:47:10+08:00",
@@ -15,38 +15,187 @@
     "--contract",
     "C:\\LAN_SHARE_REPORT\\R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037\\FULL_RESUME_CONTRACT.json"
   ],
-  "cpu_seconds": 1885.484375,
-  "cpu_seconds_at_2053": 368.28125,
-  "cpu_seconds_delta_since_2053": 1517.203125,
-  "working_set_bytes": 876335104,
+  "cpu_seconds": 7696.734375,
+  "cpu_seconds_at_2121": 1885.484375,
+  "cpu_seconds_delta_since_2121": 5811.25,
+  "working_set_bytes": 2284044288,
   "io": {
     "status": "OBSERVED",
-    "read_transfer_bytes": 151867337103,
-    "write_transfer_bytes": 23064808043,
-    "other_transfer_bytes": 1783360110,
-    "read_operations": 33641550,
-    "write_operations": 8610607
+    "read_transfer_bytes": 828170938333,
+    "write_transfer_bytes": 127912261821,
+    "other_transfer_bytes": 12297813724,
+    "read_operations": 149828202,
+    "write_operations": 52382535
   },
-  "io_delta_since_2053": {
-    "read_transfer_bytes": 133369854567,
-    "write_transfer_bytes": 23061490283
+  "io_delta_since_2121": {
+    "read_transfer_bytes": 676303601230,
+    "write_transfer_bytes": 104847453778
   },
   "io_note": "Process IO counters. Not a migration completion ratio.",
   "stdout_bytes": 0,
   "stderr_bytes": 0,
-  "python_formal_executors": [17904],
+  "python_formal_executors": [
+    17904
+  ],
   "second_instance": false,
   "phase": "RUNNING_PHASE_UNCONFIRMED",
-  "first_new_entity_copied": false,
+  "phase_note": "No final stdout yet. Last stage rowid writes are entity DONE; that is not a claimed live phase.",
+  "first_new_entity_copied": true,
   "near_limit_stage": [
-    {"item_key": "entity:2387166462|844424930324628", "row": null},
-    {"item_key": "entity:2387166462|844424930324634", "row": null},
-    {"item_key": "entity:2387166462|844424930324640", "row": null},
-    {"item_key": "entity:2387166462|844424930324643", "row": null}
+    {
+      "item_key": "entity:2387166462|844424930324628",
+      "row": {
+        "item_key": "entity:2387166462|844424930324628",
+        "kind": "entity",
+        "phase": "DONE",
+        "sha256": "f1b5e3bfcf220ff36e9b1518ee2208a4e189b6b91d85ba66cb4ea3f79553b575",
+        "file_id": "281474982417564",
+        "volume_serial": "2694002743",
+        "logical_size": 1166,
+        "dest_path_present": true,
+        "dest_path_chars": 32738
+      }
+    },
+    {
+      "item_key": "entity:2387166462|844424930324634",
+      "row": {
+        "item_key": "entity:2387166462|844424930324634",
+        "kind": "entity",
+        "phase": "DONE",
+        "sha256": "3fde2b052b555a4e4d2d3a0b86ba004c6fe222fa5d109abed20f3f99c1607883",
+        "file_id": "281474982417566",
+        "volume_serial": "2694002743",
+        "logical_size": 9095,
+        "dest_path_present": true,
+        "dest_path_chars": 32739
+      }
+    },
+    {
+      "item_key": "entity:2387166462|844424930324640",
+      "row": {
+        "item_key": "entity:2387166462|844424930324640",
+        "kind": "entity",
+        "phase": "DONE",
+        "sha256": "a65ee5d885a1c300a901d3e6cf1c7ea0df96bb2498644a92a2a06b0d07b9c3d5",
+        "file_id": "281474982417568",
+        "volume_serial": "2694002743",
+        "logical_size": 558,
+        "dest_path_present": true,
+        "dest_path_chars": 32739
+      }
+    },
+    {
+      "item_key": "entity:2387166462|844424930324643",
+      "row": {
+        "item_key": "entity:2387166462|844424930324643",
+        "kind": "entity",
+        "phase": "DONE",
+        "sha256": "62141a61f0f729dd563160b0835fe4af86cba703a470e181fb0b4c9892e8b007",
+        "file_id": "281474982417569",
+        "volume_serial": "2694002743",
+        "logical_size": 816,
+        "dest_path_present": true,
+        "dest_path_chars": 32742
+      }
+    }
   ],
-  "state_file_bytes": 8034390016,
-  "state_file_note": "File size only. Not a DONE count and not a completion ratio.",
+  "recent_stage_by_rowid": {
+    "status": "OBSERVED",
+    "note": "ORDER BY rowid DESC LIMIT 8. Not a live phase claim.",
+    "rows": [
+      {
+        "rowid": 9187232,
+        "item_key": "reparse:E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2025",
+        "kind": "reparse",
+        "phase": "DONE",
+        "sha256": null,
+        "file_id": "281474982928289",
+        "volume_serial": "2694002743",
+        "logical_size": 0,
+        "dest_path_chars": 181
+      },
+      {
+        "rowid": 9187231,
+        "item_key": "reparse:E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2024",
+        "kind": "reparse",
+        "phase": "DONE",
+        "sha256": null,
+        "file_id": "281474982928288",
+        "volume_serial": "2694002743",
+        "logical_size": 0,
+        "dest_path_chars": 181
+      },
+      {
+        "rowid": 9187230,
+        "item_key": "reparse:E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2023",
+        "kind": "reparse",
+        "phase": "DONE",
+        "sha256": null,
+        "file_id": "281474982928287",
+        "volume_serial": "2694002743",
+        "logical_size": 0,
+        "dest_path_chars": 181
+      },
+      {
+        "rowid": 9187229,
+        "item_key": "reparse:E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2022",
+        "kind": "reparse",
+        "phase": "DONE",
+        "sha256": null,
+        "file_id": "281474982928286",
+        "volume_serial": "2694002743",
+        "logical_size": 0,
+        "dest_path_chars": 181
+      },
+      {
+        "rowid": 9187228,
+        "item_key": "reparse:E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2021",
+        "kind": "reparse",
+        "phase": "DONE",
+        "sha256": null,
+        "file_id": "281474982928285",
+        "volume_serial": "2694002743",
+        "logical_size": 0,
+        "dest_path_chars": 181
+      },
+      {
+        "rowid": 9187227,
+        "item_key": "reparse:E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2020",
+        "kind": "reparse",
+        "phase": "DONE",
+        "sha256": null,
+        "file_id": "281474982928284",
+        "volume_serial": "2694002743",
+        "logical_size": 0,
+        "dest_path_chars": 181
+      },
+      {
+        "rowid": 9187226,
+        "item_key": "reparse:E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2019",
+        "kind": "reparse",
+        "phase": "DONE",
+        "sha256": null,
+        "file_id": "281474982928283",
+        "volume_serial": "2694002743",
+        "logical_size": 0,
+        "dest_path_chars": 181
+      },
+      {
+        "rowid": 9187225,
+        "item_key": "reparse:E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\INDEX_WEIGHT_PIT_R1_ASOF_20260903_EFF_20260831_20260904_042231\\year=2018",
+        "kind": "reparse",
+        "phase": "DONE",
+        "sha256": null,
+        "file_id": "281474982928282",
+        "volume_serial": "2694002743",
+        "logical_size": 0,
+        "dest_path_chars": 181
+      }
+    ]
+  },
+  "state_file_bytes": 8851435520,
+  "state_file_mtime": "2026-10-20T06:06:43.671979+08:00",
   "full_plan_acceptance": false,
   "start_again": false,
-  "prior_snapshot": "CURRENT_STATUS_20261019_2053.json"
+  "prior_snapshot": "CURRENT_STATUS_20261019_2121.json"
 }
