@@ -60,3 +60,14 @@ AGENTS → Cache-First → `CURRENT_CACHE_RELEASE.json` (asof 2026-09-24) → `�
 - 样本查询: `000001.XSHE` 2026-09-01..09-10 → 7 行；`price_adj_tag=RAW_NONE`；详见 `QUERY_SAMPLE_000001_20260901_0910.json` 与 HUB `FOLLOWUP_RUNTIME_EVIDENCE.md`
 - `.venv` 启动器 FAIL；兼容 PYTHONPATH 探测 PASS（未重建）
 - observed_at: 2026-10-20T19:01:01+0800
+
+
+## 1910 正式链阻塞点
+
+| 组件 | 状态 | 证据 |
+|---|---|---|
+| must_read_preflight DATA | PASS | logs/preflight_DATA.txt |
+| coverage common | EMPTY stub (2 bytes) | 脚本/blackbox_data_coverage_common_r1.py |
+| cache_stock_daily_pit_r1_reader_r1 | MISSING | ModuleNotFoundError |
+| resolver READY | 路径 READY；coverage_ready=false | UNKNOWN_STOP |
+| E:\BLACKBOX_ENGINES | 存在于台式机 | R9 目标根；源机 SAM 无 |
