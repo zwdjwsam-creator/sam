@@ -1,0 +1,11 @@
+{
+  "all_pass": true,
+  "checks": {
+    "actual_main_post_read_change_rejects": true,
+    "unchanged_main_returns_rows": true,
+    "post_read_authority_failure_rejects": true,
+    "reversed_date_before_data_access": true,
+    "single_endpoint_before_data_access": true
+  },
+  "scope": "entry main with controlled runtime/row inputs; not Windows Parquet reread"
+}
