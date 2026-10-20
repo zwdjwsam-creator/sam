@@ -1,0 +1,249 @@
+{
+  "task_id": "BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "candidate_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925\\candidate",
+  "tests": {
+    "calendar_window": {
+      "PASS": true,
+      "n_days": 10,
+      "weekend_2026-06-07_is_trade_day": false,
+      "calendar_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet"
+    },
+    "stock_daily_product_coverage": {
+      "PASS": true,
+      "min_date": "2014-01-02",
+      "max_date": "2026-09-24",
+      "distinct_dates": 3095,
+      "mode": "FULL_HISTORY",
+      "extract_status": "OK",
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+    },
+    "middle_gap_not_complete": {
+      "PASS": true,
+      "expected": [
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10"
+      ],
+      "available": [
+        "2026-09-01",
+        "2026-09-10"
+      ],
+      "missing": [
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09"
+      ]
+    },
+    "classify_stock_daily_window": {
+      "PASS": true,
+      "root_cause": "TRUE_MISS_AFTER_ALL_PLANES",
+      "raw_status": "INCOMPLETE",
+      "cleaning_status": "INCOMPLETE",
+      "cache_status": "INCOMPLETE",
+      "cache_gap_count": 1,
+      "envelope_min_max_insufficient": true
+    },
+    "unsupported_or_undated_unknown_stop": {
+      "PASS": true,
+      "mode": "DAILY_HISTORY",
+      "extract_status": "OK",
+      "distinct_dates": 5398,
+      "note": "If date column appears in future CORP product, mode may become DAILY_HISTORY — still not fake READY via empty dates"
+    },
+    "non_regression_self_test": {
+      "PASS": true,
+      "body": {
+        "PATCH_FULL_HISTORY_GATE_TEST": {
+          "PASS": true,
+          "fat_mode": "FULL_HISTORY",
+          "thin_mode": "INCREMENTAL_PATCH",
+          "rule": "INCREMENTAL_PATCH must not inherit as FULL_HISTORY publisher"
+        },
+        "UNKNOWN_WITHOUT_DATES": {
+          "PASS": true
+        }
+      }
+    },
+    "fat_vs_thin_reject": {
+      "PASS": true,
+      "gate": {
+        "CACHE_RELEASE_PUBLISHABLE": false,
+        "CRITICAL_PRODUCT_GATE": false,
+        "regressions": [
+          "STOCK_DAILY_PIT_R1"
+        ],
+        "child_distinct": 1,
+        "parent_distinct": 3064
+      }
+    },
+    "fat_vs_restored_allow": {
+      "PASS": true,
+      "gate": {
+        "CACHE_RELEASE_PUBLISHABLE": true,
+        "CRITICAL_PRODUCT_GATE": true,
+        "child_distinct": 3095
+      }
+    },
+    "resolver_coverage_semantics": {
+      "PASS": true,
+      "resolver_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925\\candidate\\blackbox_data_access_resolver_r1.py",
+      "coverage_ready_for_20260901_0910": false,
+      "missing_trade_days": [
+        "2026-09-01"
+      ],
+      "note": "Candidate common API matches resolver import names"
+    },
+    "sample_read_000001": {
+      "PASS": true,
+      "n_rows": 7,
+      "n_dates": 7
+    }
+  },
+  "sample": {
+    "code": "000001.XSHE",
+    "window": [
+      "2026-09-01",
+      "2026-09-10"
+    ],
+    "coverage_status": "INCOMPLETE",
+    "endpoint_definition": "inclusive trade-calendar dates via load_trade_calendar; product dates from date column projection",
+    "expected_trade_days": [
+      "2026-09-01",
+      "2026-09-02",
+      "2026-09-03",
+      "2026-09-04",
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10"
+    ],
+    "available_trade_days": [
+      "2026-09-02",
+      "2026-09-03",
+      "2026-09-04",
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10"
+    ],
+    "n_rows": 7,
+    "head7": [
+      {
+        "date": "2026-09-02 00:00:00",
+        "code": "000001.XSHE",
+        "open": 11.92,
+        "high": 11.99,
+        "low": 11.85,
+        "close": 11.91,
+        "volume": 89224752.0,
+        "money": 1063261810.46,
+        "known_at": "NaT",
+        "price_adj_tag": "RAW_NONE"
+      },
+      {
+        "date": "2026-09-03 00:00:00",
+        "code": "000001.XSHE",
+        "open": 11.88,
+        "high": 12.08,
+        "low": 11.83,
+        "close": 11.88,
+        "volume": 110513439.0,
+        "money": 1324230286.24,
+        "known_at": "NaT",
+        "price_adj_tag": "RAW_NONE"
+      },
+      {
+        "date": "2026-09-04 00:00:00",
+        "code": "000001.XSHE",
+        "open": 11.86,
+        "high": 12.0,
+        "low": 11.85,
+        "close": 11.89,
+        "volume": 81437295.0,
+        "money": 969948436.21,
+        "known_at": "NaT",
+        "price_adj_tag": "RAW_NONE"
+      },
+      {
+        "date": "2026-09-07 00:00:00",
+        "code": "000001.XSHE",
+        "open": 11.87,
+        "high": 11.88,
+        "low": 11.65,
+        "close": 11.7,
+        "volume": 108727552.0,
+        "money": 1275606340.01,
+        "known_at": "NaT",
+        "price_adj_tag": "RAW_NONE"
+      },
+      {
+        "date": "2026-09-08 00:00:00",
+        "code": "000001.XSHE",
+        "open": 11.66,
+        "high": 11.81,
+        "low": 11.65,
+        "close": 11.78,
+        "volume": 74051597.0,
+        "money": 870361064.17,
+        "known_at": "NaT",
+        "price_adj_tag": "RAW_NONE"
+      },
+      {
+        "date": "2026-09-09 00:00:00",
+        "code": "000001.XSHE",
+        "open": 11.76,
+        "high": 11.79,
+        "low": 11.69,
+        "close": 11.7,
+        "volume": 58230598.0,
+        "money": 682946782.66,
+        "known_at": "NaT",
+        "price_adj_tag": "RAW_NONE"
+      },
+      {
+        "date": "2026-09-10 00:00:00",
+        "code": "000001.XSHE",
+        "open": 11.68,
+        "high": 11.86,
+        "low": 11.66,
+        "close": 11.85,
+        "volume": 86763222.0,
+        "money": 1022543914.24,
+        "known_at": "NaT",
+        "price_adj_tag": "RAW_NONE"
+      }
+    ],
+    "known_at_null_count": 7,
+    "price_adj_tag_sample": [
+      "RAW_NONE",
+      "RAW_NONE",
+      "RAW_NONE"
+    ],
+    "disclaimer": "Historical fact read only; not a causal backtest / strategy eligibility claim"
+  },
+  "unsupported": [
+    "Full control-plane rebuild / publish CURRENT",
+    "Non-STOCK_DAILY product date schemas without discoverable date column (explicit UNKNOWN_STOP)",
+    "Security-level listing/suspend completeness (not in caller contract for these two modules)",
+    "Production deploy into E:\\BLACKBOX\\脚本"
+  ],
+  "status": "CANDIDATE_READY_FOR_REVIEW",
+  "loaded": {
+    "common_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925\\candidate\\blackbox_data_coverage_common_r1.py",
+    "gate_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925\\candidate\\blackbox_cache_coverage_non_regression_gate_r1.py",
+    "common_sha256": "194f012f9a145e7924116628ac85dc0710fcf7d626e1bf86b1454a92d1deeacd",
+    "gate_sha256": "de9d49aaed965a5a8ad9ee054898e2abe85bd65c542301dc0ee9741388db6cc1",
+    "not_e_stub": true
+  },
+  "failed": [],
+  "all_pass": true
+}
