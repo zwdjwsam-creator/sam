@@ -1,13 +1,13 @@
-# ZHANGWEI｜停止反复找备份，开始覆盖层候选重建
+# ZHANGWEI｜1925候选代码已审：不通过，修复后交v2
 task_id: BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925
+review_id: BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940
 execution_host: ZHANGWEI
-status: READY_ISOLATED_IMPLEMENTATION
+status: CHANGES_REQUIRED_NO_DEPLOY
 instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925.md
-R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+review_instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_CANDIDATE_REVIEW_20261020_1940.md
 COPY_AUTHORIZED=false
-1814: HOLD
-LiteLLM: UNCHANGED
+R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 
-两端1914已审：源目标2B一致，定向范围无非空备份；真实日线消费是缓存路径+Parquet，禁止按resolver猜名新增reader。
-现在在独立C候选目录依据真实调用API/规则/归档QA重建coverage common与non-regression gate，完成必要正反例和可行的小窗集成验证，交实际代码/合同矩阵/测试包；不只再交建议。不要覆盖E生产或更新数据/Manifest。
-原R9验收有效；SAM本轮已交说明，无需再次请求同一源核。详细范围见instruction，完成更新ChatGPT邮箱。
+已独立读取代码并复现：100日期丢40仍发布、等量换日期仍发布、基线/双方缺失仍发布、坏分区被忽略后OK/FULL_HISTORY。另有真实consumer结构不兼容，resolver测试未调用实际函数就写PASS。
+1925 all_pass不接受，禁止部署。按review仅修C候选，补严格反例和实际调用验证，交原1925目录v2代码/测试/逐点结果/SHA。不要降低断言或放宽门来凑成功，不改E生产/数据/Manifest，不重下9/1数据。
+审查复现脚本已放1925/review/ROOT_REPRO_1930.py；说明了受控模拟边界。SAM无新增工作，1814 HOLD，LiteLLM不动。
