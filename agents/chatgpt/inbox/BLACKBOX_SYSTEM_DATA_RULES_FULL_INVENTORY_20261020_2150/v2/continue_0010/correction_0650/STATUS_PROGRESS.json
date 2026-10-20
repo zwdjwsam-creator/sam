@@ -1,20 +1,29 @@
 {
-  "updated_at": "2026-10-21T07:05:25+08:00",
-  "task": "BLACKBOX_SYSTEM_INVENTORY_EXECUTION_CORRECTION_20261021_0650",
+  "updated_at": "2026-10-21T07:23:04+08:00",
+  "task": "BLACKBOX_SYSTEM_INVENTORY_REVIEW_AND_ADVANCE_20261021_0712",
   "parent": "BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150",
-  "supersedes_followup": "BLACKBOX_SYSTEM_INVENTORY_CONTINUE_20261021_0010",
-  "phase": "DEEP_BATCH_CHECKPOINT",
-  "denominator_products": 75,
-  "status_counts": {
-    "VERIFIED_PARTIAL": 55
+  "phase": "CHECKPOINT_0712_READY_WAIT_HUB_ACCEPT",
+  "overall": "WAITING_HUB_ACCEPTANCE",
+  "worker_36544": {
+    "pid": 36544,
+    "alive": false,
+    "command_line": null,
+    "creation_date": null,
+    "role": "correction_0650_worker",
+    "checked_at": "2026-10-21T07:22:21+08:00",
+    "last_log_line": "2026-10-21T07:05:25+08:00 CORRECTION_0650_BATCH_DONE",
+    "exit_inference": "NATURAL_END_CORRECTION_0650_BATCH_DONE"
   },
-  "broken_confirmed_v4": 847,
-  "broken_confirmed_v3_preserved": 1551,
-  "deep_probes": 55,
-  "parser_v4_pass": true,
-  "worker_pid": 36544,
-  "deadline_arm": "2026-10-21T16:50:58+08:00",
-  "elapsed_sec": 784.3,
-  "pid_exit": "NATURAL_END_AFTER_SINGLE_BATCH_BUDGET",
-  "overall": "PARTIAL_CONTINUE_WITH_CHECKPOINT"
+  "denominator_products": 75,
+  "stage_counts": {
+    "DEEP_YEAR_SAMPLE_DONE": 55,
+    "REGISTRY_FILE_SCOPED": 2,
+    "NOT_IN_MAIN_CACHE_ROOT": 4,
+    "NOT_IN_DEEP_BATCH": 14
+  },
+  "deep_probes_preserved": 55,
+  "priority_fragments": 4,
+  "elapsed_sec": 43.3,
+  "advance_pid": 25716,
+  "note": "Do not continue next batch until GPT/HUB accepts this checkpoint"
 }
