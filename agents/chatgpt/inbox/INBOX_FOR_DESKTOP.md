@@ -1,28 +1,19 @@
-# ZHANGWEI｜已启动17904，维持当前实例，不得再次启动
+# ZHANGWEI｜今早优先核查：需要10月20日当前状态，禁止盲目重启
 
 task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
-followup_id: R9_RESUME_CURRENT_SNAPSHOT_REQUEST_20261019_2118
+followup_id: R9_RESUME_OVERNIGHT_STATUS_AND_EXIT_TRIAGE_20261020_0818
 execution_host: ZHANGWEI
-status: CURRENT_SNAPSHOT_REQUESTED_EXISTING_INSTANCE_ONLY
-pid: 17904
-start_time: 2026-10-19T20:47:10.4043508+08:00
+status: PRIORITY_CURRENT_STATUS_AND_EXIT_TRIAGE_AWAITING_ACK
 instruction: agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
-followup_instruction: agents/chatgpt/outbox/R9_RESUME_STARTED_REVIEW_20261019_2050.md
-
-COPY_AUTHORIZED=true
-FULL_COPY_AUTHORIZED=true
-FULL_MIGRATION=true
-full_plan_acceptance=false
+followup_instruction: agents/chatgpt/outbox/R9_RESUME_OVERNIGHT_STATUS_AND_EXIT_TRIAGE_20261020_0818.md
+last_observed_at: 2026-10-19T21:21:42+08:00
+current_alive: UNKNOWN
+current_phase: UNKNOWN
 START_AGAIN_AUTHORIZED=false
+full_plan_acceptance=false
 
-STARTED/PRESTART已核，实际使用批准27af1383代码、1938副本和合同。一次启动额度已使用；不要把旧READY邮箱或本followup理解为第二次启动令。保持当前17904，不停止/重启/改代码/并发。
-入口在execute_contract返回后才输出汇总；日志为空不能单独判卡住。当前CPU增长不能确认具体阶段，没有新增entity DONE证据前first_new_entity_copied=false。
-依followup做一个轻量只读CURRENT_STATUS：核PID创建时间/argv、CPU/I/O/日志及精确无第二实例；必要时按4个固定entity主键短timeout查stage，不COUNT800万行/全盘扫描/长读事务。
-PRESTART_CHECK的ok=false来自检查powershell匹配自身。保留原记录，补CORRECTION说明实际证据和当前精确扫描，不倒填历史、不为文档更正重做预检或重启。
-回2037目录CURRENT_STATUS.json和PRESTART_CHECK_CORRECTION.json，更新ChatGPT邮箱实际运行状态。之后继续已有实例；首次新增实体/退出/验收结果按原2037报告。错误退出后停止，不自动再起、不删temp。
-
-
-## 21:18用户查收：立即补当前状态
-最新HUB回执仍停20:53:20，不能把它当当前运行事实。
-按 agents/chatgpt/outbox/R9_RESUME_CURRENT_SNAPSHOT_REQUEST_20261019_2118.md 现在做一次轻量只读快照并上传，核同一17904创建时间/argv、CPU/I/O变化、日志、4个固定实体stage；没新DONE也要交本次观察时间和事实。若已退出，读现有日志/退出记录回报，不重新运行。
-本followup不是重新启动或停止命令，不新增定时器/服务，不全表COUNT/重hash全库；原实例正常运行就继续，不干预。
+用户10月20日08:18查状态，HUB整晚无后续回执。现在先ACK，再立即实际核同一17904进程创建时间/argv、今早CPU/I/O/日志、4个固定主键stage及最后少量state写记录。不能引用昨晚alive当今早事实，不能只ACK停下。
+若已退出，读现有stdout/stderr/父级退出记录，回真实exit_code/错误/独立验收；没有记录写UNKNOWN，不补造成功。
+运行中只轻量只读，短事务，不全表COUNT、不改代码/合同/state、不停止/重启/删temp，不新增复制进程。进程已退出且无人写入时可一次核state分类计数，保留所有DONE。
+现有实例如果还在，继续原2037授权范围运行；一次启动额度已用完。本followup不授权任何第二次启动或修改迁移方案。
+完整交付细节见followup，今早快照/退出结果交原2037目录，更新INBOX_FOR_CHATGPT。SAM保持原只读共享。
