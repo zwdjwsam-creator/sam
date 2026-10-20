@@ -1,10 +1,11 @@
-# INBOX_FOR_NOTEBOOK — runtime rules handover DELIVERED
-
-task_id: BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900
+# SAM｜原规则交接已收到，补精确源码核对
+task_id: BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914
 execution_host: SAM
-status: DELIVERED
-host_verified: SAM
-handover: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900/NOTEBOOK_HANDOVER.md
-tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900
+status: READY_TARGETED_READONLY_AWAITING_PICKUP
+instruction: agents/chatgpt/outbox/BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914.md
 COPY_AUTHORIZED=false
-pending_not_run: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
+R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+
+1900交接已收到，不重复。只核blackbox_data_coverage_common_r1.py、blackbox_cache_coverage_non_regression_gate_r1.py源机字节/size/SHA与已有非空备份，并说明真正STOCK_DAILY读取入口。不得按resolver猜名写新reader，不修改源文件或生成coverage READY。
+回agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914/SOURCE_CHECK.md和必要非敏感代码。
+pending_not_run: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625（独立收尾保留，本次不执行、不取消）。
