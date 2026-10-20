@@ -1,6 +1,6 @@
 {
   "task_id": "CURSOR_BLACKBOX_E_DOCKING_HANDSHAKE_20261020_1824",
-  "observed_at": "2026-10-20T18:27:21+0800",
+  "observed_at": "2026-10-20T18:35:58+0800",
   "host": "ZHANGWEI",
   "workspace": "E:\\BLACKBOX",
   "hub_write": "OK",
@@ -10,15 +10,15 @@
   "target_conversation_matched": null,
   "composer_observed": null,
   "send_attempt_count": 0,
-  "send_outcome": "BROWSER_UNAVAILABLE_PATROL_ARMED",
-  "gpt_ack": "PENDING",
+  "send_outcome": "STOPPED_PER_1834_DO_NOT_RESEND",
+  "gpt_ack": "NOT_APPLICABLE_SUPERSEDED",
   "1814_hold": true,
   "litellm_unchanged": true,
-  "error": "BROWSER_MCP_NOT_ATTACHED",
+  "error": "BROWSER_MCP_NOT_ATTACHED_AT_HUB_RESUME",
   "patrol": {
     "interval_min": 5,
     "duration_min": 60,
-    "active": true,
+    "active": false,
     "armed_at": "2026-10-20T18:27:21+0800",
     "authority": "USER_HUB_MESSAGE_OVERRIDE",
     "probes": [
@@ -26,7 +26,24 @@
         "at": "2026-10-20T18:27:21+0800",
         "ok": false,
         "error": "Server not found"
+      },
+      {
+        "at": "2026-10-20T18:34:55+0800",
+        "ok": false,
+        "error": "Server not found",
+        "trigger": "HUB"
+      },
+      {
+        "at": "2026-10-20T18:35:58+0800",
+        "ok": false,
+        "error": "Server not found",
+        "trigger": "HUB_RESUME"
       }
-    ]
-  }
+    ],
+    "last_probe_at": "2026-10-20T18:34:55+0800",
+    "cancelled_at": "2026-10-20T18:35:58+0800",
+    "cancel_reason": "1834_supersedes_web_send"
+  },
+  "superseded_web_send_by": "BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_HANDOVER_20261020_1834",
+  "note": "HUB resume 18:34: 1834 becomes current business task; retain 1824 HUB ACK/readback; do not resend authorized web message; browser patrol for 1824 send cancelled."
 }
