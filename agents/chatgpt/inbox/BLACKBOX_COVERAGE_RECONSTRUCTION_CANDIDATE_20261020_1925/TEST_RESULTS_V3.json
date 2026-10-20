@@ -1,0 +1,86 @@
+{
+  "task_id": "BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950",
+  "parent": "BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "code_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950\\code_v3",
+  "tests": {
+    "gate_date_loss_still_rejects": {
+      "PASS": true,
+      "lost_count": 1
+    },
+    "extract_bad_partition_unverifiable": {
+      "PASS": true,
+      "status": "UNVERIFIABLE"
+    },
+    "sparse_100_not_full_history": {
+      "PASS": true,
+      "mode": "DAILY_HISTORY"
+    },
+    "resolver_unverifiable_not_ready": {
+      "PASS": true,
+      "coverage_ready": false,
+      "coverage_mode": "UNKNOWN_STOP",
+      "result_status": "READY",
+      "resolved": true
+    },
+    "resolver_unsupported_no_window_not_ready": {
+      "PASS": true,
+      "coverage_ready": false,
+      "coverage_mode": "UNKNOWN_STOP",
+      "resolved": true,
+      "extract": "UNSUPPORTED_PRODUCT"
+    },
+    "resolver_window_0901_0910_not_complete": {
+      "PASS": true,
+      "coverage_ready": false,
+      "coverage_mode": "DAILY_HISTORY",
+      "missing": [
+        "2026-09-01"
+      ],
+      "extract_status": "OK",
+      "error": null
+    },
+    "resolver_window_0902_0910_ready": {
+      "PASS": true,
+      "coverage_ready": true,
+      "coverage_mode": "DAILY_HISTORY",
+      "missing": [],
+      "extract_status": "OK",
+      "error": null
+    },
+    "cross_year_three_years": {
+      "PASS": true,
+      "years_scanned": [
+        2023,
+        2024,
+        2025
+      ],
+      "status": "COMPLETE"
+    },
+    "calendar_authority_explicit": {
+      "PASS": true,
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+      "cache_asof": "20260924"
+    },
+    "invariant_no_unknown_with_ready": {
+      "PASS": true
+    }
+  },
+  "status": "CANDIDATE_V3_READY_FOR_REVIEW",
+  "loaded": {
+    "common_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950\\code_v3\\blackbox_data_coverage_common_r1.py",
+    "gate_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950\\code_v3\\blackbox_cache_coverage_non_regression_gate_r1.py",
+    "resolver_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950\\code_v3\\blackbox_data_access_resolver_r1.py",
+    "common_sha256": "49046e63b09c0a09096a079a4b033a35ebc9e87ae981785afcb87fa3d6cce5ee",
+    "gate_sha256": "b3cb6b22ebf1b6ed0dd143ac1e487dfed35337d76b8020adf4b2d4f9af32509b",
+    "resolver_sha256": "42037d19238ff212c78e835a06476f39085f94500820f1246215e34771c82a51",
+    "in_code_v3": true
+  },
+  "failed": [],
+  "all_pass": true,
+  "review_points": {
+    "1_resolver_ready_gate": true,
+    "2_full_history_evidence": true,
+    "3_real_windows": true
+  }
+}
