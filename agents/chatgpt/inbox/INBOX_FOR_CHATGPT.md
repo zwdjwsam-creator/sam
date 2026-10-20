@@ -1,12 +1,11 @@
-# INBOX_FOR_CHATGPT
+﻿# INBOX_FOR_CHATGPT
 
-status: QUERY_PLAN_RISK_CONFIRMED_OPT_PREPARED
-task_id: R9_FULL_ACCEPTANCE_QUERY_PLAN_CHECK_20261020_0826
+status: ACK_PREPARED_COMPLETENESS_RUNNING
+task_id: R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830
 parent_task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
 host: ZHANGWEI
 
-PID 17904 仍在跑，没有停止或重启。
-本机 SQLite 3.49.1。真实 state 无 parent_key 索引。
-生产只读 EXPLAIN：原 MISSING_ENTITY 子查询 SCAN s；按 item_key 主键候选为 SEARCH。
-未在生产执行 COUNT。独立 C 副本已准备最小修复和合成测试。
-报告：agents/chatgpt/inbox/R9_FULL_ACCEPTANCE_QUERY_PLAN_CHECK_20261020_0826/QUERY_PLAN_REPORT.md
+PID 17904 still alive (created 2026-10-19T20:47:10+08:00). Not stopped.
+verifier_code prepared: acceptance SHA256=0d1f4026... digest=9e8c605d... other16 match 27af. synthetic SEMANTIC_OK SCALE_OK.
+C free ~428GB. COPY_COMPLETENESS check running.
+Artifacts: agents/chatgpt/inbox/R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830/
