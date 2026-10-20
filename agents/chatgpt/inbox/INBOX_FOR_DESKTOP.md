@@ -1,19 +1,16 @@
-# ZHANGWEI｜FULL迁移最终技术验收通过，复制与验收任务结案
+# ZHANGWEI｜修当前Cursor原生Browser连接，LiteLLM分开诊断
 
-task_id: R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830
-status: FULL_MIGRATION_TECHNICALLY_ACCEPTED
+task_id: CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720
 execution_host: ZHANGWEI
-review: agents/chatgpt/outbox/R9_FULL_MIGRATION_TECH_ACCEPTANCE_20261020_1625.md
-full_plan_acceptance=true
+status: READY_DIAGNOSE_AND_MINIMAL_REPAIR_AWAITING_ACK
+instruction: agents/chatgpt/outbox/CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720.md
+R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 COPY_AUTHORIZED=false
-FULL_COPY_AUTHORIZED=false
-START_AGAIN_AUTHORIZED=false
 
-ChatGPT已读FINAL_FULL_ACCEPTANCE及原始stdout，程序化逐字段核对所有结果与固定FULL合同一致：
-1223767实体=checked=hash_calls；content365004696055；file_paths8715072；dirs233668；links4824；
-nested full_acceptance=true，reasons=[]，missing=extra=0，write_attempts=0。
-历史copy27af与verifier9e8绑定匹配，原state历史绑定保留。原包装器false硬编码原文保留，综合FULL结论已按事先批准规则独立判true。
-不再重复execute/verify-existing/hash或新增写任务，不修改历史state/code/候选，不清理任何源/目标业务文件或temp/证据。
-本机目前无需新开发任务或额外扫描。当前最终结果已接受；原STATUS/ChatGPT邮箱若仍写运行只是过期索引，可更新引用本review，不触碰原始stdout。
-SAM另领仅移除R9LP_RO临时share的收尾，不涉及目标或源文件删除。
-实际应用查询/配置使用验收另属后续任务，不能把数据完整性验收冒充已完成全部软件配置。
+用户转述cursor-ide-browser Server not found及START_DOUBLE_AI_TASK.ps1缺ThinkPad litellm.exe路径。先ACK真实host/version/workspace/GUI或CLI会话证据，转述未含host不能凭猜测认定报错来自本机。
+官方Browser是原生功能，10/12已有“磁盘schema有但live MCP缺失”的旧SAM诊断。不要重复把tools目录存在当服务接通；查本机实际live工具、一次真实list-tabs调用和相关连接/扩展host日志。
+在本版本受支持的官方机制内直接做最小可逆修复；不安装外部浏览器/Playwright/CDP、不清登录状态、不重装。真需一次Reload/新GUI会话先保存接续材料，不能反复重启。
+若当前Agent根本做不到那个UI动作，交齐诊断和本机精确一次操作说明，不能先让用户自己找设置。不得猜配置键/伪造同名MCP。
+验收分项：live列表成功→无业务页可撤销输入/点击及快照→已存在GPT页可见性。只查看，不在GPT发消息或提交HUB触发。
+LiteLLM只读核硬编码路径/本机安装，不启动API/服务、不消费计费或改密钥路由；它不是Browser的前置依赖。
+交CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020/REPORT.md及原始脱敏证据，更新ChatGPT邮箱。R9数据与所有验收证据不动，原迁移已结案。
