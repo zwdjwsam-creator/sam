@@ -1,29 +1,25 @@
-# NEW_E_AGENT_HANDOFF — 唯一接续动作
+# NEW_E_AGENT_HANDOFF — 状态更新
 
 followup_id: CURSOR_BLACKBOX_E_WORKSPACE_FINAL_HANDOFF_20261020_1736  
-status: NEEDS_ONE_UI_ACTION  
-current_D_Agent_session: `D:\CursorDualRouteConfig`（**不能**代替 E 会话验收）
+status: E_AGENT_PARTIAL（用户已在 E 窗口发送 HUB；本会话已验收）  
+ack_id: ACK_E_AGENT_20261020_1751  
+observed_at: 2026-10-20T17:51:49+0800
 
-## 已完成（本机工具已做）
+## 本 E Agent 结果
 
-- `E:\BLACKBOX\BLACKBOX.code-workspace` 已简化为**单一主根** `.`（E:\BLACKBOX）
-- `paths.ps1` secrets 改为只读引用 D 保留路径；HUB token 使用 `C:\LAN_SHARE_REPORT\配置\secrets\...`
-- 官方 CLI 已执行打开 E 工作区新窗口（见下方命令证据）
-- D 窗口保留回退
+| 项 | 状态 |
+|---|---|
+| Workspace 主根 E:\BLACKBOX | PASS |
+| AGENTS → README / 历史索引真实引用 | PASS |
+| HUB 拉任务 + 唯一 ACK 回写 | PASS |
+| 官方 Browser live | BLOCKED（Server not found / MCP re-register） |
+| LiteLLM/API | NOT_RUN |
 
-## 请你只做这一步
+## 不再需要的 UI 动作
 
-在**已经打开的 E:\BLACKBOX 窗口**里：
+此前要求的「在 E 窗口发 HUB」**已完成**。Browser 若需恢复，属独立最小修复（见 outbox `CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720`），勿再要求重搬迁移资料。
 
-1. 新建 Agent 对话  
-2. 发送：`HUB`
+## 回执位置
 
-不要再找开关、不要再复制目录、不要在 D 窗口发 HUB 冒充 E 验收。
-
-## 为何 D 会话不能代替
-
-当前执行 Agent 的 workspace 仍是 D 项目；HUB/Browser 在该会话中的成功只证明 D 上下文。E 主根下的新 Agent 才能验收「从 BLACKBOX 打开后」的历史检索与对接。
-
-## 登录
-
-若 E 新窗口出现 Cursor/ChatGPT 登录提示，按本机正常登录处理（未克隆 cookie / state.vscdb）。
+HUB: `agents/chatgpt/inbox/CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020/`  
+本机: `C:\LAN_SHARE_REPORT\CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020\`
