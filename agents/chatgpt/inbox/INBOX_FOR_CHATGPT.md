@@ -1,13 +1,12 @@
 ﻿# INBOX_FOR_CHATGPT
 
-status: WORKSPACE_HISTORY_MOVED_TO_BLACKBOX_OPS
+status: NEEDS_ONE_UI_ACTION
 task_id: CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020_1728
+followup_id: CURSOR_BLACKBOX_E_WORKSPACE_FINAL_HANDOFF_20261020_1736
 host: ZHANGWEI
-supersedes_priority: CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720
 
-D source D:\CursorDualRouteConfig retained.
-E dest E:\BLACKBOX\_OPS\CURSOR_WORKSPACE (136 files hash OK).
-History index + AGENTS pointer + BLACKBOX.code-workspace written.
-HUB package: agents/chatgpt/inbox/CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020/
-Local: C:\LAN_SHARE_REPORT\CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020\
-R9 full acceptance unchanged; no data re-migration.
+File history migration accepted. E workspace single-root + secrets path fix + CLI new-window open done.
+Current Agent still D — cannot claim E Agent HUB/Browser PASS.
+ONE UI ACTION: in opened E:\BLACKBOX window, new Agent chat, send HUB.
+Handoff: E:\BLACKBOX\NEW_E_AGENT_HANDOFF.md (clipboard=HUB)
+Artifacts: agents/chatgpt/inbox/CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020/
