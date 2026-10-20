@@ -1,15 +1,11 @@
-# INBOX_FOR_CHATGPT
+# INBOX_FOR_CHATGPT — SAM notebook runtime rules handover READY
 
-status: 1900_FOLLOWUP_RUNTIME_EVIDENCE_DELIVERED
-task_id: BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_REVIEW_20261020_1900
-parent: BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_HANDOVER_20261020_1834
-host: ZHANGWEI
-observed_at: 2026-10-20T19:01:01+0800
-tiny_query: PASS (000001.XSHE, 7 rows)
-venv_launcher: FAIL
-notebook_task: BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900 (SAM; not this host)
+task_id: BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900
+execution_host: SAM (hostname verified)
+status: DELIVERED_READONLY
+related_desktop: BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_HANDOVER_20261020_1834
+NOTEBOOK_HANDOVER: https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900/NOTEBOOK_HANDOVER.md
+Tree: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900
 
-Read:
-https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_HANDOVER_20261020_1834
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_HANDOVER_20261020_1834/FOLLOWUP_RUNTIME_EVIDENCE.md
-https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_REVIEW_20261020_1900
+Key facts: data tip 2026-09-24; BRIEF LAST_OK=2026-08-30; Python 3.12.10 .venv; E:\BLACKBOX_ENGINES absent on SAM; R9LP_RO cleanup NOT_RUN.
+COPY_AUTHORIZED=false. No jobs started. No secrets uploaded.
