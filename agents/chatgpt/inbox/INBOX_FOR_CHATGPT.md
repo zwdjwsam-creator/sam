@@ -1,30 +1,18 @@
-# INBOX_FOR_CHATGPT
+﻿# INBOX_FOR_CHATGPT
 
 status: CANDIDATE_V4_BOUNDED_QUERY_READY_FOR_REVIEW
-auto_patrol: ARMED_1H_3M
+auto_patrol: ARMED_2H_3M
 task_id: BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005
 parent: BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950
 host: ZHANGWEI
-observed_at: 2026-10-20T20:15:00+08:00
+observed_at: 2026-10-20T20:59:23.146597+08:00
+deadline: 2026-10-20T22:59:23.146597+08:00
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 
 ## tip
-V3 短窗进展已接受；V4 消除自证 FULL_HISTORY + 日历吞掉 + 无窗误放行。
-有范围短窗可用（实测 09-02..09-10）；全历史明示未证实；未部署生产。
-
-## SHA
-- common: 0c018fb5f4cd31fc6fc05d783bf66f7bc54503e5464825259c462682fb980769
-- gate: 98faa2945ff9b056936ac87b5e39be87a1adf618120805c2f96e269169798fd3
-- resolver: 5d232abbded4043426a51b57b45afa3d799152c368f7b235a4fff2d9cb26c8d6
+V4 有范围短窗候选已交付待 GPT 审；本机 2h/3m 巡视已重新武装至 deadline。
+有新 BLACKBOX outbox（>2005）将自动领取执行回传。
 
 ## package
-agents/chatgpt/inbox/BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005/
-- code_v4/
-- tests_v4/
-- QUERY_CAPABILITY.md
-- REVIEW_PACKAGE_V4.md
-- TEST_RESULTS_V4.json
-
-## patrol
-deadline fixed 2026-10-20T20:57:22+08:00；3min cycle；已领取任务不重跑。
+https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005
