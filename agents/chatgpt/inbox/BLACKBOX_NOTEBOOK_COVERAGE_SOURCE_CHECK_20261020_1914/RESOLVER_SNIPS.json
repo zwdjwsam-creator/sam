@@ -1,0 +1,72 @@
+[
+  {
+    "path": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+    "size": 43924,
+    "lines": [
+      "79:    \"stock_daily\": \"STOCK_DAILY_PIT_R1\",",
+      "80:    \"STOCK_DAILY\": \"STOCK_DAILY_PIT_R1\",",
+      "81:    \"股票日线\": \"STOCK_DAILY_PIT_R1\",",
+      "87:    \"stock_price\": \"STOCK_DAILY_PIT_R1\",",
+      "88:    \"price\": \"STOCK_DAILY_PIT_R1\",",
+      "200:    \"STOCK_DAILY_PIT_R1\": {\"pit_policy\": \"EOD_SAME_DAY\", \"asof_behavior\": \"PIT_AT_SIGNAL_DATE\"},",
+      "524:            from blackbox_stock_minute_1m_reader_r1 import PRODUCT_ID as _SM_PID",
+      "525:            from blackbox_stock_minute_1m_reader_r1 import resolve_cleaning_stock_1m_source",
+      "557:                \"module\": \"blackbox_stock_minute_1m_reader_r1\",",
+      "685:    reader_module = f\"cache_{normalized.lower()}_reader_r1\"",
+      "700:        from blackbox_data_coverage_common_r1 import (  # local import",
+      "716:        if start_date and end_date and normalized in (\"STOCK_DAILY_PIT_R1\", \"STOCK_DAILY_RAW_PIT_R1\"):",
+      "734:                \"STOCK_DAILY_PIT_R1\", \"STOCK_DAILY_RAW_PIT_R1\", \"INDEX_DAILY_R1\", \"STOCK_FACTOR_DAILY_R1\""
+    ]
+  },
+  {
+    "path": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_control_plane_build_r1.py",
+    "size": 25474,
+    "lines": [
+      "2:\"\"\"Build Coverage Ledgers + QA + reports for BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.\"\"\"",
+      "13:from blackbox_data_coverage_common_r1 import (  # noqa: E402",
+      "27:    cache_stock_daily_dates,",
+      "32:ARCH = Path(r\"D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1\")",
+      "116:            \"reader\": f\"cache_{p.name.lower()}_reader_r1\",",
+      "135:    cache = set(cache_stock_daily_dates(WINDOW_START, WINDOW_END)[\"dates_in_window\"])",
+      "249:            \"Surgical INDEX_DAILY_732 release inherited STOCK_DAILY from thin parent chain (1-day 2026-08-11)\",",
+      "255:        \"affected_product\": \"STOCK_DAILY_PIT_R1\",",
+      "267:    from blackbox_cache_coverage_non_regression_gate_r1 import self_test, gate",
+      "301:    g_thin = gate(fat, thin, [\"STOCK_DAILY_PIT_R1\"])",
+      "302:    g_restored = gate(fat, restored, [\"STOCK_DAILY_PIT_R1\"])",
+      "304:    stock = cache_ledger[\"products\"].get(\"STOCK_DAILY_PIT_R1\", {})",
+      "405:            \"blackbox_cache_coverage_non_regression_gate_r1.py\",",
+      "449:    final_md = f\"\"\"# FINAL_REPORT — BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1",
+      "507:        \"BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1_ACCEPTED\"",
+      "557:        \"STOCK_MODE\": cache_ledger[\"products\"].get(\"STOCK_DAILY_PIT_R1\", {}).get(\"coverage_mode\"),"
+    ]
+  },
+  {
+    "path": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_diagnose_r1.py",
+    "size": 3743,
+    "lines": [
+      "41:    ds = args.dataset.strip().upper().replace(\"STOCK_DAILY_PIT_R1\", \"STOCK_DAILY\")",
+      "44:            from blackbox_data_coverage_common_r1 import classify_stock_daily  # noqa: WPS433",
+      "54:                \"action\": \"STOP_RESTORE_COVERAGE_COMMON_OR_USE_CACHE_RESOLVER\","
+    ]
+  },
+  {
+    "path": "E:\\BLACKBOX\\脚本\\run_blackbox_morning_selection_validation_r1.py",
+    "size": 25678,
+    "lines": [
+      "88:    p = cache_root / \"STOCK_DAILY_PIT_R1\" / f\"year={year}\" / f\"part_{year}.parquet\""
+    ]
+  },
+  {
+    "path": "E:\\BLACKBOX\\脚本\\blackbox_factor_definition_plane_phase2a_remaining7_r1.py",
+    "size": 29011,
+    "lines": [
+      "25:from blackbox_data_access_resolver_r1 import read_currents, resolve_product  # noqa: E402",
+      "90:        \"products\": [\"STOCK_DAILY_PIT_R1\"],",
+      "99:        \"products\": [\"STOCK_DAILY_PIT_R1\"],",
+      "106:        \"products\": [\"STOCK_DAILY_PIT_R1\"],",
+      "121:        \"products\": [\"STOCK_DAILY_PIT_R1\"],",
+      "138:        \"products\": [\"STOCK_DAILY_PIT_R1\"],",
+      "406:    daily_path = Path(auth[\"products\"][\"STOCK_DAILY_PIT_R1\"][\"product_path\"])"
+    ]
+  }
+]
