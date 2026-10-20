@@ -1,14 +1,16 @@
-# ZHANGWEI｜BLACKBOX规则交接第一轮已审，补一条实际只读查询
-task_id: BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_REVIEW_20261020_1900
+# ZHANGWEI｜规则交接已读，恢复正式只读查询
+task_id: BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910
 execution_host: ZHANGWEI
-status: READY_READONLY_FOLLOWUP
-instruction: agents/chatgpt/outbox/BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_REVIEW_20261020_1900.md
-parent: BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_HANDOVER_20261020_1834
+workspace: E:\BLACKBOX
+status: READY_MINIMAL_QUERY_RECOVERY
+instruction: agents/chatgpt/outbox/BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910.md
+source_handover: agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900/NOTEBOOK_HANDOVER.md
 1814: HOLD
 LiteLLM: UNCHANGED
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 COPY_AUTHORIZED=false
 
-已接受1834入口/地图为第一版索引，尚未验证行情数据库实际查询。按review补关键规则来源、一个真实数据入口/极小只读查询和本机解释器兼容性；不改生产、不安装依赖、不补更。
-9/24数据和8/30简报的差异先核流程归属，不归因迁移。SAM来源说明已另发HUB待领取，不必等回件才做本机可完成部分，不用用户跨机转述。
-原1834目录交FOLLOWUP_RUNTIME_EVIDENCE.md并更新ChatGPT邮箱；详见instruction。
+两端1900包已审。台式机本地7行可读，但临时pyarrow方式不算正式入口；原venv启动失败、reader未定位、coverage UNKNOWN_STOP与preflight证据未齐。
+按instruction连续完成：正式reader定位、适用预检、独立C候选环境/适配入口、允许后的小样本正式查询。允许最小隔离环境修复，不覆盖原E环境，不改生产数据/规则/Manifest，不绕覆盖或因果门，不启动更新/研究/策略。
+源机日期差与台式机一致，不再归因迁移；源机没有E引擎根不等于台式机目标E引擎根可忽略。
+整包回1910目录RECOVERY_REPORT.md，已做部分不重做，精准报告可用范围。
