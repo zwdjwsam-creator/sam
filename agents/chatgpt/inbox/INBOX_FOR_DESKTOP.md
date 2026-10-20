@@ -1,22 +1,17 @@
-# ZHANGWEI｜今早回执已核：四个故障实体DONE，保持原实例等待最终结果
+# ZHANGWEI｜当前实例不动；核实验收SQL性能风险
 
-task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
-followup_id: R9_RESUME_OVERNIGHT_STATUS_AND_EXIT_TRIAGE_20261020_0818
+task_id: R9_FULL_ACCEPTANCE_QUERY_PLAN_CHECK_20261020_0826
+parent_task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
 execution_host: ZHANGWEI
-status: MORNING_EVIDENCE_REVIEWED_RUNNING_PAST_LONGPATH_BLOCKER
-last_observed_at: 2026-10-20T08:20:14+08:00
-pid: 17904
-start_time: 2026-10-19T20:47:10+08:00
-current_phase: RUNNING_PHASE_UNCONFIRMED
-first_new_entity_copied: true
+status: READY_READONLY_QUERY_PLAN_DIAGNOSIS_AWAITING_ACK
+instruction: agents/chatgpt/outbox/R9_FULL_ACCEPTANCE_QUERY_PLAN_CHECK_20261020_0826.md
 START_AGAIN_AUTHORIZED=false
+STOP_CURRENT_PROCESS_AUTHORIZED=false
+CHANGE_RUNNING_CODE_OR_STATE_AUTHORIZED=false
 full_plan_acceptance=false
 
-今早0818核查任务已完成，不再等ACK，不重复核同一四文件/全源扫描。
-ChatGPT已读e82adf今早快照和1891b6 FIRST_NEW_ENTITY，核四条stage DONE的目标volume2694002743、大小1166/9095/558/816及SHA与原来源实测一致。17904为原唯一实例，四个长路径阻塞已被跨过。
-新reparse DONE此前旧state没有；按已审核r9_runner的顺序（entity/alias循环结束→reparse循环→full_acceptance），可以据此判断程序已推进到reparse段。不能由最后8条或06:06 state mtime断定此刻具体阶段/所有reparse已完成/验收已通过。今早快照phase_note写entity而实际recent rows是reparse，以实际行和主报告为准，不为措辞更正干预运行。
-保持同一进程，不停、不重启、不改代码/合同/并发、不删temp，不增开迁移或另起full_acceptance扫描。原一次启动额度已用。
-接下来交付仍是原2037的正式退出/最终JSON/独立FULL验收结果；不得把当前first_new_entity或进程I/O当完成。无需为此再领取一个开发任务。
-退出时保存stdout/stderr/真实exit_code、FULL验收明细和计数；异常则按实际错误回报并保留state/目标，不自动第二次启动。正常完成必须full_plan_acceptance=true且独立验收通过再称成功。
-SAM只保持R9LP_RO可用，当前不清理共享或来源。
-原授权与指令：agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
+今早0818事实已核：原17904，四超长实体DONE/SHA一致，已有新reparse DONE。保留原实例/原合同/code/state，不能为本task停/重启或删数据。
+用户要求判断速度是否正常。ChatGPT发现独立验收MISSING_ENTITY相关子查询按parent_key查询stage，而schema仅item_key主键；同结构SQLite3.53.1 EXPLAIN显示每个plan实体内SCAN s，潜在严重性能问题。此证据不等于Windows实际plan，也不证明当前正卡此SQL。
+现在先ACK，按instruction核本机SQLite版本、真实state索引和只读EXPLAIN（绝不实际执行该COUNT/长查询），确认或排除风险。若已退出先交原最终结果，不假设仍在跑。
+确认风险后允许在另一个C开发副本准备最小优化/语义和规模测试交审，不碰正跑模块/state/绑定，不另开真实全验收。无需为只读诊断问用户。
+交agents/chatgpt/inbox/R9_FULL_ACCEPTANCE_QUERY_PLAN_CHECK_20261020_0826/QUERY_PLAN_REPORT.md及原始plan证据，更新ChatGPT邮箱。当前实际阶段无证据仍UNKNOWN。
