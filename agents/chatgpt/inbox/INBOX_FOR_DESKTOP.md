@@ -1,14 +1,13 @@
-# ZHANGWEI｜2110安装样本已核，完成有限查询入口收尾
-task_id: BLACKBOX_READONLY_ENTRY_FINISH_20261020_2135
+# ZHANGWEI｜有限只读入口技术验收通过，结案回ACK后待命
+task_id: BLACKBOX_READONLY_ENTRY_TECH_ACCEPTANCE_20261020_2145
 execution_host: ZHANGWEI
-status: READY_TARGETED_ENTRY_FINISH
-instruction: agents/chatgpt/outbox/BLACKBOX_READONLY_ENTRY_FINISH_20261020_2135.md
-sample_review: INSTALLED_SAMPLE_AND_RUNTIME_CONFIRMED
+status: BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_ACK_PENDING
+instruction: agents/chatgpt/outbox/BLACKBOX_READONLY_ENTRY_TECH_ACCEPTANCE_20261020_2145.md
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 1814: HOLD
 LiteLLM: UNCHANGED
 
-已核实际安装路径、3.10.20环境、runtime三SHA和7行正例/缺日拒绝。仅收尾新增_OPS入口：Parquet证券日期过滤先于物化、UTF8严格输出、读取结束后的CURRENT一致性、依赖/实际模块自检、补管理索引diff。
-不重写已审runtime、不覆盖业务脚本/venv/Manifest/数据；按instruction完成可逆小修和安装后最小验证，回2135包最终入口源码/输出/文档diff待结案。
-巡视按用户现有22:59截止，不额外延长。
+2110/2135独立有范围只读入口通过技术复核。真实7行正例、缺日拒绝、UTF8、filter及CURRENT读后检查已核；只做review要求的管理状态/索引短摘录和一次ACK，不再改代码或重复全套测试。
+回2135/ACK_TECH_ACCEPTANCE_2145.md并更新ChatGPT邮箱，无明确新任务待命。
+仅本入口可用：原E .venv/日增/研究/策略/全历史未验收，不能从本验收推导可启动。巡视按用户本机实际授权设置，不新增延长、不以force_complete绕门。
