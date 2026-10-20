@@ -1,0 +1,101 @@
+{
+  "semantic": [
+    {
+      "case": "complete",
+      "old_count": 0,
+      "new_count": 0,
+      "expect_old": 0,
+      "expect_new": 0,
+      "ok": true,
+      "note": null
+    },
+    {
+      "case": "missing_one",
+      "old_count": 1,
+      "new_count": 1,
+      "expect_old": 1,
+      "expect_new": 1,
+      "ok": true,
+      "note": null
+    },
+    {
+      "case": "wrong_phase",
+      "old_count": 1,
+      "new_count": 1,
+      "expect_old": 1,
+      "expect_new": 1,
+      "ok": true,
+      "note": null
+    },
+    {
+      "case": "wrong_parent",
+      "old_count": 20,
+      "new_count": 20,
+      "expect_old": 20,
+      "expect_new": 20,
+      "ok": true,
+      "note": null
+    },
+    {
+      "case": "malformed_item_key",
+      "old_count": 0,
+      "new_count": 20,
+      "expect_old": 0,
+      "expect_new": 20,
+      "ok": true,
+      "note": "malformed_item_key: new refuses parent_key-only DONE without matching item_key"
+    },
+    {
+      "case": "extra_done",
+      "old_count": 0,
+      "new_count": 0,
+      "expect_old": 0,
+      "expect_new": 0,
+      "ok": true,
+      "note": null
+    }
+  ],
+  "scale": [
+    {
+      "n_plan": 100,
+      "n_stage": 1100,
+      "old_count": 0,
+      "new_count": 0,
+      "old_seconds": 0.00028820004081353545,
+      "new_seconds": 3.679998917505145e-05,
+      "old_plan": "SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1 | CORRELATED SCALAR SUBQUERY 1 | SCAN s",
+      "new_plan": "SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1 | CORRELATED SCALAR SUBQUERY 1 | SEARCH s USING INDEX sqlite_autoindex_stage_1 (item_key=?)",
+      "old_has_scan_s": true,
+      "new_has_search": true,
+      "counts_match": true
+    },
+    {
+      "n_plan": 1000,
+      "n_stage": 11000,
+      "old_count": 0,
+      "new_count": 0,
+      "old_seconds": 0.027015899948310107,
+      "new_seconds": 0.00036880001425743103,
+      "old_plan": "SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1 | CORRELATED SCALAR SUBQUERY 1 | SCAN s",
+      "new_plan": "SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1 | CORRELATED SCALAR SUBQUERY 1 | SEARCH s USING INDEX sqlite_autoindex_stage_1 (item_key=?)",
+      "old_has_scan_s": true,
+      "new_has_search": true,
+      "counts_match": true
+    },
+    {
+      "n_plan": 5000,
+      "n_stage": 55000,
+      "old_count": 0,
+      "new_count": 0,
+      "old_seconds": 0.6703375999932177,
+      "new_seconds": 0.001818499993532896,
+      "old_plan": "SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1 | CORRELATED SCALAR SUBQUERY 1 | SCAN s",
+      "new_plan": "SCAN p USING COVERING INDEX sqlite_autoindex_plan_entity_1 | CORRELATED SCALAR SUBQUERY 1 | SEARCH s USING INDEX sqlite_autoindex_stage_1 (item_key=?)",
+      "old_has_scan_s": true,
+      "new_has_search": true,
+      "counts_match": true
+    }
+  ],
+  "semantic_ok": true,
+  "scale_ok": true
+}
