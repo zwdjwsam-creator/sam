@@ -1,0 +1,147 @@
+{
+  "task_id": "BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005",
+  "parent": "BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950",
+  "python": "3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)]",
+  "code_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005\\code_v4",
+  "tests": {
+    "gate_self_test_all": {
+      "PASS": true,
+      "items": {
+        "PATCH_FULL_HISTORY_GATE_TEST": true,
+        "TWO_DATES_NOT_FULL_HISTORY": true,
+        "UNSUPPORTED_PRODUCT_STOP": true,
+        "CALENDAR_FAIL_NOT_DAILY_HISTORY": true
+      },
+      "detail": {
+        "PATCH_FULL_HISTORY_GATE_TEST": {
+          "PASS": true,
+          "sparse_mode": "DAILY_HISTORY",
+          "thin_mode": "INCREMENTAL_PATCH",
+          "rule": "sparse multi-year sample must not be FULL_HISTORY; single day = INCREMENTAL_PATCH"
+        },
+        "TWO_DATES_NOT_FULL_HISTORY": {
+          "PASS": true,
+          "mode": "DAILY_HISTORY"
+        },
+        "UNSUPPORTED_PRODUCT_STOP": {
+          "PASS": true
+        },
+        "CALENDAR_FAIL_NOT_DAILY_HISTORY": {
+          "PASS": true,
+          "mode": "UNKNOWN_STOP",
+          "error": "CALENDAR_UNVERIFIABLE:OSError:calendar unavailable"
+        }
+      }
+    },
+    "gate_date_loss_still_rejects": {
+      "PASS": true,
+      "lost_count": 1
+    },
+    "gate_set_ok_full_unproven_not_publishable": {
+      "PASS": true,
+      "SET_RETENTION_OK": true,
+      "CACHE_RELEASE_PUBLISHABLE": false,
+      "FULL_HISTORY_UNPROVEN": [
+        "STOCK_DAILY_PIT_R1"
+      ],
+      "GATE_STATUS": "REJECT_FULL_HISTORY_UNPROVEN"
+    },
+    "extract_bad_partition_unverifiable": {
+      "PASS": true,
+      "status": "UNVERIFIABLE"
+    },
+    "two_days_self_window_not_full_history": {
+      "PASS": true,
+      "mode": "DAILY_HISTORY"
+    },
+    "calendar_fail_no_window_not_ready": {
+      "PASS": true,
+      "coverage_ready": false,
+      "historical_ready": false,
+      "coverage_mode": "UNKNOWN_STOP",
+      "coverage_error": "CALENDAR_UNVERIFIABLE:OSError:calendar unavailable"
+    },
+    "no_window_daily_history_not_ready": {
+      "PASS": true,
+      "coverage_ready": false,
+      "historical_ready": false,
+      "coverage_mode": "DAILY_HISTORY",
+      "full_history_status": "UNPROVEN",
+      "coverage_scope": "FULL_HISTORY_UNPROVEN"
+    },
+    "one_endpoint_rejected": {
+      "PASS": true,
+      "coverage_ready": false,
+      "error": "BOUNDED_WINDOW_REQUIRES_BOTH_ENDPOINTS"
+    },
+    "bounded_window_ready_with_scope": {
+      "PASS": true,
+      "coverage_ready": true,
+      "coverage_scope": "BOUNDED_WINDOW_VERIFIED",
+      "coverage_scope_note": "仅该窗已验证；非全历史/非证券全量/非因果回测",
+      "historical_ready": false
+    },
+    "calendar_fail_with_window_not_ready": {
+      "PASS": true,
+      "coverage_ready": false,
+      "coverage_error": "calendar unavailable",
+      "coverage_mode": "UNKNOWN_STOP"
+    },
+    "resolver_unverifiable_not_ready": {
+      "PASS": true,
+      "coverage_ready": false,
+      "coverage_mode": "UNKNOWN_STOP"
+    },
+    "resolver_unsupported_no_window_not_ready": {
+      "PASS": true,
+      "coverage_ready": false,
+      "coverage_mode": "UNKNOWN_STOP"
+    },
+    "resolver_window_0901_0910_not_complete": {
+      "PASS": true,
+      "coverage_ready": false,
+      "coverage_mode": "DAILY_HISTORY",
+      "missing": [
+        "2026-09-01"
+      ],
+      "extract_status": "OK",
+      "error": null
+    },
+    "resolver_window_0902_0910_ready": {
+      "PASS": true,
+      "coverage_ready": true,
+      "coverage_mode": "DAILY_HISTORY",
+      "coverage_scope": "BOUNDED_WINDOW_VERIFIED",
+      "historical_ready": false,
+      "missing": [],
+      "extract_status": "OK",
+      "error": null
+    },
+    "authority_fixture_can_prove_full_history": {
+      "PASS": true,
+      "mode": "FULL_HISTORY",
+      "status": "PROVEN"
+    }
+  },
+  "status": "CANDIDATE_V4_BOUNDED_QUERY_READY_FOR_REVIEW",
+  "loaded": {
+    "common_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005\\code_v4\\blackbox_data_coverage_common_r1.py",
+    "gate_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005\\code_v4\\blackbox_cache_coverage_non_regression_gate_r1.py",
+    "resolver_file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005\\code_v4\\blackbox_data_access_resolver_r1.py",
+    "common_sha256": "0c018fb5f4cd31fc6fc05d783bf66f7bc54503e5464825259c462682fb980769",
+    "gate_sha256": "98faa2945ff9b056936ac87b5e39be87a1adf618120805c2f96e269169798fd3",
+    "resolver_sha256": "5d232abbded4043426a51b57b45afa3d799152c368f7b235a4fff2d9cb26c8d6",
+    "in_code_v4": true
+  },
+  "failed": [],
+  "all_pass": true,
+  "review_points": {
+    "A_no_self_proof_full_history": true,
+    "B_full_unproven_explicit": true,
+    "C_no_window_needs_range_proof": true,
+    "D_bounded_window_ok": true,
+    "E_calendar_errors_propagate": true,
+    "F_gate_set_vs_publishable": true,
+    "self_test": true
+  }
+}
