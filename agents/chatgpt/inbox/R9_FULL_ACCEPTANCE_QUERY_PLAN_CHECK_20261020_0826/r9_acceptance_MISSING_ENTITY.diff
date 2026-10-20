@@ -1,0 +1,15 @@
+--- running/r9_acceptance.py
++++ code_opt/r9_acceptance.py
+@@ -326,7 +326,11 @@
+             """
+             SELECT COUNT(*) FROM plan_entity p
+             WHERE NOT EXISTS (
+-                SELECT 1 FROM st.stage s WHERE s.kind='entity' AND s.phase='DONE' AND s.parent_key=p.entity_key
++                SELECT 1 FROM st.stage s
++                WHERE s.item_key = 'entity:' || p.entity_key
++                  AND s.kind='entity'
++                  AND s.phase='DONE'
++                  AND s.parent_key=p.entity_key
+             )
+             """
+         ).fetchone()[0]:
