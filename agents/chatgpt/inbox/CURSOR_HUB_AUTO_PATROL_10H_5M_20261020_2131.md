@@ -1,0 +1,11 @@
+﻿# CURSOR_HUB_AUTO_PATROL_10H_5M
+status: ARMED_10H_5M_FORCE_COMPLETE
+host: ZHANGWEI
+armed_at: 2026-10-20T21:31:05.901927+08:00
+deadline: 2026-10-21T07:31:05.901927+08:00
+interval_sec: 300
+force_complete: true
+notify_gpt_after_task: true
+wait_gpt_ack: true
+last_done: BLACKBOX_BOUNDED_QUERY_ENTRY_INSTALL_20261020_2110
+mode_note: 用户已代与GPT沟通；Cursor待命接最新outbox；完成后强制回报GPT并等查收反馈；循环至截止。
