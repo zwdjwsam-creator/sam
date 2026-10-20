@@ -1,0 +1,32 @@
+{
+  "ledger_asof": "2026-08-11",
+  "accessible_in_ledger": 71,
+  "download_status_counts": {
+    "DOWNLOADED": 70,
+    "NOT_DOWNLOADED_MISCLASSIFIED_NAV_POINTER": 1
+  },
+  "summary_field_downloaded_claimed": 71,
+  "summary_vs_items_conflict": true,
+  "FUND_PORTFOLIO_STOCK": {
+    "dataset_id": "finance.FUND_PORTFOLIO_STOCK",
+    "source_kind": "finance_table",
+    "source_ref": "finance.FUND_PORTFOLIO_STOCK",
+    "table_name": "FUND_PORTFOLIO_STOCK",
+    "n_fields": 13,
+    "info_error": null,
+    "query_ok": true,
+    "query_detail": "rows=1",
+    "local_raw_rel": null,
+    "local_raw_rel_previous": null,
+    "SOURCE_API_STATUS": "AVAILABLE",
+    "LOCAL_RAW_STATUS": "ABSENT",
+    "FORMAL_PRODUCT_STATUS": "ABSENT",
+    "OLD_LEDGER_POINTER_STATUS": "MISCLASSIFIED_NAV_SOURCE",
+    "pointer_correction_note": "P4b_fund_expand / open_fund extras are NAV (get_extras/unit_net_value), not FUND_PORTFOLIO_STOCK holdings.",
+    "corrected_by_task": "BLACKBOX_ETF_INDEX_WEIGHT_DATA_LAYER_AND_INCREMENT_GOVERNANCE_R1",
+    "download_status": "NOT_DOWNLOADED_MISCLASSIFIED_NAV_POINTER",
+    "corrected_at_cn": "2026-08-18T10:35:28+0800"
+  },
+  "corrected_statement": "items: DOWNLOADED=70; NOT_DOWNLOADED_MISCLASSIFIED_NAV_POINTER=1; summary.downloaded=71 is STALE/INCORRECT vs item statuses",
+  "permission_excluded_count": 28
+}
