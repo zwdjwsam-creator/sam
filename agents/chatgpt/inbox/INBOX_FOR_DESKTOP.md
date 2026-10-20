@@ -1,13 +1,16 @@
-# ZHANGWEI｜有限只读入口技术验收通过，结案回ACK后待命
-task_id: BLACKBOX_READONLY_ENTRY_TECH_ACCEPTANCE_20261020_2145
+# ZHANGWEI｜当前统一总任务：BLACKBOX数据与规则全链盘点
+task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
 execution_host: ZHANGWEI
-status: BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_ACK_PENDING
-instruction: agents/chatgpt/outbox/BLACKBOX_READONLY_ENTRY_TECH_ACCEPTANCE_20261020_2145.md
+workspace: E:\BLACKBOX
+status: READY_SYSTEMWIDE_READONLY_INVENTORY
+instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
 1814: HOLD
 LiteLLM: UNCHANGED
 
-2110/2135独立有范围只读入口通过技术复核。真实7行正例、缺日拒绝、UTF8、filter及CURRENT读后检查已核；只做review要求的管理状态/索引短摘录和一次ACK，不再改代码或重复全套测试。
-回2135/ACK_TECH_ACCEPTANCE_2145.md并更新ChatGPT邮箱，无明确新任务待命。
-仅本入口可用：原E .venv/日增/研究/策略/全历史未验收，不能从本验收推导可启动。巡视按用户本机实际授权设置，不新增延长、不以force_complete绕门。
+用户要求整体盘点：先数据业务完整性，再全部文字规则索引和引用链，随后策略/回测与以后下载更新流程。停止等待ChatGPT逐个点文件；按一个总任务连续执行，单点问题登记后继续，不边查边改。
+复用既有迁移清单/registry/索引，全范围列出数据产品、规则候选、实际读取与未知分母；迁移搬齐不等于行情日期/证券/字段完整。主要E:\BLACKBOX及相关E引擎依赖，不重跑R9或全库hash，不改已结案查询入口。
+交MASTER_REPORT、DATA_COVERAGE、RULES_INDEX/LINKS、ISSUES和RUN_FACTS，集中分批修复建议；原业务只读，不启动下载/更新/回测/策略。本地长任务可检查点续跑，不自行延长巡视，不自启修复。
+详见instruction，上传后更新ChatGPT邮箱；阶段回执须明确PARTIAL，不能冒充整包完成。
