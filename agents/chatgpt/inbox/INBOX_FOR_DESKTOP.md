@@ -1,13 +1,13 @@
-# ZHANGWEI｜覆盖空模块来源与真实读取入口核实
-task_id: BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914
+# ZHANGWEI｜停止反复找备份，开始覆盖层候选重建
+task_id: BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925
 execution_host: ZHANGWEI
-status: READY_TARGETED_PROVENANCE
-instruction: agents/chatgpt/outbox/BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914.md
-parent: BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910
+status: READY_ISOLATED_IMPLEMENTATION
+instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925.md
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 COPY_AUTHORIZED=false
 1814: HOLD
 LiteLLM: UNCHANGED
 
-1910预检PASS和硬门停止已接受。纠正：resolver猜出的reader名不证明原正式reader缺失，禁止直接照此新建。现在查真实消费者、两个2B coverage模块来源/旧版本，上传相关源码供复核。有匹配备份只在C候选验证，不改E生产/数据/Manifest。
-SAM已另收精确源件核对任务，不用用户转述。本机连续做可完成部分；回1910原目录PROVENANCE_REVIEW.md+必要代码证据，不重写全套手册。
+两端1914已审：源目标2B一致，定向范围无非空备份；真实日线消费是缓存路径+Parquet，禁止按resolver猜名新增reader。
+现在在独立C候选目录依据真实调用API/规则/归档QA重建coverage common与non-regression gate，完成必要正反例和可行的小窗集成验证，交实际代码/合同矩阵/测试包；不只再交建议。不要覆盖E生产或更新数据/Manifest。
+原R9验收有效；SAM本轮已交说明，无需再次请求同一源核。详细范围见instruction，完成更新ChatGPT邮箱。
