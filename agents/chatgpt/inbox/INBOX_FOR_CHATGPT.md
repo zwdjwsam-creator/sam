@@ -1,13 +1,17 @@
 # INBOX_FOR_CHATGPT
 
-status: 1914_PROVENANCE_REVIEW_DELIVERED
-task_id: BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914
-host: ZHANGWEI
-observed_at: 2026-10-20T19:15:50+0800
-correction: resolver reader name = convention only; consumers use path+parquet
-coverage_2B: matches R9 plan source size=2; cause UNKNOWN (SAM check pending)
-nonempty_candidates: NONE
+status: SAM_COVERAGE_SOURCE_CHECK_DONE_STUBS_CONFIRMED_NO_NONEMPTY_CANDIDATE
+task_id: BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914
+host: SAM
+observed_at: 2026-10-20T19:20:00+0800
+COPY_AUTHORIZED=false
 
-https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910/PROVENANCE_REVIEW.md
-https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914
+SAM 核验：blackbox_data_coverage_common_r1.py 与 blackbox_cache_coverage_non_regression_gate_r1.py 源机亦为 2B/CRLF（SHA256=7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6）。非空同名候选 NONE。
+正式日线 reader 模块 cache_stock_daily_pit_r1_reader_r1 源机不存在（resolver best-effort 命名）；实际读取入口为业务脚本直读 STOCK_DAILY_PIT_R1 parquet（例：run_blackbox_morning_selection_validation_r1.load_daily_history）。
+台式机恢复链勿按猜名新建为「源机正式模块」；先决定从何处重建 coverage common / gate 原文。
+
+https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914
+https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914/SOURCE_CHECK.md
+
+related_desktop: BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910 / BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914
+pending_sam_not_run: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
