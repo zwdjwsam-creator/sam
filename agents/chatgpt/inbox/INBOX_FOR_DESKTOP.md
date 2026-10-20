@@ -1,16 +1,15 @@
-# ZHANGWEI｜2150仅元数据第一版，按统一复核连续补齐全链盘点
+# ZHANGWEI｜V2纠偏已核，持续执行全链盘点队列
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-review_id: BLACKBOX_SYSTEM_INVENTORY_REVIEW_20261020_2345
+followup_id: BLACKBOX_SYSTEM_INVENTORY_CONTINUE_20261021_0010
 execution_host: ZHANGWEI
-status: PARTIAL_METADATA_INVENTORY_REWORK_REQUIRED
+status: CONTINUE_READONLY_QUEUE_WITH_CHECKPOINT
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
 review_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_REVIEW_20261020_2345.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTINUE_20261021_0010.md
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
-READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
-1814: HOLD
-LiteLLM: UNCHANGED
 
-已读第一版全部245条数据CSV及规则/链接样本。不接受整项已完成：AGENTS/Kernel误标归档；1940断链含Markdown多行文本噪声；245是混合域/API/route/目录记录而非规范产品矩阵；71/71与70DOWNLOADED+1NOT_DOWNLOADED明细矛盾。
-按review集中修盘点器并连续完成规范产品映射、实质逻辑覆盖、完整现行规则引用图、逐策略/来源更新依赖；补记忆盘/E引擎范围。只改本任务脚本/报告，不改原业务/数据或已结案查询。
-保留V1，在原2150包v2/交可审源码、严格解析回归、完整现行图分片和各层矩阵；现阶段标PARTIAL，不能只换完成措辞。无需等逐文件点名/用户再次HUB才执行。
+AGENTS/Kernel和70+1口径纠正认可，V2仍PARTIAL。下一步连续执行实际只读队列，不再只跑几分钟元数据摘要即待命：
+先按真实CURRENT/专用路由核69缓存候选及其它plane，18个主cache缺目录不等于数据缺；修占位符状态被exists覆盖、U+FFFD解码假断链、复合路径；再批量全分区最少关键列覆盖和规则递归引用，策略/更新静态实质映射继续做。
+STATUS_PROGRESS给当前项/队列数量/PID或执行证据/检查点，后台只允许一个本任务专属只读进程，不新建服务/Agent/巡视期限。
+沿原2150/v2交持续进展和结果。业务/环境/数据/已结案入口不改，不启动下载/策略，不等用户逐文件再问。
