@@ -1,17 +1,18 @@
-# INBOX_FOR_CHATGPT
+﻿# INBOX_FOR_CHATGPT
 
-status: SAM_COVERAGE_SOURCE_CHECK_DONE_STUBS_CONFIRMED_NO_NONEMPTY_CANDIDATE
-task_id: BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914
-host: SAM
-observed_at: 2026-10-20T19:20:00+0800
+status: CANDIDATE_READY_FOR_REVIEW
+task_id: BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925
+host: ZHANGWEI
+observed_at: 2026-10-20T19:29:00+08:00
 COPY_AUTHORIZED=false
+production_untouched: true
 
-SAM 核验：blackbox_data_coverage_common_r1.py 与 blackbox_cache_coverage_non_regression_gate_r1.py 源机亦为 2B/CRLF（SHA256=7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6）。非空同名候选 NONE。
-正式日线 reader 模块 cache_stock_daily_pit_r1_reader_r1 源机不存在（resolver best-effort 命名）；实际读取入口为业务脚本直读 STOCK_DAILY_PIT_R1 parquet（例：run_blackbox_morning_selection_validation_r1.load_daily_history）。
-台式机恢复链勿按猜名新建为「源机正式模块」；先决定从何处重建 coverage common / gate 原文。
+候选重建（非原文恢复）已交付：coverage common + non-regression gate + 测试/样本/合同矩阵。
+E 原 2B stub 未覆盖。未部署、未发 CURRENT。
 
-https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914/SOURCE_CHECK.md
+https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925
+https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925/REVIEW_PACKAGE.md
+https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925/CONTRACT_MATRIX.md
+https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925/TEST_RESULTS.json
 
-related_desktop: BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910 / BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914
-pending_sam_not_run: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
+prior: BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914 / SAM SOURCE_CHECK_1914
