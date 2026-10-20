@@ -1,19 +1,15 @@
-# ZHANGWEI｜用户确认D工作区可对接：将工作资料迁入E:\BLACKBOX并实测
+# ZHANGWEI｜资料迁移已核，补E会话实际启用
 
 task_id: CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020_1728
+followup_id: CURSOR_BLACKBOX_E_WORKSPACE_FINAL_HANDOFF_20261020_1736
 execution_host: ZHANGWEI
-status: READY_PREPARE_COPY_AND_VALIDATE_WORKSPACE_AWAITING_ACK
+status: FILE_HISTORY_ACCEPTED_E_SESSION_VALIDATION_PENDING
 instruction: agents/chatgpt/outbox/CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020_1728.md
-supersedes_current_priority: CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720
+followup_instruction: agents/chatgpt/outbox/CURSOR_BLACKBOX_E_WORKSPACE_FINAL_HANDOFF_20261020_1736.md
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
-R9_COPY_AGAIN_AUTHORIZED=false
-WORKSPACE_FILES_WRITE_AUTHORIZED=true
 
-用户明确：E:\BLACKBOX新开Agent对接失败，回D盘原迁移工作目录就能对接；希望迁移文件夹搬入BLACKBOX，使以后E工作区能查迁移历史和继续数据维护。
-先ACK真实D源/主机/workspace与可用链路，不猜D目录名、不把整个D盘当源。
-授权把项目工具/配置/可读迁移历史先复制核hash到E:\BLACKBOX\_OPS\CURSOR_WORKSPACE，切换后作为维护主目录；D原件暂保留回退，不先删。不跟Junction或业务数据再拷一遍。
-C盘冻结plan/state/旧执行路径原位留存，E建清晰历史索引/报告副本与原出处，不搬动绑定绝对路径的8GB库、不改旧run/digest。
-新目标README/MIGRATION_HISTORY_INDEX整理真实历史和最终review；在保留E根已有AGENTS/规则的基础上加最小索引入口，让新Agent直接查证，不全盘再扫描。
-实际切换为E:\BLACKBOX主根，分别实测历史可检索、HUB收发、官方Browser live列表/快照及GPT页可见性。搬文件不等于原聊天/浏览器状态自动跟随；不篡改state.vscdb/认证库、不全局替换路径。
-1720浏览器工作收敛为D/E工作区实际差异，不重装；LiteLLM只列独立问题，不启动API链。
-一次交齐SOURCE_AND_TARGET/hash清单/最小diff/回退/真实E根各项结果到新1728目录，更新ChatGPT邮箱。用户这次E管理目录写入授权明确，不再以旧R9 E写禁令拦截；已验收业务数据仍不改，不重跑迁移/全量验收。
+已核ACK/REPORT/136复制清单和历史4项。当前Agent实际仍D，Browser/HUB测试不能算新E Agent通过。
+立即按followup补最终路径diff/单根workspace/凭据加载衔接，并用本机受支持官方CLI直接打开E:\BLACKBOX\BLACKBOX.code-workspace新窗口，保留D窗口，不再问能否打开。
+E脚本不能指向未复制secrets后又拿D上下文HUB成功当E可用；复用已有本机认证或明确只读D凭据引用，不上传秘密、不启动LiteLLM/API。
+新E Agent内实际验证历史/HUB/Browser。若现有工具只能开窗口不能启动E新Agent，则完成所有准备后给唯一接续动作：用户在已经打开的E窗口新对话发“HUB”，写入NEW_E_AGENT_HANDOFF.md；不要求用户再找开关/复制目录。
+回原1728目录最终diff/工作区内容/新E实测或精确交接，更新ChatGPT邮箱。只补缺项，不重搬136文件，不改R9业务数据/冻结state。
