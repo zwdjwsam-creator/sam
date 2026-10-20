@@ -40,3 +40,12 @@ evidence_class: FILE+POINTER (本轮未执行增量/回测/下单)
 ## 相关 HUB
 
 https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_RULES_AND_DATAFLOW_HANDOVER_20261020_1834
+
+
+## 1910 正式查询恢复（2026-10-20T19:09:48+0800）
+
+- MUST_READ_PRECHECK(DATA/CACHE)=**PASS**（系统 Python312 跑预检脚本）
+- 正式查询 **BLOCKED**: `脚本/blackbox_data_coverage_common_r1.py` 为空壳(2B)；`cache_stock_daily_pit_r1_reader_r1` 模块不存在
+- 禁止用 pyarrow 直读当正式 PASS；详见 HUB RECOVERY_REPORT
+- SAM 约定: tip 与 BRIEF 分流程；台式机保留 `E:\BLACKBOX_ENGINES`（源机可无）
+- 报告: `C:\LAN_SHARE_REPORT\BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910\RECOVERY_REPORT.md`
