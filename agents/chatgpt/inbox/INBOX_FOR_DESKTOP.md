@@ -1,15 +1,16 @@
-# ZHANGWEI｜V2纠偏已核，持续执行全链盘点队列
+# ZHANGWEI｜继续实质盘点：执行状态与分类纠偏
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_CONTINUE_20261021_0010
+followup_id: BLACKBOX_SYSTEM_INVENTORY_EXECUTION_CORRECTION_20261021_0650
 execution_host: ZHANGWEI
-status: CONTINUE_READONLY_QUEUE_WITH_CHECKPOINT
+status: CONTINUE_READONLY_INVENTORY
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
 review_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_REVIEW_20261020_2345.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTINUE_20261021_0010.md
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTINUE_20261021_0010.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_EXECUTION_CORRECTION_20261021_0650.md
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
 
-AGENTS/Kernel和70+1口径纠正认可，V2仍PARTIAL。下一步连续执行实际只读队列，不再只跑几分钟元数据摘要即待命：
-先按真实CURRENT/专用路由核69缓存候选及其它plane，18个主cache缺目录不等于数据缺；修占位符状态被exists覆盖、U+FFFD解码假断链、复合路径；再批量全分区最少关键列覆盖和规则递归引用，策略/更新静态实质映射继续做。
-STATUS_PROGRESS给当前项/队列数量/PID或执行证据/检查点，后台只允许一个本任务专属只读进程，不新建服务/Agent/巡视期限。
-沿原2150/v2交持续进展和结果。业务/环境/数据/已结案入口不改，不启动下载/策略，不等用户逐文件再问。
+00:21实质状态至06:46心跳未变，先核worker39980真实存活/退出原因，不把巡视当持续扫描。保留checkpoint，单实例继续尚未完成的数据关键列覆盖，不再一轮浅探针后等用户HUB。
+1551确认断链中混有规则ID/公式/疑似丢前导点路径；先修本任务解析器并上传实际源码/回归，不修改原规则。统一发布时间不得冒充逐源更新水位。
+完整执行纠偏与回传要求见最新followup_instruction。现有窗口至10:07:25+08:00，不延长，不新建服务/Agent。只写隔离盘点产物，不动原业务、不采集/不回测。
