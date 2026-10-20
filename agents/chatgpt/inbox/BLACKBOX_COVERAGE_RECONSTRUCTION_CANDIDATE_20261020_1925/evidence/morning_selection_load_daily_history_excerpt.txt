@@ -1,0 +1,81 @@
+1:#!/usr/bin/env python3
+2:# -*- coding: utf-8 -*-
+3:"""Morning Selection validation: Tape Continuity + Cross-Source Bridge + QMT live.
+4:
+5:ORDER_ALLOWED=FALSE. Does not modify HAND / PASS_A / 13 gates.
+6:"""
+7:from __future__ import annotations
+8:
+9:import argparse
+10:import json
+11:import re
+12:import subprocess
+13:import sys
+14:from datetime import datetime
+15:from pathlib import Path
+16:from typing import Any
+17:
+18:import pandas as pd
+19:
+20:sys.stdout.reconfigure(encoding="utf-8")
+21:
+22:ROOT = Path(r"E:\BLACKBOX")
+23:INPUT_PACK = ROOT / "研究系统" / "数据平面" / "CURRENT" / "DAILY_RESEARCH_INPUT_PACK_CURRENT.json"
+24:TAPE_MEM = ROOT / "DAILY_RESEARCH" / "MARKET_TAPE_MEMORY"
+25:
+26:
+27:def now_cn() -> str:
+28:    return datetime.now().astimezone().isoformat()
+29:
+30:
+31:def load_json(p: Path) -> dict | list | None:
+32:    if not p.exists():
+33:        return None
+34:    return json.loads(p.read_text(encoding="utf-8"))
+35:
+36:
+37:def save_json(p: Path, obj: Any) -> None:
+38:    p.parent.mkdir(parents=True, exist_ok=True)
+39:    p.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+40:
+70:                str(ROOT / "脚本" / "blackbox_data_access_resolver_r1.py"),
+71:                "--dataset",
+72:                "STOCK_DAILY",
+73:                "--dump-current",
+74:            ],
+75:            text=True,
+76:            encoding="utf-8",
+77:            errors="replace",
+78:        )
+79:        data = json.loads(out)
+80:        root = data.get("cache_root")
+81:        return Path(root) if root else None
+82:    except Exception:
+83:        return None
+84:
+85:
+86:def load_daily_history(cache_root: Path, jq: str, n: int = 15) -> pd.DataFrame:
+87:    year = datetime.now().year
+88:    p = cache_root / "STOCK_DAILY_PIT_R1" / f"year={year}" / f"part_{year}.parquet"
+89:    if not p.exists():
+90:        return pd.DataFrame()
+91:    df = pd.read_parquet(p, columns=["date", "code", "open", "high", "low", "close", "volume", "money"])
+92:    sub = df[df["code"] == jq].sort_values("date").tail(n + 1).copy()
+93:    if sub.empty:
+94:        return sub
+95:    sub["prev_close"] = sub["close"].shift(1)
+96:    sub["ret"] = (sub["close"] / sub["prev_close"] - 1.0).fillna(0.0)
+97:    sub["vol_med20"] = sub["volume"].rolling(20, min_periods=3).median()
+98:    sub["vol_expansion"] = sub["volume"] / sub["vol_med20"].replace(0, pd.NA)
+99:    return sub.tail(n)
+100:
+101:
+102:def analyze_tape(hist: pd.DataFrame) -> dict[str, Any]:
+103:    if hist.empty or len(hist) < 3:
+104:        return {
+105:            "PRIOR_3D_ANOMALY_COUNT": 0,
+106:            "PRIOR_5D_ANOMALY_COUNT": 0,
+107:            "PRIOR_10D_ANOMALY_COUNT": 0,
+108:            "PRIOR_ABSORPTION_EVENTS": 0,
+109:            "PRIOR_BREAKOUT_EVENTS": 0,
+110:            "PRIOR_GAP_FADE_EVENTS": 0,
