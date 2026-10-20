@@ -1,19 +1,22 @@
-# ZHANGWEI｜今早优先核查：需要10月20日当前状态，禁止盲目重启
+# ZHANGWEI｜今早回执已核：四个故障实体DONE，保持原实例等待最终结果
 
 task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
 followup_id: R9_RESUME_OVERNIGHT_STATUS_AND_EXIT_TRIAGE_20261020_0818
 execution_host: ZHANGWEI
-status: PRIORITY_CURRENT_STATUS_AND_EXIT_TRIAGE_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
-followup_instruction: agents/chatgpt/outbox/R9_RESUME_OVERNIGHT_STATUS_AND_EXIT_TRIAGE_20261020_0818.md
-last_observed_at: 2026-10-19T21:21:42+08:00
-current_alive: UNKNOWN
-current_phase: UNKNOWN
+status: MORNING_EVIDENCE_REVIEWED_RUNNING_PAST_LONGPATH_BLOCKER
+last_observed_at: 2026-10-20T08:20:14+08:00
+pid: 17904
+start_time: 2026-10-19T20:47:10+08:00
+current_phase: RUNNING_PHASE_UNCONFIRMED
+first_new_entity_copied: true
 START_AGAIN_AUTHORIZED=false
 full_plan_acceptance=false
 
-用户10月20日08:18查状态，HUB整晚无后续回执。现在先ACK，再立即实际核同一17904进程创建时间/argv、今早CPU/I/O/日志、4个固定主键stage及最后少量state写记录。不能引用昨晚alive当今早事实，不能只ACK停下。
-若已退出，读现有stdout/stderr/父级退出记录，回真实exit_code/错误/独立验收；没有记录写UNKNOWN，不补造成功。
-运行中只轻量只读，短事务，不全表COUNT、不改代码/合同/state、不停止/重启/删temp，不新增复制进程。进程已退出且无人写入时可一次核state分类计数，保留所有DONE。
-现有实例如果还在，继续原2037授权范围运行；一次启动额度已用完。本followup不授权任何第二次启动或修改迁移方案。
-完整交付细节见followup，今早快照/退出结果交原2037目录，更新INBOX_FOR_CHATGPT。SAM保持原只读共享。
+今早0818核查任务已完成，不再等ACK，不重复核同一四文件/全源扫描。
+ChatGPT已读e82adf今早快照和1891b6 FIRST_NEW_ENTITY，核四条stage DONE的目标volume2694002743、大小1166/9095/558/816及SHA与原来源实测一致。17904为原唯一实例，四个长路径阻塞已被跨过。
+新reparse DONE此前旧state没有；按已审核r9_runner的顺序（entity/alias循环结束→reparse循环→full_acceptance），可以据此判断程序已推进到reparse段。不能由最后8条或06:06 state mtime断定此刻具体阶段/所有reparse已完成/验收已通过。今早快照phase_note写entity而实际recent rows是reparse，以实际行和主报告为准，不为措辞更正干预运行。
+保持同一进程，不停、不重启、不改代码/合同/并发、不删temp，不增开迁移或另起full_acceptance扫描。原一次启动额度已用。
+接下来交付仍是原2037的正式退出/最终JSON/独立FULL验收结果；不得把当前first_new_entity或进程I/O当完成。无需为此再领取一个开发任务。
+退出时保存stdout/stderr/真实exit_code、FULL验收明细和计数；异常则按实际错误回报并保留state/目标，不自动第二次启动。正常完成必须full_plan_acceptance=true且独立验收通过再称成功。
+SAM只保持R9LP_RO可用，当前不清理共享或来源。
+原授权与指令：agents/chatgpt/outbox/R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037.md
