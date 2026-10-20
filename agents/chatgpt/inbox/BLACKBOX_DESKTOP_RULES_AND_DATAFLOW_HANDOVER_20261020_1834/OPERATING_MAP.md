@@ -71,3 +71,13 @@ AGENTS → Cache-First → `CURRENT_CACHE_RELEASE.json` (asof 2026-09-24) → `�
 | cache_stock_daily_pit_r1_reader_r1 | MISSING | ModuleNotFoundError |
 | resolver READY | 路径 READY；coverage_ready=false | UNKNOWN_STOP |
 | E:\BLACKBOX_ENGINES | 存在于台式机 | R9 目标根；源机 SAM 无 |
+
+
+## 1914 溯源
+
+| 项 | 结论 |
+|---|---|
+| named reader | convention / display only |
+| real STOCK_DAILY read | path + pd.read_parquet |
+| coverage 2B | R9 source size=2 also; cause UNKNOWN |
+| nonempty restore candidate | NONE on ZHANGWEI search scope |
