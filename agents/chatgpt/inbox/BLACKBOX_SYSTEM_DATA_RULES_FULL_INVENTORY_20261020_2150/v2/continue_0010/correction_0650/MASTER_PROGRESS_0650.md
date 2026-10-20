@@ -1,8 +1,8 @@
 # CORRECTION_0650_PROGRESS
 
 status: **RUNNING_OR_CHECKPOINT**
-worker_pid: 40084
-elapsed_sec: 0.8
+worker_pid: 36544
+elapsed_sec: 784.3
 pid39980_exit: NATURAL_END_AFTER_SINGLE_BATCH_BUDGET
 parser_v4_pass: True
 broken_confirmed_v3_preserved: 1551
