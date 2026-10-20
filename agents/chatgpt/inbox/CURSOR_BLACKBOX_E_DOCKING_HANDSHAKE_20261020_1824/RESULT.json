@@ -1,18 +1,32 @@
-﻿{
+{
   "task_id": "CURSOR_BLACKBOX_E_DOCKING_HANDSHAKE_20261020_1824",
-  "observed_at": "2026-10-20T18:26:26+0800",
+  "observed_at": "2026-10-20T18:27:21+0800",
   "host": "ZHANGWEI",
-  "workspace": "E:\BLACKBOX",
-  "hub_write": "PENDING",
+  "workspace": "E:\\BLACKBOX",
+  "hub_write": "OK",
   "hub_readback": "PENDING",
-  "browser_live": "PENDING",
+  "browser_live": false,
+  "browser_probe": "Server not found: cursor-ide-browser (MCP provider did not re-register within 30000ms)",
   "target_conversation_matched": null,
   "composer_observed": null,
   "send_attempt_count": 0,
-  "send_outcome": "PENDING",
+  "send_outcome": "BROWSER_UNAVAILABLE_PATROL_ARMED",
   "gpt_ack": "PENDING",
   "1814_hold": true,
   "litellm_unchanged": true,
-  "error": null,
-  "patrol": {"interval_min": 5, "duration_min": 60, "active": false}
+  "error": "BROWSER_MCP_NOT_ATTACHED",
+  "patrol": {
+    "interval_min": 5,
+    "duration_min": 60,
+    "active": true,
+    "armed_at": "2026-10-20T18:27:21+0800",
+    "authority": "USER_HUB_MESSAGE_OVERRIDE",
+    "probes": [
+      {
+        "at": "2026-10-20T18:27:21+0800",
+        "ok": false,
+        "error": "Server not found"
+      }
+    ]
+  }
 }
