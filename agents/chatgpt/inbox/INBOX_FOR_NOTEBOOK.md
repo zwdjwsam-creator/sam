@@ -1,14 +1,16 @@
-# SAM｜FULL迁移已验收，仅移除专用临时共享R9LP_RO
-
-task_id: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
+# SAM｜当前业务交接：BLACKBOX原运行约定
+task_id: BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900
 execution_host: SAM
-status: READY_LIMITED_SHARE_CLEANUP_AWAITING_ACK
-instruction: agents/chatgpt/outbox/R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625.md
-technical_acceptance: agents/chatgpt/outbox/R9_FULL_MIGRATION_TECH_ACCEPTANCE_20261020_1625.md
+status: READY_READONLY_HANDOVER_AWAITING_PICKUP
+instruction: agents/chatgpt/outbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900.md
+R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 COPY_AUTHORIZED=false
-FULL_MIGRATION=false
 
-台式机FULL数据/内容/身份/链接独立验收已通过，full_plan_acceptance=true。1906临时share现按原约定收尾，本条替代之前“必须保持R9LP_RO”的阶段要求。
-只核本task创建的R9LP_RO Path/卷2387166462/anchor file_id1688849860437540/Temporary和Read配置匹配后移除这一share；已消失报ALREADY_ABSENT，不重建。
-不删任何目录或文件，不动E_DRIVE/D_DRIVE/BLACKBOX/IPC$及其他共享/会话，不改NTFS ACL/账号/密码/网络策略。未知占用或身份配置不符保持现状回报，不强制断开他人会话。
-回agents/chatgpt/inbox/R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020/SHARE_CLEANUP_REPORT.md；缺管理员通道据实报告，不绕过。收尾不影响已通过的迁移技术结论。
+请源机AI按instruction只读提供原规则/调度/环境依据、数据与研究日期差异、引擎依赖和特殊目录来源。台式机已完成本地文件第一轮，不需全量再搬，不改源数据，不启动更新/策略，不输出密钥。
+交付agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900/NOTEBOOK_HANDOVER.md，更新ChatGPT邮箱。必须核host=SAM，未上线仅待领取，不能由台式机冒充。
+
+## 保留待回执的独立收尾（本次只读交接不执行、不取消）
+pending_task: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
+pending_instruction: agents/chatgpt/outbox/R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625.md
+pending_status: READY_LIMITED_SHARE_CLEANUP_AWAITING_ACK
+原授权仅匹配专用R9LP_RO后移除共享，不删文件、不动其他共享/会话/ACL。该收尾尚未见报告，不得在本次交接中冒充已完成；原任务和验收记录保留。
