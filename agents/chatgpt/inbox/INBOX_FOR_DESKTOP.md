@@ -1,15 +1,14 @@
-# ZHANGWEI｜V3短窗认可，修全历史自证和日历失败后交有限查询能力
-task_id: BLACKBOX_COVERAGE_RECONSTRUCTION_CANDIDATE_20261020_1925
-review_id: BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005
+# ZHANGWEI｜V4有限逻辑已通过，交付独立只读查询入口
+task_id: BLACKBOX_BOUNDED_QUERY_ENTRY_INSTALL_20261020_2110
 execution_host: ZHANGWEI
-status: CHANGES_REQUIRED_FINAL_SCOPE_LIMIT
-review_instruction: agents/chatgpt/outbox/BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005.md
+status: READY_INSTALL_OPS_READONLY_ENTRY
+instruction: agents/chatgpt/outbox/BLACKBOX_BOUNDED_QUERY_ENTRY_INSTALL_20261020_2110.md
+technical_review: V4_BOUNDED_QUERY_LOGIC_ACCEPTED
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 1814: HOLD
 LiteLLM: UNCHANGED
 
-V3 UNKNOWN误放行与真实短窗正反例认可。仍复现两天自身区间被标FULL_HISTORY（自带self_test失败却未执行），日历异常被吞成DAILY_HISTORY后无窗仍放行。
-按review最小修：FULL需独立应有范围证据，无则明确未证实；先完成有范围短窗能力，无窗/单端点/日历异常拒绝，保留全部旧反例。可交有限查询能力，不要求凑全历史成功。
-交C候选v4实际代码/合并测试/能力范围，生产仍不改。独立复现已放1950包review/ROOT_REPRO_V3_1958.py。
-已查收1957用户授权巡视；不延长/新增服务，不重复已执行任务。
+V4源码与12项独立受控检查已审通过，仅有范围只读产品日期查询逻辑。下一步按instruction在_OPS/BLACKBOX_HANDOFF/READONLY_QUERY安装已审SHA独立模块和查询入口，固定实际Python路径（注意V4测试3.10.20与之前3.12.10不同），做安装入口的本机数据正反例，连入既有管理文档。
+本条授权限_OPS管理小文件安装，不覆盖原脚本/venv/数据/Manifest，不启动R9/更新/研究/策略。全历史继续UNPROVEN。无需再问能否安装这项可逆入口。
+回2110包INSTALL_REPORT/INSTALLED_FACTS/入口源码与实测输出；按已授权巡视领取，勿重复旧任务。
