@@ -1,21 +1,19 @@
-# ZHANGWEI｜修复已审：确认复制齐全后只替换验收，不重抄
+# ZHANGWEI｜FULL迁移最终技术验收通过，复制与验收任务结案
 
 task_id: R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830
-parent_task_id: R9_FULL_RESUME_DEEP_SHARE_AUTH_20261019_2037
+status: FULL_MIGRATION_TECHNICALLY_ACCEPTED
 execution_host: ZHANGWEI
-status: AUTHORIZED_CONDITIONAL_COPY_COMPLETE_THEN_READONLY_VERIFY
-instruction: agents/chatgpt/outbox/R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830.md
-approved_contract: agents/chatgpt/outbox/R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830_CONTRACT.json
+review: agents/chatgpt/outbox/R9_FULL_MIGRATION_TECH_ACCEPTANCE_20261020_1625.md
+full_plan_acceptance=true
 COPY_AUTHORIZED=false
 FULL_COPY_AUTHORIZED=false
-START_COPY_AGAIN_AUTHORIZED=false
-STOP_17904_AUTHORIZED=ONLY_AFTER_INSTRUCTION_PRECONDITIONS
-full_plan_acceptance=false
+START_AGAIN_AUTHORIZED=false
 
-SCAN风险已确认，ChatGPT独立审了原字节diff、六语义测试与规模复现；只允许这一条已审SQL优化。优化acceptance SHA256=0d1f4026d11452a4ad398ed53f5cd83a6d53cc484d5486408995444fb4b0ed6f，17模块新verifier digest=9e8c605df4a9cace1d048ffbade85f1b4684571983f88e2c43474058239ecbf0。
-先在新verifier_code准备固定17模块、相关验收回归和只读合同，原运行树不改。
-再按instruction一次性只读核全部entity/alias/dir/reparse记录与冻结计划齐全、无INTENT/缺项、state绑定/文件稳定。只有全部满足才能确认剩下是验收，才允许精确结束旧17904并等其退出；不满足立即回报，不能停止仍可能复制的实例。
-如旧进程已经成功退出，先保存最终结果，不盲目再验收。
-条件通过后连续调用现有verify-existing一次，不用execute/production_run。历史state.code_digest保持27af，verifier9e8单列，禁止重绑/清空state/重新复制/删任何目标temp。
-旧verify-existing包装器的bench_verified/full_plan_acceptance硬编码字段有历史局限：原始输出保留，最终FULL结论须按instruction全部实测验收项、固定数和零写入综合判定，不篡改stdout或仅凭exit0认成功。
-回新0830目录PREPARED/COPY_COMPLETENESS/OLD_PROCESS_STOP/STARTED/最终原始结果；执行事实更新ChatGPT邮箱。条件式处置已授权，不再等用户发继续，但不能跳过前置检查。
+ChatGPT已读FINAL_FULL_ACCEPTANCE及原始stdout，程序化逐字段核对所有结果与固定FULL合同一致：
+1223767实体=checked=hash_calls；content365004696055；file_paths8715072；dirs233668；links4824；
+nested full_acceptance=true，reasons=[]，missing=extra=0，write_attempts=0。
+历史copy27af与verifier9e8绑定匹配，原state历史绑定保留。原包装器false硬编码原文保留，综合FULL结论已按事先批准规则独立判true。
+不再重复execute/verify-existing/hash或新增写任务，不修改历史state/code/候选，不清理任何源/目标业务文件或temp/证据。
+本机目前无需新开发任务或额外扫描。当前最终结果已接受；原STATUS/ChatGPT邮箱若仍写运行只是过期索引，可更新引用本review，不触碰原始stdout。
+SAM另领仅移除R9LP_RO临时share的收尾，不涉及目标或源文件删除。
+实际应用查询/配置使用验收另属后续任务，不能把数据完整性验收冒充已完成全部软件配置。
