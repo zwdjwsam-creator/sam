@@ -1,16 +1,18 @@
-# ZHANGWEI｜继续实质盘点：执行状态与分类纠偏
+# ZHANGWEI｜0650已查收，继续全分片及规则证据核查
+confirmation: CONFIRMED_VIEWED_0650_DOCK
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_EXECUTION_CORRECTION_20261021_0650
+followup_id: BLACKBOX_SYSTEM_INVENTORY_REVIEW_AND_ADVANCE_20261021_0712
 execution_host: ZHANGWEI
 status: CONTINUE_READONLY_INVENTORY
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-review_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_REVIEW_20261020_2345.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTINUE_20261021_0010.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_EXECUTION_CORRECTION_20261021_0650.md
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_EXECUTION_CORRECTION_20261021_0650.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_REVIEW_AND_ADVANCE_20261021_0712.md
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
+current_patrol_deadline: 2026-10-21T17:09:00+08:00
 
-00:21实质状态至06:46心跳未变，先核worker39980真实存活/退出原因，不把巡视当持续扫描。保留checkpoint，单实例继续尚未完成的数据关键列覆盖，不再一轮浅探针后等用户HUB。
-1551确认断链中混有规则ID/公式/疑似丢前导点路径；先修本任务解析器并上传实际源码/回归，不修改原规则。统一发布时间不得冒充逐源更新水位。
-完整执行纠偏与回传要求见最新followup_instruction。现有窗口至10:07:25+08:00，不延长，不新建服务/Agent。只写隔离盘点产物，不动原业务、不采集/不回测。
+0707/0709对接已阅读，不必再等确认口令。保留55项新增探针和发布时间纠偏，整体仍PARTIAL；不把847汇总直接认作真实断链。
+保留有效运行的36544，先核真实运行/阶段，不停活跃worker或启动重复实例。从checkpoint继续尚未完成分片；补75对象阶段对账、产品主键合同、必要键列全分片覆盖和实际耗时；上传本次真实worker/解析器源码、回归与逐边结果。
+FUND_NAV的80文件仅1样本不能代表全范围；龙虎榜/股东/财务的高候选键碰撞需先核真实业务主键；asof_target不等于数据水位。
+继续同一结果目录和现有一套巡视，截止固定，不随ACK顺延；不动业务、不下载/回测、不重开R9/已结案入口。详见最新followup_instruction。
