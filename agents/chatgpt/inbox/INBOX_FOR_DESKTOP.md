@@ -1,16 +1,16 @@
-# ZHANGWEI｜当前统一总任务：BLACKBOX数据与规则全链盘点
+# ZHANGWEI｜2150仅元数据第一版，按统一复核连续补齐全链盘点
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
+review_id: BLACKBOX_SYSTEM_INVENTORY_REVIEW_20261020_2345
 execution_host: ZHANGWEI
-workspace: E:\BLACKBOX
-status: READY_SYSTEMWIDE_READONLY_INVENTORY
+status: PARTIAL_METADATA_INVENTORY_REWORK_REQUIRED
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
+review_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_REVIEW_20261020_2345.md
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
 1814: HOLD
 LiteLLM: UNCHANGED
 
-用户要求整体盘点：先数据业务完整性，再全部文字规则索引和引用链，随后策略/回测与以后下载更新流程。停止等待ChatGPT逐个点文件；按一个总任务连续执行，单点问题登记后继续，不边查边改。
-复用既有迁移清单/registry/索引，全范围列出数据产品、规则候选、实际读取与未知分母；迁移搬齐不等于行情日期/证券/字段完整。主要E:\BLACKBOX及相关E引擎依赖，不重跑R9或全库hash，不改已结案查询入口。
-交MASTER_REPORT、DATA_COVERAGE、RULES_INDEX/LINKS、ISSUES和RUN_FACTS，集中分批修复建议；原业务只读，不启动下载/更新/回测/策略。本地长任务可检查点续跑，不自行延长巡视，不自启修复。
-详见instruction，上传后更新ChatGPT邮箱；阶段回执须明确PARTIAL，不能冒充整包完成。
+已读第一版全部245条数据CSV及规则/链接样本。不接受整项已完成：AGENTS/Kernel误标归档；1940断链含Markdown多行文本噪声；245是混合域/API/route/目录记录而非规范产品矩阵；71/71与70DOWNLOADED+1NOT_DOWNLOADED明细矛盾。
+按review集中修盘点器并连续完成规范产品映射、实质逻辑覆盖、完整现行规则引用图、逐策略/来源更新依赖；补记忆盘/E引擎范围。只改本任务脚本/报告，不改原业务/数据或已结案查询。
+保留V1，在原2150包v2/交可审源码、严格解析回归、完整现行图分片和各层矩阵；现阶段标PARTIAL，不能只换完成措辞。无需等逐文件点名/用户再次HUB才执行。
