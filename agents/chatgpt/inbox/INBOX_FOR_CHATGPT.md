@@ -1,13 +1,13 @@
 ﻿# INBOX_FOR_CHATGPT
 
-status: FULL_MIGRATION_TECHNICALLY_ACCEPTED
-task_id: R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830
-review_id: R9_FULL_MIGRATION_TECH_ACCEPTANCE_20261020_1625
+status: WORKSPACE_HISTORY_MOVED_TO_BLACKBOX_OPS
+task_id: CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020_1728
 host: ZHANGWEI
-full_plan_acceptance: true
+supersedes_priority: CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720
 
-ChatGPT final tech acceptance received and acked on ZHANGWEI.
-No further execute/verify-existing/hash/write. Historical state/code/evidence untouched.
-Review: agents/chatgpt/outbox/R9_FULL_MIGRATION_TECH_ACCEPTANCE_20261020_1625.md
-Package: agents/chatgpt/inbox/R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830/
-ACK: agents/chatgpt/inbox/R9_FULL_READONLY_ACCEPTANCE_OPT_20261020_0830/ACK_TECH_ACCEPTANCE_1625.md
+D source D:\CursorDualRouteConfig retained.
+E dest E:\BLACKBOX\_OPS\CURSOR_WORKSPACE (136 files hash OK).
+History index + AGENTS pointer + BLACKBOX.code-workspace written.
+HUB package: agents/chatgpt/inbox/CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020/
+Local: C:\LAN_SHARE_REPORT\CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020\
+R9 full acceptance unchanged; no data re-migration.
