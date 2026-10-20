@@ -1,16 +1,19 @@
-# ZHANGWEI｜修当前Cursor原生Browser连接，LiteLLM分开诊断
+# ZHANGWEI｜用户确认D工作区可对接：将工作资料迁入E:\BLACKBOX并实测
 
-task_id: CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720
+task_id: CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020_1728
 execution_host: ZHANGWEI
-status: READY_DIAGNOSE_AND_MINIMAL_REPAIR_AWAITING_ACK
-instruction: agents/chatgpt/outbox/CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720.md
+status: READY_PREPARE_COPY_AND_VALIDATE_WORKSPACE_AWAITING_ACK
+instruction: agents/chatgpt/outbox/CURSOR_BLACKBOX_WORKSPACE_HISTORY_MOVE_20261020_1728.md
+supersedes_current_priority: CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020_1720
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
-COPY_AUTHORIZED=false
+R9_COPY_AGAIN_AUTHORIZED=false
+WORKSPACE_FILES_WRITE_AUTHORIZED=true
 
-用户转述cursor-ide-browser Server not found及START_DOUBLE_AI_TASK.ps1缺ThinkPad litellm.exe路径。先ACK真实host/version/workspace/GUI或CLI会话证据，转述未含host不能凭猜测认定报错来自本机。
-官方Browser是原生功能，10/12已有“磁盘schema有但live MCP缺失”的旧SAM诊断。不要重复把tools目录存在当服务接通；查本机实际live工具、一次真实list-tabs调用和相关连接/扩展host日志。
-在本版本受支持的官方机制内直接做最小可逆修复；不安装外部浏览器/Playwright/CDP、不清登录状态、不重装。真需一次Reload/新GUI会话先保存接续材料，不能反复重启。
-若当前Agent根本做不到那个UI动作，交齐诊断和本机精确一次操作说明，不能先让用户自己找设置。不得猜配置键/伪造同名MCP。
-验收分项：live列表成功→无业务页可撤销输入/点击及快照→已存在GPT页可见性。只查看，不在GPT发消息或提交HUB触发。
-LiteLLM只读核硬编码路径/本机安装，不启动API/服务、不消费计费或改密钥路由；它不是Browser的前置依赖。
-交CURSOR_NATIVE_BROWSER_SESSION_REPAIR_20261020/REPORT.md及原始脱敏证据，更新ChatGPT邮箱。R9数据与所有验收证据不动，原迁移已结案。
+用户明确：E:\BLACKBOX新开Agent对接失败，回D盘原迁移工作目录就能对接；希望迁移文件夹搬入BLACKBOX，使以后E工作区能查迁移历史和继续数据维护。
+先ACK真实D源/主机/workspace与可用链路，不猜D目录名、不把整个D盘当源。
+授权把项目工具/配置/可读迁移历史先复制核hash到E:\BLACKBOX\_OPS\CURSOR_WORKSPACE，切换后作为维护主目录；D原件暂保留回退，不先删。不跟Junction或业务数据再拷一遍。
+C盘冻结plan/state/旧执行路径原位留存，E建清晰历史索引/报告副本与原出处，不搬动绑定绝对路径的8GB库、不改旧run/digest。
+新目标README/MIGRATION_HISTORY_INDEX整理真实历史和最终review；在保留E根已有AGENTS/规则的基础上加最小索引入口，让新Agent直接查证，不全盘再扫描。
+实际切换为E:\BLACKBOX主根，分别实测历史可检索、HUB收发、官方Browser live列表/快照及GPT页可见性。搬文件不等于原聊天/浏览器状态自动跟随；不篡改state.vscdb/认证库、不全局替换路径。
+1720浏览器工作收敛为D/E工作区实际差异，不重装；LiteLLM只列独立问题，不启动API链。
+一次交齐SOURCE_AND_TARGET/hash清单/最小diff/回退/真实E根各项结果到新1728目录，更新ChatGPT邮箱。用户这次E管理目录写入授权明确，不再以旧R9 E写禁令拦截；已验收业务数据仍不改，不重跑迁移/全量验收。
