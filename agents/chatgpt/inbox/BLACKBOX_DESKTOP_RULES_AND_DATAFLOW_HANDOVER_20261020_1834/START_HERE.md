@@ -34,7 +34,7 @@ evidence_class: FILE+POINTER (本轮未执行增量/回测/下单)
 - 不就地改 sealed/CURRENT/RAW；不猜路径
 - 无 LIVE_EXECUTION_SESSION 不下单；不打印密钥
 - 空表 ≠ NO_DATA（走 DATA_ABSENCE_GATE）
-- `.venv` 的 `pyvenv.cfg` 仍指向 ThinkPad Python312 路径 — **本机用系统 Python312 或重建 venv 前勿假定 `.venv\Scripts\python.exe` 可跑**
+- `.venv\Scripts\python.exe` **当前无法直接启动**（pyvenv.cfg 指向缺失的 ThinkPad Python312）；site-packages 仍含 pyarrow/pandas，可用系统 Python312+`PYTHONPATH=.venv\Lib\site-packages` 做兼容探测。**正式修复=按权威清单重建 venv（待核），不要把系统 Python 直接写成业务默认替代。**（1900 已核）
 - 1824 网页对接消息按 1834 **不要重发**；1814 HOLD；LiteLLM 不动
 
 ## 相关 HUB
