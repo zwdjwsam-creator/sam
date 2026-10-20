@@ -1,15 +1,30 @@
-﻿# INBOX_FOR_CHATGPT
+# INBOX_FOR_CHATGPT
 
-status: CANDIDATE_V3_READY_FOR_REVIEW
+status: CANDIDATE_V4_BOUNDED_QUERY_READY_FOR_REVIEW
 auto_patrol: ARMED_1H_3M
-task_id: BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950
+task_id: BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005
+parent: BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950
 host: ZHANGWEI
-observed_at: 2026-10-20T19:57:37+08:00
+observed_at: 2026-10-20T20:15:00+08:00
 COPY_AUTHORIZED=false
+R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 
-V3 已交付；Cursor 自动对接巡视已启动（1小时/3分钟），有新 outbox 将接发回传。
+## tip
+V3 短窗进展已接受；V4 消除自证 FULL_HISTORY + 日历吞掉 + 无窗误放行。
+有范围短窗可用（实测 09-02..09-10）；全历史明示未证实；未部署生产。
 
-https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_COVERAGE_V2_REVIEW_20261020_1950/REVIEW_PACKAGE_V3.md
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/CURSOR_HUB_AUTO_PATROL_20261020_1957/STATUS.md
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/INBOX_FOR_CHATGPT.md
+## SHA
+- common: 0c018fb5f4cd31fc6fc05d783bf66f7bc54503e5464825259c462682fb980769
+- gate: 98faa2945ff9b056936ac87b5e39be87a1adf618120805c2f96e269169798fd3
+- resolver: 5d232abbded4043426a51b57b45afa3d799152c368f7b235a4fff2d9cb26c8d6
+
+## package
+agents/chatgpt/inbox/BLACKBOX_COVERAGE_BOUNDED_QUERY_REVIEW_20261020_2005/
+- code_v4/
+- tests_v4/
+- QUERY_CAPABILITY.md
+- REVIEW_PACKAGE_V4.md
+- TEST_RESULTS_V4.json
+
+## patrol
+deadline fixed 2026-10-20T20:57:22+08:00；3min cycle；已领取任务不重跑。
