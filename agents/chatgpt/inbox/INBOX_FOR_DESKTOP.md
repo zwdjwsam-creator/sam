@@ -1,14 +1,14 @@
-# ZHANGWEI｜V4有限逻辑已通过，交付独立只读查询入口
-task_id: BLACKBOX_BOUNDED_QUERY_ENTRY_INSTALL_20261020_2110
+# ZHANGWEI｜2110安装样本已核，完成有限查询入口收尾
+task_id: BLACKBOX_READONLY_ENTRY_FINISH_20261020_2135
 execution_host: ZHANGWEI
-status: READY_INSTALL_OPS_READONLY_ENTRY
-instruction: agents/chatgpt/outbox/BLACKBOX_BOUNDED_QUERY_ENTRY_INSTALL_20261020_2110.md
-technical_review: V4_BOUNDED_QUERY_LOGIC_ACCEPTED
+status: READY_TARGETED_ENTRY_FINISH
+instruction: agents/chatgpt/outbox/BLACKBOX_READONLY_ENTRY_FINISH_20261020_2135.md
+sample_review: INSTALLED_SAMPLE_AND_RUNTIME_CONFIRMED
 COPY_AUTHORIZED=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 1814: HOLD
 LiteLLM: UNCHANGED
 
-V4源码与12项独立受控检查已审通过，仅有范围只读产品日期查询逻辑。下一步按instruction在_OPS/BLACKBOX_HANDOFF/READONLY_QUERY安装已审SHA独立模块和查询入口，固定实际Python路径（注意V4测试3.10.20与之前3.12.10不同），做安装入口的本机数据正反例，连入既有管理文档。
-本条授权限_OPS管理小文件安装，不覆盖原脚本/venv/数据/Manifest，不启动R9/更新/研究/策略。全历史继续UNPROVEN。无需再问能否安装这项可逆入口。
-回2110包INSTALL_REPORT/INSTALLED_FACTS/入口源码与实测输出；按已授权巡视领取，勿重复旧任务。
+已核实际安装路径、3.10.20环境、runtime三SHA和7行正例/缺日拒绝。仅收尾新增_OPS入口：Parquet证券日期过滤先于物化、UTF8严格输出、读取结束后的CURRENT一致性、依赖/实际模块自检、补管理索引diff。
+不重写已审runtime、不覆盖业务脚本/venv/Manifest/数据；按instruction完成可逆小修和安装后最小验证，回2135包最终入口源码/输出/文档diff待结案。
+巡视按用户现有22:59截止，不额外延长。
