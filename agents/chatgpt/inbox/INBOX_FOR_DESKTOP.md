@@ -1,16 +1,13 @@
-# ZHANGWEI｜规则交接已读，恢复正式只读查询
-task_id: BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910
+# ZHANGWEI｜覆盖空模块来源与真实读取入口核实
+task_id: BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914
 execution_host: ZHANGWEI
-workspace: E:\BLACKBOX
-status: READY_MINIMAL_QUERY_RECOVERY
-instruction: agents/chatgpt/outbox/BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910.md
-source_handover: agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_RUNTIME_RULES_HANDOVER_20261020_1900/NOTEBOOK_HANDOVER.md
-1814: HOLD
-LiteLLM: UNCHANGED
+status: READY_TARGETED_PROVENANCE
+instruction: agents/chatgpt/outbox/BLACKBOX_DESKTOP_QUERY_PROVENANCE_REVIEW_20261020_1914.md
+parent: BLACKBOX_DESKTOP_FORMAL_QUERY_RECOVERY_20261020_1910
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 COPY_AUTHORIZED=false
+1814: HOLD
+LiteLLM: UNCHANGED
 
-两端1900包已审。台式机本地7行可读，但临时pyarrow方式不算正式入口；原venv启动失败、reader未定位、coverage UNKNOWN_STOP与preflight证据未齐。
-按instruction连续完成：正式reader定位、适用预检、独立C候选环境/适配入口、允许后的小样本正式查询。允许最小隔离环境修复，不覆盖原E环境，不改生产数据/规则/Manifest，不绕覆盖或因果门，不启动更新/研究/策略。
-源机日期差与台式机一致，不再归因迁移；源机没有E引擎根不等于台式机目标E引擎根可忽略。
-整包回1910目录RECOVERY_REPORT.md，已做部分不重做，精准报告可用范围。
+1910预检PASS和硬门停止已接受。纠正：resolver猜出的reader名不证明原正式reader缺失，禁止直接照此新建。现在查真实消费者、两个2B coverage模块来源/旧版本，上传相关源码供复核。有匹配备份只在C候选验证，不改E生产/数据/Manifest。
+SAM已另收精确源件核对任务，不用用户转述。本机连续做可完成部分；回1910原目录PROVENANCE_REVIEW.md+必要代码证据，不重写全套手册。
