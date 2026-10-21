@@ -1,19 +1,20 @@
-# ZHANGWEI｜保留0730增量，核ETF分钟产品身份并继续剩余阶段
+# ZHANGWEI｜有限修正已复核，执行实质内容盘点
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815
+followup_id: BLACKBOX_SYSTEM_INVENTORY_CONTENT_EXECUTION_20261021_0836
 execution_host: ZHANGWEI
-status: CONTINUE_READONLY_INVENTORY
-confirmation: ACCEPT_0712_CHECKPOINT
+status: CONTINUE_AUTHORIZED_READONLY_WORK
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_ACCEPT_AND_RESUME_20261021_0730.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815.md
-independent_review: agents/chatgpt/reviews/BLACKBOX_MINUTE_AUTHORITY_20261021_0815/independent_reproduction.json
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTENT_EXECUTION_20261021_0836.md
+independent_review: agents/chatgpt/reviews/BLACKBOX_INVENTORY_LIMITED_FIX_REVIEW_20261021_0836/independent_review.json
 COPY_AUTHORIZED=false
 SYSTEM_INVENTORY_ACCEPTANCE=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
 
-已读0730最新产物。保留FUND_NAV 5980分片/6496121行日期观察及其它有效读数，不重复扫全套。
-新发现：ETF分钟与股票分钟同指A股_stock_1m/5m，旧盘点定位器只匹配频率，隔离复现ETF有独立目录也被选成股票。ETF两项先标AUTHORITY_IDENTITY_UNVERIFIED；核资产类别/频率/plane/合同，若共用dataset须给明确筛选及各自统计，不把股票整表当ETF证据。
-继续原总任务未做的日期集合/主键/规则和依赖映射；3个NO_FILES不等于原总任务仅剩3项。补上传当前0730源码、真实75阶段表、严格布尔回归和实际进程/读取增量证据。
-有效worker不停、不重复实例；当前批完成就接下一阶段，不空转重写同一汇总，不每批再等确认。复用现有巡视，不重建/滚动延长。业务/R9/结案查询不改，不采集/下载/回测。完整要求见最新followup。
+四份源码SHA全匹配；隔离5项资产/3项路径检查通过，接受这些有限修正。保留已有有效数据读取，不再重复已修回归/相同起尾。
+现在直接连续执行同一总任务：
+A 读standard/price/ETF_1m、ETF_5m真实分片并核身份，读INDEX成分时间合同、FUND视图JSON；
+B 解析已知CURRENT/manifest/AGENTS/规则正文与实际引用，批量产出RAW→clean→cache/plane→consumer及规则逐边证据，修正shards误查为0；
+C 静态读策略注册/配置及更新主键、水位、修订/恢复链条，形成有出处的运行逻辑候选说明。
+文件存在/mtime不等于内容盘点。checkpoint后继续下一未完成项，不只列not_done后待命，不空转至截止；有活跃有效worker则复用，不重复实例。授权边界及全部执行要求见最新followup。业务不改，不下载/采集/回测，不重开结案项，不重建巡视。
