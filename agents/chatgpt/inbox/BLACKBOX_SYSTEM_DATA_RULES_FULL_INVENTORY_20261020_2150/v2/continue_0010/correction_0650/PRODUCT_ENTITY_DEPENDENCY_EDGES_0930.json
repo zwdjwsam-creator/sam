@@ -1,0 +1,2819 @@
+{
+  "at": "2026-10-21T09:31:16+08:00",
+  "n": 160,
+  "edges": [
+    {
+      "src": "STOCK_OHLCV",
+      "dst": "STOCK_DAILY_PIT_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[0]",
+      "raw_value": {
+        "from": "STOCK_OHLCV",
+        "to": "STOCK_DAILY_PIT_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_DAILY_PIT_R1",
+      "dst": "STOCK_FACTOR_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[1]",
+      "raw_value": {
+        "from": "STOCK_DAILY_PIT_R1",
+        "to": "STOCK_FACTOR_DAILY_R1",
+        "lookback": 250
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_FACTOR_DAILY_R1",
+      "dst": "MARKET_STRUCTURE_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[2]",
+      "raw_value": {
+        "from": "STOCK_FACTOR_DAILY_R1",
+        "to": "MARKET_STRUCTURE_DAILY_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "SW_L1_MEMBERSHIP_PIT_R1",
+      "dst": "SW_L1_STRUCTURE_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[3]",
+      "raw_value": {
+        "from": "SW_L1_MEMBERSHIP_PIT_R1",
+        "to": "SW_L1_STRUCTURE_DAILY_R1",
+        "status": "BLOCKED_UPSTREAM"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_OHLCV",
+      "dst": "ETF_DAILY_PIT_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[4]",
+      "raw_value": {
+        "from": "ETF_OHLCV",
+        "to": "ETF_DAILY_PIT_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_DAILY_PIT_R1",
+      "dst": "ETF_FACTOR_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[5]",
+      "raw_value": {
+        "from": "ETF_DAILY_PIT_R1",
+        "to": "ETF_FACTOR_DAILY_R1",
+        "lookback": 250
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_NAV",
+      "dst": "FUND_DAILY_PIT_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[6]",
+      "raw_value": {
+        "from": "FUND_NAV",
+        "to": "FUND_DAILY_PIT_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_DAILY_PIT_R1",
+      "dst": "FUND_FACTOR_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[7]",
+      "raw_value": {
+        "from": "FUND_DAILY_PIT_R1",
+        "to": "FUND_FACTOR_DAILY_R1",
+        "lookback": 250
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "INDEX_OHLCV",
+      "dst": "INDEX_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[8]",
+      "raw_value": {
+        "from": "INDEX_OHLCV",
+        "to": "INDEX_DAILY_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "INDEX_DAILY_R1",
+      "dst": "INDEX_FACTOR_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[9]",
+      "raw_value": {
+        "from": "INDEX_DAILY_R1",
+        "to": "INDEX_FACTOR_DAILY_R1",
+        "lookback": 250
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "INDEX_CONSTITUENT_SOURCE",
+      "dst": "INDEX_CONSTITUENT_PIT_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[10]",
+      "raw_value": {
+        "from": "INDEX_CONSTITUENT_SOURCE",
+        "to": "INDEX_CONSTITUENT_PIT_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_DAILY_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[0].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_FACTOR_DAILY_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[1].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_DAILY_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[2].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_FACTOR_DAILY_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[3].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_DAILY_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[4].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_FACTOR_DAILY_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[5].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "INDEX_DAILY_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[6].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "INDEX_FACTOR_DAILY_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[7].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "MARKET_STRUCTURE_DAILY_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[8].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "INDEX_CONSTITUENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "CACHE_MANIFEST_SOURCE_DATASET",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "json_path": "manifests[9].source_dataset",
+      "raw_value": {
+        "source_dataset": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260814_20260815_012340",
+        "asof_max": "2026-08-14",
+        "mode": "canary",
+        "latest_release_pointer": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+      },
+      "verify_status": "DECLARED_IN_MANIFEST_REGISTRY",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ADJUST_FACTOR_PIT_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\COVERAGE.json",
+      "json_path": "$.tip_source",
+      "raw_value": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "api.get_billboard_list",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_LINEAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\LINEAGE.json",
+      "json_path": "$.source_dataset_id",
+      "raw_value": "api.get_billboard_list",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_LINEAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\LINEAGE.json",
+      "json_path": "$.raw_root",
+      "raw_value": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "api.get_billboard_list",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.lineage.source_dataset_id",
+      "raw_value": "api.get_billboard_list",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.lineage.raw_root",
+      "raw_value": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2014\\part_2014.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[0].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2014\\part_2014.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2015\\part_2015.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[1].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2015\\part_2015.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2016\\part_2016.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[2].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2016\\part_2016.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2017\\part_2017.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[3].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2017\\part_2017.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2018\\part_2018.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[4].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2018\\part_2018.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2019\\part_2019.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[5].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2019\\part_2019.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2020\\part_2020.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[6].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2020\\part_2020.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2021\\part_2021.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[7].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2021\\part_2021.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2022\\part_2022.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[8].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2022\\part_2022.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2023\\part_2023.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[9].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2023\\part_2023.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2024\\part_2024.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[10].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2024\\part_2024.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2025\\part_2025.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[11].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2025\\part_2025.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2026\\part_2026.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_MANIFEST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\MANIFEST.json",
+      "json_path": "$.coverage.year_partitions[12].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2026\\part_2026.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2014\\part_2014.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[0].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2014\\part_2014.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2015\\part_2015.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[1].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2015\\part_2015.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2016\\part_2016.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[2].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2016\\part_2016.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2017\\part_2017.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[3].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2017\\part_2017.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2018\\part_2018.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[4].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2018\\part_2018.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2019\\part_2019.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[5].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2019\\part_2019.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2020\\part_2020.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[6].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2020\\part_2020.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2021\\part_2021.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[7].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2021\\part_2021.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2022\\part_2022.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[8].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2022\\part_2022.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2023\\part_2023.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[9].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2023\\part_2023.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2024\\part_2024.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[10].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2024\\part_2024.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2025\\part_2025.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[11].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2025\\part_2025.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "BILLBOARD_DAILY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2026\\part_2026.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.year_partitions[12].path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2026\\part_2026.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230\\standard\\reference\\shareholder_floating_top10\\shareholder_floating_top10__pub_date_20260903__clean_tip__20260904_042230.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.clean_path",
+      "raw_value": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230\\standard\\reference\\shareholder_floating_top10\\shareholder_floating_top10__pub_date_20260903__clean_tip__20260904_042230.parquet",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230\\standard\\reference\\shareholder_top10\\shareholder_top10__pub_date_20260903__clean_tip__20260904_042230.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_TOP10_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.clean_path",
+      "raw_value": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230\\standard\\reference\\shareholder_top10\\shareholder_top10__pub_date_20260903__clean_tip__20260904_042230.parquet",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "CORP_XR_XD_EVENT_PIT_R1",
+      "dst": "STK_XR_XD_EVENT_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_XR_XD_EVENT_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "CORP_XR_XD_EVENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R18_CORP_REF_ASOF_20260811_20260812_024902",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R18_CORP_REF_ASOF_20260811_20260812_024902",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "CORP_XR_XD_EVENT_PIT_R1",
+      "dst": "STK_XR_XD",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_table",
+      "raw_value": "STK_XR_XD",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "CORP_XR_XD_EVENT_PIT_R1",
+      "dst": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FULL_SW_L123_FI_CORPREF_ASOF_20260811_20260812_025102\\CORP_XR_XD_EVENT_PIT_R1\\indexes\\KNOWN_EVENT_INDEX.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.indexes.known_path",
+      "raw_value": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FULL_SW_L123_FI_CORPREF_ASOF_20260811_20260812_025102\\CORP_XR_XD_EVENT_PIT_R1\\indexes\\KNOWN_EVENT_INDEX.parquet",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "CORP_XR_XD_EVENT_PIT_R1",
+      "dst": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FULL_SW_L123_FI_CORPREF_ASOF_20260811_20260812_025102\\CORP_XR_XD_EVENT_PIT_R1\\indexes\\EFFECTIVE_EVENT_INDEX.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.indexes.effective_path",
+      "raw_value": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FULL_SW_L123_FI_CORPREF_ASOF_20260811_20260812_025102\\CORP_XR_XD_EVENT_PIT_R1\\indexes\\EFFECTIVE_EVENT_INDEX.parquet",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_TRACKING_INDEX_MAP_R1",
+      "dst": "fund_tracking_index_mapping__ALL__2026-07-12__v1__20260713_071242.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ETF_TRACKING_INDEX_MAP_R1\\COVERAGE.json",
+      "json_path": "$.source_file",
+      "raw_value": "fund_tracking_index_mapping__ALL__2026-07-12__v1__20260713_071242.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_TRACKING_INDEX_MAP_R1",
+      "dst": "finance.FUND_INVEST_TARGET / fund_tracking_index_mapping RAW",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ETF_TRACKING_INDEX_MAP_R1\\PRODUCT_META.json",
+      "json_path": "$.source",
+      "raw_value": "finance.FUND_INVEST_TARGET / fund_tracking_index_mapping RAW",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FINANCIAL_INDICATOR_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R17_ASOF_20260811_20260812_021759",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FINANCIAL_INDICATOR_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R17_ASOF_20260811_20260812_021759",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FINANCIAL_INDICATOR_PIT_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_FINANCIAL_INDICATOR_ALIGN_RELEASE.json",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FINANCIAL_INDICATOR_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_align_pointer",
+      "raw_value": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_FINANCIAL_INDICATOR_ALIGN_RELEASE.json",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_LIKE_ASSET_VIEW_R1",
+      "dst": "ETF_DAILY_PIT_R1",
+      "relation": "unions",
+      "direction": "view->base",
+      "rel_type_raw": "PRODUCT_VIEW_LIST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1\\VIEW.json",
+      "json_path": "$.unions[0]",
+      "raw_value": "ETF_DAILY_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_LIKE_ASSET_VIEW_R1",
+      "dst": "FUND_DAILY_PIT_R1",
+      "relation": "unions",
+      "direction": "view->base",
+      "rel_type_raw": "PRODUCT_VIEW_LIST",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1\\VIEW.json",
+      "json_path": "$.unions[1]",
+      "raw_value": "FUND_DAILY_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_NAV_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_NAV_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "INDEX_WEIGHT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_WEIGHT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+      "dst": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_authority",
+      "raw_value": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+      "dst": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.pit_valid_from_rule",
+      "raw_value": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+      "dst": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_BALANCE_SHEET_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_authority",
+      "raw_value": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_BALANCE_SHEET_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+      "dst": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_BALANCE_SHEET_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.pit_valid_from_rule",
+      "raw_value": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+      "dst": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_authority",
+      "raw_value": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+      "dst": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.pit_valid_from_rule",
+      "raw_value": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+      "dst": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_authority",
+      "raw_value": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+      "dst": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.pit_valid_from_rule",
+      "raw_value": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+      "dst": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_authority",
+      "raw_value": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+      "dst": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.pit_valid_from_rule",
+      "raw_value": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+      "dst": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_INCOME_STATEMENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_authority",
+      "raw_value": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_INCOME_STATEMENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+      "dst": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FINANCE_INCOME_STATEMENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.pit_valid_from_rule",
+      "raw_value": "NEXT_TRADE_DAY_AFTER_PUBLICATION",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+      "dst": "FUND_DIVIDEND_EVENT_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_DIVIDEND_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "FUND_DIVIDEND_EVENT_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_DIVIDEND_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+      "dst": "FUND_DIVIDEND",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_DIVIDEND_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "FUND_DIVIDEND",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+      "dst": "FUND_FIN_INDICATOR_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_FIN_INDICATOR_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "FUND_FIN_INDICATOR_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_FIN_INDICATOR_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+      "dst": "FUND_FIN_INDICATOR",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_FIN_INDICATOR_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "FUND_FIN_INDICATOR",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+      "dst": "FUND_MF_DAILY_PROFIT_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_MF_DAILY_PROFIT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "FUND_MF_DAILY_PROFIT_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R20_JQ20_FUND_MF_IMMUT_FIX_ASOF_20260811_20260812_051259",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_MF_DAILY_PROFIT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R20_JQ20_FUND_MF_IMMUT_FIX_ASOF_20260811_20260812_051259",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+      "dst": "FUND_MF_DAILY_PROFIT",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_FUND_MF_DAILY_PROFIT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "FUND_MF_DAILY_PROFIT",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+      "dst": "STK_AH_PRICE_COMP_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_AH_PRICE_COMP_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_AH_PRICE_COMP_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_AH_PRICE_COMP_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+      "dst": "STK_AH_PRICE_COMP",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_AH_PRICE_COMP_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_AH_PRICE_COMP",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+      "dst": "STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+      "dst": "STK_EL_CONST_CHANGE",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_EL_CONST_CHANGE",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+      "dst": "STK_EL_TOP_ACTIVATE_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EL_TOP_ACTIVATE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_EL_TOP_ACTIVATE_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EL_TOP_ACTIVATE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+      "dst": "STK_EL_TOP_ACTIVATE",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EL_TOP_ACTIVATE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_EL_TOP_ACTIVATE",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+      "dst": "STK_EMPLOYEE_INFO_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EMPLOYEE_INFO_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_EMPLOYEE_INFO_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EMPLOYEE_INFO_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+      "dst": "STK_EMPLOYEE_INFO",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EMPLOYEE_INFO_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_EMPLOYEE_INFO",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+      "dst": "STK_EXCHANGE_LINK_CALENDAR_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EXCHANGE_LINK_CALENDAR_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_EXCHANGE_LINK_CALENDAR_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EXCHANGE_LINK_CALENDAR_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+      "dst": "STK_EXCHANGE_LINK_CALENDAR",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EXCHANGE_LINK_CALENDAR_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_EXCHANGE_LINK_CALENDAR",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+      "dst": "STK_EXCHANGE_TRADE_INFO_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_EXCHANGE_TRADE_INFO_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+      "dst": "STK_EXCHANGE_TRADE_INFO",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_EXCHANGE_TRADE_INFO",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_LIST_REFERENCE_PIT_R1",
+      "dst": "STK_LIST_REFERENCE_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_LIST_REFERENCE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_LIST_REFERENCE_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_LIST_REFERENCE_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_LIST_REFERENCE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_LIST_REFERENCE_PIT_R1",
+      "dst": "STK_LIST",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_LIST_REFERENCE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_LIST",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_NAME_HISTORY_PIT_R1",
+      "dst": "STK_NAME_HISTORY_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_NAME_HISTORY_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_NAME_HISTORY_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_NAME_HISTORY_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_NAME_HISTORY_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_NAME_HISTORY_PIT_R1",
+      "dst": "STK_NAME_HISTORY",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_NAME_HISTORY_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_NAME_HISTORY",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+      "dst": "STK_PERFORMANCE_LETTERS_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_PERFORMANCE_LETTERS_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_PERFORMANCE_LETTERS_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_PERFORMANCE_LETTERS_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+      "dst": "STK_PERFORMANCE_LETTERS",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_PERFORMANCE_LETTERS_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_PERFORMANCE_LETTERS",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+      "dst": "STK_REPORT_DISCLOSURE_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_REPORT_DISCLOSURE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_REPORT_DISCLOSURE_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_REPORT_DISCLOSURE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+      "dst": "STK_REPORT_DISCLOSURE",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_REPORT_DISCLOSURE_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_REPORT_DISCLOSURE",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+      "dst": "STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.cleaning_product_id",
+      "raw_value": "STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+      "dst": "STK_SHAREHOLDERS_SHARE_CHANGE",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.dataset_id",
+      "raw_value": "STK_SHAREHOLDERS_SHARE_CHANGE",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_DAILY_RAW_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_LINEAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\LINEAGE.json",
+      "json_path": "$.cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_DAILY_RAW_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\COVERAGE.json",
+      "json_path": "$.cleaning_release_id",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_TRADEABILITY_PIT_R1",
+      "dst": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230\\tip\\tradeability_tip_20260903.parquet",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_COVERAGE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1\\COVERAGE.json",
+      "json_path": "$.tip_path",
+      "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\STOCK_TRADEABILITY_PIT_R1_ASOF_20260903_20260904_042230\\tip\\tradeability_tip_20260903.parquet",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": false,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_TRADEABILITY_PIT_R1",
+      "dst": "BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230",
+      "relation": "declared_field",
+      "direction": "upstream->product",
+      "rel_type_raw": "PRODUCT_META",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1\\PRODUCT_META.json",
+      "json_path": "$.source_cleaning",
+      "raw_value": "BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230",
+      "verify_status": "DECLARED_FIELD",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_MINUTE_1M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_CLEAN",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.STOCK_MINUTE_1M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "raw_value": "price/A股_stock_1m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_MINUTE_1M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_RAW",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.STOCK_MINUTE_1M_R1.planes.RAW_REPLACEMENT.relative_under_raw_root",
+      "raw_value": "P7_stock_raw_none_replacement_1m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_MINUTE_5M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_5m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_CLEAN",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.STOCK_MINUTE_5M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "raw_value": "price/A股_stock_5m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_MINUTE_5M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_RAW",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.STOCK_MINUTE_5M_R1.planes.RAW_REPLACEMENT.relative_under_raw_root",
+      "raw_value": "P7_stock_minute_raw_none_replacement_5m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_MINUTE_30M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_30m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_CLEAN",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.STOCK_MINUTE_30M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "raw_value": "price/A股_stock_30m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_MINUTE_30M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_RAW",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.STOCK_MINUTE_30M_R1.planes.RAW_REPLACEMENT.relative_under_raw_root",
+      "raw_value": "P7_stock_minute_raw_none",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_MINUTE_60M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_60m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_CLEAN",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.STOCK_MINUTE_60M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "raw_value": "price/A股_stock_60m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_MINUTE_60M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_RAW",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.STOCK_MINUTE_60M_R1.planes.RAW_REPLACEMENT.relative_under_raw_root",
+      "raw_value": "P7_stock_minute_raw_none",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_MINUTE_1M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_CLEAN",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_1M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "raw_value": "price/ETF_1m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_MINUTE_1M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_RAW",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_1M_R1.planes.RAW_REPLACEMENT.relative_under_raw_root",
+      "raw_value": "P4_fund_etf_raw_none/fund_etf_price_1m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_MINUTE_5M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_CLEAN",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_5M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "raw_value": "price/ETF_5m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_MINUTE_5M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_5m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_RAW",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_5M_R1.planes.RAW_REPLACEMENT.relative_under_raw_root",
+      "raw_value": "P4_fund_etf_raw_none/fund_etf_price_5m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_MINUTE_30M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_30m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_CLEAN",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_30M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "raw_value": "price/ETF_30m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_MINUTE_30M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_30m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_RAW",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_30M_R1.planes.RAW_REPLACEMENT.relative_under_raw_root",
+      "raw_value": "P4_fund_etf_raw_none/fund_etf_price_30m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_MINUTE_60M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_60m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_CLEAN",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_60M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "raw_value": "price/ETF_60m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "ETF_MINUTE_60M_R1",
+      "dst": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_60m",
+      "relation": "sourced_from",
+      "direction": "upstream->product",
+      "rel_type_raw": "UNIFIED_REGISTRY_RAW",
+      "evidence_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_60M_R1.planes.RAW_REPLACEMENT.relative_under_raw_root",
+      "raw_value": "P4_fund_etf_raw_none/fund_etf_price_60m",
+      "verify_status": "PATH_EXISTS",
+      "path_exists": true,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_LIKE_ASSET_VIEW_R1",
+      "dst": "ETF_DAILY_PIT_R1",
+      "relation": "unions",
+      "direction": "view->base",
+      "rel_type_raw": "VIEW_UNION_BASE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1\\VIEW.json",
+      "json_path": "unions",
+      "raw_value": "ETF_DAILY_PIT_R1",
+      "verify_status": "DECLARED_IN_VIEW_JSON",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "FUND_LIKE_ASSET_VIEW_R1",
+      "dst": "FUND_DAILY_PIT_R1",
+      "relation": "unions",
+      "direction": "view->base",
+      "rel_type_raw": "VIEW_UNION_BASE",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1\\VIEW.json",
+      "json_path": "unions",
+      "raw_value": "FUND_DAILY_PIT_R1",
+      "verify_status": "DECLARED_IN_VIEW_JSON",
+      "path_exists": null,
+      "dependency_usable": null,
+      "entity_types": {
+        "src": "product_or_logical",
+        "dst": "path_or_product_or_dataset"
+      }
+    },
+    {
+      "src": "STOCK_OHLCV",
+      "dst": "STOCK_DAILY_PIT_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[0]",
+      "raw_value": {
+        "from": "STOCK_OHLCV",
+        "to": "STOCK_DAILY_PIT_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": null,
+      "status": null
+    },
+    {
+      "src": "STOCK_DAILY_PIT_R1",
+      "dst": "STOCK_FACTOR_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[1]",
+      "raw_value": {
+        "from": "STOCK_DAILY_PIT_R1",
+        "to": "STOCK_FACTOR_DAILY_R1",
+        "lookback": 250
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": 250,
+      "status": null
+    },
+    {
+      "src": "STOCK_FACTOR_DAILY_R1",
+      "dst": "MARKET_STRUCTURE_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[2]",
+      "raw_value": {
+        "from": "STOCK_FACTOR_DAILY_R1",
+        "to": "MARKET_STRUCTURE_DAILY_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": null,
+      "status": null
+    },
+    {
+      "src": "SW_L1_MEMBERSHIP_PIT_R1",
+      "dst": "SW_L1_STRUCTURE_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[3]",
+      "raw_value": {
+        "from": "SW_L1_MEMBERSHIP_PIT_R1",
+        "to": "SW_L1_STRUCTURE_DAILY_R1",
+        "status": "BLOCKED_UPSTREAM"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": null,
+      "status": "BLOCKED_UPSTREAM"
+    },
+    {
+      "src": "ETF_OHLCV",
+      "dst": "ETF_DAILY_PIT_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[4]",
+      "raw_value": {
+        "from": "ETF_OHLCV",
+        "to": "ETF_DAILY_PIT_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": null,
+      "status": null
+    },
+    {
+      "src": "ETF_DAILY_PIT_R1",
+      "dst": "ETF_FACTOR_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[5]",
+      "raw_value": {
+        "from": "ETF_DAILY_PIT_R1",
+        "to": "ETF_FACTOR_DAILY_R1",
+        "lookback": 250
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": 250,
+      "status": null
+    },
+    {
+      "src": "FUND_NAV",
+      "dst": "FUND_DAILY_PIT_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[6]",
+      "raw_value": {
+        "from": "FUND_NAV",
+        "to": "FUND_DAILY_PIT_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": null,
+      "status": null
+    },
+    {
+      "src": "FUND_DAILY_PIT_R1",
+      "dst": "FUND_FACTOR_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[7]",
+      "raw_value": {
+        "from": "FUND_DAILY_PIT_R1",
+        "to": "FUND_FACTOR_DAILY_R1",
+        "lookback": 250
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": 250,
+      "status": null
+    },
+    {
+      "src": "INDEX_OHLCV",
+      "dst": "INDEX_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[8]",
+      "raw_value": {
+        "from": "INDEX_OHLCV",
+        "to": "INDEX_DAILY_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": null,
+      "status": null
+    },
+    {
+      "src": "INDEX_DAILY_R1",
+      "dst": "INDEX_FACTOR_DAILY_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[9]",
+      "raw_value": {
+        "from": "INDEX_DAILY_R1",
+        "to": "INDEX_FACTOR_DAILY_R1",
+        "lookback": 250
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": 250,
+      "status": null
+    },
+    {
+      "src": "INDEX_CONSTITUENT_SOURCE",
+      "dst": "INDEX_CONSTITUENT_PIT_R1",
+      "relation": "depends_on",
+      "direction": "from->to",
+      "rel_type_raw": "CACHE_DEP_REGISTRY_NORM",
+      "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "json_path": "edges[10]",
+      "raw_value": {
+        "from": "INDEX_CONSTITUENT_SOURCE",
+        "to": "INDEX_CONSTITUENT_PIT_R1"
+      },
+      "verify_status": "DECLARED_IN_REGISTRY",
+      "dependency_usable": null,
+      "lookback": null,
+      "status": null
+    }
+  ]
+}
