@@ -166,28 +166,25 @@ def send_armed() -> bool:
 
 
 def _hub_once(direction: str, mode: str, message_id: str | None) -> dict:
-    """Send and verify are different modes. Verify never writes."""
+    """Send uses focus-checked keyboard input. Verify never writes."""
     ev = EVID / f"hub_once_{direction}_{mode}_{message_id or 'x'}.json"
+    if mode == "Send":
+        cmd = [
+            "powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
+            "-File", str(HERE / "uia_type_hub_once.ps1"),
+            "-Direction", direction,
+            "-EvidencePath", str(ev),
+        ]
+    else:
+        cmd = [
+            "powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
+            "-File", str(HERE / "uia_send_hub_once.ps1"),
+            "-Direction", direction,
+            "-Mode", "Verify",
+            "-EvidencePath", str(ev),
+        ]
     r = subprocess.run(
-        [
-            "powershell",
-            "-NoProfile",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-File",
-            str(HERE / "uia_send_hub_once.ps1"),
-            "-Direction",
-            direction,
-            "-Mode",
-            mode,
-            "-EvidencePath",
-            str(ev),
-        ],
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        timeout=90,
+        cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=90
     )
     try:
         return json.loads(r.stdout or "{}")
