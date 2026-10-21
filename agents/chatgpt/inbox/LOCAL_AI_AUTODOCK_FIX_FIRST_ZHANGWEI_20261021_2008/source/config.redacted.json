@@ -1,0 +1,19 @@
+﻿{
+    "task_id":  "LOCAL_AI_TWO_WINDOW_HUB_NOTIFIER_PILOT_20261021_1913",
+    "period_sec":  180,
+    "hub_mailbox":  "E:\\BLACKBOX\\运行\\外部大脑信箱",
+    "hub_repo":  "zwdjwsam-creator/sam",
+    "outbox_rel":  "agents/chatgpt/outbox",
+    "reviews_rel":  "agents/chatgpt/reviews",
+    "inbox_rel":  "agents/chatgpt/inbox",
+    "chatgpt_session_title":  "接管迁移核验",
+    "chatgpt_url":  "REDACTED_SESSION_URL",
+    "local_ai_root":  "D:\\LOCAL_AI",
+    "ollama_dir":  "D:\\LOCAL_AI\\Ollama",
+    "models_dir":  "D:\\LOCAL_AI\\Models",
+    "no_blackbox_business_writes":  true,
+    "no_token_regen":  true,
+    "gemma_vision_default":  false,
+    "msg_cursor_to_gpt_template":  "Cursor 有新结果已上传 HUB，请查收 inbox。结果：{report_url}。请审阅并将后续任务发布至 outbox/reviews。",
+    "msg_gpt_to_cursor_template":  "GPT 已在 HUB 发布新的任务或复核，请查收 outbox/reviews，按既有授权范围处理。任务：{task_id} {task_url}。"
+}
