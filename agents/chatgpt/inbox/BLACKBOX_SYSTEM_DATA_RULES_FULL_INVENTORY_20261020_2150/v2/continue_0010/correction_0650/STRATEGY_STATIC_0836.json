@@ -1,0 +1,402 @@
+{
+  "static_refs": [
+    {
+      "path": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频必读.md",
+      "exists": true,
+      "bytes": 3253,
+      "dependency_lines": [
+        {
+          "line": 1,
+          "text": "# 聚宽范本（日频）必读"
+        },
+        {
+          "line": 52,
+          "text": "本范本不授权 Cursor Agent 对 QMT 下单，不改 `HAND_DECISION.json`。"
+        }
+      ],
+      "class_hint": "STRATEGY_CODING_MANDATORY"
+    },
+    {
+      "path": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_joinquant_strategy_coding_mandatory.mdc",
+      "exists": true,
+      "bytes": 4451,
+      "dependency_lines": [
+        {
+          "line": 2,
+          "text": "description: 【聚宽策略写法必读取】回测/模拟盘/热启动 HAND 顶层硬规则"
+        },
+        {
+          "line": 7,
+          "text": "# 聚宽策略写法必读取（HAND TOP）"
+        },
+        {
+          "line": 9,
+          "text": "`rule_id`: `BLACKBOX_HAND_JOINQUANT_STRATEGY_CODING_R1`"
+        },
+        {
+          "line": 17,
+          "text": "3. 范本纪律：`参考资料/聚宽策略写法/聚宽范本_日频必读.md`"
+        },
+        {
+          "line": 19,
+          "text": "5. HAND JSON：`规则库/hand_hard_rules/BLACKBOX_HAND_JOINQUANT_STRATEGY_CODING_R1.json`"
+        },
+        {
+          "line": 20,
+          "text": "与 `规则库/hand_hard_rules/BLACKBOX_HAND_JOINQUANT_DAILY_FANBEN_R1.json`"
+        },
+        {
+          "line": 84,
+          "text": "- 不替代 HAND 下载放行 / 不改 `HAND_DECISION.json`"
+        },
+        {
+          "line": 85,
+          "text": "- 收益宣称仍过 `BLACKBOX_HAND_TOP_LEVEL_BACKTEST_EXECUTION_R1`"
+        },
+        {
+          "line": 86,
+          "text": "- QMT 实盘下单走 `BLACKBOX_HAND_QMT_ORDER_GOVERNANCE_R1`：无 `LIVE_EXECUTION_SESSION` 仍 FAIL_CLOSED"
+        }
+      ],
+      "class_hint": "STRATEGY_CODING_MANDATORY"
+    },
+    {
+      "path": "E:\\BLACKBOX\\AGENTS.md",
+      "exists": true,
+      "bytes": 10991,
+      "dependency_lines": [
+        {
+          "line": 3,
+          "text": "R9 / Cursor 维护资料入口（勿全盘扫迁移路径）:"
+        },
+        {
+          "line": 10,
+          "text": "Existence claims: `脚本/blackbox_data_absence_gate_r1.py` (empty ≠ NO_DATA)."
+        },
+        {
+          "line": 11,
+          "text": "1. Read `E:\\BLACKBOX\\HAND.txt` first (filesystem authority)."
+        },
+        {
+          "line": 14,
+          "text": "- HAND mandatory precheck: `BACKTEST_MANDATORY_PRECHECK_R1`（收盘买开盘 / 分钟误用等）"
+        },
+        {
+          "line": 15,
+          "text": "- HAND causal standard: `BACKTEST_CAUSAL_INFORMATION_AND_LOOKAHEAD_STANDARD_R1`"
+        },
+        {
+          "line": 18,
+          "text": "- `脚本/blackbox_backtest_causal_information_gate_r1.py` → PASS"
+        },
+        {
+          "line": 19,
+          "text": "- then `脚本/blackbox_backtest_preflight_gate.py` (empty-rank / price adj)"
+        },
+        {
+          "line": 20,
+          "text": "- then `脚本/blackbox_backtest_price_plane_gate_r1.py`（历史回测 PRE_PIT；实盘另字段 RAW_REAL_PRICE）"
+        },
+        {
+          "line": 21,
+          "text": "4. Formula: `KNOWN_AT <= SIGNAL_TIME < FILL_TIME`"
+        },
+        {
+          "line": 22,
+          "text": "5. See `.cursor/rules/blackbox_agent_bootstrap_gate.mdc`, `.cursor/rules/blackbox_backtest_mandatory_precheck.mdc`, `.cursor/rules/blackbox_backtest_causal_information_gate.mdc`, `.cursor/rules/blackbox_backtest_price_plane_contract.mdc`."
+        },
+        {
+          "line": 23,
+          "text": "6. JoinQuant paste/backtest code: read `参考资料/聚宽策略写法/聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py` + `聚宽范本_日频必读.md` first."
+        },
+        {
+          "line": 25,
+          "text": "`.cursor/rules/blackbox_sellside_daily_incremental.mdc`"
+        },
+        {
+          "line": 26,
+          "text": "`E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u E:\\BLACKBOX\\任务\\BLACKBOX_SELLSIDE_THESIS_TIMELINE_R1\\脚本\\run_sellside_daily_incremental_r1.py`"
+        },
+        {
+          "line": 27,
+          "text": "无正文→外部转载概况；`report_date`≠`asof`；输出见 `数据/研究报告/日增量/<asof>/`。"
+        },
+        {
+          "line": 28,
+          "text": "8. External evidence (只读旁路；不污染 JQ；日期必须对齐 JQ asof)："
+        },
+        {
+          "line": 29,
+          "text": "`.cursor/rules/blackbox_external_evidence_asof_align.mdc`"
+        },
+        {
+          "line": 35,
+          "text": "`.cursor/rules/blackbox_daily_incremental_data_plane.mdc`"
+        },
+        {
+          "line": 37,
+          "text": "`python -u E:\\BLACKBOX\\脚本\\run_blackbox_research_os.py --mode daily_incremental [--run]`"
+        },
+        {
+          "line": 40,
+          "text": "`任务/BLACKBOX_UNIFIED_DATA_RESEARCH_ORCHESTRATOR_R2/HANDOFF_COMMAND.md`"
+        },
+        {
+          "line": 46,
+          "text": "硬门：JQ tip=清洗=Cache；外源 `aligned_to_jq_asof` 同日，否则 WAIT。"
+        },
+        {
+          "line": 50,
+          "text": "13. 日增后研究思维（HAND Layer1 置顶；冻结思维门，非行业模板）："
+        },
+        {
+          "line": 52,
+          "text": "`规则库/hand_hard_rules/BLACKBOX_HAND_POST_DAILY_US_NEWS_TO_CN_RESEARCH_THINKING_R1.md`"
+        },
+        {
+          "line": 55,
+          "text": "14. 每日增量新闻 URL 获取路径（HAND 顶部；网址必须落日增量台账）："
+        },
+        {
+          "line": 56,
+          "text": "`.cursor/rules/blackbox_daily_incremental_news_url_acquisition_path.mdc`"
+        },
+        {
+          "line": 57,
+          "text": "`规则库/hand_hard_rules/BLACKBOX_HAND_DAILY_INCREMENTAL_NEWS_URL_ACQUISITION_PATH_R1.md`"
+        },
+        {
+          "line": 59,
+          "text": "`.cursor/rules/blackbox_daily_incremental_research_memory.mdc`"
+        },
+        {
+          "line": 62,
+          "text": "HAND 宪法：`规则库/hand_hard_rules/BLACKBOX_HAND_CONTINUOUS_RESEARCH_TOP_LEVEL_R1.md`"
+        },
+        {
+          "line": 64,
+          "text": "`python -u E:\\BLACKBOX\\脚本\\run_blackbox_daily_incremental_research_memory_r1.py --mode status|run-day|seal`"
+        },
+        {
+          "line": 67,
+          "text": "HAND：`规则库/hand_hard_rules/BLACKBOX_HAND_RESEARCH_CALL_CONTINUITY_AND_LEDGER_COMPLETENESS_R1.md`"
+        },
+        {
+          "line": 73,
+          "text": "18. 日增完成后研究执行导航（唯一顺序页；非 HAND/非 SSOT）："
+        },
+        {
+          "line": 76,
+          "text": "**增量后研究/映射/总结必读（SSOT）**："
+        },
+        {
+          "line": 79,
+          "text": "`E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u E:\\BLACKBOX\\脚本\\blackbox_post_increment_research_rules_gate_r1.py --mode discover|regress`"
+        },
+        {
+          "line": 89,
+          "text": "`python -u E:\\BLACKBOX\\脚本\\run_blackbox_morning_global_discovery_two_pass_r1.py --asof YYYYMMDD`"
+        },
+        {
+          "line": 95,
+          "text": "`python -u E:\\BLACKBOX\\脚本\\run_blackbox_morning_selection_validation_r1.py --asof YYYYMMDD`"
+        },
+        {
+          "line": 99,
+          "text": "`python -u E:\\BLACKBOX\\脚本\\run_blackbox_live_market_patrol_r1.py --asof YYYYMMDD`（盘中）"
+        },
+        {
+          "line": 100,
+          "text": "`python -u E:\\BLACKBOX\\脚本\\run_blackbox_intraday_patrol_daily_seal_r1.py --trade-date YYYY-MM-DD --asof YYYYMMDD`（收盘）"
+        },
+        {
+          "line": 102,
+          "text": "23. Fine-grained industry taxonomy + live subtheme gate（SW0824 底座升级；禁止粗映射）:"
+        },
+        {
+          "line": 103,
+          "text": "`.cursor/rules/blackbox_sw0824_fine_grained_taxonomy_live_gate.mdc`"
+        },
+        {
+          "line": 105,
+          "text": "`python -u E:\\BLACKBOX\\脚本\\blackbox_live_fine_grained_pool_gate_r1.py`"
+        },
+        {
+          "line": 110,
+          "text": "`.cursor/rules/blackbox_sw0824_fine_grained_taxonomy_live_gate.mdc`"
+        }
+      ],
+      "class_hint": "ENTRY_POINTER"
+    },
+    {
+      "path": "E:\\BLACKBOX\\运行\\BLACKBOX_JQ_INCREMENTAL_DOWNLOAD_RULE_CURRENT.json",
+      "exists": true,
+      "bytes": 9100,
+      "dependency_lines": [
+        {
+          "line": 2,
+          "text": "\"rule_id\": \"BLACKBOX_HAND_JQ_INCREMENTAL_DOWNLOAD_RULE_R1\","
+        },
+        {
+          "line": 4,
+          "text": "\"layer\": \"HAND_TOP\","
+        },
+        {
+          "line": 11,
+          "text": "\"clean_product\": \"FINANCE_BALANCE_SHEET_PIT_R1\","
+        },
+        {
+          "line": 12,
+          "text": "\"cache_product\": \"JQ20_FINANCE_BALANCE_SHEET_PIT_R1\""
+        },
+        {
+          "line": 19,
+          "text": "\"clean_product\": \"FINANCE_BALANCE_SHEET_PARENT_PIT_R1\","
+        },
+        {
+          "line": 20,
+          "text": "\"cache_product\": \"JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1\""
+        },
+        {
+          "line": 27,
+          "text": "\"clean_product\": \"FINANCE_CASHFLOW_STATEMENT_PIT_R1\","
+        },
+        {
+          "line": 28,
+          "text": "\"cache_product\": \"JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1\""
+        },
+        {
+          "line": 35,
+          "text": "\"clean_product\": \"FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1\","
+        },
+        {
+          "line": 36,
+          "text": "\"cache_product\": \"JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1\""
+        },
+        {
+          "line": 43,
+          "text": "\"clean_product\": \"FINANCE_INCOME_STATEMENT_PIT_R1\","
+        },
+        {
+          "line": 44,
+          "text": "\"cache_product\": \"JQ20_FINANCE_INCOME_STATEMENT_PIT_R1\""
+        },
+        {
+          "line": 51,
+          "text": "\"clean_product\": \"FINANCE_INCOME_STATEMENT_PARENT_PIT_R1\","
+        },
+        {
+          "line": 52,
+          "text": "\"cache_product\": \"JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1\""
+        },
+        {
+          "line": 59,
+          "text": "\"clean_product\": \"FUND_DIVIDEND_EVENT_PIT_R1\","
+        },
+        {
+          "line": 60,
+          "text": "\"cache_product\": \"JQ20_FUND_DIVIDEND_EVENT_PIT_R1\""
+        },
+        {
+          "line": 67,
+          "text": "\"clean_product\": \"FUND_FIN_INDICATOR_PIT_R1\","
+        },
+        {
+          "line": 68,
+          "text": "\"cache_product\": \"JQ20_FUND_FIN_INDICATOR_PIT_R1\""
+        },
+        {
+          "line": 75,
+          "text": "\"clean_product\": \"FUND_MF_DAILY_PROFIT_PIT_R1\","
+        },
+        {
+          "line": 76,
+          "text": "\"cache_product\": \"JQ20_FUND_MF_DAILY_PROFIT_PIT_R1\""
+        },
+        {
+          "line": 83,
+          "text": "\"clean_product\": \"STK_AH_PRICE_COMP_PIT_R1\","
+        },
+        {
+          "line": 84,
+          "text": "\"cache_product\": \"JQ20_STK_AH_PRICE_COMP_PIT_R1\""
+        },
+        {
+          "line": 91,
+          "text": "\"clean_product\": \"STK_EL_CONST_CHANGE_EVENT_PIT_R1\","
+        },
+        {
+          "line": 92,
+          "text": "\"cache_product\": \"JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1\""
+        },
+        {
+          "line": 99,
+          "text": "\"clean_product\": \"STK_EL_TOP_ACTIVATE_PIT_R1\","
+        },
+        {
+          "line": 100,
+          "text": "\"cache_product\": \"JQ20_STK_EL_TOP_ACTIVATE_PIT_R1\""
+        },
+        {
+          "line": 107,
+          "text": "\"clean_product\": \"STK_EXCHANGE_LINK_CALENDAR_R1\","
+        },
+        {
+          "line": 108,
+          "text": "\"cache_product\": \"JQ20_STK_EXCHANGE_LINK_CALENDAR_R1\""
+        },
+        {
+          "line": 115,
+          "text": "\"clean_product\": \"STK_EXCHANGE_TRADE_INFO_PIT_R1\","
+        },
+        {
+          "line": 116,
+          "text": "\"cache_product\": \"JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1\""
+        },
+        {
+          "line": 123,
+          "text": "\"clean_product\": \"STK_EMPLOYEE_INFO_PIT_R1\","
+        },
+        {
+          "line": 124,
+          "text": "\"cache_product\": \"JQ20_STK_EMPLOYEE_INFO_PIT_R1\""
+        },
+        {
+          "line": 131,
+          "text": "\"clean_product\": \"STK_LIST_REFERENCE_PIT_R1\","
+        },
+        {
+          "line": 132,
+          "text": "\"cache_product\": \"JQ20_STK_LIST_REFERENCE_PIT_R1\""
+        },
+        {
+          "line": 139,
+          "text": "\"clean_product\": \"STK_NAME_HISTORY_PIT_R1\","
+        },
+        {
+          "line": 140,
+          "text": "\"cache_product\": \"JQ20_STK_NAME_HISTORY_PIT_R1\""
+        },
+        {
+          "line": 147,
+          "text": "\"clean_product\": \"STK_PERFORMANCE_LETTERS_PIT_R1\","
+        },
+        {
+          "line": 148,
+          "text": "\"cache_product\": \"JQ20_STK_PERFORMANCE_LETTERS_PIT_R1\""
+        },
+        {
+          "line": 155,
+          "text": "\"clean_product\": \"STK_REPORT_DISCLOSURE_PIT_R1\","
+        },
+        {
+          "line": 156,
+          "text": "\"cache_product\": \"JQ20_STK_REPORT_DISCLOSURE_PIT_R1\""
+        }
+      ],
+      "class_hint": "UPDATE_RULE"
+    }
+  ],
+  "runtime_started": false,
+  "backtest_started": false
+}
