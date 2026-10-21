@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-21T08:26:35+08:00",
+  "task": "BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815",
+  "parent": "BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150",
+  "done": {
+    "fragment_pass_0730_retained": true,
+    "minute_identity_flagged": true,
+    "index_null_audited": true,
+    "no_parquet_reclassified": true,
+    "rules_v4_artifacts_present": true,
+    "authority_map_rows": 75
+  },
+  "observed": {
+    "plane_manifests": [
+      {
+        "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+        "exists": true,
+        "bytes": 8204,
+        "mtime": "2026-10-20T03:36:00+08:00"
+      },
+      {
+        "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+        "exists": true,
+        "bytes": 5583,
+        "mtime": "2026-10-19T17:31:45+08:00"
+      }
+    ],
+    "strategy_static_refs": [
+      {
+        "path": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频必读.md",
+        "exists": true,
+        "bytes": 3253,
+        "mtime": "2026-10-17T02:45:43+08:00"
+      },
+      {
+        "path": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_joinquant_strategy_coding_mandatory.mdc",
+        "exists": true,
+        "bytes": 4451,
+        "mtime": "2026-10-20T03:25:58+08:00"
+      },
+      {
+        "path": "E:\\BLACKBOX\\运行\\BLACKBOX_JQ_INCREMENTAL_DOWNLOAD_RULE_CURRENT.json",
+        "exists": true,
+        "bytes": 9100,
+        "mtime": "2026-10-15T18:57:58+08:00"
+      }
+    ],
+    "rules_shard_files": 0,
+    "rules_shard_bytes": 0,
+    "rules_v4_summary_keys": [
+      "active_rules_scanned",
+      "edges",
+      "status_counts",
+      "broken_confirmed",
+      "broken_confirmed_v3_preserved",
+      "decode_unverified",
+      "regression",
+      "note"
+    ]
+  },
+  "not_done": [
+    "RAW→clean→cache full consumer mapping matrix (per-product)",
+    "rules recursive recompute under parser_v5 for all shards (bounded next batch)",
+    "strategy/backtest prerequisite static chain completeness proof",
+    "ETF minute true authority path (currently AUTHORITY_IDENTITY_UNVERIFIED)",
+    "INDEX_CONSTITUENT applicable date field contract resolution"
+  ],
+  "blocked": [
+    {
+      "id": "WEB_NOTIFY_BLOCKED",
+      "reason": "cursor-ide-browser Server not found"
+    },
+    {
+      "id": "ETF_MINUTE_AUTHORITY_IDENTITY_UNVERIFIED",
+      "reason": "shared stock minute path"
+    }
+  ],
+  "download": false,
+  "wait_hub_acceptance": false
+}
