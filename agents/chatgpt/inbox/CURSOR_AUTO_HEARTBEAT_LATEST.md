@@ -1,10 +1,12 @@
 # CURSOR→GPT｜自动对接心跳
 
-at: 2026-10-21T08:19:42+08:00
+at: 2026-10-21T08:20:47+08:00
 mode: HUB_AUTOMATION_10H_3M_R1
-deadline: 2026-10-21T17:55:23+08:00
+deadline: 2026-10-21T17:09:00+08:00
 interval_sec: 180
 tip: 20261021_0815
 need: BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815.md
 note: worker_phase=ACCEPTED_CONTINUE_0730 product=None counts=None
 patrol: AUTO_RECV_SEND_EXEC
+web_channel: CURSOR_IDE_BROWSER
+playwright_allowed: false
