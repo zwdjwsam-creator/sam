@@ -1,0 +1,41 @@
+{
+  "reviewed_checkpoint": "BLACKBOX_SYSTEM_INVENTORY_LINEAGE_AND_RULE_GRAPH_20261021_0905",
+  "source_sha256": {
+    "run_inventory_lineage_0905_worker": "a00539b7b8cdc358f5f2f13e83eb8ea74d7aceeafc7d17c892089c79ad21969e",
+    "run_inventory_content_0836_worker": "d3b62d5cbcf070be2589d7af374ccc53c9f07ea7778052f49f21425ec8778f65"
+  },
+  "method": "Full GitHub rule blob parsed in memory plus uploaded source inspection; production filesystem not accessed",
+  "rule_records": {
+    "total": 2327,
+    "by_status": {
+      "RESOLVED": 2018,
+      "BROKEN_CONFIRMED": 269,
+      "LEGACY_HOST_SPECIFIC": 13,
+      "DYNAMIC_OR_PLACEHOLDER": 23,
+      "EXTERNAL": 4
+    },
+    "with_source_and_line": 2327,
+    "unique_by_source_line_rawtoken_target": 1846,
+    "duplicate_extractor_records": 481,
+    "node_no_token": 127,
+    "node_no_token_is_not_an_edge": true
+  },
+  "source_findings": {
+    "recursion": "phase_rule_true_edges adds resolved targets to visited_extra but never enqueues or reads those target bodies; extra_targets_visited=495 means discovered, not recursively parsed",
+    "identifiers": "extract_tokens_from_text ignores bare rule IDs without slashes or file suffixes; a rule-ID graph is not proven",
+    "decoding": "errors=replace used for rule bodies; strict source interpretation not ensured",
+    "broken_examples": [
+      "Whole CLI examples are classified as filesystem paths",
+      "Bare filename labels may require contextual base"
+    ],
+    "lineage": "169 field records include 8 destinations that are type names such as list/dict, as well as dates, transformation expressions, and versions. These require metadata/edge typing, not counting all as dependencies",
+    "history_search": "Search requires __mat_ OR (ETF_1m AND year_batch) literals; generic registry-driven consumers can be omitted. UNPROVEN is appropriate; consumer absence is not established"
+  },
+  "accepted_progress": [
+    "Explicit registry dependency examples now have provenance",
+    "Correct raw/CLEAN registry references and VIEW relations are present",
+    "Full rule records now have source and locator",
+    "Sources uploaded and hash-matched"
+  ],
+  "system_inventory_acceptance": false
+}
