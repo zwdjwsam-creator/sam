@@ -1,0 +1,263 @@
+{
+  "at": "2026-10-21T11:38:18+08:00",
+  "task": "BLACKBOX_SYSTEM_INVENTORY_CONTENT_BATCH_20261021_1136",
+  "previous": "BLACKBOX_SYSTEM_INVENTORY_RESUME_PATCH_20261021_1118",
+  "system_inventory_acceptance": false,
+  "source_upload": {
+    "blackbox_unified_market_data_plane_r1.py": {
+      "bytes": 20104,
+      "sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce",
+      "path": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\source_upload_1136\\blackbox_unified_market_data_plane_r1.py"
+    },
+    "blackbox_etf_minute_1m_plane_r1.py": {
+      "bytes": 31890,
+      "sha256": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316",
+      "path": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\source_upload_1136\\blackbox_etf_minute_1m_plane_r1.py"
+    },
+    "registry_etf_products_slim.json": {
+      "etf_product_ids": [
+        "ETF_MINUTE_1M_R1",
+        "ETF_MINUTE_5M_R1",
+        "ETF_MINUTE_30M_R1",
+        "ETF_MINUTE_60M_R1"
+      ],
+      "sha256": "d93d7b46c7b91ce6f25a7a9bc68ded6fcd2bfbe3fca625d91d6ed14e68cf76f6"
+    },
+    "CURRENT_CLEANING_RELEASE.pointer.json": {
+      "sha256": "20675f74accac2b6c7220eeb04330b4f590d749254423cfb9010f8d5a8800c56",
+      "keys": [
+        "release_id",
+        "seal_id",
+        "sealed",
+        "cleaning_as_of",
+        "finance_asof",
+        "daily_asof",
+        "standard_root",
+        "quarantine_root",
+        "ledger_path",
+        "release_content_root_sha256",
+        "created_at",
+        "parent_release_id",
+        "switch_reason",
+        "finance_asof_note",
+        "FUND_NAV_TIP"
+      ]
+    }
+  },
+  "select_contract": {
+    "unified_file_sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce",
+    "etf1m_file_sha256": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316",
+    "roots": {
+      "etf1m_cleaning": "Path(CURRENT_CLEANING_RELEASE.standard_root)/\"price\"/\"ETF_1m\"",
+      "etf1m_raw": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
+      "registry_path": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "cleaning_ptr": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json"
+    },
+    "scan_recursion": "NON_RECURSIVE_glob_*.parquet_only",
+    "mat_included_by_consumers": false,
+    "cleaning_vs_raw_order": {
+      "build_shard_manifest": "scan cleaning first, then RAW_1M; overlapping_shards filters by plane",
+      "read_overlapping_NEW": "uses overlapping_shards then loads selected shards",
+      "read_overlapping_OLD": "first-match YEAR/INCREMENTAL only; skips DAILY_SLICE"
+    },
+    "raw_year_envelope_widen": {
+      "function": "_scan_raw_year_envelope",
+      "behavior": "if sidecar count>0 but start/end incomplete → may fill year-01-01..year-12-31",
+      "used_as": "candidate envelope for year batch metadata in resolve_product/coverage declaration",
+      "not_proof_of": "trade-day completeness or symbol completeness",
+      "evidence_lines": "121-158"
+    },
+    "write_entrypoints": {
+      "etf1m_has_build_index_cli": false,
+      "unified_has_build_index": true,
+      "etf1m_cli_modes": [],
+      "mat_literal_in_consumers": false
+    },
+    "cli_mode_snippets": [],
+    "function_spans": {
+      "unified": {
+        "_scan_cleaning_dir": {
+          "start": 91,
+          "end": 118,
+          "sha256": "30dd7cd4e05e5930fd55b4d1fd13eca65cf3e28f7fa46a4cc74b5ae6ffa33540"
+        },
+        "_scan_raw_year_envelope": {
+          "start": 121,
+          "end": 158,
+          "sha256": "6419440fd2c918eaab80ef1ed0272254b435c0ca45cb26ce0a63f7a5c3fec77b"
+        },
+        "resolve_product": {
+          "start": 161,
+          "end": 239,
+          "sha256": "77ecac962e62618b6811ae9f9fa447249167261d97a7f11770ec07b47db8acb6"
+        },
+        "coverage_window": {
+          "start": 301,
+          "end": 335,
+          "sha256": "d012ce7f17b1e71a15f470b49b748365131736f50a7d8720a3bade77cabe7ea8"
+        },
+        "list_files_for_window": {
+          "start": 338,
+          "end": 366,
+          "sha256": "9999fdf4bb3cf7358b429dc80cd7e8d0216a13abd166052e588552d22c40a946"
+        },
+        "build_index": {
+          "start": 415,
+          "end": 467,
+          "sha256": "a151e4b5fe90c47ec3fb3888d18d47ac0b3c45461ea09a08bb02dcd2481841bd"
+        }
+      },
+      "etf1m": {
+        "cleaning_etf_1m_dir": {
+          "start": 83,
+          "end": 85,
+          "sha256": "1ad97d8d396e81639e43bbc54a7cd9fda63e2711605d9b15e3b077cda3c60d9e"
+        },
+        "scan_root": {
+          "start": 160,
+          "end": 195,
+          "sha256": "d020a2a1909b5e33a652a34369ffeb798ab615f0444f6f414631f303ed9a3ab7"
+        },
+        "build_shard_manifest": {
+          "start": 198,
+          "end": 217,
+          "sha256": "dc0a4ad7b1c3aa2a763a3994aa39b37295874ae13125d05c76a916d1fe805ec0"
+        },
+        "overlapping_shards": {
+          "start": 220,
+          "end": 255,
+          "sha256": "7d17f0bc16c190076f1e12710dc3bdb4ab00e09b522946bda582dca63108ee48"
+        },
+        "filter_request": {
+          "start": 304,
+          "end": 311,
+          "sha256": "facbe21e0bafe7f966b50e0e37a8559fbc766c5d4cfe6ed058bf1aa91ee951be"
+        },
+        "dedupe_canonical": {
+          "start": 314,
+          "end": 343,
+          "sha256": "1a5a6f3e0e61014280a30ddbc73f17803b94a17704f360620f3dee0e45a923ea"
+        },
+        "read_overlapping": {
+          "start": 346,
+          "end": 429,
+          "sha256": "8effab5c797cf73f889c0ccfb20c7798eab73b95137cd1c40b6ece9d3ab546f4"
+        },
+        "main": {
+          "start": 696,
+          "end": 791,
+          "sha256": "c257a6a232c67f95f3dd8de68898f553d20f2a44c94b3e6bbdf604c28a6beed3"
+        }
+      }
+    },
+    "etf_5m_consumer": {
+      "dedicated_etf_5m_plane_script": false,
+      "status": "UNPROVEN_AS_SAME_CONSUMER",
+      "note": "p7 freshness scripts list ETF_5m directory names; no blackbox_etf_minute_5m_plane_r1.py found; cannot infer 5m from 1m reader"
+    },
+    "history_mat": {
+      "status": "HISTORY_MAY_EXIST_CURRENT_CONSUMER_CHAIN_NOT_PROVEN",
+      "consumers_checked": [
+        "E:\\BLACKBOX\\脚本\\blackbox_unified_market_data_plane_r1.py",
+        "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_1m_plane_r1.py"
+      ],
+      "mat_literal": false
+    }
+  },
+  "worklist_classification": {
+    "worklist_summary_from_1118": {
+      "phase": "WORKLIST_DRAINED",
+      "done": 950,
+      "failed": 0,
+      "pending": 0,
+      "excluded": 36082,
+      "processed_this_run": 950,
+      "pid": 46144,
+      "finished_at": "2026-10-21T03:26:50.319397+00:00",
+      "exit_code": "NOT_CAPTURED_BY_LAUNCHER",
+      "meaning": "950 document nodes completed; NOT 950 validated business rules; NOT system acceptance"
+    },
+    "excluded_reason_distribution": {
+      "SCOPE_EXCLUDED": 36082
+    },
+    "excluded_samples": {
+      "SCOPE_EXCLUDED": [
+        "e:\\blackbox_engines\\backtest_lab_shadow_experiments\\experiment_20260731_phase1_trading_mechanics_r1\\engine_baseline\\backtest_lab_snapshot\\99_reports\\tiny_replay_with_adapter_design_r1\\03_current_data_flow.md",
+        "e:\\blackbox_engines\\backtest_lab_shadow_experiments\\experiment_20260731_phase1_trading_mechanics_r1\\engine_baseline\\backtest_lab_snapshot\\99_reports\\dataprovider_adapter_impl_r1\\05_current_data_mapping_validation.md",
+        "e:\\blackbox_engines\\backtest_lab_backups\\sealed_engine_backup_r3_phase6_fully_validated_20260801\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_r1\\blackbox_current_dictionary_rule_registry.json"
+      ]
+    },
+    "node_results_sample_n": 200,
+    "edge_status_sample": {
+      "RESOLVED": 868,
+      "DYNAMIC_OR_PLACEHOLDER": 8,
+      "BROKEN_CONFIRMED": 124,
+      "COMMAND_EXAMPLE_STATIC": 4,
+      "LEGACY_HOST_SPECIFIC": 2
+    },
+    "identifier_candidates_in_sample": 919,
+    "resolved_edges_in_sample": 868,
+    "classification_buckets": {
+      "document_path_references": "edge_status RESOLVED/BROKEN path targets in node_results",
+      "filename_index_candidates_unknown_ids": "identifier_candidates + FILENAME_INDEX_CANDIDATE_NOT_DEFINITION_PROOF",
+      "business_rules_with_definition": "NOT_YET_SEPARATED_NEEDS_SEMANTIC_PASS",
+      "old_host_paths_templates_examples_missing": "COMMAND_EXAMPLE_STATIC / excluded reasons / broken targets"
+    }
+  },
+  "runtime_chain": {
+    "chain": [
+      {
+        "stage": "authority_entry",
+        "evidence": "REGISTRY_PATH + CURRENT_CLEANING_RELEASE",
+        "rw": "read"
+      },
+      {
+        "stage": "data_read",
+        "evidence": "resolve_product / cleaning_etf_1m_dir / scan_root / overlapping_shards / read_overlapping",
+        "rw": "read"
+      },
+      {
+        "stage": "pit_known_at",
+        "evidence": "NOT_FULLY_WIRED_IN_THESE_TWO_MODULES",
+        "status": "GAP"
+      },
+      {
+        "stage": "strategy_config",
+        "evidence": "NOT_IN_SCOPE_OF_THESE_READERS",
+        "status": "SEPARATE"
+      },
+      {
+        "stage": "backtest_constraints",
+        "evidence": "NOT_EXECUTED",
+        "status": "NOT_RUN"
+      },
+      {
+        "stage": "output_memory",
+        "evidence": "NOT_TRACED_THIS_BATCH",
+        "status": "PENDING"
+      },
+      {
+        "stage": "update_jobs",
+        "evidence": "CLI write modes exist (build_index etc) — not invoked",
+        "status": "BOUNDARY"
+      }
+    ],
+    "doc_vs_code": "document claims vs source implementation kept separate; no new business rules invented"
+  },
+  "product_problem_table": {
+    "product_count": 8,
+    "note": "seed table from registry only; required ranges UNKNOWN unless prior contract evidence exists"
+  },
+  "checklist": {
+    "A_source_upload_sha": "DONE",
+    "A_static_select_contract": "DONE",
+    "A_raw_year_envelope_semantics": "DONE",
+    "A_isolated_fixture_tip_history": "BLOCKED_OR_DEFERRED_SAFE_FIXTURE_NOT_YET",
+    "A_etf_5m_same_consumer": "UNPROVEN",
+    "B_worklist_classification": "PARTIAL_DONE_SAMPLE",
+    "B_runtime_chain": "SKELETON_DONE",
+    "B_registry_edge_dedupe_0930": "NOT_DONE_THIS_PASS",
+    "C_product_problem_table": "SEED_DONE",
+    "system_inventory_acceptance": false
+  }
+}
