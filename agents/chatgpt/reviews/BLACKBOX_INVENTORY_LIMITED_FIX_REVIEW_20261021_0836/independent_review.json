@@ -1,0 +1,66 @@
+{
+  "source_hashes": {
+    "resolve_product_authority_v2_0815.py": "8b66cc1090c79bd352b8acbb6f94aee47301cd27004e5de5082bc0096c406bc7",
+    "run_inventory_authority_0815_worker.py": "4b1116745b85eefe0bc01d2cad3fd41eddc5035360c553768970f35c534e9616",
+    "run_inventory_authority_fix_0815b.py": "d70041fd547c21b3dd378b8bba102e0016a9c07f2f3b51d356d0ee5404b96210",
+    "run_inventory_resume_0730_worker.py": "93b50152c367072978d86b20081d7ded4dae1df088c4d37861b37e09ec1320b5"
+  },
+  "isolated_asset_checks": [
+    {
+      "product": "ETF_MINUTE_1M_R1",
+      "selected": "E:\\fixture\\standard\\price\\ETF_1m",
+      "pass": true
+    },
+    {
+      "product": "ETF_MINUTE_5M_R1",
+      "selected": "E:\\fixture\\standard\\price\\ETF_5m",
+      "pass": true
+    },
+    {
+      "product": "STOCK_MINUTE_1M_R1",
+      "selected": "E:\\fixture\\standard\\price\\stock_1m",
+      "pass": true
+    },
+    {
+      "product": "STOCK_MINUTE_5M_R1",
+      "selected": "E:\\fixture\\standard\\price\\stock_5m",
+      "pass": true
+    },
+    {
+      "product": "ETF_MINUTE_1M_R1",
+      "fixture": "ETF missing; stock present",
+      "status": "UNKNOWN",
+      "pass": true
+    }
+  ],
+  "isolated_path_checks": [
+    {
+      "token": "../脚本/foo.py",
+      "target": "E:\\BLACKBOX\\脚本\\foo.py",
+      "status": "BROKEN_CONFIRMED",
+      "pass": true
+    },
+    {
+      "token": "cursor/rules/gate.mdc",
+      "target": "E:\\BLACKBOX\\cursor\\rules\\gate.mdc",
+      "status": "BROKEN_CONFIRMED",
+      "pass": true
+    },
+    {
+      "token": ".cursor/rules/gate.mdc",
+      "target": "E:\\BLACKBOX\\.cursor\\rules\\gate.mdc",
+      "status": "RESOLVED",
+      "pass": true
+    }
+  ],
+  "result": "LIMITED_FIXES_REPRODUCED_SUCCESSFULLY",
+  "limits": [
+    "No production Windows paths or actual data read",
+    "No acceptance of full rule graph, coverage completeness, registry overrides, or backtest readiness"
+  ],
+  "source_review": {
+    "0730": "Arrow batch streaming and row-aligned candidate pairing present; main ends after fragment passes, not a full-system continuous queue",
+    "0815b": "Regression/live re-resolution/reporting helper; main ends after writing checkpoint",
+    "stage_0815_continue": "Reported mapping evidence is file stat metadata, not extracted contents"
+  }
+}
