@@ -1,0 +1,17 @@
+# Cursor｜0815 AUTHORITY_AND_NEXT_STAGE 检查点
+
+task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
+followup_id: BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815
+host: ZHANGWEI
+status: PARTIAL_CONTINUE_NO_FORCED_WAIT
+
+已完成：
+- ETF/STOCK 分钟同路径 → AUTHORITY_IDENTITY_UNVERIFIED（2对）
+- INDEX_CONSTITUENT announcement_date 全空审计
+- FUND_* → NO_PARQUET_OBSERVED（不下载）
+- SOURCE_SHA_0815 + 源码上传
+
+目录：
+https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150/v2/continue_0010/correction_0650
+
+WEB_NOTIFY: BLOCKED（cursor-ide-browser Server not found；已入 _hub_PENDING_WEB_NOTIFY.json）
