@@ -1,31 +1,32 @@
 {
-  "updated_at": "2026-10-21T09:11:00+08:00",
-  "task": "BLACKBOX_SYSTEM_INVENTORY_LINEAGE_AND_RULE_GRAPH_20261021_0905",
-  "phase": "CHECKPOINT_0905",
+  "updated_at": "2026-10-21T09:31:27+08:00",
+  "task": "BLACKBOX_SYSTEM_INVENTORY_RECURSION_AND_SEMANTICS_20261021_0930",
+  "phase": "CHECKPOINT_0930",
   "overall": "PARTIAL_CONTINUE_CONTENT",
   "SYSTEM_INVENTORY_ACCEPTANCE": false,
-  "elapsed_sec": 0.4,
-  "product_dep": {
-    "n_edges": 169,
-    "type_counts": {
-      "CACHE_DEP_REGISTRY": 11,
-      "CACHE_MANIFEST_SOURCE_DATASET": 10,
-      "PRODUCT_COVERAGE": 27,
-      "PRODUCT_LINEAGE": 4,
-      "PRODUCT_MANIFEST": 18,
-      "PRODUCT_META": 75,
-      "PRODUCT_VIEW_LIST": 2,
-      "PRODUCT_COVERAGE_LIST": 4,
-      "UNIFIED_REGISTRY_CLEAN": 8,
-      "UNIFIED_REGISTRY_RAW": 8,
-      "VIEW_UNION_BASE": 2
-    },
-    "products_scanned": 51
+  "elapsed_sec": 10.9,
+  "semantic": {
+    "raw_field_records_0905": 169,
+    "entity_dependency_edges": 160,
+    "attributes": 12,
+    "unresolved_structure": 8,
+    "note": "PATH_EXISTS != DEPENDENCY_USABLE"
   },
-  "rule_citations": {
-    "nodes_processed": 315,
-    "citation_edges_with_src_locator": 2327,
-    "resolved_citation_edges": 2018
+  "recursion": {
+    "read_ok": 900,
+    "queued": 1003,
+    "dedup_edges": 135906,
+    "pending": 103,
+    "status_counts_dedup": {
+      "RESOLVED": 42728,
+      "BROKEN_CONFIRMED": 21360,
+      "LEGACY_HOST_SPECIFIC": 19,
+      "COMMAND_EXAMPLE_STATIC": 43,
+      "RULE_ID_UNRESOLVED": 71707,
+      "DYNAMIC_OR_PLACEHOLDER": 43,
+      "EXTERNAL": 5,
+      "PARSE_ERROR": 1
+    }
   },
-  "etf_mat": "HISTORY_CONSUMER_LINK_UNPROVEN"
+  "etf": "CALLCHAIN_CANDIDATES_FOUND_NEED_FRAGMENT_SELECT_PROOF"
 }
