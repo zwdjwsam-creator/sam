@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-21T09:11:00+08:00",
+  "question": "Does CURRENT consumer read __mat_* history or only tip ETF_*m?",
+  "evidence": [
+    {
+      "kind": "CONTRACT_TEXT",
+      "file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_1M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "value": "price/ETF_1m",
+      "note": "registry points to tip dir name, not __mat_*"
+    },
+    {
+      "kind": "CONTRACT_TEXT",
+      "file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "json_path": "products.ETF_MINUTE_5M_R1.planes.CLEANING_CURRENT.relative_under_standard",
+      "value": "price/ETF_5m",
+      "note": "registry points to tip dir name, not __mat_*"
+    },
+    {
+      "kind": "CODE_SEARCH_HITS",
+      "n": 1,
+      "sample": [
+        {
+          "file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+          "hits": [
+            {
+              "line": 27,
+              "text": "\"relative_under_standard\": \"price/A股_stock_1m\","
+            },
+            {
+              "line": 29,
+              "text": "\"year_batch_regex\": \"__stock_minute_1m__(?P<year>\\\\d{4})__batch\""
+            },
+            {
+              "line": 33,
+              "text": "\"year_batch_glob\": \"stock_minute_1m__{year}__*.parquet\","
+            },
+            {
+              "line": 47,
+              "text": "\"relative_under_standard\": \"price/A股_stock_5m\","
+            },
+            {
+              "line": 49,
+              "text": "\"year_batch_regex\": \"__stock_minute_5m__(?P<year>\\\\d{4})__batch\""
+            },
+            {
+              "line": 53,
+              "text": "\"year_batch_glob\": \"stock_minute_5m__{year}__*.parquet\","
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "STORAGE_LAYOUT",
+      "tip": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+      "tip_resolved": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260923_20260924_191823\\standard\\price\\ETF_1m",
+      "tip_parquet_n": 12,
+      "mat_dirs": [
+        "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m.__mat_13080"
+      ],
+      "mat_parquet_n": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m.__mat_13080",
+          "n": 4352
+        }
+      ],
+      "note": "tip=day freshness shards; mat=year-batch materialization sibling — not auto-merged authority"
+    },
+    {
+      "kind": "STORAGE_LAYOUT",
+      "tip": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m",
+      "tip_resolved": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260923_20260924_191823\\standard\\price\\ETF_5m",
+      "tip_parquet_n": 22,
+      "mat_dirs": [
+        "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m.__mat_8772"
+      ],
+      "mat_parquet_n": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m.__mat_8772",
+          "n": 4348
+        }
+      ],
+      "note": "tip=day freshness shards; mat=year-batch materialization sibling — not auto-merged authority"
+    }
+  ],
+  "verdict": "HISTORY_CONSUMER_LINK_UNPROVEN",
+  "reason": "No __mat_ consumer reference found in bounded script/rule search; registry uses tip path"
+}
