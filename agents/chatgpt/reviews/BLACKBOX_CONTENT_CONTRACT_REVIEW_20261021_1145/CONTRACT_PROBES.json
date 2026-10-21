@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "source_sha256": {
+    "unified": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce",
+    "etf": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316"
+  },
+  "n_probes": 12,
+  "all_assertions_pass": true,
+  "probes": [
+    {
+      "name": "undated_sidecar_widens_full_year",
+      "actual": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "expected": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "assertion_pass": true,
+      "interpretation": "Metadata envelope only; no parquet content was read"
+    },
+    {
+      "name": "empty_sidecar_can_declare_data_plane_ready",
+      "actual": [
+        1,
+        "YES"
+      ],
+      "expected": [
+        1,
+        "YES"
+      ],
+      "assertion_pass": true,
+      "interpretation": "PRESENT/YES is not actual row/calendar/symbol completeness"
+    },
+    {
+      "name": "malformed_sidecar_still_widens",
+      "actual": [
+        1,
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "expected": [
+        1,
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "assertion_pass": true,
+      "interpretation": "Counter increments before parse; malformed metadata can become broad declaration"
+    },
+    {
+      "name": "cleaning_year_prevents_discovery_other_raw_year",
+      "actual": [
+        "2025"
+      ],
+      "expected": [
+        "2025"
+      ],
+      "assertion_pass": true,
+      "interpretation": "RAW 2026 is not discovered when a CLEANING 2025 year batch exists"
+    },
+    {
+      "name": "current_scan_excludes_sibling_materialization",
+      "actual": [
+        "fund_etf_price_1m__XSHG__1m__2026-09-24__fixture.parquet"
+      ],
+      "expected": [
+        "fund_etf_price_1m__XSHG__1m__2026-09-24__fixture.parquet"
+      ],
+      "assertion_pass": true,
+      "interpretation": "Exact root glob does not traverse sibling .__mat directories"
+    },
+    {
+      "name": "cleaning_selection_tip_only",
+      "actual": [
+        "fixture_tip"
+      ],
+      "expected": [
+        "fixture_tip"
+      ],
+      "assertion_pass": true,
+      "interpretation": "CLEANING selector accepts TIP"
+    },
+    {
+      "name": "cleaning_selection_history_empty",
+      "actual": [],
+      "expected": [],
+      "assertion_pass": true,
+      "interpretation": "RAW candidate is present but CLEANING selector excludes it"
+    },
+    {
+      "name": "raw_selection_history_explicit_only",
+      "actual": [
+        "fixture_raw"
+      ],
+      "expected": [
+        "fixture_raw"
+      ],
+      "assertion_pass": true,
+      "interpretation": "Explicit RAW selection differs from default reader path"
+    },
+    {
+      "name": "default_reader_does_not_fallback_raw",
+      "actual": [
+        "fixture_tip",
+        "synthetic"
+      ],
+      "expected": [
+        "fixture_tip"
+      ],
+      "assertion_pass": true,
+      "interpretation": "Original read_overlapping body uses CLEANING only; read/normalization/filter were fake test adapters"
+    },
+    {
+      "name": "partial_window_can_have_dedupe_pass",
+      "actual": [
+        1,
+        "PASS"
+      ],
+      "expected": [
+        1,
+        "PASS"
+      ],
+      "assertion_pass": true,
+      "interpretation": "DEDUPE_QA is not coverage acceptance; one date is absent"
+    },
+    {
+      "name": "conflicting_key_is_removed_not_priority_selected",
+      "actual": [
+        1,
+        0
+      ],
+      "expected": [
+        1,
+        0
+      ],
+      "assertion_pass": true,
+      "interpretation": "Original dedupe detects conflict and removes conflicting key; no day/year precedence is applied here"
+    },
+    {
+      "name": "anti_lookahead_nan_availability_passes",
+      "actual": "PASS",
+      "expected": "PASS",
+      "assertion_pass": true,
+      "interpretation": "Existing test does not reject NaT and has no request_time argument; PASS cannot prove no lookahead"
+    }
+  ],
+  "scope": "Original AST-allowlisted function bodies; synthetic files and pandas-backed FakeArrow; production/real parquet/real Arrow NOT_RUN. Passing assertions reproduce observed behavior, NOT production readiness.",
+  "system_inventory_acceptance": false
+}
