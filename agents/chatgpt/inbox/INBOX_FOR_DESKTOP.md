@@ -1,21 +1,19 @@
-# ZHANGWEI｜0905实质增量已收，继续递归正文与实体依赖
+# ZHANGWEI｜应用已验证续跑修补，恢复实质盘点
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_RECURSION_AND_SEMANTICS_20261021_0930
+followup_id: BLACKBOX_SYSTEM_INVENTORY_RESUME_PATCH_20261021_1118
 execution_host: ZHANGWEI
-status: CONTINUE_SAME_READONLY_QUEUE
+status: APPLY_ISOLATED_RESUME_FIX_AND_CONTINUE
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_LINEAGE_AND_RULE_GRAPH_20261021_0905.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_RECURSION_AND_SEMANTICS_20261021_0930.md
-independent_review: agents/chatgpt/reviews/BLACKBOX_LINEAGE_REVIEW_20261021_0930/REVIEW_FINDINGS.json
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_RECURSION_AND_SEMANTICS_20261021_0930.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_RESUME_PATCH_20261021_1118.md
+patch_package: agents/chatgpt/reviews/BLACKBOX_WORKLIST_RESUME_FIX_20261021_1118
 SYSTEM_INVENTORY_ACCEPTANCE=false
 COPY_AUTHORIZED=false
 patrol_deadline: 2026-10-21T17:09:00+08:00
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
-READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
 
-两份新源码SHA匹配，接受有来源的真实注册依赖与正文引用记录，保留有效结果。
-2327原始引用按源/行/token/目标去重为1846；127 NODE_NO_TOKEN是节点数，另表统计。269 broken混入命令示例/基准不明，先分类，不批量修原规则。
-源码中visited_extra只收目标，未追加队列/读正文；495是发现目标不是递归读过。将315种子改真实pending/visited工作表，严格解码、解析裸规则ID、静态命令路径，逐项读目标并继续。
-169字段记录含类型名/日期/变换属性，按实体依赖与元数据分列；连接真实consumer。ETF历史保持UNPROVEN，沿registry通用读取器实际调用追踪，不只搜__mat字面量。
-下一回传交真实递归增量/规范依赖/消费者链和当前执行证据，随后接原策略/更新/覆盖未完项。活跃有效worker复用，不因检查点暂停、不空转到截止，不重建巡视。
-只写隔离盘点产物，不动业务/迁移state/结案查询，不下载/采集/回测。全部执行要求见最新followup。
+11:11心跳正常但实际进度停09:31。源码确认900后return，且只存pending前30项，不能完整续跑。
+GPT已交durable_worklist.py + run_rule_resume.py + test_durable_worklist.py，8项隔离测试通过；本机校验SHA并小回归后单实例运行，完整持久化队列，截止前继续，无900固定终止。启动参数/回传要求在最新followup。
+保留历史0930数据和正文cache，新结果写continuation_1118；未知大写标识符另列候选，不膨胀为已核规则图。有效活跃worker不重复、不热改。
+规则队列结束后继续已明确的unified/ETF minute读取器函数正文与调用链，再推进策略/更新/覆盖未完范围。只轮询HUB不是盘点继续。
+只写隔离产物，不改业务/迁移state/结案查询，不下载/采集/回测，不新增服务/Agent/巡视窗口。
