@@ -1,0 +1,71 @@
+{
+  "view_json_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1\\VIEW.json",
+  "view_json": {
+    "unions": [
+      "ETF_DAILY_PIT_R1",
+      "FUND_DAILY_PIT_R1"
+    ],
+    "preserves_asset_type": true,
+    "note": "Consumer-side logical view; base tables keep ETF vs FUND"
+  },
+  "view_kind": "VIRTUAL_CONSUMER_SIDE_UNION",
+  "materialized_table": false,
+  "unions": [
+    "ETF_DAILY_PIT_R1",
+    "FUND_DAILY_PIT_R1"
+  ],
+  "preserves_asset_type": true,
+  "note": "Consumer-side logical view; base tables keep ETF vs FUND",
+  "related_products": [
+    {
+      "product_id": "FUND_LIKE_ASSET_VIEW_R1",
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1",
+      "exists": true,
+      "entries": [
+        "VIEW.json"
+      ],
+      "parquet_or_partition_present": false,
+      "class": "LOGICAL_VIEW_JSON"
+    },
+    {
+      "product_id": "FUND_DAILY_PIT_R1",
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_DAILY_PIT_R1",
+      "exists": true,
+      "entries": [],
+      "parquet_or_partition_present": false,
+      "class": "EMPTY_CACHE_DIR_NO_PARQUET"
+    },
+    {
+      "product_id": "FUND_FACTOR_DAILY_R1",
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_FACTOR_DAILY_R1",
+      "exists": true,
+      "entries": [],
+      "parquet_or_partition_present": false,
+      "class": "EMPTY_CACHE_DIR_NO_PARQUET"
+    },
+    {
+      "product_id": "ETF_DAILY_PIT_R1",
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ETF_DAILY_PIT_R1",
+      "exists": true,
+      "entries": [
+        "year=2026"
+      ],
+      "parquet_or_partition_present": true,
+      "class": "MATERIALIZED_OR_PARTITIONED"
+    }
+  ],
+  "consumer_refs": [
+    {
+      "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+      "bytes": 6665,
+      "mentions_fund_like": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_JQ_ACCESSIBLE_DATASET_LEDGER_R1.json",
+      "bytes": 57261,
+      "mentions_fund_like": true
+    }
+  ],
+  "no_parquet_not_data_loss": true,
+  "download": false
+}
