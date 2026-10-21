@@ -1,0 +1,107 @@
+{
+  "pointers": {
+    "cleaning_current": "数据/清洗成品/CURRENT_CLEANING_RELEASE.json",
+    "cache_current": "数据/回测缓存/CURRENT_CACHE_RELEASE.json",
+    "raw_root": "数据/原始只读/JQData_9999_official_raw"
+  },
+  "product_count_total": 8,
+  "etf_related_products": {
+    "ETF_MINUTE_1M_R1": {
+      "aliases": [
+        "ETF_MINUTE_1M",
+        "ETF_1M",
+        "etf_1m"
+      ],
+      "asset": "ETF",
+      "freq": "1m",
+      "fq_tag": "raw_none",
+      "planes": {
+        "CLEANING_CURRENT": {
+          "relative_under_standard": "price/ETF_1m",
+          "day_name_regex": "__1m__(?P<date>\\d{4}-\\d{2}-\\d{2})__",
+          "year_batch_regex": "__(?P<year>\\d{4})__1m__"
+        },
+        "RAW_REPLACEMENT": {
+          "relative_under_raw_root": "P4_fund_etf_raw_none/fund_etf_price_1m",
+          "year_batch_glob": "*__{year}__*.parquet",
+          "sidecar_suffix": ".sidecar.json",
+          "sidecar_start_key": "start_date",
+          "sidecar_end_key": "end_date",
+          "note": "RAW ETF minute mixed layout; prefer Cleaning CURRENT day/year for production read"
+        }
+      }
+    },
+    "ETF_MINUTE_5M_R1": {
+      "aliases": [
+        "ETF_MINUTE_5M",
+        "ETF_5M",
+        "etf_5m"
+      ],
+      "asset": "ETF",
+      "freq": "5m",
+      "fq_tag": "raw_none",
+      "planes": {
+        "CLEANING_CURRENT": {
+          "relative_under_standard": "price/ETF_5m",
+          "day_name_regex": "__5m__(?P<date>\\d{4}-\\d{2}-\\d{2})__",
+          "year_batch_regex": "__(?P<year>\\d{4})__5m__"
+        },
+        "RAW_REPLACEMENT": {
+          "relative_under_raw_root": "P4_fund_etf_raw_none/fund_etf_price_5m",
+          "year_batch_glob": "*__{year}__*.parquet",
+          "sidecar_suffix": ".sidecar.json",
+          "sidecar_start_key": "start_date",
+          "sidecar_end_key": "end_date"
+        }
+      }
+    },
+    "ETF_MINUTE_30M_R1": {
+      "aliases": [
+        "ETF_MINUTE_30M",
+        "ETF_30M",
+        "etf_30m"
+      ],
+      "asset": "ETF",
+      "freq": "30m",
+      "fq_tag": "raw_none",
+      "planes": {
+        "CLEANING_CURRENT": {
+          "relative_under_standard": "price/ETF_30m",
+          "day_name_regex": "__30m__(?P<date>\\d{4}-\\d{2}-\\d{2})__",
+          "year_batch_regex": "__(?P<year>\\d{4})__30m__"
+        },
+        "RAW_REPLACEMENT": {
+          "relative_under_raw_root": "P4_fund_etf_raw_none/fund_etf_price_30m",
+          "year_batch_glob": "*__{year}__*.parquet",
+          "sidecar_suffix": ".sidecar.json",
+          "sidecar_start_key": "start_date",
+          "sidecar_end_key": "end_date"
+        }
+      }
+    },
+    "ETF_MINUTE_60M_R1": {
+      "aliases": [
+        "ETF_MINUTE_60M",
+        "ETF_60M",
+        "etf_60m"
+      ],
+      "asset": "ETF",
+      "freq": "60m",
+      "fq_tag": "raw_none",
+      "planes": {
+        "CLEANING_CURRENT": {
+          "relative_under_standard": "price/ETF_60m",
+          "day_name_regex": "__60m__(?P<date>\\d{4}-\\d{2}-\\d{2})__",
+          "year_batch_regex": "__(?P<year>\\d{4})__60m__"
+        },
+        "RAW_REPLACEMENT": {
+          "relative_under_raw_root": "P4_fund_etf_raw_none/fund_etf_price_60m",
+          "year_batch_glob": "*__{year}__*.parquet",
+          "sidecar_suffix": ".sidecar.json",
+          "sidecar_start_key": "start_date",
+          "sidecar_end_key": "end_date"
+        }
+      }
+    }
+  }
+}
