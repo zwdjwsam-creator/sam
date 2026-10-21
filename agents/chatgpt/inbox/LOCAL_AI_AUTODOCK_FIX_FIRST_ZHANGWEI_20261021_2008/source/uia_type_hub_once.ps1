@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 public class WinFg {
   [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr hWnd);
   [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+  [DllImport("user32.dll")] public static extern IntPtr GetAncestor(IntPtr hWnd, uint flags);
 }
 "@
 
@@ -137,10 +138,9 @@ Start-Sleep -Milliseconds 200
 try { $target.SetFocus() } catch { $meta.reason = 'SETFOCUS_FAILED'; Emit $meta; exit 0 }
 Start-Sleep -Milliseconds 200
 $fg = [WinFg]::GetForegroundWindow()
-$windowRid = Rid $window
-$fgNum = $fg.ToInt64()
-$fgMatches = ($fg -eq $hwnd) -or ($windowRid -eq "$fgNum") -or ($windowRid -like "*,$fgNum,*") -or ($windowRid -like "$fgNum,*") -or ($windowRid -like "*,$fgNum")
-if (-not $fgMatches) { $meta.reason = 'FOREGROUND_NOT_TARGET'; $meta.foreground = $fgNum; $meta.window_rid = $windowRid; Emit $meta; exit 0 }
+$fgRoot = [WinFg]::GetAncestor($fg, 2)
+$hwndRoot = [WinFg]::GetAncestor($hwnd, 2)
+if ($fgRoot -ne $hwndRoot) { $meta.reason = 'FOREGROUND_NOT_TARGET'; $meta.foreground = $fg.ToInt64(); $meta.foreground_root = $fgRoot.ToInt64(); Emit $meta; exit 0 }
 $focused = $null
 try { $focused = $AE::FocusedElement } catch {}
 $fid = $(if ($focused) { Rid $focused } else { '' })
@@ -164,8 +164,9 @@ if ($mid.visible_is_name_plus_HUB -and $focusOk) {
   exit 0
 }
 if (-not $mid.visible_exact_HUB) {
-  $meta.status = 'BLOCKED'
-  $meta.reason = 'TYPED_BUT_TEXTPATTERN_NOT_EXACT_HUB'
+  $meta.provider = 'PROVIDER_UNRELIABLE'
+  $meta.status = 'TYPED_AWAITING_VISUAL'
+  $meta.reason = 'TEXTPATTERN_DID_NOT_SHOW_HUB'
   Emit $meta
   exit 0
 }
@@ -189,7 +190,8 @@ if (-not $sent) {
     Emit $meta
     exit 0
   }
-  if ([WinFg]::GetForegroundWindow().ToInt64() -ne $fgNum -and -not ($windowRid -like "*$([WinFg]::GetForegroundWindow().ToInt64())*")) {
+  $fg2 = [WinFg]::GetForegroundWindow()
+  if ([WinFg]::GetAncestor($fg2, 2) -ne $hwndRoot) {
     $meta.status = 'DELIVERY_UNCERTAIN'; $meta.reason = 'FOREGROUND_LOST_BEFORE_ENTER'; Emit $meta; exit 0
   }
   [System.Windows.Forms.SendKeys]::SendWait('{ENTER}')
