@@ -1,14 +1,14 @@
 # RESUME_0730_PROGRESS
 
-status: **RUNNING**
-phase: DEEPEN_START_0730
-worker_pid: 28988
-elapsed_sec: 0.1
+status: **PARTIAL_CONTINUE_NO_FORCED_WAIT**
+phase: BATCH_CHECKPOINT_0730
+worker_pid: 9876
+elapsed_sec: 1.3
 parser_v5_pass: True
 fragments_products: 55
-incomplete_or_partial: 10
+incomplete_or_partial: 3
 deadline: 2026-10-21T17:55:23+08:00
-note: passA done; start deepen incomplete (FUND_NAV first)
+note: remaining incomplete=3; no WAIT barrier
 
 ## Fixes applied this worker
 1. date candidates include `day`
