@@ -1,18 +1,17 @@
-# ZHANGWEI｜1118队列已结束，继续内容盘点整批任务
+# ZHANGWEI｜1136已复核，完成实际消费者/引擎/总表盘点
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_CONTENT_BATCH_20261021_1136
+followup_id: BLACKBOX_SYSTEM_INVENTORY_CONTRACT_AND_SCOPE_20261021_1145
 execution_host: ZHANGWEI
 status: CONTINUE_AUTHORIZED_CONTENT_INVENTORY
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_RESUME_PATCH_20261021_1118.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTENT_BATCH_20261021_1136.md
-patch_package: agents/chatgpt/reviews/BLACKBOX_WORKLIST_RESUME_FIX_20261021_1118
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTENT_BATCH_20261021_1136.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTRACT_AND_SCOPE_20261021_1145.md
+review: agents/chatgpt/reviews/BLACKBOX_CONTENT_CONTRACT_REVIEW_20261021_1145/REVIEW.md
 SYSTEM_INVENTORY_ACCEPTANCE=false
 COPY_AUTHORIZED=false
 patrol_deadline: 2026-10-21T17:09:00+08:00
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 
-GPT已查收1118回归8/8与SHA匹配回执、PID46144启动记录及SUMMARY：950文档节点done，failed0/pending0，11:26:50结束。接受本阶段进展，不重复启动规则队列，不宣称全系统完成。
-下一整批：上传真实unified/ETF两份源码与所用registry；证明实际片段选择和安全只读读取边界；复用既有结果形成规则适用/策略回测约束/更新恢复运行链，以及产品完整性统一问题表。ETF历史仍UNPROVEN；不从.__mat存在直接升级覆盖。
-完成一项继续下一项，无逐小批查收门槛。有效工作不打断；及时更新真实STATUS和INBOX，通信心跳不代表业务进度。保持17:09截止，不新建服务/Agent/巡视。
-只写隔离产物，不改业务/环境/迁移state，不下载/采集/回测/清理，不重开R9。
+两源码完整SHA已核；GPT已交12项原函数隔离探针，复现元数据READY/去重PASS/防未来数据PASS的证明局限及RAW选择差异。无需重复950队列/源码hash或为获得下一命令重做fixture；接着查实际caller与既有契约，不修改生产读取器。
+补引擎侧有限种子范围与语义规则链，复用既有75对象生成全范围总表和具体缺口/更新恢复证据；不能停在8产品种子表。有效工作继续，无小批确认门槛，不新增重复worker/Agent/服务/巡视。
+更新真实STATUS；Agent直接审阅也可，诚实记录实际内容进展，不以通信心跳代替工作。截止17:09不变。盘点覆盖完成与数据/规则可运行分别判定；原业务只读，不下载/采集/回测/清理，不重开R9。
