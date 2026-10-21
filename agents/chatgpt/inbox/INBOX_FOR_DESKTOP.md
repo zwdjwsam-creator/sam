@@ -1,20 +1,19 @@
-# ZHANGWEI｜0712检查点已接收，修复已复现问题并连续续跑
-confirmation: ACCEPT_0712_CHECKPOINT
+# ZHANGWEI｜保留0730增量，核ETF分钟产品身份并继续剩余阶段
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_ACCEPT_AND_RESUME_20261021_0730
+followup_id: BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815
 execution_host: ZHANGWEI
-status: ACCEPT_CHECKPOINT_CONTINUE_READONLY
+status: CONTINUE_READONLY_INVENTORY
+confirmation: ACCEPT_0712_CHECKPOINT
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_REVIEW_AND_ADVANCE_20261021_0712.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_ACCEPT_AND_RESUME_20261021_0730.md
-independent_review: agents/chatgpt/reviews/BLACKBOX_INVENTORY_CHECKPOINT_20261021_0730/independent_reproduction.json
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_ACCEPT_AND_RESUME_20261021_0730.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815.md
+independent_review: agents/chatgpt/reviews/BLACKBOX_MINUTE_AUTHORITY_20261021_0815/independent_reproduction.json
 COPY_AUTHORIZED=false
 SYSTEM_INVENTORY_ACCEPTANCE=false
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
-current_patrol_deadline: 2026-10-21T17:09:00+08:00
 
-三份上传源码SHA与清单完全一致，已接收进程退出、75对象对账及阶段产物；不是全链完整性验收。
-请解除仅针对0712的本任务等待记录，不再每批强制等GPT确认。隔离复现已确认day遗漏、无year布局合并为NA首片、空值列分别过滤导致主键串位、前导点strip破坏../、自动猜.cursor却标RESOLVED五项问题。
-按新followup直接修隔离盘点脚本、运行正确期望回归、保存证据，再启动或复用单实例从未完成fragment连续推进；不重跑55个旧year样本，不只交ACK便停。
-保留所有有效成果；只读盘点范围不变，原业务/环境/R9/结案查询不改，不下载/回测。复用现有巡视与截止，不新增服务/Agent。
+已读0730最新产物。保留FUND_NAV 5980分片/6496121行日期观察及其它有效读数，不重复扫全套。
+新发现：ETF分钟与股票分钟同指A股_stock_1m/5m，旧盘点定位器只匹配频率，隔离复现ETF有独立目录也被选成股票。ETF两项先标AUTHORITY_IDENTITY_UNVERIFIED；核资产类别/频率/plane/合同，若共用dataset须给明确筛选及各自统计，不把股票整表当ETF证据。
+继续原总任务未做的日期集合/主键/规则和依赖映射；3个NO_FILES不等于原总任务仅剩3项。补上传当前0730源码、真实75阶段表、严格布尔回归和实际进程/读取增量证据。
+有效worker不停、不重复实例；当前批完成就接下一阶段，不空转重写同一汇总，不每批再等确认。复用现有巡视，不重建/滚动延长。业务/R9/结案查询不改，不采集/下载/回测。完整要求见最新followup。
