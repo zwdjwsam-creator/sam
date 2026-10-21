@@ -122,18 +122,7 @@ def uia_inspect() -> dict:
 
 
 def agent_composer_unique(inspect: dict) -> bool:
-    """True only if a non-ChatGPT edit exists that looks like Agent composer."""
-    # deep probe file if present
-    deep = EVID / "uia_deep_cursor.json"
-    names = []
-    if deep.exists():
-        try:
-            d = json.loads(deep.read_text(encoding="utf-8-sig"))
-            for e in d.get("edit_samples") or []:
-                names.append(e.get("name") or "")
-        except Exception:
-            pass
-    # run fresh deep
+    """Fresh class identity: exactly one visible aislash-editor-input. Names are not used."""
     r = subprocess.run(
         [
             "powershell",
@@ -141,7 +130,11 @@ def agent_composer_unique(inspect: dict) -> bool:
             "-ExecutionPolicy",
             "Bypass",
             "-File",
-            str(HERE / "uia_deep_cursor.ps1"),
+            str(HERE / "uia_send_hub_once.ps1"),
+            "-Direction",
+            "G2C",
+            "-Mode",
+            "Verify",
         ],
         capture_output=True,
         text=True,
@@ -151,24 +144,12 @@ def agent_composer_unique(inspect: dict) -> bool:
     )
     try:
         d = json.loads(r.stdout or "{}")
-        (EVID / "uia_deep_cursor.json").write_text(
-            json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8"
-        )
-        for e in d.get("edit_samples") or []:
-            names.append(e.get("name") or "")
     except Exception:
-        pass
-    non_gpt = [
-        n
-        for n in names
-        if n
-        and ("ChatGPT" not in n)
-        and ("使用 ChatGPT" not in n)
-        and ("询问 ChatGPT" not in n)
-        and ("地址" not in n)
-        and ("终端" not in n)
-    ]
-    return len(non_gpt) >= 1
+        d = {}
+    (EVID / "uia_class_verify.json").write_text(
+        json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    return int(d.get("agent_count") or 0) == 1 and d.get("status") == "VERIFY_ONLY"
 
 
 def fixed_c2g(url: str) -> str:
@@ -182,6 +163,36 @@ def fixed_g2c(url: str) -> str:
 
 def send_armed() -> bool:
     return os.environ.get("LOCAL_AI_SEND_ARMED") == "1"
+
+
+def _hub_once(direction: str, mode: str, message_id: str | None) -> dict:
+    """Send and verify are different modes. Verify never writes."""
+    ev = EVID / f"hub_once_{direction}_{mode}_{message_id or 'x'}.json"
+    r = subprocess.run(
+        [
+            "powershell",
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            str(HERE / "uia_send_hub_once.ps1"),
+            "-Direction",
+            direction,
+            "-Mode",
+            mode,
+            "-EvidencePath",
+            str(ev),
+        ],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        timeout=90,
+    )
+    try:
+        return json.loads(r.stdout or "{}")
+    except Exception:
+        return {"status": "PARSE_FAIL", "raw": (r.stdout or "")[:1500]}
 
 
 def decide_and_act(event: dict) -> dict:
@@ -228,37 +239,14 @@ def decide_and_act(event: dict) -> dict:
         result["delivery"] = {"status": "QUEUE_ONLY", "reason": "SEND_NOT_ARMED", "body": "HUB"}
     elif action == "BLOCKED_G2C":
         result["delivery"] = {"status": "BLOCKED_G2C", "reason": "AGENT_COMPOSER_NOT_UNIQUE"}
-    elif action in {"TYPE_FIXED_NOTICE", "SEND", "VERIFY_DELIVERY"} and event.get("direction") == "CURSOR_TO_GPT":
-        msg = fixed_c2g(event["url"])
-        needle = event.get("needle") or event["url"].split("/")[-1][:40]
-        ps = HERE / "uia_c2g_send_and_prove.ps1"
-        r = subprocess.run(
-            [
-                "powershell",
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-File",
-                str(ps),
-                "-Message",
-                msg,
-                "-Needle",
-                needle,
-                "-EvidencePath",
-                str(EVID / f"c2g_prove_{event.get('message_id','x')}.json"),
-            ],
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            timeout=120,
-        )
-        try:
-            uia_res = json.loads(r.stdout or "{}")
-        except Exception:
-            uia_res = {"status": "ATTEMPTED_NO_ECHO", "raw": (r.stdout or "")[:2000]}
-        result["delivery"] = uia_res
-        result["message_utf8"] = msg
+    elif action == "VERIFY_DELIVERY":
+        direction = "C2G" if event.get("direction") == "CURSOR_TO_GPT" else "G2C"
+        result["delivery"] = _hub_once(direction, "Verify", event.get("message_id"))
+        result["message_utf8"] = "HUB"
+    elif action in {"TYPE_FIXED_NOTICE", "SEND"} and event.get("direction") in {"CURSOR_TO_GPT", "GPT_TO_CURSOR"}:
+        direction = "C2G" if event.get("direction") == "CURSOR_TO_GPT" else "G2C"
+        result["delivery"] = _hub_once(direction, "Send", event.get("message_id"))
+        result["message_utf8"] = "HUB"
     else:
         result["delivery"] = {"status": action}
     outp = EVID / f"operator_{event.get('message_id','x')}.json"
