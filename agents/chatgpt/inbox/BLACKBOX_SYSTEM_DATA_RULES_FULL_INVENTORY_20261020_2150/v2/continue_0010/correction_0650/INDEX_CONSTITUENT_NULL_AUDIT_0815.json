@@ -1,0 +1,59 @@
+{
+  "product_id": "INDEX_CONSTITUENT_PIT_R1",
+  "at": "2026-10-21T08:19:58+08:00",
+  "authority_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_CONSTITUENT_PIT_R1",
+  "files": 1,
+  "schema": [
+    "canonical_index_id",
+    "index_code",
+    "constituent_code",
+    "constituent_asset_type",
+    "announcement_date",
+    "announcement_ts",
+    "effective_from",
+    "effective_to",
+    "available_from_ts",
+    "weight",
+    "weight_date",
+    "source_provider",
+    "source_api",
+    "source_date",
+    "source_version",
+    "revision_id",
+    "ingested_at",
+    "pit_status",
+    "pit_ok",
+    "current_backfill",
+    "notes"
+  ],
+  "rows": 2592719,
+  "date_like_stats": {
+    "announcement_date": {
+      "null_count": 2592719,
+      "null_ratio": 1.0,
+      "non_null": 0
+    },
+    "effective_from": {
+      "null_count": 0,
+      "null_ratio": 0.0,
+      "non_null": 2592719
+    },
+    "available_from_ts": {
+      "null_count": 0,
+      "null_ratio": 0.0,
+      "non_null": 2592719
+    },
+    "weight_date": {
+      "null_count": 2592719,
+      "null_ratio": 1.0,
+      "non_null": 0
+    },
+    "source_date": {
+      "null_count": 0,
+      "null_ratio": 0.0,
+      "non_null": 2592719
+    }
+  },
+  "verdict": "ANNOUNCEMENT_DATE_ALL_NULL_OR_EMPTY",
+  "note": "Do not claim date column recovery; pick applicable contract field or report gap"
+}
