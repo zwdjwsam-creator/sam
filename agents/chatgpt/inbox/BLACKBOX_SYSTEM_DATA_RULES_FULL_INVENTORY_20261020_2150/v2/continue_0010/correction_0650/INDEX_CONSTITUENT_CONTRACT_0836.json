@@ -1,0 +1,116 @@
+{
+  "product_id": "INDEX_CONSTITUENT_PIT_R1",
+  "authority_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_CONSTITUENT_PIT_R1",
+  "parquet": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_CONSTITUENT_PIT_R1\\INDEX_CONSTITUENT_PIT_R1.parquet",
+  "exists": true,
+  "must_read_rules": [
+    {
+      "line": 63,
+      "text": "RULE_1 `INDEX_CONSTITUENT` ≠ `INDEX_WEIGHT` ≠ `FUND_PORTFOLIO_STOCK`。三者独立 product_id；成分表无 weight 不是异常，禁止生成 weight。"
+    },
+    {
+      "line": 68,
+      "text": "RULE_6 官方权重不可用时禁止成交额/市值/相近指数/成分表代理。`WEIGHT_PROXY_FORBIDDEN=TRUE`。"
+    }
+  ],
+  "field_roles": {
+    "announcement_date": {
+      "role": "DISCLOSURE_ANNOUNCEMENT",
+      "observed": "ALL_NULL_IN_0815_AUDIT",
+      "may_use_as_known_at": false,
+      "reason": "null_ratio=1.0 in prior audit; empty cannot serve as PIT known-at"
+    },
+    "effective_from": {
+      "role": "MEMBERSHIP_EFFECTIVE_START",
+      "observed": "NON_NULL",
+      "may_use_as_known_at": false,
+      "reason": "effective membership date ≠ information available time"
+    },
+    "source_date": {
+      "role": "VENDOR_SOURCE_DATE",
+      "observed": "NON_NULL",
+      "may_use_as_known_at": false,
+      "reason": "source dating ≠ exchange disclosure announcement"
+    },
+    "available_from_ts": {
+      "role": "LOCAL_AVAILABILITY_OR_INGEST_BOUND",
+      "observed": "NON_NULL",
+      "may_use_as_known_at": false,
+      "reason": "non-null alone cannot prove historical contemporaneous availability; may be backfill/ingest"
+    },
+    "ingested_at": {
+      "role": "INGEST_WALLCLOCK",
+      "may_use_as_known_at": false,
+      "reason": "pipeline ingest time"
+    },
+    "pit_status": {
+      "role": "ADMISSION_LABEL",
+      "may_use_as_known_at": false
+    },
+    "current_backfill": {
+      "role": "BACKFILL_FLAG",
+      "may_use_as_known_at": false
+    }
+  },
+  "rows_scanned": 2592719,
+  "value_distributions": {
+    "pit_status": {
+      "ADMITTED_MONTH_END_SNAPSHOT": 2592719
+    },
+    "pit_ok": {
+      "True": 2592719
+    },
+    "current_backfill": {
+      "False": 2592719
+    },
+    "constituent_asset_type": {
+      "STOCK": 2592719
+    }
+  },
+  "date_field_ranges": {
+    "available_from_ts": {
+      "null_count": 0,
+      "null_ratio": 0.0,
+      "min": "2005-01-31T15:00:00+08:00",
+      "max": "2026-08-04T15:00:00+08:00"
+    },
+    "effective_from": {
+      "null_count": 0,
+      "null_ratio": 0.0,
+      "min": "2005-01-31",
+      "max": "2026-08-04"
+    },
+    "source_date": {
+      "null_count": 0,
+      "null_ratio": 0.0,
+      "min": "2005-01-31",
+      "max": "2026-08-04"
+    },
+    "ingested_at": {
+      "null_count": 0,
+      "null_ratio": 0.0,
+      "min": "2026-08-04T23:38:59.681514+00:00",
+      "max": "2026-08-04T23:55:20.306026+00:00"
+    },
+    "announcement_date": {
+      "null_count": 2592719,
+      "null_ratio": 1.0,
+      "min": null,
+      "max": null
+    }
+  },
+  "update_scope_refs": [],
+  "verdict": {
+    "announcement_date": "NOT_USABLE_ALL_NULL_OR_EMPTY",
+    "effective_from": "MEMBERSHIP_EFFECTIVE_ONLY",
+    "available_from_ts": "NON_NULL_BUT_NOT_PROVEN_HISTORICAL_KNOWN_AT",
+    "pit_status_observed": {
+      "ADMITTED_MONTH_END_SNAPSHOT": 2592719
+    },
+    "current_backfill_observed": {
+      "False": 2592719
+    },
+    "weight_absent_ok": true,
+    "weight_absent_rule_source": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md#RULE_1"
+  }
+}
