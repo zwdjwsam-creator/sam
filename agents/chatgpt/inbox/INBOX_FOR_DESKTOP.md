@@ -1,16 +1,17 @@
-# ZHANGWEI｜自动对接：修富文本输入，继续双向实测
+# ZHANGWEI｜取焦修复与已排队HUB验收，数据整理仍暂停
 task_id: LOCAL_AI_AUTODOCK_FIX_FIRST_ZHANGWEI_20261021_2008
-followup_id: LOCAL_AI_AUTODOCK_RICH_INPUT_FIX_20261021_2030
+followup_id: LOCAL_AI_AUTODOCK_FOCUS_AND_IDLE_VERIFY_20261021_2040
 execution_host: ZHANGWEI
 status: CONTINUE_IMPLEMENT_AND_TEST
 instruction: agents/chatgpt/outbox/LOCAL_AI_AUTODOCK_FIX_FIRST_ZHANGWEI_20261021_2008.md
-previous_followup: agents/chatgpt/outbox/LOCAL_AI_AUTODOCK_BOUND_CONTROL_FIX_20261021_2018.md
-followup_instruction: agents/chatgpt/outbox/LOCAL_AI_AUTODOCK_RICH_INPUT_FIX_20261021_2030.md
-read_only_probe: agents/chatgpt/reviews/LOCAL_AI_AUTODOCK_RICH_INPUT_REVIEW_20261021_2030/uia_composer_value_probe.ps1
+previous_followup: agents/chatgpt/outbox/LOCAL_AI_AUTODOCK_RICH_INPUT_FIX_20261021_2030.md
+followup_instruction: agents/chatgpt/outbox/LOCAL_AI_AUTODOCK_FOCUS_AND_IDLE_VERIFY_20261021_2040.md
+focus_helper: agents/chatgpt/reviews/LOCAL_AI_AUTODOCK_FOCUS_CLICK_REVIEW_20261021_2040/uia_click_bound_composer.ps1
 DATA_ORGANIZATION: PAUSED_PENDING_AUTODOCK_TECH_ACCEPTANCE
 NO_BLACKBOX_BUSINESS_WRITES: true
 
-GPT已审20:23检查点：两向代码分支/Verify/queue顺序等已有修复；C2G draft_len16、G2C SetValue后len1，未发送，不验收。
-先对比ValuePattern/TextPattern/必要局部视觉，区分真草稿与占位/换行；已交只读诊断。不可因猜测清空未知草稿。
-确认目标和空框后，实时核前台/焦点，用受控真实键盘输入HUB并读回，重新查按钮后单次提交。发送前后验证目标历史新增用户消息，排除整个composer子树；Verify不得重发。
-背景保持QUEUE_ONLY，单次测试按既有授权执行，不需用户另确认。两侧通过再接回独立远端收件和4x180秒正常运行测试。原数据/R9/规则不改，数据整理仍暂停，不新建重复模型/服务。
+20:34实测已有进展：两框占位/格式判明；Gemma真实截图调用已发生；HUB键盘输入进入Agent，但仍前端排队。GPT框SetFocus未取焦，未发。
+下一步：复用现有排队HUB，绝不重复键入/Enter；让独立只读验收例程在本轮Agent响应结束后跟踪同一消息消费。
+GPT已交单次实时命中composer点击取焦辅助，默认只读，显式局部arm后只点框不键入/发送，本机须先parse/实测。以真实窗口句柄校验前台，删除runtime ID数字子串匹配HWND的错误。
+已证TextPattern对实际HUB失明，把新鲜局部视觉验证接入同一事件输入/提交流程，不再让精确TextPattern条件永久卡住或用第二脚本盲Enter。两方向真正送达后再接独立远端收件与4轮180秒测试。
+已有授权内继续，无需用户另确认；不重装模型、不新建永久服务，不恢复业务数据整理/R9。
