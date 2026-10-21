@@ -1,34 +1,39 @@
-# LOCAL_AI_AUTODOCK_FIX_FIRST_ZHANGWEI_20261021_2008 — REPORT
+# 2008 follow-up 2018 — bound control checkpoint
 
-host: ZHANGWEI  
-at: 2026-10-21T20:09:40+08:00  
-tip_blob_sha: 61528952a2e83a3fd6e0e06780508223767a8a1e  
-DATA_ORGANIZATION_PAUSED: true  
-NO_BLACKBOX_BUSINESS_WRITES: true  
+host: ZHANGWEI
+at: 2026-10-21T20:23:10+08:00
+followup: LOCAL_AI_AUTODOCK_BOUND_CONTROL_FIX_20261021_2018
+tip_blob_sha: a9cf4e668d2e058e4f0b9f50bf42e87aa58183b1
+DATA_ORGANIZATION_PAUSED: true
 AUTODOCK_FUNCTIONAL_READY: false
+SCHEDULER_STILL: QUEUE_ONLY
 
-## Done this turn
+## Probe
 
-1. Scheduler is QUEUE_ONLY. Task `LOCAL_AI_HUB_TwoWindowNotifier_1913` action is now  
-   `python -u D:\LOCAL_AI\Watchdog\hub_two_window_notifier_1913\run_queue_only.py --once`  
-   Logon Mode remains Interactive only. It reads mailbox, persists queue, does not type or press Enter.
-2. Extra `run_pilot_1913.py --poll-cycles 4` process was stopped (it had reached cycle 2/4 silent; it did not send).
-3. UIA send scripts refuse unless `LOCAL_AI_SEND_ARMED=1`, and the only allowed body is ASCII `HUB`.
-4. Operator send path is gated the same way. URL/Chinese sentences are not keystrokes.
-5. Inspect-only bind (`evidence/uia_bind_targets.json`), no keystrokes:
-   - Window: `HUB integration with GPT - BLACKBOX (工作区) - Cursor` pid 43324 hwnd 1247992
-   - GPT candidate: class `ProseMirror`, name `使用 ChatGPT Work`, one visible. Binding `CANDIDATE_NOT_PROVEN`.
-   - Agent candidate: class `aislash-editor-input`, empty name, one visible, distinct from the ProseMirror box. Name-only match had missed it (`g2c_binding=NOT_UNIQUE` in that script). Class split is recorded; submitted-message proof is not.
-   - Terminal edit excluded.
-6. Pointer: `PILOT_C2G_C2G_GEMMA_2000.md` was 404. Real file already on main: `PILOT_C2G_C2G_GEMMA_2004.md`. No resend of that notice.
+GPT script SHA256 matches `be36e7ab5284d1db589dba45bd9d6c4c2420f1fecb30d5e911b17debc96ffb17`.
+Parse errors: 0. Ran on this machine. Result: `evidence/uia_bound_controls_probe.json`.
 
-## Not done
+- Window pid 43324 hwnd 1247992 (snapshot only, not hardcoded).
+- Agent candidates: 1, class `aislash-editor-input`, ValuePattern, no Invoke on nearby buttons (nearest button is the model picker).
+- GPT candidates: 1, class `ProseMirror`, name `使用 ChatGPT Work`, ValuePattern. Nearby buttons: 添加文件等内容, 选择 ChatGPT 模型, 听写, 开始语音. None named 发送 and none expose InvokePattern.
+- Terminal `xterm-helper-textarea` excluded.
 
-- No new C2G/G2C send. Prior Enter leaked into Agent chat; send stays disarmed until a non-SendKeys submit is bound to one control.
-- POLL_4x180S under the new queue-only action is not sealed yet.
-- LONG_RUN_12H = PENDING
-- 1155 / data organization not resumed.
+## Code
 
-## Sources
+- `uia_send_hub_once.ps1` SHA256 `e3654ed6e18ddaa373fbe20cfd4288898adf91dd91c02418887b516d05437ba4`
+  - Fresh class match, count must be 1. No last-edit fallback. No filename needle.
+  - Send and Verify are separate modes. Verify does not write or press Enter.
+  - SetValue `HUB` only when the composer value is empty. Readback must be exactly `HUB` before any submit.
+  - Invoke only a button named 发送/Send. Otherwise one Enter only if FocusedElement runtime id is the target. Focus failure clears the HUB draft and stops.
+  - Success requires the target pane (ancestor that does not contain the other composer) to gain a non-Edit name `HUB`, and the composer to be empty. Otherwise `NOT_SUBMITTED` or `DELIVERY_UNCERTAIN`. No automatic retry.
+- Operator now calls that script for both C2G and G2C. `agent_composer_unique` uses the verify mode class count, not cached names.
+- Queue writes the queue file before seen, and keeps a baseline copy of the old seen file. Inbox notifier reports stay ignored. Outbox `LOCAL_AI_*` repair tips are no longer dropped.
 
-`source/` in this folder (config URL redacted). No tokens.
+## Single-shot tests (armed only inside that process)
+
+| Direction | Result |
+|---|---|
+| C2G | `BLOCKED` `DRAFT_PRESENT` draft_len=16. Did not overwrite. |
+| G2C | `BLOCKED` `VALUE_READBACK_NOT_HUB` readback_len=1. No Enter. `aislash-editor-input` ValuePattern did not hold `HUB`. |
+
+Scheduler was not switched to auto-send. 4x180 functional seal and 12h stay open.
