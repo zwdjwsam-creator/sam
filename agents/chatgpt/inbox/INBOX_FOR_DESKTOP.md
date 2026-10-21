@@ -1,18 +1,17 @@
-# ZHANGWEI｜本地模型自动对接优先，数据整理暂停
+# ZHANGWEI｜自动对接实码修复，数据整理暂停
 task_id: LOCAL_AI_AUTODOCK_FIX_FIRST_ZHANGWEI_20261021_2008
+followup_id: LOCAL_AI_AUTODOCK_BOUND_CONTROL_FIX_20261021_2018
 execution_host: ZHANGWEI
-status: READY_IMPLEMENT_AND_VERIFY
+status: IMPLEMENT_CONCRETE_FIXES_CONTINUE
 instruction: agents/chatgpt/outbox/LOCAL_AI_AUTODOCK_FIX_FIRST_ZHANGWEI_20261021_2008.md
+followup_instruction: agents/chatgpt/outbox/LOCAL_AI_AUTODOCK_BOUND_CONTROL_FIX_20261021_2018.md
 functional_contract: agents/chatgpt/outbox/LOCAL_AI_HUB_TWO_SIGNAL_ONLY_20261021.md
-previous_notifier_task: LOCAL_AI_GEMMA_DIRECT_OPERATOR_HANDOFF_20261021
-previous_business_followup: BLACKBOX_SYSTEM_INVENTORY_MASTER_CORRECTION_20261021_1155
+inspect_only_probe: agents/chatgpt/reviews/LOCAL_AI_AUTODOCK_CODE_REVIEW_20261021_2018/uia_bound_controls_probe.ps1
 DATA_ORGANIZATION: PAUSED_PENDING_AUTODOCK_TECH_ACCEPTANCE
 NO_BLACKBOX_BUSINESS_WRITES: true
 R9_STATUS: FULL_MIGRATION_TECHNICALLY_ACCEPTED
 
-用户最新顺序：先完成本地模型部署/双向自动对接，再做数据整理。
-模型安装和Gemma本地API已由HUB实测回报；不重装/换模型。当前故障在GUI投递：错发Agent、输入残留、反向Agent框不唯一；3分钟调度启用不等于闭环成功。
-复用D:\LOCAL_AI\Watchdog\hub_two_window_notifier_1913，先QUEUE_ONLY保留事件暂停不可靠GUI自动发送，修唯一目标绑定及提交回读。上传当前实际代码/去秘密配置/计划任务Action，我会直接审实现。
-正常通知仅ASCII HUB；先推送并远端读回报告再通知。不得把旧pilot、ACK/心跳或通知器自身日志变成回声。
-两方向真实正确会话送达+独立4轮真实180秒调度后提交功能验收；12小时稳定性另列。修复全过程只在本机模型/通知器范围，数据整理/扫描/修表/下载/回测均暂停，不自动恢复17:09已到期工单。
-执行并留真实结果，不再只回ACK；现有有效修复任务接续，不另建第二套调度器。
+GPT已审20:09回执和上传源码。QUEUE_ONLY正确；候选框已见Agent=aislash-editor-input(空Name)，GPT=ProseMirror。新的只读probe提供runtime ID/祖先/邻近按钮，Windows尚未实跑。
+必须补的实码：G2C执行分支；VERIFY不再重发；HUB消息历史而非文件名Needle验收；删除任意Edit/吞焦点错误后SendKeys回退；独立调度远端收件而非只扫静态mirror；原子队列保存及按方向过滤合法LOCAL_AI修复指令。
+保持背景QUEUE_ONLY，修好唯一目标后在单次测试子进程验证，不需用户另行确认；必要受控键盘提交允许，但必须先核前台/真实焦点/目标归属。两侧通过才接回正常自动发送和4轮真实180秒。
+继续本任务，交实际源码diff/SHA与脱敏控件/送达证据，不停在候选class，不新建第二套模型/服务。数据整理/1155仍暂停，功能验收后再安排业务续作。
