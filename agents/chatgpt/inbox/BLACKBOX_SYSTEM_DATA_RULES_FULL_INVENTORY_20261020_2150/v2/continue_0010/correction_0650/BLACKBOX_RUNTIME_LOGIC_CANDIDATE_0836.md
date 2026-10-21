@@ -68,3 +68,12 @@ SYSTEM_INVENTORY_ACCEPTANCE: false
 - product mapping matrix: n=75 status={'CACHE_MATERIALIZED': 48, 'NO_CACHE_DIR': 21, 'CLEAN_PRESENT_CACHE_PARTIAL': 3, 'CACHE_DIR_EMPTY_OR_VIEW_ONLY': 2, 'LOGICAL_VIEW': 1} → PRODUCT_MAPPING_MATRIX_0836.json
 - rules edges content dump: 315 lines → RULE_EDGES_CONTENT_0836.jsonl
 - update chain fields extracted from anchors → UPDATE_CHAIN_FIELDS_0836.json
+
+## 7. RAW→CLEAN 证据边（ETF分钟）
+- at: 2026-10-21T08:55:58+08:00
+- RAW: E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P4_fund_etf_raw_none\fund_etf_price_1m parquet_n=7427
+- RAW: ...\fund_etf_price_5m parquet_n=7427
+- CLEAN tip: CURRENT standard/price/ETF_*m → R45 day-tip shards（已读行）
+- CLEAN mat: ETF_*m.__mat_* year-batch（已读 sample/mid）
+- CACHE: minute products may be clean-authority; FUND_LIKE is view over daily
+- WEB_NOTIFY: BLOCKED（内嵌 Browser MCP 未附着）；HUB 已推送
