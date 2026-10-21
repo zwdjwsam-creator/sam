@@ -19,14 +19,10 @@ SEEN = STATE / "seen_events.json"
 MUTEX = STATE / "notifier.lock"
 MAIL = Path(r"E:\BLACKBOX\运行\外部大脑信箱")
 
-# Notifier self-reports, claims, acks, pilots: never enqueue (echo guard).
-IGNORE_PARTS = (
-    "PILOT_",
-    "CURSOR_CLAIMED",
-    "ACK_",
-    "HEARTBEAT",
-    "STATUS_PROGRESS",
-    "LOCAL_AI_AUTODOCK_FIX_FIRST",
+# Direction-specific. Outbox/reviews repair tips must not be dropped for a LOCAL_AI prefix.
+IGNORE_BOTH = ("PILOT_", "CURSOR_CLAIMED", "ACK_", "HEARTBEAT", "STATUS_PROGRESS")
+IGNORE_INBOX = IGNORE_BOTH + (
+    "LOCAL_AI_AUTODOCK",
     "LOCAL_AI_GEMMA_DIRECT_OPERATOR",
     "LOCAL_AI_TWO_WINDOW_HUB_NOTIFIER",
     "LOCAL_AI_HUB_TWO_SIGNAL_ONLY",
@@ -94,12 +90,13 @@ def sha1_file(p: Path) -> str:
     return h.hexdigest()
 
 
-def ignored(rel: str) -> bool:
+def ignored(rel: str, direction: str) -> bool:
     u = rel.upper()
-    return any(part.upper() in u for part in IGNORE_PARTS)
+    parts = IGNORE_INBOX if direction == "CURSOR_TO_GPT" else IGNORE_BOTH
+    return any(part.upper() in u for part in parts)
 
 
-def scan(root_rel: str) -> list[dict]:
+def scan(root_rel: str, direction: str) -> list[dict]:
     root = MAIL / root_rel.replace("/", "\\")
     out = []
     if not root.exists():
@@ -110,7 +107,7 @@ def scan(root_rel: str) -> list[dict]:
         if p.suffix.lower() not in {".md", ".json"}:
             continue
         rel = str(p.relative_to(MAIL)).replace("\\", "/")
-        if ignored(rel):
+        if ignored(rel, direction):
             continue
         try:
             st = p.stat()
@@ -133,6 +130,9 @@ def main() -> int:
         log("MUTEX_HELD")
         return 2
     try:
+        baseline = STATE / "seen_events.baseline.json"
+        if SEEN.exists() and not baseline.exists():
+            baseline.write_bytes(SEEN.read_bytes())
         seen = {}
         if SEEN.exists():
             seen = json.loads(SEEN.read_text(encoding="utf-8"))
@@ -147,14 +147,13 @@ def main() -> int:
             ("GPT_TO_CURSOR", "agents/chatgpt/reviews"),
             ("CURSOR_TO_GPT", "agents/chatgpt/inbox"),
         ):
-            for item in scan(rel):
-                key = item["path"] + "|" + item["sha1"]
+            for item in scan(rel, direction):
                 prev = objects.get(item["path"])
                 if prev == item["sha1"]:
                     continue
-                objects[item["path"]] = item["sha1"]
                 qk = (item["path"], item["sha1"], direction)
                 if qk in queued_keys:
+                    objects[item["path"]] = item["sha1"]
                     continue
                 queue.append(
                     {
@@ -167,9 +166,15 @@ def main() -> int:
                     }
                 )
                 queued_keys.add(qk)
+                objects[item["path"]] = item["sha1"]
                 new_n += 1
-        SEEN.write_text(json.dumps(seen, ensure_ascii=False, indent=2), encoding="utf-8")
-        QUEUE.write_text(json.dumps(queue, ensure_ascii=False, indent=2), encoding="utf-8")
+        # Queue file first so a crash cannot mark seen without the event.
+        tmp_q = QUEUE.with_suffix(".json.tmp")
+        tmp_q.write_text(json.dumps(queue, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp_q.replace(QUEUE)
+        tmp_s = SEEN.with_suffix(".json.tmp")
+        tmp_s.write_text(json.dumps(seen, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp_s.replace(SEEN)
         (STATE / "STATUS_LIVE.json").write_text(
             json.dumps(
                 {
