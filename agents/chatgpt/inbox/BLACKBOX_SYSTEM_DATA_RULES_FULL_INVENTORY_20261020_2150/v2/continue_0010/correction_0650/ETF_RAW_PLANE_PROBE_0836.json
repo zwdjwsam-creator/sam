@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-21T08:55:19+08:00",
+  "method": "shallow_top_level_only_no_rglob",
+  "registry_raw_relative": "P4_fund_etf_raw_none/fund_etf_price_*m",
+  "hits": [
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
+      "parquet_n": 7427,
+      "sample": [
+        "fund_etf_price_1m__150001.XSHE_150007.XSHE__2014__1m__raw_none__v2__20260708_211001.parquet",
+        "fund_etf_price_1m__150001.XSHE_150007.XSHE__2015__1m__raw_none__v2__20260708_211753.parquet",
+        "fund_etf_price_1m__150001.XSHE_150007.XSHE__2016__1m__raw_none__v2__20260806_121629.parquet"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_5m",
+      "parquet_n": 7427,
+      "sample": [
+        "fund_etf_price_5m__150001.XSHE_150007.XSHE__2014__5m__raw_none__v2__20260707_224754.parquet",
+        "fund_etf_price_5m__150001.XSHE_150007.XSHE__2015__5m__raw_none__v2__20260707_224754.parquet",
+        "fund_etf_price_5m__150001.XSHE_150007.XSHE__2016__5m__raw_none__v2__20260806_115547.parquet"
+      ]
+    }
+  ],
+  "errors_sample": [],
+  "update_scope_line_hits": [
+    "\"fund_etf_nav\": \"ACTIVE_IN_DAILY_INCREMENTAL\","
+  ],
+  "hand_r2_hits": [
+    {
+      "json_path": "domains_catalog.required_active[12].raw",
+      "value": "P4_fund_etf_raw_none/fund_etf_price_daily"
+    },
+    {
+      "json_path": "domains_catalog.required_active[13].raw",
+      "value": "P4_fund_etf_raw_none"
+    },
+    {
+      "json_path": "domains_catalog.required_active[20].raw",
+      "value": "P4_fund_etf + P8_etf_fund"
+    },
+    {
+      "json_path": "domains_catalog.physical_raw_scan[7].domain",
+      "value": "P4_fund_etf"
+    },
+    {
+      "json_path": "domains_catalog.physical_raw_scan[7].path",
+      "value": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf"
+    },
+    {
+      "json_path": "domains_catalog.physical_raw_scan[8].domain",
+      "value": "P4_fund_etf_raw_none"
+    },
+    {
+      "json_path": "domains_catalog.physical_raw_scan[8].path",
+      "value": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none"
+    }
+  ],
+  "note": "Avoided deep rglob due to broken recursive junction under JQData_reference_dictionary"
+}
