@@ -1,15 +1,11 @@
 # CONTENT_0836_PROGRESS
 
 status: **PARTIAL_CONTINUE_CONTENT**
-phase: CONTINUE_MAPPING_RULES_UPDATE
-worker_pid: 14508
-updated_at: 2026-10-21T08:53:05+08:00
-elapsed_sec: 0.1
+phase: BATCH2_PRODUCT_STREAM
+worker_pid: 36888
+updated_at: 2026-10-21T08:56:33+08:00
+elapsed_sec: 0.9
+batch2_products: 20
 SYSTEM_INVENTORY_ACCEPTANCE: false
 
-## Continue deltas
-- PRODUCT_MAPPING_MATRIX_0836.json — 75 products; {'CACHE_MATERIALIZED': 48, 'NO_CACHE_DIR': 21, 'CLEAN_PRESENT_CACHE_PARTIAL': 3, 'CACHE_DIR_EMPTY_OR_VIEW_ONLY': 2, 'LOGICAL_VIEW': 1}
-- RULE_EDGES_CONTENT_0836.jsonl — 315 edges (315 shard lines)
-- UPDATE_CHAIN_FIELDS_0836.json — asof/published/covered fields from anchors
-
-local: `E:\BLACKBOX\_OPS\SYSTEM_INVENTORY_20261020_2150\v2\continue_0010\correction_0650`
+See PRODUCT_CONTENT_BATCH2_0836.json
