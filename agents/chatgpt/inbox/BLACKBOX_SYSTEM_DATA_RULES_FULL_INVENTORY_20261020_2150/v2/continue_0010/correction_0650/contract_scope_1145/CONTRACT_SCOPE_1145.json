@@ -1,0 +1,730 @@
+{
+  "at": "2026-10-21T11:48:57+08:00",
+  "task": "BLACKBOX_SYSTEM_INVENTORY_CONTRACT_AND_SCOPE_20261021_1145",
+  "previous": "BLACKBOX_SYSTEM_INVENTORY_CONTENT_BATCH_20261021_1136",
+  "execution_mode": "AGENT_CONTENT_REVIEW",
+  "system_inventory_acceptance": false,
+  "did_not": [
+    "rerun_950_nodes",
+    "rerun_12_isolated_probes",
+    "execute_etf_cli_write_modes",
+    "production_download_backtest"
+  ],
+  "accepted_from_gpt_review": [
+    "sidecar year-widen can READY=YES without row proof",
+    "CLEANING year present may hide RAW year discovery",
+    "ETF NEW reads CLEANING only",
+    "dedupe FAIL_CLOSED conflicts; not day>year",
+    "anti_lookahead lacks request_time",
+    "ETF CLI write flags exist"
+  ],
+  "callers": {
+    "search_root": "E:\\BLACKBOX\\脚本",
+    "by_symbol": {
+      "read_overlapping": [
+        {
+          "path": "脚本\\blackbox_etf_minute_1m_plane_r1.py",
+          "def_count": 1,
+          "call_or_ref_count": 3,
+          "import_count": 0,
+          "is_defining_module": true,
+          "role_guess": "DEFINING_MODULE"
+        },
+        {
+          "path": "脚本\\blackbox_etf_minute_coverage_calendar_rebuild_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_etf_minute_phase9_to_15_runners_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 2,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_etf_minute_root_fix_verify_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 2,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        }
+      ],
+      "overlapping_shards": [
+        {
+          "path": "脚本\\blackbox_etf_minute_1m_plane_r1.py",
+          "def_count": 1,
+          "call_or_ref_count": 2,
+          "import_count": 0,
+          "is_defining_module": true,
+          "role_guess": "DEFINING_MODULE"
+        },
+        {
+          "path": "脚本\\blackbox_etf_minute_manual_obs_attribution_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        }
+      ],
+      "coverage_window": [
+        {
+          "path": "脚本\\blackbox_unified_market_data_plane_preflight_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "TASK_DIAGNOSTIC_OR_QA"
+        },
+        {
+          "path": "脚本\\blackbox_unified_market_data_plane_r1.py",
+          "def_count": 1,
+          "call_or_ref_count": 4,
+          "import_count": 0,
+          "is_defining_module": true,
+          "role_guess": "DEFINING_MODULE"
+        }
+      ],
+      "list_files_for_window": [
+        {
+          "path": "脚本\\blackbox_unified_market_data_plane_r1.py",
+          "def_count": 1,
+          "call_or_ref_count": 2,
+          "import_count": 0,
+          "is_defining_module": true,
+          "role_guess": "DEFINING_MODULE"
+        }
+      ],
+      "resolve_product": [
+        {
+          "path": "脚本\\blackbox_backtest_price_plane_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 1,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_capital_proxy_common_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_data_access_preflight_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 1,
+          "is_defining_module": false,
+          "role_guess": "TASK_DIAGNOSTIC_OR_QA"
+        },
+        {
+          "path": "脚本\\blackbox_data_access_resolver_r1.py",
+          "def_count": 1,
+          "call_or_ref_count": 2,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_factor_definition_plane_phase2a_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 1,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_factor_definition_plane_phase2a_remaining7_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 1,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_factor_definition_plane_phase2a_valuation_delta_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 1,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_unified_market_data_plane_r1.py",
+          "def_count": 1,
+          "call_or_ref_count": 5,
+          "import_count": 0,
+          "is_defining_module": true,
+          "role_guess": "DEFINING_MODULE"
+        },
+        {
+          "path": "脚本\\blackbox_unified_market_data_plane_reader_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 1,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        }
+      ],
+      "build_shard_manifest": [
+        {
+          "path": "脚本\\blackbox_etf_minute_1m_plane_r1.py",
+          "def_count": 1,
+          "call_or_ref_count": 3,
+          "import_count": 0,
+          "is_defining_module": true,
+          "role_guess": "DEFINING_MODULE"
+        },
+        {
+          "path": "脚本\\blackbox_etf_minute_manual_obs_attribution_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        },
+        {
+          "path": "脚本\\blackbox_etf_minute_root_fix_verify_r1.py",
+          "def_count": 0,
+          "call_or_ref_count": 1,
+          "import_count": 0,
+          "is_defining_module": false,
+          "role_guess": "POSSIBLE_CONSUMER"
+        }
+      ]
+    },
+    "possible_nondefining_callers": [
+      {
+        "symbol": "read_overlapping",
+        "path": "脚本\\blackbox_etf_minute_coverage_calendar_rebuild_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 0,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "read_overlapping",
+        "path": "脚本\\blackbox_etf_minute_phase9_to_15_runners_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 2,
+        "import_count": 0,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "read_overlapping",
+        "path": "脚本\\blackbox_etf_minute_root_fix_verify_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 2,
+        "import_count": 0,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "overlapping_shards",
+        "path": "脚本\\blackbox_etf_minute_manual_obs_attribution_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 0,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "resolve_product",
+        "path": "脚本\\blackbox_backtest_price_plane_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 1,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "resolve_product",
+        "path": "脚本\\blackbox_capital_proxy_common_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 0,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "resolve_product",
+        "path": "脚本\\blackbox_factor_definition_plane_phase2a_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 1,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "resolve_product",
+        "path": "脚本\\blackbox_factor_definition_plane_phase2a_remaining7_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 1,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "resolve_product",
+        "path": "脚本\\blackbox_factor_definition_plane_phase2a_valuation_delta_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 1,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "resolve_product",
+        "path": "脚本\\blackbox_unified_market_data_plane_reader_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 1,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "build_shard_manifest",
+        "path": "脚本\\blackbox_etf_minute_manual_obs_attribution_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 0,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      },
+      {
+        "symbol": "build_shard_manifest",
+        "path": "脚本\\blackbox_etf_minute_root_fix_verify_r1.py",
+        "def_count": 0,
+        "call_or_ref_count": 1,
+        "import_count": 0,
+        "is_defining_module": false,
+        "role_guess": "POSSIBLE_CONSUMER"
+      }
+    ],
+    "strategy_backtest_caller_status": "SEE_POSSIBLE_CONSUMERS",
+    "note": "缺 caller ≠ 证明所有策略无防护；仅表示本扫描未证实正式策略读取入口",
+    "etf_cli_correction": {
+      "flags": [
+        "--build-manifest",
+        "--coverage",
+        "--regression"
+      ],
+      "writes_runtime_artifacts": true,
+      "executed_this_pass": false
+    }
+  },
+  "node_results_full_aggregate": {
+    "node_results_n": 950,
+    "edge_status": {
+      "RESOLVED": 42972,
+      "DYNAMIC_OR_PLACEHOLDER": 48,
+      "BROKEN_CONFIRMED": 21424,
+      "COMMAND_EXAMPLE_STATIC": 43,
+      "LEGACY_HOST_SPECIFIC": 10,
+      "EXTERNAL": 5,
+      "PARSE_ERROR": 1
+    },
+    "identifier_candidates_total": 5365,
+    "filename_index_candidate_edges": 464,
+    "path_like_edge_mentions": 64503,
+    "samples": {
+      "RESOLVED": [
+        {
+          "src": "e:\\blackbox\\规则库\\hand_hard_rules\\blackbox_hand_cn_branch_acceptance_after_us_r5_r1.json",
+          "raw_token": "BLACKBOX_HAND_CN_BRANCH_ACCEPTANCE_AFTER_US_R5_R1",
+          "resolved": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CN_BRANCH_ACCEPTANCE_AFTER_US_R5_R1.json"
+        },
+        {
+          "src": "e:\\blackbox\\规则库\\hand_hard_rules\\blackbox_hand_cn_branch_acceptance_after_us_r5_r1.json",
+          "raw_token": "脚本\\\\\\\\run_blackbox_cn_branch_acceptance_after_us_r5_r1.py",
+          "resolved": "E:\\BLACKBOX\\脚本\\run_blackbox_cn_branch_acceptance_after_us_r5_r1.py"
+        },
+        {
+          "src": "e:\\blackbox\\脚本\\run_blackbox_intraday_patrol_daily_seal_r1.py",
+          "raw_token": "DAILY_RESEARCH/INTRADAY_SELECTION_PATROL/CURRENT/INTRADAY_PATROL_ROLLBACK_CURRENT.json",
+          "resolved": "E:\\BLACKBOX\\DAILY_RESEARCH\\INTRADAY_SELECTION_PATROL\\CURRENT\\INTRADAY_PATROL_ROLLBACK_CURRENT.json"
+        },
+        {
+          "src": "e:\\blackbox\\脚本\\run_blackbox_intraday_patrol_daily_seal_r1.py",
+          "raw_token": "DAILY_RESEARCH/CURRENT/CURRENT_RESEARCH_BRIEF.md",
+          "resolved": "E:\\BLACKBOX\\DAILY_RESEARCH\\CURRENT\\CURRENT_RESEARCH_BRIEF.md"
+        },
+        {
+          "src": "e:\\blackbox\\脚本\\run_blackbox_intraday_patrol_daily_seal_r1.py",
+          "raw_token": "研究系统/数据平面/CURRENT/DAILY_RESEARCH_INPUT_PACK_CURRENT.json",
+          "resolved": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_RESEARCH_INPUT_PACK_CURRENT.json"
+        }
+      ],
+      "BROKEN": [],
+      "COMMAND_EXAMPLE_STATIC": [
+        {
+          "src": "e:\\blackbox\\.cursor\\rules\\blackbox_index_minute_incremental_align_architecture.mdc",
+          "raw_token": "index_minute_align_clean_antileak_seal_r1.py --mode full",
+          "resolved": ""
+        },
+        {
+          "src": "e:\\blackbox\\脚本\\blackbox_data_inventory_top_refresh.py",
+          "raw_token": "E:\\\\BLACKBOX\\\\.venv\\\\Scripts\\\\python.exe -u E:\\\\BLACKBOX\\\\脚本\\\\blackbox_data_inventory_top_refresh.py",
+          "resolved": ""
+        },
+        {
+          "src": "e:\\blackbox\\运行\\blackbox_hand_daily_incremental_update_handbook_current.md",
+          "raw_token": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u E:\\BLACKBOX\\脚本\\blackbox_fund_etf_nav_premium_plane_r1.py --asof <日> --phase all",
+          "resolved": ""
+        },
+        {
+          "src": "e:\\blackbox\\运行\\外部大脑信箱\\hub_gpt_dock_mandatory_flow_r1.md",
+          "raw_token": "python -u _hub_web_gpt_send_r1.py --headed --kind heartbeat --tip init --note login",
+          "resolved": ""
+        },
+        {
+          "src": "e:\\blackbox\\运行\\blackbox_full_data_inventory_current.md",
+          "raw_token": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u E:\\BLACKBOX\\脚本\\blackbox_data_inventory_top_refresh.py",
+          "resolved": ""
+        }
+      ]
+    },
+    "business_rules_with_definition_separated": "PARTIAL_NOT_FULLY_SEMANTICALLY_CLASSIFIED"
+  },
+  "scope_ledger": {
+    "worklist_1118": {
+      "done": 950,
+      "excluded": 36082,
+      "failed": 0,
+      "pending": 0,
+      "policy_note": "1118 ROOT admit() boundary ended worklist; NOT full-system scope closure"
+    },
+    "excluded_bucket_counts": {
+      "ENGINE_SIDE_OUTSIDE_1118_ROOT": 93,
+      "OTHER_PATH_OR_TYPE": 9,
+      "IN_ROOT_BUT_POLICY_EXCLUDED": 35966,
+      "TASK_REPORT_MIRROR_EXCLUDED": 14
+    },
+    "excluded_samples": {
+      "ENGINE_SIDE_OUTSIDE_1118_ROOT|SCOPE_EXCLUDED": [
+        "e:\\blackbox_engines\\backtest_lab_shadow_experiments\\experiment_20260731_phase1_trading_mechanics_r1\\engine_baseline\\backtest_lab_snapshot\\99_reports\\tiny_replay_with_adapter_design_r1\\03_current_data_flow.md",
+        "e:\\blackbox_engines\\backtest_lab_shadow_experiments\\experiment_20260731_phase1_trading_mechanics_r1\\engine_baseline\\backtest_lab_snapshot\\99_reports\\dataprovider_adapter_impl_r1\\05_current_data_mapping_validation.md",
+        "e:\\blackbox_engines\\backtest_lab_backups\\sealed_engine_backup_r3_phase6_fully_validated_20260801\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_r1\\blackbox_current_dictionary_rule_registry.json"
+      ],
+      "OTHER_PATH_OR_TYPE|SCOPE_EXCLUDED": [
+        "c:\\lan_share_report\\配置\\secrets\\github_hub_token.txt",
+        "c:\\lan_share_report",
+        "e:\\"
+      ],
+      "IN_ROOT_BUT_POLICY_EXCLUDED|SCOPE_EXCLUDED": [
+        "e:\\blackbox\\.venv\\scripts\\python.exe",
+        "e:\\blackbox\\daily_research\\evaluation\\stock_call_ledger.csv",
+        "e:\\blackbox\\研究系统\\selection_odds_negative_cases"
+      ],
+      "TASK_REPORT_MIRROR_EXCLUDED|SCOPE_EXCLUDED": [
+        "e:\\blackbox\\运行\\外部大脑信箱\\agents\\chatgpt\\inbox",
+        "e:\\blackbox\\_ops\\system_inventory_20261020_2150\\脚本",
+        "e:\\blackbox\\_ops\\system_inventory_20261020_2150\\v2\\continue_0010\\correction_0650\\worker_pid_0815.json"
+      ]
+    },
+    "engine_map_search": {
+      "hits": [],
+      "engines_dir_exists": true,
+      "status": "NO_96_MAP_FOUND_IN_BOUNDED_SEARCH"
+    },
+    "ledger_rows": [
+      {
+        "scope": "ORIGINAL_ROOT_WORKLIST",
+        "basis": "1118 admit within E:\\BLACKBOX and not report mirrors",
+        "targets_done": 950,
+        "excluded": 35966,
+        "reviewed": 950,
+        "unreviewed_reason": "none pending in worklist"
+      },
+      {
+        "scope": "ENGINE_SIDE",
+        "basis": "excluded samples under E:\\BLACKBOX_ENGINES + mapping search",
+        "targets_done": 0,
+        "excluded_seen": 93,
+        "reviewed": 0,
+        "unreviewed_reason": "1118 policy excluded; needs separate limited engine seed list"
+      },
+      {
+        "scope": "TASK_REPORT_MIRROR",
+        "basis": "inventory/report paths excluded from business rule source",
+        "excluded_seen": 14,
+        "reviewed": "N/A_CORRECTLY_EXCLUDED"
+      },
+      {
+        "scope": "OTHER",
+        "excluded_seen": 9
+      }
+    ]
+  },
+  "semantic_edge_dedupe": {
+    "before": 160,
+    "after": 134,
+    "duplicate_removed": 26,
+    "duplicate_samples": [
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2014\\part_2014.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[0].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2014\\part_2014.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2015\\part_2015.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[1].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2015\\part_2015.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2016\\part_2016.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[2].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2016\\part_2016.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2017\\part_2017.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[3].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2017\\part_2017.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2018\\part_2018.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[4].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2018\\part_2018.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2019\\part_2019.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[5].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2019\\part_2019.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2020\\part_2020.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[6].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2020\\part_2020.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2021\\part_2021.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[7].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2021\\part_2021.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2022\\part_2022.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[8].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2022\\part_2022.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2023\\part_2023.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[9].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2023\\part_2023.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      },
+      {
+        "src": "BILLBOARD_DAILY_PIT_R1",
+        "dst": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2024\\part_2024.parquet",
+        "relation": "declared_field",
+        "direction": "upstream->product",
+        "rel_type_raw": "PRODUCT_COVERAGE",
+        "evidence_file": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\BILLBOARD_DAILY_PIT_R1\\COVERAGE.json",
+        "json_path": "$.year_partitions[10].path",
+        "raw_value": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_PENDING_PRODUCTIZATION_TAIL_CLOSURE_R1\\candidate\\BILLBOARD_DAILY_PIT_R1\\data\\year=2024\\part_2024.parquet",
+        "verify_status": "DECLARED_FIELD",
+        "path_exists": false,
+        "dependency_usable": null,
+        "entity_types": {
+          "src": "product_or_logical",
+          "dst": "path_or_product_or_dataset"
+        }
+      }
+    ],
+    "note": "entity/relation/source key dedupe; attributes not counted as entity edges"
+  },
+  "runtime_chain": {
+    "execution_mode": "AGENT_CONTENT_REVIEW",
+    "chain": [
+      {
+        "stage": "authority_entry",
+        "doc_claim": "registry + CURRENT_CLEANING_RELEASE",
+        "code_behavior": "load_registry/load_cleaning_pointer",
+        "evidence": "blackbox_unified_market_data_plane_r1.py"
+      },
+      {
+        "stage": "data_read",
+        "doc_claim": "multi-plane read",
+        "code_behavior": "ETF default NEW=CLEANING only; RAW in manifest not auto-fallback",
+        "evidence": "review CONTRACT_PROBES + etf read_overlapping"
+      },
+      {
+        "stage": "pit_known_at",
+        "doc_claim": "available_at<=request_time",
+        "code_behavior": "anti_lookahead_test lacks request_time; NaT can PASS",
+        "status": "UNPROVEN_AS_REQUEST_TIME_FILTER"
+      },
+      {
+        "stage": "strategy_backtest_constraints",
+        "doc_claim": "HAND causal/fill rules exist",
+        "code_behavior": "no formal strategy caller of these readers found in 脚本 scan",
+        "status": "UNPROVEN_CALLER"
+      },
+      {
+        "stage": "output_memory_update_recovery",
+        "doc_claim": "update jobs / watermarks",
+        "code_behavior": "CLI can write manifests; not executed",
+        "status": "BOUNDARY_ONLY"
+      }
+    ],
+    "next_stage_priority": [
+      "1) Confirm formal consumers of unified/ETF readers (or mark diagnostic-only)",
+      "2) Close PIT/request_time wiring evidence before strategy/backtest claims",
+      "3) Engine-side limited seed list (BLACKBOX_ENGINES) separate from 1118 worklist",
+      "4) Fill required_range evidence per 75-object row from existing contracts, not UNKNOWN bulk",
+      "5) Only then allow strategy/backtest admission checks under HAND gates"
+    ]
+  },
+  "product_table_meta": {
+    "row_count": 75,
+    "source_csv": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\PRODUCT_STAGE_LEDGER_75.csv",
+    "etf_5m": {
+      "registry_id": "ETF_MINUTE_5M_R1",
+      "in_registry": true,
+      "dedicated_etf_5m_plane_script": false,
+      "same_as_1m_reader": "UNPROVEN_MUST_NOT_INFER",
+      "consumer_status": "UNIFIED_REGISTRY_PRESENT_CALLER_SEPARATELY_SCANNED"
+    },
+    "note": "Built from PRODUCT_STAGE_LEDGER_75 + registry8 merge; not a fresh full re-read of shards"
+  },
+  "checklist": {
+    "A_real_callers": "DONE_SCRIPT_SCAN",
+    "A_strategy_pit_callers": "UNPROVEN",
+    "A_etf_5m_registry": "DONE_IN_REGISTRY_CALLER_UNPROVEN",
+    "A_cli_flags_correction": "DONE",
+    "B_scope_ledger": "DONE",
+    "B_node_results_full_agg": "DONE",
+    "B_semantic_dedupe": "DONE",
+    "C_product_master_table": "DONE_FROM_75_LEDGER_MERGE",
+    "system_inventory_acceptance": false
+  }
+}
