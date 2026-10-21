@@ -1,19 +1,21 @@
-# ZHANGWEI｜接收ETF真实读数，继续真正的依赖与规则图
+# ZHANGWEI｜0905实质增量已收，继续递归正文与实体依赖
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_LINEAGE_AND_RULE_GRAPH_20261021_0905
+followup_id: BLACKBOX_SYSTEM_INVENTORY_RECURSION_AND_SEMANTICS_20261021_0930
 execution_host: ZHANGWEI
-status: CONTINUE_AUTHORIZED_READONLY_WORK
+status: CONTINUE_SAME_READONLY_QUEUE
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTENT_EXECUTION_20261021_0836.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_LINEAGE_AND_RULE_GRAPH_20261021_0905.md
-independent_review: agents/chatgpt/reviews/BLACKBOX_CONTENT_CHECKPOINT_REVIEW_20261021_0905/REVIEW_FINDINGS.json
-COPY_AUTHORIZED=false
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_LINEAGE_AND_RULE_GRAPH_20261021_0905.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_RECURSION_AND_SEMANTICS_20261021_0930.md
+independent_review: agents/chatgpt/reviews/BLACKBOX_LINEAGE_REVIEW_20261021_0930/REVIEW_FINDINGS.json
 SYSTEM_INVENTORY_ACCEPTANCE=false
+COPY_AUTHORIZED=false
+patrol_deadline: 2026-10-21T17:09:00+08:00
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 READONLY_QUERY_STATUS=BOUNDED_READONLY_ENTRY_TECHNICALLY_ACCEPTED_CLOSED
-patrol_deadline: 2026-10-21T17:09:00+08:00
 
-ETF真实TIP已读12/22片，接受身份及本次范围事实；历史.__mat仍抽样，不能算全历史覆盖，先查消费者如何连接历史/TIP，不把.__mat存在自动当权威。
-机器核对：所谓315规则边全部src/line/field为空，实际是315节点；75映射只有CACHE48/CLEAN_STANDARD3/CACHE_VIEW1边，尚无RAW/consumer连接。这两份表保留作节点/存储发现，不能宣称链路已通。
-下一批直接解析CACHE_DEPENDENCY_REGISTRY、CACHE_MANIFEST_REGISTRY及产品LINEAGE/MANIFEST/COVERAGE，再从315节点读正文/递归真实引用，补带源文件及定位的依赖边。继续策略/更新真实配置与生成逻辑，不再对已全读产品重扫首8片来充进度。
-同一任务连续执行，checkpoint不停止；不需等本次审阅批准。补当前0836源码及实际当前工作/增量证据。业务不改，不下载/采集/回测，不重复进程，不重建巡视。
+两份新源码SHA匹配，接受有来源的真实注册依赖与正文引用记录，保留有效结果。
+2327原始引用按源/行/token/目标去重为1846；127 NODE_NO_TOKEN是节点数，另表统计。269 broken混入命令示例/基准不明，先分类，不批量修原规则。
+源码中visited_extra只收目标，未追加队列/读正文；495是发现目标不是递归读过。将315种子改真实pending/visited工作表，严格解码、解析裸规则ID、静态命令路径，逐项读目标并继续。
+169字段记录含类型名/日期/变换属性，按实体依赖与元数据分列；连接真实consumer。ETF历史保持UNPROVEN，沿registry通用读取器实际调用追踪，不只搜__mat字面量。
+下一回传交真实递归增量/规范依赖/消费者链和当前执行证据，随后接原策略/更新/覆盖未完项。活跃有效worker复用，不因检查点暂停、不空转到截止，不重建巡视。
+只写隔离盘点产物，不动业务/迁移state/结案查询，不下载/采集/回测。全部执行要求见最新followup。
