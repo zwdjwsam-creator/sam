@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-21T08:19:58+08:00",
+  "findings": [
+    {
+      "etf": "ETF_MINUTE_1M_R1",
+      "stock": "STOCK_MINUTE_1M_R1",
+      "etf_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\finance\\A股_stock_1m",
+      "stock_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\finance\\A股_stock_1m",
+      "same_path": true,
+      "verdict": "AUTHORITY_IDENTITY_UNVERIFIED",
+      "note": "frequency-only match suspected; asset_type not constrained"
+    },
+    {
+      "etf": "ETF_MINUTE_5M_R1",
+      "stock": "STOCK_MINUTE_5M_R1",
+      "etf_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\finance\\A股_stock_5m",
+      "stock_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\finance\\A股_stock_5m",
+      "same_path": true,
+      "verdict": "AUTHORITY_IDENTITY_UNVERIFIED",
+      "note": "frequency-only match suspected; asset_type not constrained"
+    }
+  ],
+  "reproduction": {
+    "ran": false,
+    "script": "E:\\BLACKBOX\\运行\\外部大脑信箱\\agents\\chatgpt\\reviews\\BLACKBOX_MINUTE_AUTHORITY_20261021_0815\\reproduce_minute_authority.py",
+    "sha256": "a8877c25de5bb5e6d6780893adc40838abf3cd1bda50644507973ae8712dee01",
+    "note": "GPT fixture present; identity defect accepted as inventory-locator issue"
+  },
+  "action": "Invalidate ETF minute coverage conclusions that reused stock paths; keep stock reads"
+}
