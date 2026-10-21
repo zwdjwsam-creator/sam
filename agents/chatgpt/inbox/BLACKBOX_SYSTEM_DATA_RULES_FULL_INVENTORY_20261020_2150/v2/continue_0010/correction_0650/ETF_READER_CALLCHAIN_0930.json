@@ -1,0 +1,417 @@
+{
+  "at": "2026-10-21T09:31:27+08:00",
+  "search_keys": [
+    "relative_under_standard",
+    "RAW_REPLACEMENT",
+    "year_batch_regex",
+    "day_name_regex",
+    "CLEANING_CURRENT",
+    "ETF_MINUTE_1M_R1",
+    "resolve_product",
+    "unified_market_data_plane"
+  ],
+  "files_hit": 30,
+  "reader_like_hits": 2,
+  "verdict": "CALLCHAIN_CANDIDATES_FOUND_NEED_FRAGMENT_SELECT_PROOF",
+  "sample_reader_like": [
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_unified_market_data_plane_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "now_cn",
+        "_load_json",
+        "load_registry",
+        "load_cleaning_pointer",
+        "load_cache_pointer",
+        "normalize_product_id",
+        "_daterange",
+        "_scan_cleaning_dir",
+        "_scan_raw_year_envelope",
+        "resolve_product",
+        "_date_in_envelope",
+        "classify_date",
+        "coverage_window",
+        "list_files_for_window",
+        "diagnose",
+        "build_index",
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 15,
+          "text": "python blackbox_unified_market_data_plane_r1.py --build-index"
+        },
+        {
+          "line": 16,
+          "text": "python blackbox_unified_market_data_plane_r1.py --product STOCK_MINUTE_1M_R1 --coverage-start 2026-08-03 --coverage-end 2026-08-12"
+        },
+        {
+          "line": 17,
+          "text": "python blackbox_unified_market_data_plane_r1.py --product STOCK_MINUTE_1M --list-files --coverage-start 2026-08-03 --coverage-end 2026-08-03"
+        },
+        {
+          "line": 31,
+          "text": "REGISTRY_PATH = ROOT / \"规则库\" / \"data_dictionary\" / \"unified_market_data_plane_registry_r1.json\""
+        },
+        {
+          "line": 161,
+          "text": "def resolve_product(product_id: str, registry: Optional[dict] = None) -> dict:"
+        },
+        {
+          "line": 169,
+          "text": "cplane = meta[\"planes\"][\"CLEANING_CURRENT\"]"
+        },
+        {
+          "line": 170,
+          "text": "rplane = meta[\"planes\"][\"RAW_REPLACEMENT\"]"
+        },
+        {
+          "line": 171,
+          "text": "cleaning_dir = standard_root / cplane[\"relative_under_standard\"]"
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": true,
+      "has_relative_under_standard": true
+    },
+    {
+      "file": "E:\\BLACKBOX\\规则库\\data_dictionary\\unified_market_data_plane_registry_r1.json",
+      "encoding": "strict",
+      "funcs_sample": [],
+      "lines": [
+        {
+          "line": 26,
+          "text": "\"CLEANING_CURRENT\": {"
+        },
+        {
+          "line": 27,
+          "text": "\"relative_under_standard\": \"price/A股_stock_1m\","
+        },
+        {
+          "line": 28,
+          "text": "\"day_name_regex\": \"__(XSHE|XSHG)__1m__(?P<date>\\\\d{4}-\\\\d{2}-\\\\d{2})__\","
+        },
+        {
+          "line": 29,
+          "text": "\"year_batch_regex\": \"__stock_minute_1m__(?P<year>\\\\d{4})__batch\""
+        },
+        {
+          "line": 31,
+          "text": "\"RAW_REPLACEMENT\": {"
+        },
+        {
+          "line": 46,
+          "text": "\"CLEANING_CURRENT\": {"
+        },
+        {
+          "line": 47,
+          "text": "\"relative_under_standard\": \"price/A股_stock_5m\","
+        },
+        {
+          "line": 48,
+          "text": "\"day_name_regex\": \"__(XSHE|XSHG)__5m__(?P<date>\\\\d{4}-\\\\d{2}-\\\\d{2})__\","
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": true,
+      "has_relative_under_standard": true
+    }
+  ],
+  "sample_other": [
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_backtest_price_plane_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "__init__",
+        "_as_date",
+        "pre_pit_value",
+        "nh_breakout",
+        "apply_pre_pit_series",
+        "resolve_adjust_factor_product",
+        "planes_identical",
+        "build_receipt",
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 85,
+          "text": "from blackbox_data_access_resolver_r1 import read_currents, resolve_product  # noqa: E402"
+        },
+        {
+          "line": 88,
+          "text": "rec = resolve_product(\"adjust_factor\", asof, None, currents)"
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_capital_proxy_common_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "now_cn",
+        "sha256_bytes",
+        "sha256_file",
+        "sha256_obj",
+        "parse_ts",
+        "pit_evaluate",
+        "base_product",
+        "claim_gate_product",
+        "atomic_write_json",
+        "publish_candidate_if_requested",
+        "safe_div",
+        "simple_return",
+        "max_drawdown",
+        "recovery_ratio_from_trough",
+        "multi_window_returns",
+        "relative_strength",
+        "volume_vs_history",
+        "signed_day_persistence",
+        "close_location",
+        "session_vwap_metrics"
+      ],
+      "lines": [
+        {
+          "line": 68,
+          "text": "\"FORMULA\": \"canonical route probe via blackbox_data_access_resolver_r1.resolve_product\","
+        },
+        {
+          "line": 70,
+          "text": "\"SOURCE_LINE\": \"resolve_product\","
+        },
+        {
+          "line": 504,
+          "text": "result = mod.resolve_product(dataset, None, None, currents)"
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_data_access_preflight_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "load_index",
+        "resolve_from_index",
+        "resolve_with_coverage",
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 45,
+          "text": "from blackbox_data_access_resolver_r1 import read_currents, resolve_product"
+        },
+        {
+          "line": 52,
+          "text": "return resolve_product(dataset, None, None, currents)"
+        },
+        {
+          "line": 128,
+          "text": "\"CLEANING_CURRENT_ID\": index.get(\"cleaning_current_id\", \"\") if index else \"\","
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "sha256_short",
+        "read_currents",
+        "resolve_product",
+        "build_index",
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 31,
+          "text": "CLEANING_CURRENT_PTR = ROOT / \"数据\" / \"清洗成品\" / \"CURRENT_CLEANING_RELEASE.json\""
+        },
+        {
+          "line": 96,
+          "text": "\"etf_1m\": \"ETF_MINUTE_1M_R1\","
+        },
+        {
+          "line": 97,
+          "text": "\"ETF_1M\": \"ETF_MINUTE_1M_R1\","
+        },
+        {
+          "line": 98,
+          "text": "\"ETF_MINUTE_1M\": \"ETF_MINUTE_1M_R1\","
+        },
+        {
+          "line": 99,
+          "text": "\"ETF_MINUTE_1M_R1\": \"ETF_MINUTE_1M_R1\","
+        },
+        {
+          "line": 100,
+          "text": "\"etf_minute\": \"ETF_MINUTE_1M_R1\","
+        },
+        {
+          "line": 101,
+          "text": "# A-share stock 1m — Cleaning CURRENT plane (unified_market_data_plane product_id)"
+        },
+        {
+          "line": 204,
+          "text": "\"ETF_MINUTE_1M_R1\": {\"pit_policy\": \"BAR_END_ASOF\", \"asof_behavior\": \"BAR_AVAILABLE_AT_LE_REQUEST_TIME\"},"
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_diagnose_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "now_cn",
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 60,
+          "text": "from blackbox_unified_market_data_plane_r1 import (  # noqa: WPS433"
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_1m_plane_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "now_cn",
+        "wjson",
+        "load_json",
+        "cleaning_etf_1m_dir",
+        "classify_name",
+        "parse_range",
+        "code_in_range",
+        "code_matches_daily",
+        "envelope_from_name",
+        "sidecar_envelope",
+        "window_overlap",
+        "scan_root",
+        "build_shard_manifest",
+        "overlapping_shards",
+        "_read_table",
+        "normalize_table",
+        "pd_to_dt",
+        "filter_request",
+        "dedupe_canonical",
+        "read_overlapping"
+      ],
+      "lines": [
+        {
+          "line": 4,
+          "text": "Logical product: ETF_MINUTE_1M_R1 (reuse catalog name; not a second product)."
+        },
+        {
+          "line": 208,
+          "text": "\"product_id\": \"ETF_MINUTE_1M_R1\","
+        },
+        {
+          "line": 412,
+          "text": "\"product_id\": \"ETF_MINUTE_1M_R1\","
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_capability_control_plane_refresh_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "now_cn",
+        "wjson",
+        "load_json",
+        "refresh_data_access_index",
+        "refresh_minute_product_facts",
+        "_resolve_gate",
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 29,
+          "text": "PRODUCT = \"ETF_MINUTE_1M_R1\""
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_daily_increment_check_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 3,
+          "text": "\"\"\"Daily increment managed check for ETF_MINUTE_1M_R1."
+        },
+        {
+          "line": 23,
+          "text": "PRODUCT = \"ETF_MINUTE_1M_R1\""
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_narrow_backfill_plan_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "now_cn",
+        "wjson",
+        "rjson",
+        "sha256_of",
+        "phase1_bootstrap",
+        "phase2_read_authorities",
+        "phase3_verify_preconditions",
+        "phase4_close_route_b",
+        "phase5_create_plan",
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 388,
+          "text": "out[\"CLEANING_CURRENT_CHANGED\"] = False"
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    },
+    {
+      "file": "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_narrow_backfill_raw_qa_cleaning_r1.py",
+      "encoding": "strict",
+      "funcs_sample": [
+        "now_cn",
+        "wjson",
+        "sha256_of",
+        "preflight",
+        "verify_plan_sha",
+        "main"
+      ],
+      "lines": [
+        {
+          "line": 376,
+          "text": "\"CLEANING_CURRENT_CHANGED\": False,"
+        }
+      ],
+      "has_mat_literal": false,
+      "has_year_batch_regex": false,
+      "has_relative_under_standard": false
+    }
+  ],
+  "note": "Does not merge __mat_ into authority; tip path remains registry CLEANING_CURRENT"
+}
