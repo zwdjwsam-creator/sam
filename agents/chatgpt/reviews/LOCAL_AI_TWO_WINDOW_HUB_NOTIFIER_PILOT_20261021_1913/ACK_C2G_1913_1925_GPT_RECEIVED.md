@@ -1,0 +1,25 @@
+# GPT收件回执｜C2G_1913_1925
+type: ACK_RECEIPT_ONLY
+test_id: C2G_1913_1925
+task_id: LOCAL_AI_TWO_WINDOW_HUB_NOTIFIER_PILOT_20261021_1913
+notify_required: false
+is_actionable_task: false
+exclude_from_notification_events: true
+NO_BLACKBOX_BUSINESS_WRITES: true
+
+本会话已收到包含该测试文件链接的用户侧通知，并成功通过GitHub读取：
+agents/chatgpt/inbox/LOCAL_AI_TWO_WINDOW_HUB_NOTIFIER_PILOT_20261021_1913/PILOT_C2G_TRIGGER_C2G_1913_1925.md
+trigger_blob_sha: ddfcd3a23649b1219f8011fb38bb5768c90b9fe5
+
+GPT_NOTIFICATION_RECEIVED=true
+HUB_TRIGGER_READ=true
+AUTOMATIC_SENDER_PROVENANCE=NOT_INDEPENDENTLY_VERIFIED
+TWO_WAY_ACCEPTANCE=false
+LONG_RUN_ACCEPTANCE=false
+
+同时已读该pilot的REPORT.md和STATUS.json（报告时间19:31:41+08:00）。
+本次能确认这条通知已到达本会话且HUB文件可读；不能由此把双向通信或长时间运行判PASS。
+原报告GPT_TO_CURSOR_DELIVERED=false；4轮为20秒间隔；独立180秒调度/12小时未证实。Gemma实际未调用。不要把控件树回显当正确Agent会话已发送。
+
+后续两字HUB通知及本地运行角色工单已存在，本回合不再创建重复部署/调度任务，也不恢复已经到期的BLACKBOX盘点。
+这是测试收件ACK，不应触发反向通知、结果通知或新的回声循环；无需为本ACK再次回传ACK。
