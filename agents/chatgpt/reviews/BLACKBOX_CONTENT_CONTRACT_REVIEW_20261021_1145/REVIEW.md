@@ -1,0 +1,32 @@
+# GPT技术复核｜1136源码与12项隔离行为探针
+at: 2026-10-21T11:45:00+08:00
+host_review: ChatGPT isolated scratch; production NOT_RUN
+SYSTEM_INVENTORY_ACCEPTANCE=false
+status: PARTIAL_PROGRESS_ACCEPTED_CONTRACT_GAPS_REPRODUCED
+
+## 核对范围
+实际下载HUB两份源码的原始base64字节并核SHA：
+- unified 20104字节，6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce
+- etf1m 31890字节，cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316
+源码与1136报告完整SHA一致。已审registry_etf_products_slim与CURRENT_CLEANING_RELEASE指针。
+
+附verify_reader_contracts.py及CONTRACT_PROBES.json：12项断言通过，表示复现下列实际行为，并非生产质量通过。采用AST白名单提取原函数，不执行原模块import/main；临时目录假parquet、pandas-backed FakeArrow，不涉及Windows、真实Arrow/parquet或生产数据。
+探针脚本SHA256 2a1d797a158d3f0bccc1fd0a99082c7ae68ad44f06ca6e06db9391f5fcb9c940。
+
+## 源码和探针支持的结论
+1. unified第128-152行在sidecar存在时先n+=1，再解析；空JSON或损坏JSON可退成2026全年范围。classify_date第271-280行将此范围视为PRESENT；coverage_window第325行可返回DATA_PLANE_READY=YES。本次假parquet完全未读，已复现YES。因此这是元数据范围声明，不能上升为真实交易日/标的/行完整性。
+2. resolve_product第178-185行：只在没有CLEANING year key时发现RAW year；fixture中CLEANING2025存在时，RAW2026未被纳入year_envelope。属于潜在RAW覆盖漏发现；实盘是否触发须核具体布局/调用者，不直接判数据丢失。
+3. 两模块均在指定根做非递归glob；sibling .__mat未被扫描。源路径经当前junction/reparse解析后的实际root仍须与已有路径身份报告结合。此两函数不纳入.__mat，不能概括所有消费者都不纳入。
+4. ETF build_shard_manifest虽同时记录CLEANING/RAW，但read_overlapping默认NEW第383行固定overlapping_shards(plane=CLEANING)。fixture中RAW有历史候选，默认读取仍只读TIP。统一解析器RAW替代与此读取器不是已经证实的单条自动fallback链。
+5. 请求跨历史/TIP，只返回TIP行仍DEDUPE_QA=PASS。这只是去重标志，不代表覆盖；需核真实调用者是否检查coverage及缺口阻断。
+6. ETF dedupe_canonical第325-335行遇冲突键记录conflict并不保留该键，read_overlapping报告FAIL_CLOSED_DUPLICATE_CONFLICT。不是按day>year选择新版；identical则保留输入顺序第一行。不能将unified权威优先级直接等同ETF读取器去重优先级。
+7. anti_lookahead_test第647-669行无request_time参数；仅统计available_at<datetime-2min，NaT比较为false。fixture含NaT仍返回PASS。它不能单独证明BAR_AVAILABLE_AT<=实际请求时刻。normalize_table第284-288行还会从bar_complete_at或datetime形成availability，需原规则授权及外部caller证据；不据此直接判策略已经前视。
+8. ETF main第704-713行建目录并写运行manifest；--coverage/--regression也写多个CURRENT/qa报告。故不执行原CLI是正确边界，1136的etf1m_cli_modes=[]是不完整提取，实际存在--build-manifest/--coverage/--regression。
+
+## 队列及范围
+1118的950是文档节点。当前1136仅抽200个node_results，且SCOPE_EXCLUDED36082样例包含E:\BLACKBOX_ENGINES。1118适配器只限原ROOT，这一工作表可结束；不能据此说整个BLACKBOX引擎/规则已闭合。
+引擎侧需按现有权威入口/engine映射另列有限工作表，区分活跃与备份；不把所有备份展开读，也不能把全部引擎引用当作无关噪声。
+1136产品表仅8产品注册表种子，不等于既有75对象和其它plane整合。仍缺真实策略配置/准入规则/更新恢复链的正文及源码证据。
+
+## 处置
+接受源码/静态追踪进展；不授予整体验收。按1145 outbox继续已有只读盘点，不重跑已完成950节点或全量数据，不修改原读取器/策略/指针。先找真实调用者与正式规则，再决定需修复哪些运行入口。
