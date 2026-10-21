@@ -350,7 +350,7 @@ def extract_tokens_from_text(text: str) -> list[tuple[int, str, str]]:
             if "/" in tok or "\\" in tok or tok.endswith((".md", ".json", ".py", ".mdc", ".txt")):
                 out.append((i, "backtick", tok))
         for m in PATHISH_RE.finditer(line):
-            out.append((i, "pathish", m.group(0).rstrip(".,;）)"))
+            out.append((i, "pathish", m.group(0).rstrip(".,;)")))
     return out
 
 
