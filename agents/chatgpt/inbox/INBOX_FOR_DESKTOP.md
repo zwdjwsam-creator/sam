@@ -1,18 +1,18 @@
-# ZHANGWEI｜修正总表回退，继续实际正文与更新溯源
-task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_MASTER_CORRECTION_20261021_1155
+# ZHANGWEI｜本地模型自动对接优先，数据整理暂停
+task_id: LOCAL_AI_AUTODOCK_FIX_FIRST_ZHANGWEI_20261021_2008
 execution_host: ZHANGWEI
-status: CORRECT_REPORT_PROVENANCE_AND_CONTINUE
-instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTRACT_AND_SCOPE_20261021_1145.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_MASTER_CORRECTION_20261021_1155.md
-review_package: agents/chatgpt/reviews/BLACKBOX_MASTER_REGRESSION_REVIEW_20261021_1155
-SYSTEM_INVENTORY_ACCEPTANCE=false
-COPY_AUTHORIZED=false
-patrol_deadline: 2026-10-21T17:09:00+08:00
-R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+status: READY_IMPLEMENT_AND_VERIFY
+instruction: agents/chatgpt/outbox/LOCAL_AI_AUTODOCK_FIX_FIRST_ZHANGWEI_20261021_2008.md
+functional_contract: agents/chatgpt/outbox/LOCAL_AI_HUB_TWO_SIGNAL_ONLY_20261021.md
+previous_notifier_task: LOCAL_AI_GEMMA_DIRECT_OPERATOR_HANDOFF_20261021
+previous_business_followup: BLACKBOX_SYSTEM_INVENTORY_MASTER_CORRECTION_20261021_1155
+DATA_ORGANIZATION: PAUSED_PENDING_AUTODOCK_TECH_ACCEPTANCE
+NO_BLACKBOX_BUSINESS_WRITES: true
+R9_STATUS: FULL_MIGRATION_TECHNICALLY_ACCEPTED
 
-已读1145完整75行表：ETF1m/5m authority又指向旧股票目录；75行scope=True但应有范围/更新/缺口全是占位。GPT提供只读CSV核对脚本及逐行结果：75个scope占位问题、2个ETF权威路径回退。
-修隔离merge证据选择，保留历史，既有FUND_NAV全读不被最近样本覆盖；不重新读parquet/旧950节点。修正后继续读真实unified reader/backtest price plane正文及实际import链，不只给关键词命中名单。
-已有watermark/更新字段溯源和引擎有限工作继续，不停止/重启有效工作，不另启重复worker。承接1145剩余范围，无逐小批确认门槛，截止17:09不变。
-更新真实STATUS并交新增字段/正文/修表证据；原业务只读，仅隔离产物可写，不下载/回测/清理、不改迁移state，不重开R9。
+用户最新顺序：先完成本地模型部署/双向自动对接，再做数据整理。
+模型安装和Gemma本地API已由HUB实测回报；不重装/换模型。当前故障在GUI投递：错发Agent、输入残留、反向Agent框不唯一；3分钟调度启用不等于闭环成功。
+复用D:\LOCAL_AI\Watchdog\hub_two_window_notifier_1913，先QUEUE_ONLY保留事件暂停不可靠GUI自动发送，修唯一目标绑定及提交回读。上传当前实际代码/去秘密配置/计划任务Action，我会直接审实现。
+正常通知仅ASCII HUB；先推送并远端读回报告再通知。不得把旧pilot、ACK/心跳或通知器自身日志变成回声。
+两方向真实正确会话送达+独立4轮真实180秒调度后提交功能验收；12小时稳定性另列。修复全过程只在本机模型/通知器范围，数据整理/扫描/修表/下载/回测均暂停，不自动恢复17:09已到期工单。
+执行并留真实结果，不再只回ACK；现有有效修复任务接续，不另建第二套调度器。
