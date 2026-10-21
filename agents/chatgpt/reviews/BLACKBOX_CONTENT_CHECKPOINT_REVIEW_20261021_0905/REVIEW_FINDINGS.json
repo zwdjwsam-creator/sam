@@ -1,0 +1,55 @@
+{
+  "reviewed_at": "2026-10-21T09:05:00+08:00",
+  "task": "BLACKBOX_SYSTEM_INVENTORY_CONTENT_EXECUTION_20261021_0836",
+  "basis": "GitHub main artifacts retrieved in this review; no production disk access",
+  "accepted_observations": {
+    "ETF_MINUTE_1M_R1": {
+      "tip_files_read": 12,
+      "tip_files_discovered": 12,
+      "tip_rows": 2378160,
+      "tip_min": "2026-09-17 09:31:00",
+      "tip_max": "2026-09-24 15:00:00",
+      "historical_discovered": 4352,
+      "historical_sample": 50,
+      "additional_middle_sample": 80,
+      "history_completeness": "UNPROVEN"
+    },
+    "ETF_MINUTE_5M_R1": {
+      "tip_files_read": 22,
+      "tip_files_discovered": 22,
+      "tip_rows": 868656,
+      "tip_min": "2026-09-10 09:35:00",
+      "tip_max": "2026-09-24 15:00:00",
+      "historical_discovered": 4348,
+      "historical_sample": 50,
+      "additional_middle_sample": 80,
+      "history_completeness": "UNPROVEN"
+    },
+    "raw_parquet_name_counts": {
+      "one_minute": 7427,
+      "five_minute": 7427,
+      "note": "File counts, not expected row/coverage proof"
+    },
+    "fund_like": "VIEW.json specifies consumer-side union; two empty FUND product directories remain unclassified against materialization requirement",
+    "index_constituent": "Announcement field all-null; other non-null time fields require generation/contract evidence to establish causal use"
+  },
+  "machine_checked_artifact_gaps": {
+    "rule_file": "RULE_EDGES_CONTENT_0836.jsonl",
+    "records": 315,
+    "with_source": 0,
+    "with_locator": 0,
+    "verdict": "STORAGE_DISCOVERY_NOT_COMPLETE_PRODUCT_LINEAGE",
+    "mapping_file": "PRODUCT_MAPPING_MATRIX_0836.json",
+    "rows": 75,
+    "edge_layers": {
+      "CACHE": 48,
+      "CLEAN_STANDARD": 3,
+      "CACHE_VIEW": 1
+    },
+    "raw_edges": 0,
+    "consumer_edges": 0,
+    "current_worker_source": "SOURCE_SHA_0836 names source_upload_0836/run_inventory_content_0836_worker.py but path returned GitHub 404",
+    "batch2": "Known prior full reads repeated as first-eight-fragment samples; not new completeness proof"
+  },
+  "system_inventory_acceptance": false
+}
