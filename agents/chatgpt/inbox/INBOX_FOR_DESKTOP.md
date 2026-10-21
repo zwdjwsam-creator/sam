@@ -1,19 +1,18 @@
-# ZHANGWEI｜应用已验证续跑修补，恢复实质盘点
+# ZHANGWEI｜1118队列已结束，继续内容盘点整批任务
 task_id: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-followup_id: BLACKBOX_SYSTEM_INVENTORY_RESUME_PATCH_20261021_1118
+followup_id: BLACKBOX_SYSTEM_INVENTORY_CONTENT_BATCH_20261021_1136
 execution_host: ZHANGWEI
-status: APPLY_ISOLATED_RESUME_FIX_AND_CONTINUE
+status: CONTINUE_AUTHORIZED_CONTENT_INVENTORY
 instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150.md
-previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_RECURSION_AND_SEMANTICS_20261021_0930.md
-followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_RESUME_PATCH_20261021_1118.md
+previous_followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_RESUME_PATCH_20261021_1118.md
+followup_instruction: agents/chatgpt/outbox/BLACKBOX_SYSTEM_INVENTORY_CONTENT_BATCH_20261021_1136.md
 patch_package: agents/chatgpt/reviews/BLACKBOX_WORKLIST_RESUME_FIX_20261021_1118
 SYSTEM_INVENTORY_ACCEPTANCE=false
 COPY_AUTHORIZED=false
 patrol_deadline: 2026-10-21T17:09:00+08:00
 R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
 
-11:11心跳正常但实际进度停09:31。源码确认900后return，且只存pending前30项，不能完整续跑。
-GPT已交durable_worklist.py + run_rule_resume.py + test_durable_worklist.py，8项隔离测试通过；本机校验SHA并小回归后单实例运行，完整持久化队列，截止前继续，无900固定终止。启动参数/回传要求在最新followup。
-保留历史0930数据和正文cache，新结果写continuation_1118；未知大写标识符另列候选，不膨胀为已核规则图。有效活跃worker不重复、不热改。
-规则队列结束后继续已明确的unified/ETF minute读取器函数正文与调用链，再推进策略/更新/覆盖未完范围。只轮询HUB不是盘点继续。
-只写隔离产物，不改业务/迁移state/结案查询，不下载/采集/回测，不新增服务/Agent/巡视窗口。
+GPT已查收1118回归8/8与SHA匹配回执、PID46144启动记录及SUMMARY：950文档节点done，failed0/pending0，11:26:50结束。接受本阶段进展，不重复启动规则队列，不宣称全系统完成。
+下一整批：上传真实unified/ETF两份源码与所用registry；证明实际片段选择和安全只读读取边界；复用既有结果形成规则适用/策略回测约束/更新恢复运行链，以及产品完整性统一问题表。ETF历史仍UNPROVEN；不从.__mat存在直接升级覆盖。
+完成一项继续下一项，无逐小批查收门槛。有效工作不打断；及时更新真实STATUS和INBOX，通信心跳不代表业务进度。保持17:09截止，不新建服务/Agent/巡视。
+只写隔离产物，不改业务/环境/迁移state，不下载/采集/回测/清理，不重开R9。
