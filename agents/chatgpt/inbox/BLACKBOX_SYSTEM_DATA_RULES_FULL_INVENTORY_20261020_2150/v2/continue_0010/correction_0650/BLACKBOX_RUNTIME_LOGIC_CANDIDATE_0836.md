@@ -62,3 +62,9 @@ SYSTEM_INVENTORY_ACCEPTANCE: false
 - KEY/EXPECTED_SCOPE 全市场对照未在本轮穷尽 → 标未证实
 - mat 年批全量流式续读可按断点继续（本轮已 sample）
 - SYSTEM_INVENTORY_ACCEPTANCE 仍为 false
+
+## 6. 续跑扩展（0836 continue）
+- at: 2026-10-21T08:53:05+08:00
+- product mapping matrix: n=75 status={'CACHE_MATERIALIZED': 48, 'NO_CACHE_DIR': 21, 'CLEAN_PRESENT_CACHE_PARTIAL': 3, 'CACHE_DIR_EMPTY_OR_VIEW_ONLY': 2, 'LOGICAL_VIEW': 1} → PRODUCT_MAPPING_MATRIX_0836.json
+- rules edges content dump: 315 lines → RULE_EDGES_CONTENT_0836.jsonl
+- update chain fields extracted from anchors → UPDATE_CHAIN_FIELDS_0836.json
