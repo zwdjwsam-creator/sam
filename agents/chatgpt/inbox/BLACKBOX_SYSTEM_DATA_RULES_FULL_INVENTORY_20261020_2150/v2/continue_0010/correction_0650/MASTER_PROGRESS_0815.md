@@ -1,23 +1,23 @@
-# AUTHORITY_0815_PROGRESS
+# NEXT_STAGE_0815_CONTINUE
 
 status: **PARTIAL_CONTINUE_NO_FORCED_WAIT**
-task: BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815
-parent: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-worker_pid: 9624
-elapsed_sec: 0.5
-started_at: see WORKER_PID_0815.json
+worker_pid: 35828
+elapsed_sec: 0.0
 
-## Done
-1. ETF/STOCK minute shared-path → AUTHORITY_IDENTITY_UNVERIFIED（不删原读数）
-2. INDEX_CONSTITUENT announcement_date null audit → ANNOUNCEMENT_DATE_ALL_NULL_OR_EMPTY
-3. FUND_* empty dirs → NO_PARQUET_OBSERVED（不下载）
-4. Uploaded SOURCE_SHA_0815 + source_upload_0815（含 0730/0815 worker）
+## Done this continue
+- Stage ledger written: STAGE_LEDGER_0815_CONTINUE.json
+- Plane/strategy static paths existence observed (not claimed complete)
+- Rules v4 artifacts presence recorded; v5 full resweep queued as not_done
 
-## Reused from 0730
-- FUND_NAV 5980/5980 full stream evidence retained
-- parser_v5 regression file retained
+## Not done
+- RAW→clean→cache full consumer mapping matrix (per-product)
+- rules recursive recompute under parser_v5 for all shards (bounded next batch)
+- strategy/backtest prerequisite static chain completeness proof
+- ETF minute true authority path (currently AUTHORITY_IDENTITY_UNVERIFIED)
+- INDEX_CONSTITUENT applicable date field contract resolution
 
-## Still open (2150 scope)
-RAW→clean→cache/plane→consumer 映射；规则递归；策略/更新静态链条；真实日期集合/缺口/主键合同。
+## Blocked
+- WEB_NOTIFY_BLOCKED: cursor-ide-browser Server not found
+- ETF_MINUTE_AUTHORITY_IDENTITY_UNVERIFIED: shared stock minute path
 
 local: `E:\BLACKBOX\_OPS\SYSTEM_INVENTORY_20261020_2150\v2\continue_0010\correction_0650`
