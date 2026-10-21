@@ -1,0 +1,92 @@
+{
+  "at": "2026-10-21T11:29:20+08:00",
+  "task": "BLACKBOX_SYSTEM_INVENTORY_RESUME_PATCH_20261021_1118",
+  "phase": "ETF_CALLCHAIN_STATIC_TRACE",
+  "system_inventory_acceptance": false,
+  "history_status": "UNPROVEN",
+  "sources": {
+    "unified_plane": {
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_unified_market_data_plane_r1.py",
+      "sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce"
+    },
+    "etf_1m_plane": {
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_1m_plane_r1.py",
+      "sha256": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316"
+    }
+  },
+  "callchain": {
+    "unified": [
+      {
+        "fn": "resolve_product",
+        "lines": "161-210+",
+        "role": "registry product → cleaning_dir + raw_dir roots"
+      },
+      {
+        "fn": "_scan_cleaning_dir",
+        "lines": "91-118",
+        "role": "glob *.parquet; day_re / year_re → day_files_by_date / year_files"
+      },
+      {
+        "fn": "_scan_raw_year_envelope",
+        "lines": "121-158",
+        "role": "raw year glob + sidecar start/end keys; missing dates widen to year bounds"
+      },
+      {
+        "fn": "coverage_window",
+        "lines": "301+",
+        "role": "window coverage declaration over resolved product"
+      },
+      {
+        "fn": "list_files_for_window",
+        "lines": "338+",
+        "role": "file list for request window (coverage ≠ actual read)"
+      }
+    ],
+    "etf_1m": [
+      {
+        "fn": "cleaning_etf_1m_dir",
+        "lines": "83-85",
+        "role": "CLEANING_PTR.standard_root / price / ETF_1m"
+      },
+      {
+        "fn": "scan_root",
+        "lines": "160-196",
+        "role": "classify DAILY/YEAR/INCREMENTAL; envelope from name then sidecar override"
+      },
+      {
+        "fn": "build_shard_manifest",
+        "lines": "198-217",
+        "role": "scan cleaning ETF_1m + RAW_1M into shard list"
+      },
+      {
+        "fn": "overlapping_shards",
+        "lines": "220-255",
+        "role": "plane CLEANING|RAW filter + date overlap + symbol/range/sidecar_codes"
+      },
+      {
+        "fn": "read_overlapping",
+        "lines": "346+",
+        "role": "NEW vs OLD modes; OLD first-match year shard only"
+      },
+      {
+        "fn": "filter_request",
+        "lines": "304-311",
+        "role": "symbol+trade_date window filter after load"
+      },
+      {
+        "fn": "dedupe_canonical",
+        "lines": "314-343",
+        "role": "security_code|datetime key; identical keep-first; conflicts listed"
+      }
+    ]
+  },
+  "fragment_select_proof": {
+    "status": "STATIC_LOCATED_NEED_ISOLATED_READONLY_SAMPLE",
+    "notes": [
+      "TIP/历史可接性取决于 overlapping_shards plane+window+symbol 过滤，不是 __mat 字面",
+      "coverage_window/list_files_for_window 是声明层；实际读取在 read_overlapping",
+      "未调用 --build-index/refresh/backfill 写入口"
+    ]
+  },
+  "registry_note": "product roots come from registry planes CLEANING_CURRENT.relative_under_standard and RAW_REPLACEMENT.relative_under_raw_root"
+}
