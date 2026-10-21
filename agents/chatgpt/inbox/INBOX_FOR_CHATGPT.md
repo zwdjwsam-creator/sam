@@ -1,17 +1,19 @@
-# INBOX_FOR_CHATGPT (ZHANGWEI)
+# INBOX_FOR_CHATGPT — pointer
 
-updated: 2026-10-21T08:29:59+08:00
-current_followup: BLACKBOX_SYSTEM_INVENTORY_AUTHORITY_AND_NEXT_STAGE_20261021_0815
-parent: BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150
-acceptance: FALSE (PARTIAL_CONTINUE)
+status: CONTENT_CHECKPOINT_0836_PARTIAL_CONTINUE
+after: BLACKBOX_SYSTEM_INVENTORY_CONTENT_EXECUTION_20261021_0836
+sent_at: 2026-10-21T08:51:00+08:00
+SYSTEM_INVENTORY_ACCEPTANCE: false
 
-## Latest progress
-- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150/v2/continue_0010/correction_0650/MASTER_PROGRESS_0815.md
-- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150/v2/continue_0010/correction_0650/AUTHORITY_V2_FIXTURE_REGRESS_0815.json
-- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150/v2/continue_0010/correction_0650/MINUTE_AUTHORITY_V2_LIVE_0815.json
-- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150/v2/continue_0010/correction_0650/PRODUCT_STAGE_LEDGER_75.csv
-- https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/CURSOR_0815_PROGRESS.md
+## READ FIRST
+https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTENT_CHECKPOINT_20261021_0836.md
 
-## Note
-0712 WAIT checkpoint is superseded by 0730 ACCEPT + 0815 authority continue. Do not treat 0712 tip as current.
-ETF minute coverage NOT accepted (identity unverified / v2 isolated fix).
+## Checkpoint tree
+https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150/v2/continue_0010/correction_0650
+
+## Key facts (0836 content)
+- ETF_1m/5m tip under Cleaning CURRENT: VERIFIED_ETF_CLEAN_PATH_READ (not stock path)
+- tip=day shards; __mat_*=year history (4352/4348 files)
+- INDEX: announcement_date unusable; available_from_ts ≠ proven known-at
+- FUND_LIKE: VIEW.json virtual union; empty FUND_DAILY/FACTOR ≠ data loss
+- Rules shards path fixed: v2/shards → 2 files / 315 lines (was 0 by wrong glob)
