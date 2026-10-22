@@ -1,0 +1,52 @@
+{
+  "rule_id": "BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1",
+  "status": "ACTIVE",
+  "version": "BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1",
+  "formality": "FORMAL_HARD_GATE",
+  "authorized_at_cn": "2026-08-12T15:30:00+0800",
+  "policy": {
+    "NO_AGENT_MAY_DECLARE_DATA_MISSING_WITHOUT_COVERAGE_DIAGNOSIS": true,
+    "RAW_REDOWNLOAD_DEFAULT": "FORBIDDEN_IF_RAW_COMPLETE",
+    "FAIL_CLOSED": true,
+    "PATCH_CANNOT_SERVE_AS_FULL": true,
+    "FULL_HISTORY_NON_REGRESSION": true,
+    "CRITICAL_PRODUCT_GATE": true,
+    "SEALED_RELEASE_IMMUTABILITY": true
+  },
+  "coverage_modes": {
+    "FULL_HISTORY_OR_DAILY_HISTORY_REQUIRED_FOR": [
+      "STOCK_DAILY_PIT_R1",
+      "INDEX_DAILY_R1"
+    ],
+    "INCREMENTAL_PATCH_MUST_NOT_REPLACE_FULL_HISTORY": true
+  },
+  "publish_gate": {
+    "script": "脚本/blackbox_cache_coverage_non_regression_gate_r1.py",
+    "on_lost_dates": "PUBLISH_ALLOWED=false",
+    "on_critical_regression": "CACHE_RELEASE_PUBLISHABLE=false; CURRENT_SWITCH_ALLOWED=false"
+  },
+  "pointers": {
+    "RAW_COVERAGE_LEDGER": "运行/BLACKBOX_RAW_COVERAGE_LEDGER_CURRENT.json",
+    "CLEANING_COVERAGE_LEDGER": "运行/BLACKBOX_CLEANING_COVERAGE_LEDGER_CURRENT.json",
+    "CACHE_COVERAGE_LEDGER": "运行/BLACKBOX_CACHE_COVERAGE_LEDGER_CURRENT.json",
+    "DIAGNOSER": "脚本/blackbox_data_coverage_diagnose_r1.py",
+    "NON_REGRESSION_GATE": "脚本/blackbox_cache_coverage_non_regression_gate_r1.py",
+    "CURSOR_RULE": ".cursor/rules/blackbox_data_missing_diagnosis_gate.mdc"
+  },
+  "missing_enum_fixed": [
+    "SOURCE_MISSING",
+    "RAW_COMPLETE_CLEANING_MISSING",
+    "CLEANING_COMPLETE_CACHE_MISSING",
+    "CACHE_COVERAGE_REGRESSION",
+    "CACHE_PRODUCT_UNAVAILABLE",
+    "READER_LOAD_MISSING",
+    "READER_DATE_SLICE_MISSING",
+    "FILTER_EMPTY",
+    "UNIVERSE_EMPTY",
+    "PIT_ASOF_EMPTY",
+    "SOURCE_LIMITATION",
+    "REQUEST_OUTSIDE_PRODUCT_COVERAGE",
+    "AMBIGUOUS_DATASET",
+    "UNKNOWN_STOP"
+  ]
+}
