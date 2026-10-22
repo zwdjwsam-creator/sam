@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-22T16:29:49+08:00",
+  "items": [
+    {
+      "id": "STOCK_5M_FALSE_UNLOCATED",
+      "was": "KNOWN_UNLOCATED solely because jq_expand lacks 5m",
+      "fix": "RAW dir P7_stock_minute_raw_none_replacement_5m present",
+      "new_status": "RAW_PRESENT_ENTRY_PARTIAL"
+    },
+    {
+      "id": "BILLBOARD_FALSE_UNLOCATED",
+      "was": "finalize hard-coded KNOWN_UNLOCATED / report said shallow miss",
+      "fix": "DIRECTED listed direct_download_billboard_r1.py + aux_...; RAW P5/billboard exists",
+      "new_status": "CANDIDATES_BOUND_STAGES_PARTIAL"
+    },
+    {
+      "id": "JQ20_HAS_MANIFEST_FALSE_POSITIVE",
+      "was": "any .json or name contains MANIFEST ⇒ has_manifest",
+      "fix": "list manifest/seal/pointer/storage_reuse separately; SEAL≠MANIFEST",
+      "new_status": "FILES_CLASSIFIED"
+    },
+    {
+      "id": "ENGINE_KEYWORD_ONLY",
+      "was": "mentions...name-only / DOC_OR_POINTER without reading handoff body",
+      "fix": "mapped entry/rules/output from handoff + XVAL pointer/validation",
+      "new_status": "STATIC_MAPPED_ACTIVE_UNPROVEN"
+    }
+  ]
+}
