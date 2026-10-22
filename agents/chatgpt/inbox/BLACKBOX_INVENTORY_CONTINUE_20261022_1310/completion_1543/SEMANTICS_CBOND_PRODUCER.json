@@ -1,0 +1,43 @@
+{
+  "file": "脚本/blackbox_tushare_cbond_5y_plane_r2.py",
+  "sha256": "02b9869d45ed8a05adc748d70626bf0840f062a38723047dc8af98f6c827e240",
+  "note": "All functions below are ONLY from blackbox_tushare_cbond_5y_plane_r2.py — not mixed with reader module.",
+  "write_product": {
+    "span": "L420-L441",
+    "io": "writes CLEAN_ROOT/pid/data.parquet AND CACHE_ROOT/pid/data.parquet + PROVENANCE.json both sides",
+    "keys_from_body": "product_id in provenance; row_count; content_sha256; no drop_duplicates in write_product itself"
+  },
+  "slice_done": {
+    "span": "L326-L329",
+    "resume": "RAW_ROOT/api/slice_id/{receipt.json,raw.parquet} both exist → skip re-fetch"
+  },
+  "paginate_api_save": "save_raw_slice + slice_done gate resume at RAW slice grain",
+  "build_rating_pit_keys": {
+    "span": "L730-L792",
+    "from_body_literals": [
+      "ann_date",
+      "rating_date",
+      "ts_code",
+      "ts_code",
+      "ann_date",
+      "rating_date",
+      "ann_date",
+      "ann_date",
+      "ann_date",
+      "rating_date",
+      "ann_date",
+      "rating_date"
+    ]
+  },
+  "promote": {
+    "span": "L1311-L1449",
+    "publish_pointer": "数据/回测缓存/可转债指针/CURRENT_CBOND_CACHE_RELEASE.json",
+    "product_set_in_ptr": "R1_PRODUCTS + new_products (RATING/CALL/REMAIN/TOP10)",
+    "stock_main_current": "STOCK_CACHE_UNCHANGED True; does not write CURRENT_CACHE_RELEASE.json",
+    "also_may_append_catalog_csv": true
+  },
+  "main_span": "L1452-L1611",
+  "main_n_lines": 160,
+  "producer_review_status": "PRODUCER_STATIC_REVIEWED_SEMANTICS",
+  "extract_ref": "source_reads/CBOND_plane_FULL_FUNCS.md"
+}
