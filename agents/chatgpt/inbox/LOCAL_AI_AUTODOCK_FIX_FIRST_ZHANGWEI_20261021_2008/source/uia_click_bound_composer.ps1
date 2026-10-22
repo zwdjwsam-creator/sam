@@ -54,7 +54,8 @@ foreach($e in $window.FindAll($TS::Descendants,$ec)) {
   try {
     $c=$e.Current
     if($c.IsOffscreen -or -not $c.IsEnabled -or $c.BoundingRectangle.Width -le 0){continue}
-    if(($Direction -eq 'C2G' -and $c.ClassName -eq 'ProseMirror' -and $c.Name -match 'ChatGPT') -or
+    # Class may gain "ProseMirror-focused" after a prior click; match prefix.
+    if(($Direction -eq 'C2G' -and $c.ClassName -like 'ProseMirror*' -and $c.Name -match 'ChatGPT') -or
        ($Direction -eq 'G2C' -and $c.ClassName -eq 'aislash-editor-input')){$composerCandidates+=$e}
   }catch{}
 }
