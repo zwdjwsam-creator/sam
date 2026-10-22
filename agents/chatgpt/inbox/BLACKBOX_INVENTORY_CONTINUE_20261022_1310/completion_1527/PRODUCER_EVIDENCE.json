@@ -1,0 +1,527 @@
+{
+  "at": "2026-10-22T15:33:12+08:00",
+  "n_entries": 22,
+  "entries": [
+    {
+      "object_set": [
+        "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+        "TUSHARE_CBOND_BASIC_R1",
+        "TUSHARE_CBOND_CALL_PIT_R1",
+        "TUSHARE_CBOND_CALL_R1",
+        "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+        "TUSHARE_CBOND_DAILY_MARKET_R1",
+        "TUSHARE_CBOND_ISSUE_R1",
+        "TUSHARE_CBOND_RATE_R1",
+        "TUSHARE_CBOND_RATING_PIT_R1",
+        "TUSHARE_CBOND_RATING_R1",
+        "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+        "TUSHARE_CBOND_SHARE_R1",
+        "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+        "TUSHARE_CBOND_TOP10_HOLDERS_R1"
+      ],
+      "object_set_proven_in_code": true,
+      "producer_entry_path": "脚本/blackbox_tushare_cbond_5y_plane_r2.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "02b9869d45ed8a05adc748d70626bf0840f062a38723047dc8af98f6c827e240",
+      "functions": [
+        {
+          "name": "write_product",
+          "lineno": 420,
+          "end_lineno": 441,
+          "n_lines": 22
+        },
+        {
+          "name": "promote",
+          "lineno": 1311,
+          "end_lineno": 1449,
+          "n_lines": 139
+        },
+        {
+          "name": "main",
+          "lineno": 1452,
+          "end_lineno": 1611,
+          "n_lines": 160
+        },
+        {
+          "name": "build_rating_pit",
+          "lineno": 730,
+          "end_lineno": 792,
+          "n_lines": 63
+        },
+        {
+          "name": "build_call_pit",
+          "lineno": 795,
+          "end_lineno": 830,
+          "n_lines": 36
+        },
+        {
+          "name": "build_remain_pit",
+          "lineno": 833,
+          "end_lineno": 956,
+          "n_lines": 124
+        }
+      ],
+      "input_output_publish": "RAW 数据/原始只读/途施可转债* → CLEAN 途施可转债清洗* → CACHE releases BLACKBOX_CACHE_R*_途施可转债_* ; promote() writes 数据/回测缓存/可转债指针/CURRENT_CBOND_CACHE_RELEASE.json + product_path_map; STOCK MAIN CURRENT_CACHE_RELEASE.json deliberately NOT modified (MODIFY_STOCK_CURRENT=NO). code_object_set∩ledger=['TUSHARE_CBOND_BASIC_JQCOMPAT_R1', 'TUSHARE_CBOND_BASIC_R1', 'TUSHARE_CBOND_CALL_PIT_R1', 'TUSHARE_CBOND_CALL_R1', 'TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1', 'TUSHARE_CBOND_DAILY_MARKET_R1', 'TUSHARE_CBOND_ISSUE_R1', 'TUSHARE_CBOND_RATE_R1', 'TUSHARE_CBOND_RATING_PIT_R1', 'TUSHARE_CBOND_RATING_R1', 'TUSHARE_CBOND_REMAIN_SIZE_PIT_R1', 'TUSHARE_CBOND_SHARE_R1', 'TUSHARE_CBOND_STOCK_BRIDGE_R1', 'TUSHARE_CBOND_TOP10_HOLDERS_R1']; ledger_only_unseen_in_write_list=[]",
+      "keys_watermark_revision_resume": "ts_code/ann_date style event keys in build_*_pit; resume via slice_done/raw slices — STATIC from function names; runtime interrupt NOT_RUN",
+      "producer_review_status": "PRODUCER_STATIC_REVIEWED",
+      "notes": "reader_r2 is consumer not producer. Main JQ CACHE may only inherit references — separate from CBOND_PTR publish."
+    },
+    {
+      "object_set": [
+        "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+        "TUSHARE_CBOND_BASIC_R1",
+        "TUSHARE_CBOND_CALL_PIT_R1",
+        "TUSHARE_CBOND_CALL_R1",
+        "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+        "TUSHARE_CBOND_DAILY_MARKET_R1",
+        "TUSHARE_CBOND_ISSUE_R1",
+        "TUSHARE_CBOND_RATE_R1",
+        "TUSHARE_CBOND_RATING_PIT_R1",
+        "TUSHARE_CBOND_RATING_R1",
+        "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+        "TUSHARE_CBOND_SHARE_R1",
+        "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+        "TUSHARE_CBOND_TOP10_HOLDERS_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": "脚本/blackbox_tushare_cbond_reader_r2.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "d8051c091c1d3bc9a1b5619d83415816a254c21c13241b922225481db70aedd4",
+      "functions": [],
+      "input_output_publish": "READ path only; not a build/publish producer",
+      "keys_watermark_revision_resume": "N_A_READER",
+      "producer_review_status": "ENTRY_EXCLUSION_ONLY",
+      "notes": "Documented so reader is not mistaken for producer"
+    },
+    {
+      "object_set": [
+        "ETF_MINUTE_1M_R1"
+      ],
+      "object_set_proven_in_code": true,
+      "producer_entry_path": "脚本/blackbox_etf_minute_daily_increment_check_r1.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "a3ce211eeb385f0f190b537cc0d9e11704218c5bb1aed47e80cb13f980a223a8",
+      "functions": [
+        {
+          "name": "main",
+          "lineno": 26,
+          "end_lineno": 68,
+          "n_lines": 43
+        }
+      ],
+      "input_output_publish": "CHECK ONLY: looks for day tip under CURRENT cleaning price/ETF_1m; apply_download=False; does not switch CURRENT",
+      "keys_watermark_revision_resume": "TARGET_DATE day filename __1m__YYYY-MM-DD__; SOURCE_REFRESH NOT_FETCHED_THIS_CHECK",
+      "producer_review_status": "PRODUCER_STATIC_REVIEWED",
+      "notes": "This proves managed-check entry for 1m only. Does NOT prove ETF_MINUTE_5M/30M/60M producers. Download producer for missing slice = NOT_REVIEWED this round unless found below."
+    },
+    {
+      "object_set": [
+        "ETF_MINUTE_5M_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "mapping says N_A daily CACHE catalog — NOT a producer review",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "ENTRY_EXCLUSION_ONLY was wrongly elevated in 1519; producer path for this frequency not located in this pass"
+    },
+    {
+      "object_set": [
+        "ETF_MINUTE_30M_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "mapping says N_A daily CACHE catalog — NOT a producer review",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "ENTRY_EXCLUSION_ONLY was wrongly elevated in 1519; producer path for this frequency not located in this pass"
+    },
+    {
+      "object_set": [
+        "ETF_MINUTE_60M_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "mapping says N_A daily CACHE catalog — NOT a producer review",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "ENTRY_EXCLUSION_ONLY was wrongly elevated in 1519; producer path for this frequency not located in this pass"
+    },
+    {
+      "object_set": [
+        "STOCK_MINUTE_1M_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "stock minute producer path NOT FOUND in candidate list this pass",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "Do not use N_A_MINUTE_NOT_DAILY_CACHE as update-reviewed. 950/unified registry reuse pending deeper bind if script missing."
+    },
+    {
+      "object_set": [
+        "STOCK_MINUTE_5M_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "stock minute producer path NOT FOUND in candidate list this pass",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "Do not use N_A_MINUTE_NOT_DAILY_CACHE as update-reviewed. 950/unified registry reuse pending deeper bind if script missing."
+    },
+    {
+      "object_set": [
+        "STOCK_MINUTE_30M_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "stock minute producer path NOT FOUND in candidate list this pass",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "Do not use N_A_MINUTE_NOT_DAILY_CACHE as update-reviewed. 950/unified registry reuse pending deeper bind if script missing."
+    },
+    {
+      "object_set": [
+        "STOCK_MINUTE_60M_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "stock minute producer path NOT FOUND in candidate list this pass",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "Do not use N_A_MINUTE_NOT_DAILY_CACHE as update-reviewed. 950/unified registry reuse pending deeper bind if script missing."
+    },
+    {
+      "object_set": [
+        "INDEX_MINUTE_ALIGN_LAYER"
+      ],
+      "object_set_proven_in_code": true,
+      "producer_entry_path": "脚本/index_minute_align_clean_antileak_seal_r1.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "87a8826648c37cce8b19b4516c7c8ff727ddb033c0746b52fd9086cb5ddf35cc",
+      "functions": [
+        {
+          "name": "main",
+          "lineno": 375,
+          "end_lineno": 417,
+          "n_lines": 43
+        },
+        {
+          "name": "main",
+          "lineno": 1015,
+          "end_lineno": 1094,
+          "n_lines": 80
+        }
+      ],
+      "input_output_publish": "P3_index_minute RAW → aligned cleaning standard/index_minute; incremental engine; seal CURRENT cleaning pointer for align release",
+      "keys_watermark_revision_resume": "partition year/code/freq; incremental successor — STATIC; runtime NOT_RUN",
+      "producer_review_status": "PRODUCER_STATIC_REVIEWED",
+      "notes": "download companion exists=True path=脚本/index_minute_jq_downloadable_download_r1.py; align ≠ each ETF/STOCK minute product"
+    },
+    {
+      "object_set": [
+        "ADJUST_FACTOR_PIT_R1",
+        "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "CORP_XR_XD_EVENT_PIT_R1",
+        "FINANCIAL_INDICATOR_PIT_R1",
+        "FUND_NAV_PIT_R1",
+        "STOCK_DAILY_PIT_R1",
+        "STOCK_TRADEABILITY_PIT_R1",
+        "SW_L1_MEMBERSHIP_PIT_R1",
+        "SW_L2_MEMBERSHIP_PIT_R1",
+        "SW_L3_MEMBERSHIP_PIT_R1",
+        "VALUATION_PIT_R1"
+      ],
+      "object_set_proven_in_code": true,
+      "producer_entry_path": "脚本/blackbox_daily_increment_orchestrator_r1.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a",
+      "functions": [
+        {
+          "name": "main",
+          "lineno": 26,
+          "end_lineno": 75,
+          "n_lines": 50
+        },
+        {
+          "name": "main",
+          "lineno": 419,
+          "end_lineno": 606,
+          "n_lines": 188
+        }
+      ],
+      "input_output_publish": "POST-DOWNLOAD only: orchestrator → tip_rebase → publish_atomic → scope_refresh. Object set taken from handbook cache_products_required ∩ ledger — NOT all ETF/INDEX/SW/OTHER prefixes. RAW download domain entry for each product = separate (often NOT_REVIEWED unless named elsewhere).",
+      "keys_watermark_revision_resume": "MULTI_FILE_PUBLISH_FAILURE_WINDOW (KNOWN_GAP from 1519); tip no_publish candidate path",
+      "producer_review_status": "PRODUCER_STATIC_REVIEWED",
+      "notes": "Does not cover CBOND. Does not cover JQ20. REQUIRED4 still catalog orphan on resolve path."
+    },
+    {
+      "object_set": [
+        "SW_L1_MEMBERSHIP_PIT_R1",
+        "SW_L2_MEMBERSHIP_PIT_R1",
+        "SW_L3_MEMBERSHIP_PIT_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "handbook daily_must includes sw_l1_l2_l3_membership densify; script NOT_LOCATED_THIS_PASS",
+      "keys_watermark_revision_resume": "UNPROVEN if script missing",
+      "producer_review_status": "KNOWN_GAP_CONTRACT",
+      "notes": "Contract/handbook requires densify; producer script locate FAILED — recorded as contract gap not fake NOT_REVIEWED forever"
+    },
+    {
+      "object_set": [
+        "FUND_NAV_PIT_R1"
+      ],
+      "object_set_proven_in_code": true,
+      "producer_entry_path": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "8e5b360ce0dad95012a94def38dd6b77c7ee71cbb729964c24432b0856c96b11",
+      "functions": [
+        {
+          "name": "configure_window",
+          "lineno": 54,
+          "end_lineno": 63,
+          "n_lines": 10
+        },
+        {
+          "name": "phase_download",
+          "lineno": 139,
+          "end_lineno": 256,
+          "n_lines": 118
+        },
+        {
+          "name": "_merge_prior_tips",
+          "lineno": 283,
+          "end_lineno": 304,
+          "n_lines": 22
+        },
+        {
+          "name": "phase_clean_cache",
+          "lineno": 307,
+          "end_lineno": 524,
+          "n_lines": 218
+        },
+        {
+          "name": "main",
+          "lineno": 714,
+          "end_lineno": 744,
+          "n_lines": 31
+        }
+      ],
+      "input_output_publish": "get_extras tip → clean → FUND_NAV_PIT_R1 cache publish; PRIOR_TIP_OVERRIDES_NEW_DUPLICATE confirmed",
+      "keys_watermark_revision_resume": "(code,day); GAP_START/END; resume NOT_RUN",
+      "producer_review_status": "REUSED_PRIOR",
+      "notes": "1507/1519 accepted; full_read 6496121/5980 retained"
+    },
+    {
+      "object_set": [
+        "FUND_DAILY_PIT_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "NOT same as FUND_NAV plane; likely main-chain RAW/clean/cache — producer script not separately bound this pass",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "Rejected 1519 FUND_FAMILY→NAV blanket"
+    },
+    {
+      "object_set": [
+        "FUND_FACTOR_DAILY_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "NOT same as FUND_NAV plane; likely main-chain RAW/clean/cache — producer script not separately bound this pass",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "Rejected 1519 FUND_FAMILY→NAV blanket"
+    },
+    {
+      "object_set": [
+        "ADJUST_FACTOR_PIT_R1"
+      ],
+      "object_set_proven_in_code": true,
+      "producer_entry_path": "脚本/blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "d236dacb2e6033bac09737c0bf6da20f8c5155dbb751a0181d087d5d704c3553",
+      "functions": [],
+      "input_output_publish": "wrapper→TASK incremental_backward_refresh; publish_successor bypasses publish_atomic (KNOWN_GAP)",
+      "keys_watermark_revision_resume": "code/date; overlap 10d; dirty full history; resume STATIC/NOT_RUN",
+      "producer_review_status": "REUSED_PRIOR",
+      "notes": "1519 findings accepted"
+    },
+    {
+      "object_set": [
+        "INDEX_WEIGHT_PIT_R1"
+      ],
+      "object_set_proven_in_code": true,
+      "producer_entry_path": "脚本/blackbox_index_weight_daily_increment_check_r1.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "5bc290e1fa38110b180057d12521c57631606fb8280a92e76d25652ae8177baf",
+      "functions": [
+        {
+          "name": "daily_check",
+          "lineno": 1096,
+          "end_lineno": 1165,
+          "n_lines": 70
+        }
+      ],
+      "input_output_publish": "managed check only; apply_download=false; always rc 0",
+      "keys_watermark_revision_resume": "decision in JSON not consumed by orchestrator",
+      "producer_review_status": "REUSED_PRIOR",
+      "notes": ""
+    },
+    {
+      "object_set": [
+        "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+        "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+        "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+        "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+        "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+        "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+        "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+        "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+        "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+        "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+        "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+        "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+        "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+        "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+        "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+        "JQ20_STK_LIST_REFERENCE_PIT_R1",
+        "JQ20_STK_NAME_HISTORY_PIT_R1",
+        "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+        "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+        "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "ENTRY_DOES_NOT_SERVE_VIA_CACHE_CATALOG mapping only; domain download/clean producer NOT located as shared script with explicit object set this pass",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "1519 wrongly marked STATIC_REVIEWED from exclusion"
+    },
+    {
+      "object_set": [
+        "FUND_LIKE_ASSET_VIEW_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "logical VIEW — who builds/refreshes not found as dedicated producer this pass; must not inherit NAV rules",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "object_set": [
+        "CACHE_MANIFEST_REGISTRY_R1",
+        "CACHE_DEPENDENCY_REGISTRY_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": "脚本/blackbox_data_access_resolver_r1.py",
+      "producer_entry_exists": true,
+      "producer_entry_sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+      "functions": [],
+      "input_output_publish": "resolver reads registry JSON/CSV under 数据/回测缓存/registry/; generator/refresher of registry files NOT identified as separate producer this pass",
+      "keys_watermark_revision_resume": "meta",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "resolver consumption ≠ registry producer"
+    },
+    {
+      "object_set": [
+        "BILLBOARD_DAILY_PIT_R1",
+        "CACHE_DEPENDENCY_REGISTRY_R1",
+        "CACHE_MANIFEST_REGISTRY_R1",
+        "ETF_DAILY_PIT_R1",
+        "ETF_FACTOR_DAILY_R1",
+        "ETF_MINUTE_30M_R1",
+        "ETF_MINUTE_5M_R1",
+        "ETF_MINUTE_60M_R1",
+        "ETF_TRACKING_INDEX_MAP_R1",
+        "FUND_DAILY_PIT_R1",
+        "FUND_FACTOR_DAILY_R1",
+        "FUND_LIKE_ASSET_VIEW_R1",
+        "INDEX_CONSTITUENT_PIT_R1",
+        "INDEX_DAILY_R1",
+        "INDEX_FACTOR_DAILY_R1",
+        "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+        "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+        "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+        "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+        "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+        "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+        "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+        "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+        "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+        "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+        "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+        "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+        "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+        "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+        "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+        "JQ20_STK_LIST_REFERENCE_PIT_R1",
+        "JQ20_STK_NAME_HISTORY_PIT_R1",
+        "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+        "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+        "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+        "MARKET_STRUCTURE_DAILY_R1",
+        "MARKET_UNIVERSE_PIT_R1",
+        "SECURITY_MASTER_SNAPSHOT_R1",
+        "STOCK_DAILY_RAW_PIT_R1",
+        "STOCK_FACTOR_DAILY_R1",
+        "STOCK_MINUTE_1M_R1",
+        "STOCK_MINUTE_30M_R1",
+        "STOCK_MINUTE_5M_R1",
+        "STOCK_MINUTE_60M_R1",
+        "SW_L1_STRUCTURE_DAILY_R1",
+        "SW_L2_STRUCTURE_DAILY_R1",
+        "SW_L3_STRUCTURE_DAILY_R1"
+      ],
+      "object_set_proven_in_code": false,
+      "producer_entry_path": null,
+      "producer_entry_exists": false,
+      "producer_entry_sha256": null,
+      "functions": [],
+      "input_output_publish": "no producer evidence attached this round",
+      "keys_watermark_revision_resume": "UNPROVEN",
+      "producer_review_status": "NOT_REVIEWED",
+      "notes": "explicit residual bucket — not bulk-labeled reviewed"
+    }
+  ]
+}
