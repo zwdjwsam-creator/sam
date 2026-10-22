@@ -1,0 +1,110 @@
+{
+  "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine",
+  "exists": true,
+  "top": [
+    {
+      "name": "PHASE1_CAPABILITY_REGISTRY.json",
+      "is_dir": false,
+      "size": 392
+    },
+    {
+      "name": "PHASE1_CURRENT_ENGINE_REGISTRY.json",
+      "is_dir": false,
+      "size": 1135
+    },
+    {
+      "name": "blackbox_jq_engine",
+      "is_dir": true,
+      "size": null
+    },
+    {
+      "name": "logs",
+      "is_dir": true,
+      "size": null
+    },
+    {
+      "name": "rule_library",
+      "is_dir": true,
+      "size": null
+    },
+    {
+      "name": "rule_library_backups",
+      "is_dir": true,
+      "size": null
+    }
+  ],
+  "static_map": {
+    "PHASE1_CAPABILITY_REGISTRY.json": {
+      "keys": [
+        "BUY_MARKET",
+        "SELL_MARKET",
+        "T_PLUS_1",
+        "CLOSEABLE_AMOUNT",
+        "NO_SHORT",
+        "CASH_LEDGER",
+        "POSITION_LEDGER",
+        "FORMAL_EXECUTION_BOUNDARY",
+        "ORDER_LIFECYCLE_CORE",
+        "LIMIT_DAILY",
+        "MINUTE_LIMIT",
+        "updated_from"
+      ]
+    },
+    "PHASE1_CURRENT_ENGINE_REGISTRY.json": {
+      "keys": [
+        "CURRENT_sealed_backup_id",
+        "CURRENT_sealed_backup_path",
+        "CURRENT_root_sha256",
+        "previous_sealed_backup_id",
+        "previous_sealed_still_accessible",
+        "pre_migration_backup",
+        "unique_CURRENT",
+        "migration_run_id",
+        "current_sealed_engine_id",
+        "current_sealed_engine_path",
+        "previous_sealed_engine_id",
+        "updated_at",
+        "updated_by",
+        "CURRENT_aligned_at",
+        "CURRENT_aligned_by"
+      ]
+    },
+    "BLACKBOX_BACKTEST_ONLY_SCOPE.md": {
+      "bytes": 1627,
+      "head": "# BLACKBOX Backtest-Only Scope (D Drive Lab Fork)\n\n## Scope\n\n- **Fork location**: `D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine`\n- **Scope name**: `BLACKBOX_JQ_COMPAT_ENGINE_V0`\n- **Engine mode**: `backtest_only`\n- **Purpose**: D drive backtest lab only — not connected to E:\\BLACKBOX\n\n## Allowed (V0 active planning)\n\n- A-share, ETF, money market fund\n- HK Connect / HK Connect ET"
+    },
+    "entry_dir": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine"
+  },
+  "active_proven": false,
+  "rule_library_children": [
+    "blackbox_current_dictionary_R1",
+    "cn_a_exchange_trading_hard_rules_20260706_R1",
+    "jq_official_canonical_R1",
+    "master_registry_R1"
+  ],
+  "engine_dir_children": [
+    ".env",
+    ".git",
+    ".gitignore",
+    ".pytest_cache",
+    "BLACKBOX_BACKTEST_ONLY_SCOPE.md",
+    "bullet_trade",
+    "CHANGELOG.md",
+    "docs",
+    "env.backtest.example",
+    "env.example",
+    "env.live.example",
+    "helpers",
+    "jqdata.py",
+    "LICENSE",
+    "logs",
+    "MANIFEST.in",
+    "mkdocs.yml",
+    "pyproject.toml",
+    "pytest.ini",
+    "README.md",
+    "requirements-dev.txt",
+    "requirements.txt",
+    "tests"
+  ]
+}
