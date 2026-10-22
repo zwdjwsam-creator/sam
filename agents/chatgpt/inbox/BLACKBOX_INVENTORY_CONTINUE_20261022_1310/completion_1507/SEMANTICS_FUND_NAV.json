@@ -1,0 +1,40 @@
+{
+  "status": "STATIC_REVIEWED",
+  "note": "fetch_nav_batch is NOT defined in fund plane; called as navc.fetch_nav_batch from p4_etf_nav_share_common_r1",
+  "configure_window_n": 10,
+  "phase_download_n": 118,
+  "merge_prior_n": 22,
+  "phase_clean_cache_n": 218,
+  "main_n": 31,
+  "navc_fetch_nav_batch": {
+    "lineno": 238,
+    "end_lineno": 251,
+    "n_lines": 14
+  },
+  "keys_literals_from_bodies": [
+    "GAP_END",
+    "GAP_START",
+    "acc_net_value",
+    "asof",
+    "code",
+    "day",
+    "unit_net_value"
+  ],
+  "extract_refs": [
+    "source_reads/blackbox_fund_etf_nav_premium_plane_r1_EXTRACTS.md",
+    "source_reads/p4_etf_nav_share_common_r1_EXTRACTS.md"
+  ],
+  "not_run": [
+    "No download / clean / cache publish"
+  ],
+  "navc_path": "任务/BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1/p4_etf_nav_share_common_r1.py",
+  "navc_fetch_nav_batch_body_ref": "source_reads/p4_etf_nav_share_common_r1_EXTRACTS.md",
+  "fetch_nav_batch_keys": [
+    "acc_net_value",
+    "code",
+    "day",
+    "end",
+    "start",
+    "unit_net_value"
+  ]
+}
