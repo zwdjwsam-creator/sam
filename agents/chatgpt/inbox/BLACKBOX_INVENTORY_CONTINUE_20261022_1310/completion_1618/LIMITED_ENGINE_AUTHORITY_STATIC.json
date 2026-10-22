@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-22T16:29:49+08:00",
+  "active_proven": false,
+  "maps": [
+    {
+      "seed_doc": "BACKTEST_ENGINE_AUTHORITATIVE_HANDOFF_R1.json",
+      "entry": "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+      "engine_dir": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine",
+      "resolver_or_product": "allowed_data_contract / master_registry (see handoff)",
+      "rules": [
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1",
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_matching_behavior_rules.json",
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_daily_minute_backtest_rules.json",
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1",
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1"
+      ],
+      "output": "handoff package / module_inventory evidence_files (D:\\backtest_lab\\99_reports\\...)",
+      "status_fields": {
+        "current_engine_status": "STRUCTURE_READY_DATA_WAITING",
+        "formal_backtest_status": "CLOSED",
+        "handoff_status": "READY_FOR_BLACKBOX_REVIEW"
+      },
+      "active_proven": false,
+      "note": "STRUCTURE/HANDOFF static map; engine_core not proven live"
+    },
+    {
+      "seed_doc": "XVAL_ACTIVE_ENGINE_POINTER_CANDIDATE.json",
+      "entry": "E:\\BLACKBOX\\任务\\BLACKBOX_XVAL_FIELD_MATCH_ENGINE_REPAIR_AND_REGRESSION_R1\\04_XVAL_R2\\xval_field_match_engine_r2.py",
+      "resolver_or_product": "XVAL_FIELD_MATCH_ENGINE_R2",
+      "rules": {
+        "pit_promotion_allowed": false,
+        "HAND_approval": "required_and_present"
+      },
+      "output": "pointer/validation artifacts (not runtime proof)",
+      "validation": {
+        "resolved_path": "E:\\BLACKBOX\\任务\\BLACKBOX_XVAL_FIELD_MATCH_ENGINE_REPAIR_AND_REGRESSION_R1\\04_XVAL_R2\\xval_field_match_engine_r2.py",
+        "sha_match": true,
+        "pointer_valid": true
+      },
+      "active_proven": false,
+      "note": "pointer candidate + path/sha validation; active runtime UNPROVEN"
+    }
+  ]
+}
