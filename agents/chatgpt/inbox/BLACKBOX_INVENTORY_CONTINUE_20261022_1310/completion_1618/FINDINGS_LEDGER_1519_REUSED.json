@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-22T15:24:51+08:00",
+  "source": "GPT independent review 1519 + prior AST bodies",
+  "items": [
+    {
+      "id": "MULTI_FILE_PUBLISH_FAILURE_WINDOW",
+      "tag": "KNOWN_GAP",
+      "family": "PUBLISH_GATE",
+      "summary": "publish_atomic: sequential wjson(CLEAN)→wjson(CACHE)→wjson(FACTS); single-file os.replace only; no cross-file rollback. Lab: CACHE fail→CLEAN NEW others OLD; FACTS fail→CLEAN/CACHE NEW FACTS OLD.",
+      "evidence": "independent_review_1519/REVIEW.md + RESULTS.json (3/3 asserts); source publish_gate+common wjson",
+      "not_claimed": "production mixed-generation incident; real matrix; Windows hard-kill",
+      "candidate_fix": "wrap three pointer writes in transactional/two-phase commit or fail-closed restore from backups before returning published",
+      "isolation_verify": "reproduce.py in review pack (do not re-run required)",
+      "status": "STATIC_CLOSED_AS_KNOWN_GAP"
+    },
+    {
+      "id": "PRIOR_TIP_OVERRIDES_NEW_DUPLICATE",
+      "tag": "CONFIRMED_BEHAVIOR",
+      "family": "FUND_NAV",
+      "summary": "_merge_prior_tips: frames=[new] then append prior tip; drop_duplicates(code,day keep=last) → prior wins. Fixture new=2 old=1 → out=1.",
+      "evidence": "independent_review_1519/NAV_RESULTS.json + fund _merge_prior_tips body",
+      "not_claimed": "historical NAV corruption; whether formal revision policy should invert",
+      "candidate_fix": "if contract says new revision wins, change merge order or keep=first on new — production change NOT this round",
+      "isolation_verify": "reproduce_nav.py",
+      "status": "STATIC_CLOSED_AS_CONFIRMED_BEHAVIOR"
+    },
+    {
+      "id": "ADJUST_PUBLISH_BYPASSES_ATOMIC_GATE",
+      "tag": "KNOWN_GAP",
+      "family": "ADJUST_FACTOR",
+      "summary": "publish_successor writes RELEASE.json + CACHE_PTR directly; does not call publish_atomic / FACTS sync path.",
+      "evidence": "completion_1507 adjust extracts; REVIEW.md ADJUST section",
+      "impact": "generation consistency / admission vs daily tip path diverges",
+      "candidate_fix": "route adjust publish through publish_atomic or document intentional sidecar exception with FACTS update",
+      "coverage_gate": "empty/incomplete API results blocking publish — NOT fully covered in main/fetch bodies → OPEN_TO_VERIFY",
+      "resume_static": "no named state.json; resume via cache/current + batch outputs control flow (STATIC); runtime NOT_RUN",
+      "status": "STATIC_CLOSED_AS_KNOWN_GAP"
+    },
+    {
+      "id": "ADJUST_OVERLAP_DIRTY_RULE",
+      "tag": "CONFIRMED_BEHAVIOR",
+      "family": "ADJUST_FACTOR",
+      "summary": "keys code/date; overlap=last 10 cached dates ≤update_date; abs_diff>1e-8 → full-history refresh for dirty codes; else append target day or skip if present.",
+      "evidence": "incremental_backward_refresh_r1 extracts",
+      "default_update_date_source": "2026-08-14 (source default; not executed)",
+      "status": "STATIC_CLOSED_AS_CONFIRMED_BEHAVIOR"
+    }
+  ]
+}
