@@ -1,0 +1,18 @@
+{
+  "status": "STATIC_SCOPE_CLOSED",
+  "accepted_from": "tip_1543 + completion_1536 SEMANTICS_CBOND_PRODUCER",
+  "points": [
+    "slice_done = receipt.json + raw.parquet exist; paginate resumes by slice_id/offset — re-run mechanism ≠ checksum/interrupt drill",
+    "write_product dual-writes CLEAN+CACHE+PROVENANCE",
+    "promote requires VALIDATE_PASS; writes CURRENT_CBOND_CACHE_RELEASE; may append catalog/index; does NOT modify main stock CURRENT — not a readonly check",
+    "product_path_map: R1_PRODUCTS→R1_CACHE; 5 enhanced→R2 CACHE — inheritance/enhance publish, NOT full R2 redownload of all 14 / not proven daily update",
+    "TOP10=RAW_CLEAN_READY_PIT_NOT_READY; convert price PIT not ready; FULL_PIT_READY=false — cannot claim full CBOND PIT backtest-ready",
+    "fixed asof=2026-08-14 is build/enhance script fact; daily-update applicability needs separate entry evidence"
+  ],
+  "closed_question": "CBOND is not reader-only / path-guessing",
+  "still_open": [
+    "content completeness",
+    "dynamic runtime",
+    "original R1 producer / later incremental entry"
+  ]
+}
