@@ -1,0 +1,56 @@
+{
+  "checkpoint": "completion_1327",
+  "rows": 75,
+  "source_blobs": {
+    "PRODUCT_MASTER": "e9d8ca77ee396a9a6319997d1984566e6a76539e",
+    "UPDATE_CHAIN": "43616b56ac59c6dcbc56c4d19d27ea9c698ab04d"
+  },
+  "old_checker_pass": true,
+  "acceptance": false,
+  "findings": [
+    {
+      "code": "ETF_SUPERSEDED_STOCK_BOUNDS_REMAIN_ACTIVE",
+      "products": [
+        "ETF_MINUTE_1M_R1",
+        "ETF_MINUTE_5M_R1"
+      ],
+      "observed_range": "2014-01-02..2026-08-05",
+      "note": "authority_path corrected; active observed_range still comes from superseded stock frag bounds"
+    },
+    {
+      "code": "FUND_NAV_FULLREAD_NOT_CANONICAL",
+      "product": "FUND_NAV_PIT_R1",
+      "active_observed_range": "2014-01-02..2014-12-31",
+      "retained_frag_bounds": "2014-01-02..2026-09-24",
+      "full_read_shards": 5980,
+      "missing_full_read_row_count": 6496121
+    },
+    {
+      "code": "PLACEHOLDER_FIELDS_REMAIN",
+      "required_range_unproven": 75,
+      "update_entry_not_rechecked": 75,
+      "gap_retain_prior": 75,
+      "observation_reuse_placeholder": 75
+    },
+    {
+      "code": "UPDATE_CHAIN_IS_TEMPLATE",
+      "rows": 75,
+      "watermark_unproven": 75,
+      "resume_unproven": 75,
+      "note": "release_pointer is copied authority_path, not proven pointer file"
+    },
+    {
+      "code": "IMPORT_BINDING_DISTINCT",
+      "reader_import": "blackbox_unified_market_data_plane_r1",
+      "price_import": "blackbox_data_access_resolver_r1",
+      "note": "not one continuous pipeline on function name alone"
+    },
+    {
+      "code": "ENGINE_ONLY_ROOT_LISTING_AND_PATH_HEURISTICS",
+      "seed_rows": 17,
+      "root_exists": true,
+      "note": "no active dependency/entry point proof; root listing accepted only as scope discovery"
+    }
+  ],
+  "basis": "Independent CSV field aggregation and full text review of two uploaded source modules; production data and business code not executed."
+}
