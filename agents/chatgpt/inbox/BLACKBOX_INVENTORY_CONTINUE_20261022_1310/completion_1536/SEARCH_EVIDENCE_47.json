@@ -1,0 +1,2346 @@
+{
+  "at": "2026-10-22T15:41:10+08:00",
+  "n": 47,
+  "items": [
+    {
+      "product_id": "BILLBOARD_DAILY_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "CACHE_DEPENDENCY_REGISTRY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 2,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": [
+            {
+              "line": 830,
+              "text": "if pid == \"CACHE_MANIFEST_REGISTRY_R1\" or pid == \"CACHE_DEPENDENCY_REGISTRY_R1\":"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 144,
+              "text": "CACHE_DEPENDENCY_REGISTRY_R1,META,ALL,ACTIVE,n/a,Dependency registry"
+            }
+          ]
+        }
+      ],
+      "result": "LOCATED_CANDIDATE_PRODUCER",
+      "producer_review_status": "PRODUCER_LOCATED_BODY_PARTIAL"
+    },
+    {
+      "product_id": "CACHE_MANIFEST_REGISTRY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 2,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": [
+            {
+              "line": 830,
+              "text": "if pid == \"CACHE_MANIFEST_REGISTRY_R1\" or pid == \"CACHE_DEPENDENCY_REGISTRY_R1\":"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 143,
+              "text": "CACHE_MANIFEST_REGISTRY_R1,META,ALL,ACTIVE,n/a,Manifest registry"
+            }
+          ]
+        }
+      ],
+      "result": "LOCATED_CANDIDATE_PRODUCER",
+      "producer_review_status": "PRODUCER_LOCATED_BODY_PARTIAL"
+    },
+    {
+      "product_id": "ETF_DAILY_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 13,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_daily_increment_common_r1.py",
+          "sha256": "348d1f7e6ea18ea8db80cfbd7ed68d5a0c6c3f913e874db65796a2428ee13ec7",
+          "size": 19082,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_etf_minute_1m_plane_r1.py",
+          "sha256": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316",
+          "size": 31890,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_etf_minute_capability_control_plane_refresh_r1.py",
+          "sha256": "8864a46988ddb562611f66a618995d13be164a55a02d22ab56f66b865556ec5a",
+          "size": 9194,
+          "context": [
+            {
+              "line": 30,
+              "text": "DAILY = \"ETF_DAILY_PIT_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_etf_minute_manual_obs_attribution_r1.py",
+          "sha256": "97ae960fe9589f9126cd96442f0744ace6c2c1676e343c866436448704196c0f",
+          "size": 7498,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_etf_minute_phase9_to_15_runners_r1.py",
+          "sha256": "86bc002fb2fb8ceb7fd0b1e082fb9b3b266886354f57fe495a34eb57dc607740",
+          "size": 25482,
+          "context": [
+            {
+              "line": 364,
+              "text": "daily_index_ok = \"ETF_DAILY_PIT_R1\" in ids"
+            },
+            {
+              "line": 368,
+              "text": "daily_gate = _resolve_gate(\"ETF_DAILY_PIT_R1\", \"1d\", f\"{target}T15:00:00+08:00\", cache_gen)"
+            },
+            {
+              "line": 373,
+              "text": "and daily_gate[\"PRODUCT_ID\"] == \"ETF_DAILY_PIT_R1\""
+            },
+            {
+              "line": 377,
+              "text": "no_fallback = minute_gate[\"PRODUCT_ID\"] != \"ETF_DAILY_PIT_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_etf_minute_root_fix_verify_r1.py",
+          "sha256": "2e5636023bef22ee319264759be34bcb8bf187c6b54d21530c583211b6117ae1",
+          "size": 16933,
+          "context": [
+            {
+              "line": 223,
+              "text": "freq_iso = daily_alias == \"ETF_DAILY_PIT_R1\" and minute_alias == \"ETF_MINUTE_1M_R1\" and daily_alias != minute_alias"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py",
+          "sha256": "8e5b360ce0dad95012a94def38dd6b77c7ee71cbb729964c24432b0856c96b11",
+          "size": 31204,
+          "context": [
+            {
+              "line": 452,
+              "text": "\"premium_join\": \"ETF_DAILY_PIT_R1.close @ signal_date with FUND_NAV known_at<=signal_time (lag-1)\","
+            }
+          ]
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "ETF_FACTOR_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 6,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 512,
+              "text": "products[\"ETF_FACTOR_DAILY_R1\"] = write_year_partitions(etf_fac, rel / \"ETF_FACTOR_DAILY_R1\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_resume_r1.py",
+          "sha256": "27e66b61ba75570c4b796537b4db34dab498cfb651993be9d48576b31fe8c76d",
+          "size": 17518,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": []
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "ETF_MINUTE_30M_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/jq_expand_minute_v3.py",
+          "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+          "exists": true
+        },
+        {
+          "path": "脚本/blackbox_etf_minute_phase8_to_15_orchestrator_r1.py",
+          "sha256": "4e55bf4b8bd7c633f3ac001b8906069a589c1341a2b3aa16a8c1333c43eeae8d",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 0,
+      "content_hits_sample": [],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "ETF_MINUTE_5M_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/blackbox_etf_minute_narrow_backfill_acquisition_r1.py",
+          "sha256": "d667ad77e00eed6bf85a8511b0e0785426da61c07cbf405f2b39b29b9411a2b3",
+          "exists": true
+        },
+        {
+          "path": "脚本/blackbox_etf_minute_phase8_to_15_orchestrator_r1.py",
+          "sha256": "4e55bf4b8bd7c633f3ac001b8906069a589c1341a2b3aa16a8c1333c43eeae8d",
+          "exists": true
+        },
+        {
+          "path": "脚本/jq_expand_minute_v3.py",
+          "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 0,
+      "content_hits_sample": [],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "ETF_MINUTE_60M_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/jq_expand_minute_v3.py",
+          "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+          "exists": true
+        },
+        {
+          "path": "脚本/blackbox_etf_minute_phase8_to_15_orchestrator_r1.py",
+          "sha256": "4e55bf4b8bd7c633f3ac001b8906069a589c1341a2b3aa16a8c1333c43eeae8d",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 0,
+      "content_hits_sample": [],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "ETF_TRACKING_INDEX_MAP_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/blackbox_index_weight_governance_r1.py",
+          "sha256": "3c49a663b69582277ed68cde470131b93a174f692db3332b2279ee2d1861ee8a",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 3,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_index_weight_governance_r1.py",
+          "sha256": "3c49a663b69582277ed68cde470131b93a174f692db3332b2279ee2d1861ee8a",
+          "size": 67528,
+          "context": [
+            {
+              "line": 173,
+              "text": "track_formal = \"ETF_TRACKING_INDEX_MAP_R1\" in pids"
+            },
+            {
+              "line": 502,
+              "text": "tprod = cache_rel / \"ETF_TRACKING_INDEX_MAP_R1\""
+            },
+            {
+              "line": 553,
+              "text": "tdf[cols].to_parquet(tprod / \"ETF_TRACKING_INDEX_MAP_R1.parquet\", index=False)"
+            },
+            {
+              "line": 557,
+              "text": "\"product_id\": \"ETF_TRACKING_INDEX_MAP_R1\","
+            },
+            {
+              "line": 567,
+              "text": "\"product_id\": \"ETF_TRACKING_INDEX_MAP_R1\","
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CANDIDATE_PRODUCER",
+      "producer_review_status": "PRODUCER_LOCATED_BODY_PARTIAL"
+    },
+    {
+      "product_id": "FUND_DAILY_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        },
+        {
+          "path": "脚本/p7_hand_release_p4_fund_etf_price_daily_historical_raw_none_full_r1.py",
+          "sha256": "c6496a4a26936a9147b0519efa6097e937c339e405d562ff1b1fcf9971299799",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 5,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 513,
+              "text": "products[\"FUND_DAILY_PIT_R1\"] = write_year_partitions(fund_pit, rel / \"FUND_DAILY_PIT_R1\")"
+            },
+            {
+              "line": 664,
+              "text": "\"FUND_CACHE\": \"PASS\" if products[\"FUND_DAILY_PIT_R1\"] else \"PARTIAL\","
+            },
+            {
+              "line": 715,
+              "text": "\"FUND_CACHE\": \"PASS\" if products[\"FUND_DAILY_PIT_R1\"] else \"PARTIAL\","
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_resume_r1.py",
+          "sha256": "27e66b61ba75570c4b796537b4db34dab498cfb651993be9d48576b31fe8c76d",
+          "size": 17518,
+          "context": [
+            {
+              "line": 159,
+              "text": "pit_root = rel / \"FUND_DAILY_PIT_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": [
+            {
+              "line": 304,
+              "text": "written[\"FUND_DAILY_PIT_R1\"] = {\"status\": \"INHERITED_PARENT\"}"
+            }
+          ]
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "FUND_FACTOR_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 5,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 514,
+              "text": "products[\"FUND_FACTOR_DAILY_R1\"] = write_year_partitions(fund_fac, rel / \"FUND_FACTOR_DAILY_R1\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_resume_r1.py",
+          "sha256": "27e66b61ba75570c4b796537b4db34dab498cfb651993be9d48576b31fe8c76d",
+          "size": 17518,
+          "context": [
+            {
+              "line": 160,
+              "text": "fac_root = rel / \"FUND_FACTOR_DAILY_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": [
+            {
+              "line": 305,
+              "text": "written[\"FUND_FACTOR_DAILY_R1\"] = {\"status\": \"INHERITED_PARENT\"}"
+            }
+          ]
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "FUND_LIKE_ASSET_VIEW_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        },
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_resume_r1.py",
+          "sha256": "27e66b61ba75570c4b796537b4db34dab498cfb651993be9d48576b31fe8c76d",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 3,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": []
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "INDEX_CONSTITUENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 5,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_index_weight_governance_r1.py",
+          "sha256": "3c49a663b69582277ed68cde470131b93a174f692db3332b2279ee2d1861ee8a",
+          "size": 67528,
+          "context": [
+            {
+              "line": 787,
+              "text": "\"product_id\": \"INDEX_CONSTITUENT_PIT_R1\","
+            },
+            {
+              "line": 882,
+              "text": "by_id[\"INDEX_CONSTITUENT_PIT_R1\"][\"forbidden_fields\"] = [\"weight\"]"
+            },
+            {
+              "line": 883,
+              "text": "by_id[\"INDEX_CONSTITUENT_PIT_R1\"][\"semantic\"] = \"index membership only; get_index_stocks; weight not supported\""
+            },
+            {
+              "line": 884,
+              "text": "by_id[\"INDEX_CONSTITUENT_PIT_R1\"][\"weight_supported\"] = False"
+            },
+            {
+              "line": 885,
+              "text": "by_id[\"INDEX_CONSTITUENT_PIT_R1\"][\"not_a_substitute_for\"] = [\"INDEX_WEIGHT_PIT_R1\"]"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 432,
+              "text": "idx_cons = find_parquets(PLANE / \"INDEX_CONSTITUENT_PIT_R1\")"
+            },
+            {
+              "line": 524,
+              "text": "cons_dir = rel / \"INDEX_CONSTITUENT_PIT_R1\""
+            },
+            {
+              "line": 534,
+              "text": "products[\"INDEX_CONSTITUENT_PIT_R1\"] = cons_n"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": [
+            {
+              "line": 270,
+              "text": "idx_cons = cc.find_parquets(PLANE / \"INDEX_CONSTITUENT_PIT_R1\")"
+            },
+            {
+              "line": 335,
+              "text": "cons_dir = rel / \"INDEX_CONSTITUENT_PIT_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": []
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "INDEX_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 11,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_daily_increment_publish_gate_r1.py",
+          "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654",
+          "size": 5716,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_coverage_control_plane_build_r1.py",
+          "sha256": "0ccc17f21e0c977a8533d4724addb15a422537b045079d11d6f67e104972e3ba",
+          "size": 25474,
+          "context": [
+            {
+              "line": 166,
+              "text": "idx = product_date_coverage(root / \"INDEX_DAILY_R1\")"
+            },
+            {
+              "line": 184,
+              "text": "\"INDEX_DAILY_R1\": {k: v for k, v in idx.items() if k != \"dates\"},"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_full_data_update_scope_refresh_r1.py",
+          "sha256": "23932b983569bb60e03d0d286c1ad2295bbfadd8fb2182eb17d311c9917ca4ad",
+          "size": 3638,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_tushare_cbond_5y_plane_r1.py",
+          "sha256": "385cbee8592e5999799756154075ac7cc4a449298c02bdeea9ffa7697753dce1",
+          "size": 70707,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/run_blackbox_intraday_patrol_daily_seal_r1.py",
+          "sha256": "c4da918d35b685a7129e5dbe2ee3010447bbc303dfde024ede74015c49d295d3",
+          "size": 12464,
+          "context": [
+            {
+              "line": 60,
+              "text": "p = cache_root / \"INDEX_DAILY_R1\" / \"year=2026\" / \"part_2026.parquet\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 515,
+              "text": "products[\"INDEX_DAILY_R1\"] = write_year_partitions(index_pit, rel / \"INDEX_DAILY_R1\")"
+            },
+            {
+              "line": 665,
+              "text": "\"INDEX_CACHE\": \"PASS\" if products[\"INDEX_DAILY_R1\"] else \"PARTIAL\","
+            },
+            {
+              "line": 716,
+              "text": "\"INDEX_CACHE\": \"PASS\" if products[\"INDEX_DAILY_R1\"] else \"PARTIAL\","
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": []
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "INDEX_FACTOR_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 6,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 516,
+              "text": "products[\"INDEX_FACTOR_DAILY_R1\"] = write_year_partitions(index_fac, rel / \"INDEX_FACTOR_DAILY_R1\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_resume_r1.py",
+          "sha256": "27e66b61ba75570c4b796537b4db34dab498cfb651993be9d48576b31fe8c76d",
+          "size": 17518,
+          "context": [
+            {
+              "line": 304,
+              "text": "fac = list_year_parts(rel / \"INDEX_FACTOR_DAILY_R1\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": []
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 2,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_jq20_reader_r1.py",
+          "sha256": "b7a8b577d29177fba27f544816f2ffddc921677489568ad7fffa9173f8efffc7",
+          "size": 1752,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 4,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_daily_increment_common_r1.py",
+          "sha256": "348d1f7e6ea18ea8db80cfbd7ed68d5a0c6c3f913e874db65796a2428ee13ec7",
+          "size": 19082,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_jq20_reader_r1.py",
+          "sha256": "b7a8b577d29177fba27f544816f2ffddc921677489568ad7fffa9173f8efffc7",
+          "size": 1752,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 2,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_jq20_reader_r1.py",
+          "sha256": "b7a8b577d29177fba27f544816f2ffddc921677489568ad7fffa9173f8efffc7",
+          "size": 1752,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 4,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_daily_increment_common_r1.py",
+          "sha256": "348d1f7e6ea18ea8db80cfbd7ed68d5a0c6c3f913e874db65796a2428ee13ec7",
+          "size": 19082,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_jq20_reader_r1.py",
+          "sha256": "b7a8b577d29177fba27f544816f2ffddc921677489568ad7fffa9173f8efffc7",
+          "size": 1752,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 2,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_jq20_reader_r1.py",
+          "sha256": "b7a8b577d29177fba27f544816f2ffddc921677489568ad7fffa9173f8efffc7",
+          "size": 1752,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 4,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_daily_increment_common_r1.py",
+          "sha256": "348d1f7e6ea18ea8db80cfbd7ed68d5a0c6c3f913e874db65796a2428ee13ec7",
+          "size": 19082,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_jq20_reader_r1.py",
+          "sha256": "b7a8b577d29177fba27f544816f2ffddc921677489568ad7fffa9173f8efffc7",
+          "size": 1752,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 2,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": [
+            {
+              "line": 631,
+              "text": "if normalized == \"JQ20_FUND_MF_DAILY_PROFIT_PIT_R1\" and currents.get(\"r19_authoritative\"):"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_tushare_cbond_5y_plane_r1.py",
+          "sha256": "385cbee8592e5999799756154075ac7cc4a449298c02bdeea9ffa7697753dce1",
+          "size": 70707,
+          "context": [
+            {
+              "line": 1249,
+              "text": "pit_anchor = '    \"JQ20_FUND_MF_DAILY_PROFIT_PIT_R1\": {\"pit_policy\": \"DISCLOSURE_UPSERT\", \"asof_behavior\": \"KNOWN_AT_NEXT_TRADE_DAY\"},\\n}\\n'"
+            }
+          ]
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 2,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_external_market_evidence_data_agent_r1.py",
+          "sha256": "828711b40c062c9a2dadd887e12903d54fe03109040c6f6af5af065ec96ad1fe",
+          "size": 37990,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_LIST_REFERENCE_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_NAME_HISTORY_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 2,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_external_market_evidence_data_agent_r1.py",
+          "sha256": "828711b40c062c9a2dadd887e12903d54fe03109040c6f6af5af065ec96ad1fe",
+          "size": 37990,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 3,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_external_evidence_materialization_r2.py",
+          "sha256": "028f301c5d9e6a11f87cc420e51d83bfa713faf75e620df3bc67b3e96ce1d3b0",
+          "size": 83448,
+          "context": [
+            {
+              "line": 1066,
+              "text": "disc = root / \"JQ20_STK_REPORT_DISCLOSURE_PIT_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_external_market_evidence_data_agent_r1.py",
+          "sha256": "828711b40c062c9a2dadd887e12903d54fe03109040c6f6af5af065ec96ad1fe",
+          "size": 37990,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "MARKET_STRUCTURE_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 5,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 517,
+              "text": "products[\"MARKET_STRUCTURE_DAILY_R1\"] = write_year_partitions("
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": [
+            {
+              "line": 317,
+              "text": "n = cc.write_year_partitions(mkt2, rel / \"MARKET_STRUCTURE_DAILY_R1\", date_col=\"date\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": [
+            {
+              "line": 396,
+              "text": "n_mkt = cc.write_year_partitions(mkt, rel / \"MARKET_STRUCTURE_DAILY_R1\", date_col=\"date\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": [
+            {
+              "line": 276,
+              "text": "dest = rel / \"MARKET_STRUCTURE_DAILY_R1\""
+            },
+            {
+              "line": 282,
+              "text": "parent_m = parent / \"MARKET_STRUCTURE_DAILY_R1\""
+            },
+            {
+              "line": 299,
+              "text": "written[\"MARKET_STRUCTURE_DAILY_R1\"] = {"
+            }
+          ]
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "MARKET_UNIVERSE_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 4,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_tushare_cbond_5y_plane_r1.py",
+          "sha256": "385cbee8592e5999799756154075ac7cc4a449298c02bdeea9ffa7697753dce1",
+          "size": 70707,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_tushare_cbond_5y_plane_r2.py",
+          "sha256": "02b9869d45ed8a05adc748d70626bf0840f062a38723047dc8af98f6c827e240",
+          "size": 65133,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CANDIDATE_PRODUCER",
+      "producer_review_status": "PRODUCER_LOCATED_BODY_PARTIAL"
+    },
+    {
+      "product_id": "SECURITY_MASTER_SNAPSHOT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/run_blackbox_cn_branch_acceptance_after_us_r5_r1.py",
+          "sha256": "5794846cd7251d62121df9971ee552437fdd8a361a7ce5feab7e059cc8fff345",
+          "size": 52056,
+          "context": [
+            {
+              "line": 49,
+              "text": "SEC_MASTER = CACHE_TIP / \"SECURITY_MASTER_SNAPSHOT_R1\""
+            }
+          ]
+        }
+      ],
+      "result": "LOCATED_CANDIDATE_PRODUCER",
+      "producer_review_status": "PRODUCER_LOCATED_BODY_PARTIAL"
+    },
+    {
+      "product_id": "STOCK_DAILY_RAW_PIT_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 5,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_daily_increment_common_r1.py",
+          "sha256": "348d1f7e6ea18ea8db80cfbd7ed68d5a0c6c3f913e874db65796a2428ee13ec7",
+          "size": 19082,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_tushare_cbond_5y_plane_r1.py",
+          "sha256": "385cbee8592e5999799756154075ac7cc4a449298c02bdeea9ffa7697753dce1",
+          "size": 70707,
+          "context": [
+            {
+              "line": 1003,
+              "text": "root / \"STOCK_DAILY_RAW_PIT_R1\" / \"year=2026\","
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_tushare_cbond_5y_plane_r2.py",
+          "sha256": "02b9869d45ed8a05adc748d70626bf0840f062a38723047dc8af98f6c827e240",
+          "size": 65133,
+          "context": [
+            {
+              "line": 1189,
+              "text": "ydir = root / \"STOCK_DAILY_RAW_PIT_R1\" / \"year=2026\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": [
+            {
+              "line": 259,
+              "text": "if prod == \"STOCK_DAILY_RAW_PIT_R1\":"
+            },
+            {
+              "line": 522,
+              "text": "raw_max = price[\"products\"].get(\"STOCK_DAILY_RAW_PIT_R1\", {}).get(\"date_max\")"
+            }
+          ]
+        }
+      ],
+      "result": "LOCATED_CANDIDATE_PRODUCER",
+      "producer_review_status": "PRODUCER_LOCATED_BODY_PARTIAL"
+    },
+    {
+      "product_id": "STOCK_FACTOR_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 9,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": [
+            {
+              "line": 609,
+              "text": "related = \"STOCK_FACTOR_DAILY_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_coverage_control_plane_build_r1.py",
+          "sha256": "0ccc17f21e0c977a8533d4724addb15a422537b045079d11d6f67e104972e3ba",
+          "size": 25474,
+          "context": [
+            {
+              "line": 214,
+              "text": "factor_exists = (root / \"STOCK_FACTOR_DAILY_R1\").exists()"
+            },
+            {
+              "line": 226,
+              "text": "\"related_factor_product_id\": \"STOCK_FACTOR_DAILY_R1\" if factor_exists else None,"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_factor_definition_plane_phase1_5_r1.py",
+          "sha256": "8b00705d002fb26a11c8992d4f8f731deb5568cb16841c1d06cdcb0dc76b7753",
+          "size": 34445,
+          "context": [
+            {
+              "line": 135,
+              "text": "F = \"STOCK_FACTOR_DAILY_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_factor_definition_plane_phase1_r1.py",
+          "sha256": "3851f23ee8234656c92b6cc481f7749f823cb255b05935bd41780caf520f6cf8",
+          "size": 22112,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": [
+            {
+              "line": 510,
+              "text": "products[\"STOCK_FACTOR_DAILY_R1\"] = write_year_partitions(stock_fac, rel / \"STOCK_FACTOR_DAILY_R1\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": [
+            {
+              "line": 146,
+              "text": "fac_root = rel / \"STOCK_FACTOR_DAILY_R1\""
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_resume_r1.py",
+          "sha256": "27e66b61ba75570c4b796537b4db34dab498cfb651993be9d48576b31fe8c76d",
+          "size": 17518,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": [
+            {
+              "line": 171,
+              "text": "root = parent / \"STOCK_FACTOR_DAILY_R1\""
+            },
+            {
+              "line": 197,
+              "text": "stock_root = parent / \"STOCK_FACTOR_DAILY_R1\""
+            }
+          ]
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "STOCK_MINUTE_1M_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/blackbox_stock_minute_1m_reader_r1.py",
+          "sha256": "e214a65ce4f059c636909d47cdbca737a7f20de8b1d0e16c41e34fc495974943",
+          "exists": true
+        },
+        {
+          "path": "脚本/jq_expand_minute_v3.py",
+          "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+          "exists": true
+        },
+        {
+          "path": "脚本/p7_hand_release_post_seal_freshness_daily_minute_r12.py",
+          "sha256": "d7b553684cfc07773e5cd12bd67bd4e076d4a04c9eda3f0ccfa5b709750994cb",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 7,
+      "content_hits_sample": [
+        {
+          "kind": "filename",
+          "path": "脚本/blackbox_stock_minute_1m_reader_r1.py",
+          "sha256": "e214a65ce4f059c636909d47cdbca737a7f20de8b1d0e16c41e34fc495974943"
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_capital_proxy_common_r1.py",
+          "sha256": "7c999c2e12ae78743016a3f23f76b672fa5316b9327766ad01ff8a8fe6919310",
+          "size": 20864,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_data_access_resolver_r1.py",
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+          "size": 43924,
+          "context": [
+            {
+              "line": 530,
+              "text": "\"product_id\": \"STOCK_MINUTE_1M_R1\","
+            },
+            {
+              "line": 536,
+              "text": "pit = PIT_POLICIES.get(\"STOCK_MINUTE_1M_R1\", {})"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_stock_minute_1m_reader_r1.py",
+          "sha256": "e214a65ce4f059c636909d47cdbca737a7f20de8b1d0e16c41e34fc495974943",
+          "size": 30086,
+          "context": [
+            {
+              "line": 5,
+              "text": "Canonical product_id: STOCK_MINUTE_1M_R1 (unified market data plane naming)."
+            },
+            {
+              "line": 21,
+              "text": "PRODUCT_ID = \"STOCK_MINUTE_1M_R1\""
+            },
+            {
+              "line": 734,
+              "text": "ap = argparse.ArgumentParser(description=\"STOCK_MINUTE_1M_R1 reader\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/blackbox_unified_market_data_plane_r1.py",
+          "sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce",
+          "size": 20104,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "脚本/run_blackbox_minute_acceptance_strength_proxy_r1.py",
+          "sha256": "2cf5b02785932c1cc8ea3cbf9fb64f37891a35e3a74821257cc533bddafe5385",
+          "size": 28392,
+          "context": [
+            {
+              "line": 515,
+              "text": "ready_route = {\"route_status\": \"READY\", \"product_id\": \"STOCK_MINUTE_1M_R1\"}"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "脚本/run_blackbox_shadow_outcome_observer_r1.py",
+          "sha256": "9de6daf00ce2c0915c52091c5a3c2772daf719efaa54bd57ab1cd5161154f9bd",
+          "size": 32137,
+          "context": [
+            {
+              "line": 459,
+              "text": "base[\"data_product_id\"] = \"STOCK_MINUTE_1M_R1\""
+            },
+            {
+              "line": 481,
+              "text": "\"data_product_id\": \"STOCK_MINUTE_1M_R1\","
+            },
+            {
+              "line": 506,
+              "text": "base[\"data_product_id\"] = \"STOCK_MINUTE_1M_R1\""
+            },
+            {
+              "line": 525,
+              "text": "base[\"data_product_id\"] = \"STOCK_MINUTE_1M_R1\""
+            },
+            {
+              "line": 549,
+              "text": "\"data_product_id\": \"STOCK_MINUTE_1M_R1\","
+            }
+          ]
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "STOCK_MINUTE_30M_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/jq_expand_minute_v3.py",
+          "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 0,
+      "content_hits_sample": [],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "STOCK_MINUTE_5M_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/jq_expand_minute_v3.py",
+          "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+          "exists": true
+        },
+        {
+          "path": "脚本/p7_hand_release_post_seal_freshness_daily_minute_r12.py",
+          "sha256": "d7b553684cfc07773e5cd12bd67bd4e076d4a04c9eda3f0ccfa5b709750994cb",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 0,
+      "content_hits_sample": [],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "STOCK_MINUTE_60M_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [
+        {
+          "path": "脚本/jq_expand_minute_v3.py",
+          "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+          "exists": true
+        }
+      ],
+      "content_hits_n": 0,
+      "content_hits_sample": [],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "SW_L1_STRUCTURE_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 4,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+          "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+          "size": 38650,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+          "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+          "size": 18522,
+          "context": []
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+          "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+          "size": 22223,
+          "context": [
+            {
+              "line": 391,
+              "text": "n_st = cc.write_year_partitions(struct, rel / \"SW_L1_STRUCTURE_DAILY_R1\", date_col=\"date\")"
+            }
+          ]
+        },
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": []
+        }
+      ],
+      "result": "COVERED_BY_SHARED_PRODUCER_ENTRY"
+    },
+    {
+      "product_id": "SW_L2_STRUCTURE_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    },
+    {
+      "product_id": "SW_L3_STRUCTURE_DAILY_R1",
+      "search_bounds": {
+        "roots": [
+          "脚本 (top-level glob *.py)",
+          "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+        ],
+        "methods": [
+          "curated path list",
+          "product_id string content scan top-level scripts",
+          "filename token"
+        ]
+      },
+      "curated_candidates": [],
+      "content_hits_n": 1,
+      "content_hits_sample": [
+        {
+          "kind": "content",
+          "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+          "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+          "size": 25087,
+          "context": []
+        }
+      ],
+      "result": "LOCATED_CONSUMER_OR_ALIAS_ONLY",
+      "producer_review_status": "UNLOCATED_WITH_SEARCH_EVIDENCE"
+    }
+  ]
+}
