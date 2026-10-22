@@ -1,0 +1,20 @@
+{
+  "path": "脚本/jq_expand_minute_v3.py",
+  "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+  "role": "RAW DOWNLOAD to P7_stock_minute — NOT cache product builder; NOT ETF minute plane",
+  "FREQS": "[\"1m\", \"30m\", \"60m\"]",
+  "FREQS_note": "Body has 1m/30m/60m only — NO 5m in FREQS list",
+  "OUT_DIR": "ROOT / \"P7_stock_minute\"",
+  "universe": "A-share stocks ending XSHE/XSHG from securities_stock meta",
+  "idempotency": "build_file_index + file_exists(freq,year,batch_label) skip existing batches",
+  "resume": "skip completed batch files; not a transactional checkpoint JSON — STATIC from body",
+  "maps_to_products": {
+    "STOCK_MINUTE_1M_R1": "RAW upstream candidate only (cleaning/cache path separate)",
+    "STOCK_MINUTE_30M_R1": "RAW upstream candidate",
+    "STOCK_MINUTE_60M_R1": "RAW upstream candidate",
+    "STOCK_MINUTE_5M_R1": "NOT in FREQS — UNPROVEN by this script",
+    "ETF_MINUTE_*": "NOT this script (stock OUT_DIR only)"
+  },
+  "producer_review_status": "PRODUCER_STATIC_REVIEWED_SEMANTICS",
+  "extract_ref": "source_reads/jq_expand_minute_v3_FUNCS.md"
+}
