@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-22T16:47:51+08:00",
+  "REQUIRED4_rows_updated": [
+    "CORP_XR_XD_EVENT_PIT_R1",
+    "CORP_SHAREHOLDER_TOP10_PIT_R1",
+    "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+    "SW_L3_MEMBERSHIP_PIT_R1"
+  ],
+  "semantic_samples": [
+    "FUND_NAV_PIT_R1",
+    "ADJUST_FACTOR_PIT_R1",
+    "STOCK_DAILY_PIT_R1"
+  ],
+  "jq20_task_trace": "TASK_NAMED_BUT_LOCAL_TREE_UNLOCATED",
+  "engine_timing_split": true,
+  "remaining_unknowns": [
+    {
+      "id": "REQUIRED4_RAW_PRODUCER",
+      "impact": "entity usable off-catalog paths; ordinary resolver rejects"
+    },
+    {
+      "id": "JQ20_TASK_TREE_LOCAL",
+      "impact": "cannot bind RAW scripts/receipts; cleaning/cache prior only"
+    },
+    {
+      "id": "BILLBOARD_CLEANING_CACHE_DAILY",
+      "impact": "RAW candidate only"
+    },
+    {
+      "id": "ENGINE_ACTIVE_RUNTIME",
+      "impact": "handoff/XVAL docs mapped; not live"
+    },
+    {
+      "id": "INDEPENDENT_COVERAGE_CONTRACTS",
+      "impact": "most products lack independent expectation proof"
+    }
+  ]
+}
