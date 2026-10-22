@@ -1,0 +1,88 @@
+{
+  "tests_passed": 3,
+  "production_executed": false,
+  "matrix_stub": "PASS only; matrix validity NOT tested",
+  "platform": "Linux scratch, Python stdlib; Windows process interruption NOT tested",
+  "conclusion": "Sequential per-file atomic replacements permit mixed generations after write failure; backups are present but not restored by publish_atomic.",
+  "scenarios": [
+    {
+      "fail_on": null,
+      "writes_attempted": [
+        "CLEAN_PTR",
+        "CACHE_PTR",
+        "FACTS"
+      ],
+      "after": {
+        "CACHE_PTR": {
+          "cache_release_id": "NEW"
+        },
+        "CLEAN_PTR": {
+          "generation": "NEW"
+        },
+        "FACTS": {
+          "SYSTEM_GENERATION_ID": "NEW"
+        }
+      },
+      "exception": null,
+      "published_result": {
+        "CURRENT_PUBLISH": "ALLOWED",
+        "OPERATIONAL_READINESS": "PASS",
+        "published": true,
+        "cache_release_id": "NEW"
+      },
+      "backups_present": {
+        "CACHE_PTR": true,
+        "CLEAN_PTR": true
+      }
+    },
+    {
+      "fail_on": "CACHE_PTR",
+      "writes_attempted": [
+        "CLEAN_PTR",
+        "CACHE_PTR"
+      ],
+      "after": {
+        "CACHE_PTR": {
+          "generation": "OLD"
+        },
+        "CLEAN_PTR": {
+          "generation": "NEW"
+        },
+        "FACTS": {
+          "generation": "OLD"
+        }
+      },
+      "exception": "LAB_INJECTED_WRITE_FAILURE",
+      "published_result": null,
+      "backups_present": {
+        "CACHE_PTR": true,
+        "CLEAN_PTR": true
+      }
+    },
+    {
+      "fail_on": "FACTS",
+      "writes_attempted": [
+        "CLEAN_PTR",
+        "CACHE_PTR",
+        "FACTS"
+      ],
+      "after": {
+        "CACHE_PTR": {
+          "cache_release_id": "NEW"
+        },
+        "CLEAN_PTR": {
+          "generation": "NEW"
+        },
+        "FACTS": {
+          "generation": "OLD"
+        }
+      },
+      "exception": "LAB_INJECTED_WRITE_FAILURE",
+      "published_result": null,
+      "backups_present": {
+        "CACHE_PTR": true,
+        "CLEAN_PTR": true
+      }
+    }
+  ]
+}
