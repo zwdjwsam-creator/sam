@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-22T15:12:50+08:00",
+  "items": [
+    {
+      "id": "REQUIRED4_CATALOG_REGISTER",
+      "priority": 1,
+      "tag": "KNOWN_GAP",
+      "impact": "resolver CACHE_PRODUCT_UNAVAILABLE for 4 required products",
+      "min_fix": "production catalog row via formal cache publish — NOT this round",
+      "verify": "resolver resolve_dataset returns resolved=True"
+    },
+    {
+      "id": "CONTENT_FULL_DATE_SYMBOL_AUDIT",
+      "priority": 2,
+      "tag": "NOT_RUN",
+      "impact": "entity proof ≠ coverage proof",
+      "verify": "bounded coverage script per product required_range"
+    },
+    {
+      "id": "TIP_PUBLISH_ATOMIC_FAULT_WINDOW",
+      "priority": 2,
+      "tag": "STATIC_REVIEWED_PARTIAL",
+      "impact": "need confirm tip→gate→CURRENT fault windows from full tip body",
+      "verify": "code review checklist on copied tip+gate; no live publish"
+    },
+    {
+      "id": "ADJUST_RESUME_RUNTIME",
+      "priority": 3,
+      "tag": "NOT_RUN",
+      "impact": "bodies reviewed; interrupt/resume unproven",
+      "verify": "controlled dry lab with fixture — needs separate auth"
+    },
+    {
+      "id": "FUND_NAV_RERUN_DEDUPE",
+      "priority": 3,
+      "tag": "NOT_RUN",
+      "impact": "merge/dedupe logic in bodies; not executed",
+      "verify": "phase download dry with fixture"
+    },
+    {
+      "id": "EXTERNAL_ACCEPTANCE_FIELD_MATRIX",
+      "priority": 3,
+      "tag": "STATIC_REVIEWED",
+      "impact": "blocking tokens listed; full field matrix may need table",
+      "verify": "derive table from phase_acceptance body"
+    },
+    {
+      "id": "OTHER_PRODUCTS_UPDATE_AXIS",
+      "priority": 4,
+      "tag": "NOT_REVIEWED",
+      "impact": "most of 75 still prior mapping only",
+      "verify": "continue family handbook binding"
+    },
+    {
+      "id": "ENGINE_SCOPE_LIMITED",
+      "priority": 4,
+      "tag": "PRIOR_RETAINED",
+      "impact": "limited engines from earlier batches",
+      "verify": "reuse ENGINE_SCOPE.csv"
+    }
+  ]
+}
