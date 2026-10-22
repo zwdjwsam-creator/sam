@@ -1,0 +1,14 @@
+{
+  "status": "STATIC_REVIEWED",
+  "daily_check_n_lines": 70,
+  "daily_check_returns_dict": true,
+  "consumer": {
+    "script": "脚本/blackbox_index_weight_daily_increment_check_r1.py",
+    "behavior": "prints JSON of daily_check result; apply_download=False; **always return 0**",
+    "orchestrator_consumption": "only subprocess returncode; decision fields inside JSON are NOT read by orchestrator",
+    "boundary": "rc==0 ≠ download success; check may legally decide no download needed"
+  },
+  "extract_ref": "source_reads/blackbox_index_weight_governance_r1_EXTRACTS.md",
+  "check_entry_ref": "source_reads/blackbox_index_weight_daily_increment_check_r1_EXTRACTS.md",
+  "not_run": true
+}
