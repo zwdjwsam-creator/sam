@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-22T14:23:29+08:00",
+  "source_ref": "S_RESOLVER_R1",
+  "findings": [
+    "historical_ready uses distinct_dates>1 — not full date×symbol completeness",
+    "coverage_ready may default True for some no-window products",
+    "result_status=READY and coverage_ready are distinct fields",
+    "price_plane ready path does not check coverage_ready (prior evidence)"
+  ],
+  "status": "CURRENT_PRODUCTION_BEHAVIOR_RECORDED_ADMISSION_UNPROVEN",
+  "forbid": "do not mix V3/V4 candidate conclusions into production; no deploy/backtest this task"
+}
