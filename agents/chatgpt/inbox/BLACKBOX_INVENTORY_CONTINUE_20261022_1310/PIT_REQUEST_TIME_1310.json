@@ -1,0 +1,57 @@
+{
+  "files": [
+    {
+      "path": "脚本\\blackbox_unified_market_data_plane_r1.py",
+      "exists": true,
+      "bytes": 20104,
+      "sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce",
+      "needle_counts": {
+        "asof": 2
+      },
+      "has_request_time": false,
+      "has_causal_triplet": false
+    },
+    {
+      "path": "脚本\\blackbox_etf_minute_1m_plane_r1.py",
+      "exists": true,
+      "bytes": 31890,
+      "sha256": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316",
+      "needle_counts": {
+        "request_time": 1,
+        "anti_lookahead": 2,
+        "asof": 1
+      },
+      "has_request_time": true,
+      "has_causal_triplet": false
+    },
+    {
+      "path": "脚本\\blackbox_backtest_causal_information_gate_r1.py",
+      "exists": true,
+      "bytes": 20182,
+      "sha256": "8e7618b749fb2cbb9cc1af2cb0b34a62b914ec7bc4cda1ae8322a9e53388821e",
+      "needle_counts": {
+        "KNOWN_AT": 2,
+        "SIGNAL_TIME": 3,
+        "FILL_TIME": 2,
+        "asof": 1
+      },
+      "has_request_time": false,
+      "has_causal_triplet": true
+    },
+    {
+      "path": "脚本\\blackbox_backtest_preflight_gate.py",
+      "exists": true,
+      "bytes": 8389,
+      "sha256": "d7be35938f70a533d78f83ad09476cca16257514e6deb7bcf086bb89292c71f1",
+      "needle_counts": {},
+      "has_request_time": false,
+      "has_causal_triplet": false
+    },
+    {
+      "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_BACKTEST_CAUSAL_INFORMATION_AND_LOOKAHEAD_STANDARD_R1.md",
+      "exists": false
+    }
+  ],
+  "verdict": "PIT_DOCS_AND_GATES_PRESENT_REQUEST_TIME_PARTIAL",
+  "note": "presence in gate/docs ≠ every reader enforces request_time"
+}
