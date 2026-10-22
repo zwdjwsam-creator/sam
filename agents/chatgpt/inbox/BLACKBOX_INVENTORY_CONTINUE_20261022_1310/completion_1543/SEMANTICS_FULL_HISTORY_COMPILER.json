@@ -1,0 +1,62 @@
+{
+  "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+  "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+  "mode": "FULL_HISTORY_BUILD (mode=full) — NOT automatic daily-maintenance entry",
+  "inputs": {
+    "stock": "cleaning standard price/stock_ohlcv_daily",
+    "etf": "standard price/ETF_daily",
+    "fund": "standard fund + PLANE FUND_NET_VALUE_PIT",
+    "index": "PLANE INDEX_DAILY_* + RAW P3_index",
+    "constituents": "PLANE INDEX_CONSTITUENT_PIT_R1 copy",
+    "asof": "from CURRENT_CLEANING cleaning_as_of/daily_asof",
+    "stock_floor": "2014-01-01",
+    "no_backfill": true
+  },
+  "compile_one": {
+    "span": {
+      "lineno": 89,
+      "end_lineno": 138,
+      "n_lines": 50,
+      "body": "def compile_one(\n    name: str,\n    panel: pd.DataFrame,\n    asset_type: str,\n    rel: Path,\n    source_release: str,\n    asof: str,\n) -> dict:\n    out = {\"product\": name, \"status\": \"EMPTY\", \"rows\": 0}\n    try:\n        if panel.empty:\n            (rel / f\"{name}_DAILY_PIT_R1\").mkdir(parents=True, exist_ok=True)\n            wjson(rel / f\"{name}_DAILY_PIT_R1\" / \"EMPTY.json\", {\"reason\": \"no_source_rows\", \"no_backfill\": True})\n            out[\"status\"] = \"EMPTY_NO_BACKFILL\"\n            return out\n        gate = cc.antileak_gate(panel, \"date\", asof)\n        if not gate[\"pass\"]:\n            out.update({\"status\": \"FAIL_ANTILEAK\", \"gate\": gate})\n            return out\n        cov = coverage_report(panel, name)\n        pit = panel.copy()\n        pit[\"signal_date\"] = pit[\"date\"]\n        pit[\"data_date\"] = pit[\"date\"]\n        pit[\"asset_type\"] = asset_type\n        pit[\"price_adj_tag\"] = cc.PRICE_ADJ_TAG\n        pit[\"asof_rule\"] = \"SAME_DAY_KNOWN_EOD\"\n        pit[\"pit_status\"] = \"OK\"\n        pit[\"source_version\"] = source_release\n        pit[\"known_at\"] = pd.NaT\n        n1 = cc.write_year_partitions(pit, rel / f\"{name}_DAILY_PIT_R1\")\n        log(f\"{name} L1 partitions={n1} cov={cov}\")\n        fac = cc.compute_factors(panel)\n        n2 = cc.write_year_partitions(fac, rel / f\"{name}_FACTOR_DAILY_R1\")\n        log(f\"{name} L2 partitions={n2}\")\n        out.update({\n            \"status\": \"PASS\",\n            \"rows\": cov[\"rows\"],\n            \"min_date\": cov[\"min_date\"],\n            \"max_date\": cov[\"max_date\"],\n            \"n_codes\": cov[\"n_codes\"],\n            \"pit_partitions\": n1,\n            \"factor_partitions\": n2,\n            \"antileak\": gate,\n            \"no_backfill\": True,\n        })\n        return out\n    except Exception as e:\n        log(f\"{name} FAIL isolated: {e}\")\n        out.update({\"status\": \"FAIL_ISOLATED\", \"error\": str(e), \"traceback\": traceback.format_exc()[-2000:]})\n        return out"
+    },
+    "writes": [
+      "{ASSET}_DAILY_PIT_R1 year partitions",
+      "{ASSET}_FACTOR_DAILY_R1 year partitions"
+    ],
+    "keys_from_body": [
+      "asset_type",
+      "data_date",
+      "date",
+      "signal_date"
+    ],
+    "gates": "antileak_gate on date<=asof; empty→EMPTY.json no_backfill",
+    "dedupe": "NOT explicit drop_duplicates in compile_one — relies on source panel / write_year_partitions helper in cc module"
+  },
+  "object_set_proven": [
+    "STOCK_DAILY_PIT_R1",
+    "STOCK_FACTOR_DAILY_R1",
+    "ETF_DAILY_PIT_R1",
+    "ETF_FACTOR_DAILY_R1",
+    "FUND_DAILY_PIT_R1",
+    "FUND_FACTOR_DAILY_R1",
+    "INDEX_DAILY_R1",
+    "INDEX_FACTOR_DAILY_R1",
+    "MARKET_STRUCTURE_DAILY_R1",
+    "INDEX_CONSTITUENT_PIT_R1",
+    "FUND_LIKE_ASSET_VIEW_R1"
+  ],
+  "FUND_LIKE_VIEW": {
+    "write": "rel/FUND_LIKE_ASSET_VIEW_R1/VIEW.json",
+    "deps": [
+      "ETF_DAILY_PIT_R1",
+      "FUND_DAILY_PIT_R1"
+    ],
+    "preserves_asset_type": true,
+    "not_a_parquet_union_materializer_in_this_function": true
+  },
+  "SW": "writes BLOCKED.json for SW_L1_MEMBERSHIP and SW_L1_STRUCTURE — does not produce membership densify",
+  "publish": "writes POINTER only if STOCK PASS and qa overall_pass; else NOT_PUBLISHED.json",
+  "checkpoint": "save_ckpt during load/compile/acceptance",
+  "producer_review_status": "PRODUCER_STATIC_REVIEWED_SEMANTICS",
+  "extract_ref": "source_reads/cache_compiler_full_history_FUNCS.md"
+}
