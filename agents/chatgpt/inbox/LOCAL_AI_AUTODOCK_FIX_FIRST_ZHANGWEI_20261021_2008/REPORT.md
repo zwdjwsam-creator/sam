@@ -1,31 +1,43 @@
-# 2008 follow-up 2040 — click focus and one C2G submit attempt
+# 2008 follow-up 1145 — finish-now install checkpoint
 
-host: ZHANGWEI
-at: 2026-10-21T20:44:30+08:00
-followup: LOCAL_AI_AUTODOCK_FOCUS_AND_IDLE_VERIFY_20261021_2040
-tip_blob_sha: 3b9f1da86e20a9d422881d443a664de48ff2ca41
-DATA_ORGANIZATION_PAUSED: true
-AUTODOCK_FUNCTIONAL_READY: false
-SCHEDULER_STILL: QUEUE_ONLY
+host: ZHANGWEI  
+at: 2026-10-22T11:56:30+08:00  
+followup: LOCAL_AI_AUTODOCK_FINISH_NOW_ZHANGWEI_20261022_1145  
+tip_blob_sha: 6c21674cabb64167bff43f154e751b53d4ffd463  
+DATA_ORGANIZATION_PAUSED: true  
+AUTODOCK_FUNCTIONAL_READY: false  
 
-## Click script
+## Package install
 
-SHA256 matches `197afbb2dab26fcaecb85f1f536a4e3afceb76cf21c39c89fb2d369fc18eeaa1`. Parse errors 0. Inspect found one ProseMirror and one aislash-editor-input. No coordinate fallback.
+Copied GPT package into `D:\LOCAL_AI\Watchdog\hub_two_window_notifier_1913`.  
+SHA256 `run_autodock_once.py` / `test_runtime.py` matched VALIDATION.json on install.  
+Local edits after that: tokenized fetch via `GITHUB_TOKEN` in `run_autodock_once.py` (desktop auth), wrapper `run_autodock_tick.py`, adapter `ui_delivery_adapter.py`, ProseMirror class prefix in click script, SetFocus fallback for Agent.
 
-C2G `-FocusClick` once: `CLICKED_COMPOSER_ONLY`, foreground hwnd 1247992, UIA focus inside the target, focused class `ProseMirror ProseMirror-focused`. No typing inside that script.
+12/12 `test_runtime.py` OK on this machine.
 
-## Same-turn C2G transaction
+HUB checkout for `--repo`: `D:\LOCAL_AI\HUB_sam` (not under E:\BLACKBOX). Remote URL scrubbed; fetch uses process token only.
 
-After that click, with focus still on ProseMirror, typed ASCII `HUB` and did not touch the Agent box. Local Gemma on the composer line: `exactly_HUB=true`. Agent composer crop stayed on the placeholder. One Enter. Composer returned to the placeholder `使用 ChatGPT Work`.
+Baseline: `state/autodock_remote.json` initialized once, objects=1563, no GUI on init. Old queue-only state kept.
 
-The pane above the composer shows the previous assistant reply, not a new user bubble whose text is only HUB. Status: `DELIVERY_UNCERTAIN`. No second Enter.
+## One-shot tests (explicit --test-event, not in schtask)
 
-## Code
+| Direction | Event | Result |
+|---|---|---|
+| C2G | `.../TEST_HUB_1145_20261022_115328_C2G.md` | click → type HUB → Gemma exactly_HUB → Enter once → composer cleared. No proven user bubble reader → **UNCERTAIN** |
+| G2C | `outbox/TEST_HUB_1145_20261022_115328_G2C.md` | click hit-test failed (NO_CLICKABLE_POINT); SetFocus fallback → type → Enter → **QUEUED** (frontend queue / until history proof). Not DELIVERED |
 
-`uia_type_hub_once.ps1` no longer treats a runtime id number as a window handle. Foreground is compared with `GetAncestor` root handles. If TextPattern does not show HUB after typing, the script stops at `TYPED_AWAITING_VISUAL` and marks `PROVIDER_UNRELIABLE` instead of requiring TextPattern before any later check.
+Old overnight receipts stay INCONCLUSIVE / not resent.
 
-## G2C
+## Scheduler
 
-The existing queued HUB was not typed again, not entered again, and not deleted. A read-only watcher `uia_g2c_queue_watch_once.ps1` waits 50 seconds and writes `evidence/g2c_queue_consume_2040.json`. This Agent turn ends so that queue can move. Absence of the queue banner is not history delivery.
+Task `LOCAL_AI_HUB_TwoWindowNotifier_1913` Action now:
+`python -u ...\run_autodock_tick.py --adapter ...\ui_delivery_adapter.py --send`  
+Logon: Interactive only. No `--test-event`. Old queue-only Action replaced (same task, not a second service).
 
-4x180 and 12h are not run.
+Independent 4×180s seal started under `logs/autodock_4x180.out.log` (span ≥540s). Not finished at report time.
+
+## Not claimed
+
+- AUTODOCK_FUNCTIONAL_READY = false (need DELIVERED both ways + sealed 4×180)
+- LONG_RUN_12H = PENDING
+- Data organization still paused
