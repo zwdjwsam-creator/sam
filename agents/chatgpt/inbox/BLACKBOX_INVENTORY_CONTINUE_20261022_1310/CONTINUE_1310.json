@@ -1,0 +1,160 @@
+{
+  "at": "2026-10-22T13:15:47+08:00",
+  "task": "BLACKBOX_SYSTEM_INVENTORY_CONTINUE_20261022_1310",
+  "previous": "BLACKBOX_SYSTEM_INVENTORY_CONTRACT_AND_SCOPE_20261021_1145",
+  "execution_mode": "AGENT_CONTENT_REVIEW",
+  "system_inventory_acceptance": false,
+  "status": "PARTIAL_CONTINUE_CONTENT",
+  "did_not": [
+    "rerun_950_nodes",
+    "execute_etf_cli_writes",
+    "production_download",
+    "claim_strategy_admission",
+    "forge_HAND_DECISION"
+  ],
+  "consumers": {
+    "by_symbol_counts": {
+      "read_overlapping": 4,
+      "overlapping_shards": 2,
+      "coverage_window": 2,
+      "list_files_for_window": 1,
+      "resolve_product": 9,
+      "build_shard_manifest": 3,
+      "request_time": 1,
+      "KNOWN_AT": 9,
+      "anti_lookahead": 4,
+      "SIGNAL_TIME": 6,
+      "FILL_TIME": 1
+    },
+    "formal_candidate_n": 1,
+    "formal_candidates_head": [
+      {
+        "symbol": "resolve_product",
+        "path": "脚本/blackbox_backtest_price_plane_r1.py",
+        "defs": 0,
+        "calls": 1,
+        "refs": 2,
+        "role": "POSSIBLE_CONSUMER"
+      }
+    ],
+    "verdict": "FORMAL_CANDIDATES_FOUND_NEED_HAND_GATE_PROOF",
+    "note": "diagnostic/gate hits ≠ formal strategy admission"
+  },
+  "pit_request_time": {
+    "files": [
+      {
+        "path": "脚本\\blackbox_unified_market_data_plane_r1.py",
+        "exists": true,
+        "bytes": 20104,
+        "sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce",
+        "needle_counts": {
+          "asof": 2
+        },
+        "has_request_time": false,
+        "has_causal_triplet": false
+      },
+      {
+        "path": "脚本\\blackbox_etf_minute_1m_plane_r1.py",
+        "exists": true,
+        "bytes": 31890,
+        "sha256": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316",
+        "needle_counts": {
+          "request_time": 1,
+          "anti_lookahead": 2,
+          "asof": 1
+        },
+        "has_request_time": true,
+        "has_causal_triplet": false
+      },
+      {
+        "path": "脚本\\blackbox_backtest_causal_information_gate_r1.py",
+        "exists": true,
+        "bytes": 20182,
+        "sha256": "8e7618b749fb2cbb9cc1af2cb0b34a62b914ec7bc4cda1ae8322a9e53388821e",
+        "needle_counts": {
+          "KNOWN_AT": 2,
+          "SIGNAL_TIME": 3,
+          "FILL_TIME": 2,
+          "asof": 1
+        },
+        "has_request_time": false,
+        "has_causal_triplet": true
+      },
+      {
+        "path": "脚本\\blackbox_backtest_preflight_gate.py",
+        "exists": true,
+        "bytes": 8389,
+        "sha256": "d7be35938f70a533d78f83ad09476cca16257514e6deb7bcf086bb89292c71f1",
+        "needle_counts": {},
+        "has_request_time": false,
+        "has_causal_triplet": false
+      },
+      {
+        "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_BACKTEST_CAUSAL_INFORMATION_AND_LOOKAHEAD_STANDARD_R1.md",
+        "exists": false
+      }
+    ],
+    "verdict": "PIT_DOCS_AND_GATES_PRESENT_REQUEST_TIME_PARTIAL",
+    "note": "presence in gate/docs ≠ every reader enforces request_time"
+  },
+  "engine_seed": {
+    "n": 17,
+    "status": "BOUNDED_SEED_LIST",
+    "note": "separate from 1118 document worklist; not an admission list",
+    "seed_paths": [
+      "脚本/blackbox_acquisition_pagination_engine_r1.py",
+      "脚本/index_minute_align_incremental_engine_r1.py",
+      "脚本/p4_download_engineering_guard_lesson_seed_r1.py",
+      "任务/BLACKBOX_QMT_LIVE_VWAP_T0_90W_R1/live_t0_engine.py",
+      "任务/BLACKBOX_XVAL_FIELD_MATCH_ENGINE_REPAIR_AND_REGRESSION_R1/blackbox_xval_field_match_engine_repair_and_regression_r1.py",
+      "任务/R26d_238_FACTOR_BRUTE_FORCE_HORSE_RACE_R1/factor_recon_engine_r1.py",
+      "任务/STRATEGY_RESEARCH_PRO_TRADER_20260826_LIVE_QMT_SHADOW_REHEARSAL_R1/15_JUDGMENT_ENGINE_PASS_POLICY_PARTIAL.json",
+      "任务/STRATEGY_RESEARCH_PRO_TRADER_20260826_LIVE_QMT_SHADOW_REHEARSAL_R1/15_JUDGMENT_ENGINE_PASS_POLICY_PARTIAL.md",
+      "任务/BLACKBOX_BACKTEST_ENGINE_CROSS_PROJECT_COMPATIBILITY_REVIEW_R1/01_INPUT_SNAPSHOT/D_HANDOFF_SNAPSHOT/BACKTEST_ENGINE_AUTHORITATIVE_HANDOFF_R1.json",
+      "任务/BLACKBOX_BACKTEST_ENGINE_CROSS_PROJECT_COMPATIBILITY_REVIEW_R1/01_INPUT_SNAPSHOT/D_HANDOFF_SNAPSHOT/backtest_engine_authoritative_handoff_result.json",
+      "任务/BLACKBOX_BACKTEST_ENGINE_CROSS_PROJECT_COMPATIBILITY_REVIEW_R1/01_INPUT_SNAPSHOT/D_HANDOFF_SNAPSHOT/FINAL_BACKTEST_ENGINE_AUTHORITATIVE_HANDOFF_R1.md",
+      "任务/BLACKBOX_DATA_BASE_VERTICAL_PIPELINE_R1/P2/qa/P2_ENGINE_UNIT_TEST.json",
+      "任务/BLACKBOX_FACTOR_LAYER_INITIALIZATION_AND_DEPENDENCY_GRAPH_R1/05_BACKTEST_HANDOFF_PLACEHOLDER/BACKTEST_ENGINE_INFORMATION_REQUIRED_LATER.md",
+      "任务/BLACKBOX_JQ260_FIELD_FACTORY_L5_R1/scripts/clear_engine_family_templates_r1.py",
+      "任务/BLACKBOX_XVAL_FIELD_MATCH_ENGINE_REPAIR_AND_REGRESSION_R1/04_XVAL_R2/xval_field_match_engine_r2.py",
+      "任务/BLACKBOX_XVAL_R2_LIMITED_ACTIVATION_AND_LEGACY_RETIREMENT_R1/04_ACTIVE_POINTER/XVAL_ACTIVE_ENGINE_POINTER_CANDIDATE.json",
+      "任务/BLACKBOX_XVAL_R2_LIMITED_ACTIVATION_AND_LEGACY_RETIREMENT_R1/04_ACTIVE_POINTER/XVAL_ACTIVE_ENGINE_POINTER_VALIDATION.json"
+    ]
+  },
+  "required_range_meta": {
+    "row_count": 75,
+    "source_counts": {
+      "DEEP_OR_FRAG_SAMPLE_BOUNDS": 51,
+      "UNKNOWN": 24
+    },
+    "note": "bounds from existing deep/frag samples ≠ full trade-day×symbol completeness",
+    "cleaning_asof": null
+  },
+  "checklist": {
+    "P1_formal_consumers": "FORMAL_CANDIDATES_FOUND_NEED_HAND_GATE_PROOF",
+    "P2_pit_request_time": "PIT_DOCS_AND_GATES_PRESENT_REQUEST_TIME_PARTIAL",
+    "P3_engine_seed_list": "BOUNDED_SEED_LIST",
+    "P4_required_range_fill": "DONE_FROM_EXISTING_BOUNDS_NOT_FULL_PROOF",
+    "P5_strategy_admission": "STILL_BLOCKED_UNTIL_HAND_GATES",
+    "system_inventory_acceptance": false,
+    "previous_checkpoint": "1145"
+  },
+  "next_stage_priority": [
+    "1) Pick 1–3 formal_candidate paths and prove HAND causal gate on call path (or mark DIAGNOSTIC_ONLY)",
+    "2) For ETF NEW: document request_time/asof wiring gaps with code citations",
+    "3) Expand engine seed only under BLACKBOX_ENGINES policy if USER authorizes",
+    "4) Replace sample bounds with contract required_range where registry/contracts exist",
+    "5) Keep SYSTEM_INVENTORY_ACCEPTANCE=false until product usable≠scope-cleared is explicit per row"
+  ],
+  "prev_checklist": {
+    "A_real_callers": "DONE_SCRIPT_SCAN",
+    "A_strategy_pit_callers": "UNPROVEN",
+    "A_etf_5m_registry": "DONE_IN_REGISTRY_CALLER_UNPROVEN",
+    "A_cli_flags_correction": "DONE",
+    "B_scope_ledger": "DONE",
+    "B_node_results_full_agg": "DONE",
+    "B_semantic_dedupe": "DONE",
+    "C_product_master_table": "DONE_FROM_75_LEDGER_MERGE",
+    "system_inventory_acceptance": false
+  }
+}
