@@ -1,0 +1,37 @@
+{
+  "standard_pipeline": [
+    "1_preflight_HAND_read",
+    "2_scan_gaps_vs_CURRENT_asof",
+    "3_incremental_download_REQUIRED_except_permission_blocked",
+    "4_security_state_st_pause_master_incremental",
+    "5_index_minute_732_and_SW_L123_densify",
+    "6_formal_cleaning_seal_switch_CURRENT",
+    "7_index_minute_align_or_reuse",
+    "8_anti_leakage_PIT_checks",
+    "9_cache_compiler_or_lowmem_inject_MUST",
+    "10_atomic_publish_CACHE_CURRENT_source_cleaning_match",
+    "11_inventory_top_refresh"
+  ],
+  "hard_completion_rules": [
+    "日更宣称 PASS 必须：可下域下载完 + 清洗 CURRENT + 对齐/防穿越 + CACHE CURRENT",
+    "禁止 thin canary 覆盖掉已有 FI/CORP/JQ20/SW 产品而不 rebase",
+    "security_state 必须进 STOCK_TRADEABILITY_PIT_R1",
+    "权限挡 / 用户不需要 / QMT：SKIP 并写入全表，勿反复追问",
+    "hk_connector_aux / etf_fund_aux：辅域 DEFERRED，不挡主链"
+  ],
+  "domain_asof_mode": "PER_DOMAIN",
+  "orchestrator": "脚本/blackbox_daily_increment_orchestrator_r1.py",
+  "invariants": {
+    "INVARIANT_1": "Product exists != CAN_SERVE(D).",
+    "INVARIANT_2": "Finance serving = pit_valid_from<=D, not acquisition date.",
+    "INVARIANT_3": "RUN_TARGET_TRADE_DATE is the only runtime target.",
+    "INVARIANT_4": "Capability facts generation must pair candidate Cache generation.",
+    "INVARIANT_5": "No CURRENT publish before OPERATIONAL_READINESS PASS.",
+    "INVARIANT_6": "Cleaning+Cache two-phase/atomic publish. BUILD!=PUBLISH.",
+    "INVARIANT_7": "EMPTY/cap-hit/incomplete pagination != NO_DATA. DATA_ABSENCE_GATE only.",
+    "INVARIANT_8": "PIPELINE_PASS != PRODUCTION_OPERATIONAL_READY."
+  },
+  "handbook_md": "E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_HANDBOOK_CURRENT.md",
+  "active_rule_path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1.json",
+  "note": "CURRENT files are publish/read pointers, NOT download commands"
+}
