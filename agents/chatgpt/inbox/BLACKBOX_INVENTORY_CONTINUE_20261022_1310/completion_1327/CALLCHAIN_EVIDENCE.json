@@ -1,0 +1,309 @@
+{
+  "at": "2026-10-22T13:44:19+08:00",
+  "files": [
+    {
+      "path": "脚本\\blackbox_unified_market_data_plane_reader_r1.py",
+      "exists": true,
+      "sha256": "58139dd92df1e457be6e4abfcf79ee37382a75a5c6abe3c5dca21ac24c24f3ba",
+      "bytes": 3873,
+      "n_lines": 101,
+      "imports_of_interest": [
+        {
+          "line": 16,
+          "text": "from blackbox_unified_market_data_plane_r1 import classify_date, resolve_product"
+        }
+      ],
+      "call_sites_sample": [
+        {
+          "line": 16,
+          "text": "from blackbox_unified_market_data_plane_r1 import classify_date, resolve_product"
+        },
+        {
+          "line": 22,
+          "text": "For CLEANING_DAY_PARTITION: concatenates exchange day parquets."
+        },
+        {
+          "line": 25,
+          "text": "resolved = resolve_product(product_id)"
+        },
+        {
+          "line": 34,
+          "text": "if plane == \"CLEANING_DAY_PARTITION\":"
+        },
+        {
+          "line": 47,
+          "text": "if plane == \"RAW_YEAR_BATCH\":"
+        },
+        {
+          "line": 48,
+          "text": "raw_dir = Path(resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"dir\"])"
+        },
+        {
+          "line": 49,
+          "text": "glob_tmpl = resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"glob\"]"
+        }
+      ],
+      "call_sites_n": 7
+    },
+    {
+      "path": "脚本\\blackbox_backtest_price_plane_r1.py",
+      "exists": true,
+      "sha256": "62beda130e6213f59b6f33a5066c5dae0f1b670f5761081537ec6d1d07af739a",
+      "bytes": 6595,
+      "n_lines": 161,
+      "imports_of_interest": [
+        {
+          "line": 85,
+          "text": "from blackbox_data_access_resolver_r1 import read_currents, resolve_product  # noqa: E402"
+        }
+      ],
+      "call_sites_sample": [
+        {
+          "line": 8,
+          "text": "factor 缺失不得填 1.0；禁止静默 RAW_NONE fallback。"
+        },
+        {
+          "line": 29,
+          "text": "LIVE_PLANE = \"RAW_REAL_PRICE\""
+        },
+        {
+          "line": 30,
+          "text": "RESEARCH_RAW = \"RAW_NONE\""
+        },
+        {
+          "line": 83,
+          "text": "\"\"\"Resolver only. Missing product → coverage failure, not RAW fallback.\"\"\""
+        },
+        {
+          "line": 85,
+          "text": "from blackbox_data_access_resolver_r1 import read_currents, resolve_product  # noqa: E402"
+        },
+        {
+          "line": 88,
+          "text": "rec = resolve_product(\"adjust_factor\", asof, None, currents)"
+        }
+      ],
+      "call_sites_n": 6
+    },
+    {
+      "path": "脚本\\blackbox_unified_market_data_plane_r1.py",
+      "exists": true,
+      "sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce",
+      "bytes": 20104,
+      "n_lines": 508,
+      "imports_of_interest": [],
+      "call_sites_sample": [
+        {
+          "line": 9,
+          "text": "Agents must NOT hard-code a single RAW directory. Production read authority:"
+        },
+        {
+          "line": 11,
+          "text": "CLEANING day partition  >  CLEANING year batch  >  RAW year batch"
+        },
+        {
+          "line": 53,
+          "text": "p = ROOT / \"数据\" / \"清洗成品\" / \"CURRENT_CLEANING_RELEASE.json\""
+        },
+        {
+          "line": 161,
+          "text": "def resolve_product(product_id: str, registry: Optional[dict] = None) -> dict:"
+        },
+        {
+          "line": 169,
+          "text": "cplane = meta[\"planes\"][\"CLEANING_CURRENT\"]"
+        },
+        {
+          "line": 170,
+          "text": "rplane = meta[\"planes\"][\"RAW_REPLACEMENT\"]"
+        },
+        {
+          "line": 205,
+          "text": "\"envelope_source\": \"RAW_SIDECAR_LINEAGE\" if env.get(\"end_max\") else \"YEAR_FILES_ONLY_NO_DATE_ENVELOPE\","
+        },
+        {
+          "line": 217,
+          "text": "\"P1_CLEANING_CURRENT\": {"
+        },
+        {
+          "line": 227,
+          "text": "\"P2_RAW_REPLACEMENT\": {"
+        },
+        {
+          "line": 235,
+          "text": "\"CLEANING_DAY_PARTITION\","
+        },
+        {
+          "line": 236,
+          "text": "\"CLEANING_YEAR_BATCH\","
+        },
+        {
+          "line": 237,
+          "text": "\"RAW_YEAR_BATCH\","
+        },
+        {
+          "line": 249,
+          "text": "p1 = resolved[\"planes\"][\"P1_CLEANING_CURRENT\"]"
+        },
+        {
+          "line": 250,
+          "text": "p2 = resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"]"
+        },
+        {
+          "line": 256,
+          "text": "\"authoritative_plane\": \"CLEANING_DAY_PARTITION\","
+        },
+        {
+          "line": 266,
+          "text": "\"authoritative_plane\": \"CLEANING_YEAR_BATCH\","
+        },
+        {
+          "line": 276,
+          "text": "\"authoritative_plane\": \"RAW_YEAR_BATCH\","
+        },
+        {
+          "line": 280,
+          "text": "\"note\": \"Cleaning day/year miss; RAW envelope covers date — use RAW read path\","
+        },
+        {
+          "line": 287,
+          "text": "\"authoritative_plane\": \"CLEANING_YEAR_BATCH_UNBOUNDEDED\","
+        },
+        {
+          "line": 297,
+          "text": "\"probed_planes\": [\"CLEANING_DAY_PARTITION\", \"CLEANING_YEAR_BATCH\", \"RAW_YEAR_BATCH\"],"
+        },
+        {
+          "line": 301,
+          "text": "def coverage_window(product_id: str, start: str, end: str, registry: Optional[dict] = None) -> dict:"
+        },
+        {
+          "line": 303,
+          "text": "resolved = resolve_product(product_id, registry)"
+        },
+        {
+          "line": 313,
+          "text": "if any(r.get(\"authoritative_plane\") == \"CLEANING_DAY_PARTITION\" for r in present):"
+        },
+        {
+          "line": 314,
+          "text": "false_miss_guard = \"PASS_CLEANING_DAY_AUTHORITY_ACTIVE\""
+        },
+        {
+          "line": 331,
+          "text": "\"cleaning_dir\": resolved[\"planes\"][\"P1_CLEANING_CURRENT\"][\"dir\"],"
+        },
+        {
+          "line": 332,
+          "text": "\"cleaning_day_dates_available\": resolved[\"planes\"][\"P1_CLEANING_CURRENT\"][\"day_dates\"],"
+        },
+        {
+          "line": 333,
+          "text": "\"raw_dir\": resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"dir\"],"
+        },
+        {
+          "line": 338,
+          "text": "def list_files_for_window(product_id: str, start: str, end: str, registry: Optional[dict] = None) -> dict:"
+        },
+        {
+          "line": 339,
+          "text": "cov = coverage_window(product_id, start, end, registry)"
+        },
+        {
+          "line": 346,
+          "text": "if plane == \"RAW_YEAR_BATCH\":"
+        },
+        {
+          "line": 348,
+          "text": "resolved = resolve_product(product_id, registry)"
+        },
+        {
+          "line": 350,
+          "text": "raw_dir = Path(resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"dir\"])"
+        },
+        {
+          "line": 351,
+          "text": "glob_tmpl = resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"glob\"]"
+        },
+        {
+          "line": 370,
+          "text": "cov = coverage_window(product_id, start, end)"
+        },
+        {
+          "line": 395,
+          "text": "\"If a research script read only RAW replacement year-batches, \""
+        },
+        {
+          "line": 410,
+          "text": "\"false_alarm_class_if_single_raw_only\": \"LAYER_MISMATCH_CLEANING_HAS_DAY_BUT_RESEARCH_READ_STALE_RAW\","
+        },
+        {
+          "line": 422,
+          "text": "r = resolve_product(pid, registry)"
+        },
+        {
+          "line": 424,
+          "text": "p1 = r[\"planes\"][\"P1_CLEANING_CURRENT\"]"
+        },
+        {
+          "line": 433,
+          "text": "\"P1_CLEANING_CURRENT\": {"
+        },
+        {
+          "line": 441,
+          "text": "\"P2_RAW_REPLACEMENT\": {"
+        },
+        {
+          "line": 442,
+          "text": "\"dir\": r[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"dir\"],"
+        },
+        {
+          "line": 443,
+          "text": "\"exists\": r[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"exists\"],"
+        },
+        {
+          "line": 444,
+          "text": "\"year_envelope\": r[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"year_envelope\"],"
+        },
+        {
+          "line": 462,
+          "text": "\"production_minute_default\": \"CLEANING_CURRENT with day>year merge\","
+        },
+        {
+          "line": 489,
+          "text": "body = resolve_product(args.product)"
+        },
+        {
+          "line": 491,
+          "text": "p1 = body[\"planes\"][\"P1_CLEANING_CURRENT\"]"
+        },
+        {
+          "line": 501,
+          "text": "print(json.dumps(list_files_for_window(args.product, args.coverage_start, args.coverage_end), ensure_ascii=False, indent=2))"
+        },
+        {
+          "line": 503,
+          "text": "print(json.dumps(coverage_window(args.product, args.coverage_start, args.coverage_end), ensure_ascii=False, indent=2))"
+        }
+      ],
+      "call_sites_n": 48
+    }
+  ],
+  "resolve_product_defs": [
+    {
+      "path": "脚本\\blackbox_unified_market_data_plane_r1.py",
+      "line": 161,
+      "sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce"
+    }
+  ],
+  "limits": [
+    "line citations only; no production edits",
+    "keyword/line presence ≠ runtime HAND gate proof",
+    "1m evidence ≠ 5m evidence"
+  ],
+  "verdicts": {
+    "rule_required_vs_code_behavior": "SEPARATED_IN_CALLCHAIN_EVIDENCE_MD",
+    "formal_entry_calls_hand_gate": "UNPROVEN",
+    "etf_new_clean_vs_raw": "SEE_LINE_SAMPLES_NEED_PATH_PROOF"
+  }
+}
