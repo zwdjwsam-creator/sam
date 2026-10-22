@@ -1,0 +1,30 @@
+[
+  {
+    "bucket": "数据缺口",
+    "object": "75 products required_range",
+    "evidence": "PRODUCT_MASTER.csv required_range=UNPROVEN for sample-derived rows",
+    "impact": "cannot claim completeness",
+    "next": "cite registry/contract/calendar per product"
+  },
+  {
+    "bucket": "读取/规则连接",
+    "object": "unified/ETF readers → HAND gate",
+    "evidence": "CALLCHAIN line samples; formal HAND call UNPROVEN",
+    "impact": "strategy admission blocked",
+    "next": "trace one live caller path with gate invoke evidence"
+  },
+  {
+    "bucket": "策略回测准入",
+    "object": "backtest/strategy consumers",
+    "evidence": "no proven HAND-gated formal caller",
+    "impact": "admission checks forbidden",
+    "next": "only after callchain+range proof"
+  },
+  {
+    "bucket": "更新流程",
+    "object": "75 update chains",
+    "evidence": "UPDATE_CHAIN.csv mostly UNPROVEN watermarks",
+    "impact": "ops resume undocumented",
+    "next": "fill from existing download/clean contracts only"
+  }
+]
