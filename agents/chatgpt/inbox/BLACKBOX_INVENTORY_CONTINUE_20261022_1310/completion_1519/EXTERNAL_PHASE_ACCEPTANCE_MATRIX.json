@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-22T15:24:51+08:00",
+  "source": "phase_acceptance L1581-L1713 extract",
+  "rows": [
+    {
+      "field": "PIT_FAILURES / PIT_GATE",
+      "condition": "api in finance+fund_portfolio AND status==READY AND PIT_READY_ROWS==0 AND n_rows>0",
+      "action": "pit_fail+=1; GATES.PIT_GATE=FAIL if any"
+    },
+    {
+      "field": "PRODUCTS_READY (ready)",
+      "condition": "collect_product_pointers status==READY count",
+      "action": "feeds FINAL_STATUS thresholds"
+    },
+    {
+      "field": "FINANCIAL_ROWS (fin_rows)",
+      "condition": "tushare api in income/balancesheet/cashflow/fina_indicator n_rows sum",
+      "action": "if 0 and other fails → FINAL FAIL; if >0 contributes PARTIAL"
+    },
+    {
+      "field": "EXCHANGE_DOCUMENT_COUNT",
+      "condition": "results.exchange.EXCHANGE_DOCUMENT_COUNT > 0",
+      "action": "required with ready>=5 and CANONICAL_FACT_COUNT>0 for PARTIAL branch"
+    },
+    {
+      "field": "CANONICAL_FACT_COUNT",
+      "condition": "results.fact.CANONICAL_FACT_COUNT > 0",
+      "action": "same as above"
+    },
+    {
+      "field": "ready>=5 & fin_rows>0 & EXCHANGE>0 & CANONICAL>0",
+      "condition": "all true",
+      "action": "FINAL_STATUS=EXTERNAL_EVIDENCE_MATERIALIZATION_PARTIAL"
+    },
+    {
+      "field": "ready>=8 & FUND_BASIC_ROWS & COMPANY_INDEX_COUNT>4000 & pit_fail==0",
+      "condition": "all true",
+      "action": "still kept PARTIAL (comment: until IR/text/full fund done) — does NOT promote to PASS"
+    },
+    {
+      "field": "fin_rows>0 (elif)",
+      "condition": "first branch false but fin_rows>0",
+      "action": "FINAL_STATUS=PARTIAL"
+    },
+    {
+      "field": "else",
+      "condition": "fin_rows==0 and first branch false",
+      "action": "FINAL_STATUS=EXTERNAL_EVIDENCE_MATERIALIZATION_FAIL"
+    },
+    {
+      "field": "TUSHARE_ANNS_D",
+      "condition": "hardcoded NO_PERMISSION in accept dict",
+      "action": "recorded; PRODUCTS_NO_PERMISSION incremented if anns_d NO_PERMISSION"
+    },
+    {
+      "field": "STOP",
+      "condition": "always True in accept",
+      "action": "writes ACCEPTANCE json; forbidden_followups listed"
+    },
+    {
+      "field": "GATES.PROVENANCE/RIGHTS/SOURCE_ISOLATION/UNIT",
+      "condition": "hardcoded PASS in this function body",
+      "action": "do not treat as measured proof beyond this assignment"
+    },
+    {
+      "field": "SILENT_TRUNCATION / returned_rows==5000",
+      "condition": "NOT in phase_acceptance body itself",
+      "action": "enforced earlier in download/materialize phases / handbook — N_A in acceptance matrix rows; see download phases"
+    }
+  ]
+}
