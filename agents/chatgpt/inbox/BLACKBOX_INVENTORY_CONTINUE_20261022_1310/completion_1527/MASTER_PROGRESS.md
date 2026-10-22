@@ -1,0 +1,31 @@
+# MASTER_PROGRESS 1527
+
+{
+  "at": "2026-10-22T15:33:12+08:00",
+  "checkpoint": "COMPLETION_1527",
+  "SYSTEM_INVENTORY_ACCEPTANCE": false,
+  "status": "PARTIAL",
+  "stats": {
+    "n": 75,
+    "producer_review_status": {
+      "REUSED_PRIOR": 3,
+      "NOT_REVIEWED": 47,
+      "PRODUCER_STATIC_REVIEWED": 25
+    },
+    "mapping_status": {
+      "VERIFIED_CACHE_DIR": 20,
+      "ENTRY_DOES_NOT_SERVE_VIA_CACHE_CATALOG": 24,
+      "META_REGISTRY_NOT_PARQUET_PRODUCT": 2,
+      "ENTITY_PRESENT_CATALOG_ORPHAN": 4,
+      "VERIFIED_ETF_CLEANING_PATH": 2,
+      "N_A_MINUTE_NOT_DAILY_CACHE_ENTRY": 5,
+      "VERIFIED_SIDECAR": 2,
+      "PARTIAL_VIEW_DIR_EXISTS_DEPS_UNCHECKED": 1,
+      "VERIFIED_STOCK_MINUTE": 1,
+      "VERIFIED_CBOND": 14
+    },
+    "note": "producer_review_status ≠ mapping_status; bulk 75/75 STATIC_REVIEWED REJECTED"
+  },
+  "producer_entries": 22,
+  "sw_densify_script": null
+}
