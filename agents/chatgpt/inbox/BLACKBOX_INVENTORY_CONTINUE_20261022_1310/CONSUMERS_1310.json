@@ -1,0 +1,28 @@
+{
+  "by_symbol_counts": {
+    "read_overlapping": 4,
+    "overlapping_shards": 2,
+    "coverage_window": 2,
+    "list_files_for_window": 1,
+    "resolve_product": 9,
+    "build_shard_manifest": 3,
+    "request_time": 1,
+    "KNOWN_AT": 9,
+    "anti_lookahead": 4,
+    "SIGNAL_TIME": 6,
+    "FILL_TIME": 1
+  },
+  "formal_candidate_n": 1,
+  "formal_candidates_head": [
+    {
+      "symbol": "resolve_product",
+      "path": "脚本/blackbox_backtest_price_plane_r1.py",
+      "defs": 0,
+      "calls": 1,
+      "refs": 2,
+      "role": "POSSIBLE_CONSUMER"
+    }
+  ],
+  "verdict": "FORMAL_CANDIDATES_FOUND_NEED_HAND_GATE_PROOF",
+  "note": "diagnostic/gate hits ≠ formal strategy admission"
+}
