@@ -1,0 +1,54 @@
+{
+  "status": "STATIC_REVIEWED",
+  "wrapper": "脚本/blackbox_adjust_factor_incremental_backward_refresh_r1.py → guarded_run → TASK_SCRIPT",
+  "guarded_run": {
+    "lineno": 117,
+    "end_lineno": 123,
+    "n_lines": 7,
+    "body": "def guarded_run(cmd, **kw):\n    \"\"\"对潜在破坏性命令做正则黑名单拦截。\"\"\"\n    flat = cmd if isinstance(cmd, str) else \" \".join(map(str, cmd))\n    for pat in FORBIDDEN_PATTERNS:\n        if re.search(pat, flat, flags=re.IGNORECASE):\n            raise ForbiddenCommandError(f\"BLOCKED by guarded_run: {pat} matched in: {flat}\")\n    return run(cmd, **kw)"
+  },
+  "default_update_date_in_source": "2026-08-14",
+  "caller_override": "orchestrator does NOT call adjust wrapper; caller must pass argv — default is source fact only, NOT run",
+  "keys_from_body": {
+    "load_cache_factor_mentions": [
+      "date",
+      "date",
+      "code",
+      "code",
+      "factor",
+      "factor"
+    ],
+    "fetch_factor_mentions": [
+      "start",
+      "end",
+      "start",
+      "end",
+      "factor",
+      "start",
+      "end",
+      "code",
+      "factor",
+      "code",
+      "code",
+      "factor",
+      "factor",
+      "code",
+      "factor",
+      "factor",
+      "factor",
+      "code",
+      "code"
+    ]
+  },
+  "publish_successor_n_lines": 52,
+  "main_n_lines": 87,
+  "resume": {
+    "named_state_file": false,
+    "conclusion": "NO_NAMED_STATE_FILE_DOES_NOT_PROVE_NO_RESUME; keyword alone does not prove resume — see full main/publish bodies",
+    "status_detail": "STATIC_REVIEWED_BODIES_PRESENT"
+  },
+  "extract_ref": "source_reads/incremental_backward_refresh_r1_EXTRACTS.md",
+  "not_run": [
+    "Did not execute adjust with default or any date"
+  ]
+}
