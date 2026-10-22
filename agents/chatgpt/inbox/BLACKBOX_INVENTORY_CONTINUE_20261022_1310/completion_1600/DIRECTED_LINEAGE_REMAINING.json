@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-22T16:12:10+08:00",
+  "STOCK_MINUTE": {
+    "producer": "E:\\BLACKBOX\\脚本\\jq_expand_minute_v3.py",
+    "FREQS_proven": [
+      "1m",
+      "30m",
+      "60m"
+    ],
+    "STOCK_5M": {
+      "status": "KNOWN_UNLOCATED",
+      "evidence": "not in jq_expand FREQS (1543 semantics)"
+    },
+    "raw_dirs_sample": [
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P8_etf_fund",
+      "E:\\BLACKBOX\\数据\\原始只读\\聚宽ETF_raw"
+    ]
+  },
+  "ETF_MINUTE": {
+    "ETF_1M_plane": "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_1m_plane_r1.py",
+    "ETF_1M_role": "READ_COVER_MANIFEST_NOT_DOWNLOADER",
+    "ETF_5M_30M_60M": {
+      "status": "KNOWN_UNLOCATED",
+      "note": "do not extrapolate from 1m plane; missing generic downloader != no data"
+    }
+  },
+  "CBOND": {
+    "static_scope": "CLOSED_ACCEPTED",
+    "R1_birth": "UNPROVEN",
+    "daily_entry": "UNPROVEN",
+    "producer_static": "E:\\BLACKBOX\\脚本\\blackbox_tushare_cbond_5y_plane_r2.py",
+    "reuse": "completion_1543 CBOND_STATIC_SCOPE_CLOSED"
+  },
+  "SW_STRUCTURE": {
+    "full_history_write": "BLOCKED (not densify impl)",
+    "densify_candidates": [
+      "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_sw_l1_integrate_r1.py"
+    ],
+    "status": "BLOCKED_SEPARATE_FROM_MISSING",
+    "note": "BLOCKED confirmed in compiler; densify entry still separate search"
+  },
+  "BILLBOARD": {
+    "candidates": [
+      "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\aux_billboard_adjust_index_minute_r15.py",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\direct_download_billboard_r1.py",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\LESSON_PREFLIGHT_RECEIPT_BILLBOARD.json",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\DIRECT_DOWNLOAD_billboard",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\DIRECT_DOWNLOAD_billboard_canary",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\DIRECT_DOWNLOAD_HAND_billboard",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\ALL_CURRENT_DOWNLOADED_DATA_FINAL_SEAL_R1\\07_DOMAIN_LEVEL_SEALS\\billboard",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\POST_CLEANING_FINAL_VERIFICATION_R1\\05_RUNTIME_FIX_VALIDATION\\BILLBOARD_PRIMARY_KEY_AUDIT.parquet",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\aux_billboard_adjust_index_minute_r15.py",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\direct_download_billboard_r1.py",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\LESSON_PREFLIGHT_RECEIPT_BILLBOARD.json",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\DIRECT_DOWNLOAD_billboard",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\DIRECT_DOWNLOAD_billboard_canary",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\DIRECT_DOWNLOAD_HAND_billboard",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\ALL_CURRENT_DOWNLOADED_DATA_FINAL_SEAL_R1\\07_DOMAIN_LEVEL_SEALS\\billboard",
+      "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\POST_CLEANING_FINAL_VERIFICATION_R1\\05_RUNTIME_FIX_VALIDATION\\BILLBOARD_PRIMARY_KEY_AUDIT.parquet",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard\\billboard__2014__v1__20260713_071941.parquet",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard\\billboard__2015__v1__20260713_071941.parquet",
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard\\billboard__2016__v1__20260713_071941.parquet"
+    ],
+    "status": "CANDIDATES_FOUND_NEED_BIND"
+  },
+  "reused_semantics_keys": [
+    "jq_expand",
+    "etf1m",
+    "cbond",
+    "cbond_sem",
+    "fullhist"
+  ]
+}
