@@ -1,0 +1,404 @@
+{
+  "at": "2026-10-22T14:23:29+08:00",
+  "n": 9,
+  "sources": [
+    {
+      "source_id": "S_HAND",
+      "path": "E:\\BLACKBOX\\HAND.txt",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "f709e9b5000ab2c7d499ec312fc6be4cdb2934b4ce45fc94b6b10f40020af96b",
+      "bytes": 107154,
+      "extract": {
+        "want_keys": [],
+        "n_lines": 1941,
+        "pointer_lines_sample": [
+          "BACKTEST_DEVIATION_CURRENT=E:\\BLACKBOX\\HAND_BACKTEST_DEVIATION_CURRENT_R1.json",
+          "# HAND TOP-LEVEL POINTER APPEND — DATA TRAFFIC + DAILY INCREMENTAL SW_L123_CACHE R1",
+          "JQ_ACCESSIBLE_DATASET_LEDGER=E:\\BLACKBOX\\运行\\BLACKBOX_JQ_ACCESSIBLE_DATASET_LEDGER_CURRENT.json",
+          "FULL_DATA_UPDATE_SCOPE_R2=E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json",
+          "FULL_DATA_UPDATE_SCOPE_CURRENT=E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+          "DAILY_INCREMENTAL_SW_L123_CACHE_RULE=E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1.json",
+          "DAILY_INCREMENTAL_SW_L123_CACHE_CURRENT=E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+          "CACHE_CURRENT=E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+          "CACHE_RELEASE_ID=BLACKBOX_CACHE_R1_FULL_SW_L123_ASOF_20260811_20260812_010158",
+          "SW_L1_CACHE=READY_INTEGRATED",
+          "SW_L2_CACHE=READY_INTEGRATED",
+          "SW_L3_CACHE=READY_INTEGRATED",
+          "DAILY_UPDATE_MUST_CLEAN_ALIGN_ANTILEAK_CACHE=TRUE",
+          "DOMAIN_STATUS_AMEND_R3=E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3.json",
+          "DOMAIN_STATUS_AMEND_R3_CURRENT=E:\\BLACKBOX\\运行\\BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3_CURRENT.json",
+          "## FINANCIAL_INDICATOR FULL→CLEAN→CACHE (2026-08-12T02:18:54+0800)",
+          "- cleaning: BLACKBOX_FORMAL_CLEANING_R17_ASOF_20260811_20260812_021759",
+          "- cache: BLACKBOX_CACHE_R1_FULL_SW_L123_FI_ASOF_20260811_20260812_021759 product=FINANCIAL_INDICATOR_PIT_R1",
+          "## CORPORATE_REFERENCE_PIT_CLEAN_CACHE_R1 (2026-08-12T02:51:48+0800)",
+          "- cleaning: BLACKBOX_FORMAL_CLEANING_R18_CORP_REF_ASOF_20260811_20260812_024902",
+          "- cache: BLACKBOX_CACHE_R1_FULL_SW_L123_FI_CORPREF_ASOF_20260811_20260812_025102",
+          "JQ20_BUILD_ACCEPTANCE=D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1\\qa\\FINAL_ACCEPTANCE.json",
+          "JQ20_R19_POST_SEAL_MUTATION=E:\\BLACKBOX\\运行\\BLACKBOX_CLEANING_RELEASE_PROVENANCE_R19_POST_SEAL_MUTATION.json",
+          "CURRENT_CACHE_RELEASE=E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+          "DATA_ACCESS_AUTHORITY_SOURCE=HAND+CURRENT+CACHE_CATALOG",
+          "UNIFIED_MINUTE_AUTHORITY_ORDER=CLEANING_DAY>CLEANING_YEAR>RAW_YEAR",
+          "DATA_PLANE_THREE_LAYER_POLICY=CACHE_SLICE_AND_SMALLPACK_MUST_NOT_MASK_FULL_HISTORY",
+          "# HAND TOP-LEVEL POINTER APPEND — DATA COVERAGE CONTROL + CACHE NON-REGRESSION R1",
+          "DATA_COVERAGE_CONTROL_VERSION=BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1",
+          "DATA_COVERAGE_CONTROL_RULE=E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+          "CLEANING_COVERAGE_LEDGER=E:\\BLACKBOX\\运行\\BLACKBOX_CLEANING_COVERAGE_LEDGER_CURRENT.json",
+          "CACHE_COVERAGE_LEDGER=E:\\BLACKBOX\\运行\\BLACKBOX_CACHE_COVERAGE_LEDGER_CURRENT.json",
+          "CACHE_COVERAGE_NON_REGRESSION_GATE=E:\\BLACKBOX\\脚本\\blackbox_cache_coverage_non_regression_gate_r1.py",
+          "DATA_COVERAGE_ARCHIVE=D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1",
+          "DAILY_INCREMENTAL_SW_L123_CACHE_CURRENT=E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+          "# HAND TOP-LEVEL POINTER APPEND — POST DOWNLOAD MUST CACHE",
+          "POST_DOWNLOAD_MUST_END_IN_CACHE=TRUE",
+          "CACHE_SOURCE_CLEANING_MUST_MATCH_CLEANING_CURRENT=TRUE",
+          "SECURITY_STATE_TO_TRADEABILITY_CACHE=REQUIRED",
+          "FULL_DATA_PIPELINE_MATRIX_CURRENT=E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_PIPELINE_MATRIX_CURRENT.json"
+        ],
+        "copied_to": "source_reads\\HAND_pointer_lines.txt"
+      },
+      "error": null
+    },
+    {
+      "source_id": "S_CURRENT_CACHE_RELEASE",
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+      "bytes": 1531,
+      "extract": {
+        "want_keys": [
+          "cache_release_id",
+          "release_root",
+          "asof",
+          "source_cleaning_release",
+          "parent_release_id",
+          "published_at_cn"
+        ],
+        "json_keys": [
+          "cache_release_id",
+          "release_root",
+          "published_at",
+          "published_at_cn",
+          "asof",
+          "schema_version",
+          "build_version",
+          "source_cleaning_release",
+          "parent_release_id",
+          "mode",
+          "FORMAL_DAILY_PUBLISH",
+          "CANARY_CURRENT_PUBLISH",
+          "anti_lookahead_pass",
+          "sw_l1_status",
+          "sw_l2_status",
+          "sw_l3_status",
+          "valuation_status",
+          "stock_2026_date_max",
+          "raw_pit_2026_date_max",
+          "formal_required_missing",
+          "INDEX_DAILY_R1",
+          "FINANCE_PIT_DELTA_ROWS",
+          "FINANCE_FORMAL_INHERIT",
+          "LEGACY_TARGET_IGNORED",
+          "notes",
+          "patched_val_sw_at",
+          "FUND_NAV_PIT_R1"
+        ],
+        "values": {
+          "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "release_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "asof": "2026-09-24",
+          "source_cleaning_release": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+          "parent_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+          "published_at_cn": "2026-09-25T04:04:43+0800"
+        },
+        "copied_to": "source_reads\\S_CURRENT_CACHE_RELEASE.json"
+      },
+      "error": null
+    },
+    {
+      "source_id": "S_CURRENT_CLEANING_RELEASE",
+      "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "bytes": 1160,
+      "extract": {
+        "want_keys": [
+          "release_id",
+          "standard_root",
+          "cleaning_as_of",
+          "daily_asof",
+          "finance_asof",
+          "parent_release_id",
+          "FUND_NAV_TIP"
+        ],
+        "json_keys": [
+          "release_id",
+          "seal_id",
+          "sealed",
+          "cleaning_as_of",
+          "finance_asof",
+          "daily_asof",
+          "standard_root",
+          "quarantine_root",
+          "ledger_path",
+          "release_content_root_sha256",
+          "created_at",
+          "parent_release_id",
+          "switch_reason",
+          "finance_asof_note",
+          "FUND_NAV_TIP"
+        ],
+        "values": {
+          "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+          "standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+          "cleaning_as_of": "2026-09-24",
+          "daily_asof": "2026-09-24",
+          "finance_asof": "2026-09-24",
+          "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+          "FUND_NAV_TIP": true
+        },
+        "copied_to": "source_reads\\S_CURRENT_CLEANING_RELEASE.json"
+      },
+      "error": null
+    },
+    {
+      "source_id": "S_CACHE_PRODUCT_CATALOG",
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57",
+      "bytes": 4020,
+      "extract": {
+        "csv_rows": 41,
+        "csv_cols": [
+          "product_id",
+          "layer",
+          "asset_type",
+          "status",
+          "partition_key",
+          "description"
+        ],
+        "product_ids": [
+          "STOCK_DAILY_PIT_R1",
+          "STOCK_FACTOR_DAILY_R1",
+          "ETF_DAILY_PIT_R1",
+          "ETF_FACTOR_DAILY_R1",
+          "FUND_DAILY_PIT_R1",
+          "FUND_FACTOR_DAILY_R1",
+          "INDEX_DAILY_R1",
+          "INDEX_FACTOR_DAILY_R1",
+          "INDEX_CONSTITUENT_PIT_R1",
+          "SW_L1_MEMBERSHIP_PIT_R1",
+          "SW_L1_STRUCTURE_DAILY_R1",
+          "MARKET_UNIVERSE_PIT_R1",
+          "STOCK_TRADEABILITY_PIT_R1",
+          "MARKET_STRUCTURE_DAILY_R1",
+          "FUND_LIKE_ASSET_VIEW_R1",
+          "CACHE_MANIFEST_REGISTRY_R1",
+          "CACHE_DEPENDENCY_REGISTRY_R1",
+          "ADJUST_FACTOR_PIT_R1",
+          "STOCK_DAILY_RAW_PIT_R1",
+          "SW_L2_MEMBERSHIP_PIT_R1",
+          "VALUATION_PIT_R1",
+          "FINANCIAL_INDICATOR_PIT_R1",
+          "TUSHARE_CBOND_BASIC_R1",
+          "TUSHARE_CBOND_DAILY_MARKET_R1",
+          "TUSHARE_CBOND_ISSUE_R1",
+          "TUSHARE_CBOND_CALL_R1",
+          "TUSHARE_CBOND_RATE_R1",
+          "TUSHARE_CBOND_SHARE_R1",
+          "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+          "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+          "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+          "TUSHARE_CBOND_RATING_R1",
+          "TUSHARE_CBOND_RATING_PIT_R1",
+          "TUSHARE_CBOND_CALL_PIT_R1",
+          "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+          "TUSHARE_CBOND_TOP10_HOLDERS_R1",
+          "INDEX_WEIGHT_PIT_R1",
+          "ETF_TRACKING_INDEX_MAP_R1",
+          "ETF_MINUTE_1M_R1",
+          "STOCK_MINUTE_1M_R1",
+          "FUND_NAV_PIT_R1"
+        ],
+        "copied_to": "source_reads\\S_CACHE_PRODUCT_CATALOG.csv"
+      },
+      "error": null
+    },
+    {
+      "source_id": "S_CACHE_MANIFEST_REGISTRY",
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "37bd3f600ef0576535d1d99aff42614e7d818e9965c4497e284cdca811d0733d",
+      "bytes": 6173,
+      "extract": {
+        "want_keys": [
+          "updated_at",
+          "latest_release"
+        ],
+        "json_keys": [
+          "updated_at",
+          "latest_release",
+          "manifests"
+        ],
+        "values": {
+          "updated_at": "2026-08-14T19:46:25+00:00",
+          "latest_release": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559"
+        },
+        "copied_to": "source_reads\\S_CACHE_MANIFEST_REGISTRY.json"
+      },
+      "error": null
+    },
+    {
+      "source_id": "S_JQ_LEDGER",
+      "path": "E:\\BLACKBOX\\运行\\BLACKBOX_JQ_ACCESSIBLE_DATASET_LEDGER_CURRENT.json",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "5887d3c34c312152c27505e8942a66ff803c8a29771581131034bf0a1673663c",
+      "bytes": 56810,
+      "extract": {
+        "want_keys": [
+          "rule_id",
+          "status",
+          "asof",
+          "summary",
+          "current_pointers"
+        ],
+        "json_keys": [
+          "rule_id",
+          "status",
+          "layer",
+          "schema_version",
+          "authorized_by",
+          "authorized_at_cn",
+          "authorized_at_user_utterance",
+          "definition_one_line",
+          "asof",
+          "generated_at",
+          "generated_at_cn",
+          "exclude_policy",
+          "summary",
+          "current_pointers",
+          "items",
+          "downloaded",
+          "partial",
+          "not_downloaded",
+          "jq20_build",
+          "FUND_PORTFOLIO_STOCK_CORRECTION_R1"
+        ],
+        "values": {
+          "rule_id": "BLACKBOX_HAND_JQ_ACCESSIBLE_DATASET_LEDGER_R1",
+          "status": "ACTIVE_HARD_RULE",
+          "asof": "2026-08-11",
+          "summary": {
+            "keys": [
+              "accessible_in_ledger",
+              "finance_tables",
+              "api_surfaces",
+              "downloaded",
+              "partial",
+              "not_downloaded",
+              "permission_excluded_count",
+              "other_probe_excluded_count"
+            ]
+          },
+          "current_pointers": {
+            "keys": [
+              "cleaning",
+              "cache",
+              "cache_products"
+            ]
+          }
+        }
+      },
+      "error": null
+    },
+    {
+      "source_id": "S_SIDECAR",
+      "path": "E:\\BLACKBOX\\运行\\BLACKBOX_SIDECAR_CACHE_PRODUCTS_CURRENT.json",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "ecb9debd384e87e59fea2d6e1b5cc1d747fba384c4563e7d3ade54cd2e5053e4",
+      "bytes": 1152,
+      "extract": {
+        "want_keys": [
+          "schema_version",
+          "cache_release_id",
+          "products",
+          "note"
+        ],
+        "json_keys": [
+          "schema_version",
+          "note",
+          "cache_release_id",
+          "parent_cache_current_unchanged",
+          "products",
+          "written_at_cn",
+          "task_id"
+        ],
+        "values": {
+          "schema_version": "1.0.0",
+          "cache_release_id": "BLACKBOX_CACHE_R1_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042233",
+          "products": {
+            "keys": [
+              "INDEX_WEIGHT_PIT_R1",
+              "ETF_TRACKING_INDEX_MAP_R1"
+            ]
+          },
+          "note": "INDEX_WEIGHT / ETF map served from tradeability-weight successor cache"
+        },
+        "copied_to": "source_reads\\S_SIDECAR.json"
+      },
+      "error": null
+    },
+    {
+      "source_id": "S_EXTERNAL_EVIDENCE",
+      "path": "E:\\BLACKBOX\\运行\\BLACKBOX_EXTERNAL_EVIDENCE_RESOLVER_CURRENT.json",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "a497c1e7b9ee9ff885fe78da173ba7dcfe00ec7fe02bc516dbaf8e80e1fc58af",
+      "bytes": 22540,
+      "extract": {
+        "want_keys": [
+          "resolver_id",
+          "updated_at",
+          "product_count",
+          "forbid_mix_into_jq_products"
+        ],
+        "json_keys": [
+          "resolver_id",
+          "updated_at",
+          "materialization_task",
+          "read_policy",
+          "forbid_mix_into_jq_products",
+          "products",
+          "product_count",
+          "TUSHARE_ANNS_D"
+        ],
+        "values": {
+          "resolver_id": "BLACKBOX_EXTERNAL_EVIDENCE_RESOLVER_R1",
+          "updated_at": "2026-09-25T04:07:42+0800",
+          "product_count": 45,
+          "forbid_mix_into_jq_products": true
+        }
+      },
+      "error": null
+    },
+    {
+      "source_id": "S_RESOLVER_R1",
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+      "read_at": "2026-10-22T14:23:29+08:00",
+      "exists": true,
+      "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+      "bytes": 43924,
+      "extract": {
+        "lines_29_40": "29|HAND_PATH = ROOT / \"HAND.txt\"\n30|CACHE_CURRENT_PTR = ROOT / \"数据\" / \"回测缓存\" / \"CURRENT_CACHE_RELEASE.json\"\n31|CLEANING_CURRENT_PTR = ROOT / \"数据\" / \"清洗成品\" / \"CURRENT_CLEANING_RELEASE.json\"\n32|CATALOG_CSV = ROOT / \"数据\" / \"回测缓存\" / \"registry\" / \"CACHE_PRODUCT_CATALOG.csv\"\n33|MANIFEST_JSON = ROOT / \"数据\" / \"回测缓存\" / \"registry\" / \"CACHE_MANIFEST_REGISTRY.json\"\n34|LEDGER_JSON = ROOT / \"运行\" / \"BLACKBOX_JQ_ACCESSIBLE_DATASET_LEDGER_CURRENT.json\"\n35|R19_PROVENANCE = ROOT / \"运行\" / \"BLACKBOX_CLEANING_RELEASE_PROVENANCE_R19_POST_SEAL_MUTATION.json\"\n36|INDEX_PATH = ROOT / \"运行\" / \"BLACKBOX_DATA_ACCESS_INDEX_CURRENT.json\"\n37|SIDECAR_PRODUCTS = ROOT / \"运行\" / \"BLACKBOX_SIDECAR_CACHE_PRODUCTS_CURRENT.json\"\n38|CBOND_CACHE_CURRENT_PTR = ROOT / \"数据\" / \"回测缓存\" / \"可转债指针\" / \"CURRENT_CBOND_CACHE_RELEASE.json\"\n39|CBOND_PRODUCT_PREFIX = \"TUSHARE_CBOND_\"\n40|EXTERNAL_EVIDENCE_RESOLVER_PTR = ROOT / \"运行\" / \"BLACKBOX_EXTERNAL_EVIDENCE_RESOLVER_CURRENT.json\"",
+        "lines_383_443": "383|    if CACHE_CURRENT_PTR.is_file():\n384|        cache = json.loads(CACHE_CURRENT_PTR.read_text(encoding=\"utf-8\"))\n385|        result[\"cache_current\"] = cache\n386|        result[\"cache_release_id\"] = cache.get(\"cache_release_id\", \"\")\n387|        # CURRENT_CACHE_RELEASE.json uses release_root; some older pointers used standard_root\n388|        result[\"cache_release_root\"] = (\n389|            cache.get(\"release_root\")\n390|            or cache.get(\"standard_root\")\n391|            or cache.get(\"cache_root\")\n392|            or \"\"\n393|        )\n394|        result[\"cache_asof\"] = cache.get(\"asof\", \"\")\n395|    else:\n396|        errors.append(\"CACHE_CURRENT_POINTER MISSING\")\n397|        result[\"cache_current\"] = None\n398|\n399|    if CBOND_CACHE_CURRENT_PTR.is_file():\n400|        cbond = json.loads(CBOND_CACHE_CURRENT_PTR.read_text(encoding=\"utf-8\"))\n401|        result[\"cbond_cache_current\"] = cbond\n402|        result[\"cbond_cache_release_id\"] = cbond.get(\"cache_release_id\", \"\")\n403|        result[\"cbond_cache_release_root\"] = cbond.get(\"release_root\", \"\")\n404|        result[\"cbond_source_vendor\"] = cbond.get(\"source_vendor\", \"TUSHARE_PRO\")\n405|        result[\"cbond_product_path_map\"] = cbond.get(\"product_path_map\") or {}\n406|        result[\"cbond_parent_release_root\"] = cbond.get(\"parent_release_root\") or \"\"\n407|    else:\n408|        result[\"cbond_cache_current\"] = None\n409|        result[\"cbond_cache_release_root\"] = \"\"\n410|\n411|    result[\"sidecar_product_path_map\"] = {}\n412|    if SIDECAR_PRODUCTS.is_file():\n413|        side = json.loads(SIDECAR_PRODUCTS.read_text(encoding=\"utf-8\"))\n414|        result[\"sidecar_products\"] = side\n415|        pmap = {}\n416|        for pid, meta in (side.get(\"products\") or {}).items():\n417|            if isinstance(meta, dict) and meta.get(\"cache_product_path\"):\n418|                pmap[pid] = meta[\"cache_product_path\"]\n419|        result[\"sidecar_product_path_map\"] = pmap\n420|    else:\n421|        result[\"sidecar_products\"] = None\n422|\n423|    # EXTERNAL EVIDENCE resolver (source-isolated; never mixes into JQ products)\n424|    if EXTERNAL_EVIDENCE_RESOLVER_PTR.is_file():\n425|        ext = json.loads(EXTERNAL_EVIDENCE_RESOLVER_PTR.read_text(encoding=\"utf-8\"))\n426|        result[\"external_evidence_resolver\"] = ext\n427|        emap = {}\n428|        for row in ext.get(\"products\") or []:\n429|            if not isinstance(row, dict):\n430|                continue\n431|            pid = row.get(\"product_id\")\n432|            if pid and row.get(\"resolver_ready\") and row.get(\"path\"):\n433|                emap[pid] = row\n434|        result[\"external_evidence_product_map\"] = emap\n435|    else:\n436|        result[\"external_evidence_resolver\"] = None\n437|        result[\"external_evidence_product_map\"] = {}\n438|\n439|    # CLEANING CURRENT\n440|    if CLEANING_CURRENT_PTR.is_file():\n441|        clean = json.loads(CLEANING_CURRENT_PTR.read_text(encoding=\"utf-8\"))\n442|        result[\"cleaning_current\"] = clean\n443|        result[\"cleaning_release_id\"] = clean.get(\"release_id\", \"\")",
+        "lines_710_755": "710|        historical_ready = coverage_mode in (\"FULL_HISTORY\", \"DAILY_HISTORY\", \"ASOF_SNAPSHOT_HISTORY\") and (\n711|            (coverage_distinct or 0) > 1\n712|        )\n713|        # start/end injected via currents optional keys\n714|        start_date = currents.get(\"_request_start_date\")\n715|        end_date = currents.get(\"_request_end_date\")\n716|        if start_date and end_date and normalized in (\"STOCK_DAILY_PIT_R1\", \"STOCK_DAILY_RAW_PIT_R1\"):\n717|            expected = [str(d) for d in load_trade_calendar(start_date, end_date)]\n718|            have = set(cov.get(\"dates\") or [])\n719|            missing_trade_days = [d for d in expected if d not in have]\n720|            expected_trade_days = len(expected)\n721|            available_trade_days = len(expected) - len(missing_trade_days)\n722|            coverage_ready = len(missing_trade_days) == 0 and coverage_mode != \"INCREMENTAL_PATCH\"\n723|        elif start_date and end_date:\n724|            # generic: min/max containment\n725|            coverage_ready = (\n726|                coverage_min is not None\n727|                and coverage_max is not None\n728|                and coverage_min <= start_date\n729|                and coverage_max >= end_date\n730|                and coverage_mode != \"INCREMENTAL_PATCH\"\n731|            )\n732|        else:\n733|            coverage_ready = historical_ready if normalized in (\n734|                \"STOCK_DAILY_PIT_R1\", \"STOCK_DAILY_RAW_PIT_R1\", \"INDEX_DAILY_R1\", \"STOCK_FACTOR_DAILY_R1\"\n735|            ) else True\n736|    except Exception as e:\n737|        coverage_mode = \"UNKNOWN_STOP\"\n738|        coverage_ready = False\n739|        currents[\"_coverage_error\"] = str(e)\n740|\n741|    # 12. Build result\n742|    result = {\n743|        \"resolved\": True,\n744|        \"result_status\": \"READY\",\n745|        \"logical_dataset_id\": dataset_raw,\n746|        \"product_id\": normalized,\n747|        \"cache_release_id\": currents.get(\"cache_release_id\", \"\"),\n748|        \"cache_asof\": currents.get(\"cache_asof\", \"\"),\n749|        \"product_path\": product_path,\n750|        \"coverage_mode\": coverage_mode,\n751|        \"coverage_min_date\": coverage_min,\n752|        \"coverage_max_date\": coverage_max,\n753|        \"coverage_distinct_dates\": coverage_distinct,\n754|        \"historical_ready\": historical_ready,\n755|        \"coverage_ready\": coverage_ready,"
+      },
+      "error": null
+    }
+  ]
+}
