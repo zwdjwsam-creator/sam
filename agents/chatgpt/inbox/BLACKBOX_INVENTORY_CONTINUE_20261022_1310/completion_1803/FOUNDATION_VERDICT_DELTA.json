@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-22T18:09:21+08:00",
+  "FOUNDATION_ACCEPTANCE": false,
+  "raw_data_confirmed_gap": "NOT_AUTO_FROM_MISSING_PATHS — need formal replacement proof per domain; see MISSING samples",
+  "data_present_entry_not_adapted": "YES_PARTIAL — engine bindings mostly UNBOUND; data-side schema smoke only",
+  "evidence_insufficient_only": "field-level types/units/PIT largely insufficient (seal SCHEMA domain-key only)",
+  "domain_diff_summary": {
+    "n": 26,
+    "compared": 26,
+    "cannot_compare": 0,
+    "domains_with_missing_n_gt_0": 0,
+    "note": "missing_n>0 is unresolved until formal replacement proven; not auto RAW gap"
+  },
+  "engine_runtime": {
+    "runtime_attempted": false,
+    "result": "NOT_RUN_STATIC_ONLY",
+    "reason": "Engine package contains dotenv references; per tip do not import production package. Performed data-side isolation read without engine import instead.",
+    "data_side_isolation": "RAN_READ_PARQUET_SCHEMA_ONLY"
+  },
+  "old_9_16_1_not_acceptance": true
+}
