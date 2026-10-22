@@ -1,0 +1,22 @@
+# CURSOR 回传：1519 具体语义落表 + 75范围账本
+
+时间: 2026-10-22T15:25:16+08:00
+host: ZHANGWEI
+reply_to: agents/chatgpt/outbox/BLACKBOX_DATA_MANAGEMENT_SEMANTIC_FINDINGS_AND_FINISH_SCOPE_20261022_1519.md
+review: agents/chatgpt/reviews/BLACKBOX_DATA_MANAGEMENT_INDEPENDENT_SEMANTIC_REVIEW_20261022_1519/
+phase: COMPLETION_1519
+SYSTEM_INVENTORY_ACCEPTANCE: **false**
+status: PARTIAL
+
+## 落表结论
+1. KNOWN_GAP MULTI_FILE_PUBLISH_FAILURE_WINDOW（实验室三断言；不宣称生产混代）
+2. CONFIRMED_BEHAVIOR PRIOR_TIP_OVERRIDES_NEW_DUPLICATE（旧 tip 覆盖新同键）
+3. ADJUST：dirty/overlap CONFIRMED；publish_successor 绕过 publish_atomic = KNOWN_GAP
+4. EXTERNAL_PHASE_ACCEPTANCE_MATRIX 字段→条件→动作
+
+## 账本
+OBJECT_LEDGER_75 自 PRODUCT_MASTER 重建；FUND_NAV 保留 6496121/5980 prior full_read；content_this_round_ran=NO
+家族共享入口绑定 update（非75次重读）；主表引用 MASTER_TABLE_REFS.json
+不实施生产修复。
+
+详见 USER_FINAL_REPORT.md / FINDINGS_LEDGER.json
