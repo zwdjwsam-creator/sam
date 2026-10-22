@@ -1,0 +1,41 @@
+{
+  "paths_pk": "path",
+  "paths_note": "paths.path is PRIMARY KEY; LIKE '_' is single-char wildcard — must ESCAPE or use GLOB/range/instr; prior tip1655 prefix_n=0 on B was method bug (unescaped '_' + wrong \\\\ pattern), not empty children",
+  "other_path_bearing_tables": [
+    "links",
+    "logical_view_42",
+    "observed_metadata_52",
+    "blocked_metadata_52",
+    "suspect_version_140",
+    "link_overlay_audit"
+  ],
+  "tables": {
+    "blocked_metadata_52": {
+      "sql": "CREATE TABLE blocked_metadata_52 (\n          path TEXT PRIMARY KEY,\n          winerror INTEGER,\n          reason TEXT\n        )",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "path",
+          "type": "TEXT",
+          "notnull": 0,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "winerror",
+          "type": "INTEGER",
+          "notnull": 0,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "reason",
+          "type": "TEXT",
+          "notnull": 0,
+          "pk": 0
+        }
+      ],
+      "row_count": 52
+    }
+  }
+}
