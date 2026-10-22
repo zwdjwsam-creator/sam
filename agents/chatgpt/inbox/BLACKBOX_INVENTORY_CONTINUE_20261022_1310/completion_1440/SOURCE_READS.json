@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-22T14:45:37+08:00",
+  "sources": [
+    {
+      "source_id": "S_ORCHESTRATOR",
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_orchestrator_r1.py",
+      "exists": true,
+      "sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a",
+      "funcs": [
+        {
+          "name": "main",
+          "line": 26,
+          "preview": "26|def main() -> int:\n27|    ap = argparse.ArgumentParser()\n28|    ap.add_argument(\"--run-target-date\", required=True)\n29|    ap.add_argument(\"--cleaning-json\", help=\"Cleaning candidate RELEASE.json; default live CURRENT\")\n30|    ap.add_argument(\"--no-publish\", action=\"store_true\")\n31|    ap.add_argument(\"--out-root\")\n32|    ap.add_argument(\"--parent-root\")\n33|    args = ap.parse_args()\n34|    tgt = resolve_run_target_trade_date(cli_date=args.run_target_date)\n35|    check_cmd = [\n36|        str(PY), \"-u\", str(INDEX_WEIGHT_CHECK),\n37|        \"--run-target-date\", tgt[\"RUN_TARGET_TRADE_DATE\"],\n38|    ]\n39|    if args.no_publish:\n40|        check_cmd.append(\"--dry-run\")\n41|    print(json.dumps({\"step\": \"INDEX_WEIGHT_MANAGED_CHECK\", \"dry_run\": bool(args.no_publish)}, ensure_ascii=False))\n42|    rc_w = subprocess.call(check_cmd)\n43|    if rc_w != 0:\n44|        return rc_w\n45|    etf_min_check = ROOT / \"脚本\" / \"blackbox_etf_minute_daily_increment_check_r1.py\"\n46|    etf_cmd = [\n47|        str(PY), \"-u\", str(etf_min_check),\n48|        \"--run-target-date\", tgt[\"RUN_TARGET_TRADE_DATE\"],\n49|    ]\n50|    if args.no_publish:\n51|        etf_cmd.append(\"--dry-run\")\n52|    print(json.dumps({\"step\": \"ETF_MINUTE_1M_MANAGED_CHECK\", \"dry_run\": bool(args.no_publish)}, ensure_ascii=False))\n53|    rc_m = subprocess.call(etf_cmd)\n54|    if rc_m != 0:\n55|        return rc_m\n56|    cmd = [\n57|        str(PY), \"-u\", str(TIP),\n58|        \"--run-target-date\", tgt[\"RUN_TARGET_TRADE_DATE\"],\n59|    ]\n60|    if args.cleaning_json:\n61|        cmd.extend([\"--cleaning-json\", args.cleaning_json])\n62|    if args.parent_root:\n63|        cmd.extend([\"--parent-root\", args.parent_root])\n64|    if args.out_root:\n65|        cmd.extend([\"--out-root\", args.out_root])\n66|    if args.no_publish:"
+        }
+      ],
+      "error": null
+    },
+    {
+      "source_id": "S_ADJUST_FACTOR",
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+      "exists": true,
+      "sha256": "1dfab5b53f61a01d368b28d04412ddc1c607bb201a5015623073e92ade2e0885",
+      "funcs": [
+        {
+          "name": "main",
+          "line": 12,
+          "preview": "12|def main() -> int:\n13|    if not TASK_SCRIPT.is_file():\n14|        print(\"HARD_BLOCK: incremental engine missing\", TASK_SCRIPT)\n15|        return FAIL\n16|    cmd = [str(PY), \"-u\", str(TASK_SCRIPT), *sys.argv[1:]]\n17|    r = guarded_run(cmd, cwd=str(ROOT))\n18|    return int(r.returncode)\n19|\n20|\n21|if __name__ == \"__main__\":\n22|    raise SystemExit(main())"
+        }
+      ],
+      "error": null
+    },
+    {
+      "source_id": "S_INDEX_WEIGHT",
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_index_weight_daily_increment_check_r1.py",
+      "exists": true,
+      "sha256": "c2ee6e3f6d4b4ed3896323e68e2bedad2febc4f9ecfc46292c3c9c33181618c5",
+      "funcs": [
+        {
+          "name": "main",
+          "line": 19,
+          "preview": "19|def main() -> int:\n20|    ap = argparse.ArgumentParser()\n21|    ap.add_argument(\"--run-target-date\", required=True)\n22|    ap.add_argument(\"--dry-run\", action=\"store_true\")\n23|    ap.add_argument(\"--live\", action=\"store_true\")\n24|    args = ap.parse_args()\n25|    probe = {}\n26|    qa = {}\n27|    p3 = TASK / \"03_SOURCE_CADENCE_PROBE.json\"\n28|    p2 = TASK / \"02_RAW_QA.json\"\n29|    if p3.is_file():\n30|        probe = load_json(p3)\n31|    if p2.is_file():\n32|        qa = load_json(p2)\n33|    out = daily_check(args.run_target_date, probe=probe, qa=qa, live=args.live)\n34|    out[\"dry_run\"] = bool(args.dry_run)\n35|    out[\"apply_download\"] = False\n36|    print(json.dumps(out, ensure_ascii=False, indent=2))\n37|    return 0\n38|\n39|\n40|if __name__ == \"__main__\":\n41|    raise SystemExit(main())"
+        }
+      ],
+      "error": null
+    },
+    {
+      "source_id": "S_EXTERNAL_MAT",
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_external_evidence_materialization_r2.py",
+      "exists": true,
+      "sha256": "4b941534c8414ea88fbc77d89d1afd913c1ec79f463bbe7ae0c1ebf258cc38ad",
+      "funcs": [
+        {
+          "name": "main",
+          "line": 1716,
+          "preview": "1716|def main() -> int:\n1717|    global WORKERS, HIST_END, FORCE_TIP, FORCE_FINANCIAL_TIP\n1718|    ap = argparse.ArgumentParser()\n1719|    ap.add_argument(\"--phase\", default=\"all\", choices=[\n1720|        \"tushare\", \"exchange\", \"index\", \"canonical\", \"acceptance\", \"all\",\n1721|        \"tushare_p0\", \"tushare_p1\", \"tushare_p2\", \"tushare_p3\",\n1722|        \"asof_align\",\n1723|    ])\n1724|    ap.add_argument(\"--workers\", type=int, default=8, help=\"parallel Tushare per-code workers (default 8)\")\n1725|    ap.add_argument(\"--asof\", default=None, help=\"YYYY-MM-DD or YYYYMMDD; default=JQ SCOPE CURRENT data_asof\")\n1726|    ap.add_argument(\"--force-tip\", action=\"store_true\", help=\"force tip refresh when hist_end behind asof\")\n1727|    ap.add_argument(\n1728|        \"--force-financial-tip\",\n1729|        action=\"store_true\",\n1730|        help=\"tip-refresh income/balance/cashflow/fina (slow); auto-on with --force-tip unless --skip-financial-tip\",\n1731|    )\n1732|    ap.add_argument(\n1733|        \"--skip-financial-tip\",\n1734|        action=\"store_true\",\n1735|        help=\"opt-out: do not tip financials even when --force-tip (ASOF_ALIGN rule marks incomplete)\",\n1736|    )\n1737|    args = ap.parse_args()\n1738|    WORKERS = max(1, min(int(args.workers), 16))\n1739|    FORCE_TIP = bool(args.force_tip)\n1740|    # HAND ASOF_ALIGN_R1: --force-tip implies financial tip unless explicit skip.\n1741|    FORCE_FINANCIAL_TIP = bool(args.force_financial_tip) or (FORCE_TIP and not bool(args.skip_financial_tip))\n1742|    HIST_END = resolve_asof_yyyymmdd(args.asof)\n1743|    print(\n1744|        json.dumps(\n1745|            {\n1746|                \"WORKERS\": WORKERS,\n1747|                \"HIST_END\": HIST_END,\n1748|                \"ASOF\": asof_iso(HIST_END),\n1749|                \"FORCE_TIP\": FORCE_TIP,\n1750|                \"FORCE_FINANCIAL_TIP\": FORCE_FINANCIAL_TIP,\n1751|            },\n1752|            ensure_ascii=False,\n1753|        ),\n1754|        flush=True,\n1755|    )\n1756|"
+        }
+      ],
+      "error": null
+    },
+    {
+      "source_id": "S_DAILY_CURRENT",
+      "path": "E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+      "sha256": "9cca2be379941133aa144dbb195116e9739624fb3e37a9a0b78d7536e7b30e31",
+      "bytes": 8017,
+      "exists": true
+    },
+    {
+      "source_id": "S_R2",
+      "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json",
+      "sha256": "63974a71ab39626855645dab4f46028cd04323ec19ed2409695282353faed992",
+      "bytes": 31955,
+      "exists": true
+    }
+  ]
+}
