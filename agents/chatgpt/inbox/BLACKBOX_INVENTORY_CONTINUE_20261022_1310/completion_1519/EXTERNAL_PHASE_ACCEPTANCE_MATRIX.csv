@@ -1,0 +1,14 @@
+﻿field,condition,action
+PIT_FAILURES / PIT_GATE,api in finance+fund_portfolio AND status==READY AND PIT_READY_ROWS==0 AND n_rows>0,pit_fail+=1; GATES.PIT_GATE=FAIL if any
+PRODUCTS_READY (ready),collect_product_pointers status==READY count,feeds FINAL_STATUS thresholds
+FINANCIAL_ROWS (fin_rows),tushare api in income/balancesheet/cashflow/fina_indicator n_rows sum,if 0 and other fails → FINAL FAIL; if >0 contributes PARTIAL
+EXCHANGE_DOCUMENT_COUNT,results.exchange.EXCHANGE_DOCUMENT_COUNT > 0,required with ready>=5 and CANONICAL_FACT_COUNT>0 for PARTIAL branch
+CANONICAL_FACT_COUNT,results.fact.CANONICAL_FACT_COUNT > 0,same as above
+ready>=5 & fin_rows>0 & EXCHANGE>0 & CANONICAL>0,all true,FINAL_STATUS=EXTERNAL_EVIDENCE_MATERIALIZATION_PARTIAL
+ready>=8 & FUND_BASIC_ROWS & COMPANY_INDEX_COUNT>4000 & pit_fail==0,all true,still kept PARTIAL (comment: until IR/text/full fund done) — does NOT promote to PASS
+fin_rows>0 (elif),first branch false but fin_rows>0,FINAL_STATUS=PARTIAL
+else,fin_rows==0 and first branch false,FINAL_STATUS=EXTERNAL_EVIDENCE_MATERIALIZATION_FAIL
+TUSHARE_ANNS_D,hardcoded NO_PERMISSION in accept dict,recorded; PRODUCTS_NO_PERMISSION incremented if anns_d NO_PERMISSION
+STOP,always True in accept,writes ACCEPTANCE json; forbidden_followups listed
+GATES.PROVENANCE/RIGHTS/SOURCE_ISOLATION/UNIT,hardcoded PASS in this function body,do not treat as measured proof beyond this assignment
+SILENT_TRUNCATION / returned_rows==5000,NOT in phase_acceptance body itself,enforced earlier in download/materialize phases / handbook — N_A in acceptance matrix rows; see download phases
