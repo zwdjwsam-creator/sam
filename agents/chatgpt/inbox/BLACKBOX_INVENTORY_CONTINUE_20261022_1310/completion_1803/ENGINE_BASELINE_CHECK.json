@@ -1,0 +1,365 @@
+{
+  "at": "2026-10-22T18:09:21+08:00",
+  "engine_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine",
+  "runtime_smoke": {
+    "runtime_attempted": false,
+    "result": "NOT_RUN_STATIC_ONLY",
+    "reason": "Engine package contains dotenv references; per tip do not import production package. Performed data-side isolation read without engine import instead.",
+    "data_side_isolation": "RAN_READ_PARQUET_SCHEMA_ONLY"
+  },
+  "bindings": {
+    "admission_matrix_rows_n": 11,
+    "ingest_gate_exists": true,
+    "ingest_gate_keys": [
+      "schema_version",
+      "task",
+      "gate_order",
+      "gates",
+      "policies",
+      "notes"
+    ],
+    "adapter_files_scanned": [
+      {
+        "file": "blackbox_jq_engine\\bullet_trade\\broker\\qmt.py",
+        "functions_top_level": [
+          "_order_debug_enabled",
+          "_format_order_debug_value",
+          "_emit_order_debug",
+          "_first_present"
+        ],
+        "hints": []
+      },
+      {
+        "file": "blackbox_jq_engine\\bullet_trade\\cli\\jupyterlab.py",
+        "functions_top_level": [
+          "_home_dir",
+          "_default_settings",
+          "_settings_path",
+          "_config_dir",
+          "load_or_init_settings",
+          "_write_settings",
+          "_get_template_dir",
+          "copy_notebooks_if_needed",
+          "ensure_env_file",
+          "ensure_snippets",
+          "_is_loopback",
+          "_check_port_available",
+          "diagnose",
+          "build_jupyter_command",
+          "run_lab"
+        ],
+        "hints": []
+      },
+      {
+        "file": "blackbox_jq_engine\\bullet_trade\\data\\cache.py",
+        "functions_top_level": [],
+        "hints": [
+          "read_parquet"
+        ]
+      },
+      {
+        "file": "blackbox_jq_engine\\bullet_trade\\server\\config.py",
+        "functions_top_level": [
+          "_split_items",
+          "_parse_accounts",
+          "_parse_sub_accounts",
+          "_parse_allowlist",
+          "build_server_config"
+        ],
+        "hints": []
+      },
+      {
+        "file": "blackbox_jq_engine\\bullet_trade\\utils\\env_loader.py",
+        "functions_top_level": [
+          "load_env",
+          "get_env",
+          "parse_bool",
+          "get_env_bool",
+          "get_env_optional_bool",
+          "get_env_int",
+          "get_env_float",
+          "get_data_provider_config",
+          "get_broker_config",
+          "get_system_config",
+          "get_risk_control_config",
+          "get_live_trade_config"
+        ],
+        "hints": []
+      },
+      {
+        "file": "blackbox_jq_engine\\bullet_trade\\data\\providers\\miniqmt.py",
+        "functions_top_level": [],
+        "hints": []
+      },
+      {
+        "file": "blackbox_jq_engine\\bullet_trade\\research\\factors\\io.py",
+        "functions_top_level": [
+          "_default_output_dir",
+          "_save_df",
+          "save_results",
+          "load_results"
+        ],
+        "hints": [
+          "read_parquet"
+        ]
+      },
+      {
+        "file": "blackbox_jq_engine\\tests\\unit\\test_dividend_data_consistency.py",
+        "functions_top_level": [
+          "_get_env",
+          "_normalize_event",
+          "_fetch_dividends_from_provider",
+          "test_golden_dividends_format",
+          "test_provider_dividends_match_golden",
+          "test_cross_provider_consistency",
+          "test_dividend_cash_calculation"
+        ],
+        "hints": []
+      },
+      {
+        "file": "blackbox_jq_engine\\tests\\e2e\\data\\test_provider_parity.py",
+        "functions_top_level": [
+          "_ensure_module",
+          "_normalize_bool_env",
+          "_check_prerequisites",
+          "_check_jqdata_prerequisites",
+          "_check_tushare_prerequisites",
+          "_authenticate_tushare",
+          "_extract_open_close",
+          "_assert_pre_diff",
+          "_authenticate_providers",
+          "_extract_close",
+          "_assert_price_parity",
+          "_describe_windows",
+          "test_ping_an_bank_real_parity",
+          "test_tushare_vs_jqdata_single_day",
+          "test_multi_provider_single_day_fq_diff",
+          "test_miniqmt_resampled_recent_minute_bars_match_jqdata"
+        ],
+        "hints": []
+      }
+    ],
+    "dotenv_blockers": [
+      {
+        "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\utils\\env_loader.py",
+        "issue": "references dotenv/load_dotenv — do not import for smoke"
+      }
+    ],
+    "type_to_local_entry": [
+      {
+        "admission_row": {
+          "data_domain": "minute_bar",
+          "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+          "source_rule_file": "jq_official_canonical_data_domain_map.csv",
+          "required_fields": "open,high,low,close,volume,money,factor",
+          "allowed_asset_types": "stock,fund,etf,index",
+          "allowed_frequencies": "1m,5m,15m,30m,60m",
+          "pit_required": "false",
+          "admission_status": "ADMIT_IF_MATCHED",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_MINUTE_BAR_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
+        "bind_status": "PATH_HEURISTIC_ONLY",
+        "blocker": "path guessed by keyword; function still unbound"
+      },
+      {
+        "admission_row": {
+          "data_domain": "daily_bar",
+          "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+          "source_rule_file": "jq_official_canonical_data_domain_map.csv",
+          "required_fields": "open,high,low,close,volume,money,factor,pre_close",
+          "allowed_asset_types": "stock,fund,etf,index",
+          "allowed_frequencies": "daily",
+          "pit_required": "false",
+          "admission_status": "ADMIT_IF_MATCHED",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_DAILY_BAR_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": null,
+        "bind_status": "UNBOUND",
+        "blocker": "no explicit adapter function wired in scanned files for this row"
+      },
+      {
+        "admission_row": {
+          "data_domain": "trade_calendar",
+          "source_rule_library": "BLACKBOX_CURRENT_DICTIONARY_R1",
+          "source_rule_file": "jqdata_official_data_domain_registry_CURRENT.json",
+          "required_fields": "trade_date,is_open",
+          "allowed_asset_types": "all",
+          "allowed_frequencies": "daily",
+          "pit_required": "false",
+          "admission_status": "ADMIT_IF_MATCHED",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_TRADE_CALENDAR_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": null,
+        "bind_status": "UNBOUND",
+        "blocker": "no explicit adapter function wired in scanned files for this row"
+      },
+      {
+        "admission_row": {
+          "data_domain": "tradable_status",
+          "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+          "source_rule_file": "jq_official_tradable_status_field_map.csv",
+          "required_fields": "paused,is_st,high_limit,low_limit",
+          "allowed_asset_types": "stock,fund,etf",
+          "allowed_frequencies": "daily,1m",
+          "pit_required": "false",
+          "admission_status": "ADMIT_IF_MATCHED",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_TRADABLE_STATUS_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
+        "bind_status": "PATH_HEURISTIC_ONLY",
+        "blocker": "path guessed by keyword; function still unbound"
+      },
+      {
+        "admission_row": {
+          "data_domain": "adjustment_factor",
+          "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+          "source_rule_file": "jq_official_adjustment_field_map.csv",
+          "required_fields": "factor,fq",
+          "allowed_asset_types": "stock,fund,etf,index",
+          "allowed_frequencies": "daily,minute",
+          "pit_required": "false",
+          "admission_status": "ADMIT_IF_MATCHED",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_ADJUSTMENT_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": null,
+        "bind_status": "UNBOUND",
+        "blocker": "no explicit adapter function wired in scanned files for this row"
+      },
+      {
+        "admission_row": {
+          "data_domain": "benchmark_data",
+          "source_rule_library": "BLACKBOX_CURRENT_DICTIONARY_R1",
+          "source_rule_file": "jqdata_official_data_domain_registry_CURRENT.json",
+          "required_fields": "index_master,index_components",
+          "allowed_asset_types": "index",
+          "allowed_frequencies": "daily",
+          "pit_required": "true",
+          "admission_status": "ADMIT_IF_MATCHED",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_BENCHMARK_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": null,
+        "bind_status": "UNBOUND",
+        "blocker": "no explicit adapter function wired in scanned files for this row"
+      },
+      {
+        "admission_row": {
+          "data_domain": "factor_dictionary",
+          "source_rule_library": "BLACKBOX_FACTOR_260_CURRENT_R1",
+          "source_rule_file": "factor_260_inventory_CURRENT.csv",
+          "required_fields": "canonical_factor_name",
+          "allowed_asset_types": "stock",
+          "allowed_frequencies": "daily",
+          "pit_required": "true",
+          "admission_status": "ADMIT_DICTIONARY_ONLY",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_DICTIONARY_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": null,
+        "bind_status": "UNBOUND",
+        "blocker": "no explicit adapter function wired in scanned files for this row"
+      },
+      {
+        "admission_row": {
+          "data_domain": "factor_formula",
+          "source_rule_library": "BLACKBOX_FACTOR_260_CURRENT_R1",
+          "source_rule_file": "factor_260_formula_CURRENT.csv",
+          "required_fields": "canonical_factor_name,formula",
+          "allowed_asset_types": "stock",
+          "allowed_frequencies": "daily",
+          "pit_required": "true",
+          "admission_status": "ADMIT_DICTIONARY_ONLY",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_FORMULA_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": null,
+        "bind_status": "UNBOUND",
+        "blocker": "no explicit adapter function wired in scanned files for this row"
+      },
+      {
+        "admission_row": {
+          "data_domain": "factor_cleaning_rules",
+          "source_rule_library": "BLACKBOX_FACTOR_260_CURRENT_R1",
+          "source_rule_file": "factor_260_cleaning_rules_CURRENT.json",
+          "required_fields": "cleaning_policy",
+          "allowed_asset_types": "stock",
+          "allowed_frequencies": "daily",
+          "pit_required": "true",
+          "admission_status": "ADMIT_DICTIONARY_ONLY",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_CLEANING_RULE_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": null,
+        "bind_status": "UNBOUND",
+        "blocker": "no explicit adapter function wired in scanned files for this row"
+      },
+      {
+        "admission_row": {
+          "data_domain": "factor_pit_rules",
+          "source_rule_library": "BLACKBOX_FACTOR_260_CURRENT_R1",
+          "source_rule_file": "factor_260_pit_rules_CURRENT.json",
+          "required_fields": "pit_policy",
+          "allowed_asset_types": "stock",
+          "allowed_frequencies": "daily",
+          "pit_required": "true",
+          "admission_status": "ADMIT_DICTIONARY_ONLY",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_PIT_RULE_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": null,
+        "bind_status": "UNBOUND",
+        "blocker": "no explicit adapter function wired in scanned files for this row"
+      },
+      {
+        "admission_row": {
+          "data_domain": "matching_requirements",
+          "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+          "source_rule_file": "jq_official_matching_data_requirements.csv",
+          "required_fields": "close,volume,high_limit,low_limit,paused,factor,pre_close,money",
+          "allowed_asset_types": "stock,fund,etf",
+          "allowed_frequencies": "daily,1m",
+          "pit_required": "false",
+          "admission_status": "ADMIT_IF_MATCHED",
+          "fail_action": "BLOCK",
+          "block_reason_code": "BLOCK_DATA_DOMAIN_MATCHING_REQUIREMENTS_UNMATCHED",
+          "notes": "dictionary_only_no_value_ingest"
+        },
+        "adapter_function": null,
+        "local_standard_or_raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
+        "bind_status": "PATH_HEURISTIC_ONLY",
+        "blocker": "path guessed by keyword; function still unbound"
+      }
+    ]
+  },
+  "correction_vs_1752": {
+    "1752_runtime_attempted_was_mislabeled": true,
+    "correct_label": "runtime_attempted=false / NOT_RUN_STATIC_ONLY",
+    "not_a_runtime_failure": true
+  }
+}
