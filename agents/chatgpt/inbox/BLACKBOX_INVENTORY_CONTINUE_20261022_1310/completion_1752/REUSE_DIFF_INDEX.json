@@ -1,0 +1,67 @@
+{
+  "at": "2026-10-22T17:59:18+08:00",
+  "items": [
+    {
+      "id": "continuation_1118_SUMMARY",
+      "path": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continuation_1118\\SUMMARY.json",
+      "supports": "950 docs drained done=950 failed=0 pending=0; not 950 business-rule acceptance",
+      "new_read_this_round": false,
+      "reason": "reuse durable worklist completion",
+      "snapshot": {
+        "done": 950,
+        "failed": 0,
+        "pending": 0,
+        "phase": "WORKLIST_DRAINED"
+      }
+    },
+    {
+      "id": "content_batch_1136_ETF1m_roots",
+      "path": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\content_batch_1136\\CONTENT_BATCH_1136.json",
+      "supports": "ETF_1m formal RAW = P4_fund_etf_raw_none/fund_etf_price_1m; cleaning=CURRENT.standard_root",
+      "new_read_this_round": false,
+      "etf1m_raw": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
+      "etf1m_cleaning": "Path(CURRENT_CLEANING_RELEASE.standard_root)/\"price\"/\"ETF_1m\"",
+      "note": "1732 P4_fund_etf old dir must not override this pointer"
+    },
+    {
+      "id": "contract_scope_1145",
+      "path": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\contract_scope_1145\\CONTRACT_SCOPE_1145.json",
+      "supports": "950 aggregate + exclusions + 75 table meta + ENGINE_SIDE_OUTSIDE_1118_ROOT exclusions",
+      "new_read_this_round": false,
+      "strategy_consumer_priority": "SUPERSEDED_BY_USER_SCOPE_1745"
+    },
+    {
+      "id": "continue_1310_completions_1447_to_1732",
+      "path": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310",
+      "supports": "entity meta, FUND_NAV full-read, semantics, migration, contract extraction V2",
+      "new_read_this_round": false
+    },
+    {
+      "id": "R9_FULL_MIGRATION_TECH_ACCEPTANCE",
+      "path": "E:\\BLACKBOX\\运行\\外部大脑信箱\\agents\\chatgpt\\outbox\\R9_FULL_MIGRATION_TECH_ACCEPTANCE_20261020_1625.md",
+      "supports": "migration fidelity accepted; no rehash/recopy",
+      "new_read_this_round": false
+    },
+    {
+      "id": "FORMAL_DOMAIN_REGISTRY_26",
+      "path": "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\CLEANING_INPUT_FINAL_REVIEW_R1\\01_FORMAL_DOMAIN_REGISTRY\\FORMAL_CLEANING_INPUT_DOMAIN_REGISTRY.json",
+      "supports": "original download domain baseline (26 formal domains)",
+      "new_read_this_round": true,
+      "reason": "required to build foundation ledger join"
+    },
+    {
+      "id": "DOMAIN_LEVEL_SEALS",
+      "path": "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\ALL_CURRENT_DOWNLOADED_DATA_FINAL_SEAL_R1\\07_DOMAIN_LEVEL_SEALS",
+      "supports": "per-domain seal artifacts for join",
+      "new_read_this_round": true,
+      "reason": "freshness/schema pointers without full parquet reread"
+    },
+    {
+      "id": "ENGINE_ROOT_1655",
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine",
+      "supports": "engine present under BLACKBOX_ENGINES mapping",
+      "new_read_this_round": true,
+      "reason": "admission/interface baseline check"
+    }
+  ]
+}
