@@ -1,0 +1,44 @@
+{
+  "status": "STATIC_REVIEWED",
+  "path": "运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_HANDBOOK_CURRENT.md",
+  "sha256": "6f3664e50a85434cdf863422c42f88de299fa77d71ea0d8b00914624104c9a6d",
+  "one_liner": "可下域必须下完 → 清洗 → 对齐/防穿越 → Cache → FUND_ETF_NAV tip → 外源 tip → inventory",
+  "download_model": "分域入口 + 下载后编排（orchestrator/TIP）；手册未声称单一全系统下载可执行入口",
+  "domain_entries_named": [
+    "FUND_ETF_NAV: 脚本/blackbox_fund_etf_nav_premium_plane_r1.py --phase all",
+    "外源: 脚本/blackbox_external_evidence_materialization_r2.py",
+    "Cache publish / tip rebase: 任务/.../cache_compiler_tip_rebase_from_current_r1.py via orchestrator"
+  ],
+  "inventory_top": {
+    "exists": true,
+    "sha256": "3c19d88eb2d8933188f1c56b6f4ae8b121a2d297f7d00d796c649e86b1eb6833",
+    "size": 24519,
+    "inventory_id": "BLACKBOX_FULL_DATA_INVENTORY_TOP_R1",
+    "generated_at_cn": "2026-09-25T04:06:41+0800",
+    "keys": [
+      "inventory_id",
+      "schema_version",
+      "generated_at_cn",
+      "generated_at_utc",
+      "refresh_script",
+      "rule_mdc",
+      "definition",
+      "ag_injection_policy",
+      "roots",
+      "current_cleaning",
+      "index_minute_aligned_clean",
+      "index_minute_download_tracks",
+      "raw_jqdata_official",
+      "strategy_data_plane_additions",
+      "adjust_factor_pit_r1",
+      "price_domains_summary",
+      "clean_price_aug_minutes",
+      "in_flight_downloads",
+      "known_blocks",
+      "hand_snapshot",
+      "full_update_scope_last",
+      "sync_policy"
+    ],
+    "note": "TOP inventory ≠ 75 product master; do not treat summary PASS as measured product completeness"
+  }
+}
