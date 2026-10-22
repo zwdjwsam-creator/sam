@@ -1,0 +1,14 @@
+{
+  "status": "STATIC_REVIEWED",
+  "control_flow": [
+    "backup CACHE/CLEAN",
+    "wjson(CLEAN_PTR)",
+    "wjson(CACHE_PTR)",
+    "wjson(FACTS)",
+    "LEDGER",
+    "refresh"
+  ],
+  "atomicity": "PER_FILE_ONLY via tempfile+os.replace",
+  "finding": "MULTI_FILE_PUBLISH_FAILURE_WINDOW",
+  "review_ref": "source_reads/independent_review_1519/RESULTS.json"
+}
