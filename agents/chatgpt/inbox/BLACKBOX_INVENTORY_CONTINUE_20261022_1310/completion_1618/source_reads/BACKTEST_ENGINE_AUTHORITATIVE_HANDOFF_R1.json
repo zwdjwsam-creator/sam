@@ -1,0 +1,1566 @@
+{
+  "handoff_id": "BACKTEST_ENGINE_AUTHORITATIVE_HANDOFF_R1",
+  "generated_at": "2026-07-31T04:13:35+08:00",
+  "project_name": "backtest_lab",
+  "project_root": "D:\\backtest_lab",
+  "engine_base_path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+  "project_type": "INDEPENDENT_BACKTEST_ENGINE",
+  "blackbox_is_separate_project": true,
+  "jq_is_reference_behavior_not_source_code": true,
+  "qmt_is_downstream_and_disconnected": true,
+  "current_engine_status": "STRUCTURE_READY_DATA_WAITING",
+  "rule_layer_status": "READY",
+  "master_registry_status": "READY",
+  "formal_backtest_status": "CLOSED",
+  "factor_layer_status": "CLOSED_OR_DICTIONARY_ONLY",
+  "handoff_status": "READY_FOR_BLACKBOX_REVIEW",
+  "source_files_used": [
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\MASTER_RULE_LIBRARY_REGISTRY_R1.json",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_DOMAIN_ADMISSION_MATRIX_R1.csv",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\README_MASTER_RULE_LIBRARY_REGISTRY_R1.md",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_rule_library_registry.json",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_matching_behavior_rules.json",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_daily_minute_backtest_rules.json",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\blackbox_current_dictionary_rule_registry.json",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv",
+    "D:\\backtest_lab\\06_outputs\\contract_prelayout_R1\\contracts\\contract_registry.json",
+    "D:\\backtest_lab\\06_outputs\\artifact_query_state_registry_task_gate_R19_R21\\control_outputs\\engine_capability_registry.json",
+    "D:\\backtest_lab\\06_outputs\\output_builder_vnext_artifact_index_R18\\control_outputs\\formal_backtest_run_plan_blockers.json",
+    "D:\\backtest_lab\\99_reports\\cursor_dialog_handoff\\HANDOFF_BACKTEST_ENGINE_PHASE_SEAL.md",
+    "D:\\backtest_lab\\99_reports\\contract_prelayout_R1\\FINAL_CONTRACT_PRELAYOUT_R1_REPORT.md",
+    "D:\\backtest_lab\\99_reports\\rule_library_master_registry_R1\\rule_library_master_registry_result.json",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\BLACKBOX_BACKTEST_ONLY_SCOPE.md"
+  ],
+  "source_hashes": {
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\MASTER_RULE_LIBRARY_REGISTRY_R1.json": "10a228344711b1e288f5c29a7fa196b976e8255d4886305fca1e175af28c5625",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_DOMAIN_ADMISSION_MATRIX_R1.csv": "55ab95e94f649601cae5d4647dfba17e26b27dfd9affb95c9e2e250d3f172bfa",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\README_MASTER_RULE_LIBRARY_REGISTRY_R1.md": "034cf85f4733cbc553b6a4d4b1fbaff4cf9e850f71c4f4512ff68a66a4c70a04",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_rule_library_registry.json": "f53fcf2af0ee79925e24f355e22e1932c6ad01c2418a509ac71f8bfd349638c6",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_matching_behavior_rules.json": "9232bb52967b5494fb345f73d85dc75246da95d3fab78746091eae8ca68af60d",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_daily_minute_backtest_rules.json": "65418056c4b9054ffaa283e93cf4263f92a014ab35d2ecd138be0be5d66eda09",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\blackbox_current_dictionary_rule_registry.json": "56ca84401798ed57ee72260845144768ff33c86c074cfa8cb258a6464443f8dc",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv": "01e03d12c044ca29404aeeea4ca4ff3204b113038c438cc59cb8477a81171316",
+    "D:\\backtest_lab\\06_outputs\\contract_prelayout_R1\\contracts\\contract_registry.json": "f32b65549689810cb4c350807a33073f99a6dd2f8102ba2e733ab1d5c45746f9",
+    "D:\\backtest_lab\\06_outputs\\artifact_query_state_registry_task_gate_R19_R21\\control_outputs\\engine_capability_registry.json": "11237d7f2a9dff8c2587ba092658eadb28c90c92c07c09a63051fb22b6965adb",
+    "D:\\backtest_lab\\06_outputs\\output_builder_vnext_artifact_index_R18\\control_outputs\\formal_backtest_run_plan_blockers.json": "acc9041537a703d91b26f04337f47300a8029a1060edba9d231c22c5acdcdf26",
+    "D:\\backtest_lab\\99_reports\\cursor_dialog_handoff\\HANDOFF_BACKTEST_ENGINE_PHASE_SEAL.md": "796b5cbdefc2a6bf33a9c77b8124267a30577fbd46a161a512011ab2436ba52c",
+    "D:\\backtest_lab\\99_reports\\contract_prelayout_R1\\FINAL_CONTRACT_PRELAYOUT_R1_REPORT.md": "4c4c3d19a0095490eb94c8583c158a5cf4db15e3333222523ece0e21a78352c5",
+    "D:\\backtest_lab\\99_reports\\rule_library_master_registry_R1\\rule_library_master_registry_result.json": "f11ea09ca09edbfb92f864cc563063f370a33ed1501c8b47c191337de6db79be",
+    "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\BLACKBOX_BACKTEST_ONLY_SCOPE.md": "6e9b14ddc029bb1bca788c264184258887d4da3758236f56f7013089144e259a"
+  },
+  "engine_base_identity": {
+    "engine_dir": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine",
+    "scope_name_from_file": "BLACKBOX_JQ_COMPAT_ENGINE_V0",
+    "engine_mode_from_file": "backtest_only",
+    "scope_file": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\BLACKBOX_BACKTEST_ONLY_SCOPE.md"
+  },
+  "engine_base_origin_status": "NOT_VERIFIED",
+  "engine_base_origin_note": "D drive files do not provide authoritative provenance of the engine base origin; do not assert third-party project names as facts.",
+  "completed_modules": [
+    "single_channel",
+    "matrix_channel",
+    "parquet_input",
+    "matching_rule_gateway",
+    "archive_manager",
+    "test_memory",
+    "capability_registry",
+    "watchdog",
+    "rule_library",
+    "master_registry",
+    "pre_ingestion_gate"
+  ],
+  "structure_ready_modules": [
+    "output_metric_schema",
+    "output_builder_vnext",
+    "task_gate_scheduler",
+    "stop_failure_report",
+    "contract_prelayout"
+  ],
+  "query_ready_modules": [
+    "artifact_query"
+  ],
+  "blocked_modules": [
+    "formal_backtest",
+    "factor_layer"
+  ],
+  "not_ready_modules": [
+    "cleaning_window",
+    "execution_profile_registry",
+    "backtest_time_entry"
+  ],
+  "module_inventory": [
+    {
+      "module_id": "single_channel",
+      "status": "READY",
+      "capability_registry_module_id": "single_channel",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\channel_structure_lock_R9\\channel_structure_result.json"
+    },
+    {
+      "module_id": "matrix_channel",
+      "status": "READY",
+      "capability_registry_module_id": "matrix_channel",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\channel_structure_lock_R9\\channel_structure_result.json"
+    },
+    {
+      "module_id": "parquet_input",
+      "status": "READY",
+      "capability_registry_module_id": "parquet_replay",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\parquet_channel_replay_archive_memory_R12\\parquet_channel_replay_archive_memory_result.json"
+    },
+    {
+      "module_id": "cleaning_window",
+      "status": "NOT_READY",
+      "capability_registry_module_id": "parquet_window_expand",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\parquet_cleaning_window_expand_R11B\\parquet_cleaning_window_expand_result.json"
+    },
+    {
+      "module_id": "execution_profile_registry",
+      "status": "NOT_READY",
+      "capability_registry_module_id": "execution_profile_registry",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\cleaned_sample_profile_replay_R10B\\cleaned_sample_profile_replay_result.json"
+    },
+    {
+      "module_id": "matching_rule_gateway",
+      "status": "READY",
+      "capability_registry_module_id": "matching_rule_gateway",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\channel_structure_lock_R9\\channel_structure_result.json"
+    },
+    {
+      "module_id": "backtest_time_entry",
+      "status": "NOT_DEFINED",
+      "capability_registry_module_id": null,
+      "evidence_file": null
+    },
+    {
+      "module_id": "output_metric_schema",
+      "status": "STRUCTURE_READY",
+      "capability_registry_module_id": "metrics_computability_policy",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\full_dictionary_watchdog_formal_gate_R13_R16\\full_dictionary_watchdog_formal_gate_result.json"
+    },
+    {
+      "module_id": "output_builder_vnext",
+      "status": "STRUCTURE_READY",
+      "capability_registry_module_id": "output_builder_vnext",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\output_builder_vnext_artifact_index_R18\\output_builder_vnext_artifact_index_result.json"
+    },
+    {
+      "module_id": "archive_manager",
+      "status": "READY",
+      "capability_registry_module_id": "archive",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\parquet_channel_replay_archive_memory_R12\\parquet_channel_replay_archive_memory_result.json"
+    },
+    {
+      "module_id": "test_memory",
+      "status": "READY",
+      "capability_registry_module_id": "test_memory",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\parquet_channel_replay_archive_memory_R12\\parquet_channel_replay_archive_memory_result.json"
+    },
+    {
+      "module_id": "artifact_query",
+      "status": "QUERY_READY",
+      "capability_registry_module_id": "artifact_index",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\output_builder_vnext_artifact_index_R18\\output_builder_vnext_artifact_index_result.json"
+    },
+    {
+      "module_id": "capability_registry",
+      "status": "READY",
+      "capability_registry_module_id": null,
+      "evidence_file": null
+    },
+    {
+      "module_id": "task_gate_scheduler",
+      "status": "STRUCTURE_READY",
+      "capability_registry_module_id": null,
+      "evidence_file": null
+    },
+    {
+      "module_id": "watchdog",
+      "status": "READY",
+      "capability_registry_module_id": "io_watchdog",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\full_dictionary_watchdog_formal_gate_R13_R16\\full_dictionary_watchdog_formal_gate_result.json"
+    },
+    {
+      "module_id": "stop_failure_report",
+      "status": "STRUCTURE_READY",
+      "capability_registry_module_id": "stop_failure_report",
+      "evidence_file": "D:\\backtest_lab\\99_reports\\output_builder_vnext_artifact_index_R18\\output_builder_vnext_artifact_index_result.json"
+    },
+    {
+      "module_id": "contract_prelayout",
+      "status": "STRUCTURE_READY",
+      "capability_registry_module_id": null,
+      "evidence_file": null
+    },
+    {
+      "module_id": "rule_library",
+      "status": "READY",
+      "capability_registry_module_id": null,
+      "evidence_file": null
+    },
+    {
+      "module_id": "master_registry",
+      "status": "READY",
+      "capability_registry_module_id": null,
+      "evidence_file": null
+    },
+    {
+      "module_id": "pre_ingestion_gate",
+      "status": "READY",
+      "capability_registry_module_id": null,
+      "evidence_file": null
+    }
+  ],
+  "rule_libraries": [
+    {
+      "rule_library_id": "JQ_OFFICIAL_CANONICAL_R1",
+      "path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1",
+      "active": true,
+      "rule_count_or_file_count": 11,
+      "usage": "field_alias_asset_domain_matching_schema_reference",
+      "formal_backtest_active": false,
+      "engine_core_active": false,
+      "source_type": "BLACKBOX_RULE_LIBRARY_COPY",
+      "source_trace_status": "DOCUMENTED_IN_REGISTRY",
+      "notes": "canonical_field_count=93"
+    },
+    {
+      "rule_library_id": "JQ_OFFICIAL_MATCHING_BEHAVIOR_R1",
+      "path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_matching_behavior_rules.json",
+      "active": true,
+      "rule_count_or_file_count": 16,
+      "usage": "shadow_matching_validation;pre_ingestion_matching_requirement_check",
+      "formal_backtest_active": false,
+      "engine_core_active": false,
+      "source_type": "JQ_DOC_AND_LOCAL_ASSUMPTION",
+      "source_trace_status": "DOCUMENTED_IN_MASTER"
+    },
+    {
+      "rule_library_id": "JQ_OFFICIAL_DAILY_MINUTE_BACKTEST_R1",
+      "path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_daily_minute_backtest_rules.json",
+      "active": true,
+      "rule_count_or_file_count": 10,
+      "usage": "shadow_backtest_rule_validation;pre_ingestion_matching_requirement_check",
+      "formal_backtest_active": false,
+      "engine_core_active": false,
+      "source_type": "JQ_DOC_EXPLICIT",
+      "source_trace_status": "DOCUMENTED_IN_MASTER"
+    },
+    {
+      "rule_library_id": "BLACKBOX_CURRENT_DICTIONARY_R1",
+      "path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1",
+      "active": true,
+      "rule_count_or_file_count": 18,
+      "usage": "field_domain_pit_permission_download_route_reference",
+      "formal_backtest_active": false,
+      "engine_core_active": false,
+      "source_type": "BLACKBOX_CURRENT_SNAPSHOT",
+      "source_trace_status": "DOCUMENTED_IN_REGISTRY",
+      "notes": "factor_value_download_allowed=False"
+    },
+    {
+      "rule_library_id": "BLACKBOX_FACTOR_260_CURRENT_R1",
+      "path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1",
+      "active": true,
+      "rule_count_or_file_count": 260,
+      "usage": "factor_dictionary_only_admission;formula_explanation_mapping_reference",
+      "formal_backtest_active": false,
+      "engine_core_active": false,
+      "source_type": "BLACKBOX_CURRENT_SNAPSHOT",
+      "source_trace_status": "DOCUMENTED_IN_MASTER",
+      "notes": "dictionary_only; values forbidden"
+    },
+    {
+      "rule_library_id": "MASTER_RULE_LIBRARY_REGISTRY_R1",
+      "path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\MASTER_RULE_LIBRARY_REGISTRY_R1.json",
+      "active": true,
+      "rule_count_or_file_count": 5,
+      "usage": "master_index;pre_ingestion_admission",
+      "formal_backtest_active": false,
+      "engine_core_active": false,
+      "source_type": "D_DRIVE_MASTER_REGISTRY",
+      "source_trace_status": "DOCUMENTED"
+    },
+    {
+      "rule_library_id": "DATA_INGESTION_GATE_RULES_R1",
+      "path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+      "active": true,
+      "rule_count_or_file_count": 15,
+      "usage": "PRE_INGESTION_ONLY gate chain",
+      "formal_backtest_active": false,
+      "engine_core_active": false,
+      "source_type": "D_DRIVE_MASTER_GATE",
+      "source_trace_status": "DOCUMENTED",
+      "gate_order": [
+        "source_identity_gate",
+        "asset_code_format_gate",
+        "asset_type_gate",
+        "frequency_gate",
+        "field_dictionary_gate",
+        "field_alias_resolution_gate",
+        "data_domain_gate",
+        "pit_visibility_gate",
+        "adjustment_mode_gate",
+        "tradable_status_gate",
+        "matching_requirement_gate",
+        "factor_dictionary_gate",
+        "factor_pit_gate",
+        "factor_cleaning_rule_gate",
+        "final_admission_decision_gate"
+      ]
+    }
+  ],
+  "master_gate_flags": {
+    "data_ingestion_requires_master_rule_match": true,
+    "non_matching_data_admission_policy": "BLOCK",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "post_ingestion_judgement_allowed": false,
+    "formal_backtest_active": false,
+    "engine_core_active": false
+  },
+  "additional_rule_layer_not_in_master_list": {
+    "rule_library_id": "CN_A_EXCHANGE_TRADING_HARD_RULES_20260706_R1",
+    "path": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\cn_a_exchange_trading_hard_rules_20260706_R1",
+    "exists": true,
+    "master_registry_linked": false,
+    "status_note": "EXISTS_ON_DISK_BUT_NOT_LISTED_IN_MASTER_RULE_LIBRARIES"
+  },
+  "allowed_data_contract": [
+    {
+      "domain": "minute_bar",
+      "current_status": "DICTIONARY_ADMISSION_DEFINED",
+      "admission_condition": "ADMIT_IF_MATCHED; dictionary_only_no_value_ingest until real data gate pass",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_MINUTE_BAR_UNMATCHED",
+      "controlling_rule_file": "DATA_DOMAIN_ADMISSION_MATRIX_R1.csv"
+    },
+    {
+      "domain": "execution_profile",
+      "current_status": "STRUCTURE_DEFINED",
+      "admission_condition": "registry/schema exist; formal use requires task gate",
+      "block_reason_code": "NOT_DEFINED",
+      "controlling_rule_file": "execution_profile_registry_R8B"
+    },
+    {
+      "domain": "matching_rule",
+      "current_status": "RULE_LIBRARY_DEFINED",
+      "admission_condition": "reference-only until engine core connected",
+      "block_reason_code": "BLOCK_MATCH_*",
+      "controlling_rule_file": "jq_official_matching_behavior_rules.json"
+    },
+    {
+      "domain": "result_ledgers_structure",
+      "current_status": "STRUCTURE_READY",
+      "admission_condition": "query existing artifacts only; no new formal ledger generation in this handoff",
+      "block_reason_code": "NOT_DEFINED",
+      "controlling_rule_file": "R12 parquet_channel_replay_archive_memory"
+    },
+    {
+      "domain": "archive_structure",
+      "current_status": "READY",
+      "admission_condition": "query_existing_artifacts",
+      "block_reason_code": "NOT_DEFINED",
+      "controlling_rule_file": "08_archives"
+    },
+    {
+      "domain": "test_memory_structure",
+      "current_status": "READY",
+      "admission_condition": "query_existing_artifacts",
+      "block_reason_code": "NOT_DEFINED",
+      "controlling_rule_file": "09_test_memory"
+    },
+    {
+      "domain": "JQData_official_dictionary",
+      "current_status": "READY_DICTIONARY_ONLY",
+      "admission_condition": "schema/dictionary reference; no live API",
+      "block_reason_code": "BLOCK_FIELD_DICTIONARY_GATE",
+      "controlling_rule_file": "BLACKBOX_CURRENT_DICTIONARY_R1"
+    },
+    {
+      "domain": "factor_dictionary_metadata_only",
+      "current_status": "ADMIT_DICTIONARY_ONLY",
+      "admission_condition": "metadata only; values forbidden",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_DICTIONARY_UNMATCHED",
+      "controlling_rule_file": "factor_260_inventory_CURRENT.csv"
+    },
+    {
+      "domain": "factor_formula_metadata_only",
+      "current_status": "ADMIT_DICTIONARY_ONLY",
+      "admission_condition": "metadata only",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_FORMULA_UNMATCHED",
+      "controlling_rule_file": "factor_260_formula_CURRENT.csv"
+    },
+    {
+      "domain": "factor_pit_rules_metadata_only",
+      "current_status": "ADMIT_DICTIONARY_ONLY",
+      "admission_condition": "metadata only",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_PIT_RULE_UNMATCHED",
+      "controlling_rule_file": "factor_260_pit_rules_CURRENT.json"
+    },
+    {
+      "domain": "factor_engine_mapping_metadata_only",
+      "current_status": "ADMIT_DICTIONARY_ONLY",
+      "admission_condition": "metadata only",
+      "block_reason_code": "NOT_DEFINED",
+      "controlling_rule_file": "factor_260_engine_mapping_CURRENT.csv"
+    }
+  ],
+  "blocked_data_contract": [
+    {
+      "domain": "real_factor_values",
+      "current_status": "BLOCKED",
+      "admission_condition": "factor_value_download_allowed=false",
+      "block_reason_code": "BLOCK_FACTOR_VALUE",
+      "controlling_rule_file": "blackbox_current_dictionary_rule_registry.json"
+    },
+    {
+      "domain": "JQ260_factor_values",
+      "current_status": "BLOCKED",
+      "admission_condition": "dictionary only; values forbidden",
+      "block_reason_code": "BLOCK_FACTOR_VALUE",
+      "controlling_rule_file": "BLACKBOX_FACTOR_260_CURRENT_R1"
+    },
+    {
+      "domain": "BBX_unverified_factor_values",
+      "current_status": "BLOCKED",
+      "admission_condition": "unverified factor values forbidden",
+      "block_reason_code": "BLOCK_FACTOR_VALUE",
+      "controlling_rule_file": "master_registry_R1"
+    },
+    {
+      "domain": "data_not_matched_to_master_registry",
+      "current_status": "BLOCKED",
+      "admission_condition": "data_ingestion_requires_master_rule_match=true",
+      "block_reason_code": "BLOCK_SOURCE_IDENTITY_GATE",
+      "controlling_rule_file": "DATA_INGESTION_GATE_RULES_R1.json"
+    },
+    {
+      "domain": "unknown_fields",
+      "current_status": "BLOCKED",
+      "admission_condition": "field dictionary gate fail",
+      "block_reason_code": "BLOCK_FIELD_DICTIONARY_GATE",
+      "controlling_rule_file": "DATA_INGESTION_GATE_RULES_R1.json"
+    },
+    {
+      "domain": "unknown_asset_types",
+      "current_status": "BLOCKED",
+      "admission_condition": "asset type gate fail",
+      "block_reason_code": "BLOCK_ASSET_TYPE_GATE",
+      "controlling_rule_file": "DATA_INGESTION_GATE_RULES_R1.json"
+    },
+    {
+      "domain": "unsupported_frequencies",
+      "current_status": "BLOCKED",
+      "admission_condition": "frequency gate fail",
+      "block_reason_code": "BLOCK_FREQUENCY_GATE",
+      "controlling_rule_file": "FREQUENCY_ADMISSION_MATRIX_R1.csv"
+    },
+    {
+      "domain": "PIT_undefined_data",
+      "current_status": "BLOCKED",
+      "admission_condition": "pit visibility gate fail",
+      "block_reason_code": "BLOCK_PIT_*",
+      "controlling_rule_file": "PIT_VISIBILITY_ADMISSION_MATRIX_R1.csv"
+    },
+    {
+      "domain": "missing_matching_required_fields",
+      "current_status": "BLOCKED",
+      "admission_condition": "matching requirement gate fail",
+      "block_reason_code": "BLOCK_MATCH_*",
+      "controlling_rule_file": "MATCHING_REQUIREMENT_ADMISSION_MATRIX_R1.csv"
+    },
+    {
+      "domain": "QMT_live_broker_inputs",
+      "current_status": "BLOCKED",
+      "admission_condition": "qmt disconnected; live/broker disabled by scope",
+      "block_reason_code": "BLOCK_QMT_LIVE_BROKER",
+      "controlling_rule_file": "BLACKBOX_BACKTEST_ONLY_SCOPE.md"
+    }
+  ],
+  "not_ready_data_contract": [
+    {
+      "domain": "daily_bar",
+      "current_status": "NOT_READY",
+      "admission_condition": "domain admission defined but data not ready",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_DAILY_BAR_UNMATCHED",
+      "controlling_rule_file": "formal_backtest_run_plan_blockers.json"
+    },
+    {
+      "domain": "trade_calendar",
+      "current_status": "NOT_READY",
+      "admission_condition": "domain admission defined but data not ready",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_TRADE_CALENDAR_UNMATCHED",
+      "controlling_rule_file": "formal_backtest_run_plan_blockers.json"
+    },
+    {
+      "domain": "session",
+      "current_status": "NOT_READY",
+      "admission_condition": "domain not ready",
+      "block_reason_code": "SESSION_READY=NOT_READY",
+      "controlling_rule_file": "formal_backtest_run_plan_blockers.json"
+    },
+    {
+      "domain": "tradable_status",
+      "current_status": "NOT_READY",
+      "admission_condition": "TradableStatusContract=NOT_READY; domain not ready",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_TRADABLE_STATUS_UNMATCHED",
+      "controlling_rule_file": "contract_registry.json / blockers"
+    },
+    {
+      "domain": "benchmark_data",
+      "current_status": "NOT_READY",
+      "admission_condition": "BenchmarkMetricInputContract=NOT_READY",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_BENCHMARK_UNMATCHED",
+      "controlling_rule_file": "formal_backtest_run_plan_blockers.json"
+    },
+    {
+      "domain": "tick_formal_backtest",
+      "current_status": "NOT_READY",
+      "admission_condition": "tick backtest disabled in scope",
+      "block_reason_code": "TICK_DISABLED_BY_SCOPE",
+      "controlling_rule_file": "BLACKBOX_BACKTEST_ONLY_SCOPE.md"
+    }
+  ],
+  "time_and_visibility_contract": [
+    {
+      "item": "backtest_start_date_semantics",
+      "definition_status": "NOT_DEFINED",
+      "evidence": null,
+      "notes": "no authoritative engine-core SSOT found in inspected files"
+    },
+    {
+      "item": "backtest_end_date_semantics",
+      "definition_status": "NOT_DEFINED",
+      "evidence": null,
+      "notes": ""
+    },
+    {
+      "item": "signal_time_semantics",
+      "definition_status": "NOT_DEFINED",
+      "evidence": null,
+      "notes": ""
+    },
+    {
+      "item": "data_visibility_semantics",
+      "definition_status": "PARTIAL",
+      "evidence": "data_visibility_contract.py",
+      "notes": "STRUCTURE_ONLY contract fields; not engine-core implemented"
+    },
+    {
+      "item": "daily_bar_completion_time",
+      "definition_status": "NOT_DEFINED",
+      "evidence": null,
+      "notes": ""
+    },
+    {
+      "item": "minute_bar_completion_time",
+      "definition_status": "NOT_DEFINED",
+      "evidence": null,
+      "notes": ""
+    },
+    {
+      "item": "previous_minute_visibility",
+      "definition_status": "PARTIAL",
+      "evidence": "jq_official_daily_minute_backtest_rules.json",
+      "notes": "JQ rule library defines previous_minute_last_price for market fill; engine_core_implemented=false"
+    },
+    {
+      "item": "current_bar_visibility",
+      "definition_status": "PARTIAL",
+      "evidence": "data_visibility_contract.py",
+      "notes": "lookahead_guard reserved"
+    },
+    {
+      "item": "future_data_guard",
+      "definition_status": "PARTIAL",
+      "evidence": "DataVisibilityContractConstants.lookahead_guard=true",
+      "notes": "contract reserved only"
+    },
+    {
+      "item": "PIT_enforcement",
+      "definition_status": "PARTIAL",
+      "evidence": "PIT_VISIBILITY_ADMISSION_MATRIX_R1.csv / factor_260_pit_rules_CURRENT.json",
+      "notes": "pre-ingestion/dictionary layer; engine_core not connected"
+    },
+    {
+      "item": "timezone",
+      "definition_status": "PARTIAL",
+      "evidence": "clock_contract.py time_zone field",
+      "notes": "field reserved; concrete timezone value NOT_DEFINED"
+    },
+    {
+      "item": "trading_calendar_dependency",
+      "definition_status": "NOT_READY",
+      "evidence": "formal_backtest_run_plan_blockers.json",
+      "notes": "trade_calendar NOT_READY"
+    },
+    {
+      "item": "session_dependency",
+      "definition_status": "NOT_READY",
+      "evidence": "formal_backtest_run_plan_blockers.json",
+      "notes": "session NOT_READY"
+    }
+  ],
+  "event_clock_and_bar_contract": [
+    {
+      "item": "initialize",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "StrategyInterfaceContract STRUCTURE_ONLY",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "before_trading",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "ClockContract session_phase reserved",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "market_open",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "ClockContract session_phase reserved",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "scheduled_callback",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "scope mentions run_daily/weekly/monthly as planning; not verified implemented for formal use",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "bar_event",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "EventEnvelopeContract STRUCTURE_ONLY",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "order_event",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "OrderFillSchemaContract STRUCTURE_ONLY",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "trade_event",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "OrderFillSchemaContract STRUCTURE_ONLY",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "market_close",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "ClockContract session_phase reserved",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "time_advance_policy",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "ClockContract.time_advance_policy",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "lookahead_guard",
+      "rule_defined": false,
+      "contract_reserved": true,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": "ClockContract/DataVisibilityContract",
+      "definition_status": "CONTRACT_RESERVED"
+    },
+    {
+      "item": "same_bar_order_policy",
+      "rule_defined": false,
+      "contract_reserved": false,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": null,
+      "definition_status": "NOT_DEFINED"
+    },
+    {
+      "item": "next_bar_order_policy",
+      "rule_defined": false,
+      "contract_reserved": false,
+      "engine_core_implemented": false,
+      "verified_by_replay": false,
+      "formal_use_allowed": false,
+      "evidence": null,
+      "definition_status": "NOT_DEFINED"
+    }
+  ],
+  "matching_and_order_rules": [
+    {
+      "item": "daily_market_fill_price",
+      "rule_id": "JQ_BACKTEST_DAILY_MARKET_ORDER_FILL_PRICE_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "minute_market_fill_price",
+      "rule_id": "JQ_BACKTEST_MINUTE_MARKET_ORDER_FILL_PRICE_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "daily_market_volume_limit",
+      "rule_id": "JQ_BACKTEST_DAILY_MARKET_ORDER_VOLUME_LIMIT_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "minute_market_volume_limit",
+      "rule_id": "JQ_BACKTEST_MINUTE_MARKET_ORDER_VOLUME_LIMIT_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "pending_limit_buy_condition",
+      "rule_id": "JQ_BACKTEST_LIMIT_PENDING_MINUTE_BAR_BUY_CONDITION_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "pending_limit_sell_condition",
+      "rule_id": "JQ_BACKTEST_LIMIT_PENDING_MINUTE_BAR_SELL_CONDITION_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "pending_limit_volume_cap",
+      "rule_id": "JQ_MATCH_LIMIT_PENDING_MINUTE_BAR_VOLUME_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "market_excess_cancellation",
+      "rule_id": "JQ_MATCH_VOLUME_LIMIT_EXCESS_ACTION_R1B",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "limit_excess_remains_pending",
+      "rule_id": "JQ_MATCH_VOLUME_LIMIT_EXCESS_ACTION_R1B",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "limit_up_buy_behavior",
+      "rule_id": "JQ_MATCH_LIMIT_UP_BUY_BLOCK_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "limit_down_sell_behavior",
+      "rule_id": "JQ_MATCH_LIMIT_DOWN_SELL_BLOCK_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "suspension_no_trade_behavior",
+      "rule_id": "JQ_MATCH_SUSPENDED_NO_TRADE_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "suspended_bar_fields",
+      "rule_id": "JQ_DATA_SUSPENDED_BAR_FIELD_BEHAVIOR_R1",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "order_book_matching_scope",
+      "rule_id": "JQ_MATCH_ORDER_BOOK_SIMULATION_ONLY_R1B",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "missing_order_book_fallback",
+      "rule_id": "JQ_MATCH_ORDER_BOOK_MISSING_DATA_FALLBACK_R1B",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    },
+    {
+      "item": "tick_limit_order_behavior",
+      "rule_id": "JQ_MATCH_LIMIT_PENDING_TICK_FILL_R1B",
+      "RULE_LIBRARY_DEFINED": true,
+      "ENGINE_CORE_IMPLEMENTED": false,
+      "SHADOW_VERIFIED": false,
+      "FORMAL_VERIFIED": false,
+      "source_files": [
+        "jq_official_matching_behavior_rules.json",
+        "jq_official_daily_minute_backtest_rules.json"
+      ]
+    }
+  ],
+  "cost_settlement_cash_position_contract": [
+    {
+      "item": "CostModelContract",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "cost_model_contract.py",
+      "notes": "STRUCTURE_ONLY"
+    },
+    {
+      "item": "SettlementContract",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "settlement_contract.py",
+      "notes": "default_stock_settlement_rule=T1 reserved"
+    },
+    {
+      "item": "RiskGatewayContract",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "risk_gateway_contract.py",
+      "notes": "STRUCTURE_ONLY"
+    },
+    {
+      "item": "OrderFillSchemaContract",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "order_fill_schema_contract.py",
+      "notes": "cost fields removed; cost_model_id only"
+    },
+    {
+      "item": "cash_ledger",
+      "status": "NOT_DEFINED",
+      "evidence": "",
+      "notes": "no formal cash ledger schema SSOT verified beyond planning"
+    },
+    {
+      "item": "available_cash",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "SettlementContract.available_cash_today",
+      "notes": "schema field only"
+    },
+    {
+      "item": "frozen_cash",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "SettlementContract.frozen_cash_today",
+      "notes": "schema field only"
+    },
+    {
+      "item": "position_quantity",
+      "status": "NOT_DEFINED",
+      "evidence": "",
+      "notes": "scope mentions position model; formal schema status NOT_VERIFIED for engine core"
+    },
+    {
+      "item": "closeable_amount",
+      "status": "PARTIAL",
+      "evidence": "BLACKBOX_BACKTEST_ONLY_SCOPE.md",
+      "notes": "mentioned in V0 planning; ENGINE_CORE_IMPLEMENTED not verified for formal use"
+    },
+    {
+      "item": "T+1_reservation",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "SettlementContractConstants.position_sellable_t_plus_one=True",
+      "notes": ""
+    },
+    {
+      "item": "ETF_T0_or_T1_status",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "SettlementContract.etf_settlement_rule",
+      "notes": "T0_or_T1 literal reserved"
+    },
+    {
+      "item": "commission",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "CostModelContract",
+      "notes": "independent cost model reserved"
+    },
+    {
+      "item": "tax",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "CostModelContract",
+      "notes": ""
+    },
+    {
+      "item": "slippage",
+      "status": "CONTRACT_RESERVED",
+      "evidence": "CostModelContract / matching rules",
+      "notes": "matching rules reference slippage; formal cost activation NOT_DEFINED"
+    },
+    {
+      "item": "minimum_commission",
+      "status": "NOT_DEFINED",
+      "evidence": "",
+      "notes": ""
+    },
+    {
+      "item": "valuation_policy",
+      "status": "NOT_DEFINED",
+      "evidence": "",
+      "notes": ""
+    },
+    {
+      "item": "suspended_position_valuation",
+      "status": "LOCAL_CONFIGURABLE_POLICY_NOT_ACTIVATED",
+      "evidence": "LOCAL_MATCH_SUSPENDED_POSITION_VALUATION_R1",
+      "notes": "NOT JQ official; local assumption; engine_core_active=false"
+    }
+  ],
+  "asset_lifecycle_rules": [
+    {
+      "item": "listing_date",
+      "required_field": "list_date",
+      "source_rule_file": "tradable_status_contract.py / FINAL_CONTRACT_PRELAYOUT report",
+      "admission_status": "NOT_READY",
+      "matching_impact": "affects tradable",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "item": "delisting_date",
+      "required_field": "delist_date",
+      "source_rule_file": "tradable_status_contract.py / FINAL_CONTRACT_PRELAYOUT report",
+      "admission_status": "NOT_READY",
+      "matching_impact": "affects tradable",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "item": "new_stock",
+      "required_field": "is_new_stock",
+      "source_rule_file": "tradable_status_contract.py notes",
+      "admission_status": "NOT_READY",
+      "matching_impact": "risk/tradable",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "item": "ST",
+      "required_field": "is_st",
+      "source_rule_file": "jq_official_tradable_status_field_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED_DICTIONARY",
+      "matching_impact": "limit policy input",
+      "implementation_status": "RULE_FIELD_DEFINED_DATA_NOT_READY"
+    },
+    {
+      "item": "suspended",
+      "required_field": "paused/is_suspended",
+      "source_rule_file": "jq_official_tradable_status_field_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED_DICTIONARY",
+      "matching_impact": "no trade when suspended",
+      "implementation_status": "RULE_DEFINED_ENGINE_CORE_NOT_CONNECTED"
+    },
+    {
+      "item": "high_limit",
+      "required_field": "high_limit",
+      "source_rule_file": "jq_official_tradable_status_field_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED_DICTIONARY",
+      "matching_impact": "limit-up buy block",
+      "implementation_status": "RULE_DEFINED_ENGINE_CORE_NOT_CONNECTED"
+    },
+    {
+      "item": "low_limit",
+      "required_field": "low_limit",
+      "source_rule_file": "jq_official_tradable_status_field_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED_DICTIONARY",
+      "matching_impact": "limit-down sell block",
+      "implementation_status": "RULE_DEFINED_ENGINE_CORE_NOT_CONNECTED"
+    },
+    {
+      "item": "asset_code_format",
+      "required_field": "security_code pattern",
+      "source_rule_file": "jq_official_asset_code_format_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "matching_impact": "ingest gate",
+      "implementation_status": "RULE_DEFINED"
+    },
+    {
+      "item": "stock",
+      "required_field": "asset_type=stock",
+      "source_rule_file": "jq_official_asset_code_format_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "matching_impact": "matching/settlement",
+      "implementation_status": "RULE_DEFINED"
+    },
+    {
+      "item": "ETF",
+      "required_field": "asset_type=etf",
+      "source_rule_file": "jq_official_asset_code_format_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "matching_impact": "matching/settlement",
+      "implementation_status": "RULE_DEFINED"
+    },
+    {
+      "item": "fund",
+      "required_field": "asset_type=fund",
+      "source_rule_file": "jq_official_asset_code_format_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "matching_impact": "matching/settlement",
+      "implementation_status": "RULE_DEFINED"
+    },
+    {
+      "item": "index",
+      "required_field": "asset_type=index",
+      "source_rule_file": "jq_official_asset_code_format_map.csv",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "matching_impact": "benchmark/domain",
+      "implementation_status": "RULE_DEFINED_DATA_NOT_READY"
+    }
+  ],
+  "plugin_and_io_contract": {
+    "inputs": [
+      {
+        "item": "strategy_interface",
+        "interface_defined": true,
+        "schema_defined": true,
+        "implementation_status": "STRUCTURE_ONLY",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "StrategyInterfaceContract"
+      },
+      {
+        "item": "data_adapter",
+        "interface_defined": true,
+        "schema_defined": false,
+        "implementation_status": "PARTIAL_OR_STRUCTURE",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "dataprovider_adapter_R1 reports; formal use not allowed"
+      },
+      {
+        "item": "execution_profile",
+        "interface_defined": true,
+        "schema_defined": true,
+        "implementation_status": "REGISTRY_EXISTS_BUT_CAPABILITY_NOT_READY",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "execution_profile_registry_R8B"
+      },
+      {
+        "item": "benchmark_input",
+        "interface_defined": true,
+        "schema_defined": true,
+        "implementation_status": "NOT_READY",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "BenchmarkMetricInputContract"
+      },
+      {
+        "item": "factor_input",
+        "interface_defined": true,
+        "schema_defined": true,
+        "implementation_status": "DICTIONARY_ONLY_VALUES_BLOCKED",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "BLACKBOX_FACTOR_260_CURRENT_R1"
+      },
+      {
+        "item": "external_data_port",
+        "interface_defined": false,
+        "schema_defined": false,
+        "implementation_status": "NOT_DEFINED",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "NOT_DEFINED"
+      }
+    ],
+    "outputs": [
+      {
+        "item": "order_ledger",
+        "interface_defined": true,
+        "schema_defined": false,
+        "implementation_status": "STRUCTURE_READY_OR_PLANNING",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "R12 result package structure"
+      },
+      {
+        "item": "trade_ledger",
+        "interface_defined": true,
+        "schema_defined": false,
+        "implementation_status": "STRUCTURE_READY_OR_PLANNING",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "R12 result package structure"
+      },
+      {
+        "item": "position_ledger",
+        "interface_defined": true,
+        "schema_defined": false,
+        "implementation_status": "STRUCTURE_READY_OR_PLANNING",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "R12 result package structure"
+      },
+      {
+        "item": "cash_ledger",
+        "interface_defined": false,
+        "schema_defined": false,
+        "implementation_status": "NOT_DEFINED",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "NOT_DEFINED"
+      },
+      {
+        "item": "daily_portfolio",
+        "interface_defined": true,
+        "schema_defined": false,
+        "implementation_status": "STRUCTURE_READY_OR_PLANNING",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "scope/ledger planning"
+      },
+      {
+        "item": "metrics",
+        "interface_defined": true,
+        "schema_defined": true,
+        "implementation_status": "STRUCTURE_READY",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "metrics_computability_policy"
+      },
+      {
+        "item": "ResultPackage",
+        "interface_defined": true,
+        "schema_defined": false,
+        "implementation_status": "READY_FOR_QUERY_EXISTING",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "07_result_packages + R12"
+      },
+      {
+        "item": "archive",
+        "interface_defined": true,
+        "schema_defined": false,
+        "implementation_status": "READY",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "08_archives"
+      },
+      {
+        "item": "test_memory",
+        "interface_defined": true,
+        "schema_defined": false,
+        "implementation_status": "READY",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "09_test_memory"
+      },
+      {
+        "item": "artifact_index",
+        "interface_defined": true,
+        "schema_defined": true,
+        "implementation_status": "QUERY_READY",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "output_builder_vnext_artifact_index_R18"
+      },
+      {
+        "item": "STOP_report",
+        "interface_defined": true,
+        "schema_defined": true,
+        "implementation_status": "STRUCTURE_READY",
+        "formal_use_allowed": false,
+        "controlling_contract_or_rule": "blocked_task_stop_report_schema.json"
+      }
+    ]
+  },
+  "blackbox_review_checklist": [
+    {
+      "check_id": "BBX_CHK_001",
+      "requirement": "BLACKBOX 字段字典是否与 D 盘 MASTER 字段矩阵一致。",
+      "current_backtest_engine_status": "FIELD_ADMISSION_MATRIX_R1.csv exists; BLACKBOX response pending",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_002",
+      "requirement": "BLACKBOX 资产代码是否符合 D 盘代码准入矩阵。",
+      "current_backtest_engine_status": "ASSET_CODE_ADMISSION_MATRIX_R1.csv exists",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_003",
+      "requirement": "BLACKBOX frequency 是否在准入矩阵中。",
+      "current_backtest_engine_status": "FREQUENCY_ADMISSION_MATRIX_R1.csv exists",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_004",
+      "requirement": "BLACKBOX PIT / available_date 是否满足 D 盘可见性合同。",
+      "current_backtest_engine_status": "PIT matrix + DataVisibilityContract STRUCTURE_ONLY",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_005",
+      "requirement": "BLACKBOX trade_calendar / session 是否可提供。",
+      "current_backtest_engine_status": "trade_calendar/session NOT_READY on engine side",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_006",
+      "requirement": "BLACKBOX tradable_status 是否可提供。",
+      "current_backtest_engine_status": "tradable_status NOT_READY; TradableStatusContract NOT_READY",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_007",
+      "requirement": "BLACKBOX adjustment mode 是否明确。",
+      "current_backtest_engine_status": "PriceAdjustmentModeContract STRUCTURE_ONLY",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_008",
+      "requirement": "BLACKBOX benchmark 是否可提供。",
+      "current_backtest_engine_status": "benchmark_data NOT_READY",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_009",
+      "requirement": "BLACKBOX 因子只允许 metadata，真实因子值仍禁止。",
+      "current_backtest_engine_status": "factor layer BLOCKED / dictionary only",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_010",
+      "requirement": "BLACKBOX 输出数据必须在进入 D 盘前通过 PRE_INGESTION gate。",
+      "current_backtest_engine_status": "DATA_INGESTION_GATE_RULES_R1 active; engine core not connected",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_011",
+      "requirement": "不允许先进入后修复。",
+      "current_backtest_engine_status": "post_ingestion_judgement_allowed=false",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    },
+    {
+      "check_id": "BBX_CHK_012",
+      "requirement": "任一失败必须生成 block_reason_code。",
+      "current_backtest_engine_status": "gate rules define block_reason_code per gate",
+      "blackbox_response_required": true,
+      "compatibility_status": "PENDING_BLACKBOX_REVIEW"
+    }
+  ],
+  "current_blockers": [
+    {
+      "blocker_id": "real_data_not_ready",
+      "status": "ACTIVE",
+      "evidence": "contract_registry.engine_state=STRUCTURE_READY_DATA_WAITING"
+    },
+    {
+      "blocker_id": "daily_bar_not_ready",
+      "status": "ACTIVE",
+      "evidence": "formal_backtest_run_plan_blockers.json"
+    },
+    {
+      "blocker_id": "trade_calendar_not_ready",
+      "status": "ACTIVE",
+      "evidence": "formal_backtest_run_plan_blockers.json"
+    },
+    {
+      "blocker_id": "session_not_ready",
+      "status": "ACTIVE",
+      "evidence": "formal_backtest_run_plan_blockers.json"
+    },
+    {
+      "blocker_id": "tradable_status_not_ready",
+      "status": "ACTIVE",
+      "evidence": "formal_backtest_run_plan_blockers.json / TradableStatusContract"
+    },
+    {
+      "blocker_id": "benchmark_not_ready",
+      "status": "ACTIVE",
+      "evidence": "formal_backtest_run_plan_blockers.json"
+    },
+    {
+      "blocker_id": "factor_values_forbidden",
+      "status": "ACTIVE",
+      "evidence": "bb_reg.factor_value_download_allowed / capability factor_layer BLOCKED"
+    },
+    {
+      "blocker_id": "engine_core_not_connected_to_master_gate",
+      "status": "ACTIVE",
+      "evidence": "master.engine_core_active=false; README"
+    },
+    {
+      "blocker_id": "shadow_validation_not_run",
+      "status": "ACTIVE",
+      "evidence": "HANDOFF_BACKTEST_ENGINE_PHASE_SEAL.md next-stage candidate"
+    },
+    {
+      "blocker_id": "daily_minute_three_month_validation_not_run",
+      "status": "ACTIVE",
+      "evidence": "no validation report found in inspected outputs"
+    }
+  ],
+  "formal_start_conditions": [
+    {
+      "condition_id": "FSC_01",
+      "condition": "BLACKBOX 交接核对通过",
+      "status": "PENDING"
+    },
+    {
+      "condition_id": "FSC_02",
+      "condition": "真实数据通过 MASTER PRE_INGESTION gate",
+      "status": "PENDING"
+    },
+    {
+      "condition_id": "FSC_03",
+      "condition": "必需数据域 READY（daily_bar/trade_calendar/session/tradable_status/benchmark）",
+      "status": "PENDING"
+    },
+    {
+      "condition_id": "FSC_04",
+      "condition": "shadow engine 建立",
+      "status": "PENDING"
+    },
+    {
+      "condition_id": "FSC_05",
+      "condition": "日线和分钟线至少三个月验证完成",
+      "status": "PENDING"
+    },
+    {
+      "condition_id": "FSC_06",
+      "condition": "撮合差异已记录",
+      "status": "PENDING"
+    },
+    {
+      "condition_id": "FSC_07",
+      "condition": "本地补充规则已明确标注",
+      "status": "PARTIAL",
+      "notes": "LOCAL_MATCH_SUSPENDED_POSITION_VALUATION_R1 marked local assumption"
+    },
+    {
+      "condition_id": "FSC_08",
+      "condition": "task gate 明确允许",
+      "status": "PENDING"
+    },
+    {
+      "condition_id": "FSC_09",
+      "condition": "正式回测仍需单独授权",
+      "status": "REQUIRED",
+      "notes": "ALLOW_FORMAL_BACKTEST_IMPL_NEXT=NO currently"
+    }
+  ],
+  "formal_backtest_blockers_from_file": [
+    {
+      "domain": "formal_gate",
+      "reason": "R13-R16 ALLOW_FORMAL_BACKTEST_IMPL_NEXT=NO"
+    },
+    {
+      "domain": "daily_bar",
+      "reason": "NOT_READY"
+    },
+    {
+      "domain": "trade_calendar",
+      "reason": "NOT_READY"
+    },
+    {
+      "domain": "session",
+      "reason": "NOT_READY"
+    },
+    {
+      "domain": "tradable_status",
+      "reason": "NOT_READY"
+    },
+    {
+      "domain": "benchmark_data",
+      "reason": "NOT_READY"
+    }
+  ],
+  "contract_prelayout_summary": {
+    "engine_state": "STRUCTURE_READY_DATA_WAITING",
+    "total_contract_count": 14,
+    "formal_backtest_allowed": false,
+    "factor_layer_allowed": false,
+    "dry_structure_mode": true,
+    "contracts": [
+      {
+        "contract_id": "StrategyInterfaceContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "DataVisibilityContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "EventEnvelopeContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "OrderFillSchemaContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "TradableStatusContract",
+        "status": "NOT_READY"
+      },
+      {
+        "contract_id": "PriceAdjustmentModeContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "BenchmarkMetricInputContract",
+        "status": "NOT_READY"
+      },
+      {
+        "contract_id": "RealDataRestartGateContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "ClockContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "SettlementContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "CostModelContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "RiskGatewayContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "ReproducibilityContract",
+        "status": "STRUCTURE_ONLY"
+      },
+      {
+        "contract_id": "SchemaVersionContract",
+        "status": "STRUCTURE_ONLY"
+      }
+    ]
+  },
+  "handoff_conclusion": "BACKTEST_ENGINE_HANDOFF_PACKAGE_READY_FOR_BLACKBOX_REVIEW",
+  "explicitly_not_claimed": [
+    "FORMAL_BACKTEST_READY",
+    "REAL_FACTOR_READY",
+    "PRODUCTION_READY"
+  ],
+  "hard_boundary_confirmation": {
+    "ENGINE_SOURCE_MODIFIED": "NO",
+    "RULE_LIBRARY_MODIFIED": "NO",
+    "MASTER_REGISTRY_MODIFIED": "NO",
+    "CONTRACT_MODIFIED": "NO",
+    "E_BLACKBOX_READ": "NO",
+    "E_BLACKBOX_MODIFIED": "NO",
+    "REAL_FACTOR_CONNECTED": "NO",
+    "JQ260_FACTOR_VALUES_CONNECTED": "NO",
+    "FORMAL_BACKTEST_RUN": "NO",
+    "REPLAY_RUN": "NO",
+    "RESULT_PACKAGE_GENERATED": "NO",
+    "LEDGER_GENERATED": "NO",
+    "QMT_CONNECTED": "NO",
+    "NETWORK_USED": "NO",
+    "NEW_DEPENDENCY_INSTALLED": "NO",
+    "SYSTEM_PY_USED": "YES"
+  }
+}
