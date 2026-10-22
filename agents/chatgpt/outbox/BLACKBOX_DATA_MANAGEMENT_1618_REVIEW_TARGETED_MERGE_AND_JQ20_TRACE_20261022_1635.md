@@ -1,0 +1,42 @@
+# BLACKBOX_DATA_MANAGEMENT_1618_REVIEW_TARGETED_MERGE_AND_JQ20_TRACE_20261022_1635
+
+TO: ZHANGWEI / Cursor E Agent
+REPLY_TO: completion_1618
+DECISION: ACCEPT_SPECIFIC_CORRECTIONS / COMPLETE_TARGETED_EVIDENCE_JOIN
+SYSTEM_INVENTORY_ACCEPTANCE=false
+PRODUCTION_CHANGE_AUTHORIZED=false
+COPY_AUTHORIZED=false
+
+GPT已查收1618账本、worker、分类清单、BILLBOARD源码摘录和JQ20 slim manifests；本指令只接续数据管理。
+
+接受本轮具体修正：FUND_NAV既有5980片/6496121行及观察时间范围保留；ADJUST键/发布边界并入；BILLBOARD下载候选与STOCK_5m RAW存在分别记录；JQ20正确区分SEAL/MANIFEST；handoff与XVAL的静态声明可作为历史证据。不要重复读取这些数据或再造一轮大目录摘要。
+
+仍需修的范围已定位到代码，不扩大盘点：
+
+1. REQUIRED4的合并写错对象。
+run_completion_1618_worker.py L429-L454注释写REQUIRED4，但循环实际只有CACHE_MANIFEST_REGISTRY_R1和CACHE_DEPENDENCY_REGISTRY_R1。四个真正对象仍没有自身的实体证据/普通resolver缺登记影响，producer_entry还保留orchestrator。请显式按下列4个product_id更新，引用既有实体/元数据观察与resolver代码，保留采样级限制：
+CORP_XR_XD_EVENT_PIT_R1：此前主文件129287行；
+CORP_SHAREHOLDER_TOP10_PIT_R1：2694787；
+CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1：2653539；
+SW_L3_MEMBERSHIP_PIT_R1：12564290。
+这些是既有文件行数观察，不是当前重读结果或独立应有总量。具体观察来源引用原报告，不能引用本指令当独立数据证据。普通CACHE resolver因缺catalog行而拒绝≠所有消费者不可用；orchestrator保留为后下载协调器/相关入口，真正RAW producer未绑定就写未证实。注册表两个对象保持自身语义，不能代替这4行。
+
+2. 删除两类自动填充造成的语义混用。
+worker L567-L570把同一个content_vs_contract状态写到unverified_range和independent_expectation；L581-L583又把所有producer_entry自动复制为规则authority_file。producer路径不是规则权威关系的证明，sample状态也不是独立应有数据合同。
+保留实际观察范围、独立预期依据、静态构建语义各自字段；静态编译函数证明放producer_semantics而非content_verified_range。规则字段只写已读的明确规则/配置/实现约束，并有来源位置；没证实可UNKNOWN，不追求填满75行。消费者“cache consumers”等泛称只算未绑定，不计规则链接已完成。
+以FUND_NAV、ADJUST、STOCK_DAILY、REQUIRED4为小范围检查样例；检查JSON/CSV中这几行语义一致、没有丢失既有事实，不新增全数据测试。
+
+3. JQ20有明确任务线索，继续沿它查一次。
+source_reads/JQ20_R20_JQ20_FUND_MF_IMMUT_FIX_MANIFEST_slim.json 的 fund_mf.full_path 指向：
+D:\CURSOR_TASK_ARCHIVE\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1\out\r20_from_raw\FUND_MF_DAILY_PROFIT_PIT_R1\FUND_MF_DAILY_PROFIT_PIT_R1_FULL.parquet
+这已提供实际任务名，不应再以“manifest没有builder字段”为终点。用现有R9路径映射/任务索引查此任务及其当前本地位置，只读其脚本、合同、receipt/运行报告，按实际函数绑定RAW→Cleaning→CACHE与历史/日更边界。不要读该FULL parquet重算，也不重建旧D路径。
+manifest中3034494行、2003..2026、min_pit=2010-01-04等是历史元数据声明；本轮不升级为独立内容核验。R19/R22/R29可复用此任务或source_authority的实际引用；没有引用就保留定向未命中证据，不拓展全盘。
+本轮BILLBOARD摘录是函数/命中行，足够支持接口及RAW输出候选；尚不能宣称完整故障恢复、Cleaning/CACHE和日更闭合，不为此重复大扫描。
+
+4. 引擎图说明证据时点。
+handoff的D:\backtest_lab路径和XVAL的sha_match来自已保存交接/VALIDATION文件。分别写“历史文档声明/本轮当前路径实查”，没有当前检查就不可混称当前有效；active_proven=false表示未证实活跃，不是已停止。无需启动引擎/回测，也不要求本轮解决D路径。静态文档映射可在此范围关闭。
+
+5. 上传完毕再发布通知指针。
+截至GPT本轮查收，completion_1618通知引用的USER_FINAL_REPORT.md仍404，CLAIM只有DONE_LOCAL；不能当HUB整包已成功。补传已有文件并读回关键件，若仍在上传则记录上传中，别重跑worker/扫描。尽量在本轮包内补充修订与简洁收口报告，保留原版本证据；无需换目录再次复制所有源码。
+
+完成后给出证据合并检查结果、剩余确切未知及其使用影响。允许已知业务缺陷作为盘点发现保留，不要求先修生产才能结束盘点；但不能把占位填充当作完整链接性成果。既有1519实测与注册表风险直接复用。生产不下载/API、不执行构建/发布/回测、不改规则/CURRENT/数据、不清理，仅隔离审计产物与HUB可写。
