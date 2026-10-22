@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-22T17:39:46+08:00",
+  "items": [
+    {
+      "order": 1,
+      "focus": "REQUIRED4_resolver_catalog_reachability",
+      "why": "entity/meta present; catalog reject is availability gap separate from row integrity",
+      "evidence_cost": "low — reuse 1447 resolver reject evidence; no parquet reread",
+      "products": [
+        "CORP_XR_XD_EVENT_PIT_R1",
+        "CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "SW_L3_MEMBERSHIP_PIT_R1"
+      ]
+    },
+    {
+      "order": 2,
+      "focus": "FUND_NAV_universe_and_history_start_normative",
+      "why": "pit/key DEFINED; universe exclusion + normative start still missing for integrity compare",
+      "evidence_cost": "medium — read load_fund_codes + incremental rule FUND_ETF_NAV section only",
+      "products": [
+        "FUND_NAV_PIT_R1"
+      ]
+    },
+    {
+      "order": 3,
+      "focus": "ETF_5m_independent_coverage_artifact",
+      "why": "paths exist; no CURRENT coverage/manifest analogous to 1m; producer unbound after unbinding jq_expand",
+      "evidence_cost": "medium — locate or confirm absence of 5m coverage generator; no full rescan",
+      "products": [
+        "ETF_MINUTE_5M_R1"
+      ]
+    },
+    {
+      "order": 4,
+      "focus": "ETF_1m_should_have_universe_vs_coverage_file",
+      "why": "coverage CURRENT is plane check SOURCE_DECLARATION; not yet independent full should-have",
+      "evidence_cost": "high if full universe; prefer bounded symbol list from existing manifest first",
+      "products": [
+        "ETF_MINUTE_1M_R1"
+      ]
+    },
+    {
+      "order": 5,
+      "focus": "batch_extract_remaining_via_rule_index",
+      "why": "same method as ABC; do not invent production rules; skip keyword scoring",
+      "evidence_cost": "varies — prefer PRODUCT_META/CONTRACT then scripts cited in ledger",
+      "products_n": 65,
+      "products_head": [
+        "ADJUST_FACTOR_PIT_R1",
+        "BILLBOARD_DAILY_PIT_R1",
+        "ETF_DAILY_PIT_R1",
+        "ETF_FACTOR_DAILY_R1",
+        "ETF_MINUTE_30M_R1",
+        "ETF_MINUTE_60M_R1",
+        "ETF_TRACKING_INDEX_MAP_R1",
+        "FINANCIAL_INDICATOR_PIT_R1",
+        "FUND_DAILY_PIT_R1",
+        "FUND_FACTOR_DAILY_R1",
+        "INDEX_CONSTITUENT_PIT_R1",
+        "INDEX_DAILY_R1",
+        "INDEX_FACTOR_DAILY_R1",
+        "INDEX_WEIGHT_PIT_R1",
+        "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+        "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+        "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+        "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+        "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+        "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1"
+      ]
+    }
+  ]
+}
