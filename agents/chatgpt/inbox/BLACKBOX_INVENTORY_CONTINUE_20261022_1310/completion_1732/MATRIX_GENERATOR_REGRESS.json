@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-22T17:39:46+08:00",
+  "all_pass": true,
+  "cases": [
+    {
+      "id": 1,
+      "name": "UNKNOWN_long_insufficient_empty_gaps",
+      "pass": true,
+      "r1_assessment": "INSUFFICIENT_EVIDENCE",
+      "r1b_gaps": []
+    },
+    {
+      "id": 2,
+      "name": "proven_gap_requires_req_plus_obs",
+      "pass": true,
+      "example": {
+        "product_id": "SYNTH_PROVEN_GAP",
+        "fields": {
+          "asof": {
+            "expectation_status": "DEFINED",
+            "expectation_basis": "NORMATIVE_RULE",
+            "text": "required asof=X",
+            "source": null
+          }
+        },
+        "assessment": "PROVEN_GAP",
+        "proven_gaps": [
+          {
+            "field": "asof",
+            "required": "X",
+            "observed": "Y",
+            "evidence": "synthetic regression only"
+          }
+        ],
+        "unknowns": []
+      }
+    },
+    {
+      "id": 3,
+      "name": "view_split_assessment",
+      "pass": true,
+      "assessment": {
+        "materialized_rows": "NOT_APPLICABLE",
+        "dependency_or_consumer_link": "INSUFFICIENT_EVIDENCE"
+      }
+    },
+    {
+      "id": 4,
+      "name": "etf_unbind_jq_expand",
+      "pass": true,
+      "producer": {
+        "producer_entry": null,
+        "producer_note": "producer unbound after excluding stock jq_expand; path may still exist",
+        "excluded_stock_script_evidence": "1543/1635: jq_expand_minute_v3 serves stock minute FREQS only; must not bind as ETF_5m/30m/60m producer",
+        "producer_entry_removed": "脚本/jq_expand_minute_v3.py"
+      }
+    }
+  ]
+}
