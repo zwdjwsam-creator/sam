@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-22T15:41:10+08:00",
+  "entries": [
+    {
+      "object_set": [
+        "ETF_DAILY_PIT_R1",
+        "ETF_FACTOR_DAILY_R1",
+        "FUND_DAILY_PIT_R1",
+        "FUND_FACTOR_DAILY_R1",
+        "FUND_LIKE_ASSET_VIEW_R1",
+        "INDEX_CONSTITUENT_PIT_R1",
+        "INDEX_DAILY_R1",
+        "INDEX_FACTOR_DAILY_R1",
+        "MARKET_STRUCTURE_DAILY_R1",
+        "STOCK_FACTOR_DAILY_R1",
+        "SW_L1_STRUCTURE_DAILY_R1"
+      ],
+      "producer_entry_path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+      "producer_entry_sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+      "role": "CACHE_COMPILER_FULL_HISTORY — builds/writes many cache products including FUND_LIKE_ASSET_VIEW_R1 VIEW.json",
+      "functions": [
+        {
+          "name": "main",
+          "lineno": 237,
+          "end_lineno": 468,
+          "n_lines": 232
+        }
+      ],
+      "producer_review_status": "PRODUCER_STATIC_REVIEWED_PARTIAL",
+      "keys_watermark_revision_resume": "NOT fully extracted all helpers this round — main+product hit lines only; resume/dedupe per-product still OPEN inside compiler helpers",
+      "notes": "Shared producer for multiple daily/factor products; NOT RAW JQ download entry. post-download tip rebase is separate.",
+      "object_set_proven_in_code": true,
+      "search_ref": "source_reads/cache_compiler_full_history_product_hits.md"
+    },
+    {
+      "object_set": [
+        "ETF_MINUTE_1M_R1"
+      ],
+      "producer_entry_path": "脚本/blackbox_etf_minute_1m_plane_r1.py",
+      "producer_entry_sha256": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316",
+      "role": "ETF_MINUTE_1M plane producer (not the daily_increment_check)",
+      "functions": [
+        {
+          "lineno": 198,
+          "end_lineno": 217,
+          "n_lines": 20
+        },
+        {
+          "lineno": 696,
+          "end_lineno": 791,
+          "n_lines": 96
+        }
+      ],
+      "producer_review_status": "PRODUCER_STATIC_REVIEWED_PARTIAL",
+      "keys_watermark_revision_resume": "see plane body — shard manifest; full resume semantics PARTIAL this round",
+      "notes": "Upgrades 1527 check-only for 1m with actual plane script",
+      "object_set_proven_in_code": true
+    },
+    {
+      "object_set": [
+        "ETF_MINUTE_30M_R1",
+        "ETF_MINUTE_5M_R1",
+        "ETF_MINUTE_60M_R1",
+        "STOCK_MINUTE_1M_R1",
+        "STOCK_MINUTE_30M_R1",
+        "STOCK_MINUTE_5M_R1",
+        "STOCK_MINUTE_60M_R1"
+      ],
+      "producer_entry_path": "脚本/jq_expand_minute_v3.py",
+      "producer_entry_sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+      "role": "candidate multi-frequency minute expand/download helper",
+      "functions": [],
+      "producer_review_status": "PRODUCER_LOCATED_BODY_PARTIAL",
+      "keys_watermark_revision_resume": "UNPROVEN_FULL — hits archived; full function AST of all freqs not completed this round",
+      "notes": "Search hit — not yet full semantic chain per frequency. Do not claim complete update/resume.",
+      "object_set_proven_in_code": true,
+      "search_ref": "source_reads/jq_expand_minute_v3_hits.md"
+    }
+  ],
+  "cbond_semantics": "SEMANTICS_CBOND_PRODUCER.json"
+}
