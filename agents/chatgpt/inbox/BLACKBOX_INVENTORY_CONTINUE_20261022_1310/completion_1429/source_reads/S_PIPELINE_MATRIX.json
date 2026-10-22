@@ -1,0 +1,316 @@
+{
+  "rule_id": "BLACKBOX_FULL_DATA_PIPELINE_MATRIX_R1",
+  "asof": "2026-08-12",
+  "generated_at_cn": "2026-09-25T04:04:43+0800",
+  "overall": "PASS",
+  "cleaning_current": "BLACKBOX_FORMAL_CLEANING_R25_COMPANY_PAGED_ASOF_20260812_20260813_005630",
+  "index_minute_align_current": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260812_20260812_225721",
+  "index_minute_align_all_pass": true,
+  "cache_current": "BLACKBOX_CACHE_R1_FULL_R23_REBASE_ASOF_20260812_20260813_005404",
+  "cache_source_cleaning": "BLACKBOX_FORMAL_CLEANING_R25_COMPANY_PAGED_ASOF_20260812_20260813_005630",
+  "cache_cleaning_matched": true,
+  "anti_lookahead_pass": true,
+  "required_cache_products_present": {
+    "STOCK_DAILY_PIT_R1": true,
+    "FINANCIAL_INDICATOR_PIT_R1": true,
+    "CORP_XR_XD_EVENT_PIT_R1": true,
+    "CORP_SHAREHOLDER_TOP10_PIT_R1": true,
+    "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1": true,
+    "SW_L1_MEMBERSHIP_PIT_R1": true,
+    "SW_L2_MEMBERSHIP_PIT_R1": true,
+    "SW_L3_MEMBERSHIP_PIT_R1": true,
+    "STOCK_TRADEABILITY_PIT_R1": true,
+    "VALUATION_PIT_R1": true
+  },
+  "standard_pipeline": [
+    "scan_gaps",
+    "download_REQUIRED_except_permission_blocked_or_deferred_aux",
+    "formal_cleaning_switch_CURRENT",
+    "index_minute_align_and_SW_PIT_align",
+    "anti_leakage_checks",
+    "cache_publish_FULL_products_not_thin_canary_only",
+    "verify_source_cleaning_match",
+    "inventory_refresh"
+  ],
+  "hard_rules": [
+    "日更宣称 PASS 必须：可下域下载完 + 清洗 CURRENT + 对齐/防穿越 + CACHE CURRENT",
+    "禁止 thin canary 覆盖掉已有 FI/CORP/JQ20/SW 产品而不 rebase",
+    "security_state 必须进 STOCK_TRADEABILITY_PIT_R1",
+    "权限挡 / 用户不需要 / QMT：SKIP 并写入全表，勿反复追问",
+    "hk_connector_aux / etf_fund_aux：辅域 DEFERRED，不挡主链"
+  ],
+  "rows": [
+    {
+      "domain": "calendar_cn_exchange",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "INHERITED_VIA_DAILY_PLANE",
+      "note": "asof bumped in cleaning"
+    },
+    {
+      "domain": "A_share_daily_raw_none",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": "STOCK_DAILY_PIT_R1"
+    },
+    {
+      "domain": "ETF_daily_raw_none",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": ""
+    },
+    {
+      "domain": "index_daily_raw_none",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": ""
+    },
+    {
+      "domain": "adjust_factor",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "VIA_FACTOR_CLEAN",
+      "note": "in cleaning factor/adjust_factor"
+    },
+    {
+      "domain": "valuation_factor_reference",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": "VALUATION_PIT_R1 injected"
+    },
+    {
+      "domain": "billboard_longhubang",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "CLEAN_ONLY_OK",
+      "note": "event fact; not strategy cache answer"
+    },
+    {
+      "domain": "A_share_minute_5m/1m/30m/60m",
+      "need_download": true,
+      "download": "PASS_AUG_IN_CLEAN",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "N_A_MINUTE_NOT_DAILY_CACHE",
+      "note": "minute stays clean plane"
+    },
+    {
+      "domain": "ETF_minute_*",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "N_A_MINUTE_NOT_DAILY_CACHE",
+      "note": ""
+    },
+    {
+      "domain": "index_minute_732",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS_ALIGN",
+      "align_antileak": "PASS",
+      "cache": "N_A_MINUTE_ALIGN_PLANE",
+      "note": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260812_20260812_225721"
+    },
+    {
+      "domain": "finance_income_balance_cashflow_pit",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": "JQ20 finance products restored"
+    },
+    {
+      "domain": "finance_company_info",
+      "need_download": true,
+      "download": "PASS_PAGED_7027",
+      "clean": "PASS_R25",
+      "align_antileak": "PASS",
+      "cache": "CLEAN_REFERENCE_OK",
+      "note": "paged snapshot asof 0812"
+    },
+    {
+      "domain": "financial_indicator",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": "restored from FULL rebase"
+    },
+    {
+      "domain": "stk_xr_xd",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": ""
+    },
+    {
+      "domain": "stk_shareholder_top10",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": ""
+    },
+    {
+      "domain": "stk_shareholder_floating_top10",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": ""
+    },
+    {
+      "domain": "security_state",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS_R23",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": "ST/pause→tradeability"
+    },
+    {
+      "domain": "security_master_pit",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": ""
+    },
+    {
+      "domain": "industry_concept_meta",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "SW_MEMBERSHIP_PRODUCTS",
+      "note": "sw_l1 industries + SW L123 cache"
+    },
+    {
+      "domain": "index_constituent_pit",
+      "need_download": true,
+      "download": "PASS_ASOF_SNAPSHOT",
+      "clean": "PASS_R24",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": "major indexes asof 0812 + existing PIT product"
+    },
+    {
+      "domain": "sw_l1/l2/l3_membership",
+      "need_download": true,
+      "download": "PASS",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "PASS",
+      "note": "asof 0812"
+    },
+    {
+      "domain": "p5_events_aux",
+      "need_download": true,
+      "download": "COVERED",
+      "clean": "PASS",
+      "align_antileak": "PASS",
+      "cache": "CORP_AND_BILLBOARD",
+      "note": "COVERED_BY_BILLBOARD_AND_CORP_REF"
+    },
+    {
+      "domain": "hk_connector_aux",
+      "need_download": false,
+      "download": "DEFERRED",
+      "clean": "N_A",
+      "align_antileak": "N_A",
+      "cache": "N_A",
+      "note": "no 0812 increment slot; not blocking"
+    },
+    {
+      "domain": "etf_fund_aux",
+      "need_download": false,
+      "download": "DEFERRED",
+      "clean": "N_A",
+      "align_antileak": "N_A",
+      "cache": "N_A",
+      "note": "P8 June full; ETF main track covers daily/minute"
+    },
+    {
+      "domain": "full_factor_values_library",
+      "need_download": false,
+      "download": "SKIP_PERMISSION",
+      "clean": "N_A",
+      "align_antileak": "N_A",
+      "cache": "N_A",
+      "note": "paid module sealed"
+    },
+    {
+      "domain": "money_flow_abnormal_lock_subscribe",
+      "need_download": false,
+      "download": "SKIP_PERMISSION",
+      "clean": "N_A",
+      "align_antileak": "N_A",
+      "cache": "N_A",
+      "note": "paid module sealed"
+    },
+    {
+      "domain": "jq260_factor_values(_library)",
+      "need_download": false,
+      "download": "SKIP_PERMISSION",
+      "clean": "N_A",
+      "align_antileak": "N_A",
+      "cache": "N_A",
+      "note": "paid module sealed"
+    },
+    {
+      "domain": "fq_pre_post",
+      "need_download": false,
+      "download": "SKIP_NOT_NEEDED",
+      "clean": "N_A",
+      "align_antileak": "N_A",
+      "cache": "N_A",
+      "note": ""
+    },
+    {
+      "domain": "QMT_live",
+      "need_download": false,
+      "download": "OUT_OF_SCOPE",
+      "clean": "N_A",
+      "align_antileak": "N_A",
+      "cache": "N_A",
+      "note": ""
+    }
+  ],
+  "deferred_aux": [
+    "hk_connector_aux"
+  ],
+  "permission_skip": [
+    "money_flow_abnormal_lock_subscribe",
+    "full_factor_values_library",
+    "jq260_factor_values",
+    "jq260_factor_values_library",
+    "fq_pre_post"
+  ],
+  "fund_etf_nav_status": "ACTIVE_TIP_ASOF_20260924"
+}
