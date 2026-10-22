@@ -1,0 +1,553 @@
+{
+  "at": "2026-10-22T17:20:54+08:00",
+  "plan_path": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_FIX_FULL_SOURCE_MAPPING_AND_STRUCTURE_20261015\\FINAL_CANDIDATE.sqlite",
+  "plan_sha256": "53551d39338d0f45e1cde111391bc9d296d62bd09b08703ecfce177183a24e0d",
+  "sha_match_tip": true,
+  "paths_coverage_note": "Queried: paths (PK/LIKE-ESCAPE/GLOB/range/instr) + links/logical_view_42/observed_metadata_52/blocked_metadata_52/suspect_version_140/link_overlay_audit. entities.d_paths/delta_paths not expanded (blob aggregates; no path PK).",
+  "separator": "backslash Windows paths in DB",
+  "underscore_like_issue": {
+    "explanation": "LIKE treats '_' as wildcard; task/engine names contain '_'",
+    "old_unescaped_B_prefix_count": 975,
+    "old_unescaped_B_prefix_seconds": 1.323,
+    "old_double_backslash_percent_count": 0,
+    "old_double_backslash_percent_seconds": 1.31
+  },
+  "positive_control": {
+    "root": "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+    "method": "prefix_glob_children",
+    "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path GLOB ? LIMIT 20",
+    "params_repr": "('D:\\\\backtest_lab\\\\02_blackbox_jq_compat_engine\\\\*',)",
+    "n": 20,
+    "sample": [
+      [
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CAPABILITY_REGISTRY.json",
+        0,
+        "3187598165",
+        "562949953714149",
+        "d"
+      ],
+      [
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CURRENT_ENGINE_REGISTRY.json",
+        0,
+        "3187598165",
+        "562949953714147",
+        "d"
+      ],
+      [
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine",
+        1,
+        "3187598165",
+        "1688849860523503",
+        "d"
+      ],
+      [
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\.env",
+        0,
+        "3187598165",
+        "562949953730575",
+        "d"
+      ],
+      [
+        "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\.git",
+        1,
+        "3187598165",
+        "562949953681378",
+        "d"
+      ]
+    ],
+    "seconds": 0.0,
+    "full_b_methods": {
+      "root": "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+      "methods": {
+        "exact_pk": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path=?",
+          "params_repr": "('D:\\\\backtest_lab\\\\02_blackbox_jq_compat_engine',)",
+          "n": 1,
+          "sample": [
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+              1,
+              "3187598165",
+              "562949953680556",
+              "d"
+            ]
+          ],
+          "seconds": 0.0
+        },
+        "prefix_like_escape": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path LIKE ? ESCAPE '\\' LIMIT 20",
+          "params_repr": "('D:\\\\\\\\backtest\\\\_lab\\\\\\\\02\\\\_blackbox\\\\_jq\\\\_compat\\\\_engine\\\\%',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 1.31
+        },
+        "prefix_glob_children": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path GLOB ? LIMIT 20",
+          "params_repr": "('D:\\\\backtest_lab\\\\02_blackbox_jq_compat_engine\\\\*',)",
+          "n": 20,
+          "sample": [
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CAPABILITY_REGISTRY.json",
+              0,
+              "3187598165",
+              "562949953714149",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CURRENT_ENGINE_REGISTRY.json",
+              0,
+              "3187598165",
+              "562949953714147",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine",
+              1,
+              "3187598165",
+              "1688849860523503",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\.env",
+              0,
+              "3187598165",
+              "562949953730575",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\.git",
+              1,
+              "3187598165",
+              "562949953681378",
+              "d"
+            ]
+          ],
+          "seconds": 0.0
+        },
+        "prefix_range_children": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path >= ? AND path < ? LIMIT 20",
+          "params_repr": "('D:\\\\backtest_lab\\\\02_blackbox_jq_compat_engine\\\\', 'D:\\\\backtest_lab\\\\02_blackbox_jq_compat_engine]')",
+          "n": 20,
+          "sample": [
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CAPABILITY_REGISTRY.json",
+              0,
+              "3187598165",
+              "562949953714149",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CURRENT_ENGINE_REGISTRY.json",
+              0,
+              "3187598165",
+              "562949953714147",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine",
+              1,
+              "3187598165",
+              "1688849860523503",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\.env",
+              0,
+              "3187598165",
+              "562949953730575",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\.git",
+              1,
+              "3187598165",
+              "562949953681378",
+              "d"
+            ]
+          ],
+          "seconds": 0.0
+        },
+        "instr_leaf_name": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE instr(path, ?) > 0 LIMIT 20",
+          "params_repr": "('02_blackbox_jq_compat_engine',)",
+          "n": 20,
+          "sample": [
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+              1,
+              "3187598165",
+              "562949953680556",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine",
+              1,
+              "3187598165",
+              "1688849860523503",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\logs",
+              1,
+              "3187598165",
+              "1407374883571794",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CAPABILITY_REGISTRY.json",
+              0,
+              "3187598165",
+              "562949953714149",
+              "d"
+            ],
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CURRENT_ENGINE_REGISTRY.json",
+              0,
+              "3187598165",
+              "562949953714147",
+              "d"
+            ]
+          ],
+          "seconds": 2.145
+        }
+      }
+    }
+  },
+  "A_variants": [
+    {
+      "root": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1",
+      "methods": {
+        "exact_pk": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path=?",
+          "params_repr": "('D:\\\\CURSOR_TASK_ARCHIVE\\\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 0.0
+        },
+        "prefix_like_escape": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path LIKE ? ESCAPE '\\' LIMIT 20",
+          "params_repr": "('D:\\\\\\\\CURSOR\\\\_TASK\\\\_ARCHIVE\\\\\\\\BLACKBOX\\\\_JQ20\\\\_FULL\\\\_DOWNLOAD\\\\_PIT\\\\_CLEAN\\\\_CACHE\\\\_HAND\\\\_R1\\\\%',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 1.3
+        },
+        "prefix_glob_children": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path GLOB ? LIMIT 20",
+          "params_repr": "('D:\\\\CURSOR_TASK_ARCHIVE\\\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1\\\\*',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 0.0
+        },
+        "prefix_range_children": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path >= ? AND path < ? LIMIT 20",
+          "params_repr": "('D:\\\\CURSOR_TASK_ARCHIVE\\\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1\\\\', 'D:\\\\CURSOR_TASK_ARCHIVE\\\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1]')",
+          "n": 0,
+          "sample": [],
+          "seconds": 0.0
+        },
+        "instr_leaf_name": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE instr(path, ?) > 0 LIMIT 20",
+          "params_repr": "('BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 2.111
+        }
+      }
+    },
+    {
+      "root": "\\\\192.168.100.2\\D_DRIVE\\CURSOR_TASK_ARCHIVE\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1",
+      "methods": {
+        "exact_pk": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path=?",
+          "params_repr": "('\\\\\\\\192.168.100.2\\\\D_DRIVE\\\\CURSOR_TASK_ARCHIVE\\\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 0.0
+        },
+        "prefix_like_escape": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path LIKE ? ESCAPE '\\' LIMIT 20",
+          "params_repr": "('\\\\\\\\\\\\\\\\192.168.100.2\\\\\\\\D\\\\_DRIVE\\\\\\\\CURSOR\\\\_TASK\\\\_ARCHIVE\\\\\\\\BLACKBOX\\\\_JQ20\\\\_FULL\\\\_DOWNLOAD\\\\_PIT\\\\_CLEAN\\\\_CACHE\\\\_HAND\\\\_R1\\\\%',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 1.407
+        },
+        "prefix_glob_children": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path GLOB ? LIMIT 20",
+          "params_repr": "('\\\\\\\\192.168.100.2\\\\D_DRIVE\\\\CURSOR_TASK_ARCHIVE\\\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1\\\\*',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 0.0
+        },
+        "prefix_range_children": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE path >= ? AND path < ? LIMIT 20",
+          "params_repr": "('\\\\\\\\192.168.100.2\\\\D_DRIVE\\\\CURSOR_TASK_ARCHIVE\\\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1\\\\', '\\\\\\\\192.168.100.2\\\\D_DRIVE\\\\CURSOR_TASK_ARCHIVE\\\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1]')",
+          "n": 0,
+          "sample": [],
+          "seconds": 0.0
+        },
+        "instr_leaf_name": {
+          "sql": "SELECT path, is_dir, volume_serial, file_id, source FROM paths WHERE instr(path, ?) > 0 LIMIT 20",
+          "params_repr": "('BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1',)",
+          "n": 0,
+          "sample": [],
+          "seconds": 2.082
+        }
+      }
+    }
+  ],
+  "A_cross_table_instr_full_name": {
+    "links.path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "links.target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "links.mapped_dest": {
+      "n": 0,
+      "seconds": 0.009,
+      "sample": []
+    },
+    "links.original_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "links.migrated_link_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "links.migrated_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "logical_view_42.logical_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "logical_view_42.ordinary_representative": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "logical_view_42.junction_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "logical_view_42.junction_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "observed_metadata_52.path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "blocked_metadata_52.path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "suspect_version_140.path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.source_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.original_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.final_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.migrated_link_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.migrated_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    }
+  },
+  "A_cross_table_instr_JQ20_FULL_DOWNLOAD": {
+    "links.path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "links.target": {
+      "n": 0,
+      "seconds": 0.007,
+      "sample": []
+    },
+    "links.mapped_dest": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "links.original_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "links.migrated_link_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "links.migrated_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "logical_view_42.logical_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "logical_view_42.ordinary_representative": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "logical_view_42.junction_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "logical_view_42.junction_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "observed_metadata_52.path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "blocked_metadata_52.path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "suspect_version_140.path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.source_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.original_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.final_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.migrated_link_path": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    },
+    "link_overlay_audit.migrated_target": {
+      "n": 0,
+      "seconds": 0.0,
+      "sample": []
+    }
+  },
+  "cta_dir_exact": true,
+  "cta_child_count": 48,
+  "cta_child_seconds": 0.0,
+  "cta_child_sample": [
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\COVERAGE.json",
+      0
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\PRODUCT_META.json",
+      0
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\tips",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1_TIP_20260903_20260904_042232\\tips\\tip_pub_date_20260903.parquet",
+      0
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\COVERAGE.json",
+      0
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\PRODUCT_META.json",
+      0
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\data",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\indexes",
+      1
+    ],
+    [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_20260903_SUCCESSOR_BUILD_AND_ATOMIC_PUBLISH_R1\\pit_products\\CORP_SHAREHOLDER_TOP10_PIT_R1_TIP_20260903_20260904_042232\\tips",
+      1
+    ]
+  ],
+  "instr_CURSOR_TASK_ARCHIVE_count": 49,
+  "instr_CURSOR_TASK_ARCHIVE_seconds": 2.2,
+  "conclusion": {
+    "code": "NOT_FOUND_IN_QUERIED_SCOPE",
+    "note": "Same validated methods that return B children find zero A rows in paths + path-bearing tables. D:\\CURSOR_TASK_ARCHIVE exists as dir with GLOB children=48. Cannot infer migration loss."
+  }
+}
