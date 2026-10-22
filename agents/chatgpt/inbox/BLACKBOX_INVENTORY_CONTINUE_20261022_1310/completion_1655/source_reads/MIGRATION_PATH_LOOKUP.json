@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-22T17:00:36+08:00",
+  "plan_path": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_FIX_FULL_SOURCE_MAPPING_AND_STRUCTURE_20261015\\FINAL_CANDIDATE.sqlite",
+  "plan_sha256": "53551d39338d0f45e1cde111391bc9d296d62bd09b08703ecfce177183a24e0d",
+  "sha_match_tip": true,
+  "acceptance_roots": [
+    "E:\\\\BLACKBOX",
+    "E:\\\\BLACKBOX_ENGINES"
+  ],
+  "method": "FINAL_CANDIDATE.sqlite query_only; paths PK/prefix LIKE; no rebuild/index/hash/state",
+  "items": [
+    {
+      "id": "A_JQ20",
+      "historical_source": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1",
+      "mapping_rule_evidence": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_FIX_FULL_SOURCE_MAPPING_AND_STRUCTURE_20261015\\test_full_mapping.py L26-L33 (D_DRIVE -> E:\\\\BLACKBOX_ENGINES\\\\<rel>)",
+      "planned_dest_from_mapping": "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1",
+      "in_frozen_plan": false,
+      "plan_query_evidence": [
+        {
+          "variant": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1",
+          "exact": [],
+          "prefix_n": 0,
+          "prefix_sample": []
+        },
+        {
+          "variant": "\\\\192.168.100.2\\D_DRIVE\\CURSOR_TASK_ARCHIVE\\BLACKBOX_JQ20_FULL_DOWNLOAD_PIT_CLEAN_CACHE_HAND_R1",
+          "exact": [],
+          "prefix_n": 0,
+          "prefix_sample": []
+        }
+      ],
+      "dest_rows_in_paths_table": {
+        "exact_n": 0,
+        "prefix_n": 0,
+        "prefix_sample": []
+      },
+      "current_target_exists": false,
+      "current_target_top": [],
+      "alt_E_BLACKBOX_task_path_exists": false,
+      "conclusion": "NOT_IN_FROZEN_SCOPE",
+      "query_seconds": 3.916,
+      "impact_if_missing": "JQ20 RAW script/receipt bind remains open; cleaning/cache prior evidence still usable"
+    },
+    {
+      "id": "B_ENGINE",
+      "historical_source": "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+      "mapping_rule_evidence": "C:\\LAN_SHARE_REPORT\\R9_DESKTOP_FIX_FULL_SOURCE_MAPPING_AND_STRUCTURE_20261015\\test_full_mapping.py L26-L33 (D_DRIVE -> E:\\\\BLACKBOX_ENGINES\\\\<rel>)",
+      "planned_dest_from_mapping": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine",
+      "in_frozen_plan": true,
+      "plan_query_evidence": [
+        {
+          "variant": "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+          "exact": [
+            [
+              "D:\\backtest_lab\\02_blackbox_jq_compat_engine",
+              1,
+              "3187598165",
+              "562949953680556",
+              "d"
+            ]
+          ],
+          "prefix_n": 0,
+          "prefix_sample": []
+        },
+        {
+          "variant": "\\\\192.168.100.2\\D_DRIVE\\backtest_lab\\02_blackbox_jq_compat_engine",
+          "exact": [],
+          "prefix_n": 0,
+          "prefix_sample": []
+        }
+      ],
+      "dest_rows_in_paths_table": {
+        "exact_n": 0,
+        "prefix_n": 0,
+        "prefix_sample": []
+      },
+      "current_target_exists": true,
+      "current_target_top": [
+        {
+          "name": "PHASE1_CAPABILITY_REGISTRY.json",
+          "is_dir": false
+        },
+        {
+          "name": "PHASE1_CURRENT_ENGINE_REGISTRY.json",
+          "is_dir": false
+        },
+        {
+          "name": "blackbox_jq_engine",
+          "is_dir": true
+        },
+        {
+          "name": "logs",
+          "is_dir": true
+        },
+        {
+          "name": "rule_library",
+          "is_dir": true
+        },
+        {
+          "name": "rule_library_backups",
+          "is_dir": true
+        }
+      ],
+      "alt_E_BLACKBOX_task_path_exists": null,
+      "conclusion": "IN_PLAN_TARGET_PRESENT",
+      "query_seconds": 3.93,
+      "impact_if_missing": "engine static handoff D-path unresolved on current disk; XVAL E-path still separately valid"
+    }
+  ],
+  "notes": [
+    "NOT_IN_FROZEN_SCOPE != data lost",
+    "IN_PLAN_TARGET_MISSING = plan contains source; mapped dest currently absent — contradiction for that item only",
+    "Do not infer whole D: empty from prior empty listing of CURSOR_TASK_ARCHIVE alone"
+  ]
+}
