@@ -1,0 +1,127 @@
+{
+  "at": "2026-10-22T16:08:33+08:00",
+  "risk_id": "FIXED_TEMPLATE_REGISTRY_REPLACEMENT",
+  "status": "STATIC_KNOWN_RISK",
+  "cause_of_REQUIRED4_gap": "CAUSE_UNPROVEN",
+  "files": {
+    "daily_incremental": {
+      "path": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_daily_incremental_r1.py",
+      "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+      "bytes": 38650
+    },
+    "full_history": {
+      "path": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_full_history_r1.py",
+      "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+      "bytes": 18522
+    }
+  },
+  "path_defs": {
+    "ARCHIVE_L26": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1",
+    "REGISTRY_L30": "CACHE_ROOT / \"registry\"",
+    "note": "see source extract"
+  },
+  "wtext": {
+    "lineno": 63,
+    "behavior": "WHOLE_FILE_REPLACE",
+    "evidence": "path.parent.mkdir; path.write_text(text) — no merge/append/diff",
+    "source": "def wtext(path: Path, text: str) -> None:\n    path.parent.mkdir(parents=True, exist_ok=True)\n    tmp = path.with_name(path.name + f\".{os.getpid()}.tmp\")\n    tmp.write_text(text, encoding=\"utf-8\")\n    os.replace(tmp, path)"
+  },
+  "write_static_registries": {
+    "lineno_span": [
+      124,
+      232
+    ],
+    "fixed_template_product_count": 19,
+    "fixed_template_product_ids": [
+      "STOCK_DAILY_PIT_R1",
+      "STOCK_FACTOR_DAILY_R1",
+      "ETF_DAILY_PIT_R1",
+      "ETF_FACTOR_DAILY_R1",
+      "FUND_DAILY_PIT_R1",
+      "FUND_FACTOR_DAILY_R1",
+      "INDEX_DAILY_R1",
+      "INDEX_FACTOR_DAILY_R1",
+      "INDEX_CONSTITUENT_PIT_R1",
+      "INDEX_WEIGHT_PIT_R1",
+      "ETF_TRACKING_INDEX_MAP_R1",
+      "SW_L1_MEMBERSHIP_PIT_R1",
+      "SW_L1_STRUCTURE_DAILY_R1",
+      "MARKET_UNIVERSE_PIT_R1",
+      "STOCK_TRADEABILITY_PIT_R1",
+      "MARKET_STRUCTURE_DAILY_R1",
+      "FUND_LIKE_ASSET_VIEW_R1",
+      "CACHE_MANIFEST_REGISTRY_R1",
+      "CACHE_DEPENDENCY_REGISTRY_R1"
+    ],
+    "writes": [
+      "REGISTRY/CACHE_PRODUCT_CATALOG.csv",
+      "ARCHIVE/02_CACHE_PRODUCT_CATALOG.csv",
+      "REGISTRY/CACHE_SCHEMA_REGISTRY.csv",
+      "ARCHIVE/05_CACHE_SCHEMA_REGISTRY.csv",
+      "REGISTRY/FACTOR_FORMULA_REGISTRY.csv",
+      "ARCHIVE/06_FACTOR_FORMULA_REGISTRY.csv",
+      "REGISTRY/CACHE_DEPENDENCY_REGISTRY.json",
+      "ARCHIVE/03_SOURCE_DEPENDENCY_GRAPH.md (preserve-if-exists else stub)"
+    ],
+    "merge_mechanism": false,
+    "outer_protection": false
+  },
+  "call_sites": {
+    "full_history_main": {
+      "lineno": 241,
+      "context": "before Cleaning CURRENT read / build / QA (GPT claim; verify extract)"
+    },
+    "build_release_L405": {
+      "lineno": 405,
+      "function": "build_release",
+      "position": "FIRST_STATEMENT_AFTER_SIGNATURE_BLOCK"
+    },
+    "all_hits": [
+      {
+        "line": 405,
+        "text": "write_static_registries()"
+      }
+    ]
+  },
+  "build_release_gates": {
+    "write_static_before_canary": true,
+    "note": "L405 is immediate call at start of build_release; no canary/publish gate precedes it in-function",
+    "window_extract_ref": "source_reads/build_release_L397_450.md"
+  },
+  "current_registry": {
+    "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+    "sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57",
+    "bytes": 4020,
+    "mtime": "2026-10-19T17:01:47+08:00"
+  },
+  "diff_vs_fixed_template": {
+    "in_current_not_in_template": [
+      "ADJUST_FACTOR_PIT_R1",
+      "ETF_MINUTE_1M_R1",
+      "FINANCIAL_INDICATOR_PIT_R1",
+      "FUND_NAV_PIT_R1",
+      "STOCK_DAILY_RAW_PIT_R1",
+      "STOCK_MINUTE_1M_R1",
+      "SW_L2_MEMBERSHIP_PIT_R1",
+      "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+      "TUSHARE_CBOND_BASIC_R1",
+      "TUSHARE_CBOND_CALL_PIT_R1",
+      "TUSHARE_CBOND_CALL_R1",
+      "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+      "TUSHARE_CBOND_DAILY_MARKET_R1",
+      "TUSHARE_CBOND_ISSUE_R1",
+      "TUSHARE_CBOND_RATE_R1",
+      "TUSHARE_CBOND_RATING_PIT_R1",
+      "TUSHARE_CBOND_RATING_R1",
+      "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+      "TUSHARE_CBOND_SHARE_R1",
+      "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+      "TUSHARE_CBOND_TOP10_HOLDERS_R1",
+      "VALUATION_PIT_R1"
+    ],
+    "in_template_not_in_current": [],
+    "current_count": 41,
+    "template_count": 19
+  },
+  "historical_REQUIRED4_attribution": "CAUSE_UNPROVEN — code proves replacement capability only; no run/timeline evidence in this readonly pass"
+}
