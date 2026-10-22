@@ -1,0 +1,426 @@
+{
+  "at": "2026-10-22T15:03:56+08:00",
+  "files_sha": {
+    "orchestrator": {
+      "path": "脚本/blackbox_daily_increment_orchestrator_r1.py",
+      "exists": true,
+      "sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a",
+      "size": 3000
+    },
+    "tip_rebase": {
+      "path": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+      "exists": true,
+      "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+      "size": 25087
+    },
+    "publish_gate": {
+      "path": "脚本/blackbox_daily_increment_publish_gate_r1.py",
+      "exists": true,
+      "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654",
+      "size": 5716
+    },
+    "scope_refresh": {
+      "path": "脚本/blackbox_full_data_update_scope_refresh_r1.py",
+      "exists": true,
+      "sha256": "23932b983569bb60e03d0d286c1ad2295bbfadd8fb2182eb17d311c9917ca4ad",
+      "size": 3638
+    },
+    "index_weight_check": {
+      "path": "脚本/blackbox_index_weight_daily_increment_check_r1.py",
+      "exists": true,
+      "sha256": "5bc290e1fa38110b180057d12521c57631606fb8280a92e76d25652ae8177baf",
+      "size": 1213
+    },
+    "index_weight_governance": {
+      "path": "脚本/blackbox_index_weight_governance_r1.py",
+      "exists": true,
+      "sha256": "3c49a663b69582277ed68cde470131b93a174f692db3332b2279ee2d1861ee8a",
+      "size": 67528
+    },
+    "etf_minute_check": {
+      "path": "脚本/blackbox_etf_minute_daily_increment_check_r1.py",
+      "exists": true,
+      "sha256": "a3ce211eeb385f0f190b537cc0d9e11704218c5bb1aed47e80cb13f980a223a8",
+      "size": 2823
+    },
+    "adjust_wrapper": {
+      "path": "脚本/blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+      "exists": true,
+      "sha256": "d236dacb2e6033bac09737c0bf6da20f8c5155dbb751a0181d087d5d704c3553",
+      "size": 723
+    },
+    "adjust_task": {
+      "path": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/incremental_backward_refresh_r1.py",
+      "exists": true,
+      "sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+      "size": 11537
+    },
+    "fund_nav_plane": {
+      "path": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py",
+      "exists": true,
+      "sha256": "8e5b360ce0dad95012a94def38dd6b77c7ee71cbb729964c24432b0856c96b11",
+      "size": 31204
+    },
+    "external_mat_r2": {
+      "path": "脚本/blackbox_external_evidence_materialization_r2.py",
+      "exists": true,
+      "sha256": "028f301c5d9e6a11f87cc420e51d83bfa713faf75e620df3bc67b3e96ce1d3b0",
+      "size": 83448
+    },
+    "resolver": {
+      "path": "脚本/blackbox_data_access_resolver_r1.py",
+      "exists": true,
+      "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+      "size": 43924
+    }
+  },
+  "orchestrator": {
+    "entry": "脚本/blackbox_daily_increment_orchestrator_r1.py --run-target-date <D> [--no-publish] [--cleaning-json] [--out-root] [--parent-root]",
+    "coverage_limit": "NOT full-system downloader. Steps observed in main(): INDEX_WEIGHT managed check → ETF_MINUTE_1M managed check → TIP rebase (cache compiler) → (if publish) scope refresh. Download of RAW domains is OUTSIDE this file.",
+    "steps": [
+      {
+        "order": 1,
+        "name": "INDEX_WEIGHT_MANAGED_CHECK",
+        "script": "脚本/blackbox_index_weight_daily_increment_check_r1.py",
+        "abort_on_nonzero": true,
+        "loc": "orchestrator L35-44"
+      },
+      {
+        "order": 2,
+        "name": "ETF_MINUTE_1M_MANAGED_CHECK",
+        "script": "脚本/blackbox_etf_minute_daily_increment_check_r1.py",
+        "abort_on_nonzero": true,
+        "loc": "orchestrator L45-55"
+      },
+      {
+        "order": 3,
+        "name": "TIP_REBASE",
+        "script": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+        "abort_on_nonzero": true,
+        "loc": "orchestrator L56-71",
+        "role": "build Cache candidate vs Cleaning candidate; publish gate inside tip path"
+      },
+      {
+        "order": 4,
+        "name": "SCOPE_REFRESH",
+        "script": "脚本/blackbox_full_data_update_scope_refresh_r1.py",
+        "abort_on_nonzero": true,
+        "only_if": "not --no-publish",
+        "loc": "orchestrator L72-75"
+      }
+    ],
+    "who_downloads": "NOT in orchestrator body — contract/handbook claim of 11-step pipeline is BINDINGS-level; implementation of incremental RAW download lives elsewhere (see R2/handbook). Marked CONTRACT_VS_IMPL.",
+    "who_builds_candidate": "TIP rebase script",
+    "who_runs_gate": "publish gate script referenced as GATE const but NOT invoked directly in orchestrator.main (GATE imported as const L21; call only via tip path — verify tip). GATE path exists as sibling entry.",
+    "who_switches_CURRENT": "inside tip rebase / publish path when --no-publish absent; orchestrator itself does not write CURRENT pointers",
+    "failure_abort": "any subprocess nonzero return immediately aborts chain",
+    "success_judgment": "final return OK only if all steps 0; INDEX_WEIGHT check itself always returns 0 (see below) so it cannot alone prove data success",
+    "sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a",
+    "full_file_copied": true
+  },
+  "index_weight": {
+    "entry": "脚本/blackbox_index_weight_daily_increment_check_r1.py",
+    "calls": "blackbox_index_weight_governance_r1.daily_check",
+    "daily_check_line": 1096,
+    "apply_download": false,
+    "main_return": "always return 0 after printing JSON (L38) — exit 0 ≠ update success",
+    "contract_required": "managed check / cadence probe; must not treat as downloader",
+    "impl_proven": "apply_download=False hardcoded; dry_run flag recorded; live optional",
+    "impl_unproven": "whether daily_check decision fields are consumed by upper orchestration beyond rc==0",
+    "excerpt_main": "19|def main() -> int:\n20|    ap = argparse.ArgumentParser()\n21|    ap.add_argument(\"--run-target-date\", required=True)\n22|    ap.add_argument(\"--dry-run\", action=\"store_true\")\n23|    ap.add_argument(\"--live\", action=\"store_true\")\n24|    args = ap.parse_args()\n25|    probe = {}\n26|    qa = {}\n27|    p3 = TASK / \"03_SOURCE_CADENCE_PROBE.json\"\n28|    p2 = TASK / \"02_RAW_QA.json\"\n29|    if p3.is_file():\n30|        probe = load_json(p3)\n31|    if p2.is_file():\n32|        qa = load_json(p2)\n33|    out = daily_check(args.run_target_date, probe=probe, qa=qa, live=args.live)\n34|    out[\"dry_run\"] = bool(args.dry_run)\n35|    out[\"apply_download\"] = False\n36|    print(json.dumps(out, ensure_ascii=False, indent=2))\n37|    return 0\n38|\n39|\n40|if __name__ == \"__main__\":"
+  },
+  "adjust_factor": {
+    "wrapper": "脚本/blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+    "wrapper_role": "forwards argv via guarded_run to TASK_SCRIPT; NOT the recovery implementation",
+    "TASK_SCRIPT": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/incremental_backward_refresh_r1.py",
+    "TASK_SCRIPT_sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+    "task_funcs_lines": {
+      "load_cache_factor": 66,
+      "fetch_factor": 76,
+      "write_factor_years": 121,
+      "publish_successor": 134,
+      "main": 188
+    },
+    "state_checkpoint_hits": [],
+    "state_status": "NO_STATE_KEYWORD_IN_FIRST_PASS",
+    "contract_vs_impl": {
+      "contract": "backward dirty refresh with interrupt/resume",
+      "impl_proven": "wrapper→TASK_SCRIPT; publish_successor/load_cache_factor/fetch_factor exist as defs",
+      "impl_unproven": "full resume semantics without executing; no production run this round"
+    },
+    "excerpts": {
+      "wrapper_main": "1|# -*- coding: utf-8 -*-\n2|\"\"\"Permanent entry for ADJUST_FACTOR_PIT_R1 backward-dirty incremental refresh.\"\"\"\n3|from _base import *  # noqa: F401,F403\n4|\n5|import sys\n6|from pathlib import Path\n7|\n8|TASK_SCRIPT = ROOT / \"任务\" / \"BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\" / \"incremental_backward_refresh_r1.py\"\n9|PY = ROOT / \".venv\" / \"Scripts\" / \"python.exe\"\n10|\n11|\n12|def main() -> int:\n13|    if not TASK_SCRIPT.is_file():\n14|        print(\"HARD_BLOCK: incremental engine missing\", TASK_SCRIPT)\n15|        return FAIL\n16|    cmd = [str(PY), \"-u\", str(TASK_SCRIPT), *sys.argv[1:]]\n17|    r = guarded_run(cmd, cwd=str(ROOT))\n18|    return int(r.returncode)\n19|\n20|\n21|if __name__ == \"__main__\":\n22|    raise SystemExit(main())",
+      "task_main": "188|def main() -> int:\n189|    ap = argparse.ArgumentParser()\n190|    ap.add_argument(\"--update-date\", default=\"2026-08-14\")\n191|    ap.add_argument(\"--overlap-days\", type=int, default=OVERLAP_DAYS)\n192|    ap.add_argument(\"--selftest\", action=\"store_true\")\n193|    args = ap.parse_args()\n194|    auth()\n195|    import jqdatasdk as jq\n196|\n197|    cur = json.loads(CACHE_PTR.read_text(encoding=\"utf-8\"))\n198|    cache = load_cache_factor()\n199|    ud = pd.Timestamp(args.update_date)\n200|    cache_dates = sorted(cache.loc[cache[\"date\"] <= ud, \"date\"].unique())\n201|    overlap = cache_dates[-int(args.overlap_days) :]\n202|    codes = sorted(cache[\"code\"].unique())\n203|    live = fetch_factor(jq, codes, str(overlap[0].date()), str(ud.date()))\n204|    merged = cache.merge(live, on=[\"date\", \"code\"], how=\"inner\", suffixes=(\"_cache\", \"_live\"))\n205|    merged[\"abs_diff\"] = (merged[\"factor_cache\"] - merged[\"factor_live\"]).abs()\n206|    dirty = merged.loc[merged[\"abs_diff\"] > 1e-8, \"code\"].drop_duplicates().tolist()\n207|    xr_aux = aux_xr_codes(Path(cur[\"release_root\"]), overlap[0], ud)\n208|    receipt = {\n209|        \"update_date\": args.update_date,\n210|        \"new_date_appended\": None,\n211|        \"overlap_dates_checked\": [str(x.date()) for x in overlap],\n212|        \"overlap_codes_checked\": int(merged[\"code\"].nunique()),\n213|        \"backward_dirty_count\": int(len(dirty)),\n214|        \"backward_dirty_codes\": dirty[:50],\n215|        \"xr_xd_aux_codes_in_overlap\": xr_aux[:50],\n216|        \"xr_xd_aux_count\": int(len(xr_aux)),\n217|        \"xr_xd_is_sole_trigger\": False,\n218|        \"full_history_refreshed_count\": 0,\n219|        \"factor_revision_rows\": int((merged[\"abs_diff\"] > 1e-8).sum()),\n220|        \"source_max_date\": str(live[\"date\"].max().date()) if len(live) else None,\n221|        \"cache_max_date\": str(cache[\"date\"].max().date()),\n222|        \"resolver_release\": cur[\"cache_release_id\"],\n223|        \"raw_fallback_used\": False,\n224|        \"silent_factor_one_used\": False,\n225|        \"fq\": FQ,\n226|        \"FULL_HISTORY_START\": FULL_HISTORY_START,\n227|        \"AUTHORITY_READY\": False,",
+      "publish_successor": "134|def publish_successor(new_factor: pd.DataFrame, reason: str) -> dict:\n135|    cur = json.loads(CACHE_PTR.read_text(encoding=\"utf-8\"))\n136|    parent = Path(cur[\"release_root\"])\n137|    stamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n138|    rid = f\"BLACKBOX_CACHE_R1_ADJFACTOR_PIT_INCR_{stamp}\"\n139|    dst = CACHE_ROOT / \"releases\" / rid\n140|    dst.mkdir(parents=True, exist_ok=True)\n141|    inherited = 0\n142|    for child in parent.iterdir():\n143|        if child.name == PRODUCT:\n144|            continue\n145|        mode = inherit_tree(child, dst / child.name)\n146|        if mode in (\"JUNCTION\", \"COPYTREE\", \"EXISTS\", \"COPYFILE\"):\n147|            inherited += 1\n148|    write_factor_years(dst / PRODUCT, new_factor)\n149|    cov = {\n150|        \"product_id\": PRODUCT,\n151|        \"date_min\": str(new_factor[\"date\"].min().date()),\n152|        \"date_max\": str(new_factor[\"date\"].max().date()),\n153|        \"n_codes\": int(new_factor[\"code\"].nunique()),\n154|        \"n_rows\": int(len(new_factor)),\n155|        \"fq\": FQ,\n156|        \"reason\": reason,\n157|    }\n158|    wjson(dst / PRODUCT / \"COVERAGE.json\", cov)\n159|    pointer = {\n160|        \"cache_release_id\": rid,\n161|        \"release_root\": str(dst),\n162|        \"published_at_cn\": now_cn(),\n163|        \"asof\": str(new_factor[\"date\"].max().date()),"
+    }
+  },
+  "external_materialization": {
+    "entry": "脚本/blackbox_external_evidence_materialization_r2.py",
+    "sha256": "028f301c5d9e6a11f87cc420e51d83bfa713faf75e620df3bc67b3e96ce1d3b0",
+    "phases_located": [
+      {
+        "name": "phase_disclosure_date_check",
+        "line": 1014
+      },
+      {
+        "name": "phase_anns_d_keep",
+        "line": 1043
+      },
+      {
+        "name": "phase_exchange_company_primary",
+        "line": 1054
+      },
+      {
+        "name": "phase_company_index_r2",
+        "line": 1222
+      },
+      {
+        "name": "phase_fact_canonical",
+        "line": 1299
+      },
+      {
+        "name": "phase_acceptance",
+        "line": 1581
+      }
+    ],
+    "main_line": 1716,
+    "isolation": "external plane; must not pollute JQ products (contract)",
+    "truncation_gate": "locate in acceptance/phase bodies — see phase_acceptance",
+    "this_round": "STATIC_LOCATE_ONLY; no API; no materialize",
+    "main_preview": "1716|def main() -> int:\n1717|    global WORKERS, HIST_END, FORCE_TIP, FORCE_FINANCIAL_TIP\n1718|    ap = argparse.ArgumentParser()\n1719|    ap.add_argument(\"--phase\", default=\"all\", choices=[\n1720|        \"tushare\", \"exchange\", \"index\", \"canonical\", \"acceptance\", \"all\",\n1721|        \"tushare_p0\", \"tushare_p1\", \"tushare_p2\", \"tushare_p3\",\n1722|        \"asof_align\",\n1723|    ])\n1724|    ap.add_argument(\"--workers\", type=int, default=8, help=\"parallel Tushare per-code workers (default 8)\")\n1725|    ap.add_argument(\"--asof\", default=None, help=\"YYYY-MM-DD or YYYYMMDD; default=JQ SCOPE CURRENT data_asof\")\n1726|    ap.add_argument(\"--force-tip\", action=\"store_true\", help=\"force tip refresh when hist_end behind asof\")\n1727|    ap.add_argument(\n1728|        \"--force-financial-tip\",\n1729|        action=\"store_true\",\n1730|        help=\"tip-refresh income/balance/cashflow/fina (slow); auto-on with --force-tip unless --skip-financial-tip\",\n1731|    )\n1732|    ap.add_argument(\n1733|        \"--skip-financial-tip\",\n1734|        action=\"store_true\",\n1735|        help=\"opt-out: do not tip financials even when --force-tip (ASOF_ALIGN rule marks incomplete)\",\n1736|    )\n1737|    args = ap.parse_args()\n1738|    WORKERS = max(1, min(int(args.workers), 16))\n1739|    FORCE_TIP = bool(args.force_tip)\n1740|    # HAND ASOF_ALIGN_R1: --force-tip implies financial tip unless explicit skip.\n1741|    FORCE_FINANCIAL_TIP = bool(args.force_financial_tip) or (FORCE_TIP and not bool(args.skip_financial_tip))\n1742|    HIST_END = resolve_asof_yyyymmdd(args.asof)\n1743|    print(\n1744|        json.dumps(\n1745|            {\n1746|                \"WORKERS\": WORKERS,\n1747|                \"HIST_END\": HIST_END,\n1748|                \"ASOF\": asof_iso(HIST_END),\n1749|                \"FORCE_TIP\": FORCE_TIP,\n1750|                \"FORCE_FINANCIAL_TIP\": FORCE_FINANCIAL_TIP,\n1751|            },\n1752|            ensure_ascii=False,\n1753|        ),\n1754|        flush=True,\n1755|    )\n1756|\n1757|    set_runtime_context(\n1758|        task_dir=TASK_DIR,\n1759|        task_slug=TASK_ID,\n1760|        task_type=\"SETUP_INFRASTRUCTURE_BOOTSTRAP\",\n1761|        exemption_paths=[\n1762|            str(EVIDENCE),\n1763|            str(TASK_DIR),\n1764|            str(RUN_ACCEPT),\n1765|            str(RUN_RESOLVER),"
+  },
+  "fund_nav": {
+    "entry": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py",
+    "sha256": "8e5b360ce0dad95012a94def38dd6b77c7ee71cbb729964c24432b0856c96b11",
+    "api": "get_extras(unit_net_value)+get_extras(acc_net_value)",
+    "raw_rel_const": "incremental_get_extras_r1 (see script INC_DIR)",
+    "keyword_hits": [
+      {
+        "line": 3,
+        "text": "\"\"\"FUND ETF NAV premium-plane R1: get_extras incremental → clean/anti-leak → cache → rules."
+      },
+      {
+        "line": 6,
+        "text": "- API = get_extras(unit_net_value/acc_net_value), BATCH<=5 (forbid whole-table FUND_NET_VALUE)"
+      },
+      {
+        "line": 37,
+        "text": "GAP_START = \"2026-07-13\"  # day after year-seal batch created_at ~2026-07-12"
+      },
+      {
+        "line": 38,
+        "text": "GAP_END = ASOF"
+      },
+      {
+        "line": 42,
+        "text": "INC_DIR = RAW_NAV / \"incremental_get_extras_r1\""
+      },
+      {
+        "line": 51,
+        "text": "LEGACY_BAD_GAP = \"fund_etf_nav__incremental_gap_20260713_20260730__20260729_170725.parquet\""
+      },
+      {
+        "line": 54,
+        "text": "def configure_window(*, asof: str, gap_start: str | None = None) -> None:"
+      },
+      {
+        "line": 56,
+        "text": "global ASOF, GAP_START, GAP_END"
+      },
+      {
+        "line": 58,
+        "text": "GAP_END = ASOF"
+      },
+      {
+        "line": 59,
+        "text": "if gap_start:"
+      },
+      {
+        "line": 60,
+        "text": "GAP_START = str(gap_start).strip()"
+      },
+      {
+        "line": 63,
+        "text": "GAP_START = ASOF"
+      },
+      {
+        "line": 144,
+        "text": "trade_days = load_trade_days(GAP_START, GAP_END)"
+      },
+      {
+        "line": 153,
+        "text": "out = INC_DIR / f\"fund_etf_nav__ge_batch__{slug}__{GAP_START.replace('-','')}_{GAP_END.replace('-','')}__{now_ts()}.parquet\""
+      },
+      {
+        "line": 155,
+        "text": "df = navc.fetch_nav_batch(batch, GAP_START, GAP_END)"
+      },
+      {
+        "line": 159,
+        "text": "# get_extras long form: rows ≈ codes_with_data * trading_days — never accept ==5000 as complete"
+      },
+      {
+        "line": 165,
+        "text": "# per-code day count: allow full calendar span (get_extras may include non-bday pads)"
+      },
+      {
+        "line": 167,
+        "text": "cal_span = (pd.Timestamp(GAP_END) - pd.Timestamp(GAP_START)).days + 1"
+      },
+      {
+        "line": 192,
+        "text": "\"api_mapping\": \"get_extras.unit_net_value+acc_net_value\","
+      },
+      {
+        "line": 194,
+        "text": "\"start\": GAP_START,"
+      },
+      {
+        "line": 195,
+        "text": "\"end\": GAP_END,"
+      },
+      {
+        "line": 219,
+        "text": "tip = INC_DIR / f\"fund_etf_nav__ge_consolidated__{GAP_START.replace('-','')}_{GAP_END.replace('-','')}__{now_ts()}.parquet\""
+      },
+      {
+        "line": 231,
+        "text": "\"legacy_bad_gap_ignored\": LEGACY_BAD_GAP,"
+      },
+      {
+        "line": 236,
+        "text": "\"gap_start\": GAP_START,"
+      },
+      {
+        "line": 237,
+        "text": "\"gap_end\": GAP_END,"
+      },
+      {
+        "line": 262,
+        "text": "raise FileNotFoundError(\"missing consolidated get_extras tip; run --phase download\")"
+      },
+      {
+        "line": 284,
+        "text": "\"\"\"Append prior tip parquet rows so day tip does not drop previous get_extras window.\"\"\""
+      },
+      {
+        "line": 378,
+        "text": "tip_clean = tip_dir / f\"ETF_NAV__incremental_get_extras__{GAP_START.replace('-','')}_{GAP_END.replace('-','')}__clean.parquet\""
+      },
+      {
+        "line": 380,
+        "text": "dmin = str(tip_df[\"day\"].min()) if len(tip_df) else GAP_START"
+      },
+      {
+        "line": 381,
+        "text": "dmax = str(tip_df[\"day\"].max()) if len(tip_df) else GAP_END"
+      },
+      {
+        "line": 382,
+        "text": "tip_clean = tip_dir / f\"ETF_NAV__incremental_get_extras__{dmin.replace('-','')}_{dmax.replace('-','')}__clean.parquet\""
+      },
+      {
+        "line": 390,
+        "text": "\"reason\": \"whole-table/schema-mismatch risk near 5000 silent; superseded by get_extras incremental_get_extras_r1\","
+      },
+      {
+        "line": 472,
+        "text": "f\"{PRODUCT_ID},L1,FUND,ACTIVE,year+incremental_tip,Fund/ETF unit_net_value PIT (get_extras); premium derived vs close\\n\""
+      },
+      {
+        "line": 518,
+        "text": "\"legacy_gap_quarantined\": LEGACY_BAD_GAP,"
+      },
+      {
+        "line": 535,
+        "text": "\"raw_rel\": str(RAW_NAV / \"incremental_get_extras_r1\"),"
+      },
+      {
+        "line": 538,
+        "text": "\"api\": \"get_extras(unit_net_value)+get_extras(acc_net_value)\","
+      },
+      {
+        "line": 564,
+        "text": "row[\"note\"] = \"fund_etf_nav get_extras tip ACTIVE to asof; premium DERIVED; P8 other aux still deferred\""
+      },
+      {
+        "line": 577,
+        "text": "\"api\": \"get_extras\","
+      },
+      {
+        "line": 604,
+        "text": "\"FUND_ETF_NAV_API=get_extras.unit_net_value+acc_net_value\\n\""
+      },
+      {
+        "line": 626,
+        "text": "description: FUND/ETF NAV + 溢价派生平面 — get_extras 增量；禁止 FUND_NET_VALUE 整表 5000 静默"
+      }
+    ],
+    "family_note": "shared family read once; multi-row REFERENCE in UPDATE_CHAIN",
+    "this_round": "STATIC_READ; no download"
+  },
+  "r2_ssot_paths": {
+    "inventory_json": "运行/BLACKBOX_FULL_DATA_INVENTORY_CURRENT.json",
+    "inventory_mdc": ".cursor/rules/blackbox_data_inventory_top_ssot.mdc",
+    "r2_current": "运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+    "r2_keys_sample": [
+      "active_rule_id",
+      "active_rule_path",
+      "daily_incremental_child_rule",
+      "hand_top_data_traffic",
+      "definition_one_line",
+      "trigger_phrases",
+      "authorized_at_cn",
+      "amended_sw_l123_daily_cache_at_cn",
+      "mode",
+      "pipeline",
+      "required_domain_ids",
+      "billboard_included",
+      "valuation_adjust_factor_included",
+      "full_factor_values_excluded",
+      "index_minute_universe_n",
+      "sw_l123_required",
+      "cache_sw_l123_required",
+      "current_cleaning_release_id",
+      "index_minute_align_release_id",
+      "cache_release_id",
+      "sw_l1_status",
+      "sw_l2_status",
+      "sw_l3_status",
+      "generated_at_cn",
+      "jq260_research_layer_rule",
+      "jq260_value_download",
+      "download_must_clean",
+      "download_must_clean_rule",
+      "daily_must_end_in_cache",
+      "full_factor_values_required"
+    ],
+    "inventory_meta": {
+      "exists": true,
+      "sha256": "3c19d88eb2d8933188f1c56b6f4ae8b121a2d297f7d00d796c649e86b1eb6833",
+      "size": 24519
+    }
+  },
+  "contract_vs_impl_summary": [
+    {
+      "topic": "11-step daily pipeline",
+      "contract": "KNOWN_RULE_BINDINGS / handbook",
+      "impl": "orchestrator only proves 4 subprocess steps (IW check, ETF min check, tip rebase, scope refresh)"
+    },
+    {
+      "topic": "INDEX_WEIGHT exit 0",
+      "contract": "success means data updated",
+      "impl": "check main always returns 0; apply_download=False"
+    },
+    {
+      "topic": "adjust wrapper",
+      "contract": "resume engine",
+      "impl": "wrapper only; engine=TASK_SCRIPT"
+    },
+    {
+      "topic": "CURRENT switch",
+      "contract": "orchestrator switches CURRENT",
+      "impl": "orchestrator does not write CURRENT; tip/publish path does"
+    }
+  ]
+}
