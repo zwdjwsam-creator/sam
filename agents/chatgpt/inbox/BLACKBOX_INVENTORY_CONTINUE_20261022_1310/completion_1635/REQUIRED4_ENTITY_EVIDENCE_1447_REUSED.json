@@ -1,0 +1,914 @@
+{
+  "at": "2026-10-22T15:03:56+08:00",
+  "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+  "cache_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+  "rows": [
+    {
+      "product_id": "CORP_XR_XD_EVENT_PIT_R1",
+      "under_current_release_root": true,
+      "in_catalog": false,
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1",
+      "files_n": 51,
+      "top_files": [
+        {
+          "rel": "data/STK_XR_XD_EVENT_PIT_R1_FULL.parquet",
+          "size_bytes": 8412395
+        },
+        {
+          "rel": "indexes/KNOWN_EVENT_INDEX.parquet",
+          "size_bytes": 3546805
+        },
+        {
+          "rel": "data/year=2014/part_2014.parquet",
+          "size_bytes": 2242101
+        },
+        {
+          "rel": "indexes/EFFECTIVE_EVENT_INDEX.parquet",
+          "size_bytes": 1501348
+        },
+        {
+          "rel": "indexes/known_year=2014/part_2014.parquet",
+          "size_bytes": 980385
+        },
+        {
+          "rel": "data/year=2024/part_2024.parquet",
+          "size_bytes": 922515
+        },
+        {
+          "rel": "data/year=2025/part_2025.parquet",
+          "size_bytes": 906488
+        },
+        {
+          "rel": "data/year=2023/part_2023.parquet",
+          "size_bytes": 843025
+        },
+        {
+          "rel": "data/year=2022/part_2022.parquet",
+          "size_bytes": 800480
+        },
+        {
+          "rel": "data/year=2021/part_2021.parquet",
+          "size_bytes": 739510
+        },
+        {
+          "rel": "data/year=2020/part_2020.parquet",
+          "size_bytes": 661333
+        },
+        {
+          "rel": "data/year=2026/part_2026.parquet",
+          "size_bytes": 647718
+        }
+      ],
+      "primary_rel": "data/STK_XR_XD_EVENT_PIT_R1_FULL.parquet",
+      "primary_sample": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\data\\STK_XR_XD_EVENT_PIT_R1_FULL.parquet",
+        "exists": true,
+        "size_bytes": 8412395,
+        "schema": [
+          "id",
+          "company_id",
+          "company_name",
+          "code",
+          "report_date",
+          "bonus_type",
+          "board_plan_pub_date",
+          "board_plan_bonusnote",
+          "distributed_share_base_board",
+          "shareholders_plan_pub_date",
+          "shareholders_plan_bonusnote",
+          "distributed_share_base_shareholders",
+          "implementation_pub_date",
+          "implementation_bonusnote",
+          "distributed_share_base_implement",
+          "dividend_ratio",
+          "transfer_ratio",
+          "bonus_ratio_rmb",
+          "bonus_ratio_usd",
+          "bonus_ratio_hkd",
+          "at_bonus_ratio_rmb",
+          "exchange_rate",
+          "dividend_number",
+          "transfer_number",
+          "bonus_amount_rmb",
+          "a_registration_date",
+          "b_registration_date",
+          "a_xr_date",
+          "b_xr_baseday",
+          "b_final_trade_date",
+          "a_bonus_date",
+          "b_bonus_date",
+          "dividend_arrival_date",
+          "a_increment_listing_date",
+          "b_increment_listing_date",
+          "total_capital_before_transfer",
+          "total_capital_after_transfer",
+          "float_capital_before_transfer",
+          "float_capital_after_transfer",
+          "note",
+          "a_transfer_arrival_date",
+          "b_transfer_arrival_date",
+          "b_dividend_arrival_date",
+          "note_of_no_dividend",
+          "plan_progress_code",
+          "plan_progress",
+          "bonus_cancel_pub_date",
+          "stock_code",
+          "observation_date",
+          "publication_date",
+          "effective_date",
+          "pit_valid_from",
+          "pit_policy_id",
+          "source_table",
+          "source_row_id",
+          "event_id"
+        ],
+        "num_rows_meta": 129287,
+        "sample_rows": {
+          "id": [
+            "1",
+            "25",
+            "72"
+          ],
+          "company_id": [
+            "300000062",
+            "300000123",
+            "300000161"
+          ],
+          "company_name": [
+            "广东德美精细化工集团股份有限公司",
+            "深圳市得润电子股份有限公司",
+            "保利发展控股集团股份有限公司"
+          ],
+          "code": [
+            "002054.XSHE",
+            "002055.XSHE",
+            "600048.XSHG"
+          ],
+          "report_date": [
+            "2006-06-30 00:00:00",
+            "2006-06-30 00:00:00",
+            "2006-06-30 00:00:00"
+          ],
+          "bonus_type": [
+            "中期分红",
+            "中期分红",
+            "中期分红"
+          ],
+          "board_plan_pub_date": [
+            "2006-08-19 00:00:00",
+            "2006-08-19 00:00:00",
+            "2006-08-15 00:00:00"
+          ],
+          "board_plan_bonusnote": [
+            "不分配不转增",
+            "不分配不转增",
+            "不分配不转增"
+          ],
+          "distributed_share_base_board": [
+            "None",
+            "None",
+            "None"
+          ],
+          "shareholders_plan_pub_date": [
+            "None",
+            "None",
+            "None"
+          ],
+          "shareholders_plan_bonusnote": [
+            "None",
+            "None",
+            "None"
+          ],
+          "distributed_share_base_shareholders": [
+            "None",
+            "None",
+            "None"
+          ]
+        },
+        "date_cols_minmax": {
+          "report_date": {
+            "min_sample": "2006-01-05 00:00:00",
+            "max_sample": "2007-12-31 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "board_plan_pub_date": {
+            "min_sample": "2006-01-05 00:00:00",
+            "max_sample": "2009-01-07 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "shareholders_plan_pub_date": {
+            "min_sample": "2006-01-24 00:00:00",
+            "max_sample": "2009-03-25 00:00:00",
+            "sample_n": 2226,
+            "scope": "first_5000_rows"
+          },
+          "implementation_pub_date": {
+            "min_sample": "2006-02-08 00:00:00",
+            "max_sample": "2010-03-16 00:00:00",
+            "sample_n": 1407,
+            "scope": "first_5000_rows"
+          },
+          "a_registration_date": {
+            "min_sample": "2006-02-09 00:00:00",
+            "max_sample": "2010-03-17 00:00:00",
+            "sample_n": 1396,
+            "scope": "first_5000_rows"
+          },
+          "b_registration_date": {
+            "min_sample": "2006-04-12 00:00:00",
+            "max_sample": "2010-03-22 00:00:00",
+            "sample_n": 60,
+            "scope": "first_5000_rows"
+          }
+        },
+        "error": null,
+        "identity_status": "PHYSICAL_DATA_PRESENT_NOT_FULL_CONTENT_AUDIT",
+        "row_count_method": "polars_scan_len"
+      },
+      "year_partition_names_observed": [
+        "2006",
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "lineage_hits": [],
+      "lineage_status": "ABSENT",
+      "resolver_reject_layer": {
+        "script": "脚本/blackbox_data_access_resolver_r1.py",
+        "mechanism": "catalog[product_id]==normalized empty → result_status=CACHE_PRODUCT_UNAVAILABLE; download_required=False",
+        "lines_excerpt_ref": "source_reads/S_RESOLVER_catalog_reject.md",
+        "scope_limit": "ONLY consumers that call this resolver with product_id; other formal entries may still open release_root paths directly — NOT proven here as universal unreadability"
+      },
+      "main_enum": "CACHE_PRODUCT_UNAVAILABLE",
+      "diagnostic_detail": "PHYSICAL_PRESENT_UNDER_CURRENT_RELEASE_ROOT; parquet has schema+rows; NOT in CACHE_PRODUCT_CATALOG → resolver returns CACHE_PRODUCT_UNAVAILABLE. Do NOT assert CLEANING_COMPLETE. Do NOT assert full-content audit.",
+      "content_audit": "NOT_DONE_FULL_DATE_X_SYMBOL",
+      "candidate_fixes_readonly": [
+        "ADD_CATALOG_ROW_for_product_under_CURRENT_release (production change — NOT this round)",
+        "OR document alternate formal reader that bypasses catalog (if any) — NOT invented here",
+        "OR migrate/register via formal cache publish path when production authorized"
+      ],
+      "business_impact": "DAILY.required_cache_products consumers via data_access_resolver cannot resolve these 4 ids; disk objects exist under CURRENT root but are catalog-orphaned",
+      "forbidden": "NO_REDOWNLOAD; NO_production_catalog_write; NO_CLEANING_COMPLETE_claim"
+    },
+    {
+      "product_id": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "under_current_release_root": true,
+      "in_catalog": false,
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "files_n": 18,
+      "top_files": [
+        {
+          "rel": "data/STK_SHAREHOLDER_TOP10_PIT_R1_FULL.parquet",
+          "size_bytes": 89325428
+        },
+        {
+          "rel": "data/year=2014/part_2014.parquet",
+          "size_bytes": 17556287
+        },
+        {
+          "rel": "data/year=2023/part_2023.parquet",
+          "size_bytes": 9405800
+        },
+        {
+          "rel": "data/year=2022/part_2022.parquet",
+          "size_bytes": 9231286
+        },
+        {
+          "rel": "data/year=2021/part_2021.parquet",
+          "size_bytes": 9071222
+        },
+        {
+          "rel": "data/year=2024/part_2024.parquet",
+          "size_bytes": 8949740
+        },
+        {
+          "rel": "data/year=2025/part_2025.parquet",
+          "size_bytes": 8889516
+        },
+        {
+          "rel": "data/year=2020/part_2020.parquet",
+          "size_bytes": 7773360
+        },
+        {
+          "rel": "data/year=2019/part_2019.parquet",
+          "size_bytes": 6552411
+        },
+        {
+          "rel": "data/year=2018/part_2018.parquet",
+          "size_bytes": 6244063
+        },
+        {
+          "rel": "indexes/SHAREHOLDER_TOP10_ASOF_INDEX_R1.parquet",
+          "size_bytes": 6198128
+        },
+        {
+          "rel": "data/year=2017/part_2017.parquet",
+          "size_bytes": 6067372
+        }
+      ],
+      "primary_rel": "data/STK_SHAREHOLDER_TOP10_PIT_R1_FULL.parquet",
+      "primary_sample": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_TOP10_PIT_R1_FULL.parquet",
+        "exists": true,
+        "size_bytes": 89325428,
+        "schema": [
+          "id",
+          "company_name",
+          "company_id",
+          "code",
+          "end_date",
+          "pub_date",
+          "change_reason_id",
+          "change_reason",
+          "shareholder_rank",
+          "shareholder_name",
+          "shareholder_name_en",
+          "shareholder_id",
+          "shareholder_class_id",
+          "shareholder_class",
+          "share_number",
+          "share_ratio",
+          "sharesnature_id",
+          "sharesnature",
+          "share_pledge_freeze",
+          "share_pledge",
+          "share_freeze",
+          "stock_code",
+          "observation_date",
+          "publication_date",
+          "pit_valid_from",
+          "pit_policy_id",
+          "source_table",
+          "source_row_id",
+          "snapshot_id",
+          "snapshot_version"
+        ],
+        "num_rows_meta": 2694787,
+        "sample_rows": {
+          "id": [
+            "131377",
+            "131378",
+            "252098"
+          ],
+          "company_name": [
+            "平安银行股份有限公司",
+            "平安银行股份有限公司",
+            "平安银行股份有限公司"
+          ],
+          "company_id": [
+            "430000001",
+            "430000001",
+            "430000001"
+          ],
+          "code": [
+            "000001.XSHE",
+            "000001.XSHE",
+            "000001.XSHE"
+          ],
+          "end_date": [
+            "2005-12-31 00:00:00",
+            "2005-12-31 00:00:00",
+            "2005-12-31 00:00:00"
+          ],
+          "pub_date": [
+            "2006-04-01 00:00:00",
+            "2006-04-01 00:00:00",
+            "2006-04-01 00:00:00"
+          ],
+          "change_reason_id": [
+            "306019.0",
+            "306019.0",
+            "306019.0"
+          ],
+          "change_reason": [
+            "定期报告",
+            "定期报告",
+            "定期报告"
+          ],
+          "shareholder_rank": [
+            "1",
+            "2",
+            "3"
+          ],
+          "shareholder_name": [
+            "Newbridge Asia AIV Ⅲ,L.P.",
+            "深圳中电投资股份有限公司",
+            "海通证券股份有限公司"
+          ],
+          "shareholder_name_en": [
+            "None",
+            "China Electronics Shenzhen Company",
+            "Haitong Securities Co., Ltd."
+          ],
+          "shareholder_id": [
+            "None",
+            "100010483.0",
+            "420600837.0"
+          ]
+        },
+        "date_cols_minmax": {
+          "end_date": {
+            "min_sample": "2005-12-31 00:00:00",
+            "max_sample": "2026-03-31 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "pub_date": {
+            "min_sample": "2006-02-25 00:00:00",
+            "max_sample": "2026-04-30 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "observation_date": {
+            "min_sample": "2005-12-31 00:00:00",
+            "max_sample": "2026-03-31 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "publication_date": {
+            "min_sample": "2006-02-25 00:00:00",
+            "max_sample": "2026-04-30 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          }
+        },
+        "error": null,
+        "identity_status": "PHYSICAL_DATA_PRESENT_NOT_FULL_CONTENT_AUDIT",
+        "row_count_method": "polars_scan_len"
+      },
+      "year_partition_names_observed": [
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "lineage_hits": [],
+      "lineage_status": "ABSENT",
+      "resolver_reject_layer": {
+        "script": "脚本/blackbox_data_access_resolver_r1.py",
+        "mechanism": "catalog[product_id]==normalized empty → result_status=CACHE_PRODUCT_UNAVAILABLE; download_required=False",
+        "lines_excerpt_ref": "source_reads/S_RESOLVER_catalog_reject.md",
+        "scope_limit": "ONLY consumers that call this resolver with product_id; other formal entries may still open release_root paths directly — NOT proven here as universal unreadability"
+      },
+      "main_enum": "CACHE_PRODUCT_UNAVAILABLE",
+      "diagnostic_detail": "PHYSICAL_PRESENT_UNDER_CURRENT_RELEASE_ROOT; parquet has schema+rows; NOT in CACHE_PRODUCT_CATALOG → resolver returns CACHE_PRODUCT_UNAVAILABLE. Do NOT assert CLEANING_COMPLETE. Do NOT assert full-content audit.",
+      "content_audit": "NOT_DONE_FULL_DATE_X_SYMBOL",
+      "candidate_fixes_readonly": [
+        "ADD_CATALOG_ROW_for_product_under_CURRENT_release (production change — NOT this round)",
+        "OR document alternate formal reader that bypasses catalog (if any) — NOT invented here",
+        "OR migrate/register via formal cache publish path when production authorized"
+      ],
+      "business_impact": "DAILY.required_cache_products consumers via data_access_resolver cannot resolve these 4 ids; disk objects exist under CURRENT root but are catalog-orphaned",
+      "forbidden": "NO_REDOWNLOAD; NO_production_catalog_write; NO_CLEANING_COMPLETE_claim"
+    },
+    {
+      "product_id": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "under_current_release_root": true,
+      "in_catalog": false,
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "files_n": 18,
+      "top_files": [
+        {
+          "rel": "data/STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet",
+          "size_bytes": 88886477
+        },
+        {
+          "rel": "data/year=2014/part_2014.parquet",
+          "size_bytes": 21236065
+        },
+        {
+          "rel": "data/year=2024/part_2024.parquet",
+          "size_bytes": 8947930
+        },
+        {
+          "rel": "data/year=2023/part_2023.parquet",
+          "size_bytes": 8689918
+        },
+        {
+          "rel": "data/year=2025/part_2025.parquet",
+          "size_bytes": 8663540
+        },
+        {
+          "rel": "data/year=2022/part_2022.parquet",
+          "size_bytes": 8243613
+        },
+        {
+          "rel": "data/year=2021/part_2021.parquet",
+          "size_bytes": 7701115
+        },
+        {
+          "rel": "data/year=2020/part_2020.parquet",
+          "size_bytes": 6596423
+        },
+        {
+          "rel": "data/year=2019/part_2019.parquet",
+          "size_bytes": 5950241
+        },
+        {
+          "rel": "data/year=2018/part_2018.parquet",
+          "size_bytes": 5828693
+        },
+        {
+          "rel": "indexes/SHAREHOLDER_FLOATING_TOP10_ASOF_INDEX_R1.parquet",
+          "size_bytes": 5421122
+        },
+        {
+          "rel": "data/year=2026/part_2026.parquet",
+          "size_bytes": 5322877
+        }
+      ],
+      "primary_rel": "data/STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet",
+      "primary_sample": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data\\STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1_FULL.parquet",
+        "exists": true,
+        "size_bytes": 88886477,
+        "schema": [
+          "id",
+          "company_id",
+          "company_name",
+          "code",
+          "end_date",
+          "pub_date",
+          "change_reason_id",
+          "change_reason",
+          "shareholder_rank",
+          "shareholder_id",
+          "shareholder_name",
+          "shareholder_name_en",
+          "shareholder_class_id",
+          "shareholder_class",
+          "share_number",
+          "share_ratio",
+          "sharesnature_id",
+          "sharesnature",
+          "stock_code",
+          "observation_date",
+          "publication_date",
+          "pit_valid_from",
+          "pit_policy_id",
+          "source_table",
+          "source_row_id",
+          "snapshot_id",
+          "snapshot_version"
+        ],
+        "num_rows_meta": 2653539,
+        "sample_rows": {
+          "id": [
+            "4085067",
+            "4085068",
+            "4085069"
+          ],
+          "company_id": [
+            "430000001",
+            "430000001",
+            "430000001"
+          ],
+          "company_name": [
+            "深圳发展银行股份有限公司",
+            "深圳发展银行股份有限公司",
+            "深圳发展银行股份有限公司"
+          ],
+          "code": [
+            "000001.XSHE",
+            "000001.XSHE",
+            "000001.XSHE"
+          ],
+          "end_date": [
+            "2005-12-31 00:00:00",
+            "2005-12-31 00:00:00",
+            "2005-12-31 00:00:00"
+          ],
+          "pub_date": [
+            "2006-04-01 00:00:00",
+            "2006-04-01 00:00:00",
+            "2006-04-01 00:00:00"
+          ],
+          "change_reason_id": [
+            "306019.0",
+            "306019.0",
+            "306019.0"
+          ],
+          "change_reason": [
+            "定期报告",
+            "定期报告",
+            "定期报告"
+          ],
+          "shareholder_rank": [
+            "1",
+            "2",
+            "3"
+          ],
+          "shareholder_id": [
+            "100051805.0",
+            "130000047.0",
+            "120160627.0"
+          ],
+          "shareholder_name": [
+            "全国社保基金零零一组合",
+            "银河－渣打－CITIGROUP GLOBAL MARKETS LIMITED",
+            "中国工商银行－普丰证券投资基金"
+          ],
+          "shareholder_name_en": [
+            "None",
+            "None",
+            "None"
+          ]
+        },
+        "date_cols_minmax": {
+          "end_date": {
+            "min_sample": "2005-12-31 00:00:00",
+            "max_sample": "2026-03-31 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "pub_date": {
+            "min_sample": "2006-02-25 00:00:00",
+            "max_sample": "2026-04-30 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "observation_date": {
+            "min_sample": "2005-12-31 00:00:00",
+            "max_sample": "2026-03-31 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "publication_date": {
+            "min_sample": "2006-02-25 00:00:00",
+            "max_sample": "2026-04-30 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          }
+        },
+        "error": null,
+        "identity_status": "PHYSICAL_DATA_PRESENT_NOT_FULL_CONTENT_AUDIT",
+        "row_count_method": "polars_scan_len"
+      },
+      "year_partition_names_observed": [
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "lineage_hits": [],
+      "lineage_status": "ABSENT",
+      "resolver_reject_layer": {
+        "script": "脚本/blackbox_data_access_resolver_r1.py",
+        "mechanism": "catalog[product_id]==normalized empty → result_status=CACHE_PRODUCT_UNAVAILABLE; download_required=False",
+        "lines_excerpt_ref": "source_reads/S_RESOLVER_catalog_reject.md",
+        "scope_limit": "ONLY consumers that call this resolver with product_id; other formal entries may still open release_root paths directly — NOT proven here as universal unreadability"
+      },
+      "main_enum": "CACHE_PRODUCT_UNAVAILABLE",
+      "diagnostic_detail": "PHYSICAL_PRESENT_UNDER_CURRENT_RELEASE_ROOT; parquet has schema+rows; NOT in CACHE_PRODUCT_CATALOG → resolver returns CACHE_PRODUCT_UNAVAILABLE. Do NOT assert CLEANING_COMPLETE. Do NOT assert full-content audit.",
+      "content_audit": "NOT_DONE_FULL_DATE_X_SYMBOL",
+      "candidate_fixes_readonly": [
+        "ADD_CATALOG_ROW_for_product_under_CURRENT_release (production change — NOT this round)",
+        "OR document alternate formal reader that bypasses catalog (if any) — NOT invented here",
+        "OR migrate/register via formal cache publish path when production authorized"
+      ],
+      "business_impact": "DAILY.required_cache_products consumers via data_access_resolver cannot resolve these 4 ids; disk objects exist under CURRENT root but are catalog-orphaned",
+      "forbidden": "NO_REDOWNLOAD; NO_production_catalog_write; NO_CLEANING_COMPLETE_claim"
+    },
+    {
+      "product_id": "SW_L3_MEMBERSHIP_PIT_R1",
+      "under_current_release_root": true,
+      "in_catalog": false,
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1",
+      "files_n": 14,
+      "top_files": [
+        {
+          "rel": "SOURCE_FULL.parquet",
+          "size_bytes": 20539218
+        },
+        {
+          "rel": "year=2025/part_2025.parquet",
+          "size_bytes": 2433141
+        },
+        {
+          "rel": "year=2024/part_2024.parquet",
+          "size_bytes": 2358516
+        },
+        {
+          "rel": "year=2023/part_2023.parquet",
+          "size_bytes": 2314091
+        },
+        {
+          "rel": "year=2022/part_2022.parquet",
+          "size_bytes": 2224986
+        },
+        {
+          "rel": "year=2021/part_2021.parquet",
+          "size_bytes": 2125751
+        },
+        {
+          "rel": "year=2020/part_2020.parquet",
+          "size_bytes": 1804098
+        },
+        {
+          "rel": "year=2026/part_2026.parquet",
+          "size_bytes": 1788391
+        },
+        {
+          "rel": "year=2019/part_2019.parquet",
+          "size_bytes": 1353364
+        },
+        {
+          "rel": "year=2018/part_2018.parquet",
+          "size_bytes": 1081351
+        },
+        {
+          "rel": "year=2017/part_2017.parquet",
+          "size_bytes": 1041211
+        },
+        {
+          "rel": "year=2016/part_2016.parquet",
+          "size_bytes": 885374
+        }
+      ],
+      "primary_rel": "SOURCE_FULL.parquet",
+      "primary_sample": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1\\SOURCE_FULL.parquet",
+        "exists": true,
+        "size_bytes": 20539218,
+        "schema": [
+          "date",
+          "code",
+          "industry_code",
+          "industry_name",
+          "error",
+          "taxonomy",
+          "signal_date",
+          "data_date",
+          "asof_rule",
+          "pit_status",
+          "source",
+          "taxonomy_version",
+          "no_current_backfill",
+          "no_ffill_membership"
+        ],
+        "num_rows_meta": 12564290,
+        "sample_rows": {
+          "date": [
+            "2014-01-02 00:00:00",
+            "2014-01-02 00:00:00",
+            "2014-01-02 00:00:00"
+          ],
+          "code": [
+            "000713.XSHE",
+            "000998.XSHE",
+            "002041.XSHE"
+          ],
+          "industry_code": [
+            "850111",
+            "850111",
+            "850111"
+          ],
+          "industry_name": [
+            "种子生产III",
+            "种子生产III",
+            "种子生产III"
+          ],
+          "error": [
+            "",
+            "",
+            ""
+          ],
+          "taxonomy": [
+            "sw_l3",
+            "sw_l3",
+            "sw_l3"
+          ],
+          "signal_date": [
+            "2014-01-02 00:00:00",
+            "2014-01-02 00:00:00",
+            "2014-01-02 00:00:00"
+          ],
+          "data_date": [
+            "2014-01-02 00:00:00",
+            "2014-01-02 00:00:00",
+            "2014-01-02 00:00:00"
+          ],
+          "asof_rule": [
+            "JQ_get_industry_stocks_date",
+            "JQ_get_industry_stocks_date",
+            "JQ_get_industry_stocks_date"
+          ],
+          "pit_status": [
+            "OK",
+            "OK",
+            "OK"
+          ],
+          "source": [
+            "JQ_DAILY_TIP_20260924",
+            "JQ_DAILY_TIP_20260924",
+            "JQ_DAILY_TIP_20260924"
+          ],
+          "taxonomy_version": [
+            "JQ_sw_l3_get_industries_asof",
+            "JQ_sw_l3_get_industries_asof",
+            "JQ_sw_l3_get_industries_asof"
+          ]
+        },
+        "date_cols_minmax": {
+          "date": {
+            "min_sample": "2014-01-02 00:00:00",
+            "max_sample": "2014-01-06 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "signal_date": {
+            "min_sample": "2014-01-02 00:00:00",
+            "max_sample": "2014-01-06 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "data_date": {
+            "min_sample": "2014-01-02 00:00:00",
+            "max_sample": "2014-01-06 00:00:00",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          },
+          "asof_rule": {
+            "min_sample": "JQ_get_industry_stocks_date",
+            "max_sample": "JQ_get_industry_stocks_date",
+            "sample_n": 5000,
+            "scope": "first_5000_rows"
+          }
+        },
+        "error": null,
+        "identity_status": "PHYSICAL_DATA_PRESENT_NOT_FULL_CONTENT_AUDIT",
+        "row_count_method": "polars_scan_len"
+      },
+      "year_partition_names_observed": [
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "lineage_hits": [],
+      "lineage_status": "ABSENT",
+      "resolver_reject_layer": {
+        "script": "脚本/blackbox_data_access_resolver_r1.py",
+        "mechanism": "catalog[product_id]==normalized empty → result_status=CACHE_PRODUCT_UNAVAILABLE; download_required=False",
+        "lines_excerpt_ref": "source_reads/S_RESOLVER_catalog_reject.md",
+        "scope_limit": "ONLY consumers that call this resolver with product_id; other formal entries may still open release_root paths directly — NOT proven here as universal unreadability"
+      },
+      "main_enum": "CACHE_PRODUCT_UNAVAILABLE",
+      "diagnostic_detail": "PHYSICAL_PRESENT_UNDER_CURRENT_RELEASE_ROOT; parquet has schema+rows; NOT in CACHE_PRODUCT_CATALOG → resolver returns CACHE_PRODUCT_UNAVAILABLE. Do NOT assert CLEANING_COMPLETE. Do NOT assert full-content audit.",
+      "content_audit": "NOT_DONE_FULL_DATE_X_SYMBOL",
+      "candidate_fixes_readonly": [
+        "ADD_CATALOG_ROW_for_product_under_CURRENT_release (production change — NOT this round)",
+        "OR document alternate formal reader that bypasses catalog (if any) — NOT invented here",
+        "OR migrate/register via formal cache publish path when production authorized"
+      ],
+      "business_impact": "DAILY.required_cache_products consumers via data_access_resolver cannot resolve these 4 ids; disk objects exist under CURRENT root but are catalog-orphaned",
+      "forbidden": "NO_REDOWNLOAD; NO_production_catalog_write; NO_CLEANING_COMPLETE_claim"
+    }
+  ]
+}
