@@ -1,0 +1,558 @@
+{
+  "inventory_id": "BLACKBOX_FULL_DATA_INVENTORY_TOP_R1",
+  "schema_version": "1.2.0",
+  "generated_at_cn": "2026-09-25T04:06:41+0800",
+  "generated_at_utc": "2026-09-24T20:06:41+00:00",
+  "refresh_script": "E:\\BLACKBOX\\脚本\\blackbox_data_inventory_top_refresh.py",
+  "rule_mdc": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_data_inventory_top_ssot.mdc",
+  "definition": "黑盒数据目录总表。alwaysApply 顶层 mdc 已内嵌本快照全文，BLACKBOX 工作区内 AG 开对话即注入，无需再拉 JSON。增量下载/清洗切换后由维护脚本刷新 mdc 快照。",
+  "ag_injection_policy": {
+    "always_apply_mdc": true,
+    "self_contained": true,
+    "no_runtime_json_pull_required": true,
+    "mdc_is_authoritative_snapshot_for_chat": true,
+    "json_is_machine_backup_only": true
+  },
+  "roots": {
+    "blackbox": "E:\\BLACKBOX",
+    "raw_official": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw",
+    "clean_releases": "E:\\BLACKBOX\\数据\\清洗成品\\releases",
+    "current_cleaning_pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+    "current_index_minute_align_pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_INDEX_MINUTE_ALIGN_RELEASE.json",
+    "tasks": "E:\\BLACKBOX\\任务",
+    "runtime": "E:\\BLACKBOX\\运行",
+    "hand_decision": "E:\\BLACKBOX\\运行\\HAND_DECISION.json",
+    "full_update_scope_ssot": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json"
+  },
+  "current_cleaning": {
+    "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "seal_id": "SEAL_R33_FUND_NAV_20260924_200439",
+    "cleaning_as_of": "2026-09-24",
+    "finance_asof": "2026-09-24",
+    "daily_asof": "2026-09-24",
+    "standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+    "quarantine_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_quarantine",
+    "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+    "sealed": true
+  },
+  "index_minute_aligned_clean": {
+    "release_id": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260924_20260925_033441",
+    "release_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260924_20260925_033441",
+    "standard_index_minute_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260924_20260925_033441\\standard\\index_minute",
+    "seal_id": "BLACKBOX_INDEX_MINUTE_ALIGN_SEAL_R1_20260925_034427",
+    "all_pass": true,
+    "universe": "JQ_ALL_732",
+    "universe_n": 732,
+    "window": {
+      "start": "2014-01-01",
+      "end": "2026-08-06"
+    },
+    "freqs": [
+      "5m",
+      "1m",
+      "30m",
+      "60m"
+    ],
+    "parquet_files": 31480,
+    "size_gib": 32.08,
+    "universe_note": "全市场指数 732（546+186）四频历史已 raw DONE；对齐防穿越清洗封板后 CURRENT_INDEX_MINUTE_ALIGN_RELEASE 指向本 release。EMPTY=接口无行情年，非漏下。"
+  },
+  "index_minute_download_tracks": {
+    "jq_downloadable_546": {
+      "status": "DONE",
+      "freq": "DONE",
+      "completed_units": 26260,
+      "empty_units": 2132,
+      "covered_units": 28392,
+      "est_total_units": 28392,
+      "coverage_pct": 100.0,
+      "progress_pct_completed_only": 92.49,
+      "stopped": null,
+      "paused": false,
+      "paused_reason": null,
+      "state_path": "E:\\BLACKBOX\\运行\\INDEX_MINUTE_JQ_DOWNLOADABLE_STATE.json",
+      "log_path": "E:\\BLACKBOX\\运行\\INDEX_MINUTE_JQ_DOWNLOADABLE.log",
+      "universe_n": 546,
+      "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+      "window": {
+        "start": "2014-01-01",
+        "end": "2026-08-06"
+      }
+    },
+    "daily_only_historical_186": {
+      "status": "DONE",
+      "freq": "DONE",
+      "completed_units": 5212,
+      "empty_units": 4460,
+      "covered_units": 9672,
+      "est_total_units": 9672,
+      "coverage_pct": 100.0,
+      "progress_pct_completed_only": 53.89,
+      "stopped": null,
+      "paused": false,
+      "paused_reason": null,
+      "state_path": "E:\\BLACKBOX\\运行\\INDEX_MINUTE_DAILY_ONLY_186_STATE.json",
+      "log_path": "E:\\BLACKBOX\\任务\\20260808_194845_BLACKBOX_JQ_INDEX_MINUTE_acc523\\11_LOGS\\reprobe_download.log",
+      "universe_n": 186,
+      "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+      "window": {
+        "start": "2014-01-01",
+        "end": "2026-08-06"
+      }
+    },
+    "union_732": {
+      "status": "DONE",
+      "universe_n": 732,
+      "est_total_units": 38064,
+      "covered_units": 38064,
+      "coverage_pct": 100.0,
+      "align_clean_pass": true
+    }
+  },
+  "raw_jqdata_official": {
+    "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw",
+    "parquet_files": 358699,
+    "size_gib": 114.69,
+    "domains": [
+      {
+        "domain": "P0_meta",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+        "parquet_files": 119,
+        "size_bytes": 5945125,
+        "size_gib": 0.01
+      },
+      {
+        "domain": "P1_adjust_factor",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+        "parquet_files": 222,
+        "size_bytes": 4821363,
+        "size_gib": 0.0
+      },
+      {
+        "domain": "P2_security_state",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state",
+        "parquet_files": 956,
+        "size_bytes": 97888210,
+        "size_gib": 0.09
+      },
+      {
+        "domain": "P2_stock_daily",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+        "parquet_files": 524,
+        "size_bytes": 1150146305,
+        "size_gib": 1.07
+      },
+      {
+        "domain": "P3_finance_pit",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit",
+        "parquet_files": 685,
+        "size_bytes": 889541755,
+        "size_gib": 0.83
+      },
+      {
+        "domain": "P3_index",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+        "parquet_files": 362,
+        "size_bytes": 3857467,
+        "size_gib": 0.0
+      },
+      {
+        "domain": "P3_index_minute",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+        "parquet_files": 133968,
+        "size_bytes": 24851106640,
+        "size_gib": 23.14
+      },
+      {
+        "domain": "P4_fund_etf",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+        "parquet_files": 27218,
+        "size_bytes": 2765858415,
+        "size_gib": 2.58
+      },
+      {
+        "domain": "P4_fund_etf_raw_none",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+        "parquet_files": 36718,
+        "size_bytes": 9502275216,
+        "size_gib": 8.85
+      },
+      {
+        "domain": "P4_index",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_index",
+        "parquet_files": 144,
+        "size_bytes": 2871796,
+        "size_gib": 0.0
+      },
+      {
+        "domain": "P4b_fund_expand",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+        "parquet_files": 78719,
+        "size_bytes": 726454528,
+        "size_gib": 0.68
+      },
+      {
+        "domain": "P5_attributes_events",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+        "parquet_files": 217,
+        "size_bytes": 332178603,
+        "size_gib": 0.31
+      },
+      {
+        "domain": "P5_jq20_extension",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension",
+        "parquet_files": 1340,
+        "size_bytes": 176854183,
+        "size_gib": 0.16
+      },
+      {
+        "domain": "P6_factor_reference",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference",
+        "parquet_files": 177,
+        "size_bytes": 1097115051,
+        "size_gib": 1.02
+      },
+      {
+        "domain": "P7_stock_minute",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+        "parquet_files": 26613,
+        "size_bytes": 4800740018,
+        "size_gib": 4.47
+      },
+      {
+        "domain": "P7_stock_minute_raw_none",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none",
+        "parquet_files": 25669,
+        "size_bytes": 3954127109,
+        "size_gib": 3.68
+      },
+      {
+        "domain": "P7_stock_minute_raw_none_replacement_5m",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+        "parquet_files": 12847,
+        "size_bytes": 15318566823,
+        "size_gib": 14.27
+      },
+      {
+        "domain": "P7_stock_raw_none_replacement_1m",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+        "parquet_files": 11790,
+        "size_bytes": 57174587413,
+        "size_gib": 53.25
+      },
+      {
+        "domain": "P8_etf_fund",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P8_etf_fund",
+        "parquet_files": 18,
+        "size_bytes": 6229267,
+        "size_gib": 0.01
+      },
+      {
+        "domain": "P9_derivative_aux",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P9_derivative_aux",
+        "parquet_files": 393,
+        "size_bytes": 285275652,
+        "size_gib": 0.27
+      }
+    ]
+  },
+  "strategy_data_plane_additions": [
+    {
+      "domain": "A_SHARE_1M_RAW_NONE",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\A_SHARE_1M_RAW_NONE",
+      "latest_release": "REL_A_SHARE_1M_RAW_NONE_P7_POINTER_20260802_015345",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\A_SHARE_1M_RAW_NONE\\REL_A_SHARE_1M_RAW_NONE_P7_POINTER_20260802_015345",
+      "parquet_files": 0,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "ADJUST_FACTOR_PRE_FQ_FULL_HISTORY_R1",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ADJUST_FACTOR_PRE_FQ_FULL_HISTORY_R1",
+      "latest_release": "REL_ASOF_20260814_20260816_033909",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ADJUST_FACTOR_PRE_FQ_FULL_HISTORY_R1\\REL_ASOF_20260814_20260816_033909",
+      "parquet_files": 13,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "ETF_1M_RAW_NONE",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ETF_1M_RAW_NONE",
+      "latest_release": "REL_ETF_1M_JQ_REPAIR_R1_20260802_003736",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ETF_1M_RAW_NONE\\REL_ETF_1M_JQ_REPAIR_R1_20260802_003736",
+      "parquet_files": 2,
+      "size_gib": 0.02
+    },
+    {
+      "domain": "ETF_UNIT_NET_VALUE_PIT",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ETF_UNIT_NET_VALUE_PIT",
+      "latest_release": "REL_ETF_UNIT_NET_VALUE_JQ_R1_20260802_003736",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ETF_UNIT_NET_VALUE_PIT\\REL_ETF_UNIT_NET_VALUE_JQ_R1_20260802_003736",
+      "parquet_files": 2,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "FUND_NET_VALUE_PIT",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\FUND_NET_VALUE_PIT",
+      "latest_release": "REL_FUND_NET_VALUE_JQ_R1_20260802_002424",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\FUND_NET_VALUE_PIT\\REL_FUND_NET_VALUE_JQ_R1_20260802_002424",
+      "parquet_files": 2,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "INDEX_CONSTITUENT_PIT_R1",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_CONSTITUENT_PIT_R1",
+      "latest_release": "REL_INDEX_CONSTITUENT_PIT_SUPPLEMENT_R1_20260805_075520",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_CONSTITUENT_PIT_R1\\REL_INDEX_CONSTITUENT_PIT_SUPPLEMENT_R1_20260805_075520",
+      "parquet_files": 1,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "INDEX_CONSTITUENTS_PIT",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_CONSTITUENTS_PIT",
+      "latest_release": "REL_INDEX_CONSTITUENTS_PIT_JQ_R1_20260802_002424",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_CONSTITUENTS_PIT\\REL_INDEX_CONSTITUENTS_PIT_JQ_R1_20260802_002424",
+      "parquet_files": 2,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "INDEX_DAILY_RAW_FULL_HISTORY_R1",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1",
+      "latest_release": "REL_INDEX_DAILY_GAP_R1_20260805_20260811_20260812_122830",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_GAP_R1_20260805_20260811_20260812_122830",
+      "parquet_files": 732,
+      "size_gib": 0.01
+    },
+    {
+      "domain": "INDEX_DAILY_RAW_NONE",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_NONE",
+      "latest_release": "REL_INDEX_DAILY_MULTIYEAR_R1_20260801_225225",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_NONE\\REL_INDEX_DAILY_MULTIYEAR_R1_20260801_225225",
+      "parquet_files": 2,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "INDEX_MINUTE_RAW_R1",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_MINUTE_RAW_R1",
+      "latest_release": null
+    },
+    {
+      "domain": "SECURITY_MASTER_A_SHARE_PIT",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_A_SHARE_PIT",
+      "latest_release": "REL_SECURITY_MASTER_A_SHARE_PIT_LOCAL_S1_20260802_015345",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_A_SHARE_PIT\\REL_SECURITY_MASTER_A_SHARE_PIT_LOCAL_S1_20260802_015345",
+      "parquet_files": 3,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "SECURITY_MASTER_FUND_PIT",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_FUND_PIT",
+      "latest_release": "REL_SECURITY_MASTER_FUND_PIT_LOCAL_S1_20260802_015345",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_FUND_PIT\\REL_SECURITY_MASTER_FUND_PIT_LOCAL_S1_20260802_015345",
+      "parquet_files": 3,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "SECURITY_MASTER_INDEX_PIT",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_INDEX_PIT",
+      "latest_release": "REL_SECURITY_MASTER_INDEX_PIT_LOCAL_S1_20260802_015345",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_INDEX_PIT\\REL_SECURITY_MASTER_INDEX_PIT_LOCAL_S1_20260802_015345",
+      "parquet_files": 3,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "STOCK_DAILY_RAW_NONE_FULL_HISTORY_R1",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\STOCK_DAILY_RAW_NONE_FULL_HISTORY_R1",
+      "latest_release": "REL_ASOF_20260814_20260816_070208",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\STOCK_DAILY_RAW_NONE_FULL_HISTORY_R1\\REL_ASOF_20260814_20260816_070208",
+      "parquet_files": 13,
+      "size_gib": 0.23
+    },
+    {
+      "domain": "SW1_CONSTITUENTS_PIT",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SW1_CONSTITUENTS_PIT",
+      "latest_release": "REL_SW1_CONSTITUENTS_PIT_JQ_R1_20260802_002424",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SW1_CONSTITUENTS_PIT\\REL_SW1_CONSTITUENTS_PIT_JQ_R1_20260802_002424",
+      "parquet_files": 2,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "SW1_DAILY_PRICE",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SW1_DAILY_PRICE",
+      "latest_release": "REL_SW1_DAILY_PRICE_JQ_EXACT_R1_20260802_002424",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SW1_DAILY_PRICE\\REL_SW1_DAILY_PRICE_JQ_EXACT_R1_20260802_002424",
+      "parquet_files": 2,
+      "size_gib": 0.0
+    },
+    {
+      "domain": "TRADABLE_STATUS",
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\TRADABLE_STATUS",
+      "latest_release": "REL_TRADABLE_PAUSED_MULTIYEAR_R1_20260801_225230",
+      "latest_path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\TRADABLE_STATUS\\REL_TRADABLE_PAUSED_MULTIYEAR_R1_20260801_225230",
+      "parquet_files": 2,
+      "size_gib": 0.0
+    }
+  ],
+  "adjust_factor_pit_r1": {
+    "product_id": "ADJUST_FACTOR_PIT_R1",
+    "status": "READY",
+    "SOURCE_CUTOFF_GAP": "CLOSED",
+    "ALL_THIS_DOMAIN_GAPS_CLOSED": true,
+    "ALL_BLACKBOX_DATA_GAPS_CLOSED": false,
+    "fq": "pre",
+    "FULL_HISTORY_START": "2014-01-01",
+    "SOURCE_MAX_DATE": "2026-08-14",
+    "source_release_root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ADJUST_FACTOR_PRE_FQ_FULL_HISTORY_R1\\REL_ASOF_20260814_20260816_033909",
+    "legacy_p1_tag": "LEGACY_ADJUST_FACTOR_SOURCE_CUTOFF_20260612",
+    "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R26_ADJFACTOR_PIT_ASOF_20260814_20260816_044000",
+    "cache_release_id": "BLACKBOX_CACHE_R1_ADJFACTOR_PIT_CLEAN_ASOF_20260814_20260816_044403",
+    "cache_product": "ADJUST_FACTOR_PIT_R1",
+    "incremental_engine": "E:\\BLACKBOX\\脚本\\blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+    "note": "P1 yearly not overwritten; production reads CACHE ADJUST_FACTOR_PIT_R1"
+  },
+  "price_domains_summary": {
+    "A_share_daily_raw": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+      "status": "CURRENT_THROUGH_20260807",
+      "fq": "None / RAW_NONE"
+    },
+    "ETF_daily_raw_none": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+      "status": "CURRENT_THROUGH_20260807",
+      "fq": "None"
+    },
+    "A_share_minute_5m_replacement": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+      "status": "LEGACY_SEALED + Aug incremental in cleaning"
+    },
+    "A_share_minute_1m_replacement": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+      "status": "LEGACY_SEALED + Aug incremental in cleaning"
+    },
+    "A_share_minute_30m_60m": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none",
+      "status": "SEALED + Aug incremental in cleaning"
+    },
+    "ETF_minute_all": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+      "status": "SEALED + Aug incremental in cleaning"
+    },
+    "index_daily": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+      "main7_aug": "COVERED_THROUGH_20260807"
+    },
+    "index_minute_raw": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+      "status": "DONE_732_FULL",
+      "parquet_files": 133968,
+      "size_gib": 23.14,
+      "window_end": "2026-08-06"
+    },
+    "finance_pit": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit"
+    },
+    "valuation": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation"
+    },
+    "calendar": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange"
+    }
+  },
+  "clean_price_aug_minutes": {
+    "status": "PASS",
+    "trade_days": [
+      "2026-08-03",
+      "2026-08-04",
+      "2026-08-05",
+      "2026-08-06",
+      "2026-08-07"
+    ],
+    "standard_price_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price",
+    "domains": [
+      "A股_stock_5m",
+      "A股_stock_1m",
+      "A股_stock_30m",
+      "A股_stock_60m",
+      "ETF_5m",
+      "ETF_1m",
+      "ETF_30m",
+      "ETF_60m"
+    ],
+    "note": "Filenames contain 2026-08-0X under CURRENT standard/price/<domain>/"
+  },
+  "in_flight_downloads": {
+    "index_minute_jq_downloadable_546": {
+      "status": "DONE",
+      "freq": "DONE",
+      "completed_units": 26260,
+      "empty_units": 2132,
+      "covered_units": 28392,
+      "est_total_units": 28392,
+      "coverage_pct": 100.0,
+      "progress_pct_completed_only": 92.49,
+      "stopped": null,
+      "paused": false,
+      "paused_reason": null,
+      "state_path": "E:\\BLACKBOX\\运行\\INDEX_MINUTE_JQ_DOWNLOADABLE_STATE.json",
+      "log_path": "E:\\BLACKBOX\\运行\\INDEX_MINUTE_JQ_DOWNLOADABLE.log",
+      "watchdog_log": "E:\\BLACKBOX\\运行\\INDEX_MINUTE_JQ_DOWNLOADABLE_WATCHDOG.log",
+      "window": {
+        "start": "2014-01-01",
+        "end": "2026-08-06"
+      },
+      "universe_n": 546,
+      "worker_shards": 3,
+      "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+      "legacy_note": "Track complete when status=DONE; not in-flight when DONE"
+    },
+    "index_minute_daily_only_186": {
+      "status": "DONE",
+      "freq": "DONE",
+      "completed_units": 5212,
+      "empty_units": 4460,
+      "covered_units": 9672,
+      "est_total_units": 9672,
+      "coverage_pct": 100.0,
+      "progress_pct_completed_only": 53.89,
+      "stopped": null,
+      "paused": false,
+      "paused_reason": null,
+      "state_path": "E:\\BLACKBOX\\运行\\INDEX_MINUTE_DAILY_ONLY_186_STATE.json",
+      "universe_n": 186,
+      "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute"
+    }
+  },
+  "known_blocks": {
+    "financial_indicator": "BLOCKED_BY_JQ_ACCOUNT_PERMISSION",
+    "cross_stage_parallel": false,
+    "hand_max_workers_per_stage": 3
+  },
+  "hand_snapshot": {
+    "current_stage": "FULL_DATA_INCREMENT_R32",
+    "hand_release_level": "RELEASE_ALLOWED_FOR_FULL_DATA_INCREMENT_R32_ASOF_20260902",
+    "active_workers": 3,
+    "allowed_executor": "deepseek-v4-flash",
+    "next_action": "V4FLASH: 3-worker 5m download",
+    "index_minute_align_release_id": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260924_20260925_033441",
+    "index_minute_align_clean_pass": true
+  },
+  "full_update_scope_last": {
+    "last_amended_at_cn": null,
+    "amendment_note": null,
+    "current_cleaning": null
+  },
+  "sync_policy": {
+    "must_refresh_after": [
+      "post_seal_daily_or_minute_download_done",
+      "finance_incremental_download_done",
+      "formal_cleaning_CURRENT_switch",
+      "index_minute_download_or_align_seal",
+      "full_gapfill_or_inventory_scan",
+      "user_utterance_更新黑盒数据目录 / 同步数据总表"
+    ],
+    "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u E:\\BLACKBOX\\脚本\\blackbox_data_inventory_top_refresh.py",
+    "forbidden": [
+      "stale mdc snapshot after download/clean without refresh",
+      "AG inventing paths not present in embedded mdc snapshot",
+      "telling AG to pull JSON before answering data existence"
+    ]
+  }
+}
