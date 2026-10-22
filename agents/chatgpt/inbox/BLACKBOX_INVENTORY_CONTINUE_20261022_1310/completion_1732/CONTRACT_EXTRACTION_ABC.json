@@ -1,0 +1,823 @@
+{
+  "at": "2026-10-22T17:39:46+08:00",
+  "A_FUND_NAV": {
+    "product_id": "FUND_NAV_PIT_R1",
+    "read_sources": [
+      {
+        "path": "E:\\BLACKBOX\\脚本\\blackbox_fund_etf_nav_premium_plane_r1.py",
+        "exists": true,
+        "is_dir": false,
+        "size": 31204,
+        "mtime": "2026-10-16T05:04:28.568715+08:00",
+        "note": "implementation plane",
+        "sha256": "8e5b360ce0dad95012a94def38dd6b77c7ee71cbb729964c24432b0856c96b11"
+      },
+      {
+        "path": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_fund_etf_nav_premium_plane.mdc",
+        "exists": true,
+        "is_dir": false,
+        "size": 678,
+        "mtime": "2026-10-17T20:49:48.443781+08:00",
+        "note": "agent-requestable rule summary",
+        "sha256": "3a277579a4c21f9eabafb3617437394b0a44d4bc8598cb4545a66332493ab363"
+      },
+      {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_NAV_PIT_R1\\PRODUCT_META.json",
+        "exists": true,
+        "is_dir": false,
+        "size": 597,
+        "mtime": "2026-10-17T20:44:34.708084+08:00",
+        "note": "PRODUCT_META SOURCE_DECLARATION",
+        "sha256": "d0cedf382b18af97ee9d7df5cce5e50dda20e8feab88a15442e5b688c4282ee2"
+      },
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1519\\SEMANTICS_NAV_FINDING.json",
+        "exists": true,
+        "is_dir": false,
+        "size": 301,
+        "mtime": "2026-10-22T15:24:51.285681+08:00",
+        "note": "1519 static merge semantics",
+        "sha256": "2fbb857e7157e88ee4d09ab2e87026d738e8a0b7a00d37b7ec5fe2ab077a9a4d"
+      }
+    ],
+    "excerpts": {
+      "pit_known_at": [
+        {
+          "line_start": 217,
+          "line_end": 219,
+          "text": "        all_df = pd.concat(frames, ignore_index=True)\n        all_df = all_df.drop_duplicates(subset=[\"code\", \"day\"], keep=\"last\").sort_values([\"code\", \"day\"])\n        tip = INC_DIR / f\"fund_etf_nav__ge_consolidated__{GAP_START.replace('-','')}_{GAP_END.replace('-','')}__{now_ts()}.parquet\""
+        },
+        {
+          "line_start": 301,
+          "line_end": 303,
+          "text": "    if \"code\" in out.columns and \"day\" in out.columns:\n        out = out.drop_duplicates(subset=[\"code\", \"day\"], keep=\"last\")\n    out = out.sort_values([\"code\", \"day\"] if \"code\" in out.columns else [\"day\"])"
+        },
+        {
+          "line_start": 323,
+          "line_end": 325,
+          "text": "    nxt = next_trade_map(ASOF)\n    tip_df[\"known_at\"] = tip_df[\"day\"].map(lambda d: nxt.get(d, d))\n    tip_df[\"pit_policy\"] = \"JQ_FUND_NAV_EOD_NEXT_TRADE_DAY_R1\""
+        },
+        {
+          "line_start": 324,
+          "line_end": 326,
+          "text": "    tip_df[\"known_at\"] = tip_df[\"day\"].map(lambda d: nxt.get(d, d))\n    tip_df[\"pit_policy\"] = \"JQ_FUND_NAV_EOD_NEXT_TRADE_DAY_R1\"\n    tip_df[\"asof_rule\"] = \"day<=cleaning_as_of; known_at=next_trade_day(nav_day)\""
+        },
+        {
+          "line_start": 325,
+          "line_end": 327,
+          "text": "    tip_df[\"pit_policy\"] = \"JQ_FUND_NAV_EOD_NEXT_TRADE_DAY_R1\"\n    tip_df[\"asof_rule\"] = \"day<=cleaning_as_of; known_at=next_trade_day(nav_day)\"\n    tip_df[\"anti_lookahead\"] = tip_df[\"known_at\"] >= tip_df[\"day\"]"
+        },
+        {
+          "line_start": 326,
+          "line_end": 328,
+          "text": "    tip_df[\"asof_rule\"] = \"day<=cleaning_as_of; known_at=next_trade_day(nav_day)\"\n    tip_df[\"anti_lookahead\"] = tip_df[\"known_at\"] >= tip_df[\"day\"]\n    if not tip_df[\"anti_lookahead\"].all():"
+        },
+        {
+          "line_start": 402,
+          "line_end": 404,
+          "text": "            \"inherited_parquet_n\": inherited,\n            \"pit_policy\": \"JQ_FUND_NAV_EOD_NEXT_TRADE_DAY_R1\",\n            \"FILTER_PADDING\": \"day<=asof; drop null unit_net_value on tip\","
+        },
+        {
+          "line_start": 404,
+          "line_end": 406,
+          "text": "            \"FILTER_PADDING\": \"day<=asof; drop null unit_net_value on tip\",\n            \"premium_derived\": \"(close-unit_net_value)/unit_net_value with lag-1 NAV (known_at)\",\n            \"sha256_tip\": sha256_file(tip_clean),"
+        }
+      ],
+      "rule_mdc": [
+        {
+          "line_start": 1,
+          "line_end": 3,
+          "text": "---\ndescription: FUND/ETF NAV + 溢价派生平面 — get_extras 增量；禁止 FUND_NET_VALUE 整表 5000 静默\nalwaysApply: false"
+        },
+        {
+          "line_start": 7,
+          "line_end": 9,
+          "text": "\n- Cache 产品：`FUND_NAV_PIT_R1`（CURRENT tip）\n- API：`get_extras(unit_net_value/acc_net_value)`，BATCH≤5"
+        },
+        {
+          "line_start": 8,
+          "line_end": 10,
+          "text": "- Cache 产品：`FUND_NAV_PIT_R1`（CURRENT tip）\n- API：`get_extras(unit_net_value/acc_net_value)`，BATCH≤5\n- 禁止：`finance.FUND_NET_VALUE` 无过滤整表；`returned_rows==5000` 不得当 COMPLETE"
+        },
+        {
+          "line_start": 9,
+          "line_end": 11,
+          "text": "- API：`get_extras(unit_net_value/acc_net_value)`，BATCH≤5\n- 禁止：`finance.FUND_NET_VALUE` 无过滤整表；`returned_rows==5000` 不得当 COMPLETE\n- 溢价：派生 `(close-unit_net_value)/unit_net_value`；PIT 用 `known_at=next_trade_day(nav_day)`（lag-1）"
+        },
+        {
+          "line_start": 10,
+          "line_end": 12,
+          "text": "- 禁止：`finance.FUND_NET_VALUE` 无过滤整表；`returned_rows==5000` 不得当 COMPLETE\n- 溢价：派生 `(close-unit_net_value)/unit_net_value`；PIT 用 `known_at=next_trade_day(nav_day)`（lag-1）\n- 增量规则：`BLACKBOX_JQ_INCREMENTAL_DOWNLOAD_RULE` 数据集 `FUND_ETF_NAV`"
+        }
+      ],
+      "merge_semantics": {
+        "status": "STATIC_REVIEWED",
+        "function": "_merge_prior_tips",
+        "key": "(code, day)",
+        "precedence": "PRIOR_TIP_OVERRIDES_NEW_DUPLICATE",
+        "fixture": {
+          "new": 2.0,
+          "old": 1.0,
+          "observed": 1.0
+        },
+        "review_ref": "source_reads/independent_review_1519/NAV_RESULTS.json"
+      },
+      "product_meta": {
+        "product_id": "FUND_NAV_PIT_R1",
+        "source_cleaning": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+        "asof": "2026-09-24",
+        "n_files": 5980,
+        "layout": "history_junction + tip_incremental",
+        "tip_rows": 80666,
+        "pit_policy": "JQ_FUND_NAV_EOD_NEXT_TRADE_DAY_R1",
+        "SILENT_TRUNCATION": 0,
+        "premium_status": "DERIVED_NOT_MATERIALIZED",
+        "premium_formula": "(close - unit_net_value) / unit_net_value",
+        "premium_join": "ETF_DAILY_PIT_R1.close @ signal_date with FUND_NAV known_at<=signal_time (lag-1)",
+        "created_at": "2026-09-25T04:04:43+0800"
+      }
+    },
+    "extracted_requirements_or_declarations": [
+      {
+        "field": "date_field_day",
+        "expectation_status": "DEFINED",
+        "expectation_basis": "IMPLEMENTATION_BEHAVIOR",
+        "text": "column `day` = NAV calendar day; filter day<=cleaning_as_of; not publication timestamp",
+        "source": "blackbox_fund_etf_nav_premium_plane_r1.py tip filter / asof_rule"
+      },
+      {
+        "field": "known_at_availability",
+        "expectation_status": "DEFINED",
+        "expectation_basis": "NORMATIVE_RULE",
+        "text": "known_at=next_trade_day(nav_day); pit_policy=JQ_FUND_NAV_EOD_NEXT_TRADE_DAY_R1 (lag-1)",
+        "source": "plane script + blackbox_fund_etf_nav_premium_plane.mdc"
+      },
+      {
+        "field": "primary_key_merge",
+        "expectation_status": "DEFINED",
+        "expectation_basis": "IMPLEMENTATION_BEHAVIOR",
+        "text": "merge/dedupe key (code, day); PRIOR tip overrides new duplicate",
+        "source": "SEMANTICS_NAV_FINDING.json key=(code, day); _merge_prior_tips / drop_duplicates"
+      },
+      {
+        "field": "api_completeness_gate",
+        "expectation_status": "DEFINED",
+        "expectation_basis": "NORMATIVE_RULE",
+        "text": "forbid treating returned_rows==5000 as COMPLETE; forbid unfiltered finance.FUND_NET_VALUE",
+        "source": "blackbox_fund_etf_nav_premium_plane.mdc"
+      },
+      {
+        "field": "asof_declaration",
+        "expectation_status": "DEFINED",
+        "expectation_basis": "SOURCE_DECLARATION",
+        "text": "PRODUCT_META asof=2026-09-24; layout history_junction+tip_incremental; tip_rows=80666; n_files=5980",
+        "source": "FUND_NAV_PIT_R1/PRODUCT_META.json"
+      },
+      {
+        "field": "fund_universe",
+        "expectation_status": "PARTIAL",
+        "expectation_basis": "IMPLEMENTATION_BEHAVIOR",
+        "text": "codes from p4c.load_fund_codes(); exclusion list not fully restated in mdc",
+        "source": "plane script load_fund_codes call site"
+      },
+      {
+        "field": "history_start_rule",
+        "expectation_status": "UNDEFINED",
+        "expectation_basis": "UNKNOWN",
+        "text": null,
+        "missing_after_reads": "no normative start-date mandate beyond calendar helper 2014-01-01 used for trade map"
+      }
+    ],
+    "prior_observation_retained": {
+      "full_read_shards": 5980,
+      "full_read_rows": 6496121,
+      "observed_span": "2014-01-02..2026-09-24",
+      "note": "observation ≠ should-have; not used to define required range"
+    },
+    "comparable_now": [
+      "merge_key (code,day) vs implementation",
+      "pit_policy id string vs PRODUCT_META",
+      "n_files declaration 5980 vs prior full-read shards 5980 (declaration alignment only)"
+    ],
+    "not_comparable_yet": [
+      "independent fund-universe membership vs observed codes",
+      "required history start vs observed min day",
+      "consumer binding (ledger consumer=UNBOUND)"
+    ],
+    "merge_key_note": "producer_semantics.merge_key retained; not only ps.keys"
+  },
+  "B_ETF": {
+    "ETF_MINUTE_1M_R1": {
+      "read_sources": [
+        {
+          "path": "E:\\BLACKBOX\\脚本\\blackbox_etf_minute_1m_plane_r1.py",
+          "exists": true,
+          "is_dir": false,
+          "size": 31890,
+          "mtime": "2026-10-19T17:25:11.249577+08:00",
+          "note": "1m plane reader/coverage",
+          "sha256": "cadddb88549b36ee971fd5463d90a71cf40f90d35969bed15ccb6745f14ab316"
+        },
+        {
+          "path": "E:\\BLACKBOX\\运行\\ETF_MINUTE_1M_SHARD_MANIFEST_CURRENT.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 7459374,
+          "mtime": "2026-10-17T21:20:22.320936+08:00",
+          "note": "shard manifest CURRENT (large; header only in extract)",
+          "sha256": "8a8eae8391597451c18db1018572eb4b53a668a47beaa4c0b062fd4c090fe267"
+        },
+        {
+          "path": "E:\\BLACKBOX\\运行\\ETF_MINUTE_1M_COVERAGE_CURRENT.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 31091,
+          "mtime": "2026-10-17T03:46:28.418737+08:00",
+          "note": "coverage CURRENT",
+          "sha256": "f301754f02f160f71063840ad06781bf2a08c5fd829ed34b148bb1849b86da7a"
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R31_ETF_MINUTE_BACKFILL_ASOF_20260818_20260820_104711\\RELEASE.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 1161,
+          "mtime": "2026-10-17T04:15:20.480773+08:00",
+          "note": "R31 ETF_1m backfill RELEASE",
+          "sha256": "598745e320cfee234eca8e99c426bcd12f3e7d9678b1318abbb13dd650fa48e4"
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R31_ASOF_20260819_20260820_010011\\standard\\price\\ETF_1m",
+          "exists": true,
+          "is_dir": true,
+          "size": 2883584,
+          "mtime": "2026-10-20T03:24:59.331556+08:00",
+          "note": "cleaning standard/price/ETF_1m dir",
+          "sha256": null
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_price_1m",
+          "exists": true,
+          "is_dir": true,
+          "size": 2883584,
+          "mtime": "2026-10-20T03:40:00.074717+08:00",
+          "note": "RAW fund_etf_price_1m",
+          "sha256": null
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_price_1m\\fund_etf_price_1m__150001.XSHE_150007.XSHE__2014__1m__raw_none__v2.parquet.sidecar.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 228,
+          "mtime": "2026-10-20T02:22:07.021825+08:00",
+          "note": "sample RAW sidecar",
+          "sha256": "cc4bbbe89310f2e7dacafd2938ac5f91e2f2a78f59faae5f60cf1882c3dc1b7b"
+        }
+      ],
+      "excerpts": {
+        "plane_fields": [
+          {
+            "line_start": 44,
+            "line_end": 46,
+            "text": "CANONICAL_COLS = [\n    \"security_code\",\n    \"exchange\","
+          },
+          {
+            "line_start": 47,
+            "line_end": 49,
+            "text": "    \"datetime\",\n    \"trade_date\",\n    \"bar_time\","
+          },
+          {
+            "line_start": 55,
+            "line_end": 57,
+            "text": "    \"amount\",\n    \"bar_complete_at\",\n    \"bar_available_at\","
+          },
+          {
+            "line_start": 179,
+            "line_end": 181,
+            "text": "            \"exchange\": (EX_RE.search(f.name).group(1) if EX_RE.search(f.name) else (rng[0] if rng else None)),\n            \"frequency\": \"1m\",\n            \"date_min\": d0,"
+          },
+          {
+            "line_start": 206,
+            "line_end": 208,
+            "text": "    body = {\n        \"manifest_id\": \"ETF_MINUTE_1M_SHARD_MANIFEST_CURRENT\",\n        \"product_id\": \"ETF_MINUTE_1M_R1\","
+          },
+          {
+            "line_start": 259,
+            "line_end": 261,
+            "text": "    names = set(pq.read_schema(path).names)\n    if \"security_code\" in names and \"datetime\" in names:\n        cols = [c for c in CANONICAL_COLS if c in names]"
+          },
+          {
+            "line_start": 262,
+            "line_end": 264,
+            "text": "        return pq.read_table(path, columns=cols)\n    cols = [c for c in (\"time\", \"code\", \"open\", \"high\", \"low\", \"close\", \"volume\", \"money\", \"bar_complete_at\") if c in names]\n    return pq.read_table(path, columns=cols)"
+          },
+          {
+            "line_start": 268,
+            "line_end": 270,
+            "text": "    names = set(t.column_names)\n    if \"security_code\" in names and \"datetime\" in names:\n        df = t.to_pandas()"
+          }
+        ],
+        "release_bf": {
+          "release_id": "BLACKBOX_FORMAL_CLEANING_R31_ETF_MINUTE_BACKFILL_ASOF_20260818_20260820_104711",
+          "seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R31_ETF_MINUTE_20260820_104716",
+          "sealed": false,
+          "cleaning_as_of": "2026-08-19",
+          "finance_asof": "2026-08-19",
+          "daily_asof": "2026-08-19",
+          "standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R31_ETF_MINUTE_BACKFILL_ASOF_20260818_20260820_104711\\standard",
+          "quarantine_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R31_ASOF_20260819_20260820_010011\\_quarantine",
+          "ledger_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R31_ASOF_20260819_20260820_010011\\_control\\cleaning_ledger.sqlite",
+          "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R31_ASOF_20260819_20260820_010011",
+          "switch_reason": "ETF_MINUTE_1M_NARROW_BACKFILL_FORMAL_SUCCESSOR",
+          "candidate_only": true,
+          "plan_sha256": "a45d8b69ce872b18c7302ca912469ba1a46aabf6653aa61c74b67cec2c8bab24",
+          "formal_etf_1m_files_added": 171,
+          "formal_etf_1m_rows_added": 41040,
+          "created_at_cn": "2026-08-20T10:47:16.365169+08:00"
+        },
+        "manifest_head": {
+          "manifest_id": "ETF_MINUTE_1M_SHARD_MANIFEST_CURRENT",
+          "generated_at": "2026-08-20T10:47:44.955607+08:00",
+          "n_shards": 7598
+        },
+        "coverage_summary": {
+          "n_rows_listed": 20,
+          "state_counts_sample_cap": {
+            "AVAILABLE_PARTIAL": 18,
+            "AVAILABLE_COMPLETE": 2
+          },
+          "note": "SOURCE_DECLARATION / plane coverage check — not full integrity proof"
+        },
+        "sidecar_sample": {
+          "fq_policy": null,
+          "raw_unadjusted": true,
+          "jqdata_fq_param": null,
+          "semantic_layer": "raw_unadjusted",
+          "raw_rebuild_version": "raw_none__v2",
+          "source_fq_pre_frozen_ignored": true,
+          "checksum_status": "ok",
+          "sha256": "deadbeef"
+        }
+      },
+      "extracted": [
+        {
+          "field": "frequency",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "IMPLEMENTATION_BEHAVIOR",
+          "text": "frequency=1m; trade_date from bar datetime; keys security_code+datetime"
+        },
+        {
+          "field": "raw_semantic",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "sidecar semantic_layer=raw_unadjusted; raw_none__v2",
+          "source": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_price_1m\\fund_etf_price_1m__150001.XSHE_150007.XSHE__2014__1m__raw_none__v2.parquet.sidecar.json"
+        },
+        {
+          "field": "cleaning_backfill_scope",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "R31 backfill RELEASE: formal_etf_1m_files_added=171 rows_added=41040; candidate_only; switch_reason ETF_MINUTE_1M_NARROW_BACKFILL"
+        },
+        {
+          "field": "coverage_logic",
+          "expectation_status": "PARTIAL",
+          "expectation_basis": "IMPLEMENTATION_BEHAVIOR",
+          "text": "plane coverage compares expected_trade_days vs available; DATA_ABSENCE_GATE states; separate from __mat historical consumers"
+        },
+        {
+          "field": "full_universe_should_have",
+          "expectation_status": "UNDEFINED",
+          "expectation_basis": "UNKNOWN",
+          "text": null,
+          "missing_after_reads": "no independent full ETF universe×calendar contract found in read set"
+        }
+      ],
+      "path_counts": {
+        "raw_1m_parquet": 3633,
+        "clean_ETF_1m_parquet": 4318
+      },
+      "comparable_now": [
+        "RAW/cleaning path existence counts",
+        "coverage_state distribution in CURRENT coverage file"
+      ],
+      "not_comparable_yet": [
+        "full should-have calendar×symbol completeness",
+        "__mat consumer validity (separate)"
+      ],
+      "producer_bind": {
+        "bound": "脚本/blackbox_etf_minute_1m_plane_r1.py",
+        "role": "plane/coverage — not downloader"
+      }
+    },
+    "ETF_MINUTE_5M_R1": {
+      "read_sources": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R31_ASOF_20260819_20260820_010011\\standard\\price\\ETF_5m",
+          "exists": true,
+          "is_dir": true,
+          "size": 2883584,
+          "mtime": "2026-10-20T03:24:58.287132+08:00",
+          "note": "cleaning standard/price/ETF_5m",
+          "sha256": null
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_5m",
+          "exists": true,
+          "is_dir": true,
+          "size": 9961472,
+          "mtime": "2026-10-20T03:02:47.173784+08:00",
+          "note": "RAW fund_etf_price_5m under P4_fund_etf_raw_none",
+          "sha256": null
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_price_5m",
+          "exists": true,
+          "is_dir": true,
+          "size": 0,
+          "mtime": "2026-10-15T14:17:25.723345+08:00",
+          "note": "alternate RAW path (empty parquet count)",
+          "sha256": null
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_5m\\fund_etf_price_5m__150001.XSHE_150007.XSHE__2014__5m__raw_none__v2__20260707_224754.parquet.sidecar.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 1357,
+          "mtime": "2026-10-17T23:13:02.159821+08:00",
+          "note": "sample 5m sidecar",
+          "sha256": "8000578982ef28deb5aaa2e42fb9973c6babe646e546528f0645b08f80dee4e5"
+        }
+      ],
+      "excerpts": {
+        "sidecar_sample": {
+          "etf_codes": [
+            "150001.XSHE",
+            "150002.XSHE",
+            "150003.XSHE",
+            "150006.XSHE",
+            "150007.XSHE"
+          ],
+          "frequency": "5m",
+          "year": "2014",
+          "codes_slug": "150001.XSHE_150007.XSHE",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-31",
+          "row_count": 11520,
+          "version": "2.0.0",
+          "semantic_layer": "raw_none",
+          "filename_fq_token": "raw_none__v2",
+          "jqdata_fq_param": null,
+          "fq_policy": "none",
+          "raw_unadjusted": true,
+          "confidence": "measured",
+          "source": "JQData get_price fq=None",
+          "fields": [
+            "open",
+            "close",
+            "high",
+            "low",
+            "volume",
+            "money"
+          ],
+          "worker": "p4_etf_5m_raw_none_matrix_worker_r1",
+          "pool": "POOL_A",
+          "created_at": "2026-07-07T22:47:54+00:00",
+          "get_price_kwargs": {
+            "frequency": "5m",
+            "fields": [
+              "open",
+              "close",
+              "high",
+              "low",
+              "volume",
+              "money"
+            ],
+            "skip_paused": true,
+            "fq": null,
+            "panel": false,
+            "fill_paused": true,
+            "round": true
+          },
+          "domain": "fund_etf_price_5m",
+          "task": "BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1",
+          "parquet_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_5m\\fund_etf_price_5m__150001.XSHE_150007.XSHE__2014__5m__raw_none__v2__20260707_224754.parquet"
+        },
+        "note": "no dedicated ETF_5m plane CURRENT like 1m; do not extrapolate 1m coverage"
+      },
+      "extracted": [
+        {
+          "field": "frequency",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "cleaning filenames embed __5m__; RAW under fund_etf_price_5m"
+        },
+        {
+          "field": "path_presence",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "clean ETF_5m parquet n=4324; raw_none 5m parquet n=7427"
+        },
+        {
+          "field": "independent_coverage_contract",
+          "expectation_status": "UNDEFINED",
+          "expectation_basis": "UNKNOWN",
+          "text": null,
+          "missing_after_reads": "no ETF_5m COVERAGE/SHARD_MANIFEST CURRENT analogous to 1m in 运行/"
+        }
+      ],
+      "producer_bind": {
+        "bound": null,
+        "removed_incorrect": "脚本/jq_expand_minute_v3.py",
+        "excluded_stock_script_evidence": "stock-only jq_expand must not be ETF_5m producer",
+        "note": "unknown producer ≠ path missing"
+      },
+      "comparable_now": [
+        "path existence 5m vs 1m separately"
+      ],
+      "not_comparable_yet": [
+        "5m should-have completeness",
+        "any 1m-derived claim"
+      ]
+    }
+  },
+  "C_REQUIRED4": {
+    "CORP_XR_XD_EVENT_PIT_R1": {
+      "product_id": "CORP_XR_XD_EVENT_PIT_R1",
+      "read_sources": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\PRODUCT_META.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 1205,
+          "mtime": "2026-10-20T03:26:23.162465+08:00",
+          "note": "",
+          "sha256": "22d06b44996d983836e59a56a91ea0dba567e539042ff71f8d5e28dea98fd8a2"
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\COVERAGE.json",
+          "exists": false,
+          "note": ""
+        }
+      ],
+      "product_meta": {
+        "product_id": "CORP_XR_XD_EVENT_PIT_R1",
+        "cleaning_product_id": "STK_XR_XD_EVENT_PIT_R1",
+        "source_cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R18_CORP_REF_ASOF_20260811_20260812_024902",
+        "source_table": "STK_XR_XD",
+        "grain": "event",
+        "layer": "L1",
+        "asset_type": "STOCK",
+        "status": "READY_INTEGRATED",
+        "asof": "2026-08-11",
+        "pit_policy_id": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+        "n_rows": 129287,
+        "anti_lookahead_pass": true,
+        "full_sha256": "dab062cd83010e18a032351c71cea6b888ba99b1b44ff87cecb9f34f8ae3d8b8",
+        "partition_key": "year/pit_valid_from",
+        "no_strategy_answers": true,
+        "cache_rederived_dates": false,
+        "generated_at": "2026-08-11T18:51:04+00:00",
+        "indexes": {
+          "known_rows": 129252,
+          "effective_rows": 49209,
+          "known_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FULL_SW_L123_FI_CORPREF_ASOF_20260811_20260812_025102\\CORP_XR_XD_EVENT_PIT_R1\\indexes\\KNOWN_EVENT_INDEX.parquet",
+          "effective_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FULL_SW_L123_FI_CORPREF_ASOF_20260811_20260812_025102\\CORP_XR_XD_EVENT_PIT_R1\\indexes\\EFFECTIVE_EVENT_INDEX.parquet"
+        }
+      },
+      "coverage": null,
+      "extracted": [
+        {
+          "field": "grain",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "grain=event; not daily full-security grid; n_rows meta=129287"
+        },
+        {
+          "field": "pit_policy",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1"
+        },
+        {
+          "field": "asof",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "2026-08-11"
+        },
+        {
+          "field": "partition_key",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "year/pit_valid_from"
+        }
+      ],
+      "comparable_now": [
+        "event grain vs daily densify misconception",
+        "meta n_rows vs prior entity evidence (no parquet reread)"
+      ],
+      "not_comparable_yet": [
+        "resolver catalog reachability (separate availability gap)",
+        "every-security-every-day completeness (N/A for event grain)"
+      ]
+    },
+    "CORP_SHAREHOLDER_TOP10_PIT_R1": {
+      "product_id": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "read_sources": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_TOP10_PIT_R1\\PRODUCT_META.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 805,
+          "mtime": "2026-10-20T03:40:48.329898+08:00",
+          "note": "",
+          "sha256": "627f57b17142fe827fe55c83f9381b8c17eab1c0cd7063cdcb66a9197d7466c1"
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_TOP10_PIT_R1\\COVERAGE.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 91,
+          "mtime": "2026-10-20T03:40:01.241063+08:00",
+          "note": "",
+          "sha256": "5f7706993dfb5f8718e31342440ba3d26ce4538e76e12d7a07c370bdd4a51cd3"
+        }
+      ],
+      "product_meta": {
+        "product_id": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "mode": "EVENT_TIP_OVERLAY",
+        "snapshot_asof": "2026-09-03",
+        "tip_rows": 61,
+        "tip_sha256": "00946db2a30085be61d961bb87775cba9408b8535fe701c7ed6457c7eacaf407",
+        "clean_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230\\standard\\reference\\shareholder_top10\\shareholder_top10__pub_date_20260903__clean_tip__20260904_042230.parquet",
+        "parent_product": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "CURRENT_GATE_REQUIRED": false,
+        "REGISTERED": true,
+        "note": "Event-driven delta; full history via inherited parent data; tip overlay for 2026-09-03"
+      },
+      "coverage": {
+        "date_max_event": "2026-09-03",
+        "tip_rows": 61,
+        "mode": "EVENT_TIP_OVERLAY"
+      },
+      "extracted": [
+        {
+          "field": "mode",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "mode=EVENT_TIP_OVERLAY; event tip overlay; full history via parent"
+        },
+        {
+          "field": "snapshot_asof",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "2026-09-03"
+        },
+        {
+          "field": "daily_full_grid",
+          "expectation_status": "NOT_APPLICABLE",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "event-driven shareholder reports — not daily all-security rows"
+        }
+      ],
+      "comparable_now": [
+        "tip_rows declaration vs COVERAGE.json"
+      ],
+      "not_comparable_yet": [
+        "full historical parent completeness",
+        "catalog resolver availability"
+      ]
+    },
+    "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1": {
+      "product_id": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "read_sources": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\PRODUCT_META.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 841,
+          "mtime": "2026-10-20T03:40:01.315768+08:00",
+          "note": "",
+          "sha256": "554d3c24c2080f98ec22c17ddccfe7aae80f0d571654611ecf448371d60e0bb8"
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\COVERAGE.json",
+          "exists": true,
+          "is_dir": false,
+          "size": 91,
+          "mtime": "2026-10-20T03:40:48.451138+08:00",
+          "note": "",
+          "sha256": "7dd2ba5f61f26c4ebef3d52104f55ed44fe8921b4d2e70aaf62db5d2e56aad62"
+        }
+      ],
+      "product_meta": {
+        "product_id": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "mode": "EVENT_TIP_OVERLAY",
+        "snapshot_asof": "2026-09-03",
+        "tip_rows": 40,
+        "tip_sha256": "4445ee4dbfc3ec1da6da3b7ca325b3f808210b5ca14c54ce2502a2e5f8bd4f5d",
+        "clean_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230\\standard\\reference\\shareholder_floating_top10\\shareholder_floating_top10__pub_date_20260903__clean_tip__20260904_042230.parquet",
+        "parent_product": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260903_20260903_180234\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "CURRENT_GATE_REQUIRED": false,
+        "REGISTERED": true,
+        "note": "Event-driven delta; full history via inherited parent data; tip overlay for 2026-09-03"
+      },
+      "coverage": {
+        "date_max_event": "2026-09-03",
+        "tip_rows": 40,
+        "mode": "EVENT_TIP_OVERLAY"
+      },
+      "extracted": [
+        {
+          "field": "mode",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "mode=EVENT_TIP_OVERLAY; event tip overlay; full history via parent"
+        },
+        {
+          "field": "snapshot_asof",
+          "expectation_status": "DEFINED",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "2026-09-03"
+        },
+        {
+          "field": "daily_full_grid",
+          "expectation_status": "NOT_APPLICABLE",
+          "expectation_basis": "SOURCE_DECLARATION",
+          "text": "event-driven shareholder reports — not daily all-security rows"
+        }
+      ],
+      "comparable_now": [
+        "tip_rows declaration vs COVERAGE.json"
+      ],
+      "not_comparable_yet": [
+        "full historical parent completeness",
+        "catalog resolver availability"
+      ]
+    },
+    "SW_L3_MEMBERSHIP_PIT_R1": {
+      "product_id": "SW_L3_MEMBERSHIP_PIT_R1",
+      "read_sources": [
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1\\PRODUCT_META.json",
+          "exists": false,
+          "note": ""
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1\\COVERAGE.json",
+          "exists": false,
+          "note": ""
+        },
+        {
+          "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1",
+          "exists": true,
+          "is_dir": true,
+          "size": 4096,
+          "mtime": "2026-10-17T20:15:01.300493+08:00",
+          "note": "dir presence under FUND_NAV-named cache release",
+          "sha256": null
+        }
+      ],
+      "product_meta": null,
+      "coverage": null,
+      "extracted": [
+        {
+          "field": "product_meta_in_this_release",
+          "expectation_status": "UNDEFINED",
+          "expectation_basis": "UNKNOWN",
+          "text": null,
+          "missing_after_reads": "no PRODUCT_META.json under E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1; year= partitions + SOURCE_FULL.parquet present"
+        },
+        {
+          "field": "date_model",
+          "expectation_status": "PARTIAL",
+          "expectation_basis": "NORMATIVE_RULE",
+          "text": "SW L3 membership is dense daily PIT by project densify rules (HAND SW densify); exact field names not re-extracted from missing PRODUCT_META",
+          "source": "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE / prior inventory"
+        }
+      ],
+      "comparable_now": [
+        "directory/year partitions exist"
+      ],
+      "not_comparable_yet": [
+        "PRODUCT_META contract fields",
+        "resolver catalog row"
+      ],
+      "dir_top": [
+        "SOURCE_FULL.parquet",
+        "year=2014",
+        "year=2015",
+        "year=2016",
+        "year=2017",
+        "year=2018",
+        "year=2019",
+        "year=2020",
+        "year=2021",
+        "year=2022",
+        "year=2023",
+        "year=2024",
+        "year=2025",
+        "year=2026"
+      ]
+    }
+  }
+}
