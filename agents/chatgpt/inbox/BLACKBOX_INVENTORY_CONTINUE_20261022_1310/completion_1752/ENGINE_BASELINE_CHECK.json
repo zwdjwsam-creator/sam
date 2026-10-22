@@ -1,0 +1,302 @@
+{
+  "at": "2026-10-22T17:59:18+08:00",
+  "FOUNDATION_ACCEPTANCE": false,
+  "static": {
+    "engine_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine",
+    "exists": true,
+    "top": [
+      "PHASE1_CAPABILITY_REGISTRY.json",
+      "PHASE1_CURRENT_ENGINE_REGISTRY.json",
+      "blackbox_jq_engine",
+      "logs",
+      "rule_library",
+      "rule_library_backups"
+    ],
+    "PHASE1_CURRENT_ENGINE_REGISTRY": {
+      "CURRENT_sealed_backup_id": "SEALED_ENGINE_BACKUP_R3_PHASE6_FULLY_VALIDATED_20260801",
+      "CURRENT_sealed_backup_path": "D:\\backtest_lab_backups\\sealed_engine_backup_R3_phase6_fully_validated_20260801",
+      "CURRENT_root_sha256": "a54c2a1d675d90cbab12a8382083d4f969a0e6095f610e76cf5da093c443e772",
+      "previous_sealed_backup_id": "SEALED_ENGINE_BACKUP_R2_PHASE1_CORE_REMEDIATED_20260801",
+      "previous_sealed_still_accessible": true,
+      "pre_migration_backup": "D:\\backtest_lab_backups\\pre_phase1_candidate_migration_20260801_R1",
+      "unique_CURRENT": true,
+      "migration_run_id": "PHASE1_MIG_20260801_011454",
+      "current_sealed_engine_id": "SEALED_ENGINE_BACKUP_R3_PHASE6_FULLY_VALIDATED_20260801",
+      "current_sealed_engine_path": "D:\\backtest_lab_backups\\sealed_engine_backup_R3_phase6_fully_validated_20260801",
+      "previous_sealed_engine_id": "SEALED_ENGINE_BACKUP_R2_PHASE1_CORE_REMEDIATED_20260801",
+      "updated_at": "2026-08-01T08:26:38+08:00",
+      "updated_by": "PHASE6_20260801_082637",
+      "CURRENT_aligned_at": "2026-08-01T08:27:00+08:00",
+      "CURRENT_aligned_by": "PHASE6_20260801_082637_CURRENT_FIELD_ALIGN"
+    },
+    "PHASE1_CAPABILITY_REGISTRY": {
+      "BUY_MARKET": "PASS",
+      "SELL_MARKET": "PASS",
+      "T_PLUS_1": "PASS",
+      "CLOSEABLE_AMOUNT": "PASS",
+      "NO_SHORT": "PASS",
+      "CASH_LEDGER": "PASS",
+      "POSITION_LEDGER": "PASS",
+      "FORMAL_EXECUTION_BOUNDARY": "PASS",
+      "ORDER_LIFECYCLE_CORE": "PASS",
+      "LIMIT_DAILY": "BLOCKED_BY_CONTRACT",
+      "MINUTE_LIMIT": "BLOCKED_BY_DATA",
+      "updated_from": "PHASE1_MIG_20260801_011454"
+    },
+    "rule_library_top": [
+      "blackbox_current_dictionary_R1",
+      "cn_a_exchange_trading_hard_rules_20260706_R1",
+      "jq_official_canonical_R1",
+      "master_registry_R1"
+    ],
+    "admission_artifacts": {
+      "DATA_DOMAIN_ADMISSION_MATRIX_R1.csv": {
+        "exists": true,
+        "n_lines": 12,
+        "header": "data_domain,source_rule_library,source_rule_file,required_fields,allowed_asset_types,allowed_frequencies,pit_required,admission_status,fail_action,block_reason_code,notes",
+        "sample_rows": [
+          "minute_bar,JQ_OFFICIAL_CANONICAL_R1,jq_official_canonical_data_domain_map.csv,\"open,high,low,close,volume,money,factor\",\"stock,fund,etf,index\",\"1m,5m,15m,30m,60m\",false,ADMIT_IF_MATCHED,BLOCK,BLOCK_DATA_DOMAIN_MINUTE_BAR_UNMATCHED,dictionary_only_no_value_ingest",
+          "daily_bar,JQ_OFFICIAL_CANONICAL_R1,jq_official_canonical_data_domain_map.csv,\"open,high,low,close,volume,money,factor,pre_close\",\"stock,fund,etf,index\",daily,false,ADMIT_IF_MATCHED,BLOCK,BLOCK_DATA_DOMAIN_DAILY_BAR_UNMATCHED,dictionary_only_no_value_ingest",
+          "trade_calendar,BLACKBOX_CURRENT_DICTIONARY_R1,jqdata_official_data_domain_registry_CURRENT.json,\"trade_date,is_open\",all,daily,false,ADMIT_IF_MATCHED,BLOCK,BLOCK_DATA_DOMAIN_TRADE_CALENDAR_UNMATCHED,dictionary_only_no_value_ingest",
+          "tradable_status,JQ_OFFICIAL_CANONICAL_R1,jq_official_tradable_status_field_map.csv,\"paused,is_st,high_limit,low_limit\",\"stock,fund,etf\",\"daily,1m\",false,ADMIT_IF_MATCHED,BLOCK,BLOCK_DATA_DOMAIN_TRADABLE_STATUS_UNMATCHED,dictionary_only_no_value_ingest",
+          "adjustment_factor,JQ_OFFICIAL_CANONICAL_R1,jq_official_adjustment_field_map.csv,\"factor,fq\",\"stock,fund,etf,index\",\"daily,minute\",false,ADMIT_IF_MATCHED,BLOCK,BLOCK_DATA_DOMAIN_ADJUSTMENT_UNMATCHED,dictionary_only_no_value_ingest"
+        ],
+        "sha256": "55ab95e94f649601cae5d4647dfba17e26b27dfd9affb95c9e2e250d3f172bfa"
+      },
+      "FIELD_ADMISSION_MATRIX_R1.csv": {
+        "exists": true,
+        "n_lines": 277,
+        "header": "incoming_field_name,canonical_field_name,source_rule_file,field_domain,unit,frequency_scope,asset_scope,required_for_matching,required_for_factor,required_for_pit,admission_status,fail_action,block_reason_code",
+        "sample_rows": [
+          "open,open,jq_official_canonical_data_domain_map.csv,stock_ohlcv,,\"daily,1m,5m,15m,30m,60m\",\"stock,fund,etf,index\",true,false,false,ADMIT_IF_MATCHED,BLOCK,BLOCK_FIELD_OPEN",
+          "close,close,jq_official_canonical_data_domain_map.csv,stock_ohlcv,,\"daily,1m,5m,15m,30m,60m\",\"stock,fund,etf,index\",true,false,false,ADMIT_IF_MATCHED,BLOCK,BLOCK_FIELD_CLOSE",
+          "high,high,jq_official_canonical_data_domain_map.csv,stock_ohlcv,,\"daily,1m,5m,15m,30m,60m\",\"stock,fund,etf,index\",true,false,false,ADMIT_IF_MATCHED,BLOCK,BLOCK_FIELD_HIGH",
+          "low,low,jq_official_canonical_data_domain_map.csv,stock_ohlcv,,\"daily,1m,5m,15m,30m,60m\",\"stock,fund,etf,index\",true,false,false,ADMIT_IF_MATCHED,BLOCK,BLOCK_FIELD_LOW",
+          "volume,volume,jq_official_canonical_data_domain_map.csv,stock_ohlcv,,\"daily,1m,5m,15m,30m,60m\",\"stock,fund,etf,index\",true,false,false,ADMIT_IF_MATCHED,BLOCK,BLOCK_FIELD_VOLUME"
+        ],
+        "sha256": "ecde092cf620f8acc6eeed49793046e5cc3498bbeef75fa0eff9fad39a482fe8"
+      },
+      "FREQUENCY_ADMISSION_MATRIX_R1.csv": {
+        "exists": true,
+        "n_lines": 8,
+        "header": "incoming_frequency,canonical_frequency,source_rule_file,allowed_for_backtest,allowed_for_matching,allowed_for_factor,admission_status,fail_action,block_reason_code",
+        "sample_rows": [
+          "daily,daily,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_DAILY",
+          "1m,1m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_1M",
+          "5m,5m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_5M",
+          "15m,15m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_15M",
+          "30m,30m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_30M"
+        ],
+        "sha256": "071ce1796fd5039b310fd1fbbe558e2ce6b8c4740dd321a7c576a7058554849f"
+      },
+      "DATA_INGESTION_GATE_RULES_R1.json": {
+        "exists": true,
+        "keys": [
+          "schema_version",
+          "task",
+          "gate_order",
+          "gates",
+          "policies",
+          "notes"
+        ],
+        "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619"
+      },
+      "MASTER_RULE_LIBRARY_REGISTRY_R1.json": {
+        "exists": true,
+        "keys": [
+          "registry_id",
+          "created_at",
+          "engine_root",
+          "rule_library_root",
+          "master_registry_active",
+          "formal_backtest_active",
+          "engine_core_active",
+          "data_ingestion_requires_master_rule_match",
+          "non_matching_data_admission_policy",
+          "admission_stage",
+          "post_ingestion_judgement_allowed",
+          "rule_libraries"
+        ],
+        "sha256": "10a228344711b1e288f5c29a7fa196b976e8255d4886305fca1e175af28c5625"
+      }
+    },
+    "note_capability": "PHASE1 PASS/BLOCKED are sealed historical declarations, not today's runtime test",
+    "dictionary_rule_registry": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\blackbox_current_dictionary_rule_registry.json",
+      "exists": true,
+      "sha256": "56ca84401798ed57ee72260845144768ff33c86c074cfa8cb258a6464443f8dc"
+    }
+  },
+  "type_to_local_entry_mapping_sample": [
+    {
+      "data_domain": "minute_bar",
+      "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+      "source_rule_file": "jq_official_canonical_data_domain_map.csv",
+      "required_fields": "open,high,low,close,volume,money,factor",
+      "allowed_asset_types": "stock,fund,etf,index",
+      "allowed_frequencies": "1m,5m,15m,30m,60m",
+      "pit_required": "false",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_MINUTE_BAR_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "daily_bar",
+      "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+      "source_rule_file": "jq_official_canonical_data_domain_map.csv",
+      "required_fields": "open,high,low,close,volume,money,factor,pre_close",
+      "allowed_asset_types": "stock,fund,etf,index",
+      "allowed_frequencies": "daily",
+      "pit_required": "false",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_DAILY_BAR_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "trade_calendar",
+      "source_rule_library": "BLACKBOX_CURRENT_DICTIONARY_R1",
+      "source_rule_file": "jqdata_official_data_domain_registry_CURRENT.json",
+      "required_fields": "trade_date,is_open",
+      "allowed_asset_types": "all",
+      "allowed_frequencies": "daily",
+      "pit_required": "false",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_TRADE_CALENDAR_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "tradable_status",
+      "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+      "source_rule_file": "jq_official_tradable_status_field_map.csv",
+      "required_fields": "paused,is_st,high_limit,low_limit",
+      "allowed_asset_types": "stock,fund,etf",
+      "allowed_frequencies": "daily,1m",
+      "pit_required": "false",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_TRADABLE_STATUS_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "adjustment_factor",
+      "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+      "source_rule_file": "jq_official_adjustment_field_map.csv",
+      "required_fields": "factor,fq",
+      "allowed_asset_types": "stock,fund,etf,index",
+      "allowed_frequencies": "daily,minute",
+      "pit_required": "false",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_ADJUSTMENT_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "benchmark_data",
+      "source_rule_library": "BLACKBOX_CURRENT_DICTIONARY_R1",
+      "source_rule_file": "jqdata_official_data_domain_registry_CURRENT.json",
+      "required_fields": "index_master,index_components",
+      "allowed_asset_types": "index",
+      "allowed_frequencies": "daily",
+      "pit_required": "true",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_BENCHMARK_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "factor_dictionary",
+      "source_rule_library": "BLACKBOX_FACTOR_260_CURRENT_R1",
+      "source_rule_file": "factor_260_inventory_CURRENT.csv",
+      "required_fields": "canonical_factor_name",
+      "allowed_asset_types": "stock",
+      "allowed_frequencies": "daily",
+      "pit_required": "true",
+      "admission_status": "ADMIT_DICTIONARY_ONLY",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_DICTIONARY_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "factor_formula",
+      "source_rule_library": "BLACKBOX_FACTOR_260_CURRENT_R1",
+      "source_rule_file": "factor_260_formula_CURRENT.csv",
+      "required_fields": "canonical_factor_name,formula",
+      "allowed_asset_types": "stock",
+      "allowed_frequencies": "daily",
+      "pit_required": "true",
+      "admission_status": "ADMIT_DICTIONARY_ONLY",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_FORMULA_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "factor_cleaning_rules",
+      "source_rule_library": "BLACKBOX_FACTOR_260_CURRENT_R1",
+      "source_rule_file": "factor_260_cleaning_rules_CURRENT.json",
+      "required_fields": "cleaning_policy",
+      "allowed_asset_types": "stock",
+      "allowed_frequencies": "daily",
+      "pit_required": "true",
+      "admission_status": "ADMIT_DICTIONARY_ONLY",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_CLEANING_RULE_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "factor_pit_rules",
+      "source_rule_library": "BLACKBOX_FACTOR_260_CURRENT_R1",
+      "source_rule_file": "factor_260_pit_rules_CURRENT.json",
+      "required_fields": "pit_policy",
+      "allowed_asset_types": "stock",
+      "allowed_frequencies": "daily",
+      "pit_required": "true",
+      "admission_status": "ADMIT_DICTIONARY_ONLY",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_FACTOR_PIT_RULE_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    },
+    {
+      "data_domain": "matching_requirements",
+      "source_rule_library": "JQ_OFFICIAL_CANONICAL_R1",
+      "source_rule_file": "jq_official_matching_data_requirements.csv",
+      "required_fields": "close,volume,high_limit,low_limit,paused,factor,pre_close,money",
+      "allowed_asset_types": "stock,fund,etf",
+      "allowed_frequencies": "daily,1m",
+      "pit_required": "false",
+      "admission_status": "ADMIT_IF_MATCHED",
+      "fail_action": "BLOCK",
+      "block_reason_code": "BLOCK_DATA_DOMAIN_MATCHING_REQUIREMENTS_UNMATCHED",
+      "notes": "dictionary_only_no_value_ingest"
+    }
+  ],
+  "runtime_smoke": {
+    "attempted": true,
+    "result": "STATIC_OK_NO_RUNTIME_LOAD",
+    "reason": "No safe isolated runner invoked: avoid importing production entrypoints/.env; static admission matrices + registries verified readable",
+    "isolation_dir": "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1752\\isolation_smoke",
+    "env_present_must_not_load": true,
+    "package_dir_exists": true
+  },
+  "not_tested": [
+    "strategy backtest",
+    "PnL",
+    "live order",
+    "download",
+    "full engine behavior certification"
+  ],
+  "adapt_issues_separate_from_raw": [
+    {
+      "issue": "PHASE1_CURRENT_ENGINE_REGISTRY still cites D:\\backtest_lab_backups sealed paths",
+      "class": "CONFIG_POINTER_LEGACY_D",
+      "vs_raw_integrity": "separate"
+    },
+    {
+      "issue": "LIMIT_DAILY=BLOCKED_BY_CONTRACT MINUTE_LIMIT=BLOCKED_BY_DATA are historical capability declarations",
+      "class": "CAPABILITY_DECLARATION_NOT_TODAY_RUNTIME",
+      "vs_raw_integrity": "separate"
+    }
+  ]
+}
