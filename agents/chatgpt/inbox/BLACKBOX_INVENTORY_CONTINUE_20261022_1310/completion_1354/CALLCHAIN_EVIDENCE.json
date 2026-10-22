@@ -1,0 +1,99 @@
+{
+  "at": "2026-10-22T14:14:49+08:00",
+  "import_binding_note": "reader→unified_market_data_plane_r1; price_plane→data_access_resolver_r1 (DISTINCT)",
+  "files": [
+    {
+      "path": "脚本\\blackbox_unified_market_data_plane_reader_r1.py",
+      "exists": true,
+      "sha256": "58139dd92df1e457be6e4abfcf79ee37382a75a5c6abe3c5dca21ac24c24f3ba",
+      "bytes": 3873,
+      "n_lines": 101,
+      "defs": [
+        {
+          "name": "read_stock_1m_day",
+          "line_start": 19,
+          "line_end": 54,
+          "preview": "def read_stock_1m_day(product_id: str, trade_date: str, columns: Optional[List[str]] = None):\n    \"\"\"Read one trading day of minute bars via authoritative plane.\n\n    For CLEANING_DAY_PARTITION: concatenates exchange day parquets.\n    For YEAR_BATCH planes: filters year-batch files by calendar date (slower).\n    \"\"\"\n    resolved = resolve_product(product_id)\n    row = classify_date(resolved, trade_date)\n    if row[\"status\"] != \"PRESENT\":\n        raise FileNotFoundError(\n            f\"UNIFIED_PLANE_DATE_NOT_PRESENT: product={resolved['product_id']} date={trade_date} status={row['status']}\"\n        )\n    plane = row[\"authoritative_plane\"]\n    cols = columns or [\"time\", \"code\", \"open\", \"close\", \"high\", \"low\", \"volume\", \"money\"]\n\n    if plane == \"CLEANING_DAY_PARTITION\":\n        tables = []\n        for fp in row[\"files\"]:\n            tables.append(pq.read_table(fp, columns=[c for c in cols if c in pq.read_schema(fp).names]))\n        if not tables:\n            raise FileNotFoundError(f\"EMPTY_DAY_FILES: {trade_date}\")\n        out = tables[0]\n        for t in tables[1:]:\n            out = pa_concat(out, t)\n        return out, plane\n\n    # Year-batch path: filter by date derived from time column\n    files = row.get(\"files\") or []\n    if plane == \"RAW_YEAR_BATCH\":\n        raw_dir = Path(resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"dir\"])\n        glob_tmpl = resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"][\"glob\"]\n        files = [str(p) for p in raw_dir.glob(glob_tmpl.format(year=trade_date[:4]))]\n    if not files:\n        raise FileNotFoundError(f\"NO_YEAR_BATCH_FILES: {trade_date} plane={plane}\")\n\n    tables = []"
+        }
+      ]
+    },
+    {
+      "path": "脚本\\blackbox_unified_market_data_plane_r1.py",
+      "exists": true,
+      "sha256": "6826c1cf7c0e2d227f6e639f88897bd896bc380fb323ec5a1d9ccd400aefd9ce",
+      "bytes": 20104,
+      "n_lines": 508,
+      "defs": [
+        {
+          "name": "resolve_product",
+          "line_start": 161,
+          "line_end": 196,
+          "preview": "def resolve_product(product_id: str, registry: Optional[dict] = None) -> dict:\n    registry = registry or load_registry()\n    pid = normalize_product_id(product_id, registry)\n    meta = registry[\"products\"][pid]\n    cleaning = load_cleaning_pointer()\n    standard_root = Path(cleaning[\"standard_root\"])\n    raw_root = ROOT / registry[\"pointers\"][\"raw_root\"]\n\n    cplane = meta[\"planes\"][\"CLEANING_CURRENT\"]\n    rplane = meta[\"planes\"][\"RAW_REPLACEMENT\"]\n    cleaning_dir = standard_root / cplane[\"relative_under_standard\"]\n    raw_dir = raw_root / rplane[\"relative_under_raw_root\"]\n\n    day_re = re.compile(cplane[\"day_name_regex\"])\n    year_re = re.compile(cplane[\"year_batch_regex\"])\n    cscan = _scan_cleaning_dir(cleaning_dir, day_re, year_re)\n\n    years = sorted(set(cscan.get(\"year_batches\", {}).keys()) | set())\n    # also discover raw years via glob of year token if cleaning empty\n    if raw_dir.is_dir() and not years:\n        for f in raw_dir.glob(\"*.parquet\"):\n            m = re.search(r\"__(20\\d{2})__\", f.name)\n            if m:\n                years.append(m.group(1))\n        years = sorted(set(years))\n\n    raw_envelopes = {}\n    for y in years:\n        raw_envelopes[y] = _scan_raw_year_envelope(\n            raw_dir,\n            y,\n            rplane[\"year_batch_glob\"],\n            rplane.get(\"sidecar_start_key\", \"start_date\"),\n            rplane.get(\"sidecar_end_key\", \"end_date\"),\n        )\n"
+        },
+        {
+          "name": "classify_date",
+          "line_start": 248,
+          "line_end": 283,
+          "preview": "def classify_date(resolved: dict, d: str) -> dict:\n    p1 = resolved[\"planes\"][\"P1_CLEANING_CURRENT\"]\n    p2 = resolved[\"planes\"][\"P2_RAW_REPLACEMENT\"]\n    day_map = p1.get(\"day_files_by_date\") or {}\n    if d in day_map and day_map[d]:\n        return {\n            \"date\": d,\n            \"status\": \"PRESENT\",\n            \"authoritative_plane\": \"CLEANING_DAY_PARTITION\",\n            \"files\": day_map[d],\n            \"n_files\": len(day_map[d]),\n        }\n    year = d[:4]\n    cenv = (p1.get(\"year_envelope\") or {}).get(year) or {}\n    if (p1.get(\"year_batches\") or {}).get(year) and _date_in_envelope(d, cenv.get(\"start_min\"), cenv.get(\"end_max\")):\n        return {\n            \"date\": d,\n            \"status\": \"PRESENT\",\n            \"authoritative_plane\": \"CLEANING_YEAR_BATCH\",\n            \"files\": (p1.get(\"year_files_by_year\") or {}).get(year, []),\n            \"n_files\": (p1.get(\"year_batches\") or {}).get(year, 0),\n            \"envelope\": {\"start_min\": cenv.get(\"start_min\"), \"end_max\": cenv.get(\"end_max\")},\n        }\n    renv = (p2.get(\"year_envelope\") or {}).get(year) or {}\n    if p2.get(\"exists\") and _date_in_envelope(d, renv.get(\"start_min\"), renv.get(\"end_max\")):\n        return {\n            \"date\": d,\n            \"status\": \"PRESENT\",\n            \"authoritative_plane\": \"RAW_YEAR_BATCH\",\n            \"files\": [],\n            \"n_files\": renv.get(\"n_sidecars\", 0),\n            \"envelope\": {\"start_min\": renv.get(\"start_min\"), \"end_max\": renv.get(\"end_max\")},\n            \"note\": \"Cleaning day/year miss; RAW envelope covers date — use RAW read path\",\n        }\n    # year files exist but envelope unknown and no day file — REVIEW not automatic miss\n    if (p1.get(\"year_batches\") or {}).get(year) and not cenv.get(\"end_max\"):"
+        }
+      ]
+    },
+    {
+      "path": "脚本\\blackbox_backtest_price_plane_r1.py",
+      "exists": true,
+      "sha256": "62beda130e6213f59b6f33a5066c5dae0f1b670f5761081537ec6d1d07af739a",
+      "bytes": 6595,
+      "n_lines": 161,
+      "defs": [
+        {
+          "name": "build_receipt",
+          "line_start": 113,
+          "line_end": 148,
+          "preview": "def build_receipt(**kwargs: Any) -> dict:\n    r = {\n        \"rule_id\": RULE_ID,\n        \"strategy_id\": kwargs.get(\"strategy_id\", \"\"),\n        \"run_id\": kwargs.get(\"run_id\", \"\"),\n        \"BACKTEST_PRICE_PLANE\": kwargs.get(\"BACKTEST_PRICE_PLANE\", FORMAL_BACKTEST_PLANE),\n        \"SIGNAL_PRICE_PLANE\": kwargs.get(\"SIGNAL_PRICE_PLANE\", FORMAL_BACKTEST_PLANE),\n        \"BACKTEST_EXECUTION_PRICE_PLANE\": kwargs.get(\"BACKTEST_EXECUTION_PRICE_PLANE\", FORMAL_BACKTEST_PLANE),\n        \"BACKTEST_VALUATION_PRICE_PLANE\": kwargs.get(\"BACKTEST_VALUATION_PRICE_PLANE\", FORMAL_BACKTEST_PLANE),\n        \"BACKTEST_PNL_PRICE_PLANE\": kwargs.get(\"BACKTEST_PNL_PRICE_PLANE\", FORMAL_BACKTEST_PLANE),\n        \"LIVE_EXECUTION_PRICE_PLANE\": kwargs.get(\"LIVE_EXECUTION_PRICE_PLANE\", LIVE_PLANE),\n        \"signal_adjustment_method\": kwargs.get(\"signal_adjustment_method\", \"PRE_PIT_FACTOR_D_OVER_FACTOR_T\"),\n        \"signal_adjustment_anchor\": kwargs.get(\"signal_adjustment_anchor\", \"EACH_HISTORICAL_TRADE_DAY_T\"),\n        \"pit_causal\": kwargs.get(\"pit_causal\", True),\n        \"adjust_factor_product_id\": kwargs.get(\"adjust_factor_product_id\", PRODUCT_ID),\n        \"adjust_factor_release\": kwargs.get(\"adjust_factor_release\", \"\"),\n        \"adjust_factor_reader\": kwargs.get(\"adjust_factor_reader\", \"CACHE_READER_VIA_RESOLVER\"),\n        \"factor_coverage_ratio\": kwargs.get(\"factor_coverage_ratio\"),\n        \"missing_factor_count\": kwargs.get(\"missing_factor_count\"),\n        \"missing_factor_codes\": kwargs.get(\"missing_factor_codes\", []),\n        \"raw_fallback_used\": kwargs.get(\"raw_fallback_used\", False),\n        \"future_adjustment_used\": kwargs.get(\"future_adjustment_used\", False),\n        \"execution_uses_adjusted_price\": kwargs.get(\"execution_uses_adjusted_price\", True),\n        \"mixed_plane_used\": kwargs.get(\"mixed_plane"
+        }
+      ]
+    },
+    {
+      "path": "脚本\\blackbox_data_access_resolver_r1.py",
+      "exists": true,
+      "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+      "bytes": 43924,
+      "n_lines": 938,
+      "defs": [
+        {
+          "name": "resolve_product",
+          "line_start": 486,
+          "line_end": 521,
+          "preview": "def resolve_product(dataset_raw: str, asof: str | None, scope: str | None, currents: dict) -> dict:\n    \"\"\"Deterministic resolution of a dataset to a formal cache product.\"\"\"\n\n    # 1. Normalize via aliases\n    normalized = ALIASES.get(dataset_raw, dataset_raw)\n\n    # 1b. External evidence products (source-isolated index)\n    ext_map = currents.get(\"external_evidence_product_map\") or {}\n    if normalized in ext_map:\n        meta = ext_map[normalized]\n        path = meta.get(\"path\")\n        ready = bool(path) and Path(str(path)).exists()\n        return {\n            \"resolved\": bool(ready),\n            \"result_status\": \"READY\" if ready else \"EXTERNAL_EVIDENCE_PATH_MISSING\",\n            \"product_id\": normalized,\n            \"source_namespace\": meta.get(\"source_namespace\"),\n            \"source_vendor\": meta.get(\"source_vendor\"),\n            \"cache_product_path\": path,\n            \"meta_path\": meta.get(\"meta_path\"),\n            \"rights_status\": meta.get(\"rights_status\"),\n            \"EXTERNAL_EVIDENCE\": True,\n            \"forbid_write_into_jq_products\": True,\n            \"note\": meta.get(\"note\") or \"Resolved via BLACKBOX_EXTERNAL_EVIDENCE_RESOLVER_CURRENT.json\",\n        }\n\n    # 1c. A-share stock 1m — authority is Cleaning CURRENT (not cache shard root, not Entry fixture)\n    if normalized in {\n        \"STOCK_MINUTE_1M_R1\",\n        \"STOCK_MINUTE_1M\",\n        \"STOCK_1M\",\n        \"A股_stock_1m\",\n        \"A股_1m\",\n        \"stock_1m\",\n        \"分钟1m\",\n        \"1m\","
+        }
+      ]
+    }
+  ],
+  "call_sites_resolve_product": [
+    {
+      "path": "脚本\\blackbox_unified_market_data_plane_reader_r1.py",
+      "line": 16,
+      "text": "from blackbox_unified_market_data_plane_r1 import classify_date, resolve_product"
+    },
+    {
+      "path": "脚本\\blackbox_unified_market_data_plane_reader_r1.py",
+      "line": 25,
+      "text": "resolved = resolve_product(product_id)"
+    },
+    {
+      "path": "脚本\\blackbox_backtest_price_plane_r1.py",
+      "line": 85,
+      "text": "from blackbox_data_access_resolver_r1 import read_currents, resolve_product  # noqa: E402"
+    },
+    {
+      "path": "脚本\\blackbox_backtest_price_plane_r1.py",
+      "line": 88,
+      "text": "rec = resolve_product(\"adjust_factor\", asof, None, currents)"
+    }
+  ],
+  "limits": [
+    "static line+SHA only; no production run",
+    "build_receipt defaults ≠ causal verification success",
+    "1m consumer path ≠ 5m consumer path"
+  ]
+}
