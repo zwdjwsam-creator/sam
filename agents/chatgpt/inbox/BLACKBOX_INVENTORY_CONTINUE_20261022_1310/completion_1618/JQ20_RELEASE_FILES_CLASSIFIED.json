@@ -1,0 +1,154 @@
+{
+  "at": "2026-10-22T16:29:49+08:00",
+  "groups": [
+    {
+      "group": "R19_JQ20",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+      "exists": true,
+      "manifest_files": [
+        "MANIFEST.json"
+      ],
+      "seal_files": [
+        "SEAL.json"
+      ],
+      "storage_reuse_files": [],
+      "pointer_files": [],
+      "other_json": [],
+      "builder_field": "ABSENT_IN_MANIFEST",
+      "source_refs": {
+        "manifest_top_keys": [
+          "release_id",
+          "parent",
+          "jq20"
+        ],
+        "jq20_product_sources": {},
+        "seal": {
+          "seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R19_JQ20_20260812_041246",
+          "accepted": true,
+          "sealed_at": "2026-08-12T04:12:47+0800"
+        }
+      },
+      "duplicate_path_ignored": false
+    },
+    {
+      "group": "R20_JQ20_FUND_MF_IMMUT_FIX",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R20_JQ20_FUND_MF_IMMUT_FIX_ASOF_20260811_20260812_051259",
+      "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R20_JQ20_FUND_MF_IMMUT_FIX_ASOF_20260811_20260812_051259",
+      "exists": true,
+      "manifest_files": [
+        "MANIFEST.json"
+      ],
+      "seal_files": [
+        "SEAL.json"
+      ],
+      "storage_reuse_files": [],
+      "pointer_files": [],
+      "other_json": [],
+      "builder_field": "ABSENT_IN_MANIFEST",
+      "source_refs": {
+        "manifest_top_keys": [
+          "release_id",
+          "parent_release_id",
+          "supersedes_release_id",
+          "reason",
+          "jq20",
+          "fund_mf",
+          "publishable",
+          "candidate"
+        ],
+        "jq20_product_sources": {
+          "FINANCE_BALANCE_SHEET": "R19_HARD LINK_OTHER",
+          "FINANCE_BALANCE_SHEET_PARENT": "R19_HARD LINK_OTHER",
+          "FINANCE_CASHFLOW_STATEMENT": "R19_HARD LINK_OTHER",
+          "FINANCE_CASHFLOW_STATEMENT_PARENT": "R19_HARD LINK_OTHER",
+          "FINANCE_INCOME_STATEMENT": "R19_HARD LINK_OTHER",
+          "FINANCE_INCOME_STATEMENT_PARENT": "R19_HARD LINK_OTHER",
+          "FUND_DIVIDEND": "R19_HARD LINK_OTHER",
+          "FUND_FIN_INDICATOR": "R19_HARD LINK_OTHER",
+          "FUND_MF_DAILY_PROFIT": "RAW_REBUILD",
+          "STK_AH_PRICE_COMP": "R19_HARD LINK_OTHER",
+          "STK_EL_CONST_CHANGE": "R19_HARD LINK_OTHER",
+          "STK_EL_TOP_ACTIVATE": "R19_HARD LINK_OTHER",
+          "STK_EXCHANGE_LINK_CALENDAR": "R19_HARD LINK_OTHER",
+          "STK_EXCHANGE_TRADE_INFO": "R19_HARD LINK_OTHER",
+          "STK_EMPLOYEE_INFO": "R19_HARD LINK_OTHER",
+          "STK_LIST": "R19_HARD LINK_OTHER",
+          "STK_NAME_HISTORY": "R19_HARD LINK_OTHER",
+          "STK_PERFORMANCE_LETTERS": "R19_HARD LINK_OTHER",
+          "STK_REPORT_DISCLOSURE": "R19_HARD LINK_OTHER",
+          "STK_SHAREHOLDERS_SHARE_CHANGE": "R19_HARD LINK_OTHER"
+        },
+        "seal": {
+          "seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R20_JQ20_FUND_MF_20260812_051259",
+          "accepted": true,
+          "reason": "FUND_MF_IMMUTABILITY_REPAIR_FROM_RAW",
+          "sealed_at": "2026-08-12T05:13:06+0800"
+        }
+      },
+      "duplicate_path_ignored": false
+    },
+    {
+      "group": "R22_FINANCE_SCOPE",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+      "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+      "exists": true,
+      "manifest_files": [],
+      "seal_files": [
+        "SEAL.json"
+      ],
+      "storage_reuse_files": [
+        "STORAGE_REUSE.json"
+      ],
+      "pointer_files": [
+        "RELEASE_POINTER_CANDIDATE.json"
+      ],
+      "other_json": [
+        "FINANCE_DECLARED_RESIDUAL_POLICY.json"
+      ],
+      "builder_field": "ABSENT_IN_POINTER",
+      "source_refs": {
+        "pointer": {
+          "source_finance_authority": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500",
+          "download_ops": 0,
+          "mode": "R22_FINANCE_SCOPE_PIT_SUCCESSOR_HARDLINK_OTHERS",
+          "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R21_ASOF_20260813_20260814_004402",
+          "finance_products_rematerialized": [
+            "FINANCE_INCOME_STATEMENT_PIT_R1",
+            "FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+            "FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+            "FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+            "FINANCE_BALANCE_SHEET_PIT_R1",
+            "FINANCE_BALANCE_SHEET_PARENT_PIT_R1"
+          ]
+        },
+        "seal": {
+          "seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R22_20260814_140146",
+          "status": "SEALED"
+        }
+      },
+      "duplicate_path_ignored": false
+    },
+    {
+      "group": "R29_RAWPIT_FINANCE",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+      "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+      "exists": true,
+      "manifest_files": [],
+      "seal_files": [
+        ".BLACKBOX_SEALED",
+        "SEAL.json"
+      ],
+      "storage_reuse_files": [],
+      "pointer_files": [],
+      "other_json": [],
+      "builder_field": null,
+      "source_refs": {
+        "seal": {
+          "seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R29_20260818_013444"
+        }
+      },
+      "duplicate_path_ignored": false
+    }
+  ]
+}
