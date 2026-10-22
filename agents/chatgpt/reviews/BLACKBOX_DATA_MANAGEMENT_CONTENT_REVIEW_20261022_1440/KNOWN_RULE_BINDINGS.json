@@ -1,0 +1,166 @@
+{
+  "review": "BLACKBOX_DATA_MANAGEMENT_CONTENT_REVIEW_20261022_1440",
+  "business_data_executed": false,
+  "system_inventory_acceptance": false,
+  "source_refs": {
+    "daily": {
+      "path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1429/source_reads/S_DAILY_INC_SW_CACHE.json",
+      "blob_sha": "8ad94cdf1add53d66d0880fabd419f872073b104"
+    },
+    "gate": {
+      "path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1429/source_reads/S_COVERAGE_NONREG_GATE.json",
+      "blob_sha": "de62d160a0c49d811605885ffa3a6a7b1fa5c01c"
+    },
+    "pipeline_matrix": {
+      "path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1429/source_reads/S_PIPELINE_MATRIX.json",
+      "blob_sha": "a950740ff9474a53f6963f33a110b11d84228ac5"
+    }
+  },
+  "verified_rule_text": {
+    "standard_pipeline": [
+      "1_preflight_HAND_read",
+      "2_scan_gaps_vs_CURRENT_asof",
+      "3_incremental_download_REQUIRED_except_permission_blocked",
+      "4_security_state_st_pause_master_incremental",
+      "5_index_minute_732_and_SW_L123_densify",
+      "6_formal_cleaning_seal_switch_CURRENT",
+      "7_index_minute_align_or_reuse",
+      "8_anti_leakage_PIT_checks",
+      "9_cache_compiler_or_lowmem_inject_MUST",
+      "10_atomic_publish_CACHE_CURRENT_source_cleaning_match",
+      "11_inventory_top_refresh"
+    ],
+    "hard_completion_rules": [
+      "日更宣称 PASS 必须：可下域下载完 + 清洗 CURRENT + 对齐/防穿越 + CACHE CURRENT",
+      "禁止 thin canary 覆盖掉已有 FI/CORP/JQ20/SW 产品而不 rebase",
+      "security_state 必须进 STOCK_TRADEABILITY_PIT_R1",
+      "权限挡 / 用户不需要 / QMT：SKIP 并写入全表，勿反复追问",
+      "hk_connector_aux / etf_fund_aux：辅域 DEFERRED，不挡主链"
+    ],
+    "required_cache_products": [
+      "STOCK_DAILY_PIT_R1",
+      "FINANCIAL_INDICATOR_PIT_R1",
+      "CORP_XR_XD_EVENT_PIT_R1",
+      "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "SW_L1_MEMBERSHIP_PIT_R1",
+      "SW_L2_MEMBERSHIP_PIT_R1",
+      "SW_L3_MEMBERSHIP_PIT_R1",
+      "STOCK_TRADEABILITY_PIT_R1",
+      "VALUATION_PIT_R1",
+      "ADJUST_FACTOR_PIT_R1",
+      "FUND_NAV_PIT_R1"
+    ],
+    "permission_skip_domains": [
+      "money_flow_abnormal_lock_subscribe",
+      "full_factor_values_library",
+      "jq260_factor_values",
+      "jq260_factor_values_library",
+      "fq_pre_post"
+    ],
+    "domain_asof_mode": "PER_DOMAIN",
+    "forbid_all_equal_as_completeness": true,
+    "coverage_missing_diagnosis_policy": {
+      "NO_AGENT_MAY_DECLARE_DATA_MISSING_WITHOUT_COVERAGE_DIAGNOSIS": true,
+      "RAW_REDOWNLOAD_DEFAULT": "FORBIDDEN_IF_RAW_COMPLETE",
+      "FAIL_CLOSED": true,
+      "PATCH_CANNOT_SERVE_AS_FULL": true,
+      "FULL_HISTORY_NON_REGRESSION": true,
+      "CRITICAL_PRODUCT_GATE": true,
+      "SEALED_RELEASE_IMMUTABILITY": true
+    },
+    "coverage_missing_enum": [
+      "SOURCE_MISSING",
+      "RAW_COMPLETE_CLEANING_MISSING",
+      "CLEANING_COMPLETE_CACHE_MISSING",
+      "CACHE_COVERAGE_REGRESSION",
+      "CACHE_PRODUCT_UNAVAILABLE",
+      "READER_LOAD_MISSING",
+      "READER_DATE_SLICE_MISSING",
+      "FILTER_EMPTY",
+      "UNIVERSE_EMPTY",
+      "PIT_ASOF_EMPTY",
+      "SOURCE_LIMITATION",
+      "REQUEST_OUTSIDE_PRODUCT_COVERAGE",
+      "AMBIGUOUS_DATASET",
+      "UNKNOWN_STOP"
+    ],
+    "minute_cache_classifications": [
+      {
+        "domain": "A_share_minute_5m/1m/30m/60m",
+        "cache_classification": "N_A_MINUTE_NOT_DAILY_CACHE",
+        "note": "minute stays clean plane",
+        "evidence_scope": "matrix.asof=2026-08-12; policy/plane lead, not current content proof"
+      },
+      {
+        "domain": "ETF_minute_*",
+        "cache_classification": "N_A_MINUTE_NOT_DAILY_CACHE",
+        "note": "",
+        "evidence_scope": "matrix.asof=2026-08-12; policy/plane lead, not current content proof"
+      },
+      {
+        "domain": "index_minute_732",
+        "cache_classification": "N_A_MINUTE_ALIGN_PLANE",
+        "note": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260812_20260812_225721",
+        "evidence_scope": "matrix.asof=2026-08-12; policy/plane lead, not current content proof"
+      }
+    ]
+  },
+  "product_rule_bindings": [
+    {
+      "product_id": "INDEX_WEIGHT_PIT_R1",
+      "source_key": "/managed_snapshot_products/0",
+      "contract": {
+        "product_id": "INDEX_WEIGHT_PIT_R1",
+        "source_api": "get_index_weights",
+        "SOURCE_UPDATE_SEMANTICS": "UNKNOWN",
+        "update_policy": "CHECK_LATEST_SOURCE_SNAPSHOT_NO_UNCONDITIONAL_FULL_HISTORY",
+        "entrypoint": "脚本/blackbox_index_weight_daily_increment_check_r1.py",
+        "unconditional_full_history_redownload": false,
+        "local_max_snapshot": "2026-08-31",
+        "semantic_lock": "INDEX_CONSTITUENT != INDEX_WEIGHT != FUND_PORTFOLIO_STOCK",
+        "source_latest_verified": true,
+        "snapshot_asof_at_publish": "2026-09-03"
+      },
+      "limits": "snapshot policy and declared historical status; not a new source probe"
+    },
+    {
+      "product_id": "FUND_NAV_PIT_R1",
+      "source_key": "/fund_etf_nav",
+      "contract": {
+        "status": "ACTIVE_EOD_APPEND",
+        "cache_product": "FUND_NAV_PIT_R1",
+        "api": "get_extras",
+        "SILENT_TRUNCATION": 0,
+        "asof": "2026-09-24"
+      },
+      "limits": "EOD append/API documented; key/watermark/resume must follow actual downloader"
+    },
+    {
+      "product_id": "ADJUST_FACTOR_PIT_R1",
+      "source_key": "/adjust_factor_incremental_engine",
+      "entry": "E:\\BLACKBOX\\脚本\\blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+      "limits": "entry reference established; code has not yet been reviewed in this batch"
+    }
+  ],
+  "external_rule": {
+    "source_key": "/external_evidence",
+    "contract": {
+      "status": "ACTIVE_IN_DAILY_INCREMENTAL",
+      "clean_antileak": "REQUIRED",
+      "SILENT_TRUNCATION": 0,
+      "QUERY_CAP_5000_AS_COMPLETE": "FORBIDDEN",
+      "forbid_write_into_jq_products": true,
+      "rule": "BLACKBOX_HAND_EXTERNAL_EVIDENCE_CLEAN_ANTILEAK_R1",
+      "script_materialize": "脚本/blackbox_external_evidence_materialization_r2.py",
+      "asof_note": "外源 asof 可与 JQ CURRENT 并行；未过 CLEAN/PIT/5000 门不得宣称外源 PASS"
+    },
+    "limits": "source isolation and clean gates documented; not proof of all external product readiness"
+  },
+  "review_findings": [
+    "39 VERIFIED flags mean branch/path checks, not 39 data completeness passes or rule-chain completion.",
+    "35 GAP labels are heterogeneous: catalog absence is only lack of ordinary cache registration; cleaning/VIEW/registry planes need separate diagnosis.",
+    "main worker still sets all update watermark, revision, resume fields UNPROVEN despite available rule text; these remain unfinished.",
+    "REMAINING_ORDERED only contains non-VERIFIED mappings, omitting update chains/engine/rule dependencies for VERIFIED paths."
+  ]
+}
