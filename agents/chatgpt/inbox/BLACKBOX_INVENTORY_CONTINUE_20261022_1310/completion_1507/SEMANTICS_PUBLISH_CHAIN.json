@@ -1,0 +1,77 @@
+{
+  "status": "STATIC_REVIEWED",
+  "flow_from_code": [
+    "orchestrator.main → IW check → ETF_MINUTE check → tip_rebase.main",
+    "tip_rebase.main: if no_publish → stop candidate; else publish_atomic(...)",
+    "publish_atomic in blackbox_daily_increment_publish_gate_r1.py (run_production_matrix + atomic CURRENT)",
+    "orchestrator then scope_refresh if not no_publish"
+  ],
+  "gate_linkage": {
+    "tip_imports": "from blackbox_daily_increment_publish_gate_r1 import publish_atomic",
+    "tip_main_calls_publish_atomic": true,
+    "call_line": 592,
+    "no_publish_branch_lines": [
+      581,
+      582
+    ],
+    "no_publish_effect": "CANDIDATE_READY; CURRENT unchanged",
+    "on_publish": "pub = publish_atomic(...) then CURRENT pointer write inside gate",
+    "orchestrator_GATE_const": "defined but unused in orchestrator.main; real gate call is inside tip via publish_atomic"
+  },
+  "tip_keyword_hits": [
+    {
+      "line": 2,
+      "text": "\"\"\"Formal daily Cache candidate: tip-rebase then atomic publish gate."
+    },
+    {
+      "line": 21,
+      "text": "POINTER = CACHE_ROOT / \"CURRENT_CACHE_RELEASE.json\""
+    },
+    {
+      "line": 22,
+      "text": "CLEAN = Path(r\"E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json\")"
+    },
+    {
+      "line": 36,
+      "text": "from blackbox_daily_increment_publish_gate_r1 import publish_atomic  # noqa: E402"
+    },
+    {
+      "line": 120,
+      "text": "raise SystemExit(\"HARD_BLOCK: missing CURRENT_CACHE_RELEASE.json\")"
+    },
+    {
+      "line": 447,
+      "text": "log(f\"FORMAL_DAILY_PUBLISH={FORMAL_DAILY_PUBLISH} new={rid} parent={parent.name} asof={asof} no_publish={args.no_publish}\")"
+    },
+    {
+      "line": 574,
+      "text": "wjson(OUT / \"TIP_REBASE_LAST.json\", {\"pointer\": pointer, \"seal\": seal, \"no_publish\": args.no_publish})"
+    },
+    {
+      "line": 581,
+      "text": "if args.no_publish:"
+    },
+    {
+      "line": 582,
+      "text": "log(f\"CANDIDATE_READY no_publish CURRENT unchanged rid={rid}\")"
+    },
+    {
+      "line": 592,
+      "text": "pub = publish_atomic("
+    }
+  ],
+  "resolve_run_target": {
+    "path": "脚本/blackbox_daily_increment_common_r1.py",
+    "sha256": "348d1f7e6ea18ea8db80cfbd7ed68d5a0c6c3f913e874db65796a2428ee13ec7",
+    "func": {
+      "lineno": 110,
+      "end_lineno": 135,
+      "n_lines": 26,
+      "body": "def resolve_run_target_trade_date(\n    *,\n    cli_date: str | None = None,\n    cleaning: dict | None = None,\n) -> dict:\n    \"\"\"RUN_TARGET_TRADE_DATE is the only execution authority.\"\"\"\n    d = (cli_date or \"\").strip()\n    if not d and cleaning:\n        d = str(cleaning.get(\"cleaning_as_of\") or cleaning.get(\"daily_asof\") or \"\").strip()\n    if not d:\n        raise SystemExit(\"HARD_BLOCK: RUN_TARGET_TRADE_DATE missing\")\n    ignored = []\n    if HAND_DECISION.exists():\n        try:\n            hand = json.loads(HAND_DECISION.read_text(encoding=\"utf-8\"))\n        except Exception:\n            hand = {}\n        for key in (\"finance_asof_target\", \"stock_asof_target\", \"daily_asof_target\", \"asof_target\"):\n            legacy = str(hand.get(key) or \"\").strip()\n            if legacy and legacy != d:\n                ignored.append({\"field\": key, \"value\": legacy})\n    return {\n        \"RUN_TARGET_TRADE_DATE\": d,\n        \"LEGACY_TARGET_IGNORED\": bool(ignored),\n        \"legacy_targets\": ignored,\n    }"
+    }
+  },
+  "known_gaps": [],
+  "not_run": [
+    "No --no-publish / publish execution this round (forbidden as readonly inventory test)"
+  ]
+}
