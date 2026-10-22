@@ -1,0 +1,487 @@
+{
+  "A_FUND_NAV": {
+    "product_id": "FUND_NAV_PIT_R1",
+    "object_type": "ENTITY_TABLE_OR_PRODUCT",
+    "expectation": {
+      "kind": "STATED_IN_PRIOR_EVIDENCE_NOT_REVALIDATED",
+      "independent_expectation_text": "FULL_STREAM_OBSERVED_REQUIRED_STILL_UNPROVEN (independent coverage contract)",
+      "authority_file": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py::_merge_prior_tips (1519 body review)",
+      "authority_vs_product_self_report": "AUTHORITY_POINTER_PRESENT_NOT_REVALIDATED",
+      "should_have_scope": {
+        "date_field_meaning": "UNDEFINED_IN_THIS_MATRIX",
+        "start_end_asof": "NOT_INFERRED_FROM_MIN_MAX",
+        "asset_scope": "UNDEFINED_IN_THIS_MATRIX",
+        "frequency_or_calendar": "UNDEFINED_IN_THIS_MATRIX",
+        "key_fields": "UNKNOWN",
+        "pit_rule": "publication-time aware NAV / PIT plane constraints per plane contract",
+        "note": "no clear requirement → leave undefined; do not backfill from observed min/max"
+      }
+    },
+    "observed": {
+      "content_observed_prior": "PRIOR_FULL_READ rows=6496121 shards=5980",
+      "content_vs_contract": "FULL_STREAM_OBSERVED_REQUIRED_STILL_UNPROVEN",
+      "verified_range": "PRIOR_FULL_READ rows=6496121 shards=5980 observed_span≈2014-01-02..2026-09-24 (1519; this round NO re-read)",
+      "unverified_range": "any rows/shards beyond prior full-read observation",
+      "full_read_rows": "6496121",
+      "full_read_shards": "5980",
+      "mapping_status": "VERIFIED_CACHE_DIR",
+      "producer_entry": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py",
+      "evidence_ref_hints": [
+        "completion_1519 SEMANTICS_NAV_FINDING.json"
+      ],
+      "observation_class": "FULL_READ"
+    },
+    "delta_unknown_usage": {
+      "supported_gap": "any rows/shards beyond prior full-read observation",
+      "insufficient_evidence_only": false,
+      "not_applicable": false,
+      "usage_impact": "UNKNOWN",
+      "next_min_check": "bounded contract-field check vs existing observation; no full rescan"
+    },
+    "ledger_checkpoint": "COMPLETION_1635",
+    "detail_extra": {
+      "prior_full_read_observation": "5980 shards / 6496121 rows / 2014-01-02..2026-09-24 (prior; not re-read)",
+      "note": "full-read observation retained but does NOT replace independent should-have contract",
+      "old_etf_equity_path": "EXCLUDED_FROM_THIS_EXAMPLE"
+    },
+    "ledger_slice": {
+      "mapping_status": "VERIFIED_CACHE_DIR",
+      "content_observed_prior": "PRIOR_FULL_READ rows=6496121 shards=5980",
+      "full_read_rows": "6496121",
+      "full_read_shards": "5980",
+      "producer_entry": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py",
+      "content_integrity": {
+        "verified_range": "PRIOR_FULL_READ rows=6496121 shards=5980 observed_span≈2014-01-02..2026-09-24 (1519; this round NO re-read)",
+        "unverified_range": "any rows/shards beyond prior full-read observation",
+        "independent_expectation": "FULL_STREAM_OBSERVED_REQUIRED_STILL_UNPROVEN (independent coverage contract)",
+        "note": "sample/full-read status ≠ independent expectation"
+      },
+      "rules_consumption": {
+        "authority_file": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py::_merge_prior_tips (1519 body review)",
+        "consumer": "UNBOUND",
+        "pit_or_license_limits": "publication-time aware NAV / PIT plane constraints per plane contract",
+        "unresolved_ref_impact": "UNKNOWN"
+      },
+      "producer_semantics": {
+        "merge_key": "date/code (day)",
+        "confirmed_behavior": "PRIOR_TIP_OVERRIDES_NEW_DUPLICATE",
+        "source": "completion_1519 SEMANTICS_NAV_FINDING.json"
+      }
+    }
+  },
+  "B_ETF_1m": {
+    "product_id": "ETF_MINUTE_1M_R1",
+    "object_type": "ENTITY_TABLE_OR_PRODUCT",
+    "expectation": {
+      "kind": "UNDEFINED_OR_UNKNOWN",
+      "independent_expectation_text": "UNKNOWN",
+      "authority_file": "UNKNOWN",
+      "authority_vs_product_self_report": "AUTHORITY_UNKNOWN_OR_UNBOUND",
+      "should_have_scope": {
+        "date_field_meaning": "UNDEFINED_IN_THIS_MATRIX",
+        "start_end_asof": "NOT_INFERRED_FROM_MIN_MAX",
+        "asset_scope": "UNDEFINED_IN_THIS_MATRIX",
+        "frequency_or_calendar": "UNDEFINED_IN_THIS_MATRIX",
+        "key_fields": "UNKNOWN",
+        "pit_rule": "UNKNOWN",
+        "note": "no clear requirement → leave undefined; do not backfill from observed min/max"
+      }
+    },
+    "observed": {
+      "content_observed_prior": "PATH_VERIFIED_RANGE_UNPROVEN",
+      "content_vs_contract": "PATH_VERIFIED_RANGE_UNPROVEN",
+      "verified_range": "PATH_VERIFIED_RANGE_UNPROVEN",
+      "unverified_range": "UNKNOWN (not equated to sample status)",
+      "full_read_rows": "",
+      "full_read_shards": "",
+      "mapping_status": "VERIFIED_ETF_CLEANING_PATH",
+      "producer_entry": "脚本/blackbox_etf_minute_1m_plane_r1.py",
+      "evidence_ref_hints": [],
+      "observation_class": "METADATA_OR_SAMPLE"
+    },
+    "delta_unknown_usage": {
+      "supported_gap": "UNKNOWN (not equated to sample status)",
+      "insufficient_evidence_only": true,
+      "not_applicable": false,
+      "usage_impact": "UNKNOWN",
+      "next_min_check": "locate independent contract/manifest before completeness claim"
+    },
+    "ledger_checkpoint": "COMPLETION_1635",
+    "detail_extra": {
+      "plane": "1m",
+      "do_not_extrapolate_to": [
+        "ETF_MINUTE_5M_R1",
+        "ETF_MINUTE_30M_R1",
+        "ETF_MINUTE_60M_R1"
+      ],
+      "tip_vs_mat_history": "keep tip consumption evidence separate from __mat historical consumers",
+      "source_plane": "use actual Cleaning/RAW refs from ledger only; no new scan"
+    },
+    "ledger_slice": {
+      "mapping_status": "VERIFIED_ETF_CLEANING_PATH",
+      "content_observed_prior": "PATH_VERIFIED_RANGE_UNPROVEN",
+      "full_read_rows": "",
+      "full_read_shards": "",
+      "producer_entry": "脚本/blackbox_etf_minute_1m_plane_r1.py",
+      "content_integrity": {
+        "verified_range": "PATH_VERIFIED_RANGE_UNPROVEN",
+        "unverified_range": "UNKNOWN (not equated to sample status)",
+        "independent_expectation": "UNKNOWN",
+        "note": "1635: stopped copying sample status into independent_expectation/unverified"
+      },
+      "rules_consumption": {
+        "authority_file": "UNKNOWN",
+        "consumer": "UNBOUND",
+        "pit_or_license_limits": "UNKNOWN",
+        "unresolved_ref_impact": "UNKNOWN",
+        "note": "1635: producer_entry is not proof of rule authority"
+      }
+    }
+  },
+  "B_ETF_5m": {
+    "product_id": "ETF_MINUTE_5M_R1",
+    "object_type": "ENTITY_TABLE_OR_PRODUCT",
+    "expectation": {
+      "kind": "STATED_IN_PRIOR_EVIDENCE_NOT_REVALIDATED",
+      "independent_expectation_text": "missing generic downloader ≠ no data",
+      "authority_file": "UNKNOWN",
+      "authority_vs_product_self_report": "AUTHORITY_UNKNOWN_OR_UNBOUND",
+      "should_have_scope": {
+        "date_field_meaning": "UNDEFINED_IN_THIS_MATRIX",
+        "start_end_asof": "NOT_INFERRED_FROM_MIN_MAX",
+        "asset_scope": "UNDEFINED_IN_THIS_MATRIX",
+        "frequency_or_calendar": "UNDEFINED_IN_THIS_MATRIX",
+        "key_fields": "UNKNOWN",
+        "pit_rule": "UNKNOWN",
+        "note": "no clear requirement → leave undefined; do not backfill from observed min/max"
+      }
+    },
+    "observed": {
+      "content_observed_prior": "PATH_VERIFIED_RANGE_UNPROVEN",
+      "content_vs_contract": "PATH_VERIFIED_RANGE_UNPROVEN",
+      "verified_range": "prior: PATH_VERIFIED_RANGE_UNPROVEN",
+      "unverified_range": "do not extrapolate from ETF_1m plane; downloader may be unlocated",
+      "full_read_rows": "",
+      "full_read_shards": "",
+      "mapping_status": "VERIFIED_ETF_CLEANING_PATH",
+      "producer_entry": "脚本/jq_expand_minute_v3.py",
+      "evidence_ref_hints": [],
+      "observation_class": "METADATA_OR_SAMPLE"
+    },
+    "delta_unknown_usage": {
+      "supported_gap": "do not extrapolate from ETF_1m plane; downloader may be unlocated",
+      "insufficient_evidence_only": false,
+      "not_applicable": false,
+      "usage_impact": "UNKNOWN",
+      "next_min_check": "bounded contract-field check vs existing observation; no full rescan"
+    },
+    "ledger_checkpoint": "COMPLETION_1635",
+    "detail_extra": {
+      "plane": "5m",
+      "do_not_extrapolate_from": "ETF_MINUTE_1M_R1",
+      "source_plane": "independent of 1m; prior unverified_range kept"
+    },
+    "ledger_slice": {
+      "mapping_status": "VERIFIED_ETF_CLEANING_PATH",
+      "content_observed_prior": "PATH_VERIFIED_RANGE_UNPROVEN",
+      "full_read_rows": "",
+      "full_read_shards": "",
+      "producer_entry": "脚本/jq_expand_minute_v3.py",
+      "content_integrity": {
+        "verified_range": "prior: PATH_VERIFIED_RANGE_UNPROVEN",
+        "unverified_range": "do not extrapolate from ETF_1m plane; downloader may be unlocated",
+        "independent_expectation": "missing generic downloader ≠ no data",
+        "note": "merged from prior evidence; producer_static ≠ content"
+      },
+      "rules_consumption": {
+        "authority_file": "UNKNOWN",
+        "consumer": "UNBOUND",
+        "pit_or_license_limits": "UNKNOWN",
+        "unresolved_ref_impact": "UNKNOWN",
+        "note": "1635: producer_entry is not proof of rule authority"
+      }
+    }
+  },
+  "C_REQUIRED4": [
+    {
+      "product_id": "CORP_XR_XD_EVENT_PIT_R1",
+      "object_type": "ENTITY_TABLE_OR_PRODUCT",
+      "expectation": {
+        "kind": "STATED_IN_PRIOR_EVIDENCE_NOT_REVALIDATED",
+        "independent_expectation_text": "UNKNOWN (no independent coverage contract proven this program)",
+        "authority_file": "UNKNOWN",
+        "authority_vs_product_self_report": "AUTHORITY_UNKNOWN_OR_UNBOUND",
+        "should_have_scope": {
+          "date_field_meaning": "UNDEFINED_IN_THIS_MATRIX",
+          "start_end_asof": "NOT_INFERRED_FROM_MIN_MAX",
+          "asset_scope": "UNDEFINED_IN_THIS_MATRIX",
+          "frequency_or_calendar": "UNDEFINED_IN_THIS_MATRIX",
+          "key_fields": "UNKNOWN",
+          "pit_rule": "UNKNOWN",
+          "note": "no clear requirement → leave undefined; do not backfill from observed min/max"
+        }
+      },
+      "observed": {
+        "content_observed_prior": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "content_vs_contract": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "verified_range": "PRIOR_ENTITY_META_ROWS=129287 (completion_1447 USER_FINAL_REPORT / REQUIRED4_ENTITY_EVIDENCE; this round NO re-read)",
+        "unverified_range": "independent required total / full content integrity UNPROVEN",
+        "full_read_rows": "",
+        "full_read_shards": "",
+        "mapping_status": "ENTITY_PRESENT_CATALOG_ORPHAN",
+        "producer_entry": null,
+        "evidence_ref_hints": [
+          "completion_1447/USER_FINAL_REPORT.md + REQUIRED4_ENTITY_EVIDENCE.json",
+          "completion_1447 UPDATE_CHAIN / REQUIRED4_ENTITY_EVIDENCE"
+        ],
+        "observation_class": "METADATA_OR_SAMPLE"
+      },
+      "delta_unknown_usage": {
+        "supported_gap": "independent required total / full content integrity UNPROVEN",
+        "insufficient_evidence_only": false,
+        "not_applicable": false,
+        "usage_impact": "ordinary CACHE resolver returns CACHE_PRODUCT_UNAVAILABLE when catalog row missing (≠ all consumers unavailable)",
+        "next_min_check": "bounded contract-field check vs existing observation; no full rescan"
+      },
+      "ledger_checkpoint": "COMPLETION_1635",
+      "detail_extra": {
+        "entity_vs_metadata": "entity path/meta row counts from prior REQUIRED4_ENTITY_EVIDENCE; not re-read",
+        "catalog_reachability": "separate from data completeness",
+        "resolver_availability": "ordinary resolver catalog gap ≠ entity missing",
+        "data_integrity_vs_resolver": "SEPARATED_PER_TIP"
+      },
+      "ledger_slice": {
+        "mapping_status": "ENTITY_PRESENT_CATALOG_ORPHAN",
+        "content_observed_prior": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "full_read_rows": "",
+        "full_read_shards": "",
+        "producer_entry": null,
+        "content_integrity": {
+          "verified_range": "PRIOR_ENTITY_META_ROWS=129287 (completion_1447 USER_FINAL_REPORT / REQUIRED4_ENTITY_EVIDENCE; this round NO re-read)",
+          "unverified_range": "independent required total / full content integrity UNPROVEN",
+          "independent_expectation": "UNKNOWN (no independent coverage contract proven this program)",
+          "note": "row counts are prior file meta observations, not current re-read",
+          "evidence_ref": "completion_1447/USER_FINAL_REPORT.md + REQUIRED4_ENTITY_EVIDENCE.json"
+        },
+        "rules_consumption": {
+          "authority_file": "UNKNOWN",
+          "consumer": "UNBOUND (generic 'cache consumers' not counted as linked)",
+          "pit_or_license_limits": "UNKNOWN",
+          "unresolved_ref_impact": "ordinary CACHE resolver returns CACHE_PRODUCT_UNAVAILABLE when catalog row missing (≠ all consumers unavailable)",
+          "resolver_catalog_gap": true,
+          "evidence_ref": "completion_1447 UPDATE_CHAIN / REQUIRED4_ENTITY_EVIDENCE"
+        }
+      }
+    },
+    {
+      "product_id": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "object_type": "ENTITY_TABLE_OR_PRODUCT",
+      "expectation": {
+        "kind": "STATED_IN_PRIOR_EVIDENCE_NOT_REVALIDATED",
+        "independent_expectation_text": "UNKNOWN (no independent coverage contract proven this program)",
+        "authority_file": "UNKNOWN",
+        "authority_vs_product_self_report": "AUTHORITY_UNKNOWN_OR_UNBOUND",
+        "should_have_scope": {
+          "date_field_meaning": "UNDEFINED_IN_THIS_MATRIX",
+          "start_end_asof": "NOT_INFERRED_FROM_MIN_MAX",
+          "asset_scope": "UNDEFINED_IN_THIS_MATRIX",
+          "frequency_or_calendar": "UNDEFINED_IN_THIS_MATRIX",
+          "key_fields": "UNKNOWN",
+          "pit_rule": "UNKNOWN",
+          "note": "no clear requirement → leave undefined; do not backfill from observed min/max"
+        }
+      },
+      "observed": {
+        "content_observed_prior": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "content_vs_contract": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "verified_range": "PRIOR_ENTITY_META_ROWS=2694787 (completion_1447 USER_FINAL_REPORT / REQUIRED4_ENTITY_EVIDENCE; this round NO re-read)",
+        "unverified_range": "independent required total / full content integrity UNPROVEN",
+        "full_read_rows": "",
+        "full_read_shards": "",
+        "mapping_status": "ENTITY_PRESENT_CATALOG_ORPHAN",
+        "producer_entry": null,
+        "evidence_ref_hints": [
+          "completion_1447/USER_FINAL_REPORT.md + REQUIRED4_ENTITY_EVIDENCE.json",
+          "completion_1447 UPDATE_CHAIN / REQUIRED4_ENTITY_EVIDENCE"
+        ],
+        "observation_class": "METADATA_OR_SAMPLE"
+      },
+      "delta_unknown_usage": {
+        "supported_gap": "independent required total / full content integrity UNPROVEN",
+        "insufficient_evidence_only": false,
+        "not_applicable": false,
+        "usage_impact": "ordinary CACHE resolver returns CACHE_PRODUCT_UNAVAILABLE when catalog row missing (≠ all consumers unavailable)",
+        "next_min_check": "bounded contract-field check vs existing observation; no full rescan"
+      },
+      "ledger_checkpoint": "COMPLETION_1635",
+      "detail_extra": {
+        "entity_vs_metadata": "entity path/meta row counts from prior REQUIRED4_ENTITY_EVIDENCE; not re-read",
+        "catalog_reachability": "separate from data completeness",
+        "resolver_availability": "ordinary resolver catalog gap ≠ entity missing",
+        "data_integrity_vs_resolver": "SEPARATED_PER_TIP"
+      },
+      "ledger_slice": {
+        "mapping_status": "ENTITY_PRESENT_CATALOG_ORPHAN",
+        "content_observed_prior": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "full_read_rows": "",
+        "full_read_shards": "",
+        "producer_entry": null,
+        "content_integrity": {
+          "verified_range": "PRIOR_ENTITY_META_ROWS=2694787 (completion_1447 USER_FINAL_REPORT / REQUIRED4_ENTITY_EVIDENCE; this round NO re-read)",
+          "unverified_range": "independent required total / full content integrity UNPROVEN",
+          "independent_expectation": "UNKNOWN (no independent coverage contract proven this program)",
+          "note": "row counts are prior file meta observations, not current re-read",
+          "evidence_ref": "completion_1447/USER_FINAL_REPORT.md + REQUIRED4_ENTITY_EVIDENCE.json"
+        },
+        "rules_consumption": {
+          "authority_file": "UNKNOWN",
+          "consumer": "UNBOUND (generic 'cache consumers' not counted as linked)",
+          "pit_or_license_limits": "UNKNOWN",
+          "unresolved_ref_impact": "ordinary CACHE resolver returns CACHE_PRODUCT_UNAVAILABLE when catalog row missing (≠ all consumers unavailable)",
+          "resolver_catalog_gap": true,
+          "evidence_ref": "completion_1447 UPDATE_CHAIN / REQUIRED4_ENTITY_EVIDENCE"
+        }
+      }
+    },
+    {
+      "product_id": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "object_type": "ENTITY_TABLE_OR_PRODUCT",
+      "expectation": {
+        "kind": "STATED_IN_PRIOR_EVIDENCE_NOT_REVALIDATED",
+        "independent_expectation_text": "UNKNOWN (no independent coverage contract proven this program)",
+        "authority_file": "UNKNOWN",
+        "authority_vs_product_self_report": "AUTHORITY_UNKNOWN_OR_UNBOUND",
+        "should_have_scope": {
+          "date_field_meaning": "UNDEFINED_IN_THIS_MATRIX",
+          "start_end_asof": "NOT_INFERRED_FROM_MIN_MAX",
+          "asset_scope": "UNDEFINED_IN_THIS_MATRIX",
+          "frequency_or_calendar": "UNDEFINED_IN_THIS_MATRIX",
+          "key_fields": "UNKNOWN",
+          "pit_rule": "UNKNOWN",
+          "note": "no clear requirement → leave undefined; do not backfill from observed min/max"
+        }
+      },
+      "observed": {
+        "content_observed_prior": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "content_vs_contract": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "verified_range": "PRIOR_ENTITY_META_ROWS=2653539 (completion_1447 USER_FINAL_REPORT / REQUIRED4_ENTITY_EVIDENCE; this round NO re-read)",
+        "unverified_range": "independent required total / full content integrity UNPROVEN",
+        "full_read_rows": "",
+        "full_read_shards": "",
+        "mapping_status": "ENTITY_PRESENT_CATALOG_ORPHAN",
+        "producer_entry": null,
+        "evidence_ref_hints": [
+          "completion_1447/USER_FINAL_REPORT.md + REQUIRED4_ENTITY_EVIDENCE.json",
+          "completion_1447 UPDATE_CHAIN / REQUIRED4_ENTITY_EVIDENCE"
+        ],
+        "observation_class": "METADATA_OR_SAMPLE"
+      },
+      "delta_unknown_usage": {
+        "supported_gap": "independent required total / full content integrity UNPROVEN",
+        "insufficient_evidence_only": false,
+        "not_applicable": false,
+        "usage_impact": "ordinary CACHE resolver returns CACHE_PRODUCT_UNAVAILABLE when catalog row missing (≠ all consumers unavailable)",
+        "next_min_check": "bounded contract-field check vs existing observation; no full rescan"
+      },
+      "ledger_checkpoint": "COMPLETION_1635",
+      "detail_extra": {
+        "entity_vs_metadata": "entity path/meta row counts from prior REQUIRED4_ENTITY_EVIDENCE; not re-read",
+        "catalog_reachability": "separate from data completeness",
+        "resolver_availability": "ordinary resolver catalog gap ≠ entity missing",
+        "data_integrity_vs_resolver": "SEPARATED_PER_TIP"
+      },
+      "ledger_slice": {
+        "mapping_status": "ENTITY_PRESENT_CATALOG_ORPHAN",
+        "content_observed_prior": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "full_read_rows": "",
+        "full_read_shards": "",
+        "producer_entry": null,
+        "content_integrity": {
+          "verified_range": "PRIOR_ENTITY_META_ROWS=2653539 (completion_1447 USER_FINAL_REPORT / REQUIRED4_ENTITY_EVIDENCE; this round NO re-read)",
+          "unverified_range": "independent required total / full content integrity UNPROVEN",
+          "independent_expectation": "UNKNOWN (no independent coverage contract proven this program)",
+          "note": "row counts are prior file meta observations, not current re-read",
+          "evidence_ref": "completion_1447/USER_FINAL_REPORT.md + REQUIRED4_ENTITY_EVIDENCE.json"
+        },
+        "rules_consumption": {
+          "authority_file": "UNKNOWN",
+          "consumer": "UNBOUND (generic 'cache consumers' not counted as linked)",
+          "pit_or_license_limits": "UNKNOWN",
+          "unresolved_ref_impact": "ordinary CACHE resolver returns CACHE_PRODUCT_UNAVAILABLE when catalog row missing (≠ all consumers unavailable)",
+          "resolver_catalog_gap": true,
+          "evidence_ref": "completion_1447 UPDATE_CHAIN / REQUIRED4_ENTITY_EVIDENCE"
+        }
+      }
+    },
+    {
+      "product_id": "SW_L3_MEMBERSHIP_PIT_R1",
+      "object_type": "ENTITY_TABLE_OR_PRODUCT",
+      "expectation": {
+        "kind": "STATED_IN_PRIOR_EVIDENCE_NOT_REVALIDATED",
+        "independent_expectation_text": "UNKNOWN (no independent coverage contract proven this program)",
+        "authority_file": "UNKNOWN",
+        "authority_vs_product_self_report": "AUTHORITY_UNKNOWN_OR_UNBOUND",
+        "should_have_scope": {
+          "date_field_meaning": "UNDEFINED_IN_THIS_MATRIX",
+          "start_end_asof": "NOT_INFERRED_FROM_MIN_MAX",
+          "asset_scope": "UNDEFINED_IN_THIS_MATRIX",
+          "frequency_or_calendar": "UNDEFINED_IN_THIS_MATRIX",
+          "key_fields": "UNKNOWN",
+          "pit_rule": "UNKNOWN",
+          "note": "no clear requirement → leave undefined; do not backfill from observed min/max"
+        }
+      },
+      "observed": {
+        "content_observed_prior": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "content_vs_contract": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "verified_range": "PRIOR_ENTITY_META_ROWS=12564290 (completion_1447 USER_FINAL_REPORT / REQUIRED4_ENTITY_EVIDENCE; this round NO re-read)",
+        "unverified_range": "independent required total / full content integrity UNPROVEN",
+        "full_read_rows": "",
+        "full_read_shards": "",
+        "mapping_status": "ENTITY_PRESENT_CATALOG_ORPHAN",
+        "producer_entry": null,
+        "evidence_ref_hints": [
+          "completion_1447/USER_FINAL_REPORT.md + REQUIRED4_ENTITY_EVIDENCE.json",
+          "completion_1447 UPDATE_CHAIN / REQUIRED4_ENTITY_EVIDENCE"
+        ],
+        "observation_class": "METADATA_OR_SAMPLE"
+      },
+      "delta_unknown_usage": {
+        "supported_gap": "independent required total / full content integrity UNPROVEN",
+        "insufficient_evidence_only": false,
+        "not_applicable": false,
+        "usage_impact": "ordinary CACHE resolver returns CACHE_PRODUCT_UNAVAILABLE when catalog row missing (≠ all consumers unavailable)",
+        "next_min_check": "bounded contract-field check vs existing observation; no full rescan"
+      },
+      "ledger_checkpoint": "COMPLETION_1635",
+      "detail_extra": {
+        "entity_vs_metadata": "entity path/meta row counts from prior REQUIRED4_ENTITY_EVIDENCE; not re-read",
+        "catalog_reachability": "separate from data completeness",
+        "resolver_availability": "ordinary resolver catalog gap ≠ entity missing",
+        "data_integrity_vs_resolver": "SEPARATED_PER_TIP"
+      },
+      "ledger_slice": {
+        "mapping_status": "ENTITY_PRESENT_CATALOG_ORPHAN",
+        "content_observed_prior": "PARTIAL_OBSERVED_SAMPLE_ONLY",
+        "full_read_rows": "",
+        "full_read_shards": "",
+        "producer_entry": null,
+        "content_integrity": {
+          "verified_range": "PRIOR_ENTITY_META_ROWS=12564290 (completion_1447 USER_FINAL_REPORT / REQUIRED4_ENTITY_EVIDENCE; this round NO re-read)",
+          "unverified_range": "independent required total / full content integrity UNPROVEN",
+          "independent_expectation": "UNKNOWN (no independent coverage contract proven this program)",
+          "note": "row counts are prior file meta observations, not current re-read",
+          "evidence_ref": "completion_1447/USER_FINAL_REPORT.md + REQUIRED4_ENTITY_EVIDENCE.json"
+        },
+        "rules_consumption": {
+          "authority_file": "UNKNOWN",
+          "consumer": "UNBOUND (generic 'cache consumers' not counted as linked)",
+          "pit_or_license_limits": "UNKNOWN",
+          "unresolved_ref_impact": "ordinary CACHE resolver returns CACHE_PRODUCT_UNAVAILABLE when catalog row missing (≠ all consumers unavailable)",
+          "resolver_catalog_gap": true,
+          "evidence_ref": "completion_1447 UPDATE_CHAIN / REQUIRED4_ENTITY_EVIDENCE"
+        }
+      }
+    }
+  ]
+}
