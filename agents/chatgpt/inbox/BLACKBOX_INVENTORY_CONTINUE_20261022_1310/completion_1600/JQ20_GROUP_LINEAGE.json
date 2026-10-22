@@ -1,0 +1,198 @@
+{
+  "at": "2026-10-22T16:10:10+08:00",
+  "method": "group-by PRODUCT_META.source_cleaning_release_id; directed path hits only; no 20x full scan; no parquet read",
+  "groups": [
+    {
+      "group": "R19_JQ20",
+      "n_products": 13,
+      "products": [
+        "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+        "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+        "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+        "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+        "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+        "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+        "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+        "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+        "JQ20_STK_LIST_REFERENCE_PIT_R1",
+        "JQ20_STK_NAME_HISTORY_PIT_R1",
+        "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+        "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+        "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1"
+      ],
+      "cleaning_release_ids": [
+        "BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246"
+      ],
+      "source_authority_set": [],
+      "release_dirs_found": [
+        "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246",
+        "E:\\BLACKBOX\\数据\\清洗成品\\RELEASES\\BLACKBOX_FORMAL_CLEANING_R19_JQ20_ASOF_20260811_20260812_041246"
+      ],
+      "builder_script_candidates": [],
+      "stages": {
+        "RAW_interface_or_receipt": "UNPROVEN",
+        "Cleaning_build": "RELEASE_DIR_PRESENT",
+        "CACHE_package": "PRODUCT_META_PRESENT",
+        "daily_incremental_entry": "UNPROVEN"
+      },
+      "gaps": [
+        "RAW download builder not named in PRODUCT_META",
+        "Cleaning builder script not bound by line-number evidence in this pass unless candidate list non-empty",
+        "daily update entry not proven"
+      ],
+      "note": "metadata n_rows/asof are statements; not content integrity contract",
+      "release_top_entries": [
+        "MANIFEST.json",
+        "SEAL.json",
+        "standard"
+      ],
+      "has_manifest": true,
+      "builder_line_bound": false
+    },
+    {
+      "group": "R20_JQ20_FUND_MF_IMMUT_FIX",
+      "n_products": 1,
+      "products": [
+        "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1"
+      ],
+      "cleaning_release_ids": [
+        "BLACKBOX_FORMAL_CLEANING_R20_JQ20_FUND_MF_IMMUT_FIX_ASOF_20260811_20260812_051259"
+      ],
+      "source_authority_set": [],
+      "release_dirs_found": [
+        "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R20_JQ20_FUND_MF_IMMUT_FIX_ASOF_20260811_20260812_051259",
+        "E:\\BLACKBOX\\数据\\清洗成品\\RELEASES\\BLACKBOX_FORMAL_CLEANING_R20_JQ20_FUND_MF_IMMUT_FIX_ASOF_20260811_20260812_051259"
+      ],
+      "builder_script_candidates": [],
+      "stages": {
+        "RAW_interface_or_receipt": "UNPROVEN",
+        "Cleaning_build": "RELEASE_DIR_PRESENT",
+        "CACHE_package": "PRODUCT_META_PRESENT",
+        "daily_incremental_entry": "UNPROVEN"
+      },
+      "gaps": [
+        "RAW download builder not named in PRODUCT_META",
+        "Cleaning builder script not bound by line-number evidence in this pass unless candidate list non-empty",
+        "daily update entry not proven"
+      ],
+      "note": "metadata n_rows/asof are statements; not content integrity contract",
+      "release_top_entries": [
+        "MANIFEST.json",
+        "SEAL.json",
+        "standard"
+      ],
+      "has_manifest": true,
+      "builder_line_bound": false
+    },
+    {
+      "group": "R22_FINANCE_SCOPE",
+      "n_products": 3,
+      "products": [
+        "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+        "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+        "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1"
+      ],
+      "cleaning_release_ids": [
+        "BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146"
+      ],
+      "source_authority_set": [
+        "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500"
+      ],
+      "release_dirs_found": [
+        "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146",
+        "E:\\BLACKBOX\\数据\\清洗成品\\RELEASES\\BLACKBOX_FORMAL_CLEANING_R22_FINANCE_SCOPE_PIT_ASOF_20260813_20260814_140146"
+      ],
+      "builder_script_candidates": [],
+      "stages": {
+        "RAW_interface_or_receipt": "UNPROVEN",
+        "Cleaning_build": "RELEASE_DIR_PRESENT",
+        "CACHE_package": "PRODUCT_META_PRESENT",
+        "daily_incremental_entry": "UNPROVEN"
+      },
+      "gaps": [
+        "RAW download builder not named in PRODUCT_META",
+        "Cleaning builder script not bound by line-number evidence in this pass unless candidate list non-empty",
+        "daily update entry not proven"
+      ],
+      "note": "metadata n_rows/asof are statements; not content integrity contract",
+      "scope": "PARENT statements",
+      "release_top_entries": [
+        "FINANCE_DECLARED_RESIDUAL_POLICY.json",
+        "historical_evidence",
+        "RELEASE_POINTER_CANDIDATE.json",
+        "SEAL.json",
+        "standard",
+        "STORAGE_REUSE.json"
+      ],
+      "has_manifest": true,
+      "builder_line_bound": false
+    },
+    {
+      "group": "R29_RAWPIT_FINANCE",
+      "n_products": 3,
+      "products": [
+        "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+        "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+        "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1"
+      ],
+      "cleaning_release_ids": [
+        "BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444"
+      ],
+      "source_authority_set": [
+        "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1_20260814_131500"
+      ],
+      "release_dirs_found": [
+        "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444",
+        "E:\\BLACKBOX\\数据\\清洗成品\\RELEASES\\BLACKBOX_FORMAL_CLEANING_R29_RAWPIT_FINANCE_PIT_ASOF_20260817_20260818_013444"
+      ],
+      "builder_script_candidates": [],
+      "stages": {
+        "RAW_interface_or_receipt": "PARTIAL_VIA_source_authority_NAME_ONLY",
+        "Cleaning_build": "RELEASE_DIR_PRESENT",
+        "CACHE_package": "PRODUCT_META_PRESENT",
+        "daily_incremental_entry": "UNPROVEN"
+      },
+      "gaps": [
+        "RAW download builder not named in PRODUCT_META",
+        "Cleaning builder script not bound by line-number evidence in this pass unless candidate list non-empty",
+        "daily update entry not proven"
+      ],
+      "note": "metadata n_rows/asof are statements; not content integrity contract",
+      "upstream_plane": "BLACKBOX_FINANCE_CONSOLIDATED_PIT_R1 (source_authority); keep separate from PARENT scope",
+      "finance_consolidated_path_hits": [],
+      "release_top_entries": [
+        ".BLACKBOX_SEALED",
+        "SEAL.json",
+        "standard",
+        "_quarantine"
+      ],
+      "has_manifest": true,
+      "builder_line_bound": false
+    }
+  ],
+  "other_groups": {},
+  "found_files_n": 21,
+  "found_files_sample": [
+    "E:\\BLACKBOX\\任务\\BLACKBOX_FORMAL_CLEANING_R2_BUILD_AND_SEAL_R1\\formal_cleaning_r2_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\formal_cleaning_r15_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_GAPFILL_CLEAN_ANTILEAK_R1\\formal_cleaning_r11_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_DAILY_RAW_NONE_AND_CLEANING_R6_R1\\formal_cleaning_r6_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FINANCE_INCREMENTAL_AND_CLEANING_R5_R1\\formal_cleaning_r5_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FINANCE_INCREMENTAL_AND_CLEANING_R9_R1\\formal_cleaning_r9_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FINANCE_INDEX_AUG_INCREMENT_R13_R1\\formal_cleaning_r13_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R10_R1\\formal_cleaning_r10_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R12_20260807_R1\\formal_cleaning_r12_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R7_R1\\formal_cleaning_r7_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\formal_cleaning_r8_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_RAW_NONE_AND_CLEANING_R3_R1\\formal_cleaning_r3_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_RAW_NONE_AND_CLEANING_R4_R1\\formal_cleaning_r4_build_and_seal_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\formal_cleaning_layer_initialization_and_canary_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\pre_formal_cleaning_rule_closure_patch_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\pre_formal_cleaning_rule_closure_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\CLEANING_INPUT_FINAL_REVIEW_R1\\01_FORMAL_DOMAIN_REGISTRY\\FORMAL_CLEANING_INPUT_DOMAIN_REGISTRY.json",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\CLEANING_INPUT_FINAL_REVIEW_R1\\02_CANONICAL_SOURCE_FILES\\FORMAL_CLEANING_INPUT_MANIFEST.json",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\INDEX_WEIGHTS_REINTEGRATION_AND_CANARY_GATE_PATCH_R1\\04_INTEGRATED_MANIFEST\\INTEGRATED_FORMAL_CLEANING_MANIFEST_PATCHED.json",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\PRE_FORMAL_CLEANING_RULE_CLOSURE_PATCH_R1\\05_INTEGRATED_MANIFEST\\INTEGRATED_FORMAL_CLEANING_MANIFEST.json",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\acceptance\\PRE_FORMAL_CLEANING_RULE_CLOSURE_R1\\10_INTEGRATED_MANIFEST\\INTEGRATED_FORMAL_CLEANING_MANIFEST.json"
+  ]
+}
