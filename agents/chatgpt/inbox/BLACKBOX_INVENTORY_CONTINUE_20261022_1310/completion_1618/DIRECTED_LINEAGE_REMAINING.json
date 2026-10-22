@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-22T16:29:49+08:00",
+  "STOCK_MINUTE_5M": {
+    "raw_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+    "exists": true,
+    "n_top_entries": 38499,
+    "manifest_receipt_named": [],
+    "has_sidecar_json": true,
+    "sidecar_sample_keys": [
+      "stock_codes",
+      "frequency",
+      "year",
+      "batch_id",
+      "start_date",
+      "end_date",
+      "row_count",
+      "version",
+      "generated_at",
+      "source",
+      "jqdata_fq_param",
+      "fq",
+      "raw_none",
+      "replacement_layer"
+    ],
+    "producer_status": "RAW_DIR_PRESENT_DOWNLOADER_NOT_IN_JQ_EXPAND",
+    "note": "jq_expand FREQS exclude 5m ≠ no data; P7_..._5m present with parquet+sidecar+checksum"
+  },
+  "BILLBOARD": {
+    "candidates": [
+      {
+        "path": "E:\\BLACKBOX\\任务\\BLACKBOX_RAW_NONE_REDOWNLOAD_SEQUENCE_P7_THEN_P4_R1\\direct_download_billboard_r1.py",
+        "exists": true,
+        "funcs": [
+          "trade_days",
+          "run_canary",
+          "run_full",
+          "run_seal",
+          "main"
+        ],
+        "stages": {
+          "RAW_download": "BOUND_SCRIPT",
+          "Cleaning": "UNPROVEN",
+          "CACHE_package": "UNPROVEN",
+          "daily_entry": "UNPROVEN"
+        }
+      },
+      {
+        "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\aux_billboard_adjust_index_minute_r15.py",
+        "exists": true,
+        "funcs": [
+          "download_billboard",
+          "download_adjust_factor_day",
+          "download_index_minute_day",
+          "merge_staging",
+          "main"
+        ],
+        "stages": {
+          "RAW_download": "BOUND_FUNC_download_billboard",
+          "Cleaning": "UNPROVEN",
+          "CACHE_package": "UNPROVEN",
+          "daily_entry": "PARTIAL_VIA_R15_AUX"
+        }
+      }
+    ],
+    "raw_dir": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
+      "exists": true,
+      "n_parquet": 45
+    },
+    "status": "CANDIDATES_BOUND_STAGES_PARTIAL"
+  },
+  "SW_STRUCTURE": {
+    "compiler": "BLOCKED",
+    "densify_candidates": [
+      "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_sw_l1_integrate_r1.py"
+    ],
+    "note": "BLOCKED vs densify candidates recorded separately"
+  },
+  "ETF_MINUTE_NON_1M": "no extrapolate from 1m; prior path status retained where present"
+}
