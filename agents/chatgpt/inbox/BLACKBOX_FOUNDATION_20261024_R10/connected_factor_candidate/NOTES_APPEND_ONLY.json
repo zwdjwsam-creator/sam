@@ -1,0 +1,37 @@
+{
+ "schema": "R10_CONNECTED_CANDIDATE_NOTES_APPEND_ONLY_1",
+ "rows": [
+  {
+   "id": "N1",
+   "text": "The two reused modules (response gate and input contract) are byte-identical both to the new PIPELINE_PACKAGE.json pins and to the already-staged prior-round copies, so this round consumed the accepted validator rather than a local substitute."
+  },
+  {
+   "id": "N2",
+   "text": "The dirty-day consistency check compares the full-refresh tip against the validated reply for the same day before assemble_candidate is reachable. A tip that disagrees with the validated reply raises DIRTY_REQUEST_DAY_VALUES_CONFLICT, and the test asserts the downstream merge was not called."
+  },
+  {
+   "id": "N3",
+   "text": "Failure-order controls assert non-invocation directly: a numeric date axis, a missing security and an fq mismatch each stop before assemble_candidate, verified with a patched downstream sentinel rather than by inferring from the exception."
+  },
+  {
+   "id": "N4",
+   "text": "A prior overlap equal to or after the requested day is rejected (OVERLAP_MUST_PRECEDE_REQUEST_DAY); duplicate-day precedence is not guessed anywhere in the chain."
+  },
+  {
+   "id": "N5",
+   "text": "The dirty-history regression control is rejected by the real candidate_merge (DIRTY_HISTORY_KEY_REGRESSION), not by a mock, so the parent-key retention rule is enforced by the module that would run."
+  },
+  {
+   "id": "N6",
+   "text": "The chain returns exactly five stage names ending in PUBLICATION_NOT_AUTHORIZED and carries historical_input_authority_proven=false, expected_market_universe_proven=false, production_integrated=false, publication_authorized=false."
+  },
+  {
+   "id": "N7",
+   "text": "The guide append is documentation of a recovery-workspace diagnostic. The pinned entry blackbox_operate_r10.py, the normative contracts, the root must-read files, the live updater and the historical originals were not touched (entry pin unchanged)."
+  },
+  {
+   "id": "N8",
+   "text": "A synthetic in-memory pass is neither a repaired real-data source nor an admitted engine; no malformed RAW file was supplied, no request binding was manufactured for one, no date was derived from a filename and no factor was filled."
+  }
+ ]
+}
