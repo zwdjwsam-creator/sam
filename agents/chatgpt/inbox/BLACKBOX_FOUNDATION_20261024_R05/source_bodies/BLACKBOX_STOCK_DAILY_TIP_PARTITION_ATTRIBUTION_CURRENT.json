@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "rule_id": "BLACKBOX_STOCK_DAILY_TIP_PARTITION_ATTRIBUTION_R1",
+  "updated_at_cn": "2026-09-03T06:15:00+0800",
+  "incident_id": "STOCK_DAILY_TIP_HOLE_20260831_20260901",
+  "trade_dates": [
+    "2026-08-31",
+    "2026-09-01"
+  ],
+  "calendar_trade_day": true,
+  "calendar_authority": "cleaning standard reference/calendar_cn_exchange",
+  "layer_verdict": {
+    "L1_CACHE_CURRENT_STOCK_DAILY_PIT_R1": "UNKNOWN_PARTITION_GAP",
+    "L1_CACHE_PARENT_TIP_REBASE": "UNKNOWN_PARTITION_GAP",
+    "L2_CLEANING_TIP_INCREMENTAL": "UNKNOWN_PARTITION_GAP",
+    "L3_CACHE_STOCK_DAILY_RAW_PIT_R1": "UNKNOWN_PARTITION_GAP",
+    "L3_VENDOR_RAW_P2_stock_daily": "AVAILABLE"
+  },
+  "counts_sample": {
+    "note": "duckdb date-filtered row/code counts at investigation 2026-09-03",
+    "2026-08-28": {
+      "L1": 5212,
+      "RAW_P2": 5212
+    },
+    "2026-08-31": {
+      "L1": 0,
+      "RAW_P2": 5212
+    },
+    "2026-09-01": {
+      "L1": 0,
+      "RAW_P2": 5214
+    },
+    "2026-09-02": {
+      "L1": 5215,
+      "RAW_P2": 5215
+    }
+  },
+  "root_cause": "Vendor RAW incremental parquet for 20260831/20260901 exist under P2_stock_daily; Cleaning tip incremental and Cache year=2026 STOCK_DAILY_*_PIT_R1 partitions skipped those days when R32 published tip asof=2026-09-02 (FUND_NAV tip-rebase chain).",
+  "forbidden_claims": [
+    "NO_DATA",
+    "CONFIRMED_ABSENT_GLOBAL",
+    "SOURCE_MISSING"
+  ],
+  "required_claim_form": "L1/L2 tip UNKNOWN_PARTITION_GAP; L3 Vendor RAW AVAILABLE; DATA_ABSENT_CLAIM_ALLOWED=false",
+  "evidence_paths": [
+    "E:\\BLACKBOX\\运行\\每日下载日志\\DAILY_DOWNLOAD_CONTINUITY.jsonl",
+    "E:\\BLACKBOX\\运行\\每日下载日志\\LATEST_SLICE.md",
+    "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\",
+    "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json"
+  ],
+  "continuity_notes": {
+    "R30": "asof=2026-08-31 JQ tip DONE / COMPLETE in continuity",
+    "R31_ASOF_20260901": "no dedicated full-day increment entry found in LATEST_SLICE tail",
+    "R32": "asof=2026-09-02 chain PASS; CURRENT tip jumps 20260828 -> 20260902 in Cleaning incremental filenames"
+  },
+  "remediation": "Backfill Cleaning tip for 20260831+20260901 then Cache tip rebase / densify; do not download_history for backtest; do not declare NO_DATA"
+}
