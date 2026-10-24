@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "status": "auto_alignment_candidate",
+  "user_approval_required": true,
+  "official_factor_value_download_allowed": false,
+  "missing_value_policy": {
+    "default": "drop_or_forward_fill_forbidden",
+    "fundamental": "pit_aligned_fill_only",
+    "technical": "ffill_within_listing_life_forbidden"
+  },
+  "winsorize_policy": {
+    "default": "mad_3sigma_cross_section",
+    "review_required_factors": "per_factor_human_gate"
+  },
+  "neutralization_policy": {
+    "style_factors": "industry_and_market_cap_neutralize",
+    "technical_factors": "optional_rank_neutralize"
+  },
+  "rank_policy": {
+    "default": "cross_section_percentile_rank",
+    "direction_adjust_before_rank": true
+  },
+  "zscore_policy": {
+    "default": "cross_section_zscore",
+    "min_observations": 30
+  },
+  "direction_policy": {
+    "invert_lower_is_better": true,
+    "review_required_if_unknown": true
+  },
+  "unit_conversion_policy": {
+    "percent_to_ratio": "divide_by_100_if_tagged_percent",
+    "unconfirmed": "review_required"
+  },
+  "frequency_alignment_policy": {
+    "align_to": "trade_calendar_daily",
+    "no_forward_fill_across_coverage_boundary": true
+  },
+  "date_alignment_policy": {
+    "technical": "bar_date",
+    "fundamental": "pub_date_required"
+  },
+  "forbidden_cleaning_cases": [
+    "formula_not_passed",
+    "direction_unknown_auto_invert",
+    "unit_unknown_auto_scale",
+    "financial_pit_unknown_same_day_visible"
+  ],
+  "formula_based_cleaning_guard": true
+}
