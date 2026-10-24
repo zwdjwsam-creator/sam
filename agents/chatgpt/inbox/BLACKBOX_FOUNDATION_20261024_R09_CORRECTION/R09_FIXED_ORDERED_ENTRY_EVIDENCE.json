@@ -1,0 +1,148 @@
+{
+ "schema": "R09_FIXED_ORDERED_ENTRY_EVIDENCE_1",
+ "round": "R09/10_CORRECTION",
+ "command": {
+  "argv": [
+   "runtime/.venv/Scripts/python.exe",
+   "-X",
+   "utf8",
+   "reviews/R09/control_2100/r09_control_runtime_preflight_fixed.py",
+   "--packet",
+   "reviews/R08/BODY_EXPORT_20261024_2025",
+   "--successor",
+   "candidate/r09/control_successor"
+  ],
+  "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+  "env": {
+   "PYTHONPATH": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\control_2100",
+   "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0
+ },
+ "retained_stdout": {
+  "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\control_2100\\DESKTOP_FIXED_ENTRY.txt",
+  "sha256": "8182e69f4f5030ed055f49a0c68b0c0d5b5ecb8c231ff742bd88f608cce82ba2",
+  "bytes": 3094
+ },
+ "status": "ORDERED_CANDIDATE_CHECK_COMPLETE",
+ "steps_executed": [
+  "1_MUST_READ",
+  "2_PINNED_SOURCE_AND_RULE_BINDING",
+  "3_BOUNDED_CANDIDATE_READ",
+  "4_SHADOW_AND_PUBLISH_BLOCK_CONTROLS"
+ ],
+ "step_count_executed": 4,
+ "real_must_read_preflight": {
+  "MUST_READ_PRECHECK": "PASS",
+  "task_class": [
+   "CACHE"
+  ],
+  "required": [
+   "BOOTSTRAP",
+   "DATA_ACCESS"
+  ],
+  "problems": [],
+  "kernel": {
+   "path": "E:\\BLACKBOX\\.cursor\\rules\\BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+   "exists": true,
+   "sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+   "bytes": 1167,
+   "lines": 21
+  },
+  "rules_loaded": [
+   {
+    "key": "BOOTSTRAP",
+    "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_BOOTSTRAP_MUST_READ.md",
+    "expected_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+    "actual_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+    "status": "VERIFIED",
+    "lines": 49
+   },
+   {
+    "key": "DATA_ACCESS",
+    "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+    "expected_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+    "actual_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+    "status": "VERIFIED",
+    "lines": 99
+   }
+  ],
+  "executed_in_guarded_child": true,
+  "write_exceptions": 0,
+  "network_used": false
+ },
+ "bounded_read": {
+  "stock_request_rows": 2,
+  "stock_values": [
+   {
+    "date": "2026-08-31 00:00:00",
+    "code": "000001.XSHE",
+    "close": 11.72
+   },
+   {
+    "date": "2026-09-01 00:00:00",
+    "code": "000001.XSHE",
+    "close": 11.92
+   }
+  ],
+  "conservation": {
+   "coverage_non_regression_pass": true,
+   "grain": [
+    "date",
+    "code"
+   ],
+   "parent_keys": 959896,
+   "candidate_keys": 959896,
+   "lost_keys": 0,
+   "lost_field_observation_keys": {
+    "close": 0
+   },
+   "lost_key_examples": [],
+   "PUBLISH_ALLOWED": false,
+   "CURRENT_SWITCH_ALLOWED": false,
+   "scope": "EXACT_INPUT_FRAMES_ONLY_NOT_GLOBAL_COVERAGE_OR_ENGINE_ADMISSION"
+  },
+  "index_adapter_rows": 5242,
+  "index_diagnostic_only": true,
+  "index_master_admission": false,
+  "calendar_asof": "2026-09-24",
+  "latest_download_performed": false
+ },
+ "negative_controls": {
+  "synthetic_parse_calls": 1,
+  "real_role_reason": "REAL_DATA_NOT_AUTHORIZED",
+  "live_publish_reason": "R09_SUCCESSOR_DRY_RUN_ONLY",
+  "supplier_calls": 0
+ },
+ "conservation_statement": "selected candidate price frame and selected candidate factor frame both compare at parent_keys=959896 and candidate_keys=959896 with 0 lost keys and 0 lost close observations; the earlier prose figure 949470 belongs to a different factor-gate comparison and is withdrawn for this command",
+ "scope": "R09_ORDERED_DIAGNOSTIC_CANDIDATE; NOT_FULL_ENGINE_OR_LATEST_UPDATE_ACCEPTANCE",
+ "flags": {
+  "FOUNDATION_ACCEPTANCE": false,
+  "ORDER_ALLOWED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "SOURCE_ABSENCE_CLAIMS": 0
+ },
+ "historical_non_authoritative": [
+  {
+   "item": "original runner STOP at stage 1",
+   "evidence": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\control_2100\\DESKTOP_ORDERED_ENTRY.txt",
+   "sha256": "014b433cb103def73d3a168f3807a93a97ca94f67c37e965b9bf69f895b5b80e",
+   "authoritative": false,
+   "why": "pre-repair state, retained as history only"
+  },
+  {
+   "item": "stage 1 substituted diagnostic",
+   "evidence": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\control_2100\\DESKTOP_STAGES_2_4_WITH_STAGE1_SUBSTITUTED.json",
+   "sha256": "b9e9c82efa30e50839c29ca494a56439926005e1aabb26a7f0652f14b741fe08",
+   "authoritative": false,
+   "why": "review withdrew substitution as an acceptable execution path; its 1_MUST_READ step was never executed by that harness and must not be counted"
+  }
+ ],
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
