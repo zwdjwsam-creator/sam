@@ -1,0 +1,61 @@
+{
+ "schema": "R10_SOURCE_BATCH_CHAIN_COMMAND_LEDGER_1",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "python": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONUTF8": "1",
+  "PYTHONDONTWRITEBYTECODE": "1"
+ },
+ "commands": [
+  {
+   "seq": 1,
+   "kind": "stage_and_pin_check",
+   "script": "tools/r10_sbc_stage.py",
+   "exit_code": 0,
+   "result": "all_pins_match=true"
+  },
+  {
+   "seq": 2,
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\source_batch_chain\\test_r10_factor_source_batches.py",
+   "exit_code": 0,
+   "started_cn": "2026-10-25T01:21:12.7502055+08:00",
+   "finished_cn": "2026-10-25T01:21:14.7667690+08:00",
+   "stdout_bytes": 134,
+   "stderr_bytes": 111,
+   "stdout_sha256": "b7dc6f8cfef81a37c2e5c6a3a6acb644acf3cc4217e17403c2ed1a8502656af1",
+   "stderr_sha256": "2651ed41efc027d20b6f577492c85049f2a57b1e79b846a072cbd3f0f3cad715",
+   "stdout_text": "{\"tests_run\": 8, \"passed\": true, \"scope\": \"SOURCE_BATCH_BOUNDARY_OFFLINE_ONLY\", \"supplier_calls\": 0, \"FOUNDATION_ACCEPTANCE\": false}\r\n",
+   "stderr_text": "........\r\n----------------------------------------------------------------------\r\nRan 8 tests in 0.013s\r\n\r\nOK\r\n"
+  },
+  {
+   "seq": 3,
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\source_batch_chain\\r10_factor_source_batches.py --desktop-check",
+   "executions": 1,
+   "exit_code": 0,
+   "started_cn": "2026-10-25T01:21:22.3567943+08:00",
+   "finished_cn": "2026-10-25T01:22:52.0472258+08:00",
+   "stdout_bytes": 122907,
+   "stderr_bytes": 0,
+   "stdout_sha256": "a1d6627a1d77c7f96f11ded67678e226f5b1d57993a558e73f9d815abdb911b4",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status_field": "DECLARED_SOURCE_BATCH_CHAIN_MEASURED"
+  }
+ ],
+ "not_executed": [
+  "download_source_fq_pre_r1.py (any mode, import, CLI, help, resume)",
+  "any updater or production writer",
+  "any supplier/network call",
+  "any drive or all-layer enumeration",
+  "dirty_branch rerun",
+  "13-year Cleaning-vs-CACHE basis rerun",
+  "catalog inventory",
+  "original-source lookup"
+ ],
+ "supplier_calls": 0,
+ "network_calls_by_measured_driver": 0,
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false
+}
