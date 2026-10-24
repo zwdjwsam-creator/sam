@@ -1,0 +1,98 @@
+{
+ "schema": "R10_FACTOR_BOUNDARY_DELIVERY_MANIFEST_1",
+ "round": "R10 continuation",
+ "task_id": "BLACKBOX_FOUNDATION_R10_FACTOR_BOUNDARY_FIXED_EXECUTION_20261024",
+ "local_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_boundary_delivery",
+ "remote_root": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_boundary",
+ "manifest_excludes_itself": true,
+ "files": [
+  {
+   "path": "captures/DESKTOP_FACTOR_BOUNDARY_CHECK.stderr.bin",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "captures/DESKTOP_FACTOR_BOUNDARY_CHECK.stdout.bin",
+   "bytes": 9444,
+   "sha256": "225124815107e7fa94fb5e8bc05c5b006c28cffba1cec6372df7ac70be2de87c"
+  },
+  {
+   "path": "captures/TEST_16_CONTROLS.stderr.bin",
+   "bytes": 120,
+   "sha256": "db29437c90433367dc36244164215cfe138f7f8e41448449cf6dac4121ddf154"
+  },
+  {
+   "path": "captures/TEST_16_CONTROLS.stdout.bin",
+   "bytes": 128,
+   "sha256": "6dbc93f8739bc850ef841631bea353d6cce335a2e51642871679504d0a090311"
+  },
+  {
+   "path": "COMMAND_AND_EXIT_LEDGER.json",
+   "bytes": 3321,
+   "sha256": "f777cd65101b1198128f370c890b8150cd57c06bb7a284d0683bdae81ce13a9a"
+  },
+  {
+   "path": "DESKTOP_FACTOR_BOUNDARY_RESULT.json",
+   "bytes": 11199,
+   "sha256": "4b7831299686ac2e7742a56f9eac3307f95f3db7b0e85fe1e80c09e0be46c8f5"
+  },
+  {
+   "path": "executed_source/r10_factor_desktop_check.py",
+   "bytes": 7495,
+   "sha256": "76693d0834086e22b2afa62c70c4973b8271e14242ccae5c7f2a3f269d3cfed0"
+  },
+  {
+   "path": "executed_source/r10_factor_input_contract.py",
+   "bytes": 4046,
+   "sha256": "e30acaddecf03e0abd4360f60a74bae53525373e55feb51cf76d409beebe67c5"
+  },
+  {
+   "path": "executed_source/test_r10_factor_input_contract.py",
+   "bytes": 4639,
+   "sha256": "8055d61813032c18d1c021c4a0f09574779a94402beab5db61a7099d720e76f8"
+  },
+  {
+   "path": "OFFLINE_CONTROLS_RESULT.json",
+   "bytes": 479,
+   "sha256": "fdd761269f3316108fea85aa0c7f8a35d3b8b59efa8c967ba34f0c965cd66b86"
+  },
+  {
+   "path": "PACKAGE_VERIFICATION.json",
+   "bytes": 2214,
+   "sha256": "8707271779d77064296e656f960354a40def840228ff4b80bc3539d626722838"
+  },
+  {
+   "path": "R10_FACTOR_BOUNDARY_RECEIPT.md",
+   "bytes": 7649,
+   "sha256": "cf10ebbe49af82b75b8125a39d520eea374a8168e63fe6ee676af74526c17050"
+  },
+  {
+   "path": "REPORTING_SCOPE_CORRECTION.json",
+   "bytes": 2790,
+   "sha256": "55d760b05ea1abc9a93f67c0b81b245c1b3b0b6e1a9887f4cf34dc30b94543c3"
+  }
+ ],
+ "b1_linkage": {
+  "links_to": "B1_ADJUSTMENT_RECONCILIATION",
+  "b1_status": "OPEN",
+  "does_not_close_b1": true,
+  "measured_facts_that_bear_on_b1": [
+   "two RAW factor units for 2026-08-31 and 2026-09-01 carry integer date axes and are rejected by the successor boundary",
+   "the mounted CACHE 2026 partition holds 5208 rows for 2026-08-31, 11 for 2026-09-01 and 7 for 2026-09-02",
+   "the mounted CACHE 2026 partition holds progressively thinning rows from 2026-08-17 (89) through 2026-08-28 (19)"
+  ],
+  "questions_left_open": [
+   "83503-row count reconciliation",
+   "source-to-cache lineage per date",
+   "historical fq and PIT provenance"
+  ]
+ },
+ "other_six_groups_unchanged": true,
+ "repeated_whole_catalog_inventory": false,
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "file_count": 13
+}
