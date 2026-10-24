@@ -1,0 +1,591 @@
+{
+  "artifact": "ACQUISITION_WRITER_CURSOR_BINDINGS",
+  "task_id": "BLACKBOX_FOUNDATION_R10_WRITER_CURSOR_AND_TRANSFORM_BINDINGS_20261025",
+  "round": "R10",
+  "generated_at_cn": "2026-10-25T04:10:29+0800",
+  "evidence_kind": "STATIC_SOURCE_BINDING",
+  "executed_any_analysed_module": false,
+  "imported_any_analysed_module": false,
+  "acquisition_performed": false,
+  "global_flags": {
+    "FOUNDATION_ACCEPTANCE": false,
+    "FORMAL_ENGINE_ADMISSION": false,
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+  },
+  "question_answered": "Which reviewed entry, if any, actually initiates acquisition after all gates: no retained entry is bound to invoke a writer that reaches a supplier for stock/ETF/index daily (row A). The only bound invocation edges are row B (self-contained R15 aux script), row C (self-contained guarded P7 script with an unresolved declared entry path) and row E (data-plane Lane B invoking the external materialisation script). Row D has a bound in-body caller but it is explicitly a no-write canary. This is a binding result, not an assertion that no local entry exists.",
+  "ambient_states_kept_separate": [
+    "checkpoint authority: jq_download_execution_r1._checkpoint/latest_checkpoint.json is a June batch state (batch_id format BATCH_ID=now, TASK_NAME='JQ_DATA_DOWNLOAD_EXECUTION_R1', save_checkpoint L278-L312); it is not a daily cursor",
+    "supplier publication lag: not encoded in any retained writer; no writer reads a supplier-published-lag field",
+    "local calendar horizon: load_trade_days in common L151-L158 reads the latest calendar_cn_exchange_v2_asof_* parquet; the calendar asof is not compared with any writer window",
+    "expected historical universe: only the R15 aux writer derives it from get_all_securities per day; no writer pins a stable expected universe",
+    "factor-basis authority: not stated by any bound writer (row B writes a bare factor column)",
+    "B1..B7: remain open, untouched by this artifact"
+  ],
+  "rows": [
+    {
+      "row_id": "A_STOCK_ETF_INDEX_DAILY",
+      "lane": "stock/ETF/index daily",
+      "callable": {
+        "callable": "download_universe_daily",
+        "span": "L124-144",
+        "line_span": [
+          124,
+          144
+        ],
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+        "bytes": 19649,
+        "lines": 500,
+        "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+        "retained_source": "R05 delivery source_bodies/post_seal_daily_download_r8.py (byte-identical to live path E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py, same measured sha256)"
+      },
+      "actual_supplier_call": {
+        "api": "jqdatasdk.get_price",
+        "line_span": [
+          128,
+          135
+        ],
+        "invocation_arguments": "get_price(chunk, start_date=GAP_START, end_date=GAP_END, frequency='daily', fields=FIELDS_CORE, fq=None, panel=False)",
+        "batch_size": "200 codes per call (download_universe_daily L126-L127)",
+        "in_module_executor": {
+          "callable": "main",
+          "span": "L292-496"
+        }
+      },
+      "caller": {
+        "binding_status": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "detail": "Only caller inside the body is main() L292-496 (invoked from the module __main__ block at L499-500). A bounded name scan of E:\\BLACKBOX\\脚本 and E:\\BLACKBOX\\任务 for the token 'post_seal_daily_download_r8' returned 0 referencing files, so no retained scheduler, orchestrator or ops entry is evidenced to invoke this writer.",
+        "scan_result_reference": "CROSS_REFERENCE_HITS.json -> post_seal_daily_download_r8: []",
+        "registry_label_substituted": false
+      },
+      "fq_handling": {
+        "explicit_at_call_site": "fq=None (L134)",
+        "post_normalisation_column": "out['fq'] = None (normalize_price_df L121)",
+        "sidecar_declaration": "{'fq': None, 'price_basis': 'RAW_NONE'} (save_unit L222-L223)",
+        "governing_contract": "HAND_DECISION.fq_explicit_required must be True, enforced by hand_allows() L90-L91"
+      },
+      "field_date_index_handling": {
+        "fields_requested": "FIELDS_CORE L39-L42 = open,high,low,close,volume,money,paused,high_limit,low_limit,avg,pre_close,factor",
+        "date_axis_normalisation": "normalize_price_df L104-L113: if 'code' or 'time' absent -> reset_index(); rename any of date/index/level_0 to 'time' and level_1 to 'code'; L115-L116 renames date->time as fallback",
+        "written_index": "df.to_parquet(raw_path, index=False) (L217)",
+        "distinct_from_user_claim": "no integer ordinal date column is produced by this writer"
+      },
+      "checkpoint": {
+        "writer": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "reader": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "key_schema": "no checkpoint key emitted; the module has no checkpoint read/write call in any of its 13 callables (L49-L496)",
+        "batch_request_identity": "unit_id = f'{domain}__{GAP_START_compact}_{GAP_END_compact}' (save_unit L221)",
+        "completion_rule": "per-unit sidecar write: '<raw>.sidecar.json' and '<stage>.sidecar.json' (L235-L238) plus an in-memory units row (L240-L252); PASS iff len(df) > 0",
+        "resume_validates_content_identity": false,
+        "actual_cursor_in_use": {
+          "kind": "hard-coded single gap window, not a daily cursor",
+          "constants": "GAP_START='2026-08-05' L32, GAP_END='2026-08-05' L33, AS_OF=date(2026,8,5) L34, CAL_VERSION='calendar_cn_exchange_v2_asof_20260805' L37",
+          "note": "changing the trade date requires editing module constants; nothing derives the window from a pointer or from max(date)"
+        }
+      },
+      "output": {
+        "raw_roots": "RAW = 数据/原始只读/JQData_9999_official_raw; P0_meta L24, P2_stock_daily L25, P3_index L26, P4_fund_etf_raw_none/fund_etf_price_daily L27",
+        "staging_copy": "TASK/04_REPAIR_STAGING_DATA/<domain>/<same filename> (save_unit L214-L218)",
+        "write_mode": "new parquet per run + copy2 to staging; same-name replace only if the run repeats inside the same domain, otherwise a new file name",
+        "sidecar_or_receipt": "'<file>.parquet.sidecar.json' beside both the raw and the staged file (L235-L238)",
+        "in_place_mutation_of_sealed_release": false
+      },
+      "downstream_consumer": {
+        "module": "formal_cleaning_r15_build_and_seal_r1.py",
+        "sha256": "5ee6b3b4795c56ce178b7d6cbe581f6391fbbc817a9c677a94a09ca5023f992d",
+        "entry": {
+          "callable": "main",
+          "span": "L307-372",
+          "line_span": [
+            307,
+            372
+          ]
+        },
+        "read_pattern": "load_staging L89-L95 reads ROOT/08_DAILY_SOURCE_HANDOFF/STAGING_MANIFEST.json and keeps items with status=='PASS'; ingest_item L108-L135 takes item['stage_path'] (fallback item['raw_path']), verifies existence, hardlinks (os.link, copy2 fallback) into <release_root>/standard/<clean_rel> via place_file L98-L105",
+        "value_transform_applied_here": "none (byte-level place + sha256 re-hash, no dtype/date/fq rewrite)",
+        "staging_manifest_present_locally": {
+          "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\08_DAILY_SOURCE_HANDOFF\\STAGING_MANIFEST.json",
+          "type": "file",
+          "exists": true,
+          "bytes": 12440
+        }
+      },
+      "declared_permission": {
+        "gate_function": {
+          "callable": "hand_allows",
+          "span": "L84-94",
+          "line_span": [
+            84,
+            94
+          ]
+        },
+        "required_conditions": [
+          "HAND_DECISION.final_gate_owner == 'HAND' (L86-L87)",
+          "HAND_DECISION.post_seal_daily_raw_none_download_allowed is True (L88-L89)",
+          "HAND_DECISION.fq_explicit_required is True (L90-L91)",
+          "HAND_DECISION.current_stage in {POST_SEAL_DAILY_RAW_NONE, POST_SEAL_FRESHNESS_RAW_NONE, POST_SEAL_FRESHNESS_DAILY_AND_MINUTE} (L92-L93)"
+        ],
+        "governing_rule": "HAND top-level authority (运行/HAND_DECISION.json) as cited by the module itself; no separate registry label is used as evidence"
+      },
+      "unbound_edges": [
+        "no retained entry invokes this writer (see caller.binding_status)",
+        "supplier publication lag for daily bars is not encoded anywhere in this body",
+        "trading-session validity of GAP_START/GAP_END is not checked by this module",
+        "the index daily output is separately declared NON_BLOCKING_KNOWN_EXCEPTION (see row F)"
+      ]
+    },
+    {
+      "row_id": "B_ADJUSTMENT_FACTOR",
+      "lane": "adjustment factor",
+      "callable": {
+        "callable": "download_adjust_factor_day",
+        "span": "L102-147",
+        "line_span": [
+          102,
+          147
+        ],
+        "source_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\aux_billboard_adjust_index_minute_r15.py",
+        "bytes": 10815,
+        "lines": 295,
+        "sha256": "767c73c7a5c17e017d4274c57071725e0a59c1eef39194e795edff8dce57a3cc",
+        "retained_source": "live path E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\aux_billboard_adjust_index_minute_r15.py; additionally pinned in R10 producer/fq delivery CANDIDATE_BODIES"
+      },
+      "actual_supplier_call": {
+        "api": "jqdatasdk.get_price",
+        "line_span": [
+          110,
+          112
+        ],
+        "invocation_arguments": "get_price(chunk, start_date=day, end_date=day, frequency='daily', fields=['factor'], skip_paused=False, fq=None, panel=False)",
+        "universe_call": "jq.get_all_securities(types=['stock'], date=day) at L103-L104; codes = index (L104)",
+        "batch_size": "200 codes per call (L106)"
+      },
+      "caller": {
+        "binding_status": "BOUND_IN_SAME_BODY",
+        "callable": {
+          "callable": "main",
+          "span": "L236-291",
+          "line_span": [
+            236,
+            291
+          ]
+        },
+        "invocation_arguments": "results['adjust_factor'] = download_adjust_factor_day(jq, ASOF) at L257",
+        "asof_source": "module constant ASOF='2026-08-10' (L29); not read from any pointer",
+        "guard_before_call": "hand_ok() L57-L63 checked at L237-L239, returns 2 when HAND gate closed"
+      },
+      "fq_handling": {
+        "explicit_at_call_site": "fq=None (L111)",
+        "interpretation": "requests the raw factor column as supplied, with no price-adjustment basis applied at fetch",
+        "no_basis_tag_written": "the output schema is date,code,factor,sec_type (L128) and carries no price_adj_tag / as_of_rule field",
+        "contrast_with_row_A": "row A writes price_adj_tag='RAW_NONE' via tag_raw_pit in blackbox_daily_increment_common_r1 L343-L358; this writer does not"
+      },
+      "field_date_index_handling": {
+        "fields_requested": "['factor'] only (L111)",
+        "date_rename": "if 'time' in columns and 'date' not in columns: rename time->date (L122-L123)",
+        "index_handling": "df.reset_index() when 'code' not in columns (L114); written with index=False (L130, L133)",
+        "kept_columns": "keep = [date, code, factor, sec_type] (L128)",
+        "filename_date_tag": "day.replace('-','') embedded in the file name (L129, L132)"
+      },
+      "checkpoint": {
+        "writer": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "reader": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "key_schema": "no checkpoint object; the only identity is unit_id='ADJUST_FACTOR_<yyyymmdd>' (L139)",
+        "batch_request_identity": "batch index i in range(0,len(codes),200) is loop-local and not persisted (L107)",
+        "completion_rule": "status 'PASS' iff at least one non-empty batch frame concatenated (L120-L121); 'EMPTY' otherwise",
+        "resume_validates_content_identity": false,
+        "partial_failure_behaviour": "a failing batch is logged and skipped (L115-L116), the run can still return status PASS",
+        "actual_cursor_in_use": "none; one day per run selected by the module constant ASOF (L29) and passed in by main at L257"
+      },
+      "output": {
+        "primary": "RAW/P1_adjust_factor/adjust_factor_stock__incremental_<yyyymmdd>__<stamp>.parquet (L20, L129-L130)",
+        "mirror": "RAW/P6_factor_reference/adjust_factor/adjust_factor__incremental_<yyyymmdd>__<stamp>.parquet (L23, L132-L133)",
+        "write_mode": "new timestamped file per run; no delete/replace of prior files",
+        "sidecar_or_receipt": "no per-file sidecar; handoff receipt is the STAGING_MANIFEST item with extra_files (see downstream)",
+        "sealed_or_current_mutation": false
+      },
+      "downstream_consumer": {
+        "module": "aux_r15.merge_staging then formal_cleaning_r15_build_and_seal_r1.py",
+        "read_pattern": "merge_staging L210-L233 upserts results with unit_id='ADJUST_FACTOR_<day>' into TASK/08_DAILY_SOURCE_HANDOFF/STAGING_MANIFEST.json including extra_files (L141-L146); formal_cleaning ingest_item L110-L112 appends each extra_files entry and places it at clean_rel 'reference/adjust_factor/<name>' and 'finance/adjust_factor/<name>'",
+        "value_transform_applied_here": "none (place_file hardlink, sha256 recomputed at L128-L131)"
+      },
+      "declared_permission": {
+        "gate_function": {
+          "callable": "hand_ok",
+          "span": "L57-63",
+          "line_span": [
+            57,
+            63
+          ]
+        },
+        "governing_rule": "HAND gate evaluated inside the same body before auth() at L239-L241"
+      },
+      "unbound_edges": [
+        "factor-basis authority is not stated by this body: nothing records whether the factor column must be re-based after corporate actions",
+        "no content-identity resume: a skipped batch is indistinguishable from a completed one in the returned status",
+        "the day window cannot advance without editing ASOF"
+      ]
+    },
+    {
+      "row_id": "C_RAW_NONE_MINUTE",
+      "lane": "RAW_NONE minute",
+      "callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\脚本\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\脚本\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "caller": {
+        "binding_status": "BOUND_SELF_CONTAINED_SCRIPT",
+        "detail": "the file is a top-level guarded script; its only entry is its own __main__ path, and it is not imported by any retained module (name scan for the token 'p7_guarded' outside its own directory returned only its own manifest artifacts)",
+        "declared_replacement_entry": {
+          "declared_text": "guard/jq_p7_minute_guarded_download_entry_r1.py (from the guard comment at L10)",
+          "resolves_at_declared_relative_path": false,
+          "bounded_observation": "the declared relative path under E:\\BLACKBOX\\脚本 does not resolve; a bounded whole-project name scan found two archived copies under 数据/原始只读/JQData_9999_official_raw/_manifest/P7_minute_quota_aware_dynamic_batch_scheduler_fix_R1/guard/ and .../P7_minute_release_blocker_repair_R1/guard_fix/, neither of which is on the declared path",
+          "not_claimed": "this is not a claim that no such entry exists anywhere in the project"
+        }
+      },
+      "fq_handling": {
+        "explicit_at_call_site": "fq=None (L312) together with skip_paused=True (L311)",
+        "claimed_basis_in_note": "the module docstring of the R8 daily writer calls the plane RAW_NONE; this minute writer declares nothing beyond fq=None",
+        "no_basis_column": "the sidecar records frequency/year/batch_id/start_date/end_date/row_count only (L328-L335)"
+      },
+      "field_date_index_handling": {
+        "fields_requested": "open, close, high, low, volume, money (L310)",
+        "no_code_or_time_field": "neither 'code' nor 'time' is requested from the supplier",
+        "written_index": "result.to_parquet(str(out_path), index=True) at L321 and L323 -- the date/code axis stays in the parquet index, which is exactly the shape that produces an integer/index-derived date column downstream",
+        "filename_shape": "stock_minute_1m__<year>__<batch_id>__1.0.0__<NOW_TS>.parquet (L318)"
+      },
+      "checkpoint": {
+        "writer": {
+          "file": "OUT/checkpoint/p7_guarded_download_checkpoint_<NOW_TS>.json",
+          "line_span": [
+            464,
+            466
+          ]
+        },
+        "reader": "next run reads next_resume_queue_path from the checkpoint and re-derives the uncovered queue",
+        "key_schema": "task, current_stage, current_frequency, last_completed_partition, completed_partition_count_this_run, failed_partition_count_this_run, skipped_partition_count_this_run, quota_used_this_run, quota_left, quota_stop_reason, stage_complete, all_tasks_done, blocking_error, self_continue_allowed_next_quota_day, next_resume_requires_user_confirmation, next_resume_task, next_resume_queue_path, generated_at, time_zone (L449-L462)",
+        "batch_request_identity": "batch_id inside the output filename plus a per-batch queue entry; there is no request-hash field",
+        "completion_rule": "one_covered = min((max_b + 1) * 5, TOTAL_STOCKS); one_complete = one_covered >= TOTAL_STOCKS (L440-L441) -- a count-derived coverage estimate",
+        "resume_validates_content_identity": false,
+        "resume_validation_detail": "resume trusts the queue file plus existing output file names; no per-file sha256 is compared on resume",
+        "checkpoint_artifacts_present": {
+          "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\_manifest\\P7_minute_guarded_download_resume_5m_first_R1\\checkpoint",
+          "type": "dir",
+          "exists": true,
+          "n_children": 4,
+          "children_sample": [
+            "p7_guarded_download_checkpoint_20260614_191103.json",
+            "p7_guarded_download_checkpoint_20260614_191214.json",
+            "p7_guarded_download_checkpoint_20260615_160659.json",
+            "p7_guarded_download_checkpoint_20260615_163931.json"
+          ]
+        },
+        "note_on_june_batch_state": "the June batch checkpoint under _checkpoint/latest_checkpoint.json is a separate orchestrator state (T0..T9), not this per-run minute checkpoint; neither is a generic daily cursor"
+      },
+      "output": {
+        "root": "P7_DIR (RAW stock minute root); file written with index=True",
+        "write_mode": "new timestamped parquet per batch",
+        "sidecar_or_receipt": "<file>.parquet.sidecar.json (L333-L335)"
+      },
+      "downstream_consumer": {
+        "module": "index_minute_align_incremental_engine_r1.py (index-minute plane) and cache minute readers (stock-minute plane)",
+        "read_pattern": "latest_raw_partition_map L135-L159 globs 'index_minute__*.parquet' under RAW/P3_index_minute and keys on (code, freq, year) parsed from the double-underscore file name, preferring 'incremental' over 'full' by an explicit filename score; the aligned output is written with index=False at L773",
+        "separation_note": "the index-minute raw writer is download_index_minute_day in the same aux_r15 body (row A second leg), not this stock-minute writer"
+      },
+      "declared_permission": {
+        "governing_rule": "the P7 hard guard inside jq_download_execution_r1.py L1-L29 states that only the guarded entry may perform P7 minute download",
+        "enforcement_kind": "source-level guard text; the guard is unconditional and precedes every definition"
+      },
+      "unbound_edges": [
+        "the declared guarded entry path does not resolve, so the authorised minute entry is not evidenced in retained source",
+        "year-granular windows cannot serve as a daily cursor",
+        "completion is derived from batch counts, not from row-content identity"
+      ]
+    },
+    {
+      "row_id": "D_FINANCE_EVENT_REFERENCE",
+      "lane": "finance/event/reference",
+      "callable": {
+        "path": "E:\\BLACKBOX\\脚本\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "actual_supplier_call": {
+        "api": "jqdatasdk.finance.run_query",
+        "executor": {
+          "callable": "_fetch_page_df",
+          "span": "L77-91"
+        },
+        "invocation_arguments": "getattr(jq.finance, TABLE_ATTR[table_name]); jq.query(tbl).filter(tbl.end_date >= start_date, tbl.end_date <= end_date).order_by(tbl.end_date, tbl.code, tbl.id).offset(offset).limit(limit) then jq.finance.run_query(q)",
+        "page_size": "DEFAULT_PAGE_SIZE = 4000 imported from the pagination engine (engine L25)",
+        "max_pages": 50
+      },
+      "caller": {
+        "binding_status": "BOUND_IN_SAME_BODY",
+        "callable": {
+          "callable": "run_live_canary",
+          "span": "L177-247"
+        },
+        "invocation_path": "main L250-L288 -> run_live_canary L256, reachable only with --live-canary-no-write (L253-L257)",
+        "declared_side_effects": "'raw_write': False and 'download_ops': 0 in the returned dict (L224-L225)",
+        "canary_window": "start_date='2018-01-01', end_date='2018-06-30', table 'STK_INCOME_STATEMENT' (L181-L183)"
+      },
+      "pagination_engine_edge": {
+        "module": "E:\\BLACKBOX\\脚本\\blackbox_acquisition_pagination_engine_r1.py",
+        "sha256": "978aedee181eac7815daed14a5b057f4ab3f8c663afa6f8c18e541561a02beae",
+        "bytes": 7786,
+        "import_site": "finance adapter L19-L27 (DEFAULT_PAGE_SIZE, AcquisitionReceipt, PageReceipt, RequestSpec, _row_key, _sha_rows, now_cn)",
+        "what_the_engine_does": "pure in-memory pagination arithmetic: stable-order sort, primary-key duplicate accounting, per-page sha1 of JSON rows (_sha_rows L72-L74), silent-truncation detector for a full last page (L132-L137)",
+        "what_the_engine_does_not_do": "no supplier SDK import, no auth, no parquet/CSV write, no cursor persistence",
+        "live_flag_behaviour": "--allow-live-canary returns {'error': 'LIVE_CANARY_BLOCKED_UNTIL_P2_PIPELINE_AUTHORIZES', 'download_ops': 0} and exit code 2 (L208-L210); --self-test L152-L199 is offline only",
+        "newly_measured_identity": true
+      },
+      "fq_handling": {
+        "applicable": false,
+        "reason": "financial statement tables carry no price basis; no fq argument exists on jq.finance.run_query"
+      },
+      "field_date_index_handling": {
+        "date_filter": "end_date range pushed into the query filter (L84-L86)",
+        "date_stringification_for_identity": "end_date/pub_date/start_date/report_date values coerced to str before the primary-key hash (L129-L131)",
+        "key_source": "contract dataset_key_contracts[dataset_id].PAGINATION_STABLE_KEY / DATASET_PRIMARY_KEY loaded in build_finance_request_spec L54-L74",
+        "written_index": "not applicable, the canary writes JSON only"
+      },
+      "checkpoint": {
+        "writer": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "reader": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "key_schema": "none persisted; page receipts exist only inside the returned AcquisitionReceipt dataclass (engine L52-L66)",
+        "batch_request_identity": "page_index + offset + primary-key tuple; content identity per page is sha1 (_sha_rows)",
+        "completion_rule": "PAGINATION_COMPLETE = YES iff SILENT_TRUNCATION == 0 (engine L141); hard_gates_pass requires complete, deterministic order, stable boundary, zero duplicate loss and zero truncation (engine L143-L149)",
+        "resume_validates_content_identity": false,
+        "resume_validation_detail": "there is no resume path: each call restarts at offset 0"
+      },
+      "output": {
+        "only_write": {
+          "path": "任务/BLACKBOX_DATA_BASE_VERTICAL_PIPELINE_R1/P2/qa/P2_LIVE_CANARY_INCOME_2018H1.json",
+          "line_span": [
+            266,
+            269
+          ],
+          "mode": "guarded_write_path, single JSON receipt"
+        },
+        "artifact_present": {
+          "path": "E:\\BLACKBOX\\任务\\BLACKBOX_DATA_BASE_VERTICAL_PIPELINE_R1\\P2\\qa\\P2_LIVE_CANARY_INCOME_2018H1.json",
+          "type": "file",
+          "exists": true,
+          "bytes": 1877
+        },
+        "no_raw_parquet_written": true
+      },
+      "downstream_consumer": {
+        "module": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "detail": "no retained module reads P2_LIVE_CANARY_INCOME_2018H1.json into a RAW or cleaning product; the legacy production finance writer _download_finance_table L2027-2161 lives inside jq_download_execution_r1.py which is unreachable by its module-top guard",
+        "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
+      },
+      "declared_permission": {
+        "contract": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_UNIFIED_ACQUISITION_ARCHITECTURE_R1.json (CONTRACT_PATH engine L21-L23, adapter L30-L32)",
+        "governing_rule": "the canary is explicitly no-write; production finance acquisition is not authorised by this body"
+      },
+      "unbound_edges": [
+        "no retained production finance writer reaches a RAW path",
+        "no cursor for finance tables is evidenced; the June orchestrator batch state is a T0..T9 batch, not a daily cursor"
+      ]
+    },
+    {
+      "row_id": "E_EXTERNAL_EVIDENCE",
+      "lane": "external evidence",
+      "callable": {
+        "callable": "main",
+        "span": "L1716-1878",
+        "line_span": [
+          1716,
+          1878
+        ],
+        "source_path": "E:\\BLACKBOX\\脚本\\blackbox_external_evidence_materialization_r2.py",
+        "bytes": 83448,
+        "lines": 1882,
+        "sha256": "028f301c5d9e6a11f87cc420e51d83bfa713faf75e620df3bc67b3e96ce1d3b0",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "actual_supplier_call": {
+        "api": "tushare pro via local token loader (load_token L196-L211)",
+        "pagination": {
+          "callable": "fetch_paginated",
+          "span": "L304-357",
+          "line_span": [
+            304,
+            357
+          ]
+        },
+        "transport_retry": {
+          "callable": "_call_with_transport_retry",
+          "span": "L267-301",
+          "line_span": [
+            267,
+            301
+          ]
+        }
+      },
+      "caller": {
+        "binding_status": "BOUND_IN_RETAINED_SOURCE",
+        "caller_module": "run_blackbox_daily_incremental_data_plane_r1.py",
+        "caller_sha256": "deb363bcb1a71860c9452cd71fb8075933a30f7f329e66ba734a35c521d13d72",
+        "caller_function": {
+          "callable": "collect_lane_b",
+          "span": "L238-262",
+          "line_span": [
+            238,
+            262
+          ]
+        },
+        "invocation_arguments": "run_cmd(lane['materialization_script'], ['--phase','asof_align','--asof',asof]) then run_cmd(..., ['--phase','acceptance','--asof',asof]) at L240-L243",
+        "lane_script_resolution": "lane['materialization_script'] = 脚本/blackbox_external_evidence_materialization_r2.py per 研究系统/数据平面/CONFIG/daily_lanes.json B_T_EXTERNAL_INCREMENTAL",
+        "callback_into_plane": "the runner reads 运行/BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json and 数据/外部证据/CURRENT/EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json afterwards (L245-L248)"
+      },
+      "fq_handling": {
+        "applicable": false,
+        "reason": "external evidence is reference/PIT text and reference tables; no price basis field is written"
+      },
+      "field_date_index_handling": {
+        "asof_resolution": "resolve_asof_yyyymmdd L87-L103 and asof_iso L106-L107",
+        "hist_end": "product_hist_end L110-L120 and product_data_max_yyyymmdd L123-L143",
+        "financial_tip": "resolve_financial_tip_start L146-L158",
+        "cutoff_application": "apply_asof_align_cutoff L1454-L1545",
+        "date_plane_isolated_from_jq": "lane body declares JQ_CANONICAL_IMMUTABLE_FROM_T: True (runner L258)"
+      },
+      "checkpoint": {
+        "writer": {
+          "callable": "save_state",
+          "span": "L1787-1788",
+          "line_span": [
+            1787,
+            1788
+          ]
+        },
+        "reader": {
+          "callable": "should_skip_ready",
+          "span": "L161-173",
+          "line_span": [
+            161,
+            173
+          ]
+        },
+        "key_schema": "product-level readiness receipts plus per-code done sets (_done_codes L584-L594)",
+        "batch_request_identity": "product id + asof_yyyymmdd; per-batch flush at _flush_batch L614-L627",
+        "completion_rule": "phase_acceptance L1581-L1713 collects product pointers via collect_product_pointers L1548-L1578 and emits FINAL_STATUS",
+        "resume_validates_content_identity": "PARTIAL",
+        "resume_validation_detail": "should_skip_ready L161-L173 skips on readiness state, not on a content hash of the previously written product"
+      },
+      "output": {
+        "root": "E:\\BLACKBOX\\数据\\外部证据 (product root) and 运行/BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json",
+        "write_mode": "per-product files under a dated asof root, with pointer JSON updated at the end of the phase",
+        "sidecar_or_receipt": "per-product receipt plus EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json",
+        "artifact_present": {
+          "path": "E:\\BLACKBOX\\运行\\BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json",
+          "type": "file",
+          "exists": true,
+          "bytes": 7032
+        }
+      },
+      "downstream_consumer": {
+        "module": "run_blackbox_daily_incremental_data_plane_r1.collect_lane_b (same function that invokes it)",
+        "read_pattern": "load_json of the two pointer documents, then align_pass = align.get('status') == 'PASS' and st = PASS iff align_pass and FINAL_STATUS != EXTERNAL_EVIDENCE_MATERIALIZATION_FAIL (L245-L249)"
+      },
+      "declared_permission": {
+        "governing_rule": "external evidence is reference-only and must not mutate JQ canonical planes; enforced by the lane contract flag and by the asof-align cutoff rather than by a HAND flag inside the module"
+      },
+      "unbound_edges": [
+        "supplier publication lag for external evidence is not encoded as a gate; the asof is supplied by the caller",
+        "expected historical universe of the external products is not stated in the retained body"
+      ]
+    },
+    {
+      "row_id": "F_EXCLUSIONS",
+      "lane": "exclusions",
+      "callable": {
+        "binding_status": "NOT_APPLICABLE_BY_CONSTRUCTION"
+      },
+      "actual_supplier_call": {
+        "binding_status": "NOT_BOUND_IN_RETAINED_SOURCE",
+        "detail": "these domains are declared out of the daily acquisition scope by existing text, not by a measured absence"
+      },
+      "caller": {
+        "binding_status": "NOT_APPLICABLE_BY_CONSTRUCTION"
+      },
+      "fq_handling": {
+        "binding_status": "NOT_APPLICABLE_BY_CONSTRUCTION"
+      },
+      "field_date_index_handling": {
+        "binding_status": "NOT_APPLICABLE_BY_CONSTRUCTION"
+      },
+      "checkpoint": {
+        "writer": "NOT_APPLICABLE_BY_CONSTRUCTION",
+        "reader": "NOT_APPLICABLE_BY_CONSTRUCTION",
+        "key_schema": "NOT_APPLICABLE_BY_CONSTRUCTION",
+        "batch_request_identity": "NOT_APPLICABLE_BY_CONSTRUCTION",
+        "completion_rule": "NOT_APPLICABLE_BY_CONSTRUCTION",
+        "resume_validates_content_identity": "NOT_APPLICABLE_BY_CONSTRUCTION"
+      },
+      "output": {
+        "binding_status": "NOT_APPLICABLE_BY_CONSTRUCTION"
+      },
+      "downstream_consumer": {
+        "binding_status": "NOT_APPLICABLE_BY_CONSTRUCTION"
+      },
+      "declared_permission": {
+        "governing_rule": "HAND + data-plane scope text; no reclassification is performed in this round"
+      },
+      "excluded_items": [
+        {
+          "item": "index daily (INDEX_DAILY_R1)",
+          "declared_state": "NON_BLOCKING_KNOWN_EXCEPTION",
+          "citation": "blackbox_daily_increment_common_r1.py L60 (INDEX_DAILY_NON_BLOCKING); surfaced into scope by scope_refresh L49"
+        },
+        {
+          "item": "CLSA full text",
+          "declared_state": "METADATA_ONLY_UNLESS_LEGAL_FULLTEXT",
+          "citation": "研究系统/数据平面/CONFIG/daily_lanes.json C_GLOBAL_SELLSIDE_INCREMENTAL.clsa_policy"
+        },
+        {
+          "item": "P7 minute direct entry",
+          "declared_state": "BLOCKED_BY_SOURCE_GUARD",
+          "citation": "jq_download_execution_r1.py L1-L29"
+        },
+        {
+          "item": "paid / deferred supplier domains",
+          "declared_state": "UNCHANGED_FROM_PRIOR_ROUNDS",
+          "citation": "no paid/deferred domain is reclassified or newly selected in this round; R05 permission receipts remain the reference"
+        }
+      ],
+      "unbound_edges": [
+        "no exclusion in this row is an evidence of global source absence"
+      ]
+    }
+  ]
+}
