@@ -1,0 +1,68 @@
+{
+ "schema": "R09_ADJUST_FACTOR_SIDECAR_RECONCILIATION_1",
+ "round": "R09/10_CORRECTION",
+ "classification": "PRODUCT_PUBLICATION_OR_COVERAGE_SIDECAR__NOT_A_SUPPLIER_REQUEST_PAGE_OR_ACQUISITION_RECEIPT",
+ "sidecar": {
+  "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\COVERAGE.json",
+  "sha256": "b613442e42abfb34e46ce391e533f806653439ed92855cca54a347c9fcca7b46",
+  "content": {
+   "product_id": "ADJUST_FACTOR_PIT_R1",
+   "date_min": "2014-01-02",
+   "date_max": "2026-09-24",
+   "n_codes": 5465,
+   "n_rows": 12182523,
+   "fq": "pre",
+   "reason": "BACKWARD_DIRTY_FULL_HISTORY_REPLACE",
+   "tip_extended_at": "2026-09-24T19:56:50+00:00",
+   "tip_source": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+   "n_rows_year_2026": 863710
+  }
+ },
+ "row_count_reconciliation": {
+  "declared_by_sidecar": 12182523,
+  "measured_physically_in_R07": 12266026,
+  "difference_physical_minus_declared": 83503,
+  "status": "UNRESOLVED_SIDECAR_VS_CONTENT",
+  "resolved_by_choosing_one": false,
+  "possible_roles_not_yet_distinguished": [
+   "declared at build time then re-derived",
+   "declared excluding a partition",
+   "declared counting distinct keys rather than rows"
+  ],
+  "forbidden": [
+   "choosing either count as truth without evidence",
+   "repairing dates from filenames",
+   "inferring that a factor=1 series is complete"
+  ]
+ },
+ "date_union": {
+  "measured_dates": 3097,
+  "expected_sessions": 3097,
+  "missing_sessions": 0,
+  "proves": "date presence at the recorded grain only",
+  "does_not_prove": [
+   "every symbol present",
+   "every factor observation valid",
+   "that the 2026 degraded dates are complete"
+  ]
+ },
+ "per_session_content_observation": {
+  "source": "R07 L12",
+  "rows_on_2026_08_31": 5208,
+  "rows_on_2026_09_01": 11,
+  "interpretation": "date presence and per-session row volume are very different; the 2026-09-01 volume (11 rows) cannot be read as a full session"
+ },
+ "source_linkage": {
+  "tip_source_recorded": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+  "tip_extended_at": "2026-09-24T19:56:50+00:00",
+  "reason_recorded": "BACKWARD_DIRTY_FULL_HISTORY_REPLACE",
+  "status": "PRODUCT_LEVEL_LINK_ONLY; per-date RAW->CLEANING->CACHE ledger rows not produced"
+ },
+ "required_next_evidence": "a per-date acquisition/transform ledger row or a reviewer ruling on which count is authoritative",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
