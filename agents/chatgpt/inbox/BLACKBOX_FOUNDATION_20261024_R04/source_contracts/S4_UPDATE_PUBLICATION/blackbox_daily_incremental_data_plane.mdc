@@ -1,0 +1,62 @@
+---
+description: 每日增量数据平面 — 六 Lane 唯一含义；新 AG 必须先读 Manifest；JQ/T 隔离
+alwaysApply: false
+---
+
+# BLACKBOX DAILY INCREMENTAL DATA PLANE R1
+
+> **URL 获取路径（规则顶部）**：`.cursor/rules/blackbox_daily_incremental_news_url_acquisition_path.mdc`  
+> SSOT：`规则库/hand_hard_rules/BLACKBOX_HAND_DAILY_INCREMENTAL_NEWS_URL_ACQUISITION_PATH_R1.md`  
+> 日增量根：`数据\美国市场\新闻\日增量` · `数据\美国市场\市场状态\日增量`
+
+> 父级：`blackbox_research_operating_system.mdc`  
+> SSOT：`研究系统/数据平面/DAILY_DATA_PLANE_CURRENT.json`
+
+## 「每日增量更新」唯一含义
+
+六 Lane 全部 **PASS** 或显式 **DEGRADED** 并记录原因：
+
+| Lane | 内容 |
+|---|---|
+| A | JQ 行情/基础（CANONICAL） |
+| B | T 外源（只读，不污染 JQ） |
+| C | MS / GS / CLSA |
+| D | 国内券商研报 + 重要新闻 |
+| E | 美国重要新闻 / AI 产业 |
+| F | 美股当日开盘/板块/收盘状态 |
+
+流程：`INGEST → ALIGN → CLEAN → PIT → ISOLATE → CACHE → MANIFEST → CURRENT → RESEARCH`
+
+## 新 AG 强制预检
+
+```text
+READ HAND → RESEARCH_OS → DAILY_DATA_PLANE_CURRENT → DAILY_DATA_MANIFEST_CURRENT
+→ CHECK_DATA_ASOF / DISCOVERY_ASOF / DEGRADED_LANES → START
+```
+
+未读 Manifest：**禁止** `TODAY_DATA_READY` / `LATEST_DATA`。
+
+## Lane B/C 盘前指南针（外源 + 三大行）
+
+盘前调取外源 / MS·GS·CLSA **固定读**：
+
+`研究系统/数据平面/CONFIG/LANE_B_C_DATA_COMPASS_CURRENT.md`
+
+最短路径：`DAILY_RESEARCH_INPUT_PACK` → Compass →  
+Lane B：`ASOF_ALIGN` + `RESOLVER` + `MATERIALIZATION_FINAL`；  
+Lane C：`SELLSIDE_DAILY_INCREMENTAL_CURRENT`。
+
+## 硬规则
+
+- `JOIN FOR RESEARCH ≠ MERGE INTO CANONICAL`
+- 时间戳：`EVENT_TIME` · `PUBLICATION_TIME` · `DISCOVERY_TIME` · `MARKET_DATE` · `DATA_ASOF` · `INGEST_TIME`
+- `DISCOVERY_TIME <= RESEARCH_TIME`
+- SILENCE_GUARD：>120s 无进度 → `POSSIBLE_STALL`；>300s → `STALL_DETECTED`
+- 禁止 5000 行上下文 dump；先 CURRENT SUMMARY
+
+## 入口
+
+```text
+python -u 脚本/run_blackbox_daily_incremental_data_plane_r1.py --mode status|run
+python -u 脚本/run_blackbox_research_os.py --mode daily_incremental [--run]
+```
