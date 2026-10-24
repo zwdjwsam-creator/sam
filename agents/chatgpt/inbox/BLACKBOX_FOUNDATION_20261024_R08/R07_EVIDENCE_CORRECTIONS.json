@@ -1,0 +1,91 @@
+{
+ "round": "R08/10",
+ "purpose": "correct the specific R07 statements the GPT review rejected; every row carries the measured replacement and its evidence path",
+ "corrections": [
+  {
+   "id": "C01",
+   "r07_statement": "L04 did not open the full index-daily plane; the 2026 H1 index sessions are only reachable through the minute plane / P3 patches.",
+   "correction": "The mandated plane E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1 is present, is CURRENT at REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123, physically holds 732 per-index parquet files (149,674,471 bytes, 2,905,568 rows) and carries 137 valued sessions inside 2026-01-05..2026-07-29. 399303.XSHE is present with 5,242 rows / 3,004 valued closes spanning 2014-03-28..2026-08-04.",
+   "status": "CORRECTED",
+   "evidence": "INDEX_FULL_PLANE_PROBE.json; evidence/index_plane_probe.json",
+   "residual": "the release MANIFEST/COVERAGE record n_files=154 while 732 files exist; the registered scope ends 2026-08-11, so neither recovery date is inside it"
+  },
+  {
+   "id": "C02",
+   "r07_statement": "Positive RAW existence establishes the corresponding Cleaning layer.",
+   "correction": "WITHHELD. RAW presence is only a layer-scoped fact. For each measured product the Cleaning verdict is stated separately and, where the sealed Cleaning release has an earlier cleaning_as_of, the verdict is REQUEST_OUTSIDE_PRODUCT_COVERAGE rather than a cleaning presence claim.",
+   "status": "CORRECTED",
+   "evidence": "R07_EVIDENCE_CORRECTIONS.json; TWO_DAY_LAYER_DIAGNOSES.json"
+  },
+  {
+   "id": "C03",
+   "r07_statement": "NAV batch filenames support pagination exhaustion / observed NAV values.",
+   "correction": "WITHHELD. A filename is not pagination-completeness evidence and not an observed NAV value. FUND_NAV_PIT_R1 content is reported only as a directory/tip shape here; no completeness claim is made in this round.",
+   "status": "CORRECTED",
+   "evidence": "R09_IMPLEMENTATION_BINDINGS.json (NAV entry, completeness=PAGINATION_EVIDENCE_NOT_MEASURED_THIS_ROUND)"
+  },
+  {
+   "id": "C04",
+   "r07_statement": "The stale universe end in L08 proves a coverage regression.",
+   "correction": "WITHHELD as regression. A regression needs a pinned earlier baseline scope that was lost. Without a baseline the correct class is REQUEST_OUTSIDE_PRODUCT_COVERAGE.",
+   "status": "CORRECTED",
+   "evidence": "R07_EVIDENCE_CORRECTIONS.json (universe row)"
+  },
+  {
+   "id": "C05",
+   "r07_statement": "L10 FIELD_NOT_CACHED is a source limitation.",
+   "correction": "FIELD_NOT_CACHED is a cache-miss reason only. Diagnostic root cause, cache-miss reason, acquisition completeness and runtime admission are kept as four separate axes; a field present in RAW but absent in CACHE is RAW_COMPLETE_CLEANING_MISSING or CLEANING_COMPLETE_CACHE_MISSING, never SOURCE_LIMITATION.",
+   "status": "CORRECTED",
+   "evidence": "r08_coverage_gate.diagnose_observed_layers; two-axis reporting in TWO_DAY_LAYER_DIAGNOSES.json"
+  },
+  {
+   "id": "C06",
+   "r07_statement": "ADJUST_FACTOR has 3,097 dates, so the plane is complete; 11 rows on 2026-09-01 is acceptable inside a change-event plane.",
+   "correction": "WRONG on three counts. (1) The product contract is a DAILY_DENSE plane (pre(d|T)=raw(d)*factor(d)/factor(T), d<=T) and forbids silent_factor_eq_1, so a change-event reading is not permitted. (2) 2026-09-01 holds 11 of 5,214 codes (0.21%) and is not a change-event set: only 4 of the 11 differ from 2026-08-31. (3) 12 dates in 2026 carry fewer than 5,000 rows (2026-08-17..2026-08-28, 2026-09-01, 2026-09-02) while neighbouring dates are dense at ~5,208. Date coverage is not symbol-by-date coverage.",
+   "status": "CORRECTED",
+   "evidence": "R08 delivery ADJUST_FACTOR block; evidence/adjust_factor_two_date_keys.json"
+  },
+  {
+   "id": "C07",
+   "r07_statement": "The RAW adjust-factor 'date' column is a date axis.",
+   "correction": "WRONG. In 20 of the 37 stock incremental files the `date` column is int64 holding 0..299 with 17-18 rows per value (300 x ~17.4 = 5,214), i.e. a PAGE/BATCH ordinal. The real trade date survives only in the filename. In all 37 files `factor` has a single distinct value 1.0, so the files carry no adjustment payload.",
+   "status": "CORRECTED",
+   "evidence": "R08 delivery ADJUST_FACTOR.RAW_registered; evidence/adjust_factor_raw_date_axis.json"
+  },
+  {
+   "id": "C08",
+   "r07_statement": "FUND-like view can be served from ETF when FUND is empty.",
+   "correction": "REFUSED. The catalog contract row is 'Logical union of ETF+FUND retaining asset_type'. FUND_DAILY_PIT_R1 has zero parquet files, so the view must reject an unserved member. FUND NAV is never converted into traded OHLCV and no fund price product is synthesised.",
+   "status": "CORRECTED",
+   "evidence": "R08 delivery FUND_NAV_AND_VIEW block"
+  },
+  {
+   "id": "C09",
+   "r07_statement": "Family B is 302 codes x 105 = 31,710, i.e. every Family-B code has exactly 105 null rows.",
+   "correction": "CORRECTED with measured distribution: 294 codes are ALL-NULL with exactly 105 grid rows (30,870 rows) and appear only on 2026-01-05..2026-06-12; 8 further codes are TRAILING-null with per-code null counts 41..90 summing to 618; 42 codes are LEADING-null with 2,989 rows. 30,870 + 618 + 2,989 = 34,477 and codes 294 + 8 + 42 = 344. '105' is a GRID-ROW count, not a general null count.",
+   "status": "CORRECTED",
+   "evidence": "R08 delivery OBSERVATION_AND_NON_REGRESSION_EVIDENCE.family_b; evidence/family_b_distribution.json"
+  },
+  {
+   "id": "C10",
+   "r07_statement": "The empty gate/common modules caused the observed historical misses and publications.",
+   "correction": "WITHHELD. The empty modules and the enum incompatibility are OBSERVED static defects with identified call sites. Their causal contribution to any specific historical miss or publication is NOT established by static inspection alone and is not claimed.",
+   "status": "CORRECTED",
+   "evidence": "R09_IMPLEMENTATION_BINDINGS.json legacy_tool_defects"
+  },
+  {
+   "id": "C11",
+   "r07_statement": "SOURCE_AVAILABLE_AND_AUTHORITATIVE / SOURCE_AVAILABLE_AND_SERVED / SEPARATE_NAMESPACE_OR_REGISTRY are root causes.",
+   "correction": "They are factual labels, not members of the pinned 14-value root-cause enum. A successful diagnosis carries root_cause=null plus a separate diagnosis_status; no new enum member is invented.",
+   "status": "CORRECTED",
+   "evidence": "r08_coverage_gate.MISSING_ENUM + diagnose_observed_layers return shape"
+  }
+ ],
+ "axes_kept_separate": {
+  "diagnostic_root_cause": "one of the pinned 14 values or null",
+  "cache_miss_reason": "product/layer scoped reason",
+  "acquisition_completeness": "pagination/completeness evidence or explicit unknown",
+  "runtime_admission": "engine/MASTER admission, always false here"
+ },
+ "source_absence_claims": 0
+}
