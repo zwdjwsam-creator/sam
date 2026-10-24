@@ -1,0 +1,148 @@
+{
+ "schema": "R10_DIRTY_BRANCH_COMMAND_LEDGER_1",
+ "round": "R10_DIRTY_BRANCH_AND_SOURCE_GENERATOR_20261025",
+ "executor": "ZHANGWEI / Cursor agent, local desktop",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONUTF8": "1",
+  "PYTHONDONTWRITEBYTECODE": "1"
+ },
+ "ordering_rule": "steps are ordered; a failing step stops all dependent steps",
+ "steps": [
+  {
+   "seq": 1,
+   "step": "STAGE_AND_PRE_EXECUTION_PIN_CHECK",
+   "kind": "LOCAL_READ_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "tools\\r10_dirty_stage.py"
+   ],
+   "exit_code": 0,
+   "started_cn": "2026-10-25T01:09:18+08:00",
+   "ended_cn": "2026-10-25T01:09:19+08:00",
+   "result": "10 PACKAGE.json members plus the reused fixture match by exact bytes AND SHA256. The fixture was copied from the prior verified writer_guards stage and is byte-identical to it. No source edits, no newline conversion, no re-pinning, no substitute harness.",
+   "note_on_omission": "this staging copied only the manifest members, so the supplied PACKAGE.json was absent from the stage directory at this point. That omission caused the first desktop attempt to stop; it was corrected before the measurement and is disclosed in DESKTOP_ATTEMPTS.json.",
+   "evidence": "PRE_EXECUTION_PIN_CHECK.json"
+  },
+  {
+   "seq": 2,
+   "step": "SUPPLIED_DIRTY_BRANCH_CONTROLS",
+   "kind": "OFFLINE_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\dirty_branch\\test_r10_factor_dirty_receipt_check.py"
+   ],
+   "exit_code": 0,
+   "started_cn": "2026-10-25T01:09:25.4934060+08:00",
+   "ended_cn": "2026-10-25T01:09:26.5041145+08:00",
+   "result": "{\"tests_run\": 20, \"passed\": true, \"scope\": \"PINNED_AST_ASSEMBLY_AND_RECEIPT_SET_OFFLINE_ONLY\", \"supplier_calls\": 0, \"FOUNDATION_ACCEPTANCE\": false}; unittest stderr \"Ran 20 tests ... OK\". 20 controls include the prior 13 as regression coverage for the changed assembly. The original writer was not invoked.",
+   "stdout_file": "captures/TEST_20_CONTROLS.stdout.bin",
+   "stdout_bytes": 149,
+   "stdout_sha256": "0e2013541c77caccb37b6ad680f2bf54b32dbaed72ec4c6e4e628d800da6b7ee",
+   "stderr_file": "captures/TEST_20_CONTROLS.stderr.bin",
+   "stderr_bytes": 124,
+   "stderr_sha256": "74e76e35762438975ea1c82589ab6ca58bd4f95d7faec40c24a1bc63e3acf6d4"
+  },
+  {
+   "seq": 3,
+   "step": "FIXED_DIRTY_RECEIPT_MEASUREMENT_ATTEMPT_1",
+   "kind": "LOCAL_READ_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\dirty_branch\\r10_factor_dirty_receipt_check.py",
+    "--desktop-check"
+   ],
+   "exit_code": 3,
+   "started_cn": "2026-10-25T01:09:32.7868554+08:00",
+   "ended_cn": "2026-10-25T01:09:33.8103412+08:00",
+   "outcome": "STOP_STAGING_INCOMPLETE",
+   "result": "{\"status\": \"STOP\", \"reason\": \"FileNotFoundError\", ...}. The driver reads PACKAGE.json from its own directory first; the local stage lacked it because step 1 copied only manifest members. No pinned input was opened, the preflight did not run, and no measurement was produced.",
+   "measurement_produced": false,
+   "stdout_file": "captures/DESKTOP_DIRTY_RECEIPT.stdout.bin",
+   "stdout_bytes": 255,
+   "stdout_sha256": "ae9198cc1d6f3beb72eae8a6f5852cd67de5240e600d4eaa0b05121ecc422fd3",
+   "stderr_file": "captures/DESKTOP_DIRTY_RECEIPT.stderr.bin",
+   "stderr_bytes": 0,
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "seq": 4,
+   "step": "STAGING_GAP_CORRECTION",
+   "kind": "LOCAL_FILE_COPY",
+   "argv": null,
+   "command": "copy the supplied PACKAGE.json into reviews/R10/dirty_branch/ and verify it byte-exact",
+   "exit_code": 0,
+   "result": "1,966 B, sha256 ba5711e74efdecb06df9c63c981e3520e4584f2f5ec660a6814a233fb50ab7b7, byte-identical to the published copy. No member, fixture or driver file was edited, re-pinned or replaced; the omitted supplied manifest was restored.",
+   "evidence": "DESKTOP_ATTEMPTS.json"
+  },
+  {
+   "seq": 5,
+   "step": "FIXED_DIRTY_RECEIPT_MEASUREMENT_ATTEMPT_2",
+   "kind": "LOCAL_READ_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\dirty_branch\\r10_factor_dirty_receipt_check.py",
+    "--desktop-check"
+   ],
+   "exit_code": 0,
+   "started_cn": "2026-10-25T01:10:56.9603332+08:00",
+   "ended_cn": "2026-10-25T01:10:59.9816889+08:00",
+   "executions_that_produced_a_measurement": 1,
+   "outcome": "PINNED_DIRTY_RECEIPT_CONTENT_MEASURED",
+   "result": "package pins verified internally, original operating-entry hash 1b04bb3a... verified, genuine CACHE preflight PASS (ok true, MUST_READ_PRECHECK PASS, task_class CACHE), audit hook installed before reading data, both pinned inputs re-verified after the read, source_files_changed false, supplier_calls 0. Measured: receipt date 2026-09-02, 7 observed codes equal 7 reported dirty codes, observed_not_reported [] , reported_not_observed [], every observed row factor 1.0.",
+   "evidence": "DIRTY_RECEIPT_MEASUREMENT.json",
+   "stdout_file": "captures/DESKTOP_DIRTY_RECEIPT.attempt2.stdout.bin",
+   "stdout_bytes": 12451,
+   "stdout_sha256": "73aeb43cab036cd28cd3713d51bed045d7d30a46aa9366cc0f57621caf720c4d",
+   "stderr_file": "captures/DESKTOP_DIRTY_RECEIPT.attempt2.stderr.bin",
+   "stderr_bytes": 0,
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "seq": 6,
+   "step": "READ_ONE_ORIGINAL_SOURCE_GENERATOR",
+   "kind": "LOCAL_READ_ONLY_NO_EXECUTION",
+   "argv": null,
+   "command": "read exactly E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\download_source_fq_pre_r1.py; no import, no execution, no CLI, no auth, no fetch, no path followed from inside it",
+   "exit_code": 0,
+   "started_cn": null,
+   "ended_cn": null,
+   "timing_note": "this step is a plain file read; no clock was captured for it and none is asserted",
+   "result": "present, 7,131 B, sha256 8a49616147748b46d168542973020aed86cb1e70d09a09a45960cb641201bcea. Credential scan of the body: 0 matches. Complete original body uploaded as a BASE64_ORIGINAL_BYTES carrier with round-trip verification. A single HUB tree listing (3,041 entries, not truncated) showed no previously uploaded body of this name, so no reuse link exists.",
+   "evidence": "SOURCE_GENERATOR_BODY.json, original_bodies/download_source_fq_pre_r1.py.BASE64_ORIGINAL_BYTES.json"
+  }
+ ],
+ "safety": {
+  "production_patch": 0,
+  "candidate_assembly_installed": false,
+  "business_data_writes": 0,
+  "missing_date_filling": 0,
+  "historical_refresh": 0,
+  "original_source_selftest": "FORBIDDEN_AND_NOT_RUN",
+  "wrapper_invocation": 0,
+  "logins": 0,
+  "supplier_calls": 0,
+  "data_downloads": 0,
+  "CURRENT_promotion": 0,
+  "engine_constructions": 0,
+  "orders": 0
+ },
+ "reused_prior_delivery": {
+  "writer_guards_members": 27,
+  "prior_finisher_reused": true,
+  "controls_repeated_from_prior_rounds": false,
+  "thirteen_year_comparison_repeated": false,
+  "prior_source_lookup_repeated": false,
+  "catalog_queries_repeated": false,
+  "five_originals_export_repeated": false
+ }
+}
