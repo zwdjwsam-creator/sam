@@ -1,0 +1,211 @@
+{
+ "schema": "R10_REAL_UPDATE_PLAN_OPERATIONS_1",
+ "count": 6,
+ "plans": [
+  {
+   "product_id": "STOCK_TRADEABILITY_PIT_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_UPDATEPLAN_STOCK_TRADEABILITY_PIT_R1.txt",
+    "sha256": "026d77dc4fdfbaf70ca7bf4e86939f4fc3ad2d1865dd373610b48503f6eeda2e",
+    "bytes": 8146
+   },
+   "status": "CONTRACT_PLAN_ONLY; NO_SUPPLIER_CALL_OR_WRITER",
+   "execution_order": [
+    "MUST_READ_ACQUISITION",
+    "CHECKPOINT_AND_EXCLUSION",
+    "REGISTERED_LAYER_SEARCH",
+    "REQUEST_AND_STABLE_PAGINATION_CONTRACT",
+    "APPEND_ONLY_RAW_RECEIPTS",
+    "CLEAN_ALIGN_PIT",
+    "CACHE_EXACT_KEY_AND_FIELD_NON_REGRESSION",
+    "GENERATION_BOUND_ADMISSION",
+    "PUBLICATION_AND_FRESHNESS"
+   ],
+   "update_bindings_count": 1,
+   "source_domains_count": 1,
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(fields=['paused','high_limit','low_limit']) + get_extras('is_st') + finance.STK_STATUS_CHANGE/STK_LIST",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "known_watermark": {
+    "scope_field": "TRADEABILITY_EFFECTIVE_ASOF=2026-09-03",
+    "scope_note": "inherited_0903_until_security_state_tip",
+    "observed_product_coverage": "2026-07-13..2026-08-12 plus one 2026-09-03 tip"
+   },
+   "cleaning_entry": "same formal cleaning entry (security_state lane)",
+   "review_correction": null,
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "ADJUST_FACTOR_PIT_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_UPDATEPLAN_ADJUST_FACTOR_PIT_R1.txt",
+    "sha256": "8b8e1dcbb8adbff36f1d42da0b56b2969aec53edb1a503147335defdea2c5745",
+    "bytes": 8012
+   },
+   "status": "CONTRACT_PLAN_ONLY; NO_SUPPLIER_CALL_OR_WRITER",
+   "execution_order": [
+    "MUST_READ_ACQUISITION",
+    "CHECKPOINT_AND_EXCLUSION",
+    "REGISTERED_LAYER_SEARCH",
+    "REQUEST_AND_STABLE_PAGINATION_CONTRACT",
+    "APPEND_ONLY_RAW_RECEIPTS",
+    "CLEAN_ALIGN_PIT",
+    "CACHE_EXACT_KEY_AND_FIELD_NON_REGRESSION",
+    "GENERATION_BOUND_ADMISSION",
+    "PUBLICATION_AND_FRESHNESS"
+   ],
+   "update_bindings_count": 1,
+   "source_domains_count": 1,
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(..., fq='pre') factor series; incremental engine blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "known_watermark": {
+    "observed_cache_product_max": "2026-09-24",
+    "inventory_summary_source_max": "2026-08-14",
+    "contradiction": "recorded, not resolved"
+   },
+   "cleaning_entry": "adjust-factor backward-refresh entry (whole-series revision, not append-only)",
+   "review_correction": "Date union and COVERAGE sidecar are not symbol/field completeness or supplier acquisition receipts; 83503-row sidecar difference remains unresolved.",
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "INDEX_DAILY_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_UPDATEPLAN_INDEX_DAILY_R1.txt",
+    "sha256": "8a04db6c448bd82ab265316480667453095dd997a5040459108ebebd80037800",
+    "bytes": 8468
+   },
+   "status": "CONTRACT_PLAN_ONLY; NO_SUPPLIER_CALL_OR_WRITER",
+   "execution_order": [
+    "MUST_READ_ACQUISITION",
+    "CHECKPOINT_AND_EXCLUSION",
+    "REGISTERED_LAYER_SEARCH",
+    "REQUEST_AND_STABLE_PAGINATION_CONTRACT",
+    "APPEND_ONLY_RAW_RECEIPTS",
+    "CLEAN_ALIGN_PIT",
+    "CACHE_EXACT_KEY_AND_FIELD_NON_REGRESSION",
+    "GENERATION_BOUND_ADMISSION",
+    "PUBLICATION_AND_FRESHNESS"
+   ],
+   "update_bindings_count": 1,
+   "source_domains_count": 1,
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(..., frequency='daily', fq=None) over index codes",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "known_watermark": {
+    "source": "observed partitions",
+    "note": "INDEX_DAILY_R1 covers 2005-01-04..2026-09-24 and misses the same two dates"
+   },
+   "cleaning_entry": "same formal cleaning entry",
+   "review_correction": "Canonical full-history source already proven present in R08. The old H1 minute-derivation instruction is superseded; do not redownload or derive from minutes to replace it.",
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "FUND_LIKE_ASSET_VIEW_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_UPDATEPLAN_FUND_LIKE_ASSET_VIEW_R1.txt",
+    "sha256": "963e1f25cc693a018786503aa8e776711896586e9987ae58521f9121d1477913",
+    "bytes": 4856
+   },
+   "status": "CONTRACT_PLAN_ONLY; NO_SUPPLIER_CALL_OR_WRITER",
+   "execution_order": [
+    "MUST_READ_ACQUISITION",
+    "CHECKPOINT_AND_EXCLUSION",
+    "REGISTERED_LAYER_SEARCH",
+    "REQUEST_AND_STABLE_PAGINATION_CONTRACT",
+    "APPEND_ONLY_RAW_RECEIPTS",
+    "CLEAN_ALIGN_PIT",
+    "CACHE_EXACT_KEY_AND_FIELD_NON_REGRESSION",
+    "GENERATION_BOUND_ADMISSION",
+    "PUBLICATION_AND_FRESHNESS"
+   ],
+   "update_bindings_count": 0,
+   "source_domains_count": 0,
+   "supplier": null,
+   "permitted_callable": null,
+   "credential_locator_id": null,
+   "known_watermark": null,
+   "cleaning_entry": null,
+   "review_correction": null,
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "MARKET_UNIVERSE_PIT_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_UPDATEPLAN_MARKET_UNIVERSE_PIT_R1.txt",
+    "sha256": "079358d37e9711ffd08f0e9d211d39cb18691a64e40130ca3a2611b9410d0b15",
+    "bytes": 5652
+   },
+   "status": "CONTRACT_PLAN_ONLY; NO_SUPPLIER_CALL_OR_WRITER",
+   "execution_order": [
+    "MUST_READ_ACQUISITION",
+    "CHECKPOINT_AND_EXCLUSION",
+    "REGISTERED_LAYER_SEARCH",
+    "REQUEST_AND_STABLE_PAGINATION_CONTRACT",
+    "APPEND_ONLY_RAW_RECEIPTS",
+    "CLEAN_ALIGN_PIT",
+    "CACHE_EXACT_KEY_AND_FIELD_NON_REGRESSION",
+    "GENERATION_BOUND_ADMISSION",
+    "PUBLICATION_AND_FRESHNESS"
+   ],
+   "update_bindings_count": 0,
+   "source_domains_count": 0,
+   "supplier": null,
+   "permitted_callable": null,
+   "credential_locator_id": null,
+   "known_watermark": null,
+   "cleaning_entry": null,
+   "review_correction": "A historical measured window ending 2026-07-20 does not serve later requests and does not itself prove regression.",
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "SW_L1_MEMBERSHIP_PIT_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_UPDATEPLAN_SW_L1_MEMBERSHIP_PIT_R1.txt",
+    "sha256": "ea8305c69fddcb86ca0e1069d0736cdfc50e372c1729e12b821df54fccb0a391",
+    "bytes": 7677
+   },
+   "status": "CONTRACT_PLAN_ONLY; NO_SUPPLIER_CALL_OR_WRITER",
+   "execution_order": [
+    "MUST_READ_ACQUISITION",
+    "CHECKPOINT_AND_EXCLUSION",
+    "REGISTERED_LAYER_SEARCH",
+    "REQUEST_AND_STABLE_PAGINATION_CONTRACT",
+    "APPEND_ONLY_RAW_RECEIPTS",
+    "CLEAN_ALIGN_PIT",
+    "CACHE_EXACT_KEY_AND_FIELD_NON_REGRESSION",
+    "GENERATION_BOUND_ADMISSION",
+    "PUBLICATION_AND_FRESHNESS"
+   ],
+   "update_bindings_count": 1,
+   "source_domains_count": 1,
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_industries / get_industry (SW L1/L2/L3) + local densify",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "known_watermark": {
+    "observed": "SW_L1/L2/L3 membership PIT cover both recovered dates (3097 dates)"
+   },
+   "cleaning_entry": "sw_l1_l2_l3_membership_densify_for_new_asof_days then pit_align_seal_CURRENT",
+   "review_correction": null,
+   "real_preflight": "PASS"
+  }
+ ],
+ "target_date_rule": "TARGET = the latest session that is (a) present in the verified local calendar, (b) completed in Asia/Shanghai, and (c) no later than what the supplier has actually published minus the observed lag",
+ "no_supplier_call": true,
+ "no_login": true,
+ "no_download": true,
+ "no_write": true,
+ "no_publication": true,
+ "note": "a historical download-gap label is a record to reconcile, not authorization to re-download",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
