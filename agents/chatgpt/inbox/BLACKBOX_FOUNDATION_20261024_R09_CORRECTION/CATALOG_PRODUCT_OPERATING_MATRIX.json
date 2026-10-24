@@ -1,0 +1,1305 @@
+{
+ "schema": "R09_CATALOG_PRODUCT_OPERATING_MATRIX_1",
+ "round": "R09/10_CORRECTION",
+ "scope": "EVERY CATALOG PRODUCT ROW FROM THE EXISTING CATALOG, JOINED WITH EXISTING ROUND RECORDS",
+ "inputs": [
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r06_delivery\\source_bodies\\registry\\CACHE_PRODUCT_CATALOG.csv",
+   "sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57"
+  },
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r07_delivery\\evidence\\product_coverage_vs_authority_calendar.json",
+   "sha256": "21936ebba5f2a0bf9d32dc5c264d664d7074a7ad33a76fdc142d03f46405a889"
+  },
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r07_delivery\\LAYER_SEARCH_AND_BINDING_LEDGER.json",
+   "sha256": "e494f833a2909d00b21a5def8eb8929da76e575d01f78393e2a2c983407b2084"
+  },
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r07_delivery\\evidence\\empty_products.json",
+   "sha256": "286aa980afa37a6cc24838ccd699e4da975e7d2bf34bfa8cf41db8e47bf30342"
+  },
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\access_resources\\DATA_ACQUISITION_MATRIX.json",
+   "sha256": "f46b43ac2fa7e2a414099cc36f84b38ca12c0f84b02cfa3f33898e7f979e00fc"
+  },
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\CANDIDATE_MANIFEST.json",
+   "sha256": "89d2a903fe01701c43c6cf8a90906c096aede74db082012fb6bc31d31735787f"
+  }
+ ],
+ "row_count": 41,
+ "state_counts": {
+  "CURRENT_DECLARED_GAP": 11,
+  "CURRENT_PRODUCT_EMPTY": 3,
+  "NOT_MEASURED_IN_REVIEWED_EVIDENCE": 6,
+  "CURRENT_SERVES_MEASURED_WINDOW": 3,
+  "REGISTRY_METADATA_PRODUCT": 2,
+  "SEPARATE_NAMESPACE_RESOLVED": 14,
+  "SEPARATE_NAMESPACE_UNRESOLVED_BINDING": 2
+ },
+ "rows": [
+  {
+   "product_id": "STOCK_DAILY_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Stock daily PIT snapshot",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 13,
+    "rows": 17030241,
+    "date_col": "date",
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "distinct_dates": 3095,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 2,
+    "missing_session_examples": [
+     "2026-08-31",
+     "2026-09-01"
+    ]
+   },
+   "r08_candidate_presence": "CANDIDATE_OVERRIDE",
+   "r07_ledger": [
+    {
+     "id": "L02",
+     "kind": "TWO_DATE_RECOVERY_TARGET",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "REPAIR_IMPORT_INDEX_OR_BINDING; PRESERVE_SOURCE (already repaired in candidate form by R06)"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_2026_08_31": 0,
+    "rows_on_2026_09_01": 0
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ],
+   "measurement_caveat": {
+    "identical_tuple_shared_with": [
+     "STOCK_FACTOR_DAILY_R1"
+    ],
+    "reading": "the R07 record carries one identical measured tuple for these product ids; it is not evidence that each product has its own distinct partition set",
+    "not_reconciled_this_round": true
+   }
+  },
+  {
+   "product_id": "STOCK_FACTOR_DAILY_R1",
+   "catalog_layer": "L2",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Universal stock factors (no candidate pct)",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 13,
+    "rows": 17030241,
+    "date_col": "date",
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "distinct_dates": 3095,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 2,
+    "missing_session_examples": [
+     "2026-08-31",
+     "2026-09-01"
+    ]
+   },
+   "r08_candidate_presence": "OWN_CANDIDATE_ARTIFACT",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_MEASURED_GAP",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ],
+   "measurement_caveat": {
+    "identical_tuple_shared_with": [
+     "STOCK_DAILY_PIT_R1"
+    ],
+    "reading": "the R07 record carries one identical measured tuple for these product ids; it is not evidence that each product has its own distinct partition set",
+    "not_reconciled_this_round": true
+   }
+  },
+  {
+   "product_id": "ETF_DAILY_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "ETF",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "ETF daily PIT snapshot",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 1,
+    "rows": 63204,
+    "date_col": "date",
+    "min": "2026-07-30",
+    "max": "2026-09-24",
+    "distinct_dates": 39,
+    "expected_sessions_in_window": 41,
+    "missing_session_count": 2,
+    "missing_session_examples": [
+     "2026-08-31",
+     "2026-09-01"
+    ]
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L03",
+     "kind": "ETF_DATE_SET",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "MATERIALIZE_FULL_HISTORY_FROM_RAW; NO_DOWNLOAD"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_requested_dates": 0
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ],
+   "measurement_caveat": {
+    "identical_tuple_shared_with": [
+     "ETF_FACTOR_DAILY_R1"
+    ],
+    "reading": "the R07 record carries one identical measured tuple for these product ids; it is not evidence that each product has its own distinct partition set",
+    "not_reconciled_this_round": true
+   }
+  },
+  {
+   "product_id": "ETF_FACTOR_DAILY_R1",
+   "catalog_layer": "L2",
+   "asset_type": "ETF",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Universal ETF factors",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 1,
+    "rows": 63204,
+    "date_col": "date",
+    "min": "2026-07-30",
+    "max": "2026-09-24",
+    "distinct_dates": 39,
+    "expected_sessions_in_window": 41,
+    "missing_session_count": 2,
+    "missing_session_examples": [
+     "2026-08-31",
+     "2026-09-01"
+    ]
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L03",
+     "kind": "ETF_DATE_SET",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "MATERIALIZE_FULL_HISTORY_FROM_RAW; NO_DOWNLOAD"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_requested_dates": 0
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ],
+   "measurement_caveat": {
+    "identical_tuple_shared_with": [
+     "ETF_DAILY_PIT_R1"
+    ],
+    "reading": "the R07 record carries one identical measured tuple for these product ids; it is not evidence that each product has its own distinct partition set",
+    "not_reconciled_this_round": true
+   }
+  },
+  {
+   "product_id": "FUND_DAILY_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "FUND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Fund daily PIT (first-class asset)",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_PRODUCT_EMPTY",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "FUND_FACTOR_DAILY_R1",
+   "catalog_layer": "L2",
+   "asset_type": "FUND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Universal fund factors",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_PRODUCT_EMPTY",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "INDEX_DAILY_R1",
+   "catalog_layer": "L1",
+   "asset_type": "INDEX",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Index daily facts",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 22,
+    "rows": 2802889,
+    "date_col": "date",
+    "min": "2005-01-04",
+    "max": "2026-09-24",
+    "distinct_dates": 5140,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 139,
+    "missing_session_examples": [
+     "2026-01-05",
+     "2026-01-06",
+     "2026-01-07",
+     "2026-01-08"
+    ]
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L04",
+     "kind": "INDEX_DATE_SET",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "MATERIALIZE_FROM_RAW (two dates) and DERIVE_FROM_MINUTE_PLANE_UNDER_EXPLICIT_CONTRACT (2026 H1)"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_requested_dates": 0
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ],
+   "measurement_caveat": {
+    "identical_tuple_shared_with": [
+     "INDEX_FACTOR_DAILY_R1"
+    ],
+    "reading": "the R07 record carries one identical measured tuple for these product ids; it is not evidence that each product has its own distinct partition set",
+    "not_reconciled_this_round": true
+   }
+  },
+  {
+   "product_id": "INDEX_FACTOR_DAILY_R1",
+   "catalog_layer": "L2",
+   "asset_type": "INDEX",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Universal index factors",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 22,
+    "rows": 2802889,
+    "date_col": "date",
+    "min": "2005-01-04",
+    "max": "2026-09-24",
+    "distinct_dates": 5140,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 139,
+    "missing_session_examples": [
+     "2026-01-05",
+     "2026-01-06",
+     "2026-01-07",
+     "2026-01-08"
+    ]
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L04",
+     "kind": "INDEX_DATE_SET",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "MATERIALIZE_FROM_RAW (two dates) and DERIVE_FROM_MINUTE_PLANE_UNDER_EXPLICIT_CONTRACT (2026 H1)"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_requested_dates": 0
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ],
+   "measurement_caveat": {
+    "identical_tuple_shared_with": [
+     "INDEX_DAILY_R1"
+    ],
+    "reading": "the R07 record carries one identical measured tuple for these product ids; it is not evidence that each product has its own distinct partition set",
+    "not_reconciled_this_round": true
+   }
+  },
+  {
+   "product_id": "INDEX_CONSTITUENT_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "INDEX",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/asof_date",
+   "catalog_description": "Index constituents as-of",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "NOT_MEASURED_IN_REVIEWED_EVIDENCE",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "SW_L1_MEMBERSHIP_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE_SOURCE_READY",
+   "partition_key": "year/asof_date",
+   "catalog_description": "SW L1 membership PIT (source ready; structure product separate)",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "NOT_MEASURED_IN_REVIEWED_EVIDENCE",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "SW_L1_STRUCTURE_DAILY_R1",
+   "catalog_layer": "L3",
+   "asset_type": "INDUSTRY",
+   "catalog_status": "BLOCKED_UNTIL_STRUCTURE_BUILD",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Industry structure",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 14,
+    "rows": 180092,
+    "date_col": "date",
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "distinct_dates": 3097,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 0,
+    "missing_session_examples": []
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_2026_08_31": 62,
+    "rows_on_2026_09_01": 62
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_SERVES_MEASURED_WINDOW",
+   "served_by_current_release": "YES_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "MARKET_UNIVERSE_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Market structure universe (not trade filter)",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 3,
+    "rows": 3836582,
+    "date_col": "date",
+    "min": "2025-01-02",
+    "max": "2026-07-20",
+    "distinct_dates": 373,
+    "expected_sessions_in_window": 373,
+    "missing_session_count": 0,
+    "missing_session_examples": []
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L08",
+     "kind": "UNIVERSE_FRESHNESS",
+     "classification": "CACHE_COVERAGE_REGRESSION",
+     "allowed_action": "EXTEND_UNIVERSE_FROM_PINNED_SECURITY_STATE; NO_DOWNLOAD"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_requested_dates": 0
+   },
+   "producer_binding_in_reviewed_evidence": "PRODUCER_UNBOUND_IN_REVIEWED_EVIDENCE",
+   "operating_state": "CURRENT_SERVES_MEASURED_WINDOW",
+   "served_by_current_release": "NO_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "STOCK_TRADEABILITY_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Tradeability facts ST/suspend/limits",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 4,
+    "rows": 249858,
+    "date_col": "date",
+    "min": "2026-07-13",
+    "max": "2026-09-03",
+    "distinct_dates": 24,
+    "expected_sessions_in_window": 39,
+    "missing_session_count": 15,
+    "missing_session_examples": [
+     "2026-08-13",
+     "2026-08-14",
+     "2026-08-17",
+     "2026-08-18"
+    ]
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L09",
+     "kind": "TRADEABILITY_COVERAGE",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "MATERIALIZE_FROM_RAW_FIELDS; NO_DOWNLOAD"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "DECLARED_DOMAIN_TRADABLE_STATUS_WITH_RAW_AND_CLEAN_ROOTS",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_MEASURED_GAP",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "MARKET_STRUCTURE_DAILY_R1",
+   "catalog_layer": "L3",
+   "asset_type": "MARKET",
+   "catalog_status": "PARTIAL",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Market structure (needs structure product)",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 13,
+    "rows": 3095,
+    "date_col": "date",
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "distinct_dates": 3095,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 2,
+    "missing_session_examples": [
+     "2026-08-31",
+     "2026-09-01"
+    ]
+   },
+   "r08_candidate_presence": "OWN_CANDIDATE_ARTIFACT",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_MEASURED_GAP",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "FUND_LIKE_ASSET_VIEW_R1",
+   "catalog_layer": "L1",
+   "asset_type": "ETF_FUND_VIEW",
+   "catalog_status": "ACTIVE",
+   "partition_key": "view",
+   "catalog_description": "Logical union of ETF+FUND retaining asset_type",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L07",
+     "kind": "FUND_VIEW_BINDING",
+     "classification": "CACHE_PRODUCT_UNAVAILABLE",
+     "allowed_action": "MATERIALIZE_FUND_PRODUCTS_OR_FAIL_CLOSED_THE_VIEW"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_PRODUCT_EMPTY",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "CACHE_MANIFEST_REGISTRY_R1",
+   "catalog_layer": "META",
+   "asset_type": "ALL",
+   "catalog_status": "ACTIVE",
+   "partition_key": "n/a",
+   "catalog_description": "Manifest registry",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "REGISTRY_METADATA_PRODUCT",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "CACHE_DEPENDENCY_REGISTRY_R1",
+   "catalog_layer": "META",
+   "asset_type": "ALL",
+   "catalog_status": "ACTIVE",
+   "partition_key": "n/a",
+   "catalog_description": "Dependency registry",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "REGISTRY_METADATA_PRODUCT",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "ADJUST_FACTOR_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/asof_date",
+   "catalog_description": "PIT adjust factor fq=pre for PRE_PIT reconstruction",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 13,
+    "rows": 12266026,
+    "date_col": "date",
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "distinct_dates": 3097,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 0,
+    "missing_session_examples": []
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L12",
+     "kind": "NEGATIVE_CONTROL_COMPLETE",
+     "classification": "SOURCE_AVAILABLE_AND_SERVED",
+     "allowed_action": "NONE"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_2026_08_31": 5208,
+    "rows_on_2026_09_01": 11
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_SERVES_MEASURED_WINDOW",
+   "served_by_current_release": "YES_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "STOCK_DAILY_RAW_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Stock daily RAW PIT fq=none explicit; not P2 none_adj",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 13,
+    "rows": 12351786,
+    "date_col": "date",
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "distinct_dates": 3095,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 2,
+    "missing_session_examples": [
+     "2026-08-31",
+     "2026-09-01"
+    ]
+   },
+   "r08_candidate_presence": "CANDIDATE_OVERRIDE",
+   "r07_ledger": [
+    {
+     "id": "L02",
+     "kind": "TWO_DATE_RECOVERY_TARGET",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "REPAIR_IMPORT_INDEX_OR_BINDING; PRESERVE_SOURCE (already repaired in candidate form by R06)"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_2026_08_31": 0,
+    "rows_on_2026_09_01": 0
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "SW_L2_MEMBERSHIP_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/asof_date",
+   "catalog_description": "SW L2 membership PIT",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "NOT_MEASURED_IN_REVIEWED_EVIDENCE",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "VALUATION_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/signal_date",
+   "catalog_description": "Valuation PIT",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 3,
+    "rows": 444084,
+    "date_col": "date",
+    "min": "2018-06-28",
+    "max": "2026-09-24",
+    "distinct_dates": 48,
+    "expected_sessions_in_window": 2003,
+    "missing_session_count": 1955,
+    "missing_session_examples": [
+     "2018-07-02",
+     "2018-07-03",
+     "2018-07-04",
+     "2018-07-05"
+    ]
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L05",
+     "kind": "VALUATION_DATE_SET",
+     "classification": "CACHE_PRODUCT_UNAVAILABLE",
+     "allowed_action": "MATERIALIZE_FROM_PINNED_RAW; NO_DOWNLOAD"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": {
+    "rows_on_requested_dates": 0
+   },
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_ROWS_ON_REQUESTED_DATES",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "FINANCIAL_INDICATOR_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/asof_date",
+   "catalog_description": "Financial indicator PIT",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "NOT_MEASURED_IN_REVIEWED_EVIDENCE",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_BASIC_R1",
+   "catalog_layer": "L1",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/asof_date",
+   "catalog_description": "Tushare convertible-bond dictionary (vendor schema)",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_DAILY_MARKET_R1",
+   "catalog_layer": "L1",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/trade_date",
+   "catalog_description": "Tushare convertible-bond daily market",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_ISSUE_R1",
+   "catalog_layer": "L2",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "event",
+   "catalog_description": "Tushare convertible-bond issue events",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_CALL_R1",
+   "catalog_layer": "L2",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "event",
+   "catalog_description": "Tushare convertible-bond call/redeem events",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_RATE_R1",
+   "catalog_layer": "L2",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "coupon_period",
+   "catalog_description": "Tushare convertible-bond coupon schedule",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_SHARE_R1",
+   "catalog_layer": "L2",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "event",
+   "catalog_description": "Tushare conversion result events; not daily PIT",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+   "catalog_layer": "L1",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "dictionary",
+   "catalog_description": "Tushare bond-to-stock bridge N:1",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+   "catalog_layer": "L2",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "dictionary",
+   "catalog_description": "JQ-compatible BASIC fields A/B only; not JQ native",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+   "catalog_layer": "L2",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year/date",
+   "catalog_description": "JQ-compatible daily A/B fields; not JQ native",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_RATING_R1",
+   "catalog_layer": "L2",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "event",
+   "catalog_description": "Tushare cb_rating clean events; not as-of",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_RATING_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "pit_interval",
+   "catalog_description": "CBOND rating PIT next trade day after ann_date",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_CALL_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "pit_event",
+   "catalog_description": "CBOND call/redeem PIT next trade day after ann_date",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "pit_interval",
+   "catalog_description": "CBOND remain_size PIT next trade day after publish_date",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "TUSHARE_CBOND_TOP10_HOLDERS_R1",
+   "catalog_layer": "L2",
+   "asset_type": "CBOND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "report_period",
+   "catalog_description": "CBOND top10 holders report-period only; PIT not ready",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_RESOLVED",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "INDEX_WEIGHT_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "INDEX",
+   "catalog_status": "ACTIVE",
+   "partition_key": "index/snapshot",
+   "catalog_description": "Official index component weights PIT last-known snapshot",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "NOT_MEASURED_IN_REVIEWED_EVIDENCE",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "ETF_TRACKING_INDEX_MAP_R1",
+   "catalog_layer": "L1",
+   "asset_type": "ETF",
+   "catalog_status": "ACTIVE",
+   "partition_key": "etf_code",
+   "catalog_description": "ETF tracking index mapping (FUND_INVEST_TARGET RAW reused)",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "NOT_MEASURED_IN_REVIEWED_EVIDENCE",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "ETF_MINUTE_1M_R1",
+   "catalog_layer": "L1",
+   "asset_type": "ETF",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year+day_shards",
+   "catalog_description": "ETF 1m overlapping shards via Cleaning CURRENT; not daily fallback",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_UNRESOLVED_BINDING",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "STOCK_MINUTE_1M_R1",
+   "catalog_layer": "L1",
+   "asset_type": "STOCK",
+   "catalog_status": "ACTIVE",
+   "partition_key": "cleaning_day_shards",
+   "catalog_description": "A-share stock 1m via Cleaning CURRENT standard/price/A股_stock_1m; unified plane STOCK_MINUTE_1M_R1; not Entry fixture; not refining case",
+   "directory_in_inspected_cache_release": "ABSENT_IN_INSPECTED_CACHE_RELEASE",
+   "current_release_measurement": null,
+   "r08_candidate_presence": "NOT_IN_R08_CANDIDATE",
+   "r07_ledger": [],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "SEPARATE_NAMESPACE_UNRESOLVED_BINDING",
+   "served_by_current_release": "UNKNOWN_NOT_MEASURED",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  },
+  {
+   "product_id": "FUND_NAV_PIT_R1",
+   "catalog_layer": "L1",
+   "asset_type": "FUND",
+   "catalog_status": "ACTIVE",
+   "partition_key": "year+incremental_tip",
+   "catalog_description": "Fund/ETF unit_net_value PIT (get_extras); premium derived vs close",
+   "directory_in_inspected_cache_release": "PRESENT",
+   "current_release_measurement": {
+    "files": 5980,
+    "rows": 6496121,
+    "date_col": "day",
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "distinct_dates": 3089,
+    "expected_sessions_in_window": 3097,
+    "missing_session_count": 8,
+    "missing_session_examples": [
+     "2026-08-24",
+     "2026-08-26",
+     "2026-08-27",
+     "2026-08-31"
+    ]
+   },
+   "r08_candidate_presence": "INHERITED_BY_REFERENCE",
+   "r07_ledger": [
+    {
+     "id": "L06",
+     "kind": "NAV_DATE_SET",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "REPAIR_CACHE_MATERIALIZATION; DO_NOT_TREAT AS SOURCE_ABSENCE"
+    }
+   ],
+   "requested_date_rows_2026_08_31_and_2026_09_01": null,
+   "producer_binding_in_reviewed_evidence": "NOT_SOUGHT_THIS_ROUND",
+   "operating_state": "CURRENT_DECLARED_GAP",
+   "served_by_current_release": "NO_MEASURED_GAP",
+   "does_not_prove": [
+    "symbol-level completeness",
+    "PIT semantics beyond the recorded fields",
+    "engine admission",
+    "publication freshness for any other date"
+   ]
+  }
+ ],
+ "layer_totals": {
+  "L1": 25,
+  "L2": 12,
+  "L3": 2,
+  "META": 2
+ },
+ "caveat": "A join of records is not a fresh measurement. Every figure carries the round that produced it; nothing here was re-read from Parquet or from a re-scanned root.",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0,
+ "identical_tuple_groups": {
+  "{\"date_col\": \"date\", \"distinct_dates\": 3095, \"expected_sessions_in_window\": 3097, \"files\": 13, \"max\": \"2026-09-24\", \"min\": \"2014-01-02\", \"missing_session_count\": 2, \"missing_session_examples\": [\"2026-08-31\", \"2026-09-01\"], \"rows\": 17030241}": [
+   "STOCK_DAILY_PIT_R1",
+   "STOCK_FACTOR_DAILY_R1"
+  ],
+  "{\"date_col\": \"date\", \"distinct_dates\": 39, \"expected_sessions_in_window\": 41, \"files\": 1, \"max\": \"2026-09-24\", \"min\": \"2026-07-30\", \"missing_session_count\": 2, \"missing_session_examples\": [\"2026-08-31\", \"2026-09-01\"], \"rows\": 63204}": [
+   "ETF_DAILY_PIT_R1",
+   "ETF_FACTOR_DAILY_R1"
+  ],
+  "{\"date_col\": \"date\", \"distinct_dates\": 5140, \"expected_sessions_in_window\": 3097, \"files\": 22, \"max\": \"2026-09-24\", \"min\": \"2005-01-04\", \"missing_session_count\": 139, \"missing_session_examples\": [\"2026-01-05\", \"2026-01-06\", \"2026-01-07\", \"2026-01-08\"], \"rows\": 2802889}": [
+   "INDEX_DAILY_R1",
+   "INDEX_FACTOR_DAILY_R1"
+  ]
+ }
+}
