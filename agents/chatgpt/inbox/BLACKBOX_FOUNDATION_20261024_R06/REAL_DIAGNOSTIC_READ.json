@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "adapter": "candidate/r5/engine_adapter.py::EngineLocalValueProvider",
+  "adapter_unchanged_this_round": true,
+  "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 -c import json; from pathlib import Path; from candidate.r5.engine_adapter import EngineLocalValueProvider; m=json.loads(Path('candidate_releases/R06/R06_TWO_DAY_RECOVERY_20261024/CANDIDATE_MANIFEST.json').read_text(encoding='utf-8')); a=EngineLocalValueProvider(m['candidate_registry_path']); f=a.get_price('000001.XSHE','2026-08-28','2026-09-02',fields=['close'],fq='none',fill_paused=False); days=sorted({str(x.date()) for x in f.index}); assert '2026-08-31' in days and '2026-09-01' in days; print(json.dumps({'status':f.attrs.get('bb_status'),'dates':days,'rows':len(f),'scope':'candidate diagnostic; no MASTER admission'}))",
+  "exit_code": 0,
+  "stdout": "{\"status\": \"OK\", \"dates\": [\"2026-08-28\", \"2026-08-31\", \"2026-09-01\", \"2026-09-02\"], \"rows\": 4, \"scope\": \"candidate diagnostic; no MASTER admission\"}",
+  "stderr": "",
+  "parsed": {
+    "status": "OK",
+    "dates": [
+      "2026-08-28",
+      "2026-08-31",
+      "2026-09-01",
+      "2026-09-02"
+    ],
+    "rows": 4
+  },
+  "interpretation": {
+    "what_it_proves": "the candidate registry routes a stock-daily request for 000001.XSHE to the candidate view and both recovered dates are visible",
+    "what_it_does_not_prove": [
+      "no MASTER admission",
+      "no full engine startup: the API helper package remains unactivated because remote import-time initialization is uncorrected",
+      "no statement about any other symbol, product or date"
+    ]
+  },
+  "extra_scope_check": {
+    "symbol": "000001.XSHE",
+    "window": "2026-08-28..2026-09-02",
+    "fields": [
+      "close"
+    ],
+    "fq": "none",
+    "fill_paused": false
+  }
+}
