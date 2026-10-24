@@ -1,0 +1,83 @@
+{
+  "asof": "2026-08-07",
+  "gaps": {
+    "last_trade_day": "2026-08-07",
+    "current_cleaning_as_of": "2026-08-07",
+    "current_finance_asof": "2026-08-07",
+    "current_daily_asof": "2026-08-07",
+    "price_daily_minute_status": "CURRENT_MATCHES_LAST_TRADE_DAY",
+    "index_minute_raw_max_date_sample": "2026-08-06",
+    "index_minute_gap_days": [
+      "2026-08-07"
+    ],
+    "billboard_max_date": "2026-07-29",
+    "billboard_gap": true,
+    "billboard_gap_start": "2026-07-30",
+    "asof_target": "2026-08-07",
+    "note_weekend": "today is weekend; no new session after 2026-08-07 until 2026-08-10"
+  },
+  "quota_start": 25846410,
+  "calendar": {
+    "all": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\CALENDAR_ALL_DATES_asof_20260807_20260809_072709.parquet",
+    "trade": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\CALENDAR_TRADE_DAYS_asof_20260807_20260809_072709.parquet",
+    "trade_count": 3064
+  },
+  "billboard": {
+    "status": "PASS",
+    "rows": 5874,
+    "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard\\billboard__incremental__20260730_20260807__20260809_072713.parquet",
+    "days": [
+      "2026-07-30",
+      "2026-07-31",
+      "2026-08-03",
+      "2026-08-04",
+      "2026-08-05",
+      "2026-08-06",
+      "2026-08-07"
+    ]
+  },
+  "adjust_factor": {
+    "status": "PASS",
+    "rows": 5206,
+    "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260807__20260809_072723.parquet",
+    "path_p6": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor\\adjust_factor__incremental_20260807__20260809_072723.parquet"
+  },
+  "index_minute": {
+    "2026-08-07": {
+      "status": "EMPTY_OR_FAIL",
+      "written_files": 0,
+      "empty_batches_est": 2928,
+      "fail_batches": 0,
+      "day": "2026-08-07",
+      "codes": 732,
+      "freqs": [
+        "5m",
+        "1m",
+        "30m",
+        "60m"
+      ]
+    }
+  },
+  "price_A_ETF_daily_minute": {
+    "status": "CURRENT_MATCHES_LAST_TRADE_DAY",
+    "note": "No re-download; CURRENT cleaning already asof last trade day"
+  },
+  "finance_valuation": {
+    "status": "CURRENT_MATCH",
+    "finance_asof": "2026-08-07"
+  },
+  "jq260": {
+    "status": "SKIP_RESEARCH_LAYER",
+    "download": false
+  },
+  "quota_after_download": 25827043,
+  "index_align": {
+    "status": "SKIP_NO_NEW_MINUTE"
+  },
+  "inventory_refresh": {
+    "exit_code": 0,
+    "stdout_tail": "{\n  \"final_status\": \"PASS\",\n  \"json\": \"E:\\\\BLACKBOX\\\\运行\\\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.json\",\n  \"md\": \"E:\\\\BLACKBOX\\\\运行\\\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.md\",\n  \"mdc\": \"E:\\\\BLACKBOX\\\\.cursor\\\\rules\\\\blackbox_data_inventory_top_ssot.mdc\",\n  \"generated_at_cn\": \"2026-08-09T07:27:59+0800\",\n  \"schema_version\": \"1.2.0\",\n  \"self_contained\": true,\n  \"current_release\": \"BLACKBOX_FORMAL_CLEANING_R13_ASOF_20260807_20260808_010337\",\n  \"raw_files\": 240248,\n  \"raw_gib\": 113.03,\n  \"index_minute_732_status\": \"DONE\",\n  \"index_minute_732_coverage_pct\": 100.0,\n  \"index_minute_align_release\": \"BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260806_20260809_045840\",\n  \"index_minute_align_pass\": true,\n  \"index_minute_align_parquet\": 31448\n}\n"
+  },
+  "final_status": "FAIL",
+  "generated_at_cn": "2026-08-09T07:27:59+0800"
+}
