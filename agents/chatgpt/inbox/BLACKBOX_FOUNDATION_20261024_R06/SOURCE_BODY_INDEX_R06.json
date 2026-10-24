@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "R06/10",
+  "purpose": "the exact bodies R07 needs; previously only an excerpt of the compiler had been supplied",
+  "bodies": [
+    {
+      "name": "cache_compiler_daily_incremental_r1.py",
+      "source_path": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_daily_incremental_r1.py",
+      "delivered_path": "source_bodies/cache_compiler_daily_incremental_r1.py",
+      "bytes": 38650,
+      "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+      "source_sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+      "copy_identical_to_source": true,
+      "lines": 950,
+      "cited_sha256_in_prior_excerpt": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+      "cited_hash_equals_actual": true,
+      "hash_statement": "the earlier excerpt cited this hash and the byte-identical current file still has it. The equality was verified, not assumed; nothing was substituted to make the two match",
+      "why_supplied": "complete current body: modules, ROOT constants, write_static_registries (lines 124-234), load_current_standard (235-241), read_price_frame (249-309), compute_factors (312-343), write_year_partitions (346-360), antileak_gate (363-369), market_structure (372-394), build_release (397-767), write_hand_policy (768-877), hand_release_note (878-905), main (906-end)",
+      "not_executed_this_round": true
+    },
+    {
+      "name": "registry/CACHE_PRODUCT_CATALOG.csv",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+      "delivered_path": "source_bodies/registry/CACHE_PRODUCT_CATALOG.csv",
+      "bytes": 4020,
+      "sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57",
+      "rows": 41,
+      "why_supplied": "the actual product/status/partition registry the compiler writes at lines 124-234; R06 found 41 entries, of which 23 have a physical root under the CURRENT cache release"
+    },
+    {
+      "name": "registry/CACHE_SCHEMA_REGISTRY.csv",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_SCHEMA_REGISTRY.csv",
+      "delivered_path": "source_bodies/registry/CACHE_SCHEMA_REGISTRY.csv",
+      "bytes": 2043,
+      "sha256": "17aea241b7123c5551ba02005161c0684e7c6c08372cdbb6f9c94d6105e15661",
+      "why_supplied": "declared column/time_class mapping for the price and factor products; it is narrower than the physical partitions, which matters for any schema-driven rebuild"
+    },
+    {
+      "name": "registry/FACTOR_FORMULA_REGISTRY.csv",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\FACTOR_FORMULA_REGISTRY.csv",
+      "delivered_path": "source_bodies/registry/FACTOR_FORMULA_REGISTRY.csv",
+      "bytes": 1541,
+      "sha256": "edc22e611193cb92f88a44cc8bf7b75f9d9e2dd94ba5a9fc52f11d8f2245fa31",
+      "why_supplied": "declared formula and lookback per factor_id (formula_version univ_factor_r1_v1), needed to size the 250-session recompute window"
+    },
+    {
+      "name": "registry/CACHE_DEPENDENCY_REGISTRY.json",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+      "delivered_path": "source_bodies/registry/CACHE_DEPENDENCY_REGISTRY.json",
+      "bytes": 1126,
+      "sha256": "76bb4064e56794f4a3785b092035e2f1a8e3279154f0bcfd03d49d486e98d61a",
+      "edges": 11,
+      "why_supplied": "the declared dependency edges; only 2 of 11 carry a lookback, so MARKET_STRUCTURE_DAILY_R1 has no declared lookback and its functional need was measured instead"
+    },
+    {
+      "name": "registry/CACHE_MANIFEST_REGISTRY.json",
+      "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+      "delivered_path": "source_bodies/registry/CACHE_MANIFEST_REGISTRY.json",
+      "bytes": 6173,
+      "sha256": "37bd3f600ef0576535d1d99aff42614e7d818e9965c4497e284cdca811d0733d",
+      "why_supplied": "the manifest registry that any real generation boundary would have to reconcile with"
+    }
+  ],
+  "helper_resolution": {
+    "question": "do read_price_frame / compute_factors / market_structure / write_static_registries / source joins live outside the compiler body",
+    "answer": "no. All five are defined inside cache_compiler_daily_incremental_r1.py; no separate helper body is missing",
+    "only_outer_local_import": {
+      "module": "p7_gate_common",
+      "path": "E:\\BLACKBOX\\脚本\\p7_gate_common.py",
+      "bytes": 62651,
+      "sha256": "afb460e08b9aac695f09a9326b1fe0c69701c75edfa54b1a70d8393bf3f90fbd",
+      "used_by": "hand_release_note() at lines 878-905 only: load_hand_decision / write_hand_decision / write_hand_md / now_iso",
+      "decision": "not uploaded; it neither reads prices nor computes factors nor joins sources nor writes the registries, so it is not a missing normative data body"
+    },
+    "source_join_roots": [
+      "<CURRENT standard_root>/price/stock_ohlcv_daily",
+      "<CURRENT standard_root>/price/ETF_daily",
+      "<CURRENT standard_root>/fund",
+      "数据/原始只读/strategy_data_plane_additions/FUND_NET_VALUE_PIT",
+      "数据/原始只读/strategy_data_plane_additions/ETF_UNIT_NET_VALUE_PIT",
+      "数据/原始只读/strategy_data_plane_additions/INDEX_DAILY_RAW_NONE",
+      "数据/原始只读/strategy_data_plane_additions/INDEX_DAILY_RAW_FULL_HISTORY_R1",
+      "数据/原始只读/JQData_9999_official_raw/P3_index",
+      "数据/原始只读/strategy_data_plane_additions/INDEX_CONSTITUENT_PIT_R1"
+    ]
+  },
+  "not_uploaded_and_why": [
+    "p7_gate_common.py — HAND note writer only, see helper_resolution",
+    "the old compiler, its main/canary entry, write_static_registries, capability fact generators and any updater were NOT executed",
+    "no parquet bodies are uploaded; only paths, hashes and row/date facts"
+  ]
+}
