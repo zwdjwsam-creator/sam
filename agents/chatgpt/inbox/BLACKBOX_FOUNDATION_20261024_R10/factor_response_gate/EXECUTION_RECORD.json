@@ -1,0 +1,98 @@
+{
+ "schema": "R10_RESPONSE_GATE_EXECUTION_RECORD_1",
+ "at_cn": "2026-10-25T02:22:22+08:00",
+ "working_directory": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONUTF8": "1",
+  "PYTHONDONTWRITEBYTECODE": "1"
+ },
+ "staged_before_execution": {
+  "all_pins_match": true,
+  "members": 6,
+  "manifest_staged_first": true,
+  "manifest_sha256": "7dbc184c238c488abfbf8d7883176d1587a80624d3351de2f42eafcc4e9b0c55"
+ },
+ "step_1_genuine_preflight": {
+  "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\operating_entry\\blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1",
+  "exit_code": 0,
+  "window_cn": "2026-10-25T02:21:57.6625779+08:00 -> 2026-10-25T02:21:58.6862836+08:00",
+  "stdout_bytes": 6632,
+  "stdout_sha256": "581bd41a7a89d61b90e25535b0afe37f8c744c92254ec252b6d4868bf544cb83",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "captured_externally": true,
+  "real_preflight": {
+   "ok": true,
+   "MUST_READ_PRECHECK": "PASS",
+   "task_class": [
+    "CACHE"
+   ],
+   "required": [
+    "BOOTSTRAP",
+    "DATA_ACCESS"
+   ],
+   "problems": [],
+   "rules_loaded": [
+    {
+     "key": "BOOTSTRAP",
+     "status": "VERIFIED"
+    },
+    {
+     "key": "DATA_ACCESS",
+     "status": "VERIFIED"
+    }
+   ],
+   "kernel_sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+   "task_execution": "ALLOWED",
+   "task_execution_forbidden": false
+  },
+  "preflight_block": "MUST_READ_PRECHECK = PASS\nTASK_CLASS = CACHE\nKERNEL_SHA256 = b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a\nKERNEL_STATUS = VERIFIED\nKERNEL_BYTES = 1167\nHAND_READ = NOT_SUFFICIENT\nAUTHORITY_READY = YES\nTASK_EXECUTION = ALLOWED\nTASK_EXECUTION_FORBIDDEN = FALSE\nrules_loaded:\n  - BOOTSTRAP\n    expected_sha256 = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\n    actual_sha256   = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\n    status = VERIFIED\n  - DATA_ACCESS\n    expected_sha256 = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\n    actual_sha256   = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\n    status = VERIFIED",
+  "gate_decision": "PROCEED — dependent work allowed"
+ },
+ "step_2_gate_execution": {
+  "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\factor_response_gate\\test_r10_factor_response_gate.py",
+  "exit_code": 0,
+  "window_cn": "2026-10-25T02:22:02.2272741+08:00 -> 2026-10-25T02:22:03.2416254+08:00",
+  "stdout_bytes": 156,
+  "stdout_sha256": "cdaf49549f7aa59d132103714282b655866917afd315d5e84449844e8ab81928",
+  "stderr_bytes": 549,
+  "stderr_sha256": "1984e95f6f1f6b8f027f978c633b111d73e2c575602af9dd78d69bd01fd1a802",
+  "captured_externally": true,
+  "executed_exactly_once": true,
+  "rerun_for_capture": false,
+  "stdout_json": {
+   "tests_run": 20,
+   "passed": true,
+   "scope": "SYNTHETIC_RESPONSES_AND_PINNED_ISOLATED_LEGACY_AST_ONLY",
+   "supplier_calls": 0,
+   "FOUNDATION_ACCEPTANCE": false
+  },
+  "stderr_text": "........E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\factor_response_gate\\test_r10_factor_response_gate.py:62: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.\r\n  f=frame();f['date']+=pd.Timedelta(hours=1);self.reject(f,'INTRADAY_AXIS_IN_DAILY_PRODUCT')\r\n............\r\n----------------------------------------------------------------------\r\nRan 20 tests in 0.066s\r\n\r\nOK\r\n",
+  "expected": {
+   "tests_run": 20,
+   "passed": true,
+   "exit": 0
+  },
+  "observed": {
+   "tests_run": 20,
+   "passed": true,
+   "exit": 0
+  },
+  "expectation_met": true,
+  "stderr_note": "stderr contains unittest progress dots, the standard summary block and one DeprecationWarning raised by the test body at line 62 (Timedelta on a bare generic unit). The warning originates in the test, not in the gate or the contract module; it does not affect the result and was not edited away.",
+  "source_tests_fixtures_edited": false
+ },
+ "scope": "SYNTHETIC_RESPONSES_AND_PINNED_ISOLATED_LEGACY_AST_ONLY",
+ "supplier_calls": 0,
+ "network_calls": 0,
+ "business_data_written": false,
+ "flags": {
+  "FOUNDATION_ACCEPTANCE": false,
+  "FORMAL_ENGINE_ADMISSION": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false,
+  "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+ }
+}
