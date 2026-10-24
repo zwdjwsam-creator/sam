@@ -1,0 +1,103 @@
+{
+ "schema": "R09_TEMP_DIR_FIX_DESKTOP_RESULTS_1",
+ "round": "R09/10_CORRECTION",
+ "supplied_package_pins": {
+  "fix_r09_preflight_tempdir.py": {
+   "expected_sha256": "41a1d2d5c31fd67fc0dd96d6dfc6f70a72d276e899dae41ea13ca2638817d7d5",
+   "expected_bytes": 2148,
+   "actual_sha256": "41a1d2d5c31fd67fc0dd96d6dfc6f70a72d276e899dae41ea13ca2638817d7d5",
+   "actual_bytes": 2148,
+   "match": true
+  },
+  "test_r09_preflight_tempdir.py": {
+   "expected_sha256": "875283920c519b7fa00d967335be563007e554b6990e3adb9bbadca14f274f8a",
+   "expected_bytes": 5918,
+   "actual_sha256": "875283920c519b7fa00d967335be563007e554b6990e3adb9bbadca14f274f8a",
+   "actual_bytes": 5918,
+   "match": true
+  },
+  "R09_TEMP_DIR_FIX_TEST_RESULTS.json": {
+   "expected_sha256": "4e2c1b08a02f28df5bc2a25e49edb214cc4aa8b7cd49ff2fc9e79336df0e52a0",
+   "expected_bytes": 682,
+   "actual_sha256": "4e2c1b08a02f28df5bc2a25e49edb214cc4aa8b7cd49ff2fc9e79336df0e52a0",
+   "actual_bytes": 682,
+   "match": true
+  }
+ },
+ "fixed_entry": {
+  "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\control_2100\\r09_control_runtime_preflight_fixed.py",
+  "sha256": "f52236648c37eb91944fd7e03e545f18ed887dc0e2c7ec12f2dcdeb6895d9d24",
+  "bytes": 13252,
+  "expected_sha256": "f52236648c37eb91944fd7e03e545f18ed887dc0e2c7ec12f2dcdeb6895d9d24",
+  "match_expected": true,
+  "status": "FIXED_ENTRY_CREATED",
+  "write_exceptions_added": 0,
+  "original_runner_sha256": "87ff01f31d4a77736f1a2eb3eb031c81a627923eb73c61e29c0035f93e128e60",
+  "original_runner_unchanged": true,
+  "successor_modules_unchanged": true
+ },
+ "supplied_test_literal_result": {
+  "file": "test_r09_preflight_tempdir.py",
+  "sha256": "875283920c519b7fa00d967335be563007e554b6990e3adb9bbadca14f274f8a",
+  "exit_code": 1,
+  "controls_passed_before_stop": 5,
+  "stop_at_control": "fixed child runs actual successor preflight without bypass",
+  "traceback_line": 78,
+  "assertion": "assert after.returncode==0",
+  "cause": "FIXTURE_NEWLINE_PORTABILITY_ON_WINDOWS: expected SHA256 is computed from read_bytes() after write_text() stored CRLF, while the child read_text() translates CRLF to LF",
+  "expected_sha256_of_CRLF_fixture": "5bd17a4a66c4126008a147278511f1fb55774b443fa32bf571a0ffd5a8efc073",
+  "actual_sha256_of_LF_text": "e80b71cd14d3cbd65f4173abcbfcf01a545dbca32a72d575108b553a648cc96f",
+  "proves": [
+   "the fixed child got past the import probe (no temp dir error)",
+   "the guard was installed and did not block the read-only preflight",
+   "the real successor preflight executed and rejected the fixture on SHA, i.e. its verification path is live"
+  ],
+  "does_not_prove": [
+   "the ten-control PASS claim on this host"
+  ],
+  "stdout_retained": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\preflight_fix_2140\\DESKTOP_TEMP_DIR_FIX_STDOUT.txt",
+  "stdout_sha256": "b9cb51e9dfa7f8875bcacfe03fd3162ef4c4d99d010bd2e45052330a85462d1d",
+  "modification_made": false
+ },
+ "additive_windows_completion": {
+  "status": "PASS",
+  "controls_passed": 10,
+  "controls": [
+   "original source pin and exact guard byte preservation",
+   "new sibling only and unchanged replay",
+   "tampered destination preserved and rejected",
+   "original runtime unchanged",
+   "original child reproduces real import-probe failure",
+   "fixed child runs actual successor preflight without bypass",
+   "real preflight hash rejection retained",
+   "import-time write still denied",
+   "import-time network still denied before connection",
+   "directory creation still denied"
+  ],
+  "scope": "ADDITIVE_WINDOWS_PORT_COMPLETION_OF_SUPPLIED_TEST; SUPPLIED_TEST_UNMODIFIED",
+  "supplied_test_pin": "875283920c519b7fa00d967335be563007e554b6990e3adb9bbadca14f274f8a",
+  "supplied_test_windows_failure": {
+   "control": "fixed child runs actual successor preflight without bypass",
+   "type": "FIXTURE_NEWLINE_PORTABILITY",
+   "expected_sha256_of_CRLF_bytes": "5bd17a4a66c4126008a147278511f1fb55774b443fa32bf571a0ffd5a8efc073",
+   "actual_sha256_of_LF_text": "e80b71cd14d3cbd65f4173abcbfcf01a545dbca32a72d575108b553a648cc96f",
+   "real_preflight_reached_and_rejected": true
+  },
+  "guard_write_exceptions": 0,
+  "supplier_calls": 0,
+  "FOUNDATION_ACCEPTANCE": false
+ },
+ "additive_harness": {
+  "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\tools\\additive_win_completion_test_r09_tempdir.py",
+  "sha256": "9fecda21ea5f95a398ae4ec506be34f2b1fbc33f4d2490444fbe65456cf4f93b"
+ },
+ "guard_predicate_byte_identical": true,
+ "guard_write_exceptions": 0,
+ "interpretation": "The supplied repair is sound and executes the real successor preflight under the unchanged guard. The supplied test alone cannot reach ten green controls on Windows because of its own fixture newline handling; the additive harness proves the same ten invariants with byte-exact fixtures.",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
