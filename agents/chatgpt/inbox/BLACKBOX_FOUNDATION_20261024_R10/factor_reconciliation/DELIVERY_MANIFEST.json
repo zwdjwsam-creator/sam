@@ -1,0 +1,120 @@
+{
+ "schema": "R10_FACTOR_RECONCILIATION_DELIVERY_MANIFEST_1",
+ "round": "R10 continuation",
+ "task_id": "BLACKBOX_FOUNDATION_R10_FACTOR_PARTITION_AND_LINEAGE_RECONCILIATION_20261024",
+ "local_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_reconciliation_delivery",
+ "remote_root": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_reconciliation",
+ "manifest_excludes_itself": true,
+ "no_self_referential_hash_requirement": true,
+ "files": [
+  {
+   "path": "COMMAND_AND_EXIT_LEDGER.json",
+   "bytes": 3275,
+   "sha256": "fe8c4a5f40b7164f05d3b26653524db701e5304868971ce1af85ee48eec86c84"
+  },
+  {
+   "path": "COUNT_DECOMPOSITION.json",
+   "bytes": 2202,
+   "sha256": "ff796d6505df0682f48e3cb1d5b83058637e439b8c60e969b34f5a0efb6f4b0c"
+  },
+  {
+   "path": "DECLARED_SOURCE_LINEAGE_FINDING.json",
+   "bytes": 7607,
+   "sha256": "485fdb131bc57af7b2bcaf2b2bddc7f64cd242a9945da7e8515db14da5e211c9"
+  },
+  {
+   "path": "DESKTOP_FACTOR_RECONCILIATION_RESULT.json",
+   "bytes": 119351,
+   "sha256": "6744cb9270331d5b58a0610a04c42b70ab5038ce34cb08ac472e87cc3f07a823"
+  },
+  {
+   "path": "OFFLINE_CONTROLS_RESULT.json",
+   "bytes": 489,
+   "sha256": "01edefb83cf485c129e518857d81453784acddada1029ccde0d18e348d293bfc"
+  },
+  {
+   "path": "PACKAGE_VERIFICATION.json",
+   "bytes": 3210,
+   "sha256": "e40bc7370ca12ee18e220009c6cb9411dae9ce8b0e29335fb4e4926df53a4f79"
+  },
+  {
+   "path": "R10_FACTOR_RECONCILIATION_RECEIPT.md",
+   "bytes": 10551,
+   "sha256": "3f6e99299c1173326d2ded6de4a5fda0dbed63088d12915abbd4647b2c2ec154"
+  },
+  {
+   "path": "SOURCE_CORPUS_SEARCH.json",
+   "bytes": 4870,
+   "sha256": "f59ac07e2acf4c3581f935095274d843bc8d88cb06c2d2f92d86b14681f93dda"
+  },
+  {
+   "path": "captures/DESKTOP_FACTOR_RECONCILIATION.stderr.bin",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "captures/DESKTOP_FACTOR_RECONCILIATION.stdout.bin",
+   "bytes": 99589,
+   "sha256": "d3414dd0a5b17ae5779868d74f6e9c01655a8eb88bb306c2a0f426c67c5ec1bb"
+  },
+  {
+   "path": "captures/TEST_17_CONTROLS.stderr.bin",
+   "bytes": 121,
+   "sha256": "38b0b2bf94148a8ce7bf72dd64cb225bc3ee9ee28862452d0a2cb60fa6e511af"
+  },
+  {
+   "path": "captures/TEST_17_CONTROLS.stdout.bin",
+   "bytes": 137,
+   "sha256": "3563e275f010c26c6fe84bc09a4079d57d84aff17fdac862ad0083d84d899b99"
+  },
+  {
+   "path": "executed_source/r10_factor_desktop_check.py",
+   "bytes": 7495,
+   "sha256": "76693d0834086e22b2afa62c70c4973b8271e14242ccae5c7f2a3f269d3cfed0"
+  },
+  {
+   "path": "executed_source/r10_factor_input_contract.py",
+   "bytes": 4046,
+   "sha256": "e30acaddecf03e0abd4360f60a74bae53525373e55feb51cf76d409beebe67c5"
+  },
+  {
+   "path": "executed_source/r10_factor_reconcile.py",
+   "bytes": 11223,
+   "sha256": "171146f589fe1dbaf6903a1a5b631718732175705cb25ccf81e08a657145ae33"
+  },
+  {
+   "path": "executed_source/test_r10_factor_reconcile.py",
+   "bytes": 6386,
+   "sha256": "6011780276df7d25704bf3c5a72821f0d3e0c4449c62c9aab44e917f08e4c3ca"
+  }
+ ],
+ "b1_linkage": {
+  "links_to": "B1_ADJUSTMENT_RECONCILIATION",
+  "b1_status": "OPEN",
+  "does_not_close_b1": true,
+  "measured_facts": [
+   "13 partitions measured: physical 12,266,026 = distinct 12,266,026, unique within disjoint verified calendar years",
+   "declared 12,182,523; shortfall 83,503 reproduces the prior delta",
+   "declared 2026 count equals measured 2026 count exactly (863,710), so the whole shortfall sits in 2014-2025",
+   "2014-2025 partitions are NEW_MEASURED_IDENTITY_NOT_ADMITTED with recorded hashes",
+   "Cleaning 2026 (774,406 rows, tip 2026-08-14) vs CACHE 2026 (863,710 rows, tip 2026-09-24): clean_only 0, cache_only 89,304, shared 774,406, unequal factors on shared keys 13,199",
+   "the two differences are different comparisons and neither explains the other"
+  ],
+  "questions_left_open": [
+   "exact writer and transform receipts for 2014-2025",
+   "historical fq and PIT provenance",
+   "all-layer factor source resolution"
+  ],
+  "lineage_link_status": "UNRESOLVED"
+ },
+ "other_six_groups_unchanged": true,
+ "no_acquisition": true,
+ "no_writer_invoked": true,
+ "no_repair_performed": true,
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "file_count": 16
+}
