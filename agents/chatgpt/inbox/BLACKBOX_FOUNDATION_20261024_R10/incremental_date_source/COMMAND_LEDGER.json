@@ -1,0 +1,100 @@
+{
+ "schema": "R10_INCREMENTAL_DATE_SOURCE_COMMAND_LEDGER_1",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "python": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONUTF8": "1",
+  "PYTHONDONTWRITEBYTECODE": "1"
+ },
+ "commands": [
+  {
+   "seq": 0,
+   "kind": "hub_poll",
+   "exit_code": 0,
+   "result": "new outbox BLACKBOX_FOUNDATION_R10_INCREMENTAL_DATE_SOURCE_AND_R33_20261025.md (7,487 B) and review note DESKTOP_EVIDENCE_REVIEW_0135.md (4,221 B)"
+  },
+  {
+   "seq": 1,
+   "kind": "finish_prior_delivery",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_finish_upload.py",
+   "exit_code": 0,
+   "result": "uploaded the pre-existing local FINAL_BYTE_READBACK.json (21,703 B, b116bf1d...) to source_batch_chain/FINAL_BYTE_READBACK.json; remote 404 before, bytes+sha equal after; commit 218250d6; no regeneration, no member re-upload"
+  },
+  {
+   "seq": 2,
+   "kind": "genuine_cache_preflight",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\operating_entry\\blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1",
+   "exit_code": 0,
+   "started_cn": "2026-10-25T01:44:08.9707319+08:00",
+   "finished_cn": "2026-10-25T01:44:09.9810559+08:00",
+   "stdout_bytes": 6632,
+   "stderr_bytes": 0,
+   "stdout_sha256": "581bd41a7a89d61b90e25535b0afe37f8c744c92254ec252b6d4868bf544cb83",
+   "result": "real_preflight ok=true MUST_READ_PRECHECK=PASS task_class=[CACHE] problems=[]"
+  },
+  {
+   "seq": 3,
+   "kind": "raw_pin_verify",
+   "exit_code": 0,
+   "result": "all three RAW sha256 pins matched before reading"
+  },
+  {
+   "seq": 4,
+   "kind": "bounded_r33_inventory",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_r33_inventory.py",
+   "exit_code": 0,
+   "result": "non-recursive enumeration of the one declared product directory; 18 entries, 18 parquet, 0 non-parquet, 0 reparse points; limits 256/64"
+  },
+  {
+   "seq": 5,
+   "kind": "schema_examination",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_schema_examine.py tools\\schema_spec.json",
+   "exit_code": 0,
+   "result": "first read-only pass over 3 RAW + 18 R33 parquet files"
+  },
+  {
+   "seq": 6,
+   "kind": "schema_examination_captured_rerun",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_schema_examine.py tools\\schema_spec_rerun.json",
+   "exit_code": 0,
+   "started_cn": "2026-10-25T01:48:51+08:00",
+   "finished_cn": "2026-10-25T01:48:51+08:00",
+   "stdout_bytes": 5256,
+   "stderr_bytes": 0,
+   "result": "byte-identical to the first output: True"
+  },
+  {
+   "seq": 7,
+   "kind": "retained_index_lookup",
+   "exit_code": 0,
+   "result": "producer evidence assembled from ECOLOGY_REGISTRY, r04 SOURCE_BODY_INDEX/SOURCE_ACCESS_REGISTER, r05 GAP_REPAIR_INPUTS producer_chain, r08 date-axis evidence, r09 narrowing, r10 writer candidate"
+  },
+  {
+   "seq": 8,
+   "kind": "read_identity_reverify",
+   "exit_code": 0,
+   "result": "all 21 inspected files re-hashed: all_unchanged=True"
+  }
+ ],
+ "not_executed": [
+  "any producer/downloader/compiler import or run",
+  "JQ auth or supplier call",
+  "drive/all-layer enumeration",
+  "broad code-root scan",
+  "credential file read",
+  "production patch",
+  "business-data write",
+  "date repair/backfill/refetch",
+  "CURRENT switch",
+  "engine construction",
+  "order"
+ ],
+ "supplier_calls": 0,
+ "network_calls_for_market_data": 0,
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+}
