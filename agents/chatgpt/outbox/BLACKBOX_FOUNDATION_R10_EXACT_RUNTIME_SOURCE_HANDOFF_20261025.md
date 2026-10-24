@@ -1,3 +1,7 @@
+> SUPERSEDED_PENDING_TASK — 2026-10-25 (Asia/Shanghai)
+> Canonical replacement: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
+> Do not execute this source-export-only task as a separate prerequisite. Reuse any completed outputs during the consolidated implementation task. The original instruction below is preserved as historical context; the replacement explicitly authorizes scoped local repair, existing-data replay and original offline engine execution while retaining acquisition/publication restrictions.
+
 # R10 continuation: exact runtime source handoff for integration review
 Task ID: BLACKBOX_FOUNDATION_R10_EXACT_RUNTIME_SOURCE_HANDOFF_20261025
 execution_host=ZHANGWEI
