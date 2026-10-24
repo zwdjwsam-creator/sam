@@ -1,0 +1,3149 @@
+{
+ "schema_version": "1.0.0",
+ "language": "en",
+ "round": "R08/10",
+ "purpose": "implementation-ready bindings for R09, carried forward by exact HUB path/blob/hash where already delivered, with only the newly measured facts added",
+ "no_download": true,
+ "no_network": true,
+ "no_production_change": true,
+ "pins": {
+  "CURRENT_CACHE_RELEASE": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+   "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564"
+  },
+  "CURRENT_CLEANING_RELEASE": {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+   "sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128"
+  },
+  "calendar_trade_days": {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "sha256": "d044d628279d48c1644eb7913af9e45d27d17b04b086f6d316936e31d6eddcea"
+  },
+  "CACHE_PRODUCT_CATALOG": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+   "sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57"
+  },
+  "CACHE_MANIFEST_REGISTRY": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+   "sha256": "37bd3f600ef0576535d1d99aff42614e7d818e9965c4497e284cdca811d0733d"
+  },
+  "CACHE_DEPENDENCY_REGISTRY": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+   "sha256": "76bb4064e56794f4a3785b092035e2f1a8e3279154f0bcfd03d49d486e98d61a"
+  },
+  "CACHE_SCHEMA_REGISTRY": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_SCHEMA_REGISTRY.csv",
+   "sha256": "17aea241b7123c5551ba02005161c0684e7c6c08372cdbb6f9c94d6105e15661"
+  },
+  "FACTOR_FORMULA_REGISTRY": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\FACTOR_FORMULA_REGISTRY.csv",
+   "sha256": "edc22e611193cb92f88a44cc8bf7b75f9d9e2dd94ba5a9fc52f11d8f2245fa31"
+  },
+  "INDEX_PLANE_CURRENT_RELEASE": {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\CURRENT_RELEASE.json",
+   "sha256": "7260e365a18e4cd7dbe0bbaf22a278d29dab5ad034375c62effadd112bf863f4"
+  }
+ },
+ "current_pair": {
+  "cache": {
+   "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+   "release_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+   "published_at": "2026-09-24T19:56:46+00:00",
+   "published_at_cn": "2026-09-25T04:04:43+0800",
+   "asof": "2026-09-24",
+   "schema_version": "1.0.0",
+   "build_version": "TIP_REBASE_FROM_CURRENT_R1",
+   "source_cleaning_release": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+   "parent_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+   "mode": "tip_fund_nav_pit",
+   "FORMAL_DAILY_PUBLISH": "TIP_REBASE_ONLY",
+   "CANARY_CURRENT_PUBLISH": "STRUCTURALLY_FORBIDDEN",
+   "anti_lookahead_pass": true,
+   "sw_l1_status": "READY_INTEGRATED",
+   "sw_l2_status": "READY_INTEGRATED",
+   "sw_l3_status": "READY_INTEGRATED",
+   "valuation_status": "READY",
+   "stock_2026_date_max": "2026-09-24",
+   "raw_pit_2026_date_max": "2026-09-24",
+   "formal_required_missing": [],
+   "INDEX_DAILY_R1": "NON_BLOCKING_KNOWN_EXCEPTION",
+   "FINANCE_PIT_DELTA_ROWS": 0,
+   "FINANCE_FORMAL_INHERIT": "ALLOWED",
+   "LEGACY_TARGET_IGNORED": false,
+   "notes": [
+    "Formal daily candidate (tip-rebase). CURRENT switch only via publish gate.",
+    "Canary mode cannot write CURRENT",
+    "FUND_NAV_PIT_R1 tip added; premium derived from NAV+close; whole-table FUND_NET_VALUE forbidden"
+   ],
+   "patched_val_sw_at": "2026-09-24T19:56:54+00:00",
+   "FUND_NAV_PIT_R1": "READY"
+  },
+  "cleaning": {
+   "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+   "seal_id": "SEAL_R33_FUND_NAV_20260924_200439",
+   "sealed": true,
+   "cleaning_as_of": "2026-09-24",
+   "finance_asof": "2026-09-24",
+   "daily_asof": "2026-09-24",
+   "standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+   "quarantine_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_quarantine",
+   "ledger_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_control\\cleaning_ledger.sqlite",
+   "release_content_root_sha256": "966e92d0e1ba820c028cc4e7f1369815600efde6ce4c0c9e338b173e7f36b431",
+   "created_at": "2026-09-25T04:04:43+0800",
+   "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+   "switch_reason": "USER_AUTHORIZED_FUND_ETF_NAV_PREMIUM_PLANE_R1",
+   "finance_asof_note": "PIT cutoff carried from R33_FUND_NAV; daily tip 2026-09-24 only",
+   "FUND_NAV_TIP": true
+  }
+ },
+ "registry_revision": {
+  "catalog_rows": 41,
+  "manifest_registry_updated_at": "2026-08-14T19:46:25+00:00",
+  "manifest_registry_latest_release": "BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559",
+  "dependency_registry_schema": "1.0.0",
+  "stale_relative_to_current": true,
+  "note": "the manifest registry still records the 2026-08-14 canary while CURRENT is the 2026-09-24 FUND_NAV tip; the catalog status column is also stale for SW_L1_STRUCTURE_DAILY_R1"
+ },
+ "domains": {
+  "stock_daily": {
+   "authoritative_logical_products": [
+    "STOCK_DAILY_PIT_R1",
+    "STOCK_DAILY_RAW_PIT_R1",
+    "STOCK_FACTOR_DAILY_R1"
+   ],
+   "catalog_rows": {
+    "STOCK_DAILY_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Stock daily PIT snapshot"
+    },
+    "STOCK_DAILY_RAW_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Stock daily RAW PIT fq=none explicit; not P2 none_adj"
+    },
+    "STOCK_FACTOR_DAILY_R1": {
+     "layer": "L2",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Universal stock factors (no candidate pct)"
+    }
+   },
+   "supplier_and_provenance": "JoinQuant official raw (JQData_9999_official_raw) daily bars; RAW product is fq=none/RAW_NONE, not the P2 none_adj legacy plane",
+   "roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw",
+    "RAW_price_subtree": "UNRESOLVED: price subtree not verified this round",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "sidecar": "raw *.parquet.sidecar.json next to each raw unit",
+    "view": "none"
+   },
+   "registered_file_list_locator": {
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+    "catalog_sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57",
+    "manifest_registry": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+    "manifest_registry_sha256": "37bd3f600ef0576535d1d99aff42614e7d818e9965c4497e284cdca811d0733d",
+    "manifest_registry_revision_note": "updated_at=2026-08-14T19:46:25+00:00 latest_release=BLACKBOX_CACHE_CANARY_ASOF_20260814_20260815_034559 while CURRENT is BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439 -> REGISTRY_IS_STALE_RELATIVE_TO_CURRENT"
+   },
+   "selected_physical_sources": {
+    "STOCK_DAILY_PIT_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+     "sha256": "c28b37cd925c187e399dbf24aeb0cbde790de4b22a81d674795ee549041e4dbe",
+     "bytes": 19814682,
+     "rows": 949470,
+     "schema": [
+      "date",
+      "code",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "money",
+      "signal_date",
+      "data_date",
+      "asset_type",
+      "price_adj_tag",
+      "asof_rule",
+      "pit_status",
+      "source_version",
+      "known_at"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 176,
+      "time_min": "2026-01-05 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": {
+      "valued": 914993,
+      "null": 34477
+     }
+    },
+    "STOCK_DAILY_RAW_PIT_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+     "sha256": "bf080579ece5249a0b4b7e44316c89f5df8f38e9473c3bc208db22fd1a66bae8",
+     "bytes": 19881465,
+     "rows": 949470,
+     "schema": [
+      "date",
+      "code",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "money",
+      "signal_date",
+      "data_date",
+      "asset_type",
+      "price_adj_tag",
+      "asof_rule",
+      "pit_status",
+      "source_version",
+      "known_at"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 176,
+      "time_min": "2026-01-05 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": {
+      "valued": 914993,
+      "null": 34477
+     }
+    }
+   },
+   "keys_frequency_fq": {
+    "grain": [
+     "date",
+     "code"
+    ],
+    "frequency": "1d",
+    "fq": {
+     "STOCK_DAILY_RAW_PIT_R1": "none (RAW_NONE)",
+     "STOCK_DAILY_PIT_R1": "none (RAW_NONE)",
+     "STOCK_FACTOR_DAILY_R1": "RAW_NONE with derived factor columns"
+    },
+    "adj_tag_field": "price_adj_tag"
+   },
+   "revision_precedence": {
+    "rule": "CURRENT_CACHE_RELEASE pair -> cache_overrides -> candidate overrides; no newest-filename wins",
+    "current_pair": {
+     "cache": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "cleaning": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439"
+    },
+    "candidate_overrides": {
+     "R06": "candidate_releases/R06/R06_TWO_DAY_RECOVERY_20261024/CANDIDATE_MANIFEST.json",
+     "R08": "candidate_releases/R08/R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024/CANDIDATE_MANIFEST.json"
+    },
+    "conflict_policy": "same-key conflicting values block; identity-unknown rows block"
+   },
+   "transform_reader_entry": {
+    "compiler": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_full_history_r1.py",
+    "compiler_sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+    "daily_incremental": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_daily_incremental_r1.py",
+    "daily_incremental_sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+    "candidate_repair": "reviews/R08/r08_rebuild_local.py (observed_segments rebuild) + reviews/R07/r07_rebuild_local.py (pure extraction and physical parquet reader)",
+    "transitive_helpers": [
+     "reviews/R08/r06_bundle_store.py",
+     "reviews/R08/r08_coverage_gate.py",
+     "reviews/R08/cache_compiler_source_R06.py"
+    ]
+   },
+   "dependency_edges": [
+    {
+     "from": "STOCK_OHLCV",
+     "to": "STOCK_DAILY_PIT_R1"
+    },
+    {
+     "from": "STOCK_DAILY_PIT_R1",
+     "to": "STOCK_FACTOR_DAILY_R1",
+     "lookback": 250
+    },
+    {
+     "from": "STOCK_FACTOR_DAILY_R1",
+     "to": "MARKET_STRUCTURE_DAILY_R1"
+    }
+   ],
+   "completeness": {
+    "pagination": "not applicable to local parquet partitions",
+    "valued_observation": "measured per source in selected_physical_sources",
+    "open_issue": "34,477 all-six-null grid rows in the 2026 RAW partition preserved as UNOBSERVED_GRID_ROW (see OBSERVATION_AND_NON_REGRESSION_EVIDENCE.family_b)"
+   }
+  },
+  "etf_daily": {
+   "authoritative_logical_products": [
+    "ETF_DAILY_PIT_R1",
+    "ETF_FACTOR_DAILY_R1",
+    "ETF_TRACKING_INDEX_MAP_R1"
+   ],
+   "catalog_rows": {
+    "ETF_DAILY_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "ETF",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "ETF daily PIT snapshot"
+    },
+    "ETF_FACTOR_DAILY_R1": {
+     "layer": "L2",
+     "asset_type": "ETF",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Universal ETF factors"
+    },
+    "ETF_TRACKING_INDEX_MAP_R1": {
+     "layer": "L1",
+     "asset_type": "ETF",
+     "status": "ACTIVE",
+     "partition_key": "etf_code",
+     "description": "ETF tracking index mapping (FUND_INVEST_TARGET RAW reused)"
+    }
+   },
+   "supplier_and_provenance": "JoinQuant official raw P4_fund_etf_raw_none/fund_etf_price_daily, fq column present in RAW, price_adj_tag RAW_NONE in cache",
+   "roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_daily",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ETF_DAILY_PIT_R1",
+    "sidecar": "raw *.parquet.sidecar.json",
+    "view": "FUND_LIKE_ASSET_VIEW_R1 is a separate logical view (metadata only)"
+   },
+   "registered_file_list_locator": {
+    "raw_family": "P4_fund_etf_raw_none/fund_etf_price_daily/etf_daily__incremental_gap_*__full__*.parquet",
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+    "catalog_sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57"
+   },
+   "selected_physical_sources": {
+    "cache_2026": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ETF_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+     "sha256": "25677dab84469eb70011319cc3e06a74522dac6a0513d81d49a26a6d526e43c2",
+     "bytes": 1584720,
+     "rows": 63204,
+     "schema": [
+      "date",
+      "code",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "money",
+      "signal_date",
+      "data_date",
+      "asset_type",
+      "price_adj_tag",
+      "asof_rule",
+      "pit_status",
+      "source_version",
+      "known_at"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 39,
+      "time_min": "2026-07-30 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": {
+      "valued": 63192,
+      "null": 12
+     }
+    },
+    "raw_two_recovery_dates": {
+     "20260831": {
+      "candidates": [
+       "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_daily\\etf_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet"
+      ],
+      "chosen": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_daily\\etf_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "sha256": "61d1ae24adcc786a24f91b3e5eccbeda4f0a71e771b9bd847f8f9037321f3137",
+      "rows": 1623,
+      "schema": [
+       "time",
+       "code",
+       "open",
+       "high",
+       "low",
+       "close",
+       "volume",
+       "money",
+       "paused",
+       "high_limit",
+       "low_limit",
+       "avg",
+       "pre_close",
+       "factor",
+       "fq"
+      ],
+      "sidecar_sha256": "496b4356ecd70f73c6f596564f77d91b70f7ae0ccff95ce7d2a3dd96d6dd3386"
+     },
+     "20260901": {
+      "candidates": [
+       "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_daily\\etf_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+      ],
+      "chosen": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_daily\\etf_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "sha256": "75a5bf6b14d6e19fd320d69c0ebc6328adca29af2f9cfe9981d87cbf47158e19",
+      "rows": 1624,
+      "schema": [
+       "time",
+       "code",
+       "open",
+       "high",
+       "low",
+       "close",
+       "volume",
+       "money",
+       "paused",
+       "high_limit",
+       "low_limit",
+       "avg",
+       "pre_close",
+       "factor",
+       "fq"
+      ],
+      "sidecar_sha256": "50fab2d3c04c2dff5da08d3bd807e47d68fb1c10a79bacba117ff636e9671d59"
+     }
+    }
+   },
+   "keys_frequency_fq": {
+    "grain": [
+     "date",
+     "code"
+    ],
+    "frequency": "1d",
+    "fq": "RAW has an explicit fq column; cache ETF_DAILY_PIT_R1 is RAW_NONE tagged"
+   },
+   "revision_precedence": {
+    "rule": "CURRENT cache pair -> overrides; no glob-latest"
+   },
+   "transform_reader_entry": {
+    "compiler": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1 (shared ETF branch; exact ETF function not re-verified this round)",
+    "unknown": "the ETF-specific transform entry was not located by exact reference in this round and is recorded as an explicit unresolved binding rather than guessed"
+   },
+   "dependency_edges": [
+    {
+     "from": "ETF_OHLCV",
+     "to": "ETF_DAILY_PIT_R1"
+    },
+    {
+     "from": "ETF_DAILY_PIT_R1",
+     "to": "ETF_FACTOR_DAILY_R1",
+     "lookback": 250
+    }
+   ],
+   "two_recovery_dates": {
+    "raw_present": "measured in selected_physical_sources.raw_two_recovery_dates",
+    "cache_rows_2026_08_31": 0,
+    "cache_rows_2026_09_01": 0,
+    "layer_verdict": "RAW_COMPLETE_CLEANING_OR_CACHE_MISSING (RAW units exist for both dates; the cache product has neither)"
+   }
+  },
+  "index_full_history_daily": {
+   "authoritative_logical_products": [
+    "INDEX_DAILY_R1",
+    "INDEX_FACTOR_DAILY_R1",
+    "INDEX_CONSTITUENT_PIT_R1",
+    "INDEX_WEIGHT_PIT_R1"
+   ],
+   "catalog_rows": {
+    "INDEX_DAILY_R1": {
+     "layer": "L1",
+     "asset_type": "INDEX",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Index daily facts"
+    },
+    "INDEX_FACTOR_DAILY_R1": {
+     "layer": "L2",
+     "asset_type": "INDEX",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Universal index factors"
+    },
+    "INDEX_CONSTITUENT_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "INDEX",
+     "status": "ACTIVE",
+     "partition_key": "year/asof_date",
+     "description": "Index constituents as-of"
+    },
+    "INDEX_WEIGHT_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "INDEX",
+     "status": "ACTIVE",
+     "partition_key": "index/snapshot",
+     "description": "Official index component weights PIT last-known snapshot"
+    }
+   },
+   "supplier_and_provenance": {
+    "sources": [
+     "local INDEX_DAILY_RAW_NONE + P3 incremental gaps",
+     "jqdatasdk.get_price fq=None"
+    ],
+    "hand_receipt": "E:\\BLACKBOX\\任务\\20260804_230632_BLACKBOX_BUILD_CANONICAL_786aec\\HAND_AUTHORIZE_PHASE_H_PACKET\\HAND_AUTHORIZE_PHASE_H_RECEIPT.json",
+    "not_official_raw_claim": true
+   },
+   "roots": {
+    "RAW_full_history_plane": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1",
+    "RAW_current_release": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\RAW_FILES",
+    "RAW_gap_release": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_GAP_R1_20260805_20260811_20260812_122830\\RAW_FILES",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_DAILY_R1",
+    "sidecar": "none observed inside the index plane RAW_FILES",
+    "view": "none"
+   },
+   "registered_file_list_locator": {
+    "CURRENT_txt": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\CURRENT.txt",
+    "CURRENT_RELEASE_json": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\CURRENT_RELEASE.json",
+    "CURRENT_RELEASE_sha256": "7260e365a18e4cd7dbe0bbaf22a278d29dab5ad034375c62effadd112bf863f4",
+    "MANIFEST": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\MANIFEST\\MANIFEST.json",
+    "COVERAGE": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\COVERAGE\\coverage.json",
+    "coverage_sha256": "a3eac9f0eb830f3c4fbfebb0c2e8f44f6b242b0534934ea6eb63dbaaa4e50343",
+    "overlapping_shards": {
+     "full_history": "index_daily__<code>__to_20260804.parquet x732 (one per index, full history)",
+     "gap": "index_daily_gap__<code>__20260805_20260811.parquet x732 (5 sessions)",
+     "complete_overlap_rule": "union of both releases per code; neither alone covers 2026-08-05..2026-08-11"
+    },
+    "registry_inconsistency": "MANIFEST.n_files=154 and COVERAGE.codes_attempted=154 while 732 files exist"
+   },
+   "selected_physical_sources": {
+    "cache_2026": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_DAILY_R1\\year=2026\\part_2026.parquet",
+     "sha256": "2d99607545217fb49294f1ccb03892cbc82d112d1da3cba989caff5b7d41697a",
+     "bytes": 25892,
+     "rows": 273,
+     "schema": [
+      "date",
+      "code",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "money",
+      "signal_date",
+      "data_date",
+      "asset_type",
+      "price_adj_tag",
+      "asof_rule",
+      "pit_status",
+      "source_version",
+      "known_at"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 39,
+      "time_min": "2026-07-30 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": {
+      "valued": 273,
+      "null": 0
+     }
+    },
+    "raw_399303_XSHE": {
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\RAW_FILES\\index_daily__399303_XSHE__to_20260804.parquet",
+     "sha256": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200"
+    }
+   },
+   "keys_frequency_fq": {
+    "grain": [
+     "trade_date",
+     "canonical_code"
+    ],
+    "frequency": "1d",
+    "fq": "source_fq=NOT_APPLICABLE; price_variant=PRICE_INDEX; return_variant=PRICE"
+   },
+   "revision_precedence": {
+    "rule": "explicit release id from CURRENT_RELEASE.json, never glob-latest; the gap release has SET_CURRENT=false and is an additive successor for 2026-08-05..2026-08-11 only"
+   },
+   "transform_reader_entry": {
+    "clean_release": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
+    "align_release": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_INDEX_DAILY_ALIGN_R1_ASOF_20260811_20260812_123021",
+    "unknown": "the exact compiler function that writes INDEX_DAILY_R1 year partitions was not located by exact reference this round"
+   },
+   "layer_verdict": {
+    "2026_01_05_to_2026_07_29": "RAW_COMPLETE; 137 valued sessions present in the registered plane; the cache product starts 2026-07-30",
+    "2026_08_31_and_2026_09_01": "REQUEST_OUTSIDE_PRODUCT_COVERAGE for the whole plane (registered scope ends 2026-08-11); only P3 seven-index patches exist for these dates",
+    "cache_declared_status": "NON_BLOCKING_KNOWN_EXCEPTION in CURRENT_CACHE_RELEASE.json"
+   }
+  },
+  "valuation": {
+   "authoritative_logical_products": [
+    "VALUATION_PIT_R1"
+   ],
+   "catalog_rows": {
+    "VALUATION_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Valuation PIT"
+    }
+   },
+   "supplier_and_provenance": "JoinQuant official raw P6_factor_reference/valuation, daily snapshot rows keyed (code, day)",
+   "roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factor\\valuation",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\VALUATION_PIT_R1"
+   },
+   "registered_file_list_locator": {
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+    "catalog_sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57",
+    "raw_naming": "valuation__incremental_<yyyymmdd>__*.parquet and valuation__incremental_asof_<yyyymmdd>__*.parquet (two families, both present for the recovery dates)"
+   },
+   "selected_physical_sources": {
+    "cache_2026": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\VALUATION_PIT_R1\\year=2026\\part_2026.parquet",
+     "sha256": "c737398915cf60f9a29950289fb5e58e9a8a33542d2a62cb3151e4d708e7d648",
+     "bytes": 9274374,
+     "rows": 161658,
+     "schema": [
+      "code",
+      "date",
+      "pe_ratio",
+      "pb_ratio",
+      "ps_ratio",
+      "pcf_ratio",
+      "capitalization",
+      "market_cap",
+      "circulating_cap",
+      "circulating_market_cap",
+      "turnover_ratio",
+      "pe_ratio_lyr",
+      "signal_date",
+      "data_date",
+      "product_id",
+      "asof_rule",
+      "pit_status"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 31,
+      "time_min": "2026-08-11 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": {
+      "valued": 161658,
+      "null": 0
+     }
+    },
+    "raw_two_recovery_dates": {
+     "20260831": {
+      "candidates": [
+       "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_20260831__20260831_163050.parquet",
+       "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_20260831__20260831_163115.parquet",
+       "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_asof_20260831__20260831_161805.parquet"
+      ],
+      "chosen": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_20260831__20260831_163050.parquet",
+      "sha256": "cb0c770f48e7c3988a84adeca64635f9a4b6192dab88a57eaffa03c91b4f788e",
+      "rows": 5212,
+      "schema": [
+       "code",
+       "day",
+       "pe_ratio",
+       "pb_ratio",
+       "ps_ratio",
+       "pcf_ratio",
+       "capitalization",
+       "market_cap",
+       "circulating_cap",
+       "circulating_market_cap",
+       "turnover_ratio",
+       "pe_ratio_lyr"
+      ],
+      "sidecar_sha256": null
+     },
+     "20260901": {
+      "candidates": [
+       "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_20260901__20260901_170950.parquet",
+       "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_20260901__20260901_171014.parquet",
+       "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_asof_20260901__20260901_165754.parquet"
+      ],
+      "chosen": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_20260901__20260901_170950.parquet",
+      "sha256": "72f0fff83f5c6e4fa480d4e925a2b309873c55fcc260908ebb787cb3f2422124",
+      "rows": 5214,
+      "schema": [
+       "code",
+       "day",
+       "pe_ratio",
+       "pb_ratio",
+       "ps_ratio",
+       "pcf_ratio",
+       "capitalization",
+       "market_cap",
+       "circulating_cap",
+       "circulating_market_cap",
+       "turnover_ratio",
+       "pe_ratio_lyr"
+      ],
+      "sidecar_sha256": null
+     }
+    }
+   },
+   "keys_frequency_fq": {
+    "grain": [
+     "date",
+     "code"
+    ],
+    "frequency": "1d",
+    "fq": "not applicable (ratio snapshot)"
+   },
+   "revision_precedence": {
+    "rule": "within a date the two RAW families must be reconciled by original contract; neither filename is authority by itself",
+    "conflict_policy": "same-key drift blocks"
+   },
+   "transform_reader_entry": {
+    "unknown": "valuation compiler entry not located by exact reference this round"
+   },
+   "two_recovery_dates": {
+    "cache_rows_2026_08_31": 0,
+    "cache_rows_2026_09_01": 0,
+    "raw_present": true,
+    "layer_verdict": "RAW_COMPLETE_CLEANING_OR_CACHE_MISSING"
+   }
+  },
+  "nav": {
+   "authoritative_logical_products": [
+    "FUND_NAV_PIT_R1"
+   ],
+   "catalog_rows": {
+    "FUND_NAV_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "FUND",
+     "status": "ACTIVE",
+     "partition_key": "year+incremental_tip",
+     "description": "Fund/ETF unit_net_value PIT (get_extras); premium derived vs close"
+    }
+   },
+   "supplier_and_provenance": "JoinQuant get_extras(unit_net_value/acc_net_value), BATCH<=5; whole-table FUND_NET_VALUE is FORBIDDEN",
+   "roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_nav\\incremental_get_extras_r1",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_NAV",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_NAV_PIT_R1",
+    "sidecar": "raw *_sidecar/QUARANTINE markers under cleaning",
+    "view": "FUND_LIKE_ASSET_VIEW_R1"
+   },
+   "registered_file_list_locator": {
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+    "product_meta": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_NAV_PIT_R1\\PRODUCT_META.json",
+    "product_meta_sha256": "d0cedf382b18af97ee9d7df5cce5e50dda20e8feab88a15442e5b688c4282ee2",
+    "tip_files": 1,
+    "history_files": 5979,
+    "tip_sample": [
+     {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_NAV_PIT_R1\\data\\tip\\ETF_NAV__incremental_get_extras__20260713_20260924__clean.parquet",
+      "sha256": "5dbd20e566e709908e98c68fc7c2ff820b776e7250ccc33c861b16ada3d072ae",
+      "rows": 80666
+     }
+    ]
+   },
+   "selected_physical_sources": {
+    "tip": [
+     {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_NAV_PIT_R1\\data\\tip\\ETF_NAV__incremental_get_extras__20260713_20260924__clean.parquet",
+      "sha256": "5dbd20e566e709908e98c68fc7c2ff820b776e7250ccc33c861b16ada3d072ae",
+      "bytes": 600337,
+      "rows": 80666,
+      "schema": [
+       "day",
+       "code",
+       "unit_net_value",
+       "acc_net_value",
+       "known_at",
+       "pit_policy",
+       "asof_rule"
+      ],
+      "time": {
+       "time_field": "day",
+       "distinct_time_values": 46,
+       "time_min": "2026-07-13 00:00:00",
+       "time_max": "2026-09-24 00:00:00",
+       "null_time_values": 0
+      },
+      "valued_counts": {
+       "valued": 80666,
+       "null": 0
+      }
+     }
+    ]
+   },
+   "keys_frequency_fq": {
+    "grain": [
+     "day",
+     "code"
+    ],
+    "frequency": "1d (publication calendar, not exchange trades)",
+    "fq": "not applicable"
+   },
+   "pit_policy": "JQ_FUND_NAV_EOD_NEXT_TRADE_DAY_R1; known_at = next trade day of nav_day; premium is derived vs ETF close with lag-1",
+   "revision_precedence": {
+    "rule": "CURRENT cache pair; FUND_NAV is inherited by the R33 tip successor, not merged by filename order"
+   },
+   "transform_reader_entry": {
+    "script": "E:\\BLACKBOX\\脚本\\blackbox_fund_etf_nav_premium_plane_r1.py",
+    "script_sha256": "8e5b360ce0dad95012a94def38dd6b77c7ee71cbb729964c24432b0856c96b11",
+    "functions": [
+     "configure_window",
+     "download (get_extras batched)",
+     "build_clean_and_cache",
+     "phase_rules"
+    ]
+   },
+   "completeness": {
+    "pagination": "PAGINATION_EVIDENCE_NOT_MEASURED_THIS_ROUND; a batch filename is NOT pagination-exhaustion proof",
+    "silent_truncation": "SILENT_TRUNCATION=0 declared by the writer; not re-proved this round"
+   },
+   "is_not_traded_ohlcv": true
+  },
+  "adjustment": {
+   "requested_keys": [
+    "000001.XSHE",
+    "002223.XSHE",
+    "301237.XSHE",
+    "600351.XSHG",
+    "600989.XSHG"
+   ],
+   "requested_dates": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "product_contract": {
+    "product_id": "ADJUST_FACTOR_PIT_R1",
+    "pit_contract_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R26_ADJFACTOR_PIT_ASOF_20260814_20260816_044000\\standard\\fundamentals\\adjust_factor\\PIT_CONTRACT.json",
+    "pit_contract": {
+     "product_id": "ADJUST_FACTOR_PIT_R1",
+     "known_at": "date EOD",
+     "anchor": "SIGNAL_DATE_T",
+     "d_le_T": true,
+     "asof_cutoff": "2026-08-14",
+     "formula": "pre(d|T)=raw(d)*factor(d)/factor(T) for d<=T",
+     "fq": "pre",
+     "forbid": [
+      "silent_factor_eq_1",
+      "raw_fallback",
+      "future_factor_rewrite",
+      "omit_fq",
+      "fq=none"
+     ],
+     "anti_lookahead_pass": true
+    },
+    "semantics": "DAILY_DENSE_PIT_FACTOR_PLANE; the contract formula pre(d|T)=raw(d)*factor(d)/factor(T) for d<=T requires a factor value on every session d, so a change-event or point-snapshot reading is NOT permitted by this contract",
+    "forbidden": [
+     "silent_factor_eq_1",
+     "raw_fallback",
+     "future_factor_rewrite",
+     "omit_fq",
+     "fq=none"
+    ]
+   },
+   "CACHE_current": {
+    "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\data\\year=2026\\part_2026.parquet",
+    "sha256": "3f44139e136a00f9eb1dca31bf9b668f3a2a8709519752ec69a8894c8c66a46d",
+    "rows": 863710,
+    "distinct_dates": 178,
+    "codes": 5241,
+    "date_min": "2026-01-05",
+    "date_max": "2026-09-24",
+    "per_date_counts_2026_08_10_to_2026_09_08": {
+     "2026-08-10": 5206,
+     "2026-08-11": 5208,
+     "2026-08-12": 5208,
+     "2026-08-13": 5208,
+     "2026-08-14": 5208,
+     "2026-08-17": 89,
+     "2026-08-18": 88,
+     "2026-08-19": 81,
+     "2026-08-20": 72,
+     "2026-08-21": 64,
+     "2026-08-24": 49,
+     "2026-08-25": 45,
+     "2026-08-26": 39,
+     "2026-08-27": 29,
+     "2026-08-28": 19,
+     "2026-08-31": 5208,
+     "2026-09-01": 11,
+     "2026-09-02": 7,
+     "2026-09-03": 5215,
+     "2026-09-04": 5215,
+     "2026-09-07": 5216,
+     "2026-09-08": 5216
+    },
+    "degraded_dates_under_5000_rows": {
+     "2026-08-17": 89,
+     "2026-08-18": 88,
+     "2026-08-19": 81,
+     "2026-08-20": 72,
+     "2026-08-21": 64,
+     "2026-08-24": 49,
+     "2026-08-25": 45,
+     "2026-08-26": 39,
+     "2026-08-27": 29,
+     "2026-08-28": 19,
+     "2026-09-01": 11,
+     "2026-09-02": 7
+    },
+    "exact_keys": {
+     "2026-08-31": {
+      "000001.XSHE": 1.0,
+      "002223.XSHE": 0.9846035023142652,
+      "301237.XSHE": 0.7189900732540311,
+      "600351.XSHG": 0.9719101537155483,
+      "600989.XSHG": 0.9830099998379282
+     },
+     "2026-09-01": {
+      "000001.XSHE": null,
+      "002223.XSHE": 1.0,
+      "301237.XSHE": 1.0,
+      "600351.XSHG": 1.0,
+      "600989.XSHG": 1.0
+     }
+    },
+    "rows_on_2026_08_31": 5208,
+    "rows_on_2026_09_01": 11,
+    "codes_on_2026_09_01": [
+     "002223.XSHE",
+     "002891.XSHE",
+     "002895.XSHE",
+     "300773.XSHE",
+     "300888.XSHE",
+     "301029.XSHE",
+     "301237.XSHE",
+     "301563.XSHE",
+     "600351.XSHG",
+     "600989.XSHG",
+     "688578.XSHG"
+    ]
+   },
+   "CLEANING_registered": {
+    "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R26_ADJFACTOR_PIT_ASOF_20260814_20260816_044000\\standard\\fundamentals\\adjust_factor\\data\\year=2026\\part_2026.parquet",
+    "sha256": "e20315ba98c6766159a3ccf1972a838b9cbc936149b8fa0bd968f9c1c55443a4",
+    "release_id": "BLACKBOX_FORMAL_CLEANING_R26_ADJFACTOR_PIT_ASOF_20260814_20260816_044000",
+    "cleaning_as_of": "2026-08-14",
+    "rows": 774406,
+    "distinct_dates": 149,
+    "date_min": "2026-01-05",
+    "date_max": "2026-08-14",
+    "per_date_density": "dense; no date below 5,000 rows",
+    "rows_on_recovery_dates": {
+     "2026-08-31": 0,
+     "2026-09-01": 0
+    },
+    "verdict": "REQUEST_OUTSIDE_PRODUCT_COVERAGE: the sealed Cleaning release carrying ADJUST_FACTOR_PIT_R1 has cleaning_as_of 2026-08-14, so neither recovery date is inside its registered scope",
+    "current_cleaning_pointer": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "current_cleaning_note": "the CURRENT Cleaning pointer is the R33 FUND_NAV tip; its ADJUST_FACTOR_PIT_R1 content is inherited from the R26 successor chain and is not extended to the recovery dates by any measured artefact"
+   },
+   "RAW_registered": {
+    "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+    "batch_2026_files": 12,
+    "batch_2026_rows": 545419,
+    "batch_2026_date_min": "2026-01-05",
+    "batch_2026_date_max": "2026-06-12",
+    "batch_2026_note": "dense real factors (0.6654..1.0) but the legacy source CUTOFF is 2026-06-12",
+    "incremental_files": 37,
+    "incremental_detail": [
+     {
+      "file": "adjust_factor_stock__incremental_20260807__20260809_072723.parquet",
+      "sha256": "d38d439735fb72869b1010f792f23bf40e58e16d43a692d94e018160a2f1d432",
+      "bytes": 34722,
+      "rows": 5206,
+      "codes": 5206,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-08-07 00:00:00",
+       "max": "2026-08-07 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+      "sha256": "549d6a288f3f6fdaf384fcab158c3ff8e24126e575d181ce65c7b1fad5a27843",
+      "bytes": 34722,
+      "rows": 5206,
+      "codes": 5206,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-08-10 00:00:00",
+       "max": "2026-08-10 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260811__20260811_233713.parquet",
+      "sha256": "9949bac5ded7715d9298144f9772842fbf4d7920a877ac9937fb88fbabca80de",
+      "bytes": 34732,
+      "rows": 5208,
+      "codes": 5208,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-08-11 00:00:00",
+       "max": "2026-08-11 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260812__20260812_223725.parquet",
+      "sha256": "5e9347ecd8bb6f9b79917e91865903b9417d524a517b3177acf673e809d923d0",
+      "bytes": 36927,
+      "rows": 5208,
+      "codes": 5208,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260813__20260814_004353.parquet",
+      "sha256": "5e9347ecd8bb6f9b79917e91865903b9417d524a517b3177acf673e809d923d0",
+      "bytes": 36927,
+      "rows": 5208,
+      "codes": 5208,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260814__20260815_011553.parquet",
+      "sha256": "5e9347ecd8bb6f9b79917e91865903b9417d524a517b3177acf673e809d923d0",
+      "bytes": 36927,
+      "rows": 5208,
+      "codes": 5208,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260817__20260818_004854.parquet",
+      "sha256": "5e9347ecd8bb6f9b79917e91865903b9417d524a517b3177acf673e809d923d0",
+      "bytes": 36927,
+      "rows": 5208,
+      "codes": 5208,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260818__20260818_235608.parquet",
+      "sha256": "babfb7bdbcf33b2ed31992f48ae16a8a6400e26b73840db0ae000c4213fffb3f",
+      "bytes": 36952,
+      "rows": 5209,
+      "codes": 5209,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260819__20260820_005502.parquet",
+      "sha256": "b720573d79a2d238eb6698d23ba0e302a08480f2895db9c467e4df22ca060394",
+      "bytes": 36956,
+      "rows": 5210,
+      "codes": 5210,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260820__20260821_003829.parquet",
+      "sha256": "787d553dc7a4e0f03762a743d09f7b6036dd17eb2d92565e33c4c3322bd693d6",
+      "bytes": 36961,
+      "rows": 5211,
+      "codes": 5211,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260821__20260822_003243.parquet",
+      "sha256": "787d553dc7a4e0f03762a743d09f7b6036dd17eb2d92565e33c4c3322bd693d6",
+      "bytes": 36961,
+      "rows": 5211,
+      "codes": 5211,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260821__20260822_003341.parquet",
+      "sha256": "787d553dc7a4e0f03762a743d09f7b6036dd17eb2d92565e33c4c3322bd693d6",
+      "bytes": 36961,
+      "rows": 5211,
+      "codes": 5211,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260824__20260824_173247.parquet",
+      "sha256": "787d553dc7a4e0f03762a743d09f7b6036dd17eb2d92565e33c4c3322bd693d6",
+      "bytes": 36961,
+      "rows": 5211,
+      "codes": 5211,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260825__20260826_010718.parquet",
+      "sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+      "bytes": 36967,
+      "rows": 5212,
+      "codes": 5212,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260826__20260826_171206.parquet",
+      "sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+      "bytes": 36967,
+      "rows": 5212,
+      "codes": 5212,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260827__20260827_181411.parquet",
+      "sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+      "bytes": 36967,
+      "rows": 5212,
+      "codes": 5212,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260828__20260829_042049.parquet",
+      "sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+      "bytes": 36967,
+      "rows": 5212,
+      "codes": 5212,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+      "sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+      "bytes": 36967,
+      "rows": 5212,
+      "codes": 5212,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+      "sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
+      "bytes": 36980,
+      "rows": 5214,
+      "codes": 5214,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260902__20260903_010420.parquet",
+      "sha256": "2367eb2017909b0938f53c4c991b0fd979af50fdff28a25055b809dcac2803c5",
+      "bytes": 36983,
+      "rows": 5215,
+      "codes": 5215,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260903__20260904_013451.parquet",
+      "sha256": "0f40821693f3462366d9977ea46538322262e1cd80763793daaef8c249ac9066",
+      "bytes": 34782,
+      "rows": 5215,
+      "codes": 5215,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-03 00:00:00",
+       "max": "2026-09-03 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260904__20260907_002941.parquet",
+      "sha256": "97d437396c35f5e10706bbc21f4e79fd953c9abf633ee6895d1112a8799ad3ef",
+      "bytes": 34782,
+      "rows": 5215,
+      "codes": 5215,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-04 00:00:00",
+       "max": "2026-09-04 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260907__20260908_085151.parquet",
+      "sha256": "b2854d54385eea8f09df9834defe12bfe10b5c0b843559d6e2de1e44d1e88792",
+      "bytes": 34787,
+      "rows": 5216,
+      "codes": 5216,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-07 00:00:00",
+       "max": "2026-09-07 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260908__20260909_161714.parquet",
+      "sha256": "61c2a8fa1bff6c2b3ef9215d24351003ee988910a9ca04e17b52039f39a2dc7f",
+      "bytes": 34787,
+      "rows": 5216,
+      "codes": 5216,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-08 00:00:00",
+       "max": "2026-09-08 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260909__20260909_173601.parquet",
+      "sha256": "fb90758f5df7de476b3bf292cfb550e9dea3b950d8e089214765f8fb270bad6f",
+      "bytes": 34806,
+      "rows": 5217,
+      "codes": 5217,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-09 00:00:00",
+       "max": "2026-09-09 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260910__20260917_144912.parquet",
+      "sha256": "25965d125759efb9ab492724ac579ff1e7aff356b1211ca2ac456591d87d61e6",
+      "bytes": 34812,
+      "rows": 5218,
+      "codes": 5218,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-10 00:00:00",
+       "max": "2026-09-10 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260910__20260917_145154.parquet",
+      "sha256": "25965d125759efb9ab492724ac579ff1e7aff356b1211ca2ac456591d87d61e6",
+      "bytes": 34812,
+      "rows": 5218,
+      "codes": 5218,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-10 00:00:00",
+       "max": "2026-09-10 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260911__20260918_072837.parquet",
+      "sha256": "e9e4145b03f47a9809f4bad09f4005335b7dfb25e80b6fe1368545cf8e842743",
+      "bytes": 34815,
+      "rows": 5219,
+      "codes": 5219,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-11 00:00:00",
+       "max": "2026-09-11 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260914__20260924_082308.parquet",
+      "sha256": "2c0ad20e1ed0544a464f8dc99f05b3597f07c3d0e7290832f8e77103d75b0165",
+      "bytes": 34815,
+      "rows": 5219,
+      "codes": 5219,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-14 00:00:00",
+       "max": "2026-09-14 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260915__20260924_093041.parquet",
+      "sha256": "e56c1f32e5efea9221b8e4091b3ec510efb9cdc4b78760a1f2be4a89ecaf92aa",
+      "bytes": 34815,
+      "rows": 5219,
+      "codes": 5219,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-15 00:00:00",
+       "max": "2026-09-15 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260916__20260924_103048.parquet",
+      "sha256": "7ef2efe3ef6f1110879a887e9a0a4aa1060f0d3ba59250dd49bc8e3760d27ef3",
+      "bytes": 34820,
+      "rows": 5220,
+      "codes": 5220,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-16 00:00:00",
+       "max": "2026-09-16 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260917__20260924_114439.parquet",
+      "sha256": "7fdd274c2b2a1e186d9f5592d6275b3b1f73fbb59ece7d836e31adad65e69e5f",
+      "bytes": 34835,
+      "rows": 5221,
+      "codes": 5221,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-17 00:00:00",
+       "max": "2026-09-17 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260918__20260924_130214.parquet",
+      "sha256": "ef678b17cd12cfc8a97a27524e8aecff63586ba185f7f1d57cd3e17de9de3088",
+      "bytes": 34835,
+      "rows": 5221,
+      "codes": 5221,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-18 00:00:00",
+       "max": "2026-09-18 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260921__20260924_163612.parquet",
+      "sha256": "916213d04317788cedc4e6664eb2e5219b45164e1a276a0c4c69c8173574259f",
+      "bytes": 34835,
+      "rows": 5221,
+      "codes": 5221,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-21 00:00:00",
+       "max": "2026-09-21 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260922__20260924_173734.parquet",
+      "sha256": "e80b66f7c762d1cccc7f09707ce73e727bf81c30e4c68f5f9c2716541e334834",
+      "bytes": 34838,
+      "rows": 5222,
+      "codes": 5222,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-22 00:00:00",
+       "max": "2026-09-22 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260923__20260924_183758.parquet",
+      "sha256": "7de44a455f16a4b8ed05a4232327fb62ad0e314060c0eb0d45760661733a703a",
+      "bytes": 34838,
+      "rows": 5222,
+      "codes": 5222,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-23 00:00:00",
+       "max": "2026-09-23 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     },
+     {
+      "file": "adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+      "sha256": "59ca656ea171c198f4dbf238c3d39b69481b02ae563c6a8421934b3fddc7cac6",
+      "bytes": 34838,
+      "rows": 5222,
+      "codes": 5222,
+      "date_axis": {
+       "kind": "TIMESTAMP_NS",
+       "distinct": 1,
+       "min": "2026-09-24 00:00:00",
+       "max": "2026-09-24 00:00:00"
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     }
+    ],
+    "files_for_2026_08_31": [
+     {
+      "file": "adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+      "sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+      "bytes": 36967,
+      "rows": 5212,
+      "codes": 5212,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     }
+    ],
+    "files_for_2026_09_01": [
+     {
+      "file": "adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+      "sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
+      "bytes": 36980,
+      "rows": 5214,
+      "codes": 5214,
+      "date_axis": {
+       "kind": "INT64_PAGE_ORDINAL",
+       "distinct": 300,
+       "min": 0,
+       "max": 299,
+       "rows_per_value_min": 17,
+       "rows_per_value_max": 18
+      },
+      "factor_unique": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "sidecar_present": false
+     }
+    ],
+    "ordinal_axis_defect": {
+     "files": [
+      "adjust_factor_stock__incremental_20260812__20260812_223725.parquet",
+      "adjust_factor_stock__incremental_20260813__20260814_004353.parquet",
+      "adjust_factor_stock__incremental_20260814__20260815_011553.parquet",
+      "adjust_factor_stock__incremental_20260817__20260818_004854.parquet",
+      "adjust_factor_stock__incremental_20260818__20260818_235608.parquet",
+      "adjust_factor_stock__incremental_20260819__20260820_005502.parquet",
+      "adjust_factor_stock__incremental_20260820__20260821_003829.parquet",
+      "adjust_factor_stock__incremental_20260821__20260822_003243.parquet",
+      "adjust_factor_stock__incremental_20260821__20260822_003341.parquet",
+      "adjust_factor_stock__incremental_20260824__20260824_173247.parquet",
+      "adjust_factor_stock__incremental_20260825__20260826_010718.parquet",
+      "adjust_factor_stock__incremental_20260826__20260826_171206.parquet",
+      "adjust_factor_stock__incremental_20260827__20260827_181411.parquet",
+      "adjust_factor_stock__incremental_20260828__20260829_042049.parquet",
+      "adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+      "adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+      "adjust_factor_stock__incremental_20260902__20260903_010420.parquet"
+     ],
+     "count": 17,
+     "measured_shape": "int64 `date` holding 0..299 with 17-18 rows per value; 300 values x ~17.4 = 5,214 rows, i.e. a PAGE/BATCH counter, not a trade date",
+     "why_not_a_timestamp": "300 distinct integers of at most two-digit magnitude spread 17-18 rows each cannot encode a per-row session date for a single-day extract; pd.to_datetime on them yields 1970-01-01 + n nanoseconds",
+     "consequence": "the real trade date survives only in the FILENAME; the file content cannot certify its own date, so neither recovery date can be certified from RAW content alone"
+    },
+    "factor_payload_defect": {
+     "statement": "in all 37 stock incremental files the `factor` column has exactly one distinct value, 1.0",
+     "files_affected": 37,
+     "consequence": "these incrementals carry no adjustment information; factor=1.0 must not be read as an adjustment series (contract forbids silent_factor_eq_1)"
+    },
+    "transform_evidence": {
+     "reader": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_adjust_factor_pit_r1.py",
+     "reader_sha256": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0",
+     "lines": {
+      "flatten_factor_date_coercion": "scripts line 110: out['date'] = pd.to_datetime(out['date']).dt.normalize() -> an int64 axis becomes 1970-01-01",
+      "legacy_batch_window_filter": "scripts line 156: keep 2014-01-01 <= date < REFRESH_START -> rows coerced to 1970-01-01 are dropped by this filter",
+      "factor_zero_drop": "scripts line 113/162: rows with factor == 0 are dropped; factor == 1.0 is retained"
+     },
+     "classification": "OBSERVED_CODE_PATH plus MEASURED_FILE_STATE; the exact call path that produced the CURRENT cache rows for the sparse dates is NOT proven by static inspection alone and is left as an open causal question"
+    }
+   },
+   "layer_verdict": {
+    "CACHE": "serving for 2026-08-31 at 5,208/5,214 codes; serving for 2026-09-01 at 11/5,214 codes (0.21%) - NOT full coverage",
+    "CLEANING": "REQUEST_OUTSIDE_PRODUCT_COVERAGE for both dates",
+    "RAW": "files named for both dates exist but carry a page-ordinal `date` and a constant factor=1.0; no usable date or factor authority for either date",
+    "root_cause": null,
+    "diagnosis_status": "MIXED: CACHE_PARTIAL_2026_09_01 (11 rows) + CLEANING_OUTSIDE_ASOF + RAW_DATE_AXIS_AND_PAYLOAD_DEFECT",
+    "source_absence_claim": "NOT_MADE",
+    "download_required": false
+   },
+   "eleven_row_fact": {
+    "rows": 11,
+    "denominator_codes": 5214,
+    "share": 0.00211,
+    "codes": [
+     "002223.XSHE",
+     "002891.XSHE",
+     "002895.XSHE",
+     "300773.XSHE",
+     "300888.XSHE",
+     "301029.XSHE",
+     "301237.XSHE",
+     "301563.XSHE",
+     "600351.XSHG",
+     "600989.XSHG",
+     "688578.XSHG"
+    ],
+    "is_change_event_set": false,
+    "change_evidence": "only 4 of the 11 codes differ from their 2026-08-31 value (002223.XSHE, 301237.XSHE, 600351.XSHG, 600989.XSHG all move to 1.0); the other 7 repeat the previous value, so the 11 rows are not a corporate-action change set",
+    "statement": "2026-09-01 holds 11 adjustment rows, which is a recorded fact and NOT full coverage"
+   },
+   "sparse_date_change_test": {
+    "baseline_date": "2026-08-14",
+    "baseline_codes": 5208,
+    "per_date": {
+     "2026-08-17": {
+      "rows": 89,
+      "changed_vs_baseline": 1
+     },
+     "2026-08-18": {
+      "rows": 88,
+      "changed_vs_baseline": 7
+     },
+     "2026-08-19": {
+      "rows": 81,
+      "changed_vs_baseline": 9
+     },
+     "2026-08-20": {
+      "rows": 72,
+      "changed_vs_baseline": 8
+     },
+     "2026-08-21": {
+      "rows": 64,
+      "changed_vs_baseline": 15
+     },
+     "2026-08-24": {
+      "rows": 49,
+      "changed_vs_baseline": 4
+     },
+     "2026-08-25": {
+      "rows": 45,
+      "changed_vs_baseline": 6
+     },
+     "2026-08-26": {
+      "rows": 39,
+      "changed_vs_baseline": 10
+     },
+     "2026-08-27": {
+      "rows": 29,
+      "changed_vs_baseline": 10
+     },
+     "2026-08-28": {
+      "rows": 19,
+      "changed_vs_baseline": 8
+     },
+     "2026-09-01": {
+      "rows": 11,
+      "changed_vs_baseline": 4
+     },
+     "2026-09-02": {
+      "rows": 7,
+      "changed_vs_baseline": 7
+     }
+    },
+    "conclusion": "the 12 degraded dates are NOT corporate-action change-event sets: only 1-15 of 19-89 rows differ from the 2026-08-14 baseline"
+   },
+   "catalog_rows": {
+    "ADJUST_FACTOR_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "year/asof_date",
+     "description": "PIT adjust factor fq=pre for PRE_PIT reconstruction"
+    }
+   },
+   "roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+    "RAW_duplicate_copy": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fundamentals\\adjust_factor",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1",
+    "sidecar": "no sidecar exists for any adjust_factor_stock incremental (measured)"
+   },
+   "transform_reader_entry": {
+    "legacy_compiler": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_adjust_factor_pit_r1.py",
+    "legacy_compiler_sha256": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0",
+    "current_builder": "UNRESOLVED: the writer that produced the CURRENT 2026 ADJUST_FACTOR_PIT_R1 rows for 2026-08-15..2026-09-24 was not identified by exact reference this round"
+   },
+   "precedence": {
+    "rule": "CLEANING sealed PIT factor plane -> CACHE; RAW incrementals are not usable as authority while their date axis is a page ordinal"
+   }
+  },
+  "security_universe": {
+   "authoritative_logical_products": [
+    "SECURITY_MASTER_SNAPSHOT_R1",
+    "MARKET_UNIVERSE_PIT_R1"
+   ],
+   "catalog_rows": {
+    "SECURITY_MASTER_SNAPSHOT_R1": null,
+    "MARKET_UNIVERSE_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Market structure universe (not trade filter)"
+    }
+   },
+   "catalog_gap": "SECURITY_MASTER_SNAPSHOT_R1 exists as a physical cache product but has NO row in CACHE_PRODUCT_CATALOG.csv -> CATALOG_MISSING_PRODUCT",
+   "supplier_and_provenance": "JoinQuant official security metadata (P0/meta families) + market universe daily snapshot",
+   "roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "registered_file_list_locator": {
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv"
+   },
+   "selected_physical_sources": {
+    "SECURITY_MASTER_SNAPSHOT_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SECURITY_MASTER_SNAPSHOT_R1\\security_master__stock__snapshot_asof_20260812__20260813_003208.parquet",
+     "sha256": "eb6cce58bb897372c932a446820e073d3ffc81c0ff39a986e8ca02cc02d2101c",
+     "bytes": 153128,
+     "rows": 5208,
+     "schema": [
+      "code",
+      "display_name",
+      "name",
+      "start_date",
+      "end_date",
+      "type"
+     ],
+     "time": {},
+     "valued_counts": null
+    },
+    "MARKET_UNIVERSE_PIT_R1_2026": null
+   },
+   "keys_frequency_fq": {
+    "grain": {
+     "SECURITY_MASTER_SNAPSHOT_R1": [
+      "code"
+     ],
+     "MARKET_UNIVERSE_PIT_R1": [
+      "date",
+      "code"
+     ]
+    },
+    "frequency": "snapshot / 1d"
+   },
+   "revision_precedence": {
+    "rule": "universe is a PIT snapshot per session; a shorter current window is NOT a proved regression without a pinned baseline"
+   },
+   "universe_regression_policy": {
+    "baseline_required": true,
+    "baseline_present_this_round": false,
+    "correct_class_without_baseline": "REQUEST_OUTSIDE_PRODUCT_COVERAGE",
+    "forbidden": "declaring CACHE_COVERAGE_REGRESSION from a stale universe end alone"
+   },
+   "transform_reader_entry": {
+    "unknown": "universe builder not located by exact reference this round"
+   }
+  },
+  "tradeability_st_limits": {
+   "authoritative_logical_products": [
+    "STOCK_TRADEABILITY_PIT_R1"
+   ],
+   "catalog_rows": {
+    "STOCK_TRADEABILITY_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "year/signal_date",
+     "description": "Tradeability facts ST/suspend/limits"
+    }
+   },
+   "supplier_and_provenance": "JoinQuant trade status / ST / limit facts, PIT daily",
+   "roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1"
+   },
+   "registered_file_list_locator": {
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv"
+   },
+   "selected_physical_sources": {
+    "cache_2026": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1\\year=2026\\part_2026.parquet",
+     "sha256": "dd53cd61f167147551841f306d40828943d91ee8c3a3797b85aa922c3b85ae88",
+     "bytes": 713381,
+     "rows": 119714,
+     "schema": [
+      "date",
+      "code",
+      "is_st",
+      "paused",
+      "high_limit",
+      "low_limit",
+      "signal_date",
+      "data_date",
+      "asset_type",
+      "asof_rule",
+      "pit_status",
+      "product_id",
+      "source_cleaning_release"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 23,
+      "time_min": "2026-07-13 00:00:00",
+      "time_max": "2026-08-12 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": {
+      "valued": 119714,
+      "null": 0
+     }
+    }
+   },
+   "keys_frequency_fq": {
+    "grain": [
+     "date",
+     "code"
+    ],
+    "frequency": "1d"
+   },
+   "revision_precedence": {
+    "rule": "CURRENT cache pair"
+   },
+   "transform_reader_entry": {
+    "unknown": "tradeability builder not located by exact reference this round"
+   },
+   "note": "FINE_GRAINED_POOL_LOADED != OBSERVED and NO_BREADTH_VWAP_TURNOVER = NO_FORMAL_L4_ACCEPTANCE remain separate from this product"
+  },
+  "sw_structure": {
+   "authoritative_logical_products": [
+    "SW_L1_MEMBERSHIP_PIT_R1",
+    "SW_L1_STRUCTURE_DAILY_R1",
+    "SW_L2_MEMBERSHIP_PIT_R1",
+    "SW_L2_STRUCTURE_DAILY_R1",
+    "SW_L3_MEMBERSHIP_PIT_R1",
+    "SW_L3_STRUCTURE_DAILY_R1"
+   ],
+   "catalog_rows": {
+    "SW_L1_MEMBERSHIP_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE_SOURCE_READY",
+     "partition_key": "year/asof_date",
+     "description": "SW L1 membership PIT (source ready; structure product separate)"
+    },
+    "SW_L1_STRUCTURE_DAILY_R1": {
+     "layer": "L3",
+     "asset_type": "INDUSTRY",
+     "status": "BLOCKED_UNTIL_STRUCTURE_BUILD",
+     "partition_key": "year/signal_date",
+     "description": "Industry structure"
+    },
+    "SW_L2_MEMBERSHIP_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "year/asof_date",
+     "description": "SW L2 membership PIT"
+    }
+   },
+   "catalog_status_conflict": "CACHE_PRODUCT_CATALOG.csv still marks SW_L1_STRUCTURE_DAILY_R1 BLOCKED_UNTIL_STRUCTURE_BUILD while CURRENT_CACHE_RELEASE.json declares sw_l1/l2/l3_status READY_INTEGRATED and physical partitions exist",
+   "supplier_and_provenance": "Shenwan industry classification PIT membership + derived daily structure",
+   "roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "registered_file_list_locator": {
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+    "dependency_registry": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json"
+   },
+   "selected_physical_sources": {
+    "SW_L1_MEMBERSHIP_PIT_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L1_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet",
+     "sha256": "33a7a1a2131ede0153c6db0bb49e51dd1f9876bd6fa4b9b270f5d168a154778e",
+     "bytes": 1610805,
+     "rows": 926693,
+     "schema": [
+      "date",
+      "code",
+      "industry_code",
+      "industry_name",
+      "error",
+      "taxonomy",
+      "signal_date",
+      "data_date",
+      "asof_rule",
+      "pit_status",
+      "source",
+      "taxonomy_version",
+      "no_current_backfill",
+      "no_ffill_membership"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 178,
+      "time_min": "2026-01-05 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": null
+    },
+    "SW_L1_STRUCTURE_DAILY_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L1_STRUCTURE_DAILY_R1\\year=2026\\part_2026.parquet",
+     "sha256": "ee02f39236c270b1a0cc3116ecb8ac9bfc88bf1e34b8b70be766081180005de6",
+     "bytes": 18813,
+     "rows": 5518,
+     "schema": [
+      "date",
+      "industry_code",
+      "n_members",
+      "n_with_r1",
+      "positive_ratio",
+      "mean_r1",
+      "money",
+      "industry_name",
+      "money_share",
+      "signal_date",
+      "data_date",
+      "asof_rule",
+      "pit_status",
+      "taxonomy",
+      "source_version",
+      "no_lookahead"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 178,
+      "time_min": "2026-01-05 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": null
+    },
+    "SW_L2_MEMBERSHIP_PIT_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L2_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet",
+     "sha256": "2eda1bc55097854b36f1474d65a9110ec85fc26cebda4e51f9618b55415afa78",
+     "bytes": 1646889,
+     "rows": 926693,
+     "schema": [
+      "date",
+      "code",
+      "industry_code",
+      "industry_name",
+      "error",
+      "taxonomy",
+      "signal_date",
+      "data_date",
+      "asof_rule",
+      "pit_status",
+      "source",
+      "taxonomy_version",
+      "no_current_backfill",
+      "no_ffill_membership"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 178,
+      "time_min": "2026-01-05 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": null
+    },
+    "SW_L2_STRUCTURE_DAILY_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L2_STRUCTURE_DAILY_R1\\year=2026\\part_2026.parquet",
+     "sha256": "b75959d1682f024a2f65506e7b9041d2ec2a6388ffcaec784ec523c7a7f565f5",
+     "bytes": 29498,
+     "rows": 23318,
+     "schema": [
+      "date",
+      "industry_code",
+      "n_members",
+      "n_with_r1",
+      "positive_ratio",
+      "mean_r1",
+      "money",
+      "industry_name",
+      "money_share",
+      "signal_date",
+      "data_date",
+      "asof_rule",
+      "pit_status",
+      "taxonomy",
+      "source_version",
+      "no_lookahead"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 178,
+      "time_min": "2026-01-05 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": null
+    },
+    "SW_L3_MEMBERSHIP_PIT_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet",
+     "sha256": "0cdc1b2187089fce16a4d57f5cd9fcd24d98b303aaf158f03a6cdfdaee3390b3",
+     "bytes": 1788391,
+     "rows": 926011,
+     "schema": [
+      "date",
+      "code",
+      "industry_code",
+      "industry_name",
+      "error",
+      "taxonomy",
+      "signal_date",
+      "data_date",
+      "asof_rule",
+      "pit_status",
+      "source",
+      "taxonomy_version",
+      "no_current_backfill",
+      "no_ffill_membership"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 178,
+      "time_min": "2026-01-05 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": null
+    },
+    "SW_L3_STRUCTURE_DAILY_R1": {
+     "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_STRUCTURE_DAILY_R1\\year=2026\\part_2026.parquet",
+     "sha256": "fddd5ae99b93591dc132e2b3c580c383e1168f5d5959052efdd0d053889d7c1f",
+     "bytes": 58090,
+     "rows": 59875,
+     "schema": [
+      "date",
+      "industry_code",
+      "n_members",
+      "n_with_r1",
+      "positive_ratio",
+      "mean_r1",
+      "money",
+      "industry_name",
+      "money_share",
+      "signal_date",
+      "data_date",
+      "asof_rule",
+      "pit_status",
+      "taxonomy",
+      "source_version",
+      "no_lookahead"
+     ],
+     "time": {
+      "time_field": "date",
+      "distinct_time_values": 178,
+      "time_min": "2026-01-05 00:00:00",
+      "time_max": "2026-09-24 00:00:00",
+      "null_time_values": 0
+     },
+     "valued_counts": null
+    }
+   },
+   "keys_frequency_fq": {
+    "grain": {
+     "membership": [
+      "date",
+      "code"
+     ],
+     "structure": [
+      "date",
+      "industry"
+     ]
+    },
+    "frequency": "1d"
+   },
+   "revision_precedence": {
+    "rule": "membership is the upstream; structure is a dependent product and must be invalidated when membership changes"
+   },
+   "dependency_edges": [
+    {
+     "from": "SW_L1_MEMBERSHIP_PIT_R1",
+     "to": "SW_L1_STRUCTURE_DAILY_R1",
+     "status": "BLOCKED_UPSTREAM"
+    }
+   ],
+   "transform_reader_entry": {
+    "integrate": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_sw_l1_integrate_r1.py",
+    "integrate_sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69"
+   },
+   "known_gap": "MARKET_STRUCTURE_DAILY_R1 SW columns are NOT recomputed in the R08 candidate; pit_status=PARTIAL_OBSERVED_CORE_SW_UNVERIFIED"
+  },
+  "minute_namespaces": {
+   "authoritative_logical_products": [
+    "STOCK_MINUTE_1M_R1",
+    "ETF_MINUTE_1M_R1",
+    "INDEX_MINUTE_ALIGN_R1"
+   ],
+   "catalog_rows": {
+    "STOCK_MINUTE_1M_R1": {
+     "layer": "L1",
+     "asset_type": "STOCK",
+     "status": "ACTIVE",
+     "partition_key": "cleaning_day_shards",
+     "description": "A-share stock 1m via Cleaning CURRENT standard/price/A股_stock_1m; unified plane STOCK_MINUTE_1M_R1; not Entry fixture; not refining case"
+    },
+    "ETF_MINUTE_1M_R1": {
+     "layer": "L1",
+     "asset_type": "ETF",
+     "status": "ACTIVE",
+     "partition_key": "year+day_shards",
+     "description": "ETF 1m overlapping shards via Cleaning CURRENT; not daily fallback"
+    }
+   },
+   "roots": {
+    "stock_1m_clean": {
+     "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
+     "exists": true,
+     "subdirs": [
+      "1m",
+      "A股_stock_1m__XSHE__1m__2026-09-11__fq_none__raw_none__r12_freshness__RU_A股_stock_1m_XSHE_1m_2026-09-11.parquet",
+      "A股_stock_1m__XSHE__1m__2026-09-14__fq_none__raw_none__r12_freshness__RU_A股_stock_1m_XSHE_1m_2026-09-14.parquet",
+      "A股_stock_1m__XSHE__1m__2026-09-15__fq_none__raw_none__r12_freshness__RU_A股_stock_1m_XSHE_1m_2026-09-15.parquet",
+      "A股_stock_1m__XSHE__1m__2026-09-16__fq_none__raw_none__r12_freshness__RU_A股_stock_1m_XSHE_1m_2026-09-16.parquet",
+      "A股_stock_1m__XSHE__1m__2026-09-17__fq_none__raw_none__r12_freshness__RU_A股_stock_1m_XSHE_1m_2026-09-17.parquet",
+      "A股_stock_1m__XSHE__1m__2026-09-18__fq_none__raw_none__r12_freshness__RU_A股_stock_1m_XSHE_1m_2026-09-18.parquet",
+      "A股_stock_1m__XSHE__1m__2026-09-21__fq_none__raw_none__r12_freshness__RU_A股_stock_1m_XSHE_1m_2026-09-21.parquet"
+     ]
+    },
+    "etf_1m_clean": {
+     "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+     "exists": true,
+     "subdirs": [
+      "1m",
+      "ETF_1m__XSHE__1m__2026-09-17__fq_none__raw_none__r12_freshness__RU_ETF_1m_XSHE_1m_2026-09-17.parquet",
+      "ETF_1m__XSHE__1m__2026-09-18__fq_none__raw_none__r12_freshness__RU_ETF_1m_XSHE_1m_2026-09-18.parquet",
+      "ETF_1m__XSHE__1m__2026-09-21__fq_none__raw_none__r12_freshness__RU_ETF_1m_XSHE_1m_2026-09-21.parquet",
+      "ETF_1m__XSHE__1m__2026-09-22__fq_none__raw_none__r12_freshness__RU_ETF_1m_XSHE_1m_2026-09-22.parquet",
+      "ETF_1m__XSHE__1m__2026-09-23__fq_none__raw_none__r12_freshness__RU_ETF_1m_XSHE_1m_2026-09-23.parquet",
+      "ETF_1m__XSHE__1m__2026-09-24__fq_none__raw_none__r12_freshness__RU_ETF_1m_XSHE_1m_2026-09-24.parquet",
+      "ETF_1m__XSHG__1m__2026-09-17__fq_none__raw_none__r12_freshness__RU_ETF_1m_XSHG_1m_2026-09-17.parquet"
+     ]
+    },
+    "stock_5m_clean": {
+     "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_5m",
+     "exists": true,
+     "subdirs": [
+      "5m",
+      "A股_stock_5m__XSHE__5m__2026-09-08__fq_none__raw_none__r12_freshness__RU_A股_stock_5m_XSHE_5m_2026-09-08.parquet",
+      "A股_stock_5m__XSHE__5m__2026-09-09__fq_none__raw_none__r12_freshness__RU_A股_stock_5m_XSHE_5m_2026-09-09.parquet",
+      "A股_stock_5m__XSHE__5m__2026-09-10__fq_none__raw_none__r12_freshness__RU_A股_stock_5m_XSHE_5m_2026-09-10.parquet",
+      "A股_stock_5m__XSHE__5m__2026-09-11__fq_none__raw_none__r12_freshness__RU_A股_stock_5m_XSHE_5m_2026-09-11.parquet",
+      "A股_stock_5m__XSHE__5m__2026-09-14__fq_none__raw_none__r12_freshness__RU_A股_stock_5m_XSHE_5m_2026-09-14.parquet",
+      "A股_stock_5m__XSHE__5m__2026-09-15__fq_none__raw_none__r12_freshness__RU_A股_stock_5m_XSHE_5m_2026-09-15.parquet",
+      "A股_stock_5m__XSHE__5m__2026-09-16__fq_none__raw_none__r12_freshness__RU_A股_stock_5m_XSHE_5m_2026-09-16.parquet"
+     ]
+    },
+    "stock_30m_clean": {
+     "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_30m",
+     "exists": true,
+     "subdirs": [
+      "30m",
+      "A股_stock_30m__XSHE__30m__2026-09-11__fq_none__raw_none__r12_freshness__RU_A股_stock_30m_XSHE_30m_2026-09-11.parquet",
+      "A股_stock_30m__XSHE__30m__2026-09-14__fq_none__raw_none__r12_freshness__RU_A股_stock_30m_XSHE_30m_2026-09-14.parquet",
+      "A股_stock_30m__XSHE__30m__2026-09-15__fq_none__raw_none__r12_freshness__RU_A股_stock_30m_XSHE_30m_2026-09-15.parquet",
+      "A股_stock_30m__XSHE__30m__2026-09-16__fq_none__raw_none__r12_freshness__RU_A股_stock_30m_XSHE_30m_2026-09-16.parquet",
+      "A股_stock_30m__XSHE__30m__2026-09-17__fq_none__raw_none__r12_freshness__RU_A股_stock_30m_XSHE_30m_2026-09-17.parquet",
+      "A股_stock_30m__XSHE__30m__2026-09-18__fq_none__raw_none__r12_freshness__RU_A股_stock_30m_XSHE_30m_2026-09-18.parquet",
+      "A股_stock_30m__XSHE__30m__2026-09-21__fq_none__raw_none__r12_freshness__RU_A股_stock_30m_XSHE_30m_2026-09-21.parquet"
+     ]
+    },
+    "stock_60m_clean": {
+     "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_60m",
+     "exists": true,
+     "subdirs": [
+      "60m",
+      "A股_stock_60m__XSHE__60m__2026-09-10__fq_none__raw_none__r12_freshness__RU_A股_stock_60m_XSHE_60m_2026-09-10.parquet",
+      "A股_stock_60m__XSHE__60m__2026-09-11__fq_none__raw_none__r12_freshness__RU_A股_stock_60m_XSHE_60m_2026-09-11.parquet",
+      "A股_stock_60m__XSHE__60m__2026-09-14__fq_none__raw_none__r12_freshness__RU_A股_stock_60m_XSHE_60m_2026-09-14.parquet",
+      "A股_stock_60m__XSHE__60m__2026-09-15__fq_none__raw_none__r12_freshness__RU_A股_stock_60m_XSHE_60m_2026-09-15.parquet",
+      "A股_stock_60m__XSHE__60m__2026-09-16__fq_none__raw_none__r12_freshness__RU_A股_stock_60m_XSHE_60m_2026-09-16.parquet",
+      "A股_stock_60m__XSHE__60m__2026-09-17__fq_none__raw_none__r12_freshness__RU_A股_stock_60m_XSHE_60m_2026-09-17.parquet",
+      "A股_stock_60m__XSHE__60m__2026-09-18__fq_none__raw_none__r12_freshness__RU_A股_stock_60m_XSHE_60m_2026-09-18.parquet"
+     ]
+    },
+    "index_minute_align": {
+     "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price",
+     "exists": true,
+     "subdirs": [
+      "A股_stock_1m",
+      "A股_stock_1m.__mat_36624",
+      "A股_stock_30m",
+      "A股_stock_30m.__mat_32460",
+      "A股_stock_5m",
+      "A股_stock_5m.__mat_10268",
+      "A股_stock_60m",
+      "A股_stock_60m.__mat_16068"
+     ]
+    }
+   },
+   "registered_file_list_locator": {
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+    "index_minute_rel": "清洗成品/releases/BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_* (successive day-sealed releases; CURRENT is the daily pointer)",
+    "architecture_rule": "INDEX MINUTE ALIGN daily must use --mode incremental; full rebuild requires explicit auth"
+   },
+   "keys_frequency_fq": {
+    "grain": [
+     "datetime",
+     "code"
+    ],
+    "frequency": "1m/5m/30m/60m",
+    "fq": "declared per namespace, not re-verified this round"
+   },
+   "revision_precedence": {
+    "rule": "Cleaning CURRENT standard/price day shards with overlapping-day override; a minute plane must never be used as a daily fallback"
+   },
+   "transform_reader_entry": {
+    "unknown": "exact minute compiler entry not located by exact reference this round"
+   },
+   "hard_rule": "minute bars must not be aggregated into daily bars (explicitly forbidden this round)"
+  },
+  "external_tushare_cbond": {
+   "authoritative_logical_products": [
+    "TUSHARE_CBOND_BASIC_R1",
+    "TUSHARE_CBOND_DAILY_MARKET_R1",
+    "TUSHARE_CBOND_ISSUE_R1",
+    "TUSHARE_CBOND_CALL_R1",
+    "TUSHARE_CBOND_RATE_R1",
+    "TUSHARE_CBOND_SHARE_R1",
+    "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+    "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+    "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+    "TUSHARE_CBOND_RATING_R1",
+    "TUSHARE_CBOND_RATING_PIT_R1",
+    "TUSHARE_CBOND_CALL_PIT_R1",
+    "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+    "TUSHARE_CBOND_TOP10_HOLDERS_R1"
+   ],
+   "catalog_rows": {
+    "TUSHARE_CBOND_BASIC_R1": {
+     "layer": "L1",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "year/asof_date",
+     "description": "Tushare convertible-bond dictionary (vendor schema)"
+    },
+    "TUSHARE_CBOND_DAILY_MARKET_R1": {
+     "layer": "L1",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "year/trade_date",
+     "description": "Tushare convertible-bond daily market"
+    },
+    "TUSHARE_CBOND_ISSUE_R1": {
+     "layer": "L2",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "event",
+     "description": "Tushare convertible-bond issue events"
+    },
+    "TUSHARE_CBOND_CALL_R1": {
+     "layer": "L2",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "event",
+     "description": "Tushare convertible-bond call/redeem events"
+    },
+    "TUSHARE_CBOND_RATE_R1": {
+     "layer": "L2",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "coupon_period",
+     "description": "Tushare convertible-bond coupon schedule"
+    },
+    "TUSHARE_CBOND_SHARE_R1": {
+     "layer": "L2",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "event",
+     "description": "Tushare conversion result events; not daily PIT"
+    },
+    "TUSHARE_CBOND_STOCK_BRIDGE_R1": {
+     "layer": "L1",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "dictionary",
+     "description": "Tushare bond-to-stock bridge N:1"
+    },
+    "TUSHARE_CBOND_BASIC_JQCOMPAT_R1": {
+     "layer": "L2",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "dictionary",
+     "description": "JQ-compatible BASIC fields A/B only; not JQ native"
+    },
+    "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1": {
+     "layer": "L2",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "year/date",
+     "description": "JQ-compatible daily A/B fields; not JQ native"
+    },
+    "TUSHARE_CBOND_RATING_R1": {
+     "layer": "L2",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "event",
+     "description": "Tushare cb_rating clean events; not as-of"
+    },
+    "TUSHARE_CBOND_RATING_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "pit_interval",
+     "description": "CBOND rating PIT next trade day after ann_date"
+    },
+    "TUSHARE_CBOND_CALL_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "pit_event",
+     "description": "CBOND call/redeem PIT next trade day after ann_date"
+    },
+    "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1": {
+     "layer": "L1",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "pit_interval",
+     "description": "CBOND remain_size PIT next trade day after publish_date"
+    },
+    "TUSHARE_CBOND_TOP10_HOLDERS_R1": {
+     "layer": "L2",
+     "asset_type": "CBOND",
+     "status": "ACTIVE",
+     "partition_key": "report_period",
+     "description": "CBOND top10 holders report-period only; PIT not ready"
+    }
+   },
+   "supplier_and_provenance": "Tushare vendor schema; JQCOMPAT variants are explicitly NOT JQ native",
+   "roots": {
+    "cache_R1": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1",
+    "cache_R2": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R2_途施可转债_ASOF_20260814_R1",
+    "external_evidence": "E:\\BLACKBOX\\数据\\外部证据\\TUSHARE",
+    "reference_patch": "E:\\BLACKBOX\\数据\\外部补充只读\\Tushare_reference_patch"
+   },
+   "separate_registry_not_in_current_pair": true,
+   "registered_file_list_locator": {
+    "note": "these products live in two dedicated releases (BLACKBOX_CACHE_R1/R2_途施可转债_ASOF_20260814_R1) and are NOT part of the CURRENT BLACKBOX_CACHE_R1_FUND_NAV_PIT release root; that separation is intentional and must not be collapsed",
+    "catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv"
+   },
+   "selected_physical_sources": {
+    "R1": {
+     "TUSHARE_CBOND_BASIC_JQCOMPAT_R1": {
+      "parquet_files": 1,
+      "total_rows": 1162,
+      "schema": [
+       "code",
+       "bond_code_ts",
+       "short_name",
+       "full_name",
+       "company_code",
+       "list_date",
+       "delist_Date",
+       "convert_start_date",
+       "convert_end_date",
+       "convert_price",
+       "source_vendor",
+       "jq_native_data",
+       "schema_compat_target"
+      ],
+      "sha256_first": "5ac3e346c11fc0d5f323e617df9ce6f28a3864bb3441d9ae67a103e87bc8bf8f",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_BASIC_JQCOMPAT_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_BASIC_R1": {
+      "parquet_files": 1,
+      "total_rows": 1162,
+      "schema": [
+       "ts_code",
+       "bond_full_name",
+       "bond_short_name",
+       "cb_code",
+       "cb_type",
+       "stk_code",
+       "stk_short_name",
+       "maturity",
+       "par",
+       "issue_price",
+       "issue_size",
+       "remain_size",
+       "value_date",
+       "maturity_date",
+       "rate_type",
+       "coupon_rate",
+       "add_rate",
+       "pay_per_year",
+       "list_date",
+       "delist_date",
+       "exchange",
+       "conv_start_date",
+       "conv_end_date",
+       "conv_stop_date",
+       "first_conv_price",
+       "conv_price",
+       "rate_clause",
+       "put_clause",
+       "maturity_call_price",
+       "call_clause",
+       "reset_clause",
+       "conv_clause",
+       "guarantor",
+       "guarantee_type",
+       "issue_rating",
+       "newest_rating",
+       "rating_comp",
+       "bond_code_ts",
+       "bond_code_jq",
+       "stock_code_ts",
+       "stock_code_jq",
+       "source_vendor",
+       "jq_native_data",
+       "current_convert_price_snapshot",
+       "PIT_SAFE",
+       "SNAPSHOT_ONLY"
+      ],
+      "sha256_first": "7065c910d4294496053fd6c3cfa0d0ba7043c91958cdf56f9b37276c7c2761ef",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_BASIC_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_CALL_R1": {
+      "parquet_files": 1,
+      "total_rows": 2489,
+      "schema": [
+       "ts_code",
+       "call_type",
+       "is_call",
+       "ann_date",
+       "call_date",
+       "call_price",
+       "call_price_tax",
+       "call_vol",
+       "call_amount",
+       "payment_date",
+       "call_reg_date",
+       "bond_code_ts",
+       "bond_code_jq",
+       "source_vendor",
+       "jq_native_data"
+      ],
+      "sha256_first": "09dd41689bde349a14f78ebd1d11c8720fe51770961981e2d2c53243b86d2ada",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_CALL_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1": {
+      "parquet_files": 6,
+      "total_rows": 554432,
+      "schema": [
+       "code",
+       "bond_code_ts",
+       "date",
+       "pre_close",
+       "open",
+       "high",
+       "low",
+       "close",
+       "volume",
+       "money",
+       "source_vendor",
+       "jq_native_data",
+       "VENDOR_DAILY_CONVERT_VALUE",
+       "VENDOR_DAILY_CONVERT_PREMIUM",
+       "JQ_EQUIVALENT"
+      ],
+      "sha256_first": "a31bd6064cbbba8d7283be101f0a531b971bbfedf2eefc6d92c3b43821bb3edc",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1\\year=2021\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1\\year=2022\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1\\year=2023\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1\\year=2024\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1\\year=2025\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1\\year=2026\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_DAILY_MARKET_R1": {
+      "parquet_files": 6,
+      "total_rows": 554432,
+      "schema": [
+       "ts_code",
+       "trade_date",
+       "pre_close",
+       "open",
+       "high",
+       "low",
+       "close",
+       "change",
+       "pct_chg",
+       "vol",
+       "amount",
+       "bond_value",
+       "bond_over_rate",
+       "cb_value",
+       "cb_over_rate",
+       "bond_code_ts",
+       "bond_code_jq",
+       "source_vendor",
+       "jq_native_data"
+      ],
+      "sha256_first": "c97de256dcf3b4188280425725065ef9e24496dc5988b250c5927f1bd4a8095d",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_R1\\year=2021\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_R1\\year=2022\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_R1\\year=2023\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_R1\\year=2024\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_R1\\year=2025\\data.parquet",
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_DAILY_MARKET_R1\\year=2026\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_ISSUE_R1": {
+      "parquet_files": 1,
+      "total_rows": 1135,
+      "schema": [
+       "ts_code",
+       "ann_date",
+       "res_ann_date",
+       "plan_issue_size",
+       "issue_size",
+       "issue_price",
+       "issue_type",
+       "onl_code",
+       "onl_name",
+       "onl_date",
+       "onl_size",
+       "onl_pch_vol",
+       "onl_pch_num",
+       "onl_pch_excess",
+       "shd_ration_code",
+       "shd_ration_name",
+       "shd_ration_date",
+       "shd_ration_record_date",
+       "shd_ration_pay_date",
+       "shd_ration_price",
+       "shd_ration_ratio",
+       "shd_ration_size",
+       "offl_size",
+       "bond_code_ts",
+       "bond_code_jq",
+       "source_vendor",
+       "jq_native_data"
+      ],
+      "sha256_first": "6dd99a0173c300cfbaef6545962670c98bbe85d26f2e7d559909942803914c2b",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_ISSUE_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_RATE_R1": {
+      "parquet_files": 1,
+      "total_rows": 4870,
+      "schema": [
+       "ts_code",
+       "rate_freq",
+       "rate_start_date",
+       "rate_end_date",
+       "coupon_rate",
+       "bond_code_ts",
+       "bond_code_jq",
+       "source_vendor",
+       "jq_native_data"
+      ],
+      "sha256_first": "60384e7f9bdee798f6f0b529e19db135680d23cd7dc0c9ccbd240e9ee37ad598",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_RATE_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_SHARE_R1": {
+      "parquet_files": 1,
+      "total_rows": 64948,
+      "schema": [
+       "ts_code",
+       "bond_short_name",
+       "publish_date",
+       "end_date",
+       "issue_size",
+       "convert_price_initial",
+       "convert_price",
+       "convert_val",
+       "convert_vol",
+       "convert_ratio",
+       "acc_convert_val",
+       "acc_convert_vol",
+       "acc_convert_ratio",
+       "remain_size",
+       "total_shares",
+       "bond_code_ts",
+       "bond_code_jq",
+       "source_vendor",
+       "jq_native_data"
+      ],
+      "sha256_first": "9518789d4820716fea706ce1ec375eb9bc351bd60e5224b39ace22292642a527",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_SHARE_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_STOCK_BRIDGE_R1": {
+      "parquet_files": 1,
+      "total_rows": 1162,
+      "schema": [
+       "bond_code_ts",
+       "bond_code_jq",
+       "stock_code_ts",
+       "stock_code_jq",
+       "bond_short_name",
+       "cb_type",
+       "list_date",
+       "delist_date",
+       "conv_start_date",
+       "conv_end_date",
+       "source_vendor",
+       "stock_short_name",
+       "source_api"
+      ],
+      "sha256_first": "0505d1a1ebf8766463cc7e9184c0d09163d7c855eb1abf3643f2b859b3aae778",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_STOCK_BRIDGE_R1\\data.parquet"
+      ]
+     }
+    },
+    "R2": {
+     "TUSHARE_CBOND_CALL_PIT_R1": {
+      "parquet_files": 1,
+      "total_rows": 3056,
+      "schema": [
+       "ts_code",
+       "call_type",
+       "is_call",
+       "ann_date",
+       "call_date",
+       "call_price",
+       "call_price_tax",
+       "call_vol",
+       "call_amount",
+       "payment_date",
+       "call_reg_date",
+       "bond_code_ts",
+       "bond_code_jq",
+       "source_vendor",
+       "jq_native_data",
+       "pit_valid_from",
+       "source_ann_date",
+       "EVENT_DATE",
+       "DISCLOSURE_DATE",
+       "KNOWN_AT_POLICY",
+       "PIT_SAFE",
+       "source_api"
+      ],
+      "sha256_first": "32c6b1e2ec69b13b0c80e2a296dd0667c8c02d870623d6cd3bf583777bac37ef",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R2_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_CALL_PIT_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_RATING_PIT_R1": {
+      "parquet_files": 1,
+      "total_rows": 5133,
+      "schema": [
+       "bond_code_jq",
+       "bond_code_ts",
+       "pit_valid_from",
+       "pit_valid_to",
+       "rating",
+       "rating_outlook",
+       "rating_com_name",
+       "rating_way",
+       "rating_type",
+       "source_ann_date",
+       "source_rating_date",
+       "KNOWN_AT_POLICY",
+       "PIT_SAFE",
+       "source_vendor",
+       "source_api",
+       "jq_native_data"
+      ],
+      "sha256_first": "335c475304c2dc938e2dee569427f2bd9a542a541d065c7b7f78936f90bd0d0e",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R2_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_RATING_PIT_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_RATING_R1": {
+      "parquet_files": 1,
+      "total_rows": 5133,
+      "schema": [
+       "ts_code",
+       "ann_date",
+       "rating_date",
+       "rating_com_name",
+       "rating_way",
+       "rating_type",
+       "rating",
+       "rating_outlook",
+       "bond_code_ts",
+       "bond_code_jq",
+       "source_vendor",
+       "jq_native_data",
+       "pit_valid_from"
+      ],
+      "sha256_first": "c76250b61d3b3edddc61054f01ca97c0bb1917892d2dcaa659cbcf528ae83482",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R2_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_RATING_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1": {
+      "parquet_files": 1,
+      "total_rows": 108284,
+      "schema": [
+       "bond_code_ts",
+       "bond_code_jq",
+       "pit_valid_from",
+       "known_remain_size",
+       "known_remain_size_source",
+       "size_state_source",
+       "source_publish_date",
+       "remain_size",
+       "publish_date",
+       "end_date",
+       "convert_price",
+       "convert_val",
+       "convert_vol",
+       "convert_ratio",
+       "acc_convert_val",
+       "acc_convert_vol",
+       "acc_convert_ratio",
+       "issue_size",
+       "source_api",
+       "PIT_SAFE",
+       "pit_valid_to",
+       "KNOWN_AT_POLICY",
+       "source_vendor",
+       "jq_native_data"
+      ],
+      "sha256_first": "2e6b7de0ce67612db2eca70506444eebcfd30cd247ff22d456487c2c3fff13ba",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R2_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_REMAIN_SIZE_PIT_R1\\data.parquet"
+      ]
+     },
+     "TUSHARE_CBOND_TOP10_HOLDERS_R1": {
+      "parquet_files": 1,
+      "total_rows": 42870,
+      "schema": [
+       "ts_code",
+       "end_date",
+       "holder_rank",
+       "holder_name",
+       "hold_amount",
+       "hold_ratio",
+       "bond_code_ts",
+       "bond_code_jq",
+       "source_vendor",
+       "jq_native_data",
+       "PIT_SAFE",
+       "REPORT_PERIOD_ONLY",
+       "BACKTEST_DEFAULT_ACCESS",
+       "known_at"
+      ],
+      "sha256_first": "9af2d289312fefeb3b5d0cf042ff2f046c5df5a8658f22fc06a20d850267b998",
+      "paths": [
+       "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R2_途施可转债_ASOF_20260814_R1\\TUSHARE_CBOND_TOP10_HOLDERS_R1\\data.parquet"
+      ]
+     }
+    }
+   },
+   "keys_frequency_fq": {
+    "grain": {
+     "dictionary": [
+      "ts_code"
+     ],
+     "daily_market": [
+      "trade_date",
+      "ts_code"
+     ],
+     "events": [
+      "ts_code",
+      "ann_date"
+     ]
+    },
+    "frequency": "1d / event",
+    "fq": "not applicable"
+   },
+   "revision_precedence": {
+    "rule": "R2 PIT products supersede R1 raw-vendor products for PIT use; JQCOMPAT never becomes JQ native"
+   },
+   "transform_reader_entry": {
+    "unknown": "Tushare CBOND compiler entry not located by exact reference this round"
+   },
+   "pit_policies_observed": {
+    "TUSHARE_CBOND_RATING_PIT_R1": "pit_valid_from / pit_valid_to interval, KNOWN_AT_POLICY column present",
+    "TUSHARE_CBOND_CALL_PIT_R1": "EVENT_DATE / DISCLOSURE_DATE / KNOWN_AT_POLICY present",
+    "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1": "pit_valid_from/to + source_publish_date + known_remain_size",
+    "TUSHARE_CBOND_TOP10_HOLDERS_R1": "REPORT_PERIOD_ONLY; BACKTEST_DEFAULT_ACCESS column; PIT not ready"
+   }
+  },
+  "dictionary_and_factor_value": {
+   "distinction": "a factor DICTIONARY row (name/formula/alias/PIT rule) is not a factor VALUE; the 260 native factor library is a dictionary/formula asset and its value store is a separate, permission-gated target",
+   "dictionary_roots": {
+    "cache_schema_registry": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_SCHEMA_REGISTRY.csv",
+    "cache_schema_registry_sha256": "17aea241b7123c5551ba02005161c0684e7c6c08372cdbb6f9c94d6105e15661",
+    "factor_formula_registry": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\FACTOR_FORMULA_REGISTRY.csv",
+    "factor_formula_registry_sha256": "edc22e611193cb92f88a44cc8bf7b75f9d9e2dd94ba5a9fc52f11d8f2245fa31",
+    "rule_library": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\source_contracts\\S1_ENGINE_RULE_LIBRARY",
+    "jq_dictionary_raw": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\.."
+   },
+   "factor_value_roots": {
+    "cache_stock_factor": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_FACTOR_DAILY_R1\\year=2026\\part_2026.parquet",
+    "cache_etf_factor": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ETF_FACTOR_DAILY_R1\\year=2026\\part_2026.parquet",
+    "cache_index_factor": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_FACTOR_DAILY_R1\\year=2026\\part_2026.parquet",
+    "clean_panels": {
+     "panel_20": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factors\\family=panel_20",
+     "panel_260": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factors\\family=panel_260",
+     "panel_20_exists": true,
+     "panel_260_exists": true
+    }
+   },
+   "formula_version_rule": {
+    "formal": "univ_factor_r1_v1",
+    "candidate_r08": "univ_factor_r1_v1.R08_OBSERVED_SEGMENTS",
+    "rule": "a version change means the outputs are candidates and are NOT silently compatible formal factors"
+   },
+   "field_not_cached_rule": "FIELD_NOT_CACHED is a cache-miss reason; it is never SOURCE_LIMITATION when the RAW field exists, and never an unavailable-vendor-field claim without a permission receipt"
+  }
+ },
+ "legacy_tool_defects": {
+  "empty_modules": [
+   {
+    "path": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_common_r1.py",
+    "bytes": 2,
+    "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+   },
+   {
+    "path": "E:\\BLACKBOX\\脚本\\blackbox_cache_coverage_non_regression_gate_r1.py",
+    "bytes": 2,
+    "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+   }
+  ],
+  "required_names_missing_from_common": [
+   "infer_mode_for_product",
+   "load_trade_calendar",
+   "product_date_coverage",
+   "CRITICAL_BACKTEST_PRODUCTS",
+   "HISTORICAL_REQUIRED",
+   "cache_current",
+   "cleaning_current",
+   "classify_stock_daily",
+   "compare_coverage",
+   "find_calendar_trade_days",
+   "now_cn",
+   "raw_stock_daily_dates"
+  ],
+  "required_names_missing_from_gate": [
+   "self_test",
+   "gate"
+  ],
+  "call_sites": [
+   {
+    "script": "脚本/blackbox_data_access_resolver_r1.py",
+    "line": 700,
+    "imports": [
+     "infer_mode_for_product",
+     "load_trade_calendar",
+     "product_date_coverage"
+    ]
+   },
+   {
+    "script": "脚本/blackbox_data_coverage_control_plane_build_r1.py",
+    "line": 13,
+    "imports": [
+     "12 names as above"
+    ]
+   },
+   {
+    "script": "脚本/blackbox_data_coverage_control_plane_build_r1.py",
+    "line": 267,
+    "imports": [
+     "self_test",
+     "gate"
+    ]
+   },
+   {
+    "script": "脚本/blackbox_data_coverage_diagnose_r1.py",
+    "line": 44,
+    "imports": [
+     "classify_stock_daily"
+    ]
+   }
+  ],
+  "causal_status": "STATIC_IMPORT_DEFECT_OBSERVED; the contribution of these modules to any specific historical miss or publication is NOT established by static inspection and is not claimed",
+  "enumerator_mismatch": {
+   "hand_enum_members": [
+    "SOURCE_MISSING",
+    "RAW_COMPLETE_CLEANING_MISSING",
+    "CLEANING_COMPLETE_CACHE_MISSING",
+    "CACHE_COVERAGE_REGRESSION",
+    "CACHE_PRODUCT_UNAVAILABLE",
+    "READER_LOAD_MISSING",
+    "READER_DATE_SLICE_MISSING",
+    "FILTER_EMPTY",
+    "UNIVERSE_EMPTY",
+    "PIT_ASOF_EMPTY",
+    "SOURCE_LIMITATION",
+    "REQUEST_OUTSIDE_PRODUCT_COVERAGE",
+    "AMBIGUOUS_DATASET",
+    "UNKNOWN_STOP"
+   ],
+   "success_labels_are_not_root_causes": [
+    "SOURCE_AVAILABLE_AND_AUTHORITATIVE",
+    "SOURCE_AVAILABLE_AND_SERVED",
+    "SEPARATE_NAMESPACE_OR_REGISTRY"
+   ],
+   "rule": "successful diagnosis may carry root_cause=null plus a separate success status; no new root-cause value is invented"
+  },
+  "successor_controls_isolated": true
+ },
+ "unresolved_bindings": [
+  {
+   "binding": "ETF_DAILY_PIT_R1 transform entry",
+   "reason": "ETF-specific compiler function not located by exact reference this round",
+   "action_for_r09": "resolve from cache_compiler_daily_incremental_r1.py ETF branch before any update"
+  },
+  {
+   "binding": "INDEX_DAILY_R1 cache writer",
+   "reason": "compiler function not located by exact reference this round",
+   "action_for_r09": "resolve before extending the index plane past 2026-08-11"
+  },
+  {
+   "binding": "VALUATION_PIT_R1 transform entry",
+   "reason": "not located by exact reference this round",
+   "action_for_r09": "resolve and reconcile the two RAW families"
+  },
+  {
+   "binding": "CURRENT ADJUST_FACTOR_PIT_R1 writer",
+   "reason": "the writer producing 2026-08-15..2026-09-24 cache rows was not identified",
+   "action_for_r09": "resolve together with the RAW page-ordinal defect"
+  },
+  {
+   "binding": "SECURITY_MASTER_SNAPSHOT_R1 / MARKET_UNIVERSE_PIT_R1 builder",
+   "reason": "not located by exact reference this round",
+   "action_for_r09": "resolve before any universe regression claim"
+  },
+  {
+   "binding": "STOCK_TRADEABILITY_PIT_R1 builder",
+   "reason": "not located by exact reference this round",
+   "action_for_r09": "resolve before ST/limit admission work"
+  },
+  {
+   "binding": "minute namespace compiler",
+   "reason": "not located by exact reference this round",
+   "action_for_r09": "resolve before any minute update"
+  },
+  {
+   "binding": "Tushare CBOND compiler",
+   "reason": "not located by exact reference this round",
+   "action_for_r09": "resolve in the CBOND release, not the equity cache"
+  },
+  {
+   "binding": "INDEX_DAILY_RAW_FULL_HISTORY_R1 MANIFEST n_files",
+   "reason": "declares 154, directory holds 732",
+   "action_for_r09": "registry correction, not a data loss"
+  }
+ ],
+ "reusable_source_bodies_on_hub": [
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_engine/S3_ENGINE_SOURCE/api.py",
+   "use": "engine provider creation/injection"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_engine/S3_ENGINE_SOURCE/engine.py",
+   "use": "engine core"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_engine/S3_ENGINE_SOURCE/pyproject.toml",
+   "use": "dependency declaration"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_contracts/S4_UPDATE_PUBLICATION/jq_download_execution_r1.py",
+   "use": "downloader entry"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_contracts/S4_UPDATE_PUBLICATION/jq_download_base.py",
+   "use": "downloader base"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_contracts/S4_UPDATE_PUBLICATION/run_blackbox_daily_incremental_data_plane_r1.py",
+   "use": "daily lane orchestrator"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R05/candidate_r5/provider.py",
+   "use": "LocalValueProvider boundary patch"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R05/source_bodies/formal_cleaning_r15_build_and_seal_r1.py",
+   "use": "cleaning build+seal"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R05/source_bodies/post_seal_daily_download_r8.py",
+   "use": "post-seal daily download"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/NEXT_UPDATE_BINDINGS.json",
+   "use": "update route bindings"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/DERIVED_DEPENDENCY_REPAIR_PLAN.json",
+   "use": "derived dependency plan"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/source_bodies/MUST_READ_MANIFEST_CURRENT.json",
+   "use": "manifest"
+  }
+ ],
+ "successor_controls_isolated": {
+  "modules": [
+   "reviews/R08/r08_coverage_gate.py",
+   "reviews/R08/r08_rebuild_local.py",
+   "reviews/R08/test_r08.py"
+  ],
+  "installation_path_replaced": false,
+  "rule": "these remain isolated successor controls until GPT supplies a tested compatible integration"
+ },
+ "source_absence_claims": 0,
+ "DOWNLOAD_REQUIRED": false
+}
