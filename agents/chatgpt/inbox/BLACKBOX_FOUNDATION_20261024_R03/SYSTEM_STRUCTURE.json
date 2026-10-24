@@ -1,0 +1,360 @@
+{
+ "structure_id": "BLACKBOX_SYSTEM_STRUCTURE_R3",
+ "built_at": "2026-10-24T14:46:55",
+ "language": "en",
+ "round": "R03_OF_10",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "source_of_paths": "R01 executable registry + direct file existence checks at build time",
+ "read_chain": [
+  "cand.launcher",
+  "cand.interpreter",
+  "cand.registry_builder",
+  "cand.registry",
+  "cand.registry_query",
+  "prod.cleaning_current",
+  "cand.reader",
+  "cand.adapter",
+  "eng.base",
+  "eng.api",
+  "eng.engine"
+ ],
+ "update_chain": [
+  "prod.update_entry",
+  "prod.daily_manifest",
+  "prod.publication_boundary"
+ ],
+ "nodes": [
+  {
+   "id": "cand.launcher",
+   "kind": "launcher",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\tests\\test_conformance_r3.py",
+   "exists": true,
+   "callable_or_key": "main()",
+   "status": "candidate",
+   "io": "read local parquet; write TEST_RESULTS.json and runtime caches",
+   "rule": "candidate tree only; no production write",
+   "evidence": "executes the 10 required verifications",
+   "sha256_16": "5576a61c24809272",
+   "bytes": 28938
+  },
+  {
+   "id": "cand.interpreter",
+   "kind": "interpreter",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+   "exists": true,
+   "callable_or_key": "python.exe",
+   "status": "candidate",
+   "io": "read-only",
+   "rule": "isolated venv; global Python and the historical .venv are untouched",
+   "evidence": "{\"python\": \"3.12.10\", \"pandas\": \"2.3.3\", \"pyarrow\": \"21.0.0\"}",
+   "sha256_16": "0b471133e110cfb5",
+   "bytes": 274424,
+   "versions": {
+    "python": "3.12.10",
+    "pandas": "2.3.3",
+    "pyarrow": "21.0.0"
+   }
+  },
+  {
+   "id": "sys.interpreter",
+   "kind": "interpreter",
+   "path": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+   "exists": true,
+   "callable_or_key": "python.exe",
+   "status": "current",
+   "io": "read-only",
+   "rule": "system interpreter; lacks pandas, so the engine contract cannot be exercised here (kept unchanged)",
+   "evidence": "R01 blocked on this interpreter",
+   "sha256_16": "4d6f5f81a4bca111",
+   "bytes": 104952
+  },
+  {
+   "id": "cand.registry_builder",
+   "kind": "registry_builder",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\build_registry_r3.py",
+   "exists": true,
+   "callable_or_key": "main()",
+   "status": "candidate",
+   "io": "reads R01 registry + parquet footer statistics; writes R3 registry",
+   "rule": "candidate tree only",
+   "evidence": "observed coverage replaces filename/build-stamp heuristics",
+   "sha256_16": "c15f66c236fb4d9c",
+   "bytes": 11094
+  },
+  {
+   "id": "cand.registry_query",
+   "kind": "registry_query",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\eco_query_r3.py",
+   "exists": true,
+   "callable_or_key": "main()",
+   "status": "candidate",
+   "io": "read-only",
+   "rule": "candidate tree only",
+   "evidence": "executable registry entry",
+   "sha256_16": "ea10e1eb4f530782",
+   "bytes": 3610
+  },
+  {
+   "id": "cand.registry",
+   "kind": "registry",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
+   "exists": true,
+   "callable_or_key": "datasets[]",
+   "status": "candidate",
+   "io": "read-only",
+   "rule": "single machine-generated source for scope/coverage claims",
+   "evidence": null,
+   "sha256_16": "8a1a4d9337d25839",
+   "bytes": 115833
+  },
+  {
+   "id": "prod.cleaning_current",
+   "kind": "current_pointer",
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+   "exists": true,
+   "callable_or_key": "release_id / standard_root",
+   "status": "current",
+   "io": "read-only",
+   "rule": "dynamic pointer; the only allowed source of the active clean release",
+   "evidence": "read by build_registry_r3.py through the R01 registry",
+   "sha256_16": "9abad90cd952a1d6",
+   "bytes": 1160
+  },
+  {
+   "id": "prod.cache_current",
+   "kind": "current_pointer",
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+   "exists": true,
+   "callable_or_key": "cache_release_id / asof",
+   "status": "current",
+   "io": "read-only",
+   "rule": "cache is a derived product; not bound to the candidate reader this cycle",
+   "evidence": null,
+   "sha256_16": "b2ce53f05e50e0d3",
+   "bytes": 1531
+  },
+  {
+   "id": "prod.daily_manifest",
+   "kind": "current_pointer",
+   "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+   "exists": true,
+   "callable_or_key": "DAILY_INCREMENTAL_READY / CN_RESEARCH_DATE",
+   "status": "current",
+   "io": "read-only",
+   "rule": "daily incremental plane status; not re-run in this cycle",
+   "evidence": null,
+   "sha256_16": "0f0813cb822f535e",
+   "bytes": 5583
+  },
+  {
+   "id": "prod.update_entry",
+   "kind": "update_entry",
+   "path": "E:\\BLACKBOX\\脚本\\run_blackbox_research_os.py",
+   "exists": true,
+   "callable_or_key": "--mode daily_incremental",
+   "status": "current",
+   "io": "read local + network (download)",
+   "rule": "must not be invoked by the read plane",
+   "evidence": "separate from the candidate reader; not executed this cycle",
+   "sha256_16": "5fbf8c3149c70819",
+   "bytes": 23323
+  },
+  {
+   "id": "cand.reader",
+   "kind": "reader",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r3\\provider.py",
+   "exists": true,
+   "callable_or_key": "LocalValueProvider.get_price",
+   "status": "candidate",
+   "io": "read local parquet only; no network",
+   "rule": "READ_ONLY_VALUE_PLANE; RAW_NONE identity",
+   "evidence": "returns envelopes with explicit accounting",
+   "sha256_16": "7fe6dbd07d512327",
+   "bytes": 37160
+  },
+  {
+   "id": "cand.adapter",
+   "kind": "contract_adapter",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r3\\engine_adapter.py",
+   "exists": true,
+   "callable_or_key": "EngineLocalValueProvider",
+   "status": "candidate",
+   "io": "read local parquet only; no network",
+   "rule": "subclasses the real engine base; rejects unsupported parameters",
+   "evidence": "engine-facing DataFrame / list types",
+   "sha256_16": "cf0f0582a23eb0ee",
+   "bytes": 11129
+  },
+  {
+   "id": "eng.base",
+   "kind": "engine_contract",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\providers\\base.py",
+   "exists": true,
+   "callable_or_key": "DataProvider.get_price",
+   "status": "current",
+   "io": "read-only",
+   "rule": "engine contract; unmodified",
+   "evidence": "loaded as a leaf module in the candidate runtime",
+   "sha256_16": "be053cf0693aa1ad",
+   "bytes": 10037
+  },
+  {
+   "id": "eng.api",
+   "kind": "engine_api",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\api.py",
+   "exists": true,
+   "callable_or_key": "_create_provider / _call_provider_get_price",
+   "status": "current",
+   "io": "read-only",
+   "rule": "engine data API; unmodified",
+   "evidence": "provider branches: jqdata, tushare, qmt/miniqmt, remote-qmt; no local-value branch",
+   "sha256_16": "49c49697504202fb",
+   "bytes": 120960
+  },
+  {
+   "id": "eng.engine",
+   "kind": "engine_core",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\engine.py",
+   "exists": true,
+   "callable_or_key": "get_trade_days / get_split_dividend consumers",
+   "status": "current",
+   "io": "read-only",
+   "rule": "engine core; formal_backtest_active and engine_core_active unchanged (false)",
+   "evidence": "consumer evidence for event schema and trade-day types",
+   "sha256_16": "7e31f9ee391f3bc6",
+   "bytes": 133571
+  },
+  {
+   "id": "prod.publication_boundary",
+   "kind": "publication_boundary",
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+   "exists": true,
+   "callable_or_key": "CURRENT_* pointers",
+   "status": "current",
+   "io": "write (prohibited this cycle)",
+   "rule": "sealed/CURRENT/RAW are never edited in place",
+   "evidence": "no publication performed",
+   "sha256_16": "9abad90cd952a1d6",
+   "bytes": 1160
+  }
+ ],
+ "edges": [
+  {
+   "from": "cand.launcher",
+   "to": "cand.interpreter",
+   "mechanism": "venv executable",
+   "confirmed": true,
+   "note": "documented in RUNTIME_COMMAND.md"
+  },
+  {
+   "from": "cand.launcher",
+   "to": "cand.reader",
+   "mechanism": "import candidate.r3.provider",
+   "confirmed": true,
+   "note": "exercised by 9 of 10 checks"
+  },
+  {
+   "from": "cand.reader",
+   "to": "cand.registry",
+   "mechanism": "LocalValueProvider(registry_path)",
+   "confirmed": true,
+   "note": "registry supplies layer roots and dataset scope"
+  },
+  {
+   "from": "cand.registry_builder",
+   "to": "prod.cleaning_current",
+   "mechanism": "R01 registry dynamic_sources -> standard_root",
+   "confirmed": true,
+   "note": "the active clean release is read from the CURRENT pointer, not hardcoded"
+  },
+  {
+   "from": "cand.registry_builder",
+   "to": "cand.registry",
+   "mechanism": "writes JSON",
+   "confirmed": true,
+   "note": "counts are generated from the build"
+  },
+  {
+   "from": "cand.registry",
+   "to": "prod.cleaning_current",
+   "mechanism": "layer.root",
+   "confirmed": true,
+   "note": "dataset layer roots resolve to the active release"
+  },
+  {
+   "from": "cand.reader",
+   "to": "local_parquet",
+   "mechanism": "pyarrow read_table",
+   "confirmed": true,
+   "note": "bounded reads; footer statistics come from the cached index"
+  },
+  {
+   "from": "cand.adapter",
+   "to": "eng.base",
+   "mechanism": "importlib leaf load + subclass",
+   "confirmed": true,
+   "note": "isinstance(adapter, DataProvider) verified at runtime"
+  },
+  {
+   "from": "eng.api",
+   "to": "cand.adapter",
+   "mechanism": "_create_provider branch",
+   "confirmed": false,
+   "note": "UNRESOLVED: no local-value branch is registered in the factory; the adapter is instantiable and conformant but not selectable by the engine"
+  },
+  {
+   "from": "eng.api",
+   "to": "eng.base",
+   "mechanism": "DataProvider contract",
+   "confirmed": true,
+   "note": "abstract methods and parameter list inspected"
+  },
+  {
+   "from": "prod.update_entry",
+   "to": "prod.daily_manifest",
+   "mechanism": "six-lane daily plane",
+   "confirmed": true,
+   "note": "separate path; not executed this cycle"
+  },
+  {
+   "from": "prod.update_entry",
+   "to": "prod.publication_boundary",
+   "mechanism": "release publication + CURRENT pointer switch",
+   "confirmed": true,
+   "note": "publication is out of scope; the candidate only reads"
+  },
+  {
+   "from": "cand.reader",
+   "to": "prod.publication_boundary",
+   "mechanism": "none",
+   "confirmed": false,
+   "note": "no write edge exists by design (READ_ONLY_VALUE_PLANE)"
+  }
+ ],
+ "unresolved_edges": [
+  {
+   "edge": "eng.api -> cand.adapter",
+   "why": "the provider factory in data/api.py:57 only branches to jqdata/tushare/qmt/miniqmt/remote-qmt; registering a local-value branch is a production configuration change reserved for a later round",
+   "impact": "the engine cannot select this adapter yet; conformance is proven by direct construction and real DataFrame calls only"
+  },
+  {
+   "edge": "adjusted price semantics",
+   "why": "no evidenced pre/post adjustment exists for the batch segments (factor is null there); applying a factor formula would fabricate values",
+   "impact": "fq=pre/post are rejected; the engine default fq='pre' therefore cannot be served by this candidate until adjustment is implemented"
+  },
+  {
+   "edge": "per-dataset increment cursor",
+   "why": "scope.increment_cursor is null for every observed dataset; no updater has published one",
+   "impact": "the read plane knows coverage bounds but not the next download offset"
+  },
+  {
+   "edge": "full engine initialization",
+   "why": "engine_core_active/formal_backtest_active remain false and package import may initialise trading/download paths",
+   "impact": "this cycle proves the leaf contract and DataFrame layout, not a full backtest run"
+  }
+ ],
+ "node_count": 16,
+ "edge_count": 13,
+ "missing_paths": []
+}
