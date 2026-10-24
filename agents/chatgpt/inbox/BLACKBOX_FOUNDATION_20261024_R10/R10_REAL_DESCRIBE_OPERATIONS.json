@@ -1,0 +1,221 @@
+{
+ "schema": "R10_REAL_DESCRIBE_OPERATIONS_1",
+ "count": 5,
+ "products": [
+  {
+   "product_id": "STOCK_DAILY_RAW_PIT_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_DESCRIBE_STOCK_DAILY_RAW_PIT_R1.txt",
+    "sha256": "823a891b314b05f5bcd2608caa991144f374454ba88ade18cdf360e3f0f468c9",
+    "bytes": 7380
+   },
+   "catalog_description": "Stock daily RAW PIT fq=none explicit; not P2 none_adj",
+   "operating_state_historical": "CURRENT_DECLARED_GAP",
+   "serving_authority_now": "REQUEST_NOT_EVALUATED",
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "physical": {
+    "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1",
+    "root_exists": true,
+    "parquet_files": 13,
+    "date_min": "2014-01-02",
+    "date_max": "2026-09-24",
+    "ndates": 3095,
+    "view_only": false,
+    "carried_inherited_by_candidate": true,
+    "has_2026_08_31": false,
+    "has_2026_09_01": false
+   },
+   "columns": [
+    "date",
+    "code",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "money",
+    "signal_date",
+    "data_date",
+    "asset_type",
+    "price_adj_tag",
+    "asof_rule",
+    "pit_status",
+    "source_version",
+    "known_at"
+   ],
+   "dependency_present": false,
+   "review_correction": null,
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "ADJUST_FACTOR_PIT_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_DESCRIBE_ADJUST_FACTOR_PIT_R1.txt",
+    "sha256": "faa5c2599890f250032df27439c94ad90b6b6ef0f7d372ac97d11e2c99e3973e",
+    "bytes": 6635
+   },
+   "catalog_description": "PIT adjust factor fq=pre for PRE_PIT reconstruction",
+   "operating_state_historical": "CURRENT_SERVES_MEASURED_WINDOW",
+   "serving_authority_now": "REQUEST_NOT_EVALUATED",
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "physical": {
+    "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1",
+    "root_exists": true,
+    "parquet_files": 13,
+    "date_min": "2014-01-02",
+    "date_max": "2026-09-24",
+    "ndates": 3097,
+    "view_only": false,
+    "carried_inherited_by_candidate": true,
+    "has_2026_08_31": true,
+    "has_2026_09_01": true
+   },
+   "columns": [
+    "date",
+    "code",
+    "factor"
+   ],
+   "dependency_present": false,
+   "review_correction": "Date union and COVERAGE sidecar are not symbol/field completeness or supplier acquisition receipts; 83503-row sidecar difference remains unresolved.",
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "MARKET_UNIVERSE_PIT_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_DESCRIBE_MARKET_UNIVERSE_PIT_R1.txt",
+    "sha256": "921dbd907013d9157fb6f0bdf4b4870f0d9c5f58b31c1743c4120b1194cd351d",
+    "bytes": 4275
+   },
+   "catalog_description": "Market structure universe (not trade filter)",
+   "operating_state_historical": "CURRENT_SERVES_MEASURED_WINDOW",
+   "serving_authority_now": "REQUEST_NOT_EVALUATED",
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "physical": {
+    "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\MARKET_UNIVERSE_PIT_R1",
+    "root_exists": true,
+    "parquet_files": 3,
+    "date_min": "2025-01-02",
+    "date_max": "2026-07-20",
+    "ndates": 373,
+    "view_only": false,
+    "carried_inherited_by_candidate": true,
+    "has_2026_08_31": false,
+    "has_2026_09_01": false
+   },
+   "columns": [
+    "date",
+    "code",
+    "listed_asof",
+    "delisted_asof",
+    "has_daily_bar",
+    "sw_l1_available",
+    "valuation_available",
+    "in_market_universe",
+    "exclusion_reason",
+    "pit_status",
+    "list_date",
+    "end_date",
+    "data_date",
+    "asof_rule",
+    "source_version"
+   ],
+   "dependency_present": false,
+   "review_correction": "A historical measured window ending 2026-07-20 does not serve later requests and does not itself prove regression.",
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "INDEX_DAILY_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_DESCRIBE_INDEX_DAILY_R1.txt",
+    "sha256": "55f3d1847c10c890c4a420fbcfdc0419c0b4b400dfb7463b05dfc19f85561c78",
+    "bytes": 7091
+   },
+   "catalog_description": "Index daily facts",
+   "operating_state_historical": "CURRENT_DECLARED_GAP",
+   "serving_authority_now": "REQUEST_NOT_EVALUATED",
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "physical": {
+    "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_DAILY_R1",
+    "root_exists": true,
+    "parquet_files": 22,
+    "date_min": "2005-01-04",
+    "date_max": "2026-09-24",
+    "ndates": 5140,
+    "view_only": false,
+    "carried_inherited_by_candidate": true,
+    "has_2026_08_31": false,
+    "has_2026_09_01": false
+   },
+   "columns": [
+    "date",
+    "code",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "money",
+    "signal_date",
+    "data_date",
+    "asset_type",
+    "price_adj_tag",
+    "asof_rule",
+    "pit_status",
+    "source_version",
+    "known_at"
+   ],
+   "dependency_present": false,
+   "review_correction": "Canonical full-history source already proven present in R08. The old H1 minute-derivation instruction is superseded; do not redownload or derive from minutes to replace it.",
+   "real_preflight": "PASS"
+  },
+  {
+   "product_id": "FUND_LIKE_ASSET_VIEW_R1",
+   "exit_code": 0,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_DESCRIBE_FUND_LIKE_ASSET_VIEW_R1.txt",
+    "sha256": "cea7b76ae5951fc0882fef6b72b6365d8064a490a54f07483ad1ebf1b6474e7f",
+    "bytes": 3479
+   },
+   "catalog_description": "Logical union of ETF+FUND retaining asset_type",
+   "operating_state_historical": "CURRENT_PRODUCT_EMPTY",
+   "serving_authority_now": "REQUEST_NOT_EVALUATED",
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "physical": {
+    "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1",
+    "root_exists": true,
+    "parquet_files": 0,
+    "date_min": null,
+    "date_max": null,
+    "ndates": null,
+    "view_only": true,
+    "carried_inherited_by_candidate": true,
+    "has_2026_08_31": null,
+    "has_2026_09_01": null
+   },
+   "columns": null,
+   "dependency_present": false,
+   "review_correction": null,
+   "real_preflight": "PASS"
+  }
+ ],
+ "unknown_product_control": {
+  "requested": "NOT_A_PRODUCT",
+  "exit_code": 3,
+  "status": "STOP",
+  "reason": "PRODUCT_NOT_IN_REVIEWED_CATALOG",
+  "retained_stdout": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_DESCRIBE_UNKNOWN.txt",
+   "sha256": "6b7d95f8d069beba05c2644492059d9362594ae27a8a2a43549cc0e19211b7db"
+  }
+ },
+ "note": "no source alias is guessed; Tushare JQ-compatible products are not reported as JQ-native",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
