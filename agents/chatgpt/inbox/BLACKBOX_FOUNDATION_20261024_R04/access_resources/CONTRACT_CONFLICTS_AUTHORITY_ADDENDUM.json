@@ -1,0 +1,159 @@
+{
+ "document_id": "CONTRACT_CONFLICTS_AUTHORITY_ADDENDUM_R4A",
+ "generated_at": "2026-10-24T15:26:56+08:00",
+ "language": "en",
+ "appends_to": "CONTRACT_CONFLICTS_R4 (unchanged)",
+ "resolution_owner": "GPT",
+ "this_supplement_lifts_no_prohibition": true,
+ "conflicts": [
+  {
+   "conflict_id": "R04-A01",
+   "kind": "AUTHORITY_CONFLICT",
+   "topic": "factor value library: required target vs skip seal vs engine prohibition",
+   "clauses": [
+    {
+     "authority": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+     "file": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3.json",
+     "sha256": "b02dfbdf43528a111e3232c0f91facd65c57d388b3fd8ac37f26188a2fb82ac1",
+     "key": "domains[0] (full_factor_values_library)",
+     "clause": "role=REQUIRED_FULL_HISTORY_THEN_DAILY_INCREMENTAL, status_new=REQUIRED, in_full_data_update=true, in_daily_incremental=true"
+    },
+    {
+     "authority": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+     "file": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3.json",
+     "sha256": "b02dfbdf43528a111e3232c0f91facd65c57d388b3fd8ac37f26188a2fb82ac1",
+     "key": "obsolete_claims",
+     "clause": "declares 'full_factor_values_library excluded from full data update' and 'factor_value_download_allowed=false as permanent HAND truth' OBSOLETE"
+    },
+    {
+     "authority": "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+     "file": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1.json",
+     "sha256": "290b21c14a7d2646ce9e863177b2aec3db84b1fe00ad74854aec31d30ad80739",
+     "key": "permission_blocked_skip_sealed / permission_skip_domains",
+     "clause": "lists full_factor_values_library, jq260_factor_values, jq260_factor_values_library, money_flow_abnormal_lock_subscribe, fq_pre_post"
+    },
+    {
+     "authority": "MASTER_RULE_LIBRARY_REGISTRY_R1 / DATA_INGESTION_GATE_RULES_R1",
+     "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+     "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+     "key": "policies.factor_value_download_forbidden",
+     "clause": "true; unknown factor field BLOCKs ingestion; factor cleaning not active"
+    }
+   ],
+   "observed_behavior": "no factor value plane exists on this desktop (registry layer FACTOR_VALUE exists=false); no permission re-probe has been run since the amendment",
+   "consequence": "target need, download permission, local acquisition authorization and engine admission are four different questions; none is currently evidenced as satisfied",
+   "status": "AUTHORITY_CONFLICT",
+   "affected_interface": "dataset admission + updater scope"
+  },
+  {
+   "conflict_id": "R04-A02",
+   "kind": "AUTHORITY_CONFLICT",
+   "topic": "financial_indicator: REQUIRED vs former BLOCKED",
+   "clauses": [
+    {
+     "authority": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+     "key": "domains[1]",
+     "clause": "status_new=REQUIRED, status_old=BLOCKED, permission_gate=REPROBE_REQUIRED_BEFORE_CLAIM_BLOCKED"
+    },
+    {
+     "authority": "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+     "key": "financial_indicator_status",
+     "clause": "READY_INTEGRATED_ASOF_20260811 (child rule status, not a re-probe)"
+    }
+   ],
+   "observed_behavior": "FINANCE_PIT layers hold 685 RAW and 353 CLEAN files; the incremental child rule status is not the same as a permission re-probe",
+   "consequence": "presence of files does not prove the full history required by the amendment",
+   "status": "AUTHORITY_CONFLICT",
+   "affected_interface": "financial indicator scope"
+  },
+  {
+   "conflict_id": "R04-A03",
+   "kind": "AUTHORITY_CONFLICT",
+   "topic": "money_flow / abnormal / lock_shares / subscribe: REQUIRED vs skip seal",
+   "clauses": [
+    {
+     "authority": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+     "key": "domains[2]",
+     "clause": "role=REQUIRED_FULL_HISTORY, in_full_data_update=true, in_daily_incremental=true"
+    },
+    {
+     "authority": "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+     "key": "permission_skip_domains",
+     "clause": "money_flow_abnormal_lock_subscribe sealed as permission-skipped"
+    }
+   ],
+   "observed_behavior": "P5_attributes_events RAW root exists with 217 files shared by several P5 datasets; per-leaf coverage for money_flow is not established",
+   "consequence": "cannot be declared delivered or permanently impossible",
+   "status": "AUTHORITY_CONFLICT",
+   "affected_interface": "P5 event scope"
+  },
+  {
+   "conflict_id": "R04-A04",
+   "kind": "AUTHORITY_CONFLICT",
+   "topic": "jq260 factor values: TARGET_REQUIRED + mandatory re-probe vs permanent-skip language",
+   "clauses": [
+    {
+     "authority": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+     "key": "domains[3..4]",
+     "clause": "TARGET_REQUIRED + REPROBE; forbidden to auto-skip on the old policy; a failed probe must record PROBE_FAIL, not a fake PASS"
+    },
+    {
+     "authority": "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+     "key": "conflicts_resolved.jq260",
+     "clause": "records the user statement that the 260 factor library cannot be updated due to permissions, while formulas remain research-layer usable"
+    }
+   ],
+   "observed_behavior": "no probe of any kind was run in R04 or this supplement",
+   "consequence": "the current permission state is unknown; no label is forced",
+   "status": "AUTHORITY_CONFLICT",
+   "affected_interface": "factor research layer vs value library"
+  },
+  {
+   "conflict_id": "R04-A05",
+   "kind": "AUTHORITY_CONFLICT",
+   "topic": "fq_pre_post: NOT_NEEDED vs engine fq=pre default (extends R04-C03)",
+   "clauses": [
+    {
+     "authority": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+     "key": "domains[5]",
+     "clause": "status_new=NOT_NEEDED_NOW; pre/post prices may be generated dynamically; whole-library download forbidden as a mandatory task"
+    },
+    {
+     "authority": "engine adapter",
+     "key": "get_price default fq",
+     "clause": "fq='pre' default while the local plane fq column is NULL and factor is constant 1.0"
+    }
+   ],
+   "observed_behavior": "engine default cannot be served; every engine call must pass fq='none'",
+   "consequence": "dynamic generation requires an adjustment formula authority that does not exist yet (R04-C03, NM-03)",
+   "status": "AUTHORITY_CONFLICT",
+   "affected_interface": "engine price mode"
+  },
+  {
+   "conflict_id": "R04-A06",
+   "kind": "FACT_GAP",
+   "topic": "CLEAN omission of 2026-08-31 and 2026-09-01",
+   "clauses": [
+    {
+     "authority": "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_HANDBOOK_CURRENT.md",
+     "key": "standard pipeline step 1",
+     "clause": "scan gaps against the full matrix before downloading"
+    },
+    {
+     "authority": "RAW plane",
+     "key": "P2_stock_daily units",
+     "clause": "both RAW day units exist with 5212/5214 rows"
+    },
+    {
+     "authority": "CLEAN release",
+     "key": "stock_ohlcv_daily",
+     "clause": "no rows for either date in any file"
+    }
+   ],
+   "observed_behavior": "the daily CLEAN day-file series jumps 20260828 -> 20260902",
+   "consequence": "the current release is not gap-free; a coverage-complete claim would be false",
+   "status": "OBSERVED_DEFECT_UNRESOLVED",
+   "affected_interface": "read plane completeness"
+  }
+ ]
+}
