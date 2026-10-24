@@ -1,0 +1,67 @@
+---
+description: 数据平面三层分述硬门 — 禁止小包/薄Cache盖住 FULL_HISTORY
+alwaysApply: false
+---
+
+
+# BLACKBOX 数据平面三层分述（HAND TOP）
+
+> rule=`BLACKBOX_HAND_DATA_PLANE_THREE_LAYER_STATEMENT_R1`  
+> SSOT=`规则库/hand_hard_rules/BLACKBOX_HAND_DATA_PLANE_THREE_LAYER_STATEMENT_R1.json`  
+> CURRENT=`运行/BLACKBOX_DATA_PLANE_THREE_LAYER_STATEMENT_CURRENT.json`  
+> 触发缺陷：小包规则 + Cache 切片盖住 FULL_HISTORY，未按 HAND/SCOPE 分述
+
+## 0. 一句话
+
+**谈「有没有 / 覆盖多少码 / 缺不缺码 / 要不要重下」时，必须分开写三层；禁止用 8 码小包或 1 日薄 Cache 否定 732 FULL_HISTORY。**
+
+## 1. 强制三层（指数日线为首例，同类平面同构）
+
+| 层 | 是什么 | 权威用途 | 非权威 |
+|---|---|---|---|
+| **L1_CACHE** | CACHE CURRENT 产品（如 `INDEX_DAILY_R1`） | 正式研究/回测默认读路径（覆盖足够时） | 「全历史是否已下载」「全码宇宙」 |
+| **L2_RAW_FULL** | SCOPE 登记全量平面（指数：`INDEX_DAILY_RAW_FULL_HISTORY_R1`，**732**） | 是否已全码落盘、缺码判定、缺口补齐基底 | 单独充当回测默认读（仍 Cache-First） |
+| **L3_SMALLPACK** | 便利小包/窄增量（`INDEX_DAILY_RAW_NONE`=8；P3 gap≈7） | 宽基便利、窄日更补丁 | **全宇宙 / CSI2000 有无** |
+
+### 指数日线路径（分述，勿混）
+
+| 层 | 路径 |
+|---|---|
+| L1 | `数据/回测缓存/CURRENT_CACHE_RELEASE.json` → `INDEX_DAILY_R1`（必须报 date_min/max + n_codes） |
+| L2 | `数据/原始只读/strategy_data_plane_additions/INDEX_DAILY_RAW_FULL_HISTORY_R1/`（SCOPE R2 已登记） |
+| L3 | `.../INDEX_DAILY_RAW_NONE/`（8 码）；`.../P3_index/index_daily__incremental_gap_*`（7 宽基） |
+
+`399303.XSHE`：**在 L2 FULL_HISTORY 内**；仅 L3 小包未收录 ≠ 本地 miss。
+
+## 2. 强制输出块（存在性/覆盖/缺码声称前）
+
+```
+DATA_PLANE_THREE_LAYER
+L1_CACHE = <release/product + n_codes + date_min..date_max + READY/THIN/MISS>
+L2_RAW_FULL = <domain + n_codes + date_max + target_code_present=YES/NO/NOT_OPENED>
+L3_SMALLPACK = <pack + n_codes + NOT_FULL_UNIVERSE>
+COLLAPSE_FORBIDDEN = YES
+```
+
+若 `L2_RAW_FULL = NOT_OPENED` 却宣称缺码/未下载 → **违规**（`FALSE_LOCAL_MISS_WITHOUT_FULL_PLANE_PROBE`）。
+
+## 3. 硬禁
+
+1. 把 `INDEX_DAILY_RAW_NONE` 写成「优先/唯一」本地指数日线权威  
+2. `CACHE READY` 或薄切片 ⇒ 当作 RAW 全量已齐/未齐的唯一证据  
+3. 未打开 FULL_HISTORY 就报 `399303` 本地缺失并申请 JQ  
+4. 用 P3 七宽基增量宣称 732 缺口已补完  
+5. 回答「黑盒有没有指数日线」时只引用 alwaysApply 小包段、跳过 SCOPE `strategy_data_plane_additions`
+
+## 4. 与其它规则
+
+| 规则 | 关系 |
+|---|---|
+| `LOCAL_DAILY_OHLC_FIRST` | **本规则修订其优先级**：先分三层，再「先本地后云」 |
+| Cache-First | L1 仍是研究默认读；**覆盖不足**写 `CACHE_MISS_REASON`，可 Hybrid 读 L2，不得假装 L1=L2 |
+| Data Access Resolver | Resolver 只解析 L1 正式产品；**存在性盘点**仍必须陈述 L2/L3 |
+| SCOPE R2 | `INDEX_DAILY_RAW_FULL_HISTORY_R1` 与 `INDEX_DAILY_RAW_NONE` 分域并列 — 不得合并叙述 |
+
+## 5. 违规
+
+至少 `REVIEW_REQUIRED`；marker：`DATA_PLANE_LAYERS_COLLAPSED` / `SMALLPACK_MASKED_FULL_HISTORY` / `CACHE_SLICE_MASKED_FULL_PLANE`。
