@@ -1,0 +1,40 @@
+{
+  "schema": "R10_FACTOR_BOUNDARY_PACKAGE_1",
+  "purpose": "Pure input-boundary successor and four-file read-only desktop verification; no operational compiler activation.",
+  "files": [
+    {
+      "path": "r10_factor_input_contract.py",
+      "sha256": "e30acaddecf03e0abd4360f60a74bae53525373e55feb51cf76d409beebe67c5",
+      "bytes": 4046
+    },
+    {
+      "path": "test_r10_factor_input_contract.py",
+      "sha256": "8055d61813032c18d1c021c4a0f09574779a94402beab5db61a7099d720e76f8",
+      "bytes": 4639
+    },
+    {
+      "path": "r10_factor_desktop_check.py",
+      "sha256": "76693d0834086e22b2afa62c70c4973b8271e14242ccae5c7f2a3f269d3cfed0",
+      "bytes": 7495
+    }
+  ],
+  "review_host_controls": {
+    "passed": 16,
+    "total": 16,
+    "real_parquet_controls": 2,
+    "command": "PYTHONPATH=r06_deps PYTHONDONTWRITEBYTECODE=1 python test_r10_factor_input_contract.py",
+    "scope": "OFFLINE_ONLY",
+    "supplier_calls": 0,
+    "production_writes": 0
+  },
+  "source_bodies_reviewed": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/cache_compiler_adjust_factor_pit_r1.py",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_contracts/S4_UPDATE_PUBLICATION/BLACKBOX_HAND_ADJUST_FACTOR_INCREMENTAL_RULE_R1.json",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/R09_IMPLEMENTATION_BINDINGS.json#domains.adjustment",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09_CORRECTION/ADJUST_FACTOR_SIDECAR_RECONCILIATION.json"
+  ],
+  "FOUNDATION_ACCEPTANCE": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false
+}
