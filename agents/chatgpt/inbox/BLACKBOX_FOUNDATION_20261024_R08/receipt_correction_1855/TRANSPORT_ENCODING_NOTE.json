@@ -1,0 +1,20 @@
+{
+ "generation": "R08_RECEIPT_CORRECTION_1855",
+ "observation": "The HUB contents API returned byte-identical payloads for every utf-8 file, but re-encoded the four BOM'd utf-16 stdout captures to utf-8 with a BOM (3,168 -> 1,586 bytes for the probe capture), while the returned git blob sha still equaled the sha1 of the local file.",
+ "measured": {
+  "utf8_files_roundtrip_identical": true,
+  "utf16_raw_files_roundtrip_identical": false,
+  "examples_checked": [
+   "execution/PROBE_CANONICAL_INDEX.stdout.txt",
+   "CORRECTION_STATUS.json",
+   "ORIGINAL_CANDIDATE_MANIFEST.json",
+   "source_bodies/cache_compiler_adjust_factor_pit_r1.py"
+  ]
+ },
+ "remediation": "The four literal stdout captures are delivered as .stdout.raw.b64 (pure ASCII base64 of the exact captured bytes) with the sha256 of the decoded bytes recorded; the earlier .raw binaries were removed from the bundle so no file claims a literal-byte carriage it does not have.",
+ "not_affecting": "No JSON, markdown, code or transcription content was altered; only the encoding of four capture containers changed.",
+ "flags": {
+  "NETWORK_CALLS": 0,
+  "DATA_WRITES": 0
+ }
+}
