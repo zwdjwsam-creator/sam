@@ -1,0 +1,1158 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "R08/10",
+  "evidence_strength_scale": {
+    "TEXT_REFERENCE_ONLY": "rule names a path/phase but no executing code was located",
+    "CALLSITE_PROVEN": "the exact function/callsite was read in source; ordering is visible in code",
+    "ISOLATED_TESTED": "a self-test/fixture/receipt in the repo exercised the unit",
+    "ACTUAL_ENTRY_EXERCISED": "the real production entry was run end-to-end with real data and a receipt exists",
+    "BROKEN_CALLSITE": "a callsite exists but the callee cannot satisfy it"
+  },
+  "human_stage_groups": [
+    {
+      "group": 1,
+      "meaning": "Authority and phase",
+      "not_a_phase_id": true,
+      "underlying_steps": [
+        "A1",
+        "B0 (phase selection)",
+        "L1-L4 seal state"
+      ]
+    },
+    {
+      "group": 2,
+      "meaning": "Identity and discovery",
+      "not_a_phase_id": true,
+      "underlying_steps": [
+        "A2",
+        "A3",
+        "A4",
+        "B1"
+      ]
+    },
+    {
+      "group": 3,
+      "meaning": "Controlled transformation",
+      "not_a_phase_id": true,
+      "underlying_steps": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ]
+    },
+    {
+      "group": 4,
+      "meaning": "Verification and release",
+      "not_a_phase_id": true,
+      "underlying_steps": [
+        "B7",
+        "B8",
+        "B9"
+      ]
+    },
+    {
+      "group": 5,
+      "meaning": "Consumption and feedback",
+      "not_a_phase_id": true,
+      "underlying_steps": [
+        "A5",
+        "A6",
+        "A7",
+        "C1-C7",
+        "D1-D15",
+        "E1-E2"
+      ]
+    }
+  ],
+  "explicit_warning": "groups 1-5 are a human reading aid only; they are not P1..P5 phase identifiers and do not authorize skipping any original step",
+  "diagnosis_order_vs_read_priority": {
+    "normal_consumption_priority": [
+      "P1_CACHE_CURRENT",
+      "P2_HISTORICAL_CACHE_RELEASE_PINNED",
+      "P3_FORMAL_RAW_OR_CLEAN_CURRENT",
+      "P4_TEMP_RESEARCH_WITH_PROVENANCE_ONLY"
+    ],
+    "absence_diagnosis_order": [
+      "RAW",
+      "Cleaning",
+      "Cache",
+      "Reader",
+      "Filter"
+    ],
+    "note": "C is a diagnosis order; it is NOT a reversal of cache-first consumption"
+  },
+  "workflows": {
+    "A_NORMAL_READ": [
+      {
+        "workflow_id": "A_NORMAL_READ",
+        "original_phase_or_stage": "A1 task authority + preflight (kernel -> AGENTS -> Manifest -> preflight)",
+        "predecessor_conditions": "conversation start; TASK_CLASS decided",
+        "allowed_operation": "select authority, verify SHA, obtain MUST_READ_PRECHECK=PASS",
+        "input_contract": "TASK_CLASS; manifest entries with sha256",
+        "output_contract_and_meaning": "MUST_READ_PRECHECK=PASS and AUTHORITY_READY=YES, else TASK_EXECUTION_FORBIDDEN=TRUE",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\契约\\必读\\MUST_READ_MANIFEST_CURRENT.json",
+            "sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08",
+            "clause": "files{}; per-task budget"
+          },
+          {
+            "path": "E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py",
+            "sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+            "clause": "main; G2_SHA_FAIL_CLOSED"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_must_read_preflight_r1.py::main (sha256_text + manifest compare, lines 253-290)",
+        "expected_machine_result": "PASS only when every listed file exists and sha matches",
+        "actual_observed_result": "preflight run for this round: PASS on the 9 requested bodies + HAND (HAND sha equals GPT pin)",
+        "failure_rule_or_code": "SHA_MISMATCH_<KEY> / SHA_MISMATCH_KERNEL -> MUST_READ_PRECHECK=FAIL, TASK_EXECUTION_FORBIDDEN=TRUE",
+        "stop_quarantine_record_resume_behaviour": "fail-closed: no execution, no partial read claims",
+        "incident_card_or_test": "error_repair_lessons L-ACTIVE-SEED-20260614-11/12 (no false PASS, no REVIEW_REQUIRED rewrite)",
+        "source_evidence": "preflight source lines 253-290; this round's PASS output",
+        "evidence_strength": "ISOLATED_TESTED",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "A_NORMAL_READ",
+        "original_phase_or_stage": "A2 request spec (product/symbol/date window/frequency/fields/fq/asof)",
+        "predecessor_conditions": "A1 PASS",
+        "allowed_operation": "form an explicit request contract; never infer it from a directory name",
+        "input_contract": "PRODUCT_ID, REQUEST_START_DATE, REQUEST_END_DATE, FREQUENCY, UNIVERSE, REQUIRED_FIELDS, USAGE_MODE, CAUSAL_MODE, SIGNAL_TIME, SYSTEM_GENERATION_ID",
+        "output_contract_and_meaning": "request dict consumable by resolver/capability",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+            "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+            "clause": "request -> ... -> result order"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_request_window_data_capability_resolver_r1.py::resolve_request(request, facts=...)",
+        "expected_machine_result": "missing/ambiguous fields stop before any read",
+        "actual_observed_result": "publish gate builds this dict per product (run_production_matrix)",
+        "failure_rule_or_code": "REQUEST_READINESS != AVAILABLE_FORMAL or TASK_DATA_GATE != PASS",
+        "stop_quarantine_record_resume_behaviour": "stop; do not substitute a different product/frequency/date axis",
+        "incident_card_or_test": "LESSON_JQDATA_005 (interface/field pitfalls)",
+        "source_evidence": "publish gate lines 38-60",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "A_NORMAL_READ",
+        "original_phase_or_stage": "A3 Resolver PATH (logical product -> registered physical product)",
+        "predecessor_conditions": "A2 request built",
+        "allowed_operation": "resolve dataset through explicit aliases and scope",
+        "input_contract": "dataset name (or alias); --asof; --scope for finance statements",
+        "output_contract_and_meaning": "product_id, path/cache_product_path, pit_policy, reader{module,function}, raw_fallback_allowed=false",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_PLANE_GOVERNANCE_AND_CONTROL_ENFORCEMENT_R1.json",
+            "sha256": "a1dcbb86c5d0cabe69aaedcd379b1042a9a1681794efb93fb621d52bbbd078ac",
+            "clause": "ag_must: Resolve via blackbox_data_access_resolver_r1.py with explicit --scope"
+          },
+          {
+            "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+            "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+            "clause": "Resolver(PATH) step"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_data_access_resolver_r1.py::resolve_product (AMBIGUOUS_DATASETS at :43, scope branch at :564)",
+        "expected_machine_result": "READY only with an existing path and a scope for ambiguous finance datasets",
+        "actual_observed_result": "R08 receipt 21/21; resolver read this build (no execution of business writes)",
+        "failure_rule_or_code": "AMBIGUOUS_DATASET / *_PATH_MISSING / STOCK_MINUTE_READER_UNAVAILABLE",
+        "stop_quarantine_record_resume_behaviour": "return resolved=false and the reason; no fallback to RAW",
+        "incident_card_or_test": "error_repair_lessons L-ACTIVE-SEED-01/06 (no re-derived download range)",
+        "source_evidence": "resolver lines 43-60, 486-570",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": "Path READY is still not request readiness (A5)"
+      },
+      {
+        "workflow_id": "A_NORMAL_READ",
+        "original_phase_or_stage": "A4 registered Reader over all overlapping shards",
+        "predecessor_conditions": "A3 resolved=true",
+        "allowed_operation": "open the registered reader and every registered shard/alias/historical layer that overlaps the window",
+        "input_contract": "product path + request window",
+        "output_contract_and_meaning": "rows/values plus the shard list actually read",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+            "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+            "clause": "read all registered overlapping shards"
+          },
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+            "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27",
+            "clause": "research_read_priority P1_CACHE_CURRENT ... P4"
+          }
+        ],
+        "original_implementation_path_function_callsite": "resolver returns one cache_product_path; STOCK_MINUTE_1M branch returns source_paths list; no generic multi-shard enumerator found",
+        "expected_machine_result": "every overlapping shard contributes",
+        "actual_observed_result": "single-path resolution is the norm; multi-shard enumeration is product-specific",
+        "failure_rule_or_code": "partial read presented as complete",
+        "stop_quarantine_record_resume_behaviour": "must record which shards were read before any completeness statement",
+        "incident_card_or_test": "LESSON_JQDATA_004 (coverage tolerance)",
+        "source_evidence": "resolver lines 519-560",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": "OEL-04: no generic all-shard enumerator for cache products"
+      },
+      {
+        "workflow_id": "A_NORMAL_READ",
+        "original_phase_or_stage": "A5 acquisition/partition completeness of the resolved product",
+        "predecessor_conditions": "A4 read attempted",
+        "allowed_operation": "prove the product actually covers the requested window at the requested grain",
+        "input_contract": "request window + product coverage metadata",
+        "output_contract_and_meaning": "COVERAGE_OK / outside coverage / gap",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "coverage_modes; REQUEST_OUTSIDE_PRODUCT_COVERAGE in missing_enum"
+          },
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+            "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27",
+            "clause": "coverage_boundaries; DATE_OUTSIDE_CACHE_COVERAGE => CACHE_MISS"
+          }
+        ],
+        "original_implementation_path_function_callsite": "resolver returns coverage/capability facts only when wired to capability resolver; publish gate builds FORMAL_COVERAGE_MAX per product",
+        "expected_machine_result": "window inside formal coverage",
+        "actual_observed_result": "coverage facts exist per product; the read path does not itself re-derive them",
+        "failure_rule_or_code": "request outside coverage must be named as such, not as NO_DATA",
+        "stop_quarantine_record_resume_behaviour": "stop and report coverage fact; never silently backfill",
+        "incident_card_or_test": "LESSON_JQDATA_004",
+        "source_evidence": "publish gate lines 60-72; NONREGRESSION_RULE coverage_modes",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-04"
+      },
+      {
+        "workflow_id": "A_NORMAL_READ",
+        "original_phase_or_stage": "A6 request Capability (window-level readiness)",
+        "predecessor_conditions": "A5 coverage known",
+        "allowed_operation": "evaluate the specific request, not the product",
+        "input_contract": "request dict + product facts",
+        "output_contract_and_meaning": "REQUEST_READINESS (AVAILABLE_FORMAL / AVAILABLE_PARTIAL / ...) + TASK_DATA_GATE PASS/FAIL",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+            "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+            "clause": "Capability(request window) step; Path READY != request ready"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_request_window_data_capability_resolver_r1.py::resolve_request; used by publish gate per product",
+        "expected_machine_result": "TASK_DATA_GATE=PASS only for AVAILABLE_FORMAL in the requested window",
+        "actual_observed_result": "publish gate matrix depends on it (all products must be AVAILABLE_FORMAL)",
+        "failure_rule_or_code": "request blocked with reason",
+        "stop_quarantine_record_resume_behaviour": "stop; do not downgrade to a partial answer as if formal",
+        "incident_card_or_test": "error_repair_lessons 5000-truncation lesson (partial must stay labeled)",
+        "source_evidence": "publish gate 38-72",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "A_NORMAL_READ",
+        "original_phase_or_stage": "A7 result to consumer with provenance",
+        "predecessor_conditions": "A6 PASS",
+        "allowed_operation": "hand rows to research/backtest together with release ids and PIT policy",
+        "input_contract": "rows + cache_release_id/cleaning_release_id/pit_policy/adj tag",
+        "output_contract_and_meaning": "consumer receives reproducible provenance",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+            "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27",
+            "clause": "reproducibility_required_fields"
+          }
+        ],
+        "original_implementation_path_function_callsite": "consumer scripts (research/backtest) read the same CURRENT pointers",
+        "expected_machine_result": "provenance recorded",
+        "actual_observed_result": "provenance fields exist in CURRENT pointers",
+        "failure_rule_or_code": "missing provenance",
+        "stop_quarantine_record_resume_behaviour": "refuse to publish a research call without release ids",
+        "incident_card_or_test": "n/a",
+        "source_evidence": "CACHE_FIRST_RULE reproducibility_required_fields",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": null
+      }
+    ],
+    "B_UPDATE_MATERIALIZATION": [
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B1 scope / calendar / local coverage / permission decision",
+        "predecessor_conditions": "daily incremental requested",
+        "allowed_operation": "decide what may be fetched: scope, trade calendar, local coverage, paid permission",
+        "input_contract": "run target trade date; local RAW inventory; permission/exclusion list",
+        "output_contract_and_meaning": "explicit fetch plan or NO_FETCH decision",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+            "sha256": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23",
+            "clause": "HIST_END/asof"
+          },
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_UNIFIED_ACQUISITION_ARCHITECTURE_R1.json",
+            "sha256": "adf4b9e19bad1992be420cc0fc7bd15e59c53b84fbfe4f20600b48497c0bb52b",
+            "clause": "download_ops_allowed=0; live_jq_calls_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_full_data_update_scope_refresh_r1.py::refresh_scope_from_live; scripts/blackbox_daily_increment_orchestrator_r1.py subprocess",
+        "expected_machine_result": "no fetch when local coverage or a sealed exclusion already answers it",
+        "actual_observed_result": "scope refresh runs at the end of the orchestrator, not before the compiler",
+        "failure_rule_or_code": "NO_PERMISSION must go to exclusion list; never retried",
+        "stop_quarantine_record_resume_behaviour": "record exclusion; do not burn quota",
+        "incident_card_or_test": "error_repair_lessons L-ACTIVE-SEED-...-03 (quota) and -05 (formal mode)",
+        "source_evidence": "orchestrator lines 21-74",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": "OEL-05: scope refresh order"
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B2 authorized acquisition or local restoration",
+        "predecessor_conditions": "B1 fetch plan",
+        "allowed_operation": "paginate with stable ordering; or restore from local RAW",
+        "input_contract": "RequestSpec (dataset, keys, page size) + authorization flags",
+        "output_contract_and_meaning": "PageReceipt per page; AcquisitionReceipt overall; RAW append-only write",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_UNIFIED_ACQUISITION_ARCHITECTURE_R1.json",
+            "sha256": "adf4b9e19bad1992be420cc0fc7bd15e59c53b84fbfe4f20600b48497c0bb52b",
+            "clause": "pipeline[9]; hard_gates{}"
+          },
+          {
+            "path": "E:\\BLACKBOX\\脚本\\blackbox_acquisition_pagination_engine_r1.py",
+            "sha256": "978aedee181eac7815daed14a5b057f4ab3f8c663afa6f8c18e541561a02beae",
+            "clause": "RequestSpec/PageReceipt/AcquisitionReceipt"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_acquisition_pagination_engine_r1.py::paginate_in_memory (line 77); main --allow-live-canary is a HARD-blocked stub",
+        "expected_machine_result": "PAGINATION_COMPLETE=YES, ORDER_DETERMINISTIC=YES, DUPLICATE_LOSS=0, SILENT_TRUNCATION=0, REPLAY_IDENTICAL=YES",
+        "actual_observed_result": "engine self_test() passes; live writes deliberately unimplemented",
+        "failure_rule_or_code": "cap hit (e.g. 5000) => UNKNOWN_INCOMPLETE_ACQUISITION, never COMPLETE",
+        "stop_quarantine_record_resume_behaviour": "stop at cap; page further; never mark COMPLETE",
+        "incident_card_or_test": "LESSON_JQDATA_009 + ACQUISITION_SILENT_TRUNCATION_5000_GUARD_R1",
+        "source_evidence": "pagination engine 27-152; absence gate decide()",
+        "evidence_strength": "ISOLATED_TESTED",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B3 RAW lineage / receipt",
+        "predecessor_conditions": "B2 pages written",
+        "allowed_operation": "record who produced the bytes, when, from which request",
+        "input_contract": "page receipts + provenance",
+        "output_contract_and_meaning": "RAW release with provenance/manifest; immutable afterwards",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "SEALED_RELEASE_IMMUTABILITY"
+          },
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1.json",
+            "sha256": "bcc614abd0147c61612e65253599cb4453d7c7e39afc843074323a387d2072b6",
+            "clause": "no download may end at RAW"
+          }
+        ],
+        "original_implementation_path_function_callsite": "release MANIFEST.json/provenance.json in each RAW release root",
+        "expected_machine_result": "every byte traceable to a receipt",
+        "actual_observed_result": "release roots carry MANIFEST/provenance/coverage files",
+        "failure_rule_or_code": "missing receipt",
+        "stop_quarantine_record_resume_behaviour": "quarantine the release; do not clean it",
+        "incident_card_or_test": "error_repair_lessons L-ACTIVE-SEED-...-09 (no raw modification)",
+        "source_evidence": "RAW release MANIFEST/provenance/coverage files",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B4 Cleaning / domain alignment (field and time normalization)",
+        "predecessor_conditions": "B3 RAW release present",
+        "allowed_operation": "normalize fields/units/timezone and map to canonical domains",
+        "input_contract": "RAW release + dictionary versions",
+        "output_contract_and_meaning": "cleaning release with canonical fields and explicit asof",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_PLANE_GOVERNANCE_AND_CONTROL_ENFORCEMENT_R1.json",
+            "sha256": "a1dcbb86c5d0cabe69aaedcd379b1042a9a1681794efb93fb621d52bbbd078ac",
+            "clause": "L2_DATA_AUTHORITY"
+          },
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1.json",
+            "sha256": "bcc614abd0147c61612e65253599cb4453d7c7e39afc843074323a387d2072b6",
+            "clause": "cleaning/alignment seal"
+          }
+        ],
+        "original_implementation_path_function_callsite": "cleaning builders per domain; CURRENT_CLEANING_RELEASE pointer",
+        "expected_machine_result": "cleaning CURRENT carries a release id per build",
+        "actual_observed_result": "current cleaning release is R33 FUND_NAV asof 2026-09-24",
+        "failure_rule_or_code": "field not in dictionary => BLOCK_FIELD_DICTIONARY_GATE (engine) / unmapped field",
+        "stop_quarantine_record_resume_behaviour": "stop; do not alias by guess",
+        "incident_card_or_test": "LESSON_JQDATA_005",
+        "source_evidence": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B5 anti-lookahead / PIT gate (field-time and cross-product alignment)",
+        "predecessor_conditions": "B4 cleaning release",
+        "allowed_operation": "prove known_at <= decision time for every consumed field",
+        "input_contract": "cleaning release + asof/known_at columns",
+        "output_contract_and_meaning": "PIT_PASS per release (candidate must carry it before publish)",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+            "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27",
+            "clause": "anti_lookahead_before_cache.required_gates = CLEAN, ALIGN, ANTI_LOOKAHEAD_PIT; any_fail = CACHE_PUBLISH=BLOCKED"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no single enforcing module found; the daily manifest records PIT_PASS per lane, publish gate does not read it",
+        "expected_machine_result": "any fail => CACHE_PUBLISH=BLOCKED (declared)",
+        "actual_observed_result": "daily manifest JQ lane carries PIT_PASS=true at 2026-09-24",
+        "failure_rule_or_code": "PIT fail",
+        "stop_quarantine_record_resume_behaviour": "block publish, keep release as candidate",
+        "incident_card_or_test": "LESSON_JQDATA_006 (pubDate field PIT)",
+        "source_evidence": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-06: no single enforcing anti-lookahead module behind the declared key"
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B6 Cache compiler with parent inheritance + dependency invalidation",
+        "predecessor_conditions": "B5 PIT pass",
+        "allowed_operation": "compile consumable products from cleaning, inheriting the parent release",
+        "input_contract": "cleaning release + parent cache release + dependency registry",
+        "output_contract_and_meaning": "candidate cache release with parent_release_id and per-product manifests",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+            "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27",
+            "clause": "incremental_semantics.invalidations; universal_product_promotion"
+          },
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "INCREMENTAL_PATCH_MUST_NOT_REPLACE_FULL_HISTORY"
+          }
+        ],
+        "original_implementation_path_function_callsite": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py (invoked by orchestrator line 57)",
+        "expected_machine_result": "every product either exactly inherits the parent or is explicitly recomputed; nothing silently thinned",
+        "actual_observed_result": "CURRENT shows build_version=TIP_REBASE_FROM_CURRENT_R1 and parent_release_id set",
+        "failure_rule_or_code": "untouched product not fully inherited => coverage regression (see B7)",
+        "stop_quarantine_record_resume_behaviour": "block publish; record forensics",
+        "incident_card_or_test": "CACHE_REGRESSION_INCIDENT forensics written by control-plane build",
+        "source_evidence": "TIP compiler path; CURRENT fields",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B7 equivalence / coverage / non-regression checks",
+        "predecessor_conditions": "B6 candidate release",
+        "allowed_operation": "prove RAW<->CACHE equivalence and that no date was lost versus parent",
+        "input_contract": "candidate + parent release",
+        "output_contract_and_meaning": "PUBLISH_ALLOWED / CACHE_RELEASE_PUBLISHABLE",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "publish_gate: on_lost_dates=PUBLISH_ALLOWED=false; on_critical_regression CURRENT_SWITCH_ALLOWED=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_cache_coverage_non_regression_gate_r1.py -> 2 bytes, gate/self_test absent; consumer import at control-plane :267",
+        "expected_machine_result": "a lost date must make publication impossible",
+        "actual_observed_result": "the gate cannot run at all; only per-product FORMAL_COVERAGE_MAX>=target is checked by the publish gate",
+        "failure_rule_or_code": "lost dates",
+        "stop_quarantine_record_resume_behaviour": "expected: block; actual: guard absent",
+        "incident_card_or_test": "ERROR card: CACHE_REGRESSION forensics in coverage control plane build",
+        "source_evidence": "measured stub bytes + module attribute probe",
+        "evidence_strength": "TRIGGER_NOT_IMPLEMENTED",
+        "unresolved_dependency": "OEL-02 (highest severity)"
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B8 authorized publication / CURRENT selection",
+        "predecessor_conditions": "B7 would be PASS",
+        "allowed_operation": "switch CURRENT atomically, only from an authorized publisher",
+        "input_contract": "candidate release + capability facts",
+        "output_contract_and_meaning": "new CURRENT with backup of the previous pointer",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+            "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654",
+            "clause": "publish_atomic; generation equality; production matrix; .bak"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_daily_increment_publish_gate_r1.py::publish_atomic (line 83); callers: etf minute runners :484 and main()",
+        "expected_machine_result": "CURRENT switched only when all products AVAILABLE_FORMAL and generation == cache_release_id",
+        "actual_observed_result": "the daily orchestrator never calls the gate (GATE defined line 21, unused)",
+        "failure_rule_or_code": "CAPABILITY_FACTS_GENERATION_STALE / CURRENT_PUBLISH=FORBIDDEN",
+        "stop_quarantine_record_resume_behaviour": "expected: refuse; actual: orchestrator path bypasses the gate",
+        "incident_card_or_test": "n/a",
+        "source_evidence": "orchestrator lines 19-77; publish gate 83-110",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": "OEL-03"
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B9 inventory / manifest + downstream consumption",
+        "predecessor_conditions": "B8 published",
+        "allowed_operation": "record the generation and let consumers see it",
+        "input_contract": "release ids + facts",
+        "output_contract_and_meaning": "DAILY_DATA_MANIFEST with DATA_GENERATION_ID; six lanes",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+            "sha256": "0f0813cb822f535e6978edb501b1af3e8c666461851602f5a816b10babaeecc8",
+            "clause": "ALL_LANES_READY; DATA_GENERATION_ID"
+          },
+          {
+            "path": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_daily_incremental_data_plane.mdc",
+            "sha256": "12847189edeba38b484967b170f52d1ab39772c1b7b9419d30eb05e0d6b89f7a",
+            "clause": "six-lane unique meaning"
+          }
+        ],
+        "original_implementation_path_function_callsite": "研究系统 data plane runner writes the manifest",
+        "expected_machine_result": "JQ-only completion must not be reported as all-daily-complete",
+        "actual_observed_result": "manifest at 2026-09-24 shows 6 lanes with individual statuses",
+        "failure_rule_or_code": "lane not ready",
+        "stop_quarantine_record_resume_behaviour": "report per-lane status; never collapse to one boolean",
+        "incident_card_or_test": "AGENTS.md item 10",
+        "source_evidence": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "B_UPDATE_MATERIALIZATION",
+        "original_phase_or_stage": "B10 external evidence tail (Tushare) with asof alignment",
+        "predecessor_conditions": "B9 or in parallel per lane B",
+        "allowed_operation": "materialize external facts aligned to the JQ asof, into the isolated evidence root",
+        "input_contract": "phase (tushare_p0 only for financials), asof, force-tip flag",
+        "output_contract_and_meaning": "external evidence release + FINAL status",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\经验卡\\JQData_download_lessons\\cards\\LESSON_JQDATA_010_EXTERNAL_WRONG_PHASE_FULL_TIP.md",
+            "sha256": "039dd583313c885fc92f29488dc4158e98efa7d0b1f240bf6c660e1ea1927fd6",
+            "clause": "phase table; tip_start rule"
+          },
+          {
+            "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+            "sha256": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23",
+            "clause": "HIST_END"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_external_evidence_materialization_r2.py::resolve_financial_tip_start (:146, called :570)",
+        "expected_machine_result": "TIP_MODE tip_start near window, hist_end=asof, data_max printed",
+        "actual_observed_result": "resolution function present and called; phase mapping enforced by argument validation",
+        "failure_rule_or_code": "tip_start == HIST_START outside first build => stop",
+        "stop_quarantine_record_resume_behaviour": "kill the run, fix resolution, rerun; never let a wrong phase finish",
+        "incident_card_or_test": "LESSON_JQDATA_010 + EXTERNAL_EVIDENCE_WRONG_PHASE_FULL_TIP_GUARD_R1 (hit_count=1)",
+        "source_evidence": "materialization script 146/570; card body",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": null
+      }
+    ],
+    "C_ABSENCE_DIAGNOSIS": [
+      {
+        "workflow_id": "C_ABSENCE_DIAGNOSIS",
+        "original_phase_or_stage": "C1 RAW layer",
+        "predecessor_conditions": "an absence/empty result is suspected",
+        "allowed_operation": "check the RAW layer and its registered releases before anything else",
+        "input_contract": "request window; RAW coverage ledger",
+        "output_contract_and_meaning": "RAW present/absent with release id",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "missing_enum: SOURCE_MISSING; RAW_COVERAGE_LEDGER pointer"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_data_coverage_diagnose_r1.py (diagnoser pointer)",
+        "expected_machine_result": "absence only after RAW is proven incomplete",
+        "actual_observed_result": "diagnoser exists; ledgers are CURRENT-pointer based",
+        "failure_rule_or_code": "RAW complete => redownload FORBIDDEN",
+        "stop_quarantine_record_resume_behaviour": "stop; no re-download",
+        "incident_card_or_test": "LESSON_JQDATA_004; error_repair_lessons -01/-06",
+        "source_evidence": "NONREGRESSION_RULE pointers",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "C_ABSENCE_DIAGNOSIS",
+        "original_phase_or_stage": "C2 Cleaning layer",
+        "predecessor_conditions": "C1 RAW complete",
+        "allowed_operation": "check whether cleaning dropped/never produced the window",
+        "input_contract": "RAW release + cleaning release",
+        "output_contract_and_meaning": "RAW_COMPLETE_CLEANING_MISSING or cleaning coverage fact",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "missing_enum"
+          }
+        ],
+        "original_implementation_path_function_callsite": "cleaning ledgers per coverage control plane",
+        "expected_machine_result": "distinguish RAW-complete-cleaning-missing from source-missing",
+        "actual_observed_result": "ledger structure defined; values are per build",
+        "failure_rule_or_code": "mislabeling",
+        "stop_quarantine_record_resume_behaviour": "record enum value, keep RAW untouched",
+        "incident_card_or_test": "n/a",
+        "source_evidence": "NONREGRESSION_RULE missing_enum",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "C_ABSENCE_DIAGNOSIS",
+        "original_phase_or_stage": "C3 Cache layer",
+        "predecessor_conditions": "C2 cleaning present",
+        "allowed_operation": "check the cache product/release, including parent inheritance",
+        "input_contract": "cleaning release + cache candidate",
+        "output_contract_and_meaning": "CLEANING_COMPLETE_CACHE_MISSING / CACHE_COVERAGE_REGRESSION",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "missing_enum; FULL_HISTORY_NON_REGRESSION"
+          }
+        ],
+        "original_implementation_path_function_callsite": "cache ledgers; non-regression gate stub (B7)",
+        "expected_machine_result": "regression distinguishable from a genuine missing product",
+        "actual_observed_result": "gate that would classify regression is unimplemented",
+        "failure_rule_or_code": "regression misread as absence",
+        "stop_quarantine_record_resume_behaviour": "expected: block/defer; actual: no machine check",
+        "incident_card_or_test": "CACHE_REGRESSION forensics",
+        "source_evidence": "measured stub",
+        "evidence_strength": "TRIGGER_NOT_IMPLEMENTED",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "C_ABSENCE_DIAGNOSIS",
+        "original_phase_or_stage": "C4 Reader layer",
+        "predecessor_conditions": "C3 cache product exists",
+        "allowed_operation": "check reader load and date slice",
+        "input_contract": "product path + window",
+        "output_contract_and_meaning": "READER_LOAD_MISSING / READER_DATE_SLICE_MISSING",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "missing_enum"
+          }
+        ],
+        "original_implementation_path_function_callsite": "resolver + reader modules",
+        "expected_machine_result": "reader failure must not be reported as product absence",
+        "actual_observed_result": "resolver exposes reader module/function per product",
+        "failure_rule_or_code": "reader failure",
+        "stop_quarantine_record_resume_behaviour": "report enum value",
+        "incident_card_or_test": "n/a",
+        "source_evidence": "resolver reader block",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "C_ABSENCE_DIAGNOSIS",
+        "original_phase_or_stage": "C5 Filter layer",
+        "predecessor_conditions": "C4 reader returned rows",
+        "allowed_operation": "check whether a filter/universe/asof condition emptied the result",
+        "input_contract": "rows before/after filter",
+        "output_contract_and_meaning": "FILTER_EMPTY / UNIVERSE_EMPTY / PIT_ASOF_EMPTY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "missing_enum"
+          }
+        ],
+        "original_implementation_path_function_callsite": "task-level filters (no central module)",
+        "expected_machine_result": "empty after filter is not source-missing",
+        "actual_observed_result": "per-task code; no central classifier",
+        "failure_rule_or_code": "filter empty reported as source missing",
+        "stop_quarantine_record_resume_behaviour": "report enum value",
+        "incident_card_or_test": "error_repair_lessons L-ACTIVE-SEED-...-10/11 (no false PASS)",
+        "source_evidence": "coverage control plane filter_demo block",
+        "evidence_strength": "ISOLATED_TESTED",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "C_ABSENCE_DIAGNOSIS",
+        "original_phase_or_stage": "C6 acquisition completeness evidence",
+        "predecessor_conditions": "C1-C5 any layer inconclusive",
+        "allowed_operation": "prove pagination/partition completeness before any absence claim",
+        "input_contract": "n_rows, query cap, pagination flag, completeness state, symbol identity, partition gaps",
+        "output_contract_and_meaning": "closed verdict enum",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\脚本\\blackbox_data_absence_gate_r1.py",
+            "sha256": "f7f84f2e2d340605cfdbef607c7f9586a357bf310e3bd00b8f4cec3c8d99e04b",
+            "clause": "decide(): verdict enum; DATA_ABSENT_CLAIM_ALLOWED"
+          }
+        ],
+        "original_implementation_path_function_callsite": "脚本/blackbox_data_absence_gate_r1.py::decide; imported by daily_increment_common, etf minute planes, external evidence agent",
+        "expected_machine_result": "CONFIRMED_ABSENT only when rows==0 AND pagination complete AND completeness COMPLETE",
+        "actual_observed_result": "self-test covers 13 cases including cap=5000 and WEEKEND-style outside coverage",
+        "failure_rule_or_code": "cap hit / partial pagination / unknown",
+        "stop_quarantine_record_resume_behaviour": "UNKNOWN_* verdict; claim forbidden",
+        "incident_card_or_test": "LESSON_JQDATA_009; ACQUISITION_SILENT_TRUNCATION_5000_GUARD_R1",
+        "source_evidence": "absence gate 42-141",
+        "evidence_strength": "ISOLATED_TESTED",
+        "unresolved_dependency": null
+      },
+      {
+        "workflow_id": "C_ABSENCE_DIAGNOSIS",
+        "original_phase_or_stage": "C7 final absence verdict + stop",
+        "predecessor_conditions": "C6 verdict produced",
+        "allowed_operation": "state the verdict with its enum value and stop",
+        "input_contract": "verdict dict",
+        "output_contract_and_meaning": "DATA_ABSENCE_GATE=<enum>; NO_DATA_FORBIDDEN flag",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX\\脚本\\blackbox_data_absence_gate_r1.py",
+            "sha256": "f7f84f2e2d340605cfdbef607c7f9586a357bf310e3bd00b8f4cec3c8d99e04b",
+            "clause": "NO_DATA_FORBIDDEN"
+          },
+          {
+            "path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+            "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c",
+            "clause": "NO_AGENT_MAY_DECLARE_DATA_MISSING_WITHOUT_COVERAGE_DIAGNOSIS"
+          }
+        ],
+        "original_implementation_path_function_callsite": "decide() return dict",
+        "expected_machine_result": "no bare 'no data' statement is permissible",
+        "actual_observed_result": "flag present in the return contract",
+        "failure_rule_or_code": "verdict UNKNOWN_*",
+        "stop_quarantine_record_resume_behaviour": "diagnosis continues or stops as UNKNOWN; never NO_DATA",
+        "incident_card_or_test": "n/a",
+        "source_evidence": "absence gate return dict",
+        "evidence_strength": "ISOLATED_TESTED",
+        "unresolved_dependency": null
+      }
+    ],
+    "D_ENGINE_ADMISSION": [
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D1 source_identity_gate",
+        "predecessor_conditions": "engine start of an ingestion batch",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "source_id;dataset_id;ingestion_batch_id",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_SOURCE_IDENTITY_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[0].pass_condition = source registered in master registry; block_reason_code=BLOCK_SOURCE_IDENTITY_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for source_identity_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_SOURCE_IDENTITY_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D2 asset_code_format_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "security_code",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_ASSET_CODE_FORMAT_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[1].pass_condition = code matches JQ/local canonical pattern; block_reason_code=BLOCK_ASSET_CODE_FORMAT_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for asset_code_format_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_ASSET_CODE_FORMAT_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D3 asset_type_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "security_code;asset_type_hint",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_ASSET_TYPE_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[2].pass_condition = asset type recognized; block_reason_code=BLOCK_ASSET_TYPE_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for asset_type_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_ASSET_TYPE_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D4 frequency_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "data_frequency",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_FREQUENCY_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[3].pass_condition = frequency in allowed set for domain; block_reason_code=BLOCK_FREQUENCY_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for frequency_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_FREQUENCY_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D5 field_dictionary_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "incoming_field_names",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_FIELD_DICTIONARY_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[4].pass_condition = all fields map to canonical fields; block_reason_code=BLOCK_FIELD_DICTIONARY_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for field_dictionary_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_FIELD_DICTIONARY_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D6 field_alias_resolution_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "incoming_field_names",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_FIELD_ALIAS_RESOLUTION_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[5].pass_condition = aliases resolve to canonical fields; block_reason_code=BLOCK_FIELD_ALIAS_RESOLUTION_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for field_alias_resolution_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_FIELD_ALIAS_RESOLUTION_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D7 data_domain_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "data_domain;dataset_profile",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_DATA_DOMAIN_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[6].pass_condition = domain registered and matched; block_reason_code=BLOCK_DATA_DOMAIN_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for data_domain_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_DATA_DOMAIN_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D8 pit_visibility_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "data_domain;as_of_time",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_PIT_VISIBILITY_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[7].pass_condition = PIT/visibility rule explicit; block_reason_code=BLOCK_PIT_VISIBILITY_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for pit_visibility_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_PIT_VISIBILITY_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D9 adjustment_mode_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "adjustment_mode;price_fields",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_ADJUSTMENT_MODE_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[8].pass_condition = adjustment mode mapped; block_reason_code=BLOCK_ADJUSTMENT_MODE_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for adjustment_mode_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_ADJUSTMENT_MODE_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D10 tradable_status_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "paused;is_st;high_limit;low_limit",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_TRADABLE_STATUS_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[9].pass_condition = tradable status fields mapped; block_reason_code=BLOCK_TRADABLE_STATUS_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for tradable_status_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_TRADABLE_STATUS_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D11 matching_requirement_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "matching_profile;required_fields",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_MATCHING_REQUIREMENT_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[10].pass_condition = matching required fields present; block_reason_code=BLOCK_MATCHING_REQUIREMENT_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for matching_requirement_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_MATCHING_REQUIREMENT_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D12 factor_dictionary_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "factor_field_names",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_FACTOR_DICTIONARY_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[11].pass_condition = factor in 260 CURRENT dictionary; block_reason_code=BLOCK_FACTOR_DICTIONARY_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for factor_dictionary_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_FACTOR_DICTIONARY_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D13 factor_pit_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "factor_name;as_of_time",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_FACTOR_PIT_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[12].pass_condition = factor PIT rule available; block_reason_code=BLOCK_FACTOR_PIT_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for factor_pit_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_FACTOR_PIT_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D14 factor_cleaning_rule_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "factor_name;cleaning_profile",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_FACTOR_CLEANING_RULE_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[13].pass_condition = cleaning rule dictionary available; cleaning not executed; block_reason_code=BLOCK_FACTOR_CLEANING_RULE_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for factor_cleaning_rule_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_FACTOR_CLEANING_RULE_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "D_ENGINE_ADMISSION",
+        "original_phase_or_stage": "D15 final_admission_decision_gate",
+        "predecessor_conditions": "previous gate PASS (no warning pass)",
+        "allowed_operation": "evaluate only, never parse/write before the chain completes",
+        "input_contract": "all_prior_gates",
+        "output_contract_and_meaning": "gate verdict PASS or BLOCK_FINAL_ADMISSION_DECISION_GATE; admission_stage=PRE_INGESTION_ONLY",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "gates[14].pass_condition = all prior gates PASS; block_reason_code=BLOCK_FINAL_ADMISSION_DECISION_GATE; allow_warning_pass=false; post_ingestion_repair_allowed=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "no code emits this code; nearest live implementation is wiring/pre_ingestion_gate.py::PreIngestionGate.validate with a different code vocabulary",
+        "expected_machine_result": "PASS for final_admission_decision_gate only when its own predicate holds",
+        "actual_observed_result": "not emitted as written; e.g. source identity is covered only indirectly by MasterGateResolver (MASTER_REGISTRY_* codes)",
+        "failure_rule_or_code": "BLOCK_FINAL_ADMISSION_DECISION_GATE",
+        "stop_quarantine_record_resume_behaviour": "BLOCK: no ingest, no repair after the fact",
+        "incident_card_or_test": "engine rule library only",
+        "source_evidence": "DATA_INGESTION_GATE_RULES_R1 gates[]",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-07: two gate vocabularies, no mapping"
+      },
+      {
+        "workflow_id": "ENGINE_SUBCHAIN",
+        "original_phase_or_stage": "E1 MASTER resolution before pre-ingestion validation",
+        "predecessor_conditions": "engine task entry called",
+        "allowed_operation": "resolve master registry/fingerprint, then validate payload, then parse",
+        "input_contract": "request (input_contract_id, release ids) + payload (16 required fields)",
+        "output_contract_and_meaning": "block_reason_code from MASTER_RESOLUTION or PRE_INGESTION_VALIDATION, or parse result",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\task_entry.py",
+            "sha256": "692dec3ac85e1788e9f90a25f23757c93603c1d6079ea44079653be3e85c5382",
+            "clause": "run(): ENGINE_START -> LOAD_CONTRACT -> master.resolve -> gate.validate -> parse_after_gate"
+          },
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\pre_ingestion_gate.py",
+            "sha256": "9385131008d24b82b616bc1f175be4e8ce237d81556711ed6781270322ad0637",
+            "clause": "validate(): REQUIRED_FIELDS; FORBIDDEN_ROLES; PIT_NOT_PROVEN; PRICE_BASIS_NOT_AVAILABLE; adjustment non-RAW_NONE blocked"
+          }
+        ],
+        "original_implementation_path_function_callsite": "shadow_architecture_R1/wiring/task_entry.py::TaskEntryController.run (lines 48-108); pre_ingestion_gate.py::validate",
+        "expected_machine_result": "parse is impossible before a PASS; parse_after_gate raises PARSE_WITHOUT_PRE_INGESTION",
+        "actual_observed_result": "fixture task D_BACKTEST_ENGINE_MINIMAL_DAILY_PACKAGE_PRE_INGESTION_VALIDATION_R1 instantiates the gate",
+        "failure_rule_or_code": "MASTER_* / *_NOT_PROVEN / DATA_ROLE_FORBIDDEN / PARSE_BLOCKED:<code>",
+        "stop_quarantine_record_resume_behaviour": "raise or return blocked result with stage name; engine stops",
+        "incident_card_or_test": "block_reason_codes registry (40 codes)",
+        "source_evidence": "task_entry.py 48-108; gate 58-296",
+        "evidence_strength": "CALLSITE_PROVEN",
+        "unresolved_dependency": "OEL-08: engine.py does not import this chain"
+      },
+      {
+        "workflow_id": "ENGINE_SUBCHAIN",
+        "original_phase_or_stage": "E2 engine start-up versus admission",
+        "predecessor_conditions": "E1 PASS",
+        "allowed_operation": "actually start bullet_trade engine; a get_price fixture is not start-up",
+        "input_contract": "strategy script + data",
+        "output_contract_and_meaning": "engine run",
+        "effective_rule_id_path_hash": [
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\engine.py",
+            "sha256": "7e31f9ee391f3bc6b913fbc8bb308eab92b3e492cdf635e19b5ac5174eb258e2",
+            "clause": "engine core"
+          },
+          {
+            "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+            "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+            "clause": "formal_backtest_active=false"
+          }
+        ],
+        "original_implementation_path_function_callsite": "bullet_trade/core/engine.py (no PreIngestionGate import)",
+        "expected_machine_result": "admission chain gates engine start-up",
+        "actual_observed_result": "chain exists beside the engine, not inside it",
+        "failure_rule_or_code": "n/a",
+        "stop_quarantine_record_resume_behaviour": "engine runs without the admission chain",
+        "incident_card_or_test": "n/a",
+        "source_evidence": "grep over bullet_trade for ingestion/admission: zero hits",
+        "evidence_strength": "TEXT_REFERENCE_ONLY",
+        "unresolved_dependency": "OEL-08"
+      }
+    ]
+  },
+  "transition_counts": {
+    "A": 7,
+    "B": 10,
+    "C": 7,
+    "D": 17
+  },
+  "no_publication_or_download_performed": true
+}
