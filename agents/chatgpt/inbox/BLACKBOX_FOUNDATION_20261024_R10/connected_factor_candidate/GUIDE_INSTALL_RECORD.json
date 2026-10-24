@@ -1,0 +1,27 @@
+{
+ "schema": "R10_GUIDE_DIAGNOSTIC_INSTALL_1",
+ "at_cn": "2026-10-25T02:27:49+08:00",
+ "guide_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\BLACKBOX_LOCAL_OPERATIONS_R10.md",
+ "existing_content_preserved": true,
+ "before": {
+  "bytes": 5333,
+  "sha256": "685e3b2097007cbd7981af504c8652be8842741c1bd62af86edd4482164b7c3c"
+ },
+ "after": {
+  "bytes": 6765,
+  "sha256": "a5a189e9b3489c6af3edae77c57cda58a24afaa13d24d61be3a4257ca13cf478"
+ },
+ "appended_bytes": 1432,
+ "append_only": true,
+ "prior_bytes_saved_at": "GUIDE/BLACKBOX_LOCAL_OPERATIONS_R10.before.md",
+ "diff_path": "GUIDE/GUIDE_APPEND_DIFF.patch",
+ "diff": "--- BLACKBOX_LOCAL_OPERATIONS_R10.md (before)\n+++ BLACKBOX_LOCAL_OPERATIONS_R10.md (after)\n@@ -46,2 +46,34 @@\n \n This entry authorizes no acquisition, CURRENT publication, formal engine run or orders. Never expose credentials or secret-dependent hashes. Old strategy reconstruction is not a prerequisite for diagnosing the data foundation.\n+\n+## Candidate factor diagnostic (R10, recovery workspace only)\n+\n+Exact 11-check command (read-only, synthetic, in-memory):\n+\n+    E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe -X utf8 ^\n+      reviews\\R10\\connected_factor_candidate\\test_r10_factor_candidate_pipeline.py\n+\n+Expected: `tests_run=11`, `passed=true`, exit 0, scope `CONNECTED_CANDIDATE_GATES_SYNTHETIC_ONLY`.\n+\n+Actual function chain, all modules under `reviews/R10/connected_factor_candidate/`:\n+\n+    r10_factor_response_gate.assemble_responses\n+      -> r10_factor_refresh_assembly.assemble_candidate\n+        -> r10_factor_candidate_merge.candidate_merge\n+\n+`candidate_pipeline` returns these five stage names, in this fixed order:\n+\n+    REQUEST_RESPONSES_VALIDATED\n+    OVERLAP_BOUNDARY_VALIDATED\n+    DIRTY_DAY_BOUNDARY_VALIDATED\n+    HISTORY_PRESERVING_MERGE_PASSED\n+    PUBLICATION_NOT_AUTHORIZED\n+\n+The last stage is an intentional no-publication boundary. There is no publisher API in this chain, so it does not\n+execute or certify the production publish gate.\n+\n+Synthetic diagnostic only; no real-data authority, publication or formal engine admission.\n+\n+The unchanged global acquisition prohibition applies: this diagnostic performs no supplier call, download,\n+refetch, business-data write, CURRENT switch, production patch, engine construction or order, and it establishes\n+nothing about historical input authority or the expected market universe.\n",
+ "not_patched": [
+  "reviews/R10/operating_entry/blackbox_operate_r10.py (pinned entry)",
+  "normative contracts",
+  "root must-read files",
+  "live updater",
+  "historical originals",
+  "business data"
+ ]
+}
