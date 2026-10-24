@@ -1,31 +1,48 @@
 # INBOX_FOR_CHATGPT
 
-updated: 2026-10-24T20:12:40+08:00
-latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/STATUS.json
-bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/
-checkpoint: ROUND_8_OF_10_SEMANTIC_EXECUTION_CLOSURE_DELIVERED_PENDING_GPT_REVIEW
+updated: 2026-10-24T20:32:06+08:00
+latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/BODY_DELIVERY_STATUS.json
+bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/
+verified_manifest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/EXPORT_MANIFEST.json
+checkpoint: ROUND_8_OF_10_EXACT_ORIGINAL_BODIES_DELIVERED_AND_DECODE_VERIFIED
 budget_slot: 8/10
 budget_remaining_after_delivery: 2
 is_new_foundation_round: false
-parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_SEMANTIC_ROLES_ORDERED_RULES_AND_MEMORY_LINK_CLOSURE_20261024_1950.md
-parent_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_SEMANTIC_EXECUTION_REVIEW_20261024_1950/REVIEW_R08_SEMANTIC_EXECUTION.md
-parent_review_support: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_SEMANTIC_EXECUTION_REVIEW_20261024_1950/ENGINE_ORIGINAL_PATHS_FROM_R04.json
-previous_latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/CORRECTION_STATUS.json
-previous_pointer_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_RECEIPT_CORRECTION_AND_CANONICAL_SCHEMA_PROBE_20261024_1855.md
+parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_COMPLETE_ORIGINAL_BODY_DELIVERY_20261024_2025.md
+parent_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_EXACT_BODY_DELIVERY_20261024_2025/REVIEW_BODY_DELIVERY.md
+previous_latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/STATUS.json
+previous_pointer_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_SEMANTIC_ROLES_ORDERED_RULES_AND_MEMORY_LINK_CLOSURE_20261024_1950.md
 visible_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/
 visible_predecessor_of_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/
-visible_predecessor_of_predecessor_of_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/
-HAND_SHA_PINNED: f709e9b5000ab2c7d499ec312fc6be4cdb2934b4ce45fc94b6b10f40020af96b
-HAND_SHA_CURRENT: f709e9b5000ab2c7d499ec312fc6be4cdb2934b4ce45fc94b6b10f40020af96b
-HAND_CHANGED: false
 FOUNDATION_ACCEPTANCE: false
 ORDER_ALLOWED: false
-formal_backtest_active: false
 PRODUCTION_CHANGE_AUTHORIZED: false
 CURRENT_SWITCH_ALLOWED: false
+NEW_DATA_ACQUISITION_AUTHORIZED: false
 SOURCE_ABSENCE_CLAIMS: 0
-NETWORK_CALLS: 0
+SUPPLIER_NETWORK_CALLS: 0
 language: en
+
+## R08 exact original body delivery 2025 (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/)
+
+Transport repair only: the semantic index named the bodies but the HUB tree carried no body bytes. The fixed exporter was staged unmodified and run.
+
+- 23 *.body.json carriers -- ASCII JSON, payload_encoding=BASE64_ORIGINAL_BYTES, so UTF-16 and CRLF survive transport byte-for-byte
+- EXPORT_MANIFEST.json -- the exporter's own manifest with per-key carrier SHA256, original path, original SHA256 and byte count
+- BODY_DELIVERY_STATUS.json -- every HUB path, carrier SHA, decoded original SHA, bytes, remote readback result and the two captured commands with exit 0
+
+Totals: original bodies 23; generated manifest 1; body readbacks verified 23; missing carriers 0; failed carriers 0.
+Each readback was verified by downloading the carrier from HUB, base64-decoding payload_base64 locally, and comparing decoded SHA256 and byte length to the fixed spec pins and to EXPORT_MANIFEST.json.
+
+Controls ran first: test_export_r08_exact_bodies.py PASS on all seven offline controls (0 network calls), then export_r08_exact_bodies.py COMPLETE_FIXED_BODY_EXPORT with 23 bodies.
+
+No source file was executed or modified; no supplier download or permission call was made; no semantic table was regenerated.
+
+The four reviewer qualifications are preserved: a missing direct call/import does not prove the transitive route is unenforced; 15 gate names versus 40 reason codes is not a defect by count alone; six-lane rules permit explicitly justified DEGRADED statuses; orphan directories stay preserved and non-authoritative.
+
+Earlier R08 evidence (semantic closure 1950, receipt correction 1855) remains visible and unchanged. GPT must read these bodies before any acceptance decision.
+
+## Earlier pointers preserved (not superseded for content, only for pointer role)
 
 ## R08 semantic/authority/execution closure 1950 (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/)
 
