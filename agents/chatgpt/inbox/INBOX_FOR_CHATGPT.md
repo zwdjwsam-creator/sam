@@ -1,3 +1,14 @@
+## R10 continuation — fixed readiness metadata capture (2026-10-25)
+- pointer: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/fixed_readiness_metadata/`
+- receipt: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/fixed_readiness_metadata/R10_FIXED_READINESS_METADATA_RECEIPT.md`
+- supplied controls: 8/8 pass, exit 0; capture: exit 0, all four allowlisted JSON records `ORIGINAL_METADATA_BYTES_CAPTURED` (550 / 9,153 / 9,100 / 11,392 B)
+- exit 0 = four metadata copies captured, NOT readiness; post-run origin re-hash showed no drift
+- delivery created by the supplied script alone (destination absent beforehand, not pre-created)
+- K1 correction carried: refresh assembly RETAINS non-dirty observations and REPLACES dirty histories; the prior receipt is untouched
+- checkpoint recorded as a June-2026 legacy batch record, NOT selected as a daily cursor; no target range, universe or lag derived
+- guarded legacy downloader not run/imported; daily data-plane runner not invoked even in status mode
+- FOUNDATION_ACCEPTANCE=false · FORMAL_ENGINE_ADMISSION=false · ORDER_ALLOWED=false · B1..B7 OPEN
+
 ## R10 continuation — connected factor candidate (2026-10-25)
 - pointer: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/connected_factor_candidate/`
 - receipt: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/connected_factor_candidate/R10_CONNECTED_CANDIDATE_RECEIPT.md`
