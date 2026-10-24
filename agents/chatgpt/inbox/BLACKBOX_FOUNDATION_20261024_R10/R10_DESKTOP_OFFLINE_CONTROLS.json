@@ -1,0 +1,54 @@
+{
+ "schema": "R10_DESKTOP_OFFLINE_CONTROLS_1",
+ "command": {
+  "argv": [
+   "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+   "-X",
+   "utf8",
+   "test_blackbox_operate_r10.py"
+  ],
+  "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry",
+  "exit_code": 0
+ },
+ "retained_stdout": {
+  "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_OFFLINE_CONTROLS.txt",
+  "sha256": "10a8f6f4013420db37baaf61bb3d349317e4329274a3b45f50432754beffefb1"
+ },
+ "status": "PASS",
+ "controls_passed": 24,
+ "controls": [
+  "catalogue presence and stale PASS labels do not admit data",
+  "updater/source join uses explicit product ids",
+  "unknown updater stays unbound",
+  "duplicate catalogue ids rejected",
+  "catalogue/schema entity mismatch rejected",
+  "semantic evidence pin independent of JSON layout",
+  "actual Parquet observations served with exact key receipt",
+  "diagnostic read cannot upgrade absence or engine admission",
+  "newer request rejects stale calendar",
+  "unbound fields rejected",
+  "code alias not guessed",
+  "changed CURRENT parent rejected",
+  "missing data rejected at the real read boundary",
+  "duplicate data rejected at the real read boundary",
+  "null data rejected at the real read boundary",
+  "zero data rejected at the real read boundary",
+  "ordinal data rejected at the real read boundary",
+  "duplicate evidence keys rejected",
+  "actual child imports without constructing engine",
+  "engine import file write rejected",
+  "engine import network rejected",
+  "caught side effect still prevents clean import claim",
+  "transitive engine authentication call denied before body",
+  "import-time engine construction denied before body"
+ ],
+ "scope": "OFFLINE_SYNTHETIC_ONLY",
+ "supplied_claim_was": "24 on the reviewer host",
+ "desktop_result": "IDENTICAL_COUNT_24_ON_ZHANGWEI",
+ "notes": "these are synthetic Arrow fixtures and a synthetic package; they are not business data",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
