@@ -1,25 +1,50 @@
 # INBOX_FOR_CHATGPT
 
-updated: 2026-10-24T17:40:00+08:00
-latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/DELTA_REPORT.md
-bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/
-checkpoint: ROUND_7_OF_10_DELIVERED
-budget_slot: 7/10
-budget_remaining_after_delivery: 3
-parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R07_OF_10_SEARCH_ALL_LAYERS_AND_REPAIR_CONSUMPTION_20261024_1718.md
-producer_side_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R06_REVIEW_R07_LAYER_DIAGNOSIS_20261024_1718/REVIEW_R06_AND_R07.md
-visible_predecessor: BLACKBOX_FOUNDATION_20261024_R06
-visible_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R05 (pointer only)
-visible_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R04 (+ access_resources supplement)
-visible_predecessor_of_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R03 (pointer only; no R03 section body survives in this file)
+updated: 2026-10-24T18:20:00+08:00
+latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/DELTA_REPORT.md
+bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/
+checkpoint: ROUND_8_OF_10_DELIVERED
+budget_slot: 8/10
+budget_remaining_after_delivery: 2
+parent_tip: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R07_REVIEW_R08_CONSUMPTION_20261024_1812/REVIEW_R07_AND_R08.md
+parent_outbox_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_OF_10_OBSERVATION_GATE_AND_EXPLICIT_BINDINGS_20261024_1812.md
+visible_predecessor: BLACKBOX_FOUNDATION_20261024_R07
+visible_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R06
+visible_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R04 (R05/R03 pointer only)
 FOUNDATION_ACCEPTANCE: false
 ORDER_ALLOWED: false
 formal_backtest_active: false
 PRODUCTION_CHANGE_AUTHORIZED: false
+CURRENT_SWITCH_ALLOWED: false
 source_absence_claims_this_round: 0
 network_calls_this_round: 0
 language: en
 
+## R08/10 bundle contents (all under inbox/BLACKBOX_FOUNDATION_20261024_R08/)
+
+- DELTA_REPORT.md -- exact execution of the four supplied files, ALREADY_BUILT_VERIFIED candidate, 23/23 controls, the nine required corrections with measured replacements, Section C bindings, the root-venv defect
+- ROUND_STATUS.json -- slot 8/10, remaining 2, per-section status, safety flags, budget
+- GPT_CODE_EXECUTION.json -- every executed file hash (unedited), the isolated runtime, zero network/download/auth/production writes
+- FIXTURE_TEST_RESULTS.json -- 23/23 offline controls PASS, zero network calls, synthetic-only scope
+- LOCAL_REPAIR_RESULT.json -- candidate artifacts and hashes, observation accounting (12,362,212 = 12,327,735 + 34,477), Family-B reconciliation, lost_keys=0
+- MUST_READ_PREFLIGHT.txt -- CACHE-class precheck PASS, kernel sha VERIFIED, both manifest members sha-matching
+- OBSERVATION_AND_NON_REGRESSION_EVIDENCE.json -- per-product key conservation and observation states
+- TWO_DAY_LAYER_DIAGNOSES.json -- published vs candidate layer readings for both stock products, four axes kept separate
+- INDEX_FULL_PLANE_PROBE.json -- the mandated 732-file index plane opened explicitly (137 valued H1 sessions, 399303.XSHE present)
+- R07_EVIDENCE_CORRECTIONS.json -- C01..C11, each rejected sentence replaced by a measured statement with its evidence file
+- R09_IMPLEMENTATION_BINDINGS.json -- 12 domains, exact pins, 9 unresolved bindings with the exact R09 action
+- ENGINE_RUNTIME_AND_UPDATE_READINESS.json -- runtime and dependency matrix, provider/admission design, all flags false
+- POTENTIAL_DATA_LOSS_REGISTER.json -- still empty; no loss attributed to migration
+- evidence/ -- adjust_factor date-axis and two-date keys, family_b distribution, fund/nav view, legacy tool defects, dependency matrix
+
+## Concise close-out
+
+1. The four supplied files were executed unedited; the compilers pin `c8ddf805...f336` matched. `MUST_READ_PRECHECK = PASS` for CACHE.
+2. 23/23 offline controls PASS, zero network calls, scope `OFFLINE_SYNTHETIC_ONLY`.
+3. The candidate rebuild replayed to `ALREADY_BUILT_VERIFIED`: input 12,362,212 rows = 12,327,735 observed + 34,477 unobserved, null-to-zero fills 0, no listing/delisting inference, `lost_keys = 0` and no lost field observations on either product. Factor grid 959,896 rows, market structure 178, grid audit 34,477. Nothing published, no CURRENT switch, no engine admission.
+4. The nine review points are answered in `R07_EVIDENCE_CORRECTIONS.json`, not by re-assertion: the index plane was actually opened (732 files, 137 valued 2026 H1 sessions, 399303.XSHE with 3,004 valued closes) and its MANIFEST n_files=154 defect is recorded as a registry error; RAW presence never implies Cleaning completeness; the stale universe end is `REQUEST_OUTSIDE_PRODUCT_COVERAGE`, not regression; FIELD_NOT_CACHED is a miss reason only; the adjust-factor plane is DAILY_DENSE by contract and is neither complete nor a change-event series, with 20 of 37 RAW files carrying a 0..299 page ordinal in `date` and a constant factor of 1.0; the FUND-like view must reject its empty member; the three extra labels are not enum members; Family B is 294x105 + 42 leading + 8 trailing = 34,477 rows over 344 codes.
+5. The legacy empty modules and enum clash remain observed defects with located call sites, with no causal history claimed.
+6. Section C binds 12 domains and explicitly leaves 9 unresolved rather than guessing. `E:\BLACKBOX\.venv` is unusable on this host (pyvenv base points to a ThinkPad path); an isolated runtime venv was used and the defect is logged, not repaired.
 ## R07/10 bundle contents (all under inbox/BLACKBOX_FOUNDATION_20261024_R07/)
 
 - DELTA_REPORT.md -- what was executed, the exact guard failure, the two null-row families, the cross-layer search conclusion, twelve defects, next implementable fixes
