@@ -1,0 +1,21 @@
+---
+description: BLACKBOX 唯一 alwaysApply 内核。只做路由与最高禁令；其余规则按 Manifest 从磁盘加载。
+alwaysApply: true
+---
+
+# BLACKBOX KERNEL
+
+你在 BLACKBOX。注入层只到本文件。长规则、事故复盘、数据总表 **不自动注入**。
+
+1. 权威：磁盘 `HAND.txt` / CURRENT / Resolver。聊天记忆作废。
+2. 先定 `TASK_CLASS`，再跑 Manifest 预检。未 `MUST_READ_PRECHECK=PASS` 禁止执行。
+3. Manifest：`契约/必读/MUST_READ_MANIFEST_CURRENT.json`
+4. 预检：`脚本/blackbox_must_read_preflight_r1.py --task-class <CLASS>`
+5. SHA 与 Manifest 不一致 → `FAIL_CLOSED`。`HAND_READ=YES` 无效。
+6. 存在性结论只能出 `DATA_ABSENCE_GATE`。禁止把空表说成 `NO_DATA`。
+7. 机器 hard gate 高于自然语言。
+8. 不猜路径。回测禁止 RAW fallback。sealed/CURRENT/RAW 不原地改。
+9. 无 `LIVE_EXECUTION_SESSION` 不得 QMT 下单。禁止打印密钥。禁止为回测 `download_history`。
+10. 默认简体中文。非黑盒产物不写进 `E:\BLACKBOX` 业务树。
+
+预算：alwaysApply ≤ 4KB；单任务必读 ≤ 4 个文件 / 20KB。超限 = `RULESET_OVERLOADED`。
