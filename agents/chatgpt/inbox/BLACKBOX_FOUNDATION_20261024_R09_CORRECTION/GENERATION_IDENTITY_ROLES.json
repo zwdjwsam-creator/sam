@@ -1,0 +1,95 @@
+{
+ "schema": "R09_GENERATION_IDENTITY_ROLES_1",
+ "round": "R09/10_CORRECTION",
+ "principle": "different files carry different identities by design; CURRENT names the selected mounted release while the release-internal records keep their own generation. No seal, id or pointer is rewritten to make them agree.",
+ "roles": [
+  {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+   "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+   "role": "SELECTION_POINTER",
+   "identity": "cache_release_id of the currently mounted release",
+   "authoritative_for": [
+    "which release is mounted",
+    "asof"
+   ],
+   "not_authoritative_for": [
+    "product provenance"
+   ]
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\RELEASE.json",
+   "sha256": "a8a873791a4c25038ff062d08b9fcc11e3c18694293ce264137c3dd05292fde8",
+   "role": "RELEASE_GENERATION_RECORD",
+   "identity": "the generation that produced this release tree",
+   "authoritative_for": [
+    "build provenance",
+    "parent chain",
+    "status flags written at build time"
+   ],
+   "not_authoritative_for": [
+    "which release is currently mounted"
+   ]
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\MANIFEST.json",
+   "sha256": "afa93d19bc3b3a428311687d150db552f5f303d200787125e905b91334e408ca",
+   "role": "PRODUCT_ADDITION_RECORD",
+   "identity": "products added by this particular release step",
+   "authoritative_for": [
+    "product delta of the step"
+   ],
+   "not_authoritative_for": [
+    "the mounted release id"
+   ]
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SEAL.json",
+   "sha256": "432b0418d67f0095a99755dc82a8295fe52033cc490f445a01a424dc8dd76c0a",
+   "role": "MINIMAL_ACCEPTANCE_STAMP",
+   "identity": "sealed/accepted + timestamp only",
+   "carries": [
+    "accepted",
+    "sealed_at"
+   ],
+   "does_not_carry": [
+    "release id",
+    "product list",
+    "content hash"
+   ],
+   "gap": "a seal that cannot name what it sealed is not a generation binding"
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+   "sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+   "role": "SELECTION_POINTER_PLUS_INHERITANCE",
+   "identity": "release_id = the product-bearing release (R33 FUND_NAV); parent_release_id, quarantine_root and ledger_path = the daily tip release (R45)",
+   "authoritative_for": [
+    "mounted cleaning standard root"
+   ],
+   "not_authoritative_for": [
+    "that R33 produced the tip quaranantine ledger"
+   ]
+  },
+  {
+   "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+   "sha256": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23",
+   "role": "CAPABILITY_GENERATION_DECLARATION",
+   "identity": "capability_generation_id"
+  }
+ ],
+ "stale_generation_handling": {
+  "rule": "capability facts whose SYSTEM_GENERATION_ID does not match the declared capability generation stay REJECTED (CAPABILITY_FACTS_GENERATION_STALE)",
+  "solved_by_relabeling": false
+ },
+ "future_serving_envelope_requirements": [
+  "name the chosen manifest",
+  "name each actual source and version",
+  "retain every original identity unmodified"
+ ],
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
