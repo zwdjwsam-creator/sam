@@ -1,0 +1,133 @@
+{
+ "schema": "R10_PRODUCER_FQ_BODY_PROVENANCE_1",
+ "at_cn": "2026-10-25T02:03:09+08:00",
+ "rule": "source bodies delivered as exact original bytes; credential scan run first; jdb.auth() delegates to jq_download_base and no credential value is embedded in either body",
+ "supplied": [
+  {
+   "file": "SUPPLIED_SOURCES/locate_incremental_factor_writer.py",
+   "original_path": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_PRODUCER_AND_FQ_CONTRACT_20261025/locate_incremental_factor_writer.py",
+   "bytes": 7189,
+   "sha256": "f30e2149af5e0228472c2fe5a9806631726843a8872290ab4d7786d75b4092e1",
+   "byte_identical_to_original": true,
+   "role": "supplied HUB package member, byte-identical to the staged copy",
+   "embedded_credential_found": false,
+   "encoding": "utf-8"
+  },
+  {
+   "file": "SUPPLIED_SOURCES/PACKAGE.json",
+   "original_path": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_PRODUCER_AND_FQ_CONTRACT_20261025/PACKAGE.json",
+   "bytes": 337,
+   "sha256": "059af6d72d238629b1ad8ec86deebda1f65f141c9a161f02029745d365eb5940",
+   "byte_identical_to_original": true,
+   "role": "supplied HUB package member, byte-identical to the staged copy",
+   "embedded_credential_found": false,
+   "encoding": "utf-8"
+  }
+ ],
+ "candidates": [
+  {
+   "file": "CANDIDATE_BODIES/aux_billboard_adjust_index_minute_r15.py",
+   "original_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\aux_billboard_adjust_index_minute_r15.py",
+   "bytes": 10815,
+   "sha256": "767c73c7a5c17e017d4274c57071725e0a59c1eef39194e795edff8dce57a3cc",
+   "byte_identical_to_original": true,
+   "role": "PRODUCER CANDIDATE: writes P1/adjust_factor_stock__incremental_<YYYYMMDD>__<stamp>.parquet with the exact observed naming (line 129)",
+   "embedded_credential_found": false,
+   "encoding": "utf-8"
+  },
+  {
+   "file": "CANDIDATE_BODIES/full_data_update_r14_run.py",
+   "original_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\full_data_update_r14_run.py",
+   "bytes": 23720,
+   "sha256": "a1ca66995ccecc15c08f982b1cc5568372d123c47a0fc16c93fdc7a653b01944",
+   "byte_identical_to_original": true,
+   "role": "PRODUCER CANDIDATE: same naming and request (line 308), plus an index->date rename fallback that the R15 body does not have",
+   "embedded_credential_found": false,
+   "encoding": "utf-8-sig"
+  }
+ ],
+ "historical": [
+  {
+   "file": "HISTORICAL_RECEIPTS/r14_full_data_update.log",
+   "original_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\11_LOGS\\r14_full_data_update.log",
+   "bytes": 3250,
+   "sha256": "e15423c31ca85e34dea8ed5b0f82617f0654ec9036743c25dcf6c6334b1f154f",
+   "byte_identical_to_original": true,
+   "role": "exact path declared by an identified body; maximum 6 files, no directory expansion",
+   "embedded_credential_found": false,
+   "encoding": "utf-8"
+  },
+  {
+   "file": "HISTORICAL_RECEIPTS/R14_FULL_DATA_UPDATE_RESULT.json",
+   "original_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\12_ACCEPTANCE\\R14_FULL_DATA_UPDATE_RESULT.json",
+   "bytes": 3593,
+   "sha256": "ef932db6672d23318fb0eed93c2f2f0724c108648a5b5f1222fad544e57cb0e7",
+   "byte_identical_to_original": true,
+   "role": "exact path declared by an identified body; maximum 6 files, no directory expansion",
+   "embedded_credential_found": false,
+   "encoding": "utf-8"
+  },
+  {
+   "file": "HISTORICAL_RECEIPTS/R14_RESULT_SUMMARY.json",
+   "original_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\10_ACCEPTANCE\\R14_RESULT_SUMMARY.json",
+   "bytes": 1834,
+   "sha256": "1c92e492bad10f0ae75b88b010195e21e6572dd2baa5dc7d0d05e7294ffb3684",
+   "byte_identical_to_original": true,
+   "role": "exact path declared by an identified body; maximum 6 files, no directory expansion",
+   "embedded_credential_found": false,
+   "encoding": "utf-8"
+  },
+  {
+   "file": "HISTORICAL_RECEIPTS/GAP_SCAN_R14.json",
+   "original_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\10_ACCEPTANCE\\GAP_SCAN_R14.json",
+   "bytes": 560,
+   "sha256": "5d27be849312ae089a75d7c50e64f3d004a633433ed2d3d63ead2cad89ed64dd",
+   "byte_identical_to_original": true,
+   "role": "exact path declared by an identified body; maximum 6 files, no directory expansion",
+   "embedded_credential_found": false,
+   "encoding": "utf-8"
+  },
+  {
+   "file": "HISTORICAL_RECEIPTS/aux_download.log",
+   "original_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\11_LOGS\\aux_download.log",
+   "bytes": 775,
+   "sha256": "17e0f72e8a833ff4c90ac36b462f1abb6b954cf3a5760991ddb3461183c58205",
+   "byte_identical_to_original": true,
+   "role": "exact path declared by an identified body; maximum 6 files, no directory expansion",
+   "embedded_credential_found": false,
+   "encoding": "utf-8"
+  }
+ ],
+ "contracts": [
+  {
+   "file": "CONTRACTS/domain_schema_contract.csv",
+   "original_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+   "bytes": 4182,
+   "sha256": "6367c574c27b7ddbb7a926e4899f59502f3febc76a4cf2b0092998d275458146",
+   "byte_identical_to_original": true,
+   "role": "normative dictionary contract, raw original bytes retained",
+   "embedded_credential_found": false,
+   "encoding": "utf-8-sig"
+  },
+  {
+   "file": "CONTRACTS/pit_schema_contract.csv",
+   "original_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+   "bytes": 1490,
+   "sha256": "1e62d187b6417b875f42a9b9b45fc616b3ac1d375c88f6d77116488c783e253b",
+   "byte_identical_to_original": true,
+   "role": "normative dictionary contract, raw original bytes retained",
+   "embedded_credential_found": false,
+   "encoding": "utf-8-sig"
+  },
+  {
+   "file": "CONTRACTS/dtype_precision_contract.csv",
+   "original_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+   "bytes": 1076,
+   "sha256": "3864ff80edeb0538881d30b70e894c4a0783eec80fb51908035ebae23e74b57f",
+   "byte_identical_to_original": true,
+   "role": "normative dictionary contract, raw original bytes retained",
+   "embedded_credential_found": false,
+   "encoding": "utf-8-sig"
+  }
+ ]
+}
