@@ -1,0 +1,107 @@
+{
+  "rule_id": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+  "status": "ACTIVE_HARD_RULE",
+  "schema_version": "3.0.0",
+  "layer": "HAND_TOP",
+  "authorized_by": "USER_AS_HAND",
+  "authorized_at_cn": "2026-08-12T01:18:42+0800",
+  "authorized_at_user_utterance": "新的正式口径：full_factor_values_library需要下载；financial_indicator需要全量下载；money_flow_abnormal_lock_subscribe需要全量下载；jq260因子值库目标需要但权限必须重新实测；fq_pre_post目前不需要；QMT_live仍不属于历史全量建设",
+  "amends": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_JQ260_FACTOR_RESEARCH_LAYER_R1"
+  ],
+  "definition_one_line": "正式口径：全量因子值库/财务指标/资金流异常锁仓申购 = 须全量建设；JQ260 因子值库目标须建但先强制权限实测；前/后复权整库不建；QMT 实时不在历史全量范围。",
+  "domains": [
+    {
+      "id": "full_factor_values_library",
+      "cn": "全量因子历史值库",
+      "role": "REQUIRED_FULL_HISTORY_THEN_DAILY_INCREMENTAL",
+      "status_new": "REQUIRED",
+      "status_old": "DEFERRED_POLICY / excluded",
+      "policy": "凡账户/API 可取得的因子，历史全量建库；之后按交易日增量更新。不等于前/后复权价库；与 adjust_factor/valuation 并行不互斥。",
+      "permission_gate": "ACCOUNT_API_CAPABILITY_SPLIT: download all allowed factors; log DENIED per factor",
+      "in_full_data_update": true,
+      "in_daily_incremental": true
+    },
+    {
+      "id": "financial_indicator",
+      "cn": "财务指标历史库",
+      "role": "REQUIRED_FULL_HISTORY",
+      "status_new": "REQUIRED",
+      "status_old": "BLOCKED",
+      "policy": "需要全量下载财务指标历史库；旧 BLOCKED 作废，须重新拉权限/接口实测后执行。",
+      "permission_gate": "REPROBE_REQUIRED_BEFORE_CLAIM_BLOCKED",
+      "raw": "P3_finance_pit/financial_indicator",
+      "in_full_data_update": true,
+      "in_daily_incremental": true
+    },
+    {
+      "id": "money_flow_abnormal_lock_subscribe",
+      "cn": "资金流/异常交易/锁仓/申购相关历史数据",
+      "role": "REQUIRED_FULL_HISTORY",
+      "status_new": "REQUIRED",
+      "status_old": "OPTIONAL_GAP",
+      "policy": "需要全量下载；覆盖 money_flow / abnormal / lock_shares / subscribe 等 P5 相关叶。",
+      "raw": "P5_attributes_events/{money_flow,abnormal,lock_shares,subscribe,...}",
+      "in_full_data_update": true,
+      "in_daily_incremental": true
+    },
+    {
+      "id": "jq260_factor_values_library",
+      "cn": "聚宽 260 因子完整历史值库",
+      "role": "TARGET_REQUIRED_SUBJECT_TO_PERMISSION_REPROBE",
+      "status_new": "TARGET_REQUIRED + REPROBE",
+      "status_old": "NOT (value_download denied by old policy)",
+      "policy": "目标上需要完整历史值库；不得仅因旧 FACTOR_VALUE_POLICY / 旧研究层口令自动跳过。执行前必须重新实测账号权限；实测可用则全量建库+日更；实测不可用则写 PROBE_FAIL 证据，不得假 PASS。",
+      "permission_gate": "MANDATORY_LIVE_REPROBE",
+      "in_full_data_update": true,
+      "in_daily_incremental": "IF_PROBE_PASS"
+    },
+    {
+      "id": "jq260_factor_values",
+      "cn": "聚宽 260 因子的实际因子值",
+      "role": "TARGET_REQUIRED_SUBJECT_TO_PERMISSION_REPROBE",
+      "status_new": "TARGET_REQUIRED + REPROBE",
+      "status_old": "skip by old policy",
+      "policy": "同上；先查权限再决定下载/日更，不可默认跳过。",
+      "permission_gate": "MANDATORY_LIVE_REPROBE",
+      "in_full_data_update": true,
+      "in_daily_incremental": "IF_PROBE_PASS"
+    },
+    {
+      "id": "fq_pre_post",
+      "cn": "前复权/后复权价格整库",
+      "role": "NOT_REQUIRED",
+      "status_new": "NOT_NEEDED_NOW",
+      "status_old": "FORBIDDEN_UNLESS_EXPLICIT",
+      "policy": "目前不需要整库；已有复权因子，需要时可动态生成 pre/post 价。禁止把 fq 整库当必下任务。",
+      "in_full_data_update": false,
+      "in_daily_incremental": false
+    },
+    {
+      "id": "QMT_live",
+      "cn": "QMT 实时盘中数据",
+      "role": "OUT_OF_SCOPE_HISTORY_FULL_BUILD",
+      "status_new": "HARD_BLOCK / OUT_OF_SCOPE",
+      "status_old": "HARD_BLOCK",
+      "policy": "仍不属于历史数据全量建设范围；不进「数据更新」主轨。",
+      "in_full_data_update": false,
+      "in_daily_incremental": false
+    }
+  ],
+  "obsolete_claims": [
+    "full_factor_values_library excluded from full data update",
+    "financial_indicator permanently BLOCKED without re-probe",
+    "money_flow_abnormal_lock_subscribe optional zero-ok forever",
+    "jq260 factor values never download by fixed old policy without live re-probe",
+    "factor_value_download_allowed=false as permanent HAND truth"
+  ],
+  "research_layer_still_valid": {
+    "jq260_dictionary_formula": true,
+    "note": "260 原生字典/公式研究层仍保留；可平台识别；公式截面防穿越重算仍可用；与「目标因子值库」并行：值库建成后以值库为主，研究层不消失。"
+  },
+  "does_not_auto_start_download": true,
+  "hand_decision_not_forged": true,
+  "generated_at_cn": "2026-08-12T01:18:42+0800",
+  "generated_at_utc": "2026-08-11T17:18:42+00:00"
+}
