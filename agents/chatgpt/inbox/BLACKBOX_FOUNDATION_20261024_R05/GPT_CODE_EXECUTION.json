@@ -1,0 +1,160 @@
+{
+  "round_id": "BLACKBOX_FOUNDATION_20261024_R05",
+  "working_directory": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+  "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+  "interpreter_version": "Python 3.12.10",
+  "commands": [
+    {
+      "seq": 1,
+      "purpose": "stage the four GPT scripts plus the review and prove blob identity",
+      "command": "copy agents/chatgpt/reviews/..._1542/*.py|*.md -> reviews/R05/",
+      "exit_code": 0,
+      "result": "5/5 git blob sha1 match the HUB blobs"
+    },
+    {
+      "seq": 2,
+      "purpose": "create the R05 candidate from R04",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe reviews\\R05\\build_r05.py candidate\\r4 candidate\\r5",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"CREATED\", ...}",
+      "result": "candidate/r5 created; R04 preserved untouched"
+    },
+    {
+      "seq": 3,
+      "purpose": "reader counterexamples",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe reviews\\R05\\verify_reader_r05.py candidate\\r4 candidate\\r5",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"PASS\",\"scope\":\"synthetic file-index and actual provider calculation blocks\",\"checks\":[\"all overlapping builds retained\",\"unknown footer not silently dropped\",\"unserved tail counted\",\"different-rank revision conflict exposed\"]}"
+    },
+    {
+      "seq": 4,
+      "purpose": "offline access controls",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe reviews\\R05\\jq_bounded_access.py --selftest",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"PASS\",\"scope\":\"offline SDK double\",\"checks\":5}"
+    },
+    {
+      "seq": 5,
+      "purpose": "exact API function-path harness plus helper candidate generation",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -m reviews.R05.api_boundary_probe \"E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\api.py\" --adapter candidate.r5.engine_adapter --output-api reviews\\R05\\api_r05_helper_candidate.py",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"PASS\",...,\"old_admission_error\":\"EMPTY_FRAME\",\"patched_admission_error\":\"PROPAGATED\",\"success_control\":\"FRAME\",\"factory_calls\":0,\"engine_core_started\":false,\"MASTER_ADMISSION\":\"NOT_IMPLEMENTED_BY_THIS_HARNESS\",\"real_diagnostic_call\":{\"result\":\"FRAME\",\"rows\":3,\"status\":\"OK\"},\"real_adjustment_rejection\":\"ADJUST_MODE_UNEVIDENCED\"}"
+    },
+    {
+      "seq": 6,
+      "purpose": "install the exact historical SDK distribution into the dedicated candidate runtime only",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -m pip install --no-input \"jqdatasdk==1.9.8\"",
+      "exit_code": 0,
+      "installed": {
+        "jqdatasdk": "1.9.8",
+        "SQLAlchemy": "2.1.6",
+        "thriftpy2": "0.4.20",
+        "PyMySQL": "1.2.3",
+        "msgpack": "1.2.3",
+        "ply": "3.11",
+        "requests": "2.34.2",
+        "urllib3": "2.8.0",
+        "certifi": "2026.10.23",
+        "charset_normalizer": "3.5.2",
+        "idna": "3.20",
+        "typing_extensions": "4.16.0"
+      },
+      "pre_existing_unchanged": {
+        "numpy": "2.5.4",
+        "pandas": "2.3.3",
+        "pyarrow": "21.0.0",
+        "six": "1.17.0"
+      },
+      "version_source": "E:\\BLACKBOX\\.venv\\Lib\\site-packages\\jqdatasdk-1.9.8.dist-info\\METADATA (read as file, historical interpreter never executed)",
+      "global_python_or_historical_venv_modified": false,
+      "credential_files_modified": false,
+      "engine_configuration_modified": false
+    },
+    {
+      "seq": 7,
+      "purpose": "dependency consistency",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -m pip check",
+      "exit_code": 0,
+      "stdout": "No broken requirements found."
+    },
+    {
+      "seq": 8,
+      "purpose": "the one authorized ordinary JQ access check",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe reviews\\R05\\jq_bounded_access.py --live",
+      "exit_code": 0,
+      "stdout": "{\"result_path\":\"...reviews\\\\R05\\\\JQ_BOUNDED_ACCESS.json\",\"status\":\"BOUNDED_ACCESS_VERIFIED\"}",
+      "result_file": "JQ_BOUNDED_ACCESS.json"
+    }
+  ],
+  "source_hashes": {
+    "api_source": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\api.py",
+      "sha256_bytes": "49c49697504202fb24a73241d14f0025729a08d03ff12a67a7f694e325383dee",
+      "sha256_normalized": "49c49697504202fb24a73241d14f0025729a08d03ff12a67a7f694e325383dee",
+      "bytes": 120960,
+      "unchanged_after_run": true
+    },
+    "r04_inputs_normalized_sha256": {
+      "provider.py": "dc1e35bd58027507d20e1972b78c04d4bbeadad5bfe70b244778c05f4395788a",
+      "engine_adapter.py": "c8536166045e62624a54fbba19a3d64ef365da56e80faf4af8d19efbb7aed9e6",
+      "file_index.py": "1c74bebab1a39aacc56c303e8fab51a7401fac39546e5ab31b7bc2f776083803",
+      "securities.py": "eebfa2ae3fb356b81966086dae91427e4a0d72474fe91f939fd8196a9b3ed499",
+      "errors.py": "7eb7ac69f42931842b2bb279cee39a9c247be816325c0c247d127c2cd00cb281"
+    },
+    "r05_outputs_normalized_sha256": {
+      "provider.py": "5257d1e9dbaa7cb540af5b3dabe1f2821d118a540ace6a732fa12fee464691c1",
+      "engine_adapter.py": "c8536166045e62624a54fbba19a3d64ef365da56e80faf4af8d19efbb7aed9e6",
+      "file_index.py": "85f621bd02b239392915f8a341d6603be00f9ea27e41d7d51eb71e1ca8048a7c",
+      "securities.py": "eebfa2ae3fb356b81966086dae91427e4a0d72474fe91f939fd8196a9b3ed499",
+      "errors.py": "e49c9b2c7335a44b7bcffed609c682c4d944997748e43fd6d6e9a681751e973f"
+    },
+    "changed_files": [
+      "provider.py",
+      "file_index.py",
+      "errors.py"
+    ],
+    "unchanged_files_not_uploaded": [
+      "engine_adapter.py",
+      "securities.py"
+    ],
+    "api_helper_candidate": {
+      "path": "reviews/R05/api_r05_helper_candidate.py",
+      "sha256_bytes": "db41d0d2a96b2cea295640d26c10a3485d2def8ae307d5ab57fac9df154e78b4",
+      "bytes": 124489
+    }
+  },
+  "semantic_scope": {
+    "reader_changes": [
+      "ProviderReject carries bb_admission_error=True (errors.py)",
+      "file selection keeps every overlapping build; filename family/build time is not authority",
+      "unknown/unreadable coverage is surfaced as UNKNOWN_REQUIRES_REVIEW instead of being dropped",
+      "differences are exposed across every overlapping revision, not only the top rank",
+      "expected dates are not clipped to the observed data watermark"
+    ],
+    "api_change": "only _raise_if_not_implemented is replaced: it now propagates any error carrying bb_admission_error in addition to NotImplementedError. Import-time initialization of the module is retained textually but never executed by the harness.",
+    "test_scope": {
+      "FUNCTION_PATH_TESTED": true,
+      "FULL_PACKAGE_STARTUP_NOT_TESTED": true,
+      "MASTER_ADMISSION_NOT_IMPLEMENTED": true,
+      "synthetic_inputs_only_for_reader_controls": true,
+      "real_bounded_read_executed": true
+    },
+    "not_claimed": [
+      "engine readiness",
+      "MASTER gate implementation",
+      "source identity resolution",
+      "full domain-required field joins",
+      "adjusted price support",
+      "clock-grid coverage",
+      "clean correctness for all other datasets"
+    ]
+  },
+  "invocations_observed": {
+    "jq_sdk_auth": 1,
+    "jq_get_query_count": 1,
+    "jq_get_price": 1,
+    "retries": 0,
+    "other_accounts_tried": 0,
+    "note": "counts are the public calls made by the supplied script; SDK internals may issue their own requests"
+  }
+}
