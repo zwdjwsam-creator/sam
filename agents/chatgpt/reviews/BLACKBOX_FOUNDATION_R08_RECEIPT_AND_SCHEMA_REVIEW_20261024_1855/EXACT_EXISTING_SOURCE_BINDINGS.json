@@ -1,0 +1,48 @@
+{
+  "reviewed_at": "2026-10-24T18:55:00+08:00",
+  "invalid_to_actual": [
+    {
+      "invalid": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_contracts/S4_UPDATE_PUBLICATION/jq_download_execution_r1.py",
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/source_bodies/S4_UPDATE_PUBLICATION__jq_download_execution_r1.py",
+      "blob": "5d6f2435dece753aa52325f5a80b1b2ea024c667"
+    },
+    {
+      "invalid": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_contracts/S4_UPDATE_PUBLICATION/jq_download_base.py",
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/source_bodies/S4_UPDATE_PUBLICATION__jq_download_base.py",
+      "blob": "ae75eea476e8ec418008ef578982e956d8ab10a3"
+    },
+    {
+      "invalid": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_contracts/S4_UPDATE_PUBLICATION/run_blackbox_daily_incremental_data_plane_r1.py",
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/source_bodies/S4_UPDATE_PUBLICATION__run_blackbox_daily_incremental_data_plane_r1.py",
+      "blob": "41ea6597875bbee8778fe4db9ec0eddca8fe3576"
+    }
+  ],
+  "existing_compilers": [
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/source_bodies/cache_compiler_daily_incremental_r1.py",
+      "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+      "function": "build_release",
+      "source_read_function": "read_price_frame",
+      "warning": "canonical_code unrecognized, amount unrecognized, broad writer side effects"
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1543/source_reads/cache_compiler_full_history_r1.py",
+      "blob": "d363db6958ac30a15d737dd65e8e6e8e39d6acc5",
+      "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+      "functions": [
+        "load_asset",
+        "compile_one",
+        "main"
+      ],
+      "warning": "INDEX_DAILY_PIT_R1 naming mismatch; shared reader incompatibility; do not run"
+    }
+  ],
+  "carry_forward": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R05/GAP_REPAIR_INPUTS.json",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/SOURCE_ACCESS_REGISTER.json",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/ACCESS_AND_DOWNLOAD_RUNBOOK.md",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/NEXT_UPDATE_BINDINGS.json"
+  ],
+  "current_body_hash_must_be_checked": true,
+  "production_execution_authorized": false
+}
