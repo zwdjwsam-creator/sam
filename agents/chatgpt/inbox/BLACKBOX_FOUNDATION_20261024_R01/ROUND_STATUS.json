@@ -1,0 +1,173 @@
+{
+ "round": "1/10",
+ "round_id": "BLACKBOX_FOUNDATION_R01_OF_10_EXECUTABLE_REGISTRY_AND_LOCAL_READ",
+ "tip": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R01_OF_10_EXECUTABLE_REGISTRY_AND_LOCAL_READ_20261024_1401.md",
+ "commit": "f14efc66",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "work_tree": "E:/BLACKBOX/_OPS/FOUNDATION_RECOVERY_20261024",
+
+ "deliverables": {
+  "A_ecology_registry": {
+   "builder": "build_ecology_registry.py",
+   "artifact": "ECOLOGY_REGISTRY.json",
+   "index": "ECOLOGY_REGISTRY_INDEX.json",
+   "query": "eco_query.py",
+   "datasets": 54,
+   "validator": "PASS (0 errors / 0 warnings)",
+   "by_supplier": {"JQData": 41, "VARIOUS": 6, "Tushare": 3, "MULTI_EXTERNAL": 1, "EXTERNAL": 1, "Friend_JQData/Tushare": 1, "BLACKBOX_INTERNAL": 1},
+   "by_layer_present": {"RAW": 41, "CLEAN": 34, "CACHE": 12, "FACTOR_DICTIONARY": 6, "FACTOR_VALUE": 1, "STRATEGY_OUTPUT": 1, "EVIDENCE": 4},
+   "dynamic_inputs_read_at_build": [
+    "数据/清洗成品/CURRENT_CLEANING_RELEASE.json",
+    "数据/回测缓存/CURRENT_CACHE_RELEASE.json",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json",
+    "rule_library/master_registry_R1/MASTER_RULE_LIBRARY_REGISTRY_R1.json",
+    "rule_library/master_registry_R1/DATA_INGESTION_GATE_RULES_R1.json",
+    "rule_library/master_registry_R1/DATA_DOMAIN_ADMISSION_MATRIX_R1.csv",
+    "20_unified_data_schema_contract_freeze_full_R1",
+    "completion_1803/SCOPE_COVERAGE_MAP.json",
+    "completion_1814/{DICTIONARY_FIELD_MAPPING_R1,POST_BASELINE_SCOPE_SUPPLEMENT_R1,ENGINE_DATA_INTERFACE_R1}"
+   },
+   "answers_operator_questions": ["这是什么数据", "什么来源/血统", "是否清洗", "字典在哪", "谁能读", "怎样更新", "PIT/复权", "准入阶段"]
+  },
+  "B_local_read_candidate": {
+   "module": "candidate/local_plane_provider.py",
+   "class": "LocalPlaneProvider",
+   "api": ["get_price(daily|1m|5m|30m|60m)", "get_trade_days", "get_all_securities",
+           "get_index_stocks", "get_extras(NAV)", "get_split_dividend(PIT asof)", "attribute_history"],
+   "chain_proven": "dataset_id -> registry resolve -> source identity -> bounded parquet read -> field/freq/adjust/knowable-time validation -> standard object (dict envelope)",
+   "engine_connected": false,
+   "reused_existing_readers": ["blackbox_data_access_resolver_r1.py (CURRENT 解析思路)",
+                                "blackbox_stock_minute_1m_reader_r1.py (日文件定位/PIT 口径)"],
+   "read_examples": {
+    "daily": "000001.XSHE 2026-06-01..06-30 CLEAN -> 22 rows, amount from money",
+    "minute": "000001.XSHE 2026-09-11 1m -> 240 rows, price_basis=RAW_NONE",
+    "raw_vs_clean": "2026-09-10 close 11.85 both sides (identity cross-check)"
+   }
+  },
+  "C_high_impact_fields": {
+   "index_weights_corrected": {
+    "prior_claim_1814": "缺 member_code（仅单个 RAW snapshot schema 摘要）",
+    "this_round": "成分代码存在：RAW 列名 index，CLEAN 列名 component_code",
+    "measured": "105 文件 / 56,164 行 / 8 指数 / 2014-2026 / weight null=0",
+    "new_gate": "historical_backtest_eligible 真实值=0；53,714 行 PARTIAL_OR_UNPROVEN -> 权重历史可回测性未通过",
+    "action": "恢复映射并登记资格门；不得把『文件在』当『权重可用』"
+   },
+   "minute_fields": {
+    "fact": "26 域分钟平面（含 clean A股_stock_1m）仍无 factor/high_limit/low_limit/paused",
+    "status": "候选 join 规则登记，未落地；拒绝填造"
+   },
+   "daily_segment_schema": {
+    "history_batch": ["time","code","open","close","high","low","volume","money","__index_level_0__"],
+    "incremental_dayfile": ["time","code","open","close","high","low","volume","money","paused","high_limit","low_limit","avg","pre_close","factor","fq"],
+    "measured_2026_09_10": {"factor": 1.0, "paused": 0.0, "high_limit": 12.87, "low_limit": 10.53},
+    "measured_2026_06_15_batch": {"factor": null},
+    "impact": "RAW 不是天然缺这四列；缺口只在历史 batch 段。batch 段 factor=null 必须显式拒绝，不得当 1"
+   },
+   "volume_and_date": {
+    "volume": "double, 122,500 行非整数计数=0 -> int64 安全；null 8,330（按 paused 核对后再定）",
+    "date": "timestamp[ns], time_of_day 实测全为 00:00 -> 语义正确，仅 dtype 偏离契约"
+   },
+   "duplicate_versions": {
+    "fact": "同 family 多次下载版本（trailing YYYYMMDD_HHMMSS）会导致双计数",
+    "fix": "family 去重取最新 + (code,timestamp) 兜底去重；已实现并验证"
+   },
+   "finance_aliases": "别名相同不证明内容等同；RAW 无 revision_version -> 修订链未实现，不发明"
+  },
+  "D_ai_reading_entry": {
+   "artifact": "AI_READING_ENTRY_CANDIDATE.md",
+   "status": "CANDIDATE_ONLY（未覆盖 AGENTS/规则/HAND）",
+   "covers": ["底层权威顺序", "生态查询 CLI", "只读候选入口", "来源层次", "允许/禁止", "经验索引", "阻塞", "下次更新现状"]
+  }
+ },
+
+ "smoke": {
+  "artifact": "SMOKE_RESULTS.json",
+  "runner": "run_round1_smoke.py",
+  "checks": {
+   "1_identity_separation": "PASS",
+   "2_real_local_read_pipeline": "PASS",
+   "3_explicit_rejections": "PASS",
+   "4_readonly_source_unchanged": "PASS"
+  },
+  "all_pass": true,
+  "engine_interface": {
+   "mode": "STATIC_AST_CONTRACT_CHECK",
+   "abstract_methods": ["get_price", "get_trade_days", "get_all_securities", "get_index_stocks", "get_split_dividend"],
+   "all_abstract_implemented": true,
+   "status": "INTERFACE_GAP_IDENTIFIED",
+   "blocking": ["system py312 无 pandas -> 引擎 base.py 导入失败",
+                "E:/BLACKBOX/.venv pyvenv.cfg 指向 C:/Users/ThinkPad -> 本机 venv 失效",
+                "候选返回 dict，引擎要求 pd.DataFrame"]
+  },
+  "network": false,
+  "downloads": 0,
+  "api_calls": 0,
+  "production_write": false
+ },
+
+ "reused_from_previous_rounds": [
+  "R9 冻结范围内容/链接保真验收",
+  "26 份 CANONICAL_FILE_LIST 逐路径 missing=0",
+  "950 文档索引 / 4 级 66 条目录概览",
+  "FUND_NAV 5980 片 / 6,496,121 行观察",
+  "15 组字段对应 + 20 个 JQ20 RAW_MANIFEST + NAV 增量资料",
+  "引擎 DataProvider 基类/工厂/字典纯读取层/master+ingest gate 命中"
+ ],
+
+ "new_this_round": [
+  "可加载 + 可校验 + 可查询的 ECOLOGY_REGISTRY（54 数据集 × 7 层 × 供应商血缘）",
+  "LocalPlaneProvider 只读候选，真实跑通 日频/1m/日历/证券/NAV 拒绝/除权事件 PIT",
+  "index_weights 成分代码缺失结论 CORRECTED + 105 文件资格实测（eligible=0）",
+  "日频 batch 段 vs day-file 段 schema 分裂实测（factor/limit/paused 只在 day-file）",
+  "重复版本双计数修复（family 去重 + 行去重）",
+  "RAW/CLEAN 同日同码 close 一致交叉验证",
+  "引擎抽象方法静态契约比对（5/5 实现）+ 依赖缺口定位（pandas / venv 失效）"
+ ],
+
+ "not_passed": [
+  "引擎仍未接通（formal_backtest_active=false 未变；候选未接入调用链）",
+  "分钟域 factor/limit/paused join 未落地",
+  "index_weights 权重历史可回测资格 0/53,714 通过",
+  "因子值仍 NOT_DOWNLOADED_BY_POLICY（未解禁，本轮未尝试）",
+  "pandas 缺失 / .venv 失效 未修（属环境变更，本轮只读范围外）"
+ ],
+
+ "precise_blockers": [
+  {"id": "B1", "blocker": "PANDAS_ABSENT_IN_SYSTEM_PY312",
+   "evidence": "import pandas -> ModuleNotFoundError; 引擎 base.py 顶层 import pandas",
+   "impact": "引擎 DataProvider 无法实例化/导入；接口只能做静态契约比对",
+   "owner_next_round": "R2/R3 依赖落户（用户授权安装或指定已装 pandas 的解释器）"},
+  {"id": "B2", "blocker": "BLACKBOX_VENV_STALE",
+   "evidence": ".venv/pyvenv.cfg: home=C:/Users/ThinkPad/AppData/Local/Programs/Python/Python312",
+   "impact": "项目内 .venv 不可用，所有历史 .venv 命令在本机失效",
+   "owner_next_round": "重建 venv 或改用 system py312"},
+  {"id": "B3", "blocker": "FACTOR_VALUE_POLICY_BLOCK",
+   "evidence": "DATA_INGESTION_GATE_RULES_R1.policies.factor_value_download_forbidden",
+   "impact": "因子值不可用；字典准入≠因子值可用",
+   "owner_next_round": "需用户/审查明确解禁范围与权限重探"},
+  {"id": "B4", "blocker": "INDEX_WEIGHTS_ELIGIBILITY_ZERO",
+   "evidence": "53,714 行 PARTIAL_OR_UNPROVEN / eligible_true=0",
+   "impact": "权重类回测不可准入；成分映射本身已恢复",
+   "owner_next_round": "R2 字段/合同差异收口时按指数逐年补证"}
+ ],
+
+ "next_round_required": [
+  "R2：原下载域/后续增量/外源清单 vs 字段合同差异收口；index_weights 资格补证；finance 别名/重复列/revision 语义分组结论",
+  "R2：把 21 个 JQ20 增量数据集的逐日完整性从『MANIFEST 在』推进到可对账口径（不重下全历史）",
+  "R3：实现只读本地值 provider 的引擎适配（DataFrame 返回 + 依赖落地），验证价格/日历/证券/准入接口",
+  "R3+：分钟域 factor/limit/paused join（按 code+trade_date, PIT 当日可见），batch 段缺失显式拒绝",
+  "R5/R6：更新计划幂等/修订/续跑/发布检查 + 代表域真实增量对账"
+ ],
+
+ "integrity": {
+  "raw_modified": false,
+  "current_modified": false,
+  "rules_modified": false,
+  "r9_modified": false,
+  "env_read": false,
+  "secrets_read": false,
+  "outputs_confined_to": "E:/BLACKBOX/_OPS/FOUNDATION_RECOVERY_20261024"
+ }
+}
