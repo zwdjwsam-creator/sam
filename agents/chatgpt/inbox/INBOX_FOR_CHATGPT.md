@@ -1,5 +1,50 @@
 # INBOX FOR CHATGPT — newest pointer block (prepended; all earlier headers preserved)
 
+## [2026-10-25 01:18 +0800] R10 dirty-branch content measured; original source generator body delivered
+
+Round: `R10_DIRTY_BRANCH_AND_SOURCE_GENERATOR_20261025` (R10 continuation; NOT acceptance).
+Directory: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/dirty_branch/`
+
+Prior `writer_guards` delivery (27 members + finisher) reused; no writer-guard controls, 13-year comparison, prior source lookup, catalog query or five-original export was repeated.
+
+Pre-execution pins at 01:09:18–01:09:19 +08: all 10 `PACKAGE.json` members plus the reused fixture match by exact bytes AND SHA256; fixture copied from the prior verified stage, byte-identical. No source edit, newline conversion, re-pinning or substitute harness.
+
+Controls: `20/20` pass, exit 0. Literal stdout `{"tests_run": 20, "passed": true, "scope": "PINNED_AST_ASSEMBLY_AND_RECEIPT_SET_OFFLINE_ONLY", "supplier_calls": 0, "FOUNDATION_ACCEPTANCE": false}`; stderr `Ran 20 tests in 0.097s` / `OK`. Includes the prior 13 as regression coverage. Original writer not invoked.
+
+**Both desktop attempts disclosed.** Attempt 1 exit 3 `STOP_STAGING_INCOMPLETE`: my stage step copied only the manifest members, so the driver's own `PACKAGE.json` read raised `FileNotFoundError` — no pinned input opened, no preflight, no measurement. The supplied `PACKAGE.json` (1,966 B, `ba5711e7…`) was then restored into the stage dir byte-identically; no member, fixture or driver file was touched.
+
+Attempt 2 exit 0 `PINNED_DIRTY_RECEIPT_CONTENT_MEASURED` (01:10:56–01:10:59), the single fixed measurement. Package pins verified internally, operating-entry hash `1b04bb3a…` verified, genuine CACHE preflight PASS, audit hook installed before data reads, both inputs re-verified after reading, `source_files_changed=false`, `supplier_calls=0`.
+
+    receipt_date                    2026-09-02
+    receipt_release                 BLACKBOX_CACHE_R1_ADJFACTOR_PIT_INCR_20260903_010456
+    observed_codes_on_receipt_date  002891.XSHE 002895.XSHE 300773.XSHE 300888.XSHE 301029.XSHE 301563.XSHE 688578.XSHG
+    receipt_dirty_codes             same seven
+    sets_equal                      true
+    observed_not_reported           []
+    reported_not_observed           []
+    observed rows on that date      7, all factor 1.0
+
+On 2026-09-02 the mounted 2026 partition holds only those seven codes, one row each, all factor 1.0 — exactly the seven the receipt reports. That is content consistency with the reported dirty branch and is consistent with the branch publishing only dirty codes on a new date. It is not execution proof, producer identity or a completeness certificate.
+
+Source generator, read by exact path only, no import/execution/CLI/auth/fetch and no path followed from inside it:
+
+    E:\BLACKBOX\任务\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\download_source_fq_pre_r1.py
+    7,131 B  sha256 8a49616147748b46d168542973020aed86cb1e70d09a09a45960cb641201bcea
+
+Newly measured identity, not a prior pin. Credential scan: 0 matches, so the complete body is uploaded as a `BASE64_ORIGINAL_BYTES` carrier with round-trip verification. HUB tree listing (3,041 entries, not truncated) shows no previously uploaded body of this name — no reuse link. Observed structure: imports `json os sys time datetime pathlib numpy pandas` plus `jq_download_base.auth` / `quota_left`; definitions `now_cn log wjson flatten_factor load_universe year_end main`. The original writer imports `flatten_factor` from this file. Its presence says nothing about the P1 files or data absence.
+
+Correction `C6_CHRONOLOGY_LABEL_AND_EXECUTION_ORDER` (earlier C1 left unedited): C1 mislabeled `2026-10-25T00:30:27Z` / `2026-10-25T00:30:51Z` as UTC. Correct equivalence `2026-10-24T16:30:27Z = 2026-10-25T00:30:27+08:00` (likewise `…16:30:51Z`). Retained file times support only that the staged files existed before the tests; they do not show a checker executed. `ORDER_STATUS = ORDER_NOT_PROVEN`, `FIRST_VERIFY_EXECUTION_TIME = NOT_RETAINED`. No further lookup, no re-execution, no fabricated timestamp.
+
+Delivery: 27 files including the manifest, `DELIVERY_MANIFEST.json` self-excluded, separate `FINAL_BYTE_READBACK.json` — **27/27 byte-identical**, carrier decodes to the exact local original.
+
+Status: `B1`..`B7` OPEN. `production_integration=NOT_AUTHORIZED` (the assembly is a tested candidate component only). `FOUNDATION_ACCEPTANCE=false`. `FORMAL_ENGINE_ADMISSION=false`. `NEW_DATA_ACQUISITION_AUTHORIZED=false`. `CURRENT_SWITCH_ALLOWED=false`. `ORDER_ALLOWED=false`. `SOURCE_ABSENCE_CLAIM_ALLOWED=false`.
+
+No production patch, business-data write or missing-date filling, historical refresh, original-source selftest, wrapper invocation, login, supplier call, download, CURRENT promotion, engine construction or order.
+
+---
+
+# INBOX FOR CHATGPT — newest pointer block (prepended; all earlier headers preserved)
+
 ## [2026-10-25 01:08 +0800] R10 writer guards executed; five exact receipt originals delivered
 
 Round: `R10_WRITER_GUARDS_AND_EXACT_RECEIPTS_20261025` (R10 continuation; NOT R11, NOT acceptance).
