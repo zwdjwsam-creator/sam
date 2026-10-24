@@ -1,0 +1,2791 @@
+{
+ "registry_id": "BLACKBOX_ECOLOGY_REGISTRY_R3",
+ "version": "R3_20261024",
+ "built_at": "2026-10-24T14:46:18+0800",
+ "predecessor": "ECOLOGY_REGISTRY.json (R01)",
+ "round": "R03_OF_10",
+ "budget_slot": "3/10",
+ "budget_remaining_after_delivery": 7,
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "production_write": false,
+ "language": "en",
+ "scope_policy": {
+  "coverage_source": "parquet footer statistics of the actual time column",
+  "filename_rule": "build stamps YYYYMMDD_HHMMSS are stripped and are never coverage",
+  "undefined_ranges": "kept explicitly null; no invented 2014 start",
+  "version_rule": "same family + same coverage => newest build wins; different coverage => complementary segments are both kept"
+ },
+ "security_classification": {
+  "source_dataset": "SECURITY_MASTER",
+  "n_codes": 34759,
+  "by_type": {
+   "stock": 5222,
+   "etf": 1572,
+   "lof": 404,
+   "fjm": 62,
+   "reits": 104,
+   "mmf": 24,
+   "futures": 1027,
+   "index": 554,
+   "mixture_fund": 10531,
+   "bond_fund": 7857,
+   "fund_fund": 2187,
+   "money_market_fund": 942,
+   "stock_fund": 4268,
+   "commodity_fund": 5
+  },
+  "asset_class_map": {
+   "stock": "STOCK",
+   "etf": "ETF",
+   "lof": "ETF",
+   "fund": "ETF",
+   "index": "INDEX"
+  }
+ },
+ "observed_read_plane": {
+  "PRICE_STOCK_DAILY": {
+   "layer": "CLEAN",
+   "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+   "observed_start": "2014-01-02",
+   "observed_end": "2026-09-24",
+   "n_files": 232,
+   "index_cache": "runtime/file_index_PRICE_STOCK_DAILY_CLEAN.json"
+  },
+  "PRICE_STOCK_1M": {
+   "layer": "CLEAN",
+   "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
+   "observed_start": "2026-09-11",
+   "observed_end": "2026-09-24",
+   "n_files": 40,
+   "index_cache": "runtime/file_index_PRICE_STOCK_1M_CLEAN.json"
+  },
+  "PRICE_ETF_DAILY": {
+   "layer": "CLEAN",
+   "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_daily",
+   "observed_start": "2026-07-30",
+   "observed_end": "2026-09-24",
+   "n_files": 37,
+   "index_cache": "runtime/file_index_PRICE_ETF_DAILY_CLEAN.json"
+  },
+  "PRICE_ETF_1M": {
+   "layer": "CLEAN",
+   "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+   "observed_start": "2026-09-17",
+   "observed_end": "2026-09-24",
+   "n_files": 24,
+   "index_cache": "runtime/file_index_PRICE_ETF_1M_CLEAN.json"
+  },
+  "PRICE_INDEX_DAILY": {
+   "layer": "CLEAN",
+   "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
+   "observed_start": "2026-07-30",
+   "observed_end": "2026-09-24",
+   "n_files": 37,
+   "index_cache": "runtime/file_index_PRICE_INDEX_DAILY_CLEAN.json"
+  },
+  "PRICE_INDEX_MINUTE": {
+   "layer": "RAW",
+   "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+   "observed_start": "2014-01-02",
+   "observed_end": "2026-09-24",
+   "n_files": 133968,
+   "index_cache": "runtime/file_index_PRICE_INDEX_MINUTE_RAW.json"
+  },
+  "CALENDAR_CN_EXCHANGE": {
+   "layer": "CLEAN",
+   "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
+   "observed_start": "2014-01-02",
+   "observed_end": "2026-09-24",
+   "n_files": 2,
+   "index_cache": "runtime/file_index_CALENDAR_CN_EXCHANGE_CLEAN.json"
+  },
+  "ADJUST_FACTOR": {
+   "layer": "CLEAN",
+   "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor",
+   "observed_start": "2026-08-10",
+   "observed_end": "2026-09-24",
+   "n_files": 18,
+   "index_cache": "runtime/file_index_ADJUST_FACTOR_CLEAN.json"
+  },
+  "TRADABLE_STATUS": {
+   "layer": "CLEAN",
+   "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status",
+   "observed_start": "2026-07-13",
+   "observed_end": "2026-09-03",
+   "n_files": 3,
+   "index_cache": "runtime/file_index_TRADABLE_STATUS_CLEAN.json"
+  }
+ },
+ "datasets": [
+  {
+   "dataset_id": "PRICE_STOCK_DAILY",
+   "title_en": "A-share stock daily OHLCV (raw and cleaned)",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+     "exists": true,
+     "n_parquet": 524,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+     "exists": true,
+     "n_parquet": 232,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2014-01-02",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2014-01-02",
+     "end": "2026-09-24"
+    },
+    "n_files_indexed": 232,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": "stock daily bars for stock-class codes",
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "required_fields": "open,high,low,close,volume,money,factor,pre_close",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_STOCK_1M",
+   "title_en": "A-share stock 1-minute bars",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+     "exists": true,
+     "n_parquet": 11790,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
+     "exists": true,
+     "n_parquet": 40,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2026-09-11",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2026-09-11",
+     "end": "2026-09-24"
+    },
+    "n_files_indexed": 40,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": "stock 1-minute bars for stock-class codes",
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_STOCK_5M",
+   "title_en": "PRICE_STOCK_5M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+     "exists": true,
+     "n_parquet": 12847,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_5m",
+     "exists": true,
+     "n_parquet": 52,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_STOCK_30M",
+   "title_en": "PRICE_STOCK_30M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+     "exists": true,
+     "n_parquet": 26613,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_30m",
+     "exists": true,
+     "n_parquet": 40,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_STOCK_60M",
+   "title_en": "PRICE_STOCK_60M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+     "exists": true,
+     "n_parquet": 26613,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_60m",
+     "exists": true,
+     "n_parquet": 44,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_ETF_DAILY",
+   "title_en": "ETF daily OHLCV",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P8_etf_fund",
+     "exists": true,
+     "n_parquet": 18,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_daily",
+     "exists": true,
+     "n_parquet": 37,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2026-07-30",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2026-07-30",
+     "end": "2026-09-24"
+    },
+    "n_files_indexed": 37,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": "ETF daily bars for ETF/LOF/fund codes",
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "required_fields": "open,high,low,close,volume,money,factor,pre_close",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_ETF_1M",
+   "title_en": "ETF 1-minute bars",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+     "exists": true,
+     "n_parquet": 36718,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+     "exists": true,
+     "n_parquet": 24,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2026-09-17",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2026-09-17",
+     "end": "2026-09-24"
+    },
+    "n_files_indexed": 24,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": "ETF 1-minute bars",
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_ETF_5M",
+   "title_en": "PRICE_ETF_5M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+     "exists": true,
+     "n_parquet": 36718,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m",
+     "exists": true,
+     "n_parquet": 44,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_ETF_30M",
+   "title_en": "PRICE_ETF_30M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+     "exists": true,
+     "n_parquet": 36718,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_30m",
+     "exists": true,
+     "n_parquet": 4395,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_ETF_60M",
+   "title_en": "PRICE_ETF_60M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+     "exists": true,
+     "n_parquet": 36718,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_60m",
+     "exists": true,
+     "n_parquet": 4399,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_INDEX_DAILY",
+   "title_en": "Index daily OHLCV",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+     "exists": true,
+     "n_parquet": 362,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
+     "exists": true,
+     "n_parquet": 37,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "derived; read through the cache product name, not the directory",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2026-07-30",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2026-07-30",
+     "end": "2026-09-24"
+    },
+    "n_files_indexed": 37,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": "index daily bars for index-class codes",
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "required_fields": "open,high,low,close,volume,money,factor,pre_close",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "PRICE_INDEX_MINUTE",
+   "title_en": "Index minute bars",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+     "exists": true,
+     "n_parquet": 133968,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": null,
+     "exists": false,
+     "n_parquet": null,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2014-01-02",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2014-01-02",
+     "end": "2026-09-24"
+    },
+    "n_files_indexed": 133968,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": "index minute bars",
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "CALENDAR_CN_EXCHANGE",
+   "title_en": "China exchange trading calendar",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+     "exists": true,
+     "n_parquet": 119,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
+     "exists": true,
+     "n_parquet": 2,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2014-01-02",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2014-01-02",
+     "end": "2026-09-24"
+    },
+    "n_files_indexed": 2,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": "expected trade-day derivation",
+   "authority_rule": {
+    "engine_data_domain": "trade_calendar",
+    "required_fields": "trade_date,is_open",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "SECURITY_MASTER",
+   "title_en": "Security master (type, name, listing window)",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+     "exists": true,
+     "n_parquet": 119,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master",
+     "exists": true,
+     "n_parquet": 11,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NO_TIME_AXIS_OBSERVED",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "n_files_indexed": 11,
+    "time_columns_present": [
+     "code",
+     "display_name",
+     "end_date",
+     "index",
+     "name",
+     "start_date",
+     "type"
+    ],
+    "increment_cursor": null,
+    "note": "Reference/event family without a single bar time axis; per-row validity or event columns are listed in time_columns_present. No synthetic range is invented."
+   },
+   "read_plane_role": "asset-class routing and listing window",
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "ADJUST_FACTOR",
+   "title_en": "Adjustment factor plane",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+     "exists": true,
+     "n_parquet": 222,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor",
+     "exists": true,
+     "n_parquet": 18,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2026-08-10",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2026-08-10",
+     "end": "2026-09-24"
+    },
+    "n_files_indexed": 18,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "adjustment_factor",
+    "required_fields": "factor,fq",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "TRADABLE_STATUS",
+   "title_en": "Tradable / limit / pause status",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state",
+     "exists": true,
+     "n_parquet": 956,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status",
+     "exists": true,
+     "n_parquet": 3,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2026-07-13",
+    "observed_end": "2026-09-03",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+     "start": "2026-07-13",
+     "end": "2026-09-03"
+    },
+    "n_files_indexed": 3,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "tradable_status",
+    "required_fields": "paused,is_st,high_limit,low_limit",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "INDEX_COMPONENTS",
+   "title_en": "Index constituents",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+     "exists": true,
+     "n_parquet": 362,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_components",
+     "exists": true,
+     "n_parquet": 106,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NO_TIME_AXIS_OBSERVED",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "n_files_indexed": 106,
+    "time_columns_present": [
+     "asof_date",
+     "code",
+     "component_code",
+     "historical_backtest_eligible",
+     "historical_coverage_status",
+     "index_code",
+     "snapshot_backfill_allowed"
+    ],
+    "increment_cursor": null,
+    "note": "Reference/event family without a single bar time axis; per-row validity or event columns are listed in time_columns_present. No synthetic range is invented."
+   },
+   "read_plane_role": "index membership",
+   "authority_rule": {
+    "engine_data_domain": "benchmark_data",
+    "required_fields": "index_master,index_components",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "INDEX_WEIGHTS",
+   "title_en": "Index weights (component code preserved; historical backtest ineligible)",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+     "exists": true,
+     "n_parquet": 362,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_weights",
+     "exists": true,
+     "n_parquet": 105,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "benchmark_data",
+    "required_fields": "index_master,index_components",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "INDUSTRY_CONCEPT",
+   "title_en": "INDUSTRY_CONCEPT dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept",
+     "exists": true,
+     "n_parquet": 13,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "INDUSTRY_CONCEPT_EVENTS",
+   "title_en": "INDUSTRY_CONCEPT_EVENTS dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept_events",
+     "exists": true,
+     "n_parquet": 1,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "BILLBOARD",
+   "title_en": "BILLBOARD dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\billboard",
+     "exists": true,
+     "n_parquet": 28,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "XR_XD",
+   "title_en": "Ex-rights / ex-dividend events",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\xr_xd",
+     "exists": true,
+     "n_parquet": 62,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NO_TIME_AXIS_OBSERVED",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "n_files_indexed": 62,
+    "time_columns_present": [
+     "a_bonus_date",
+     "a_increment_listing_date",
+     "a_registration_date",
+     "a_transfer_arrival_date",
+     "a_xr_date",
+     "at_bonus_ratio_rmb",
+     "b_bonus_date",
+     "b_dividend_arrival_date",
+     "b_final_trade_date",
+     "b_increment_listing_date",
+     "b_registration_date",
+     "b_transfer_arrival_date",
+     "b_xr_baseday",
+     "board_plan_bonusnote",
+     "board_plan_pub_date",
+     "bonus_amount_rmb",
+     "bonus_cancel_pub_date",
+     "bonus_ratio_hkd",
+     "bonus_ratio_rmb",
+     "bonus_ratio_usd",
+     "bonus_type",
+     "code",
+     "company_id",
+     "company_name",
+     "distributed_share_base_board",
+     "distributed_share_base_implement",
+     "distributed_share_base_shareholders",
+     "dividend_arrival_date",
+     "dividend_number",
+     "dividend_ratio",
+     "exchange_rate",
+     "float_capital_after_transfer",
+     "float_capital_before_transfer",
+     "id",
+     "implementation_bonusnote",
+     "implementation_pub_date",
+     "note",
+     "note_of_no_dividend",
+     "plan_progress",
+     "plan_progress_code",
+     "report_date",
+     "shareholders_plan_bonusnote",
+     "shareholders_plan_pub_date",
+     "total_capital_after_transfer",
+     "total_capital_before_transfer",
+     "transfer_number",
+     "transfer_ratio"
+    ],
+    "increment_cursor": null,
+    "note": "Reference/event family without a single bar time axis; per-row validity or event columns are listed in time_columns_present. No synthetic range is invented."
+   },
+   "read_plane_role": "ex-rights / ex-dividend events",
+   "authority_rule": {
+    "engine_data_domain": "corporate_actions",
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "CORPORATE_REFERENCE",
+   "title_en": "CORPORATE_REFERENCE dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\corporate_reference",
+     "exists": true,
+     "n_parquet": 42,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "corporate_actions",
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "SHAREHOLDER_TOP10",
+   "title_en": "SHAREHOLDER_TOP10 dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_top10",
+     "exists": true,
+     "n_parquet": 1,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "SHAREHOLDER_FLOATING_TOP10",
+   "title_en": "SHAREHOLDER_FLOATING_TOP10 dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_floating_top10",
+     "exists": true,
+     "n_parquet": 1,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "VALUATION",
+   "title_en": "Valuation metrics",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference",
+     "exists": true,
+     "n_parquet": 177,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factor\\valuation",
+     "exists": true,
+     "n_parquet": 48,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FINANCE_PIT",
+   "title_en": "Point-in-time financial statements",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit",
+     "exists": true,
+     "n_parquet": 685,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fundamentals",
+     "exists": true,
+     "n_parquet": 353,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "factor_pit_rules",
+    "required_fields": "pit_policy",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "MTSS",
+   "title_en": "MTSS dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FUND_ETF_NAV",
+   "title_en": "Fund and ETF NAV / premium plane",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_nav",
+     "exists": true,
+     "n_parquet": 19752,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_NAV",
+     "exists": true,
+     "n_parquet": 5980,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "ETF_SHARE",
+   "title_en": "ETF_SHARE dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+     "exists": true,
+     "n_parquet": 27218,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE",
+     "exists": true,
+     "n_parquet": 3829,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "OPEN_FUND",
+   "title_en": "OPEN_FUND dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+     "exists": true,
+     "n_parquet": 78719,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\open_fund",
+     "exists": true,
+     "n_parquet": 76650,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "QDII",
+   "title_en": "QDII dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+     "exists": true,
+     "n_parquet": 78719,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\QDII",
+     "exists": true,
+     "n_parquet": 1899,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FUND_OTHER",
+   "title_en": "FUND_OTHER dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+     "exists": true,
+     "n_parquet": 78719,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\other",
+     "exists": true,
+     "n_parquet": 170,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FUND_TRACKING_INDEX_MAPPING",
+   "title_en": "FUND_TRACKING_INDEX_MAPPING dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+     "exists": true,
+     "n_parquet": 27218,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\fund_tracking_index_mapping",
+     "exists": true,
+     "n_parquet": 3,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FACTOR_260_DICTIONARY",
+   "title_en": "Factor 260 dictionary metadata",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FACTOR_260_SEMANTICS",
+   "title_en": "Factor 260 semantics metadata",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_field_semantics_CURRENT.csv",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FACTOR_260_FORMULA",
+   "title_en": "Factor 260 formula metadata",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_formula_CURRENT.csv",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FACTOR_260_PIT_RULES",
+   "title_en": "Factor 260 point-in-time rules",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_pit_rules_CURRENT.json",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FACTOR_260_CLEANING_RULES",
+   "title_en": "Factor 260 cleaning rules",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_cleaning_rules_CURRENT.json",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FACTOR_260_ENGINE_MAPPING",
+   "title_en": "Factor 260 engine mapping",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_engine_mapping_CURRENT.csv",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FACTOR_VALUE",
+   "title_en": "Factor value plane (permission-blocked in R01 evidence)",
+   "supplier": "JQData",
+   "lineage": "NOT_DOWNLOADED_BY_POLICY",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "get_factor_values 付费模块",
+    "api": "get_factor_values"
+   },
+   "layers": {
+    "FACTOR_VALUE": {
+     "root": null,
+     "exists": false,
+     "n_parquet": null,
+     "kind": "VALUE",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": "factor_pit_rules",
+    "admission_status": "BLOCKED_BY_POLICY",
+    "reason": "DATA_INGESTION_GATE_RULES_R1.policies.factor_value_download_forbidden=true"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "STRATEGY_OUTPUT",
+   "title_en": "Strategy output plane (not an input)",
+   "supplier": "BLACKBOX_INTERNAL",
+   "lineage": "INTERNAL_RESEARCH_OUTPUT",
+   "source_identity": {
+    "vendor": "内部研究",
+    "auth": "本地",
+    "api": null
+   },
+   "layers": {
+    "STRATEGY_OUTPUT": {
+     "root": "E:\\BLACKBOX\\研究系统\\CURRENT",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "STRATEGY_OUTPUT",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUT_OF_DATA_FOUNDATION"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "TS_CBOND_R1",
+   "title_en": "TS_CBOND_R1 dataset (supplier: Tushare); identifier and lineage preserved",
+   "supplier": "Tushare",
+   "lineage": "EXTERNAL_TUSHARE",
+   "source_identity": {
+    "vendor": "Tushare",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R1",
+     "exists": true,
+     "n_parquet": 1279,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "KG06 在 JQ 侧 out_of_scope；本目录为 Tushare 供应商序列，不套 JQ 命名"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "TS_CBOND_R2",
+   "title_en": "TS_CBOND_R2 dataset (supplier: Tushare); identifier and lineage preserved",
+   "supplier": "Tushare",
+   "lineage": "EXTERNAL_TUSHARE",
+   "source_identity": {
+    "vendor": "Tushare",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R2",
+     "exists": true,
+     "n_parquet": 1371,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "R1 续跑批；同一供应商序列，不重复计为新来源"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "EXTERNAL_DICT_EVIDENCE",
+   "title_en": "EXTERNAL_DICT_EVIDENCE dataset (supplier: Friend_JQData/Tushare); identifier and lineage preserved",
+   "supplier": "Friend_JQData/Tushare",
+   "lineage": "EXTERNAL_FRIEND_JQDATA_TUSHARE",
+   "source_identity": {
+    "vendor": "Friend_JQData/Tushare",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "layers": {
+    "EVIDENCE": {
+     "root": "E:\\BLACKBOX\\数据\\外部补充只读",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "EVIDENCE",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "仅字典置信度补充，不含值数据"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "EXTERNAL_EVIDENCE_PLANE",
+   "title_en": "EXTERNAL_EVIDENCE_PLANE dataset (supplier: MULTI_EXTERNAL); identifier and lineage preserved",
+   "supplier": "MULTI_EXTERNAL",
+   "lineage": "EXTERNAL_MULTI_EXTERNAL",
+   "source_identity": {
+    "vendor": "MULTI_EXTERNAL",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "layers": {
+    "EVIDENCE": {
+     "root": "E:\\BLACKBOX\\数据\\外部证据",
+     "exists": true,
+     "n_parquet": 10726,
+     "kind": "EVIDENCE",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "独立证据平面，不是 26 域 RAW 清洗输入"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "US_MARKET",
+   "title_en": "US_MARKET dataset (supplier: EXTERNAL); identifier and lineage preserved",
+   "supplier": "EXTERNAL",
+   "lineage": "EXTERNAL_EXTERNAL",
+   "source_identity": {
+    "vendor": "EXTERNAL",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "layers": {
+    "EVIDENCE": {
+     "root": "E:\\BLACKBOX\\数据\\美国市场",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "EVIDENCE",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "KG02 美股 out_of_scope；仅研究旁路"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "TUSHARE_INDEX_WEIGHT_ADAPTER",
+   "title_en": "TUSHARE_INDEX_WEIGHT_ADAPTER dataset (supplier: Tushare); identifier and lineage preserved",
+   "supplier": "Tushare",
+   "lineage": "EXTERNAL_TUSHARE",
+   "source_identity": {
+    "vendor": "Tushare",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "layers": {
+    "EVIDENCE": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\19_tushare_index_weight_adapter_lock",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "EVIDENCE",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "not stated in this candidate",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "与 JQ index_weights 血统不同，不得混用"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "LEGACY_JQ_RAW_CN",
+   "title_en": "LEGACY_JQ_RAW_CN dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "lineage": "LEGACY_PRE_BASELINE_RAW_CLASSIFICATION",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读",
+     "exists": true,
+     "n_parquet": 363965,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "EXPERIMENTAL_WINDOW_RAW",
+   "title_en": "EXPERIMENTAL_WINDOW_RAW dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "lineage": "HISTORICAL_EXPERIMENTAL_WINDOW_DO_NOT_USE_AS_MASTER",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_WINDOW_FULL_RAW_20260325_20260501",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "STRATEGY_DATA_PLANE_ADDITIONS",
+   "title_en": "STRATEGY_DATA_PLANE_ADDITIONS dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "lineage": "FORMAL_POST_BASELINE_INHERITANCE",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions",
+     "exists": true,
+     "n_parquet": 2013,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "FORENSIC_CANARY",
+   "title_en": "FORENSIC_CANARY dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "lineage": "AUDIT_ONLY_NOT_FOUNDATION",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\_forensic_canary",
+     "exists": true,
+     "n_parquet": 510,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "EXPERIMENT_CANARY",
+   "title_en": "EXPERIMENT_CANARY dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "lineage": "EXPERIMENTAL_NOT_FOUNDATION",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\试验",
+     "exists": true,
+     "n_parquet": 93,
+     "kind": "RAW",
+     "release_id": null,
+     "asof": null,
+     "time_visibility": "bar visible after its trade date close",
+     "adjustment_identity": "RAW_NONE; factor is a separate column, never folded into close; a missing factor is not admitted as 1.0"
+    }
+   },
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  },
+  {
+   "dataset_id": "UNDETERMINED_SCOPE",
+   "title_en": "UNDETERMINED_SCOPE dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "lineage": "UNDETERMINED",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "layers": {},
+   "scope": {
+    "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+    "observed_start": null,
+    "observed_end": null,
+    "declared_range": null,
+    "scope_undefined": true,
+    "increment_cursor": null,
+    "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+   },
+   "read_plane_role": null,
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "language_note": "Original Chinese layer notes are preserved in the R01 registry artifact and deliberately not duplicated or bulk-translated here."
+  }
+ ],
+ "counts": {
+  "datasets": 54,
+  "datasets_with_observed_coverage": 9,
+  "layers": [
+   "CACHE",
+   "CLEAN",
+   "EVIDENCE",
+   "FACTOR_DICTIONARY",
+   "FACTOR_VALUE",
+   "RAW",
+   "STRATEGY_OUTPUT"
+  ]
+ },
+ "counts_note": "Counts are generated from this build, not hand-written."
+}
