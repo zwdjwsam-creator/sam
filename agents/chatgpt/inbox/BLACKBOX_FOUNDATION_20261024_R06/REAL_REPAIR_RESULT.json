@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "R06/10",
+  "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R06\\r06_gap_repair.py --gap-inputs reviews\\R06\\GAP_REPAIR_INPUTS_R05.json",
+  "exit_code": 0,
+  "status": "CANDIDATE_BUILT",
+  "generation": "R06_TWO_DAY_RECOVERY_20261024",
+  "scope_acceptance": "EXACT_TWO_DATES_TWO_PRICE_PRODUCTS_ONLY",
+  "FOUNDATION_ACCEPTANCE": false,
+  "candidate_only": true,
+  "read_scope": {
+    "cleaning_current_pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+    "cache_current_pointer": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+    "parent_daily_directory": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+    "parent_daily_directory_realpath": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily",
+    "parent_daily_file_count": 232,
+    "parent_cache_year_partitions": [
+      "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+      "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet"
+    ],
+    "raw_units": {
+      "2026-08-31": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "2026-09-01": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+    },
+    "raw_sidecars": {
+      "2026-08-31": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
+      "2026-09-01": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json"
+    },
+    "adjacent_control_raw": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+    "registry_input": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
+    "network_calls": 0,
+    "supplier_quota_spent": 0,
+    "authentication_attempted": false
+  },
+  "write_scope": {
+    "root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024",
+    "files_written": 238,
+    "directories_written": 8,
+    "writes_outside_candidate_root": [],
+    "current_pointer_modified": false,
+    "parent_release_modified": false,
+    "hardlinked_parent_files_opened_for_write": false,
+    "source_or_parent_cleanup_performed": false
+  },
+  "conservation": {
+    "rule": "derived from the actual parent and source tables, not hardcoded",
+    "by_product": {
+      "STOCK_DAILY_PIT_R1": {
+        "parent_rows": 949470,
+        "added": {
+          "2026-08-31": 5212,
+          "2026-09-01": 5214
+        },
+        "expected_rows": 959896,
+        "candidate_rows": 959896,
+        "conserved": true,
+        "all_non_target_rows_preserved": true
+      },
+      "STOCK_DAILY_RAW_PIT_R1": {
+        "parent_rows": 949470,
+        "added": {
+          "2026-08-31": 5212,
+          "2026-09-01": 5214
+        },
+        "expected_rows": 959896,
+        "candidate_rows": 959896,
+        "conserved": true,
+        "all_non_target_rows_preserved": true
+      }
+    },
+    "note": "the 949470 parent figure stated by the task was confirmed as the actual parent partition row count; 959896 is the derived result, not an assertion written into the code"
+  },
+  "daily_inheritance": {
+    "parent_daily_count": 232,
+    "candidate_daily_count": 234,
+    "added_files": [
+      "stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+    ],
+    "parent_daily_dir_still_232_files": true,
+    "parent_daily_names_unchanged": false
+  },
+  "guards": {
+    "source_current_pair_match": true,
+    "raw_hash_pinned": true,
+    "sidecar_hash_pinned": true,
+    "raw_row_count_match": true,
+    "raw_duplicate_keys": 0,
+    "raw_numeric_nulls": 0,
+    "raw_fq_all_null": true,
+    "adjacent_mapping_reproduced": true,
+    "target_already_in_parent_cache": false,
+    "parent_cache_duplicate_keys": 0,
+    "output_duplicate_keys": 0,
+    "unsupported_cache_columns": [],
+    "inheritance_loss": false,
+    "thin_canary_parent": false
+  },
+  "rejections_encountered": [],
+  "not_done_and_why": [
+    "no production pointer replacement (not authorized in R06)",
+    "no CANDIDATE_CURRENT switch on real business candidates (not authorized)",
+    "no derived-factor or market-structure recomputation (implementation owned by GPT; products remain DIRTY)",
+    "no adjusted-price claim: a constant factor=1 in a RAW_NONE unit does not establish an adjustment series",
+    "no engine API package activation: remote import-time initialization remains uncorrected"
+  ],
+  "current_identity": {
+    "schema_version": "1.0.0",
+    "language": "en",
+    "observed_at_cn": "2026-10-24",
+    "cleaning": {
+      "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "pointer_sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "logical_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+      "standard_root_realpath": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+      "quarantine_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_quarantine",
+      "ledger_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_control\\cleaning_ledger.sqlite"
+    },
+    "cache": {
+      "pointer": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+      "pointer_sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+      "logical_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+      "release_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+      "release_root_realpath": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+      "source_cleaning_release": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "parent_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+      "asof": "2026-09-24"
+    },
+    "pairing": {
+      "clean_release_id_equals_cache_source_cleaning_release": true,
+      "verified": true
+    },
+    "r45_relationship": {
+      "r45_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+      "r45_role": "parent of the CURRENT logical release; owner of the quarantine and ledger paths; physical provider of the price tree through a directory junction",
+      "stock_daily_physical_realpath": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily",
+      "physical_realpath_starts_with_r45_release": true,
+      "junction_observed": {
+        "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price",
+        "link_type": "Junction",
+        "target": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+      },
+      "statement": "CURRENT points at the R33 logical release. Its standard/price entry is a junction into the R45 release directory, so the active daily bytes observed this round physically live under R45. R45 is therefore neither a stale ledger path nor the logical CURRENT id: it is the current parent whose tree is inherited. Neither label was used to choose a data source; the resolver followed standard_root and the realpath was recorded."
+    },
+    "reading_rules_applied": [
+      "CURRENT bytes were snapshotted and hashed before any decision",
+      "standard_root was followed; no release was selected by name or by maximum label",
+      "the quarantine/ledger paths were reported but not read as the active data source"
+    ]
+  },
+  "candidate_manifest_sha256": "ec7485ef50c03b36dfe8357822cd2bdd7dba5dbade83b3cc0c1671eb03b1bbde",
+  "candidate_registry_sha256": "8a590957ee8a1f996fef929a0c37e536227492feab9238d054ad4e18e2744f79"
+}
