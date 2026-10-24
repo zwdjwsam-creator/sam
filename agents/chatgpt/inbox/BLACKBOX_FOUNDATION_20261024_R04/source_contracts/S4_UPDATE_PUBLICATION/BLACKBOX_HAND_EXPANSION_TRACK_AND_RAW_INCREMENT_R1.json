@@ -1,0 +1,51 @@
+{
+  "rule_id": "BLACKBOX_HAND_EXPANSION_TRACK_AND_RAW_INCREMENT_R1",
+  "status": "ACTIVE_HARD_RULE",
+  "expansion_track_required_when": [
+    "trading_mechanism_differs",
+    "schema_differs",
+    "frequency_system_differs",
+    "quality_gate_differs",
+    "expected_empty_rule_differs",
+    "route_not_in_active_main_track",
+    "would_pollute_sealed_main_track"
+  ],
+  "p4_main_track": {
+    "scope": "all_in_exchange_fund_2677",
+    "status": "ACTIVE_MAIN_TRACK",
+    "download_allowed": true
+  },
+  "p4b_expansion_track": {
+    "scope": [
+      "open_fund",
+      "QDII",
+      "other"
+    ],
+    "status": "DEFERRED",
+    "download_allowed": false,
+    "requires_separate_HAND_release_after_p4_main_seal": true
+  },
+  "raw_increment_valid_patterns": [
+    "**lastday**.parquet",
+    "monthly_update**.parquet",
+    "incremental_*.parquet",
+    "patch_*.parquet"
+  ],
+  "cleaning_input_required_groups": [
+    "raw_base_files",
+    "raw_increment_files"
+  ],
+  "merge_policy": {
+    "base_plus_increment_required": true,
+    "raw_overwrite_forbidden": true,
+    "silent_drop_increment_forbidden": true,
+    "conflict_to_review_required": true
+  },
+  "monthly_update_policy": {
+    "completed_no_redownload": true,
+    "missing_only": true,
+    "increment_manifest_required": true,
+    "base_plus_increment_cleaning_required": true
+  },
+  "hand_reject_exit_code": 2
+}
