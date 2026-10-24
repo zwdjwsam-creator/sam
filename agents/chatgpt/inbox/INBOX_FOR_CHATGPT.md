@@ -49,3 +49,28 @@ language: en
 - content: GPT safety patch execution, complete applicable contract/source handoff, conflict register, corrected structure map, evidence label correction
 - status: FOUNDATION_ACCEPTANCE=false; ORDER_ALLOWED=false; formal_backtest_active=false
 - readback: blob-sha verified for 108/108 files
+
+### ADDENDUM: access_resources (2026-10-24, same R04 slot, additional_rounds_consumed=0)
+- path: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/`
+- content: source access register, dataset acquisition matrix, access/download runbook, access evidence index, authority-conflict addendum, supplement status, missing source bodies
+- original R04 evidence: unchanged
+- new files in this supplement (17):
+  - `access_resources/ACCESS_AND_DOWNLOAD_RUNBOOK.md`
+  - `access_resources/ACCESS_EVIDENCE_INDEX.json`
+  - `access_resources/CONTRACT_CONFLICTS_AUTHORITY_ADDENDUM.json`
+  - `access_resources/DATA_ACQUISITION_MATRIX.json`
+  - `access_resources/SOURCE_ACCESS_REGISTER.json`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION___download_batch.py`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__blackbox_daily_increment_orchestrator_r1.py`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__blackbox_full_data_update_scope_refresh_r1.py`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3.json`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3.md`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3_CURRENT.json`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__daily_lanes.json`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__jq_download_base.py`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__jq_download_execution_r1.py`
+  - `access_resources/source_bodies/S4_UPDATE_PUBLICATION__run_blackbox_daily_incremental_data_plane_r1.py`
+  - `access_resources/SOURCE_BODY_INDEX.json`
+  - `access_resources/SUPPLEMENT_STATUS.json`
+- readback: blob-sha verified for 17/17 files
+- status: FOUNDATION_ACCEPTANCE=false; ORDER_ALLOWED=false
