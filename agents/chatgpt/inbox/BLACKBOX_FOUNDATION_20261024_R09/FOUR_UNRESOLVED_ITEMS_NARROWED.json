@@ -1,0 +1,407 @@
+{
+ "schema": "R09_FOUR_UNRESOLVED_ITEMS_NARROWED_1",
+ "round": "R09/10",
+ "method": "existing inventories + exact current-consumer references; no global scan, no re-download",
+ "items": {
+  "I1": {
+   "products": [
+    "MARKET_UNIVERSE_PIT_R1",
+    "STOCK_TRADEABILITY_PIT_R1"
+   ],
+   "catalog_declaration": [
+    [
+     "MARKET_UNIVERSE_PIT_R1",
+     "L1",
+     "STOCK",
+     "ACTIVE",
+     "year/signal_date",
+     "Market structure universe (not trade filter)"
+    ],
+    [
+     "STOCK_TRADEABILITY_PIT_R1",
+     "L1",
+     "STOCK",
+     "ACTIVE",
+     "year/signal_date",
+     "Tradeability facts ST/suspend/limits"
+    ]
+   ],
+   "consumer_references": [
+    {
+     "file": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+     "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+     "lines": [
+      125,
+      126,
+      127,
+      210,
+      211
+     ],
+     "role": "name map + PIT policy (reader only)"
+    },
+    {
+     "file": "E:\\BLACKBOX\\脚本\\blackbox_external_market_evidence_data_agent_r1.py",
+     "sha256": "828711b40c062c9a2dadd887e12903d54fe03109040c6f6af5af065ec96ad1fe",
+     "lines": [
+      228,
+      405
+     ],
+     "role": "reads tradeability from a release root; external-evidence agent, not the JQ producer"
+    }
+   ],
+   "writer_search_roots": [
+    "E:\\BLACKBOX\\脚本",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1",
+    "E:\\BLACKBOX\\研究系统\\数据平面"
+   ],
+   "writer_files_found": [],
+   "content_state": {
+    "MARKET_UNIVERSE_PIT_R1": {
+     "files": 3,
+     "rows": 3836582,
+     "date_col": "date",
+     "min": "2025-01-02",
+     "max": "2026-07-20",
+     "distinct_dates": 373,
+     "expected_sessions_in_window": 373,
+     "missing_sessions": [],
+     "missing_session_count": 0,
+     "read_errors": 0
+    },
+    "STOCK_TRADEABILITY_PIT_R1": {
+     "files": 4,
+     "rows": 249858,
+     "date_col": "date",
+     "min": "2026-07-13",
+     "max": "2026-09-03",
+     "distinct_dates": 24,
+     "expected_sessions_in_window": 39,
+     "missing_sessions": [
+      "2026-08-13",
+      "2026-08-14",
+      "2026-08-17",
+      "2026-08-18",
+      "2026-08-19",
+      "2026-08-20",
+      "2026-08-21",
+      "2026-08-24",
+      "2026-08-25",
+      "2026-08-26",
+      "2026-08-27",
+      "2026-08-28",
+      "2026-08-31",
+      "2026-09-01",
+      "2026-09-02"
+     ],
+     "missing_session_count": 15,
+     "read_errors": 0
+    }
+   },
+   "current_scope_declaration": {
+    "TRADEABILITY_EFFECTIVE_ASOF": "2026-09-03",
+    "TRADEABILITY_NOTE": "inherited_0903_until_security_state_tip"
+   },
+   "narrowed_status": "DECLARED_AND_READ_BUT_NO_LOCAL_PRODUCER_FOUND; CONTENT_STALE_BY_DECLARED_ASOF",
+   "not_a_source_gap": true,
+   "acquisition_authorized": false,
+   "what_is_now_settled": [
+    "both products are ACTIVE catalog rows (L1/STOCK)",
+    "both are consumed by the resolver name map and by the external evidence agent",
+    "no local writer exists in the three searched roots",
+    "content is stale relative to the declared effective asof"
+   ],
+   "what_remains_open": [
+    "who produces them (JQ interface or external supplier) and where the receipt lives"
+   ],
+   "decision_needed": "NAME_THE_PRODUCER_INTERFACE; DO_NOT_REBUILD_OR_REDOWNLOAD"
+  },
+  "I2": {
+   "receipt_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\COVERAGE.json",
+   "receipt": {
+    "product_id": "ADJUST_FACTOR_PIT_R1",
+    "date_min": "2014-01-02",
+    "date_max": "2026-09-24",
+    "n_codes": 5465,
+    "n_rows": 12182523,
+    "fq": "pre",
+    "reason": "BACKWARD_DIRTY_FULL_HISTORY_REPLACE",
+    "tip_extended_at": "2026-09-24T19:56:50+00:00",
+    "tip_source": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+    "n_rows_year_2026": 863710
+   },
+   "release_seal": {
+    "accepted": true,
+    "sealed_at": "2026-09-25T04:04:43+0800"
+   },
+   "coverage_3097_sessions": {
+    "files": 13,
+    "rows": 12266026,
+    "date_col": "date",
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "distinct_dates": 3097,
+    "expected_sessions_in_window": 3097,
+    "missing_sessions": [],
+    "missing_session_count": 0,
+    "read_errors": 0
+   },
+   "degraded_note_from_r08": "2026-09-24 with 12 degraded dates in 2026",
+   "narrowed_status": "PRODUCT_LEVEL_REFRESH_RECEIPT_EXISTS_WITH_EXACT_TIP_SOURCE; PER_DATE_RAW_TO_CACHE_LINKAGE_STILL_ABSENT",
+   "not_a_source_gap": true,
+   "acquisition_authorized": false,
+   "what_is_now_settled": [
+    "a product-level refresh receipt exists with exact tip RAW source, timestamp and row counts",
+    "coverage is 3097/3097 sessions with 0 read errors"
+   ],
+   "what_remains_open": [
+    "per-date RAW->Cleaning->Cache linkage for the recovered dates",
+    "what the 12 degraded 2026 dates are and whether they need action"
+   ],
+   "decision_needed": "ACCEPT_PRODUCT_LEVEL_RECEIPT_OR_REQUEST_PER_DATE_LEDGER_ROW"
+  },
+  "I3": {
+   "route_owner": "TIP_COMPILER.inject_sw",
+   "pointers": {
+    "L1": {
+     "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L1_PIT_ALIGN_RELEASE.json",
+     "pointer_sha256": "e993859e87d7d04d61828983adf765fa3f5fea254820670a620744ebcc474035",
+     "release_id": "BLACKBOX_SW_L1_PIT_ALIGN_R1_ASOF_20260924_20260925_031250",
+     "formal_data_asof": "2026-09-24",
+     "gate_pass": true,
+     "n_membership_rows_pointer": 12587795,
+     "thin_days": 0,
+     "standard_root_exists": true,
+     "mem_full_exists": true,
+     "st_full_exists": true,
+     "mem_partition_years": 13,
+     "st_partition_years": 13,
+     "mem_rows": 12587795,
+     "mem_columns_sample": [
+      "date",
+      "code",
+      "industry_code",
+      "industry_name",
+      "error",
+      "taxonomy",
+      "signal_date",
+      "data_date"
+     ],
+     "mem_derived_max": "2026-09-24",
+     "mem_derived_matches_pointer": true,
+     "st_rows": 90046,
+     "st_derived_max": "2026-09-24",
+     "st_derived_matches_pointer": true
+    },
+    "L2": {
+     "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L2_PIT_ALIGN_RELEASE.json",
+     "pointer_sha256": "59d61bac2688383d6bb219e9570bfee471687bc3b840dc6bd0a34b02b24c5311",
+     "release_id": "BLACKBOX_SW_L2_PIT_ALIGN_R1_ASOF_20260924_20260925_031431",
+     "formal_data_asof": "2026-09-24",
+     "gate_pass": true,
+     "n_membership_rows_pointer": 12575466,
+     "thin_days": 0,
+     "standard_root_exists": true,
+     "mem_full_exists": true,
+     "st_full_exists": true,
+     "mem_partition_years": 13,
+     "st_partition_years": 13,
+     "mem_rows": 12575466,
+     "mem_columns_sample": [
+      "date",
+      "code",
+      "industry_code",
+      "industry_name",
+      "error",
+      "taxonomy",
+      "signal_date",
+      "data_date"
+     ],
+     "mem_derived_max": "2026-09-24",
+     "mem_derived_matches_pointer": true,
+     "st_rows": 351502,
+     "st_derived_max": "2026-09-24",
+     "st_derived_matches_pointer": true
+    },
+    "L3": {
+     "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L3_PIT_ALIGN_RELEASE.json",
+     "pointer_sha256": "b1d96d3f8f64f2221946cd1b2d620c0df029f1fb2d7016b5a25bd3f084024fbf",
+     "release_id": "BLACKBOX_SW_L3_PIT_ALIGN_R1_ASOF_20260924_20260925_031609",
+     "formal_data_asof": "2026-09-24",
+     "gate_pass": true,
+     "n_membership_rows_pointer": 12564290,
+     "thin_days": 0,
+     "standard_root_exists": true,
+     "mem_full_exists": true,
+     "st_full_exists": true,
+     "mem_partition_years": 13,
+     "st_partition_years": 13,
+     "mem_rows": 12564290,
+     "mem_columns_sample": [
+      "date",
+      "code",
+      "industry_code",
+      "industry_name",
+      "error",
+      "taxonomy",
+      "signal_date",
+      "data_date"
+     ],
+     "mem_derived_max": "2026-09-24",
+     "mem_derived_matches_pointer": true,
+     "st_rows": 825939,
+     "st_derived_max": "2026-09-24",
+     "st_derived_matches_pointer": true
+    }
+   },
+   "cache_release_sw_status": {
+    "sw_l1_status": "READY_INTEGRATED",
+    "sw_l2_status": "READY_INTEGRATED",
+    "sw_l3_status": "READY_INTEGRATED"
+   },
+   "narrowed_status": "ROUTE_PLUS_GENERATION_PLUS_CONTENT_QUALIFIED_FOR_CURRENT; CANDIDATE_INHERITS_BY_NAME_REFERENCE_ONLY",
+   "not_a_source_gap": true,
+   "acquisition_authorized": false,
+   "what_is_now_settled": [
+    "route exists in TIP_COMPILER.inject_sw for L1/L2/L3",
+    "each CURRENT pointer resolves to an existing release and standard root",
+    "derived content max == pointer formal_data_asof == 2026-09-24 at all three levels",
+    "gate_pass true, thin_days 0, 13 partition years each"
+   ],
+   "what_remains_open": [
+    "whether the candidate inherits exactly these releases (it inherits by name reference)"
+   ],
+   "decision_needed": "ACCEPT_ROUTE_QUALIFICATION; CANDIDATE_INHERITANCE_STAYS_REFERENCE_ONLY"
+  },
+  "I4": {
+   "cache_pointer": {
+    "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "release_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "published_at": "2026-09-24T19:56:46+00:00",
+    "published_at_cn": "2026-09-25T04:04:43+0800",
+    "asof": "2026-09-24",
+    "schema_version": "1.0.0",
+    "build_version": "TIP_REBASE_FROM_CURRENT_R1",
+    "source_cleaning_release": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "parent_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+    "mode": "tip_fund_nav_pit",
+    "FORMAL_DAILY_PUBLISH": "TIP_REBASE_ONLY",
+    "CANARY_CURRENT_PUBLISH": "STRUCTURALLY_FORBIDDEN",
+    "anti_lookahead_pass": true,
+    "sw_l1_status": "READY_INTEGRATED",
+    "sw_l2_status": "READY_INTEGRATED",
+    "sw_l3_status": "READY_INTEGRATED",
+    "valuation_status": "READY",
+    "stock_2026_date_max": "2026-09-24",
+    "raw_pit_2026_date_max": "2026-09-24",
+    "formal_required_missing": [],
+    "INDEX_DAILY_R1": "NON_BLOCKING_KNOWN_EXCEPTION",
+    "FINANCE_PIT_DELTA_ROWS": 0,
+    "FINANCE_FORMAL_INHERIT": "ALLOWED",
+    "LEGACY_TARGET_IGNORED": false,
+    "notes": [
+     "Formal daily candidate (tip-rebase). CURRENT switch only via publish gate.",
+     "Canary mode cannot write CURRENT",
+     "FUND_NAV_PIT_R1 tip added; premium derived from NAV+close; whole-table FUND_NET_VALUE forbidden"
+    ],
+    "patched_val_sw_at": "2026-09-24T19:56:54+00:00",
+    "FUND_NAV_PIT_R1": "READY"
+   },
+   "cache_release_json": {
+    "cache_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+    "release_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+    "published_at": "2026-09-24T19:56:46+00:00",
+    "published_at_cn": "2026-09-25T03:56:46+0800",
+    "asof": "2026-09-24",
+    "schema_version": "1.0.0",
+    "build_version": "TIP_REBASE_FROM_CURRENT_R1",
+    "source_cleaning_release": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+    "parent_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260923_20260924_113420",
+    "mode": "tip_rebase",
+    "FORMAL_DAILY_PUBLISH": "TIP_REBASE_ONLY",
+    "CANARY_CURRENT_PUBLISH": "STRUCTURALLY_FORBIDDEN",
+    "anti_lookahead_pass": true,
+    "sw_l1_status": "READY_INTEGRATED",
+    "sw_l2_status": "READY_INTEGRATED",
+    "sw_l3_status": "READY_INTEGRATED",
+    "valuation_status": "READY",
+    "stock_2026_date_max": "2026-09-24",
+    "raw_pit_2026_date_max": "2026-09-24",
+    "formal_required_missing": [],
+    "INDEX_DAILY_R1": "NON_BLOCKING_KNOWN_EXCEPTION",
+    "FINANCE_PIT_DELTA_ROWS": 0,
+    "FINANCE_FORMAL_INHERIT": "ALLOWED",
+    "LEGACY_TARGET_IGNORED": false,
+    "notes": [
+     "Formal daily candidate (tip-rebase). CURRENT switch only via publish gate.",
+     "Canary mode cannot write CURRENT"
+    ],
+    "patched_val_sw_at": "2026-09-24T19:56:54+00:00"
+   },
+   "cache_manifest_json": {
+    "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "parent": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+    "products_added": [
+     "FUND_NAV_PIT_R1"
+    ],
+    "asof": "2026-09-24"
+   },
+   "cache_seal_json": {
+    "accepted": true,
+    "sealed_at": "2026-09-25T04:04:43+0800"
+   },
+   "cleaning_pointer": {
+    "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "seal_id": "SEAL_R33_FUND_NAV_20260924_200439",
+    "sealed": true,
+    "cleaning_as_of": "2026-09-24",
+    "finance_asof": "2026-09-24",
+    "daily_asof": "2026-09-24",
+    "standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+    "quarantine_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_quarantine",
+    "ledger_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_control\\cleaning_ledger.sqlite",
+    "release_content_root_sha256": "966e92d0e1ba820c028cc4e7f1369815600efde6ce4c0c9e338b173e7f36b431",
+    "created_at": "2026-09-25T04:04:43+0800",
+    "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+    "switch_reason": "USER_AUTHORIZED_FUND_ETF_NAV_PREMIUM_PLANE_R1",
+    "finance_asof_note": "PIT cutoff carried from R33_FUND_NAV; daily tip 2026-09-24 only",
+    "FUND_NAV_TIP": true
+   },
+   "cleaning_r33_exists": true,
+   "cleaning_r45_exists": true,
+   "r33_seal_present": true,
+   "r33_seal": {
+    "seal_id": "SEAL_R33_FUND_NAV_20260924_200439",
+    "accepted": true,
+    "sealed_at": "2026-09-25T04:04:41+0800"
+   },
+   "r45_seal_present": false,
+   "capability_generation_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+   "divergence": [
+    "CURRENT_CACHE_RELEASE.cache_release_id=FUND_NAV_PIT_ASOF_20260924...; the RELEASE.json inside its own release_root carries cache_release_id=TIP_REBASE_ASOF_20260924_20260925_034907",
+    "MANIFEST.json in that release_root declares cache_release_id=FUND_NAV... with parent=TIP_REBASE... and products_added=[FUND_NAV_PIT_R1]",
+    "CURRENT_CLEANING_RELEASE.release_id=R33_FUND_NAV while parent_release_id=R45_DAILY_TIP and its quarantine_root+ledger_path live under R45",
+    "SEAL.json is 70 bytes and carries accepted+sealed_at only: no generation id, no product list, no content hash"
+   ],
+   "narrowed_status": "GENERATION_ID_DEPENDS_ON_THE_READER_PATH; POINTER_IS_AUTHORITATIVE, INNER_RELEASE_JSON_IS_HISTORICAL",
+   "not_a_source_gap": true,
+   "acquisition_authorized": false,
+   "what_is_now_settled": [
+    "CURRENT_CACHE_RELEASE.cache_release_id=FUND_NAV_PIT_ASOF_20260924...; the RELEASE.json inside its own release_root carries cache_release_id=TIP_REBASE_ASOF_20260924_20260925_034907",
+    "MANIFEST.json in that release_root declares cache_release_id=FUND_NAV... with parent=TIP_REBASE... and products_added=[FUND_NAV_PIT_R1]",
+    "CURRENT_CLEANING_RELEASE.release_id=R33_FUND_NAV while parent_release_id=R45_DAILY_TIP and its quarantine_root+ledger_path live under R45",
+    "SEAL.json is 70 bytes and carries accepted+sealed_at only: no generation id, no product list, no content hash"
+   ],
+   "what_remains_open": [
+    "which reader path is authorized as the generation authority"
+   ],
+   "decision_needed": "DECLARE_POINTER_AS_THE_ONLY_GENERATION_AUTHORITY_AND_HAVE_SEAL_CARRY_IT"
+  }
+ },
+ "bodies": "see NARROWING_SOURCE_BODIES.json (byte-exact base64 carriers)",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
