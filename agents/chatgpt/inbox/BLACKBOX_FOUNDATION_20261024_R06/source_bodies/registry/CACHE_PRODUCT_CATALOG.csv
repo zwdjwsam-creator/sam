@@ -1,0 +1,43 @@
+product_id,layer,asset_type,status,partition_key,description
+STOCK_DAILY_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Stock daily PIT snapshot
+STOCK_FACTOR_DAILY_R1,L2,STOCK,ACTIVE,year/signal_date,Universal stock factors (no candidate pct)
+ETF_DAILY_PIT_R1,L1,ETF,ACTIVE,year/signal_date,ETF daily PIT snapshot
+ETF_FACTOR_DAILY_R1,L2,ETF,ACTIVE,year/signal_date,Universal ETF factors
+FUND_DAILY_PIT_R1,L1,FUND,ACTIVE,year/signal_date,Fund daily PIT (first-class asset)
+FUND_FACTOR_DAILY_R1,L2,FUND,ACTIVE,year/signal_date,Universal fund factors
+INDEX_DAILY_R1,L1,INDEX,ACTIVE,year/signal_date,Index daily facts
+INDEX_FACTOR_DAILY_R1,L2,INDEX,ACTIVE,year/signal_date,Universal index factors
+INDEX_CONSTITUENT_PIT_R1,L1,INDEX,ACTIVE,year/asof_date,Index constituents as-of
+SW_L1_MEMBERSHIP_PIT_R1,L1,STOCK,ACTIVE_SOURCE_READY,year/asof_date,SW L1 membership PIT (source ready; structure product separate)
+SW_L1_STRUCTURE_DAILY_R1,L3,INDUSTRY,BLOCKED_UNTIL_STRUCTURE_BUILD,year/signal_date,Industry structure
+MARKET_UNIVERSE_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Market structure universe (not trade filter)
+STOCK_TRADEABILITY_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Tradeability facts ST/suspend/limits
+MARKET_STRUCTURE_DAILY_R1,L3,MARKET,PARTIAL,year/signal_date,Market structure (needs structure product)
+FUND_LIKE_ASSET_VIEW_R1,L1,ETF_FUND_VIEW,ACTIVE,view,Logical union of ETF+FUND retaining asset_type
+CACHE_MANIFEST_REGISTRY_R1,META,ALL,ACTIVE,n/a,Manifest registry
+CACHE_DEPENDENCY_REGISTRY_R1,META,ALL,ACTIVE,n/a,Dependency registry
+ADJUST_FACTOR_PIT_R1,L1,STOCK,ACTIVE,year/asof_date,PIT adjust factor fq=pre for PRE_PIT reconstruction
+STOCK_DAILY_RAW_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Stock daily RAW PIT fq=none explicit; not P2 none_adj
+SW_L2_MEMBERSHIP_PIT_R1,L1,STOCK,ACTIVE,year/asof_date,SW L2 membership PIT
+VALUATION_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Valuation PIT
+FINANCIAL_INDICATOR_PIT_R1,L1,STOCK,ACTIVE,year/asof_date,Financial indicator PIT
+TUSHARE_CBOND_BASIC_R1,L1,CBOND,ACTIVE,year/asof_date,Tushare convertible-bond dictionary (vendor schema)
+TUSHARE_CBOND_DAILY_MARKET_R1,L1,CBOND,ACTIVE,year/trade_date,Tushare convertible-bond daily market
+TUSHARE_CBOND_ISSUE_R1,L2,CBOND,ACTIVE,event,Tushare convertible-bond issue events
+TUSHARE_CBOND_CALL_R1,L2,CBOND,ACTIVE,event,Tushare convertible-bond call/redeem events
+TUSHARE_CBOND_RATE_R1,L2,CBOND,ACTIVE,coupon_period,Tushare convertible-bond coupon schedule
+TUSHARE_CBOND_SHARE_R1,L2,CBOND,ACTIVE,event,Tushare conversion result events; not daily PIT
+TUSHARE_CBOND_STOCK_BRIDGE_R1,L1,CBOND,ACTIVE,dictionary,Tushare bond-to-stock bridge N:1
+TUSHARE_CBOND_BASIC_JQCOMPAT_R1,L2,CBOND,ACTIVE,dictionary,JQ-compatible BASIC fields A/B only; not JQ native
+TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1,L2,CBOND,ACTIVE,year/date,JQ-compatible daily A/B fields; not JQ native
+TUSHARE_CBOND_RATING_R1,L2,CBOND,ACTIVE,event,Tushare cb_rating clean events; not as-of
+TUSHARE_CBOND_RATING_PIT_R1,L1,CBOND,ACTIVE,pit_interval,CBOND rating PIT next trade day after ann_date
+TUSHARE_CBOND_CALL_PIT_R1,L1,CBOND,ACTIVE,pit_event,CBOND call/redeem PIT next trade day after ann_date
+TUSHARE_CBOND_REMAIN_SIZE_PIT_R1,L1,CBOND,ACTIVE,pit_interval,CBOND remain_size PIT next trade day after publish_date
+TUSHARE_CBOND_TOP10_HOLDERS_R1,L2,CBOND,ACTIVE,report_period,CBOND top10 holders report-period only; PIT not ready
+INDEX_WEIGHT_PIT_R1,L1,INDEX,ACTIVE,index/snapshot,Official index component weights PIT last-known snapshot
+ETF_TRACKING_INDEX_MAP_R1,L1,ETF,ACTIVE,etf_code,ETF tracking index mapping (FUND_INVEST_TARGET RAW reused)
+ETF_MINUTE_1M_R1,L1,ETF,ACTIVE,year+day_shards,ETF 1m overlapping shards via Cleaning CURRENT; not daily fallback
+STOCK_MINUTE_1M_R1,L1,STOCK,ACTIVE,cleaning_day_shards,A-share stock 1m via Cleaning CURRENT standard/price/A股_stock_1m; unified plane STOCK_MINUTE_1M_R1; not Entry fixture; not refining case
+
+FUND_NAV_PIT_R1,L1,FUND,ACTIVE,year+incremental_tip,Fund/ETF unit_net_value PIT (get_extras); premium derived vs close
