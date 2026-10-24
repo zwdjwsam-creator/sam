@@ -1,0 +1,14 @@
+matching_requirement_id,required_field,required_domain,required_frequency,required_asset_scope,source_rule_file,admission_status,fail_action,block_reason_code
+MATCH-BAR-001,close,bar_matching,"daily,1m","stock,fund,etf",jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-BAR-001
+MATCH-LIM-001,high_limit_price,limit_check,"daily,1m",stock,jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-LIM-001
+MATCH-LIM-002,low_limit_price,limit_check,"daily,1m",stock,jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-LIM-002
+MATCH-SUS-001,is_suspended,suspension_check,"daily,1m","stock,fund,etf",jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-SUS-001
+MATCH-VOL-001,volume,volume_limit_check,"daily,1m","stock,fund,etf",jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-VOL-001
+MATCH-CST-001,turnover_amount,cost_model,daily,"stock,fund,etf",jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-CST-001
+MATCH-ADJ-001,adjust_factor,price_adjustment,daily,"stock,fund,etf",jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-ADJ-001
+MATCH-SET-001,previous_close,settlement_check,daily,"stock,fund,etf",jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-SET-001
+MATCH-OBI-001,ohlc,order_book_matching,1m,stock,jq_official_matching_data_requirements.csv,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_MATCH-OBI-001
+JQ_BACKTEST_DAILY_MARKET_ORDER_FILL_PRICE_R1,"open,current_day_open",daily_market_order,daily,"stock,fund,etf",jq_official_daily_minute_backtest_rules.json,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_JQ_BACKTEST_DAILY_MARKET_ORDER_FILL_PRICE_R1
+JQ_BACKTEST_MINUTE_MARKET_ORDER_FILL_PRICE_R1,"close,previous_minute_last_price",minute_market_order,1m,"stock,fund,etf",jq_official_daily_minute_backtest_rules.json,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_JQ_BACKTEST_MINUTE_MARKET_ORDER_FILL_PRICE_R1
+JQ_BACKTEST_LIMIT_PENDING_MINUTE_BAR_BUY_CONDITION_R1,"low,limit_price",limit_pending_minute_bar,1m,"stock,fund,etf",jq_official_daily_minute_backtest_rules.json,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_JQ_BACKTEST_LIMIT_PENDING_MINUTE_BAR_BUY_CONDITION_R1
+JQ_BACKTEST_LIMIT_PENDING_MINUTE_BAR_SELL_CONDITION_R1,"high,limit_price",limit_pending_minute_bar,1m,"stock,fund,etf",jq_official_daily_minute_backtest_rules.json,ADMIT_IF_MATCHED,BLOCK,BLOCK_MATCH_JQ_BACKTEST_LIMIT_PENDING_MINUTE_BAR_SELL_CONDITION_R1
