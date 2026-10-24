@@ -1,0 +1,229 @@
+{
+ "schema": "R09_CONTROL_AND_ENTRY_RESULTS_1",
+ "round": "R09/10",
+ "review_package": {
+  "source": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R09_CONTROL_INTEGRATION_20261024_2100",
+  "stage_pins": {
+   "build_r09_control_successor.py": {
+    "expected": "0b11552b87cf98bd21d19f04ef32813faaa3c617e7d6f19a4a688dae9f5cd1fd",
+    "bytes_expected": 10140,
+    "actual": "0b11552b87cf98bd21d19f04ef32813faaa3c617e7d6f19a4a688dae9f5cd1fd",
+    "bytes_actual": 10140,
+    "match": true
+   },
+   "r09_control_runtime.py": {
+    "expected": "87ff01f31d4a77736f1a2eb3eb031c81a627923eb73c61e29c0035f93e128e60",
+    "bytes_expected": 12870,
+    "actual": "87ff01f31d4a77736f1a2eb3eb031c81a627923eb73c61e29c0035f93e128e60",
+    "bytes_actual": 12870,
+    "match": true
+   },
+   "test_r09_controls.py": {
+    "expected": "52a62643285fdc1de1629327588a1c0b11c375561455afb1289ba35a2326f3a8",
+    "bytes_expected": 13130,
+    "actual": "52a62643285fdc1de1629327588a1c0b11c375561455afb1289ba35a2326f3a8",
+    "bytes_actual": 13130,
+    "match": true
+   },
+   "canonical_index_schema_r1.py": {
+    "expected": "38c0290e3c50313879924d0fd41866e62badeaa2066421647f3a9e305f6957cc",
+    "bytes_expected": 2300,
+    "actual": "38c0290e3c50313879924d0fd41866e62badeaa2066421647f3a9e305f6957cc",
+    "bytes_actual": 2300,
+    "match": true
+   },
+   "r08_coverage_gate.py": {
+    "expected": "9d90046c252b7f4c08786906cd3a95d28a5b3099493e4cb1f0ca8931fae982af",
+    "bytes_expected": 5105,
+    "actual": "9d90046c252b7f4c08786906cd3a95d28a5b3099493e4cb1f0ca8931fae982af",
+    "bytes_actual": 5105,
+    "match": true
+   },
+   "R09_OFFLINE_TEST_RESULTS.json": {
+    "expected": "26484b5a5655573164d2073cb4e8e323ab032de081fde0646756f2f6754e312d",
+    "bytes_expected": 1617,
+    "actual": "26484b5a5655573164d2073cb4e8e323ab032de081fde0646756f2f6754e312d",
+    "bytes_actual": 1617,
+    "match": true
+   }
+  },
+  "all_match": true
+ },
+ "successor_build": {
+  "manifest_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r09\\control_successor\\SUCCESSOR_BUILD_MANIFEST.json",
+  "manifest_sha256": "b33c978f69e679271aa8382df6d053d288289bf08a5d52a547b20d50abd8b447",
+  "source_pins": {
+   "PREFLIGHT": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+   "REQ_CAPABILITY": "c22fc461db2049c0d3a9ca8988b08c6f9ee0fee95c0d2bdbb8ea8bd00114710e",
+   "PRE_INGESTION_GATE": "9385131008d24b82b616bc1f175be4e8ce237d81556711ed6781270322ad0637",
+   "PUBLISH_GATE": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654"
+  },
+  "outputs": {
+   "blackbox_must_read_preflight_r1.py": {
+    "build_sha256": "0d7b039eb25d82285d7da1cd70b371a44c3ce38a4a44eed3f43a9eafdf99525f",
+    "disk_sha256": "0d7b039eb25d82285d7da1cd70b371a44c3ce38a4a44eed3f43a9eafdf99525f",
+    "expected_review_sha256": "0d7b039eb25d82285d7da1cd70b371a44c3ce38a4a44eed3f43a9eafdf99525f",
+    "match_expected": true
+   },
+   "blackbox_request_window_data_capability_resolver_r1.py": {
+    "build_sha256": "f847a9184c4f4dcf7adc512688e695f064a9c9931073edd2a7eb70efd23fcfb7",
+    "disk_sha256": "f847a9184c4f4dcf7adc512688e695f064a9c9931073edd2a7eb70efd23fcfb7",
+    "expected_review_sha256": "f847a9184c4f4dcf7adc512688e695f064a9c9931073edd2a7eb70efd23fcfb7",
+    "match_expected": true
+   },
+   "pre_ingestion_gate.py": {
+    "build_sha256": "365784a54d1655a0e08404142e8ad7793c0041e54b06eed45f59be9090f4c512",
+    "disk_sha256": "365784a54d1655a0e08404142e8ad7793c0041e54b06eed45f59be9090f4c512",
+    "expected_review_sha256": "365784a54d1655a0e08404142e8ad7793c0041e54b06eed45f59be9090f4c512",
+    "match_expected": true
+   },
+   "blackbox_daily_increment_publish_gate_r1.py": {
+    "build_sha256": "c4600d14d88a083baa4f65fd92c93d1873c8869b9f872e4a9ed4436a2fba1160",
+    "disk_sha256": "c4600d14d88a083baa4f65fd92c93d1873c8869b9f872e4a9ed4436a2fba1160",
+    "expected_review_sha256": "c4600d14d88a083baa4f65fd92c93d1873c8869b9f872e4a9ed4436a2fba1160",
+    "match_expected": true
+   }
+  },
+  "production_modified": false
+ },
+ "desktop_offline_controls": {
+  "status": "PASS",
+  "controls_passed": 38,
+  "scope": "OFFLINE_CONTROLS_ONLY",
+  "supplier_calls": 0,
+  "production_writes": 0,
+  "controls": [
+   "source-pinned four-module build",
+   "unchanged replay",
+   "partial successor preserved",
+   "tampered successor rejected",
+   "original missing-field permissiveness reproduced",
+   "evidenced positive request retained",
+   "strict required-field evidence blocks plain",
+   "strict required-field evidence blocks declared_gap",
+   "strict required-field evidence blocks alternate",
+   "SIGNAL_TIME_REQUIRED",
+   "KNOWN_AT_EVIDENCE_REQUIRED",
+   "EXPLICIT_TIMEZONE_REQUIRED",
+   "EXPLICIT_TIMEZONE_REQUIRED",
+   "INVALID_CAUSAL_TIMESTAMP",
+   "SIGNAL_BEFORE_KNOWN_AT",
+   "generation mismatch retained",
+   "valid preflight retained",
+   "missing SHA blocks BOOTSTRAP",
+   "missing SHA blocks DATA_ACCESS",
+   "missing SHA blocks KERNEL",
+   "malformed hash authority rejected",
+   "mutating option denied --acceptance",
+   "mutating option denied --write-manifest",
+   "bound synthetic fixture parses once",
+   "ticket replay rejected",
+   "post-admission payload replacement rejected",
+   "failed validation invalidates previous ticket",
+   "forged allowed result rejected",
+   "all seven real roles remain forbidden even with real-data flag",
+   "matching pair dry-run only",
+   "R09_SUCCESSOR_DRY_RUN_ONLY",
+   "CACHE_ROOT_IDENTITY_MISMATCH",
+   "CLEANING_CACHE_PAIR_MISMATCH",
+   "CAPABILITY_FACTS_GENERATION_STALE",
+   "failed preflight prevents bind, parse and publisher",
+   "ordered four-stage entry with limited acceptance",
+   "actual Arrow ordered-entry positive read with scoped claims",
+   "ordered entry rejects changed Parquet before parsing"
+  ],
+  "interpretation": "REVIEWED CONTROLS RE-RUN ON DESKTOP; NOT ENGINE ADMISSION"
+ },
+ "desktop_ordered_entry": {
+  "status": "STOP",
+  "error": "ValueError",
+  "reason": "MUST_READ_PREFLIGHT_FAILED:         ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\tempfile.py\", line 223, in _get_default_tempdir\n    raise FileNotFoundError(_errno.ENOENT,\nFileNotFoundError: [Errno 2] No usable temporary directory found in ['C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp', 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp', 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp', 'C:\\\\Windows\\\\Temp', 'c:\\\\temp', 'c:\\\\tmp', '\\\\temp', '\\\\tmp', 'E:\\\\BLACKBOX\\\\_OPS\\\\FOUNDATION_RECOVERY_20261024']\n",
+  "stage_reached": "1_MUST_READ",
+  "root_cause": {
+   "observed": "tempfile.gettempdir() called at import time by E:\\BLACKBOX\\脚本\\_base.py line 30; the R09 audit guard denies the O_CREAT probe write, so no temp dir is found",
+   "evidence_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\control_2100\\_diag_child.py",
+   "evidence_sha256": "f53383adeff7552b9485faf6d30e323e8f714897abf74cffbd93c66334dfa64d",
+   "base_line": 30,
+   "base_sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+   "guard_relaxed": false,
+   "action": "STOP per review instruction; no production edit, no guard exception added"
+  },
+  "guard_relaxed": false,
+  "stdout_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\control_2100\\DESKTOP_ORDERED_ENTRY.txt",
+  "stdout_sha256": "014b433cb103def73d3a168f3807a93a97ca94f67c37e965b9bf69f895b5b80e"
+ },
+ "desktop_stages_2_4_disclosed_substitution": {
+  "status": "STAGES_2_4_DIAGNOSTIC_COMPLETE",
+  "scope": "R09_STAGES_2_4_DIAGNOSTIC_WITH_STAGE1_SUBSTITUTED; NOT_A_PASSED_ORDERED_ENTRY; STAGES_2_4=EXECUTED_ON_DESKTOP",
+  "steps": [
+   "1_MUST_READ",
+   "2_PINNED_SOURCE_AND_RULE_BINDING",
+   "3_BOUNDED_CANDIDATE_READ",
+   "4_SHADOW_AND_PUBLISH_BLOCK_CONTROLS"
+  ],
+  "stage1_substituted": true,
+  "bounded_read": {
+   "stock_request_rows": 2,
+   "stock_values": [
+    {
+     "date": "2026-08-31 00:00:00",
+     "code": "000001.XSHE",
+     "close": 11.72
+    },
+    {
+     "date": "2026-09-01 00:00:00",
+     "code": "000001.XSHE",
+     "close": 11.92
+    }
+   ],
+   "conservation": {
+    "coverage_non_regression_pass": true,
+    "grain": [
+     "date",
+     "code"
+    ],
+    "parent_keys": 959896,
+    "candidate_keys": 959896,
+    "lost_keys": 0,
+    "lost_field_observation_keys": {
+     "close": 0
+    },
+    "lost_key_examples": [],
+    "PUBLISH_ALLOWED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "scope": "EXACT_INPUT_FRAMES_ONLY_NOT_GLOBAL_COVERAGE_OR_ENGINE_ADMISSION"
+   },
+   "index_adapter_rows": 5242,
+   "index_diagnostic_only": true,
+   "index_master_admission": false,
+   "calendar_asof": "2026-09-24",
+   "latest_download_performed": false
+  },
+  "controls": {
+   "synthetic_parse_calls": 1,
+   "real_role_reason": "REAL_DATA_NOT_AUTHORIZED",
+   "live_publish_reason": "R09_SUCCESSOR_DRY_RUN_ONLY",
+   "supplier_calls": 0
+  },
+  "file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R09\\control_2100\\DESKTOP_STAGES_2_4_WITH_STAGE1_SUBSTITUTED.json",
+  "sha256": "b9e9c82efa30e50839c29ca494a56439926005e1aabb26a7f0652f14b741fe08",
+  "not_claimed": [
+   "PASSED_ORDERED_ENTRY",
+   "ENGINE_ADMISSION",
+   "CURRENT_SWITCH",
+   "PUBLICATION"
+  ]
+ },
+ "verdict": {
+  "ordered_entry_on_desktop": "STOP_AT_STAGE_1",
+  "stages_2_4_on_desktop": "EXECUTED_AND_PASSED_IN_DISCLOSED_DIAGNOSTIC",
+  "relax_guard_to_proceed": false,
+  "next_decision_owner": "REVIEWER (GPT)"
+ },
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
