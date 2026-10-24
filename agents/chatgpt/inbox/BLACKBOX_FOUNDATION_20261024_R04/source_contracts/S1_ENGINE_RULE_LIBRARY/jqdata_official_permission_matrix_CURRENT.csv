@@ -1,0 +1,11 @@
+﻿domain,official_api_or_table,permission_status,success,error_message,sample_row_count,current_account_available,extra_purchase_required,recommended_action
+official_table_info,get_table_info(FUND_INVEST_TARGET),allowed,true,,8,true,false,use_official_definition
+fund_invest_target,finance.FUND_INVEST_TARGET,allowed,true,,3,true,false,available_now
+official_table_info,get_table_info(FUND_SHARE_DAILY),allowed,true,,6,true,false,use_official_definition
+fund_share_daily,finance.FUND_SHARE_DAILY,allowed,true,,20,true,false,available_now
+official_table_info,get_table_info(FUND_NET_VALUE),allowed,true,,8,true,false,use_official_definition
+fund_net_value,finance.FUND_NET_VALUE,allowed,true,,0,true,false,available_now
+stock_limit_pause_status,"get_price(fields=['paused','high_limit','low_limit','factor'])",allowed,true,,4,true,false,available_now
+fund_etf_nav,get_extras(info='unit_net_value'),allowed,true,,1,true,false,available_now
+fund_etf_nav,get_extras(info='acc_net_value'),allowed,true,,1,true,false,available_now
+fund_etf_nav,get_extras(info='refactor_net_value'),error,false,不支持的 info 参数：'refactor_net_value',0,false,false,alternative_interface_probe_required
