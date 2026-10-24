@@ -1,0 +1,114 @@
+{
+ "schema": "R09_ENGINE_RUNTIME_REQUIREMENT_CLASSIFICATION_1",
+ "round": "R09/10_CORRECTION",
+ "pyproject": {
+  "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\source_engine\\S3_ENGINE_SOURCE\\pyproject.toml",
+  "sha256": "e959aa692b5b295158e243e22df14fcac9dfa662a9d964b58997040fbfd63686",
+  "core_dependencies": [
+   "pandas>=1.3.0,<3.0",
+   "numpy>=1.21.0",
+   "matplotlib>=3.4.0",
+   "jqdatasdk>=1.8.0",
+   "plotly>=5.15.0",
+   "python-dotenv>=0.19.0",
+   "filelock>=3.0.0",
+   "pyecharts>=1.9.0",
+   "tabulate>=0.9.0",
+   "jupyterlab>=4.1.0",
+   "ipykernel>=6.29.0"
+  ]
+ },
+ "r08_verdict": {
+  "value": "RUNTIME_INCOMPLETE_FOR_ENGINE_STARTUP",
+  "relabeled_as": "RUNTIME_INVENTORY_VERDICT__NOT_A_PROVEN_STARTUP_FAILURE"
+ },
+ "missing_package_classification": {
+  "filelock": {
+   "import_name": "filelock",
+   "in_pyproject_core_dependencies": true,
+   "class": "DECLARED_ONLY__NO_IMPORT_REFERENCE_IN_DELIVERED_SOURCES__STARTUP_NEED_UNPROVEN",
+   "import_sites": {}
+  },
+  "ipykernel": {
+   "import_name": "ipykernel",
+   "in_pyproject_core_dependencies": true,
+   "class": "DECLARED_ONLY__NO_IMPORT_REFERENCE_IN_DELIVERED_SOURCES__STARTUP_NEED_UNPROVEN",
+   "import_sites": {}
+  },
+  "jupyterlab": {
+   "import_name": "jupyterlab",
+   "in_pyproject_core_dependencies": true,
+   "class": "DECLARED_ONLY__NO_IMPORT_REFERENCE_IN_DELIVERED_SOURCES__STARTUP_NEED_UNPROVEN",
+   "import_sites": {}
+  },
+  "matplotlib": {
+   "import_name": "matplotlib",
+   "in_pyproject_core_dependencies": true,
+   "class": "OPTIONAL_AT_IMPORT__GUARDED_TRY_EXCEPT_IN_PACKAGE_INIT",
+   "import_sites": {
+    "__init____4fb40998.py": {
+     "module_level": {
+      "matplotlib": [
+       "<module>"
+      ]
+     },
+     "function_level": {}
+    }
+   }
+  },
+  "plotly": {
+   "import_name": "plotly",
+   "in_pyproject_core_dependencies": true,
+   "class": "DECLARED_ONLY__NO_IMPORT_REFERENCE_IN_DELIVERED_SOURCES__STARTUP_NEED_UNPROVEN",
+   "import_sites": {}
+  },
+  "pyecharts": {
+   "import_name": "pyecharts",
+   "in_pyproject_core_dependencies": true,
+   "class": "DECLARED_ONLY__NO_IMPORT_REFERENCE_IN_DELIVERED_SOURCES__STARTUP_NEED_UNPROVEN",
+   "import_sites": {}
+  },
+  "python-dotenv": {
+   "import_name": "dotenv",
+   "in_pyproject_core_dependencies": true,
+   "class": "OPTIONAL_LAZY__IMPORTED_INSIDE_load_env_WITH_ImportError_HANDLER",
+   "import_sites": {
+    "env_loader.py": {
+     "module_level": {},
+     "function_level": {
+      "dotenv": [
+       "load_env"
+      ]
+     }
+    }
+   }
+  },
+  "tabulate": {
+   "import_name": "tabulate",
+   "in_pyproject_core_dependencies": true,
+   "class": "DECLARED_ONLY__NO_IMPORT_REFERENCE_IN_DELIVERED_SOURCES__STARTUP_NEED_UNPROVEN",
+   "import_sites": {}
+  }
+ },
+ "counts": {
+  "declared_core": 11,
+  "missing_total": 8,
+  "guarded_optional_at_import": 1,
+  "lazy_optional": 1,
+  "declared_only_unproven": 6
+ },
+ "conclusion": "the eight absent names are packaging declarations, not a demonstrated engine-startup requirement set; one is guarded at import and one is a lazy optional import, six are never imported by the delivered engine sources",
+ "install_actions_taken": 0,
+ "notebook_stack_installed": false,
+ "still_unproven_separately": [
+  "a real engine startup trace",
+  "MASTER admission",
+  "package installation as a repair"
+ ],
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
