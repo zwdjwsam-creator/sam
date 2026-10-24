@@ -1,0 +1,41 @@
+{
+ "schema": "R10_PRODUCER_FQ_CORRECTIONS_APPEND_ONLY_1",
+ "append_only": true,
+ "rows": [
+  {
+   "id": "C1",
+   "type": "PRODUCER_IDENTIFIED_AS_CANDIDATE_FAMILY",
+   "text": "The bounded lookup produced two writer candidates whose text reproduces the observed file naming, column set and clean_rel exactly. This upgrades the producer status from not-identified to CANDIDATE_FAMILY_ONLY. It is not an execution certificate for the three dated files."
+  },
+  {
+   "id": "C2",
+   "type": "P6_SIBLING_ABSENT",
+   "text": "Both candidate bodies also write a P6_factor_reference/adjust_factor copy under a different name pattern. No counterpart of the three P1 names exists there even though the P6 directory exists, so that predicted sibling is not evidence for these three files."
+  },
+  {
+   "id": "C3",
+   "type": "MTIME_NOT_THE_STAMP",
+   "text": "All three P1 mtimes are 2026-10-17, not the 20260831/20260901/20260925 stamps in the names. The stamps come from the writing code; the mtimes reflect a later copy. Neither is treated as a date authority."
+  },
+  {
+   "id": "C4",
+   "type": "ORDINAL_SHAPE_UNEXPLAINED",
+   "text": "The int64 axis has 300 distinct ordinals with 17-18 rows each. The batch=200 request logic in the candidate bodies would produce a different grouping, so the exact mechanism that produced these 300 groups is recorded as unresolved rather than inferred."
+  },
+  {
+   "id": "C5",
+   "type": "FQ_IS_NOT_A_COLUMN_OBLIGATION",
+   "text": "The normative domain contract requires factor (not fq) on price_fq_factor and is silent on fq placement, request binding and enforcement. The earlier \"no physical fq column\" statement is therefore descriptive only; it is not a contract violation and no allowance is invented."
+  },
+  {
+   "id": "C6",
+   "type": "DATE_DTYPE_DIVERGENCE",
+   "text": "The dtype contract declares date storage as date with YYYY-MM-DD and nullable N. The two RAW files store int64 and the R33 files store timestamp[ns]. Both are recorded as observations; nothing is converted or normalized."
+  },
+  {
+   "id": "C7",
+   "type": "NO_REPAIR",
+   "text": "No date was inferred from any filename, no ordinal was interpreted, no alternate date field was substituted, no factor was filled, no fq column was added and no product was admitted."
+  }
+ ]
+}
