@@ -1,0 +1,102 @@
+{
+ "schema": "R10_COMMAND_AND_EXIT_LEDGER_1",
+ "round": "R10/10",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "entries": [
+  {
+   "step": "verify R10 package pins",
+   "exit_code": 0,
+   "retention": "RETAINED_IN_JSON",
+   "result": "all 7 package files match declared sha256 and byte size"
+  },
+  {
+   "step": "verify 4 evidence input canonical pins",
+   "exit_code": 0,
+   "retention": "RETAINED_IN_JSON",
+   "result": "matrix/dependency/bindings/acquisition all match declared canonical JSON sha256"
+  },
+  {
+   "step": "staged copies written",
+   "exit_code": 0,
+   "retention": "RETAINED_IN_JSON",
+   "note": "local staging copies only; originals not edited"
+  },
+  {
+   "step": "24 offline controls",
+   "argv": [
+    "test_blackbox_operate_r10.py"
+   ],
+   "exit_code": 0,
+   "retained": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_OFFLINE_CONTROLS.txt",
+   "result": "PASS 24"
+  },
+  {
+   "step": "catalog",
+   "argv": [
+    "blackbox_operate_r10.py",
+    "catalog"
+   ],
+   "exit_code": 0,
+   "retained": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_CATALOG.txt",
+   "result": "41 entities, 13 updater joins"
+  },
+  {
+   "step": "describe x5",
+   "exit_code": 0,
+   "retained": "DESKTOP_DESCRIBE_*.txt",
+   "result": "all served"
+  },
+  {
+   "step": "describe unknown product",
+   "exit_code": 3,
+   "retained": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_DESCRIBE_UNKNOWN.txt",
+   "result": "STOP PRODUCT_NOT_IN_REVIEWED_CATALOG"
+  },
+  {
+   "step": "bounded query",
+   "exit_code": 0,
+   "retained": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_QUERY_STOCK_RAW.txt",
+   "result": "BOUNDED_OBSERVATIONS_SERVED 4/4 keys"
+  },
+  {
+   "step": "six real negative controls",
+   "exit_code": 3,
+   "retained": "DESKTOP_NEG_*.txt",
+   "result": "six distinct STOP reasons, all SOURCE_ABSENCE_CLAIM_ALLOWED=false"
+  },
+  {
+   "step": "update-plan x6",
+   "exit_code": 0,
+   "retained": "DESKTOP_UPDATEPLAN_*.txt",
+   "result": "CONTRACT_PLAN_ONLY; no supplier call"
+  },
+  {
+   "step": "desktop engine import probe",
+   "exit_code": 0,
+   "retained": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_ENGINE_IMPORT_PROBE.txt",
+   "result": "IMPORT_ATTEMPTED_FORBIDDEN_SIDE_EFFECT (os.mkdir); classes present; nothing constructed"
+  },
+  {
+   "step": "additive side-effect localisation",
+   "exit_code": 0,
+   "retained": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_ENGINE_IMPORT_SIDE_EFFECT_LOCATED.txt",
+   "result": "globals.py:421 -> globals.py:156 os.makedirs(\"./logs\")"
+  },
+  {
+   "step": "delivery build",
+   "exit_code": 0,
+   "retention": "RETAINED_IN_JSON"
+  },
+  {
+   "step": "upload + readback",
+   "exit_code": 0,
+   "retention": "RETAINED_IN_JSON"
+  }
+ ],
+ "not_retained_policy": "nothing in this round is marked NOT_RETAINED; every command above has a retained capture or an inline JSON result recorded here",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
