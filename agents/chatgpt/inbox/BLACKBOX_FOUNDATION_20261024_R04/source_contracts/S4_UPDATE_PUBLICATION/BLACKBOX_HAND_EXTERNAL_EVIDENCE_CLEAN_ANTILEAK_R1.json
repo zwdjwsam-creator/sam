@@ -1,0 +1,79 @@
+{
+  "rule_id": "BLACKBOX_HAND_EXTERNAL_EVIDENCE_CLEAN_ANTILEAK_R1",
+  "status": "ACTIVE_HARD_RULE",
+  "schema_version": "1.0.0",
+  "layer": "HAND_TOP",
+  "authorized_by": "USER_AS_HAND",
+  "authorized_at_cn": "2026-08-24T11:52:00+0800",
+  "authorized_at_user_utterance": "清洗对齐防止穿越做过了吗，给到本地HAND置顶，以后增量下载加入外源数据，同样要清洗对齐防止穿越，再给到本地数据置顶规则内的必读，目前有外源数据可以参考，防止5000行静默",
+  "parent_rules": [
+    "BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1",
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "BLACKBOX_HAND_UNIFIED_ACQUISITION_ARCHITECTURE_R1"
+  ],
+  "definition_one_line": "外源（TUSHARE/EXCHANGE/COMPANY_PRIMARY/…）增量下载结束必须：清洗→对齐→防穿越→SILENT_TRUNCATION=0；禁止 returned_rows==5000 当 COMPLETE；禁止写入 JQ 产品",
+  "applies_to": [
+    "TUSHARE",
+    "EXCHANGE",
+    "COMPANY_PRIMARY",
+    "GOVERNMENT",
+    "INDUSTRY_PRIMARY",
+    "MEDIA",
+    "OTHER_PUBLIC",
+    "EXTERNAL_EVIDENCE"
+  ],
+  "pipeline_tail_mandatory": [
+    "download_or_increment",
+    "RAW_READONLY_append_only",
+    "CLEAN_normalize_provenance",
+    "PIT_publication_at_not_economic_period_end_alone",
+    "anti_lookahead_known_at_le_signal",
+    "SILENT_TRUNCATION_gate_QUERY_CAP_5000",
+    "PAGINATION_COMPLETE_YES",
+    "register_EXTERNAL_EVIDENCE_RESOLVER",
+    "refresh_EXTERNAL_EVIDENCE_CATALOG_CURRENT"
+  ],
+  "forbid": [
+    "RAW_ONLY_CLAIM_PASS",
+    "WRITE_EXTERNAL_INTO_JQ_PRODUCTS",
+    "returned_rows_eq_5000_as_COMPLETE",
+    "returned_rows_eq_query_cap_as_COMPLETE",
+    "PERMISSION_FAIL_as_NO_DATA",
+    "end_date_as_market_available_at_for_financials",
+    "report_period_end_as_same_day_visible_for_fund_holdings"
+  ],
+  "silent_truncation": {
+    "QUERY_CAP": 5000,
+    "SILENT_TRUNCATION_MUST": 0,
+    "PAGINATION_COMPLETE_MUST": "YES",
+    "reference_patterns": [
+      "FUND_ETF_NAV get_extras BATCH<=5 / FUND_NET_VALUE whole-table FORBIDDEN",
+      "BLACKBOX_ACQUISITION_MUST_READ / blackbox_acquisition_pagination_engine_r1.py",
+      "REPORT_NARRATIVE / CORPORATE_DISCLOSURE 5000 silent gate"
+    ]
+  },
+  "pit_contract": {
+    "financials": "publication_at from f_ann_date|ann_date; forbid end_date-only visibility",
+    "fund_holdings": "market_available_at from ann_date/disclosure; forbid report_period end same-day",
+    "announcements": "market_available_at = real public time"
+  },
+  "r2_status_note": {
+    "product_level_CLEAN_PIT_done": true,
+    "formal_JQ_cleaning_seal_not_applicable": true,
+    "source_isolation": "STRICT",
+    "future_increment_must_rerun_CLEAN_PIT_gates": true,
+    "asof_align_child_rule": "BLACKBOX_HAND_EXTERNAL_EVIDENCE_ASOF_ALIGN_R1"
+  },
+  "child_rules": [
+    "BLACKBOX_HAND_EXTERNAL_EVIDENCE_ASOF_ALIGN_R1"
+  ],
+  "evidence_root": "E:\\BLACKBOX\\数据\\外部证据",
+  "scripts": [
+    "脚本/blackbox_external_market_evidence_data_agent_r1.py",
+    "脚本/blackbox_external_evidence_materialization_r2.py"
+  ],
+  "mdc": ".cursor/rules/blackbox_external_evidence_clean_antileak.mdc",
+  "asof_align_mdc": ".cursor/rules/blackbox_external_evidence_asof_align.mdc",
+  "handbook": "运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_HANDBOOK_CURRENT.md"
+}
