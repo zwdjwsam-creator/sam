@@ -1,0 +1,272 @@
+{
+ "generation": "R08_RECEIPT_CORRECTION_1855",
+ "issued_against_tip": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_RECEIPT_CORRECTION_AND_CANONICAL_SCHEMA_PROBE_20261024_1855.md",
+ "issued_against_tip_blob": "c9d48862dc291493fdc38a60edd0edf380b7e353",
+ "issued_against_review": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_RECEIPT_AND_SCHEMA_REVIEW_20261024_1855/REVIEW_R08_RECEIPT_AND_SCHEMA.md",
+ "issued_against_review_blob": "7a66f5d7ee926d6d7ae56b07eae4a4c9ee651511",
+ "generated_at": "2026-10-24T19:25:56+08:00",
+ "slot": "R08",
+ "slot_ordinal": "8/10",
+ "slot_state": "OPEN_PENDING_GPT_REVIEW",
+ "is_new_foundation_round": false,
+ "is_fresh_inventory": false,
+ "future_execution_deliveries_remaining": 2,
+ "delivered": [
+  "CORRECTION_STATUS.json",
+  "ORIGINAL_CANDIDATE_MANIFEST.json",
+  "ORIGINAL_MANIFEST_BYTE_PRESERVATION.json",
+  "RECONCILED_EVIDENCE.json",
+  "ORIGINAL_SOURCE_BODY_INDEX_CORRECTED.json",
+  "R09_IMPLEMENTATION_BINDINGS_CORRECTED.json",
+  "FIRST_BUILD_RECEIPT_STATUS.json",
+  "executed_code/ (6 files)",
+  "execution/ (8 files)",
+  "source_bodies/ (5 files)"
+ ],
+ "executions": [
+  {
+   "id": "CTRL_TEST_R08_RECEIPT_AUDIT",
+   "purpose": "control test suite: six synthetic controls",
+   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.raw",
+   "stdout_utf8_transcription": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.txt",
+   "stderr": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stderr.txt",
+   "captured_encoding": "utf-16",
+   "transcription_note": "byte-for-byte capture kept in .stdout.raw; the .txt is a lossless transcription of the same bytes (PowerShell 5.1 redirection wrote UTF-16LE)",
+   "stdout_raw_bytes": 258,
+   "stderr_raw_bytes": 0,
+   "stdout_raw_sha256": "8874142623e9e9b1a5ca90875dd9eeac62be57a79f013eef9acec77267cd6739",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "exit_code": 0,
+   "parsed_status": "PASS"
+  },
+  {
+   "id": "CTRL_TEST_CANONICAL_INDEX_SCHEMA",
+   "purpose": "control test suite: nine synthetic controls incl. legacy reader reproduction",
+   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.raw",
+   "stdout_utf8_transcription": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.txt",
+   "stderr": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stderr.txt",
+   "captured_encoding": "utf-16",
+   "transcription_note": "byte-for-byte capture kept in .stdout.raw; the .txt is a lossless transcription of the same bytes (PowerShell 5.1 redirection wrote UTF-16LE)",
+   "stdout_raw_bytes": 440,
+   "stderr_raw_bytes": 0,
+   "stdout_raw_sha256": "ec06001a963acd7a2e8848e347f7c412958bf822d186dd86c33987db2432f794",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "exit_code": 0,
+   "parsed_status": "PASS"
+  },
+  {
+   "id": "AUDIT_R08_RECEIPT",
+   "purpose": "independent reconciliation of the R08 manifest and physical artifacts",
+   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.raw",
+   "stdout_utf8_transcription": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.txt",
+   "stderr": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stderr.txt",
+   "captured_encoding": "utf-16",
+   "transcription_note": "byte-for-byte capture kept in .stdout.raw; the .txt is a lossless transcription of the same bytes (PowerShell 5.1 redirection wrote UTF-16LE)",
+   "stdout_raw_bytes": 64818,
+   "stderr_raw_bytes": 0,
+   "stdout_raw_sha256": "089c94aea9b050c8dbe361a940f930851385ad8b5dc1a484a81b48867eb06644",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "exit_code": 0,
+   "parsed_status": "RECONCILED"
+  },
+  {
+   "id": "PROBE_CANONICAL_INDEX",
+   "purpose": "hash-pinned 399303.XSHE source read through the candidate adapter",
+   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.raw",
+   "stdout_utf8_transcription": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.txt",
+   "stderr": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stderr.txt",
+   "captured_encoding": "utf-16",
+   "transcription_note": "byte-for-byte capture kept in .stdout.raw; the .txt is a lossless transcription of the same bytes (PowerShell 5.1 redirection wrote UTF-16LE)",
+   "stdout_raw_bytes": 3168,
+   "stderr_raw_bytes": 0,
+   "stdout_raw_sha256": "e7da723f17bf9a6c7f0310bcd139fa4ef665b7d9ef3be78e53b35f20318d6232",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "exit_code": 0,
+   "parsed_status": "SCHEMA_ADAPTER_PROBE_PASS"
+  }
+ ],
+ "control_outcome": {
+  "test_r08_receipt_audit": "PASS 6/6",
+  "test_canonical_index_schema_r1": "PASS 9/9",
+  "r08_receipt_audit": "RECONCILED 21/21",
+  "probe_canonical_index_r1": "SCHEMA_ADAPTER_PROBE_PASS"
+ },
+ "counts": {
+  "reconciled_items": 10,
+  "failed_checks": 0,
+  "uploaded_source_bodies": 5
+ },
+ "manifest_sha256": "89d2a903fe01701c43c6cf8a90906c096aede74db082012fb6bc31d31735787f",
+ "manifest_sha_matches_r08_claim": true,
+ "unchanged_outcomes": {
+  "MUST_READ_MANIFEST": "unchanged",
+  "HAND": "unchanged",
+  "production_gate": "unchanged",
+  "CURRENT": "unchanged",
+  "sealed_releases": "unchanged"
+ },
+ "flags": {
+  "SOURCE_ABSENCE_CLAIMS": 0,
+  "NETWORK_CALLS": 0,
+  "FOUNDATION_ACCEPTANCE": false,
+  "ORDER_ALLOWED": false,
+  "PRODUCTION_CHANGE_AUTHORIZED": false,
+  "NETWORK_ACQUISITION_AUTHORIZED": false,
+  "BUILD_OR_REBUILD": false,
+  "PUBLICATION": false,
+  "CURRENT_SWITCH": false,
+  "SUPPLIER_CALL": false,
+  "AUTHENTICATION": false,
+  "CREDENTIAL_READ": false,
+  "DATA_RESTORATION": false,
+  "DATA_CLEANUP": false,
+  "PRODUCTION_COMPILER_IMPORT": false
+ },
+ "file_manifest": [
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/executed_code/canonical_index_schema_r1.py",
+   "bytes": 2300,
+   "sha256": "38c0290e3c50313879924d0fd41866e62badeaa2066421647f3a9e305f6957cc"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/executed_code/probe_canonical_index_r1.py",
+   "bytes": 2270,
+   "sha256": "b9fd6714e10db3476fe2d069c90bfa4a2ca45df395b7270c861cec3db7e868a4"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/executed_code/r06_bundle_store.py",
+   "bytes": 3842,
+   "sha256": "6c76c0de3aca7d96223e5883b68918c794585156e29c292962d438e6986269a2"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/executed_code/r08_receipt_audit.py",
+   "bytes": 7838,
+   "sha256": "6802053d2f87822d466556a70a24310120d99d24679f4f965fecdb108156e838"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/executed_code/test_canonical_index_schema_r1.py",
+   "bytes": 3353,
+   "sha256": "50717907c340a5f613a9ee24d979b6ea8f040098b17ccde240e2eac8f4c3d44a"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/executed_code/test_r08_receipt_audit.py",
+   "bytes": 4373,
+   "sha256": "883a3d8b5a20a30a8ad3f0ba49b08c91de2a71065de82326dc9de0304ddd8c6a"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stderr.txt",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.raw",
+   "bytes": 64818,
+   "sha256": "089c94aea9b050c8dbe361a940f930851385ad8b5dc1a484a81b48867eb06644"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.txt",
+   "bytes": 33191,
+   "sha256": "388c5c43d62a330ff2ca2a5ee9b2765e4138706e6cdb69eb166bf5d92195659a"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stderr.txt",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.raw",
+   "bytes": 440,
+   "sha256": "ec06001a963acd7a2e8848e347f7c412958bf822d186dd86c33987db2432f794"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.txt",
+   "bytes": 220,
+   "sha256": "9a92057eec4d625866e9e238c2e301c04d32e8cffb8bd4b002074e93193f73e1"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stderr.txt",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.raw",
+   "bytes": 258,
+   "sha256": "8874142623e9e9b1a5ca90875dd9eeac62be57a79f013eef9acec77267cd6739"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.txt",
+   "bytes": 129,
+   "sha256": "be64e99c488a1054039795f0b1dac242c384e1a38527b2d7d3b2abbf7e3e5dcc"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stderr.txt",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.raw",
+   "bytes": 3168,
+   "sha256": "e7da723f17bf9a6c7f0310bcd139fa4ef665b7d9ef3be78e53b35f20318d6232"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.txt",
+   "bytes": 1644,
+   "sha256": "6f2a7f2c17135407f9bf0c064d4f97e4c23425f1f917c1dcfdd6e8220a4b76e6"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/FIRST_BUILD_RECEIPT_STATUS.json",
+   "bytes": 1306,
+   "sha256": "028c39f6a77913add02a5b20c87f63cf0c93894be6d843c31b88d5b927cc8167"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/ORIGINAL_CANDIDATE_MANIFEST.json",
+   "bytes": 80026,
+   "sha256": "89d2a903fe01701c43c6cf8a90906c096aede74db082012fb6bc31d31735787f"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/ORIGINAL_MANIFEST_BYTE_PRESERVATION.json",
+   "bytes": 806,
+   "sha256": "eb850a1c8f5d68c04497524dcbb290080e8af6f7982cdce01ab3f439107980a4"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/ORIGINAL_SOURCE_BODY_INDEX_CORRECTED.json",
+   "bytes": 22294,
+   "sha256": "492797252f009123642ca132e74f70b1ca864f93ee4106f46bc16c80a4b89c51"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/R09_IMPLEMENTATION_BINDINGS_CORRECTED.json",
+   "bytes": 5687,
+   "sha256": "71f5f44732678149b8013101790171da342070c16f4caa2b5a02a1e713a8724d"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/RECONCILED_EVIDENCE.json",
+   "bytes": 19773,
+   "sha256": "ea83475756d7e8b925e2c9de424ad38e6779c28e14963e867d7c278843f14c9a"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/blackbox_data_access_resolver_r1.py",
+   "bytes": 43924,
+   "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/blackbox_data_coverage_control_plane_build_r1.py",
+   "bytes": 25474,
+   "sha256": "0ccc17f21e0c977a8533d4724addb15a422537b045079d11d6f67e104972e3ba"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/blackbox_valuation_historical_authority_cache_productization_r1.py",
+   "bytes": 27493,
+   "sha256": "5e804b8459b2655936dc876c8a16d7672d9a30cd707cb9f2b717057110e9d6fb"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/cache_compiler_adjust_factor_pit_r1.py",
+   "bytes": 16033,
+   "sha256": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/cache_compiler_sw_l1_integrate_r1.py",
+   "bytes": 22223,
+   "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69"
+  }
+ ]
+}
