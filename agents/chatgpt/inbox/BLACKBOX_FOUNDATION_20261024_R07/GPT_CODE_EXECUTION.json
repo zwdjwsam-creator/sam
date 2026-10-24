@@ -1,0 +1,87 @@
+{
+ "round": "R07/10",
+ "generated_at": "2026-10-24T17:41:40.159648+08:00",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "utf8_mode": "-X utf8",
+ "blob_verification": "reviews/R07/HUB_BLOB_VERIFICATION_R07.json",
+ "steps": [
+  {
+   "n": 1,
+   "what": "stage GPT R07 scripts into reviews/R07",
+   "files": [
+    "r07_claim_guard.py",
+    "r07_rebuild_local.py",
+    "test_r07.py",
+    "REVIEW_R06_AND_R07.md"
+   ],
+   "result": "STAGED"
+  },
+  {
+   "n": 2,
+   "what": "copy unchanged GPT r06_bundle_store.py from reviews/R06",
+   "result": "BYTE_IDENTICAL",
+   "sha256": "6c76c0de3aca7d96223e5883b68918c794585156e29c292962d438e6986269a2"
+  },
+  {
+   "n": 3,
+   "what": "copy R06-delivered full compiler body to reviews/R07/cache_compiler_source_R06.py",
+   "result": "SHA_MATCH",
+   "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+   "expected": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+   "also_identical_to": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r06_delivery\\source_bodies\\cache_compiler_daily_incremental_r1.py",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_daily_incremental_r1.py"
+   ]
+  },
+  {
+   "n": 4,
+   "what": "verify HUB blob identity for 4 reviewed files",
+   "result": "4_OF_4_MATCH",
+   "record": "reviews/R07/HUB_BLOB_VERIFICATION_R07.json"
+  },
+  {
+   "n": 5,
+   "what": "run offline controls",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R07\\test_r07.py reviews\\R07\\cache_compiler_source_R06.py",
+   "result": "PASS",
+   "controls": 15,
+   "network_calls": 0
+  },
+  {
+   "n": 6,
+   "what": "run real local derived rebuild (first invocation)",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R07\\r07_rebuild_local.py --compiler-source reviews\\R07\\cache_compiler_source_R06.py",
+   "result": "GUARD_FAILURE",
+   "error": "ValueError: PRICE_INPUT_NULL",
+   "raised_at": "r07_rebuild_local.py:48 (via check at :26)",
+   "exit_code": 1
+  },
+  {
+   "n": 7,
+   "what": "replay invocation (idempotence)",
+   "result": "NOT_EXECUTED",
+   "reason": "CONTRACT_REQUIRES_REPLAY_ONLY_AFTER_SUCCESS"
+  },
+  {
+   "n": 8,
+   "what": "independent diagnosis of the guard failure",
+   "result": "TWO_DISTINCT_INPUT_ROW_FAMILIES_IDENTIFIED",
+   "record": "TIME_INDEX_AND_IMPORT_DEFECTS.json#D01"
+  },
+  {
+   "n": 9,
+   "what": "read pinned contract chain and record hashes",
+   "result": "READ",
+   "record": "PINNED_RULE_CLOSURE.json"
+  },
+  {
+   "n": 10,
+   "what": "read-only layer search across cache/clean/raw/meta roots for every reported problem",
+   "result": "DELIVERED",
+   "record": "LAYER_SEARCH_AND_BINDING_LEDGER.json"
+  }
+ ],
+ "script_edits": 0,
+ "retries_with_modified_code": 0,
+ "large_binary_uploads": 0
+}
