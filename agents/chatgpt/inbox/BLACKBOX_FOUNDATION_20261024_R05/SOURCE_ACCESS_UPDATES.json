@@ -1,0 +1,143 @@
+{
+  "schema_version": "2.0.0",
+  "round_id": "BLACKBOX_FOUNDATION_20261024_R05",
+  "language": "en",
+  "purpose": "preserve the R04 register and add R05 corrections rather than rewriting it",
+  "supersedes_field_only_in": [
+    "SRC_JQDATA_SDK.acquisition_status",
+    "SRC_QMT_TERMINAL.notes",
+    "counts.acquisition"
+  ],
+  "evidence_class_split": {
+    "rule": "counts are split so that a local file read is never counted as remote supplier capability",
+    "classes": {
+      "LOCAL_FILE_ACCESS": {
+        "definition": "a local path was opened and its size/line shape/non-empty presence was observed",
+        "sources": [
+          "SRC_JQDATA_SDK",
+          "SRC_TUSHARE_PRO",
+          "SRC_QMT_TERMINAL",
+          "SRC_HUB_GITHUB",
+          "SRC_LOCAL_RELEASES"
+        ],
+        "count": 5,
+        "not_current_supplier_proof": true
+      },
+      "STATIC_CONFIGURATION": {
+        "definition": "a loader, rule, lane configuration or registry declares how a source would be reached",
+        "sources": [
+          "SRC_JQDATA_SDK",
+          "SRC_TUSHARE_PRO",
+          "SRC_EXTERNAL_DOC_IMPORT",
+          "SRC_QMT_TERMINAL"
+        ],
+        "count": 4,
+        "not_current_supplier_proof": true
+      },
+      "HISTORICAL_SUPPLIER_PROOF": {
+        "definition": "an earlier probe or release recorded a real supplier response",
+        "sources": [
+          "SRC_JQDATA_SDK",
+          "SRC_TUSHARE_PRO"
+        ],
+        "count": 2,
+        "proof_dates": {
+          "SRC_JQDATA_SDK": "2026-08-13",
+          "SRC_TUSHARE_PRO": "2026-08-24"
+        }
+      },
+      "CURRENT_BOUNDED_SUPPLIER_PROOF": {
+        "definition": "a supplier response observed inside this round, for one named request only",
+        "sources": [
+          "SRC_JQDATA_SDK"
+        ],
+        "count": 1,
+        "observed_at": "2026-10-24T16:00:26+08:00",
+        "request": "000001.XSHE daily 2026-09-24, fq=None, fields open/high/low/close/volume/money"
+      }
+    },
+    "replaces_prior_claim": "the R04 'current_proof_count=4' is withdrawn as a mixed-class count and replaced by this four-class split"
+  },
+  "entry_updates": [
+    {
+      "source_id": "SRC_JQDATA_SDK",
+      "field": "acquisition_status",
+      "previous": "CONFIGURED_NOT_VERIFIED",
+      "now": "BOUNDED_ACCESS_VERIFIED_FOR_ONE_ORDINARY_REQUEST",
+      "scope_of_the_proof": "one auth, one quota metadata call, one daily bar for 000001.XSHE on 2026-09-24 with fq=None and six fields",
+      "still_not_proven": [
+        "every JQ table",
+        "all frequencies",
+        "full-history scope",
+        "factor-value permissions",
+        "money_flow permissions",
+        "the latest update date",
+        "Tushare access"
+      ],
+      "full_dataset_access_proven": false,
+      "quota_metadata_observed": {
+        "total": 200000000,
+        "spare": 200000000
+      },
+      "result_file": "JQ_BOUNDED_ACCESS.json"
+    },
+    {
+      "source_id": "SRC_TUSHARE_PRO",
+      "field": "acquisition_status",
+      "previous": "HISTORICAL_ACCESS_ONLY",
+      "now": "HISTORICAL_ACCESS_ONLY",
+      "change": "none; unchanged by design",
+      "new_evidence_receipt": "PERMISSION_RECEIPTS/TUSHARE_PERMISSION_PROBE_CURRENT.json (2026-08-24, 14/16 products available in a sample probe, no download authorized)"
+    },
+    {
+      "source_id": "SRC_QMT_TERMINAL",
+      "field": "acquisition_status",
+      "previous": "DENIED_BY_CURRENT_POLICY",
+      "now": "DENIED_BY_CURRENT_POLICY",
+      "change": "unchanged; the classification is policy scope",
+      "correction": "this inventory did not establish that QMT cannot serve history. The applicable exclusion is policy scope for this task, not a demonstrated supplier limitation. No QMT capability claim is now made in either direction."
+    },
+    {
+      "source_id": "SRC_LOCAL_RELEASES",
+      "field": "acquisition_status",
+      "previous": "VERIFIED_CURRENT_ACCESS",
+      "now": "LOCAL_READ_VERIFIED",
+      "reason": "the seven matrix rows marked VERIFIED_CURRENT_ACCESS (FACTOR_260_DICTIONARY, _SEMANTICS, _FORMULA, _PIT_RULES, _CLEANING_RULES, _ENGINE_MAPPING, STRATEGY_OUTPUT) are local rule and derived sources. They are re-labelled LOCAL_READ_VERIFIED so they are not read as seven functioning remote data feeds."
+    },
+    {
+      "source_id": "SRC_HUB_GITHUB",
+      "field": "acquisition_status",
+      "previous": "VERIFIED_CURRENT_ACCESS",
+      "now": "VERIFIED_CURRENT_ACCESS",
+      "change": "none; the HUB round trip in this round is a real current access proof for this channel"
+    },
+    {
+      "source_id": "SRC_EXTERNAL_DOC_IMPORT",
+      "field": "acquisition_status",
+      "previous": "MANUAL_OR_LICENSED_DOCUMENT_ONLY",
+      "now": "MANUAL_OR_LICENSED_DOCUMENT_ONLY",
+      "change": "none"
+    }
+  ],
+  "papered_over_counts_withdrawn": {
+    "current_proof_count_4": "WITHDRAWN — mixed local reads, static configuration and policy text",
+    "verified_current_access_7": "RELABELLED — all seven are local rule/derived sources"
+  },
+  "factor_and_money_flow_state": {
+    "target_requirement": "PRESERVED — these remain required research targets",
+    "historical_denial_evidence": {
+      "path": "PERMISSION_RECEIPTS/BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+      "date": "2026-08-13",
+      "blocked": [
+        "get_money_flow",
+        "get_all_factors",
+        "get_factor_values(market_cap)",
+        "finance.STK_MONEY_FLOW"
+      ]
+    },
+    "current_access": "UNKNOWN — not re-probed in this round, by contract",
+    "execution_state": "SKIP_PENDING_CHANGED_ENTITLEMENT",
+    "engine_admission": "PROHIBITED",
+    "note": "an adjustment factor is not a JQ260 alpha factor value; the two must not be conflated"
+  }
+}
