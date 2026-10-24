@@ -1,0 +1,97 @@
+{
+ "round": "R07/10",
+ "generated_at": "2026-10-24T17:41:40.159648+08:00",
+ "generation_target": "R07_LOCAL_STOCK_DERIVED_RECOVERY_20261024",
+ "status": "BLOCKED_BY_GUARD",
+ "guard": "PRICE_INPUT_NULL",
+ "guard_message": "ValueError: PRICE_INPUT_NULL",
+ "guard_location": {
+  "file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R07\\r07_rebuild_local.py",
+  "sha256": "a9759390564b1ac1dc20c1098e37a52199d4bb439990522babffc90352e18a03",
+  "raise_line": 26,
+  "call_line": 48,
+  "statement": "check(not data[['date','code','close','volume']].isna().any().any(),'PRICE_INPUT_NULL')"
+ },
+ "candidate_output": {
+  "directory": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R07",
+  "exists": false,
+  "reason": "the guard fires before dest.mkdir(); no partial product file was written",
+  "partial_files_deleted": false,
+  "script_edited_after_failure": false
+ },
+ "replay": {
+  "executed": false,
+  "reason": "CONTRACT_REQUIRES_REPLAY_ONLY_AFTER_SUCCESS"
+ },
+ "input_panel": {
+  "rows": 12351786,
+  "years": "2014..2026",
+  "year_2026_source": "R06 candidate override (959,896 rows) via r06_bundle_store.resolve_cache",
+  "partitions_physical": 13,
+  "stored_prefix_used": "ENTIRE_STORED_PRICE_PREFIX",
+  "rows_after_pinned_parent_asof": 0
+ },
+ "null_rows": {
+  "count": 34477,
+  "columns": [
+   "open",
+   "high",
+   "low",
+   "close",
+   "volume",
+   "money"
+  ],
+  "located_in": "STOCK_DAILY_RAW_PIT_R1/year=2026/part_2026.parquet (inherited by the R06 candidate view)",
+  "date_window": [
+   "2026-01-05",
+   "2026-08-06"
+  ],
+  "distinct_dates": 143,
+  "distinct_codes": 344,
+  "source_version_stamp_on_all_null_rows": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+  "family_a": {
+   "codes": 42,
+   "null_rows": 2989,
+   "signature": "first valued date == SECURITY_MASTER_SNAPSHOT_R1 start_date",
+   "example": {
+    "code": "603468.XSHG",
+    "start_date": "2026-08-06",
+    "first_valued": "2026-08-06",
+    "last_null": "2026-08-05"
+   },
+   "interpretation": "pre-listing placeholders on a densified calendar grid; listing date proves non-observation"
+  },
+  "family_b": {
+   "codes": 302,
+   "null_rows": 31488,
+   "signature": "code absent from SECURITY_MASTER_SNAPSHOT_R1; zero 2025 rows; exactly 105 null rows each from 2026-01-05 to 2026-06-12; 8 codes have >=1 valued 2026 row",
+   "examples": [
+    "000005.XSHE",
+    "000018.XSHE",
+    "000022.XSHE"
+   ],
+   "interpretation": "codes carried into a 2026 calendar grid without any market observation; not a 2026 market fact"
+  }
+ },
+ "interpretation": {
+  "is_source_absence": false,
+  "is_2026_market_fact": false,
+  "root_cause_class": "TIME_INDEX_AND_IMPORT_DEFECTS.json#D01",
+  "why_guard_cannot_be_satisfied_locally": "the guard is a full-panel predicate; the null rows pre-date R06/R07 and are present in the pinned parent. Repair requires a GPT-authored ingest/densify correction, not a local filter.",
+  "local_operator_action_taken": "stopped, preserved the exact failure, executed independent read-only diagnosis"
+ },
+ "not_claimed": [
+  "MARKET_STRUCTURE_DAILY_R1 recomputed",
+  "STOCK_FACTOR_DAILY_R1 recomputed",
+  "all products ready",
+  "engine ready",
+  "latest supplier coverage",
+  "FOUNDATION_ACCEPTANCE"
+ ],
+ "proposed_next_contract_inputs": [
+  "decide whether pre-listing / non-observation grid rows belong in STOCK_DAILY_RAW_PIT_R1 at all",
+  "if they belong: supply an explicit non-observation predicate (paused / not-listed / delisted) instead of a blanket null guard",
+  "if they do not belong: supply an ingest compaction rule with row-conservation accounting",
+  "confirm that the R06 candidate view must inherit or may drop these rows"
+ ]
+}
