@@ -1,0 +1,197 @@
+{
+  "artifact": "TRANSFORM_CALL_BINDINGS",
+  "task_id": "BLACKBOX_FOUNDATION_R10_WRITER_CURSOR_AND_TRANSFORM_BINDINGS_20261025",
+  "generated_at_cn": "2026-10-25T04:10:29+0800",
+  "evidence_kind": "STATIC_SOURCE_BINDING",
+  "rule_applied": "a filename mention is never upgraded to a call edge; each stage carries its own evidence class list",
+  "global_flags": {
+    "FOUNDATION_ACCEPTANCE": false,
+    "FORMAL_ENGINE_ADMISSION": false,
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+  },
+  "stages": [
+    {
+      "stage_id": "T1_FORMAL_CLEANING",
+      "named_stage": "formal cleaning",
+      "evidence_classes": {
+        "SOURCE_REFERENCE_ONLY": [
+          "R05 SOURCE_BODY_INDEX entry for formal_cleaning_r15_build_and_seal_r1.py"
+        ],
+        "CALLABLE_PRESENT": [
+          "formal_cleaning_r15_build_and_seal_r1.main L307-372",
+          "ingest_item L108-135",
+          "ingest_minute_staging L138-179",
+          "seal_release L182-251",
+          "switch_current L254-276"
+        ],
+        "EXECUTED_HISTORICAL_EVIDENCE": "R15_SEAL_RESULT.json and STAGING_MANIFEST.json exist on disk under the R15 task (see ARTIFACT_PRESENCE_PROBE); this artifact records presence only and does not re-read or re-assert their verdicts",
+        "CONNECTED_RECOVERY_CANDIDATE": []
+      },
+      "entry": {
+        "module": "formal_cleaning_r15_build_and_seal_r1.py",
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\formal_cleaning_r15_build_and_seal_r1.py",
+        "bytes": 14196,
+        "lines": 376,
+        "sha256": "5ee6b3b4795c56ce178b7d6cbe581f6391fbbc817a9c677a94a09ca5023f992d"
+      },
+      "input_read_pattern": "STAGING_MANIFEST.json items with status=='PASS'; ingest_item uses stage_path then raw_path",
+      "output_write_pattern": "<release_root>/standard/<clean_rel> via place_file hardlink/copy2; seal inventory parquet at L199; seal certificate L219; .BLACKBOX_SEALED marker L225",
+      "value_transform": "none at this stage (byte placement plus sha256)",
+      "gap": "no dtype/date/fq normalisation is performed here, so any integer/index-derived date column is carried forward unchanged"
+    },
+    {
+      "stage_id": "T2_INDEX_MINUTE_ALIGN",
+      "named_stage": "index-minute align",
+      "evidence_classes": {
+        "SOURCE_REFERENCE_ONLY": [
+          "R08 INDEX_FULL_PLANE_PROBE.json"
+        ],
+        "CALLABLE_PRESENT": [
+          "index_minute_align_incremental_engine_r1.main",
+          "latest_raw_partition_map L135-159",
+          "align_raw_frame L206-",
+          "plan_affected_partitions L377-413",
+          "source_completeness_gate L416-",
+          "storage_non_regression_gate L500-",
+          "index_minute_align_clean_antileak_seal_r1.py"
+        ],
+        "EXECUTED_HISTORICAL_EVIDENCE": "数据/清洗成品/CURRENT_INDEX_MINUTE_ALIGN_RELEASE.json exists and names release_id BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260924_20260925_033441, seal_id BLACKBOX_INDEX_MINUTE_ALIGN_SEAL_R1_20260925_034427, previous_release_id BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260923_20260924_190739, successor_mode INCREMENTAL_MODEL_A (read directly, 548 bytes)",
+        "CONNECTED_RECOVERY_CANDIDATE": []
+      },
+      "entry": {
+        "module": "E:\\BLACKBOX\\脚本\\index_minute_align_incremental_engine_r1.py",
+        "bytes": 41432,
+        "sha256": "a5dc7a404dfa4bc97643b189a4832b9c05faa958c4a014af867a7e72a7078ea8"
+      },
+      "cursor_semantics": {
+        "kind": "SEALED_CURSOR_PRESENT",
+        "reader": "read_previous_cutoff L356-368 reads prev_root/SEAL.json['cutoff'] with a filename fallback and raises when neither is available",
+        "pointer": "load_current_pointer L371-374 reads POINTER (CURRENT_INDEX_MINUTE_ALIGN_RELEASE.json)",
+        "increment_dates": "plan_affected_partitions L388-L399 uses explicit increment_dates when supplied, otherwise every calendar day with previous_cutoff < d <= new_cutoff",
+        "this_is_the_only_bound_content_sealed_cursor_in_the_round": true
+      },
+      "input_read_pattern": "latest_raw_partition_map globs index_minute__*.parquet under RAW/P3_index_minute and picks one file per (code,freq,year) by filename score (tail_gap 4, incremental 3, migrated_p9 2, full 1) then mtime then size",
+      "output_write_pattern": "aligned parquet written with index=False at L773",
+      "gap": "the raw side it consumes is produced by aux_r15.download_index_minute_day (P3_IDX_MIN/<code>/<freq>), whose caller is the same R15 aux main; no separate scheduler edge is evidenced"
+    },
+    {
+      "stage_id": "T3_SW_L123_PIT_ALIGN",
+      "named_stage": "SW L1/L2/L3 PIT align",
+      "evidence_classes": {
+        "SOURCE_REFERENCE_ONLY": [
+          "R06 CACHE_DEPENDENCY_REGISTRY / CACHE_SCHEMA_REGISTRY references to SW_*_MEMBERSHIP_PIT_R1"
+        ],
+        "CALLABLE_PRESENT": [
+          "cache_compiler_tip_rebase_from_current_r1.inject_sw L355-416",
+          "cache_compiler_sw_l1_integrate_r1.py (L1 only)"
+        ],
+        "EXECUTED_HISTORICAL_EVIDENCE": "the three CURRENT pointers are read by name in the cache body (L52, L61, L70) but no SW release receipt was reopened in this round",
+        "CONNECTED_RECOVERY_CANDIDATE": []
+      },
+      "entry": {
+        "module": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+        "source_path": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+        "bytes": 25087,
+        "lines": 610,
+        "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13"
+      },
+      "input_read_pattern": "inject_sw reads cfg['ptr'] = CURRENT_SW_L{1,2,3}_PIT_ALIGN_RELEASE.json, then <standard_root>/<mem_dir>/<mem_full> plus an optional partitions/year=* tree (L357-L388)",
+      "output_write_pattern": "rebuilds the product directory (rmdir/rmtree then mkdir) and places SOURCE_FULL.parquet plus part_{year}.parquet (L362-L388)",
+      "value_transform": "NONE: this is a copy/mount of an already-sealed alignment. The daily path does not compute SW alignment here.",
+      "gap": "the callable that actually computes L1/L2/L3 PIT alignment is not inside this daily path; only the L1 integrator script name was located, and no L2/L3 align callable was found by a bounded name scan. Recorded as a missing edge, not as absence of such a callable in the project.",
+      "important_correction_of_the_earlier_wording": "the daily cache stage consumes a sealed SW pointer; it does not densify SW membership on the same run"
+    },
+    {
+      "stage_id": "T4_ANTI_LEAK_CHECKS",
+      "named_stage": "anti-leak checks",
+      "evidence_classes": {
+        "SOURCE_REFERENCE_ONLY": [
+          "HAND rule blackbox_download_must_clean_antileak"
+        ],
+        "CALLABLE_PRESENT": [
+          "任务/BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1/r15_antileak_and_ssot_r1.py",
+          "脚本/index_minute_align_clean_antileak_seal_r1.py",
+          "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/clean_align_antileak_cache_r1.py",
+          "脚本/blackbox_backtest_causal_information_gate_r1.py (backtest plane, not the daily plane)"
+        ],
+        "EXECUTED_HISTORICAL_EVIDENCE": [],
+        "CONNECTED_RECOVERY_CANDIDATE": []
+      },
+      "entry": {
+        "module": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\r15_antileak_and_ssot_r1.py",
+        "bytes": 5883,
+        "sha256": "d1a4ff2a174f9219068bb60e5804c47b7e707458626115ae9b9c9b350c9de0ab",
+        "evidence_grade": "CALLABLE_PRESENT_BODY_NOT_READ_IN_THIS_ROUND"
+      },
+      "input_read_pattern": "NOT_MEASURED_IN_THIS_ROUND (no body read; the file name was located by a bounded name scan only)",
+      "output_write_pattern": "NOT_MEASURED_IN_THIS_ROUND",
+      "gap": "the daily anti-leak stage is located by name but its call graph is not bound in this artifact; the in-pipeline causal gate that IS bound is blackbox_daily_increment_publish_gate_r1.run_production_matrix L31-80, which asserts REQUEST_READINESS == AVAILABLE_FORMAL and TASK_DATA_GATE == PASS with CAUSAL_MODE PREVIOUS_DAY_CAUSAL and SIGNAL_TIME target T15:00"
+    },
+    {
+      "stage_id": "T5_FULL_CACHE_REBASE",
+      "named_stage": "FULL cache/rebase",
+      "evidence_classes": {
+        "SOURCE_REFERENCE_ONLY": [
+          "R06 NEXT_UPDATE_BINDINGS.json",
+          "R08 ENGINE_RUNTIME_AND_UPDATE_READINESS.json"
+        ],
+        "CALLABLE_PRESENT": [
+          "cache_compiler_tip_rebase_from_current_r1.main L419-606",
+          "rebuild_price_2026 L150-306 (with clip2026 L174-178 and tag_pit L196-208)",
+          "build_valuation L309-351"
+        ],
+        "EXECUTED_HISTORICAL_EVIDENCE": "数据/回测缓存/CURRENT_CACHE_RELEASE.json exists (1531 bytes); its verdict is not re-asserted here",
+        "CONNECTED_RECOVERY_CANDIDATE": [
+          "r10_connected_factor_candidate_delivery: response_gate -> refresh_assembly -> candidate_merge, 11 controls passed, terminal stage PUBLICATION_NOT_AUTHORIZED"
+        ]
+      },
+      "entry": {
+        "module": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+        "source_path": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+        "bytes": 25087,
+        "lines": 610,
+        "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13"
+      },
+      "input_read_pattern": "resolve_parent_and_asof L112-147 resolves the parent release root and asof; SW and cleaning pointers are read per product",
+      "output_write_pattern": "candidate release root only; CURRENT is never written by this module",
+      "gap": "rebuild_price_2026 applies clip2026 and tag_pit, so price-plane re-basing on the 2026 slice happens here rather than at acquisition; the writer side therefore never emits a rebased plane"
+    },
+    {
+      "stage_id": "T6_PAIRED_PUBLICATION",
+      "named_stage": "paired publication",
+      "evidence_classes": {
+        "SOURCE_REFERENCE_ONLY": [
+          "HAND paired candidate/publish contract"
+        ],
+        "CALLABLE_PRESENT": [
+          "blackbox_daily_increment_publish_gate_r1.publish_atomic L83-125",
+          "blackbox_daily_increment_publish_gate_r1.run_production_matrix L31-80",
+          "blackbox_daily_increment_orchestrator_r1.main L26-75",
+          "blackbox_full_data_update_scope_refresh_r1.refresh_scope_from_live L26-68"
+        ],
+        "EXECUTED_HISTORICAL_EVIDENCE": "数据/清洗成品/CURRENT_CLEANING_RELEASE.json and 数据/回测缓存/CURRENT_CACHE_RELEASE.json both exist; no publication was performed in this round",
+        "CONNECTED_RECOVERY_CANDIDATE": [
+          "r10_connected_factor_candidate_delivery terminal stage PUBLICATION_NOT_AUTHORIZED"
+        ]
+      },
+      "entry": {
+        "module": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+        "source_path": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+        "bytes": 5716,
+        "lines": 154,
+        "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654"
+      },
+      "pairing_rule_in_source": [
+        "publish_atomic L92-L100 fails closed when facts generation != cache pointer release, and returns published=False unless run_production_matrix returns CURRENT_PUBLISH ALLOWED",
+        "CURRENT writes are L110-L121: CLEAN_PTR then CACHE_PTR then FACTS then the ledger freshness block, each through wjson (tmp + os.replace)",
+        "orchestrator L26-L75 runs the index-weight check, the ETF minute check, the tip rebase and then the scope refresh; it never switches Cleaning CURRENT first"
+      ],
+      "input_read_pattern": "--cache-pointer-json, --facts-json, --target, optional --cleaning-pointer-json (L129-L140)",
+      "output_write_pattern": "CURRENT_CACHE_RELEASE.json / CURRENT_CLEANING_RELEASE.json / capability FACTS / freshness ledger, with .bak_before_atomic_publish copies L106-L109",
+      "gap": "the publish gate validates request-level readiness for the target date; it does not itself prove that the underlying rows were freshly acquired on that date"
+    }
+  ]
+}
