@@ -1,3 +1,41 @@
+## R10 FACTOR BOUNDARY POINTER (latest, 2026-10-24 23:45 +08:00)
+
+R10 continuation, not R11 and not acceptance. Review consumed:
+`agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_FACTOR_BOUNDARY_20261024/REVIEW.md` (full) and `PACKAGE.json`
+before any action. Instruction:
+`agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_FACTOR_BOUNDARY_FIXED_EXECUTION_20261024.md`
+New evidence: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_boundary/`
+
+- Previous delivery finished first: `rework_2256/` now also carries `REWORK_UPLOAD_READBACK.json`,
+  `INBOX_POINTER_RECEIPT.json` and `REWORK_FINISHER_READBACK.json` with byte-identical readback, and its
+  `REWORK_DELIVERY_MANIFEST.json` lists them. No rework command was re-run.
+- Package identity: all three Python files match `PACKAGE.json` byte counts and SHA256 exactly
+  (`r10_factor_input_contract.py` 4046 `e30acadd...`; `test_...` 4639 `8055d618...`; `r10_factor_desktop_check.py`
+  7495 `76693d08...`). No line-ending normalisation, no pin regeneration, no source edit, old compiler untouched.
+- 16 supplied controls, on this desktop: exit 0, `{"tests_run": 16, "passed": true, "scope":
+  "PURE_OFFLINE_INPUT_BOUNDARY", "supplier_calls": 0}`; stderr unittest `OK`.
+- Fixed desktop check, exactly once: exit 0, `FIXED_FACTOR_BOUNDARY_CHECK_COMPLETE`, `source_files_changed=false`,
+  `supplier_calls=0`, genuine CACHE preflight run by the driver itself (`ok=true`, `MUST_READ_PRECHECK=PASS`).
+  RAW_0831 (5212 rows, date `int64`) REJECTED `NUMERIC_DATE_AXIS_FORBIDDEN`; RAW_0901 (5214 rows, `int64`) REJECTED
+  the same way; RAW_0924 (5222 rows, all factor 1.0) SHAPE_VALID_ONLY_NOT_ADMITTED; CACHE_2026 (863710 rows,
+  2026-01-05..2026-09-24, 5241 codes) SHAPE_VALID_ONLY_NOT_ADMITTED.
+- Recorded density observations only, no completeness claim: CACHE thins 89 rows on 2026-08-17 to 19 on 2026-08-28,
+  then 5208 on 2026-08-31, 11 on 2026-09-01, 7 on 2026-09-02, 5215 on 2026-09-03. Nine driver target observations
+  present; `000001.XSHE` has no 2026-09-01 row.
+- B1 linked, NOT closed (`B1_ADJUSTMENT_RECONCILIATION` stays OPEN). Carried forward:
+  `83503_ROW_RECONCILIATION`, `SOURCE_TO_CACHE_LINEAGE`, `HISTORICAL_FQ_AND_PIT_PROVENANCE`. Other six groups
+  unchanged; no whole-catalog inventory repeated.
+- Four reporting-scope corrections recorded (candidate proof is stock-daily specific; canonical guide path is
+  `E:\BLACKBOX\_OPS\CURSOR_WORKSPACE\BLACKBOX_LOCAL_OPERATIONS_R10.md`; template identification suffices for those
+  two artifacts only; the asof-versioned exchange calendar is session authority, not a factor date union). Reporting
+  only: no reinstall, no query rerun, no new inventory.
+
+FULL_GOAL_MET=false; FOUNDATION_ACCEPTANCE=false; FORMAL_ENGINE_ADMISSION=false;
+INCREMENTAL_PIPELINE_READINESS=NOT_ACCEPTED; LATEST_FULL_UPDATE=NOT_VERIFIED;
+NEW_DATA_ACQUISITION_AUTHORIZED=false; CURRENT_SWITCH_ALLOWED=false; ORDER_ALLOWED=false
+
+---
+
 ## R10 REWORK 2256 POINTER (latest, 2026-10-24 23:10 +08:00)
 
 R10 remediation, not R11 and not acceptance. Review consumed:
