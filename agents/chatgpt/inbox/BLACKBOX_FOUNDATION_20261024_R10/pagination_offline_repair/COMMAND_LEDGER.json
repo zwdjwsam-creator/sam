@@ -1,0 +1,70 @@
+{
+  "artifact": "R10_PAGINATION_OFFLINE_REPAIR_COMMAND_LEDGER",
+  "task_id": "BLACKBOX_FOUNDATION_R10_PAGINATION_OFFLINE_REPAIR_20261025",
+  "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+  "python": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+  "environment_names_set": [
+    "PYTHONUTF8=1",
+    "PYTHONDONTWRITEBYTECODE=1"
+  ],
+  "commands": [
+    {
+      "seq": 0,
+      "kind": "hub_poll",
+      "exit_code": 0,
+      "result": "new outbox BLACKBOX_FOUNDATION_R10_PAGINATION_OFFLINE_REPAIR_20261025.md and reviews/BLACKBOX_FOUNDATION_R10_PAGINATION_OFFLINE_REPAIR_20261025/ (6 files incl. PACKAGE.json)"
+    },
+    {
+      "seq": 1,
+      "kind": "stage_and_pin",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\stage_r10_pagination.py",
+      "started_at_cn": null,
+      "exit_code": 0,
+      "result": "PACKAGE.json placed first, then the five members in declared order; all lengths and SHA256 match; legacy_original.py kept its 222 original CRLF line endings; no newline conversion"
+    },
+    {
+      "seq": 2,
+      "kind": "cache_preflight",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\operating_entry\\blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1",
+      "started_at_cn": "2026-10-25T06:00:43+0800",
+      "finished_at_cn": "2026-10-25T06:00:43+0800",
+      "exit_code": 0,
+      "result": "ok=true MUST_READ_PRECHECK=PASS task_class=[CACHE] problems=[]; pinned entry sha256 verified against the connected-factor delivery ledger before execution",
+      "operating_entry_pin": {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\blackbox_operate_r10.py",
+        "declared_sha256": "1b04bb3a373e2a4276563c62c2514905dde49910f69e519e8b3626090ef18ec9",
+        "observed_sha256": "1b04bb3a373e2a4276563c62c2514905dde49910f69e519e8b3626090ef18ec9",
+        "match": true,
+        "pin_source": "r10_connected_factor_candidate_delivery/STAGE_AND_PIN_CHECK.json -> operating_entry_pin"
+      }
+    },
+    {
+      "seq": 3,
+      "kind": "pinned_test",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\pagination_offline_repair\\test_r10_pagination_candidate.py",
+      "started_at_cn": "2026-10-25T06:00:54+0800",
+      "finished_at_cn": "2026-10-25T06:00:54+0800",
+      "exit_code": 0,
+      "invocations": 1,
+      "result": "tests_run=18 passed=true exit 0; stderr is normal unittest progress + OK, not an empty stream"
+    }
+  ],
+  "not_executed": [
+    "the legacy module, _base, legacy main/self_test, any SDK, auth or finance adapter",
+    "any supplier or live endpoint",
+    "the six-lane data-plane runner, including status mode",
+    "any production install, patch, CURRENT switch or publication",
+    "any re-run of the test for capture purposes"
+  ],
+  "supplier_calls": 0,
+  "credential_values_read": 0,
+  "downloads": 0,
+  "flags": {
+    "FOUNDATION_ACCEPTANCE": false,
+    "FORMAL_ENGINE_ADMISSION": false,
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+  }
+}
