@@ -1,0 +1,28 @@
+{
+ "round": "R08/10",
+ "entries": [],
+ "statement": "No registered file required by this round was found unreadable or missing at a path this round needed. All read errors observed in R07 measurements were resolved to a readable registered artefact, so no POTENTIAL_DATA_LOSS entry is opened.",
+ "unresolved_bindings_not_loss": [
+  {
+   "binding": "INDEX_DAILY_RAW_FULL_HISTORY_R1 MANIFEST/COVERAGE n_files",
+   "issue": "declares 154 while 732 per-index files exist",
+   "class": "REGISTRY_METADATA_INCONSISTENCY"
+  },
+  {
+   "binding": "ADJUST_FACTOR_PIT_R1 RAW incrementals 20260812..20260902",
+   "issue": "page-ordinal date axis and constant factor=1.0",
+   "class": "SOURCE_SCHEMA_AND_PAYLOAD_DEFECT"
+  },
+  {
+   "binding": "FUND_LIKE_ASSET_VIEW_R1 / FUND_DAILY_PIT_R1 / FUND_FACTOR_DAILY_R1",
+   "issue": "declared ACTIVE in the catalog; no physical parquet",
+   "class": "CATALOG_VS_PHYSICAL_MISMATCH"
+  },
+  {
+   "binding": "blackbox_data_coverage_common_r1.py / blackbox_cache_coverage_non_regression_gate_r1.py",
+   "issue": "2-byte empty modules imported by four scripts",
+   "class": "TOOL_IMPLEMENTATION_DEFECT"
+  }
+ ],
+ "POTENTIAL_DATA_LOSS": 0
+}
