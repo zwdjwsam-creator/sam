@@ -1,0 +1,22 @@
+{
+  "contract_id": "BLACKBOX_FINANCE_PIT_KNOWN_AT_ANTILEAK_R1",
+  "phase": "P5",
+  "status": "ACTIVE",
+  "formula": "KNOWN_AT <= SIGNAL_TIME < FILL_TIME",
+  "clock_fields": {
+    "report_period": "end_date|statDate|report_date — economic period end, NOT known_at",
+    "publication_date": "pub_date|pubDate — primary economic known_at for statement rows",
+    "revision_date": "later pub_date for same code×end_date×scope — revision chain",
+    "source_known_at": "min(publication_date, exchange_disclosure_known_at if declared)",
+    "local_acquired_at": "BACKFILL_ACQUIRED_AT / file timestamp — LOCAL ONLY, never economic known_at"
+  },
+  "hard_blocks": [
+    "USE_BACKFILL_ACQUIRED_AT_AS_KNOWN_AT",
+    "ASSUME_REPORT_PERIOD_END_IS_PUBLIC",
+    "SAME_DAY_EOD_TO_OPEN_WITHOUT_CONTRACT",
+    "FFILL_MEMBERSHIP_OR_STATEMENT_ACROSS_FUTURE_PUB"
+  ],
+  "reader_rule": "For signal_time T, only rows with pub_date <= T (date normalized) are visible",
+  "backfill_semantics": "2026 local acquire of 2018Q2 does not change 2018 publication known_at",
+  "parent_rule": "BLACKBOX_HAND_BACKTEST_CAUSAL_INFORMATION_STANDARD_R1"
+}
