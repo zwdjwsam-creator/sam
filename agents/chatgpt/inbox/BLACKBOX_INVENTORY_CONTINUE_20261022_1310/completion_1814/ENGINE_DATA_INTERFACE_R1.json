@@ -1,0 +1,239 @@
+{
+  "at": "2026-10-24T13:55:08.739158+08:00",
+  "task": "TIP_1814_REMAINDER_3_ENGINE_REAL_DATA_INTERFACE",
+  "FOUNDATION_ACCEPTANCE": false,
+  "reused": [
+    "completion_1752/ENGINE_BASELINE_CHECK.json (静态核查基线)",
+    "1803 runtime_attempted=false / NOT_RUN_STATIC_ONLY 更正（保留）"
+  ],
+  "declared_entry": {
+    "pyproject": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\pyproject.toml",
+      "exists": true,
+      "sha256": "e959aa692b5b295158e243e22df14fcac9dfa662a9d964b58997040fbfd63686",
+      "bytes": 4424
+    },
+    "project_name": "bullet-trade",
+    "scripts": {
+      "bullet-trade": "bullet_trade.cli.main:main"
+    },
+    "packages_find": [
+      "bullet_trade*",
+      "helpers*"
+    ],
+    "py_modules": [
+      "jqdata"
+    ],
+    "note": "包名与目录名不同：pyproject 声明 bullet_trade，实际位于 blackbox_jq_engine/bullet_trade/"
+  },
+  "provider_chain": {
+    "api": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\api.py",
+      "exists": true,
+      "sha256": "49c49697504202fb24a73241d14f0025729a08d03ff12a67a7f694e325383dee",
+      "bytes": 120960
+    },
+    "provider_base": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\providers\\base.py",
+      "exists": true,
+      "sha256": "be053cf0693aa1adcd54b077c3fa3748f0db42922aff369f1fca07049185002e",
+      "bytes": 10037
+    },
+    "factory_fn": "_create_provider (bullet_trade/data/api.py)",
+    "branches_found": [
+      "jqdata",
+      "tushare",
+      "qmt",
+      "miniqmt",
+      "qmt-remote",
+      "remote-qmt",
+      "remote_qmt"
+    ],
+    "local_value_plane_branch": false,
+    "global_setter": "set_data_provider / get_data_provider",
+    "abstract_required_methods": [
+      "get_price",
+      "get_trade_days",
+      "get_all_securities",
+      "get_index_stocks",
+      "get_split_dividend"
+    ],
+    "optional_methods": [
+      "get_bars",
+      "get_ticks",
+      "get_extras",
+      "get_fundamentals",
+      "get_index_weights",
+      "get_industry",
+      "get_industry_stocks",
+      "get_concept",
+      "get_concept_stocks",
+      "get_marginsec_stocks",
+      "get_billboard_list",
+      "subscribe_ticks"
+    ],
+    "conclusion": "provider 工厂只有 jqdata/tushare/miniqmt/remote_qmt 四支；不存在读取本地 RAW 值数据的 provider 分支"
+  },
+  "local_dictionary_adapter": {
+    "path": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\local_dictionary_registry.py",
+      "exists": true,
+      "sha256": "4f1482d23273f9f598dfb0d5c4189ea88afc22e551a998f24a22c6d9f41f310d",
+      "bytes": 12195
+    },
+    "source_type": "BB_LOCAL_ALIGNED_DICTIONARY_SNAPSHOT",
+    "allowed_usage": "data_provider_test_and_schema_alignment_only",
+    "can_be_official_rule_basis": false,
+    "root_policy": "必须显式 snapshot_root 或 env BLACKBOX_LOCAL_DICTIONARY_SNAPSHOT；显式拒绝 E:\\ 与 SEALED_SANDBOXES",
+    "reads": [
+      "04_enum_dictionary/securities_*.csv",
+      "04_enum_dictionary/industry_sw_l*.csv",
+      "04_enum_dictionary/concepts.csv",
+      "03_field_dictionary/trade_calendar.csv",
+      "11_final_dictionary_before_9999_purchase/02_jq_factor_dictionary_final/*.csv"
+    ],
+    "class_methods_identified": [
+      "load_local_dictionary_snapshot",
+      "load_securities_master",
+      "load_trade_calendar",
+      "load_factor_registry",
+      "load_industry_concept_registry",
+      "classify_asset",
+      "is_supported_v0_asset",
+      "get_dictionary_manifest"
+    ],
+    "nature": "字典/参考层纯读取；不含 price/volume 值读取"
+  },
+  "activation_boundary": {
+    "source": "rule_library/master_registry_R1/MASTER_RULE_LIBRARY_REGISTRY_R1.json",
+    "master_registry_active": true,
+    "formal_backtest_active": false,
+    "engine_core_active": false,
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "post_ingestion_judgement_allowed": false,
+    "non_matching_data_admission_policy": "BLOCK",
+    "engine_root_declared": "D:\\backtest_lab",
+    "gate_policies": {
+      "data_must_map_to_master_registry": true,
+      "unmapped_field_blocks_ingestion": true,
+      "invalid_asset_code_blocks_ingestion": true,
+      "unsupported_frequency_blocks_ingestion": true,
+      "unclear_pit_visibility_blocks_ingestion": true,
+      "missing_matching_required_field_blocks_ingestion": true,
+      "unknown_factor_field_blocks_ingestion": true,
+      "factor_value_download_forbidden": true,
+      "factor_cleaning_not_active": true,
+      "formal_backtest_active": false,
+      "post_ingestion_judgement_allowed": false,
+      "admission_stage": "PRE_INGESTION_ONLY",
+      "non_matching_data_admission_policy": "BLOCK"
+    },
+    "n_gates": 15,
+    "gate_order": [
+      "source_identity_gate",
+      "asset_code_format_gate",
+      "asset_type_gate",
+      "frequency_gate",
+      "field_dictionary_gate",
+      "field_alias_resolution_gate",
+      "data_domain_gate",
+      "pit_visibility_gate",
+      "adjustment_mode_gate",
+      "tradable_status_gate",
+      "matching_requirement_gate",
+      "factor_dictionary_gate",
+      "factor_pit_gate",
+      "factor_cleaning_rule_gate",
+      "final_admission_decision_gate"
+    ],
+    "verdict": "formal_backtest_active=false / engine_core_active=false / PRE_INGESTION_ONLY 属原交付阶段与准入边界，非迁移丢失"
+  },
+  "capability_registry": {
+    "path": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CAPABILITY_REGISTRY.json",
+      "exists": true,
+      "sha256": "9ccf94f17d75a736da9d58f173137409a0d74c5d4fc9cb5eeda87a0adb098050",
+      "bytes": 392
+    },
+    "values": {
+      "BUY_MARKET": "PASS",
+      "SELL_MARKET": "PASS",
+      "T_PLUS_1": "PASS",
+      "CLOSEABLE_AMOUNT": "PASS",
+      "NO_SHORT": "PASS",
+      "CASH_LEDGER": "PASS",
+      "POSITION_LEDGER": "PASS",
+      "FORMAL_EXECUTION_BOUNDARY": "PASS",
+      "ORDER_LIFECYCLE_CORE": "PASS",
+      "LIMIT_DAILY": "BLOCKED_BY_CONTRACT",
+      "MINUTE_LIMIT": "BLOCKED_BY_DATA",
+      "updated_from": "PHASE1_MIG_20260801_011454"
+    },
+    "note": "PASS/BLOCKED_BY_CONTRACT/BLOCKED_BY_DATA 为封存期声明，不是今日运行时结论"
+  },
+  "CURRENT_pointer": {
+    "path": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\PHASE1_CURRENT_ENGINE_REGISTRY.json",
+      "exists": true,
+      "sha256": "cfc131b7b4d4100954a0bea65fb2c9132b97bed760b564969e375ad4fff23664",
+      "bytes": 1135
+    },
+    "CURRENT_sealed_backup_path": "D:\\backtest_lab_backups\\sealed_engine_backup_R3_phase6_fully_validated_20260801",
+    "unique_CURRENT": true,
+    "class": "CONFIG_POINTER_LEGACY_D（已有登记，非本轮新问题）"
+  },
+  "isolated_smoke": {
+    "attempted": true,
+    "import_method": "importlib.util.spec_from_file_location (bypasses bullet_trade/__init__ + dotenv)",
+    "module_loaded": true,
+    "module_import_side_effects": {
+      "dotenv_imported": false,
+      "network_client_imported": false
+    },
+    "e_drive_rejection": {
+      "raised": true,
+      "type": "ValueError",
+      "msg": "Forbidden snapshot root (E: drive): E:\\BLACKBOX",
+      "verdict": "E_DRIVE_FORBIDDEN_CONFIRMED"
+    },
+    "trade_calendar_read": {
+      "snapshot_root": "C:\\Users\\Admin\\AppData\\Local\\Temp\\bb_dict_snap_eidiaipr",
+      "n_trade_dates": 5587,
+      "first": "2005-01-04",
+      "last": "2027-12-31",
+      "file_meta": {
+        "rel": "03_field_dictionary/trade_calendar.csv",
+        "row_count": 5587,
+        "source_type": "BB_LOCAL_ALIGNED_DICTIONARY_SNAPSHOT",
+        "allowed_usage": "data_provider_test_and_schema_alignment_only"
+      },
+      "verdict": "PURE_READ_ADAPTER_USABLE_ON_NON_E_ROOT"
+    },
+    "can_be_official_rule_basis": false,
+    "env_required": "BLACKBOX_LOCAL_DICTIONARY_SNAPSHOT"
+  },
+  "missing_layer": {
+    "layer": "local value-plane provider + 路径绑定",
+    "evidence": [
+      "_create_provider 无 local/raw 分支（只有 4 家远端/终端供应商）",
+      "local_dictionary_registry 明确拒绝 E:\\ 且 CAN_BE_OFFICIAL_RULE_BASIS=false，只读字典",
+      "DataProvider 抽象方法要求 get_price/get_trade_days/get_all_securities/get_index_stocks/get_split_dividend，本地值数据侧无实现类",
+      "数据侧 read_schema 只证明 parquet 可读，不构成引擎接通"
+    ],
+    "minimal_isolated_adapter_plan": [
+      "新增 read-only LocalPlaneProvider(DataProvider)：仅实现 get_price/get_trade_days/get_all_securities/get_index_stocks/get_split_dividend + get_extras",
+      "路径绑定走既有数据访问 resolver，不硬编码、不读 .env、不导入 jqdatasdk/xtquant",
+      "由调用方显式 set_data_provider(LocalPlaneProvider(...)) 注入；不改 formal_backtest_active，不绕过 PRE_INGESTION gate",
+      "首期只开 daily + 1m/5m/30m/60m 价格与 factor/limit/paused join，先只读 smoke，不跑策略"
+    ],
+    "not_migration_loss": "原交付即 dictionary_only_no_value_ingest（DATA_DOMAIN_ADMISSION_MATRIX notes 全域标注）"
+  },
+  "not_tested": [
+    "策略回测",
+    "PnL",
+    "实盘下单",
+    "下载/API",
+    "全引擎行为认证"
+  ],
+  "previous_correction_kept": "type_to_local_entry 关键词猜测已作废：不再把 minute/tradable_status/matching 猜成同一 ETF_1m 路径；adapter_function 全部保持未绑定（null）"
+}
