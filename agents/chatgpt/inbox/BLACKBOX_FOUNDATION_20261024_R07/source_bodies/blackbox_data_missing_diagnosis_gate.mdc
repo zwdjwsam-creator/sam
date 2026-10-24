@@ -1,0 +1,43 @@
+---
+description: BLACKBOX on-demand rule (blackbox_data_missing_diagnosis_gate.mdc). Not alwaysApply; load via MUST_READ manifest.
+alwaysApply: false
+---
+
+# BLACKBOX Data Missing Diagnosis Gate R1
+
+rule_id: BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1
+status: ACTIVE
+
+## One-line rule
+
+Any BLACKBOX statement that data is "missing" must be supported by `BLACKBOX_DATA_COVERAGE_DIAGNOSIS`.
+
+## Hard bans
+
+Never infer missing source data from:
+
+- empty dataframe
+- empty filtered dataframe
+- missing cache slice
+- missing reader output
+- partial glob results
+
+## Allowed root causes
+
+Only the formal coverage enum (`SOURCE_MISSING` … `UNKNOWN_STOP`).
+
+Only `SOURCE_MISSING` may be phrased as "raw/source not downloaded".
+
+For all other classes: `DOWNLOAD_REQUIRED = NO`.
+
+## Procedure
+
+1. Run `脚本/blackbox_data_coverage_diagnose_r1.py --dataset <DS> --start-date … --end-date …`
+2. Or run Data Access Preflight with the same date range (`DATA_ACCESS_READY` + `DATA_COVERAGE_READY`)
+3. If diagnosis unavailable or `UNKNOWN_STOP` → **STOP**
+
+## Diagnose order (fixed)
+
+RAW → Cleaning → Cache → Reader → Filter
+
+Do not skip earlier layers.
