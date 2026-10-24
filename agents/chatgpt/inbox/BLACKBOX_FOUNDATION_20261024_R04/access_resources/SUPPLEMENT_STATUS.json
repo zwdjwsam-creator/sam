@@ -1,0 +1,54 @@
+{
+ "supplement_id": "SUPPLEMENT_STATUS_R4A",
+ "parent_task": "BLACKBOX_FOUNDATION_R04_OF_10_GPT_PATCH_AND_COMPLETE_CONTRACT_HANDOFF_20261024_1455",
+ "parent_round": "R04/10",
+ "at": "2026-10-24T15:26:56+08:00",
+ "language": "en",
+ "additional_rounds_consumed": 0,
+ "budget_slot": "4/10",
+ "remaining_cycles_after_R04": 6,
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "original_r04_unchanged": true,
+ "new_files": [
+  "access_resources/SOURCE_ACCESS_REGISTER.json",
+  "access_resources/DATA_ACQUISITION_MATRIX.json",
+  "access_resources/ACCESS_AND_DOWNLOAD_RUNBOOK.md",
+  "access_resources/ACCESS_EVIDENCE_INDEX.json",
+  "access_resources/SUPPLEMENT_STATUS.json",
+  "access_resources/CONTRACT_CONFLICTS_AUTHORITY_ADDENDUM.json",
+  "access_resources/source_bodies/"
+ ],
+ "operations": [
+  "static review of both JQ loader credential parsers",
+  "static read of the installed jqdatasdk declared auth endpoint",
+  "static read of the Tushare loader and the historical permission probe CURRENT",
+  "traced the two missing trade days through RAW, CLEAN and CACHE",
+  "read the AMEND_R3 body, R2 amendment clauses and the daily child rule skip seals",
+  "built the source register, acquisition matrix, evidence index and authority addendum"
+ ],
+ "not_performed": [
+  "no login, authentication attempt or quota query",
+  "no data download of any kind",
+  "no permission probe of blocked modules",
+  "no purchase or subscription",
+  "no secret value read into any output",
+  "no production write, no CURRENT switch"
+ ],
+ "counts": {
+  "sources": 6,
+  "datasets_in_matrix": 54,
+  "current_proof_entries": 4,
+  "historical_proof_entries": 2,
+  "static_only_entries": 2,
+  "authority_conflicts": 6
+ },
+ "key_findings": [
+  "RAW possesses 2026-08-31 and 2026-09-01; CLEAN and CACHE do not (cause not proven)",
+  "the legacy JQ downloader credential parser cannot read the observed credential file format; the base module can",
+  "factor-value scope carries a live AUTHORITY_CONFLICT and no value plane exists locally",
+  "Tushare current access is HISTORICAL_ACCESS_ONLY (probe dated 2026-08-24)"
+ ],
+ "next_for_gpt": "author one bounded source-access verification contract together with the updater integration; reconcile the authority conflicts from full bodies before any probe or download"
+}
