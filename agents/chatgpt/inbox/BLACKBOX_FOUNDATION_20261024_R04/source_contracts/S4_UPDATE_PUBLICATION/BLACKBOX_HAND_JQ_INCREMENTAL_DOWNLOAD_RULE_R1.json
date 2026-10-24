@@ -1,0 +1,183 @@
+{
+  "rule_id": "BLACKBOX_HAND_JQ_INCREMENTAL_DOWNLOAD_RULE_R1",
+  "status": "ACTIVE",
+  "layer": "HAND_TOP",
+  "datasets": [
+    {
+      "dataset_id": "FINANCE_BALANCE_SHEET",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\finance_balance_sheet",
+      "clean_product": "FINANCE_BALANCE_SHEET_PIT_R1",
+      "cache_product": "JQ20_FINANCE_BALANCE_SHEET_PIT_R1"
+    },
+    {
+      "dataset_id": "FINANCE_BALANCE_SHEET_PARENT",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\finance_balance_sheet_parent",
+      "clean_product": "FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+      "cache_product": "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1"
+    },
+    {
+      "dataset_id": "FINANCE_CASHFLOW_STATEMENT",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\finance_cashflow_statement",
+      "clean_product": "FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+      "cache_product": "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1"
+    },
+    {
+      "dataset_id": "FINANCE_CASHFLOW_STATEMENT_PARENT",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\finance_cashflow_statement_parent",
+      "clean_product": "FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+      "cache_product": "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1"
+    },
+    {
+      "dataset_id": "FINANCE_INCOME_STATEMENT",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\finance_income_statement",
+      "clean_product": "FINANCE_INCOME_STATEMENT_PIT_R1",
+      "cache_product": "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1"
+    },
+    {
+      "dataset_id": "FINANCE_INCOME_STATEMENT_PARENT",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\finance_income_statement_parent",
+      "clean_product": "FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+      "cache_product": "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1"
+    },
+    {
+      "dataset_id": "FUND_DIVIDEND",
+      "increment_class": "EVENT_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\fund_dividend",
+      "clean_product": "FUND_DIVIDEND_EVENT_PIT_R1",
+      "cache_product": "JQ20_FUND_DIVIDEND_EVENT_PIT_R1"
+    },
+    {
+      "dataset_id": "FUND_FIN_INDICATOR",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\fund_fin_indicator",
+      "clean_product": "FUND_FIN_INDICATOR_PIT_R1",
+      "cache_product": "JQ20_FUND_FIN_INDICATOR_PIT_R1"
+    },
+    {
+      "dataset_id": "FUND_MF_DAILY_PROFIT",
+      "increment_class": "EOD_APPEND",
+      "pit_policy": "JQ_DAILY_EOD_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\fund_mf_daily_profit",
+      "clean_product": "FUND_MF_DAILY_PROFIT_PIT_R1",
+      "cache_product": "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_AH_PRICE_COMP",
+      "increment_class": "EOD_APPEND",
+      "pit_policy": "JQ_DAILY_EOD_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_ah_price_comp",
+      "clean_product": "STK_AH_PRICE_COMP_PIT_R1",
+      "cache_product": "JQ20_STK_AH_PRICE_COMP_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_EL_CONST_CHANGE",
+      "increment_class": "EVENT_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_el_const_change",
+      "clean_product": "STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+      "cache_product": "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_EL_TOP_ACTIVATE",
+      "increment_class": "EOD_APPEND",
+      "pit_policy": "JQ_DAILY_EOD_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_el_top_activate",
+      "clean_product": "STK_EL_TOP_ACTIVATE_PIT_R1",
+      "cache_product": "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_EXCHANGE_LINK_CALENDAR",
+      "increment_class": "CALENDAR_REFRESH",
+      "pit_policy": "CALENDAR_EFFECTIVE_AS_STATED_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_exchange_link_calendar",
+      "clean_product": "STK_EXCHANGE_LINK_CALENDAR_R1",
+      "cache_product": "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1"
+    },
+    {
+      "dataset_id": "STK_EXCHANGE_TRADE_INFO",
+      "increment_class": "EOD_APPEND",
+      "pit_policy": "JQ_DAILY_EOD_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_exchange_trade_info",
+      "clean_product": "STK_EXCHANGE_TRADE_INFO_PIT_R1",
+      "cache_product": "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_EMPLOYEE_INFO",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_employee_info",
+      "clean_product": "STK_EMPLOYEE_INFO_PIT_R1",
+      "cache_product": "JQ20_STK_EMPLOYEE_INFO_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_LIST",
+      "increment_class": "REFERENCE_RECONCILE",
+      "pit_policy": "REFERENCE_EFFECTIVE_AS_STATED_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_list",
+      "clean_product": "STK_LIST_REFERENCE_PIT_R1",
+      "cache_product": "JQ20_STK_LIST_REFERENCE_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_NAME_HISTORY",
+      "increment_class": "REFERENCE_RECONCILE",
+      "pit_policy": "REFERENCE_EFFECTIVE_AS_STATED_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_name_history",
+      "clean_product": "STK_NAME_HISTORY_PIT_R1",
+      "cache_product": "JQ20_STK_NAME_HISTORY_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_PERFORMANCE_LETTERS",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_performance_letters",
+      "clean_product": "STK_PERFORMANCE_LETTERS_PIT_R1",
+      "cache_product": "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_REPORT_DISCLOSURE",
+      "increment_class": "DISCLOSURE_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_report_disclosure",
+      "clean_product": "STK_REPORT_DISCLOSURE_PIT_R1",
+      "cache_product": "JQ20_STK_REPORT_DISCLOSURE_PIT_R1"
+    },
+    {
+      "dataset_id": "STK_SHAREHOLDERS_SHARE_CHANGE",
+      "increment_class": "EVENT_UPSERT",
+      "pit_policy": "JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_jq20_extension\\stk_shareholders_share_change",
+      "clean_product": "STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+      "cache_product": "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1"
+    },
+    {
+      "dataset_id": "FUND_ETF_NAV",
+      "increment_class": "EOD_APPEND",
+      "pit_policy": "JQ_FUND_NAV_EOD_NEXT_TRADE_DAY_R1",
+      "raw_rel": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_nav\\incremental_get_extras_r1",
+      "clean_product": "ETF_NAV",
+      "cache_product": "FUND_NAV_PIT_R1",
+      "api": "get_extras(unit_net_value)+get_extras(acc_net_value)",
+      "batch_size": 5,
+      "SILENT_TRUNCATION": 0,
+      "FORBIDDEN": "finance.run_query(FUND_NET_VALUE) whole-table / returned_rows==5000 as complete",
+      "premium_derived": true,
+      "asof_target": "2026-09-24"
+    }
+  ],
+  "generated_at_cn": "2026-09-25T04:04:43+0800",
+  "FUND_ETF_NAV": "ACTIVE"
+}
