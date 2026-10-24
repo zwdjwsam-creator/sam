@@ -1,0 +1,82 @@
+{
+ "schema": "R10_PRODUCER_FQ_COMMAND_LEDGER_1",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "python": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONUTF8": "1",
+  "PYTHONDONTWRITEBYTECODE": "1"
+ },
+ "commands": [
+  {
+   "seq": 0,
+   "kind": "hub_poll",
+   "exit_code": 0,
+   "result": "new outbox BLACKBOX_FOUNDATION_R10_PRODUCER_AND_FQ_CONTRACT_20261025.md (7,798 B) plus the HUB package in reviews/BLACKBOX_FOUNDATION_R10_PRODUCER_AND_FQ_CONTRACT_20261025/"
+  },
+  {
+   "seq": 1,
+   "kind": "stage_and_pin",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_pfq_stage.py",
+   "exit_code": 0,
+   "result": "both package members copied to reviews/R10/producer_and_fq_contract/, bytes and sha256 equal to PACKAGE.json, line endings preserved (0 CRLF), locator ENTRY_SHA pin holds"
+  },
+  {
+   "seq": 2,
+   "kind": "supplied_locator_execution",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\producer_and_fq_contract\\locate_incremental_factor_writer.py --desktop-check",
+   "exit_code": 0,
+   "started_cn": "2026-10-25T02:01:07.8958932+08:00",
+   "finished_cn": "2026-10-25T02:01:12.9613870+08:00",
+   "stdout_bytes": 20290,
+   "stdout_sha256": "81b1757de25871e8766393e11302b60d46abd61c4e664802ce388724a048725e",
+   "stderr_bytes": 0,
+   "result": "executed exactly once; status BOUNDED_SOURCE_CANDIDATES_MEASURED; 2,134 dirs, 989 files, 14,141,295 source bytes, 17 candidates, 35 skipped (all EXCLUDED_OR_DEPTH_BOUND), 0 errors; nested preflight exit 0 PASS"
+  },
+  {
+   "seq": 3,
+   "kind": "candidate_body_reads",
+   "exit_code": 0,
+   "result": "2 bodies opened as text (aux_billboard_adjust_index_minute_r15.py, full_data_update_r14_run.py); nothing imported or executed"
+  },
+  {
+   "seq": 4,
+   "kind": "exact_path_probes",
+   "exit_code": 0,
+   "result": "P6_factor_reference/adjust_factor counterparts of the three names: ABSENT (dir exists); P1 mtimes all 2026-10-17"
+  },
+  {
+   "seq": 5,
+   "kind": "declared_history_reads",
+   "exit_code": 0,
+   "result": "5 exact files declared by the identified bodies; no directory expansion"
+  },
+  {
+   "seq": 6,
+   "kind": "contract_reads",
+   "exit_code": 0,
+   "result": "3 exact CSVs, retained prefixes matched, full sha256 measured, raw bytes retained"
+  }
+ ],
+ "not_executed": [
+  "any candidate import, help, selftest, auth, resume, wrapper or updater",
+  "supplier access",
+  "credential file read",
+  "download or historical refetch",
+  "business-data write",
+  "date repair or factor fill",
+  "fq column addition",
+  "product admission",
+  "production install",
+  "CURRENT switch",
+  "engine build",
+  "order"
+ ],
+ "supplier_calls": 0,
+ "network_calls_for_market_data": 0,
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+}
