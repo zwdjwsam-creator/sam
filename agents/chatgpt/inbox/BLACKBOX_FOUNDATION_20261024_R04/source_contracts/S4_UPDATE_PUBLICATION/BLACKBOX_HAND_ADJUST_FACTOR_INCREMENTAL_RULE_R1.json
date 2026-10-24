@@ -1,0 +1,60 @@
+{
+  "rule_id": "BLACKBOX_HAND_ADJUST_FACTOR_INCREMENTAL_RULE_R1",
+  "status": "ACTIVE_HARD_RULE",
+  "formality": "FORMAL_HARD_GATE_NOT_PATCH",
+  "layer": "TOP_LEVEL_DATA_PRODUCT",
+  "authorized_at_cn": "2026-08-16T03:20:00+0800",
+  "authorized_by": "USER",
+  "triggered_by": "ADJUST_FACTOR_SOURCE_CUTOFF_ROOT_CAUSE_R1",
+  "cursor_rule": ".cursor/rules/blackbox_adjust_factor_incremental_rule.mdc",
+  "current_pointer": "运行/BLACKBOX_ADJUST_FACTOR_INCREMENTAL_RULE_CURRENT.json",
+  "root_cause_archive": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_ADJUST_FACTOR_SOURCE_CUTOFF_ROOT_CAUSE_R1\\ADJUST_FACTOR_SOURCE_CUTOFF_ROOT_CAUSE_R1.md",
+  "one_sentence": "adjust factor is a backward-affecting product; after XR/XD/split/bonus/transfer, appending only the current session factor is FORBIDDEN; affected history must be rebuilt.",
+  "product_class": "BACKWARD_AFFECTING",
+  "increment_class": "REBUILD_AFFECTED_HISTORY",
+  "not_increment_class": "EOD_APPEND",
+  "REBUILD_AFFECTED_HISTORY": true,
+  "APPEND_CURRENT_SESSION_ONLY": "FORBIDDEN",
+  "ADJUST_FACTOR_AUTHORITY_READY_IF_APPEND_ONLY": false,
+  "source_api": {
+    "call": "get_price(..., fields=['factor'], fq='pre')",
+    "fq_must_be_explicit": true,
+    "fq_value": "pre",
+    "forbid_fq_none_as_pre_pit_factor": true,
+    "forbid_rely_on_omitted_fq_default": true,
+    "omit_fq_live_equals_pre": true,
+    "formula": "pre(d|T)=raw(d)*factor(d)/factor(T)",
+    "multiply_raw_close_not_pre_close": true
+  },
+  "contrast_ohlc": {
+    "OHLC": "today appends today",
+    "ADJUST_FACTOR": "today corporate action can rewrite factor(d) for d < action_date"
+  },
+  "forbidden": [
+    "APPEND_ONLY_CURRENT_TRADE_DATE_FACTOR",
+    "PATCH_SINGLE_CODE_TO_HIDE_MARKETWIDE_CUTOFF",
+    "BUILD_PRE_PIT_FROM_FQ_NONE_FACTOR",
+    "RELY_ON_OMITTED_FQ_DEFAULT",
+    "YEARLY_BATCH_PLUS_DAILY_APPEND_AS_AUTHORITY",
+    "CLAIM_PRE_PIT_DATA_READY_BEFORE_FULL_REBUILD"
+  ],
+  "next_authorized_task_if_user_says_so": {
+    "task_id": "ADJUST_FACTOR_PIT_R1_FULL_REBUILD",
+    "authorized_now": false,
+    "not_a_gapfill": true,
+    "rebuild_range": "at least the strategy-required history window, not only 2026-06-13..2026-08-14",
+    "output": "full code x trade_date factor then compile ADJUST_FACTOR_PIT_R1"
+  },
+  "current_status_lock": {
+    "SOURCE_CUTOFF_ROOT_CAUSE": "SEALED",
+    "DATA_REFRESH_IMPLEMENTED": true,
+    "CACHE_REBUILD_IMPLEMENTED": true,
+    "FORMAL_BACKTEST": "R26b_FORMAL_PRE_PIT_20260816_041800_COMPLETED",
+    "ADJUST_FACTOR_PIT_R1": "READY",
+    "PRE_PIT_DATA_READY": true,
+    "SOURCE_MAX_DATE": "2026-08-14",
+    "SOURCE_CUTOFF_GAP": "CLOSED",
+    "ALL_BLACKBOX_DATA_GAPS_CLOSED": false,
+    "audit_pass_means": "FULL_REBUILD_ACCEPTED_PRE_PIT_DATA_READY"
+  }
+}
