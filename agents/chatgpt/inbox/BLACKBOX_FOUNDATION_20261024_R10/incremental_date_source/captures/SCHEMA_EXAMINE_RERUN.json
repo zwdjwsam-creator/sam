@@ -1,0 +1,3324 @@
+{
+ "schema": "R10_READ_ONLY_SCHEMA_EXAMINATION_1",
+ "mode": "OBSERVATION_ONLY_NOT_SCHEMA_ADMISSION",
+ "rules": [
+  "no integer date parsed as nanoseconds",
+  "no alternate time field substituted",
+  "no date inferred from filename",
+  "no timezone normalization",
+  "no factor filled",
+  "no frame modified or persisted"
+ ],
+ "targets": [
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+   "exists": true,
+   "bytes": 36967,
+   "sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+   "pinned_sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+   "pin_match": true,
+   "row_count": 5212,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "int64",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5212
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5212,
+     "distinct_non_null": 300,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      107,
+      108,
+      109,
+      110,
+      111
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 299,
+     "observed_min_max_are_dates": false,
+     "arrow_type": "int64",
+     "identified_by": "name",
+     "explicit_daily_axis": false,
+     "integer_or_non_date_axis_uninterpreted": true
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5212,
+     "distinct_non_null": 5212,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5207,
+      5208,
+      5209,
+      5210,
+      5211
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5211,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": 0,
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": 1,
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": 2,
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": 3,
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": 4,
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "int64",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+   "exists": true,
+   "bytes": 36980,
+   "sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
+   "pinned_sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
+   "pin_match": true,
+   "row_count": 5214,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "int64",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5214
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5214,
+     "distinct_non_null": 300,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      109,
+      110,
+      111,
+      112,
+      113
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 299,
+     "observed_min_max_are_dates": false,
+     "arrow_type": "int64",
+     "identified_by": "name",
+     "explicit_daily_axis": false,
+     "integer_or_non_date_axis_uninterpreted": true
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5214,
+     "distinct_non_null": 5214,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5209,
+      5210,
+      5211,
+      5212,
+      5213
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5213,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": 0,
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": 1,
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": 2,
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": 3,
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": 4,
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "int64",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+   "exists": true,
+   "bytes": 34838,
+   "sha256": "59ca656ea171c198f4dbf238c3d39b69481b02ae563c6a8421934b3fddc7cac6",
+   "pinned_sha256": "59ca656ea171c198f4dbf238c3d39b69481b02ae563c6a8421934b3fddc7cac6",
+   "pin_match": true,
+   "row_count": 5222,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5222
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5222,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-24",
+     "observed_calendar_max": "2026-09-24",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-24"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5222,
+     "distinct_non_null": 5222,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5217,
+      5218,
+      5219,
+      5220,
+      5221
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5221,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+   "exists": true,
+   "bytes": 34722,
+   "sha256": "549d6a288f3f6fdaf384fcab158c3ff8e24126e575d181ce65c7b1fad5a27843",
+   "pinned_sha256": "549d6a288f3f6fdaf384fcab158c3ff8e24126e575d181ce65c7b1fad5a27843",
+   "pin_match": true,
+   "row_count": 5206,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5206
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5206,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-08-10T00:00:00",
+      "2026-08-10T00:00:00",
+      "2026-08-10T00:00:00",
+      "2026-08-10T00:00:00",
+      "2026-08-10T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-08-10T00:00:00",
+      "2026-08-10T00:00:00",
+      "2026-08-10T00:00:00",
+      "2026-08-10T00:00:00",
+      "2026-08-10T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-08-10",
+     "observed_calendar_max": "2026-08-10",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": []
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5206,
+     "distinct_non_null": 5206,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5201,
+      5202,
+      5203,
+      5204,
+      5205
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5205,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-08-10T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-08-10T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-08-10T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-08-10T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-08-10T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260811__20260811_233713.parquet",
+   "exists": true,
+   "bytes": 34732,
+   "sha256": "9949bac5ded7715d9298144f9772842fbf4d7920a877ac9937fb88fbabca80de",
+   "pinned_sha256": "9949bac5ded7715d9298144f9772842fbf4d7920a877ac9937fb88fbabca80de",
+   "pin_match": true,
+   "row_count": 5208,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5208
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5208,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-08-11T00:00:00",
+      "2026-08-11T00:00:00",
+      "2026-08-11T00:00:00",
+      "2026-08-11T00:00:00",
+      "2026-08-11T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-08-11T00:00:00",
+      "2026-08-11T00:00:00",
+      "2026-08-11T00:00:00",
+      "2026-08-11T00:00:00",
+      "2026-08-11T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-08-11",
+     "observed_calendar_max": "2026-08-11",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": []
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5208,
+     "distinct_non_null": 5208,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5203,
+      5204,
+      5205,
+      5206,
+      5207
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5207,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-08-11T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-08-11T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-08-11T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-08-11T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-08-11T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260903__20260904_013451.parquet",
+   "exists": true,
+   "bytes": 34782,
+   "sha256": "0f40821693f3462366d9977ea46538322262e1cd80763793daaef8c249ac9066",
+   "pinned_sha256": "0f40821693f3462366d9977ea46538322262e1cd80763793daaef8c249ac9066",
+   "pin_match": true,
+   "row_count": 5215,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5215
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5215,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-03T00:00:00",
+      "2026-09-03T00:00:00",
+      "2026-09-03T00:00:00",
+      "2026-09-03T00:00:00",
+      "2026-09-03T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-03T00:00:00",
+      "2026-09-03T00:00:00",
+      "2026-09-03T00:00:00",
+      "2026-09-03T00:00:00",
+      "2026-09-03T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-03",
+     "observed_calendar_max": "2026-09-03",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-03"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5215,
+     "distinct_non_null": 5215,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5210,
+      5211,
+      5212,
+      5213,
+      5214
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5214,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-03T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-03T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-03T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-03T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-03T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260904__20260907_002941.parquet",
+   "exists": true,
+   "bytes": 34782,
+   "sha256": "97d437396c35f5e10706bbc21f4e79fd953c9abf633ee6895d1112a8799ad3ef",
+   "pinned_sha256": "97d437396c35f5e10706bbc21f4e79fd953c9abf633ee6895d1112a8799ad3ef",
+   "pin_match": true,
+   "row_count": 5215,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5215
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5215,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-04T00:00:00",
+      "2026-09-04T00:00:00",
+      "2026-09-04T00:00:00",
+      "2026-09-04T00:00:00",
+      "2026-09-04T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-04T00:00:00",
+      "2026-09-04T00:00:00",
+      "2026-09-04T00:00:00",
+      "2026-09-04T00:00:00",
+      "2026-09-04T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-04",
+     "observed_calendar_max": "2026-09-04",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-04"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5215,
+     "distinct_non_null": 5215,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5210,
+      5211,
+      5212,
+      5213,
+      5214
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5214,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-04T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-04T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-04T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-04T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-04T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260907__20260908_085151.parquet",
+   "exists": true,
+   "bytes": 34787,
+   "sha256": "b2854d54385eea8f09df9834defe12bfe10b5c0b843559d6e2de1e44d1e88792",
+   "pinned_sha256": "b2854d54385eea8f09df9834defe12bfe10b5c0b843559d6e2de1e44d1e88792",
+   "pin_match": true,
+   "row_count": 5216,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5216
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5216,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-07T00:00:00",
+      "2026-09-07T00:00:00",
+      "2026-09-07T00:00:00",
+      "2026-09-07T00:00:00",
+      "2026-09-07T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-07T00:00:00",
+      "2026-09-07T00:00:00",
+      "2026-09-07T00:00:00",
+      "2026-09-07T00:00:00",
+      "2026-09-07T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-07",
+     "observed_calendar_max": "2026-09-07",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-07"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5216,
+     "distinct_non_null": 5216,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5211,
+      5212,
+      5213,
+      5214,
+      5215
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5215,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-07T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-07T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-07T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-07T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-07T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260908__20260909_161714.parquet",
+   "exists": true,
+   "bytes": 34787,
+   "sha256": "61c2a8fa1bff6c2b3ef9215d24351003ee988910a9ca04e17b52039f39a2dc7f",
+   "pinned_sha256": "61c2a8fa1bff6c2b3ef9215d24351003ee988910a9ca04e17b52039f39a2dc7f",
+   "pin_match": true,
+   "row_count": 5216,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5216
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5216,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-08T00:00:00",
+      "2026-09-08T00:00:00",
+      "2026-09-08T00:00:00",
+      "2026-09-08T00:00:00",
+      "2026-09-08T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-08T00:00:00",
+      "2026-09-08T00:00:00",
+      "2026-09-08T00:00:00",
+      "2026-09-08T00:00:00",
+      "2026-09-08T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-08",
+     "observed_calendar_max": "2026-09-08",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-08"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5216,
+     "distinct_non_null": 5216,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5211,
+      5212,
+      5213,
+      5214,
+      5215
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5215,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-08T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-08T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-08T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-08T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-08T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260909__20260909_173601.parquet",
+   "exists": true,
+   "bytes": 34806,
+   "sha256": "fb90758f5df7de476b3bf292cfb550e9dea3b950d8e089214765f8fb270bad6f",
+   "pinned_sha256": "fb90758f5df7de476b3bf292cfb550e9dea3b950d8e089214765f8fb270bad6f",
+   "pin_match": true,
+   "row_count": 5217,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5217
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5217,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-09T00:00:00",
+      "2026-09-09T00:00:00",
+      "2026-09-09T00:00:00",
+      "2026-09-09T00:00:00",
+      "2026-09-09T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-09T00:00:00",
+      "2026-09-09T00:00:00",
+      "2026-09-09T00:00:00",
+      "2026-09-09T00:00:00",
+      "2026-09-09T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-09",
+     "observed_calendar_max": "2026-09-09",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-09"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5217,
+     "distinct_non_null": 5217,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5212,
+      5213,
+      5214,
+      5215,
+      5216
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5216,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-09T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-09T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-09T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-09T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-09T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260910__20260917_145154.parquet",
+   "exists": true,
+   "bytes": 34812,
+   "sha256": "25965d125759efb9ab492724ac579ff1e7aff356b1211ca2ac456591d87d61e6",
+   "pinned_sha256": "25965d125759efb9ab492724ac579ff1e7aff356b1211ca2ac456591d87d61e6",
+   "pin_match": true,
+   "row_count": 5218,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5218
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5218,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-10T00:00:00",
+      "2026-09-10T00:00:00",
+      "2026-09-10T00:00:00",
+      "2026-09-10T00:00:00",
+      "2026-09-10T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-10T00:00:00",
+      "2026-09-10T00:00:00",
+      "2026-09-10T00:00:00",
+      "2026-09-10T00:00:00",
+      "2026-09-10T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-10",
+     "observed_calendar_max": "2026-09-10",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-10"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5218,
+     "distinct_non_null": 5218,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5213,
+      5214,
+      5215,
+      5216,
+      5217
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5217,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-10T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-10T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-10T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-10T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-10T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260911__20260918_072837.parquet",
+   "exists": true,
+   "bytes": 34815,
+   "sha256": "e9e4145b03f47a9809f4bad09f4005335b7dfb25e80b6fe1368545cf8e842743",
+   "pinned_sha256": "e9e4145b03f47a9809f4bad09f4005335b7dfb25e80b6fe1368545cf8e842743",
+   "pin_match": true,
+   "row_count": 5219,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5219
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5219,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-11T00:00:00",
+      "2026-09-11T00:00:00",
+      "2026-09-11T00:00:00",
+      "2026-09-11T00:00:00",
+      "2026-09-11T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-11T00:00:00",
+      "2026-09-11T00:00:00",
+      "2026-09-11T00:00:00",
+      "2026-09-11T00:00:00",
+      "2026-09-11T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-11",
+     "observed_calendar_max": "2026-09-11",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-11"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5219,
+     "distinct_non_null": 5219,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5214,
+      5215,
+      5216,
+      5217,
+      5218
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5218,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-11T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-11T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-11T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-11T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-11T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260914__20260924_082308.parquet",
+   "exists": true,
+   "bytes": 34815,
+   "sha256": "2c0ad20e1ed0544a464f8dc99f05b3597f07c3d0e7290832f8e77103d75b0165",
+   "pinned_sha256": "2c0ad20e1ed0544a464f8dc99f05b3597f07c3d0e7290832f8e77103d75b0165",
+   "pin_match": true,
+   "row_count": 5219,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5219
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5219,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-14T00:00:00",
+      "2026-09-14T00:00:00",
+      "2026-09-14T00:00:00",
+      "2026-09-14T00:00:00",
+      "2026-09-14T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-14T00:00:00",
+      "2026-09-14T00:00:00",
+      "2026-09-14T00:00:00",
+      "2026-09-14T00:00:00",
+      "2026-09-14T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-14",
+     "observed_calendar_max": "2026-09-14",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-14"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5219,
+     "distinct_non_null": 5219,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5214,
+      5215,
+      5216,
+      5217,
+      5218
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5218,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-14T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-14T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-14T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-14T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-14T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260915__20260924_093041.parquet",
+   "exists": true,
+   "bytes": 34815,
+   "sha256": "e56c1f32e5efea9221b8e4091b3ec510efb9cdc4b78760a1f2be4a89ecaf92aa",
+   "pinned_sha256": "e56c1f32e5efea9221b8e4091b3ec510efb9cdc4b78760a1f2be4a89ecaf92aa",
+   "pin_match": true,
+   "row_count": 5219,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5219
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5219,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-15T00:00:00",
+      "2026-09-15T00:00:00",
+      "2026-09-15T00:00:00",
+      "2026-09-15T00:00:00",
+      "2026-09-15T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-15T00:00:00",
+      "2026-09-15T00:00:00",
+      "2026-09-15T00:00:00",
+      "2026-09-15T00:00:00",
+      "2026-09-15T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-15",
+     "observed_calendar_max": "2026-09-15",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-15"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5219,
+     "distinct_non_null": 5219,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5214,
+      5215,
+      5216,
+      5217,
+      5218
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5218,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-15T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-15T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-15T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-15T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-15T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260916__20260924_103048.parquet",
+   "exists": true,
+   "bytes": 34820,
+   "sha256": "7ef2efe3ef6f1110879a887e9a0a4aa1060f0d3ba59250dd49bc8e3760d27ef3",
+   "pinned_sha256": "7ef2efe3ef6f1110879a887e9a0a4aa1060f0d3ba59250dd49bc8e3760d27ef3",
+   "pin_match": true,
+   "row_count": 5220,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5220
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5220,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-16T00:00:00",
+      "2026-09-16T00:00:00",
+      "2026-09-16T00:00:00",
+      "2026-09-16T00:00:00",
+      "2026-09-16T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-16T00:00:00",
+      "2026-09-16T00:00:00",
+      "2026-09-16T00:00:00",
+      "2026-09-16T00:00:00",
+      "2026-09-16T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-16",
+     "observed_calendar_max": "2026-09-16",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-16"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5220,
+     "distinct_non_null": 5220,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5215,
+      5216,
+      5217,
+      5218,
+      5219
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5219,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-16T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-16T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-16T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-16T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-16T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260917__20260924_114439.parquet",
+   "exists": true,
+   "bytes": 34835,
+   "sha256": "7fdd274c2b2a1e186d9f5592d6275b3b1f73fbb59ece7d836e31adad65e69e5f",
+   "pinned_sha256": "7fdd274c2b2a1e186d9f5592d6275b3b1f73fbb59ece7d836e31adad65e69e5f",
+   "pin_match": true,
+   "row_count": 5221,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5221
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5221,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-17T00:00:00",
+      "2026-09-17T00:00:00",
+      "2026-09-17T00:00:00",
+      "2026-09-17T00:00:00",
+      "2026-09-17T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-17T00:00:00",
+      "2026-09-17T00:00:00",
+      "2026-09-17T00:00:00",
+      "2026-09-17T00:00:00",
+      "2026-09-17T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-17",
+     "observed_calendar_max": "2026-09-17",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-17"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5221,
+     "distinct_non_null": 5221,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5216,
+      5217,
+      5218,
+      5219,
+      5220
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5220,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-17T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-17T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-17T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-17T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-17T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260918__20260924_130214.parquet",
+   "exists": true,
+   "bytes": 34835,
+   "sha256": "ef678b17cd12cfc8a97a27524e8aecff63586ba185f7f1d57cd3e17de9de3088",
+   "pinned_sha256": "ef678b17cd12cfc8a97a27524e8aecff63586ba185f7f1d57cd3e17de9de3088",
+   "pin_match": true,
+   "row_count": 5221,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5221
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5221,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-18T00:00:00",
+      "2026-09-18T00:00:00",
+      "2026-09-18T00:00:00",
+      "2026-09-18T00:00:00",
+      "2026-09-18T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-18T00:00:00",
+      "2026-09-18T00:00:00",
+      "2026-09-18T00:00:00",
+      "2026-09-18T00:00:00",
+      "2026-09-18T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-18",
+     "observed_calendar_max": "2026-09-18",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-18"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5221,
+     "distinct_non_null": 5221,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5216,
+      5217,
+      5218,
+      5219,
+      5220
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5220,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-18T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-18T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-18T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-18T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-18T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260921__20260924_163612.parquet",
+   "exists": true,
+   "bytes": 34835,
+   "sha256": "916213d04317788cedc4e6664eb2e5219b45164e1a276a0c4c69c8173574259f",
+   "pinned_sha256": "916213d04317788cedc4e6664eb2e5219b45164e1a276a0c4c69c8173574259f",
+   "pin_match": true,
+   "row_count": 5221,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5221
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5221,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-21T00:00:00",
+      "2026-09-21T00:00:00",
+      "2026-09-21T00:00:00",
+      "2026-09-21T00:00:00",
+      "2026-09-21T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-21T00:00:00",
+      "2026-09-21T00:00:00",
+      "2026-09-21T00:00:00",
+      "2026-09-21T00:00:00",
+      "2026-09-21T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-21",
+     "observed_calendar_max": "2026-09-21",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-21"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5221,
+     "distinct_non_null": 5221,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5216,
+      5217,
+      5218,
+      5219,
+      5220
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5220,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-21T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-21T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-21T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-21T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-21T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260922__20260924_173734.parquet",
+   "exists": true,
+   "bytes": 34838,
+   "sha256": "e80b66f7c762d1cccc7f09707ce73e727bf81c30e4c68f5f9c2716541e334834",
+   "pinned_sha256": "e80b66f7c762d1cccc7f09707ce73e727bf81c30e4c68f5f9c2716541e334834",
+   "pin_match": true,
+   "row_count": 5222,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5222
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5222,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-22T00:00:00",
+      "2026-09-22T00:00:00",
+      "2026-09-22T00:00:00",
+      "2026-09-22T00:00:00",
+      "2026-09-22T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-22T00:00:00",
+      "2026-09-22T00:00:00",
+      "2026-09-22T00:00:00",
+      "2026-09-22T00:00:00",
+      "2026-09-22T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-22",
+     "observed_calendar_max": "2026-09-22",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-22"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5222,
+     "distinct_non_null": 5222,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5217,
+      5218,
+      5219,
+      5220,
+      5221
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5221,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-22T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-22T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-22T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-22T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-22T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260923__20260924_183758.parquet",
+   "exists": true,
+   "bytes": 34838,
+   "sha256": "7de44a455f16a4b8ed05a4232327fb62ad0e314060c0eb0d45760661733a703a",
+   "pinned_sha256": "7de44a455f16a4b8ed05a4232327fb62ad0e314060c0eb0d45760661733a703a",
+   "pin_match": true,
+   "row_count": 5222,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5222
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5222,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-23T00:00:00",
+      "2026-09-23T00:00:00",
+      "2026-09-23T00:00:00",
+      "2026-09-23T00:00:00",
+      "2026-09-23T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-23T00:00:00",
+      "2026-09-23T00:00:00",
+      "2026-09-23T00:00:00",
+      "2026-09-23T00:00:00",
+      "2026-09-23T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-23",
+     "observed_calendar_max": "2026-09-23",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-23"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5222,
+     "distinct_non_null": 5222,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5217,
+      5218,
+      5219,
+      5220,
+      5221
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5221,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-23T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-23T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-23T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-23T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-23T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+   "exists": true,
+   "bytes": 34838,
+   "sha256": "59ca656ea171c198f4dbf238c3d39b69481b02ae563c6a8421934b3fddc7cac6",
+   "pinned_sha256": "59ca656ea171c198f4dbf238c3d39b69481b02ae563c6a8421934b3fddc7cac6",
+   "pin_match": true,
+   "row_count": 5222,
+   "num_columns": 4,
+   "num_row_groups": 1,
+   "created_by": "parquet-cpp-arrow version 24.0.0",
+   "arrow_schema": [
+    {
+     "name": "date",
+     "arrow_type": "timestamp[ns]",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "code",
+     "arrow_type": "string",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "factor",
+     "arrow_type": "double",
+     "nullable": true,
+     "metadata": {}
+    },
+    {
+     "name": "sec_type",
+     "arrow_type": "large_string",
+     "nullable": true,
+     "metadata": {}
+    }
+   ],
+   "parquet_key_value_metadata_keys": [
+    "ARROW:schema",
+    "pandas"
+   ],
+   "pandas_metadata": {
+    "index_columns": [],
+    "column_indexes": [],
+    "pandas_version": "3.0.3",
+    "creator": "pyarrow",
+    "columns_count": 4
+   },
+   "in_memory_index": {
+    "name": null,
+    "nlevels": 1,
+    "dtype": "int64",
+    "length": 5222
+   },
+   "physical_column_order": [
+    "date",
+    "code",
+    "factor",
+    "sec_type"
+   ],
+   "date_like_fields": {
+    "date": {
+     "dtype": "datetime64[ns]",
+     "null_count": 0,
+     "non_null_count": 5222,
+     "distinct_non_null": 1,
+     "first_five_literals": [
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00"
+     ],
+     "last_five_literals": [
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00",
+      "2026-09-24T00:00:00"
+     ],
+     "arrow_type": "timestamp[ns]",
+     "identified_by": "name+type",
+     "observed_calendar_dates_count": 1,
+     "observed_calendar_min": "2026-09-24",
+     "observed_calendar_max": "2026-09-24",
+     "explicit_daily_axis": true,
+     "dates_after_20260814": [
+      "2026-09-24"
+     ]
+    }
+   },
+   "index_level_stats": {
+    "None": {
+     "dtype": "int64",
+     "null_count": 0,
+     "non_null_count": 5222,
+     "distinct_non_null": 5222,
+     "first_five_literals": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "last_five_literals": [
+      5217,
+      5218,
+      5219,
+      5220,
+      5221
+     ],
+     "observed_min_literal": 0,
+     "observed_max_literal": 5221,
+     "observed_min_max_are_dates": false
+    }
+   },
+   "head_samples": {
+    "columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "rows": [
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000001.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000002.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000006.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000007.XSHE",
+      "factor": 1.0
+     },
+     {
+      "date": "2026-09-24T00:00:00",
+      "code": "000008.XSHE",
+      "factor": 1.0
+     }
+    ]
+   },
+   "dtypes": {
+    "date": "datetime64[ns]",
+    "code": "object",
+    "factor": "float64",
+    "sec_type": "object"
+   },
+   "total_null_cells": 0
+  }
+ ]
+}
