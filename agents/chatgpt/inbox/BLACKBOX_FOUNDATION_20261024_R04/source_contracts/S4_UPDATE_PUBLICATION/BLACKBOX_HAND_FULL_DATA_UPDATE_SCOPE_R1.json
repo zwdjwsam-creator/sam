@@ -1,0 +1,228 @@
+{
+  "rule_id": "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R1",
+  "status": "SUPERSEDED_BY_R2_HISTORY_RETAINED",
+  "layer": "HAND_USER_AUTHORIZED",
+  "authorized_by": "USER_AS_HAND",
+  "authorized_at_cn": "2026-08-06T07:00:44+08:00",
+  "authorized_at_user_utterance": "补吧，不完后按流程进行清洗，和防止穿越，所有数据全部下载完毕后，将全数据表单给到HAND以后说更新数据指的就是全数据更新加清洗加防止穿越。包含财务报表，也需要写入全数据，以后更新就是全数据更新",
+  "last_amended_at_cn": "2026-08-11T01:06:24+0800",
+  "last_amended_by": "USER",
+  "last_amended_utterance": "自动清洗对齐防止穿越",
+  "amendment_note": "R15 封板：2026-08-10 A股/ETF/指数日线+分钟摄入；CURRENT asof 三元组对齐 2026-08-10；财务无新增下载，PIT cutoff 随交易日推进。",
+  "trigger_phrases": [
+    "更新数据",
+    "全数据更新",
+    "黑盒全量更新",
+    "更新全数据"
+  ],
+  "means": {
+    "download": [
+      "calendar",
+      "A_share_daily_raw_none",
+      "ETF_daily_raw_none",
+      "index_daily_raw_none",
+      "A_share_minute_5m_1m_30m_60m_raw_none",
+      "ETF_minute_5m_1m_30m_60m_raw_none",
+      "index_minute_5m_1m_30m_60m_raw_none",
+      "index_constituent_pit",
+      "finance_valuation",
+      "finance_income_balance_cashflow_pit",
+      "stk_financial_statements_as_needed"
+    ],
+    "index_minute_note": "2026-08-07：指数分钟纳入全数据更新范围；universe=REQUIRED_1M（9 只，非 732）；须 HAND stage INDEX_MINUTE_FULL_DOWNLOAD / INDEX_MINUTE_ALIGN_CLEAN_ANTILEAK；见 BLACKBOX_HAND_INDEX_MINUTE_FULL_DOWNLOAD_R1。",
+    "then": [
+      "formal_cleaning_seal_and_switch_CURRENT",
+      "anti_leakage_PIT_available_from_ts_checks",
+      "HAND_inventory_form_refresh"
+    ],
+    "forbidden_unless_explicit": [
+      "fq_pre_or_post_bars",
+      "QMT_live",
+      "backtest_as_gate"
+    ]
+  },
+  "asof_policy": "trade_date / finance_asof / cleaning_as_of 必须同批对齐并写入 CURRENT",
+  "inventory_ssot": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.json",
+  "index_pit_fill_30": {
+    "requested": 30,
+    "present_after": 30,
+    "still_missing": [],
+    "release": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_CONSTITUENT_PIT_R1\\REL_INDEX_CONSTITUENT_PIT_FULL_EXPAND_R1_20260806_065913",
+    "row_count": 9497401,
+    "n_indexes": 691
+  },
+  "legal_empty_constituent_n": 24,
+  "anti_leakage_last": {
+    "overall_pass": true,
+    "asof_aligned": true,
+    "cleaning_as_of": "2026-08-10",
+    "checked_at": "2026-08-10T17:06:24+00:00",
+    "source": "R15_ANTILEAK"
+  },
+  "download_completion_log": [
+    {
+      "domain": "index_minute_5m_1m_30m_60m_raw_none",
+      "completed_at_cn": "2026-08-07",
+      "status": "CURRENT",
+      "cutoff": "2026-08-06",
+      "universe": "REQUIRED_1M",
+      "n_codes": 9,
+      "codes": [
+        "000001.XSHG",
+        "399001.XSHE",
+        "000300.XSHG",
+        "000016.XSHG",
+        "000905.XSHG",
+        "000852.XSHG",
+        "399303.XSHE",
+        "000688.XSHG",
+        "399006.XSHE"
+      ],
+      "frequencies": [
+        "5m",
+        "1m",
+        "30m",
+        "60m"
+      ],
+      "all_nine_p3_full_13y": true,
+      "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+      "raw_parquet_count": 483,
+      "source_fq": "NOT_APPLICABLE",
+      "hand_stages": [
+        "INDEX_MINUTE_FULL_DOWNLOAD",
+        "INDEX_MINUTE_ALIGN_CLEAN_ANTILEAK"
+      ],
+      "migrate_artifact": "E:\\BLACKBOX\\任务\\20260804_230632_BLACKBOX_BUILD_CANONICAL_786aec\\artifacts\\INDEX_MINUTE_P9_MIGRATE_R1.json",
+      "aligned_release_id": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260806_20260807_094721",
+      "aligned_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260806_20260807_094721",
+      "aligned_partitions_written": 444,
+      "aligned_rows_out": 7704600,
+      "acceptance_markers": {
+        "INDEX_MINUTE_ANTILEAK_PASS": true,
+        "INDEX_MINUTE_DICTIONARY_DATE_ALIGN_PASS": true,
+        "INDEX_MINUTE_UNIVERSE_REGISTRY_ALIGN_PASS": true,
+        "MARKET_STATE_SLICE_COMPLETED_BAR_PASS": true
+      },
+      "market_state_binding": "E:\\BLACKBOX\\任务\\20260804_230632_BLACKBOX_BUILD_CANONICAL_786aec\\artifacts\\INDEX_MARKET_STATE_MINUTE_BINDING_R1.json",
+      "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_INDEX_MINUTE_ALIGN_RELEASE.json",
+      "related_rule": "BLACKBOX_HAND_INDEX_MINUTE_FULL_DOWNLOAD_R1"
+    },
+    {
+      "domain": "full_gapfill_ashare_finance_valuation_r1",
+      "completed_at_cn": "2026-08-07T11:25:19+0800",
+      "status": "CURRENT",
+      "cutoff": "2026-08-06",
+      "window": {
+        "start": "2014-01-01",
+        "end": "2026-08-06"
+      },
+      "phases": {
+        "ashare_code_gapfill": "PASS",
+        "finance_quarter_backfill": "PASS",
+        "financial_indicator": "BLOCKED_BY_JQ_ACCOUNT_PERMISSION",
+        "valuation_daily_history": "PASS",
+        "cleaning_r11": "PASS",
+        "anti_leakage": true,
+        "completeness": true
+      },
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R11_ASOF_20260806_20260807_111824",
+      "cleaning_seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R11_20260807_111824",
+      "acceptance": {
+        "PRICE_GAPFILL": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_GAPFILL_CLEAN_ANTILEAK_R1\\12_ACCEPTANCE\\PRICE_GAPFILL_ACCEPTANCE.json",
+        "FINANCE_BACKFILL": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_GAPFILL_CLEAN_ANTILEAK_R1\\12_ACCEPTANCE\\FINANCE_BACKFILL_ACCEPTANCE.json",
+        "VALUATION_DAILY": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_GAPFILL_CLEAN_ANTILEAK_R1\\10_REPORT\\VALUATION_DAILY_RESULT.json",
+        "R11_SEAL": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_GAPFILL_CLEAN_ANTILEAK_R1\\12_ACCEPTANCE\\R11_SEAL_RESULT.json",
+        "ANTI_LEAKAGE": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_GAPFILL_CLEAN_ANTILEAK_R1\\12_ACCEPTANCE\\ANTI_LEAKAGE_R1.json",
+        "COMPLETENESS": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_GAPFILL_CLEAN_ANTILEAK_R1\\12_ACCEPTANCE\\COMPLETENESS_CHECK.json"
+      },
+      "task": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_GAPFILL_CLEAN_ANTILEAK_R1",
+      "related_user_utterance": "全部数据下载完成后自动进行数据清洗对齐防止穿越…写入SSOT…关机"
+    }
+  ],
+  "r2_append_status": "PENDING_USER_OR_CONTROLLER",
+  "does_not_auto_rewrite": "契约/BLACKBOX_HAND_RULES_WITH_CLEANING_LAYER_MODEL_ROUTE_R2.txt",
+  "completed_domains": [
+    {
+      "domain": "post_seal_freshness_daily_minute_r12_20260807",
+      "completed_at_cn": "2026-08-08T00:49:07+0800",
+      "status": "CURRENT",
+      "cutoff": "2026-08-07",
+      "window": {
+        "start": "2026-08-07",
+        "end": "2026-08-07"
+      },
+      "phases": {
+        "download_daily_minute": "PASS",
+        "cleaning_r12": "PASS",
+        "anti_leakage": true
+      },
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R12_ASOF_20260807_20260808_004052",
+      "cleaning_seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R12_20260808_004052",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R11_ASOF_20260806_20260807_111824",
+      "evidence": {
+        "R12_SEAL": "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R12_20260807_R1\\12_ACCEPTANCE\\R12_SEAL_RESULT.json",
+        "ANTI_LEAKAGE": "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R12_20260807_R1\\12_ACCEPTANCE\\ANTI_LEAKAGE_R12.json"
+      },
+      "related_user_utterance": "自动清洗对齐防止穿越"
+    },
+    {
+      "domain": "post_seal_finance_index_aug_increment_r13",
+      "completed_at_cn": "2026-08-08T01:10:42+0800",
+      "status": "CURRENT",
+      "cutoff": "2026-08-07",
+      "phases": {
+        "aug_scan": "PASS",
+        "price_aug_already_clean": true,
+        "index_daily_main7": "NO_GAP",
+        "finance_valuation_download": "PASS",
+        "cleaning_r13": "PASS",
+        "anti_leakage": true
+      },
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R13_ASOF_20260807_20260808_010337",
+      "cleaning_seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R13_20260808_010337",
+      "related_user_utterance": "全量检查8月增量含财务和指数，有则下载清洗对齐防穿越"
+    },
+    {
+      "domain": "full_data_update_r15_20260810",
+      "completed_at_cn": "2026-08-11T01:06:24+0800",
+      "status": "CURRENT",
+      "cutoff": "2026-08-10",
+      "window": {
+        "start": "2026-08-10",
+        "end": "2026-08-10"
+      },
+      "phases": {
+        "download_daily_minute": "PASS",
+        "cleaning_r15": "PASS",
+        "anti_leakage": true
+      },
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R15_ASOF_20260810_20260811_005733",
+      "cleaning_seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R15_20260811_005733",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R14_ASOF_20260807_20260809_082152",
+      "evidence": {
+        "R12_SEAL": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\12_ACCEPTANCE\\R15_SEAL_RESULT.json",
+        "ANTI_LEAKAGE": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\12_ACCEPTANCE\\ANTI_LEAKAGE_R15.json"
+      },
+      "related_user_utterance": "自动清洗对齐防止穿越"
+    }
+  ],
+  "current_cleaning": {
+    "release_id": "BLACKBOX_FORMAL_CLEANING_R15_ASOF_20260810_20260811_005733",
+    "seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R15_20260811_005733",
+    "cleaning_as_of": "2026-08-10",
+    "status": "CURRENT"
+  },
+  "inventory_ssot_md": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.md",
+  "inventory_top_rule_mdc": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_data_inventory_top_ssot.mdc",
+  "inventory_last_refreshed_at_cn": "2026-08-12T00:48:07+0800",
+  "inventory_ag_injection": {
+    "always_apply_mdc": true,
+    "self_contained": true,
+    "no_runtime_json_pull_required": true,
+    "mdc_is_authoritative_snapshot_for_chat": true,
+    "json_is_machine_backup_only": true
+  },
+  "superseded_by": "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+  "superseded_at_cn": "2026-08-09T07:11:30+0800",
+  "legacy_role": "completion_log_and_r13_history_only; trigger semantics use R2"
+}
