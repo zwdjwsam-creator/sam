@@ -1,0 +1,622 @@
+{
+ "generation": "R08_RECEIPT_CORRECTION_1855",
+ "generated_at": "2026-10-24T19:25:56+08:00",
+ "basis": "existing 950-node source-body cache + R04 SOURCE_BODY_INDEX origin_path values; no rescan performed",
+ "reused_existing_hub_bodies": [
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/source_bodies/cache_compiler_daily_incremental_r1.py",
+   "blob": "49ef5d87dae76ac9b74e747e31a080c4e3d96e0f",
+   "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+   "why": "identical hash to the reviewed R06 daily compiler; not re-uploaded"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1543/source_reads/cache_compiler_full_history_r1.py",
+   "blob": "d363db6958ac30a15d737dd65e8e6e8e39d6acc5",
+   "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+   "why": "identical hash to the reviewed full-history compiler; not re-uploaded"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/source_bodies/S4_UPDATE_PUBLICATION__jq_download_execution_r1.py",
+   "blob": "5d6f2435dece753aa52325f5a80b1b2ea024c667",
+   "why": "download execution body, referenced in place"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/source_bodies/S4_UPDATE_PUBLICATION__jq_download_base.py",
+   "blob": "ae75eea476e8ec418008ef578982e956d8ab10a3",
+   "why": "download base body, referenced in place"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/source_bodies/S4_UPDATE_PUBLICATION__run_blackbox_daily_incremental_data_plane_r1.py",
+   "blob": "41ea6597875bbee8778fe4db9ec0eddca8fe3576",
+   "why": "data-plane runner body, referenced in place"
+  }
+ ],
+ "A_current_coverage_callers": {
+  "status": "RESOLVED_CURRENT_BODIES_UPLOADED",
+  "resolver": {
+   "local_module_name": "blackbox_data_access_resolver_r1.py",
+   "actual_current_source_path": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+   "bytes": 43924,
+   "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+   "delivered": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/blackbox_data_access_resolver_r1.py",
+   "delivered_sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+   "function_bodies": [
+    {
+     "name": "sha256_short",
+     "line": 362,
+     "end_line": 365
+    },
+    {
+     "name": "read_currents",
+     "line": 368,
+     "end_line": 483
+    },
+    {
+     "name": "resolve_product",
+     "line": 486,
+     "end_line": 816
+    },
+    {
+     "name": "build_index",
+     "line": 819,
+     "end_line": 881
+    },
+    {
+     "name": "main",
+     "line": 884,
+     "end_line": 934
+    }
+   ],
+   "line_count": 938
+  },
+  "control_plane_build": {
+   "local_module_name": "blackbox_data_coverage_control_plane_build_r1.py",
+   "actual_current_source_path": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_control_plane_build_r1.py",
+   "bytes": 25474,
+   "sha256": "0ccc17f21e0c977a8533d4724addb15a422537b045079d11d6f67e104972e3ba",
+   "delivered": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/blackbox_data_coverage_control_plane_build_r1.py",
+   "delivered_sha256": "0ccc17f21e0c977a8533d4724addb15a422537b045079d11d6f67e104972e3ba",
+   "function_bodies": [
+    {
+     "name": "build_raw_ledger",
+     "line": 38,
+     "end_line": 59
+    },
+    {
+     "name": "build_cleaning_ledger",
+     "line": 62,
+     "end_line": 88
+    },
+    {
+     "name": "build_cache_ledger",
+     "line": 91,
+     "end_line": 128
+    },
+    {
+     "name": "build_date_matrix",
+     "line": 131,
+     "end_line": 160
+    },
+    {
+     "name": "audit_index",
+     "line": 163,
+     "end_line": 202
+    },
+    {
+     "name": "audit_valuation",
+     "line": 205,
+     "end_line": 235
+    },
+    {
+     "name": "root_cause_incident",
+     "line": 238,
+     "end_line": 263
+    },
+    {
+     "name": "run_qa",
+     "line": 266,
+     "end_line": 381
+    },
+    {
+     "name": "write_reports",
+     "line": 384,
+     "end_line": 471
+    },
+    {
+     "name": "main",
+     "line": 474,
+     "end_line": 560
+    }
+   ],
+   "line_count": 564
+  },
+  "hub_comparison": "Neither body exists on HUB under any earlier package (R04/R06/R07 source_bodies listings were checked); the local copies are the current files, so both were uploaded rather than referenced.",
+  "missing_common_module": {
+   "module": "blackbox_data_coverage_common_r1.py",
+   "hub_defect": "the delivered copy is a 2-byte placeholder, so the module contract is not on HUB",
+   "imported_symbols": [
+    "CRITICAL_BACKTEST_PRODUCTS",
+    "HISTORICAL_REQUIRED",
+    "cache_current",
+    "cleaning_current",
+    "classify_stock_daily",
+    "compare_coverage",
+    "find_calendar_trade_days",
+    "infer_mode_for_product",
+    "load_trade_calendar",
+    "now_cn",
+    "product_date_coverage",
+    "raw_stock_daily_dates",
+    "cleaning_stock_daily_dates",
+    "cache_stock_daily_dates",
+    "wjson"
+   ],
+   "exact_call_signatures_observed": [
+    "raw_stock_daily_dates(WINDOW_START, WINDOW_END) -> dict with keys raw_root, raw_gap_count, and per-window fields",
+    "raw_stock_daily_dates('2024-01-02','2024-01-31') -> same shape, used as a sample",
+    "cleaning_stock_daily_dates(WINDOW_START, WINDOW_END) -> dict",
+    "cache_stock_daily_dates(WINDOW_START, WINDOW_END) -> dict",
+    "cleaning_current() -> dict (callers only ever .get on the result)",
+    "cache_current() -> dict; keys used include cache_release_id and root",
+    "load_trade_calendar(WINDOW_START, WINDOW_END) -> date set/sequence",
+    "load_trade_calendar('2026-06-01','2026-06-30') -> same",
+    "find_calendar_trade_days() -> path-like (stringified into trade_calendar_authority)",
+    "product_date_coverage(Path) -> dict with at least date coverage counts",
+    "infer_mode_for_product(name: str, coverage: dict) -> str mode label",
+    "classify_stock_daily(start, end) -> diagnosis dict",
+    "now_cn() -> str timestamp",
+    "wjson(Path, obj) -> writes json",
+    "CRITICAL_BACKTEST_PRODUCTS / HISTORICAL_REQUIRED -> declarative containers",
+    "compare_coverage(...) -> imported but not called in this module body"
+   ],
+   "self_test_and_gate": {
+    "module": "blackbox_cache_coverage_non_regression_gate_r1.py",
+    "hub_defect": "the delivered copy is a 2-byte placeholder",
+    "import_site": "line 267, function-local: from blackbox_cache_coverage_non_regression_gate_r1 import self_test, gate",
+    "self_test": "self_test() -> dict; caller reads result['PATCH_FULL_HISTORY_GATE_TEST']['PASS']",
+    "gate": "gate(fat, thin, ['STOCK_DAILY_PIT_R1']) -> dict; caller reads result['CACHE_RELEASE_PUBLISHABLE'] (bool) and result.get('CRITICAL_PRODUCT_GATE', False)"
+   },
+   "not_invoked": "Both modules are ledger/publish writers; neither was imported or executed in this correction."
+  }
+ },
+ "B_adjust_factor": {
+  "status": "RESOLVED_LEGACY_READER_UPLOADED; CURRENT_2026_WRITER_UNRESOLVED",
+  "legacy_reader": {
+   "local_module_name": "cache_compiler_adjust_factor_pit_r1.py",
+   "actual_current_source_path": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_adjust_factor_pit_r1.py",
+   "bytes": 16033,
+   "sha256": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0",
+   "delivered": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/cache_compiler_adjust_factor_pit_r1.py",
+   "delivered_sha256": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0",
+   "function_bodies": [
+    {
+     "name": "now_iso",
+     "line": 50,
+     "end_line": 51
+    },
+    {
+     "name": "now_cn",
+     "line": 54,
+     "end_line": 55
+    },
+    {
+     "name": "log",
+     "line": 58,
+     "end_line": 59
+    },
+    {
+     "name": "wjson",
+     "line": 62,
+     "end_line": 66
+    },
+    {
+     "name": "inherit_tree",
+     "line": 69,
+     "end_line": 81
+    },
+    {
+     "name": "parse_cred",
+     "line": 84,
+     "end_line": 94
+    },
+    {
+     "name": "flatten_factor",
+     "line": 97,
+     "end_line": 114
+    },
+    {
+     "name": "jq_refresh_stock_factor",
+     "line": 117,
+     "end_line": 147
+    },
+    {
+     "name": "load_p1_history",
+     "line": 150,
+     "end_line": 167
+    },
+    {
+     "name": "nh120",
+     "line": 170,
+     "end_line": 197
+    },
+    {
+     "name": "golden_one",
+     "line": 200,
+     "end_line": 239
+    },
+    {
+     "name": "append_catalog",
+     "line": 242,
+     "end_line": 248
+    },
+    {
+     "name": "main",
+     "line": 251,
+     "end_line": 395
+    }
+   ],
+   "line_count": 399
+  },
+  "sha256_expected_from_earlier_handoff": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0",
+  "sha256_measured": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0",
+  "sha_match": true,
+  "local_helper_bodies": "NONE: the module imports only stdlib, numpy and pandas; all 13 functions are in-file and enumerated above",
+  "credential_route": "module constant CRED = E:\\BLACKBOX\\配置\\secrets\\已验证\\聚宽账号.txt (path locator only; no value read)",
+  "request_sidecar_lineage": {
+   "stock_incremental_sidecars": 0,
+   "etf_and_batch_sidecars_present": 185,
+   "refresh_build_artifact": "absent from the sealed release _build directory",
+   "status": "REQUEST_RECEIPT_NOT_RETAINED"
+  },
+  "ordinal_reconciliation": {
+   "measured_ordinal_files": 17,
+   "measured_timestamp_files": 20,
+   "earlier_prose_figure": "20 ordinal of 37",
+   "verdict": "prose figure withdrawn; the 17-file list in the bindings was correct"
+  }
+ },
+ "C_other_creators": {
+  "valuation": {
+   "status": "LOCATED",
+   "body": {
+    "local_module_name": "blackbox_valuation_historical_authority_cache_productization_r1.py",
+    "actual_current_source_path": "E:\\BLACKBOX\\脚本\\blackbox_valuation_historical_authority_cache_productization_r1.py",
+    "bytes": 27493,
+    "sha256": "5e804b8459b2655936dc876c8a16d7672d9a30cd707cb9f2b717057110e9d6fb",
+    "delivered": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/blackbox_valuation_historical_authority_cache_productization_r1.py",
+    "delivered_sha256": "5e804b8459b2655936dc876c8a16d7672d9a30cd707cb9f2b717057110e9d6fb",
+    "function_bodies": [
+     {
+      "name": "now_cn",
+      "line": 83,
+      "end_line": 84
+     },
+     {
+      "name": "now_ts",
+      "line": 87,
+      "end_line": 88
+     },
+     {
+      "name": "wjson",
+      "line": 91,
+      "end_line": 93
+     },
+     {
+      "name": "wcsv",
+      "line": 96,
+      "end_line": 104
+     },
+     {
+      "name": "hardlink_or_copy_tree",
+      "line": 107,
+      "end_line": 124
+     },
+     {
+      "name": "load_trade_days",
+      "line": 127,
+      "end_line": 129
+     },
+     {
+      "name": "to_pit",
+      "line": 132,
+      "end_line": 172
+     },
+     {
+      "name": "latest_yearly",
+      "line": 175,
+      "end_line": 180
+     },
+     {
+      "name": "clean_day_20260811",
+      "line": 183,
+      "end_line": 229
+     },
+     {
+      "name": "gather_source_frames",
+      "line": 232,
+      "end_line": 250
+     },
+     {
+      "name": "build_valuation_product",
+      "line": 253,
+      "end_line": 384
+     },
+     {
+      "name": "model_a_publish",
+      "line": 387,
+      "end_line": 510
+     },
+     {
+      "name": "phase2a_readiness",
+      "line": 513,
+      "end_line": 577
+     },
+     {
+      "name": "main",
+      "line": 580,
+      "end_line": 716
+     }
+    ],
+    "line_count": 720
+   },
+   "evidence": "line 410 assigns dst = staging / 'VALUATION_PIT_R1'; the module exposes to_pit, latest_yearly, gather_source_frames, build_valuation_product, model_a_publish",
+   "caveat": "located as a creator by exact path and code; whether it is the writer of the CURRENT 2026 slice is not proven by presence alone"
+  },
+  "universe_and_security": {
+   "status": "UNRESOLVED_WITH_SEARCHED_PROVENANCE",
+   "searched": [
+    "E:\\BLACKBOX\\脚本",
+    "E:\\BLACKBOX\\任务",
+    "E:\\BLACKBOX\\运行 (excluding HUB copies)",
+    "the 950-node cached source reads under completion_*"
+   ],
+   "what_was_found": "only READERS of SECURITY_MASTER_SNAPSHOT_R1 and MARKET_UNIVERSE_PIT_R1 (for example run_blackbox_cn_branch_acceptance_after_us_r5_r1.py line 49, _run_r2_universe_and_discovery.py line 135); no writer that emits either product",
+   "narrow_unresolved_dependency": "the creator that materialises SECURITY_MASTER_SNAPSHOT_R1 and MARKET_UNIVERSE_PIT_R1 under a release root",
+   "guessed_callable_substituted": false
+  },
+  "tradeability": {
+   "status": "UNRESOLVED_WITH_SEARCHED_PROVENANCE",
+   "what_was_found": "only a reader assignment in blackbox_external_market_evidence_data_agent_r1.py line 405 (tr = root / 'STOCK_TRADEABILITY_PIT_R1'); cache_compiler_daily_incremental_r1 mentions the product only as an unavailable input",
+   "narrow_unresolved_dependency": "the creator of STOCK_TRADEABILITY_PIT_R1 including its is_st / paused / high_limit / low_limit columns",
+   "guessed_callable_substituted": false
+  },
+  "sw_structure": {
+   "status": "PARTIAL",
+   "located": {
+    "body": {
+     "local_module_name": "cache_compiler_sw_l1_integrate_r1.py",
+     "actual_current_source_path": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_sw_l1_integrate_r1.py",
+     "bytes": 22223,
+     "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+     "delivered": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/cache_compiler_sw_l1_integrate_r1.py",
+     "delivered_sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+     "function_bodies": [
+      {
+       "name": "log",
+       "line": 68,
+       "end_line": 73
+      },
+      {
+       "name": "wjson",
+       "line": 76,
+       "end_line": 80
+      },
+      {
+       "name": "junction",
+       "line": 83,
+       "end_line": 96
+      },
+      {
+       "name": "load_parent",
+       "line": 99,
+       "end_line": 109
+      },
+      {
+       "name": "normalize_membership",
+       "line": 112,
+       "end_line": 129
+      },
+      {
+       "name": "build_structure",
+       "line": 132,
+       "end_line": 166
+      },
+      {
+       "name": "load_stock_returns_window",
+       "line": 169,
+       "end_line": 188
+      },
+      {
+       "name": "rebuild_market",
+       "line": 191,
+       "end_line": 258
+      },
+      {
+       "name": "qa",
+       "line": 261,
+       "end_line": 317
+      },
+      {
+       "name": "main",
+       "line": 320,
+       "end_line": 563
+      }
+     ],
+     "line_count": 567
+    },
+    "evidence": "writes SW_L1_STRUCTURE_DAILY_R1 plus BLOCKED.json at line 378; functions build_structure, normalize_membership, rebuild_market"
+   },
+   "blocked_writers": "cache_compiler_daily_incremental_r1.py line 543 and cache_compiler_full_history_r1.py line 331 write only BLOCKED.json for SW_L1_STRUCTURE_DAILY_R1, so the incremental path never materialises the product",
+   "sw_l2_l3": {
+    "status": "UNRESOLVED",
+    "what_was_found": "no writer of SW_L2_STRUCTURE_DAILY_R1 or SW_L3_STRUCTURE_DAILY_R1 outside the flat-string mentions in cache_compiler_tip_rebase_from_current_r1.py"
+   }
+  },
+  "fund_like_view_reader": {
+   "status": "RESOLVED_BY_REFERENCE",
+   "reference": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/source_bodies/cache_compiler_daily_incremental_r1.py",
+   "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+   "evidence": "line 548 writes FUND_LIKE_ASSET_VIEW_R1/VIEW.json; the full-history compiler does the same at line 346",
+   "view_semantics": "a VIEW.json sidecar, not a data product; an empty union member is refused rather than silently published"
+  }
+ },
+ "D_minute_and_cbond": {
+  "status": "REUSED_EXISTING_BINDINGS",
+  "minute": "existing R09 bindings and cached bodies reused; no minute-wide scan performed",
+  "cbond": "existing binding and body (blackbox_tushare_cbond_5y_plane_r2.py in the cached reads) reused; no equity-cache takeover",
+  "expansion_into_strategy_research": false
+ },
+ "E_engine_layout": {
+  "status": "FLATTENED_NAMES_RESOLVED_FROM_PYPROJECT_AND_RELATIVE_IMPORTS",
+  "delivered_tree": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\source_engine\\S3_ENGINE_SOURCE",
+  "real_source_root": "not present on this host; only the flattened delivery tree exists, so the real path is reconstructed from pyproject packaging declarations",
+  "package_name": "bullet-trade",
+  "pyproject_sha256": "e959aa692b5b295158e243e22df14fcac9dfa662a9d964b58997040fbfd63686",
+  "declared_packages": {
+   "include": [
+    "bullet_trade*",
+    "helpers*"
+   ],
+   "exclude": [
+    "tests*",
+    "docs*",
+    "examples*"
+   ]
+  },
+  "declared_py_modules": [
+   "jqdata"
+  ],
+  "entry_point": {
+   "console_script": "bullet-trade = bullet_trade.cli.main:main"
+  },
+  "dependency_declaration": "pyproject [project].dependencies plus extras dev/tushare/qmt/qmtserver/report; no lockfile in the delivered tree",
+  "flat_to_module_mapping": [
+   {
+    "flat": "__init__.py",
+    "module": "jqdata",
+    "basis": "declared py-modules entry and the JQData shim body"
+   },
+   {
+    "flat": "__init____4fb40998.py",
+    "module": "bullet_trade/__init__.py",
+    "basis": "package banner 'BulletTrade' and matplotlib Agg setup"
+   },
+   {
+    "flat": "__init____611063f6.py",
+    "module": "helpers/__init__.py",
+    "basis": "relative model/globals/settings imports that match the helper namespace"
+   },
+   {
+    "flat": "api.py",
+    "module": "bullet_trade/api.py",
+    "basis": "defines _create_provider / _ensure_provider_auth per the R08 provider block"
+   },
+   {
+    "flat": "base.py",
+    "module": "bullet_trade/providers/base.py",
+    "basis": "DataProvider base referenced by api._create_provider"
+   },
+   {
+    "flat": "env_loader.py",
+    "module": "bullet_trade/utils/env_loader.py",
+    "basis": "get_data_provider_config consumer"
+   },
+   {
+    "flat": "engine.py",
+    "module": "bullet_trade/engine.py",
+    "basis": "run loop body"
+   },
+   {
+    "flat": "backtest_session.py",
+    "module": "bullet_trade/backtest_session.py",
+    "basis": "session object body"
+   },
+   {
+    "flat": "globals.py",
+    "module": "bullet_trade/globals.py",
+    "basis": "exports g and log used by helpers"
+   },
+   {
+    "flat": "models.py",
+    "module": "bullet_trade/models.py",
+    "basis": "Context/Portfolio/Position/Trade exports used by helpers"
+   },
+   {
+    "flat": "settings.py",
+    "module": "bullet_trade/settings.py",
+    "basis": "set_benchmark/set_order_cost exports used by helpers"
+   },
+   {
+    "flat": "cache.py",
+    "module": "bullet_trade/cache.py",
+    "basis": "self-contained cache body"
+   },
+   {
+    "flat": "exceptions.py",
+    "module": "bullet_trade/exceptions.py",
+    "basis": "self-contained exception body"
+   },
+   {
+    "flat": "jqdata.py",
+    "module": "jqdata (implementation body)",
+    "basis": "JQData API surface; the __init__ shim imports from .api"
+   },
+   {
+    "flat": "base__9942cb95.py",
+    "module": "UNRESOLVED_SECOND_BASE",
+    "basis": "a second flattened base body; package membership cannot be recovered from the flat name alone"
+   },
+   {
+    "flat": "test_dividend_data_consistency.py",
+    "module": "tests/*",
+    "basis": "pytest file, excluded from packaging"
+   },
+   {
+    "flat": "test_exec_and_dividends_reference.py",
+    "module": "tests/*",
+    "basis": "pytest file, excluded from packaging"
+   }
+  ],
+  "no_package_startup": true,
+  "no_installs": true,
+  "authorized_this_correction": false
+ },
+ "repaired_by_reference": {
+  "stock_raw_paths_and_two_source_hashes": {
+   "carried_from": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R05/GAP_REPAIR_INPUTS.json plus the R06 pins",
+   "reset_to_unknown": false
+  },
+  "credential_locators": {
+   "carried_from": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/SOURCE_ACCESS_REGISTER.json",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/ACCESS_AND_DOWNLOAD_RUNBOOK.md"
+   ],
+   "reset_to_unknown": false
+  },
+  "engine_env_loader": "an env-loader placeholder is not a substitute for the established download credential route; the register/runbook remain the authority",
+  "secret_values_or_secret_dependent_hashes_uploaded": false
+ },
+ "canonical_adapter_status": {
+  "delivered_as": "pure candidate transform",
+  "installed_reader": false,
+  "wired_into_production": false,
+  "engine_pointed_directly_at_raw": false,
+  "creates_known_at_or_pit_admission": false,
+  "formal_data_plane": false,
+  "regression_evidence": {
+   "legacy_reader_rows_on_canonical_schema": 0,
+   "successor_rows_preserved": 2,
+   "probe_source": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\RAW_FILES\\index_daily__399303_XSHE__to_20260804.parquet",
+   "probe_source_sha256": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200",
+   "probe_rows_in": 5242,
+   "probe_rows_out": 5242
+  },
+  "root_cause_statement": "The hash-pinned daily compiler's read_price_frame recognises code/security/order_book_id/symbol but not canonical_code, and recognises money but not amount. This is a reproducible code-path/schema incompatibility; it does not establish which historical publication used that function and does not explain every missing consumer window."
+ },
+ "flags": {
+  "SOURCE_ABSENCE_CLAIMS": 0,
+  "NETWORK_CALLS": 0,
+  "FOUNDATION_ACCEPTANCE": false,
+  "ORDER_ALLOWED": false
+ }
+}
