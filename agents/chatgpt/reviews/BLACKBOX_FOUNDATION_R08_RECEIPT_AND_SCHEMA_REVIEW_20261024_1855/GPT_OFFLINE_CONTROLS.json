@@ -1,0 +1,26 @@
+{
+  "reviewed_at": "2026-10-24T18:55:00+08:00",
+  "receipt_audit_tests": {
+    "status": "PASS",
+    "controls": 6,
+    "command": "PYTHONPATH=/workspace/scratch/d47cebca484a/r06_deps python test_r08_receipt_audit.py"
+  },
+  "canonical_schema_tests": {
+    "status": "PASS",
+    "controls": 9,
+    "command": "PYTHONPATH=/workspace/scratch/d47cebca484a/r06_deps python test_canonical_index_schema_r1.py r07_compiler_source.py",
+    "old_reader_rows": 0,
+    "successor_rows_preserved": 2
+  },
+  "scope": "OFFLINE_SYNTHETIC_ONLY",
+  "desktop_audited": false,
+  "production_integration": false,
+  "network_calls": 0,
+  "files": {
+    "r08_receipt_audit.py": "6802053d2f87822d466556a70a24310120d99d24679f4f965fecdb108156e838",
+    "test_r08_receipt_audit.py": "883a3d8b5a20a30a8ad3f0ba49b08c91de2a71065de82326dc9de0304ddd8c6a",
+    "canonical_index_schema_r1.py": "38c0290e3c50313879924d0fd41866e62badeaa2066421647f3a9e305f6957cc",
+    "test_canonical_index_schema_r1.py": "50717907c340a5f613a9ee24d979b6ea8f040098b17ccde240e2eac8f4c3d44a",
+    "probe_canonical_index_r1.py": "b9fd6714e10db3476fe2d069c90bfa4a2ca45df395b7270c861cec3db7e868a4"
+  }
+}
