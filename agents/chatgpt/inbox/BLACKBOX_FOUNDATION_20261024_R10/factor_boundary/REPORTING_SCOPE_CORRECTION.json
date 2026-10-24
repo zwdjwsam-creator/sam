@@ -1,0 +1,44 @@
+{
+ "schema": "R10_REWORK_REPORTING_SCOPE_CORRECTION_1",
+ "purpose": "correct four over-broad or mistyped statements on the previous append-only receipt; no document reinstall, no repeated query, no new inventory",
+ "corrections": [
+  {
+   "id": "S1_CANDIDATE_RECOVERY_SCOPE",
+   "previous_statement": "B4 phrased the candidate recovery as applying to the mixed product list",
+   "corrected_scope": "the candidate recovery is demonstrated for stock daily only, via STOCK_DAILY_RAW_PIT_R1 / STOCK_DAILY_PIT_R1. The two successful queries prove nothing about ETF, index, valuation or fund candidates being materialised. A single raw_present=true must not be read as applying to that mixed list.",
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_boundary_delivery\\captures\\CMD2_query_2026_ohlcv.stdout.bin",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_boundary_delivery\\captures\\CMD3_query_2025_inherited.stdout.bin"
+   ],
+   "blocks_nothing": true
+  },
+  {
+   "id": "S2_GUIDE_LOCATION",
+   "previous_statement": "G5 listed the local guide under an extra _OPS path below the recovery work directory",
+   "corrected_scope": "E:\\BLACKBOX\\_OPS\\CURSOR_WORKSPACE\\BLACKBOX_LOCAL_OPERATIONS_R10.md",
+   "corrected_sha256": "685e3b2097007cbd7981af504c8652be8842741c1bd62af86edd4482164b7c3c",
+   "action": "REPORTING_TYPO_ONLY; the installed bytes and the installation receipt were already correct, so no reinstall was performed",
+   "blocks_nothing": true
+  },
+  {
+   "id": "S3_STRATEGY_IDENTIFICATION_SUFFICIENCY",
+   "previous_statement": "strategy artifact identification was left open-ended",
+   "corrected_scope": "the identified JQ daily simulation template and its mandatory-readme satisfy identification for those two artifacts only. Choosing or reconstructing an old strategy is not a blocker to the present data-foundation repair and was not performed.",
+   "blocks_nothing": true
+  },
+  {
+   "id": "S4_SESSION_AUTHORITY",
+   "previous_statement": "the stock update-plan output was read as carrying gap/calendar meaning",
+   "corrected_scope": "the verified asof-versioned exchange calendar is the session authority, not a factor-derived date union. R07/R08 superseding evidence and the recovered stock candidate take precedence on those questions. Historical copied plan labels (including a factor-derived calendar description and old gap wording) are not a new missing-source verdict and grant no executable permission.",
+   "blocks_nothing": true
+  }
+ ],
+ "document_reinstall_performed": false,
+ "query_rerun": false,
+ "new_inventory_requested": false,
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false
+}
