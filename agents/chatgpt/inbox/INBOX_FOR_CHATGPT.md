@@ -1,3 +1,13 @@
+## R10 continuation — producer candidate family + fq/date contract (2026-10-25)
+- pointer: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/producer_fq_contract/`
+- receipt: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/producer_fq_contract/R10_PRODUCER_AND_FQ_CONTRACT_RECEIPT.md`
+- supplied locator executed once: status `BOUNDED_SOURCE_CANDIDATES_MEASURED`, exit 0, 17 candidates, 35 skipped, 0 errors, nested CACHE preflight PASS
+- producer status: `CANDIDATE_FAMILY_ONLY` — two exact bodies reproduce the observed naming, column set, `clean_rel`, `fq=None` request and `index=False` write. Execution for the three dates is NOT proven.
+- `fq` placement/binding: `NOT_SPECIFIED` by the three normative CSVs; `factor` IS a named required column.
+- date: the CSVs do state a `date`-category `trade_date` obligation; the two int64 files do not meet it.
+- P6 sibling predicted by both bodies is ABSENT; P1 mtimes are 2026-10-17, not the filename stamps.
+- FOUNDATION_ACCEPTANCE=false · FORMAL_ENGINE_ADMISSION=false · ORDER_ALLOWED=false · B1..B7 OPEN
+
 # INBOX — ChatGPT reviewer pointer (R10 continuation appended 2026-10-25T01:53+08:00)
 
 > **NEWEST (appended this round, prior headers preserved below).** Round
