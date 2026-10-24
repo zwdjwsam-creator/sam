@@ -1,0 +1,823 @@
+{
+ "registry_id": "BLACKBOX_ECOLOGY_REGISTRY",
+ "version": "R1_ROUND1_20261024",
+ "datasets": [
+  {
+   "dataset_id": "PRICE_STOCK_DAILY",
+   "title": "A股日线 OHLCV（原始/清洗）",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）",
+    "batch 段 factor=null 的复权路径未落地"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_STOCK_1M",
+   "title": "A股 1 分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_STOCK_5M",
+   "title": "A股 5 分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_5m",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_STOCK_30M",
+   "title": "A股 30 分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_30m",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_STOCK_60M",
+   "title": "A股 60 分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_60m",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_ETF_DAILY",
+   "title": "ETF 日线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P8_etf_fund",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_daily",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_ETF_1M",
+   "title": "ETF 1 分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_ETF_5M",
+   "title": "ETF 5 分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_ETF_30M",
+   "title": "ETF 30 分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_30m",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_ETF_60M",
+   "title": "ETF 60 分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_60m",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_INDEX_DAILY",
+   "title": "指数日线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CACHE",
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "PRICE_INDEX_MINUTE",
+   "title": "指数分钟线",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+   "clean_root": null,
+   "unknown": [
+    "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+   ],
+   "conflict": []
+  },
+  {
+   "dataset_id": "CALENDAR_CN_EXCHANGE",
+   "title": "交易日历",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "SECURITY_MASTER",
+   "title": "证券主数据（股/ETF/基金/指数/期货）",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "ADJUST_FACTOR",
+   "title": "复权因子（独立列）",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "TRADABLE_STATUS",
+   "title": "涨跌停 / 停牌状态",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "INDEX_COMPONENTS",
+   "title": "指数成分（快照）",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_components",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "INDEX_WEIGHTS",
+   "title": "指数权重",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_weights",
+   "unknown": [
+    "逐指数/逐年 PIT 补证未做（historical_backtest_eligible 全 False）"
+   ],
+   "conflict": [
+    "权重文件在 ≠ 权重历史可回测（53,714 行 PARTIAL_OR_UNPROVEN）"
+   ]
+  },
+  {
+   "dataset_id": "INDUSTRY_CONCEPT",
+   "title": "行业 / 概念成分",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "INDUSTRY_CONCEPT_EVENTS",
+   "title": "概念事件",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept_events",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "BILLBOARD",
+   "title": "龙虎榜",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\billboard",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "XR_XD",
+   "title": "除权除息事件",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\xr_xd",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "CORPORATE_REFERENCE",
+   "title": "公司行为参考",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\corporate_reference",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "SHAREHOLDER_TOP10",
+   "title": "十大股东",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_top10",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "SHAREHOLDER_FLOATING_TOP10",
+   "title": "十大流通股东",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_floating_top10",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "VALUATION",
+   "title": "估值日频",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factor\\valuation",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "FINANCE_PIT",
+   "title": "财务三大表 + 指标（PIT）",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fundamentals",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "MTSS",
+   "title": "融资融券",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+   "clean_root": null,
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "FUND_ETF_NAV",
+   "title": "ETF 净值（unit/acc）",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_nav",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_NAV",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "ETF_SHARE",
+   "title": "ETF 份额",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "OPEN_FUND",
+   "title": "场外基金净值",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\open_fund",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "QDII",
+   "title": "QDII 净值",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\QDII",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "FUND_OTHER",
+   "title": "其他基金净值",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\other",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "FUND_TRACKING_INDEX_MAPPING",
+   "title": "基金跟踪指数映射",
+   "supplier": "JQData",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": [
+    "CLEAN",
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+   "clean_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\fund_tracking_index_mapping",
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "FACTOR_260_DICTIONARY",
+   "title": "聚宽 260 因子字典（清单/语义/公式）",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [],
+   "conflict": [
+    "字典可用 ≠ 因子值可用"
+   ]
+  },
+  {
+   "dataset_id": "FACTOR_260_SEMANTICS",
+   "title": "因子字段语义",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [],
+   "conflict": [
+    "字典可用 ≠ 因子值可用"
+   ]
+  },
+  {
+   "dataset_id": "FACTOR_260_FORMULA",
+   "title": "因子公式",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [],
+   "conflict": [
+    "字典可用 ≠ 因子值可用"
+   ]
+  },
+  {
+   "dataset_id": "FACTOR_260_PIT_RULES",
+   "title": "因子 PIT 规则",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [],
+   "conflict": [
+    "字典可用 ≠ 因子值可用"
+   ]
+  },
+  {
+   "dataset_id": "FACTOR_260_CLEANING_RULES",
+   "title": "因子清洗规则（未激活）",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [],
+   "conflict": [
+    "字典可用 ≠ 因子值可用"
+   ]
+  },
+  {
+   "dataset_id": "FACTOR_260_ENGINE_MAPPING",
+   "title": "因子 → 引擎字段映射",
+   "supplier": "JQData",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [],
+   "conflict": [
+    "字典可用 ≠ 因子值可用"
+   ]
+  },
+  {
+   "dataset_id": "FACTOR_VALUE",
+   "title": "因子值（260）",
+   "supplier": "JQData",
+   "lineage": "NOT_DOWNLOADED_BY_POLICY",
+   "layers": [
+    "FACTOR_VALUE"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [
+    "若未来解禁需权限重探"
+   ],
+   "conflict": [
+    "不得把字典准入当因子值可用"
+   ]
+  },
+  {
+   "dataset_id": "STRATEGY_OUTPUT",
+   "title": "策略/研究输出（非数据底座）",
+   "supplier": "BLACKBOX_INTERNAL",
+   "lineage": "INTERNAL_RESEARCH_OUTPUT",
+   "layers": [
+    "STRATEGY_OUTPUT"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [],
+   "conflict": [
+    "策略经验 ≠ 底层规则"
+   ]
+  },
+  {
+   "dataset_id": "TS_CBOND_R1",
+   "title": "途施可转债原始 R1",
+   "supplier": "Tushare",
+   "lineage": "EXTERNAL_TUSHARE",
+   "layers": [
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R1",
+   "clean_root": null,
+   "unknown": [
+    "字段级与周期完整性未核"
+   ],
+   "conflict": [
+    "不得混血统"
+   ]
+  },
+  {
+   "dataset_id": "TS_CBOND_R2",
+   "title": "途施可转债原始 R2",
+   "supplier": "Tushare",
+   "lineage": "EXTERNAL_TUSHARE",
+   "layers": [
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R2",
+   "clean_root": null,
+   "unknown": [
+    "字段级与周期完整性未核"
+   ],
+   "conflict": [
+    "不得混血统"
+   ]
+  },
+  {
+   "dataset_id": "EXTERNAL_DICT_EVIDENCE",
+   "title": "外部字典证据（朋友 JQData 字典 + Tushare patch）",
+   "supplier": "Friend_JQData/Tushare",
+   "lineage": "EXTERNAL_FRIEND_JQDATA_TUSHARE",
+   "layers": [
+    "EVIDENCE"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [
+    "字段级与周期完整性未核"
+   ],
+   "conflict": [
+    "不得混血统"
+   ]
+  },
+  {
+   "dataset_id": "EXTERNAL_EVIDENCE_PLANE",
+   "title": "外部证据平面（CANONICAL/COMPANY_PRIMARY/EXCHANGE…）",
+   "supplier": "MULTI_EXTERNAL",
+   "lineage": "EXTERNAL_MULTI_EXTERNAL",
+   "layers": [
+    "EVIDENCE"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [
+    "字段级与周期完整性未核"
+   ],
+   "conflict": [
+    "不得混血统"
+   ]
+  },
+  {
+   "dataset_id": "US_MARKET",
+   "title": "美股研究旁路",
+   "supplier": "EXTERNAL",
+   "lineage": "EXTERNAL_EXTERNAL",
+   "layers": [
+    "EVIDENCE"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [
+    "字段级与周期完整性未核"
+   ],
+   "conflict": [
+    "不得混血统"
+   ]
+  },
+  {
+   "dataset_id": "TUSHARE_INDEX_WEIGHT_ADAPTER",
+   "title": "Tushare 指数权重适配器锁",
+   "supplier": "Tushare",
+   "lineage": "EXTERNAL_TUSHARE",
+   "layers": [
+    "EVIDENCE"
+   ],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [
+    "字段级与周期完整性未核"
+   ],
+   "conflict": [
+    "不得混血统"
+   ]
+  },
+  {
+   "dataset_id": "LEGACY_JQ_RAW_CN",
+   "title": "旧中文分类聚宽 RAW（行情/财务/ETF/因子/行业）",
+   "supplier": "VARIOUS",
+   "lineage": "LEGACY_PRE_BASELINE_RAW_CLASSIFICATION",
+   "layers": [
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读",
+   "clean_root": null,
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "EXPERIMENTAL_WINDOW_RAW",
+   "title": "2026-03-25..05-01 独立窗口 RAW",
+   "supplier": "VARIOUS",
+   "lineage": "HISTORICAL_EXPERIMENTAL_WINDOW_DO_NOT_USE_AS_MASTER",
+   "layers": [
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_WINDOW_FULL_RAW_20260325_20260501",
+   "clean_root": null,
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "STRATEGY_DATA_PLANE_ADDITIONS",
+   "title": "策略数据平面增量（17 产品）",
+   "supplier": "VARIOUS",
+   "lineage": "FORMAL_POST_BASELINE_INHERITANCE",
+   "layers": [
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions",
+   "clean_root": null,
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "FORENSIC_CANARY",
+   "title": "取证金丝雀 / 接口盘点",
+   "supplier": "VARIOUS",
+   "lineage": "AUDIT_ONLY_NOT_FOUNDATION",
+   "layers": [
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\_forensic_canary",
+   "clean_root": null,
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "EXPERIMENT_CANARY",
+   "title": "分钟 fq 试验 canary",
+   "supplier": "VARIOUS",
+   "lineage": "EXPERIMENTAL_NOT_FOUNDATION",
+   "layers": [
+    "RAW"
+   ],
+   "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\试验",
+   "clean_root": null,
+   "unknown": [],
+   "conflict": []
+  },
+  {
+   "dataset_id": "UNDETERMINED_SCOPE",
+   "title": "未在有界范围内出现的来源",
+   "supplier": "VARIOUS",
+   "lineage": "UNDETERMINED",
+   "layers": [],
+   "raw_root": null,
+   "clean_root": null,
+   "unknown": [
+    "保持 UNDETERMINED：不据此宣称数据缺失，也不静默遗漏"
+   ],
+   "conflict": []
+  }
+ ]
+}
