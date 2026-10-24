@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-24T13:55:08.739158+08:00",
+  "reused_artifacts": [
+    {
+      "from": "completion_1803/DOMAIN_SAMESET_DIFF.json",
+      "use": "26 域路径存在性结论（不再重查）"
+    },
+    {
+      "from": "completion_1803/SCOPE_COVERAGE_MAP.json",
+      "use": "21 增量 dataset + 26 域映射"
+    },
+    {
+      "from": "completion_1752/ENGINE_BASELINE_CHECK.json",
+      "use": "引擎静态核查基线、admission matrix 指纹"
+    },
+    {
+      "from": "13_local_schema_header_final_check",
+      "use": "attribute/minute/finance schema 枚举 + dictionary v2"
+    },
+    {
+      "from": "20_unified_data_schema_contract_freeze_full_R1",
+      "use": "17 份统一契约（domain/dtype/pk/pit/status/known_gap）"
+    },
+    {
+      "from": "rule_library/master_registry_R1",
+      "use": "5 张 admission matrix + 15 道 gate + 激活字段"
+    }
+  ],
+  "new_measurements_only": [
+    "26 域 parquet header 按 prefix 枚举（证明分钟 8 列）",
+    "P5 20 dataset 的 receipt/sidecar 计数",
+    "FUND_ETF_NAV 增量文件计数",
+    "local_dictionary_registry 隔离纯读取 smoke"
+  ],
+  "not_done_on_purpose": [
+    "26 域逐文件重读",
+    "财务正文读取",
+    "历史下载脚本找回",
+    "收益重现",
+    "下载/API"
+  ]
+}
