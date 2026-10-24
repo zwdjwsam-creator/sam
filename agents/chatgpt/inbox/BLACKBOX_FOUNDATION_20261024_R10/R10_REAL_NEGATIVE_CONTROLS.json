@@ -1,0 +1,84 @@
+{
+ "schema": "R10_REAL_NEGATIVE_CONTROLS_1",
+ "count": 6,
+ "controls": [
+  {
+   "control": "STALE_CALENDAR",
+   "exit_code": 3,
+   "status": "STOP",
+   "reason": "REQUEST_OUTSIDE_PINNED_CALENDAR; NO_SOURCE_ABSENCE_CLAIM",
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_NEG_STALE_CALENDAR.txt",
+    "sha256": "754a4e1fd9bf25e5034226ea2524250f6aa171fe8e73847a18d28a095bb20739",
+    "bytes": 296
+   }
+  },
+  {
+   "control": "UNSUPPORTED_FIELD",
+   "exit_code": 3,
+   "status": "STOP",
+   "reason": "UNSUPPORTED_FIELD",
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_NEG_UNSUPPORTED_FIELD.txt",
+    "sha256": "f2241762f6dc216fdbb86032dca3944568235cd3342c2c724978d316dec8cbce",
+    "bytes": 257
+   }
+  },
+  {
+   "control": "CODE_ALIAS",
+   "exit_code": 3,
+   "status": "STOP",
+   "reason": "CANONICAL_CODE_REQUIRED",
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_NEG_CODE_ALIAS.txt",
+    "sha256": "428fc61a5be867b590ce1f3e5b41e7f5330b4c525855ce1e21a2010b77e7f857",
+    "bytes": 263
+   }
+  },
+  {
+   "control": "READER_NOT_ACTIVATED",
+   "exit_code": 3,
+   "status": "STOP",
+   "reason": "PRODUCT_READER_NOT_ACTIVATED; NO_RAW_FALLBACK",
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_NEG_READER_NOT_ACTIVATED.txt",
+    "sha256": "6da00622408b3d8f40b6d55651d27ffb030331247cca32341f9a5a1d0a2f03ad",
+    "bytes": 285
+   }
+  },
+  {
+   "control": "WINDOW_OVER_31",
+   "exit_code": 3,
+   "status": "STOP",
+   "reason": "REQUEST_WINDOW_LIMIT_31_DAYS",
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_NEG_WINDOW_OVER_31.txt",
+    "sha256": "65f236fad74269c26ebe8dae60a9e0e3e99d2fd41459696ff2dd69d00740d35e",
+    "bytes": 268
+   }
+  },
+  {
+   "control": "TOO_MANY_CODES",
+   "exit_code": 3,
+   "status": "STOP",
+   "reason": "INVALID_CODE_COUNT",
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_NEG_TOO_MANY_CODES.txt",
+    "sha256": "ac531f45f293bb95a53a7170cd5acf088ad9e95bcab26c68d70bc0e28cf3a3fe",
+    "bytes": 258
+   }
+  }
+ ],
+ "note": "each is a real desktop invocation of the reviewed entry, not a synthetic unit test; all STOP with exit 3 and all set SOURCE_ABSENCE_CLAIM_ALLOWED=false",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
