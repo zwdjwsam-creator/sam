@@ -1,0 +1,1313 @@
+{
+  "FOUNDATION_ACCEPTANCE": false,
+  "artifacts": [
+    {
+      "bytes": 310665,
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cleaning\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063"
+    },
+    {
+      "bytes": 311528,
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cleaning\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7"
+    },
+    {
+      "bytes": 21878999,
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+      "sha256": "ee46d3639133fc57cc7c015a173e23620f8013e1b52b783f53f9b4cd512b00ca"
+    },
+    {
+      "bytes": 21881023,
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+      "sha256": "2405ad954d2618868e36a72b9a7d4364f7d352256876baf601cf9fe3b7a7086b"
+    },
+    {
+      "bytes": 124076,
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\ECOLOGY_REGISTRY_R06_DIAGNOSTIC.json",
+      "sha256": "8a590957ee8a1f996fef929a0c37e536227492feab9238d054ad4e18e2744f79"
+    }
+  ],
+  "build_validated": true,
+  "cache_overrides": {
+    "STOCK_DAILY_PIT_R1": {
+      "year=2026/part_2026.parquet": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet"
+    },
+    "STOCK_DAILY_RAW_PIT_R1": {
+      "year=2026/part_2026.parquet": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet"
+    }
+  },
+  "cache_results": {
+    "STOCK_DAILY_PIT_R1": {
+      "added_by_date": {
+        "2026-08-31": 5212,
+        "2026-09-01": 5214
+      },
+      "all_non_target_rows_preserved": true,
+      "candidate_rows": 959896,
+      "parent_rows": 949470
+    },
+    "STOCK_DAILY_RAW_PIT_R1": {
+      "added_by_date": {
+        "2026-08-31": 5212,
+        "2026-09-01": 5214
+      },
+      "all_non_target_rows_preserved": true,
+      "candidate_rows": 959896,
+      "parent_rows": 949470
+    }
+  },
+  "candidate_daily_count": 234,
+  "candidate_only": true,
+  "candidate_registry_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\ECOLOGY_REGISTRY_R06_DIAGNOSTIC.json",
+  "catalog_reconciliation_status": "PHYSICAL_PARENT_PRODUCT_ROOTS_ONLY; registry and sidecars remain a separate gate",
+  "cleaning_daily_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cleaning\\price\\stock_ohlcv_daily",
+  "dirty_derived_products": [
+    "STOCK_FACTOR_DAILY_R1",
+    "MARKET_STRUCTURE_DAILY_R1"
+  ],
+  "engine_admission_allowed": false,
+  "generation": "R06_TWO_DAY_RECOVERY_20261024",
+  "inherited_cache_products": [
+    "ADJUST_FACTOR_PIT_R1",
+    "BILLBOARD_DAILY_PIT_R1",
+    "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+    "CORP_SHAREHOLDER_TOP10_PIT_R1",
+    "CORP_XR_XD_EVENT_PIT_R1",
+    "ETF_DAILY_PIT_R1",
+    "ETF_FACTOR_DAILY_R1",
+    "ETF_TRACKING_INDEX_MAP_R1",
+    "FINANCIAL_INDICATOR_PIT_R1",
+    "FUND_DAILY_PIT_R1",
+    "FUND_FACTOR_DAILY_R1",
+    "FUND_LIKE_ASSET_VIEW_R1",
+    "FUND_NAV_PIT_R1",
+    "INDEX_CONSTITUENT_PIT_R1",
+    "INDEX_DAILY_R1",
+    "INDEX_FACTOR_DAILY_R1",
+    "INDEX_WEIGHT_PIT_R1",
+    "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+    "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+    "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+    "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+    "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+    "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+    "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+    "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+    "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+    "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+    "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+    "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+    "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+    "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+    "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+    "JQ20_STK_LIST_REFERENCE_PIT_R1",
+    "JQ20_STK_NAME_HISTORY_PIT_R1",
+    "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+    "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+    "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+    "MARKET_STRUCTURE_DAILY_R1",
+    "MARKET_UNIVERSE_PIT_R1",
+    "SECURITY_MASTER_SNAPSHOT_R1",
+    "STOCK_DAILY_PIT_R1",
+    "STOCK_DAILY_RAW_PIT_R1",
+    "STOCK_FACTOR_DAILY_R1",
+    "STOCK_TRADEABILITY_PIT_R1",
+    "SW_L1_MEMBERSHIP_PIT_R1",
+    "SW_L1_STRUCTURE_DAILY_R1",
+    "SW_L2_MEMBERSHIP_PIT_R1",
+    "SW_L2_STRUCTURE_DAILY_R1",
+    "SW_L3_MEMBERSHIP_PIT_R1",
+    "SW_L3_STRUCTURE_DAILY_R1",
+    "VALUATION_PIT_R1"
+  ],
+  "inherited_status": "PRESERVED_REFERENCE_NOT_REVERIFIED_OR_PROMOTED",
+  "other_dependencies": "UNVERIFIED_UNTIL_DEPENDENCY_REGISTRY_RECONCILED",
+  "parent_cache_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+  "parent_cache_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+  "parent_cleaning_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+  "parent_cleaning_standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+  "parent_daily_count": 232,
+  "parent_daily_fingerprints": {
+    "stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      203498,
+      1792248598213238000
+    ],
+    "stock_daily__batch_10__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      283231,
+      1792248597847030400
+    ],
+    "stock_daily__batch_11__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      11467,
+      1792248598760424200
+    ],
+    "stock_daily__batch_1__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      236671,
+      1792248599278072600
+    ],
+    "stock_daily__batch_2__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      228330,
+      1792248599901478100
+    ],
+    "stock_daily__batch_3__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      232230,
+      1792248600557386800
+    ],
+    "stock_daily__batch_4__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      254758,
+      1792248601108401600
+    ],
+    "stock_daily__batch_5__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      269974,
+      1792248598517277200
+    ],
+    "stock_daily__batch_6__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      220496,
+      1792248599584002900
+    ],
+    "stock_daily__batch_7__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      212070,
+      1792248600245669900
+    ],
+    "stock_daily__batch_8__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      247834,
+      1792248600822756400
+    ],
+    "stock_daily__batch_9__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      257249,
+      1792248601453445500
+    ],
+    "stock_daily__gapfill_codes__2026__000638XSHE_301583XSHE__none_adj__v1__20260807_040139.parquet": [
+      30517,
+      1792113955163441400
+    ],
+    "stock_daily__gapfill_codes__2026__301677XSHE_688825XSHG__none_adj__v1__20260807_040139.parquet": [
+      29520,
+      1792113955364201400
+    ],
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-03__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-03.parquet": [
+      73229,
+      1792398199171861200
+    ],
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-06__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-06.parquet": [
+      73150,
+      1792398199460538700
+    ],
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-07__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-07.parquet": [
+      72879,
+      1792398199745619800
+    ],
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-08__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-08.parquet": [
+      72867,
+      1792398199996004600
+    ],
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-09__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-09.parquet": [
+      72941,
+      1792398200300087700
+    ],
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-10__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-10.parquet": [
+      73110,
+      1792398200679064400
+    ],
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-03__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-03.parquet": [
+      59890,
+      1792098257643211700
+    ],
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-06__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-06.parquet": [
+      59874,
+      1792398197772916400
+    ],
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-07__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-07.parquet": [
+      59723,
+      1792398198079944500
+    ],
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-08__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-08.parquet": [
+      59737,
+      1792398198433174700
+    ],
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-09__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-09.parquet": [
+      59715,
+      1792398198668738000
+    ],
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-10__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-10.parquet": [
+      59872,
+      1792398198916386100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2014__none_adj__v1__20260612_183025.parquet": [
+      2470439,
+      1792437612992143300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2015__none_adj__v1__20260612_183025.parquet": [
+      2565971,
+      1792437610681131900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2016__none_adj__v1__20260612_183025.parquet": [
+      2751412,
+      1792437609625130600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2017__none_adj__v1__20260612_183025.parquet": [
+      2762914,
+      1792437611907660400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2018__none_adj__v1__20260612_183025.parquet": [
+      2738173,
+      1792437618057695700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2019__none_adj__v1__20260612_183025.parquet": [
+      2832553,
+      1792437614280666800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2020__none_adj__v1__20260612_183025.parquet": [
+      2861482,
+      1792437616617365000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2021__none_adj__v1__20260612_183025.parquet": [
+      2934013,
+      1792437615389079900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2022__none_adj__v1__20260612_183025.parquet": [
+      2780559,
+      1792437620551689100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2023__none_adj__v1__20260612_183025.parquet": [
+      2667394,
+      1792437619295715300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2024__none_adj__v1__20260612_183025.parquet": [
+      2809603,
+      1792437621744371300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2025__none_adj__v1__20260612_183025.parquet": [
+      2787959,
+      1792437622915587900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2026__none_adj__v1__20260612_183025.parquet": [
+      1274673,
+      1792437623519071500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      120263,
+      1792437623798920200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2014__none_adj__v1__20260612_183025.parquet": [
+      7300,
+      1792437624268234300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2015__none_adj__v1__20260612_183025.parquet": [
+      7287,
+      1792437624011465300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2016__none_adj__v1__20260612_183025.parquet": [
+      7321,
+      1792437624727139000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2017__none_adj__v1__20260612_183025.parquet": [
+      7283,
+      1792437624491355900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2018__none_adj__v1__20260612_183025.parquet": [
+      7285,
+      1792437625022207000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2019__none_adj__v1__20260612_183025.parquet": [
+      58665,
+      1792437625253408700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2020__none_adj__v1__20260612_183025.parquet": [
+      678439,
+      1792437625788275200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2021__none_adj__v1__20260612_183025.parquet": [
+      1747668,
+      1792437626613889800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2022__none_adj__v1__20260612_183025.parquet": [
+      2466765,
+      1792437629437887400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2023__none_adj__v1__20260612_183025.parquet": [
+      3085424,
+      1792437628203359000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2024__none_adj__v1__20260612_183025.parquet": [
+      3433492,
+      1792437631138995600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet": [
+      3695535,
+      1792437632803323300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2026__none_adj__v1__20260612_183025.parquet": [
+      1740848,
+      1792437633726687700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_10__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      156203,
+      1792437634095759700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2014__none_adj__v1__20260612_183025.parquet": [
+      4759,
+      1792437634390416700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2015__none_adj__v1__20260612_183025.parquet": [
+      4752,
+      1792437634647214800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2016__none_adj__v1__20260612_183025.parquet": [
+      4786,
+      1792437634867953200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2017__none_adj__v1__20260612_183025.parquet": [
+      4748,
+      1792437635119370800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2018__none_adj__v1__20260612_183025.parquet": [
+      4747,
+      1792437635922428400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2019__none_adj__v1__20260612_183025.parquet": [
+      4769,
+      1792437635629746300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2020__none_adj__v1__20260612_183025.parquet": [
+      12866,
+      1792437635391301100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2021__none_adj__v1__20260612_183025.parquet": [
+      31779,
+      1792437636240794500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2022__none_adj__v1__20260612_183025.parquet": [
+      30492,
+      1792437637035882100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2023__none_adj__v1__20260612_183025.parquet": [
+      30159,
+      1792437636494226300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2024__none_adj__v1__20260612_183025.parquet": [
+      31918,
+      1792437636765221000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2025__none_adj__v1__20260612_183025.parquet": [
+      32320,
+      1792437637319275000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2026__none_adj__v1__20260612_183025.parquet": [
+      32718,
+      1792437637628536800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_11__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      6953,
+      1792437637925176100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2014__none_adj__v1__20260612_183025.parquet": [
+      2181905,
+      1792437639009874300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2015__none_adj__v1__20260612_183025.parquet": [
+      2182262,
+      1792437640100730500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2016__none_adj__v1__20260612_183025.parquet": [
+      2448412,
+      1792437641200927800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2017__none_adj__v1__20260612_183025.parquet": [
+      2441156,
+      1792437642285183900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2018__none_adj__v1__20260612_183025.parquet": [
+      2406869,
+      1792437643324358900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2019__none_adj__v1__20260612_183025.parquet": [
+      2518076,
+      1792437644329355400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2020__none_adj__v1__20260612_183025.parquet": [
+      2586312,
+      1792437646702586000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2021__none_adj__v1__20260612_183025.parquet": [
+      2606982,
+      1792437645506869000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2022__none_adj__v1__20260612_183025.parquet": [
+      2629657,
+      1792437649273659100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2023__none_adj__v1__20260612_183025.parquet": [
+      2791589,
+      1792437647934770700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2024__none_adj__v1__20260612_183025.parquet": [
+      3022587,
+      1792437650389248500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2025__none_adj__v1__20260612_183025.parquet": [
+      3153994,
+      1792437651816395600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2026__none_adj__v1__20260612_183025.parquet": [
+      1476549,
+      1792437652463914100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_1__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      138606,
+      1792437652795808800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2014__none_adj__v1__20260612_183025.parquet": [
+      1766041,
+      1792437653587159100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2015__none_adj__v1__20260612_183025.parquet": [
+      1993858,
+      1792437655495474000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2016__none_adj__v1__20260612_183025.parquet": [
+      2490735,
+      1792437654523990700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2017__none_adj__v1__20260612_183025.parquet": [
+      2899320,
+      1792437656645036000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2018__none_adj__v1__20260612_183025.parquet": [
+      3045772,
+      1792437658006162800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2019__none_adj__v1__20260612_183025.parquet": [
+      3172382,
+      1792437660553011600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2020__none_adj__v1__20260612_183025.parquet": [
+      3273165,
+      1792437659287619200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2021__none_adj__v1__20260612_183025.parquet": [
+      3264564,
+      1792437664903203100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2022__none_adj__v1__20260612_183025.parquet": [
+      3093794,
+      1792437669381002300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2023__none_adj__v1__20260612_183025.parquet": [
+      2990538,
+      1792437667321569100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2024__none_adj__v1__20260612_183025.parquet": [
+      3109915,
+      1792437670959110900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2025__none_adj__v1__20260612_183025.parquet": [
+      3157132,
+      1792437672644272200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2026__none_adj__v1__20260612_183025.parquet": [
+      1440824,
+      1792437674022759500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_2__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      133860,
+      1792437673003140300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2014__none_adj__v1__20260612_183025.parquet": [
+      2021535,
+      1792437675156409100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2015__none_adj__v1__20260612_183025.parquet": [
+      2147851,
+      1792437677253172400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2016__none_adj__v1__20260612_183025.parquet": [
+      2341154,
+      1792437678314960200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2017__none_adj__v1__20260612_183025.parquet": [
+      2306825,
+      1792437676260320200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2018__none_adj__v1__20260612_183025.parquet": [
+      2454656,
+      1792437679369762600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2019__none_adj__v1__20260612_183025.parquet": [
+      2710374,
+      1792437680615889100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2020__none_adj__v1__20260612_183025.parquet": [
+      3074188,
+      1792437683307152800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2021__none_adj__v1__20260612_183025.parquet": [
+      3344709,
+      1792437682055890000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2022__none_adj__v1__20260612_183025.parquet": [
+      3098385,
+      1792437684872608900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2023__none_adj__v1__20260612_183025.parquet": [
+      3024883,
+      1792437687695811000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2024__none_adj__v1__20260612_183025.parquet": [
+      3190083,
+      1792437686410302400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2025__none_adj__v1__20260612_183025.parquet": [
+      3235081,
+      1792437688878770400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2026__none_adj__v1__20260612_183025.parquet": [
+      1460390,
+      1792437689537876600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_3__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      136008,
+      1792437689869426700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2014__none_adj__v1__20260612_183025.parquet": [
+      78242,
+      1792437690155408400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2015__none_adj__v1__20260612_183025.parquet": [
+      556606,
+      1792437690582096700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2016__none_adj__v1__20260612_183025.parquet": [
+      961336,
+      1792437691122439000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2017__none_adj__v1__20260612_183025.parquet": [
+      1825024,
+      1792437692091443400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2018__none_adj__v1__20260612_183025.parquet": [
+      2335750,
+      1792437693167317100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2019__none_adj__v1__20260612_183025.parquet": [
+      2639441,
+      1792437694250135300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2020__none_adj__v1__20260612_183025.parquet": [
+      3282896,
+      1792437695510378400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2021__none_adj__v1__20260612_183025.parquet": [
+      3556532,
+      1792437698373107800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2022__none_adj__v1__20260612_183025.parquet": [
+      3343080,
+      1792437696865151200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2023__none_adj__v1__20260612_183025.parquet": [
+      3312477,
+      1792437700921339600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2024__none_adj__v1__20260612_183025.parquet": [
+      3476520,
+      1792437699633430400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2025__none_adj__v1__20260612_183025.parquet": [
+      3598978,
+      1792437703025457500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2026__none_adj__v1__20260612_183025.parquet": [
+      1621982,
+      1792437701730904400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_4__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      146924,
+      1792437703458013500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2014__none_adj__v1__20260612_183025.parquet": [
+      7297,
+      1792437703695876100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2015__none_adj__v1__20260612_183025.parquet": [
+      7284,
+      1792437704081868800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2016__none_adj__v1__20260612_183025.parquet": [
+      7318,
+      1792437704790751400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2017__none_adj__v1__20260612_183025.parquet": [
+      7280,
+      1792437704308027600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2018__none_adj__v1__20260612_183025.parquet": [
+      7282,
+      1792437705059420200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2019__none_adj__v1__20260612_183025.parquet": [
+      7301,
+      1792437705299688800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2020__none_adj__v1__20260612_183025.parquet": [
+      42342,
+      1792437706630050800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2021__none_adj__v1__20260612_183025.parquet": [
+      928853,
+      1792437707144159500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2022__none_adj__v1__20260612_183025.parquet": [
+      2059817,
+      1792437706381204600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2023__none_adj__v1__20260612_183025.parquet": [
+      2920008,
+      1792437708525850600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2024__none_adj__v1__20260612_183025.parquet": [
+      3432451,
+      1792437712803914300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2025__none_adj__v1__20260612_183025.parquet": [
+      3645275,
+      1792437711190387800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2026__none_adj__v1__20260612_183025.parquet": [
+      1675268,
+      1792437709296360000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_5__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      151733,
+      1792437709565468800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2014__none_adj__v1__20260612_183025.parquet": [
+      2282453,
+      1792437714021573000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2015__none_adj__v1__20260612_183025.parquet": [
+      2453027,
+      1792437715241291100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2016__none_adj__v1__20260612_183025.parquet": [
+      2422073,
+      1792437716323096700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2017__none_adj__v1__20260612_183025.parquet": [
+      2414551,
+      1792437717703138600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2018__none_adj__v1__20260612_183025.parquet": [
+      2368574,
+      1792437718793704300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2019__none_adj__v1__20260612_183025.parquet": [
+      2445135,
+      1792437721899328400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2020__none_adj__v1__20260612_183025.parquet": [
+      2635464,
+      1792437719923855300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2021__none_adj__v1__20260612_183025.parquet": [
+      2662529,
+      1792437720942178000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2022__none_adj__v1__20260612_183025.parquet": [
+      2469731,
+      1792437723172863700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2023__none_adj__v1__20260612_183025.parquet": [
+      2365168,
+      1792437724325632500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2024__none_adj__v1__20260612_183025.parquet": [
+      2630776,
+      1792437726735337000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2025__none_adj__v1__20260612_183025.parquet": [
+      2840247,
+      1792437725583614400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2026__none_adj__v1__20260612_183025.parquet": [
+      1349137,
+      1792437727591829000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_6__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      128259,
+      1792437727933157300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2014__none_adj__v1__20260612_183025.parquet": [
+      2271772,
+      1792437729784457100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2015__none_adj__v1__20260612_183025.parquet": [
+      2435115,
+      1792437730703416900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2016__none_adj__v1__20260612_183025.parquet": [
+      2462461,
+      1792437728923147600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2017__none_adj__v1__20260612_183025.parquet": [
+      2496081,
+      1792437731731082700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2018__none_adj__v1__20260612_183025.parquet": [
+      2530151,
+      1792437732695007900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2019__none_adj__v1__20260612_183025.parquet": [
+      2646712,
+      1792437733840557900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2020__none_adj__v1__20260612_183025.parquet": [
+      2855956,
+      1792437735115347500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2021__none_adj__v1__20260612_183025.parquet": [
+      2911653,
+      1792437736336013500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2022__none_adj__v1__20260612_183025.parquet": [
+      2745573,
+      1792437737726475400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2023__none_adj__v1__20260612_183025.parquet": [
+      2710818,
+      1792437739004235900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2024__none_adj__v1__20260612_183025.parquet": [
+      2940675,
+      1792437741551852900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2025__none_adj__v1__20260612_183025.parquet": [
+      2919776,
+      1792437740217229300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2026__none_adj__v1__20260612_183025.parquet": [
+      1332923,
+      1792437742847346800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_7__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      125873,
+      1792437741876692600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2014__none_adj__v1__20260612_183025.parquet": [
+      643744,
+      1792437743348923200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2015__none_adj__v1__20260612_183025.parquet": [
+      951048,
+      1792437744581514400
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2016__none_adj__v1__20260612_183025.parquet": [
+      1102005,
+      1792437744004925100
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2017__none_adj__v1__20260612_183025.parquet": [
+      1636105,
+      1792437745482511500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2018__none_adj__v1__20260612_183025.parquet": [
+      1946748,
+      1792437746331848800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2019__none_adj__v1__20260612_183025.parquet": [
+      2144885,
+      1792437747278092800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2020__none_adj__v1__20260612_183025.parquet": [
+      2514297,
+      1792437748367990200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2021__none_adj__v1__20260612_183025.parquet": [
+      2641744,
+      1792437749594019600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2022__none_adj__v1__20260612_183025.parquet": [
+      2647236,
+      1792437750671658900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2023__none_adj__v1__20260612_183025.parquet": [
+      2787880,
+      1792437751695409200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2024__none_adj__v1__20260612_183025.parquet": [
+      3106313,
+      1792437752920698800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2025__none_adj__v1__20260612_183025.parquet": [
+      3298951,
+      1792437755092399800
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2026__none_adj__v1__20260612_183025.parquet": [
+      1543181,
+      1792437753546478700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_8__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      143017,
+      1792437753874496600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2014__none_adj__v1__20260612_183025.parquet": [
+      48180,
+      1792437755366819500
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2015__none_adj__v1__20260612_183025.parquet": [
+      318061,
+      1792437755742552900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2016__none_adj__v1__20260612_183025.parquet": [
+      531395,
+      1792437756103961300
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2017__none_adj__v1__20260612_183025.parquet": [
+      1115598,
+      1792437756801416600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2018__none_adj__v1__20260612_183025.parquet": [
+      1480737,
+      1792437757524371600
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2019__none_adj__v1__20260612_183025.parquet": [
+      1742284,
+      1792437758461109000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2020__none_adj__v1__20260612_183025.parquet": [
+      2475836,
+      1792437759708915000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2021__none_adj__v1__20260612_183025.parquet": [
+      3202664,
+      1792437761172307900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2022__none_adj__v1__20260612_183025.parquet": [
+      3323912,
+      1792437762605213200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2023__none_adj__v1__20260612_183025.parquet": [
+      3336449,
+      1792437763984730900
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2024__none_adj__v1__20260612_183025.parquet": [
+      3474206,
+      1792437766912064700
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2025__none_adj__v1__20260612_183025.parquet": [
+      3566482,
+      1792437765379359000
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2026__none_adj__v1__20260612_183025.parquet": [
+      1623422,
+      1792437768082841200
+    ],
+    "stock_ohlcv_daily__stock_daily__batch_9__2026__none_adj__v1__gapfill_20260702_154610.parquet": [
+      147707,
+      1792437767247754200
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260713_20260730__full__20260729_170458.parquet": [
+      1397790,
+      1792437768892690900
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260730_20260804__full__20260804_062955.parquet": [
+      745176,
+      1792110797676389000
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260804_20260804__full__20260804_232001.parquet": [
+      307586,
+      1792110801140588800
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260805_20260805__full__20260806_002103.parquet": [
+      308519,
+      1792437884796484500
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260806_20260806__full__20260806_234303.parquet": [
+      309733,
+      1792113888854880600
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260807_20260807__full__20260808_001532.parquet": [
+      310295,
+      1792121092626673700
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet": [
+      311265,
+      1792148387447645800
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260811_20260811__full__20260811_233004.parquet": [
+      310579,
+      1792148813964132500
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260812_20260812__full__20260812_221357.parquet": [
+      311299,
+      1792150658968146900
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260813_20260813__full__20260814_001722.parquet": [
+      310952,
+      1792150781535262800
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260814_20260814__full__20260815_002949.parquet": [
+      310684,
+      1792174044985951000
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260817_20260817__full__20260817_235512.parquet": [
+      310580,
+      1792176916078113800
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260818_20260818__full__20260818_231819.parquet": [
+      311866,
+      1792178699267905000
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260819_20260819__full__20260820_001803.parquet": [
+      310599,
+      1792180361866331100
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260820_20260820__full__20260821_000102.parquet": [
+      309966,
+      1792182060865272700
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260821_20260821__full__20260821_235739.parquet": [
+      310411,
+      1792183574286356500
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260824_20260824__full__20260824_163703.parquet": [
+      309480,
+      1792187288555342400
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260825_20260825__full__20260826_001241.parquet": [
+      309474,
+      1792188867276750100
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260826_20260826__full__20260826_163653.parquet": [
+      310566,
+      1792190902993276200
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260827_20260827__full__20260827_173734.parquet": [
+      310675,
+      1792193620197469500
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260828_20260828__full__20260829_003304.parquet": [
+      310659,
+      1792195770650576800
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet": [
+      310621,
+      1792204098473663400
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260903_20260903__full__20260904_004009.parquet": [
+      310849,
+      1792208366494658900
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260904_20260904__full__20260907_002846.parquet": [
+      311746,
+      1792076258681052300
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260907_20260907__full__20260908_085104.parquet": [
+      311242,
+      1792216064211544600
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260908_20260908__full__20260909_161615.parquet": [
+      311790,
+      1792089538555896100
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260909_20260909__full__20260909_173526.parquet": [
+      311051,
+      1792219694718423000
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260910_20260910__full__20260917_145054.parquet": [
+      310363,
+      1792402054950766300
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260911_20260911__full__20260918_072703.parquet": [
+      309506,
+      1792223037085802000
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260914_20260914__full__20260924_082242.parquet": [
+      308380,
+      1792224803139434700
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260915_20260915__full__20260924_093008.parquet": [
+      308955,
+      1792226639759210300
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260916_20260916__full__20260924_103015.parquet": [
+      309686,
+      1792228473386758600
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260917_20260917__full__20260924_114350.parquet": [
+      309973,
+      1792402131198222400
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260918_20260918__full__20260924_130124.parquet": [
+      310487,
+      1792438559214093500
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260921_20260921__full__20260924_163523.parquet": [
+      311770,
+      1792233681738825400
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260922_20260922__full__20260924_173644.parquet": [
+      312686,
+      1792235502778930300
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260923_20260923__full__20260924_183710.parquet": [
+      311904,
+      1792237340254914100
+    ],
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260924_20260924__full__20260925_030125.parquet": [
+      311821,
+      1792061919193208900
+    ]
+  },
+  "parent_daily_names": [
+    "stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_10__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_11__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_1__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_2__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_3__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_4__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_5__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_6__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_7__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_8__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__batch_9__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_daily__gapfill_codes__2026__000638XSHE_301583XSHE__none_adj__v1__20260807_040139.parquet",
+    "stock_daily__gapfill_codes__2026__301677XSHE_688825XSHG__none_adj__v1__20260807_040139.parquet",
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-03__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-03.parquet",
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-06__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-06.parquet",
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-07__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-07.parquet",
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-08__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-08.parquet",
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-09__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-09.parquet",
+    "stock_ohlcv_daily__XSHE__DAILY__2026-07-10__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-10.parquet",
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-03__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-03.parquet",
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-06__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-06.parquet",
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-07__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-07.parquet",
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-08__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-08.parquet",
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-09__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-09.parquet",
+    "stock_ohlcv_daily__XSHG__DAILY__2026-07-10__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHG_DAILY_2026-07-10.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_10__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_11__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_1__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_2__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_3__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_4__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_5__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_6__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_7__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_8__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2014__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2015__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2016__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2017__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2018__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2019__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2020__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2021__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2022__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2023__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2024__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2025__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2026__none_adj__v1__20260612_183025.parquet",
+    "stock_ohlcv_daily__stock_daily__batch_9__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260713_20260730__full__20260729_170458.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260730_20260804__full__20260804_062955.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260804_20260804__full__20260804_232001.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260805_20260805__full__20260806_002103.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260806_20260806__full__20260806_234303.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260807_20260807__full__20260808_001532.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260811_20260811__full__20260811_233004.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260812_20260812__full__20260812_221357.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260813_20260813__full__20260814_001722.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260814_20260814__full__20260815_002949.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260817_20260817__full__20260817_235512.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260818_20260818__full__20260818_231819.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260819_20260819__full__20260820_001803.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260820_20260820__full__20260821_000102.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260821_20260821__full__20260821_235739.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260824_20260824__full__20260824_163703.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260825_20260825__full__20260826_001241.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260826_20260826__full__20260826_163653.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260827_20260827__full__20260827_173734.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260828_20260828__full__20260829_003304.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260903_20260903__full__20260904_004009.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260904_20260904__full__20260907_002846.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260907_20260907__full__20260908_085104.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260908_20260908__full__20260909_161615.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260909_20260909__full__20260909_173526.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260910_20260910__full__20260917_145054.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260911_20260911__full__20260918_072703.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260914_20260914__full__20260924_082242.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260915_20260915__full__20260924_093008.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260916_20260916__full__20260924_103015.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260917_20260917__full__20260924_114350.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260918_20260918__full__20260924_130124.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260921_20260921__full__20260924_163523.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260922_20260922__full__20260924_173644.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260923_20260923__full__20260924_183710.parquet",
+    "stock_ohlcv_daily__stock_daily__incremental_gap_20260924_20260924__full__20260925_030125.parquet"
+  ],
+  "parent_realpaths": {
+    "cache": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "cleaning_standard": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+    "stock_daily": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+  },
+  "production_publish_allowed": false,
+  "scope_acceptance": "EXACT_TWO_DATES_TWO_PRICE_PRODUCTS_ONLY",
+  "source_pins": {
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json": "8a1a4d9337d258390ac390232522daa026e4ebf5b5f70ef45942061bc52c56b6",
+    "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+    "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
+    "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+    "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
+    "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+    "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+    "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet": "c28b37cd925c187e399dbf24aeb0cbde790de4b22a81d674795ee549041e4dbe",
+    "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet": "bf080579ece5249a0b4b7e44316c89f5df8f38e9473c3bc208db22fd1a66bae8",
+    "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128"
+  }
+}
