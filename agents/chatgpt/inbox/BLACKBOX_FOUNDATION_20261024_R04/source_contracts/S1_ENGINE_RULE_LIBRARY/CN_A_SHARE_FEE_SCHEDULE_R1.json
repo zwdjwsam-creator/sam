@@ -1,0 +1,58 @@
+{
+  "schedule_id": "CN_A_SHARE_FEE_R1_20230828",
+  "generated_for": "STANDARD_BACKTEST_ENGINE",
+  "sources": [
+    {
+      "item": "stamp_tax_half",
+      "authority": "财政部 税务总局公告2023年第39号",
+      "url": "https://fgk.chinatax.gov.cn/zcfgk/c102416/c5211343/content.html",
+      "effective": "2023-08-28",
+      "note": "证券交易印花税减半征收；法定基础为成交金额千分之一、出让方征收，减半后实际 0.0005"
+    },
+    {
+      "item": "transfer_fee",
+      "authority": "中国结算 2022-04-28 通知（中证网/中新网一致转载）",
+      "url": "https://www.cs.com.cn/sylm/jsbd/202204/t20220428_6265199.html",
+      "effective": "2022-04-29",
+      "rate": 0.00001,
+      "bilateral": true,
+      "note": "沪深A股过户费统一按成交金额 0.01‰ 双向收取"
+    },
+    {
+      "item": "exchange_handling_fee",
+      "authority": "上海证券交易所收费一览表",
+      "url": "https://star.sse.com.cn/services/tradingservice/charge/ssecharge/",
+      "rate": 0.0000341,
+      "bilateral": true,
+      "note": "A股竞价经手费 0.00341% 双向（2023-08-28 起）"
+    },
+    {
+      "item": "csrc_supervision_fee",
+      "authority": "上海证券交易所代收税费一览表",
+      "url": "https://www.sse.com.cn/services/tradingservice/charge/taxfee/",
+      "rate": 0.00002,
+      "bilateral": true,
+      "note": "证管费 成交金额 0.002% 双向"
+    }
+  ],
+  "engine_defaults": {
+    "stamp_tax_before_20230828": 0.001,
+    "stamp_tax_on_or_after_20230828": 0.0005,
+    "stamp_tax_side": "sell_only",
+    "transfer_fee_rate": 0.00001,
+    "transfer_fee_bilateral": true,
+    "transfer_fee_before_20220429": 0.00002,
+    "broker_commission_default": 0.0003,
+    "min_commission": 5.0,
+    "commission_mode": "GROSS_INCLUDES_REGULATORY_FEES",
+    "commission_mode_note": "默认万三按券商全佣口径（含经手费+证管费），另计过户费与印花税",
+    "fund_etf_stamp_tax": 0.0,
+    "fund_etf_stock_transfer_fee": 0.0,
+    "fund_etf_note": "场内基金/ETF 免股票印花税；主流品种不计股票过户费（券商/交易所公示一致）"
+  },
+  "cross_check_20260815": [
+    "https://fgk.chinatax.gov.cn/zcfgk/c102416/c5211343/content.html",
+    "https://www.chinanews.com.cn/cj/2022/04-28/9742100.shtml",
+    "http://www.sse.com.cn/services/tradingservice/charge/ssecharge/"
+  ]
+}
