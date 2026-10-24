@@ -1,0 +1,112 @@
+{
+ "round": "R08",
+ "command": "python -X utf8 -u r08_rebuild_local.py --compiler-source cache_compiler_source_R06.py",
+ "status": "ALREADY_BUILT_VERIFIED",
+ "manifest": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\CANDIDATE_MANIFEST.json",
+ "replay_semantics": "ALREADY_BUILT_VERIFIED = candidate parquet re-read, parent bytes re-checked, audit re-derived; no overwrite of sealed parent",
+ "observation_accounting": {
+  "all_price_keys_preserved": true,
+  "input_rows": 12362212,
+  "listing_or_delisting_inferred": false,
+  "null_to_zero_fills": 0,
+  "observed_rows": 12327735,
+  "state_policy": "CONTIGUOUS_OBSERVED_SEGMENTS; NO_BRIDGING_EXPLICIT_NULL_RUNS",
+  "unobserved_codes": 344,
+  "unobserved_dates": 143,
+  "unobserved_rows": 34477
+ },
+ "cache_results": {
+  "STOCK_DAILY_PIT_R1": {
+   "added_by_date": {
+    "2026-08-31": 5212,
+    "2026-09-01": 5214
+   },
+   "all_non_target_rows_preserved": true,
+   "candidate_rows": 959896,
+   "parent_rows": 949470
+  },
+  "STOCK_DAILY_RAW_PIT_R1": {
+   "added_by_date": {
+    "2026-08-31": 5212,
+    "2026-09-01": 5214
+   },
+   "all_non_target_rows_preserved": true,
+   "candidate_rows": 959896,
+   "parent_rows": 949470
+  }
+ },
+ "coverage_gates": {
+  "MARKET_STRUCTURE_DAILY_R1": {
+   "CURRENT_SWITCH_ALLOWED": false,
+   "PUBLISH_ALLOWED": false,
+   "candidate_keys": 178,
+   "coverage_non_regression_pass": true,
+   "grain": [
+    "date"
+   ],
+   "lost_field_observation_keys": {
+    "allA_count": 0,
+    "allA_money": 0
+   },
+   "lost_key_examples": [],
+   "lost_keys": 0,
+   "parent_keys": 176,
+   "scope": "EXACT_INPUT_FRAMES_ONLY_NOT_GLOBAL_COVERAGE_OR_ENGINE_ADMISSION"
+  },
+  "STOCK_FACTOR_DAILY_R1": {
+   "CURRENT_SWITCH_ALLOWED": false,
+   "PUBLISH_ALLOWED": false,
+   "candidate_keys": 959896,
+   "coverage_non_regression_pass": true,
+   "grain": [
+    "date",
+    "code"
+   ],
+   "lost_field_observation_keys": {
+    "close": 0
+   },
+   "lost_key_examples": [],
+   "lost_keys": 0,
+   "parent_keys": 949470,
+   "scope": "EXACT_INPUT_FRAMES_ONLY_NOT_GLOBAL_COVERAGE_OR_ENGINE_ADMISSION"
+  }
+ },
+ "artifacts": [
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\STOCK_FACTOR_DAILY_R1\\year=2026\\part_2026.parquet",
+   "product": "STOCK_FACTOR_DAILY_R1",
+   "rows": 959896,
+   "sha256": "e70bc796a00c95448c78e802e00504d72c5907158e844f9c9c610c1d46fe7de3"
+  },
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\MARKET_STRUCTURE_DAILY_R1\\year=2026\\part_2026.parquet",
+   "product": "MARKET_STRUCTURE_DAILY_R1",
+   "rows": 178,
+   "sha256": "0ea3bd07e5b5b4d49a132485629d7cd08f15961bc5ebf4b303b55b362b84b99c"
+  },
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\UNOBSERVED_GRID_ROWS.parquet",
+   "product": "UNOBSERVED_GRID_AUDIT",
+   "rows": 34477,
+   "sha256": "1235c8e99198d0cab336aa9a98e91b8941c72dd5b07ed5c5fe67beff4d5d46b7"
+  }
+ ],
+ "unobserved_grid_audit_rows": 34477,
+ "family_b_reconciliation": {
+  "all_null_codes": 294,
+  "all_null_rows": 30870,
+  "leading_only_codes": 42,
+  "leading_only_rows": 2989,
+  "trailing_only_codes": 8,
+  "trailing_only_rows": 618,
+  "total_rows": 34477,
+  "total_codes": 344,
+  "arithmetic_correction": "302*105=31,710 was NOT a row count; 105 is the per-code grid length of the 294 all-null codes (294*105=30,870)"
+ },
+ "non_regression": "coverage_non_regression_pass=true for both products; lost_keys=0; lost_field_observation_keys all 0",
+ "null_to_zero_fills": 0,
+ "listing_or_delisting_inferred": false,
+ "PUBLISH_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "engine_admission_allowed": false
+}
