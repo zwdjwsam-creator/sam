@@ -1,0 +1,51 @@
+{
+  "rule_id": "BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1",
+  "status": "ACTIVE_HARD_RULE",
+  "schema_version": "1.0.0",
+  "layer": "HAND_USER_AUTHORIZED",
+  "authorized_by": "USER_AS_HAND",
+  "authorized_at_cn": "2026-08-09T08:21:52+0800",
+  "authorized_at_user_utterance": "数据下载结束后都必须清洗防止污染",
+  "definition_one_line": "任何数据下载结束后必须进入正式清洗/对齐 + 防穿越，再允许宣称该批次完成；禁止只落原始只读、不进清洗 CURRENT（或域专用 CURRENT）造成污染。",
+  "mandatory_pipeline_tail": [
+    "download_done",
+    "formal_cleaning_or_domain_align_seal",
+    "anti_leakage_checks",
+    "switch_CURRENT_pointer_if_applicable",
+    "inventory_top_refresh",
+    "cache_compiler",
+    "cache_qa_equivalence",
+    "atomic_publish_cache_current"
+  ],
+  "applies_to": [
+    "FULL_DATA_UPDATE_R2",
+    "post_seal_freshness",
+    "index_minute_download",
+    "finance_valuation_incremental",
+    "billboard_and_p5_events",
+    "adjust_factor",
+    "any_raw_official_incremental_download",
+    "SW_L1_MEMBERSHIP_PIT_DENSE_DAILY",
+    "DYNAMIC_MOTHERLINE_SW_HISTORY_EXTEND_R1",
+    "any_off_main_chain_domain_download"
+  ],
+  "forbidden": [
+    "claim_download_batch_PASS_without_clean_or_align",
+    "leave_new_raw_only_without_CURRENT_ingest",
+    "skip_antileak_after_download"
+  ],
+  "exceptions": [
+    {
+      "id": "jq260_factor_values",
+      "note": "260 因子数值库不下载；研究层重算不叫下载批次"
+    }
+  ],
+  "ssot_mdc": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_download_must_clean_antileak.mdc",
+  "generated_at_cn": "2026-08-09T08:21:52+0800",
+  "related_rules": [
+    "BLACKBOX_HAND_BACKTEST_CACHE_POLICY_R1",
+    "BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1",
+    "BLACKBOX_HAND_SW_L1_PIT_FULL_LOCAL_AND_UNATTENDED_R1",
+    "BLACKBOX_HAND_OFF_MAIN_CHAIN_DATA_GAP_REGISTER_R1"
+  ]
+}
