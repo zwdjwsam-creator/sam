@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.1",
+  "system_id": "BLACKBOX_DAILY_INCREMENTAL_DATA_PLANE_R1",
+  "parent": "BLACKBOX_RESEARCH_OPERATING_SYSTEM_AND_HAND_TOPLEVEL_R1",
+  "path_map": "E:\\BLACKBOX\\研究系统\\数据平面\\CONFIG\\DATA_PLANE_PATH_MAP.json",
+  "definition_one_line": "每日增量更新 = 六 Lane 全部完成（或显式 DEGRADED）→ 对齐 → PIT → 缓存 → Manifest → CURRENT",
+  "pipeline": ["INGEST", "ALIGN", "CLEAN", "PIT", "ISOLATE", "CACHE", "MANIFEST", "CURRENT", "RESEARCH"],
+  "principle": "DATA_FIRST_THEN_RESEARCH",
+  "lanes": {
+    "A_JQ_INCREMENTAL": {
+      "id": "JQ_INCREMENTAL",
+      "role": "CANONICAL_MARKET_DATA",
+      "verify_only_when_updated": true,
+      "state_file": "STATE/JQ_INCREMENTAL_STATE.json",
+      "scope_current": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+      "cleaning_current": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "cache_current": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+      "scope_refresh_script": "E:\\BLACKBOX\\脚本\\blackbox_full_data_update_scope_refresh_r1.py",
+      "minute_authority_order": ["CLEANING_DAY", "CLEANING_YEAR", "RAW_YEAR"]
+    },
+    "B_T_EXTERNAL_INCREMENTAL": {
+      "id": "T_EXTERNAL_INCREMENTAL",
+      "role": "EXTERNAL_REFERENCE_ONLY",
+      "verify_only_when_updated": true,
+      "product_root": "E:\\BLACKBOX\\数据\\外部证据",
+      "state_file": "STATE/T_EXTERNAL_INCREMENTAL_STATE.json",
+      "materialization_script": "E:\\BLACKBOX\\脚本\\blackbox_external_evidence_materialization_r2.py",
+      "asof_align_current": "E:\\BLACKBOX\\运行\\BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json",
+      "final_current": "E:\\BLACKBOX\\数据\\外部证据\\CURRENT\\EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json",
+      "jq_canonical_immutable_from_t": true
+    },
+    "C_GLOBAL_SELLSIDE_INCREMENTAL": {
+      "id": "GLOBAL_SELLSIDE_INCREMENTAL",
+      "role": "GLOBAL_STRUCTURAL_PRIOR",
+      "product_root": "E:\\BLACKBOX\\数据\\研究报告",
+      "firms": ["MORGAN_STANLEY", "GOLDMAN_SACHS", "CLSA"],
+      "raw_ms": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\MORGAN_STANLEY",
+      "raw_gs": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\GOLDMAN_SACHS",
+      "raw_clsa": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\CLSA_METADATA",
+      "daily_incremental": "E:\\BLACKBOX\\数据\\研究报告\\日增量",
+      "state_file": "STATE/GLOBAL_SELLSIDE_INCREMENTAL_STATE.json",
+      "script": "E:\\BLACKBOX\\任务\\BLACKBOX_SELLSIDE_THESIS_TIMELINE_R1\\脚本\\run_sellside_daily_incremental_r1.py",
+      "current": "E:\\BLACKBOX\\数据\\研究报告\\CURRENT\\SELLSIDE_DAILY_INCREMENTAL_CURRENT.json",
+      "last_success": "E:\\BLACKBOX\\数据\\研究报告\\日增量\\LAST_SUCCESSFUL_UPDATE.json",
+      "clsa_policy": "METADATA_ONLY_UNLESS_LEGAL_FULLTEXT"
+    },
+    "D_DOMESTIC_RESEARCH_NEWS_INCREMENTAL": {
+      "id": "DOMESTIC_RESEARCH_NEWS_INCREMENTAL",
+      "domestic_sellside_root": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方",
+      "domestic_sellside_current": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\CURRENT\\DOMESTIC_SELLSIDE_CURRENT.json",
+      "domestic_sellside_daily": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\日增量",
+      "domestic_news_root": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻",
+      "domestic_news_current": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\CURRENT\\DOMESTIC_NEWS_CURRENT.json",
+      "domestic_news_daily": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\日增量",
+      "observer_ledger_fallback": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\cache\\DOMESTIC_SELLSIDE_LEDGER.csv",
+      "news_script": "E:\\BLACKBOX\\任务\\STRATEGY_RESEARCH_PRO_TRADER_TAO_DECISION_POLICY_AND_DATA_SYSTEM_RECONSTRUCTION_R1\\LIVE\\INTRADAY_NEWS_OBS_R1\\脚本\\run_intraday_news_obs_r1.py",
+      "news_obs_current": "E:\\BLACKBOX\\任务\\STRATEGY_RESEARCH_PRO_TRADER_TAO_DECISION_POLICY_AND_DATA_SYSTEM_RECONSTRUCTION_R1\\LIVE\\INTRADAY_NEWS_OBS_R1\\CURRENT.json",
+      "state_file": "STATE/DOMESTIC_RESEARCH_INCREMENTAL_STATE.json"
+    },
+    "E_US_NEWS_INCREMENTAL": {
+      "id": "US_NEWS_INCREMENTAL",
+      "product_root": "E:\\BLACKBOX\\数据\\美国市场\\新闻",
+      "current": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\CURRENT\\US_NEWS_CURRENT.json",
+      "important_news_csv": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\CURRENT\\US_IMPORTANT_NEWS_CURRENT.csv",
+      "daily_incremental": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\日增量",
+      "screenshot_fallback": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\抓屏",
+      "raw_readonly": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\原始只读",
+      "collector_script": "E:\\BLACKBOX\\脚本\\run_blackbox_us_l1_news_open_close_collector_r1.py",
+      "taxonomy": "E:\\BLACKBOX\\数据\\美国市场\\CONFIG\\US_L1_TAXONOMY.json",
+      "state_file": "STATE/US_NEWS_INCREMENTAL_STATE.json",
+      "products": ["US_L1_IMPORTANT_NEWS"]
+    },
+    "F_US_MARKET_STATE_INCREMENTAL": {
+      "id": "US_MARKET_STATE_INCREMENTAL",
+      "product_root": "E:\\BLACKBOX\\数据\\美国市场\\市场状态",
+      "current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_MARKET_STATE_CURRENT.json",
+      "open_current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_OPEN_STATE_CURRENT.json",
+      "close_current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_CLOSE_STATE_CURRENT.json",
+      "alignment_csv": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_NEWS_MARKET_ALIGNMENT_CURRENT.csv",
+      "daily_archive": "E:\\BLACKBOX\\数据\\美国市场\\DAILY",
+      "daily_incremental": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\日增量",
+      "screenshot_fallback": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\抓屏",
+      "session_alignment": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_TO_CN_SESSION_ALIGNMENT.csv",
+      "collector_script": "E:\\BLACKBOX\\脚本\\run_blackbox_us_l1_news_open_close_collector_r1.py",
+      "fine_grained_script": "E:\\BLACKBOX\\脚本\\run_blackbox_us_fine_grained_flow_profit_pool_r1.py",
+      "fine_grained_current": "E:\\BLACKBOX\\运行\\BLACKBOX_US_MARKET_FINE_GRAINED_FLOW_PROFIT_POOL_CURRENT.json",
+      "fine_grained_root": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池",
+      "fine_grained_taxonomy": "E:\\BLACKBOX\\数据\\美国市场\\CONFIG\\US_L234_PROFIT_POOL_TAXONOMY.json",
+      "state_file": "STATE/US_MARKET_STATE_INCREMENTAL_STATE.json",
+      "products": [
+        "US_OPEN_STATE",
+        "US_CLOSE_STATE",
+        "US_FINE_GRAINED_SNAPSHOT",
+        "TOP_REAL_FLOW_SECTORS",
+        "TOP_PRICE_ACCEPTANCE_SECTORS",
+        "FINE_GRAINED_LEADERSHIP_TABLE",
+        "A_SHARE_MAPPING_PRIOR",
+        "ONE_LINE_CONCLUSION"
+      ],
+      "indices": ["SPX", "NASDAQ", "DJIA", "RUSSELL2000", "SOX"]
+    }
+  }
+}
