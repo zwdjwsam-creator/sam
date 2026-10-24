@@ -1,0 +1,8 @@
+incoming_frequency,canonical_frequency,source_rule_file,allowed_for_backtest,allowed_for_matching,allowed_for_factor,admission_status,fail_action,block_reason_code
+daily,daily,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_DAILY
+1m,1m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_1M
+5m,5m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_5M
+15m,15m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_15M
+30m,30m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_30M
+60m,60m,jq_official_canonical_data_domain_map.csv,true,true,true,ADMIT_IF_MATCHED,BLOCK,BLOCK_FREQUENCY_60M
+tick,tick,jq_official_canonical_data_domain_map.csv,false,false,false,NOT_READY_BLOCKED,BLOCK,BLOCK_FREQUENCY_TICK
