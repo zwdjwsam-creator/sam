@@ -1,0 +1,331 @@
+{
+ "schema_version": "1.0.0",
+ "language": "en",
+ "round": "R08/10",
+ "engine_runtime": {
+  "runtime_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+  "python": "Python 3.12.10",
+  "pip_check": "No broken requirements found.",
+  "pip_check_exit": 0,
+  "installed_packages": {
+   "certifi": "2026.10.23",
+   "charset-normalizer": "3.5.2",
+   "idna": "3.20",
+   "jqdatasdk": "1.9.8",
+   "msgpack": "1.2.3",
+   "numpy": "2.5.4",
+   "pandas": "2.3.3",
+   "pip": "26.2.2",
+   "ply": "3.11",
+   "pyarrow": "21.0.0",
+   "pymysql": "1.2.3",
+   "python-dateutil": "3.0.0",
+   "pytz": "2026.5",
+   "requests": "2.34.2",
+   "six": "1.17.0",
+   "sqlalchemy": "2.1.6",
+   "thriftpy2": "0.4.20",
+   "typing_extensions": "4.16.0",
+   "tzdata": "2026.5",
+   "urllib3": "2.8.0"
+  },
+  "declared_runtime_dependencies": {
+   "pandas": ">=1.3.0,<3.0",
+   "numpy": ">=1.21.0",
+   "matplotlib": ">=3.4.0",
+   "jqdatasdk": ">=1.8.0",
+   "plotly": ">=5.15.0",
+   "python-dotenv": ">=0.19.0",
+   "filelock": ">=3.0.0",
+   "pyecharts": ">=1.9.0",
+   "tabulate": ">=0.9.0",
+   "jupyterlab": ">=4.1.0",
+   "ipykernel": ">=6.29.0"
+  },
+  "dependency_matrix": {
+   "pandas": {
+    "declared": ">=1.3.0,<3.0",
+    "import_name": "pandas",
+    "installed_version": "2.3.3",
+    "importable": true,
+    "status": "PRESENT"
+   },
+   "numpy": {
+    "declared": ">=1.21.0",
+    "import_name": "numpy",
+    "installed_version": "2.5.4",
+    "importable": true,
+    "status": "PRESENT"
+   },
+   "matplotlib": {
+    "declared": ">=3.4.0",
+    "import_name": "matplotlib",
+    "installed_version": null,
+    "importable": false,
+    "status": "MISSING"
+   },
+   "jqdatasdk": {
+    "declared": ">=1.8.0",
+    "import_name": "jqdatasdk",
+    "installed_version": "1.9.8",
+    "importable": true,
+    "status": "PRESENT"
+   },
+   "plotly": {
+    "declared": ">=5.15.0",
+    "import_name": "plotly",
+    "installed_version": null,
+    "importable": false,
+    "status": "MISSING"
+   },
+   "python-dotenv": {
+    "declared": ">=0.19.0",
+    "import_name": "dotenv",
+    "installed_version": null,
+    "importable": false,
+    "status": "MISSING"
+   },
+   "filelock": {
+    "declared": ">=3.0.0",
+    "import_name": "filelock",
+    "installed_version": null,
+    "importable": false,
+    "status": "MISSING"
+   },
+   "pyecharts": {
+    "declared": ">=1.9.0",
+    "import_name": "pyecharts",
+    "installed_version": null,
+    "importable": false,
+    "status": "MISSING"
+   },
+   "tabulate": {
+    "declared": ">=0.9.0",
+    "import_name": "tabulate",
+    "installed_version": null,
+    "importable": false,
+    "status": "MISSING"
+   },
+   "jupyterlab": {
+    "declared": ">=4.1.0",
+    "import_name": "jupyterlab",
+    "installed_version": null,
+    "importable": false,
+    "status": "MISSING"
+   },
+   "ipykernel": {
+    "declared": ">=6.29.0",
+    "import_name": "ipykernel",
+    "installed_version": null,
+    "importable": false,
+    "status": "MISSING"
+   }
+  },
+  "missing_count": 8,
+  "missing": [
+   "filelock",
+   "ipykernel",
+   "jupyterlab",
+   "matplotlib",
+   "plotly",
+   "pyecharts",
+   "python-dotenv",
+   "tabulate"
+  ],
+  "package_importable": false,
+  "package_install_status": "bullet-trade is not installed in the recovery venv; the delivered sources are a source tree, not an installed distribution",
+  "verdict": "RUNTIME_INCOMPLETE_FOR_ENGINE_STARTUP",
+  "method": "importlib.util.find_spec + pip list + pip check only; no import of a startup path, no auth, no network"
+ },
+ "engine_contract": {
+  "package_name": "bullet-trade",
+  "pyproject": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\source_engine\\S3_ENGINE_SOURCE\\pyproject.toml",
+  "pyproject_sha256": "e959aa692b5b295158e243e22df14fcac9dfa662a9d964b58997040fbfd63686",
+  "requires_python": ">=3.8",
+  "lock_config_reference": "no lockfile in the delivered tree; pyproject.toml [project].dependencies plus extras dev/tushare/qmt/qmtserver/report is the only declaration",
+  "entry_points": {
+   "console_script": "bullet-trade = bullet_trade.cli.main:main"
+  },
+  "py_modules": [
+   "jqdata"
+  ]
+ },
+ "provider_creation_and_injection": {
+  "entry_function": "bullet_trade.api._create_provider(provider_name=None, overrides=None)",
+  "config_source": "bullet_trade.utils.env_loader.get_data_provider_config()",
+  "provider_base": "bullet_trade.providers.base.DataProvider",
+  "concrete_providers": [
+   "bullet_trade.providers.jqdata.JQDataProvider",
+   "bullet_trade.providers.tushare.TushareProvider",
+   "bullet_trade.providers.miniqmt.MiniQMTProvider",
+   "bullet_trade.providers.remote_qmt.RemoteQmtProvider"
+  ],
+  "auth_path": "bullet_trade.api._ensure_provider_auth -> provider.auth(); state tracked in _provider_auth_attempted",
+  "source_reference": "r04_delivery/source_engine/S3_ENGINE_SOURCE/api.py lines 24-125",
+  "executed_this_round": false,
+  "startup_risk": "importing api or calling _create_provider may reach auth/download; deliberately NOT executed"
+ },
+ "candidate_provider": {
+  "module": "r05_delivery/candidate_r5/provider.py",
+  "sha256": "4e0ecdec38f01095c0c4b9af6f40ff5ffdde738475d4ddd2dd099241ea2b01d0",
+  "class": "LocalValueProvider",
+  "required_5_methods": {
+   "get_price": "line 217",
+   "get_all_securities": "line 515",
+   "get_index_stocks": "line 560",
+   "get_split_dividend": "line 603",
+   "trade_days": "line 144"
+  },
+  "support_methods": [
+   "datasets",
+   "_layer_root",
+   "describe",
+   "index",
+   "coverage",
+   "route",
+   "check_engine_params",
+   "df"
+  ],
+  "scope_note": "a selected-function harness is NOT full-package startup and does not certify engine admission"
+ },
+ "admission_gate_wiring": {
+  "status": "SOURCE_REFERENCE_ONLY_NOT_EXECUTED",
+  "engine_admission_allowed": false,
+  "formal_backtest_started": false,
+  "MASTER_outcome_changed": false,
+  "order_allowed": false,
+  "network_calls": 0
+ },
+ "update_readiness": {
+  "scope_ssot": {
+   "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+   "sha256": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23",
+   "active_rule_id": "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+   "keys": [
+    "ALL_BLACKBOX_DATA_GAPS_CLOSED",
+    "DOMAIN_ASOF_MODE",
+    "EXTERNAL_EVIDENCE_SILENT_TRUNCATION",
+    "FORBID_ALL_EQUAL_AS_COMPLETENESS",
+    "FUND_NAV_PIT_R1",
+    "INDEX_DAILY_R1",
+    "INDEX_MINUTE_ALIGN_0904",
+    "INDEX_WEIGHT_EFFECTIVE_ASOF",
+    "INDEX_WEIGHT_STATUS",
+    "JQ_MAINCHAIN_0903_CLOSED",
+    "JQ_MAINCHAIN_0904_TIP_PUBLISHED",
+    "NEXT_INCREMENT_BASELINE",
+    "NOT_AUTHORITY_FOR_DATA_READINESS",
+    "QMT_live",
+    "SILENT_TRUNCATION_FUND_NET_VALUE_WHOLE_TABLE",
+    "SUMMARY_STALE",
+    "TRADEABILITY_EFFECTIVE_ASOF",
+    "TRADEABILITY_NOTE",
+    "active_rule_id",
+    "active_rule_path",
+    "adjust_factor_pit_r1",
+    "adjust_factor_source_cutoff_gap",
+    "amended_adjust_factor_pit_at_cn",
+    "amended_cache_mandatory_at_cn",
+    "amended_corporate_reference_at_cn",
+    "amended_domain_status_r3_at_cn",
+    "amended_financial_indicator_at_cn",
+    "amended_permission_probe_at_cn",
+    "amended_pipeline_matrix_at_cn",
+    "amended_r41_baseline_at_cn",
+    "amended_r42_tip_at_cn",
+    "amended_security_state_gapfill_at_cn",
+    "amended_sw_l123_daily_cache_at_cn",
+    "authorized_at_cn",
+    "billboard_included",
+    "cache_cleaning_matched",
+    "cache_release",
+    "cache_release_id",
+    "cache_sw_l123_required",
+    "capability_generation_id"
+   ]
+  },
+  "pipeline_matrix": {
+   "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_PIPELINE_MATRIX_CURRENT.json",
+   "sha256": "8d8b0ced9f16c0815bf288ecf47adac1a2fea07d34f92f5f8530674bf2f1378c",
+   "exists": true
+  },
+  "incremental_rule": {
+   "path": "E:\\BLACKBOX\\运行\\BLACKBOX_JQ_INCREMENTAL_DOWNLOAD_RULE_CURRENT.json",
+   "sha256": "2084f9683f1aa8385daf720565021631a0ac1d66ee1a52f241b252107782fa4a",
+   "datasets": 21,
+   "FUND_ETF_NAV_state": "ACTIVE"
+  },
+  "no_retry_paid_exclusion": {
+   "rule": "a paid permission probe is not repeated; a previously validated one-stock query does not certify all interfaces",
+   "prior_probe_receipts": [
+    "r05_delivery/PERMISSION_RECEIPTS/BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+    "r05_delivery/PERMISSION_RECEIPTS/TUSHARE_PERMISSION_PROBE_CURRENT.json",
+    "r05_delivery/JQ_BOUNDED_ACCESS.json"
+   ],
+   "repeated_this_round": false
+  },
+  "credential_locators_only": {
+   "declaration": "credential LOCATORS only; no secret bytes, headers, cookies, .env content or secret-dependent hashes are included",
+   "locators": [
+    "C:\\LAN_SHARE_REPORT\\配置\\secrets\\github_hub_token.TXT",
+    "environment variables referenced by bullet_trade.utils.env_loader (not read)"
+   ]
+  },
+  "watermarks": {
+   "calendar_authority_max": "2026-09-24",
+   "cache_asof": "2026-09-24",
+   "cleaning_asof": "2026-09-24",
+   "stock_daily_2026_date_max": "2026-09-24",
+   "per_domain_watermark": {
+    "stock_daily": "2026-09-24 with 2026-08-31 / 2026-09-01 recovered only inside the R06/R08 candidates",
+    "etf_daily": "2026-09-24 but 2026-08-31 and 2026-09-01 absent",
+    "index_daily": "2026-09-24 but two dates absent and H1 absent from cache",
+    "valuation": "2026-09-24 but 2026-08-31 and 2026-09-01 absent",
+    "adjust_factor": "2026-09-24 with 12 degraded dates in 2026",
+    "nav": "tip only; history layout",
+    "cbond": "2026-08-14 dedicated releases"
+   }
+  },
+  "target_calendar_source": {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "sha256": "d044d628279d48c1644eb7913af9e45d27d17b04b086f6d316936e31d6eddcea",
+   "rows": 3097
+  },
+  "downloader_request_signature": {
+   "entry": "E:\\BLACKBOX\\脚本\\jq_download_execution_r1.py",
+   "entry_sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+   "pattern_observed": "adjust_factor_stock__incremental_<asof>__<runts>.parquet with optional .sidecar.json",
+   "pagination_risk": "adjust_factor incrementals show a 0..299 page-ordinal in the date field, so the writer must be re-checked before any reuse"
+  },
+  "safe_output_and_receipt_path": {
+   "raw": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor (append-only)",
+   "clean": "E:\\BLACKBOX\\数据\\清洗成品\\releases",
+   "cache": "E:\\BLACKBOX\\数据\\回测缓存\\releases",
+   "forbidden": "in-place mutation of sealed releases, CURRENT, or RAW"
+  },
+  "source_to_clean_to_cache_successor_flow": [
+   "RAW append-only unit + sidecar",
+   "Cleaning release build + SEAL.json",
+   "Cache release build + parent_release_id + CURRENT switch only through the publish gate",
+   "Research/MASTER consumers read CURRENT; candidates never publish themselves"
+  ],
+  "publication_gates": [
+   "FORMAL_DAILY_PUBLISH",
+   "CANARY_CURRENT_PUBLISH=STRUCTURALLY_FORBIDDEN",
+   "anti_lookahead_pass",
+   "coverage_non_regression_pass",
+   "FOUNDATION_ACCEPTANCE=false until R10"
+  ],
+  "verdict": "UPDATE_ROUTE_BOUND_BUT_NOT_EXECUTABLE_THIS_ROUND; six transform entries remain unresolved bindings"
+ },
+ "flags": {
+  "NETWORK_ACQUISITION_AUTHORIZED": false,
+  "AUTHENTICATION_ATTEMPTS": 0,
+  "NEW_DOWNLOADS": 0,
+  "SOURCE_ABSENCE_CLAIMS": 0,
+  "PRODUCTION_CHANGE_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false,
+  "FOUNDATION_ACCEPTANCE": false
+ }
+}
