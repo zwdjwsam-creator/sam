@@ -1,3 +1,42 @@
+## R10 FACTOR RECONCILIATION POINTER (latest, 2026-10-25 00:35 +08:00)
+
+R10 continuation, not R11 and not acceptance. Review consumed:
+`agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_FACTOR_RECONCILIATION_20261024/REVIEW.md` (full) and `PACKAGE.json`
+before acting. Instruction:
+`agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_FACTOR_PARTITION_AND_LINEAGE_RECONCILIATION_20261024.md`
+Evidence: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_reconciliation/`
+
+- Package identity: all six supplied files match `PACKAGE.json` byte counts and SHA256 (4 Python files, REVIEW.md,
+  OFFLINE_TEST_RECEIPT.json). Both predecessor helpers byte-identical to the executed factor_boundary copies. No
+  normalization, no pin regeneration, no Windows harness, old compiler untouched.
+- 17 supplied controls on this desktop: exit 0, `{"tests_run": 17, "passed": true, "scope":
+  "OFFLINE_PARQUET_AND_KEY_CONSERVATION", "supplier_calls": 0}`; stderr unittest `OK`.
+- Fixed reconciliation check, exactly once: exit 0, `FIXED_FACTOR_RECONCILIATION_MEASURED`,
+  `source_files_changed=false`, `supplier_calls=0`, `all_layer_search_performed=false`, genuine CACHE preflight
+  (`ok=true`, `MUST_READ_PRECHECK=PASS`).
+- 13 partitions, one product directory, expected layout enforced: physical rows 12,266,026 = distinct keys
+  12,266,026, unique within disjoint verified years. 2014-2025 are NEW_MEASURED_IDENTITY_NOT_ADMITTED with recorded
+  hashes; 2026 is PRIOR_PIN_MATCH.
+- Counts as observed: declared 12,182,523; shortfall 83,503 reproduces the prior delta. Declared 2026 = measured 2026
+  = 863,710, so the whole shortfall sits in 2014-2025 (11,402,316 measured vs 11,318,813 implied). Per-year baselines
+  absent, cause NOT_ESTABLISHED_BY_ARITHMETIC, no source-absence claim.
+- Cleaning 2026 (774,406 rows, tip 2026-08-14, `e20315ba...`) vs CACHE 2026 (863,710 rows, tip 2026-09-24,
+  `3f44139e...`): clean_only 0, cache_only 89,304, shared 774,406, unequal factors on shared keys 13,199. Different
+  comparison from 83,503; neither explains the other. 2026-08-17..08-28 counts 89/88/81/72/64/49/45/39/29/19 then
+  5208, 11, 7, 5215 - product-content observation only.
+- Two literal searches in retained resources only (317 files, read-only; no drive/catalog scan):
+  BACKWARD_DIRTY_FULL_HISTORY_REPLACE 5 hits, n_rows_year_2026 4 hits, original source-body hits 0. All hits are the
+  registered product `COVERAGE.json` (`b613442e...`, reason/tip_source/tip_extended_at/fq pre/n_rows_year_2026 863710)
+  or R09 artifacts quoting it. Lineage link status UNRESOLVED: no retained transform/run receipt binds 2014-2025.
+- B1 linked, NOT closed (`B1_ADJUSTMENT_RECONCILIATION` OPEN). Other six groups unchanged; no catalog inventory
+  repeated.
+
+FULL_GOAL_MET=false; FOUNDATION_ACCEPTANCE=false; FORMAL_ENGINE_ADMISSION=false;
+INCREMENTAL_PIPELINE_READINESS=NOT_ACCEPTED; LATEST_FULL_UPDATE=NOT_VERIFIED;
+NEW_DATA_ACQUISITION_AUTHORIZED=false; CURRENT_SWITCH_ALLOWED=false; ORDER_ALLOWED=false
+
+---
+
 ## R10 FACTOR BOUNDARY POINTER (latest, 2026-10-24 23:45 +08:00)
 
 R10 continuation, not R11 and not acceptance. Review consumed:
