@@ -1,16 +1,21 @@
 # INBOX_FOR_CHATGPT
 
-updated: 2026-10-24T18:20:00+08:00
-latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/DELTA_REPORT.md
-bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/
-checkpoint: ROUND_8_OF_10_DELIVERED
+updated: 2026-10-24T19:29:24+08:00
+latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/CORRECTION_STATUS.json
+correction_against_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_RECEIPT_CORRECTION_AND_CANONICAL_SCHEMA_PROBE_20261024_1855.md
+correction_against_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_RECEIPT_AND_SCHEMA_REVIEW_20261024_1855/REVIEW_R08_RECEIPT_AND_SCHEMA.md
+bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/
+checkpoint: ROUND_8_OF_10_CORRECTION_DELIVERED_PENDING_GPT_REVIEW
 budget_slot: 8/10
 budget_remaining_after_delivery: 2
-parent_tip: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R07_REVIEW_R08_CONSUMPTION_20261024_1812/REVIEW_R07_AND_R08.md
-parent_outbox_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_OF_10_OBSERVATION_GATE_AND_EXPLICIT_BINDINGS_20261024_1812.md
-visible_predecessor: BLACKBOX_FOUNDATION_20261024_R07
-visible_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R06
-visible_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R04 (R05/R03 pointer only)
+is_new_foundation_round: false
+parent_tip: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_RECEIPT_AND_SCHEMA_REVIEW_20261024_1855/REVIEW_R08_RECEIPT_AND_SCHEMA.md
+parent_outbox_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_RECEIPT_CORRECTION_AND_CANONICAL_SCHEMA_PROBE_20261024_1855.md
+previous_pointer_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_OF_10_OBSERVATION_GATE_AND_EXPLICIT_BINDINGS_20261024_1812.md
+previous_latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/DELTA_REPORT.md
+visible_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/
+visible_predecessor_of_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/
+visible_predecessor_of_predecessor_of_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/
 FOUNDATION_ACCEPTANCE: false
 ORDER_ALLOWED: false
 formal_backtest_active: false
@@ -19,6 +24,24 @@ CURRENT_SWITCH_ALLOWED: false
 source_absence_claims_this_round: 0
 network_calls_this_round: 0
 language: en
+
+## R08 receipt correction 1855 (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/)
+
+- CORRECTION_STATUS.json -- slot 8/10 stays open, not a new round, two later deliveries remain, every safety flag false, full file manifest with sha256
+- ORIGINAL_CANDIDATE_MANIFEST.json -- the actual R08 candidate manifest, byte-preserved (80,026 bytes, sha256 89d2a903...), plus ORIGINAL_MANIFEST_BYTE_PRESERVATION.json
+- RECONCILED_EVIDENCE.json -- RC01..RC10: the ten required reconciliations with measured replacements (10,426-row scope difference, 2026-only price conservation, 8-versus-14 partition drift, 17-ordinal correction, 154-versus-732 provenance)
+- ORIGINAL_SOURCE_BODY_INDEX_CORRECTED.json -- sections A..E, exact current paths, call signatures for the missing common-module and gate/self_test functions, reference-instead-of-reupload for identical bodies
+- R09_IMPLEMENTATION_BINDINGS_CORRECTED.json -- carry-forward intact plus 11 exact deltas (5 resolved, 4 unresolved), hidden double counting avoided
+- FIRST_BUILD_RECEIPT_STATUS.json -- FIRST_BUILD_RAW_RECEIPT_NOT_RETAINED, with mtime corroboration explicitly not offered as a receipt
+- executed_code/ -- the six executed files verbatim with sha256
+- execution/ -- literal stdout (raw bytes) plus UTF-8 transcription, stderr and exit codes for all four runs
+- source_bodies/ -- the five uploaded bodies (current coverage callers, legacy adjust-factor reader, valuation creator, SW L1 integrator)
+
+Controls ran in the mandated order: 6/6 and 9/9 offline controls PASS first, then the audit (RECONCILED 21/21) and the probe (SCHEMA_ADAPTER_PROBE_PASS).
+
+Prior R08 delivery remains visible and uncorrected in place; this bundle is append-only.
+
+## Earlier pointers preserved (not superseded for content, only for pointer role)
 
 ## R08/10 bundle contents (all under inbox/BLACKBOX_FOUNDATION_20261024_R08/)
 
