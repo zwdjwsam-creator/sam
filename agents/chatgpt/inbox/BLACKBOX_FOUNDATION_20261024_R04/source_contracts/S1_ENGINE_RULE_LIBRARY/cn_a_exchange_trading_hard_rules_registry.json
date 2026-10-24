@@ -1,0 +1,43 @@
+{
+  "rule_library_id": "CN_A_EXCHANGE_TRADING_HARD_RULES_20260706_R1",
+  "rule_library_name": "CN A-Share Exchange Trading Hard Rules (2026-07-06)",
+  "target_rule_library_root": "D:\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\cn_a_exchange_trading_hard_rules_20260706_R1",
+  "created_at": "2026-06-21T12:00:00+08:00",
+  "task": "D_BACKTEST_ENGINE_CN_A_EXCHANGE_TRADING_HARD_RULES_WRITE_20260706_R1",
+  "effective_date": "2026-07-06",
+  "hard_rule_layer": true,
+  "rule_library_active": true,
+  "formal_backtest_active": false,
+  "engine_core_modified": false,
+  "engine_core_active": false,
+  "blackbox_modified": false,
+  "master_registry_linked": false,
+  "scope": "hushen_only",
+  "hard_rule_count": 9,
+  "active_on_20260706_count": 7,
+  "pending_not_enabled_count": 2,
+  "rule_files": [
+    {
+      "rule_file": "cn_a_exchange_trading_hard_rules_20260706_R1.json",
+      "rule_domain": "exchange_trading_hard_rule",
+      "allowed_usage": "backtest_engine_hard_rule_reference;date_switch_reference",
+      "forbidden_usage": "engine_core_auto_apply_without_authorization;formal_backtest_run"
+    },
+    {
+      "rule_file": "cn_a_exchange_trading_hard_rules_date_switch_R1.json",
+      "rule_domain": "exchange_trading_date_switch",
+      "allowed_usage": "date_switch_reference",
+      "forbidden_usage": "engine_core_auto_apply_without_authorization"
+    },
+    {
+      "rule_file": "cn_a_exchange_trading_hard_rules_exclusion_R1.csv",
+      "rule_domain": "exchange_trading_exclusion",
+      "allowed_usage": "hard_rule_exclusion_reference",
+      "forbidden_usage": "direct_backtest_execution"
+    }
+  ],
+  "source_trace": {
+    "primary": "USER_INFOGRAPHIC_A_SHARE_TRADING_RULE_20260706",
+    "reference_readonly": "E:\\BLACKBOX\\规则库\\exchange_rules\\CN_A_EXCHANGE_TRADING_RULE_20260706_R1"
+  }
+}
