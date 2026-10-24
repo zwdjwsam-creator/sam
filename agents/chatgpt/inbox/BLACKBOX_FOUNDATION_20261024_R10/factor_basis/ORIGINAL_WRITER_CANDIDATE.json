@@ -1,0 +1,153 @@
+{
+ "schema": "R10_ORIGINAL_WRITER_CANDIDATE_1",
+ "search_command_literal": "rg -n --hidden --no-ignore --fixed-strings --max-filesize 2M --glob \"*.py\" --glob \"*.ps1\" --glob \"!**/.git/**\" --glob \"!**/.venv/**\" --glob \"!**/node_modules/**\" --glob \"!**/__pycache__/**\" -e \"BACKWARD_DIRTY_FULL_HISTORY_REPLACE\" -e \"n_rows_year_2026\" -- \"E:\\BLACKBOX\\脚本\" \"E:\\BLACKBOX\\任务\" \"E:\\BLACKBOX\\运行\"",
+ "rg_executable": "C:\\cursor\\resources\\app\\node_modules\\@vscode\\ripgrep\\bin\\rg.exe",
+ "rg_exit_code": 0,
+ "rg_stdout_bytes": 452,
+ "rg_stdout_sha256": "d18c838ede802251b719d0ced0f29d8d2e6048be62a0c6478bc931599e78bdf6",
+ "rg_stderr_bytes": 0,
+ "rg_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "rg_stdout_literal": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\incremental_backward_refresh_r1.py:246:        pub = publish_successor(new_df, \"BACKWARD_DIRTY_FULL_HISTORY_REPLACE\")\nE:\\BLACKBOX\\运行\\外部大脑信箱\\agents\\chatgpt\\inbox\\BLACKBOX_INVENTORY_CONTINUE_20261022_1310\\completion_1507\\source_reads\\incremental_backward_refresh_r1.py:246:        pub = publish_successor(new_df, \"BACKWARD_DIRTY_FULL_HISTORY_REPLACE\")\n",
+ "roots_searched": [
+  "E:\\BLACKBOX\\脚本",
+  "E:\\BLACKBOX\\任务",
+  "E:\\BLACKBOX\\运行"
+ ],
+ "hit_count": 2,
+ "hits": [
+  {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\incremental_backward_refresh_r1.py",
+   "line": 246,
+   "needle": "BACKWARD_DIRTY_FULL_HISTORY_REPLACE",
+   "line_context": "pub = publish_successor(new_df, \"BACKWARD_DIRTY_FULL_HISTORY_REPLACE\")",
+   "bytes": 11537,
+   "sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+   "kind": "ORIGINAL_SOURCE"
+  },
+  {
+   "path": "E:\\BLACKBOX\\运行\\外部大脑信箱\\agents\\chatgpt\\inbox\\BLACKBOX_INVENTORY_CONTINUE_20261022_1310\\completion_1507\\source_reads\\incremental_backward_refresh_r1.py",
+   "line": 246,
+   "needle": "BACKWARD_DIRTY_FULL_HISTORY_REPLACE",
+   "line_context": "pub = publish_successor(new_df, \"BACKWARD_DIRTY_FULL_HISTORY_REPLACE\")",
+   "bytes": 11537,
+   "sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+   "kind": "LOCAL_HUB_CHECKOUT_COPY_OF_THE_SAME_BYTES"
+  }
+ ],
+ "n_rows_year_2026_hits": 0,
+ "n_rows_year_2026_statement": "the second literal produced no hit inside the three searched code roots; the only occurrence found anywhere in this round is inside the product COVERAGE.json metadata, which no searched source emits",
+ "why_this_is_a_writer_candidate_not_proof": [
+  "a string hit is a source candidate; it does not establish that this program produced the current release",
+  "the file was not imported, executed or patched in this round"
+ ],
+ "what_the_source_does_show": {
+  "publish_successor_signature": "publish_successor(new_factor: pd.DataFrame, reason: str) -> dict",
+  "coverage_fields_written": [
+   "product_id",
+   "date_min",
+   "date_max",
+   "n_codes",
+   "n_rows",
+   "fq",
+   "reason"
+  ],
+  "n_rows_expression": "int(len(new_factor))",
+  "reason_value_at_call_site": "BACKWARD_DIRTY_FULL_HISTORY_REPLACE",
+  "call_site_line": 246,
+  "pointer_fields_written": [
+   "cache_release_id",
+   "release_root",
+   "published_at_cn",
+   "asof",
+   "parent_release_id",
+   "mode",
+   "ADJUST_FACTOR_PIT_R1",
+   "notes"
+  ],
+  "implication": "this program writes reason and n_rows into COVERAGE.json: the declared count is the in-memory frame length, and the reason label is the backward-refresh path label. That is the mechanism behind the two literals; it is not a per-year baseline and does not explain the 83,503 rows."
+ },
+ "fields_in_current_coverage_this_file_does_not_emit": [
+  "tip_extended_at",
+  "tip_source",
+  "n_rows_year_2026"
+ ],
+ "binding_receipts_in_the_same_task_dir": [],
+ "line_context_around_reason_and_count": [
+  "134: def publish_successor(new_factor: pd.DataFrame, reason: str) -> dict:",
+  "154:         \"n_rows\": int(len(new_factor)),",
+  "156:         \"reason\": reason,",
+  "167:         \"notes\": [reason, \"Old release retained for rollback\"],",
+  "219:         \"factor_revision_rows\": int((merged[\"abs_diff\"] > 1e-8).sum()),",
+  "238:         log(json.dumps({k: receipt[k] for k in (\"backward_dirty_count\", \"factor_revision_rows\", \"cache_max_date\", \"source_max_date\", \"AUTHORITY_READY\", \"action\")}, ensure_ascii=False))",
+  "273:     log(json.dumps({k: receipt[k] for k in (\"backward_dirty_count\", \"factor_revision_rows\", \"cache_max_date\", \"source_max_date\", \"AUTHORITY_READY\", \"action\")}, ensure_ascii=False))"
+ ],
+ "HUB_body_already_present": {
+  "path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1507/source_reads/incremental_backward_refresh_r1.py",
+  "sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+  "bytes": 11537,
+  "blob_sha": "95d6704f08f8d02d5dc76dc63671a7745f04487a",
+  "verified_byte_identical": true,
+  "action": "REUSE; no re-upload of this body"
+ },
+ "linked_execution_receipts": {
+  "incremental_receipt": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\INCREMENTAL_RECEIPT.json",
+   "bytes": 1074,
+   "sha256": "bbbec46fb07034506bdc74761e6e7d6de95edfb771d9b80314ff8eaa6f8b71ed",
+   "binds": "update_date 2026-09-02, backward_dirty_count 7, full_history_refreshed_count 7, factor_revision_rows 7, resolver_release BLACKBOX_CACHE_R1_ADJFACTOR_PIT_INCR_20260903_010456, fq pre, raw_fallback_used false, silent_factor_one_used false, AUTHORITY_READY true",
+   "binding_strength": "PROVES_THE_BACKWARD_REFRESH_PATH_RAN_ONCE_ON_2026-09-02_FOR_7_CODES; DOES_NOT_COVER_2014-2025_OR_THE_CURRENT_MOUNTED_RELEASE"
+  },
+  "authority_gates": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\AUTHORITY_GATES.json",
+   "bytes": 1148,
+   "sha256": "e820afdd5ca726c27047a45c18958c56380a76e47f3212c715f1893ae6bbe360",
+   "binds": "BACKWARD_REFRESH_ENGINE -> this exact file; BACKWARD_REFRESH_SCRIPT -> the wrapper below; source_min_date 2014-01-02, SOURCE_MAX_DATE 2026-08-14"
+  },
+  "source_coverage": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\SOURCE_COVERAGE.json",
+   "bytes": 714,
+   "sha256": "dbe8df6287e8b24f705799c3e8c295bc9dc69d1462fc79d9345994b7b3a9c59a",
+   "binds": "total_rows 12176722, actual_codes 5465, expected_trade_days 3068 = actual_trade_days 3068, missing_trade_days [], source_min_date 2014-01-02, source_max_date 2026-08-14",
+   "cross_check": "total_rows 12,176,722 equals the CLEAN total measured this round exactly, so the R26 cleaning generation and this source coverage agree"
+  },
+  "clean_antileak_qa": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\CLEAN_ANTILEAK_QA.json",
+   "bytes": 735,
+   "sha256": "5da57e4a5806017ae41264a916100c5ce4c57b0220bfe16dd25daf68d12f5679",
+   "binds": "total_rows 12176722, duplicate_key_count 0, null/nonfinite/le_zero 0, formula pre(d|T)=raw(d)*factor(d)/factor(T), fq pre, ANTI_LOOKAHEAD_PASS true"
+  },
+  "task_closed": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\TASK_CLOSED.json",
+   "bytes": 1075,
+   "sha256": "49286df9a8d6e74ba824efb18d635629d472f8b82f9d55822320e0919e0ba257",
+   "binds": "closed 2026-08-16T05:05:00+0800, source_parquet 13 = clean_parquet 13 = cache_parquet 13, missing_trade_days [], cache_release_id BLACKBOX_CACHE_R1_ADJFACTOR_PIT_CLEAN_ASOF_20260814_20260816_044403"
+  }
+ },
+ "link_status_to_current_generation": "PARTIAL",
+ "link_reason": "the receipts bind this program to the 2026-08-14 R26 generation and to one 2026-09-02 incremental refusal-free refresh. The currently mounted release is BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439, whose COVERAGE.json also carries tip_extended_at, tip_source and n_rows_year_2026 that this program does not emit. So this is the writer of the reason label and the base count, not a proven writer of every later tip field.",
+ "not_conclusions": [
+  "this program is not declared the sole writer",
+  "no execution is inferred for the current release",
+  "no source absence is claimed",
+  "nothing found by this lookup may be invoked"
+ ],
+ "FOUNDATION_ACCEPTANCE": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "B1_CLOSED": false,
+ "wrapper_carrier": {
+  "carrier_file": "blackbox_adjust_factor_incremental_backward_refresh_r1.BASE64_ORIGINAL_BYTES.json",
+  "decoded_bytes": 723,
+  "decoded_sha256": "d236dacb2e6033bac09737c0bf6da20f8c5155dbb751a0181d087d5d704c3553",
+  "carrier_file_bytes": 1622,
+  "carrier_sha256": "168f90a2b109b7de4fa90ac09f5bdc7fae3a6fca885a9e8c89467f154d1bcbf8",
+  "roundtrip_ok": true
+ },
+ "wrapper_source_summary": {
+  "declares_task_script": "ROOT/任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/incremental_backward_refresh_r1.py",
+  "hard_blocks_if_missing": true,
+  "runs_guarded_subprocess": true,
+  "supplier_calls_made_by_wrapper": 0
+ }
+}
