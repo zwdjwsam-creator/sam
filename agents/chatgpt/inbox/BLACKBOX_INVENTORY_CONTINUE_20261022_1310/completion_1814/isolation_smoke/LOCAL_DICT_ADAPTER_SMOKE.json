@@ -1,0 +1,30 @@
+{
+  "attempted": true,
+  "import_method": "importlib.util.spec_from_file_location (bypasses bullet_trade/__init__ + dotenv)",
+  "module_loaded": true,
+  "module_import_side_effects": {
+    "dotenv_imported": false,
+    "network_client_imported": false
+  },
+  "e_drive_rejection": {
+    "raised": true,
+    "type": "ValueError",
+    "msg": "Forbidden snapshot root (E: drive): E:\\BLACKBOX",
+    "verdict": "E_DRIVE_FORBIDDEN_CONFIRMED"
+  },
+  "trade_calendar_read": {
+    "snapshot_root": "C:\\Users\\Admin\\AppData\\Local\\Temp\\bb_dict_snap_eidiaipr",
+    "n_trade_dates": 5587,
+    "first": "2005-01-04",
+    "last": "2027-12-31",
+    "file_meta": {
+      "rel": "03_field_dictionary/trade_calendar.csv",
+      "row_count": 5587,
+      "source_type": "BB_LOCAL_ALIGNED_DICTIONARY_SNAPSHOT",
+      "allowed_usage": "data_provider_test_and_schema_alignment_only"
+    },
+    "verdict": "PURE_READ_ADAPTER_USABLE_ON_NON_E_ROOT"
+  },
+  "can_be_official_rule_basis": false,
+  "env_required": "BLACKBOX_LOCAL_DICTIONARY_SNAPSHOT"
+}
