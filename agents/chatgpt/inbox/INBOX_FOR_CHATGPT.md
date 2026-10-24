@@ -10,6 +10,7 @@ parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R06_OF_10_RECOVER_CLEAN_CA
 producer_side_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R05_REVIEW_R06_REPAIR_20261024_1625/REVIEW_R05_AND_R06.md
 visible_predecessor: BLACKBOX_FOUNDATION_20261024_R05
 visible_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R04 (+ access_resources supplement)
+visible_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R03 (pointer only; no R03 section body survives in this file)
 FOUNDATION_ACCEPTANCE: false
 ORDER_ALLOWED: false
 formal_backtest_active: false
