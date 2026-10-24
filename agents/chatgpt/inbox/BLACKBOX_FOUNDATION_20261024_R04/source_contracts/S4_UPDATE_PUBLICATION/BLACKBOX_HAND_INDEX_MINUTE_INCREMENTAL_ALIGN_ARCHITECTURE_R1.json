@@ -1,0 +1,61 @@
+{
+  "rule_id": "BLACKBOX_HAND_INDEX_MINUTE_INCREMENTAL_ALIGN_ARCHITECTURE_R1",
+  "status": "SEALED_ACTIVE",
+  "formality": "FORMAL_HARD_GATE_NOT_PATCH",
+  "sealed_at_cn": "2026-08-14T06:55:00+0800",
+  "authorized_at_cn": "2026-08-14T06:55:00+0800",
+  "task_id": "BLACKBOX_INDEX_MINUTE_INCREMENTAL_ALIGN_ARCHITECTURE_FIX_R1",
+  "incident_chain_closed": true,
+  "defects_closed": [
+    "FULL_HISTORY_REWRITE_ON_INCREMENTAL",
+    "ABORTED_ORPHAN_LEAK"
+  ],
+  "engine": "脚本/index_minute_align_incremental_engine_r1.py",
+  "seal_entry": "脚本/index_minute_align_clean_antileak_seal_r1.py",
+  "cursor_rule": ".cursor/rules/blackbox_index_minute_incremental_align_architecture.mdc",
+  "gates": [
+    "脚本/index_minute_incremental_storage_non_regression_gate_r1.py",
+    "脚本/index_minute_increment_source_completeness_gate_r1.py"
+  ],
+  "principles": [
+    "DAILY_MUST_USE_MODE_INCREMENTAL",
+    "FULL_REQUIRES_EXPLICIT_REBUILD_TASK_AUTH_CAPACITY_REASON",
+    "INCREMENT_ONLY_AFFECTED_PARTITIONS",
+    "UNCHANGED_MUST_PHYSICAL_REUSE",
+    "SOURCE_COMPLETENESS_REQUIRED_BEFORE_SUCCESSOR",
+    "PARTIAL_CANARY_FORBIDDEN_AS_FULL_INCREMENT",
+    "STAGING_QA_SEAL_ATOMIC_CURRENT",
+    "ABORTED_CANDIDATE_MUST_REGISTER_ORPHAN",
+    "FORMAL_WA_RECORDED_EACH_RUN",
+    "SUCCESSOR_MUST_NOT_LOSE_UNCHANGED_AUTHORITY",
+    "CURRENT_CATALOG_INDEX_COVERAGE_SAME_GENERATION",
+    "FRESHNESS_COVERAGE_AUTHORITY_PHYSICAL_SEPARATE_LEDGERS"
+  ],
+  "code_hard_gate_full_mode": {
+    "marker": "HARD_BLOCK_FULL_MODE_FOR_DAILY_ALIGN",
+    "required_flags": [
+      "--explicit-full-rebuild-authorized",
+      "--full-rebuild-task-class INDEX_MINUTE_ALIGN_FULL_REBUILD",
+      "--full-rebuild-reason",
+      "--full-rebuild-capacity-gb-estimate"
+    ]
+  },
+  "write_amplification_definition": "NEW_PHYSICAL_BYTES / AUTHORITATIVE_INCREMENTAL_SOURCE_BYTES",
+  "physical_write_to_reused_logical_ratio_definition": "NEW_PHYSICAL_BYTES / REUSED_LOGICAL_BYTES",
+  "default_mode": "incremental",
+  "full_mode": "INDEX_MINUTE_ALIGN_FULL_REBUILD_ONLY",
+  "orphan_registry": "运行/BLACKBOX_STORAGE_ORPHAN_REGISTRY_CURRENT.json",
+  "fail_closed": {
+    "untouched_partition_rewrite_count_gt_0_on_single_day": true,
+    "full_history_copy_bytes_gt_0": true,
+    "partial_source": true,
+    "full_mode_without_explicit_rebuild_auth": true
+  },
+  "boundary_idempotent_cutover_not_production_wa": {
+    "note": "Same-asof hardlink cutover (new_physical=0) validates idempotency only; do NOT invent production WA until next real D→D+1 authoritative increment.",
+    "production_wa_status": "PENDING_NEXT_REAL_INCREMENT_ACCEPTANCE"
+  },
+  "logical_semantics_frozen": true,
+  "BAR_END_PIT_UNCHANGED": true,
+  "next_action": "PRODUCTION_ACCEPTANCE_ON_NEXT_REAL_D_TO_D1_INCREMENT_THEN_STOP_GOVERNANCE_EXPANSION"
+}
