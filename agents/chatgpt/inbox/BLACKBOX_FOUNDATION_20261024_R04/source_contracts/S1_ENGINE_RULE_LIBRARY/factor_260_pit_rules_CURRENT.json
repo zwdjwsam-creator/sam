@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "status": "candidate_probe_only",
+  "user_approval_required": true,
+  "technical_factor_rule": "use_bar_date_only_no_future_bar",
+  "fundamental_factor_rule": "align_to_pub_date_not_report_date",
+  "valuation_factor_rule": "align_to_trade_date_with_availability_lag_review",
+  "same_day_usage_rule": "technical_factors_only_with_bar_close_assumption_review",
+  "next_day_usage_rule": "fundamental_and_valuation_default",
+  "pub_date_alignment_required": true,
+  "report_date_alignment_required": false,
+  "forbidden_future_function_cases": [
+    "use_report_date_before_pub_date",
+    "use_index_future_constituent",
+    "factor_value_download_without_plan"
+  ]
+}
