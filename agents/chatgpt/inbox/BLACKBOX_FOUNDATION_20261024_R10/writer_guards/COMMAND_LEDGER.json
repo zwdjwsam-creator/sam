@@ -1,0 +1,113 @@
+{
+ "schema": "R10_WRITER_GUARDS_COMMAND_LEDGER_1",
+ "round": "R10_WRITER_GUARDS_AND_EXACT_RECEIPTS_20261025",
+ "executor": "ZHANGWEI / Cursor agent, local desktop",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONUTF8": "1",
+  "PYTHONDONTWRITEBYTECODE": "1"
+ },
+ "ordering_rule": "a failing step stops all dependent steps",
+ "steps": [
+  {
+   "seq": 1,
+   "step": "STAGE_AND_PRE_EXECUTION_PIN_CHECK",
+   "kind": "LOCAL_READ_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "tools\\r10_stage_writer_guards.py"
+   ],
+   "exit_code": 0,
+   "started_cn": "2026-10-25T00:58:12+08:00",
+   "ended_cn": "2026-10-25T00:58:13+08:00",
+   "result": "6 of 6 declared identities match by exact bytes AND SHA256: the 5 PACKAGE.json members and the HUB fixture. The fixture was fetched from the published HUB body and is byte-identical to the local original. No line-ending normalisation, no source change, no pin regeneration, no substitute test.",
+   "fixture": {
+    "path": "reviews/R10/writer_guards/source_incremental_backward_refresh_r1.py",
+    "hub_path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1507/source_reads/incremental_backward_refresh_r1.py",
+    "bytes": 11537,
+    "sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0"
+   },
+   "evidence": "PRE_EXECUTION_PIN_CHECK.json (written before the controls ran, with actual clock times)"
+  },
+  {
+   "seq": 2,
+   "step": "SUPPLIED_WRITER_REGRESSION_CONTROLS",
+   "kind": "OFFLINE_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\writer_guards\\test_r10_factor_writer_regressions.py"
+   ],
+   "exit_code": 0,
+   "started_cn": "2026-10-25T00:58:18.1666729+08:00",
+   "ended_cn": "2026-10-25T00:58:19.1786086+08:00",
+   "result": "{\"tests_run\": 13, \"passed\": true, \"scope\": \"PINNED_AST_AND_OFFLINE_MERGE_ONLY\", \"supplier_calls\": 0, \"FOUNDATION_ACCEPTANCE\": false}; unittest stderr \"Ran 13 tests ... OK\". The run imports only the pure input and merge guards and parses one hash-verified AST; it does not import or execute the original writer, the wrapper, auth, the publisher or any supplier SDK.",
+   "stdout_file": "captures/TEST_13_CONTROLS.stdout.bin",
+   "stdout_bytes": 134,
+   "stdout_sha256": "ddb3c0de2d77f44a41e057bc99666db36b6428dd468b78af47c014871d9e38ac",
+   "stderr_file": "captures/TEST_13_CONTROLS.stderr.bin",
+   "stderr_bytes": 117,
+   "stderr_sha256": "f980d591ae4d7716f96210c0a246f2f9890f118226a3a187683787412fb4afa5"
+  },
+  {
+   "seq": 3,
+   "step": "GENUINE_PREFLIGHT_DESCRIBE",
+   "kind": "LOCAL_READ_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\operating_entry\\blackbox_operate_r10.py",
+    "describe",
+    "--product",
+    "ADJUST_FACTOR_PIT_R1"
+   ],
+   "exit_code": 0,
+   "started_cn": "2026-10-25T00:58:24.5735196+08:00",
+   "ended_cn": "2026-10-25T00:58:25.5886235+08:00",
+   "result": "real_preflight ok=true, MUST_READ_PRECHECK=PASS, task_class CACHE, rules BOOTSTRAP and DATA_ACCESS both VERIFIED, problems [], AUTHORITY_READY=YES. Catalog status ACTIVE, 13 parquet files, 12,266,026 rows, 2014-01-02..2026-09-24, 3097 of 3097 expected sessions, missing_session_count 0. use_for_formal_backtest false, source_absence_claim_allowed false.",
+   "stdout_file": "captures/PREFLIGHT_DESCRIBE.stdout.bin",
+   "stdout_bytes": 6632,
+   "stdout_sha256": "581bd41a7a89d61b90e25535b0afe37f8c744c92254ec252b6d4868bf544cb83",
+   "stderr_file": "captures/PREFLIGHT_DESCRIBE.stderr.bin",
+   "stderr_bytes": 0,
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "seq": 4,
+   "step": "READ_FIVE_EXACT_RECEIPT_ORIGINALS",
+   "kind": "LOCAL_READ_ONLY_NO_SEARCH",
+   "argv": null,
+   "command": "read exactly the five named files under E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\ and compare bytes and SHA256 with the issued pins",
+   "exit_code": 0,
+   "started_cn": null,
+   "ended_cn": "2026-10-25T00:58:46+08:00",
+   "timing_note": "only the artifact write time is retained (FIVE_RECEIPT_ORIGINALS.json ctime 2026-10-24T16:58:46Z = 00:58:46+08). The start of this read step was not separately captured and is not asserted.",
+   "result": "5 of 5 match the issued pins exactly; no path differed, no alternate root used, no re-pin. No directory enumeration of data roots and no drive search was performed. Only a single HUB repository tree listing (2,994 entries, not truncated) was consulted to test whether a complete body of the same name was already published; none was, so all five are returned as complete BASE64 carriers.",
+   "evidence": "FIVE_RECEIPT_ORIGINALS.json, CARRIER_RECEIPT.json"
+  }
+ ],
+ "safety": {
+  "production_patch": 0,
+  "business_data_merge": 0,
+  "historical_refresh": 0,
+  "logins": 0,
+  "supplier_calls": 0,
+  "data_downloads": 0,
+  "CURRENT_changes": 0,
+  "engine_constructions": 0,
+  "orders": 0,
+  "original_source_selftest": "FORBIDDEN_AND_NOT_RUN",
+  "writer_wrapper_or_auth_imported": false
+ },
+ "reused_prior_delivery": {
+  "factor_basis_members": 26,
+  "final_byte_readback_blob": "2d0260ace3c3eedaa84973777128d799954f4367",
+  "second_finisher_started": false,
+  "measurements_repeated": false
+ }
+}
