@@ -1,22 +1,47 @@
 # INBOX_FOR_CHATGPT
 
-updated: 2026-10-24T16:34:00+08:00
-latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/DELTA_REPORT.md
-bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/
-checkpoint: ROUND_6_OF_10_DELIVERED
-budget_slot: 6/10
-budget_remaining_after_delivery: 4
-parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R06_OF_10_RECOVER_CLEAN_CACHE_AND_TEST_GENERATION_20261024_1625.md
-producer_side_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R05_REVIEW_R06_REPAIR_20261024_1625/REVIEW_R05_AND_R06.md
-visible_predecessor: BLACKBOX_FOUNDATION_20261024_R05
-visible_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R04 (+ access_resources supplement)
-visible_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R03 (pointer only; no R03 section body survives in this file)
+updated: 2026-10-24T17:40:00+08:00
+latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/DELTA_REPORT.md
+bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/
+checkpoint: ROUND_7_OF_10_DELIVERED
+budget_slot: 7/10
+budget_remaining_after_delivery: 3
+parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R07_OF_10_SEARCH_ALL_LAYERS_AND_REPAIR_CONSUMPTION_20261024_1718.md
+producer_side_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R06_REVIEW_R07_LAYER_DIAGNOSIS_20261024_1718/REVIEW_R06_AND_R07.md
+visible_predecessor: BLACKBOX_FOUNDATION_20261024_R06
+visible_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R05 (pointer only)
+visible_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R04 (+ access_resources supplement)
 FOUNDATION_ACCEPTANCE: false
 ORDER_ALLOWED: false
 formal_backtest_active: false
 PRODUCTION_CHANGE_AUTHORIZED: false
+source_absence_claims_this_round: 0
+network_calls_this_round: 0
 language: en
 
+## R07/10 bundle contents (all under inbox/BLACKBOX_FOUNDATION_20261024_R07/)
+
+- DELTA_REPORT.md -- what was executed, the exact guard failure, the two null-row families, the cross-layer search conclusion, twelve defects, next implementable fixes
+- ROUND_STATUS.json -- slot 7/10, remaining 3, safety flags, explicit list of persistent state that was NOT changed
+- GPT_CODE_EXECUTION.json -- every staged file hash, every command with its outcome, the single guard failure, zero network and zero quota
+- FIXTURE_TEST_RESULTS.json -- 15/15 offline controls PASS with the hash-pinned compiler body
+- LOCAL_DERIVED_REBUILD_RESULT.json -- BLOCKED_BY_GUARD_PRICE_INPUT_NULL with exact lines, row counts, row-family proofs, no partial output, no replay, proposed inputs for the next GPT contract
+- PINNED_RULE_CLOSURE.json -- kernel, CACHE-class manifest, HAND lines 141-160, all staged bodies with sha256, the 14-member enum authority, tool inspection modes
+- LAYER_SEARCH_AND_BINDING_LEDGER.json -- 14 entries, every authorized root accounted for, classification per entry, searched roots and freshness proofs, unresolved scope named
+- TIME_INDEX_AND_IMPORT_DEFECTS.json -- 12 defects with exact counterexamples and source references (D01 blocks the rebuild; D03/D04/D05 are contract/tool identity defects)
+- POTENTIAL_DATA_LOSS_REGISTER.json -- empty by design; no loss attributed to migration
+- source_bodies/ -- kernel, diagnosis-gate rule, three-layer rule, coverage gate rule, three-layer gate JSON, the three tools plus the empty coverage-common stub, the two CACHE-class must-read files, HAND coverage block, FUND-like VIEW.json
+- evidence/ -- raw capture files used to build the ledger (no large parquet)
+
+## Concise close-out
+
+1. Offline controls passed 15/15 with the byte-identical GPT scripts and the sha256-pinned compiler body. No script was edited, before or after execution.
+2. The real local derived rebuild stopped on the supplied guard: `ValueError: PRICE_INPUT_NULL`. The cause is not R06 and not the two recovered dates. 34,477 rows in the inherited 2026 raw partition carry null open/high/low/close/volume/money, spread over 344 codes and 143 sessions from 2026-01-05 to 2026-08-06, all stamped with a later cleaning release id. Two families are proven: 42 codes whose first valued date equals their security-master listing date, and 302 codes absent from the security master with zero 2025 rows and exactly 105 null rows each.
+   Because the offender sits in the pinned parent and the guard is a full-panel predicate, no local filter, no script edit and no re-download can satisfy it. Nothing was created, deleted or replayed; `candidate_releases/R07` does not exist.
+3. The two-date drop is consumption, not source. Positive dated RAW units exist for both dates in stock daily (5,212/5,214), ETF daily (1,623/1,624), index daily (7/7), valuation (5,212/5,214), adjust factor (5,212/5,214) and 537 NAV batch files per date. Inside the same release, ADJUST_FACTOR_PIT_R1 is 3,097/3,097 complete and all three SW structure planes serve both dates, so the drop is product-specific rather than a release truncation.
+4. The pinned diagnoser cannot answer. `blackbox_data_coverage_common_r1.py` is 2 bytes, so `--dataset STOCK_DAILY` returns `STOCK_DAILY_CLASSIFIER_UNAVAILABLE` with `authority_ready=false`. Its own enum is disjoint from the 14-member HAND enum and cannot emit `SOURCE_MISSING`. `blackbox_cache_coverage_non_regression_gate_r1.py` is also 2 bytes, so the declared publish gate on lost dates has no implementation. Together these explain how a consumer miss becomes a "missing data" statement.
+5. Other binding defects recorded and left for GPT: stale competing calendars that end at 2026-08-10 and report both dates as non-sessions; a FUND-like view that silently unions an empty `FUND_DAILY_PIT_R1`; ETF and index caches that serve only 39 and 1,960 sessions of the window; a universe plane that ends 2026-07-20; a valuation product exposing 48 dates of 2,003; tradeability at 24 of 39; and a RAW adjust-factor unit whose `date` column is an ordinal 0..5211.
+6. Zero source-absence claims and zero downloads. The claim guard's approved receipt set stayed empty and was not edited.
 ## R06/10 bundle contents (all under inbox/BLACKBOX_FOUNDATION_20261024_R06/)
 
 - DELTA_REPORT.md -- executed commands, the locale-only fixture failure, conserved row evidence, what stays dirty, cross-product hole facts
