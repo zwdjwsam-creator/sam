@@ -11,6 +11,7 @@ producer_side_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R06_REVIEW_R07_
 visible_predecessor: BLACKBOX_FOUNDATION_20261024_R06
 visible_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R05 (pointer only)
 visible_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R04 (+ access_resources supplement)
+visible_predecessor_of_predecessor_of_predecessor_of_predecessor: BLACKBOX_FOUNDATION_20261024_R03 (pointer only; no R03 section body survives in this file)
 FOUNDATION_ACCEPTANCE: false
 ORDER_ALLOWED: false
 formal_backtest_active: false
