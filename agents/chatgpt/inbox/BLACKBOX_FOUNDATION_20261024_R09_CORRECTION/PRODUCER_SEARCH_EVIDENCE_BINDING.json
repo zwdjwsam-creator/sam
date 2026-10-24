@@ -1,0 +1,154 @@
+{
+ "schema": "R09_PRODUCER_SEARCH_EVIDENCE_BINDING_1",
+ "round": "R09/10_CORRECTION",
+ "retracted": {
+  "artifact": "EVIDENCE_INPUTS_R09.json -> four_unresolved_items.I1.writer_files_found = []",
+  "why": "it looked like a fresh exhaustive writer search but cited no search ledger; R09 did not run one"
+ },
+ "replacement_statement": "PRODUCER_UNBOUND_IN_REVIEWED_EVIDENCE",
+ "what_the_reviewed_evidence_does_bind": {
+  "domain_row": {
+   "source": "r04_delivery/access_resources/DATA_ACQUISITION_MATRIX.json",
+   "sha256": "f46b43ac2fa7e2a414099cc36f84b38ca12c0f84b02cfa3f33898e7f979e00fc",
+   "dataset_id": "TRADABLE_STATUS",
+   "title": "Tradable / limit / pause status",
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "child rule security_state_daily_include=true -> STOCK_TRADEABILITY_PIT_R1"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status"
+   },
+   "layer_file_counts": {
+    "RAW": 956,
+    "CLEAN": 3
+   },
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "known_gap": null,
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  "update_binding": {
+   "source": "r06_delivery/NEXT_UPDATE_BINDINGS.json",
+   "sha256": "7307cf49209638f8dba9fc272d71cfedbd55ba1a9aa005d98e25c4f2e95f7a1f",
+   "excerpt": "scope_field=TRADEABILITY_EFFECTIVE_ASOF=2026-09-03, scope_note=inherited_0903_until_security_state_tip, observed_product_coverage=2026-07-13..2026-08-12 plus one 2026-09-03 tip, required_cache_product=[STOCK_TRADEABILITY_PIT_R1], receipt_or_exception=PERMISSION_OK per probe; the missing dates are a DOWNLOAD GAP, not a permission gap, status=PERMISSION_OK_DOWNLOAD_GAP"
+  },
+  "search_scope": {
+   "source": "r07_delivery/LAYER_SEARCH_AND_BINDING_LEDGER.json",
+   "sha256": "e494f833a2909d00b21a5def8eb8929da76e575d01f78393e2a2c983407b2084",
+   "products_enumerated": 51,
+   "catalog_entries": 41,
+   "searched_roots": [
+    {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "layer": "CACHE_CURRENT_RELEASE",
+     "searched": true,
+     "index_used": "CACHE_PRODUCT_CATALOG.csv (41 products) + directory enumeration (51 dirs)",
+     "freshness_proof": "release id carries asof 20260924; product max dates reach 2026-09-24"
+    },
+    {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases",
+     "layer": "CLEAN_HISTORICAL_AND_SEALED_RELEASES",
+     "searched": true,
+     "index_used": "release name enumeration; index-minute align releases located by asof date"
+    },
+    {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases",
+     "layer": "CACHE_HISTORICAL_PINNED_RELEASES",
+     "searched": true,
+     "index_used": "release name enumeration (140+ releases)"
+    },
+    {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw",
+     "layer": "RAW_CANONICAL_FULL_HISTORY",
+     "searched": true,
+     "index_used": "per-dataset root enumeration with date-token filename matching",
+     "note": "dated-token search only; undated annual files verified separately"
+    },
+    {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange",
+     "layer": "META_CALENDAR_AUTHORITY",
+     "searched": true,
+     "index_used": "asof-versioned directory listing; sha256 recorded"
+    },
+    {
+     "root": "E:\\BLACKBOX\\运行",
+     "layer": "COVERAGE_LEDGERS",
+     "searched": true,
+     "index_used": "BLACKBOX_RAW_COVERAGE_LEDGER_CURRENT.json / CLEANING / CACHE"
+    },
+    {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions",
+     "layer": "SIDE_PLANE_RAW",
+     "searched": true,
+     "index_used": "directory enumeration"
+    },
+    {
+     "root": "E:\\BLACKBOX\\数据\\外部证据",
+     "layer": "EXTERNAL_EVIDENCE",
+     "searched": true,
+     "index_used": "directory enumeration only (no product claim depends on it)"
+    }
+   ],
+   "entries_used": [
+    {
+     "id": "L08",
+     "dataset": "MARKET_UNIVERSE_PIT_R1",
+     "classification": "CACHE_COVERAGE_REGRESSION",
+     "allowed_action": "EXTEND_UNIVERSE_FROM_PINNED_SECURITY_STATE; NO_DOWNLOAD"
+    },
+    {
+     "id": "L09",
+     "dataset": "STOCK_TRADEABILITY_PIT_R1",
+     "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+     "allowed_action": "MATERIALIZE_FROM_RAW_FIELDS; NO_DOWNLOAD"
+    },
+    {
+     "id": "L11",
+     "dataset": "catalog entries without a directory",
+     "classification": "SEPARATE_NAMESPACE_OR_REGISTRY"
+    }
+   ]
+  },
+  "consumer_references": [
+   {
+    "file": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+    "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+    "lines": [
+     125,
+     126,
+     127,
+     210,
+     211
+    ],
+    "role": "name map + PIT policy (reader)"
+   },
+   {
+    "file": "E:\\BLACKBOX\\脚本\\blackbox_external_market_evidence_data_agent_r1.py",
+    "sha256": "828711b40c062c9a2dadd887e12903d54fe03109040c6f6af5af065ec96ad1fe",
+    "lines": [
+     228,
+     405
+    ],
+    "role": "reads a tradeability release root (reader)"
+   }
+  ]
+ },
+ "what_remains_unbound": [
+  "the executable module that materializes RAW P2_security_state into STOCK_TRADEABILITY_PIT_R1",
+  "the module that owns MARKET_UNIVERSE_PIT_R1 membership"
+ ],
+ "explicitly_not_claimed": [
+  "that no producer exists anywhere",
+  "that the RAW lane is absent",
+  "any new acquisition",
+  "producer ownership of the two minute products beyond what L11 records"
+ ],
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
