@@ -1,0 +1,49 @@
+{
+ "schema": "R10_FACTOR_COUNT_DECOMPOSITION_1",
+ "note": "arithmetic only. This file records how the two known differences relate in size; it does not identify a cause and does not adjudicate which side is correct.",
+ "product_sidecar_comparison": {
+  "physical_rows_all_13_partitions": 12266026,
+  "distinct_keys": 12266026,
+  "global_distinct_key_proof": "UNIQUE_WITHIN_DISJOINT_YEAR_PARTITIONS",
+  "sidecar_declared_rows": 12182523,
+  "physical_minus_sidecar": 83503,
+  "reproduces_prior_83503_delta": true
+ },
+ "year_split_of_the_83503": {
+  "measured_2026_rows": 863710,
+  "sidecar_2026_rows": 863710,
+  "year_2026_agrees": true,
+  "measured_2014_2025_rows": 11402316,
+  "sidecar_implied_2014_2025_rows": 11318813,
+  "difference_2014_2025": 83503,
+  "statement": "the whole 83,503-row shortfall sits in the 2014-2025 partitions, because the declared 2026 count equals the measured 2026 count exactly",
+  "per_year_sidecar_baselines": "NOT_AVAILABLE_IN_THIS_SIDECAR"
+ },
+ "cleaning_vs_cache_2026": {
+  "clean_rows": 774406,
+  "cache_rows": 863710,
+  "clean_only": 0,
+  "cache_only": 89304,
+  "shared": 774406,
+  "unequal_values_on_shared_keys": 13199,
+  "row_delta_cache_minus_clean": 89304,
+  "clean_tip": "2026-08-14",
+  "cache_tip": "2026-09-24",
+  "different_comparison_from_83503": true,
+  "statement": "the 89,304-row Cleaning-vs-CACHE difference is not the 83,503 product-sidecar difference and neither explains the other without per-partition/key evidence"
+ },
+ "interpretation_limits": [
+  "a row-count match would establish arithmetic only",
+  "clean_only = 0 shows the Cleaning key set is contained in the CACHE key set for the overlapping window; it does not establish which side is authoritative",
+  "the 13,199 unequal shared-key factors are descriptive; the two sides may use different anchoring bases",
+  "no per-year baseline exists in this sidecar, so the aggregate cannot name a faulty year"
+ ],
+ "count_mismatch_cause": "NOT_ESTABLISHED_BY_ARITHMETIC",
+ "source_absence_claim": false,
+ "B1_CLOSED": false,
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false
+}
