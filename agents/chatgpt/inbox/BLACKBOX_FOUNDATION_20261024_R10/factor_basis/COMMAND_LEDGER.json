@@ -1,0 +1,146 @@
+{
+ "schema": "R10_FACTOR_BASIS_COMMAND_LEDGER_1",
+ "executor": "ZHANGWEI / Cursor agent, local desktop",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "ordering_rule": "steps are ordered; a failing step stops all dependent steps",
+ "steps": [
+  {
+   "seq": 1,
+   "step": "STAGE_AND_VERIFY_PACKAGE",
+   "kind": "LOCAL_READ_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "tools\\verify_factor_basis_pins.py"
+   ],
+   "exit_code": 0,
+   "env": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+   },
+   "started_cn": "2026-10-25T00:45:43.6495082+08:00",
+   "ended_cn": "2026-10-25T00:45:44.6736550+08:00",
+   "result": "ALL_PINS_MATCH True across 8 declared package files; three helpers byte-identical to the accepted reconciliation round; no mismatch, no stop",
+   "stdout_file": "captures/PACKAGE_PIN_VERIFY.stdout.bin",
+   "stdout_bytes": 1668,
+   "stdout_sha256": "8ebd89350764c12ec2e60829226e07c402c680264eab4d170002f6bf81db667a",
+   "stderr_file": "captures/PACKAGE_PIN_VERIFY.stderr.bin",
+   "stderr_bytes": 0,
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "seq": 2,
+   "step": "SUPPLIED_OFFLINE_CONTROLS",
+   "kind": "OFFLINE_ONLY",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\factor_basis\\test_r10_factor_basis.py"
+   ],
+   "exit_code": 0,
+   "env": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+   },
+   "started_cn": "2026-10-25T00:30:27.7926460+08:00",
+   "ended_cn": "2026-10-25T00:30:28.8042270+08:00",
+   "result": "{\"tests_run\": 12, \"passed\": true, \"scope\": \"FACTOR_RATIO_INVARIANCE_OFFLINE_ONLY\", \"supplier_calls\": 0, \"FOUNDATION_ACCEPTANCE\": false}; unittest stderr \"Ran 12 tests ... OK\"",
+   "stdout_file": "captures/TEST_12_CONTROLS.stdout.bin",
+   "stdout_bytes": 137,
+   "stdout_sha256": "a513614700c277a2c54dd99166893ebf8e62e23f31fd0d1714b698045882ffe3",
+   "stderr_file": "captures/TEST_12_CONTROLS.stderr.bin",
+   "stderr_bytes": 116,
+   "stderr_sha256": "61bac56988b59e49aec33ddd9e305a09080fc26547336c8a4be3b72ebbe3a21a"
+  },
+  {
+   "seq": 3,
+   "step": "FACTOR_GENERATION_COMPARISON",
+   "kind": "LOCAL_READ_ONLY_MEASUREMENT",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\factor_basis\\r10_factor_basis.py",
+    "--desktop-check"
+   ],
+   "exit_code": 0,
+   "env": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+   },
+   "started_cn": "2026-10-25T00:30:51.0745385+08:00",
+   "ended_cn": "2026-10-25T00:32:37.8188194+08:00",
+   "executions": 1,
+   "rerun": false,
+   "result": "status FACTOR_GENERATION_BASIS_MEASURED; genuine CACHE preflight invoked through reviews/R10/operating_entry/blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1, exit 0, MUST_READ_PRECHECK PASS for task_class CACHE; source_files_changed false; supplier_calls 0; all_layer_search_performed false",
+   "stdout_file": "captures/DESKTOP_FACTOR_BASIS.stdout.bin",
+   "stdout_bytes": 1341456,
+   "stdout_sha256": "afbdaee971741a6d635e493b3c03fd6417af6125d9f026223b3a2abac19d6303",
+   "stderr_file": "captures/DESKTOP_FACTOR_BASIS.stderr.bin",
+   "stderr_bytes": 0,
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "seq": 4,
+   "step": "SCOPED_ORIGINAL_SOURCE_LOOKUP",
+   "kind": "LOCAL_READ_ONLY_BOUNDED_SEARCH",
+   "argv": [
+    "rg",
+    "-n",
+    "--hidden",
+    "--no-ignore",
+    "--fixed-strings",
+    "--max-filesize",
+    "2M",
+    "--glob",
+    "*.py",
+    "--glob",
+    "*.ps1",
+    "--glob",
+    "!**/.git/**",
+    "--glob",
+    "!**/.venv/**",
+    "--glob",
+    "!**/node_modules/**",
+    "--glob",
+    "!**/__pycache__/**",
+    "-e",
+    "BACKWARD_DIRTY_FULL_HISTORY_REPLACE",
+    "-e",
+    "n_rows_year_2026",
+    "--",
+    "E:\\BLACKBOX\\脚本",
+    "E:\\BLACKBOX\\任务",
+    "E:\\BLACKBOX\\运行"
+   ],
+   "rg_executable": "C:\\cursor\\resources\\app\\node_modules\\@vscode\\ripgrep\\bin\\rg.exe",
+   "exit_code": 0,
+   "executions": 1,
+   "started_cn": "2026-10-25T00:43:30.3444947+08:00",
+   "ended_cn": "2026-10-25T00:43:31.3550247+08:00",
+   "result": "2 hits, both for the first literal in the same byte-identical file; 0 hits for n_rows_year_2026 inside the three searched roots",
+   "stdout_file": "captures/SOURCE_LOOKUP_RG.stdout.bin",
+   "stdout_bytes": 452,
+   "stdout_sha256": "d18c838ede802251b719d0ced0f29d8d2e6048be62a0c6478bc931599e78bdf6",
+   "stderr_file": "captures/SOURCE_LOOKUP_RG.stderr.bin",
+   "stderr_bytes": 0,
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+ ],
+ "post_upload_steps": [],
+ "safety": {
+  "business_data_writes": 0,
+  "historical_refresh": 0,
+  "logins": 0,
+  "supplier_calls": 0,
+  "downloads": 0,
+  "candidate_promotions": 0,
+  "CURRENT_changes": 0,
+  "engine_constructions": 0,
+  "orders": 0
+ },
+ "source_edits": "none; no newline normalization, no pin regeneration, no substitute tests, no Windows harness"
+}
