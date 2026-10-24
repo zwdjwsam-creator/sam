@@ -1,0 +1,44 @@
+{
+  "round_id": "BLACKBOX_FOUNDATION_20261024_R05",
+  "bodies": [
+    {
+      "name": "formal_cleaning_r15_build_and_seal_r1.py",
+      "source_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\formal_cleaning_r15_build_and_seal_r1.py",
+      "bytes": 14196,
+      "sha256": "5ee6b3b4795c56ce178b7d6cbe581f6391fbbc817a9c677a94a09ca5023f992d",
+      "why_supplied": "release-ingest family copy: load_staging / ingest_item / place_file / hardlink_tree / seal_release, and the hardcoded PARENT_ID that makes carry-forward depend on one fixed parent"
+    },
+    {
+      "name": "post_seal_daily_download_r8.py",
+      "source_path": "E:\\BLACKBOX\\任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py",
+      "bytes": 19649,
+      "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+      "why_supplied": "write-side family copy: save_unit writes RAW + staging + sidecars and the clean_rel convention; main writes STAGING_MANIFEST.json"
+    },
+    {
+      "name": "BLACKBOX_STOCK_DAILY_TIP_PARTITION_ATTRIBUTION_CURRENT.json",
+      "source_path": "E:\\BLACKBOX\\运行\\BLACKBOX_STOCK_DAILY_TIP_PARTITION_ATTRIBUTION_CURRENT.json",
+      "bytes": 2381,
+      "sha256": "7afe1cd09d92ab993ca82e83c11bc6c4201c5bce6f93a998a2fe911f551e24c1",
+      "why_supplied": "pre-existing incident attribution for STOCK_DAILY_TIP_HOLE_20260831_20260901, including the forbidden claims"
+    },
+    {
+      "name": "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1.json",
+      "source_path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1.json",
+      "bytes": 10472,
+      "sha256": "290b21c14a7d2646ce9e863177b2aec3db84b1fe00ad74854aec31d30ad80739",
+      "why_supplied": "the daily invariants that make RUN_TARGET_TRADE_DATE the only runtime target and forbid a summary asof from freezing updates"
+    },
+    {
+      "name": "blackbox_full_data_update_scope_refresh_r1.py",
+      "source_path": "E:\\BLACKBOX\\脚本\\blackbox_full_data_update_scope_refresh_r1.py",
+      "bytes": 3638,
+      "sha256": "23932b983569bb60e03d0d286c1ad2295bbfadd8fb2182eb17d311c9917ca4ad",
+      "why_supplied": "proves the scope refresh is a writer, not a read-only inspection"
+    }
+  ],
+  "not_uploaded_because_already_in_hub": [
+    "api.py — supplied by GPT in R05 and already present in HUB review paths",
+    "candidate/r4/*.py — R04 delivery; unchanged copies are not re-sent"
+  ]
+}
