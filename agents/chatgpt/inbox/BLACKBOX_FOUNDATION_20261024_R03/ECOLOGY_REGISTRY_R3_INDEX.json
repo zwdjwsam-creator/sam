@@ -1,0 +1,641 @@
+{
+ "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
+ "datasets": {
+  "PRICE_STOCK_DAILY": {
+   "title_en": "A-share stock daily OHLCV (raw and cleaned)",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2014-01-02",
+   "observed_end": "2026-09-24",
+   "read_plane_role": "stock daily bars for stock-class codes"
+  },
+  "PRICE_STOCK_1M": {
+   "title_en": "A-share stock 1-minute bars",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2026-09-11",
+   "observed_end": "2026-09-24",
+   "read_plane_role": "stock 1-minute bars for stock-class codes"
+  },
+  "PRICE_STOCK_5M": {
+   "title_en": "PRICE_STOCK_5M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "PRICE_STOCK_30M": {
+   "title_en": "PRICE_STOCK_30M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "PRICE_STOCK_60M": {
+   "title_en": "PRICE_STOCK_60M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "PRICE_ETF_DAILY": {
+   "title_en": "ETF daily OHLCV",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2026-07-30",
+   "observed_end": "2026-09-24",
+   "read_plane_role": "ETF daily bars for ETF/LOF/fund codes"
+  },
+  "PRICE_ETF_1M": {
+   "title_en": "ETF 1-minute bars",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2026-09-17",
+   "observed_end": "2026-09-24",
+   "read_plane_role": "ETF 1-minute bars"
+  },
+  "PRICE_ETF_5M": {
+   "title_en": "PRICE_ETF_5M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "PRICE_ETF_30M": {
+   "title_en": "PRICE_ETF_30M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "PRICE_ETF_60M": {
+   "title_en": "PRICE_ETF_60M dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "PRICE_INDEX_DAILY": {
+   "title_en": "Index daily OHLCV",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN",
+    "CACHE"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2026-07-30",
+   "observed_end": "2026-09-24",
+   "read_plane_role": "index daily bars for index-class codes"
+  },
+  "PRICE_INDEX_MINUTE": {
+   "title_en": "Index minute bars",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2014-01-02",
+   "observed_end": "2026-09-24",
+   "read_plane_role": "index minute bars"
+  },
+  "CALENDAR_CN_EXCHANGE": {
+   "title_en": "China exchange trading calendar",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2014-01-02",
+   "observed_end": "2026-09-24",
+   "read_plane_role": "expected trade-day derivation"
+  },
+  "SECURITY_MASTER": {
+   "title_en": "Security master (type, name, listing window)",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NO_TIME_AXIS_OBSERVED",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": "asset-class routing and listing window"
+  },
+  "ADJUST_FACTOR": {
+   "title_en": "Adjustment factor plane",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2026-08-10",
+   "observed_end": "2026-09-24",
+   "read_plane_role": null
+  },
+  "TRADABLE_STATUS": {
+   "title_en": "Tradable / limit / pause status",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+   "observed_start": "2026-07-13",
+   "observed_end": "2026-09-03",
+   "read_plane_role": null
+  },
+  "INDEX_COMPONENTS": {
+   "title_en": "Index constituents",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NO_TIME_AXIS_OBSERVED",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": "index membership"
+  },
+  "INDEX_WEIGHTS": {
+   "title_en": "Index weights (component code preserved; historical backtest ineligible)",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "INDUSTRY_CONCEPT": {
+   "title_en": "INDUSTRY_CONCEPT dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "INDUSTRY_CONCEPT_EVENTS": {
+   "title_en": "INDUSTRY_CONCEPT_EVENTS dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "BILLBOARD": {
+   "title_en": "BILLBOARD dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "XR_XD": {
+   "title_en": "Ex-rights / ex-dividend events",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NO_TIME_AXIS_OBSERVED",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": "ex-rights / ex-dividend events"
+  },
+  "CORPORATE_REFERENCE": {
+   "title_en": "CORPORATE_REFERENCE dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "SHAREHOLDER_TOP10": {
+   "title_en": "SHAREHOLDER_TOP10 dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "SHAREHOLDER_FLOATING_TOP10": {
+   "title_en": "SHAREHOLDER_FLOATING_TOP10 dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "VALUATION": {
+   "title_en": "Valuation metrics",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FINANCE_PIT": {
+   "title_en": "Point-in-time financial statements",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "MTSS": {
+   "title_en": "MTSS dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FUND_ETF_NAV": {
+   "title_en": "Fund and ETF NAV / premium plane",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "ETF_SHARE": {
+   "title_en": "ETF_SHARE dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "OPEN_FUND": {
+   "title_en": "OPEN_FUND dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "QDII": {
+   "title_en": "QDII dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FUND_OTHER": {
+   "title_en": "FUND_OTHER dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FUND_TRACKING_INDEX_MAPPING": {
+   "title_en": "FUND_TRACKING_INDEX_MAPPING dataset (supplier: JQData); identifier and lineage preserved",
+   "supplier": "JQData",
+   "layers": [
+    "RAW",
+    "CLEAN"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FACTOR_260_DICTIONARY": {
+   "title_en": "Factor 260 dictionary metadata",
+   "supplier": "JQData",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FACTOR_260_SEMANTICS": {
+   "title_en": "Factor 260 semantics metadata",
+   "supplier": "JQData",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FACTOR_260_FORMULA": {
+   "title_en": "Factor 260 formula metadata",
+   "supplier": "JQData",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FACTOR_260_PIT_RULES": {
+   "title_en": "Factor 260 point-in-time rules",
+   "supplier": "JQData",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FACTOR_260_CLEANING_RULES": {
+   "title_en": "Factor 260 cleaning rules",
+   "supplier": "JQData",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FACTOR_260_ENGINE_MAPPING": {
+   "title_en": "Factor 260 engine mapping",
+   "supplier": "JQData",
+   "layers": [
+    "FACTOR_DICTIONARY"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FACTOR_VALUE": {
+   "title_en": "Factor value plane (permission-blocked in R01 evidence)",
+   "supplier": "JQData",
+   "layers": [
+    "FACTOR_VALUE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "STRATEGY_OUTPUT": {
+   "title_en": "Strategy output plane (not an input)",
+   "supplier": "BLACKBOX_INTERNAL",
+   "layers": [
+    "STRATEGY_OUTPUT"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "TS_CBOND_R1": {
+   "title_en": "TS_CBOND_R1 dataset (supplier: Tushare); identifier and lineage preserved",
+   "supplier": "Tushare",
+   "layers": [
+    "RAW"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "TS_CBOND_R2": {
+   "title_en": "TS_CBOND_R2 dataset (supplier: Tushare); identifier and lineage preserved",
+   "supplier": "Tushare",
+   "layers": [
+    "RAW"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "EXTERNAL_DICT_EVIDENCE": {
+   "title_en": "EXTERNAL_DICT_EVIDENCE dataset (supplier: Friend_JQData/Tushare); identifier and lineage preserved",
+   "supplier": "Friend_JQData/Tushare",
+   "layers": [
+    "EVIDENCE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "EXTERNAL_EVIDENCE_PLANE": {
+   "title_en": "EXTERNAL_EVIDENCE_PLANE dataset (supplier: MULTI_EXTERNAL); identifier and lineage preserved",
+   "supplier": "MULTI_EXTERNAL",
+   "layers": [
+    "EVIDENCE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "US_MARKET": {
+   "title_en": "US_MARKET dataset (supplier: EXTERNAL); identifier and lineage preserved",
+   "supplier": "EXTERNAL",
+   "layers": [
+    "EVIDENCE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "TUSHARE_INDEX_WEIGHT_ADAPTER": {
+   "title_en": "TUSHARE_INDEX_WEIGHT_ADAPTER dataset (supplier: Tushare); identifier and lineage preserved",
+   "supplier": "Tushare",
+   "layers": [
+    "EVIDENCE"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "LEGACY_JQ_RAW_CN": {
+   "title_en": "LEGACY_JQ_RAW_CN dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "layers": [
+    "RAW"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "EXPERIMENTAL_WINDOW_RAW": {
+   "title_en": "EXPERIMENTAL_WINDOW_RAW dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "layers": [
+    "RAW"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "STRATEGY_DATA_PLANE_ADDITIONS": {
+   "title_en": "STRATEGY_DATA_PLANE_ADDITIONS dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "layers": [
+    "RAW"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "FORENSIC_CANARY": {
+   "title_en": "FORENSIC_CANARY dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "layers": [
+    "RAW"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "EXPERIMENT_CANARY": {
+   "title_en": "EXPERIMENT_CANARY dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "layers": [
+    "RAW"
+   ],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  },
+  "UNDETERMINED_SCOPE": {
+   "title_en": "UNDETERMINED_SCOPE dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "supplier": "VARIOUS",
+   "layers": [],
+   "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+   "observed_start": null,
+   "observed_end": null,
+   "read_plane_role": null
+  }
+ }
+}
