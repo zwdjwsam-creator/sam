@@ -1,0 +1,120 @@
+{
+ "schema": "R10_REAL_CATALOG_OPERATION_1",
+ "command": {
+  "argv": [
+   "blackbox_operate_r10.py",
+   "catalog"
+  ],
+  "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry",
+  "exit_code": 0
+ },
+ "retained_stdout": {
+  "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_CATALOG.txt",
+  "bytes": 212865,
+  "sha256": "5f726a65cb893d49c2e77611fb71303948b51e9aaf0273b82ddb4fce9903d4d2"
+ },
+ "catalog_count": 41,
+ "reviewer_expected_entities": 41,
+ "entities_match": true,
+ "with_explicit_update_binding": 13,
+ "reviewer_expected_updater_joins": 13,
+ "updater_joins_match": true,
+ "with_source_domain_record": 13,
+ "update_binding_status_counts": {
+  "DECLARED_ROUTE_NOT_EXECUTED": 13,
+  "UNBOUND_IN_THIS_EVIDENCE_JOIN": 28
+ },
+ "serving_authority_counts": {
+  "REQUEST_NOT_EVALUATED": 41
+ },
+ "canonical_input_pins_reported_by_entry": {
+  "matrix": "1d4963e9447e8c2ad90e1278eb55fab66d485a0ca66d9f5c6ae0d6a0f92d2901",
+  "dependency": "ac51fe94c6fa316bb6972e1f67fb0fc92ce75f1a21ebc1d2c820a2e7a6355db7",
+  "bindings": "7ac4cb53dc8cc624d7b3a8d83f922ca9ecd031339b387aa372a5f91587f26891",
+  "acquisition": "5640c8896de8c762c550dfef72008ac3ed66c632cda9e4e490ea72b807e49250"
+ },
+ "real_preflight": {
+  "MUST_READ_PRECHECK": "PASS",
+  "problems": [],
+  "kernel_sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+  "rules_verified": [
+   "VERIFIED",
+   "VERIFIED"
+  ]
+ },
+ "review_corrections_carried": {
+  "INDEX_DAILY_R1": "Canonical full-history source already proven present in R08. The old H1 minute-derivation instruction is superseded; do not redownload or derive from minutes to replace it.",
+  "MARKET_UNIVERSE_PIT_R1": "A historical measured window ending 2026-07-20 does not serve later requests and does not itself prove regression.",
+  "ADJUST_FACTOR_PIT_R1": "Date union and COVERAGE sidecar are not symbol/field completeness or supplier acquisition receipts; 83503-row sidecar difference remains unresolved."
+ },
+ "historical_labels_are_not_current_admission": true,
+ "field_ownership_products": [
+  "STOCK_DAILY_PIT_R1",
+  "STOCK_DAILY_RAW_PIT_R1",
+  "STOCK_TRADEABILITY_PIT_R1",
+  "ADJUST_FACTOR_PIT_R1",
+  "STOCK_FACTOR_DAILY_R1"
+ ],
+ "dependency_edge_count": 11,
+ "registry_sources": {
+  "product_catalog": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+   "sha256": "9c59c46fd48aa99f9855f67832765d5b37c0409b75561b2ab55f3cc3a38e7f57",
+   "rows": 41
+  },
+  "schema_registry": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_SCHEMA_REGISTRY.csv",
+   "sha256": "17aea241b7123c5551ba02005161c0684e7c6c08372cdbb6f9c94d6105e15661"
+  },
+  "formula_registry": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\FACTOR_FORMULA_REGISTRY.csv",
+   "sha256": "edc22e611193cb92f88a44cc8bf7b75f9d9e2dd94ba5a9fc52f11d8f2245fa31"
+  },
+  "dependency_registry": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+   "sha256": "76bb4064e56794f4a3785b092035e2f1a8e3279154f0bcfd03d49d486e98d61a"
+  },
+  "manifest_registry": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+   "sha256": "37bd3f600ef0576535d1d99aff42614e7d818e9965c4497e284cdca811d0733d"
+  },
+  "selected_by": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_daily_incremental_r1.py::write_static_registries (lines 124-234) and load_current_standard (lines 235-241)"
+ },
+ "target_date_rule": "TARGET = the latest session that is (a) present in the verified local calendar, (b) completed in Asia/Shanghai, and (c) no later than what the supplier has actually published minus the observed lag",
+ "unbound_products": [
+  "STOCK_FACTOR_DAILY_R1",
+  "FUND_DAILY_PIT_R1",
+  "FUND_FACTOR_DAILY_R1",
+  "INDEX_CONSTITUENT_PIT_R1",
+  "SW_L1_STRUCTURE_DAILY_R1",
+  "MARKET_UNIVERSE_PIT_R1",
+  "MARKET_STRUCTURE_DAILY_R1",
+  "FUND_LIKE_ASSET_VIEW_R1",
+  "CACHE_MANIFEST_REGISTRY_R1",
+  "CACHE_DEPENDENCY_REGISTRY_R1",
+  "TUSHARE_CBOND_BASIC_R1",
+  "TUSHARE_CBOND_DAILY_MARKET_R1",
+  "TUSHARE_CBOND_ISSUE_R1",
+  "TUSHARE_CBOND_CALL_R1",
+  "TUSHARE_CBOND_RATE_R1",
+  "TUSHARE_CBOND_SHARE_R1",
+  "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+  "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+  "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+  "TUSHARE_CBOND_RATING_R1",
+  "TUSHARE_CBOND_RATING_PIT_R1",
+  "TUSHARE_CBOND_CALL_PIT_R1",
+  "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+  "TUSHARE_CBOND_TOP10_HOLDERS_R1",
+  "INDEX_WEIGHT_PIT_R1",
+  "ETF_TRACKING_INDEX_MAP_R1",
+  "ETF_MINUTE_1M_R1",
+  "STOCK_MINUTE_1M_R1"
+ ],
+ "scope": "EVIDENCE_JOIN; NO_NEW_BUSINESS_POLICY_OR_COMPLETENESS_CERTIFICATE",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
