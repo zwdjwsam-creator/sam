@@ -1,0 +1,207 @@
+{
+ "schema": "R10_FINAL_BLOCKERS_1",
+ "round": "R10/10 remediation",
+ "blocker_count": 7,
+ "status_vocabulary": [
+  "OPEN",
+  "CLOSED_WITH_EVIDENCE",
+  "PERMITTED_EXCEPTION_WITH_EXACT_CONTRACT"
+ ],
+ "owner_vocabulary": [
+  "GPT_CODE_OR_RULE_REVIEW",
+  "LOCAL_EXECUTE_FIXED_CONTRACT",
+  "RESOURCE_LIMIT"
+ ],
+ "blockers": [
+  {
+   "blocker_id": "B1_ADJUSTMENT_RECONCILIATION",
+   "predicate": "ADJUST_FACTOR_PIT_R1 sidecar row count and physical row count disagree and no per-date lineage exists",
+   "product_scope": "ADJUST_FACTOR_PIT_R1 (CACHE L2, release BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439)",
+   "physical_layer_scope": "CACHE CURRENT product; RAW factor units untouched",
+   "exact_evidence_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r09_correction\\ADJUST_FACTOR_SIDECAR_RECONCILIATION.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r07_delivery\\LAYER_SEARCH_AND_BINDING_LEDGER.json (L12)",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r07_delivery\\evidence\\product_coverage_vs_authority_calendar.json"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09_CORRECTION/ADJUST_FACTOR_SIDECAR_RECONCILIATION.json"
+   ],
+   "raw_presence_vs_mounted": {
+    "raw_present": true,
+    "mounted_behavior": "product serves both requested dates at the date grain",
+    "candidate_behavior": "inherited by reference, not byte-verified"
+   },
+   "measured_numbers": {
+    "sidecar_declared_rows": 12182523,
+    "physical_rows": 12266026,
+    "difference_physical_minus_declared": 83503,
+    "rows_on_2026_08_31": 5208,
+    "rows_on_2026_09_01": 11
+   },
+   "closure_evidence_required": "same-scope partition/key/field reconciliation plus the RAW->CLEANING->CACHE transform receipt for each affected date; neither count may win by declaration",
+   "next_owner": "GPT_CODE_OR_RULE_REVIEW",
+   "status": "OPEN"
+  },
+  {
+   "blocker_id": "B2_UNIVERSE_AND_TRADEABILITY_CONTRACT",
+   "predicate": "universe and tradeability producers and request coverage are unproved in the reviewed join",
+   "product_scope": "MARKET_UNIVERSE_PIT_R1, STOCK_TRADEABILITY_PIT_R1 (CACHE L1)",
+   "physical_layer_scope": "RAW P2_security_state (956 files) -> CLEAN stock_limit_pause_status (3 files) -> CACHE",
+   "exact_evidence_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r09_correction\\PRODUCER_SEARCH_EVIDENCE_BINDING.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\access_resources\\DATA_ACQUISITION_MATRIX.json (TRADABLE_STATUS row)",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r06_delivery\\NEXT_UPDATE_BINDINGS.json (security_state binding)",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD1_update_plan_stock_raw.stdout.bin"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09_CORRECTION/PRODUCER_SEARCH_EVIDENCE_BINDING.json"
+   ],
+   "raw_presence_vs_mounted": {
+    "raw_present": true,
+    "mounted_behavior": "universe measured window ends 2026-07-20; tradeability product spans 2026-07-13..2026-09-03 with 15 missing sessions",
+    "candidate_behavior": "both inherited by reference only"
+   },
+   "note": "PRODUCER_UNBOUND_IN_REVIEWED_EVIDENCE does not mean no producer exists locally; it means the reviewed join carries no producer identity",
+   "closure_evidence_required": "source identity, actual callable, measured scope and an executed materialisation or an exact exclusion contract",
+   "next_owner": "GPT_CODE_OR_RULE_REVIEW",
+   "status": "OPEN"
+  },
+  {
+   "blocker_id": "B3_REQUIRED_VIEW_MEMBERS_EMPTY",
+   "predicate": "a required member of the fund-like virtual union has no data at the specified cache root",
+   "product_scope": "FUND_LIKE_ASSET_VIEW_R1 requiring FUND_DAILY_PIT_R1 and FUND_FACTOR_DAILY_R1",
+   "physical_layer_scope": "CACHE product directories in the mounted release",
+   "exact_evidence_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r07_delivery\\evidence\\empty_products.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r07_delivery\\LAYER_SEARCH_AND_BINDING_LEDGER.json (L07)",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_delivery\\R10_REAL_DESCRIBE_OPERATIONS.json"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/"
+   ],
+   "raw_presence_vs_mounted": {
+    "raw_present": "not established for the empty members at this root",
+    "mounted_behavior": "FUND_DAILY_PIT_R1 0 parquet, FUND_FACTOR_DAILY_R1 0 parquet, FUND_LIKE_ASSET_VIEW_R1 carries only VIEW.json",
+    "candidate_behavior": "inherited as references"
+   },
+   "closure_evidence_required": "complete registered-layer search across RAW/CLEAN/CACHE for those members, then either materialisation or an exact contract permitting exclusion; an empty required member must never be silently reduced to an ETF-only union",
+   "next_owner": "GPT_CODE_OR_RULE_REVIEW",
+   "status": "OPEN"
+  },
+  {
+   "blocker_id": "B4_CURRENT_VS_CANDIDATE_SEPARATION",
+   "predicate": "the mounted release does not serve 2026-08-31/2026-09-01 for several products while the candidate does",
+   "product_scope": "STOCK_DAILY_PIT_R1, STOCK_DAILY_RAW_PIT_R1, ETF_*, INDEX_*, VALUATION_PIT_R1, FUND_NAV_PIT_R1",
+   "physical_layer_scope": "CACHE mounted release vs R06/R08 candidate",
+   "exact_evidence_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r07_delivery\\LAYER_SEARCH_AND_BINDING_LEDGER.json (L02/L03/L04/L05/L06)",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_delivery\\R10_REAL_CATALOG_OPERATION.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD2_query_2026_ohlcv.stdout.bin",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD3_query_2025_inherited.stdout.bin"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/rework_2256/captures/"
+   ],
+   "raw_presence_vs_mounted": {
+    "raw_present": true,
+    "mounted_behavior": "serves the window but drops the two sessions for the listed products",
+    "candidate_behavior": "serves both recovered sessions plus the inherited 2025 history"
+   },
+   "scoped_correction": "the \"11 products with missing sessions\" statement is a historical measured scope at one release, not an all-layer absence verdict; the closed candidate recovery must not be reopened as if no recovery occurred",
+   "closure_evidence_required": "a promotion decision with exact generation binding, or an explicit statement that CURRENT remains unpromoted",
+   "next_owner": "GPT_CODE_OR_RULE_REVIEW",
+   "status": "OPEN"
+  },
+  {
+   "blocker_id": "B5_FORMAL_ENGINE_ADMISSION",
+   "predicate": "a diagnostic module import is not formal engine admission",
+   "product_scope": "bullet_trade engine at E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine",
+   "physical_layer_scope": "engine source only; no data plane, no provider",
+   "exact_evidence_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_delivery\\R10_DESKTOP_ENGINE_IMPORT_OUTCOME.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_delivery\\captures\\DESKTOP_ENGINE_IMPORT_PROBE.txt",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\tools\\r10_locate_engine_import_side_effect.py (additive diagnostic)",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\engine_import_probe_r10.py"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/R10_DESKTOP_ENGINE_IMPORT_OUTCOME.json"
+   ],
+   "raw_presence_vs_mounted": {
+    "raw_present": "n/a",
+    "mounted_behavior": "n/a",
+    "candidate_behavior": "n/a"
+   },
+   "measured_result": {
+    "verdict": "IMPORT_ATTEMPTED_FORBIDDEN_SIDE_EFFECT",
+    "blocked_event": "os.mkdir",
+    "source_frame": "bullet_trade/core/globals.py:156 called from globals.py:421 log = Logger()",
+    "classes_present": true,
+    "engine_constructed": false
+   },
+   "interpretation": "the engine wraps the mkdir in except Exception: pass, so the write was attempted and swallowed; this is not a missing dependency and not an established startup failure",
+   "closure_evidence_required": "provider/field/time/PIT/universe/status/matching/generation contracts wired, an engine constructed once, and a declared non-trading smoke result",
+   "next_owner": "GPT_CODE_OR_RULE_REVIEW",
+   "status": "OPEN"
+  },
+  {
+   "blocker_id": "B6_UPDATE_AND_PUBLICATION_READINESS",
+   "predicate": "update-plan output proves navigation, not a writer, checkpoint, resume, non-regression, release or freshness",
+   "product_scope": "all 13 explicitly bound products; 28 remain unbound",
+   "physical_layer_scope": "contract layer only",
+   "exact_evidence_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_delivery\\R10_REAL_UPDATE_PLANS.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD1_update_plan_stock_raw.stdout.bin",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r06_delivery\\NEXT_UPDATE_BINDINGS.json"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/rework_2256/captures/CMD1_update_plan_stock_raw.stdout.bin"
+   ],
+   "raw_presence_vs_mounted": {
+    "raw_present": true,
+    "mounted_behavior": "unchanged by this round",
+    "candidate_behavior": "unchanged by this round"
+   },
+   "lane_separation_required": [
+    "stock daily",
+    "factor",
+    "minute (RAW_NONE lanes only)",
+    "finance",
+    "external evidence",
+    "paid-source exclusions"
+   ],
+   "closure_evidence_required": "an executed contract run in the prescribed order, or an exact written exclusion per lane; no updater may be invoked from this evidence round",
+   "next_owner": "GPT_CODE_OR_RULE_REVIEW",
+   "status": "OPEN"
+  },
+  {
+   "blocker_id": "B7_GENERATION_BINDING",
+   "predicate": "selection pointer, release provenance, product-addition manifest and seal carry different identities and no serving envelope binds them",
+   "product_scope": "all products in the mounted release",
+   "physical_layer_scope": "metadata only",
+   "exact_evidence_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r09_correction\\GENERATION_IDENTITY_ROLES.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r09_correction\\ROUND_STATUS_R09_CORRECTION.json"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09_CORRECTION/GENERATION_IDENTITY_ROLES.json"
+   ],
+   "raw_presence_vs_mounted": {
+    "raw_present": "n/a",
+    "mounted_behavior": "CURRENT names the mounted release; inner RELEASE/MANIFEST keep their own generations; SEAL carries only accepted + sealed_at",
+    "candidate_behavior": "candidate manifest is separate and unpromoted"
+   },
+   "closure_evidence_required": "a fresh serving/admission envelope that binds the chosen manifest and each actual source/version while retaining every original identity; the stale capability generation stays rejected rather than relabelled",
+   "next_owner": "GPT_CODE_OR_RULE_REVIEW",
+   "status": "OPEN"
+  }
+ ],
+ "no_blocker_closed_by_this_round": true,
+ "unavailable_or_paid_not_reclassified_as_obtainable": true,
+ "metadata_join_omission_not_treated_as_nonexistent_producer": true,
+ "FULL_GOAL_MET": false,
+ "FOUNDATION_ACCEPTANCE": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "FORMAL_ENGINE_ADMISSION": false
+}
