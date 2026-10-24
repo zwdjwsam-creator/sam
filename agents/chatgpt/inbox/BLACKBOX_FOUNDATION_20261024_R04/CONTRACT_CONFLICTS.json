@@ -1,0 +1,351 @@
+{
+ "register_id": "CONTRACT_CONFLICTS_R4",
+ "generated_at": "2026-10-24T15:05:56+08:00",
+ "language": "en",
+ "operator_scope": "facts only; resolution_owner=GPT; missing semantics stay UNRESOLVED",
+ "counts": {
+  "total": 13,
+  "unresolved": 10,
+  "observed_defect": 3
+ },
+ "conventions": [
+  "each conflict cites full-body file sha256 plus a line or JSON key",
+  "observed_behavior is limited to behaviour actually seen in this cycle",
+  "no conflict is closed by the operator"
+ ],
+ "conflicts": [
+  {
+   "conflict_id": "R04-C01",
+   "topic": "Partial admission versus reject-before-ingestion",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+    "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619",
+    "clause": "admission_stage=PRE_INGESTION_ONLY; post_ingestion_judgement_allowed=false; policy data_must_map_to_master_registry=true; notes forbid 'ingest first, judge later'",
+    "key": "policies/notes"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "diagnostic get_price still returns rows with status PARTIAL/REJECTED reasons attached; only the engine boundary raises",
+    "key": "LocalValueProvider.get_price envelope"
+   },
+   "observed_behavior": "engine boundary rejects PARTIAL (verified); the diagnostic plane still materialises rows before any MASTER gate evaluation",
+   "consequence": "a caller that uses the diagnostic API can act on non-admitted rows; no PRE_INGESTION gate exists in the candidate",
+   "status": "UNRESOLVED",
+   "affected_interface": "LocalValueProvider.get_price diagnostic envelope",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C02",
+   "topic": "Dataset factor/pre_close requirement versus requested-field-only admission",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\FIELD_ADMISSION_MATRIX_R1.csv",
+    "sha256": "ecde092cf620f8acc6eeed49793046e5cc3498bbeef75fa0eff9fad39a482fe8",
+    "clause": "close / factor->adjust_factor / pre_close->previous_close are required_for_matching=true for stock daily,1m",
+    "line": "3,8,11"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_DOMAIN_ADMISSION_MATRIX_R1.csv",
+    "sha256": "55ab95e94f649601cae5d4647dfba17e26b27dfd9affb95c9e2e250d3f172bfa",
+    "clause": "daily_bar required_fields=open,high,low,close,volume,money,factor,pre_close",
+    "key": "daily_bar"
+   },
+   "source_c": {
+    "tag": "C",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "field_admission only covers fields the caller requested; requesting close does not require factor/pre_close",
+    "key": "field_admission"
+   },
+   "observed_behavior": "clean daily plane carries factor, pre_close, high_limit, low_limit, paused, fq columns, but factor is 1.0 for every row and fq is NULL for every row; pre_close is NULL in 912 of 1430 rows of the sampled file",
+   "consequence": "an OK/complete envelope can be produced while the matching domain prerequisites are absent or degenerate",
+   "status": "UNRESOLVED",
+   "affected_interface": "field_admission + engine get_price",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C03",
+   "topic": "fq_pre_post exclusion versus engine fq=pre default",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_HANDBOOK_CURRENT.md",
+    "sha256": "6f3664e50a85434cdf863422c42f88de299fa77d71ea0d8b00914624104c9a6d",
+    "clause": "skip list is closed for the full table: money_flow / full_factor_values / jq260* / fq_pre_post"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\engine_adapter.py",
+    "sha256": "9a971305a215d3c9d554fb9af860c20086d66a19f2c5b7fdd546f93e1fa03ab0",
+    "clause": "get_price default fq='pre'",
+    "key": "EngineLocalValueProvider.get_price signature"
+   },
+   "source_c": {
+    "tag": "C",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_adjustment_field_map.csv",
+    "sha256": "c17f56900a932704d6fbe38d898e8904ed2eee46d859d12b9ae44c3e3df33ac0",
+    "clause": "fq=pre maps to adjust_forward/pre_adjusted_bars; fq=none maps to unadjusted_bars",
+    "line": "2-4"
+   },
+   "observed_behavior": "the clean plane stores RAW_NONE bars with a NULL fq provenance column and a constant factor=1.0, so fq=pre cannot be served from it",
+   "consequence": "the engine default price mode is structurally unavailable; every engine call must pass fq='none' explicitly, which is not the engine contract default",
+   "status": "UNRESOLVED",
+   "affected_interface": "engine fq argument / read plane",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C04",
+   "topic": "Bar clock assumptions versus actual clock/session/visibility contracts",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\运行\\外部大脑信箱\\agents\\chatgpt\\inbox\\BLACKBOX_INVENTORY_CONTINUE_20261022_1310\\completion_1618\\source_reads\\FINAL_BACKTEST_ENGINE_AUTHORITATIVE_HANDOFF_R1.md",
+    "sha256": "a0edfa40f09ebe717d08ea77aca9109b2a0600599ff22890ce416f54b8774b2f",
+    "clause": "daily_bar_completion_time=NOT_DEFINED; minute_bar_completion_time=NOT_DEFINED; data_visibility_semantics=PARTIAL; session_dependency=NOT_READY",
+    "key": "section 7"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\jq_clock.py",
+    "sha256": "43ee7d7539faacd461694467d7d8abb0277f35f871eb84211646cbc7af8f71aa",
+    "clause": "actual label grid 09:31-11:30 and 13:01-15:00, 240 labels, excludes 09:30 and 12:00-13:00"
+   },
+   "source_c": {
+    "tag": "C",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "intraday coverage verification compares trade dates only, not the 240-label session grid; daily bars are treated as knowable at 15:00 CN",
+    "key": "coverage verification"
+   },
+   "source_d": {
+    "tag": "D",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\PIT_VISIBILITY_ADMISSION_MATRIX_R1.csv",
+    "sha256": "a4e2a4e2c1105163c1b22c9562196ee85d586bff90ed2e40c822ad380efe8bd5",
+    "clause": "daily_bar=bar_date_close_visible_same_day; minute_bar=minute_bar_end_visible_at_bar_close",
+    "line": "2,3"
+   },
+   "observed_behavior": "the reader's 15:00/end-label convention agrees with the PIT matrix wording but is not proven against an implemented clock; no bar-grid check exists in the reader",
+   "consequence": "a partial or misaligned session cannot be detected by the current coverage logic",
+   "status": "UNRESOLVED",
+   "affected_interface": "intraday coverage + as-of cutoff",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C05",
+   "topic": "Revision priority versus authoritative conflict handling",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\运行\\外部大脑信箱\\agents\\chatgpt\\inbox\\BLACKBOX_SYSTEM_DATA_RULES_FULL_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\contract_scope_1145\\CONTRACT_SCOPE_1145.json",
+    "sha256": "6dcbc4238b02fc89eab358bfba522ed35bed7d051a2a90262424e1fe0ffc5e88",
+    "clause": "accepted review item 4: 'dedupe FAIL_CLOSED conflicts; not day>year'",
+    "key": "accepted_from_gpt_review/3"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\file_index.py",
+    "sha256": "8e1828a73817cc874bce2c4d732352851789382a7c2825b300e6fd74d2ba0f71",
+    "clause": "deterministic rank specificity_rank, build timestamp, file name; equal-rank conflicts exposed but not resolved",
+    "key": "select/ranking"
+   },
+   "observed_behavior": "for one window a year file and narrower day files both exist; the reader prefers the narrower span, which the contract scope explicitly does not authorise",
+   "consequence": "overlapping revisions are resolved by an implementation choice rather than recorded provenance",
+   "status": "UNRESOLVED",
+   "affected_interface": "file_index selection",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C06",
+   "topic": "Corporate-action units and shape versus engine consumer expectations",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\providers\\jqdata.py",
+    "sha256": "36be88f0afae5fa2374363bfefd1c891e1056b085c37218ab9cb373bcf96f031",
+    "clause": "consumer expects list of dicts {security,date,security_type,scale_factor,bonus_pre_tax,per_base}; A-share branch uses per_base=10 with bonus_ratio_rmb and scale_factor=1+(dividend+transfer)/10",
+    "line": "820-850"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "candidate returns XR-XD rows with raw columns (a_xr_date, dividend_ratio, transfer_ratio, bonus_ratio_rmb, implementation_pub_date)",
+    "key": "get_split_dividend"
+   },
+   "observed_behavior": "the clean XR_XD plane stores 45 raw columns per 10-share convention; no per_base/scale_factor conversion exists in the candidate",
+   "consequence": "shape and unit mismatch; a future enablement would feed unconverted rows to the engine",
+   "status": "UNRESOLVED",
+   "affected_interface": "get_split_dividend (engine method now quarantined)",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C07",
+   "topic": "As-of announcement visibility versus engine event consumption",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "withholds rows with no announcement date and, after the R04 patch, rows announced after asof",
+    "key": "get_split_dividend"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\engine_adapter.py",
+    "sha256": "9a971305a215d3c9d554fb9af860c20086d66a19f2c5b7fdd546f93e1fa03ab0",
+    "clause": "engine get_split_dividend is quarantined and never passes asof, so no PIT filter can be applied at the engine boundary",
+    "key": "get_split_dividend"
+   },
+   "observed_behavior": "the engine event path has no as-of parameter at all (audited) while the engine provider's own implementation swallows exceptions with 'except Exception: pass'",
+   "consequence": "event PIT safety cannot be claimed for any engine call",
+   "status": "UNRESOLVED",
+   "affected_interface": "engine corporate event path",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C08",
+   "topic": "Index snapshot eligibility and dated security master semantics",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_components\\index_components__index_components__000001_XSHG__2014__v1__20260702_165340.parquet",
+    "sha256": "c645412fb5beed5674e334e97b6a8f5d703486a3f70850c6339efd1f2ca968f5",
+    "clause": "observed columns index_code, code, asof_date; one file per index-year"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "get_index_stocks reads only the final two selected entries and ignores per-date eligibility",
+    "key": "get_index_stocks"
+   },
+   "source_c": {
+    "tag": "C",
+    "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master\\security_master__security_master__2014-01-01_2026-07-02__none_adj__v1__20260702_164638.parquet",
+    "sha256": "0fd69d117a59ccba7a6f4f9e2a5119a175ffa9e4285dee0371bcab130db244cd",
+    "clause": "observed columns code, display_name, name, start_date, end_date, type"
+   },
+   "observed_behavior": "R03 get_all_securities ignores its date argument and can report OK despite unreadable reference files",
+   "consequence": "historical membership and dated listing windows cannot be asserted from the current reader",
+   "status": "UNRESOLVED",
+   "affected_interface": "get_index_stocks / get_all_securities (engine membership path quarantined)",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C09",
+   "topic": "Daily/full update obligations versus existing updater/publication defects",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_HANDBOOK_CURRENT.md",
+    "sha256": "6f3664e50a85434cdf863422c42f88de299fa77d71ea0d8b00914624104c9a6d",
+    "clause": "full product inheritance, FUND_ETF_NAV tip, external evidence tip, SILENT_TRUNCATION=0, cache.source_cleaning==cleaning CURRENT"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\运行\\外部大脑信箱\\agents\\chatgpt\\outbox\\BLACKBOX_FOUNDATION_R04_OF_10_GPT_PATCH_AND_COMPLETE_CONTRACT_HANDOFF_20261024_1455.md",
+    "sha256": "11bef985bcfcf32a2f9d25e1aa38305405b1b92e8333143d2a6dc37f50bb79f8",
+    "clause": "retain as open defects: multi-file publication window, prior-tip-overrides-new revision issue, static-registry overwrite risk"
+   },
+   "observed_behavior": "the three publication defects were confirmed by GPT in earlier evidence and were not re-run this cycle (production update execution is out of scope)",
+   "consequence": "the update chain cannot be declared safe even if a single lane passes",
+   "status": "UNRESOLVED",
+   "affected_interface": "publication boundary",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C10",
+   "topic": "Observed clean-plane coverage gap versus the handbook gap-scan obligation",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_HANDBOOK_CURRENT.md",
+    "sha256": "6f3664e50a85434cdf863422c42f88de299fa77d71ea0d8b00914624104c9a6d",
+    "clause": "step 1 scan for gaps against the full matrix before downloading"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "observed trade-day coverage for 000001.XSHE in the CLEAN daily plane",
+    "key": "coverage verification"
+   },
+   "observed_behavior": "2026-08-31 and 2026-09-01 are calendar trade days but have no rows for 000001.XSHE in any file whose footer statistics touch the window; the day files jump 20260828 -> 20260902",
+   "consequence": "the current clean release is not gap-free for the sampled security; a coverage-complete claim would be false",
+   "status": "OBSERVED_DEFECT_UNRESOLVED",
+   "affected_interface": "read plane completeness",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C11",
+   "topic": "Coverage watermark clipping hides the unserved tail",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "expected trade days are clipped to the observed dataset watermark",
+    "key": "coverage verification"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "diagnostic request 2026-06-01..2026-12-31 against an observed end of 2026-09-24",
+    "key": "observed run"
+   },
+   "observed_behavior": "the envelope reported missing dates only for 2026-08-31/2026-09-01; the 2026-09-25..2026-12-31 tail was not counted as missing",
+   "consequence": "a request beyond the watermark can under-report unserved days; the engine boundary happened to reject it for a different reason",
+   "status": "OBSERVED_DEFECT_UNRESOLVED",
+   "affected_interface": "coverage verification",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C12",
+   "topic": "Suspended-bar field semantics versus fill_paused rejection",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_daily_minute_backtest_rules.json",
+    "sha256": "65418056c4b9054ffaa283e93cf4263f92a014ab35d2ecd138be0be5d66eda09",
+    "clause": "JQ_BACKTEST_SUSPENDED_BAR_FIELDS_R1: when paused, open/close/low/high/pre_close equal the pre-suspension close, volume=0, money=0",
+    "key": "rules"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+    "sha256": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+    "clause": "the reader rejects fill_paused=True as unevidenced instead of producing the contracted suspended-bar fields",
+    "key": "get_price"
+   },
+   "source_c": {
+    "tag": "C",
+    "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\jq_official_canonical_R1\\jq_official_tradable_status_field_map.csv",
+    "sha256": "22f63cc7245ad8482551c66f25663a83737ab78891bfc7e0a0bc06d5b8439092",
+    "clause": "paused->is_suspended: block/block; aliases suspended/limit_up_price/limit_down_price are declared",
+    "line": "2,4,5,7"
+   },
+   "observed_behavior": "the clean daily plane has paused in {0.0,1.0,NULL}; NULL cannot be treated as trading under the contract",
+   "consequence": "no consumer can obtain contract-correct suspended bars; pause unknowns remain ambiguous",
+   "status": "UNRESOLVED",
+   "affected_interface": "get_price fill_paused",
+   "resolution_owner": "GPT"
+  },
+  {
+   "conflict_id": "R04-C13",
+   "topic": "Static registry text versus per-dataset observed semantics (R03 self-defect)",
+   "source_a": {
+    "tag": "A",
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
+    "sha256": "8a1a4d9337d258390ac390232522daa026e4ebf5b5f70ef45942061bc52c56b6",
+    "clause": "every dataset layer repeats the same adjustment_identity and time_visibility sentence, including reference datasets such as SECURITY_MASTER and INDEX_COMPONENTS",
+    "key": "datasets/*/layers"
+   },
+   "source_b": {
+    "tag": "B",
+    "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master\\security_master__security_master__2014-01-01_2026-07-02__none_adj__v1__20260702_164638.parquet",
+    "sha256": "0fd69d117a59ccba7a6f4f9e2a5119a175ffa9e4285dee0371bcab130db244cd",
+    "clause": "observed columns show a listing window rather than a bar time axis"
+   },
+   "observed_behavior": "the R03 registry copied one generic sentence into every layer instead of recording per-dataset evidence",
+   "consequence": "the registry overstates what was observed; corrected in R04 as an annotation, not a silent rewrite",
+   "status": "OBSERVED_DEFECT_UNRESOLVED",
+   "affected_interface": "ECOLOGY_REGISTRY_R3 annotations",
+   "resolution_owner": "GPT"
+  }
+ ]
+}
