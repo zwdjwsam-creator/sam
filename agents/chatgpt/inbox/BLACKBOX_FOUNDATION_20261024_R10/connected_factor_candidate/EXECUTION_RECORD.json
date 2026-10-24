@@ -1,0 +1,121 @@
+{
+ "schema": "R10_CONNECTED_CANDIDATE_EXECUTION_RECORD_1",
+ "at_cn": "2026-10-25T02:28:06+08:00",
+ "working_directory": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONUTF8": "1",
+  "PYTHONDONTWRITEBYTECODE": "1"
+ },
+ "staged_before_execution": {
+  "manifest_first": true,
+  "manifest_sha256": "52c616a0670b21b112c760324bbd5af46339c7b6cb766005a3d6eba06ad7bd0a",
+  "members": 7,
+  "all_pins_match": true,
+  "reused_modules_byte_identical_to_prior_round": [
+   "r10_factor_response_gate.py",
+   "r10_factor_input_contract.py"
+  ]
+ },
+ "step_1_genuine_preflight": {
+  "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\operating_entry\\blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1",
+  "exit_code": 0,
+  "window_cn": "2026-10-25T02:27:30.6040703+08:00 -> 2026-10-25T02:27:31.6223449+08:00",
+  "stdout_bytes": 6632,
+  "stdout_sha256": "581bd41a7a89d61b90e25535b0afe37f8c744c92254ec252b6d4868bf544cb83",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "captured_externally": true,
+  "ok": true,
+  "MUST_READ_PRECHECK": "PASS",
+  "task_class": [
+   "CACHE"
+  ],
+  "required": [
+   "BOOTSTRAP",
+   "DATA_ACCESS"
+  ],
+  "problems": [],
+  "rules_loaded": [
+   {
+    "key": "BOOTSTRAP",
+    "status": "VERIFIED"
+   },
+   {
+    "key": "DATA_ACCESS",
+    "status": "VERIFIED"
+   }
+  ],
+  "kernel_sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+  "preflight_block": "MUST_READ_PRECHECK = PASS\nTASK_CLASS = CACHE\nKERNEL_SHA256 = b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a\nKERNEL_STATUS = VERIFIED\nKERNEL_BYTES = 1167\nHAND_READ = NOT_SUFFICIENT\nAUTHORITY_READY = YES\nTASK_EXECUTION = ALLOWED\nTASK_EXECUTION_FORBIDDEN = FALSE\nrules_loaded:\n  - BOOTSTRAP\n    expected_sha256 = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\n    actual_sha256   = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\n    status = VERIFIED\n  - DATA_ACCESS\n    expected_sha256 = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\n    actual_sha256   = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\n    status = VERIFIED",
+  "gate_decision": "PROCEED"
+ },
+ "step_2_connected_candidate_check": {
+  "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\connected_factor_candidate\\test_r10_factor_candidate_pipeline.py",
+  "exit_code": 0,
+  "window_cn": "2026-10-25T02:27:35.2015700+08:00 -> 2026-10-25T02:27:36.2183978+08:00",
+  "stdout_bytes": 141,
+  "stdout_sha256": "aaf63dd38dcba7f6528c926a1937c9afee0eea69f83d76fb2323a40730bb7445",
+  "stderr_bytes": 115,
+  "stderr_sha256": "eb053593be01c9194c41162eb21d581149ec8be7f96d208c8f9badce879976c0",
+  "captured_externally": true,
+  "executed_exactly_once": true,
+  "rerun_for_capture": false,
+  "stdout_json": {
+   "tests_run": 11,
+   "passed": true,
+   "scope": "CONNECTED_CANDIDATE_GATES_SYNTHETIC_ONLY",
+   "supplier_calls": 0,
+   "FOUNDATION_ACCEPTANCE": false
+  },
+  "stderr_text": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.090s\r\n\r\nOK\r\n",
+  "expected": {
+   "tests_run": 11,
+   "passed": true,
+   "exit": 0
+  },
+  "observed": {
+   "tests_run": 11,
+   "passed": true,
+   "exit": 0
+  },
+  "expectation_met": true,
+  "stderr_note": "unittest progress dots plus the standard summary block; no warning and no failure",
+  "previous_standalone_20_control_suite_rerun": false,
+  "tests_or_source_edited": false
+ },
+ "step_3_guide_append": {
+  "guide_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\BLACKBOX_LOCAL_OPERATIONS_R10.md",
+  "before": {
+   "bytes": 5333,
+   "sha256": "685e3b2097007cbd7981af504c8652be8842741c1bd62af86edd4482164b7c3c"
+  },
+  "after": {
+   "bytes": 6765,
+   "sha256": "a5a189e9b3489c6af3edae77c57cda58a24afaa13d24d61be3a4257ca13cf478"
+  },
+  "append_only": true,
+  "appended_bytes": 1432,
+  "diff_path": "GUIDE/GUIDE_APPEND_DIFF.patch"
+ },
+ "authority": {
+  "standalone_source_response_gate": "PRIOR 20-CONTROL RESULT REUSED — not re-executed",
+  "connected_response_refresh_merge_candidate": "NEW 11-CONTROL RESULT, actual staged modules",
+  "production_writer": "NOT_EXERCISED_NOT_PATCHED",
+  "real_data_source_authority": "NOT_ESTABLISHED",
+  "expected_market_universe": "NOT_ESTABLISHED",
+  "production_publish_gate": "NOT_EXECUTED_NOT_CERTIFIED",
+  "formal_engine": "NOT_ADMITTED"
+ },
+ "scope": "CONNECTED_CANDIDATE_GATES_SYNTHETIC_ONLY",
+ "supplier_calls": 0,
+ "business_data_written": false,
+ "flags": {
+  "FOUNDATION_ACCEPTANCE": false,
+  "FORMAL_ENGINE_ADMISSION": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false,
+  "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+ }
+}
