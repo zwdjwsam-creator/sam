@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "round_id": "BLACKBOX_FOUNDATION_20261024_R05",
+  "policy": "append corrections; original R04 reports are preserved unedited",
+  "corrections": [
+    {
+      "id": "C-01",
+      "prior_claim": "JQ credential locator documented on the desktop, therefore the source is available",
+      "correction": "a known credential location and a non-empty file are not live authentication. The credential file documents a locator; only the R05 bounded live run establishes current authentication, and only for that one request.",
+      "evidence": [
+        "JQ_BOUNDED_ACCESS.json",
+        "PERMISSION_RECEIPTS/BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json"
+      ]
+    },
+    {
+      "id": "C-02",
+      "prior_claim": "current_proof_count=4 counted as current supplier proof",
+      "correction": "withdrawn. Local file access, static configuration, historical supplier proof and current bounded supplier proof are now four separate classes with separate counts.",
+      "evidence": [
+        "SOURCE_ACCESS_UPDATES.json#evidence_class_split"
+      ]
+    },
+    {
+      "id": "C-03",
+      "prior_claim": "the runbook's examples use E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "correction": "that interpreter is the known-broken desktop binding. Package directories existing inside it do not make the interpreter runnable. Every executable example must use the dedicated working interpreter runtime\\.venv\\Scripts\\python.exe.",
+      "evidence": [
+        "GPT_CODE_EXECUTION.json#interpreter",
+        "runtime/.venv/Scripts/python.exe --version -> Python 3.12.10"
+      ]
+    },
+    {
+      "id": "C-04",
+      "prior_claim": "blackbox_full_data_update_scope_refresh_r1.py can be used as a read-only scope inspection",
+      "correction": "it is a writer. Its body calls wjson(SCOPE, new) and then writes a child CURRENT summary. It must not be run as an inspection step.",
+      "evidence": [
+        "source_bodies/blackbox_full_data_update_scope_refresh_r1.py lines 58 and 67",
+        "SOURCE_BODY_INDEX.json"
+      ]
+    },
+    {
+      "id": "C-05",
+      "prior_claim": "an old summary HIST_END/asof is the runtime download target",
+      "correction": "a summary asof is not runtime authority. The existing daily invariant states RUN_TARGET_TRADE_DATE is the only runtime target and that legacy HAND finance_asof_target/stock_asof_target cannot override it. Latest-data updates must not be frozen to an old CURRENT asof.",
+      "evidence": [
+        "source_bodies/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1.json INVARIANT_3"
+      ]
+    },
+    {
+      "id": "C-06",
+      "prior_claim": "ACCESS_EVIDENCE EV-05: 'CLEAN (and therefore CACHE)' lacks 2026-08-31 and 2026-09-01",
+      "correction": "the 'and therefore CACHE' inference is withdrawn and replaced with a direct observation: the 2026 partition of both STOCK_DAILY_RAW_PIT_R1 and STOCK_DAILY_PIT_R1 returns exactly 0 rows on both dates, while 2026-08-28 has 5,212 rows and 2026-09-02 has 5,215 rows. The CLEAN observation is unchanged and was independently re-confirmed.",
+      "evidence": [
+        "GAP_REPAIR_INPUTS.json#cache_plane.direct_observation"
+      ]
+    },
+    {
+      "id": "C-07",
+      "prior_claim": "QMT live only / not a history source, stated as a supplier limitation",
+      "correction": "the exclusion is policy scope for this task, not a demonstrated supplier limitation. No claim is made about QMT history capability in either direction.",
+      "evidence": [
+        "SOURCE_ACCESS_UPDATES.json#entry_updates SRC_QMT_TERMINAL"
+      ]
+    },
+    {
+      "id": "C-08",
+      "prior_claim": "R04-C06: no conversion code exists in the candidate adapter",
+      "correction": "overstated. The candidate adapter has a conversion body behind a quarantine. Disabled and unverified is not the same as not implemented, and it stays disabled.",
+      "evidence": [
+        "candidate/r5/engine_adapter.py (unchanged from R04) — quarantine present, not enabled"
+      ]
+    },
+    {
+      "id": "C-09",
+      "prior_claim": "retrieving or invoking the generated helper candidate means the engine is ready",
+      "correction": "retrieval and invocation are not formal engine readiness. The R05 API result is a function-path harness only: FUNCTION_PATH_TESTED=true, FULL_PACKAGE_STARTUP_NOT_TESTED=true, MASTER_ADMISSION_NOT_IMPLEMENTED=true.",
+      "evidence": [
+        "GPT_CODE_EXECUTION.json#semantic_scope.test_scope"
+      ]
+    },
+    {
+      "id": "C-10",
+      "prior_claim": "the CLEAN omission had no identified mechanism",
+      "correction": "observed mechanism now evidenced at release-graph level: three consecutive tip releases were parented to the same older release and each added only its own unit, so a sibling's unit is never carried forward. Numeric proof and per-release parent ids are in GAP_REPAIR_INPUTS.json.",
+      "evidence": [
+        "GAP_REPAIR_INPUTS.json#release_lineage_window_20260820_20260909",
+        "GAP_REPAIR_INPUTS.json#observed_mechanism"
+      ]
+    }
+  ]
+}
