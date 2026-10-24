@@ -1,0 +1,36 @@
+{
+  "rule_id": "BLACKBOX_HAND_BACKTEST_CACHE_POLICY_R1",
+  "status": "ACTIVE_HARD_RULE",
+  "schema_version": "1.0.0",
+  "layer": "HAND_USER_AUTHORIZED",
+  "authorized_at_cn": "2026-08-15T02:16:59+0800",
+  "authorized_at_user_utterance": "BACKTEST_CACHE_COMPILER_R1 build + FUND coverage",
+  "policy": [
+    "After clean/align/anti-leak, data proceeds to Cache Compiler in principle",
+    "Caches are historical as-of partitions; never current-snapshot overwrite history",
+    "Strategies prefer CACHE after equivalence gate PASS",
+    "Cache is Data Plane only; no strategy answers",
+    "RAW/CACHE divergence must enter backtest bias ledger",
+    "Source correction must invalidate and rebuild dependent partitions",
+    "PIT/manifest unclear products must not enter formal backtest",
+    "Assets: STOCK+ETF+FUND+INDEX; FUND is first-class"
+  ],
+  "forbids": [
+    "cache_H_C_V4_R20_TOP1",
+    "cache_candidate_specific_percentile",
+    "SW_current_snapshot_backfill",
+    "ETF_only_scan_when_fund_assets_exist",
+    "canary_mode_publish_CURRENT",
+    "thin_canary_overwrite_formal_CURRENT"
+  ],
+  "cache_root": "E:\\BLACKBOX\\数据\\回测缓存",
+  "current_pointer": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+  "related_tasks": [
+    "BLACKBOX_BACKTEST_CACHE_COMPILER_R1"
+  ],
+  "addendum": "BACKTEST_CACHE_FUND_ASSET_COVERAGE_R1",
+  "CANARY_CURRENT_PUBLISH": "STRUCTURALLY_FORBIDDEN",
+  "FORMAL_DAILY_PUBLISH": "TIP_REBASE_ONLY",
+  "formal_daily_entry": "脚本/blackbox_daily_increment_orchestrator_r1.py",
+  "formal_daily_cache_compiler": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py"
+}
