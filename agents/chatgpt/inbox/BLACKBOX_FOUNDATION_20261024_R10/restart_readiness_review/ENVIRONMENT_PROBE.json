@@ -1,0 +1,54 @@
+{
+ "schema": "RESTART_READINESS_ENVIRONMENT_PROBE_1",
+ "at_cn": "2026-10-25T07:22:44+08:00",
+ "host_os": "Windows-11-10.0.26200-SP0",
+ "host_user": "Admin",
+ "documented_interpreter": {
+  "path": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+  "exists": true,
+  "launch_result": "FAILED",
+  "stderr_excerpt": "No Python at '\"C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python312\\python.exe'",
+  "exit_code": 103,
+  "cause": "venv was created by a different Windows profile (ThinkPad); pyvenv.cfg home points to a path that does not exist for the current user (Admin)",
+  "pyvenv_cfg": {
+   "path": "E:\\BLACKBOX\\.venv\\pyvenv.cfg",
+   "exists": true,
+   "bytes": 312,
+   "sha256": "86fd45844227f9c2833dc2ab169e677037bbf2caddfc3a79604806ed932d2da7"
+  },
+  "venv_site_packages_dirs": 455
+ },
+ "alternate_interpreters": [
+  {
+   "path": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+   "exists": true,
+   "version": "3.12.10"
+  },
+  {
+   "path": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+   "exists": false
+  },
+  {
+   "path": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+   "exists": false
+  },
+  {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+   "exists": true,
+   "version": "3.12.10 (isolated review runtime)"
+  }
+ ],
+ "system_python_packages": {
+  "pandas": "MISSING",
+  "pyarrow": "26.0.0",
+  "numpy": "2.5.0",
+  "requests": "2.34.2",
+  "jqdatasdk": "MISSING"
+ },
+ "isolated_runtime_packages": {
+  "pandas": "2.3.3",
+  "pyarrow": "21.0.0",
+  "numpy": "2.5.4"
+ },
+ "interpretation": "The interpretive document layer (MUST_READ preflight) runs on the system interpreter, but every data/backtest/acquisition entry needs pandas and the supplier SDK, which the system interpreter lacks while the documented venv cannot start. No file is missing; the launcher binding is broken."
+}
