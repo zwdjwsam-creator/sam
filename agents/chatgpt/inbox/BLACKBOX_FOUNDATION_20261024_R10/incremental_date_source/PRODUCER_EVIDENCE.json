@@ -1,0 +1,280 @@
+{
+ "schema": "R10_PRODUCER_EVIDENCE_SEPARATED_1",
+ "method": "retained source indexes, rule/contract references and already-uploaded source bodies only; no code-root scan, no supplier documentation search, no credential read, no producer execution",
+ "retained_body_pins": {
+  "full_history_downloader": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\access_resources\\source_bodies\\S4_UPDATE_PUBLICATION__jq_download_execution_r1.py",
+   "exists": true,
+   "bytes": 130769,
+   "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815"
+  },
+  "post_seal_daily_download_family_copy": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+   "exists": true,
+   "bytes": 19649,
+   "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2"
+  },
+  "formal_cleaning_family_copy": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\formal_cleaning_r15_build_and_seal_r1.py",
+   "exists": true,
+   "bytes": 14196,
+   "sha256": "5ee6b3b4795c56ce178b7d6cbe581f6391fbbc817a9c677a94a09ca5023f992d"
+  },
+  "cache_compiler_adjust_factor": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r08_delivery\\receipt_correction_1855\\source_bodies\\cache_compiler_adjust_factor_pit_r1.py",
+   "exists": true,
+   "bytes": 16033,
+   "sha256": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0"
+  },
+  "staged_source_generator": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\download_source_fq_pre_r1.py",
+   "exists": true,
+   "bytes": 7131,
+   "sha256": "8a49616147748b46d168542973020aed86cb1e70d09a09a45960cb641201bcea"
+  },
+  "backward_refresh_engine": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\incremental_backward_refresh_r1.py",
+   "exists": true,
+   "bytes": 11537,
+   "sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+   "already_on_hub": {
+    "path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1507/source_reads/incremental_backward_refresh_r1.py",
+    "blob_sha": "95d6704f08f8d02d5dc76dc63671a7745f04487a",
+    "byte_identical": true
+   }
+  }
+ },
+ "governing_registry_row": {
+  "source": "ECOLOGY_REGISTRY.json#datasets[dataset_id=ADJUST_FACTOR]",
+  "registry_sha256": "74404a616ef2b7e784676572c60bd74245697cb4962b8772dfdbfdb1fdac2f35",
+  "RAW_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+  "RAW_n_parquet": 222,
+  "CLEAN_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor",
+  "CLEAN_n_parquet": 18,
+  "CLEAN_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+  "authority_rule": {
+   "engine_data_domain": "adjustment_factor",
+   "required_fields": "factor,fq",
+   "admission_stage": "PRE_INGESTION_ONLY"
+  },
+  "declared_required_fields": [
+   "factor",
+   "fq"
+  ],
+  "dictionary_contracts": {
+   "schema_contract": {
+    "id": "20_freeze/domain_schema",
+    "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+    "exists": true,
+    "sha256_16": "6367c574c27b7ddb"
+   },
+   "pit_schema": {
+    "id": "20_freeze/pit_schema",
+    "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+    "exists": true,
+    "sha256_16": "1e62d187b6417b87"
+   },
+   "dtype_schema": {
+    "id": "20_freeze/dtype",
+    "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+    "exists": true,
+    "sha256_16": "3864ff80edeb0538"
+   }
+  },
+  "observed_columns_for_the_21_files": [
+   "date",
+   "code",
+   "factor",
+   "sec_type"
+  ],
+  "contract_vs_bytes": "the registry declares standard_required=[factor, fq]; none of the 21 measured files carries a physical fq column. This is a contract-vs-bytes difference, not a repair instruction, and fq is therefore not demonstrated by these bytes."
+ },
+ "WHAT_THE_SOURCE_TEXT_SAYS": {
+  "legacy_full_history_downloader": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\access_resources\\source_bodies\\S4_UPDATE_PUBLICATION__jq_download_execution_r1.py",
+   "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+   "role": "legacy full-history producer of P1_adjust_factor (T1), batches of 500 x years 2014..2026",
+   "quoted_request": "jqdatasdk.get_price(security=codes_batch, start_date=start_d, end_date=end_d, fields=[\"factor\"])  # lines 841-848: NO fq argument is passed at all",
+   "quoted_write": "save_parquet(df_flat, out_path) with make_filename(stage, domain, date_range=f\"{year}\", symbol=f\"batch_{batch_idx}\")  # lines 884-892",
+   "quoted_flatten": "if \"time\" in df_flat.columns: df_flat = df_flat.rename(columns={\"time\": \"date\"}) ; df_flat[\"sec_type\"] = sec_type  # lines 861-869",
+   "declared_stage_map": "\"T1\": \"P1_adjust_factor\"  # line 76",
+   "why_it_does_not_explain_the_three_files": "its names are batch_NNN__<year>__none_adj__v1__<BATCH_ID>.parquet under P1, and its request spans whole calendar years; the three files are named __incremental_<start>__<stamp>, and the 20260924 one also exists at 37 raw files total. No incremental naming, no per-day window, no sidecar writing appears in this body."
+  },
+  "staged_source_generator_already_delivered": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\download_source_fq_pre_r1.py",
+   "sha256": "8a49616147748b46d168542973020aed86cb1e70d09a09a45960cb641201bcea",
+   "role": "full-history staged source (TASK/staging/source_batches), not P1 and not incremental",
+   "declared_request": "explicit fq=pre, year-by-year, batches of 400, cutoff 2026-08-14"
+  },
+  "cache_compiler_that_reads_the_three_files": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r08_delivery\\receipt_correction_1855\\source_bodies\\cache_compiler_adjust_factor_pit_r1.py",
+   "sha256": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0",
+   "role": "READER of P1, not necessarily their writer",
+   "quoted_glob": "sorted(P1.glob(\"adjust_factor_stock__*.parquet\")) + sorted(P1.glob(\"adjust_factor_etf__*.parquet\"))  # line 151: this glob does match the __incremental_* files",
+   "quoted_date_coercion": "df[\"date\"] = pd.to_datetime(df[\"date\"]).dt.normalize()  # line 155",
+   "quoted_window_filter": "df = df.loc[(df[\"date\"] >= \"2014-01-01\") & (df[\"date\"] < REFRESH_START)]  # line 156",
+   "quoted_factor_drop": "df = df.loc[df[\"factor\"] != 0]  # line 162 (factor == 1.0 is retained)",
+   "effect_on_an_int64_ordinal_axis": "line 155 turns a 0..299 int64 axis into 1970-01-01, and line 156 then drops those rows. This is observed code text plus the measured axis; it explains why such rows cannot enter this reader, and it is not a producer identity.",
+   "fq_in_its_own_request": "the reader does not pass fq either (lines 129-135)."
+  },
+  "clean_plane_declared_mechanism": {
+   "writer_family": "post_seal_daily_download_r<N>.py",
+   "writer_family_pin": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+    "exists": true,
+    "bytes": 19649,
+    "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2"
+   },
+   "writer_declared_scope": "calendar + A/ETF/index daily, fq=None only (module docstring line 2); \"fq_explicit_required\" guard at lines 90-91",
+   "writer_quoted_lines": {
+    "reset_index": "out = out.reset_index()  # line 104",
+    "explicit_fq": "out[\"fq\"] = None  # line 120",
+    "write": "df.to_parquet(str(raw_path), index=False)  # line 217",
+    "staging_handoff": "STAGING_MANIFEST.json PASS items with clean_rel"
+   },
+   "ingest_family": "formal_cleaning_r<N>_build_and_seal_r1.py",
+   "ingest_family_pin": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\formal_cleaning_r15_build_and_seal_r1.py",
+    "exists": true,
+    "bytes": 14196,
+    "sha256": "5ee6b3b4795c56ce178b7d6cbe581f6391fbbc817a9c677a94a09ca5023f992d"
+   },
+   "ingest_quoted_lines": {
+    "parent_constant": "PARENT_ID = \"BLACKBOX_FORMAL_CLEANING_R14_...\"  # lines 23-25",
+    "carry_forward": "hardlink_tree(PARENT/\"standard\", release_root/\"standard\")  # lines 337-339",
+    "input_selection": "load_staging() keeps only items with status == \"PASS\"  # lines 89-95",
+    "placement": "ingest_item() places stage_path at release_root/\"standard\"/clean_rel  # lines 108-135"
+   },
+   "why_the_byte_identity_matters": "R33/standard/reference/adjust_factor/...20260924...parquet is byte-identical to the RAW P1 file of the same name (sha256 59ca656e...). A byte-identical copy is consistent with this declared ingest/hardlink placement, but bytes alone cannot distinguish ingest_item place_file from hardlink_tree carry-forward, and cannot prove which run produced R33.",
+   "declared_scope_gap": "the retained writer family body is fq=None daily-bar oriented and contains no adjust_factor branch, so it is not evidenced as the writer of the three adjust_factor RAW files."
+  },
+  "runtime_rule_reference": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1.json",
+   "sha256": "290b21c14a7d2646ce9e863177b2aec3db84b1fe00ad74854aec31d30ad80739",
+   "declares": "formal_daily_orchestrator = 脚本/blackbox_daily_increment_orchestrator_r1.py; formal_daily_cache_compiler = 任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+   "note": "the orchestrator body (retained, 3,000 B) chains INDEX_WEIGHT check, ETF-minute check, TIP_REBASE and SCOPE refresh; it launches no adjust_factor RAW producer"
+  }
+ },
+ "WHAT_A_RECEIPT_REPORTS": {
+  "INCREMENTAL_RECEIPT.json": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\\INCREMENTAL_RECEIPT.json",
+   "sha256": "bbbec46fb07034506bdc74761e6e7d6de95edfb771d9b80314ff8eaa6f8b71ed",
+   "reported": {
+    "update_date": "2026-09-02",
+    "source_max_date": "2026-09-02",
+    "fq": "pre",
+    "raw_fallback_used": false,
+    "silent_factor_one_used": false,
+    "backward_dirty_count": 7,
+    "action": "FULL_HISTORY_REFRESHED_DIRTY_CODES"
+   },
+   "names_no_raw_producer": true
+  },
+  "SOURCE_COVERAGE.json": {
+   "sha256": "dbe8df6287e8b24f705799c3e8c295bc9dc69d1462fc79d9345994b7b3a9c59a",
+   "reported": {
+    "source_min_date": "2014-01-02",
+    "source_max_date": "2026-08-14",
+    "actual_trade_days": 3068,
+    "total_rows": 12176722,
+    "n_missing_trade_days": 0
+   }
+  },
+  "AUTHORITY_GATES.json": {
+   "sha256": "e820afdd5ca726c27047a45c18958c56380a76e47f3212c715f1893ae6bbe360",
+   "reported_engine": "incremental_backward_refresh_r1.py",
+   "note": "the receipt names the backward-refresh engine and the wrapper, not any RAW downloader"
+  },
+  "retained_R33_identity_finding": {
+   "source": "retained R09 narrowing (FOUR_UNRESOLVED_ITEMS_NARROWED.json) and prior inbox text",
+   "states": "generation identity diverges by reader path for the cleaning layer (R33 pointer vs R45 parent/quarantine/ledger; SEAL.json 70 B carries no identity)"
+  }
+ },
+ "WHAT_THE_BYTES_DEMONSTRATE": {
+  "raw_20260831": {
+   "date_type": "int64",
+   "distinct": 300,
+   "min": 0,
+   "max": 299,
+   "rows": 5212,
+   "factor_distinct": 1,
+   "factor_value": 1.0,
+   "sidecar": null
+  },
+  "raw_20260901": {
+   "date_type": "int64",
+   "distinct": 300,
+   "min": 0,
+   "max": 299,
+   "rows": 5214,
+   "factor_distinct": 1,
+   "factor_value": 1.0,
+   "sidecar": null
+  },
+  "raw_20260924": {
+   "date_type": "timestamp[ns]",
+   "distinct": 1,
+   "value": "2026-09-24T00:00:00",
+   "rows": 5222,
+   "factor_distinct": 1,
+   "factor_value": 1.0,
+   "sidecar": null
+  },
+  "r33_layer": {
+   "files": 18,
+   "all_explicit_timestamp_ns": true,
+   "dates_present": [
+    "2026-08-10",
+    "2026-08-11",
+    "2026-09-03",
+    "2026-09-04",
+    "2026-09-07",
+    "2026-09-08",
+    "2026-09-09",
+    "2026-09-10",
+    "2026-09-11",
+    "2026-09-14",
+    "2026-09-15",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18",
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-23",
+    "2026-09-24"
+   ],
+   "2026_08_31_present": false,
+   "2026_09_01_present": false,
+   "2026_09_02_present": false,
+   "2026_09_24_present": true,
+   "note": "the two 0..299 int64 RAW axes are NOT reproduced in R33; R33 carries real timestamp axes only"
+  },
+  "independence": "the two int64-ordinal observations reproduce the retained R08 measurement (kind INT64_PAGE_ORDINAL, distinct 300, min 0, max 299, factor 1.0, sidecar absent) exactly, by a separate read in this round"
+ },
+ "UNRESOLVED_EXECUTION_IDENTITY": {
+  "status": "PRODUCER_NOT_IDENTIFIED_IN_RETAINED_INDEX",
+  "what_is_missing": "no retained index, rule reference or already-uploaded body supplies an exact path for the program that wrote adjust_factor_stock__incremental_*.parquet into P1_adjust_factor, and no retained receipt names it either",
+  "candidates_checked_and_excluded_as_writers": [
+   "jq_download_execution_r1.py (T1): different naming, whole-year windows, no sidecar",
+   "post_seal_daily_download_r8.py: fq=None daily bar family, no adjust_factor branch",
+   "download_source_fq_pre_r1.py: writes TASK/staging/source_batches, not P1",
+   "cache_compiler_adjust_factor_pit_r1.py: reads P1 (glob matches), does not write P1",
+   "blackbox_daily_increment_orchestrator_r1.py: chains cache/scope steps only"
+  ],
+  "not_done_by_instruction": [
+   "broad code-root scan",
+   "supplier documentation search",
+   "credential file read",
+   "producer execution",
+   "inference of a date from a filename",
+   "any claim that the producer does not exist"
+  ],
+  "next_evidence_needed": "an exact producer path or a retained receipt naming one, supplied or indexed"
+ },
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+}
