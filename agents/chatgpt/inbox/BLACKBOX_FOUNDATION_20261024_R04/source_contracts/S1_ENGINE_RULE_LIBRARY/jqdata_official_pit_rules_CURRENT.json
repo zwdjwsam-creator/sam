@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "no_lookahead": true,
+  "rules": [
+    {
+      "domain": "index_components",
+      "api": "get_index_stocks(index, date=...)",
+      "pit_status": "pit_available_now"
+    },
+    {
+      "domain": "index_weights",
+      "api": "get_index_weights(index, date=...)",
+      "pit_status": "pit_available_now",
+      "quality_gate": "weight_sum_near_100"
+    },
+    {
+      "domain": "industry_concept",
+      "api": "get_industry_stocks / get_concept_stocks with date=",
+      "pit_status": "pit_reconstructable_from_date_param",
+      "manual_rule_required": true,
+      "manual_rule_reason": "行业分类体系变更(sw vs jq_l1);回测窗口需固定口径"
+    },
+    {
+      "domain": "fundamentals",
+      "pit_status": "later_patch",
+      "required_date_fields": [
+        "pub_date",
+        "report_date",
+        "statDate"
+      ],
+      "blocks_p7_resume": false
+    },
+    {
+      "domain": "valuation",
+      "pit_status": "later_patch",
+      "required_date_fields": [
+        "statDate",
+        "day"
+      ],
+      "blocks_p7_resume": false
+    },
+    {
+      "domain": "index_pit_integrity",
+      "api": "get_index_stocks/get_index_weights(date=)",
+      "pit_status": "pit_available_now",
+      "quality_gate_required": true,
+      "quality_gate": "weight_sum_near_100"
+    }
+  ]
+}
