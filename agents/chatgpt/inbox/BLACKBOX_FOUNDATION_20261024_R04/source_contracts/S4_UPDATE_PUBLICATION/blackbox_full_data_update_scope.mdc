@@ -1,0 +1,120 @@
+---
+description: BLACKBOX 数据更新=全数据增量下载+清洗对齐防穿越+SW L123 densify+切片进缓存（R2+日更尾）
+alwaysApply: false
+---
+
+
+# BLACKBOX 数据更新统一口径（HAND FULL_DATA R2）
+
+> **口令语义唯一 alwaysApply 权威**；旧晨更条令已并入。  
+> 硬规则：`规则库/hand_hard_rules/BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json`  
+> 日更尾规则：`规则库/hand_hard_rules/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1.json`  
+> 顶部流量：`运行/BLACKBOX_HAND_TOP_DATA_TRAFFIC_CURRENT.json`  
+> 运行态：`运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json`  
+> 路径体积：`blackbox_data_inventory_top_ssot.mdc`  
+> 生效：**2026-08-09T07:11:30+0800** · SW/L123+Cache 日更尾修订：**2026-08-12T01:12:47+0800**
+
+## 0. 一句话
+
+**「数据更新」= 全数据增量下载（含指数分钟732 + SW L1/L2/L3 densify）+ 正式清洗对齐 + 防穿越 + Cache 年切片发布 CURRENT（含 SW_L1/L2/L3 独立产品）+ 刷新总表。**
+
+
+
+## 0.1 域名正式口径（R3 · 2026-08-12）
+
+| Dataset | 状态 |
+|---|---|
+| full_factor_values_library | **REQUIRED** 可取尽取历史全量，之后交易日增量 |
+| financial_indicator | **REQUIRED** 全量（旧 BLOCKED 作废，须重探） |
+| money_flow_abnormal_lock_subscribe | **REQUIRED** 全量 |
+| jq260_factor_values(_library) | **TARGET_REQUIRED**，**先 live 权限重探**，禁旧 policy 跳过 |
+| fq_pre_post | **NOT_NEEDED_NOW**（复权因子动态生成） |
+| QMT_live | **OUT_OF_SCOPE**（非历史全量建设） |
+
+SSOT：`规则库/hand_hard_rules/BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3.json`
+
+## 1. 触发短语（同义）
+
+数据更新 / 更新数据 / 全数据更新 / 黑盒全量更新 / 更新全数据 / 数据增量更新 / 每日更新 / 日更
+
+## 2. 流水线
+
+1. 读 HAND + R2 SCOPE + 顶部数据流量 + 库存 mdc  
+2. 相对 CURRENT asof **增量扫缺口**  
+3. REQUIRED ACTIVE 全域增量下载（含指数分钟 732）  
+4. **SW L1/L2/L3 membership densify** → PIT seal 切 CURRENT  
+5. 正式清洗封板切 CURRENT  
+6. 指数分钟：缺口对齐 / 无缺口复用 CURRENT_INDEX_MINUTE_ALIGN  
+7. 防穿越  
+8. **Cache Compiler**（价量平面增量）  
+9. **SW_L1/L2/L3 独立产品**切片进 CACHE CURRENT（禁止混表）  
+10. **FUND_ETF_NAV tip**（`blackbox_fund_etf_nav_premium_plane_r1.py --asof <日>`）→ `FUND_NAV_PIT_R1`；溢价派生刷新平面 CURRENT  
+11. **外源证据 tip**（`数据/外部证据/`）：`HIST_END`=JQ SCOPE asof；`--force-tip`（默认含财报 `--force-financial-tip`）→ CLEAN/对齐/防穿越/`asof_align` → `SILENT_TRUNCATION=0` → Resolver；**只读旁路、禁止写入 JQ**（`blackbox_external_evidence_asof_align.mdc`）  
+12. inventory_top_refresh  
+
+## 3. 必须纳入（盘点）
+
+| 类别 | 纳入 | 位置 |
+|---|---|---|
+| 日历/行业概念 | 是 | P0_meta |
+| 复权因子 / 估值因子 | 是 | P1 年批=LEGACY cutoff；**生产读 `ADJUST_FACTOR_PIT_R1`**（fq=pre 全历史 2014-01-01..2026-08-14，**READY / cutoff CLOSED**）+ P6 valuation |
+| 260 聚宽原生因子 **数值库** | **TARGET**：须权限重探后下载+日更 | `blackbox_jq260_factor_research_layer.mdc` + R3 |
+| 260 因子字典/公式研究层 | 静态引用；公式可截面防穿越重算 | `规则库/data_dictionary/jqdata_factor_dictionary_current/` |
+| A股日线/分钟 | 是 | P2 / P7 |
+| ETF 日线/分钟 | 是 | P4_fund_etf_raw_none |
+| **FUND/ETF NAV + 溢价派生** | **是（日更 tip）** | `get_extras` → `FUND_NAV_PIT_R1`；溢价=`(close-NAV)/NAV`（非独立表）；脚本 `blackbox_fund_etf_nav_premium_plane_r1.py --asof <日>` |
+| 指数日线/成分/master | 是 | P3_index + plane |
+| 指数分钟 | 是 **732** | P3_index_minute |
+| **SW L1/L2/L3 membership PIT** | **是（日更 densify）** | CURRENT_SW_L*_PIT_ALIGN |
+| **Cache SW_L1/L2/L3 产品** | **是（清洗后切片）** | CACHE CURRENT |
+| 财务报表三大表 | 是 | P3_finance_pit |
+| financial_indicator | **REQUIRED** 已全量入库+清洗+CACHE（asof 08-11；日更续） | P3_finance_pit + FINANCIAL_INDICATOR_PIT_R1 |
+| **龙虎榜** | **是** | P5/.../billboard |
+| P5 其它事件 | 是 | 审计/股本/质押/分红… |
+| 港股通辅助 | 是 | P9 |
+| **外源证据（TUSHARE/EXCHANGE/…）** | **是（日更 tip；源隔离；asof 对齐）** | `数据/外部证据/` · HIST_END=JQ asof · 财报 tip 默认 · 清洗防穿越 · 5000 门 · `blackbox_external_evidence_asof_align.mdc` |
+| P4b 开基等 | DEFERRED | 扩展轨 |
+| 前/后复权 / QMT | 禁 | — |
+
+CURRENT 清洗：`BLACKBOX_FORMAL_CLEANING_R26_ADJFACTOR_PIT_ASOF_20260814_20260816_044000` asof=`2026-08-14`（含 `ADJUST_FACTOR_PIT_R1` fq=pre 全历史）  
+指数分钟对齐：`BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260814_20260815_020400`  
+CACHE CURRENT：`BLACKBOX_CACHE_R1_ADJFACTOR_PIT_CLEAN_ASOF_20260814_20260816_044403` · `ADJUST_FACTOR_PIT_R1`=`READY` · SOURCE_CUTOFF_GAP=`CLOSED`  
+**不是**全市场缺口已齐：`ALL_BLACKBOX_DATA_GAPS_CLOSED=FALSE`（jq260 / 付费模块仍 TARGET 或 SKIP）
+
+## 4. 口令边界
+
+| 口令 | 含义 |
+|---|---|
+| 数据更新 / 更新数据 / 全数据更新 / 每日更新 | **本 R2 + SW L123 densify + Cache 尾** |
+| 更新报告 / 黑盒更新 | 仅报告，不下载清洗 |
+| 同步数据总表 | 仅刷 inventory |
+
+## 5. 冲突消解
+
+- 晨更窄口径 **作废**，统一 R2  
+- 指数分钟 9 只 → **732**  
+- 因子参考=估值+复权；**260 为研究层原生因子字典**（数值库不更新，见 jq260 mdc）  
+- 龙虎榜 **有**，纳入  
+- L2/L3 Cache **已产品化**；日更必须进 CACHE  
+
+## 6. HAND
+
+- 口径放行 `POLICY_SCOPE_AUTHORIZE`；真正下载仍待口令执行 + launcher  
+- 禁止手改 `HAND_DECISION.json`；本修订只写流量/SCOPE/日更尾 CURRENT  
+- 流量 SSOT：`运行/BLACKBOX_HAND_TOP_DATA_TRAFFIC_CURRENT.json`
+
+## 7. 完成后
+
+```powershell
+E:\BLACKBOX\.venv\Scripts\python.exe -u E:\BLACKBOX\脚本\blackbox_data_inventory_top_refresh.py
+```
+
+## 强制：下载结束必须清洗（防污染）+ 进缓存
+
+见 `blackbox_download_must_clean_antileak.mdc` + `blackbox_cache_first_workflow_policy.mdc`。  
+未过 CLEAN/ALIGN/PIT → `CACHE_PUBLISH=BLOCKED`；未进 CACHE → 不得宣称日更 PASS。
+
+## 强制：外源证据增量同级清洗防穿越
+
+见 `blackbox_external_evidence_clean_antileak.mdc` + `BLACKBOX_HAND_EXTERNAL_EVIDENCE_CLEAN_ANTILEAK_R1`。  
+未过 CLEAN/PIT/`SILENT_TRUNCATION=0` → 外源 FAIL；不得宣称外源 PASS。不挡 JQ 主链 CURRENT，但日更清单须含此外源尾。
