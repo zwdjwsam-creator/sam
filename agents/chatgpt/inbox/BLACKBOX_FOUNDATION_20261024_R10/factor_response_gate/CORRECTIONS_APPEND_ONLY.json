@@ -1,0 +1,34 @@
+{
+ "schema": "R10_RESPONSE_GATE_CORRECTIONS_APPEND_ONLY_1",
+ "append_only": true,
+ "source": "reviewer corrections supplied in outbox/BLACKBOX_FOUNDATION_R10_RESPONSE_GATE_AND_PINNED_REGRESSIONS_20261025.md",
+ "carried_forward_verbatim_effect": [
+  {
+   "id": "RC1",
+   "text": "The three original CSVs do not impose a physical fq column. Missing fq bytes do not independently establish a contract violation. Explicit fq semantics remain governed by the particular consumer contract/request binding; never relabel None as pre from numerical factor=1."
+  },
+  {
+   "id": "RC2",
+   "text": "domain_schema price_fq_factor targets stock_daily. Do not automatically impose its complete stock OHLCV column list on a standalone adjust-factor source. Shared date meaning applies, while full product-specific schema/authority still needs its actual contract."
+  },
+  {
+   "id": "RC3",
+   "text": "A timestamp at midnight is an observed explicit daily value. Record the dtype representation difference from CSV date without declaring every R33 timestamp invalid solely because it is timestamp[ns]."
+  },
+  {
+   "id": "RC4",
+   "text": "Do not conflate the measured mounted CACHE plane, the historical backward-refresh writer and the new candidate merge/response gates. They are separate objects."
+  },
+  {
+   "id": "RC5",
+   "text": "The already pinned backward-refresh engine fetches replies directly through fetch_factor(jq,...), and the retained receipt reports raw_fallback_used=false. Do not invent a requirement to identify P1 files it supposedly consumed. Separate that direct-response lineage from the current CACHE tip_source field, which is a different declared RAW input. No new source search or execution is authorized here."
+  }
+ ],
+ "effect_applied_to_this_round": [
+  "this round performed no source search, no parquet inspection, no re-upload of the prior delivery",
+  "no fq column was fabricated and factor=1 observations are preserved as valid",
+  "the gate is described as a candidate component in front of concat/write, not as the CACHE plane, not as the historical writer, and not as a merge engine",
+  "the isolated-AST tests reproduce implementation mechanisms; they are not historical causation for the two integer-axis files"
+ ],
+ "still_open": "B1..B7"
+}
