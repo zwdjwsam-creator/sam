@@ -27,6 +27,8 @@ Expected 8 tests, passed=true, exit 0. Failure stops; preserve output and do not
 Only after PASS run once:
 .\runtime\.venv\Scripts\python.exe -X utf8 reviews\R10\fixed_readiness_metadata\capture_readiness_metadata.py
 
+Keep command captures in E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\r10_readiness_metadata_command_captures\ until the script has created its delivery. Do not pre-create r10_readiness_metadata_delivery for capture/staging; the script alone creates it.
+
 The script's complete input allowlist:
 - E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\_checkpoint\latest_checkpoint.json
 - E:\BLACKBOX\运行\BLACKBOX_FULL_DATA_PIPELINE_MATRIX_CURRENT.json
