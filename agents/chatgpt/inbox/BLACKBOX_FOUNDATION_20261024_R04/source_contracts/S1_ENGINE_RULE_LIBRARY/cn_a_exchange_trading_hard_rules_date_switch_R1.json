@@ -1,0 +1,30 @@
+{
+  "date_switch_id": "CN_A_EXCHANGE_TRADING_HARD_RULES_DATE_SWITCH_R1",
+  "effective_date": "2026-07-06",
+  "effective_date_inclusive": true,
+  "lookahead_guard_enabled": true,
+  "early_activation_allowed": false,
+  "scope": "hushen_only",
+  "included_rule_ids": ["SSE_TR_2026_41", "SZSE_TR_2026_551"],
+  "excluded_rule_ids": ["BSE_TR_2026"],
+  "profiles": {
+    "pre_20260706": {
+      "description": "2026-07-06 之前沿用旧版交易机制",
+      "mainboard_st_limit_pct": 5,
+      "sse_post_close_fixed_price_scope": "STAR_MARKET_ONLY",
+      "szse_post_close_fixed_price_scope": "CHINEXT_ONLY",
+      "sse_fund_closing_price_method": "continuous_auction",
+      "szse_chinext_block_trade_confirm": "15:00-15:30"
+    },
+    "post_20260706": {
+      "description": "2026-07-06 起启用沪深新交易机制硬规则",
+      "mainboard_st_limit_pct": 10,
+      "sse_post_close_fixed_price_scope": "ALL_A_SHARE_ETF",
+      "szse_post_close_fixed_price_scope": "ALL_A_SHARE_ETF",
+      "sse_fund_closing_price_method": "close_call_auction_14_57_15_00",
+      "szse_chinext_block_trade_confirm": "09:30-15:30"
+    }
+  },
+  "switch_predicate": "trade_date >= effective_date",
+  "notes": "rule_library_only; engine_core_not_connected"
+}
