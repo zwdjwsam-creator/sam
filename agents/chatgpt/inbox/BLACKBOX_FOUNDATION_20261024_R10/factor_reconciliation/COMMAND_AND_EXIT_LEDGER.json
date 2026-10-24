@@ -1,0 +1,80 @@
+{
+ "schema": "R10_FACTOR_RECONCILIATION_COMMAND_LEDGER_1",
+ "round": "R10 continuation (not R11)",
+ "executor": "ZHANGWEI",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONDONTWRITEBYTECODE": "1",
+  "PYTHONUTF8": "1"
+ },
+ "order_preserved": true,
+ "executed_once_each": true,
+ "capture_method": "PowerShell Start-Process with separate raw stdout/stderr redirection; no re-encoding, no newline rewriting, no stdout reconstruction",
+ "entries": [
+  {
+   "step": "TEST_17_CONTROLS",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\factor_reconciliation\\test_r10_factor_reconcile.py"
+   ],
+   "literal_command_line": "reviews\\R10\\factor_reconciliation\\test_r10_factor_reconcile.py",
+   "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+   "note": "expected 17 tests all passed",
+   "started_at_cn": "2026-10-25T00:08:44.4873526+08:00",
+   "ended_at_cn": "2026-10-25T00:08:45.4993399+08:00",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "exit_code": 0,
+   "stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_reconciliation_delivery\\captures\\TEST_17_CONTROLS.stdout.bin",
+    "bytes": 137,
+    "sha256": "3563e275f010c26c6fe84bc09a4079d57d84aff17fdac862ad0083d84d899b99",
+    "bom": false,
+    "crlf_count": 1,
+    "encoding": "UTF-8 without BOM"
+   },
+   "stderr": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_reconciliation_delivery\\captures\\TEST_17_CONTROLS.stderr.bin",
+    "bytes": 121,
+    "sha256": "38b0b2bf94148a8ce7bf72dd64cb225bc3ee9ee28862452d0a2cb60fa6e511af"
+   }
+  },
+  {
+   "step": "DESKTOP_FACTOR_RECONCILIATION",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\factor_reconciliation\\r10_factor_reconcile.py",
+    "--desktop-check"
+   ],
+   "literal_command_line": "reviews\\R10\\factor_reconciliation\\r10_factor_reconcile.py --desktop-check",
+   "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+   "note": "fixed four-input read-only reconciliation, executed once",
+   "started_at_cn": "2026-10-25T00:08:53.0339958+08:00",
+   "ended_at_cn": "2026-10-25T00:09:20.1773337+08:00",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "exit_code": 0,
+   "stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_reconciliation_delivery\\captures\\DESKTOP_FACTOR_RECONCILIATION.stdout.bin",
+    "bytes": 99589,
+    "sha256": "d3414dd0a5b17ae5779868d74f6e9c01655a8eb88bb306c2a0f426c67c5ec1bb",
+    "bom": false,
+    "crlf_count": 1,
+    "encoding": "UTF-8 without BOM"
+   },
+   "stderr": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_reconciliation_delivery\\captures\\DESKTOP_FACTOR_RECONCILIATION.stderr.bin",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   }
+  }
+ ],
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false
+}
