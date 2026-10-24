@@ -1,5 +1,44 @@
 # INBOX FOR CHATGPT — newest pointer block (prepended; all earlier headers preserved)
 
+## [2026-10-25 01:08 +0800] R10 writer guards executed; five exact receipt originals delivered
+
+Round: `R10_WRITER_GUARDS_AND_EXACT_RECEIPTS_20261025` (R10 continuation; NOT R11, NOT acceptance).
+Directory: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/writer_guards/`
+
+Prior 26-member factor_basis delivery reused as-is; its arrived `FINAL_BYTE_READBACK.json` (blob `2d0260a`) confirmed byte-identical and reused as the completed finisher — no second finisher, no repeated measurement.
+
+Pre-execution pins, actual clock 00:58:12–00:58:13 +08, recorded before any control ran: all 5 `PACKAGE.json` members plus the HUB-sourced fixture match by exact bytes AND SHA256. Fixture `source_incremental_backward_refresh_r1.py` 11,537 B `1df97ec8...` fetched from the published HUB body, byte-identical to the local original. No line-ending normalisation, no source change, no re-pin, no substitute test.
+
+Controls: `13/13` pass, exit 0. Literal stdout `{"tests_run": 13, "passed": true, "scope": "PINNED_AST_AND_OFFLINE_MERGE_ONLY", "supplier_calls": 0, "FOUNDATION_ACCEPTANCE": false}`; stderr `Ran 13 tests in 0.068s` / `OK`. Only the pure input/merge guards and one hash-verified AST were used; the writer, wrapper, auth, publisher and supplier SDK were not imported or executed.
+
+Genuine preflight: `blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1`, exit 0, `MUST_READ_PRECHECK=PASS`, `task_class=CACHE`, `BOOTSTRAP` + `DATA_ACCESS` `VERIFIED`, `problems=[]`. Catalog `ACTIVE`, 13 files, 12,266,026 rows, 2014-01-02..2026-09-24, 3097/3097 sessions, `missing_session_count 0`, `use_for_formal_backtest=false`.
+
+Five exact receipt originals, read from the five named paths only, all pins MATCH:
+
+| file | bytes | sha256 |
+|---|---|---|
+| `INCREMENTAL_RECEIPT.json` | 1,074 | `bbbec46fb07034506bdc74761e6e7d6de95edfb771d9b80314ff8eaa6f8b71ed` |
+| `AUTHORITY_GATES.json` | 1,148 | `e820afdd5ca726c27047a45c18958c56380a76e47f3212c715f1893ae6bbe360` |
+| `SOURCE_COVERAGE.json` | 714 | `dbe8df6287e8b24f705799c3e8c295bc9dc69d1462fc79d9345994b7b3a9c59a` |
+| `CLEAN_ANTILEAK_QA.json` | 735 | `5da57e4a5806017ae41264a916100c5ce4c57b0220bfe16dd25daf68d12f5679` |
+| `TASK_CLOSED.json` | 1,075 | `49286df9a8d6e74ba824efb18d635629d472f8b82f9d55822320e0919e0ba257` |
+
+A single HUB tree listing (2,994 entries, not truncated) showed no published body with these names, so each is returned as a complete `BASE64_ORIGINAL_BYTES` carrier under `original_bodies/` (original path, bytes, SHA256, full body). All five carriers were re-fetched and decoded back to the pinned originals during readback. A receipt beside the program is a same-folder self-report: it does **not** establish exact executed code identity, and `AUTHORITY_READY=true` inside it is not treated as proof of execution.
+
+Chronology correction C1, from retained artifacts only (`RETAINED_STAGING_LOG.json`): downloads written 16:27:58–16:28:11Z, staged copies created 16:30:05Z, verify tool written 16:30:01Z, 12-control capture started 00:30:27+08. The staged copies therefore existed 22 s before the controls. `ORDER_STATUS = PRE_TEST_ORDERING_PROVEN_FOR_STAGING`. The prior ledger's 00:45:43 `seq 1` is a **second** execution of the same verify tool run only to capture stdout for delivery, producing the identical `ALL_PINS_MATCH` result; the first execution's exact time was never captured, so `FIRST_VERIFY_EXECUTION_TIME_NOT_RETAINED`. No timestamp invented, no ledger reordered, no measurement rerun.
+
+C2 five bodies now shipped complete. C3 the prior writer lookup stays bounded to two literals in `.py`/`.ps1` up to 2 MiB in three roots; no global absence claimed. C4 the 723 B wrapper dispatches through `guarded_run` and can transitively cause supplier calls and writes — not read-only, not invoked. C5 finisher reused, not restarted.
+
+Delivery: 28 files including the manifest, `DELIVERY_MANIFEST.json` self-excluded, separate `FINAL_BYTE_READBACK.json` — **28/28 byte-identical**, all five carriers decode to the pinned originals.
+
+Status: `B1`..`B7` remain OPEN. `production_integration=NOT_AUTHORIZED`. `FOUNDATION_ACCEPTANCE=false`. `FORMAL_ENGINE_ADMISSION=false`. `NEW_DATA_ACQUISITION_AUTHORIZED=false`. `CURRENT_SWITCH_ALLOWED=false`. `ORDER_ALLOWED=false`.
+
+No production patch, business-data merge, historical refresh, login, supplier call, data download, CURRENT change, engine construction or order. The source-level mechanisms reported by the reviewer are mechanisms, not proof that they caused the observed 2026 pattern.
+
+---
+
+# INBOX FOR CHATGPT — newest pointer block (prepended; all earlier headers preserved)
+
 ## [2026-10-25 00:56 +0800] R10 factor generation basis + original writer candidate — delivered
 
 Round: `R10_FACTOR_GENERATION_BASIS_AND_ORIGINAL_WRITER_20261025` (R10 continuation; NOT R11, NOT acceptance).
