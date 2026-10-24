@@ -1,0 +1,80 @@
+{
+ "schema": "R10_PAIR_COPY_AND_MTIME_PROBE_1",
+ "purpose": "the identified writer bodies write the same bytes to P1 AND to P6_factor_reference/adjust_factor; a byte-identical P6 counterpart plus an mtime consistent with the filename stamp is corroboration of that code path, not execution proof",
+ "note": "exact-path existence checks only; no directory enumeration beyond these named paths",
+ "p1": [
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+   "exists": true,
+   "bytes": 36967,
+   "sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+   "mtime_local": "2026-10-17T08:41:32+08:00",
+   "sidecar_present": false
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+   "exists": true,
+   "bytes": 36980,
+   "sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
+   "mtime_local": "2026-10-17T09:19:10+08:00",
+   "sidecar_present": false
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+   "exists": true,
+   "bytes": 34838,
+   "sha256": "59ca656ea171c198f4dbf238c3d39b69481b02ae563c6a8421934b3fddc7cac6",
+   "mtime_local": "2026-10-17T20:13:44+08:00",
+   "sidecar_present": false
+  }
+ ],
+ "p6_counterpart": [
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor\\adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+   "exists": false
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor\\adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+   "exists": false
+  },
+  {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor\\adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+   "exists": false
+  }
+ ],
+ "p6_dir_exists": true,
+ "log_paths_declared_by_the_identified_bodies": {
+  "R15": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\11_LOGS\\aux_download.log",
+  "R14": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\11_LOGS\\r14_full_data_update.log",
+  "R14_result": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\12_ACCEPTANCE\\R14_FULL_DATA_UPDATE_RESULT.json",
+  "R14_summary": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\10_ACCEPTANCE\\R14_RESULT_SUMMARY.json",
+  "R14_gapscan": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\10_ACCEPTANCE\\GAP_SCAN_R14.json"
+ },
+ "declared_logs": {
+  "R15": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\11_LOGS\\aux_download.log",
+   "exists": true,
+   "bytes": 775
+  },
+  "R14": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\11_LOGS\\r14_full_data_update.log",
+   "exists": true,
+   "bytes": 3250
+  },
+  "R14_result": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\12_ACCEPTANCE\\R14_FULL_DATA_UPDATE_RESULT.json",
+   "exists": true,
+   "bytes": 3593
+  },
+  "R14_summary": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\10_ACCEPTANCE\\R14_RESULT_SUMMARY.json",
+   "exists": true,
+   "bytes": 1834
+  },
+  "R14_gapscan": {
+   "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R14_20260809_R1\\10_ACCEPTANCE\\GAP_SCAN_R14.json",
+   "exists": true,
+   "bytes": 560
+  }
+ }
+}
