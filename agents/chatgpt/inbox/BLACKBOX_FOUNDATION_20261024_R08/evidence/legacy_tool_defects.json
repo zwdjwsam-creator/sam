@@ -1,0 +1,91 @@
+{
+ "empty_modules": [
+  {
+   "path": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_common_r1.py",
+   "bytes": 2,
+   "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+  },
+  {
+   "path": "E:\\BLACKBOX\\脚本\\blackbox_cache_coverage_non_regression_gate_r1.py",
+   "bytes": 2,
+   "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+  }
+ ],
+ "required_names_missing_from_common": [
+  "infer_mode_for_product",
+  "load_trade_calendar",
+  "product_date_coverage",
+  "CRITICAL_BACKTEST_PRODUCTS",
+  "HISTORICAL_REQUIRED",
+  "cache_current",
+  "cleaning_current",
+  "classify_stock_daily",
+  "compare_coverage",
+  "find_calendar_trade_days",
+  "now_cn",
+  "raw_stock_daily_dates"
+ ],
+ "required_names_missing_from_gate": [
+  "self_test",
+  "gate"
+ ],
+ "call_sites": [
+  {
+   "script": "脚本/blackbox_data_access_resolver_r1.py",
+   "line": 700,
+   "imports": [
+    "infer_mode_for_product",
+    "load_trade_calendar",
+    "product_date_coverage"
+   ]
+  },
+  {
+   "script": "脚本/blackbox_data_coverage_control_plane_build_r1.py",
+   "line": 13,
+   "imports": [
+    "12 names as above"
+   ]
+  },
+  {
+   "script": "脚本/blackbox_data_coverage_control_plane_build_r1.py",
+   "line": 267,
+   "imports": [
+    "self_test",
+    "gate"
+   ]
+  },
+  {
+   "script": "脚本/blackbox_data_coverage_diagnose_r1.py",
+   "line": 44,
+   "imports": [
+    "classify_stock_daily"
+   ]
+  }
+ ],
+ "causal_status": "STATIC_IMPORT_DEFECT_OBSERVED; the contribution of these modules to any specific historical miss or publication is NOT established by static inspection and is not claimed",
+ "enumerator_mismatch": {
+  "hand_enum_members": [
+   "SOURCE_MISSING",
+   "RAW_COMPLETE_CLEANING_MISSING",
+   "CLEANING_COMPLETE_CACHE_MISSING",
+   "CACHE_COVERAGE_REGRESSION",
+   "CACHE_PRODUCT_UNAVAILABLE",
+   "READER_LOAD_MISSING",
+   "READER_DATE_SLICE_MISSING",
+   "FILTER_EMPTY",
+   "UNIVERSE_EMPTY",
+   "PIT_ASOF_EMPTY",
+   "SOURCE_LIMITATION",
+   "REQUEST_OUTSIDE_PRODUCT_COVERAGE",
+   "AMBIGUOUS_DATASET",
+   "UNKNOWN_STOP"
+  ],
+  "success_labels_are_not_root_causes": [
+   "SOURCE_AVAILABLE_AND_AUTHORITATIVE",
+   "SOURCE_AVAILABLE_AND_SERVED",
+   "SEPARATE_NAMESPACE_OR_REGISTRY"
+  ],
+  "rule": "successful diagnosis may carry root_cause=null plus a separate success status; no new root-cause value is invented"
+ },
+ "successor_controls_isolated": true
+}
