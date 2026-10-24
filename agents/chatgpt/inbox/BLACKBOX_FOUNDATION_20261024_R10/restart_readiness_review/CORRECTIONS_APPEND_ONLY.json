@@ -1,0 +1,36 @@
+{
+ "schema": "RESTART_READINESS_CORRECTIONS_APPEND_ONLY_1",
+ "at_cn": "2026-10-25T07:22:44+08:00",
+ "corrections": [
+  {
+   "id": "C1",
+   "preliminary_observation": "blackbox_daily_increment_orchestrator_r1.py defines GATE but never uses it, so the publish gate looks unbound",
+   "correction": "the orchestrator delegates; cache_compiler_tip_rebase_from_current_r1.py:36 imports publish_atomic from the gate, and blackbox_etf_minute_phase9_to_15_runners_r1.py:25 imports it too. Publish is bound at import level. No defect recorded.",
+   "how_established": "S4 full .py text scan (2,173 files, 21 refs) plus line-level reading"
+  },
+  {
+   "id": "C2",
+   "preliminary_observation": "E:\\BLACKBOX\\研究系统\\数据平面\\DAILY_DATA_PLANE_CURRENT.json missing",
+   "correction": "path guess was wrong; the file exists at 研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+   "how_established": "S1 name scan over 307,205 directories, 1 hit"
+  },
+  {
+   "id": "C3",
+   "preliminary_observation": "E:\\BLACKBOX\\运行\\BLACKBOX_SELLSIDE_THESIS_TIMELINE_R1 missing",
+   "correction": "the task lives at 任务\\BLACKBOX_SELLSIDE_THESIS_TIMELINE_R1 and its runner run_sellside_daily_incremental_r1.py is present",
+   "how_established": "S1 name scan, 1 hit; runner existence check"
+  },
+  {
+   "id": "C4",
+   "preliminary_observation": "the V4 gate references a D: root, so check only D:",
+   "correction": "the name scan was extended to C/D/E/F before any conclusion; the root is absent on all four, and no run_v4_three_eod script or V4_THREE_EOD output exists on any of them",
+   "how_established": "S2"
+  },
+  {
+   "id": "C5",
+   "preliminary_observation": "an empty E:\\BLACKBOX\\配置\\secrets listing implies no supplier credential",
+   "correction": "the credential file is one level deeper (配置\\secrets\\已验证\\聚宽账号.txt) and exists; jq_download_base.py:19 reads exactly that path",
+   "how_established": "S6, presence only, no content read"
+  }
+ ]
+}
