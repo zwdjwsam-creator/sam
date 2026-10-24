@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "R06/10",
+  "authority": "GPT review section 'Required interpretation corrections' items 2, 3 and 4, plus R06 section 6D",
+  "corrections": [
+    {
+      "id": "R06-C1",
+      "subject": "finance.STK_MONEY_FLOW class",
+      "previous": "grouped into PERMISSION_BLOCKED_PAID_MODULE with get_money_flow",
+      "corrected": "PERMISSION_TYPE_UNKNOWN",
+      "receipt_detail": "Exception: 所获取数据的权限类型未知 (unknown data permission type); this is NOT the paid-module text",
+      "still_blocked": true,
+      "entitlement_state": "UNKNOWN",
+      "consequence": "the money_flow domain remains blocked because get_money_flow carries the explicit paid-module text; STK_MONEY_FLOW adds no paid evidence and must not be cited as such"
+    },
+    {
+      "id": "R06-C2",
+      "subject": "get_extras_paused",
+      "previous": "counted as a security_state permission/capability failure",
+      "corrected": "VALID_API_UNSUPPORTED_INFO_PARAMETER",
+      "receipt_detail": "Exception: 不支持的 info 参数：'paused'",
+      "evidence": "get_price(paused) returned PERMISSION_OK in the same probe, so paused is available through get_price and security_state is not permission-limited",
+      "consequence": "no paid denial, no account limitation; the paused route is get_price, not get_extras"
+    },
+    {
+      "id": "R06-C3",
+      "subject": "five lock-share / abnormal leaves",
+      "previous": "counted together with paid denials",
+      "corrected": "SDK_NAME_OR_VERSION_MISMATCH",
+      "receipt_detail": "RuntimeError: missing finance.STK_LOCK_SHARE / STK_LOCKED_SHARE / STK_SHARES_LOCKED / STK_LIMITED_SHARES / STK_ABNORMAL_CHANGE",
+      "consequence": "these names are absent from the installed SDK surface, so the probe never reached the supplier. Their entitlement is UNVERIFIED, not denied. Do not assert paid gating for them"
+    },
+    {
+      "id": "R06-C4",
+      "subject": "get_factor_values with roe / ROE / BV / pe_ratio / circ_market_cap",
+      "previous": "treated as access denial for the factor library as a whole",
+      "corrected": "PROBE_FAIL_INVALID_FACTOR_NAME",
+      "receipt_detail": "Exception: 无效的因子 ['roe'] etc.",
+      "consequence": "invalid factor identifiers, so they carry no entitlement information. The paid-module conclusion for the factor value library rests only on get_all_factors and get_factor_values(market_cap), both of which carry the explicit paid-module text. The library stays a required target and the skip seal stays separate from the target"
+    },
+    {
+      "id": "R06-C5",
+      "subject": "per-interface evidence split",
+      "previous": "23 probes summarised as one grouped access verdict",
+      "corrected": "class counts retained per probe: PERMISSION_OK 8, PROBE_FAIL 11, PERMISSION_BLOCKED_PAID_MODULE 3, PERMISSION_BLOCKED_ACCOUNT 1",
+      "source": "r05_delivery/PERMISSION_RECEIPTS/BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json probes[]",
+      "consequence": "no re-probe performed this round; the seal is unchanged and the entitlement state remains unverified for every skipped module"
+    },
+    {
+      "id": "R06-C6",
+      "subject": "two unmatched RAW files described as superseded",
+      "previous": "R05 called them superseded because later retry files exist in CLEAN",
+      "corrected": "SELECTION_HISTORY_NOT_EQUIVALENCE",
+      "consequence": "both source versions are preserved; no newest-build-wins rule is applied; this repair added only the two hash-pinned units and removed nothing"
+    },
+    {
+      "id": "R06-C7",
+      "subject": "constant factor=1 in a RAW_NONE unit",
+      "previous": "n/a",
+      "corrected": "NOT_AN_ADJUSTMENT_SERIES",
+      "evidence": "the recovered units carry factor=1.0 with fq=NULL for every row",
+      "consequence": "no forward/backward adjusted price capability is inferred; ADJUST_FACTOR_PIT_R1 remains the separate fq=pre product"
+    },
+    {
+      "id": "R06-C8",
+      "subject": "stock daily R45 label",
+      "previous": "R05 called R45 the active release",
+      "corrected": "R33_..._20260924_20260924_200439 is the CURRENT logical cleaning release; R45_DAILY_TIP_ASOF_20260924_20260925_034534 is its parent and the physical provider of standard/price through a junction",
+      "consequence": "no release was selected by label; the repair followed CURRENT.standard_root and recorded realpaths"
+    }
+  ],
+  "do_not_do": [
+    "do not re-probe the paid modules without a reported entitlement change",
+    "do not assign a paid denial to every abnormal/lock/subscribe leaf",
+    "do not treat an unsupported info parameter or a missing SDK attribute as an entitlement denial",
+    "do not treat the inventory summary as authority over observed partitions"
+  ]
+}
