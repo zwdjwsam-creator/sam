@@ -1,0 +1,36 @@
+{
+ "round": "R07/10",
+ "generated_at": "2026-10-24T17:41:40.159648+08:00",
+ "script": "reviews/R07/test_r07.py",
+ "script_sha256": "88fd95e36fcb21e94225e7452f558668e53a3e8ccca1ba296cb3675813b46bff",
+ "compiler_argument_sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+ "status": "PASS",
+ "controls_expected": 15,
+ "controls_passed": 15,
+ "controls": [
+  "cache miss is not source absence",
+  "positive RAW presence blocks re-download",
+  "CLEAN vs CACHE distinction",
+  "R9 historical success is not migration-loss proof",
+  "unreviewed absence receipt blocked by claim guard",
+  "r1 arithmetic",
+  "250-session rolling arithmetic",
+  "recursive EMA full-prefix state",
+  "pre-restoration past values unchanged",
+  "post-restoration later returns change",
+  "duplicate keys rejected",
+  "candidate parquet build",
+  "SW unknowns remain explicitly partial",
+  "idempotent replay ALREADY_BUILT_VERIFIED",
+  "parent files unchanged"
+ ],
+ "scope": "offline synthetic Arrow/parquet plus exact original formula functions",
+ "not_performed": [
+  "supplier call",
+  "desktop business rebuild",
+  "global absence search",
+  "production update"
+ ],
+ "source_absence_claims_authorized": 0,
+ "network_calls": 0
+}
