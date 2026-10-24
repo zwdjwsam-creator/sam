@@ -1,0 +1,42 @@
+{
+ "round": "R08",
+ "source": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R07_REVIEW_R08_CONSUMPTION_20261024_1812/ (HUB tip 5cac5f7f)",
+ "code_executed_unedited": true,
+ "local_modifications": [],
+ "files": {
+  "r08_coverage_gate.py": {
+   "sha256": "9d90046c252b7f4c08786906cd3a95d28a5b3099493e4cb1f0ca8931fae982af",
+   "role": "enum/date/coverage gate helpers"
+  },
+  "r08_rebuild_local.py": {
+   "sha256": "46da05cb40ce73472ccb896916676d0f42a100d42ece4e46dcb764c64f5d8407",
+   "role": "observed-segment derived rebuild + audit"
+  },
+  "test_r08.py": {
+   "sha256": "8b02040fa0f79211148292a992959469dc4c64e8401785e06a00c722c417d3d9",
+   "role": "23 offline controls"
+  },
+  "r07_rebuild_local.py": {
+   "sha256": "a9759390564b1ac1dc20c1098e37a52199d4bb439990522babffc90352e18a03",
+   "role": "unchanged R07 arithmetic (imported)"
+  },
+  "r06_bundle_store.py": {
+   "sha256": "6c76c0de3aca7d96223e5883b68918c794585156e29c292962d438e6986269a2",
+   "role": "unchanged R06 store helpers"
+  },
+  "cache_compiler_source_R06.py": {
+   "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+   "role": "hash-pinned compiler under test"
+  }
+ },
+ "compiler_pin_matches_r07_manifest": true,
+ "execution_environment": {
+  "python": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+  "note": "E:\\BLACKBOX\\.venv is BROKEN on this desktop (pyvenv home points to C:\\Users\\ThinkPad\\...); repo-wide venv unusable, isolated runtime venv used",
+  "env_defect_id": "BLACKBOX_ROOT_VENV_BASE_INTERPRETER_STALE"
+ },
+ "network_calls": 0,
+ "downloads": 0,
+ "authentication_attempts": 0,
+ "production_writes": 0
+}
