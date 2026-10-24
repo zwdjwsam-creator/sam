@@ -1,0 +1,13 @@
+﻿field_category,example_fields,storage_dtype,precision_rule,nullable_allowed,forbidden_dtype,notes
+price,"open,high,low,close",float64,4 decimal places,Y,,
+money_amount,"money,amount,market_cap,circulating_market_cap,free_market_cap",float64,4 decimal places,Y,,金额字段必须关联unit
+ratio,"pe_ratio,pb_ratio,ps_ratio,pcf_ratio,roe,roa,eps,turnover_ratio",float64,6 decimal places,Y,,
+volume_share,volume,int64,N/A,N,float,成交量
+share_capital,"capitalization,circulating_cap,free_cap,a_cap",int64,N/A,N,float,股本
+datetime,"datetime_local,datetime_utc",datetime64[ns],ISO8601,N,bare_string,禁止裸字符串进clean
+date,"trade_date,weight_date,pubDate,statDate,day",date,YYYY-MM-DD,N,string_mixed,
+primary_key,"symbol,code,index_code",string,N/A,N,"float,date",
+symbol,"symbol,code,con_code",string,N/A,N,,
+flag_status,"is_st,is_suspended,halt_status,risk_warning",category/string,N/A,Y,boolean_forced,不强制boolean
+source_priority_numeric,source_priority_numeric,int32,N/A,N,,
+revision_version,"revision_version,revision_count",int32,N/A,N,,
