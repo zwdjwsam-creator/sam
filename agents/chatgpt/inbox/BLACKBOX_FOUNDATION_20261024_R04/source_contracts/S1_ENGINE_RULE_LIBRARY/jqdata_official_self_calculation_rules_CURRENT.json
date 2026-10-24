@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "rules": [
+    {
+      "domain": "fund_etf_premium",
+      "formula": "(close - unit_net_value) / unit_net_value",
+      "inputs": [
+        "get_price.close",
+        "get_extras.unit_net_value"
+      ],
+      "depends_on_jq_technical_indicator": false
+    },
+    {
+      "domain": "technical_indicator",
+      "method": "local_OHLCV_calculation",
+      "depends_on_jq_technical_indicator": false,
+      "notes": "不依赖聚宽技术指标作为核心数据源"
+    }
+  ]
+}
