@@ -1,0 +1,65 @@
+{
+  "final_status": "PASS",
+  "asof": "2026-08-07",
+  "price": {
+    "status": "CURRENT_MATCHES_LAST_TRADE_DAY",
+    "note": "No re-download; CURRENT cleaning already asof last trade day"
+  },
+  "billboard": {
+    "status": "PASS",
+    "rows": 5874,
+    "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard\\billboard__incremental__20260730_20260807__20260809_072713.parquet",
+    "days": [
+      "2026-07-30",
+      "2026-07-31",
+      "2026-08-03",
+      "2026-08-04",
+      "2026-08-05",
+      "2026-08-06",
+      "2026-08-07"
+    ]
+  },
+  "index_minute": {
+    "2026-08-07": {
+      "status": "EMPTY_OR_FAIL",
+      "written_files": 0,
+      "empty_batches_est": 2928,
+      "fail_batches": 0,
+      "day": "2026-08-07",
+      "codes": 732,
+      "freqs": [
+        "5m",
+        "1m",
+        "30m",
+        "60m"
+      ]
+    }
+  },
+  "index_align_exit": 0,
+  "quota_start": 25846410,
+  "quota_end": 25827043,
+  "index_minute_fix": {
+    "final_status": "PASS",
+    "asof": "2026-08-07",
+    "index_minute_written_files": 2928,
+    "empty": 0,
+    "fail": 0,
+    "align_exit": 0,
+    "align_release": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260807_20260809_073322",
+    "align_all_pass": true,
+    "quota_end": 25606863,
+    "phase": "INDEX_MINUTE_FIX_R14"
+  },
+  "index_align_release": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260807_20260809_073322",
+  "cleaning_r14": {
+    "final_status": "PASS",
+    "release_id": "BLACKBOX_FORMAL_CLEANING_R14_ASOF_20260807_20260809_082152",
+    "seal_id": "BLACKBOX_CLEANING_LAYER_SEAL_R14_20260809_082152",
+    "domains": [
+      "billboard",
+      "adjust_factor"
+    ],
+    "rule": "BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1"
+  },
+  "download_must_clean_enforced": true
+}
