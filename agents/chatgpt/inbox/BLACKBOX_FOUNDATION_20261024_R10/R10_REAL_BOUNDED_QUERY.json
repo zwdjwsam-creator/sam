@@ -1,0 +1,92 @@
+{
+ "schema": "R10_REAL_BOUNDED_QUERY_1",
+ "command": {
+  "argv": [
+   "blackbox_operate_r10.py",
+   "query",
+   "--product",
+   "STOCK_DAILY_RAW_PIT_R1",
+   "--codes",
+   "000001.XSHE",
+   "--start",
+   "2026-08-28",
+   "--end",
+   "2026-09-02",
+   "--fields",
+   "close"
+  ],
+  "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry",
+  "exit_code": 0
+ },
+ "retained_stdout": {
+  "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_QUERY_STOCK_RAW.txt",
+  "sha256": "f64ce49f52617e0233b503cc345f392047b4fb4bc6b47d6b73f2650bf8789c8d",
+  "bytes": 3562
+ },
+ "status": "BOUNDED_OBSERVATIONS_SERVED",
+ "product_id": "STOCK_DAILY_RAW_PIT_R1",
+ "generation": "R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024",
+ "request": {
+  "codes": [
+   "000001.XSHE"
+  ],
+  "start": "2026-08-28",
+  "end": "2026-09-02",
+  "fields": [
+   "close"
+  ],
+  "fq": null
+ },
+ "rows": [
+  {
+   "date": "2026-08-28",
+   "code": "000001.XSHE",
+   "close": 11.65
+  },
+  {
+   "date": "2026-08-31",
+   "code": "000001.XSHE",
+   "close": 11.72
+  },
+  {
+   "date": "2026-09-01",
+   "code": "000001.XSHE",
+   "close": 11.92
+  },
+  {
+   "date": "2026-09-02",
+   "code": "000001.XSHE",
+   "close": 11.91
+  }
+ ],
+ "receipt": {
+  "expected_keys": 4,
+  "returned_keys": 4,
+  "keys_complete": true,
+  "source_pins": {
+   "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+   "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+   "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet": "d044d628279d48c1644eb7913af9e45d27d17b04b086f6d316936e31d6eddcea",
+   "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet": "2405ad954d2618868e36a72b9a7d4364f7d352256876baf601cf9fe3b7a7086b"
+  }
+ },
+ "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+ "engine_admission": "NOT_ADMITTED",
+ "scope": "RAW_NONE_CANDIDATE_OBSERVATIONS; NO_PIT_OR_TRADING_ELIGIBILITY_CLAIM",
+ "real_preflight": {
+  "MUST_READ_PRECHECK": "PASS",
+  "problems": []
+ },
+ "must_not_be_read_as": [
+  "a universe",
+  "a listing date",
+  "an adjustment factor",
+  "tradeability or PIT eligibility",
+  "a full-universe usability proof"
+ ],
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
