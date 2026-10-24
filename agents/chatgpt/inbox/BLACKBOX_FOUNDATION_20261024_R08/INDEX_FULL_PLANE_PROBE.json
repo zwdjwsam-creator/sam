@@ -1,0 +1,175 @@
+{
+ "mandated_plane": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1",
+ "current_pointer": {
+  "CURRENT.txt": [
+   "CURRENT=REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123",
+   "PATH=E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123",
+   "SET_CURRENT=true",
+   "AT=2026-08-06T06:02:59+08:00"
+  ],
+  "CURRENT_RELEASE.json_sha256": "7260e365a18e4cd7dbe0bbaf22a278d29dab5ad034375c62effadd112bf863f4"
+ },
+ "registered_releases": {
+  "REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123": {
+   "MANIFEST": {
+    "domain_id": "INDEX_DAILY_RAW_FULL_HISTORY_R1",
+    "release_id": "REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123",
+    "cutoff": "2026-08-04",
+    "n_files": 154,
+    "hand_authorized": true,
+    "SET_CURRENT": true,
+    "set_current_at": "2026-08-05T22:02:59+00:00",
+    "set_current_by": "USER_AS_HAND",
+    "set_current_utterance": "HAND 明确 「SET_CURRENT」 或 「快照 review 通过」；授权"
+   },
+   "COVERAGE": {
+    "cutoff": "2026-08-04",
+    "codes_attempted": 154,
+    "codes_with_rows": 154,
+    "codes_error_or_empty": 0,
+    "399303": {
+     "status": "DOWNLOADED",
+     "rows": 5242,
+     "min_date": "2005-01-04",
+     "max_date": "2026-08-04",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\RAW_FILES\\index_daily__399303_XSHE__to_20260804.parquet",
+     "sha256": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200",
+     "start_used": "1992-02-21"
+    },
+    "release_dir": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123",
+    "generated_at": "2026-08-04T23:32:08.623113+00:00",
+    "SET_CURRENT": true,
+    "set_current_at": "2026-08-05T22:02:59+00:00"
+   },
+   "PROVENANCE": {
+    "sources": [
+     "local INDEX_DAILY_RAW_NONE + P3 incremental gaps",
+     "jqdatasdk.get_price fq=None"
+    ],
+    "hand_receipt": "E:\\BLACKBOX\\任务\\20260804_230632_BLACKBOX_BUILD_CANONICAL_786aec\\HAND_AUTHORIZE_PHASE_H_PACKET\\HAND_AUTHORIZE_PHASE_H_RECEIPT.json",
+    "not_official_raw_claim": true
+   },
+   "SET_CURRENT": true
+  },
+  "REL_INDEX_DAILY_GAP_R1_20260805_20260811_20260812_122830": {
+   "MANIFEST": {
+    "domain_id": "INDEX_DAILY_RAW_FULL_HISTORY_GAP_R1",
+    "release_id": "REL_INDEX_DAILY_GAP_R1_20260805_20260811_20260812_122830",
+    "n_files": 732,
+    "user_utterance": "之后几天进行全码补齐然后清洗对齐防止穿越，切片进入缓存",
+    "SET_CURRENT": false
+   },
+   "SET_CURRENT": false
+  }
+ },
+ "manifest_vs_actual_file_count": {
+  "MANIFEST.n_files": 154,
+  "COVERAGE.codes_attempted": 154,
+  "actual_RAW_FILES_parquet": 732,
+  "verdict": "MISMATCH: the manifest/coverage record 154 while the release directory holds 732 per-index files; the 732-index plane the HAND rule names is physically present"
+ },
+ "full_history_release_measured": {
+  "files": 732,
+  "rows": 2905568,
+  "bytes": 149674471,
+  "distinct_valued_dates": 5242,
+  "date_min": "2005-01-04",
+  "date_max": "2026-08-04",
+  "per_file_reference": "evidence/index_plane_probe.json"
+ },
+ "gap_release_measured": {
+  "files": 732,
+  "rows": 3660,
+  "dates": 5,
+  "date_min": "2026-08-05",
+  "date_max": "2026-08-11"
+ },
+ "combined_union": {
+  "dates": 5247,
+  "min": "2005-01-04",
+  "max": "2026-08-11"
+ },
+ "schema": [
+  "canonical_index_id",
+  "canonical_code",
+  "provider_native_code",
+  "trade_date",
+  "open",
+  "high",
+  "low",
+  "close",
+  "pre_close",
+  "volume",
+  "amount",
+  "turnover_rate",
+  "currency",
+  "price_variant",
+  "return_variant",
+  "source_provider",
+  "source_api_or_file",
+  "source_fq",
+  "source_downloaded_at",
+  "ingested_at",
+  "schema_version"
+ ],
+ "time_field": {
+  "raw": "trade_date (timestamp[ns])",
+  "cache": "date"
+ },
+ "frequency": "daily",
+ "fq": "source_fq=NOT_APPLICABLE; price_variant=PRICE_INDEX; return_variant=PRICE",
+ "provenance": "local_INDEX_DAILY_RAW_NONE + P3 incremental gaps; jqdatasdk.get_price fq=None; not_official_raw_claim=true",
+ "code_399303_XSHE": {
+  "full_history": {
+   "file": "index_daily__399303_XSHE__to_20260804.parquet",
+   "rows": 5242,
+   "valued_close": 3004,
+   "min": "2014-03-28",
+   "max": "2026-08-04",
+   "bytes": 220560,
+   "sha256": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200"
+  },
+  "gap": {
+   "file": "index_daily_gap__399303_XSHE__20260805_20260811.parquet",
+   "rows": 5,
+   "valued_close": 5,
+   "min": "2026-08-05",
+   "max": "2026-08-11",
+   "bytes": 13435,
+   "sha256": "262f12bdb4bfdfdc2c0d51c7eebffa65aebba7d786a483b10999e044b5fa7574"
+  }
+ },
+ "requested_window_2026_01_05_to_2026_07_29": {
+  "authority_sessions": 137,
+  "valued_sessions_present_in_plane": 137,
+  "codes_whose_file_window_spans_the_window": 553,
+  "codes_in_plane": 732,
+  "conclusion": "the mandated full-history plane DOES cover 2026-01-05..2026-07-29 with 137 valued sessions; the earlier R07 claim that only the minute plane could supply these sessions is WITHDRAWN"
+ },
+ "recovery_dates_in_plane": {
+  "2026-08-31": false,
+  "2026-09-01": false
+ },
+ "cache_product_INDEX_DAILY_R1": {
+  "parts": 22,
+  "part_2026_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_DAILY_R1\\year=2026\\part_2026.parquet",
+  "part_2026_sha256": "2d99607545217fb49294f1ccb03892cbc82d112d1da3cba989caff5b7d41697a",
+  "date_min": "2026-07-30",
+  "date_max": "2026-09-24",
+  "distinct_2026_dates": 39,
+  "authority_sessions_2026_07_30_to_2026_09_24": 41,
+  "present_in_window": 39,
+  "missing_in_window": [
+   "2026-08-31",
+   "2026-09-01"
+  ],
+  "missing_h1_sessions": 137,
+  "CURRENT_declared_status": "NON_BLOCKING_KNOWN_EXCEPTION"
+ },
+ "layer_verdict": {
+  "2026_01_05_to_2026_07_29": "RAW_COMPLETE_CLEANING_OR_CACHE_MISSING_CANDIDATE (registered RAW plane holds the sessions; the cache product starts 2026-07-30)",
+  "2026_08_31_and_2026_09_01": "REQUEST_OUTSIDE_PRODUCT_COVERAGE for every index in this plane (registered scope ends 2026-08-11); the only RAW index daily units for these two dates are the P3 seven-index patches",
+  "no_minute_derivation": true,
+  "no_download": true
+ }
+}
