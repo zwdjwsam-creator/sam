@@ -1,0 +1,34 @@
+{
+ "schema": "RESTART_READINESS_GATE_PROBE_1",
+ "at_cn": "2026-10-25T07:22:44+08:00",
+ "interpreter_used": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+ "probes": [
+  {
+   "command": "blackbox_must_read_preflight_r1.py --task-class BACKTEST",
+   "exit_code": 0,
+   "captured": [
+    "MUST_READ_PRECHECK = PASS",
+    "TASK_CLASS = BACKTEST",
+    "KERNEL_SHA256 = b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+    "KERNEL_STATUS = VERIFIED",
+    "HAND_READ = NOT_SUFFICIENT",
+    "AUTHORITY_READY = YES",
+    "TASK_EXECUTION = ALLOWED",
+    "TASK_EXECUTION_FORBIDDEN = FALSE",
+    "BOOTSTRAP / DATA_ACCESS / BACKTEST rule sha256 = VERIFIED"
+   ]
+  },
+  {
+   "command": "blackbox_must_read_preflight_r1.py --task-class ACQUISITION",
+   "exit_code": 0,
+   "captured": [
+    "MUST_READ_PRECHECK = PASS",
+    "TASK_CLASS = ACQUISITION",
+    "KERNEL_STATUS = VERIFIED",
+    "AUTHORITY_READY = YES",
+    "TASK_EXECUTION = ALLOWED"
+   ]
+  }
+ ],
+ "interpretation": "The manifest/gate layer is functional and admits both task classes when a working interpreter is used. The restriction on restart is therefore capability/evidence, not this gate."
+}
