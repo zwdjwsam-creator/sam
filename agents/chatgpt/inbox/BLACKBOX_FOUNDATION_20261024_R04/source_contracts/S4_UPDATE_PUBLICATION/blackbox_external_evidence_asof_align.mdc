@@ -1,0 +1,49 @@
+---
+description: 外源证据只读不污染 JQ；HIST_END/asof 必须对齐 JQ CURRENT；财报 tip 默认强制
+alwaysApply: false
+---
+
+# 外源证据 ASOF 日期对齐 R1（HAND 置顶）
+
+> SSOT：`规则库/hand_hard_rules/BLACKBOX_HAND_EXTERNAL_EVIDENCE_ASOF_ALIGN_R1.json`  
+> 父规则：`blackbox_external_evidence_clean_antileak.mdc`  
+> 根目录：`E:\BLACKBOX\数据\外部证据\`（源隔离）
+
+## 0. 一句话
+
+**外源 = 只读旁路平面：禁止写入任何 JQ 产品/Cache/正式清洗；`HIST_END` 必须 = JQ `FULL_DATA_UPDATE_SCOPE_CURRENT.data_asof`；日更 tip 默认含财报公告窗口。**
+
+## 1. 硬门
+
+| 门 | 要求 |
+|---|---|
+| 源隔离 | 只写 `数据/外部证据/` |
+| 不污染 JQ | 禁写 JQ RAW/CLEAN/PIT/Cache/FORMAL_CLEANING |
+| 日期对齐 | `HIST_END` ← SCOPE CURRENT `data_asof`；禁硬编码落后 tip |
+| 财报 tip | `--force-tip` 默认开启 `--force-financial-tip`（慢）；仅显式 `--skip-financial-tip` 可跳过 |
+| 防未来 | `publication_at/market_available_at > asof` → 存盘可留，`PIT_valid=False` |
+| 裁剪≠下载 | 仅做 asof 裁剪、不 tip 财报到窗口 = **未对齐** |
+
+## 2. 日更命令骨架
+
+```text
+python -u 脚本/blackbox_external_evidence_materialization_r2.py \
+  --phase <tip> --asof <JQ_ASOF> --force-tip
+# 默认已含财报 tip；验收：
+#   --phase asof_align|acceptance
+```
+
+收据：`运行/BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json`  
+外源 FAIL **不回滚** JQ CURRENT；外源自身未过门 = 外源 FAIL。
+
+## 3. 禁止宣称
+
+- `HIST_END` 仍钉旧日却称与 JQ tip 对齐  
+- 外源行混入 JQ 平面后称「对齐」  
+- 用 asof 裁剪代替财报 `--force-financial-tip` 窗口拉取  
+- 外源 PARTIAL/STOP 后做产业研究 / QMT / 回测买卖
+
+## 4. 事故经验（必读 · 勿雾）
+
+- `EXTERNAL_EVIDENCE_WRONG_PHASE_FULL_TIP_GUARD_R1` / `LESSON_JQDATA_010`：财报只用 `tushare_p0`；`tip_start≠HIST_START`。
+- 见 `经验卡/JQData_download_lessons/cards/LESSON_JQDATA_010_EXTERNAL_WRONG_PHASE_FULL_TIP.md`
