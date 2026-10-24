@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "rule_id": "BLACKBOX_MUST_READ_MANIFEST_R1",
+  "status": "ACTIVE",
+  "budgets": {
+    "ALWAYS_APPLY_BUDGET_BYTES": 4096,
+    "TASK_RULE_BUDGET_BYTES": 20480,
+    "MAX_REQUIRED_RULE_FILES": 4,
+    "LINE_CAP": 120
+  },
+  "kernel": {
+    "path": ".cursor/rules/BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+    "sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+    "alwaysApply": true,
+    "bytes": 1167
+  },
+  "classes": {
+    "GENERAL": [
+      "BOOTSTRAP"
+    ],
+    "ENGINE": [
+      "BOOTSTRAP"
+    ],
+    "DATA": [
+      "BOOTSTRAP",
+      "DATA_ACCESS"
+    ],
+    "CACHE": [
+      "BOOTSTRAP",
+      "DATA_ACCESS"
+    ],
+    "ACQUISITION": [
+      "BOOTSTRAP",
+      "DATA_ACCESS",
+      "ACQUISITION"
+    ],
+    "DOWNLOAD": [
+      "BOOTSTRAP",
+      "DATA_ACCESS",
+      "ACQUISITION"
+    ],
+    "FACTOR": [
+      "BOOTSTRAP",
+      "DATA_ACCESS",
+      "FACTOR"
+    ],
+    "FACTOR_RESEARCH": [
+      "BOOTSTRAP",
+      "DATA_ACCESS",
+      "FACTOR"
+    ],
+    "JQ260": [
+      "BOOTSTRAP",
+      "DATA_ACCESS",
+      "FACTOR"
+    ],
+    "BACKTEST": [
+      "BOOTSTRAP",
+      "DATA_ACCESS",
+      "BACKTEST"
+    ],
+    "STRATEGY": [
+      "BOOTSTRAP",
+      "DATA_ACCESS",
+      "BACKTEST"
+    ],
+    "QMT": [
+      "BOOTSTRAP",
+      "QMT"
+    ],
+    "LIVE": [
+      "BOOTSTRAP",
+      "QMT"
+    ]
+  },
+  "files": {
+    "BOOTSTRAP": {
+      "path": "契约/必读/BLACKBOX_BOOTSTRAP_MUST_READ.md",
+      "sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+      "required": true,
+      "lines": 45
+    },
+    "DATA_ACCESS": {
+      "path": "契约/必读/BLACKBOX_DATA_ACCESS_MUST_READ.md",
+      "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+      "required": true,
+      "lines": 99
+    },
+    "ACQUISITION": {
+      "path": "契约/必读/BLACKBOX_ACQUISITION_MUST_READ.md",
+      "sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+      "required": true,
+      "lines": 58
+    },
+    "FACTOR": {
+      "path": "契约/必读/BLACKBOX_FACTOR_RESEARCH_MUST_READ.md",
+      "sha256": "a1d5fb341da930304f833c72445007f6dbbda9cf9d83907cb4816ee9f7a173c4",
+      "required": true,
+      "lines": 33
+    },
+    "BACKTEST": {
+      "path": "契约/必读/BLACKBOX_BACKTEST_MUST_READ.md",
+      "sha256": "c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37",
+      "required": true,
+      "lines": 37
+    },
+    "QMT": {
+      "path": "契约/必读/BLACKBOX_QMT_MUST_READ.md",
+      "sha256": "210336d5e8e41ff742fd1084eb5deb43e0d621a51ddb2d2e56a4cff0b6eb4d31",
+      "required": true,
+      "lines": 24
+    }
+  },
+  "gates": {
+    "DATA_ABSENCE": "脚本/blackbox_data_absence_gate_r1.py",
+    "ACQUISITION_PAGINATION": "脚本/blackbox_acquisition_pagination_engine_r1.py"
+  },
+  "note": "On-demand disk load only. Accident recaps stay in HAND/task archives. HAND_READ is not sufficient."
+}
