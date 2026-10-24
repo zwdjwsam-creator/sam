@@ -1,0 +1,57 @@
+{
+ "document_id": "NEXT_MISSING_EVIDENCE_R4",
+ "at": "2026-10-24T15:06:37+08:00",
+ "language": "en",
+ "purpose": "exact remaining evidence gaps; no system-wide PASS is claimed",
+ "items": [
+  {
+   "id": "NM-01",
+   "item": "engine factory / set_data_provider injection path",
+   "searched_scope": "blackbox_jq_engine\\bullet_trade\\data\\api.py (staged), core/settings.py (staged), utils/env_loader.py (staged)",
+   "status": "PARTIAL",
+   "why_it_matters": "the adapter cannot be selected by the engine until object injection or a factory branch is proven"
+  },
+  {
+   "id": "NM-02",
+   "item": "implemented clock/session contract object (not TypedDict)",
+   "searched_scope": "rule_library, contract_prelayout_R1/contracts, core/jq_clock.py",
+   "status": "NOT_FOUND",
+   "why_it_matters": "handoff declares COMPLETION_TIME NOT_DEFINED; only a label generator exists"
+  },
+  {
+   "id": "NM-03",
+   "item": "adjustment formula authority (factor to price series)",
+   "searched_scope": "jq_official_adjustment_field_map.csv, jqdata provider, ADJUST_FACTOR plane",
+   "status": "DICTIONARY_ONLY",
+   "why_it_matters": "fq=pre cannot be produced from a plane whose fq column is NULL and factor is constant 1.0"
+  },
+  {
+   "id": "NM-04",
+   "item": "per-dataset incremental cursor authority",
+   "searched_scope": "DAILY_DATA_MANIFEST_CURRENT.json fields (lane as-of only), handbook step 10",
+   "status": "NOT_FOUND",
+   "why_it_matters": "a maximum date is not a validated cursor; earlier gaps cannot be proven closed"
+  },
+  {
+   "id": "NM-05",
+   "item": "index membership historical eligibility rule",
+   "searched_scope": "INDEX_COMPONENTS plane (asof_date), jqdata_official_pit_rules_CURRENT.json",
+   "status": "PARTIAL",
+   "why_it_matters": "engine membership path stays quarantined until eligibility semantics are authored"
+  },
+  {
+   "id": "NM-06",
+   "item": "corporate event announcement authority for A shares",
+   "searched_scope": "XR_XD plane columns, jqdata provider stop-gap logic",
+   "status": "PARTIAL",
+   "why_it_matters": "rows can carry board_plan_pub_date only, or no announcement at all; as-of semantics must be authored"
+  },
+  {
+   "id": "NM-07",
+   "item": "updater module inventory for lanes beyond the entry script",
+   "searched_scope": "run_blackbox_research_os.py (staged), DAILY_DATA_MANIFEST_CURRENT.json",
+   "status": "PARTIAL",
+   "why_it_matters": "lane implementations that the entry invokes by subprocess were not fully staged"
+  }
+ ]
+}
