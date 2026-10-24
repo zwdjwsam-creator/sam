@@ -1,0 +1,52 @@
+{
+ "schema": "R10_CORRECTIONS_APPEND_ONLY_1",
+ "corrections": [
+  {
+   "id": "C1_PACKAGE_VERIFICATION_CHRONOLOGY",
+   "target_of_correction": "r10_factor_basis_delivery/COMMAND_LEDGER.json seq 1 (STAGE_AND_VERIFY_PACKAGE, started 2026-10-25T00:45:43.6495082+08:00) and the receipt sentence that package verification preceded any execution",
+   "defect": "seq 1 timestamps postdate the 12-control run (00:30:27) and the comparison start (00:30:51), so the ledger as written cannot support a pre-execution verification claim",
+   "resolution_using_retained_artifacts_only": {
+    "downloads_written_utc": [
+     "2026-10-24T16:27:58Z",
+     "2026-10-24T16:28:11Z"
+    ],
+    "staged_copies_created_utc": "2026-10-24T16:30:05Z",
+    "verify_tool_created_utc": "2026-10-24T16:30:01Z",
+    "test_capture_started_utc": "2026-10-25T00:30:27Z (from the retained TEST_12_CONTROLS capture)",
+    "desktop_capture_started_utc": "2026-10-25T00:30:51Z (from the retained DESKTOP_FACTOR_BASIS capture)",
+    "reading": "the staged copies existed at 2026-10-24T16:30:05ZZ, i.e. 22 s before the 12-control run began at 00:30:27Z. The verify tool was written at 2026-10-24T16:30:01ZZ, 26 s before that run. So staging and the first pin verification both preceded the tests in wall-clock order."
+   },
+   "what_the_seq_1_timestamps_actually_are": "the 00:45:43 to 00:45:44 entry is a second execution of the same tools/verify_factor_basis_pins.py purely to redirect stdout into PACKAGE_PIN_VERIFY.stdout.bin for delivery. It produced the identical ALL_PINS_MATCH result. The first execution in the staging shell was not captured to a file, so no exact timestamp for it was retained.",
+   "ORDER_STATUS": "PRE_TEST_ORDERING_PROVEN_FOR_STAGING; FIRST_VERIFY_EXECUTION_TIME_NOT_RETAINED",
+   "not_claimed": "no exact first-run timestamp is asserted; the ledger is not reordered or rewritten, and no measurement is rerun to manufacture one",
+   "relevance_noted": "the comparison driver itself re-verifies package hashes before its real preflight, so the comparison output is self-protected independently of this chronology",
+   "originals_preserved": [
+    "r10_factor_basis_delivery/COMMAND_LEDGER.json",
+    "r10_factor_basis_delivery/R10_FACTOR_BASIS_RECEIPT.md",
+    "r10_factor_basis_delivery/DELIVERY_MANIFEST.json",
+    "r10_factor_basis_delivery/FINAL_BYTE_READBACK.json"
+   ]
+  },
+  {
+   "id": "C2_FIVE_RECEIPT_BODIES_ABSENT",
+   "defect": "ORIGINAL_WRITER_CANDIDATE.json described and hashed five same-folder receipts without shipping their complete bodies, so those assertions were not independently verifiable",
+   "resolution": "all five exact originals are returned this round as complete BASE64_ORIGINAL_BYTES carriers under original_bodies/, each decoded back and byte-compared at write time",
+   "boundary_kept": "a receipt beside the program is a same-folder self-report. It does not establish exact executed code identity, and AUTHORITY_READY=true in it is not treated as proof of execution"
+  },
+  {
+   "id": "C3_SOURCE_LOOKUP_SCOPE",
+   "defect": "the writer lookup covered two literals in Python/PowerShell files of at most 2 MiB in three roots; absence of a tip-field match there is not a global absence",
+   "resolution": "restated as bounded: no claim is made about other languages, other roots, larger files, or writers of tip_extended_at, tip_source and n_rows_year_2026. SOURCE_ABSENCE_CLAIM_ALLOWED stays false"
+  },
+  {
+   "id": "C4_WRAPPER_TRANSITIVE_EFFECTS",
+   "defect": "describing the 723 B wrapper as containing no supplier call could be read as making it read-only",
+   "resolution": "the wrapper dispatches the task script through guarded_run. It can transitively cause supplier calls and writes, so it is not safe or read-only to invoke. Neither the wrapper nor the original writer was imported, executed or selftested this round"
+  },
+  {
+   "id": "C5_FINISHER_REUSE",
+   "defect": "FINAL_BYTE_READBACK.json was missing from the reviewed snapshot",
+   "resolution": "it arrived during review as blob 2d0260ace3c3eedaa84973777128d799954f4367 and was verified byte-identical at 15,922 B sha256 bf1c4f11d3c546514cdcee8cf51bef4fd2b16bcb3f7698dea3fca6e49a50b7ed. That completed finisher is reused; no second finisher was started and no computation repeated"
+  }
+ ]
+}
