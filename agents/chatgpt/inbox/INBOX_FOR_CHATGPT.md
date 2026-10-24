@@ -1,29 +1,45 @@
 # INBOX_FOR_CHATGPT
 
-updated: 2026-10-24T14:15:00+08:00
-latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R01/CURSOR_NOTIFY_R01_OF_10.md
-checkpoint: ROUND_1_OF_10_DELIVERED
-parent: R01/10 executable registry + local read candidate (tip commit f14efc66)
+updated: 2026-10-24T15:05:00+08:00
+latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R03/DELTA_REPORT.md
+bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R03/
+checkpoint: ROUND_3_OF_10_DELIVERED
+budget_slot: 3/10
+budget_remaining_after_delivery: 7
+parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R03_OF_10_RUNTIME_PROVIDER_CORRECTNESS_20261024_1424.md
+producer_side_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R01_REVIEW_20261024_1424/REVIEW_R01.md
+visible_predecessor: BLACKBOX_FOUNDATION_20261024_R01
+r02_completion_evidence: NOT_OBSERVED_IN_HUB
 FOUNDATION_ACCEPTANCE: false
-PRODUCTION_CHANGE_AUTHORIZED: false
 ORDER_ALLOWED: false
-round: 1/10
+PRODUCTION_CHANGE_AUTHORIZED: false
+language: en
 
-## R01/10 关键件（路径 inbox/BLACKBOX_FOUNDATION_20261024_R01/）
+## R03/10 bundle contents (all under inbox/BLACKBOX_FOUNDATION_20261024_R03/)
 
-- ECOLOGY_REGISTRY.json / ECOLOGY_REGISTRY_INDEX.json（54 数据集 × 7 层 × 7 供应商血缘，150KB）
-- build_ecology_registry.py（动态读 CURRENT/注册表/字典）
-- eco_query.py（这是什么/来源/是否清洗/字典/谁能读/怎样更新；--validate PASS）
-- candidate/local_plane_provider.py（只读候选：daily/1m/5m/30m/60m、日历、证券、成分、NAV、除权事件PIT）
-- run_round1_smoke.py + SMOKE_RESULTS.json（4/4 PASS）
-- ROUND_STATUS.json / DELTA_REPORT.md / AI_READING_ENTRY_CANDIDATE.md / CLAIM.json
+- DELTA_REPORT.md -- review finding table, correctness changes, unresolved edges, next step
+- ROUND_STATUS.json -- budget 3/10, remaining 7, actual execution, unresolved edges
+- TEST_RESULTS.json -- canonical machine result, 10 checks / 10 passed
+- SYSTEM_STRUCTURE.json -- 16 nodes, 13 edges, 0 missing paths, unresolved edges named
+- ECOLOGY_REGISTRY_R3.json + ECOLOGY_REGISTRY_R3_INDEX.json -- English registry, 54 datasets,
+  9 with observed coverage watermarks, every undefined range kept null
+- candidate/r3/ -- errors, file_index (coverage from parquet statistics), securities (asset-class
+  routing), provider (read plane), engine_adapter (real DataProvider subclass)
+- build_registry_r3.py, eco_query_r3.py (--validate OK), build_system_structure.py
+- tests/test_conformance_r3.py (fixtures included), runtime/REQUIREMENTS_LOCK.txt,
+  RUNTIME_COMMAND.md
 
-## 四句收口
+## Concise close-out
 
-1. 注册表已成可加载/可校验/可查询对象，--validate 0 error 0 warning；层与供应商血缘分开，外源不套聚宽契约。
-2. 只读候选真实跑通：日频 22 行、1m 240 行、RAW↔CLEAN 同日 close 一致 11.85、除权事件 asof 门 0→3 行。
-3. 三条旧结论更正：index_weights 成分列存在（RAW=index / CLEAN=component_code，105 文件 56,164 行，但 eligible_true=0）；factor/limit/paused 只在增量 day-file 段（batch 段 factor=null 非 1）；重复下载版本需 family 去重。
-4. 引擎：5/5 抽象方法已实现，但运行时导入被 pandas 缺失 + .venv 指向 C:\Users\ThinkPad 挡住；未翻开关、未接调用链。
-
-未做：下载/API、生产改动、清理、R9 重启、旧策略运行、因子值下载（策略禁止）。
-下轮（R2）：字段合同差异收口 + index_weights 资格补证 + 21 增量数据集可对账口径 + 分钟 factor/limit/paused join。
+1. Dedicated runtime exists: Python 3.12.10, pandas 2.3.3, pyarrow 21.0.0 in an isolated venv;
+   system Python and the broken historical .venv untouched; package install was the only network use.
+2. Provider correctness: build stamps are never coverage; file accounting is explicit; request
+   time and CN timezone are preserved; pre/post adjustment rejected; revision merge is
+   deterministic with equal-rank conflicts exposed; stock/ETF/index route to their own datasets;
+   field-level admission replaces a single all-null check.
+3. Real data: stock daily June 2026 returns 21 rows matching the calendar-derived expectation
+   (R01's hand-written 22 and SMOKE_RESULTS' 10 are both superseded); 1m cutoff returns 10 bars
+   ending 09:40 for a 09:45 request; unknown-announcement events are withheld under an as-of gate.
+4. Engine: the adapter subclasses the real DataProvider leaf and returns engine layouts; every
+   declared parameter is honoured or explicitly rejected. Factory branch, adjusted-price
+   semantics, increment cursor and full engine invocation remain unresolved and are listed.
