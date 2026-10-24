@@ -1,0 +1,41 @@
+{
+ "schema": "R10_INCREMENTAL_DATE_SOURCE_CORRECTIONS_APPEND_ONLY_1",
+ "append_only": true,
+ "rows": [
+  {
+   "id": "C1",
+   "type": "DELIVERY_COMPLETION",
+   "text": "The prior round uploaded 30 manifest members and then wrote FINAL_BYTE_READBACK.json locally without a subsequent PUT; the pointer therefore described a readback that was not remotely readable. This round uploaded that exact pre-existing file (no time regenerated, payload readback_cn still 2026-10-25T01:30:50+08:00) and verified bytes+sha. No second finisher and no member re-upload."
+  },
+  {
+   "id": "C2",
+   "type": "EXECUTION_COUNT",
+   "text": "The supplied driver was NOT rerun in this round; its accepted result is reused. Only this round's own read-only schema helper ran twice: once uncaptured, once captured. The captured output is byte-identical to the first, recorded in SCHEMA_EXAMINE_RERUN_EQUALITY.json."
+  },
+  {
+   "id": "C3",
+   "type": "INTEGER_AXIS_HANDLING",
+   "text": "The 20260831 and 20260901 RAW files carry an int64 0..299 axis with 300 distinct values. Per instruction it is recorded as an uninterpreted integer axis: it was not parsed as nanoseconds, not converted to dates, and no date was inferred from either filename. No alternate time field was substituted because none exists in these files."
+  },
+  {
+   "id": "C4",
+   "type": "R33_COUNT_NOT_FORCED",
+   "text": "The product directory was enumerated once inside the authorized bound and yielded 18 entries, all parquet, matching the retained file_index_ADJUST_FACTOR_CLEAN.json observation (n_files=18, observed 2026-08-10..2026-09-24). The count was recorded, not targeted."
+  },
+  {
+   "id": "C5",
+   "type": "PRODUCER_SCOPE",
+   "text": "No exact producer path for the adjust_factor_stock__incremental_* RAW files is supplied by any retained index or receipt, and this round did not expand the search. The finding is bounded as PRODUCER_NOT_IDENTIFIED_IN_RETAINED_INDEX; it is not a claim that no producer exists."
+  },
+  {
+   "id": "C6",
+   "type": "FIELD_CONTRACT_DIFFERENCE",
+   "text": "The registry row declares standard_required=[factor, fq], but none of the 21 measured files has a physical fq column. This is reported as a contract-vs-bytes difference only. fq was not added, inferred, or filled anywhere."
+  },
+  {
+   "id": "C7",
+   "type": "R33_DATE_COVERAGE",
+   "text": "All 18 R33 adjust_factor files carry explicit timestamp[ns] single-date axes. 2026-08-31, 2026-09-01 and 2026-09-02 are absent from this layer; 2026-09-24 is present. Absence here is an observation about this one product directory, not a market-source absence claim."
+  }
+ ]
+}
