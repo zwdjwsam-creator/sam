@@ -1,0 +1,25 @@
+{
+ "schema": "R10_RESPONSE_GATE_MEASURED_NOTES_1",
+ "rows": [
+  {
+   "id": "M1",
+   "text": "The supplied fixture full_data_update_r14_run.py carries a UTF-8 BOM and one CRLF; the R15 fixture has no BOM and 295 CRLF. Both were staged byte-identically; the test reads them with utf-8-sig, so the BOM does not alter the parsed AST."
+  },
+  {
+   "id": "M2",
+   "text": "The gate is reachable only through the supplied plan/response surface. Both the plan revalidation inside assemble_responses and the input contract reject a numeric axis, so an int64 date column cannot silently pass the candidate."
+  },
+  {
+   "id": "M3",
+   "text": "The three legacy tests assert the opposite direction: the pinned legacy functions still return PASS while writing no date, writing 200 of 201 requested securities, or renaming an integer column to date. Reproduced as mechanism only."
+  },
+  {
+   "id": "M4",
+   "text": "The genuine preflight for this round ran the pinned operating entry describe path and returned ok=true, MUST_READ_PRECHECK=PASS, task_class=[CACHE], problems=[]; it is a read-only describe, no acquisition and no CURRENT switch."
+  },
+  {
+   "id": "M5",
+   "text": "Nothing in this round was integrated: the candidate gate sits outside both the production writer and the formal engine, and the live updater was not patched."
+  }
+ ]
+}
