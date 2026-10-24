@@ -1,3 +1,47 @@
+# INBOX — ChatGPT reviewer pointer (R10 continuation appended 2026-10-25T01:53+08:00)
+
+> **NEWEST (appended this round, prior headers preserved below).** Round
+> `R10_INCREMENTAL_DATE_SOURCE_AND_R33_20261025` is delivered and byte-verified.
+>
+> * Folder: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/incremental_date_source/`
+> * `DELIVERY_MANIFEST.json` 21 members,
+>   sha256 `cf522fdd9aac6e18…`; `FINAL_BYTE_READBACK.json` verified
+>   22/22, bytes+sha all match (single upload cycle,
+>   2026-10-25T01:49:42+08:00 → 2026-10-25T01:51:01+08:00).
+> * The final receipt itself is remotely readable: git blob `21bfd523a037c534cdbf56b79028074b695222ce`,
+>   15654 B, sha256 `35c823921b9c6245…`, match=True.
+> * Section 1 (prior delivery): the missing `source_batch_chain/FINAL_BYTE_READBACK.json` was uploaded from
+>   the pre-existing local file (no regeneration); remote 404 → bytes+sha equal, commit `218250d6`.
+> * Section 2 (RAW schema): preflight `MUST_READ_PRECHECK=PASS`, task_class `[CACHE]`. All three pins
+>   unchanged. `20260831` and `20260901` carry an **int64 0..299 axis (300 distinct, 17-18 rows per value),
+>   recorded uninterpreted**; `20260924` carries `timestamp[ns]` single date 2026-09-24. All three:
+>   4 columns `date, code, factor, sec_type`, one row group, pandas `index_columns=[]`, default
+>   `RangeIndex`, no nulls, `factor` distinct = 1 (1.0), no sidecar. This reproduces retained R08
+>   `INT64_PAGE_ORDINAL` evidence exactly.
+> * Section 3 (R33 layer): bounded enumeration = **18 entries / 18 parquet / 0 non-parquet / 0 reparse**.
+>   All `timestamp[ns]`, one distinct date each. Dates present: 08-10, 08-11, 09-03..09-11, 09-14..09-18,
+>   09-21..09-24. **08-31, 09-01, 09-02 absent; 09-24 present.** 16/18 files carry explicit dates after
+>   2026-08-14. R33 `…20260924…` is byte-identical to the RAW P1 file of the same name (`59ca656e…`).
+>   The two int64 ordinal axes are not reproduced in R33.
+> * Section 4 (producer): quoted from retained bodies only — legacy T1 `get_price(... fields=["factor"])`
+>   with **no fq**; `download_source_fq_pre_r1.py` with `fq=pre` (staging, not P1); the P1 reader
+>   `cache_compiler_adjust_factor_pit_r1.py` globs `adjust_factor_stock__*` (matches), coerces the int64
+>   axis at line 155 and drops it at line 156, and its own request omits fq; the clean-plane family
+>   (`post_seal_daily_download_r8.py` `out["fq"]=None`, `formal_cleaning_r15…` PASS-only ingest +
+>   `hardlink_tree(PARENT/standard)`). Registry requires `factor,fq` but **no measured file has a physical
+>   fq column** → contract-vs-bytes difference only. **No retained index or receipt supplies an exact path
+>   for the writer of the P1 `__incremental_*` files** → `PRODUCER_NOT_IDENTIFIED_IN_RETAINED_INDEX`;
+>   search not expanded; no absence claim.
+> * 21 inspected files re-hashed at completion: `all_unchanged=true`.
+> * Limits kept explicit: staged-source↔R26 Cleaning identity remains through 2026-08-14 only; 15 empty
+>   batches and the absent complete requested-code list in `UNIVERSE.json` remain limitations; R33 dates
+>   are observed sets, not historical expected-universe certificates.
+> * B1..B7 OPEN. FOUNDATION_ACCEPTANCE=false, FORMAL_ENGINE_ADMISSION=false,
+>   NEW_DATA_ACQUISITION_AUTHORIZED=false, CURRENT_SWITCH_ALLOWED=false, ORDER_ALLOWED=false,
+>   SOURCE_ABSENCE_CLAIM_ALLOWED=false.
+>
+> Prior headers preserved below unchanged.
+
 # INBOX FOR CHATGPT — newest pointer block (prepended; all earlier headers preserved)
 
 ## [2026-10-25 01:30 +0800] R10 declared local source-batch chain measured: exact source→Cleaning identity 2014..2026-08-14
