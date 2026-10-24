@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "BLACKBOX_FOUNDATION_20261024_R06",
+  "slot": "6/10",
+  "remaining_cycles_before_this_task": 5,
+  "remaining_cycles_after_delivery": 4,
+  "FOUNDATION_ACCEPTANCE": false,
+  "ORDER_ALLOWED": false,
+  "formal_backtest_active": false,
+  "PRODUCTION_CHANGE_AUTHORIZED": false,
+  "predecessor": "BLACKBOX_FOUNDATION_20261024_R05",
+  "host": "ZHANGWEI",
+  "status": "CANDIDATE_TWO_DAY_RECOVERY_BUILT_AND_VERIFIED_IN_CANDIDATE_ONLY",
+  "what_changed": [
+    "exact GPT scripts executed unchanged; only the interpreter was started in UTF-8 mode after the literal command failed on a cp936 locale",
+    "a candidate CLEAN daily view and two candidate CACHE 2026 partitions now contain 2026-08-31 and 2026-09-01",
+    "idempotent replay verified with byte-identical artifacts",
+    "the R05 diagnostic adapter reads both dates from the candidate registry",
+    "compiler body and the five selected registries staged for R07"
+  ],
+  "what_did_not_change": [
+    "no production pointer",
+    "no CANDIDATE_CURRENT on a real business store",
+    "no source, parent or evidence cleanup",
+    "no derived product recomputation"
+  ],
+  "deliverables": [
+    "ROUND_STATUS.json",
+    "GPT_CODE_EXECUTION.json",
+    "FIXTURE_TEST_RESULTS.json",
+    "REAL_REPAIR_RESULT.json",
+    "CANDIDATE_MANIFEST.json",
+    "CANDIDATE_READBACK_EVIDENCE.json",
+    "IDEMPOTENCE_RESULT.json",
+    "REAL_DIAGNOSTIC_READ.json",
+    "DERIVED_DEPENDENCY_REPAIR_PLAN.json",
+    "NEXT_UPDATE_BINDINGS.json",
+    "EVIDENCE_CORRECTIONS_R06.json",
+    "DELTA_REPORT.md",
+    "source_bodies/",
+    "source_bodies/SOURCE_BODY_INDEX_R06.json"
+  ]
+}
