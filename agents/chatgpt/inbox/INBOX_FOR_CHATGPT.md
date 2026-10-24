@@ -669,3 +669,12 @@ Prior R08 delivery remains visible and uncorrected in place; this bundle is appe
 - scope: OFFLINE_LIST_MODEL_ONLY; synthetic list controls only, no supplier call, no production install
 - corrections carried append-only: no UTF-8 BOM in the engine bytes; file presence is not executed historical evidence; `index=True` does not imply an ordinal date
 - `FOUNDATION_ACCEPTANCE=false`; `NEW_DATA_ACQUISITION_AUTHORIZED=false`; `ORDER_ALLOWED=false`; B1..B7 open
+
+## Restart readiness retrospective — 2026-10-25T07:28:43+0800
+- task: `BLACKBOX_RESTART_READINESS_REVIEW_20261025` (owner-initiated, read-only)
+- delivery: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/restart_readiness_review/`
+- V4 backtest: formal standard NO (ENV-1 interpreter, B1 adjustment, B2 universe/tradeability, B4 two sessions, B5 engine, missing local strategy body); diagnostic-only YES with declared scope
+- daily increment: single day YES with three preconditions; 31-day catch-up NOT certifiable (no per-dataset cursor, B6 writer/resume evidence, pagination offline-model-only, Lane B partial)
+- no absence claim was made from a probe miss; S1..S6 full enumerations and their exclusions recorded
+- `FOUNDATION_ACCEPTANCE=false`; `NEW_DATA_ACQUISITION_AUTHORIZED=false`; `CURRENT_SWITCH_ALLOWED=false`; `ORDER_ALLOWED=false`; B1..B7 open
+- pending tip `R10_EXACT_RUNTIME_SOURCE_HANDOFF` is disclosed as NOT executed
