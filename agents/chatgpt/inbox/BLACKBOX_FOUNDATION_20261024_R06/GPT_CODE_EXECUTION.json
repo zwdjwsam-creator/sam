@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "R06/10",
+  "working_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+  "files_staged": [
+    {
+      "role": "gap repair",
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R06\\r06_gap_repair.py",
+      "sha256": "3f927a5fa64302f770ed9d7d76060dd2b6a1bdeba49af2c5f5d6864165a370f7",
+      "hub_blob_sha1": "14c4258cc3eb0ffde017b4f980daea1b30e44683",
+      "blob_match": true,
+      "edited": false
+    },
+    {
+      "role": "bundle store",
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R06\\r06_bundle_store.py",
+      "sha256": "6c76c0de3aca7d96223e5883b68918c794585156e29c292962d438e6986269a2",
+      "hub_blob_sha1": "377bea24a1380489136c312f55f9ff2d7a58629d",
+      "blob_match": true,
+      "edited": false
+    },
+    {
+      "role": "fixture suite",
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R06\\test_r06.py",
+      "sha256": "c6adeafdf9d483c813cae7c6f4cdb2ea0ee6c32fa848df169bd0c465c5238e5b",
+      "hub_blob_sha1": "f69668b77549561a283a9de1ba03df0bb9cee1a0",
+      "blob_match": true,
+      "edited": false
+    },
+    {
+      "role": "review",
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R06\\REVIEW_R05_AND_R06.md",
+      "sha256": "143c080c10b5be49ca77b92c54cb35a89cdccaef75531fe06fdc2126e63d24e6",
+      "hub_blob_sha1": "b65fd236932fb06eec7951469431ce4f7616455e",
+      "blob_match": true,
+      "edited": false
+    },
+    {
+      "role": "predecessor gap inputs",
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R06\\GAP_REPAIR_INPUTS_R05.json",
+      "sha256": "d43c419b7c405ef66d69dde5bd5f14983d58432310e33f29a2a6292e190ce2c6",
+      "copy_of": "r05_delivery/GAP_REPAIR_INPUTS.json",
+      "byte_identical_to_r05_delivery": true,
+      "edited": false
+    }
+  ],
+  "hub_blob_verification": {
+    "files": [
+      {
+        "name": "r06_gap_repair.py",
+        "local_blob": "14c4258cc3eb0ffde017b4f980daea1b30e44683",
+        "remote_blob": "14c4258cc3eb0ffde017b4f980daea1b30e44683",
+        "match": true,
+        "bytes": 14258
+      },
+      {
+        "name": "r06_bundle_store.py",
+        "local_blob": "377bea24a1380489136c312f55f9ff2d7a58629d",
+        "remote_blob": "377bea24a1380489136c312f55f9ff2d7a58629d",
+        "match": true,
+        "bytes": 3842
+      },
+      {
+        "name": "test_r06.py",
+        "local_blob": "f69668b77549561a283a9de1ba03df0bb9cee1a0",
+        "remote_blob": "f69668b77549561a283a9de1ba03df0bb9cee1a0",
+        "match": true,
+        "bytes": 7444
+      },
+      {
+        "name": "REVIEW_R05_AND_R06.md",
+        "local_blob": "b65fd236932fb06eec7951469431ce4f7616455e",
+        "remote_blob": "b65fd236932fb06eec7951469431ce4f7616455e",
+        "match": true,
+        "bytes": 6176
+      }
+    ],
+    "gap_copy_identical_to_r05_delivery": true,
+    "all_match": true
+  },
+  "steps": [
+    {
+      "step": 1,
+      "what": "fixture suite, literal command",
+      "result": "FAILED_ENVIRONMENT_LOCALE",
+      "detail": "attempt_1_literal_command in FIXTURE_TEST_RESULTS.json"
+    },
+    {
+      "step": 2,
+      "what": "fixture suite, UTF-8 interpreter mode",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R06\\test_r06.py",
+      "exit_code": 0,
+      "result": "11/11 PASS"
+    },
+    {
+      "step": 3,
+      "what": "bounded candidate repair",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R06\\r06_gap_repair.py --gap-inputs reviews\\R06\\GAP_REPAIR_INPUTS_R05.json",
+      "exit_code": 0,
+      "result": "CANDIDATE_BUILT"
+    },
+    {
+      "step": 4,
+      "what": "idempotent replay",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R06\\r06_gap_repair.py --gap-inputs reviews\\R06\\GAP_REPAIR_INPUTS_R05.json",
+      "exit_code": 0,
+      "result": "ALREADY_BUILT_VERIFIED"
+    },
+    {
+      "step": 5,
+      "what": "diagnostic read through candidate registry",
+      "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 -c import json; from pathlib import Path; from candidate.r5.engine_adapter import EngineLocalValueProvider; m=json.loads(Path('candidate_releases/R06/R06_TWO_DAY_RECOVERY_20261024/CANDIDATE_MANIFEST.json').read_text(encoding='utf-8')); a=EngineLocalValueProvider(m['candidate_registry_path']); f=a.get_price('000001.XSHE','2026-08-28','2026-09-02',fields=['close'],fq='none',fill_paused=False); days=sorted({str(x.date()) for x in f.index}); assert '2026-08-31' in days and '2026-09-01' in days; print(json.dumps({'status':f.attrs.get('bb_status'),'dates':days,'rows':len(f),'scope':'candidate diagnostic; no MASTER admission'}))",
+      "exit_code": 0,
+      "result": "{\"status\": \"OK\", \"dates\": [\"2026-08-28\", \"2026-08-31\", \"2026-09-01\", \"2026-09-02\"], \"rows\": 4, \"scope\": \"candidate diagnostic; no MASTER admission\"}"
+    }
+  ],
+  "network_or_auth": {
+    "network_calls": 0,
+    "authentications": 0,
+    "quota_spent": 0,
+    "paid_probes": 0
+  },
+  "inputs_touched": {
+    "raw_units_read": {
+      "2026-08-31": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "2026-09-01": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+    },
+    "raw_sha256_expected": {
+      "2026-08-31": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "2026-09-01": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7"
+    },
+    "raw_sha256_observed": {
+      "2026-08-31": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "2026-09-01": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7"
+    }
+  },
+  "outputs": {
+    "candidate_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024",
+    "manifest": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\CANDIDATE_MANIFEST.json",
+    "manifest_sha256": "ec7485ef50c03b36dfe8357822cd2bdd7dba5dbade83b3cc0c1671eb03b1bbde",
+    "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\ECOLOGY_REGISTRY_R06_DIAGNOSTIC.json",
+    "registry_sha256": "8a590957ee8a1f996fef929a0c37e536227492feab9238d054ad4e18e2744f79",
+    "artifact_files": 5,
+    "cache_partitions": {
+      "STOCK_DAILY_PIT_R1": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+      "STOCK_DAILY_RAW_PIT_R1": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet"
+    }
+  },
+  "bundle_store_exercised_only_in_fixtures": true,
+  "bundle_store_invoked_on_real_store": false
+}
