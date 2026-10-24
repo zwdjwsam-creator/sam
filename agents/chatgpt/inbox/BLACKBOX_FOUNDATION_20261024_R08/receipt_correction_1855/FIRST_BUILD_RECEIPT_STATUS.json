@@ -1,0 +1,35 @@
+{
+ "generation": "R08_RECEIPT_CORRECTION_1855",
+ "status": "FIRST_BUILD_RAW_RECEIPT_NOT_RETAINED",
+ "statement": "The original first-build stdout/stderr/exit code was printed to the operator console and was not captured to a durable file. No session-wide log ever held it. It is not reconstructed here.",
+ "reconstructed": false,
+ "rerun_to_manufacture_it": false,
+ "physical_corroboration_only": {
+  "note": "mtime ordering is physical corroboration of when the files were written; it is NOT a build receipt and does not prove how they were produced",
+  "files": [
+   {
+    "name": "CANDIDATE_MANIFEST.json",
+    "bytes": 80026,
+    "mtime_utc": "2026-10-24T10:18:40.222505+00:00"
+   },
+   {
+    "name": "part_2026.parquet",
+    "bytes": 12270,
+    "mtime_utc": "2026-10-24T10:18:39.921313+00:00"
+   },
+   {
+    "name": "part_2026.parquet",
+    "bytes": 218996741,
+    "mtime_utc": "2026-10-24T10:18:39.777848+00:00"
+   },
+   {
+    "name": "UNOBSERVED_GRID_ROWS.parquet",
+    "bytes": 9682,
+    "mtime_utc": "2026-10-24T10:18:39.936312+00:00"
+   }
+  ],
+  "replay_invocation_rewrote_candidate": false
+ },
+ "replay_stdout_retained": true,
+ "replay_stdout_reference": "r08_delivery/LOCAL_REPAIR_STDOUT.txt (ALREADY_BUILT_VERIFIED branch; hash validation only, see RC02)"
+}
