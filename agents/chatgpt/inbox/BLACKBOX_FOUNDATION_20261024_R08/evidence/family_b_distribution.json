@@ -1,0 +1,120 @@
+{
+ "measured_from": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+ "measured_from_sha256": "bf080579ece5249a0b4b7e44316c89f5df8f38e9473c3bc208db22fd1a66bae8",
+ "partition_rows": 949470,
+ "partition_sessions": 176,
+ "partition_session_min": "2026-01-05",
+ "partition_session_max": "2026-09-24",
+ "partition_blank_rows": 34477,
+ "partition_codes": 5535,
+ "r07_claim": {
+  "family_A": "42 codes / 2,989 rows described as pre-listing placeholder codes",
+  "family_B": "302 codes / 31,488 rows described as 302*105 = 31,710 null rows",
+  "total": "344 codes / 34,477 rows"
+ },
+ "observed_decomposition": {
+  "ALL_NULL_CODES": {
+   "codes": 294,
+   "null_rows": 30870,
+   "grid_rows_per_code": [
+    105
+   ],
+   "null_rows_per_code": [
+    105
+   ],
+   "date_window": {
+    "min": "2026-01-05",
+    "max": "2026-06-12"
+   },
+   "sessions_2026_total": 178,
+   "note": "each all-null code carries exactly 105 grid rows covering 2026-01-05..2026-06-12 and is absent from the remaining sessions"
+  },
+  "LEADING_NULL_CODES": {
+   "codes": 42,
+   "null_rows": 2989,
+   "per_code_null_rows": [
+    1,
+    8,
+    17,
+    18,
+    21,
+    23,
+    26,
+    26,
+    27,
+    38,
+    51,
+    51,
+    55,
+    55,
+    56,
+    60,
+    62,
+    62,
+    66,
+    66,
+    67,
+    69,
+    69,
+    72,
+    76,
+    80,
+    80,
+    84,
+    85,
+    89,
+    89,
+    92,
+    101,
+    111,
+    113,
+    117,
+    123,
+    130,
+    134,
+    137,
+    140,
+    142
+   ]
+  },
+  "TRAILING_NULL_CODES": {
+   "codes": 8,
+   "null_rows": 618,
+   "per_code_null_rows": [
+    41,
+    46,
+    70,
+    73,
+    80,
+    88,
+    90,
+    130
+   ]
+  },
+  "INTERNAL_NULL_CODES": {
+   "codes": 0,
+   "null_rows": 0
+  },
+  "BOTH_END_NULL_CODES": {
+   "codes": 0,
+   "null_rows": 0
+  },
+  "FULLY_VALUED_CODES": 5191
+ },
+ "arithmetic_check": {
+  "r07_expression": "302*105",
+  "r07_value": 31710,
+  "observed_all_null_rows": 30870,
+  "difference": 840,
+  "explanation": "only 294 codes have 105 null rows (30,870). The other 8 codes with nulls are TRAILING-null codes whose per-code null counts are 41..90 and sum to 618. 30,870 + 618 = 31,488, so the 31,488 total was right while 302*105 was wrong.",
+  "what_105_refers_to": "GRID ROWS (sessions the code appears in), not null rows in general; for the 294 all-null codes grid rows and null rows coincide because every one of their rows is null"
+ },
+ "corrected_statements": [
+  "34,477 all-six-null price rows / 344 codes / 143 dates CONFIRMED on the physical 2026 partition.",
+  "294 codes are ALL-NULL with exactly 105 grid rows each (30,870 rows) and appear only on 2026-01-05..2026-06-12.",
+  "50 codes are PARTIALLY null: 42 LEADING-only (2,989 rows) and 8 TRAILING-only (618 rows); no INTERNAL and no BOTH-ENDS runs.",
+  "'302 codes x 105 null rows' is arithmetically wrong; the correct split is 294x105 plus 8 trailing codes totalling 618.",
+  "No listing, delisting, suspension or source-absence inference is made from any of these states."
+ ],
+ "identity_inference": "NOT_INFERRED; observation state only"
+}
