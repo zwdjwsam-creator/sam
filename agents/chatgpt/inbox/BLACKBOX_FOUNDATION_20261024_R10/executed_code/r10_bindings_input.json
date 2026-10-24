@@ -1,0 +1,305 @@
+{
+ "schema_version": "1.0.0",
+ "language": "en",
+ "round": "R06/10",
+ "purpose": "inventory the later latest-data update route from existing configuration; R06 downloads nothing",
+ "no_download_this_round": true,
+ "no_new_api_chosen": true,
+ "sources": {
+  "scope_ssot": {
+   "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+   "sha256": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23",
+   "active_rule_id": "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+   "required_domain_count": 32
+  },
+  "source_access_register": {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/SOURCE_ACCESS_REGISTER.json",
+   "local_copy": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r06_work\\SOURCE_ACCESS_REGISTER_R04.json",
+   "sha256": "c270e9c1c863a6e64860610b58046f7cd7e3bf0297f846de41c3286d6f8d750a"
+  },
+  "permission_receipt": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\PERMISSION_RECEIPTS\\BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+   "sha256": "3a48507a10e1471852383cb0359418a70b45d9fb7f9e978e17924f4cf18246d4"
+  },
+  "bounded_access_receipt": {
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\JQ_BOUNDED_ACCESS.json",
+   "sha256": "656fcc5b49f873b15caf1add7723058d82474d502a85f3256e79bd26cafe5c63"
+  },
+  "pipeline_matrix": {
+   "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_PIPELINE_MATRIX_CURRENT.json",
+   "sha256": "8d8b0ced9f16c0815bf288ecf47adac1a2fea07d34f92f5f8530674bf2f1378c"
+  },
+  "data_inventory": {
+   "path": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.json",
+   "sha256": "3c19d88eb2d8933188f1c56b6f4ae8b121a2d297f7d00d796c649e86b1eb6833",
+   "authority_note": "the summary watermarks in this file are older than the observed partitions; it is a directory snapshot, not a readiness authority"
+  },
+  "trading_calendar_raw": {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange",
+   "authority": "the only calendar source used to decide which dates are sessions"
+  }
+ },
+ "target_date_rule": {
+  "rule": "TARGET = the latest session that is (a) present in the verified local calendar, (b) completed in Asia/Shanghai, and (c) no later than what the supplier has actually published minus the observed lag",
+  "forbidden": [
+   "using the old CURRENT asof as a permanent upper bound",
+   "inferring a cursor from max(date) in a product",
+   "assuming a universal historical start",
+   "assuming current availability for an untested API"
+  ],
+  "supplier_lag": "UNKNOWN_UNMEASURED",
+  "supplier_lag_reason": "no lag measurement exists in the register (update_lag='UNKNOWN') and R06 is not authorized to measure it",
+  "calendar_evidence": "calendar sessions observed inside ADJUST_FACTOR_PIT_R1 for 2026-08-01..2026-09-24 = 39, from 2026-08-03 to 2026-09-24; this is the working session set for the two-hole analysis, not a supplier-lag proof"
+ },
+ "bindings": [
+  {
+   "domain_id": "A_share_daily_raw_none",
+   "dataset": "PRICE_STOCK_DAILY",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(security, start_date, end_date, frequency='daily', fields=['open','high','low','close','volume','money','paused','high_limit','low_limit','avg','pre_close','factor'], fq=None)",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "credential_locator": "E:\\BLACKBOX\\配置\\secrets\\已验证\\聚宽账号.txt",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+   "known_watermark": {
+    "source": "observed tip units",
+    "latest_tip_unit_seen": "2026-09-24",
+    "gap_dates_under_repair": [
+     "2026-08-31",
+     "2026-09-01"
+    ]
+   },
+   "cleaning_entry": "E:\\BLACKBOX\\任务\\...formal_cleaning_r15_build_and_seal_r1.py (parent-inherit + ingest_item)",
+   "required_cache_product": [
+    "STOCK_DAILY_PIT_R1",
+    "STOCK_DAILY_RAW_PIT_R1"
+   ],
+   "receipt_or_exception": "R05 CURRENT_BOUNDED_SUPPLIER_PROOF (2026-10-24T16:00:26+08:00) covers one daily bar only; no full-dataset proof",
+   "status": "BOUNDED_PROOF_ONLY"
+  },
+  {
+   "domain_id": "ETF_daily_raw_none",
+   "dataset": "PRICE_ETF_DAILY",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(..., frequency='daily', fq=None) over ETF codes",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+   "known_watermark": {
+    "source": "observed partitions",
+    "note": "ETF cache partitions cover 2026-07-30..2026-09-24 and also miss the two dates"
+   },
+   "cleaning_entry": "same formal cleaning entry",
+   "required_cache_product": [
+    "ETF_DAILY_PIT_R1",
+    "ETF_FACTOR_DAILY_R1"
+   ],
+   "receipt_or_exception": "historic get_extras(unit_net_value) permission OK 2026-06-19; daily ETF price route not separately re-proved",
+   "status": "ROUTE_DECLARED_PROOF_PARTIAL"
+  },
+  {
+   "domain_id": "index_daily_raw_none",
+   "dataset": "PRICE_INDEX_DAILY",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(..., frequency='daily', fq=None) over index codes",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+   "known_watermark": {
+    "source": "observed partitions",
+    "note": "INDEX_DAILY_R1 covers 2005-01-04..2026-09-24 and misses the same two dates"
+   },
+   "cleaning_entry": "same formal cleaning entry",
+   "required_cache_product": [
+    "INDEX_DAILY_R1",
+    "INDEX_FACTOR_DAILY_R1"
+   ],
+   "receipt_or_exception": "CURRENT scope records INDEX_DAILY_R1=NON_BLOCKING_KNOWN_EXCEPTION",
+   "status": "KNOWN_EXCEPTION_NOT_READY"
+  },
+  {
+   "domain_id": "etf_fund_aux / fund nav",
+   "dataset": "FUND_ETF_NAV",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_extras(unit_net_value / acc_net_value); whole-table get_fund_info FUND_NET_VALUE route is forbidden",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\FUND_NET_VALUE_PIT",
+   "known_watermark": {
+    "source": "observed FUND_NAV_PIT_R1 partitions",
+    "latest": "2026-09-24",
+    "missing_in_window": [
+     "2026-08-24",
+     "2026-08-26",
+     "2026-08-27",
+     "2026-08-31",
+     "2026-09-01",
+     "2026-09-09",
+     "2026-09-10",
+     "2026-09-17"
+    ],
+    "adjudication": "scattered misses may be genuine NAV non-publication days; not classified as a defect this round"
+   },
+   "cleaning_entry": "same formal cleaning entry (fund lane)",
+   "required_cache_product": [
+    "FUND_NAV_PIT_R1"
+   ],
+   "receipt_or_exception": "get_extras unit_net_value allowed (2026-06-19 probe); SILENT_TRUNCATION_FUND_NET_VALUE_WHOLE_TABLE=FORBIDDEN",
+   "status": "ROUTE_DECLARED_PROOF_PARTIAL"
+  },
+  {
+   "domain_id": "adjust_factor",
+   "dataset": "ADJUST_FACTOR",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(..., fq='pre') factor series; incremental engine blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ADJUST_FACTOR_PRE_FQ_FULL_HISTORY_R1",
+   "known_watermark": {
+    "observed_cache_product_max": "2026-09-24",
+    "inventory_summary_source_max": "2026-08-14",
+    "contradiction": "recorded, not resolved"
+   },
+   "cleaning_entry": "adjust-factor backward-refresh entry (whole-series revision, not append-only)",
+   "required_cache_product": [
+    "ADJUST_FACTOR_PIT_R1"
+   ],
+   "receipt_or_exception": "inventory marks SOURCE_CUTOFF_GAP=CLOSED; the summary max date contradicts the observed partition",
+   "status": "COVERS_BOTH_DATES_OBSERVED"
+  },
+  {
+   "domain_id": "security_state",
+   "dataset": "TRADABLE_STATUS",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(fields=['paused','high_limit','low_limit']) + get_extras('is_st') + finance.STK_STATUS_CHANGE/STK_LIST",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state",
+   "known_watermark": {
+    "scope_field": "TRADEABILITY_EFFECTIVE_ASOF=2026-09-03",
+    "scope_note": "inherited_0903_until_security_state_tip",
+    "observed_product_coverage": "2026-07-13..2026-08-12 plus one 2026-09-03 tip"
+   },
+   "cleaning_entry": "same formal cleaning entry (security_state lane)",
+   "required_cache_product": [
+    "STOCK_TRADEABILITY_PIT_R1"
+   ],
+   "receipt_or_exception": "PERMISSION_OK per probe; the missing dates are a DOWNLOAD GAP, not a permission gap",
+   "status": "PERMISSION_OK_DOWNLOAD_GAP"
+  },
+  {
+   "domain_id": "valuation_factor_reference",
+   "dataset": "VALUATION",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_fundamentals / valuation table (valuation_control probe OK)",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation",
+   "known_watermark": {
+    "observed_product": "VALUATION_PIT_R1",
+    "coverage": "2018-06-28..2026-09-24",
+    "missing_in_window": 8
+   },
+   "cleaning_entry": "same formal cleaning entry",
+   "required_cache_product": [
+    "VALUATION_PIT_R1"
+   ],
+   "receipt_or_exception": "valuation_control probe PERMISSION_OK 2026-08-13",
+   "status": "PERMISSION_OK_EXTRA_HOLES"
+  },
+  {
+   "domain_id": "finance_income_balance_cashflow_pit",
+   "dataset": "FINANCE_PIT",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "finance.STK_* statement tables; PIT rule JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit",
+   "known_watermark": {
+    "source": "CURRENT scope",
+    "note": "FINANCE_PIT_DELTA_ROWS=0 at the last publish; not re-measured this round"
+   },
+   "cleaning_entry": "same formal cleaning entry (finance lane)",
+   "required_cache_product": [
+    "FINANCIAL_INDICATOR_PIT_R1",
+    "JQ20_FINANCE_*_PIT_R1"
+   ],
+   "receipt_or_exception": "not re-probed this round",
+   "status": "INHERITED_NOT_REVERIFIED"
+  },
+  {
+   "domain_id": "sw_l1_membership_pit_densify / sw_l2 / sw_l3",
+   "dataset": "INDUSTRY_CONCEPT",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_industries / get_industry (SW L1/L2/L3) + local densify",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "membership source releases under 数据/原始只读",
+   "known_watermark": {
+    "observed": "SW_L1/L2/L3 membership PIT cover both recovered dates (3097 dates)"
+   },
+   "cleaning_entry": "sw_l1_l2_l3_membership_densify_for_new_asof_days then pit_align_seal_CURRENT",
+   "required_cache_product": [
+    "SW_L1_MEMBERSHIP_PIT_R1",
+    "SW_L2_MEMBERSHIP_PIT_R1",
+    "SW_L3_MEMBERSHIP_PIT_R1"
+   ],
+   "receipt_or_exception": "SW_L1_STRUCTURE_DAILY_R1 remains BLOCKED_UNTIL_STRUCTURE_BUILD",
+   "status": "COVERS_BOTH_DATES_OBSERVED_STRUCTURE_BLOCKED"
+  },
+  {
+   "domain_id": "full_factor_values_library",
+   "dataset": "FACTOR_VALUES",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_all_factors / get_factor_values",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference",
+   "known_watermark": {
+    "state": "NO_LOCAL_FACTOR_VALUE_LIBRARY"
+   },
+   "cleaning_entry": "JQ260 factor value download route (blocked)",
+   "required_cache_product": [
+    "CACHE_SW_L123 membership product is separate; factor values have no cache product yet"
+   ],
+   "receipt_or_exception": "PERMISSION_BLOCKED_PAID_MODULE per get_all_factors and get_factor_values(market_cap); invalid-factor probes are PROBE_FAIL and carry no entitlement meaning",
+   "status": "TARGET_PRESERVED_SKIP_SEAL"
+  },
+  {
+   "domain_id": "money_flow_abnormal_lock_subscribe",
+   "dataset": "MONEY_FLOW / ABNORMAL / LOCK / SUBSCRIBE",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_money_flow; finance.STK_MONEY_FLOW; lock/abnormal leaves",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "none acquired",
+   "known_watermark": {
+    "state": "NOT_ACQUIRED"
+   },
+   "cleaning_entry": "n/a",
+   "required_cache_product": [
+    "none yet"
+   ],
+   "receipt_or_exception": "get_money_flow = paid-module text (blocked); STK_MONEY_FLOW = unknown permission type; lock/abnormal names absent from the SDK version = unverified",
+   "status": "PERMISSION_BLOCKED_PAID_MODULE_PLUS_UNVERIFIED_LEAVES"
+  },
+  {
+   "domain_id": "index_minute_5m_1m_30m_60m",
+   "dataset": "PRICE_INDEX_MINUTE",
+   "supplier": "SRC_JQDATA_SDK",
+   "permitted_callable": "get_price(..., frequency='1m'/'5m'/'30m'/'60m') over the 732-index union",
+   "credential_locator_id": "CRED_JQ_DATA_ACCOUNT",
+   "local_raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+   "known_watermark": {
+    "raw_window_end": "2026-08-06",
+    "downloadable_track": 546,
+    "daily_only_track": 186,
+    "union": 732
+   },
+   "cleaning_entry": "index minute align (incremental mode)",
+   "required_cache_product": [
+    "INDEX_MINUTE_* via INDEX_MINUTE_ALIGN CURRENT"
+   ],
+   "receipt_or_exception": "INDEX_MINUTE_ALIGN_0904=WAIT_SOURCE_THEN_RETRY",
+   "status": "WAITING_SOURCE_NOT_READY"
+  }
+ ],
+ "explicit_gaps_kept": [
+  "supplier lag unmeasured; no target date is asserted by this round",
+  "no entitlement change reported for any skipped module",
+  "no current availability proof for any API outside the single R05 bounded request",
+  "Tushare remains HISTORICAL_ACCESS_ONLY",
+  "QMT remains out of scope for history by policy, not by demonstrated limitation",
+  "VALUATION 6 extra holes before 2026-08-31 and FUND_NAV scattered misses are recorded but not adjudicated",
+  "18 catalog products have no physical root under the CURRENT cache release; their acquisition route is unchanged and unverified"
+ ]
+}
