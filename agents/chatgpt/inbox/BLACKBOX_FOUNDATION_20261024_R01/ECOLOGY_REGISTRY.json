@@ -1,0 +1,4615 @@
+{
+ "registry_id": "BLACKBOX_ECOLOGY_REGISTRY",
+ "version": "R1_ROUND1_20261024",
+ "built_at": "2026-10-24T14:14:28.989455+08:00",
+ "round": "1/10",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "production_write": false,
+ "dynamic_sources": {
+  "cleaning_current": {
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+   "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+   "seal_id": "SEAL_R33_FUND_NAV_20260924_200439",
+   "cleaning_as_of": "2026-09-24",
+   "daily_asof": "2026-09-24",
+   "finance_asof": "2026-09-24",
+   "standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+   "sha256_16": "9abad90cd952a1d6",
+   "pointer_observation": {
+    "release_id_points_to": "R33_FUND_NAV",
+    "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+    "quarantine_root_release": "R45_DAILY_TIP",
+    "ledger_path_release": "R45_DAILY_TIP",
+    "switch_reason": "USER_AUTHORIZED_FUND_ETF_NAV_PREMIUM_PLANE_R1",
+    "note": "release_id/parent/quarantine/ledger 跨 R33 与 R45；按 switch_reason 视为授权回切，但读取必须以 release_id 的 standard_root 为准，不得把 parent(R45) 的 asof 当作本 release 内容"
+   }
+  },
+  "cache_current": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+   "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+   "asof": "2026-09-24",
+   "sha256_16": "b2ce53f05e50e0d3"
+  },
+  "daily_manifest": {
+   "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+   "CN_RESEARCH_DATE": "2026-09-24",
+   "DAILY_INCREMENTAL_READY": "YES",
+   "DEGRADED_LANES": [],
+   "sha256_16": "0f0813cb822f535e"
+  },
+  "master_rule_registry": {
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\MASTER_RULE_LIBRARY_REGISTRY_R1.json",
+   "master_registry_active": true,
+   "formal_backtest_active": false,
+   "engine_core_active": false,
+   "admission_stage": "PRE_INGESTION_ONLY"
+  },
+  "ingestion_gate": {
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+   "n_gates": 15,
+   "policies": {
+    "data_must_map_to_master_registry": true,
+    "unmapped_field_blocks_ingestion": true,
+    "invalid_asset_code_blocks_ingestion": true,
+    "unsupported_frequency_blocks_ingestion": true,
+    "unclear_pit_visibility_blocks_ingestion": true,
+    "missing_matching_required_field_blocks_ingestion": true,
+    "unknown_factor_field_blocks_ingestion": true,
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true,
+    "formal_backtest_active": false,
+    "post_ingestion_judgement_allowed": false,
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "non_matching_data_admission_policy": "BLOCK"
+   }
+  },
+  "schema_freeze20": {
+   "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1"
+  },
+  "reused_from": [
+   "completion_1803/SCOPE_COVERAGE_MAP.json",
+   "completion_1814/DICTIONARY_FIELD_MAPPING_R1.json",
+   "completion_1814/POST_BASELINE_SCOPE_SUPPLEMENT_R1.json",
+   "completion_1814/ENGINE_DATA_INTERFACE_R1.json"
+  ]
+ },
+ "layer_taxonomy": {
+  "RAW": "供应商原始下载（只读、不可原地改）",
+  "CLEAN": "正式清洗产品（CURRENT_CLEANING_RELEASE.standard）",
+  "CACHE": "回测缓存派生产品（CURRENT_CACHE_RELEASE）",
+  "FACTOR_DICTIONARY": "因子字典/公式/PIT/清洗规则（值 ≠ 字典）",
+  "FACTOR_VALUE": "因子值（当前规则禁止下载）",
+  "STRATEGY_OUTPUT": "策略/研究输出（不作底座）",
+  "EVIDENCE": "外部证据平面"
+ },
+ "engine_boundary": {
+  "source": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\MASTER_RULE_LIBRARY_REGISTRY_R1.json",
+  "master_registry_active": true,
+  "formal_backtest_active": false,
+  "engine_core_active": false,
+  "admission_stage": "PRE_INGESTION_ONLY",
+  "provider_factory_branches": [
+   "jqdata",
+   "tushare",
+   "qmt",
+   "miniqmt",
+   "qmt-remote",
+   "remote-qmt",
+   "remote_qmt"
+  ],
+  "local_value_branch_present": false,
+  "note": "本地值数据接入属后续轮次；本轮只做只读候选并验证接口可包裹，不翻开关"
+ },
+ "field_facts": {
+  "code_column_names": {
+   "PRICE_STOCK_DAILY": "code",
+   "PRICE_STOCK_1M": "code",
+   "CALENDAR_CN_EXCHANGE": "trade_date (no code)",
+   "SECURITY_MASTER": "index（pandas 索引被保留为列；clean 层即证券代码）",
+   "INDEX_COMPONENTS": "index_code + code",
+   "INDEX_WEIGHTS_RAW_SNAPSHOT": "index（成分代码）+ index_code（指数代码）",
+   "INDEX_WEIGHTS_CLEAN": "index_code + component_code（显式成分列，105 文件 2014→）",
+   "INDEX_CONSTITUENT_PIT_R1": "index_code + constituent_code（元数据齐全，920 万行）",
+   "FUND_ETF_NAV": "code"
+  },
+  "index_weights_correction": {
+   "prior_1814_claim": "缺 member_code，PK 契约不可满足（基于单个 RAW snapshot 的 schema 摘要）",
+   "this_round_evidence": {
+    "raw_snapshot_columns": [
+     "index",
+     "date",
+     "weight",
+     "display_name",
+     "index_code",
+     "query_date",
+     "data_asof",
+     "discovery_asof",
+     "available_at"
+    ],
+    "raw_pandas_index_columns": [],
+    "clean_plane_files": 105,
+    "clean_columns": [
+     "index_code",
+     "component_code",
+     "date",
+     "weight",
+     "display_name",
+     "query_date",
+     "historical_backtest_eligible",
+     "historical_coverage_status"
+    ]
+   },
+   "verdict": "CORRECTED：成分代码存在（RAW 为 index 列、CLEAN 为 component_code 列），不是源缺失；1814 的缺口结论仅适用于该单个 snapshot 的列名摘要，不适用于 105 文件全范围",
+   "remaining_gate": "clean 行标记 historical_backtest_eligible=False / historical_coverage_status=PARTIAL_OR_UNPROVEN，权重历史可回测性受限（需按指数/年份核）"
+  },
+  "dtype_facts": {
+   "stock_daily.volume": "double，实测 122,500 行非整数计数 = 0（可安全转 int64）；null 8,330（需按 paused 核对后再定）",
+   "stock_daily.date": "timestamp[ns]，实测 time_of_day 全为 00:00（日期语义正确，仅 dtype 偏离契约）",
+   "fund_etf_nav.day": "large_string，需显式转 date 且不得混格式"
+  },
+  "segment_schema_split": {
+   "fact": "日频 CLEAN/RAW 的『历史 batch 段』与『增量 day-file 段』schema 不同：",
+   "history_batch_columns": [
+    "time",
+    "code",
+    "open",
+    "close",
+    "high",
+    "low",
+    "volume",
+    "money",
+    "__index_level_0__"
+   ],
+   "incremental_dayfile_columns_in_clean": [
+    "time",
+    "code",
+    "open",
+    "close",
+    "high",
+    "low",
+    "volume",
+    "money",
+    "paused",
+    "high_limit",
+    "low_limit",
+    "avg",
+    "pre_close",
+    "factor",
+    "fq"
+   ],
+   "measured": {
+    "2026-09-10 clean day-file": {
+     "factor": 1.0,
+     "paused": 0.0,
+     "high_limit": 12.87,
+     "low_limit": 10.53
+    },
+    "2026-06-15 batch segment": {
+     "factor": null
+    }
+   },
+   "verdict": "CORRECTED：RAW 并非天然缺 factor/limit/paused；增量 day-file 段自带这四列。缺口只在历史 batch 段，且可由 day-file + 日频 join 补齐；本轮不填造、不默认 factor=1",
+   "caveat": "batch 段 factor 为 null 而非 1，任何按 factor 计算的复权必须在缺失段显式拒绝而非静默当作 1"
+  },
+  "duplicate_version_fact": {
+   "fact": "同一 (family, 年份/日) 存在多次下载版本（trailing YYYYMMDD_HHMMSS），如 stock_daily__incremental_gap_20260910__full__20260917_144821 / _145054",
+   "rule": "读取必须按 family 去重取最新版本，并按 (code,timestamp) 兜底去重；否则会双计数",
+   "implemented": "candidate/local_plane_provider.py::_dedupe_versions + (code,timestamp) 去重"
+  },
+  "index_weights_eligibility": {
+   "measured": {
+    "n_files": 105,
+    "n_rows": 56164,
+    "n_index": 8,
+    "indexes": [
+     "000001.XSHG",
+     "000016.XSHG",
+     "000300.XSHG",
+     "000688.XSHG",
+     "000852.XSHG",
+     "000905.XSHG",
+     "399001.XSHE",
+     "399006.XSHE"
+    ],
+    "years": "2014-2026",
+    "rows_by_year": {
+     "2014": 3024,
+     "2015": 3569,
+     "2016": 3663,
+     "2017": 3884,
+     "2018": 3939,
+     "2019": 3988,
+     "2020": 4033,
+     "2021": 4250,
+     "2022": 4509,
+     "2023": 4655,
+     "2024": 4741,
+     "2025": 4742,
+     "2026": 4717
+    },
+    "historical_backtest_eligible_true": 0,
+    "coverage_status_rows": {
+     "PARTIAL_OR_UNPROVEN": 53714
+    },
+    "weight_null": 0,
+    "schema_groups": {
+     "repair_v1_code_preserved": 104,
+     "clean_tip_snapshot_20260831": 1
+    }
+   },
+   "rule": "权重文件齐全且成分代码显式（component_code），但 historical_backtest_eligible 全为 False → 『权重值在』≠『权重历史可回测』；按指数/年份补证 PIT 后才可准入权重回测"
+  },
+  "minute_fields": {
+   "fact": "26 域分钟平面（含 clean A股_stock_1m）均无 factor/high_limit/low_limit/paused",
+   "clean_1m_extra": [
+    "fq",
+    "price_basis",
+    "repair_unit_id",
+    "domain_id",
+    "exchange"
+   ],
+   "rule": "join 日频（按 code+trade_date，PIT=当日可见），不默认 factor=1，不填造涨跌停/停牌",
+   "status": "候选映射；本轮未落地 join 结果"
+  },
+  "finance_facts": {
+   "alias": "statDate/pubDate（income/balance/indicator） vs pub_date/report_date/report_type（cash_flow）",
+   "duplicate": "balance/indicator 存在 statDate 与 statDate.1",
+   "revision": "RAW 无 revision_version；restatement 链是契约（08）而非已实现",
+   "rule": "别名相同不证明内容等同；不发明历史修订链；未解决则阻止该字段准入"
+  }
+ },
+ "datasets": [
+  {
+   "dataset_id": "PRICE_STOCK_DAILY",
+   "title": "A股日线 OHLCV（原始/清洗）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+     "exists": true,
+     "n_parquet": 524,
+     "kind": "RAW",
+     "pit_rule": "trade_date 收盘后可见（bar_date_close_visible_same_day）",
+     "adjust_note": "RAW_NONE 未复权；factor 为独立列，不并入 close，不得默认 factor=1",
+     "alt_roots": []
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+     "exists": true,
+     "n_parquet": 232,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "trade_date 收盘后可见（bar_date_close_visible_same_day）",
+     "adjust_note": "RAW_NONE 未复权；factor 为独立列，不并入 close，不得默认 factor=1"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "required_fields": "open,high,low,close,volume,money,factor,pre_close",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "date",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money",
+     "avg",
+     "pre_close",
+     "high_limit",
+     "low_limit",
+     "paused",
+     "factor"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor",
+     "pre_close"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=524",
+     "CLEAN n_parquet=232",
+     "实测 RAW/CLEAN 同日同码 close 一致（2026-09-10 000001.XSHE = 11.85）",
+     "实测节段 schema 分裂：batch 段 8 列，day-file 段 15 列（含 paused/high_limit/low_limit/avg/pre_close/factor/fq）"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）",
+     "batch 段 factor=null 的复权路径未落地"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_STOCK_1M",
+   "title": "A股 1 分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+     "exists": true,
+     "n_parquet": 11790,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close（分钟收盘可见）",
+     "adjust_note": "RAW_NONE；factor/limit/paused 不在分钟平面，需按 (code,trade_date) join 日频，不得填造",
+     "alt_roots": [
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute"
+     ]
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
+     "exists": true,
+     "n_parquet": 40,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close（分钟收盘可见）",
+     "adjust_note": "RAW_NONE；factor/limit/paused 不在分钟平面，需按 (code,trade_date) join 日频，不得填造"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=11790",
+     "CLEAN n_parquet=40"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_STOCK_5M",
+   "title": "A股 5 分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+     "exists": true,
+     "n_parquet": 12847,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上（分钟平面无 factor/limit/paused）",
+     "alt_roots": []
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_5m",
+     "exists": true,
+     "n_parquet": 52,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上（分钟平面无 factor/limit/paused）"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=12847",
+     "CLEAN n_parquet=52"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_STOCK_30M",
+   "title": "A股 30 分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+     "exists": true,
+     "n_parquet": 26613,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上",
+     "alt_roots": []
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_30m",
+     "exists": true,
+     "n_parquet": 40,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=26613",
+     "CLEAN n_parquet=40"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_STOCK_60M",
+   "title": "A股 60 分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+     "exists": true,
+     "n_parquet": 26613,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上",
+     "alt_roots": []
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_60m",
+     "exists": true,
+     "n_parquet": 44,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=26613",
+     "CLEAN n_parquet=44"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_ETF_DAILY",
+   "title": "ETF 日线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P8_etf_fund",
+     "exists": true,
+     "n_parquet": 18,
+     "kind": "RAW",
+     "pit_rule": "trade_date 收盘后可见",
+     "adjust_note": "ETF 日线两套 RAW schema（含/不含 fq 列），clean 以带 fq 者为准",
+     "alt_roots": [
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none"
+     ]
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_daily",
+     "exists": true,
+     "n_parquet": 37,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "trade_date 收盘后可见",
+     "adjust_note": "ETF 日线两套 RAW schema（含/不含 fq 列），clean 以带 fq 者为准"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "required_fields": "open,high,low,close,volume,money,factor,pre_close",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor",
+     "pre_close"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=18",
+     "CLEAN n_parquet=37"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_ETF_1M",
+   "title": "ETF 1 分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+     "exists": true,
+     "n_parquet": 36718,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "分钟平面无 factor/limit/paused",
+     "alt_roots": []
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+     "exists": true,
+     "n_parquet": 24,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "分钟平面无 factor/limit/paused"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=36718",
+     "CLEAN n_parquet=24"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_ETF_5M",
+   "title": "ETF 5 分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+     "exists": true,
+     "n_parquet": 36718,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上",
+     "alt_roots": []
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m",
+     "exists": true,
+     "n_parquet": 44,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=36718",
+     "CLEAN n_parquet=44"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_ETF_30M",
+   "title": "ETF 30 分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+     "exists": true,
+     "n_parquet": 36718,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上",
+     "alt_roots": []
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_30m",
+     "exists": true,
+     "n_parquet": 4395,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=36718",
+     "CLEAN n_parquet=4395"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_ETF_60M",
+   "title": "ETF 60 分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+     "exists": true,
+     "n_parquet": 36718,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上",
+     "alt_roots": []
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_60m",
+     "exists": true,
+     "n_parquet": 4399,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "同上"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=36718",
+     "CLEAN n_parquet=4399"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_INDEX_DAILY",
+   "title": "指数日线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+     "exists": true,
+     "n_parquet": 362,
+     "kind": "RAW",
+     "pit_rule": "trade_date 收盘后可见",
+     "adjust_note": "指数无 tradable_status 语义",
+     "alt_roots": [
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_index"
+     ]
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
+     "exists": true,
+     "n_parquet": 37,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "trade_date 收盘后可见",
+     "adjust_note": "指数无 tradable_status 语义"
+    },
+    "CACHE": {
+     "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "exists": true,
+     "n_parquet": 6675,
+     "kind": "CACHE",
+     "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "note": "cache 为派生产品，读取请走 cache 产品名而非目录"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "required_fields": "open,high,low,close,volume,money,factor,pre_close",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "paused",
+     "high_limit",
+     "low_limit",
+     "avg",
+     "pre_close",
+     "factor",
+     "fq"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor",
+     "pre_close"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面已发布（CURRENT_CLEANING_RELEASE as_of 2026-09-24）"
+    ],
+    "observed": [
+     "RAW n_parquet=362",
+     "CLEAN n_parquet=37"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "PRICE_INDEX_MINUTE",
+   "title": "指数分钟线",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999 套餐",
+    "api": "get_price"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+     "exists": true,
+     "n_parquet": 133968,
+     "kind": "RAW",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "仅 RAW 层存在；未进本轮 clean 平面",
+     "alt_roots": [
+      "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P9_derivative_aux"
+     ]
+    },
+    "CLEAN": {
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "minute_bar_end_visible_at_bar_close",
+     "adjust_note": "仅 RAW 层存在；未进本轮 clean 平面"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "minute_bar",
+    "required_fields": "open,high,low,close,volume,money,factor",
+    "admission_stage": "PRE_INGESTION_ONLY",
+    "frequency_gate": "daily / 1m / 5m / 15m / 30m / 60m ADMIT_IF_MATCHED；tick NOT_READY_BLOCKED"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_unified_data_schema_contract_freeze_full_R1",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "price_field_dictionary": {
+     "id": "03_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+     "exists": true,
+     "sha256_16": "1c173f07a41d94fd"
+    },
+    "unit_dictionary": {
+     "id": "06_unit_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+     "exists": true,
+     "sha256_16": "5d0cfab169d8fe5d"
+    },
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "source_columns_observed": [
+     "time",
+     "code",
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "paused",
+     "high_limit",
+     "low_limit",
+     "avg",
+     "pre_close",
+     "factor",
+     "fq"
+    ],
+    "standard_required": [
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "factor"
+    ],
+    "unit": {
+     "price": "元",
+     "volume": "股",
+     "amount": "元"
+    }
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof（RAW 全历史；PAST 不重下）",
+    "exclusions": "tick（KG11）/ 期货期权债券（KG03-05）不在本轮范围",
+    "increment_rule": "日增量 append；分钟域按 day-file 追加，幂等键 (code,timestamp)",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof / daily_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P0_meta(calendar/securities)",
+     "P1_adjust_factor",
+     "P2_security_state"
+    ],
+    "downstream": [
+     "CLEAN",
+     "CACHE",
+     "FACTOR_260(输入)"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "26 域 CANONICAL_FILE_LIST 逐路径 exists（1803）",
+     "清洗平面未发布（该数据集不在本轮 clean 平面）"
+    ],
+    "observed": [
+     "RAW n_parquet=133968",
+     "CLEAN 目录不存在"
+    ],
+    "unknown": [
+     "分钟平面 factor/limit/paused 的 join 结果是否已落 clean（本轮未验）"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\DICTIONARY_FIELD_MAPPING_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "CALENDAR_CN_EXCHANGE",
+   "title": "交易日历",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+     "exists": true,
+     "n_parquet": 119,
+     "kind": "RAW",
+     "pit_rule": "calendar_known_before_session",
+     "adjust_note": "无复权语义"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
+     "exists": true,
+     "n_parquet": 2,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "calendar_known_before_session",
+     "adjust_note": "无复权语义"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "trade_calendar",
+    "required_fields": "trade_date,is_open",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {
+    "standard_required": [
+     "trade_date",
+     "is_open"
+    ]
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=119"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "SECURITY_MASTER",
+   "title": "证券主数据（股/ETF/基金/指数/期货）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+     "exists": true,
+     "n_parquet": 119,
+     "kind": "RAW",
+     "pit_rule": "static（start_date/end_date 生效）",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master",
+     "exists": true,
+     "n_parquet": 11,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "static（start_date/end_date 生效）",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=119"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "ADJUST_FACTOR",
+   "title": "复权因子（独立列）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+     "exists": true,
+     "n_parquet": 222,
+     "kind": "RAW",
+     "pit_rule": "factor 跳变对应 corporate action ex_date",
+     "adjust_note": "raw close 保持未复权"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor",
+     "exists": true,
+     "n_parquet": 18,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "factor 跳变对应 corporate action ex_date",
+     "adjust_note": "raw close 保持未复权"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "adjustment_factor",
+    "required_fields": "factor,fq",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {
+    "standard_required": [
+     "factor",
+     "fq"
+    ]
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=222"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "TRADABLE_STATUS",
+   "title": "涨跌停 / 停牌状态",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state",
+     "exists": true,
+     "n_parquet": 956,
+     "kind": "RAW",
+     "pit_rule": "status_known_at_bar_time",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status",
+     "exists": true,
+     "n_parquet": 3,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "status_known_at_bar_time",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "tradable_status",
+    "required_fields": "paused,is_st,high_limit,low_limit",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {
+    "standard_required": [
+     "paused",
+     "is_st",
+     "high_limit",
+     "low_limit"
+    ]
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=956"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "INDEX_COMPONENTS",
+   "title": "指数成分（快照）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+     "exists": true,
+     "n_parquet": 362,
+     "kind": "RAW",
+     "pit_rule": "asof_date 快照",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_components",
+     "exists": true,
+     "n_parquet": 106,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "asof_date 快照",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "benchmark_data",
+    "required_fields": "index_master,index_components",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {
+    "standard_required": [
+     "index_master",
+     "index_components"
+    ]
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=362"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "INDEX_WEIGHTS",
+   "title": "指数权重",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+     "exists": true,
+     "n_parquet": 362,
+     "kind": "RAW",
+     "pit_rule": "weight_date 可见；禁止用文件生成时间",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_weights",
+     "exists": true,
+     "n_parquet": 105,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "weight_date 可见；禁止用文件生成时间",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "benchmark_data",
+    "required_fields": "index_master,index_components",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {
+    "standard_required": [
+     "index_master",
+     "index_components"
+    ]
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=362",
+     "105 文件 / 56,164 行 / 8 指数 / 2014-2026，component_code 显式存在"
+    ],
+    "unknown": [
+     "逐指数/逐年 PIT 补证未做（historical_backtest_eligible 全 False）"
+    ],
+    "conflict": [
+     "权重文件在 ≠ 权重历史可回测（53,714 行 PARTIAL_OR_UNPROVEN）"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "INDUSTRY_CONCEPT",
+   "title": "行业 / 概念成分",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "pit_rule": "effective_from 生效",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept",
+     "exists": true,
+     "n_parquet": 13,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "effective_from 生效",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=217"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "INDUSTRY_CONCEPT_EVENTS",
+   "title": "概念事件",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "pit_rule": "as_of",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept_events",
+     "exists": true,
+     "n_parquet": 1,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "as_of",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=217"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "BILLBOARD",
+   "title": "龙虎榜",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "pit_rule": "day 为事件日",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\billboard",
+     "exists": true,
+     "n_parquet": 28,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "day 为事件日",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=217"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "XR_XD",
+   "title": "除权除息事件",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "pit_rule": "announce_date 可见；ex_date 为除权日，二者不得混用",
+     "adjust_note": "adj_factor 事件基准"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\xr_xd",
+     "exists": true,
+     "n_parquet": 62,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "announce_date 可见；ex_date 为除权日，二者不得混用",
+     "adjust_note": "adj_factor 事件基准"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "corporate_actions",
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=217"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "CORPORATE_REFERENCE",
+   "title": "公司行为参考",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "pit_rule": "announce_date",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\corporate_reference",
+     "exists": true,
+     "n_parquet": 42,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "announce_date",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "corporate_actions",
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=217"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "SHAREHOLDER_TOP10",
+   "title": "十大股东",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "pit_rule": "pub_date 可见 / end_date 报告期",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_top10",
+     "exists": true,
+     "n_parquet": 1,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "pub_date 可见 / end_date 报告期",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=217"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "SHAREHOLDER_FLOATING_TOP10",
+   "title": "十大流通股东",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "pit_rule": "pub_date 可见 / end_date 报告期",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_floating_top10",
+     "exists": true,
+     "n_parquet": 1,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "pub_date 可见 / end_date 报告期",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=217"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "VALUATION",
+   "title": "估值日频",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference",
+     "exists": true,
+     "n_parquet": 177,
+     "kind": "RAW",
+     "pit_rule": "day 按日频可见",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factor\\valuation",
+     "exists": true,
+     "n_parquet": 48,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "day 按日频可见",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=177"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "FINANCE_PIT",
+   "title": "财务三大表 + 指标（PIT）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit",
+     "exists": true,
+     "n_parquet": 685,
+     "kind": "RAW",
+     "pit_rule": "pubDate 可见 / statDate 报告期；禁止用文件生成时间",
+     "adjust_note": "不适用"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fundamentals",
+     "exists": true,
+     "n_parquet": 353,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24",
+     "pit_rule": "pubDate 可见 / statDate 报告期；禁止用文件生成时间",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "factor_pit_rules",
+    "required_fields": "pit_policy",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {
+    "standard_required": [
+     "pit_policy"
+    ]
+   },
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=685"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "MTSS",
+   "title": "融资融券",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "jqdatasdk 9999",
+    "api": "见 raw plane"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+     "exists": true,
+     "n_parquet": 217,
+     "kind": "RAW",
+     "pit_rule": "date",
+     "adjust_note": "不适用"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "required_fields": "",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "schema_contract": {
+     "id": "20_freeze/domain_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "6367c574c27b7ddb"
+    },
+    "pit_schema": {
+     "id": "20_freeze/pit_schema",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+     "exists": true,
+     "sha256_16": "1e62d187b6417b87"
+    },
+    "dtype_schema": {
+     "id": "20_freeze/dtype",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+     "exists": true,
+     "sha256_16": "3864ff80edeb0538"
+    }
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "2014-01-01 → cleaning_asof",
+    "increment_rule": "按 dataset 增量类（EOD_APPEND / EVENT_UPSERT / DISCLOSURE_UPSERT / REFERENCE_RECONCILE）",
+    "cursor": "CURRENT_CLEANING_RELEASE.cleaning_asof"
+   },
+   "relations": {
+    "downstream": [
+     "CLEAN",
+     "CACHE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录存在"
+    ],
+    "observed": [
+     "RAW n_parquet=217"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "FUND_ETF_NAV",
+   "title": "ETF 净值（unit/acc）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_nav",
+     "exists": true,
+     "n_parquet": 19752,
+     "kind": "RAW",
+     "pit_rule": "净值 T+1 可见（unit_net_value: PIT_DELAYED_1D）"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_NAV",
+     "exists": true,
+     "n_parquet": 5980,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "naming_note": "unit_net_value + acc_net_value（与 fund_fund_net_value 的 net_value/sum_value 为不同命名族）",
+    "standard_required": [
+     "code",
+     "day",
+     "unit_net_value",
+     "acc_net_value"
+    ]
+   },
+   "scope": {
+    "download_range": "2014 → asof",
+    "exclusions": "FUND_NET_VALUE 整表 5000 静默禁止",
+    "increment_rule": "get_extras(unit)+get_extras(acc) 批量，batch_size=5",
+    "cursor": "CLEAN.FUND_NAV_TIP / cleaning_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P4_fund_etf"
+    ],
+    "downstream": [
+     "CACHE: FUND_NAV_PIT_R1"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "NAV 增量 13775 parquet + sidecar（20260713–20260924，1814 实测）"
+    ],
+    "observed": [
+     "RAW n_parquet=19752"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "ETF_SHARE",
+   "title": "ETF 份额",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+     "exists": true,
+     "n_parquet": 27218,
+     "kind": "RAW",
+     "pit_rule": "净值 T+1 可见（unit_net_value: PIT_DELAYED_1D）"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE",
+     "exists": true,
+     "n_parquet": 3829,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "naming_note": "shares",
+    "standard_required": [
+     "code",
+     "day",
+     "unit_net_value",
+     "acc_net_value"
+    ]
+   },
+   "scope": {
+    "download_range": "2014 → asof",
+    "exclusions": "FUND_NET_VALUE 整表 5000 静默禁止",
+    "increment_rule": "get_extras(unit)+get_extras(acc) 批量，batch_size=5",
+    "cursor": "CLEAN.FUND_NAV_TIP / cleaning_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P4_fund_etf"
+    ],
+    "downstream": [
+     "CACHE: FUND_NAV_PIT_R1"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "NAV 增量 13775 parquet + sidecar（20260713–20260924，1814 实测）"
+    ],
+    "observed": [
+     "RAW n_parquet=27218"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "OPEN_FUND",
+   "title": "场外基金净值",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+     "exists": true,
+     "n_parquet": 78719,
+     "kind": "RAW",
+     "pit_rule": "净值 T+1 可见（unit_net_value: PIT_DELAYED_1D）"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\open_fund",
+     "exists": true,
+     "n_parquet": 76650,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "naming_note": "unit_net_value",
+    "standard_required": [
+     "code",
+     "day",
+     "unit_net_value",
+     "acc_net_value"
+    ]
+   },
+   "scope": {
+    "download_range": "2014 → asof",
+    "exclusions": "FUND_NET_VALUE 整表 5000 静默禁止",
+    "increment_rule": "get_extras(unit)+get_extras(acc) 批量，batch_size=5",
+    "cursor": "CLEAN.FUND_NAV_TIP / cleaning_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P4_fund_etf"
+    ],
+    "downstream": [
+     "CACHE: FUND_NAV_PIT_R1"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "NAV 增量 13775 parquet + sidecar（20260713–20260924，1814 实测）"
+    ],
+    "observed": [
+     "RAW n_parquet=78719"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "QDII",
+   "title": "QDII 净值",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+     "exists": true,
+     "n_parquet": 78719,
+     "kind": "RAW",
+     "pit_rule": "净值 T+1 可见（unit_net_value: PIT_DELAYED_1D）"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\QDII",
+     "exists": true,
+     "n_parquet": 1899,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "naming_note": "unit_net_value",
+    "standard_required": [
+     "code",
+     "day",
+     "unit_net_value",
+     "acc_net_value"
+    ]
+   },
+   "scope": {
+    "download_range": "2014 → asof",
+    "exclusions": "FUND_NET_VALUE 整表 5000 静默禁止",
+    "increment_rule": "get_extras(unit)+get_extras(acc) 批量，batch_size=5",
+    "cursor": "CLEAN.FUND_NAV_TIP / cleaning_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P4_fund_etf"
+    ],
+    "downstream": [
+     "CACHE: FUND_NAV_PIT_R1"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "NAV 增量 13775 parquet + sidecar（20260713–20260924，1814 实测）"
+    ],
+    "observed": [
+     "RAW n_parquet=78719"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "FUND_OTHER",
+   "title": "其他基金净值",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+     "exists": true,
+     "n_parquet": 78719,
+     "kind": "RAW",
+     "pit_rule": "净值 T+1 可见（unit_net_value: PIT_DELAYED_1D）"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\other",
+     "exists": true,
+     "n_parquet": 170,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "naming_note": "unit_net_value",
+    "standard_required": [
+     "code",
+     "day",
+     "unit_net_value",
+     "acc_net_value"
+    ]
+   },
+   "scope": {
+    "download_range": "2014 → asof",
+    "exclusions": "FUND_NET_VALUE 整表 5000 静默禁止",
+    "increment_rule": "get_extras(unit)+get_extras(acc) 批量，batch_size=5",
+    "cursor": "CLEAN.FUND_NAV_TIP / cleaning_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P4_fund_etf"
+    ],
+    "downstream": [
+     "CACHE: FUND_NAV_PIT_R1"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "NAV 增量 13775 parquet + sidecar（20260713–20260924，1814 实测）"
+    ],
+    "observed": [
+     "RAW n_parquet=78719"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "FUND_TRACKING_INDEX_MAPPING",
+   "title": "基金跟踪指数映射",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "9999",
+    "api": "get_extras / finance.run_query"
+   },
+   "lineage": "JQ_OFFICIAL_RAW",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+     "exists": true,
+     "n_parquet": 27218,
+     "kind": "RAW",
+     "pit_rule": "净值 T+1 可见（unit_net_value: PIT_DELAYED_1D）"
+    },
+    "CLEAN": {
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\fund_tracking_index_mapping",
+     "exists": true,
+     "n_parquet": 3,
+     "kind": "CLEAN",
+     "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "asof": "2026-09-24"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "daily_bar",
+    "admission_stage": "PRE_INGESTION_ONLY"
+   },
+   "dictionary": {
+    "pit_tags": {
+     "id": "05_pit_field_dictionary",
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+     "exists": true,
+     "sha256_16": "021c38f42fb4cdd4"
+    }
+   },
+   "fields": {
+    "naming_note": "traced_index_code",
+    "standard_required": [
+     "code",
+     "day",
+     "unit_net_value",
+     "acc_net_value"
+    ]
+   },
+   "scope": {
+    "download_range": "2014 → asof",
+    "exclusions": "FUND_NET_VALUE 整表 5000 静默禁止",
+    "increment_rule": "get_extras(unit)+get_extras(acc) 批量，batch_size=5",
+    "cursor": "CLEAN.FUND_NAV_TIP / cleaning_asof"
+   },
+   "relations": {
+    "upstream": [
+     "P4_fund_etf"
+    ],
+    "downstream": [
+     "CACHE: FUND_NAV_PIT_R1"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "NAV 增量 13775 parquet + sidecar（20260713–20260924，1814 实测）"
+    ],
+    "observed": [
+     "RAW n_parquet=27218"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "FACTOR_260_DICTIONARY",
+   "title": "聚宽 260 因子字典（清单/语义/公式）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv",
+     "sha256_16": "01e03d12c044ca29"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "dictionary": {
+    "self": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv"
+   },
+   "fields": {
+    "standard_required": [
+     "canonical_factor_name"
+    ]
+   },
+   "scope": {
+    "download_range": "字典 only（不含因子值）",
+    "exclusions": "因子值 API = KG10 paid_module",
+    "increment_rule": "字典随规则库版本发布",
+    "cursor": "rule_library CURRENT"
+   },
+   "relations": {
+    "downstream": [
+     "FACTOR_VALUE（未下载）",
+     "引擎 factor gates"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "字典准入（ADMIT_DICTIONARY_ONLY）"
+    ],
+    "conflict": [
+     "字典可用 ≠ 因子值可用"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "FACTOR_260_SEMANTICS",
+   "title": "因子字段语义",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_field_semantics_CURRENT.csv",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_field_semantics_CURRENT.csv",
+     "sha256_16": "766ca94efe551233"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "dictionary": {
+    "self": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_field_semantics_CURRENT.csv"
+   },
+   "fields": {
+    "standard_required": [
+     "canonical_factor_name"
+    ]
+   },
+   "scope": {
+    "download_range": "字典 only（不含因子值）",
+    "exclusions": "因子值 API = KG10 paid_module",
+    "increment_rule": "字典随规则库版本发布",
+    "cursor": "rule_library CURRENT"
+   },
+   "relations": {
+    "downstream": [
+     "FACTOR_VALUE（未下载）",
+     "引擎 factor gates"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "字典准入（ADMIT_DICTIONARY_ONLY）"
+    ],
+    "conflict": [
+     "字典可用 ≠ 因子值可用"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "FACTOR_260_FORMULA",
+   "title": "因子公式",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_formula_CURRENT.csv",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_formula_CURRENT.csv",
+     "sha256_16": "72d0a861e3fb71ae"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "dictionary": {
+    "self": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_formula_CURRENT.csv"
+   },
+   "fields": {
+    "standard_required": [
+     "canonical_factor_name"
+    ]
+   },
+   "scope": {
+    "download_range": "字典 only（不含因子值）",
+    "exclusions": "因子值 API = KG10 paid_module",
+    "increment_rule": "字典随规则库版本发布",
+    "cursor": "rule_library CURRENT"
+   },
+   "relations": {
+    "downstream": [
+     "FACTOR_VALUE（未下载）",
+     "引擎 factor gates"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "字典准入（ADMIT_DICTIONARY_ONLY）"
+    ],
+    "conflict": [
+     "字典可用 ≠ 因子值可用"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "FACTOR_260_PIT_RULES",
+   "title": "因子 PIT 规则",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_pit_rules_CURRENT.json",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_pit_rules_CURRENT.json",
+     "sha256_16": "84daa233b08ae51e"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "dictionary": {
+    "self": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_pit_rules_CURRENT.json"
+   },
+   "fields": {
+    "standard_required": [
+     "canonical_factor_name"
+    ]
+   },
+   "scope": {
+    "download_range": "字典 only（不含因子值）",
+    "exclusions": "因子值 API = KG10 paid_module",
+    "increment_rule": "字典随规则库版本发布",
+    "cursor": "rule_library CURRENT"
+   },
+   "relations": {
+    "downstream": [
+     "FACTOR_VALUE（未下载）",
+     "引擎 factor gates"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "字典准入（ADMIT_DICTIONARY_ONLY）"
+    ],
+    "conflict": [
+     "字典可用 ≠ 因子值可用"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "FACTOR_260_CLEANING_RULES",
+   "title": "因子清洗规则（未激活）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_cleaning_rules_CURRENT.json",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_cleaning_rules_CURRENT.json",
+     "sha256_16": "3259850a37b3431c"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "dictionary": {
+    "self": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_cleaning_rules_CURRENT.json"
+   },
+   "fields": {
+    "standard_required": [
+     "canonical_factor_name"
+    ]
+   },
+   "scope": {
+    "download_range": "字典 only（不含因子值）",
+    "exclusions": "因子值 API = KG10 paid_module",
+    "increment_rule": "字典随规则库版本发布",
+    "cursor": "rule_library CURRENT"
+   },
+   "relations": {
+    "downstream": [
+     "FACTOR_VALUE（未下载）",
+     "引擎 factor gates"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "字典准入（ADMIT_DICTIONARY_ONLY）"
+    ],
+    "conflict": [
+     "字典可用 ≠ 因子值可用"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "FACTOR_260_ENGINE_MAPPING",
+   "title": "因子 → 引擎字段映射",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData 字典副本",
+    "auth": "无（静态文件）",
+    "api": null
+   },
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "layers": {
+    "FACTOR_DICTIONARY": {
+     "root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_engine_mapping_CURRENT.csv",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "DICTIONARY",
+     "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_engine_mapping_CURRENT.csv",
+     "sha256_16": "a34f0f67581fa998"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "factor_dictionary",
+    "admission_status": "ADMIT_DICTIONARY_ONLY",
+    "factor_value_download_forbidden": true,
+    "factor_cleaning_not_active": true
+   },
+   "dictionary": {
+    "self": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_engine_mapping_CURRENT.csv"
+   },
+   "fields": {
+    "standard_required": [
+     "canonical_factor_name"
+    ]
+   },
+   "scope": {
+    "download_range": "字典 only（不含因子值）",
+    "exclusions": "因子值 API = KG10 paid_module",
+    "increment_rule": "字典随规则库版本发布",
+    "cursor": "rule_library CURRENT"
+   },
+   "relations": {
+    "downstream": [
+     "FACTOR_VALUE（未下载）",
+     "引擎 factor gates"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "字典准入（ADMIT_DICTIONARY_ONLY）"
+    ],
+    "conflict": [
+     "字典可用 ≠ 因子值可用"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "FACTOR_VALUE",
+   "title": "因子值（260）",
+   "supplier": "JQData",
+   "source_identity": {
+    "vendor": "JQData",
+    "auth": "get_factor_values 付费模块",
+    "api": "get_factor_values"
+   },
+   "lineage": "NOT_DOWNLOADED_BY_POLICY",
+   "layers": {
+    "FACTOR_VALUE": {
+     "kind": "VALUE",
+     "status": "NOT_MATERIALIZED_BY_RULE"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": "factor_pit_rules",
+    "admission_status": "BLOCKED_BY_POLICY",
+    "reason": "DATA_INGESTION_GATE_RULES_R1.policies.factor_value_download_forbidden=true"
+   },
+   "dictionary": {
+    "factor_dictionary": "FACTOR_260_DICTIONARY"
+   },
+   "fields": {},
+   "scope": {
+    "download_range": "无",
+    "exclusions": "KG10",
+    "increment_rule": "不适用（策略禁止）"
+   },
+   "relations": {
+    "upstream": [
+     "FACTOR_260_DICTIONARY"
+    ]
+   },
+   "status": {
+    "observed": [
+     "规则层显式禁止"
+    ],
+    "unknown": [
+     "若未来解禁需权限重探"
+    ],
+    "conflict": [
+     "不得把字典准入当因子值可用"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "STRATEGY_OUTPUT",
+   "title": "策略/研究输出（非数据底座）",
+   "supplier": "BLACKBOX_INTERNAL",
+   "source_identity": {
+    "vendor": "内部研究",
+    "auth": "本地",
+    "api": null
+   },
+   "lineage": "INTERNAL_RESEARCH_OUTPUT",
+   "layers": {
+    "STRATEGY_OUTPUT": {
+     "root": "E:\\BLACKBOX\\研究系统\\CURRENT",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "STRATEGY_OUTPUT",
+     "note": "指针层；不在本轮扫描/不作为底座"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUT_OF_DATA_FOUNDATION"
+   },
+   "dictionary": {},
+   "fields": {},
+   "scope": {
+    "download_range": "不适用",
+    "exclusions": "策略/PnL 不作底座前置",
+    "increment_rule": "研究流程"
+   },
+   "relations": {
+    "upstream": [
+     "CACHE",
+     "EVIDENCE"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "本轮不评估"
+    ],
+    "conflict": [
+     "策略经验 ≠ 底层规则"
+    ]
+   },
+   "evidence": []
+  },
+  {
+   "dataset_id": "TS_CBOND_R1",
+   "title": "途施可转债原始 R1",
+   "supplier": "Tushare",
+   "source_identity": {
+    "vendor": "Tushare",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "lineage": "EXTERNAL_TUSHARE",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R1",
+     "exists": true,
+     "n_parquet": 1279,
+     "kind": "RAW"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "KG06 在 JQ 侧 out_of_scope；本目录为 Tushare 供应商序列，不套 JQ 命名"
+   },
+   "dictionary": {
+    "own_contract": "该供应商自有字段字典/README，不得套 20_freeze 聚宽契约"
+   },
+   "fields": {
+    "what": "可转债基础/条款/日线/发行/利率/份额（多窗口 receipt 序列）"
+   },
+   "scope": {
+    "download_range": "见各自目录",
+    "exclusions": "不硬套聚宽规则",
+    "increment_rule": "供应商 own-contract",
+    "cursor": "见各自 receipt/lock"
+   },
+   "relations": {
+    "downstream": [
+     "EVIDENCE / RESEARCH"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录与 receipt 结构存在（1814 有界核查）"
+    ],
+    "observed": [
+     "n_parquet=1279"
+    ],
+    "unknown": [
+     "字段级与周期完整性未核"
+    ],
+    "conflict": [
+     "不得混血统"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "TS_CBOND_R2",
+   "title": "途施可转债原始 R2",
+   "supplier": "Tushare",
+   "source_identity": {
+    "vendor": "Tushare",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "lineage": "EXTERNAL_TUSHARE",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R2",
+     "exists": true,
+     "n_parquet": 1371,
+     "kind": "RAW"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "R1 续跑批；同一供应商序列，不重复计为新来源"
+   },
+   "dictionary": {
+    "own_contract": "该供应商自有字段字典/README，不得套 20_freeze 聚宽契约"
+   },
+   "fields": {
+    "what": "call/rating/share/top10 holders（carryin 续跑）"
+   },
+   "scope": {
+    "download_range": "见各自目录",
+    "exclusions": "不硬套聚宽规则",
+    "increment_rule": "供应商 own-contract",
+    "cursor": "见各自 receipt/lock"
+   },
+   "relations": {
+    "downstream": [
+     "EVIDENCE / RESEARCH"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录与 receipt 结构存在（1814 有界核查）"
+    ],
+    "observed": [
+     "n_parquet=1371"
+    ],
+    "unknown": [
+     "字段级与周期完整性未核"
+    ],
+    "conflict": [
+     "不得混血统"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "EXTERNAL_DICT_EVIDENCE",
+   "title": "外部字典证据（朋友 JQData 字典 + Tushare patch）",
+   "supplier": "Friend_JQData/Tushare",
+   "source_identity": {
+    "vendor": "Friend_JQData/Tushare",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "lineage": "EXTERNAL_FRIEND_JQDATA_TUSHARE",
+   "layers": {
+    "EVIDENCE": {
+     "root": "E:\\BLACKBOX\\数据\\外部补充只读",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "EVIDENCE"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "仅字典置信度补充，不含值数据"
+   },
+   "dictionary": {
+    "own_contract": "该供应商自有字段字典/README，不得套 20_freeze 聚宽契约"
+   },
+   "fields": {
+    "what": "字典交叉核验 / 冲突复核"
+   },
+   "scope": {
+    "download_range": "见各自目录",
+    "exclusions": "不硬套聚宽规则",
+    "increment_rule": "供应商 own-contract",
+    "cursor": "见各自 receipt/lock"
+   },
+   "relations": {
+    "downstream": [
+     "EVIDENCE / RESEARCH"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录与 receipt 结构存在（1814 有界核查）"
+    ],
+    "observed": [
+     "n_parquet=0"
+    ],
+    "unknown": [
+     "字段级与周期完整性未核"
+    ],
+    "conflict": [
+     "不得混血统"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "EXTERNAL_EVIDENCE_PLANE",
+   "title": "外部证据平面（CANONICAL/COMPANY_PRIMARY/EXCHANGE…）",
+   "supplier": "MULTI_EXTERNAL",
+   "source_identity": {
+    "vendor": "MULTI_EXTERNAL",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "lineage": "EXTERNAL_MULTI_EXTERNAL",
+   "layers": {
+    "EVIDENCE": {
+     "root": "E:\\BLACKBOX\\数据\\外部证据",
+     "exists": true,
+     "n_parquet": 10726,
+     "kind": "EVIDENCE"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "独立证据平面，不是 26 域 RAW 清洗输入"
+   },
+   "dictionary": {
+    "own_contract": "该供应商自有字段字典/README，不得套 20_freeze 聚宽契约"
+   },
+   "fields": {
+    "what": "研究证据产品（每产品 PRODUCT_META）"
+   },
+   "scope": {
+    "download_range": "见各自目录",
+    "exclusions": "不硬套聚宽规则",
+    "increment_rule": "供应商 own-contract",
+    "cursor": "见各自 receipt/lock"
+   },
+   "relations": {
+    "downstream": [
+     "EVIDENCE / RESEARCH"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录与 receipt 结构存在（1814 有界核查）"
+    ],
+    "observed": [
+     "n_parquet=10726"
+    ],
+    "unknown": [
+     "字段级与周期完整性未核"
+    ],
+    "conflict": [
+     "不得混血统"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "US_MARKET",
+   "title": "美股研究旁路",
+   "supplier": "EXTERNAL",
+   "source_identity": {
+    "vendor": "EXTERNAL",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "lineage": "EXTERNAL_EXTERNAL",
+   "layers": {
+    "EVIDENCE": {
+     "root": "E:\\BLACKBOX\\数据\\美国市场",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "EVIDENCE"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "KG02 美股 out_of_scope；仅研究旁路"
+   },
+   "dictionary": {
+    "own_contract": "该供应商自有字段字典/README，不得套 20_freeze 聚宽契约"
+   },
+   "fields": {
+    "what": "美股日频/新闻/细粒度利润池"
+   },
+   "scope": {
+    "download_range": "见各自目录",
+    "exclusions": "不硬套聚宽规则",
+    "increment_rule": "供应商 own-contract",
+    "cursor": "见各自 receipt/lock"
+   },
+   "relations": {
+    "downstream": [
+     "EVIDENCE / RESEARCH"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录与 receipt 结构存在（1814 有界核查）"
+    ],
+    "observed": [
+     "n_parquet=0"
+    ],
+    "unknown": [
+     "字段级与周期完整性未核"
+    ],
+    "conflict": [
+     "不得混血统"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "TUSHARE_INDEX_WEIGHT_ADAPTER",
+   "title": "Tushare 指数权重适配器锁",
+   "supplier": "Tushare",
+   "source_identity": {
+    "vendor": "Tushare",
+    "auth": "该供应商自有",
+    "api": null
+   },
+   "lineage": "EXTERNAL_TUSHARE",
+   "layers": {
+    "EVIDENCE": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\19_tushare_index_weight_adapter_lock",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "EVIDENCE"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "OUTSIDE_JQ_FOUNDATION",
+    "note": "与 JQ index_weights 血统不同，不得混用"
+   },
+   "dictionary": {
+    "own_contract": "该供应商自有字段字典/README，不得套 20_freeze 聚宽契约"
+   },
+   "fields": {
+    "what": "外源指数权重适配（适配器锁，非值数据）"
+   },
+   "scope": {
+    "download_range": "见各自目录",
+    "exclusions": "不硬套聚宽规则",
+    "increment_rule": "供应商 own-contract",
+    "cursor": "见各自 receipt/lock"
+   },
+   "relations": {
+    "downstream": [
+     "EVIDENCE / RESEARCH"
+    ]
+   },
+   "status": {
+    "accepted": [
+     "目录与 receipt 结构存在（1814 有界核查）"
+    ],
+    "observed": [
+     "n_parquet=0"
+    ],
+    "unknown": [
+     "字段级与周期完整性未核"
+    ],
+    "conflict": [
+     "不得混血统"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "LEGACY_JQ_RAW_CN",
+   "title": "旧中文分类聚宽 RAW（行情/财务/ETF/因子/行业）",
+   "supplier": "VARIOUS",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "lineage": "LEGACY_PRE_BASELINE_RAW_CLASSIFICATION",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读",
+     "exists": true,
+     "n_parquet": 363965,
+     "kind": "RAW"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "dictionary": {},
+   "fields": {},
+   "scope": {
+    "download_range": "n/a",
+    "exclusions": "26 域正式清单对应 P0-P9 平面；旧分类不作正式输入",
+    "increment_rule": "n/a"
+   },
+   "relations": {},
+   "status": {
+    "observed": [
+     "exists=True"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "EXPERIMENTAL_WINDOW_RAW",
+   "title": "2026-03-25..05-01 独立窗口 RAW",
+   "supplier": "VARIOUS",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "lineage": "HISTORICAL_EXPERIMENTAL_WINDOW_DO_NOT_USE_AS_MASTER",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_WINDOW_FULL_RAW_20260325_20260501",
+     "exists": true,
+     "n_parquet": 0,
+     "kind": "RAW"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "dictionary": {},
+   "fields": {},
+   "scope": {
+    "download_range": "n/a",
+    "exclusions": "自带 EXPERIMENTAL_TRIAL_DATA_DO_NOT_USE_AS_MASTER.txt；仅字段证据",
+    "increment_rule": "n/a"
+   },
+   "relations": {},
+   "status": {
+    "observed": [
+     "exists=True"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "STRATEGY_DATA_PLANE_ADDITIONS",
+   "title": "策略数据平面增量（17 产品）",
+   "supplier": "VARIOUS",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "lineage": "FORMAL_POST_BASELINE_INHERITANCE",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions",
+     "exists": true,
+     "n_parquet": 2013,
+     "kind": "RAW"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "dictionary": {},
+   "fields": {},
+   "scope": {
+    "download_range": "n/a",
+    "exclusions": "自带 REL/MANIFEST/COVERAGE/PROVENANCE/CHECKSUMS 发布结构",
+    "increment_rule": "n/a"
+   },
+   "relations": {},
+   "status": {
+    "observed": [
+     "exists=True"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "FORENSIC_CANARY",
+   "title": "取证金丝雀 / 接口盘点",
+   "supplier": "VARIOUS",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "lineage": "AUDIT_ONLY_NOT_FOUNDATION",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\_forensic_canary",
+     "exists": true,
+     "n_parquet": 510,
+     "kind": "RAW"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "dictionary": {},
+   "fields": {},
+   "scope": {
+    "download_range": "n/a",
+    "increment_rule": "n/a"
+   },
+   "relations": {},
+   "status": {
+    "observed": [
+     "exists=True"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "EXPERIMENT_CANARY",
+   "title": "分钟 fq 试验 canary",
+   "supplier": "VARIOUS",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "lineage": "EXPERIMENTAL_NOT_FOUNDATION",
+   "layers": {
+    "RAW": {
+     "root": "E:\\BLACKBOX\\数据\\原始只读\\试验",
+     "exists": true,
+     "n_parquet": 93,
+     "kind": "RAW"
+    }
+   },
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "dictionary": {},
+   "fields": {},
+   "scope": {
+    "download_range": "n/a",
+    "increment_rule": "n/a"
+   },
+   "relations": {},
+   "status": {
+    "observed": [
+     "exists=True"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  },
+  {
+   "dataset_id": "UNDETERMINED_SCOPE",
+   "title": "未在有界范围内出现的来源",
+   "supplier": "VARIOUS",
+   "source_identity": {
+    "vendor": "unknown/mixed",
+    "auth": null,
+    "api": null
+   },
+   "lineage": "UNDETERMINED",
+   "layers": {},
+   "authority_rule": {
+    "engine_data_domain": null,
+    "admission_stage": "NOT_A_FORMAL_INPUT"
+   },
+   "dictionary": {},
+   "fields": {},
+   "scope": {
+    "download_range": "n/a",
+    "exclusions": "保持 UNDETERMINED：不据此宣称数据缺失，也不静默遗漏",
+    "increment_rule": "n/a"
+   },
+   "relations": {},
+   "status": {
+    "observed": [
+     "exists=False"
+    ],
+    "unknown": [
+     "保持 UNDETERMINED：不据此宣称数据缺失，也不静默遗漏"
+    ]
+   },
+   "evidence": [
+    "E:\\BLACKBOX\\_OPS\\SYSTEM_INVENTORY_20261020_2150\\v2\\continue_0010\\correction_0650\\continue_1310\\completion_1814\\POST_BASELINE_SCOPE_SUPPLEMENT_R1.json"
+   ]
+  }
+ ],
+ "counts": {
+  "n_datasets": 54,
+  "by_supplier": {
+   "BLACKBOX_INTERNAL": 1,
+   "EXTERNAL": 1,
+   "Friend_JQData/Tushare": 1,
+   "JQData": 41,
+   "MULTI_EXTERNAL": 1,
+   "Tushare": 3,
+   "VARIOUS": 6
+  },
+  "by_layer_present": {
+   "RAW": 41,
+   "CLEAN": 33,
+   "CACHE": 11,
+   "FACTOR_DICTIONARY": 6,
+   "FACTOR_VALUE": 1,
+   "STRATEGY_OUTPUT": 1,
+   "EVIDENCE": 4
+  }
+ }
+}
