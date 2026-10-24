@@ -1,0 +1,85 @@
+{
+ "round": "R03_OF_10",
+ "round_id": "BLACKBOX_FOUNDATION_R03_OF_10_RUNTIME_PROVIDER_CORRECTNESS",
+ "budget_slot": "3/10",
+ "budget_remaining_after_delivery": 7,
+ "remaining_cycles_before_this_task": 8,
+ "visible_predecessor": "BLACKBOX_FOUNDATION_20261024_R01",
+ "r02_completion_evidence": "NOT_OBSERVED_IN_HUB",
+ "source_tip": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R03_OF_10_RUNTIME_PROVIDER_CORRECTNESS_20261024_1424.md",
+ "independent_review": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R01_REVIEW_20261024_1424/REVIEW_R01.md",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "production_write": false,
+ "formal_backtest_active": false,
+ "engine_core_active": false,
+ "runtime": {
+  "executable": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+  "python": "3.12.10",
+  "pandas": "2.3.3",
+  "pyarrow": "21.0.0",
+  "numpy": "2.5.4",
+  "lock": "runtime/REQUIREMENTS_LOCK.txt",
+  "network_used_only_for": "package installation into the isolated venv"
+ },
+ "actual_execution": {
+  "conformance_suite": {"checks": 10, "passed": 10, "failed": 0, "result_file": "TEST_RESULTS.json"},
+  "registry_build": {"datasets": 54, "observed_coverage": 9, "validator": "OK",
+                     "file": "ECOLOGY_REGISTRY_R3.json"},
+  "structure_build": {"nodes": 16, "edges": 13, "missing_paths": [], "file": "SYSTEM_STRUCTURE.json"},
+  "real_data_reads": [
+   {"request": "000001.XSHE daily 2026-06-01..2026-06-30", "rows": 21, "status": "OK",
+    "expected_from_calendar": 21, "files_loaded": 38, "duplicates_resolved": 13},
+   {"request": "000001.XSHE 1m 2026-09-11 09:30..09:45", "rows": 10, "status": "OK",
+    "last_bar": "2026-09-11 09:40:00", "excluded_after_cutoff": 3},
+   {"request": "000001.XSHE ex-rights asof 2026-01-10", "admitted": 1, "withheld": 1}
+  ],
+  "engine_contract": {"base_file": "bullet_trade/data/providers/base.py",
+                      "isinstance": true, "leaf_import": true,
+                      "engine_core_activated": false}
+ },
+ "fixed_defects": [
+  "build timestamp was treated as coverage",
+  "silent file-read exception and budget overflow returned OK",
+  "pre/post adjustment accepted without adjustment",
+  "request time reduced to a date; knowable-time rule was only a string",
+  "revision merge depended on iteration order (day files before year files)",
+  "all securities routed to the stock plane",
+  "single all-null check instead of field-level admission",
+  "universal 2014 start / global as-of cursor in registry scope",
+  "family-level version de-duplication dropped complementary segments (10 vs 22 rows)"
+ ],
+ "unresolved_edges": [
+  {"id": "FACTORY_BRANCH", "detail": "data/api.py::_create_provider has no local-value branch; adapter not engine-selectable"},
+  {"id": "ADJUSTMENT", "detail": "pre/post unimplemented; batch segments carry factor=null; engine default fq=pre cannot be served"},
+  {"id": "INCREMENT_CURSOR", "detail": "scope.increment_cursor is null for every dataset"},
+  {"id": "FULL_ENGINE_RUN", "detail": "only the leaf contract and DataFrame layout verified; core stays inactive"},
+  {"id": "CACHE_AND_FACTOR_VALUE", "detail": "cache release and factor value plane not bound to this reader"}
+ ],
+ "next_minimal_step": {
+  "engine_integration": "add one read-only provider branch behind an explicit config switch (default unchanged) and prove it through data/api.py::get_price in an isolated unit test without activating the core",
+  "real_incremental_update": "derive one per-dataset cursor from the observed stock-daily watermark, then run a single-day bounded append into a candidate release; never write sealed/CURRENT"
+ },
+ "artifacts": [
+  "candidate/r3/__init__.py",
+  "candidate/r3/errors.py",
+  "candidate/r3/file_index.py",
+  "candidate/r3/securities.py",
+  "candidate/r3/provider.py",
+  "candidate/r3/engine_adapter.py",
+  "build_registry_r3.py",
+  "eco_query_r3.py",
+  "build_system_structure.py",
+  "tests/test_conformance_r3.py",
+  "ECOLOGY_REGISTRY_R3.json",
+  "ECOLOGY_REGISTRY_R3_INDEX.json",
+  "runtime/REQUIREMENTS_LOCK.txt",
+  "RUNTIME_COMMAND.md",
+  "TEST_RESULTS.json",
+  "SYSTEM_STRUCTURE.json",
+  "DELTA_REPORT.md",
+  "ROUND_STATUS.json"
+ ],
+ "language": "en",
+ "upload_target": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R03/"
+}
