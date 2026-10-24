@@ -1,0 +1,376 @@
+{
+ "suite": "BLACKBOX_FOUNDATION_R03_CONFORMANCE",
+ "round": "R03_OF_10",
+ "budget_slot": "3/10",
+ "generated_at": "2026-10-24T14:46:21",
+ "runtime": {
+  "executable": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+  "python": "3.12.10",
+  "pandas": "2.3.3",
+  "pyarrow": "21.0.0"
+ },
+ "counts": {
+  "checks": 10,
+  "passed": 10,
+  "failed": 0
+ },
+ "checks": [
+  {
+   "id": "1_build_stamp_not_coverage",
+   "name": "Build timestamp is not coverage",
+   "status": "PASS",
+   "detail": {
+    "status": "OK",
+    "rows": 2,
+    "dates": [
+     "2026-01-12",
+     "2026-01-13"
+    ],
+    "loaded_files": [
+     "stock_daily__day_20260112__none_adj__v1__20260613_130000.parquet",
+     "stock_daily__day_20260113__none_adj__v1__20260613_130000.parquet"
+    ],
+    "any_2014_file_loaded": false,
+    "closes": [
+     4.0,
+     4.1
+    ],
+    "expectation": "a 2014-coverage file built in 2026 must not satisfy a 2026 request"
+   }
+  },
+  {
+   "id": "2_read_failure_and_budget",
+   "name": "Read failure and budget overflow cannot be complete OK",
+   "status": "PASS",
+   "detail": {
+    "unreadable_case": {
+     "status": "PARTIAL",
+     "reasons": [
+      "SOURCE_FILE_UNREADABLE"
+     ],
+     "unreadable_files": [
+      "stock_daily__corrupt__day_20260107__v1__20260613_120000.parquet"
+     ],
+     "rows": 3
+    },
+    "budget_case": {
+     "status": "PARTIAL",
+     "reasons": [
+      "FILE_BUDGET_EXCEEDED",
+      "COVERAGE_INCOMPLETE"
+     ],
+     "budget_skipped": [
+      "stock_daily__day_20260113__none_adj__v1__20260613_130000.parquet",
+      "stock_daily__batch_0__2026__none_adj__v1__20260613_090000.parquet"
+     ],
+     "rows": 1
+    },
+    "expectation": "neither a read exception nor a file budget overflow may return complete OK"
+   }
+  },
+  {
+   "id": "3_time_filters",
+   "name": "Intraday cutoff and as-of knowledge gate",
+   "status": "PASS",
+   "detail": {
+    "intraday": {
+     "status": "OK",
+     "rows": 10,
+     "first": "2026-09-11 09:31:00",
+     "last": "2026-09-11 09:40:00",
+     "excluded_after_cutoff": 3
+    },
+    "events_without_asof": {
+     "rows": 2,
+     "knowable_at": [
+      "announce_date",
+      "UNPROVEN_NO_ANNOUNCEMENT"
+     ]
+    },
+    "events_with_asof": {
+     "rows": 1,
+     "withheld": 1,
+     "announce_dates": [
+      "2026-01-02"
+     ]
+    },
+    "expectation": "later bars are excluded; an event with no announcement cannot pass an as-of gate"
+   }
+  },
+  {
+   "id": "4_adjustment_rejected",
+   "name": "Adjusted modes rejected, RAW_NONE identity preserved",
+   "status": "PASS",
+   "detail": {
+    "fq_pre": {
+     "status": "REJECTED",
+     "reason": "ADJUST_MODE_UNEVIDENCED"
+    },
+    "fq_post": {
+     "status": "REJECTED",
+     "reason": "ADJUST_MODE_UNEVIDENCED"
+    },
+    "fq_none": {
+     "status": "OK",
+     "closes": [
+      4.0,
+      4.1
+     ]
+    },
+    "factor_request": {
+     "status": "OK",
+     "null_fields": [
+      "factor"
+     ],
+     "admission": {
+      "null_ratio": 1.0,
+      "admitted": false,
+      "required": false
+     }
+    },
+    "expectation": "pre/post are rejected (no evidenced conversion); RAW_NONE is returned unchanged; a requested factor that the segment lacks is reported null, never substituted with 1.0"
+   }
+  },
+  {
+   "id": "5_revisions_and_shuffle",
+   "name": "Deterministic revision merge with exposed conflicts",
+   "status": "PASS",
+   "detail": {
+    "status": "PARTIAL",
+    "reasons": [
+     "SOURCE_FILE_UNREADABLE",
+     "REVISION_CONFLICT"
+    ],
+    "rows": 3,
+    "closes": [
+     [
+      "2026-01-05",
+      2.5
+     ],
+     [
+      "2026-01-06",
+      8.0
+     ],
+     [
+      "2026-01-07",
+      2.0
+     ]
+    ],
+    "conflicts": [
+     {
+      "code": "000001.XSHE",
+      "ts": "2026-01-06 00:00:00",
+      "fields": {
+       "close": [
+        "8.0",
+        "9.0"
+       ]
+      },
+      "sources": [
+       "stock_daily__conflict_a__day_20260106__v1__20260613_110000.parquet",
+       "stock_daily__conflict_b__day_20260106__v1__20260613_110000.parquet"
+      ]
+     }
+    ],
+    "duplicates_resolved": 3,
+    "shuffle_identical": true,
+    "expectation": "day file outranks year batch; equal-rank disagreements are exposed as conflicts; reversed enumeration yields an identical frame"
+   }
+  },
+  {
+   "id": "6_routing",
+   "name": "Asset-class routing and explicit failures",
+   "status": "PASS",
+   "detail": {
+    "etf": {
+     "status": "OK",
+     "dataset": "PRICE_ETF_DAILY",
+     "rows": 1
+    },
+    "index": {
+     "status": "OK",
+     "dataset": "PRICE_INDEX_DAILY",
+     "rows": 1
+    },
+    "futures": {
+     "status": "REJECTED",
+     "reason": "ASSET_CLASS_UNSUPPORTED"
+    },
+    "mixed": {
+     "status": "REJECTED",
+     "reason": "MIXED_ASSET_CLASS"
+    },
+    "unknown_code": {
+     "status": "REJECTED",
+     "reason": "CODE_NOT_IN_SECURITY_MASTER"
+    },
+    "expectation": "stock/ETF/index resolve to their own datasets; futures, mixed and unknown codes fail explicitly"
+   }
+  },
+  {
+   "id": "7_engine_contract",
+   "name": "Engine DataProvider conformance in the dedicated runtime",
+   "status": "PASS",
+   "detail": {
+    "isinstance_engine_base": true,
+    "dataframe_type": "DataFrame",
+    "index_type": "DatetimeIndex",
+    "columns": [
+     "open",
+     "close",
+     "volume"
+    ],
+    "rows": 2,
+    "attrs_status": "OK",
+    "panel_false_columns": [
+     "time",
+     "code",
+     "close"
+    ],
+    "multiindex_panel": true,
+    "trade_days": [
+     "2026-01-05",
+     "2026-01-06",
+     "2026-01-07",
+     "2026-01-12",
+     "2026-01-13"
+    ],
+    "index_members": [
+     "000001.XSHE",
+     "000002.XSHE"
+    ],
+    "security_master_rows": 2,
+    "event_keys": [
+     "announce_date",
+     "bonus_pre_tax",
+     "date",
+     "knowable_at",
+     "per_base",
+     "raw_ratios",
+     "scale_factor",
+     "security",
+     "security_type"
+    ],
+    "event_scale_factor": 1.0,
+    "rejections": {
+     "fq_pre": "ADJUST_MODE_UNEVIDENCED",
+     "prefer_engine": "ENGINE_FALLBACK_UNAVAILABLE",
+     "intraday_count": "INTRADAY_COUNT_UNSUPPORTED",
+     "fill_paused_unevidenced": "FILL_PAUSED_EVIDENCE_MISSING"
+    },
+    "engine_base_file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\providers\\base.py",
+    "expectation": "real DataProvider subclass; engine layouts; every declared parameter honoured or explicitly rejected"
+   }
+  },
+  {
+   "id": "8_reconcile_row_counts",
+   "name": "Reconcile R01's 22 and SMOKE_RESULTS' 10",
+   "status": "PASS",
+   "detail": {
+    "canonical_rows": 21,
+    "canonical_status": "OK",
+    "calendar_trade_days_in_window": 21,
+    "expected_rows_derived": 21,
+    "returned_dates": [
+     "2026-06-01",
+     "2026-06-02",
+     "2026-06-03",
+     "2026-06-04",
+     "2026-06-05",
+     "2026-06-08",
+     "2026-06-09",
+     "2026-06-10",
+     "2026-06-11",
+     "2026-06-12",
+     "2026-06-15",
+     "2026-06-16",
+     "2026-06-17",
+     "2026-06-18",
+     "2026-06-22",
+     "2026-06-23",
+     "2026-06-24",
+     "2026-06-25",
+     "2026-06-26",
+     "2026-06-29",
+     "2026-06-30"
+    ],
+    "coverage": {
+     "requested": [
+      "2026-06-01",
+      "2026-06-30"
+     ],
+     "dataset_observed": [
+      "2014-01-02",
+      "2026-09-24"
+     ],
+     "expected_trade_days": {
+      "000001.XSHE": 21
+     },
+     "returned_dates": {
+      "000001.XSHE": 21
+     },
+     "missing_dates_per_code": {},
+     "proven": true,
+     "missing_reason": null
+    },
+    "file_accounting": {
+     "selected": 38,
+     "attempted": 38,
+     "loaded": 38,
+     "truncated_rows": 0
+    },
+    "r01_report_claim": 22,
+    "r01_smoke_results_row_count": 10,
+    "resolution": "R01 hand-written 22 is unsupported (the calendar-derived expectation is 21); the 10-row smoke result came from family-level version de-duplication that kept only the newest build and dropped complementary segments. Coverage-aware selection plus day-level de-duplication yields 21, matching the calendar and the security listing window.",
+    "expectation": "rows must equal the calendar-derived expectation, not a literal count"
+   }
+  },
+  {
+   "id": "9_real_engine_bounded",
+   "name": "Bounded real-data adapter request",
+   "status": "PASS",
+   "detail": {
+    "rows": 3,
+    "index_type": "DatetimeIndex",
+    "columns": [
+     "open",
+     "close",
+     "high",
+     "low",
+     "volume",
+     "money"
+    ],
+    "status": "OK",
+    "dataset": "PRICE_STOCK_DAILY",
+    "coverage_proven": true,
+    "expectation": "a bounded real request passes through the adapter with the engine layout and retained provenance"
+   }
+  },
+  {
+   "id": "10_registry_scope",
+   "name": "Per-dataset observed coverage, undefined ranges preserved",
+   "status": "PASS",
+   "detail": {
+    "daily_coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "daily_observed": [
+     "2014-01-02",
+     "2026-09-24"
+    ],
+    "daily_declared_range": null,
+    "daily_increment_cursor": null,
+    "unobserved_dataset_scope": {
+     "coverage_basis": "NOT_OBSERVED_THIS_CYCLE",
+     "observed_start": null,
+     "observed_end": null,
+     "declared_range": null,
+     "scope_undefined": true,
+     "increment_cursor": null,
+     "note": "No universal 2014 start and no global as-of cursor is assumed here. An updater must read the observed watermark once it exists; until then the range stays explicitly undefined."
+    },
+    "n_datasets": 54,
+    "n_observed": 9,
+    "expectation": "per-dataset observed coverage replaces universal 2014/as-of constants; unobserved ranges stay explicitly undefined"
+   }
+  }
+ ]
+}
