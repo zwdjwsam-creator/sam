@@ -1,0 +1,173 @@
+{
+ "schema": "R10_REWORK_COMMAND_AND_EXIT_LEDGER_1",
+ "round": "R10/10 remediation (NOT R11)",
+ "executor": "ZHANGWEI",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONDONTWRITEBYTECODE": "1",
+  "PYTHONUTF8": "1"
+ },
+ "capture_method": "PowerShell Start-Process -RedirectStandardOutput/-RedirectStandardError; raw bytes, no re-encoding, no newline rewriting; stderr captured separately",
+ "entries": [
+  {
+   "step": "CMD1_update_plan_stock_raw",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\operating_entry\\blackbox_operate_r10.py",
+    "update-plan",
+    "--product",
+    "STOCK_DAILY_RAW_PIT_R1"
+   ],
+   "literal_command_line": "reviews\\R10\\operating_entry\\blackbox_operate_r10.py update-plan --product STOCK_DAILY_RAW_PIT_R1",
+   "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+   "started_at_cn": "2026-10-24T22:59:53.6678764+08:00",
+   "ended_at_cn": "2026-10-24T22:59:54.6880451+08:00",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "exit_code": 0,
+   "stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD1_update_plan_stock_raw.stdout.bin",
+    "bytes": 8754,
+    "sha256": "fb22db29c82172035135850b9010312e58a4aeff7333c2e96dd93fb6672c99da",
+    "bom": false,
+    "crlf_count": 1,
+    "lf_count": 1,
+    "encoding": "UTF-8 without BOM",
+    "rewritten": false
+   },
+   "stderr": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD1_update_plan_stock_raw.stderr.bin",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "empty": true
+   },
+   "parsed_status": "CONTRACT_PLAN_ONLY; NO_SUPPLIER_CALL_OR_WRITER",
+   "receipt": null,
+   "rows_returned": 0,
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": null,
+   "real_preflight": "PASS"
+  },
+  {
+   "step": "CMD2_query_2026_ohlcv",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\operating_entry\\blackbox_operate_r10.py",
+    "query",
+    "--product",
+    "STOCK_DAILY_RAW_PIT_R1",
+    "--codes",
+    "000001.XSHE",
+    "--start",
+    "2026-08-28",
+    "--end",
+    "2026-09-02",
+    "--fields",
+    "open,high,low,close,volume,money"
+   ],
+   "literal_command_line": "reviews\\R10\\operating_entry\\blackbox_operate_r10.py query --product STOCK_DAILY_RAW_PIT_R1 --codes 000001.XSHE --start 2026-08-28 --end 2026-09-02 --fields open,high,low,close,volume,money",
+   "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+   "started_at_cn": "2026-10-24T22:59:54.6940501+08:00",
+   "ended_at_cn": "2026-10-24T22:59:55.7044659+08:00",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "exit_code": 0,
+   "stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD2_query_2026_ohlcv.stdout.bin",
+    "bytes": 3961,
+    "sha256": "b030bfcad7c5682cb76a854acbdb4a47c716d607cfe71003e7712b1edba1a71f",
+    "bom": false,
+    "crlf_count": 1,
+    "lf_count": 1,
+    "encoding": "UTF-8 without BOM",
+    "rewritten": false
+   },
+   "stderr": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD2_query_2026_ohlcv.stderr.bin",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "empty": true
+   },
+   "parsed_status": "BOUNDED_OBSERVATIONS_SERVED",
+   "receipt": {
+    "expected_keys": 4,
+    "returned_keys": 4
+   },
+   "rows_returned": 4,
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+   "real_preflight": "PASS"
+  },
+  {
+   "step": "CMD3_query_2025_inherited",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\operating_entry\\blackbox_operate_r10.py",
+    "query",
+    "--product",
+    "STOCK_DAILY_RAW_PIT_R1",
+    "--codes",
+    "000001.XSHE",
+    "--start",
+    "2025-09-22",
+    "--end",
+    "2025-09-24",
+    "--fields",
+    "close"
+   ],
+   "literal_command_line": "reviews\\R10\\operating_entry\\blackbox_operate_r10.py query --product STOCK_DAILY_RAW_PIT_R1 --codes 000001.XSHE --start 2025-09-22 --end 2025-09-24 --fields close",
+   "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+   "started_at_cn": "2026-10-24T22:59:55.7054706+08:00",
+   "ended_at_cn": "2026-10-24T22:59:56.7224481+08:00",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "exit_code": 0,
+   "stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD3_query_2025_inherited.stdout.bin",
+    "bytes": 3509,
+    "sha256": "a5be1e0753718f25054b160a86b37bf1adc7482997dccc9acc7e5787edee5a85",
+    "bom": false,
+    "crlf_count": 1,
+    "lf_count": 1,
+    "encoding": "UTF-8 without BOM",
+    "rewritten": false
+   },
+   "stderr": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD3_query_2025_inherited.stderr.bin",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "empty": true
+   },
+   "parsed_status": "BOUNDED_OBSERVATIONS_SERVED",
+   "receipt": {
+    "expected_keys": 3,
+    "returned_keys": 3
+   },
+   "rows_returned": 3,
+   "SOURCE_ABSENCE_CLAIM_ALLOWED": false,
+   "real_preflight": "PASS"
+  }
+ ],
+ "pin_precheck": {
+  "entry_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\blackbox_operate_r10.py",
+  "entry_sha256": "1b04bb3a373e2a4276563c62c2514905dde49910f69e519e8b3626090ef18ec9",
+  "required_sha256": "1b04bb3a373e2a4276563c62c2514905dde49910f69e519e8b3626090ef18ec9",
+  "entry_match": true,
+  "all_package_files_match": true,
+  "all_four_input_canonical_pins_match": true,
+  "stale_pins_replaced": 0
+ },
+ "notes": [
+  "the three commands were omitted from the previous R10 delivery; this runs them exactly once each",
+  "a success here is a bounded diagnostic receipt, not full-universe, engine or update acceptance",
+  "the second query returned rows from the candidate partition; that is not a CURRENT serving claim"
+ ],
+ "FULL_GOAL_MET": false,
+ "FOUNDATION_ACCEPTANCE": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "FORMAL_ENGINE_ADMISSION": false
+}
