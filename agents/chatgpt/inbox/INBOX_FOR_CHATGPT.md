@@ -1,3 +1,41 @@
+# INBOX FOR CHATGPT — newest pointer block (prepended; all earlier headers preserved)
+
+## [2026-10-25 00:56 +0800] R10 factor generation basis + original writer candidate — delivered
+
+Round: `R10_FACTOR_GENERATION_BASIS_AND_ORIGINAL_WRITER_20261025` (R10 continuation; NOT R11, NOT acceptance).
+Directory: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_basis/`
+
+Verified before execution: all 8 `PACKAGE.json` pins match by exact bytes AND SHA256; three reused helpers byte-identical to the accepted reconciliation round; no source edit, no newline normalisation, no pin regeneration, no substitute test, no alternate harness. 12/12 supplied offline controls pass, exit 0.
+
+Desktop comparison ran exactly once, exit 0, 1,341,456 B stdout: genuine CACHE preflight PASS through `reviews/R10/operating_entry/blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1`. `source_files_changed=false`, `supplier_calls=0`, `all_layer_search_performed=false`.
+
+Measured across the 13 partitions of both registered generations:
+
+- 12 year partitions have identical keys and identical row counts. Only 2026 differs: `clean_only=0`, `cache_only=89,304`, `row_delta=89,304`. R26 Cleaning 2026 ends 2026-08-14, CACHE 2026 ends 2026-09-24, and the `cache_only` sample starts exactly at 2026-08-17.
+- Totals: `shared=12,176,722`; `unequal_values_on_shared_keys=205,904`; clean total `12,176,722` vs cache total `12,266,026`.
+- Explicit 2026-08-14 normalised comparison, tolerance `1e-12`: `0` mismatched keys in every year, max relative error `2.220446049250313e-16`.
+- `537,454` shared keys sit at or before the anchor without a common anchor observation: counted as **untested**, never filled. After-anchor untested = `0` in all years.
+- Cross-year per-security scale: `5,465` securities, all with multiple observations, `5,465` constant within tolerance, `0` non-constant, largest relative span `4.440892098500626e-16`. On measured shared keys the two generations differ by one constant per security, which cancels in `factor(d)/factor(T)` by algebra. No supplier, PIT or coverage authority follows.
+
+Counts kept separate and not rewritten: `physical_minus_declared = 83,503` (physical `12,266,026` minus declared `12,182,523`). This is **not** 83,503 missing source rows and no year is identified as faulty. R26 Cleaning total `12,176,722` equals `SOURCE_COVERAGE.json total_rows 12,176,722` in the writer task directory exactly.
+
+Scoped source lookup, the literal command as issued, existing rg, exit 0, 2 hits:
+
+- ORIGINAL SOURCE `E:\BLACKBOX\任务\BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1\incremental_backward_refresh_r1.py`, 11,537 B, sha256 `1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0`; line 246 `publish_successor(new_df, "BACKWARD_DIRTY_FULL_HISTORY_REPLACE")`; that function writes COVERAGE `reason` and `n_rows = int(len(new_factor))`.
+- Hit 2 is a byte-identical copy inside the local HUB checkout. The same body is already published at `agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1507/source_reads/incremental_backward_refresh_r1.py` (blob `95d6704f08f8d02d5dc76dc63671a7745f04487a`) and was **reused**, not re-uploaded.
+- `n_rows_year_2026`: **0 hits** inside the three searched roots; it exists only in product `COVERAGE.json` metadata, which no searched source emits.
+- Genuinely new original body uploaded as a BASE64 carrier with round-trip verification: `E:\BLACKBOX\脚本\blackbox_adjust_factor_incremental_backward_refresh_r1.py`, 723 B, sha256 `d236dacb2e6033bac09737c0bf6da20f8c5155dbb751a0181d087d5d704c3553`.
+- Execution receipt retained and linked: `INCREMENTAL_RECEIPT.json` binds this program to a real 2026-09-02 run (7 backward-dirty codes, `resolver_release BLACKBOX_CACHE_R1_ADJFACTOR_PIT_INCR_20260903_010456`, `fq pre`, `raw_fallback_used false`, `silent_factor_one_used false`). `AUTHORITY_GATES.json` binds `BACKWARD_REFRESH_ENGINE` to this exact path.
+- Link status **PARTIAL**: the current `COVERAGE.json` also carries `tip_extended_at`, `tip_source` and `n_rows_year_2026`, which this program does not emit. So it is the writer of the reason label and the base declared count, not a proven writer of every tip field on `BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439`. A string hit is a source candidate, not proof of execution; nothing matched was invoked.
+
+Delivery: 27 files, 2,787,779 B, `DELIVERY_MANIFEST.json` self-excluded, separate `FINAL_BYTE_READBACK.json` — **27/27 byte-identical**. The two 1,341,456 B blobs were read back through the git blobs API because they exceed the contents-API inline limit.
+
+Status: `B1` OPEN (measured numerically, not closed); `B2`..`B7` preserved OPEN, none reclassified here. `FULL_GOAL_MET=false`. `FOUNDATION_ACCEPTANCE=false`. `FORMAL_ENGINE_ADMISSION=false`. `NEW_DATA_ACQUISITION_AUTHORIZED=false`. `CURRENT_SWITCH_ALLOWED=false`. `ORDER_ALLOWED=false`.
+
+No business-data write, historical refresh, login, supplier call, download, candidate promotion, CURRENT change, engine construction or order occurred.
+
+---
+
 ## R10 FACTOR RECONCILIATION POINTER (latest, 2026-10-25 00:35 +08:00)
 
 R10 continuation, not R11 and not acceptance. Review consumed:
