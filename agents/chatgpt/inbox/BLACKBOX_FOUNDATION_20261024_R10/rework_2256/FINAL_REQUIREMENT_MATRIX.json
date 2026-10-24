@@ -1,0 +1,172 @@
+{
+ "schema": "R10_FINAL_REQUIREMENT_MATRIX_1",
+ "round": "R10/10 remediation",
+ "requirement_groups_exactly_five": true,
+ "groups": [
+  {
+   "id": "G1",
+   "group": "Data ecology, dictionary, rule hierarchy, ordered failure triggers and lesson/memory links",
+   "accepted_bounded_evidence": [
+    "ECOLOGY_REGISTRY_R3.json / ECOLOGY_REGISTRY_R3_INDEX.json exist as built registries",
+    "SYSTEM_STRUCTURE.json (r1) and r04_delivery/SYSTEM_STRUCTURE_R4.json record nodes/edges with an unresolved_edges field",
+    "r04_delivery/source_contracts/S1_ENGINE_RULE_LIBRARY holds the rule-library contract bodies",
+    "r08_delivery/semantic_execution_closure_1950/ORDERED_EXECUTION_AND_FAILURE_MAP.json and WRONG_STEP_TRIGGER_MATRIX.json record ordered failure triggers",
+    "ROOT_SEMANTIC_ROLE_MAP.json and SOURCE_AND_RULE_BODY_INDEX.json record role separation and body identity"
+   ],
+   "unmet_predicates": [
+    "several original rule bodies are historical/generation-specific and cannot be relabelled as fresh certificates",
+    "ordered failure triggers are recorded but are not wired to an executable gate chain that has been exercised end to end",
+    "lesson/memory links are indexed, not proven consumed by any admitted run"
+   ],
+   "local_source_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\SYSTEM_STRUCTURE.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\SYSTEM_STRUCTURE_R4.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\source_contracts\\S1_ENGINE_RULE_LIBRARY",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r08_delivery\\semantic_execution_closure_1950"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/"
+   ],
+   "gpt_owned_repair_needed": "bind each rule body to its generation and to the gate that consumes it; supply the ordered failure map as an executable contract rather than an index"
+  },
+  {
+   "id": "G2",
+   "group": "Engine/data contracts and actual runtime/admission",
+   "accepted_bounded_evidence": [
+    "three engine sources matched their pinned sha256 and imported in a guarded child",
+    "BacktestEngine/DataProvider/get_price present; nothing constructed; no auth/network/order",
+    "the blocked event was located exactly: bullet_trade/core/globals.py:421 -> globals.py:156 os.makedirs(\"./logs\")"
+   ],
+   "unmet_predicates": [
+    "FORMAL_ENGINE_ADMISSION = false; provider/field/time/PIT/universe/status/matching/generation contracts unwired",
+    "no engine construction, no data-plane call, no backtest",
+    "import readiness is not admission, and the swallowed mkdir is not a proven startup failure"
+   ],
+   "local_source_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_delivery\\R10_DESKTOP_ENGINE_IMPORT_OUTCOME.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\engine_import_probe_r10.py",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\source_engine\\S3_ENGINE_SOURCE"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/source_engine/"
+   ],
+   "gpt_owned_repair_needed": "supply the admission wiring (provider factory, field/time/PIT/universe/status/matching bindings) and decide whether the logger mkdir must be made lazy; do not install packages or remove guards as a substitute"
+  },
+  {
+   "id": "G3",
+   "group": "Strategy artifact identification",
+   "accepted_bounded_evidence": [
+    "root AGENTS.md already inventories two JQ strategy artifacts by exact path",
+    "both files were opened only to read identity; neither was executed, reconstructed or modified"
+   ],
+   "identified_artifacts": [
+    {
+     "path": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py",
+     "bytes": 98620,
+     "sha256": "8d9334dd6ed2053b6cb297ea5780408c106c9cf2e0b7138629685e4f589d992e",
+     "status": "IDENTIFIED_PRESENT_NOT_RUN",
+     "role": "daily simulated-trading template (V4/R21 hot start)"
+    },
+    {
+     "path": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频必读.md",
+     "bytes": 3253,
+     "sha256": "7e0f822b6381eeef81b7ba748141fffdf9132db575345bac6060a5aac7ddf577",
+     "status": "IDENTIFIED_PRESENT_NOT_RUN",
+     "role": "mandatory reading for that template"
+    }
+   ],
+   "unmet_predicates": [
+    "identification only: no strategy was reconstructed, backtested or claimed profitable",
+    "no admitted engine exists to run either artifact against",
+    "no claim is made that these are the only strategy artifacts on the host"
+   ],
+   "local_source_paths": [
+    "E:\\BLACKBOX\\AGENTS.md (item 6 pointer)",
+    "E:\\BLACKBOX\\参考资料\\聚宽策略写法 (directory)"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/rework_2256/FINAL_REQUIREMENT_MATRIX.json"
+   ],
+   "gpt_owned_repair_needed": "state which artifact is the target and under which contract; no reconstruction is authorized locally"
+  },
+  {
+   "id": "G4",
+   "group": "Download/incremental contracts and access resources",
+   "accepted_bounded_evidence": [
+    "R04 DATA_ACQUISITION_MATRIX: 54 rows, policy REQUIRED 37 / CONDITIONAL 5 / DEFERRED 6 / NOT_REQUIRED 5 / AUTHORITY_CONFLICT 1; possession PRESENT_COVERAGE_UNVERIFIED 39 / NOT_PRESENT_IN_CHECKED_SCOPE 12",
+    "R05 JQ_BOUNDED_ACCESS: one daily bar served, auth SUCCEEDED, quota spare 200,000,000, BOUNDED_ACCESS_VERIFIED, full_dataset_access_proven false",
+    "R05 PERMISSION_RECEIPTS/BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json records per-probe classes including one PROBE_FAIL for get_extras_paused",
+    "R06 NEXT_UPDATE_BINDINGS: 13 explicit product/updater joins",
+    "R10 update-plan for STOCK_DAILY_RAW_PIT_R1 shows supplier SRC_JQDATA_SDK, the permitted callable, the recorded watermark and the cleaning entry, with no supplier call performed"
+   ],
+   "access_boundaries": {
+    "local_coverage": "RAW/CLEAN/CACHE roots recorded per domain in R04 and R07 ledgers",
+    "current_verification_status": "ONE_DAILY_BAR_ONLY; the R05 row is scoped historical evidence, not blanket access",
+    "configuration_repair": "bound via explicit product ids; no route invented for the 28 unbound products",
+    "paid_or_permission_restrictions": "get_extras_paused probe classed PROBE_FAIL; paid/restricted domains are not assumed obtainable",
+    "unknown_capability": "full-dataset access and pagination completeness remain unproven; no credential value or secret-derived hash is printed anywhere in this evidence"
+   },
+   "unmet_predicates": [
+    "no writer/checkpoint/resume contract has been executed",
+    "no append-only RAW receipt, no non-regression gate run, no coherent publication, no freshness proof",
+    "INCREMENTAL_PIPELINE_READINESS = NOT_ACCEPTED"
+   ],
+   "local_source_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\access_resources\\DATA_ACQUISITION_MATRIX.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\JQ_BOUNDED_ACCESS.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\PERMISSION_RECEIPTS",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r06_delivery\\NEXT_UPDATE_BINDINGS.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures\\CMD1_update_plan_stock_raw.stdout.bin"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R05/",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/"
+   ],
+   "gpt_owned_repair_needed": "provide the executable acquisition contract (request/checkpoint/exclusion/pagination/processing) before any download; do not treat the bounded test as blanket authorization"
+  },
+  {
+   "id": "G5",
+   "group": "Actual desktop operating scope, end-to-end update readiness and latest-update completion",
+   "accepted_bounded_evidence": [
+    "the reviewed entry is installed and runs under a genuine CACHE must-read preflight PASS",
+    "24 offline synthetic controls passed on this host",
+    "catalog: 41 entities, 13 explicit updater joins, 28 explicitly unbound, all serving authority REQUEST_NOT_EVALUATED",
+    "describe: 5 products served; unknown product STOPs",
+    "query 2026-08-28..2026-09-02 with open/high/low/close/volume/money: 4/4 keys, all six finite per row",
+    "query 2025-09-22..2025-09-24 close: 3/3 keys",
+    "update-plan for STOCK_DAILY_RAW_PIT_R1: CONTRACT_PLAN_ONLY, 9-step order, no supplier call",
+    "six real negative requests rejected with SOURCE_ABSENCE_CLAIM_ALLOWED=false",
+    "guided engine import produced a located blocked event rather than an inferred startup failure"
+   ],
+   "unmet_predicates": [
+    "the three queries are bounded single-code diagnostics, not full-universe or engine acceptance",
+    "LATEST_FULL_UPDATE = NOT_VERIFIED; no per-domain update was run or measured",
+    "INCREMENTAL_PIPELINE_READINESS = NOT_ACCEPTED",
+    "the mounted stream is not certified by a candidate read"
+   ],
+   "local_source_paths": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_delivery",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\captures",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_rework_2256\\installation\\R10_GUIDE_INSTALLATION.json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\_OPS\\CURSOR_WORKSPACE\\BLACKBOX_LOCAL_OPERATIONS_R10.md"
+   ],
+   "hub_evidence_paths": [
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/",
+    "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/rework_2256/"
+   ],
+   "gpt_owned_repair_needed": "issue a separately scoped acquisition/update task after prerequisites pass; completion of updates cannot be claimed from diagnostics"
+  }
+ ],
+ "duplicate_FULL_GOAL_MET_filler_used": false,
+ "evidence_completion_vs_integration_repair": "this file completes delivery evidence only; it closes no integration blocker",
+ "FULL_GOAL_MET": false,
+ "FOUNDATION_ACCEPTANCE": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false,
+ "FORMAL_ENGINE_ADMISSION": false
+}
