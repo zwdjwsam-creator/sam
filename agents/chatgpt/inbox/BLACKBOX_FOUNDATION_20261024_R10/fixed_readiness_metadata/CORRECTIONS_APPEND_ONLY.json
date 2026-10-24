@@ -1,0 +1,36 @@
+{
+ "schema": "R10_FIXED_READINESS_CORRECTIONS_APPEND_ONLY_1",
+ "append_only": true,
+ "rows": [
+  {
+   "id": "K1",
+   "type": "PRIOR_RECEIPT_WORDING_CORRECTION",
+   "text": "The prior connected-candidate receipt, section 4, said the refresh assembly \"drops non-dirty observed rows\". Its actual source retains them: it concatenates observed.loc[~observed.code.isin(dirty)] with the revised full histories, i.e. it RETAINS non-dirty observations and REPLACES dirty histories. The prior receipt file is left untouched; this correction is carried forward here."
+  },
+  {
+   "id": "K2",
+   "type": "EXIT_CODE_SEMANTICS",
+   "text": "Capture exit 0 means exactly that the four metadata copies were captured. It is not readiness, not completeness, not freshness and not an acquisition authorization."
+  },
+  {
+   "id": "K3",
+   "type": "CHECKPOINT_NOT_PROMOTED",
+   "text": "The captured legacy checkpoint is recorded as an observed execution record of a June 2026 batch task. Its filename, COMPLETED flag and updated_at are not a daily cursor, and no writer binding was performed. No cursor, target or lag was produced from it."
+  },
+  {
+   "id": "K4",
+   "type": "GUARDED_AND_WRITING_PATHS_NOT_TOUCHED",
+   "text": "The guarded legacy jq_download_execution_r1.py was not imported, run, resumed or un-guarded, and the daily data-plane runner was not invoked even in status mode because that path writes current/archive state."
+  },
+  {
+   "id": "K5",
+   "type": "ALLOWLIST_NOT_BROADENED",
+   "text": "Exactly the four declared metadata paths were read. All four were present and captured on the first and only run; no fifth path was sought, no directory was enumerated, no JSON-internal path was opened, and no parquet or credential file was read."
+  },
+  {
+   "id": "K6",
+   "type": "DELIVERY_NOT_PRECREATED",
+   "text": "The capture destination did not exist before this round and was not pre-created for staging; the supplied script created it itself, which also confirms the no-replay overwrite behaviour was not bypassed."
+  }
+ ]
+}
