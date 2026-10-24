@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "suite": "reviews/R06/test_r06.py (GPT-authored, unmodified)",
+  "suite_sha256": "c6adeafdf9d483c813cae7c6f4cdb2ea0ee6c32fa848df169bd0c465c5238e5b",
+  "suite_blob_matches_hub": true,
+  "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+  "runtime_versions": {
+    "python": "3.12.10",
+    "pandas": "2.3.3",
+    "pyarrow": "21.0.0"
+  },
+  "attempt_1_literal_command": {
+    "command": ".\\runtime\\.venv\\Scripts\\python.exe reviews\\R06\\test_r06.py",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr_tail": "  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp\\\\blackbox_r06_fixture_6tug_qsw\\\\bb\\\\数据\\\\清洗成品\\\\CURRENT_CLEANING_RELEASE.json'"
+  },
+  "attempt_1_diagnosis": {
+    "class": "ENVIRONMENT_LOCALE_NOT_DATA_GUARD",
+    "preferred_encoding": "cp936",
+    "detail": "the suite calls manifest.read_text() with no encoding argument; on a cp936 host that decodes the UTF-8 manifest into mojibake paths, and the later publish_candidate(source_pins) step then cannot open those paths",
+    "conclusion": "the failure occurs before any parquet or business data is involved: the disposable fixture tree is read back through the locale default. No supplied code was edited and no fixture was adjusted",
+    "display_note": "the mojibake path string is written to a cp936 console, which re-creates the original UTF-8 bytes; the terminal therefore still shows the correct Chinese characters while the in-memory string being opened is mojibake. That is why the FileNotFoundError message looks impossible at first sight",
+    "failure_site": "r06_bundle_store.publish_candidate -> digest(source) for a source_pins path"
+  },
+  "attempt_2_utf8_interpreter_mode": {
+    "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R06\\test_r06.py",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"PASS\", \"scope\": \"end-to-end synthetic Arrow/parquet and candidate publication fixtures\", \"checks\": [\"two-day clean and cache recovery\", \"all parent daily files retained\", \"other product retained\", \"all non-target rows unchanged\", \"candidate registry binding\", \"idempotent replay\", \"original inputs unchanged before injected corruption\", \"before-commit failure\", \"after-commit complete generation\", \"stale parent rejected\", \"corruption rejected\"], \"production_publish_tested\": false}",
+    "stderr_tail": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R06\\test_r06.py:58: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.\n  base['known_at']=base['date']+pd.Timedelta(hours=15)"
+  },
+  "resolution": "the same bytes were executed with the interpreter in PEP 686 UTF-8 mode (-X utf8 / PYTHONUTF8=1). This changes only the process locale default, not the supplied source",
+  "checks_reported_pass": 11,
+  "checks_listed": [
+    "two-day clean and cache recovery",
+    "all parent daily files retained",
+    "other product retained",
+    "all non-target rows unchanged",
+    "candidate registry binding",
+    "idempotent replay",
+    "original inputs unchanged before injected corruption",
+    "before-commit failure",
+    "after-commit complete generation",
+    "stale parent rejected",
+    "corruption rejected"
+  ],
+  "status": "PASS",
+  "not_a_claim": [
+    "this is an injected failure test, not a Windows process-kill or power-loss certification",
+    "no production publication path was exercised"
+  ]
+}
