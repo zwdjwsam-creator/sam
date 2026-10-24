@@ -43,3 +43,9 @@ language: en
 4. Engine: the adapter subclasses the real DataProvider leaf and returns engine layouts; every
    declared parameter is honoured or explicitly rejected. Factory branch, adjusted-price
    semantics, increment cursor and full engine invocation remain unresolved and are listed.
+
+## BLACKBOX_FOUNDATION_20261024_R04 (2026-10-24)
+- path: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/`
+- content: GPT safety patch execution, complete applicable contract/source handoff, conflict register, corrected structure map, evidence label correction
+- status: FOUNDATION_ACCEPTANCE=false; ORDER_ALLOWED=false; formal_backtest_active=false
+- readback: blob-sha verified for 108/108 files
