@@ -1,0 +1,835 @@
+{
+  "rule_id": "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+  "status": "ACTIVE_HARD_RULE",
+  "schema_version": "2.0.0",
+  "layer": "HAND_USER_AUTHORIZED",
+  "authorized_by": "USER_AS_HAND",
+  "authorized_at_cn": "2026-08-09T07:11:30+0800",
+  "authorized_at_user_utterance": "统一规则，不要乱，数据更新就是全数据增量下载，加清洗对齐防止穿越，包含因子、财务报表、龙虎榜、指数数据等；盘点全部数据统一口径，让HAND放行",
+  "supersedes": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R1",
+    "blackbox_data_update_morning.mdc_incremental_only_semantics"
+  ],
+  "trigger_phrases": [
+    "数据更新",
+    "更新数据",
+    "全数据更新",
+    "黑盒全量更新",
+    "更新全数据",
+    "数据增量更新"
+  ],
+  "definition_one_line": "数据更新 = 全数据增量/缺口下载（含指数分钟732、SW L1/L2/L3、全量因子值库（可取尽取）、财务指标、资金流/异常/锁仓/申购、JQ260 因子值库（权限重探通过后）） + 正式清洗对齐 + 防穿越 + Cache 切片 CURRENT + 刷新总表；不含 fq 前/后复权整库与 QMT 实时。",
+  "pipeline": [
+    "preflight_HAND_read",
+    "scan_gaps_vs_CURRENT_asof",
+    "incremental_download_all_REQUIRED_ACTIVE_domains",
+    "formal_cleaning_candidate_build_no_CURRENT_switch",
+    "index_minute_align_or_reuse_CURRENT_INDEX_MINUTE_ALIGN",
+    "anti_leakage_PIT_available_from_ts_checks",
+    "inventory_top_refresh_mdc",
+    "cache_compiler_daily_incremental",
+    "sw_l1_l2_l3_membership_densify_for_new_asof_days",
+    "sw_l1_l2_l3_pit_align_seal_CURRENT",
+    "cache_sw_l1_l2_l3_membership_product_integrate",
+    "atomic_publish_CLEANING_AND_CACHE_CURRENT"
+  ],
+  "mode": "INCREMENTAL_FROM_CURRENT_ASOF",
+  "asof_policy": "trade_date / finance_asof / cleaning_as_of / index_minute_cutoff 同批对齐并写入 CURRENT",
+  "means": {
+    "download_REQUIRED_ACTIVE": [
+      "calendar_cn_exchange",
+      "industry_concept_meta",
+      "adjust_factor",
+      "security_state",
+      "A_share_daily_raw_none",
+      "finance_income_balance_cashflow_pit",
+      "finance_company_info",
+      "valuation_factor_reference",
+      "index_daily_raw_none",
+      "index_minute_5m_1m_30m_60m",
+      "index_constituent_pit",
+      "security_master_pit",
+      "ETF_daily_raw_none",
+      "ETF_minute_5m_1m_30m_60m_raw_none",
+      "A_share_minute_5m_replacement",
+      "A_share_minute_1m_replacement",
+      "A_share_minute_30m_60m",
+      "billboard_longhubang",
+      "p5_events_aux",
+      "hk_connector_aux",
+      "etf_fund_aux",
+      "sw_l1_membership_pit_densify",
+      "sw_l2_membership_pit_densify",
+      "sw_l3_membership_pit_densify",
+      "full_factor_values_library",
+      "financial_indicator",
+      "money_flow_abnormal_lock_subscribe",
+      "jq260_factor_values_library",
+      "jq260_factor_values"
+    ],
+    "then": [
+      "formal_cleaning_seal_and_switch_CURRENT",
+      "anti_leakage_PIT_available_from_ts_checks",
+      "HAND_inventory_form_refresh"
+    ],
+    "forbidden_unless_explicit": [
+      "fq_pre_or_post_bars",
+      "QMT_live",
+      "backtest_as_gate",
+      "full_factor_values_library_when_policy_false",
+      "P4b_full_track_mix_into_main"
+    ]
+  },
+  "domains_catalog": {
+    "required_active": [
+      {
+        "id": "calendar_cn_exchange",
+        "raw": "P0_meta/calendar_cn_exchange",
+        "role": "REQUIRED",
+        "note": "交易日历"
+      },
+      {
+        "id": "industry_concept_meta",
+        "raw": "P0_meta/industry_concept",
+        "role": "REQUIRED",
+        "note": "行业概念元数据"
+      },
+      {
+        "id": "adjust_factor",
+        "raw": "P1_adjust_factor + P6_factor_reference/adjust_factor",
+        "role": "REQUIRED",
+        "note": "复权因子"
+      },
+      {
+        "id": "security_state",
+        "raw": "P2_security_state",
+        "role": "REQUIRED",
+        "note": "停牌/ST 等状态"
+      },
+      {
+        "id": "A_share_daily_raw_none",
+        "raw": "P2_stock_daily/none_adj",
+        "role": "REQUIRED",
+        "fq": "None"
+      },
+      {
+        "id": "finance_income_balance_cashflow_pit",
+        "raw": "P3_finance_pit/*_statement*",
+        "role": "REQUIRED",
+        "note": "三大表 PIT"
+      },
+      {
+        "id": "finance_company_info",
+        "raw": "P3_finance_pit/company_info",
+        "role": "REQUIRED"
+      },
+      {
+        "id": "valuation_factor_reference",
+        "raw": "P6_factor_reference/valuation",
+        "role": "REQUIRED",
+        "note": "估值因子"
+      },
+      {
+        "id": "index_daily_raw_none",
+        "raw": "P3_index + strategy plane",
+        "role": "REQUIRED"
+      },
+      {
+        "id": "index_minute_5m_1m_30m_60m",
+        "raw": "P3_index_minute",
+        "role": "REQUIRED",
+        "universe": "JQ_ALL_732"
+      },
+      {
+        "id": "index_constituent_pit",
+        "raw": "strategy_data_plane_additions/INDEX_CONSTITUENT_PIT_R1",
+        "role": "REQUIRED"
+      },
+      {
+        "id": "security_master_pit",
+        "raw": "SECURITY_MASTER_*_PIT",
+        "role": "REQUIRED"
+      },
+      {
+        "id": "ETF_daily_raw_none",
+        "raw": "P4_fund_etf_raw_none/fund_etf_price_daily",
+        "role": "REQUIRED",
+        "fq": "None"
+      },
+      {
+        "id": "ETF_minute_5m_1m_30m_60m_raw_none",
+        "raw": "P4_fund_etf_raw_none",
+        "role": "REQUIRED",
+        "fq": "None"
+      },
+      {
+        "id": "A_share_minute_5m_replacement",
+        "raw": "P7_stock_minute_raw_none_replacement_5m",
+        "role": "REQUIRED",
+        "fq": "None"
+      },
+      {
+        "id": "A_share_minute_1m_replacement",
+        "raw": "P7_stock_raw_none_replacement_1m",
+        "role": "REQUIRED",
+        "fq": "None"
+      },
+      {
+        "id": "A_share_minute_30m_60m",
+        "raw": "P7_stock_minute_raw_none",
+        "role": "REQUIRED",
+        "fq": "None"
+      },
+      {
+        "id": "billboard_longhubang",
+        "raw": "P5_attributes_events/billboard",
+        "role": "REQUIRED",
+        "note": "龙虎榜",
+        "present": true
+      },
+      {
+        "id": "p5_events_aux",
+        "raw": "P5_attributes_events/*",
+        "role": "REQUIRED",
+        "note": "属性事件增量"
+      },
+      {
+        "id": "hk_connector_aux",
+        "raw": "P9_derivative_aux",
+        "role": "REQUIRED"
+      },
+      {
+        "id": "etf_fund_aux",
+        "raw": "P4_fund_etf + P8_etf_fund",
+        "role": "REQUIRED"
+      },
+      {
+        "id": "sw_l1_membership_pit_densify",
+        "role": "REQUIRED",
+        "note": "申万一级 PIT densify + CURRENT_SW_L1 seal；进 CACHE SW_L1_MEMBERSHIP_PIT_R1",
+        "cache_product": "SW_L1_MEMBERSHIP_PIT_R1"
+      },
+      {
+        "id": "sw_l2_membership_pit_densify",
+        "role": "REQUIRED",
+        "note": "申万二级 PIT densify + CURRENT_SW_L2 seal；进 CACHE SW_L2_MEMBERSHIP_PIT_R1",
+        "cache_product": "SW_L2_MEMBERSHIP_PIT_R1"
+      },
+      {
+        "id": "sw_l3_membership_pit_densify",
+        "role": "REQUIRED",
+        "note": "申万三级 PIT densify + CURRENT_SW_L3 seal；进 CACHE SW_L3_MEMBERSHIP_PIT_R1",
+        "cache_product": "SW_L3_MEMBERSHIP_PIT_R1"
+      },
+      {
+        "id": "cache_sw_l123_membership_products",
+        "role": "REQUIRED",
+        "note": "清洗后独立产品切片进 CACHE CURRENT；L1/L2/L3 禁止混表"
+      },
+      {
+        "id": "full_factor_values_library",
+        "role": "REQUIRED",
+        "status_new": "REQUIRED",
+        "note": "凡账户/API 可取得的因子，历史全量建库；之后按交易日增量更新。不等于前/后复权价库；与 adjust_factor/valuation 并行不互斥。",
+        "amended_by": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3"
+      },
+      {
+        "id": "financial_indicator",
+        "role": "REQUIRED",
+        "status_new": "REQUIRED",
+        "note": "需要全量下载财务指标历史库；旧 BLOCKED 作废，须重新拉权限/接口实测后执行。",
+        "amended_by": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+        "raw": "P3_finance_pit/financial_indicator"
+      },
+      {
+        "id": "money_flow_abnormal_lock_subscribe",
+        "role": "REQUIRED",
+        "status_new": "REQUIRED",
+        "note": "需要全量下载；覆盖 money_flow / abnormal / lock_shares / subscribe 等 P5 相关叶。",
+        "amended_by": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+        "raw": "P5_attributes_events/{money_flow,abnormal,lock_shares,subscribe,...}"
+      },
+      {
+        "id": "jq260_factor_values_library",
+        "role": "REQUIRED",
+        "status_new": "TARGET_REQUIRED + REPROBE",
+        "note": "目标上需要完整历史值库；不得仅因旧 FACTOR_VALUE_POLICY / 旧研究层口令自动跳过。执行前必须重新实测账号权限；实测可用则全量建库+日更；实测不可用则写 PROBE_FAIL 证据，不得假 PASS。",
+        "amended_by": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3"
+      },
+      {
+        "id": "jq260_factor_values",
+        "role": "REQUIRED",
+        "status_new": "TARGET_REQUIRED + REPROBE",
+        "note": "同上；先查权限再决定下载/日更，不可默认跳过。",
+        "amended_by": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3"
+      }
+    ],
+    "deferred_or_blocked": [
+      {
+        "id": "P4b_open_fund_qdii_other",
+        "raw": "P4b_fund_expand",
+        "role": "DEFERRED",
+        "reason": "扩展轨不混主轨"
+      },
+      {
+        "id": "fq_pre_post_bars",
+        "role": "NOT_REQUIRED",
+        "status_new": "NOT_NEEDED_NOW",
+        "reason": "已有复权因子；需要时可动态生成 pre/post 价；整库不纳入全量建设",
+        "amended_by": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3"
+      },
+      {
+        "id": "QMT_live_trade",
+        "role": "HARD_BLOCK",
+        "reason": "不属于历史数据全量建设范围",
+        "amended_by": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3"
+      }
+    ],
+    "physical_raw_scan": [
+      {
+        "domain": "P0_meta",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+        "parquet_files": 62,
+        "size_gib": 0.002,
+        "subdirs": [
+          "calendar_cn_exchange",
+          "industry_concept"
+        ]
+      },
+      {
+        "domain": "P1_adjust_factor",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+        "parquet_files": 185,
+        "size_gib": 0.003,
+        "subdirs": []
+      },
+      {
+        "domain": "P2_security_state",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state",
+        "parquet_files": 949,
+        "size_gib": 0.09,
+        "subdirs": [
+          "stock_limit_pause_status",
+          "stock_st_status"
+        ]
+      },
+      {
+        "domain": "P2_stock_daily",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+        "parquet_files": 488,
+        "size_gib": 1.061,
+        "subdirs": [
+          "none_adj"
+        ]
+      },
+      {
+        "domain": "P3_finance_pit",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit",
+        "parquet_files": 362,
+        "size_gib": 0.397,
+        "subdirs": [
+          "balance_sheet",
+          "balance_sheet_parent",
+          "cashflow_statement",
+          "cashflow_statement_parent",
+          "company_info",
+          "fin_indicator_calc",
+          "financial_indicator",
+          "income_statement",
+          "income_statement_parent"
+        ]
+      },
+      {
+        "domain": "P3_index",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+        "parquet_files": 320,
+        "size_gib": 0.003,
+        "subdirs": [
+          "index_weights_code_preserved__asof_20260702__repair_v1"
+        ]
+      },
+      {
+        "domain": "P3_index_minute",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+        "parquet_files": 31488,
+        "size_gib": 22.41,
+        "subdirs": [
+          "SSE",
+          "SZSE"
+        ]
+      },
+      {
+        "domain": "P4_fund_etf",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+        "parquet_files": 13443,
+        "size_gib": 2.537,
+        "subdirs": [
+          "fund_etf_master",
+          "fund_etf_nav",
+          "fund_etf_price_1m",
+          "fund_etf_price_30m",
+          "fund_etf_price_5m",
+          "fund_etf_price_60m",
+          "fund_etf_price_daily",
+          "fund_etf_share",
+          "fund_tracking_index_mapping"
+        ]
+      },
+      {
+        "domain": "P4_fund_etf_raw_none",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+        "parquet_files": 36679,
+        "size_gib": 8.846,
+        "subdirs": [
+          "fund_etf_price_1m",
+          "fund_etf_price_30m",
+          "fund_etf_price_5m",
+          "fund_etf_price_60m",
+          "fund_etf_price_daily"
+        ]
+      },
+      {
+        "domain": "P4_index",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_index",
+        "parquet_files": 144,
+        "size_gib": 0.003,
+        "subdirs": []
+      },
+      {
+        "domain": "P4b_fund_expand",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+        "parquet_files": 78719,
+        "size_gib": 0.677,
+        "subdirs": [
+          "open_fund",
+          "other",
+          "qdii"
+        ]
+      },
+      {
+        "domain": "P5_attributes_events",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+        "parquet_files": 38,
+        "size_gib": 0.085,
+        "subdirs": [
+          "abnormal",
+          "audit_opinion",
+          "billboard",
+          "capital_change",
+          "holder_num",
+          "industry_concept_events",
+          "limited_shares",
+          "lock_shares",
+          "management_info",
+          "money_flow",
+          "mt_total",
+          "shares_frozen",
+          "shares_pledge",
+          "status_change",
+          "subscribe",
+          "xr_xd"
+        ]
+      },
+      {
+        "domain": "P6_factor_reference",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference",
+        "parquet_files": 34,
+        "size_gib": 0.974,
+        "subdirs": [
+          "adjust_factor",
+          "valuation"
+        ]
+      },
+      {
+        "domain": "P7_stock_minute",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+        "parquet_files": 26613,
+        "size_gib": 4.471,
+        "subdirs": []
+      },
+      {
+        "domain": "P7_stock_minute_raw_none",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none",
+        "parquet_files": 25669,
+        "size_gib": 3.683,
+        "subdirs": []
+      },
+      {
+        "domain": "P7_stock_minute_raw_none_replacement_5m",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+        "parquet_files": 12847,
+        "size_gib": 14.267,
+        "subdirs": []
+      },
+      {
+        "domain": "P7_stock_raw_none_replacement_1m",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+        "parquet_files": 11790,
+        "size_gib": 53.248,
+        "subdirs": []
+      },
+      {
+        "domain": "P8_etf_fund",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P8_etf_fund",
+        "parquet_files": 18,
+        "size_gib": 0.006,
+        "subdirs": [
+          "fund_dividend",
+          "fund_nav",
+          "fund_profit",
+          "fund_share"
+        ]
+      },
+      {
+        "domain": "P9_derivative_aux",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P9_derivative_aux",
+        "parquet_files": 393,
+        "size_gib": 0.266,
+        "subdirs": [
+          "exchange_link_rate",
+          "exchange_trade",
+          "hk_hold_info",
+          "hk_hold_info2",
+          "ml_quota"
+        ]
+      }
+    ],
+    "physical_strategy_plane": [
+      {
+        "domain": "A_SHARE_1M_RAW_NONE",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\A_SHARE_1M_RAW_NONE",
+        "latest_release": "REL_A_SHARE_1M_RAW_NONE_P7_POINTER_20260802_015345",
+        "release_count": 1
+      },
+      {
+        "domain": "ETF_1M_RAW_NONE",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ETF_1M_RAW_NONE",
+        "latest_release": "REL_ETF_1M_JQ_REPAIR_R1_20260802_003736",
+        "release_count": 3
+      },
+      {
+        "domain": "ETF_UNIT_NET_VALUE_PIT",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\ETF_UNIT_NET_VALUE_PIT",
+        "latest_release": "REL_ETF_UNIT_NET_VALUE_JQ_R1_20260802_003736",
+        "release_count": 2
+      },
+      {
+        "domain": "FUND_NET_VALUE_PIT",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\FUND_NET_VALUE_PIT",
+        "latest_release": "REL_FUND_NET_VALUE_JQ_R1_20260802_002424",
+        "release_count": 1
+      },
+      {
+        "domain": "INDEX_CONSTITUENT_PIT_R1",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_CONSTITUENT_PIT_R1",
+        "latest_release": "REL_INDEX_CONSTITUENT_PIT_SUPPLEMENT_R1_20260805_075520",
+        "release_count": 3
+      },
+      {
+        "domain": "INDEX_CONSTITUENTS_PIT",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_CONSTITUENTS_PIT",
+        "latest_release": "REL_INDEX_CONSTITUENTS_PIT_JQ_R1_20260802_002424",
+        "release_count": 1
+      },
+      {
+        "domain": "INDEX_DAILY_RAW_FULL_HISTORY_R1",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1",
+        "latest_release": "REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123",
+        "release_count": 1
+      },
+      {
+        "domain": "INDEX_DAILY_RAW_NONE",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_NONE",
+        "latest_release": "REL_INDEX_DAILY_MULTIYEAR_R1_20260801_225225",
+        "release_count": 2
+      },
+      {
+        "domain": "INDEX_MINUTE_RAW_R1",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_MINUTE_RAW_R1",
+        "latest_release": null,
+        "release_count": 0
+      },
+      {
+        "domain": "SECURITY_MASTER_A_SHARE_PIT",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_A_SHARE_PIT",
+        "latest_release": "REL_SECURITY_MASTER_A_SHARE_PIT_LOCAL_S1_20260802_015345",
+        "release_count": 2
+      },
+      {
+        "domain": "SECURITY_MASTER_FUND_PIT",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_FUND_PIT",
+        "latest_release": "REL_SECURITY_MASTER_FUND_PIT_LOCAL_S1_20260802_015345",
+        "release_count": 1
+      },
+      {
+        "domain": "SECURITY_MASTER_INDEX_PIT",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SECURITY_MASTER_INDEX_PIT",
+        "latest_release": "REL_SECURITY_MASTER_INDEX_PIT_LOCAL_S1_20260802_015345",
+        "release_count": 2
+      },
+      {
+        "domain": "SW1_CONSTITUENTS_PIT",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SW1_CONSTITUENTS_PIT",
+        "latest_release": "REL_SW1_CONSTITUENTS_PIT_JQ_R1_20260802_002424",
+        "release_count": 1
+      },
+      {
+        "domain": "SW1_DAILY_PRICE",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\SW1_DAILY_PRICE",
+        "latest_release": "REL_SW1_DAILY_PRICE_JQ_EXACT_R1_20260802_002424",
+        "release_count": 1
+      },
+      {
+        "domain": "TRADABLE_STATUS",
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\TRADABLE_STATUS",
+        "latest_release": "REL_TRADABLE_PAUSED_MULTIYEAR_R1_20260801_225230",
+        "release_count": 1
+      }
+    ],
+    "p5_leaves": [
+      {
+        "name": "abnormal",
+        "parquet_files": 0,
+        "size_gib": 0.0,
+        "present": false
+      },
+      {
+        "name": "audit_opinion",
+        "parquet_files": 2,
+        "size_gib": 0.0,
+        "present": true
+      },
+      {
+        "name": "billboard",
+        "parquet_files": 14,
+        "size_gib": 0.072,
+        "present": true
+      },
+      {
+        "name": "capital_change",
+        "parquet_files": 2,
+        "size_gib": 0.001,
+        "present": true
+      },
+      {
+        "name": "holder_num",
+        "parquet_files": 2,
+        "size_gib": 0.0,
+        "present": true
+      },
+      {
+        "name": "industry_concept_events",
+        "parquet_files": 1,
+        "size_gib": 0.0,
+        "present": true
+      },
+      {
+        "name": "limited_shares",
+        "parquet_files": 2,
+        "size_gib": 0.0,
+        "present": true
+      },
+      {
+        "name": "lock_shares",
+        "parquet_files": 0,
+        "size_gib": 0.0,
+        "present": false
+      },
+      {
+        "name": "management_info",
+        "parquet_files": 2,
+        "size_gib": 0.002,
+        "present": true
+      },
+      {
+        "name": "money_flow",
+        "parquet_files": 0,
+        "size_gib": 0.0,
+        "present": false
+      },
+      {
+        "name": "mt_total",
+        "parquet_files": 2,
+        "size_gib": 0.001,
+        "present": true
+      },
+      {
+        "name": "shares_frozen",
+        "parquet_files": 2,
+        "size_gib": 0.001,
+        "present": true
+      },
+      {
+        "name": "shares_pledge",
+        "parquet_files": 2,
+        "size_gib": 0.001,
+        "present": true
+      },
+      {
+        "name": "status_change",
+        "parquet_files": 2,
+        "size_gib": 0.0,
+        "present": true
+      },
+      {
+        "name": "subscribe",
+        "parquet_files": 0,
+        "size_gib": 0.0,
+        "present": false
+      },
+      {
+        "name": "xr_xd",
+        "parquet_files": 2,
+        "size_gib": 0.0,
+        "present": true
+      }
+    ],
+    "billboard_longhubang": {
+      "exists": true,
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
+      "parquet_files": 14,
+      "size_gib": 0.072,
+      "in_full_data_update": true,
+      "cn_name": "龙虎榜"
+    },
+    "factor_policy": {
+      "adjust_valuation_in_full_data_update": true,
+      "jq260_native_research_layer": {
+        "rule_id": "BLACKBOX_HAND_JQ260_FACTOR_RESEARCH_LAYER_R1",
+        "factor_count": 260,
+        "dictionary_formula_research_layer": true,
+        "value_library_target": true,
+        "value_library_download": "SUBJECT_TO_LIVE_PERMISSION_REPROBE",
+        "old_forbid_without_reprobe": "OBSOLETE",
+        "formula_cs_recompute_research_allowed": true,
+        "dictionary_root": "E:\\BLACKBOX\\规则库\\data_dictionary\\jqdata_factor_dictionary_current"
+      },
+      "path_pvalue_policy": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\FACTOR_VALUE_POLICY.json",
+      "policy_snapshot": {
+        "factor_value_download_allowed": "REPROBE_REQUIRED",
+        "reason": "用户 2026-08-12 正式口径：因子值库目标必需；禁止凭旧 policy 永久跳过",
+        "related_amend": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+        "amended_at_cn": "2026-08-12T01:18:42+0800"
+      },
+      "full_factor_values_library": {
+        "in_full_data_update": true,
+        "mode": "FULL_HISTORY_THEN_DAILY_INCREMENTAL",
+        "note": "账户可取因子尽取全量；不可取记 DENIED，不假 PASS"
+      }
+    },
+    "index_minute_universe": {
+      "status": "DONE_732_IN_ALIGN",
+      "universe_n": 732,
+      "supersedes_required_1m_nine": true,
+      "align_release_id": "BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260811_20260811_234728",
+      "align_all_pass": true,
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute"
+    },
+    "current_cleaning": {
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R16_ASOF_20260811_20260811_233835",
+      "cleaning_as_of": "2026-08-11",
+      "finance_asof": "2026-08-11",
+      "daily_asof": "2026-08-11",
+      "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json"
+    },
+    "sw_l123_pit_and_cache": {
+      "cleaning": {
+        "L1": {
+          "release_id": "BLACKBOX_SW_L1_PIT_ALIGN_R1_ASOF_20260811_20260812_004239",
+          "window": "2014-01-02..2026-08-11",
+          "gate_pass": true,
+          "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L1_PIT_ALIGN_RELEASE.json"
+        },
+        "L2": {
+          "release_id": "BLACKBOX_SW_L2_PIT_ALIGN_R1_ASOF_20260811_20260812_004311",
+          "window": "2014-01-02..2026-08-11",
+          "gate_pass": true,
+          "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L2_PIT_ALIGN_RELEASE.json"
+        },
+        "L3": {
+          "release_id": "BLACKBOX_SW_L3_PIT_ALIGN_R1_ASOF_20260811_20260812_004342",
+          "window": "2014-01-02..2026-08-11",
+          "gate_pass": true,
+          "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L3_PIT_ALIGN_RELEASE.json"
+        }
+      },
+      "cache": {
+        "cache_release_id": "BLACKBOX_CACHE_R1_FULL_SW_L123_ASOF_20260811_20260812_010158",
+        "asof": "2026-08-11",
+        "sw_l1_status": "READY_INTEGRATED",
+        "sw_l2_status": "READY_INTEGRATED",
+        "sw_l3_status": "READY_INTEGRATED",
+        "mode": "full_plus_sw_l123",
+        "pointer": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json"
+      },
+      "productization": "BLACKBOX_CACHE_SW_L2_L3_PRODUCTIZATION_R1_ACCEPTED",
+      "obsolete": "NOT_APPLICABLE_NO_CACHE_PRODUCT_YET"
+    }
+  },
+  "conflicts_resolved": {
+    "blackbox_data_update_morning.mdc": "废除窄口径；数据更新=全数据增量 R2。",
+    "index_minute_REQUIRED_1M_nine": "R2 升级 universe=732。",
+    "因子": "估值+复权进全数据更新；260 聚宽原生为研究层（公式可识别/可重算），数值库不更新。",
+    "龙虎榜": "P5 billboard 存在，纳入 REQUIRED。",
+    "jq260": "这个因子库你无法更新因为权限不够，但需要注明260个因子属于聚宽原生因子，可以直接再聚宽平台被识别使用，研究拿公式做截面推演也可以进入聚宽回测被聚宽识别，然后260个因子公式，按截面日期防止穿越从新算得可以进入因子库，但因子库不更新，只作为因子研究层，这一条也需要写入顶部让所有AG知道",
+    "download_without_clean": "禁止；用户 2026-08-09：下载结束必须清洗防污染",
+    "sw_l2_l3_cache": "L2/L3 已正式 Cache 产品化（独立 product_id）；每日增量必须 densify+seal+进 CACHE；原 NOT_APPLICABLE_NO_CACHE_PRODUCT_YET 作废",
+    "daily_must_end_in_cache": "用户 2026-08-12：以后每日更新包含目前最新数据，清洗对齐防穿越，切片进入缓存",
+    "domain_status_r3": "full_factor_values/financial_indicator/money_flow* 升格 REQUIRED；jq260 值库 TARGET+强制重探；fq 整库 NOT_NEEDED；QMT 仍出圈"
+  },
+  "ssot_paths": {
+    "hard_rule_json": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json",
+    "legacy_r1_history": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R1.json",
+    "runtime_current": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+    "cursor_mdc": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_full_data_update_scope.mdc",
+    "inventory_mdc": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_data_inventory_top_ssot.mdc",
+    "inventory_json": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.json"
+  },
+  "hand_release": {
+    "requested": true,
+    "release_kind": "POLICY_SCOPE_AUTHORIZE",
+    "does_not_start_download_by_itself": true,
+    "next_user_command_to_execute": "数据更新"
+  },
+  "r2_append_status": "PENDING_USER_OR_CONTROLLER",
+  "does_not_auto_rewrite": "契约/BLACKBOX_HAND_RULES_WITH_CLEANING_LAYER_MODEL_ROUTE_R2.txt",
+  "generated_at_cn": "2026-08-09T07:11:30+0800",
+  "jq260_amended_at_cn": "2026-08-09T07:20:43+0800",
+  "download_must_clean_antileak": true,
+  "download_must_clean_rule": "BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1",
+  "amended_download_must_clean_at_cn": "2026-08-09T08:21:52+0800",
+  "cache_compiler_task": "BLACKBOX_BACKTEST_CACHE_COMPILER_R1",
+  "amended_sw_l123_daily_cache_at_cn": "2026-08-12T01:12:47+0800",
+  "daily_incremental_child_rule": "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+  "hand_top_data_traffic": "E:\\BLACKBOX\\运行\\BLACKBOX_HAND_TOP_DATA_TRAFFIC_CURRENT.json",
+  "inventory_ssot": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.json",
+  "inventory_ssot_md": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.md",
+  "inventory_top_rule_mdc": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_data_inventory_top_ssot.mdc",
+  "inventory_last_refreshed_at_cn": "2026-09-25T04:06:41+0800",
+  "inventory_ag_injection": {
+    "always_apply_mdc": true,
+    "self_contained": true,
+    "no_runtime_json_pull_required": true,
+    "mdc_is_authoritative_snapshot_for_chat": true,
+    "json_is_machine_backup_only": true
+  },
+  "amended_domain_status_r3_at_cn": "2026-08-12T01:18:42+0800",
+  "domain_status_amend_rule": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+  "full_factor_values_excluded": false,
+  "corporate_reference_note": "CORPORATE_REFERENCE_PIT_CLEAN_CACHE_R1: XR_XD event≠shareholder snapshot; pit_valid_from=next_trade_day(pub); policy JQ_FINANCE_DAILY_24H_NEXT_TRADE_DAY_R1",
+  "amended_corporate_reference_at_cn": "2026-08-12T02:51:48+0800",
+  "formal_daily_orchestrator": "脚本/blackbox_daily_increment_orchestrator_r1.py",
+  "summary_writer": "脚本/blackbox_full_data_update_scope_refresh_r1.py",
+  "summary_is_not_authority": true,
+  "amended_root_fix_r1_at_cn": "2026-08-18T02:20:00+0800",
+  "daily_increment_invariants_r1": {
+    "INVARIANT_1": "Product exists != CAN_SERVE(D).",
+    "INVARIANT_2": "Finance serving = pit_valid_from<=D, not acquisition date.",
+    "INVARIANT_3": "RUN_TARGET_TRADE_DATE is the only runtime target.",
+    "INVARIANT_4": "Capability facts generation must pair candidate Cache generation.",
+    "INVARIANT_5": "No CURRENT publish before OPERATIONAL_READINESS PASS.",
+    "INVARIANT_6": "Cleaning+Cache two-phase/atomic publish. BUILD!=PUBLISH.",
+    "INVARIANT_7": "EMPTY/cap-hit/incomplete pagination != NO_DATA. DATA_ABSENCE_GATE only.",
+    "INVARIANT_8": "PIPELINE_PASS != PRODUCTION_OPERATIONAL_READY."
+  }
+}
