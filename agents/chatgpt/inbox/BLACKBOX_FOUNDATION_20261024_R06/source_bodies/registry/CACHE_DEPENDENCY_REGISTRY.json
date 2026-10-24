@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "edges": [
+    {
+      "from": "STOCK_OHLCV",
+      "to": "STOCK_DAILY_PIT_R1"
+    },
+    {
+      "from": "STOCK_DAILY_PIT_R1",
+      "to": "STOCK_FACTOR_DAILY_R1",
+      "lookback": 250
+    },
+    {
+      "from": "STOCK_FACTOR_DAILY_R1",
+      "to": "MARKET_STRUCTURE_DAILY_R1"
+    },
+    {
+      "from": "SW_L1_MEMBERSHIP_PIT_R1",
+      "to": "SW_L1_STRUCTURE_DAILY_R1",
+      "status": "BLOCKED_UPSTREAM"
+    },
+    {
+      "from": "ETF_OHLCV",
+      "to": "ETF_DAILY_PIT_R1"
+    },
+    {
+      "from": "ETF_DAILY_PIT_R1",
+      "to": "ETF_FACTOR_DAILY_R1",
+      "lookback": 250
+    },
+    {
+      "from": "FUND_NAV",
+      "to": "FUND_DAILY_PIT_R1"
+    },
+    {
+      "from": "FUND_DAILY_PIT_R1",
+      "to": "FUND_FACTOR_DAILY_R1",
+      "lookback": 250
+    },
+    {
+      "from": "INDEX_OHLCV",
+      "to": "INDEX_DAILY_R1"
+    },
+    {
+      "from": "INDEX_DAILY_R1",
+      "to": "INDEX_FACTOR_DAILY_R1",
+      "lookback": 250
+    },
+    {
+      "from": "INDEX_CONSTITUENT_SOURCE",
+      "to": "INDEX_CONSTITUENT_PIT_R1"
+    }
+  ]
+}
