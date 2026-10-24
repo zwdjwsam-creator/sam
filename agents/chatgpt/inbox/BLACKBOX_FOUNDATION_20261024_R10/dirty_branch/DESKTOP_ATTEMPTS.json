@@ -1,0 +1,33 @@
+{
+ "schema": "R10_DIRTY_BRANCH_DESKTOP_ATTEMPTS_1",
+ "attempts": [
+  {
+   "attempt": 1,
+   "outcome": "STOP_STAGING_INCOMPLETE",
+   "started_cn": "2026-10-25T01:09:32+08:00",
+   "ended_cn": "2026-10-25T01:09:33+08:00",
+   "exit_code": 3,
+   "stdout_bytes": 255,
+   "stdout_sha256": "ae9198cc1d6f3beb72eae8a6f5852cd67de5240e600d4eaa0b05121ecc422fd3",
+   "stderr_bytes": 0,
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stdout_literal": "{\"status\": \"STOP\", \"reason\": \"FileNotFoundError\", \"FOUNDATION_ACCEPTANCE\": false, \"FORMAL_ENGINE_ADMISSION\": false, \"NEW_DATA_ACQUISITION_AUTHORIZED\": false, \"CURRENT_SWITCH_ALLOWED\": false, \"ORDER_ALLOWED\": false, \"SOURCE_ABSENCE_CLAIM_ALLOWED\": false}",
+   "cause": "the local stage directory did not contain the supplied PACKAGE.json. The driver reads PACKAGE.json from its own directory to verify the package before doing anything else, so it raised FileNotFoundError at that read. No pinned input was opened, no preflight ran, no measurement was produced.",
+   "measurement_produced": false
+  },
+  {
+   "attempt": 2,
+   "outcome": "PINNED_DIRTY_RECEIPT_CONTENT_MEASURED",
+   "started_cn": "2026-10-25T01:10:56+08:00",
+   "ended_cn": "2026-10-25T01:10:59+08:00",
+   "exit_code": 0,
+   "stdout_bytes": 12451,
+   "stdout_sha256": "73aeb43cab036cd28cd3713d51bed045d7d30a46aa9366cc0f57621caf720c4d",
+   "stderr_bytes": 0,
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "precondition_added": "the supplied PACKAGE.json, byte-identical to the published copy (1,966 B, sha256 ba5711e74efdecb06df9c63c981e3520e4584f2f5ec660a6814a233fb50ab7b7), was placed in the stage directory. No member, fixture or driver file was edited, re-pinned or replaced.",
+   "measurement_produced": true
+  }
+ ],
+ "disclosure": "both runs are reported with raw stdout and stderr; the first is not hidden. The single fixed measurement is attempt 2."
+}
