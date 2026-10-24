@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "R08/10",
+  "corrections": [
+    {
+      "id": "C1",
+      "claim_withdrawn": "the engine layout is bullet_trade/api.py, bullet_trade/engine.py, bullet_trade/base.py or an unresolved 'helpers' namespace",
+      "withdrawn_from": "R08 round evidence (flattened delivery-name inference)",
+      "why_wrong": "it inferred a package layout from attachment file names instead of the R04 CONTRACT_SOURCE_MANIFEST record",
+      "correct_statement": "the engine lives at E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine with bullet_trade/data/api.py, bullet_trade/core/engine.py, bullet_trade/data/providers/base.py, bullet_trade/data/base.py and bullet_trade/core/__init__.py",
+      "evidence": {
+        "recorded_paths_exist": 21,
+        "sha_match": 21,
+        "sha_mismatch": 0,
+        "missing": 0,
+        "delivered_bodies_identical_to_originals": 18,
+        "delivered_bodies_checked": 18
+      },
+      "files_modified_to_make_this_true": 0,
+      "note": "no symlink, no copy, no rename, no package flat-file was created or moved"
+    },
+    {
+      "id": "C2",
+      "claim_withdrawn": "the 2026-08-05..08-11 gap release supplies the 2026 January-July (H1) index rows",
+      "withdrawn_from": "receipt_correction_1855 RC10 lineage narrative",
+      "why_wrong": "a 5-session gap release cannot contain 137 H1 sessions; the probe that actually read H1 data read the full-history release file",
+      "correct_statement": "H1 2026 history comes from REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123 / RAW_FILES/index_daily__399303_XSHE__to_20260804.parquet; the sibling REL_INDEX_DAILY_GAP_R1_20260805_20260811_20260812_122830 covers only the five sessions 2026-08-05..2026-08-11",
+      "evidence": {
+        "full_history_file": {
+          "locator": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\RAW_FILES\\index_daily__399303_XSHE__to_20260804.parquet",
+          "exists": true,
+          "kind": "file",
+          "bytes": 220560,
+          "sha256": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200"
+        },
+        "gap_release_locator": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_GAP_R1_20260805_20260811_20260812_122830",
+        "gap_release_exists": true,
+        "full_history_sha256_expected_by_probe": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200",
+        "full_history_sha256_measured_now": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200",
+        "matches": true
+      },
+      "roles_kept_separate": [
+        "full_history_release (history through 2026-08-04)",
+        "gap_release (5 sessions 2026-08-05..2026-08-11)"
+      ],
+      "manifest_changed": false,
+      "current_status_changed": false,
+      "source_content_changed": false,
+      "unregistered_extra_files_blessed": false
+    }
+  ],
+  "untouched_by_this_bundle": [
+    "original 154-file index manifest",
+    "CURRENT statuses",
+    "all source releases",
+    "HAND",
+    "Manifest",
+    "alwaysApply budget"
+  ]
+}
