@@ -1,0 +1,268 @@
+{
+ "schema": "BLACKBOX_TIME_INDEX_AND_IMPORT_DEFECTS_R07",
+ "round": "R07/10",
+ "generated_at": "2026-10-24T17:41:40.171346+08:00",
+ "summary": {
+  "defects": 12,
+  "blocking_local_rebuild": [
+   "D01"
+  ],
+  "contract_or_tool_identity_defects": [
+   "D03",
+   "D04",
+   "D05"
+  ],
+  "time_index_defects": [
+   "D01",
+   "D02",
+   "D04",
+   "D12"
+  ],
+  "binding_defects": [
+   "D06",
+   "D07",
+   "D08",
+   "D09",
+   "D10",
+   "D11"
+  ],
+  "owner_for_fix": "GPT (semantic/code); local operator only evidence"
+ },
+ "defects": [
+  {
+   "id": "D01",
+   "title": "Null OHLCV grid rows stamped with a later cleaning release id",
+   "layer": "CLEANING -> CACHE (imported into the R06 candidate view)",
+   "exact_counterexample": "STOCK_DAILY_RAW_PIT_R1/year=2026/part_2026.parquet row (2026-01-05, 000005.XSHE) has open/high/low/close/volume/money all null while source_version='BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534'",
+   "measured": {
+    "null_rows": 34477,
+    "distinct_codes": 344,
+    "distinct_dates": 143,
+    "date_window": [
+     "2026-01-05",
+     "2026-08-06"
+    ],
+    "family_a": {
+     "codes": 42,
+     "rows": 2989,
+     "proof": "first valued date == SECURITY_MASTER start_date, e.g. 603468.XSHG start 2026-08-06 / first valued 2026-08-06"
+    },
+    "family_b": {
+     "codes": 302,
+     "rows": 31488,
+     "proof": "code absent from SECURITY_MASTER_SNAPSHOT_R1, zero 2025 rows, exactly 105 null rows each ending 2026-06-12"
+    }
+   },
+   "consumer_impact": "r07_rebuild_local.recompute() aborts on PRICE_INPUT_NULL; any factor recompute over the stored prefix aborts",
+   "source_reference": "reviews/R07/r07_rebuild_local.py:48 (check at :26); row stamp field source_version",
+   "root_cause_status": "ROW_FAMILIES_PROVEN; INGEST_STEP_NOT_YET_IDENTIFIED",
+   "proposed_fix_owner": "GPT",
+   "safe_local_action": "NONE (blocked); do not filter, do not drop rows, do not re-download"
+  },
+  {
+   "id": "D02",
+   "title": "Stale competing calendars inside the authority directory",
+   "layer": "META",
+   "exact_counterexample": "CALENDAR_ALL_DATES.parquet reports 2026-08-31/2026-09-01 as non-sessions while the asof-versioned calendar reports both as sessions",
+   "measured": {
+    "authority": {
+     "file": "calendar_cn_exchange_v2_asof_20260924/CALENDAR_TRADE_DAYS.parquet",
+     "max": "2026-09-24",
+     "sessions_2026": 178
+    },
+    "stale_all_dates": {
+     "max": "2026-08-10",
+     "sessions_2026": 145
+    },
+    "stale_bare_trade_days": {
+     "file": "P0_meta/calendar_cn_exchange/CALENDAR_TRADE_DAYS.parquet",
+     "max": "2026-08-10",
+     "rows": 3064
+    },
+    "selection_hazard": "a naive glob sorted by path returns the bare stale file last ('CALENDAR_TRADE_DAYS.parquet' > 'calendar_cn_exchange_v2_asof_...'), so 'latest' selection can land on stale data"
+   },
+   "consumer_impact": "false NON_SESSION classification and false date-set mismatch",
+   "source_reference": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D03",
+   "title": "Diagnoser enum is disjoint from the pinned HAND enum",
+   "layer": "TOOL/CONTRACT",
+   "exact_counterexample": "the diagnoser's allowed_root_causes contains no SOURCE_MISSING, RAW_COMPLETE_CLEANING_MISSING, CLEANING_COMPLETE_CACHE_MISSING, READER_LOAD_MISSING, FILTER_EMPTY, CACHE_PRODUCT_UNAVAILABLE, etc.; only UNKNOWN_STOP overlaps",
+   "measured": {
+    "tool_enum": [
+     "OK_MULTI_PLANE",
+     "PARTIAL_WINDOW_GAP",
+     "TRUE_MISS_AFTER_ALL_PLANES",
+     "ENVELOPE_REVIEW",
+     "UNIFIED_PLANE_DIAGNOSE_FAIL",
+     "UNKNOWN_STOP",
+     "STOCK_DAILY_CLASSIFIER_UNAVAILABLE"
+    ],
+    "hand_enum": "14 members, see PINNED_RULE_CLOSURE.json#enum_authority"
+   },
+   "consumer_impact": "the tool cannot emit any classification the gate rule accepts",
+   "source_reference": "脚本/blackbox_data_coverage_diagnose_r1.py lines 19-28",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D04",
+   "title": "Coverage-common module is an empty file",
+   "layer": "TOOL",
+   "exact_counterexample": "blackbox_data_coverage_common_r1.py is 2 bytes (b'\\n')",
+   "measured": {
+    "path": "脚本/blackbox_data_coverage_common_r1.py",
+    "bytes": 2,
+    "contains_classify_stock_daily": false
+   },
+   "consumer_impact": "every --dataset STOCK_DAILY diagnosis returns STOCK_DAILY_CLASSIFIER_UNAVAILABLE with authority_ready=false",
+   "source_reference": "scripts import at line 46; failure at the import, captured verbatim in LAYER_SEARCH_AND_BINDING_LEDGER.json#L14",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D05",
+   "title": "Cache coverage non-regression gate is an empty file",
+   "layer": "TOOL / PUBLISH GATE",
+   "exact_counterexample": "blackbox_cache_coverage_non_regression_gate_r1.py is 2 bytes (b'\\r\\n')",
+   "measured": {
+    "path": "脚本/blackbox_cache_coverage_non_regression_gate_r1.py",
+    "bytes": 2,
+    "declared_by": [
+     "HAND.txt:151",
+     "BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json#publish_gate"
+    ]
+   },
+   "consumer_impact": "FULL_HISTORY_NON_REGRESSION and on_lost_dates=PUBLISH_ALLOWED=false are declared but not mechanically enforceable; a release with lost sessions can still be published",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D06",
+   "title": "Coverage ledger scope cannot certify the requested dates",
+   "layer": "LEDGER",
+   "exact_counterexample": "BLACKBOX_RAW_COVERAGE_LEDGER_CURRENT.json declares STOCK_DAILY window 2026-06-01..2026-08-11 and was generated 2026-08-12",
+   "measured": {
+    "requested": [
+     "2026-08-31",
+     "2026-09-01"
+    ],
+    "inside_declared_window": false,
+    "dataset_entries": 1
+   },
+   "consumer_impact": "ledger silence is easily misread as absence",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D07",
+   "title": "FUND-like view silently degrades to ETF-only",
+   "layer": "CACHE VIEW",
+   "exact_counterexample": "FUND_LIKE_ASSET_VIEW_R1/VIEW.json unions ETF_DAILY_PIT_R1 and FUND_DAILY_PIT_R1; FUND_DAILY_PIT_R1 contains zero files",
+   "measured": {
+    "view": {
+     "unions": [
+      "ETF_DAILY_PIT_R1",
+      "FUND_DAILY_PIT_R1"
+     ]
+    },
+    "ETF_DAILY_PIT_R1": {
+     "files": 1,
+     "rows": 63204
+    },
+    "FUND_DAILY_PIT_R1": {
+     "files": 0
+    },
+    "FUND_FACTOR_DAILY_R1": {
+     "files": 0
+    }
+   },
+   "consumer_impact": "fund queries return ETF-only rows with no error; 'no fund rows' is then misreported as missing fund data",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D08",
+   "title": "ETF cache is a 39-session slice while RAW holds full history",
+   "layer": "CACHE",
+   "exact_counterexample": "ETF_DAILY_PIT_R1 date window starts 2026-07-30 and contains 39 distinct sessions; RAW fund_etf_price_daily holds annual files 2014..2026",
+   "measured": {
+    "cache_dates": 39,
+    "expected_in_window": 41,
+    "missing": [
+     "2026-08-31",
+     "2026-09-01"
+    ]
+   },
+   "consumer_impact": "violates PATCH_CANNOT_SERVE_AS_FULL / FULL_HISTORY_NON_REGRESSION in spirit; ETF consumers see a 2-month plane",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D09",
+   "title": "Index daily 2026 H1 hole with an available minute-plane alternative",
+   "layer": "CACHE vs RAW/derived",
+   "exact_counterexample": "INDEX_DAILY_R1 has 137 consecutive missing sessions 2026-01-05..2026-07-29; P3_index_minute 1m files cover 178 2026 sessions 2026-01-05..2026-09-24",
+   "measured": {
+    "cache_missing_in_2014_2026_window": 139,
+    "h1_continuous_missing": 137,
+    "minute_plane_2026_sessions": 178
+   },
+   "consumer_impact": "index consumers see no 2026 H1 daily bars although minute data exists",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D10",
+   "title": "Universe plane ends two months before asof",
+   "layer": "CACHE",
+   "exact_counterexample": "MARKET_UNIVERSE_PIT_R1 max date 2026-07-20 against release asof 2026-09-24",
+   "measured": {
+    "max": "2026-07-20",
+    "staleness_sessions": 66,
+    "holes_inside_window": 0
+   },
+   "consumer_impact": "downstream joins on recovered dates can yield UNIVERSE_EMPTY, which then looks like missing data",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D11",
+   "title": "Valuation product exposes 48 dates across a 2003-session window",
+   "layer": "CACHE",
+   "exact_counterexample": "VALUATION_PIT_R1 SOURCE_FULL.parquet earliest date 2018-06-28; product holds 48 distinct dates against 2003 sessions",
+   "measured": {
+    "files": 3,
+    "rows": 444084,
+    "distinct_dates": 48,
+    "expected": 2003,
+    "missing": 1955
+   },
+   "consumer_impact": "valuation joins silently return sparse rows",
+   "proposed_fix_owner": "GPT"
+  },
+  {
+   "id": "D12",
+   "title": "Time-column naming and encoding drift across layers",
+   "layer": "RAW -> CACHE",
+   "exact_counterexample": "RAW adjust_factor unit adjust_factor__incremental_20260831__20260831_163108.parquet has column `date` whose values are 0..5211 (an ordinal), not calendar dates; RAW price uses `time`; cache uses `date`; FUND_NAV uses `day`; VALUATION carries both `date` and `signal_date`",
+   "measured": {
+    "raw_adjust_factor_columns": [
+     "date",
+     "code",
+     "factor",
+     "sec_type"
+    ],
+    "raw_adjust_factor_first_values": [
+     0,
+     1,
+     2
+    ],
+    "cache_adjust_factor_columns": [
+     "date",
+     "code",
+     "factor"
+    ],
+    "raw_price_time_column": "time",
+    "cache_price_time_column": "date",
+    "nav_time_column": "day"
+   },
+   "consumer_impact": "a filter on date == '2026-08-31' against that RAW unit returns zero rows, producing a false absence; date-derived calendar inference from ADJUST_FACTOR is also unsafe",
+   "proposed_fix_owner": "GPT"
+  }
+ ]
+}
