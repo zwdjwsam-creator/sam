@@ -107,3 +107,25 @@ Keep the handoff practical:
 Do not upload market parquet or credentials. Use one payload manifest excluding itself and one final remote readback; avoid recursive self-hashes, repeated upload cycles and per-source handoff packages. Do not duplicate already accepted payloads. Update the established INBOX_FOR_CHATGPT.md with this task ID and actual result. If long-running, append a concise real progress checkpoint in this same directory stating completed/active/blocked work; a progress checkpoint is not an acceptance result and is not a request for another microtask.
 
 No A/B/C technical-choice prompt to the owner. After completed handoff/readback, Cursor chat final response exactly END.
+
+
+## Execution clarification after restart_readiness_review — same task, no new round
+
+The 2026-10-25 07:22:44 desktop retrospective was received. GPT read ENVIRONMENT_PROBE.json, GATE_PROBE.json, RESTART_READINESS_VERDICT.json and CORRECTIONS_APPEND_ONLY.json directly from HUB. This is a targeted review of those records, not independent certification of every scan or the complete payload.
+
+The retrospective is not execution of this completion task. Its pending-tip statement is stale: the exact-runtime five-source handoff has been superseded. Fetch this entire current canonical task before continuing. Do not ask the owner to choose environment repair versus five-source export.
+
+Execution order:
+1. Establish a working local runtime first. ENVIRONMENT_PROBE itself reports the existing recovery runtime at _OPS\FOUNDATION_RECOVERY_20261024\runtime\.venv\Scripts\python.exe, with pandas/pyarrow/numpy. Validate actual imports and entry execution there and continue the integrated work immediately where it works. The broken root .venv is not evidence that no usable runtime exists. Record any additional actual dependency failure. For standard root command restoration, rebuild the venv against the installed Admin interpreter with the project's compatible dependency specifications, preserving the old environment and unrelated work; do not rely on changing pyvenv.cfg home alone as a complete portability fix. Required ordinary runtime dependency installation is permitted; supplier auth/data calls remain prohibited.
+2. Continue the three existing deliverables locally: current dataset state/update basis, actual queries/original offline engine, retained-batch transformation and candidate-publication replay. Do not stop after interpreter repair or another readiness retrospective. If V4 requires a local port, use its exact retained source/config and preserve algorithm semantics; identify unresolved API/PIT dependencies rather than replacing the strategy with a demonstration.
+3. Submit real execution progress and the consolidated final package under end_to_end_completion. If the V4 formal request is blocked, preserve its actual failed predicate and continue independent authorized dataset/replay work. A diagnostic run remains diagnostic.
+
+Interpretation corrections to carry in that same consolidated result:
+- Preflight ALLOWED proves the preflight check passed, not supplier/download authorization. "Single day can run" is unproven until the integrated candidate path is actually exercised; the three proposed fixes are not a proof of full readiness.
+- Do not derive every dataset's cursor from CURRENT 2026-09-24 plus a calendar. Use the per-dataset valid/completeness/revision evidence required above. The 31-day difference is calendar age, not 31 missing trading sessions or a proven missing range.
+- With CURRENT_SWITCH_ALLOWED=false, publish_atomic may only be exercised against isolated candidate pointers. Calling the production publish function against real CURRENT is prohibited.
+- Import-level binding establishes a source dependency, not successful invocation, failure propagation or transactional publication. Prove the relevant actual candidate behavior with retained batches.
+- Lane NO_RECORD_CONFIRMED/0 rows is not by itself proof that the supplier had no relevant records or the sole explanation for empty required views. Record the measured request/result scope; no new supplier-absence certificate is implied.
+- Reuse later accepted R10 evidence when reconciling B1/B4 and other blockers. The 83,503 count difference alone is not data loss, and factor raw-value differences alone are not adjusted-price differences. Keep content equality, factor-ratio equivalence, lineage and expected coverage as separate predicates. Keep existing candidate-restored dates separate from mounted CURRENT gaps.
+
+No additional full-disk search or repeated five-source export is required by this clarification. No new acquisition, production publication or trading authority is granted. The sole active task remains BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.
