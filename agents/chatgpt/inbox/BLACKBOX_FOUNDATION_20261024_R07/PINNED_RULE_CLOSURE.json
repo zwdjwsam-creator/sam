@@ -1,0 +1,227 @@
+{
+ "round": "R07/10",
+ "generated_at": "2026-10-24T17:41:40.159648+08:00",
+ "task_class_declared": "CACHE",
+ "task_class_required_files": [
+  "BOOTSTRAP",
+  "DATA_ACCESS"
+ ],
+ "kernel": {
+  "path": "E:\\BLACKBOX\\.cursor\\rules\\BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+  "declared_sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+  "observed_sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+  "match": true
+ },
+ "manifest": {
+  "path": "E:\\BLACKBOX\\契约\\必读\\MUST_READ_MANIFEST_CURRENT.json",
+  "sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08"
+ },
+ "manifest_files": {
+  "BOOTSTRAP": {
+   "path": "契约/必读/BLACKBOX_BOOTSTRAP_MUST_READ.md",
+   "exists": true,
+   "declared_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+   "observed_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+   "match": true,
+   "bytes": 1570
+  },
+  "DATA_ACCESS": {
+   "path": "契约/必读/BLACKBOX_DATA_ACCESS_MUST_READ.md",
+   "exists": true,
+   "declared_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+   "observed_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+   "match": true,
+   "bytes": 6911
+  },
+  "ACQUISITION": {
+   "path": "契约/必读/BLACKBOX_ACQUISITION_MUST_READ.md",
+   "exists": true,
+   "declared_sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+   "observed_sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+   "match": true,
+   "bytes": 2467
+  },
+  "FACTOR": {
+   "path": "契约/必读/BLACKBOX_FACTOR_RESEARCH_MUST_READ.md",
+   "exists": true,
+   "declared_sha256": "a1d5fb341da930304f833c72445007f6dbbda9cf9d83907cb4816ee9f7a173c4",
+   "observed_sha256": "a1d5fb341da930304f833c72445007f6dbbda9cf9d83907cb4816ee9f7a173c4",
+   "match": true,
+   "bytes": 1100
+  },
+  "BACKTEST": {
+   "path": "契约/必读/BLACKBOX_BACKTEST_MUST_READ.md",
+   "exists": true,
+   "declared_sha256": "c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37",
+   "observed_sha256": "c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37",
+   "match": true,
+   "bytes": 1326
+  },
+  "QMT": {
+   "path": "契约/必读/BLACKBOX_QMT_MUST_READ.md",
+   "exists": true,
+   "declared_sha256": "210336d5e8e41ff742fd1084eb5deb43e0d621a51ddb2d2e56a4cff0b6eb4d31",
+   "observed_sha256": "210336d5e8e41ff742fd1084eb5deb43e0d621a51ddb2d2e56a4cff0b6eb4d31",
+   "match": true,
+   "bytes": 691
+  }
+ },
+ "gates": {
+  "DATA_ABSENCE": "脚本/blackbox_data_absence_gate_r1.py",
+  "ACQUISITION_PAGINATION": "脚本/blackbox_acquisition_pagination_engine_r1.py"
+ },
+ "staged_bodies": {
+  "BLACKBOX_KERNEL_ALWAYS_APPLY.mdc": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\.cursor\\rules\\BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+   "bytes": 1167,
+   "sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a"
+  },
+  "blackbox_data_missing_diagnosis_gate.mdc": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_data_missing_diagnosis_gate.mdc",
+   "bytes": 1166,
+   "sha256": "f514f540ccdb5d9337ea88ae616eb5026337ad3701eb006632990501d7abe323"
+  },
+  "blackbox_data_plane_three_layer_statement.mdc": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_data_plane_three_layer_statement.mdc",
+   "bytes": 3401,
+   "sha256": "a3ac0337352d51c2f01e236815ab0adb2c420984974de7e5185824c3451d8bfa"
+  },
+  "BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+   "bytes": 2008,
+   "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c"
+  },
+  "BLACKBOX_HAND_DATA_PLANE_THREE_LAYER_STATEMENT_R1.json": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_PLANE_THREE_LAYER_STATEMENT_R1.json",
+   "bytes": 5234,
+   "sha256": "80cb8177137c49d08bc708726afd8e99da99c3c84027d9d0f9fd6345eb9b86a6"
+  },
+  "blackbox_data_coverage_diagnose_r1.py": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_diagnose_r1.py",
+   "bytes": 3743,
+   "sha256": "f97048d7b524b98f062ed8bd9c1f6b8bd91ecebec5106e250276742b56796132"
+  },
+  "blackbox_cache_coverage_non_regression_gate_r1.py": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\脚本\\blackbox_cache_coverage_non_regression_gate_r1.py",
+   "bytes": 2,
+   "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+  },
+  "blackbox_data_absence_gate_r1.py": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\脚本\\blackbox_data_absence_gate_r1.py",
+   "bytes": 6687,
+   "sha256": "f7f84f2e2d340605cfdbef607c7f9586a357bf310e3bd00b8f4cec3c8d99e04b"
+  },
+  "blackbox_data_coverage_common_r1.py": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_common_r1.py",
+   "bytes": 2,
+   "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+  },
+  "MUST_READ_MANIFEST_CURRENT.json": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\契约\\必读\\MUST_READ_MANIFEST_CURRENT.json",
+   "bytes": 2943,
+   "sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08"
+  },
+  "BLACKBOX_BOOTSTRAP_MUST_READ.md": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_BOOTSTRAP_MUST_READ.md",
+   "bytes": 1570,
+   "sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406"
+  },
+  "BLACKBOX_DATA_ACCESS_MUST_READ.md": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+   "bytes": 6911,
+   "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8"
+  },
+  "FUND_LIKE_ASSET_VIEW_R1_VIEW.json": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1\\VIEW.json",
+   "bytes": 178,
+   "sha256": "e8ac703b23ea4f28515c6de25e241e881e43970aae03459b1b79c5c5a9c48c76"
+  },
+  "HAND_COVERAGE_SECTION_LINES_141_160.txt": {
+   "staged": true,
+   "source_path": "E:\\BLACKBOX\\HAND.txt",
+   "lines": "141-160",
+   "sha256": "8868b0b422f484816debcc3e835575af7343c5eff819b531e8af22b3bd9de839",
+   "hand_sha256": "f709e9b5000ab2c7d499ec312fc6be4cdb2934b4ce45fc94b6b10f40020af96b"
+  }
+ },
+ "hand_clauses": {
+  "source": "HAND.txt lines 142-159",
+  "hand_sha256": "f709e9b5000ab2c7d499ec312fc6be4cdb2934b4ce45fc94b6b10f40020af96b",
+  "clauses": {
+   "BLACKBOX_DATA_COVERAGE_CONTROL": "ACTIVE",
+   "DATA_COVERAGE_CONTROL_VERSION": "BLACKBOX_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1",
+   "DATA_COVERAGE_POLICY": "NO_AGENT_MAY_DECLARE_DATA_MISSING_WITHOUT_COVERAGE_DIAGNOSIS",
+   "RAW_REDOWNLOAD_DEFAULT": "FORBIDDEN_IF_RAW_COMPLETE",
+   "PATCH_CANNOT_SERVE_AS_FULL": true,
+   "FULL_HISTORY_NON_REGRESSION": true,
+   "CRITICAL_PRODUCT_GATE": true,
+   "SEALED_RELEASE_IMMUTABILITY": true,
+   "DATA_COVERAGE_FAIL_CLOSED": true
+  }
+ },
+ "enum_authority": {
+  "source": "BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json#missing_enum_fixed",
+  "members": [
+   "SOURCE_MISSING",
+   "RAW_COMPLETE_CLEANING_MISSING",
+   "CLEANING_COMPLETE_CACHE_MISSING",
+   "CACHE_COVERAGE_REGRESSION",
+   "CACHE_PRODUCT_UNAVAILABLE",
+   "READER_LOAD_MISSING",
+   "READER_DATE_SLICE_MISSING",
+   "FILTER_EMPTY",
+   "UNIVERSE_EMPTY",
+   "PIT_ASOF_EMPTY",
+   "SOURCE_LIMITATION",
+   "REQUEST_OUTSIDE_PRODUCT_COVERAGE",
+   "AMBIGUOUS_DATASET",
+   "UNKNOWN_STOP"
+  ]
+ },
+ "unresolved_references": [
+  {
+   "reference": ".cursor/rules/blackbox_data_absence_gate.mdc",
+   "resolution": "ABSENT_AS_MDC; the implemented gate is 脚本/blackbox_data_absence_gate_r1.py and is declared through MUST_READ_MANIFEST gates.DATA_ABSENCE"
+  }
+ ],
+ "inspection_note": "All tools below were read statically before any invocation. Only read-only CLIs were executed; no ledger, CURRENT or HAND writer was invoked.",
+ "tools_read": [
+  {
+   "path": "脚本/blackbox_data_coverage_diagnose_r1.py",
+   "mode": "STATIC_READ_THEN_READ_ONLY_RUN",
+   "writes": "stdout only",
+   "sha256": "f97048d7b524b98f062ed8bd9c1f6b8bd91ecebec5106e250276742b56796132"
+  },
+  {
+   "path": "脚本/blackbox_cache_coverage_non_regression_gate_r1.py",
+   "mode": "STATIC_READ_ONLY",
+   "finding": "file is 2 bytes; see TIME_INDEX_AND_IMPORT_DEFECTS.json#D05",
+   "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+  },
+  {
+   "path": "脚本/blackbox_data_absence_gate_r1.py",
+   "mode": "STATIC_READ_ONLY",
+   "writes": "none on decide(); CLI prints JSON",
+   "sha256": "f7f84f2e2d340605cfdbef607c7f9586a357bf310e3bd00b8f4cec3c8d99e04b"
+  },
+  {
+   "path": "脚本/blackbox_data_coverage_common_r1.py",
+   "mode": "STATIC_READ_ONLY",
+   "finding": "file is 2 bytes; see TIME_INDEX_AND_IMPORT_DEFECTS.json#D04",
+   "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+  }
+ ]
+}
