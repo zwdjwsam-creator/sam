@@ -1,0 +1,461 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "R08/10",
+  "purpose": "only real unproven / contradictory / unenforced links, each with exact source bodies and the integration boundary GPT needs next",
+  "count": 15,
+  "links": [
+    {
+      "link_id": "OEL-01",
+      "title": "NO_PHASE_SKIP has no runtime guard",
+      "kind": "UNENFORCED",
+      "severity": "high",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_BASE_VERTICAL_PIPELINE_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 3319,
+          "sha256": "2bc031a1abac3d62002d41d13e83e5adec4de910e1aca65068d1c133f6fefd78"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\运行\\BLACKBOX_DATA_BASE_VERTICAL_PIPELINE_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1391,
+          "sha256": "02ab33b9bc91283422132c3ead3deeed39fc4bfd57116bad56f1a61e1a2f88a2"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_L5_RESEARCH_PLANE_RESUME_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1151,
+          "sha256": "50903529074fc24ca4c7eb2deb9e09d9912249ceb11f8721ac43f83ae1efac60"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\HAND.txt",
+          "exists": true,
+          "kind": "file",
+          "bytes": 107154,
+          "sha256": "f709e9b5000ab2c7d499ec312fc6be4cdb2934b4ce45fc94b6b10f40020af96b"
+        }
+      ],
+      "observed": "phase state is data in CURRENT files; no module reads active_phase to block a task",
+      "integration_boundary": "one guard at task entry (before preflight PASS is acted on) that reads active_phase and refuses research/update work when the predecessor phase is not PASS",
+      "what_cursor_must_not_do": "invent phase predicates or reorder phases"
+    },
+    {
+      "link_id": "OEL-02",
+      "title": "coverage non-regression gate is a 2-byte stub",
+      "kind": "UNIMPLEMENTED",
+      "severity": "critical",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2008,
+          "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_cache_coverage_non_regression_gate_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 5716,
+          "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_data_coverage_control_plane_build_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 25474,
+          "sha256": "0ccc17f21e0c977a8533d4724addb15a422537b045079d11d6f67e104972e3ba"
+        }
+      ],
+      "observed": "file b'\\r\\n'; module imports with zero public names; gate/self_test missing; control-plane build imports both names at :267",
+      "integration_boundary": "implement gate(parent, candidate, products) + self_test per publish_gate.on_lost_dates / on_critical_regression, then call it inside publish_atomic before any pointer write",
+      "what_cursor_must_not_do": "create a new policy; only implement the existing declared predicates"
+    },
+    {
+      "link_id": "OEL-03",
+      "title": "daily orchestrator bypasses the atomic publish gate",
+      "kind": "CONTRADICTORY",
+      "severity": "critical",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_orchestrator_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 3000,
+          "sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 5716,
+          "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6665,
+          "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27"
+        }
+      ],
+      "observed": "orchestrator defines GATE at line 21, calls only TIP compiler (line 57) and scope refresh (line 74); publish gate is only used by etf minute runners and its own main",
+      "integration_boundary": "either invoke the gate after TIP_REBASE, or document that the TIP compiler is the authorized publisher and make the gate the only writer of CURRENT",
+      "what_cursor_must_not_do": "switch CURRENT to demonstrate the fix"
+    },
+    {
+      "link_id": "OEL-04",
+      "title": "no generic all-registered-shard/layer enumeration",
+      "kind": "PARTIAL",
+      "severity": "high",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6911,
+          "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 43924,
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6665,
+          "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27"
+        }
+      ],
+      "observed": "resolver returns one path; only the STOCK_MINUTE_1M branch returns source_paths[]",
+      "integration_boundary": "product-level shard/layer registry consulted before any completeness or absence statement",
+      "what_cursor_must_not_do": "treat a single resolved path as proof of complete coverage"
+    },
+    {
+      "link_id": "OEL-05",
+      "title": "scope refresh runs after the cache build",
+      "kind": "ORDERING",
+      "severity": "medium",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_orchestrator_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 3000,
+          "sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 8204,
+          "sha256": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23"
+        }
+      ],
+      "observed": "orchestrator: index-weight check -> etf minute check -> TIP_REBASE -> scope refresh",
+      "integration_boundary": "confirm whether HIST_END must be fixed before the build (external evidence alignment uses it)",
+      "what_cursor_must_not_do": "reorder without GPT's decision"
+    },
+    {
+      "link_id": "OEL-06",
+      "title": "anti-lookahead gate declared but no single enforcing module",
+      "kind": "UNENFORCED",
+      "severity": "high",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6665,
+          "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 5583,
+          "sha256": "0f0813cb822f535e6978edb501b1af3e8c666461851602f5a816b10babaeecc8"
+        }
+      ],
+      "observed": "rule declares required_gates CLEAN/ALIGN/ANTI_LOOKAHEAD_PIT with CACHE_PUBLISH=BLOCKED; manifest only records PIT_PASS per lane",
+      "integration_boundary": "publish_atomic must require a PIT receipt for the candidate generation",
+      "what_cursor_must_not_do": "assert PIT compliance from a manifest boolean alone"
+    },
+    {
+      "link_id": "OEL-07",
+      "title": "two gate vocabularies with no mapping (15 BLOCK_*_GATE vs 40 wiring codes)",
+      "kind": "CONTRADICTORY",
+      "severity": "high",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 9512,
+          "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619"
+        },
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\pre_ingestion_gate.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 10728,
+          "sha256": "9385131008d24b82b616bc1f175be4e8ce237d81556711ed6781270322ad0637"
+        },
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\block_reason_codes.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1816,
+          "sha256": "1dd483be9df1fffddfe846c44cfec2a71f543ee2821aa087d73038534e0bfab3"
+        }
+      ],
+      "observed": "no code emits BLOCK_SOURCE_IDENTITY_GATE ... BLOCK_FINAL_ADMISSION_DECISION_GATE; live codes are MASTER_*/*_NOT_PROVEN/DATA_ROLE_FORBIDDEN",
+      "integration_boundary": "either map each of the 15 gates to concrete predicates + codes, or declare the wiring set as the effective vocabulary and reconcile the rule text",
+      "what_cursor_must_not_do": "add codes or rename rule text"
+    },
+    {
+      "link_id": "OEL-08",
+      "title": "engine start-up does not import the admission chain",
+      "kind": "UNWIRED",
+      "severity": "high",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\task_entry.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 3686,
+          "sha256": "692dec3ac85e1788e9f90a25f23757c93603c1d6079ea44079653be3e85c5382"
+        },
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\pre_ingestion_gate.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 10728,
+          "sha256": "9385131008d24b82b616bc1f175be4e8ce237d81556711ed6781270322ad0637"
+        },
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\engine.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 133571,
+          "sha256": "7e31f9ee391f3bc6b913fbc8bb308eab92b3e492cdf635e19b5ac5174eb258e2"
+        }
+      ],
+      "observed": "TaskEntryController exists in 03_shadow_engine/wiring; bullet_trade/core/engine.py has no ingestion/admission reference",
+      "integration_boundary": "decide whether engine start-up must call TaskEntryController, or whether wiring is a pre-engine service",
+      "what_cursor_must_not_do": "patch engine.py"
+    },
+    {
+      "link_id": "OEL-09",
+      "title": "reader/schema compatibility is not registered per product",
+      "kind": "PARTIAL",
+      "severity": "medium",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 43924,
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_PLANE_GOVERNANCE_AND_CONTROL_ENFORCEMENT_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1596,
+          "sha256": "a1dcbb86c5d0cabe69aaedcd379b1042a9a1681794efb93fb621d52bbbd078ac"
+        }
+      ],
+      "observed": "R08 measured a legacy reader returning 0 rows on a valid canonical schema; the fix lived in a successor adapter, not in a registry",
+      "integration_boundary": "schema/reader version per product in the product registry",
+      "what_cursor_must_not_do": "treat 0 rows as absence"
+    },
+    {
+      "link_id": "OEL-10",
+      "title": "adjust-factor ordinal vs timestamp axis has no admission check",
+      "kind": "UNIMPLEMENTED",
+      "severity": "medium",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 9512,
+          "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\RAW_FILES\\index_daily__399303_XSHE__to_20260804.parquet",
+          "exists": true,
+          "kind": "file",
+          "bytes": 220560,
+          "sha256": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200"
+        }
+      ],
+      "observed": "R08 counted 17 ordinal-named vs 20 timestamp-named incremental factor files; no gate reads the axis",
+      "integration_boundary": "asset/period/axis predicate inside the field-dictionary or PIT gate",
+      "what_cursor_must_not_do": "invent an axis rule"
+    },
+    {
+      "link_id": "OEL-11",
+      "title": "rule bodies embed stale CURRENT release ids",
+      "kind": "CONTRADICTORY",
+      "severity": "medium",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\运行\\BLACKBOX_DATA_BASE_VERTICAL_PIPELINE_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1391,
+          "sha256": "02ab33b9bc91283422132c3ead3deeed39fc4bfd57116bad56f1a61e1a2f88a2"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_PLANE_GOVERNANCE_AND_CONTROL_ENFORCEMENT_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1596,
+          "sha256": "a1dcbb86c5d0cabe69aaedcd379b1042a9a1681794efb93fb621d52bbbd078ac"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_L5_RESEARCH_PLANE_RESUME_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1151,
+          "sha256": "50903529074fc24ca4c7eb2deb9e09d9912249ceb11f8721ac43f83ae1efac60"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6665,
+          "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1531,
+          "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564"
+        }
+      ],
+      "observed": "embedded ids are R22 / FULL_SW_ASOF_20260807 (2026-08); live CURRENT_CACHE_RELEASE is FUND_NAV asof 2026-09-24",
+      "integration_boundary": "declare pointer precedence (CURRENT file wins) or refresh the embedded ids; GPT decides which",
+      "what_cursor_must_not_do": "edit rule bodies"
+    },
+    {
+      "link_id": "OEL-12",
+      "title": "ETF-only vs FUND-like union check exists only as text",
+      "kind": "UNIMPLEMENTED",
+      "severity": "medium",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6665,
+          "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27"
+        }
+      ],
+      "observed": "no code contains ETF_ONLY / FUND_LIKE handling",
+      "integration_boundary": "resolver-level universe/union check for fund-like assets",
+      "what_cursor_must_not_do": "widen a universe to 'fix' a miss"
+    },
+    {
+      "link_id": "OEL-13",
+      "title": "checkpoint / permission-exclusion read is not wired into acquisition",
+      "kind": "UNIMPLEMENTED",
+      "severity": "high",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\记忆盘\\03_操作流程经验包\\error_repair_lessons.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 53159,
+          "sha256": "c85cd258383f56b3164ae7f935542fd0ee76acbb6630a7d687fe5b715a82fa01"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2008,
+          "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_acquisition_pagination_engine_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 7786,
+          "sha256": "978aedee181eac7815daed14a5b057f4ab3f8c663afa6f8c18e541561a02beae"
+        }
+      ],
+      "observed": "lessons declare HARD_BLOCK on re-download/no_permission retry; the acquisition engine's live path is a stub and no exclusion-list reader was found",
+      "integration_boundary": "acquisition entry must read checkpoint + exclusion before any page request",
+      "what_cursor_must_not_do": "run a download to test it"
+    },
+    {
+      "link_id": "OEL-14",
+      "title": "six-lane completion is not gated",
+      "kind": "UNIMPLEMENTED",
+      "severity": "low",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 5583,
+          "sha256": "0f0813cb822f535e6978edb501b1af3e8c666461851602f5a816b10babaeecc8"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_daily_incremental_data_plane.mdc",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2316,
+          "sha256": "12847189edeba38b484967b170f52d1ab39772c1b7b9419d30eb05e0d6b89f7a"
+        }
+      ],
+      "observed": "manifest holds the lanes; nothing blocks a JQ-only completion claim",
+      "integration_boundary": "completion predicate on ALL_LANES_READY + per-lane status",
+      "what_cursor_must_not_do": "redefine lanes"
+    },
+    {
+      "link_id": "OEL-15",
+      "title": "orphan/mojibake root directories are unmapped",
+      "kind": "UNKNOWN",
+      "severity": "low",
+      "source_bodies": [
+        {
+          "locator": "E:\\BLACKBOX\\目录映射.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 7820,
+          "sha256": "d020bcad9baab10e7677240d8f888092b15e7999a27f8e2a6504ef7edd131055"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\项目清单.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 219,
+          "sha256": "84ce18aeaa7fe2271daa13cf8b1de15ba2189ccea4b9025f479465a1787a62a6"
+        }
+      ],
+      "observed": "杩愯 and 浠诲姟 exist at root with one near-empty subtree each; 目录映射.json does not mention them",
+      "integration_boundary": "user/GPT decision: classify as orphan or map explicitly; do not delete or rename in an audit round",
+      "what_cursor_must_not_do": "create symlinks or merge directories"
+    }
+  ]
+}
