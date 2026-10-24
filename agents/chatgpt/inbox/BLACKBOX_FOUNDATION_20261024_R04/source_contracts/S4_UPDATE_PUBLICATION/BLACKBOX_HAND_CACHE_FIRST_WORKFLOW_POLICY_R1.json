@@ -1,0 +1,199 @@
+{
+  "rule_id": "BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1",
+  "task_id": "BLACKBOX_CACHE_FIRST_WORKFLOW_POLICY_R1",
+  "task_type": "TOP_LEVEL_GOVERNANCE_POLICY",
+  "status": "ACTIVE_HARD_RULE",
+  "schema_version": "1.0.0",
+  "layer": "HAND_USER_AUTHORIZED",
+  "priority": "HIGH",
+  "authorized_by": "USER_AS_HAND",
+  "authorized_at_cn": "2026-08-09T12:15:00+0800",
+  "authorized_at_user_utterance": "BLACKBOX 顶层长期规则更新 CACHE-FIRST + 每日增量进入缓存链",
+  "definition_one_line_cn": "BLACKBOX 的正式研究和回测默认优先读取已通过 PIT、防穿越及 RAW↔CACHE 等价验收的统一缓存。仅当所需数据不存在缓存、缓存覆盖不足或研究明确需要底层原始字段时，才允许对缺失部分单独读取正式 RAW 数据。不得因为局部缓存缺失而无理由退回全量 RAW 重算。",
+  "daily_pipeline_one_line_cn": "BLACKBOX 每日增量数据在完成清洗、字段与时间口径对齐、防未来函数/穿越验收后，必须进入 Cache Compiler，通过 QA 后发布为新的 CACHE CURRENT，供之后研究与回测统一消费。",
+  "cache_infrastructure_status": "OPERATIONALLY_READY",
+  "current_cache_release_id": "BLACKBOX_CACHE_R1_FULL_SW_ASOF_20260807_20260809_120443",
+  "cache_root": "E:\\BLACKBOX\\数据\\回测缓存",
+  "current_pointer": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+  "product_catalog": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_PRODUCT_CATALOG.csv",
+  "manifest_registry": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_MANIFEST_REGISTRY.json",
+  "dependency_registry": "E:\\BLACKBOX\\数据\\回测缓存\\registry\\CACHE_DEPENDENCY_REGISTRY.json",
+  "consumable_families": [
+    "STOCK",
+    "FUND",
+    "ETF",
+    "INDEX",
+    "MARKET_UNIVERSE_PIT",
+    "STOCK_TRADEABILITY_PIT",
+    "VALUATION_PIT",
+    "SW_L1_MEMBERSHIP_PIT",
+    "SW_L1_STRUCTURE_DAILY",
+    "MARKET_STRUCTURE_DAILY",
+    "UNIVERSAL_FACTOR_DAILY"
+  ],
+  "coverage_boundaries": {
+    "SW_L1_MEMBERSHIP_PIT": {
+      "min_date": "2025-01-02",
+      "max_date": "2026-07-20",
+      "rule": "DATE_OUTSIDE_CACHE_COVERAGE => CACHE_MISS; no silent backfill"
+    },
+    "ETF_native_source": {
+      "note": "PASS means product present, NOT multi-year full coverage; verify actual window in CURRENT coverage/manifest",
+      "consumer_rule": "commodity/fund-like long history via FUND + FUND_LIKE_ASSET_VIEW; forbid ETF-only scan"
+    }
+  },
+  "research_read_priority": [
+    "P1_CACHE_CURRENT",
+    "P2_HISTORICAL_CACHE_RELEASE_PINNED",
+    "P3_FORMAL_RAW_OR_CLEAN_CURRENT",
+    "P4_TEMP_RESEARCH_WITH_PROVENANCE_ONLY"
+  ],
+  "cache_first_steps": [
+    "check_CACHE_PRODUCT_CATALOG",
+    "check_CACHE_MANIFEST_REGISTRY",
+    "check_CACHE_CURRENT",
+    "if_exists_and_pit_pass_and_date_covered_then_must_use_cache",
+    "if_miss_then_partial_raw_only_with_CACHE_MISS_REASON"
+  ],
+  "cache_miss_reasons": [
+    "NO_CACHE_PRODUCT",
+    "DATE_OUTSIDE_CACHE_COVERAGE",
+    "FIELD_NOT_CACHED",
+    "PIT_NOT_READY",
+    "CACHE_VERSION_INCOMPATIBLE",
+    "RESEARCH_REQUIRES_RAW",
+    "OTHER_WITH_EXPLANATION"
+  ],
+  "hybrid_read": {
+    "allowed": true,
+    "recommended": true,
+    "pattern": "CACHE + ON_DEMAND_RAW",
+    "forbid": "full_raw_reload_because_of_one_missing_field"
+  },
+  "forbids_as_cache_facts": [
+    "H_TOP1",
+    "C_TOP1",
+    "V4_TOP1",
+    "R20_TOP1",
+    "ETF_final_champion",
+    "strategy_final_target",
+    "final_position_answer",
+    "rebalance_answer",
+    "candidate_specific_percentile",
+    "strategy_filtered_final_rank"
+  ],
+  "allows_as_cache_facts": [
+    "market_facts",
+    "universal_base_factors",
+    "pit_cross_sections",
+    "industry_structure",
+    "market_structure",
+    "tradeability_state"
+  ],
+  "daily_data_pipeline": [
+    "SOURCE_DOWNLOAD",
+    "RAW_CURRENT_UPDATE",
+    "CLEAN",
+    "ALIGN",
+    "ANTI_LOOKAHEAD_PIT_GATE",
+    "CACHE_COMPILER",
+    "CACHE_QA_EQUIVALENCE",
+    "ATOMIC_PUBLISH",
+    "CACHE_CURRENT",
+    "RESEARCH_BACKTEST"
+  ],
+  "daily_data_pipeline_cn": [
+    "下载/增量",
+    "清洗",
+    "对齐",
+    "防止未来函数/穿越",
+    "编译成缓存",
+    "验收",
+    "发布 CURRENT",
+    "回测与研究消费"
+  ],
+  "anti_lookahead_before_cache": {
+    "required_gates": ["CLEAN", "ALIGN", "ANTI_LOOKAHEAD_PIT"],
+    "any_fail": "CACHE_PUBLISH=BLOCKED",
+    "forbid": "cache_before_clean"
+  },
+  "incremental_semantics": {
+    "not_only_latest_day": true,
+    "supports": ["NEW_PARTITION", "HISTORICAL_CORRECTION"],
+    "invalidation": "dependency_graph must recompute affected products"
+  },
+  "universal_product_promotion": {
+    "when": [
+      "reused_across_researches",
+      "strategy_agnostic",
+      "strict_pit",
+      "stable_formula",
+      "raw_cache_equivalence_provable"
+    ],
+    "flow": [
+      "define_schema",
+      "define_formula_version",
+      "build_cache",
+      "equivalence_gate",
+      "manifest",
+      "dependency_registry",
+      "publish"
+    ],
+    "forbid": "private_authoritative_cache_in_research_scripts"
+  },
+  "reproducibility_required_fields": [
+    "cache_release_id",
+    "cache_product_ids",
+    "cache_schema_version",
+    "price_adj_tag",
+    "universe_definition",
+    "sw_taxonomy_version",
+    "pit_status",
+    "raw_fallback_fields"
+  ],
+  "deviation_attribution_order": [
+    "SELECTION_CORE",
+    "PRICE_PLANE",
+    "UNIVERSE_CROSS_SECTION",
+    "FACTOR_INPUT",
+    "EXECUTION",
+    "RETURN_PATH"
+  ],
+  "forbid": [
+    "prefer_unknown_old_cache",
+    "prefer_temp_csv_without_provenance",
+    "silent_historical_backfill_on_coverage_gap",
+    "full_raw_retreat_on_local_cache_miss",
+    "retune_strategy_params_to_fit_cache",
+    "cache_strategy_answers",
+    "etf_only_scan_for_fund_like_assets",
+    "modify_H_C_V4_R20_ETF_Detector_CANONICAL_under_this_policy_task"
+  ],
+  "applies_to": [
+    "backtest",
+    "market_research",
+    "strategy_research",
+    "factor_research",
+    "Detector",
+    "H",
+    "C",
+    "V4",
+    "R20",
+    "ETF_FUND_INDEX_research",
+    "future_strategies"
+  ],
+  "related_rules": [
+    "BLACKBOX_HAND_BACKTEST_CACHE_POLICY_R1",
+    "BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1",
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_TRADEABILITY_PIT_POLICY_R1",
+    "BLACKBOX_HAND_BACKTEST_PLATFORM_DEVIATION_ATTRIBUTION_R1"
+  ],
+  "ssot_mdc": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_cache_first_workflow_policy.mdc",
+  "runtime_status": "E:\\BLACKBOX\\运行\\BLACKBOX_CACHE_FIRST_WORKFLOW_POLICY_CURRENT.json",
+  "this_task_constraints": {
+    "strategy_files_modified": false,
+    "cache_rebuild_triggered": false,
+    "scope": "TOP_LEVEL_GOVERNANCE_ONLY"
+  }
+}
