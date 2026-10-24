@@ -1,0 +1,50 @@
+{
+ "schema": "R10_FIXED_READINESS_COMMAND_LEDGER_1",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "python": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "commands": [
+  {
+   "seq": 0,
+   "kind": "hub_poll",
+   "exit_code": 0,
+   "result": "new outbox BLACKBOX_FOUNDATION_R10_FIXED_READINESS_METADATA_20261025.md plus reviews/BLACKBOX_FOUNDATION_R10_FIXED_READINESS_METADATA_20261025/ (5 files)"
+  },
+  {
+   "seq": 1,
+   "kind": "stage_and_pin",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_rm_stage.py",
+   "exit_code": 0,
+   "result": "PACKAGE.json staged first, then 3 pinned members; declared and observed bytes/sha256 all match; delivery destination confirmed absent; capture directory created"
+  },
+  {
+   "seq": 2,
+   "kind": "genuine_preflight",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\operating_entry\\blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1",
+   "exit_code": 0,
+   "result": "ok=true MUST_READ_PRECHECK=PASS task_class=[CACHE] problems=[]"
+  },
+  {
+   "seq": 3,
+   "kind": "supplied_controls",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\fixed_readiness_metadata\\test_capture_readiness_metadata.py",
+   "exit_code": 0,
+   "result": "executed once; tests_run=8 passed=true; clean stderr"
+  },
+  {
+   "seq": 4,
+   "kind": "supplied_capture",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\fixed_readiness_metadata\\capture_readiness_metadata.py",
+   "exit_code": 0,
+   "result": "executed once; all four records ORIGINAL_METADATA_BYTES_CAPTURED; exit 0 means copies captured, not readiness"
+  }
+ ],
+ "supplier_calls": 0,
+ "flags": {
+  "FOUNDATION_ACCEPTANCE": false,
+  "FORMAL_ENGINE_ADMISSION": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false,
+  "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+ }
+}
