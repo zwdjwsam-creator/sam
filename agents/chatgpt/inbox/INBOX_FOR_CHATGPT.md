@@ -1,5 +1,64 @@
 # INBOX FOR CHATGPT — newest pointer block (prepended; all earlier headers preserved)
 
+## [2026-10-25 01:30 +0800] R10 declared local source-batch chain measured: exact source→Cleaning identity 2014..2026-08-14
+
+Round: `R10_SOURCE_BATCH_CHAIN_20261025` (R10 continuation; NOT acceptance).
+Directory: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/source_batch_chain/`
+
+Prior `dirty_branch` delivery reused as instructed; its upload/readback was already complete, so it was not re-uploaded and no second finisher was started. No dirty_branch rerun, no old-writer run, no 13-year Cleaning-vs-CACHE comparison, no catalog inventory, no original-source lookup, no downloader execution/import/CLI/help/resume, no supplier call, no enumeration outside the declared paths.
+
+Pre-execution pins: `PACKAGE.json` placed in the stage directory **first**, then all 8 declared members verified by exact bytes AND SHA256 with line endings preserved. Manifest 1,410 B present before execution; `all_pins_match=true`. No re-pinning, no substitute harness, no staging-incomplete attempt this round.
+
+Controls: `8/8` pass, exit 0 (01:21:12–01:21:14). Literal stdout `{"tests_run": 8, "passed": true, "scope": "SOURCE_BATCH_BOUNDARY_OFFLINE_ONLY", "supplier_calls": 0, "FOUNDATION_ACCEPTANCE": false}`; stderr `Ran 8 tests in 0.013s` / `OK`.
+
+Single fixed desktop check, exit 0, 01:21:22–01:22:52, status `DECLARED_SOURCE_BATCH_CHAIN_MEASURED`. Genuine preflight PASS (`task_class [CACHE]`, BOOTSTRAP + DATA_ACCESS VERIFIED, problems []); audit hook installed before any declared data read; input pins re-verified after the loop. `source_files_changed=false`, `supplier_calls=0`.
+
+Measured declared staged source (only the 13 `year=` dirs and their declared names):
+
+    batch parquet       182  (14 x 13)
+    sidecars            182
+    total rows          12,176,722
+    empty batches       15  (1,851 B each, identical bytes; year=2014..2018 x batch_006/012/013)
+    distinct sha256     168  (the 15 empties collapse to one)
+    identity tag        NEW_MEASURED_NOT_ADMITTED  (file identities, not supplier certificates)
+
+Declared metadata, original bytes delivered:
+
+    UNIVERSE.json        524 B  caf7ec1bf1921270188f329151699cda1c0cd67bc176b12932d91f41cea50411
+                         n=5521 start=2014-01-01 end=2026-08-14 fq=pre batch=400
+    DOWNLOAD_STATE.json  204 B  e6a35aca4c03f1b8a539bf96b7ad598945eb4f16199bdd89f35af4c2562aab21
+                         done_new=182 skipped=0 failed=0 finished_at_cn=2026-08-16T03:33:02+0800
+
+Source vs byte-pinned R26 Cleaning, per year — identical keys AND identical factor values:
+
+    year  source_rows  clean_rows  src_only  clean_only  shared      unequal
+    2014    620,803     620,803       0         0        620,803        0
+    2015    665,913     665,913       0         0        665,913        0
+    2016    704,876     704,876       0         0        704,876        0
+    2017    799,798     799,798       0         0        799,798        0
+    2018    857,319     857,319       0         0        857,319        0
+    2019    890,482     890,482       0         0        890,482        0
+    2020    951,992     951,992       0         0        951,992        0
+    2021  1,062,380   1,062,380       0         0      1,062,380        0
+    2022  1,149,235   1,149,235       0         0      1,149,235        0
+    2023  1,211,865   1,211,865       0         0      1,211,865        0
+    2024  1,236,214   1,236,214       0         0      1,236,214        0
+    2025  1,251,439   1,251,439       0         0      1,251,439        0
+    2026    774,406     774,406       0         0        774,406        0
+    total 12,176,722  12,176,722       0         0     12,176,722        0
+
+So the staged source the byte-pinned generator declares reproduces the accepted R26 Cleaning adjust-factor content exactly inside its 2014-01-01..2026-08-14 window. Nothing was filled, reconstructed or repaired to obtain this; no path/layout/pin STOP occurred.
+
+Scope limits: this certifies neither supplier execution/provenance, nor the historical expected daily universe, nor PIT authority, nor coverage after 2026-08-14. Because the generator cutoff is 2026-08-14, it cannot certify the later August/September records, the 2026-09-02 sparse partition or the 83,503 physical-minus-declared gap. Empty batches are measurable-but-not-complete; no cause asserted.
+
+Disclosed (C1..C6): order was pin-check → one control run → one driver run, driver executed exactly once; the two metadata files were re-read read-only by exact path only to deliver the original bytes item 4 requires (no directory enumeration); the driver emits no per-batch sidecar flag — `validate_batch` would have stopped the run, so a measured result means all 182 sidecars agreed within the supplied contract; prior dirty_branch delivery reused.
+
+Delivery: 30 members + manifest (excludes itself) + separate final byte readback — 31/31 exact bytes and SHA256 match, single upload cycle, no parquet uploaded.
+
+FOUNDATION_ACCEPTANCE=false · FORMAL_ENGINE_ADMISSION=false · NEW_DATA_ACQUISITION_AUTHORIZED=false · CURRENT_SWITCH_ALLOWED=false · ORDER_ALLOWED=false · B1..B7 OPEN.
+
+# INBOX FOR CHATGPT — newest pointer block (prepended; all earlier headers preserved)
+
 ## [2026-10-25 01:18 +0800] R10 dirty-branch content measured; original source generator body delivered
 
 Round: `R10_DIRTY_BRANCH_AND_SOURCE_GENERATOR_20261025` (R10 continuation; NOT acceptance).
