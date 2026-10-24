@@ -1,0 +1,93 @@
+{
+ "schema": "R10_WRITER_GUARDS_PRE_EXECUTION_PIN_CHECK_1",
+ "stage_dir": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\writer_guards",
+ "checked_at_cn_start": "2026-10-25T00:58:12+08:00",
+ "checked_at_cn_end": "2026-10-25T00:58:13+08:00",
+ "rule": "exact byte count AND exact SHA256 for every declared member and for the fixture, before any control or preflight is executed",
+ "all_pins_match": true,
+ "stop_triggered": false,
+ "files": [
+  {
+   "path": "r10_factor_candidate_merge.py",
+   "role": "PACKAGE_MEMBER",
+   "declared_bytes": 2656,
+   "actual_bytes": 2656,
+   "declared_sha256": "f375f523d857811019008e2c7b89f360f43b156ec41c4b74059bbd2c9b7d2fd5",
+   "actual_sha256": "f375f523d857811019008e2c7b89f360f43b156ec41c4b74059bbd2c9b7d2fd5",
+   "bytes_match": true,
+   "sha256_match": true,
+   "ok": true
+  },
+  {
+   "path": "test_r10_factor_writer_regressions.py",
+   "role": "PACKAGE_MEMBER",
+   "declared_bytes": 4889,
+   "actual_bytes": 4889,
+   "declared_sha256": "862433eba05f3e51a30194b7df42d0b5602ce357fadf5cf0648249b27585e84c",
+   "actual_sha256": "862433eba05f3e51a30194b7df42d0b5602ce357fadf5cf0648249b27585e84c",
+   "bytes_match": true,
+   "sha256_match": true,
+   "ok": true
+  },
+  {
+   "path": "r10_factor_input_contract.py",
+   "role": "PACKAGE_MEMBER",
+   "declared_bytes": 4046,
+   "actual_bytes": 4046,
+   "declared_sha256": "e30acaddecf03e0abd4360f60a74bae53525373e55feb51cf76d409beebe67c5",
+   "actual_sha256": "e30acaddecf03e0abd4360f60a74bae53525373e55feb51cf76d409beebe67c5",
+   "bytes_match": true,
+   "sha256_match": true,
+   "ok": true
+  },
+  {
+   "path": "REVIEW.md",
+   "role": "PACKAGE_MEMBER",
+   "declared_bytes": 5619,
+   "actual_bytes": 5619,
+   "declared_sha256": "797e742fe7268e96d50b74a5bc47ea141dd1c1c2bdd4d7c0a97e417ec337d1bc",
+   "actual_sha256": "797e742fe7268e96d50b74a5bc47ea141dd1c1c2bdd4d7c0a97e417ec337d1bc",
+   "bytes_match": true,
+   "sha256_match": true,
+   "ok": true
+  },
+  {
+   "path": "OFFLINE_TEST_RECEIPT.json",
+   "role": "PACKAGE_MEMBER",
+   "declared_bytes": 231,
+   "actual_bytes": 231,
+   "declared_sha256": "83e5acaff7e208c0a7a56566d2da4eede01469d71fbc6a4dfb58df5a1c23b410",
+   "actual_sha256": "83e5acaff7e208c0a7a56566d2da4eede01469d71fbc6a4dfb58df5a1c23b410",
+   "bytes_match": true,
+   "sha256_match": true,
+   "ok": true
+  },
+  {
+   "path": "source_incremental_backward_refresh_r1.py",
+   "role": "ORIGINAL_FIXTURE_FROM_HUB",
+   "declared_bytes": 11537,
+   "actual_bytes": 11537,
+   "declared_sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+   "actual_sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+   "bytes_match": true,
+   "sha256_match": true,
+   "hub_path": "agents/chatgpt/inbox/BLACKBOX_INVENTORY_CONTINUE_20261022_1310/completion_1507/source_reads/incremental_backward_refresh_r1.py",
+   "hub_blob_sha": "95d6704f08f8d02d5dc76dc63671a7745f04487a",
+   "note": "fixture is the published HUB body, decoded and hash-checked; local original on disk also equals these bytes",
+   "ok": true
+  }
+ ],
+ "fixture_equals_local_original": true,
+ "staged_file_creation_times_utc": {
+  "OFFLINE_TEST_RECEIPT.json": "2026-10-24T16:58:12Z",
+  "r10_factor_candidate_merge.py": "2026-10-24T16:58:12Z",
+  "r10_factor_input_contract.py": "2026-10-24T16:58:12Z",
+  "REVIEW.md": "2026-10-24T16:58:12Z",
+  "source_incremental_backward_refresh_r1.py": "2026-10-24T16:58:13Z",
+  "test_r10_factor_writer_regressions.py": "2026-10-24T16:58:12Z"
+ },
+ "no_line_ending_normalization": true,
+ "no_source_change": true,
+ "no_pin_regeneration": true,
+ "no_substitute_test": true
+}
