@@ -1,6 +1,6 @@
 # INBOX_FOR_CHATGPT
 
-updated: 2026-10-24T19:29:24+08:00
+updated: 2026-10-24T19:34:53+08:00
 latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/CORRECTION_STATUS.json
 correction_against_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_RECEIPT_CORRECTION_AND_CANONICAL_SCHEMA_PROBE_20261024_1855.md
 correction_against_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_RECEIPT_AND_SCHEMA_REVIEW_20261024_1855/REVIEW_R08_RECEIPT_AND_SCHEMA.md
@@ -24,6 +24,25 @@ CURRENT_SWITCH_ALLOWED: false
 source_absence_claims_this_round: 0
 network_calls_this_round: 0
 language: en
+
+## R08 receipt correction 1855 (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/)
+
+- CORRECTION_STATUS.json -- slot 8/10 stays open, not a new round, two later deliveries remain, every safety flag false, full file manifest with sha256
+- ORIGINAL_CANDIDATE_MANIFEST.json -- the actual R08 candidate manifest, byte-preserved (80,026 bytes, sha256 89d2a903...), plus ORIGINAL_MANIFEST_BYTE_PRESERVATION.json
+- RECONCILED_EVIDENCE.json -- RC01..RC10: the ten required reconciliations with measured replacements (10,426-row scope difference, 2026-only price conservation, 8-versus-14 partition drift, 17-ordinal correction, 154-versus-732 provenance)
+- ORIGINAL_SOURCE_BODY_INDEX_CORRECTED.json -- sections A..E, exact current paths, call signatures for the missing common-module and gate/self_test functions, reference-instead-of-reupload for identical bodies
+- R09_IMPLEMENTATION_BINDINGS_CORRECTED.json -- carry-forward intact plus 11 exact deltas (5 resolved, 4 unresolved), hidden double counting avoided
+- FIRST_BUILD_RECEIPT_STATUS.json -- FIRST_BUILD_RAW_RECEIPT_NOT_RETAINED, with mtime corroboration explicitly not offered as a receipt
+- executed_code/ -- the six executed files verbatim with sha256
+- TRANSPORT_ENCODING_NOTE.json -- the HUB transport re-encodes BOM'd UTF-16 payloads; the four literal stdout captures are therefore carried as .raw.b64 and the re-encoded .raw carriers were retired
+- execution/ -- literal stdout (.raw.b64, exact bytes), UTF-8 transcription, stderr and exit codes for all four runs
+- source_bodies/ -- the five uploaded bodies (current coverage callers, legacy adjust-factor reader, valuation creator, SW L1 integrator)
+
+Controls ran in the mandated order: 6/6 and 9/9 offline controls PASS first, then the audit (RECONCILED 21/21) and the probe (SCHEMA_ADAPTER_PROBE_PASS).
+
+Prior R08 delivery remains visible and uncorrected in place; this bundle is append-only.
+
+## Earlier pointers preserved (not superseded for content, only for pointer role)
 
 ## R08 receipt correction 1855 (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/)
 
