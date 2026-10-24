@@ -1,0 +1,2169 @@
+{
+ "matrix_id": "DATA_ACQUISITION_MATRIX_R4A",
+ "generated_at": "2026-10-24T15:26:56+08:00",
+ "language": "en",
+ "axes_are_independent": [
+  "possession",
+  "acquisition",
+  "policy"
+ ],
+ "counts": {
+  "rows": 54,
+  "policy": {
+   "AUTHORITY_CONFLICT": 1,
+   "CONDITIONAL": 5,
+   "DEFERRED": 6,
+   "NOT_REQUIRED": 5,
+   "REQUIRED": 37
+  },
+  "possession": {
+   "NOT_PRESENT_IN_CHECKED_SCOPE": 12,
+   "PRESENT_COVERAGE_UNVERIFIED": 39,
+   "PRESENT_PARTIAL": 2,
+   "UNVERIFIED": 1
+  },
+  "acquisition": {
+   "CONFIGURED_NOT_VERIFIED": 34,
+   "HISTORICAL_ACCESS_ONLY": 3,
+   "MANUAL_OR_LICENSED_DOCUMENT_ONLY": 3,
+   "UNVERIFIED": 7,
+   "VERIFIED_CURRENT_ACCESS": 7
+  }
+ },
+ "row_evidence_override": {
+  "PRICE_STOCK_DAILY_gap": {
+   "dates": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "calendar_status": "both dates are open trade days in the loaded CLEAN calendar (E:\\BLACKBOX\\数据\\清洗成品\\releases\\...\\standard\\reference\\calendar_cn_exchange)",
+   "raw_layer": {
+    "state": "PRESENT",
+    "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet": {
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+     "exists": true,
+     "bytes": 310665,
+     "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+     "rows": 5212,
+     "distinct_codes": 5212,
+     "sample_code_present": "000001.XSHE",
+     "sidecar_sha256": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7"
+    },
+    "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet": {
+     "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+     "exists": true,
+     "bytes": 311528,
+     "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+     "rows": 5214,
+     "distinct_codes": 5214,
+     "sample_code_present": "000001.XSHE",
+     "sidecar_sha256": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b"
+    }
+   },
+   "clean_layer": {
+    "state": "ABSENT",
+    "release": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "daily_dir": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+    "day_file_series_span": "incremental day files run 20260828 -> 20260902 with both dates absent",
+    "year_gapfill_files": "2026 year gapfill files end at 2026-07-02",
+    "any_code_on_these_dates": false
+   },
+   "cache_layer": {
+    "state": "PROPAGATED_ABSENT",
+    "reason": "CACHE is built from CLEAN; the two dates never entered CLEAN"
+   },
+   "proven": "RAW presence and CLEAN absence are directly observed; the reason CLEAN omitted the two RAW units is NOT proven",
+   "cause_status": "CAUSE_NOT_PROVEN",
+   "note": "this is not global absence and not a supplier failure; it is a two-day CLEAN omission for at least the 5,212/5,214 codes present in RAW"
+  }
+ },
+ "rules": [
+  "a zero-row response, cap-hit, partial pagination, failed request or timeout is never proof of NO_DATA",
+  "accessibility does not imply policy permission; an inaccessible required dataset is an explicit capability exception",
+  "a derived or recomputed factor is not the supplier's downloaded factor value"
+ ],
+ "rows": [
+  {
+   "dataset_id": "PRICE_STOCK_DAILY",
+   "title": "A-share stock daily OHLCV (raw and cleaned)",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "STOCK",
+    "domain": "PRICE_STOCK_DAILY",
+    "frequency": "daily"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active A_share_daily; child rule cache products STOCK_DAILY_PIT_R1"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 524,
+    "CLEAN": 232,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "2026-08-31 and 2026-09-01 absent in CLEAN/CACHE although present in RAW",
+   "checked_scope_for_absence": "000001.XSHE across every CLEAN file whose footer statistics touch 2026-08-25..2026-09-10; plus every CLEAN 2026 file distinct-date scan",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_PARTIAL",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_STOCK_1M",
+   "title": "A-share stock 1-minute bars",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "STOCK",
+    "domain": "PRICE_STOCK_1M",
+    "frequency": "1m"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active A_share_minute_1m_replacement; INDEX minute 732 separate"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 11790,
+    "CLEAN": 40,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_STOCK_5M",
+   "title": "PRICE_STOCK_5M dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "STOCK",
+    "domain": "PRICE_STOCK_5M",
+    "frequency": "5m"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active A_share_minute_5m_replacement"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_5m",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 12847,
+    "CLEAN": 52,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_STOCK_30M",
+   "title": "PRICE_STOCK_30M dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "STOCK",
+    "domain": "PRICE_STOCK_30M",
+    "frequency": "30m"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active A_share_minute_30m_60m"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_30m",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 26613,
+    "CLEAN": 40,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_STOCK_60M",
+   "title": "PRICE_STOCK_60M dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "STOCK",
+    "domain": "PRICE_STOCK_60M",
+    "frequency": "60m"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active A_share_minute_30m_60m"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_60m",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 26613,
+    "CLEAN": 44,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_ETF_DAILY",
+   "title": "ETF daily OHLCV",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "ETF",
+    "domain": "PRICE_ETF_DAILY",
+    "frequency": "daily"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active ETF_daily_raw_none"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P8_etf_fund",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_daily",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 18,
+    "CLEAN": 37,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_ETF_1M",
+   "title": "ETF 1-minute bars",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "ETF",
+    "domain": "PRICE_ETF_1M",
+    "frequency": "1m"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active ETF_minute_5m_1m_30m_60m_raw_none"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 36718,
+    "CLEAN": 24,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_ETF_5M",
+   "title": "PRICE_ETF_5M dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "ETF",
+    "domain": "PRICE_ETF_5M",
+    "frequency": "5m"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active ETF_minute_5m_1m_30m_60m_raw_none"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 36718,
+    "CLEAN": 44,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_ETF_30M",
+   "title": "PRICE_ETF_30M dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "ETF",
+    "domain": "PRICE_ETF_30M",
+    "frequency": "30m"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active ETF_minute_5m_1m_30m_60m_raw_none"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_30m",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 36718,
+    "CLEAN": 4395,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_ETF_60M",
+   "title": "PRICE_ETF_60M dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "ETF",
+    "domain": "PRICE_ETF_60M",
+    "frequency": "60m"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active ETF_minute_5m_1m_30m_60m_raw_none"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_60m",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 36718,
+    "CLEAN": 4399,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_INDEX_DAILY",
+   "title": "Index daily OHLCV",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "INDEX",
+    "domain": "PRICE_INDEX_DAILY",
+    "frequency": "daily"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active index daily"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
+    "CACHE": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+   },
+   "layer_file_counts": {
+    "RAW": 362,
+    "CLEAN": 37,
+    "CACHE": 6675
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "PRICE_INDEX_MINUTE",
+   "title": "Index minute bars",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "INDEX",
+    "domain": "PRICE_INDEX_MINUTE",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 index_minute_732_incremental_for_new_trade_days"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index_minute",
+    "CLEAN": null
+   },
+   "layer_file_counts": {
+    "RAW": 133968,
+    "CLEAN": null
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "CALENDAR_CN_EXCHANGE",
+   "title": "China exchange trading calendar",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "CALENDAR_CN_EXCHANGE",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active calendar_cn_exchange"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange"
+   },
+   "layer_file_counts": {
+    "RAW": 119,
+    "CLEAN": 2
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "SECURITY_MASTER",
+   "title": "Security master (type, name, listing window)",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "SECURITY_MASTER",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active security_master_pit"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master"
+   },
+   "layer_file_counts": {
+    "RAW": 119,
+    "CLEAN": 11
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "ADJUST_FACTOR",
+   "title": "Adjustment factor plane",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "ADJUST_FACTOR",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active adjust_factor; fq_pre_post NOT required"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor"
+   },
+   "layer_file_counts": {
+    "RAW": 222,
+    "CLEAN": 18
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "TRADABLE_STATUS",
+   "title": "Tradable / limit / pause status",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "TRADABLE_STATUS",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "child rule security_state_daily_include=true -> STOCK_TRADEABILITY_PIT_R1"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status"
+   },
+   "layer_file_counts": {
+    "RAW": 956,
+    "CLEAN": 3
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "INDEX_COMPONENTS",
+   "title": "Index constituents",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "INDEX",
+    "domain": "INDEX_COMPONENTS",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 index_components; engine benchmark domain"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_components"
+   },
+   "layer_file_counts": {
+    "RAW": 362,
+    "CLEAN": 106
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "INDEX_WEIGHTS",
+   "title": "Index weights (component code preserved; historical backtest ineligible)",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "INDEX",
+    "domain": "INDEX_WEIGHTS",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "CONDITIONAL",
+    "reason": "managed snapshot; CHECK_LATEST_SOURCE_SNAPSHOT_NO_UNCONDITIONAL_FULL_HISTORY"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_weights"
+   },
+   "layer_file_counts": {
+    "RAW": 362,
+    "CLEAN": 105
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "historical backtest ineligible by declared semantics; local max snapshot 2026-06-30",
+   "checked_scope_for_absence": "registry note + managed_snapshot_products",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "CONDITIONAL",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "INDUSTRY_CONCEPT",
+   "title": "INDUSTRY_CONCEPT dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "INDUSTRY_CONCEPT",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "child rule SW L1/L2/L3 membership PIT densify"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept"
+   },
+   "layer_file_counts": {
+    "RAW": 217,
+    "CLEAN": 13
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "INDUSTRY_CONCEPT_EVENTS",
+   "title": "INDUSTRY_CONCEPT_EVENTS dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "INDUSTRY_CONCEPT_EVENTS",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "SW membership change events"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept_events"
+   },
+   "layer_file_counts": {
+    "RAW": 217,
+    "CLEAN": 1
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "BILLBOARD",
+   "title": "BILLBOARD dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "BILLBOARD",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active billboard_longhubang"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\billboard"
+   },
+   "layer_file_counts": {
+    "RAW": 217,
+    "CLEAN": 28
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "XR_XD",
+   "title": "Ex-rights / ex-dividend events",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "XR_XD",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "child rule stk_xr_xd_event_pit -> CORP_XR_XD_EVENT_PIT_R1"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\xr_xd"
+   },
+   "layer_file_counts": {
+    "RAW": 217,
+    "CLEAN": 62
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "CORPORATE_REFERENCE",
+   "title": "CORPORATE_REFERENCE dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "CORPORATE_REFERENCE",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 corporate_reference amendment"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\corporate_reference"
+   },
+   "layer_file_counts": {
+    "RAW": 217,
+    "CLEAN": 42
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "SHAREHOLDER_TOP10",
+   "title": "SHAREHOLDER_TOP10 dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "SHAREHOLDER_TOP10",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "child rule stk_shareholder_top10_pit"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_top10"
+   },
+   "layer_file_counts": {
+    "RAW": 217,
+    "CLEAN": 1
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "SHAREHOLDER_FLOATING_TOP10",
+   "title": "SHAREHOLDER_FLOATING_TOP10 dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "SHAREHOLDER_FLOATING_TOP10",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "child rule stk_shareholder_floating_top10_pit"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_floating_top10"
+   },
+   "layer_file_counts": {
+    "RAW": 217,
+    "CLEAN": 1
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "VALUATION",
+   "title": "Valuation metrics",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "VALUATION",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active valuation -> VALUATION_PIT_R1"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factor\\valuation"
+   },
+   "layer_file_counts": {
+    "RAW": 177,
+    "CLEAN": 48
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "FINANCE_PIT",
+   "title": "Point-in-time financial statements",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FINANCE_PIT",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "AMEND_R3 financial_indicator REQUIRED_FULL_HISTORY"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fundamentals"
+   },
+   "layer_file_counts": {
+    "RAW": 685,
+    "CLEAN": 353
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "MTSS",
+   "title": "MTSS dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "MTSS",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "DEFERRED",
+    "reason": "no amendment names MTSS; RAW only"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events"
+   },
+   "layer_file_counts": {
+    "RAW": 217
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "RAW only, no CLEAN layer",
+   "checked_scope_for_absence": "registry layers",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_PARTIAL",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "DEFERRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "FUND_ETF_NAV",
+   "title": "Fund and ETF NAV / premium plane",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "ETF",
+    "domain": "FUND_ETF_NAV",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "child rule fund_etf_nav get_extras -> FUND_NAV_PIT_R1 (daily mandatory)"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_nav",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_NAV"
+   },
+   "layer_file_counts": {
+    "RAW": 19752,
+    "CLEAN": 5980
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "ETF_SHARE",
+   "title": "ETF_SHARE dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "ETF",
+    "domain": "ETF_SHARE",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active fund_etf_share"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE"
+   },
+   "layer_file_counts": {
+    "RAW": 27218,
+    "CLEAN": 3829
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "OPEN_FUND",
+   "title": "OPEN_FUND dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "FUND",
+    "domain": "OPEN_FUND",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "DEFERRED",
+    "reason": "P4b_open_fund_qdii_other DEFERRED，不混主轨"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\open_fund"
+   },
+   "layer_file_counts": {
+    "RAW": 78719,
+    "CLEAN": 76650
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "DEFERRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "QDII",
+   "title": "QDII dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "FUND",
+    "domain": "QDII",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "DEFERRED",
+    "reason": "P4b_open_fund_qdii_other DEFERRED"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\QDII"
+   },
+   "layer_file_counts": {
+    "RAW": 78719,
+    "CLEAN": 1899
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "DEFERRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "FUND_OTHER",
+   "title": "FUND_OTHER dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "FUND",
+    "domain": "FUND_OTHER",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "DEFERRED",
+    "reason": "P4b_open_fund_qdii_other DEFERRED"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\other"
+   },
+   "layer_file_counts": {
+    "RAW": 78719,
+    "CLEAN": 170
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "DEFERRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "FUND_TRACKING_INDEX_MAPPING",
+   "title": "FUND_TRACKING_INDEX_MAPPING dataset (supplier: JQData); identifier and lineage preserved",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "JQ_OFFICIAL_RAW",
+   "asset_domain_frequency": {
+    "asset": "INDEX",
+    "domain": "FUND_TRACKING_INDEX_MAPPING",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "R2 required_active fund_tracking_index_mapping"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+    "CLEAN": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\fund_tracking_index_mapping"
+   },
+   "layer_file_counts": {
+    "RAW": 27218,
+    "CLEAN": 3
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "CONFIGURED_NOT_VERIFIED",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "FACTOR_260_DICTIONARY",
+   "title": "Factor 260 dictionary metadata",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FACTOR_260_DICTIONARY",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "dictionary/formula research layer retained"
+   },
+   "layer_roots": {
+    "FACTOR_DICTIONARY": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv"
+   },
+   "layer_file_counts": {
+    "FACTOR_DICTIONARY": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "VERIFIED_CURRENT_ACCESS",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "FACTOR_260_SEMANTICS",
+   "title": "Factor 260 semantics metadata",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FACTOR_260_SEMANTICS",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "dictionary research layer"
+   },
+   "layer_roots": {
+    "FACTOR_DICTIONARY": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_field_semantics_CURRENT.csv"
+   },
+   "layer_file_counts": {
+    "FACTOR_DICTIONARY": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "VERIFIED_CURRENT_ACCESS",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "FACTOR_260_FORMULA",
+   "title": "Factor 260 formula metadata",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FACTOR_260_FORMULA",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "dictionary/formula research layer"
+   },
+   "layer_roots": {
+    "FACTOR_DICTIONARY": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_formula_CURRENT.csv"
+   },
+   "layer_file_counts": {
+    "FACTOR_DICTIONARY": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "VERIFIED_CURRENT_ACCESS",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "FACTOR_260_PIT_RULES",
+   "title": "Factor 260 point-in-time rules",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FACTOR_260_PIT_RULES",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "factor_260_pit_rules_CURRENT (ADMIT_DICTIONARY_ONLY)"
+   },
+   "layer_roots": {
+    "FACTOR_DICTIONARY": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_pit_rules_CURRENT.json"
+   },
+   "layer_file_counts": {
+    "FACTOR_DICTIONARY": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "VERIFIED_CURRENT_ACCESS",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "FACTOR_260_CLEANING_RULES",
+   "title": "Factor 260 cleaning rules",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FACTOR_260_CLEANING_RULES",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "cleaning rule dictionary only, cleaning not executed"
+   },
+   "layer_roots": {
+    "FACTOR_DICTIONARY": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_cleaning_rules_CURRENT.json"
+   },
+   "layer_file_counts": {
+    "FACTOR_DICTIONARY": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "VERIFIED_CURRENT_ACCESS",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "FACTOR_260_ENGINE_MAPPING",
+   "title": "Factor 260 engine mapping",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FACTOR_260_ENGINE_MAPPING",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "engine mapping dictionary"
+   },
+   "layer_roots": {
+    "FACTOR_DICTIONARY": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_engine_mapping_CURRENT.csv"
+   },
+   "layer_file_counts": {
+    "FACTOR_DICTIONARY": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "VERIFIED_CURRENT_ACCESS",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "FACTOR_VALUE",
+   "title": "Factor value plane (permission-blocked in R01 evidence)",
+   "source_id": "SRC_JQDATA_SDK",
+   "lineage": "NOT_DOWNLOADED_BY_POLICY",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FACTOR_VALUE",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "AUTHORITY_CONFLICT",
+    "reason": "AMEND_R3 full_factor_values_library REQUIRED vs daily child rule permission_blocked_skip_sealed vs MASTER factor_value_download_forbidden"
+   },
+   "layer_roots": {
+    "FACTOR_VALUE": null
+   },
+   "layer_file_counts": {
+    "FACTOR_VALUE": null
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "no value plane on this desktop",
+   "checked_scope_for_absence": "registry layer FACTOR_VALUE exists=false; no candidate file plane",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "UNVERIFIED",
+   "policy_status": "AUTHORITY_CONFLICT",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "no action this cycle; authority conflict is for GPT to reconcile"
+  },
+  {
+   "dataset_id": "STRATEGY_OUTPUT",
+   "title": "Strategy output plane (not an input)",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "INTERNAL_RESEARCH_OUTPUT",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "STRATEGY_OUTPUT",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "NOT_REQUIRED",
+    "reason": "internal research output, not an input plane"
+   },
+   "layer_roots": {
+    "STRATEGY_OUTPUT": "E:\\BLACKBOX\\研究系统\\CURRENT"
+   },
+   "layer_file_counts": {
+    "STRATEGY_OUTPUT": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "VERIFIED_CURRENT_ACCESS",
+   "policy_status": "NOT_REQUIRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "TS_CBOND_R1",
+   "title": "TS_CBOND_R1 dataset (supplier: Tushare); identifier and lineage preserved",
+   "source_id": "SRC_TUSHARE_PRO",
+   "lineage": "EXTERNAL_TUSHARE",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "TS_CBOND_R1",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "CONDITIONAL",
+    "reason": "external Tushare convertible-bond lane; not in the six-lane daily required list"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R1"
+   },
+   "layer_file_counts": {
+    "RAW": 1279
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "HISTORICAL_ACCESS_ONLY",
+   "policy_status": "CONDITIONAL",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "TS_CBOND_R2",
+   "title": "TS_CBOND_R2 dataset (supplier: Tushare); identifier and lineage preserved",
+   "source_id": "SRC_TUSHARE_PRO",
+   "lineage": "EXTERNAL_TUSHARE",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "TS_CBOND_R2",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "CONDITIONAL",
+    "reason": "external Tushare convertible-bond lane"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R2"
+   },
+   "layer_file_counts": {
+    "RAW": 1371
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "HISTORICAL_ACCESS_ONLY",
+   "policy_status": "CONDITIONAL",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "EXTERNAL_DICT_EVIDENCE",
+   "title": "EXTERNAL_DICT_EVIDENCE dataset (supplier: Friend_JQData/Tushare); identifier and lineage preserved",
+   "source_id": "SRC_EXTERNAL_DOC_IMPORT",
+   "lineage": "EXTERNAL_FRIEND_JQDATA_TUSHARE",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "EXTERNAL_DICT_EVIDENCE",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "CONDITIONAL",
+    "reason": "external dictionary evidence; read-only sidecar"
+   },
+   "layer_roots": {
+    "EVIDENCE": "E:\\BLACKBOX\\数据\\外部补充只读"
+   },
+   "layer_file_counts": {
+    "EVIDENCE": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "layer present with 0 parquet",
+   "checked_scope_for_absence": "registry layer EVIDENCE n_parquet=0",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "MANUAL_OR_LICENSED_DOCUMENT_ONLY",
+   "policy_status": "CONDITIONAL",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "EXTERNAL_EVIDENCE_PLANE",
+   "title": "EXTERNAL_EVIDENCE_PLANE dataset (supplier: MULTI_EXTERNAL); identifier and lineage preserved",
+   "source_id": "SRC_EXTERNAL_DOC_IMPORT",
+   "lineage": "EXTERNAL_MULTI_EXTERNAL",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "EXTERNAL_EVIDENCE_PLANE",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "external evidence tip is mandatory daily (clean/antileak/5000 gate)"
+   },
+   "layer_roots": {
+    "EVIDENCE": "E:\\BLACKBOX\\数据\\外部证据"
+   },
+   "layer_file_counts": {
+    "EVIDENCE": 10726
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "MANUAL_OR_LICENSED_DOCUMENT_ONLY",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "US_MARKET",
+   "title": "US_MARKET dataset (supplier: EXTERNAL); identifier and lineage preserved",
+   "source_id": "SRC_EXTERNAL_DOC_IMPORT",
+   "lineage": "EXTERNAL_EXTERNAL",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "US_MARKET",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "REQUIRED",
+    "reason": "lane E/F US news and market state"
+   },
+   "layer_roots": {
+    "EVIDENCE": "E:\\BLACKBOX\\数据\\美国市场"
+   },
+   "layer_file_counts": {
+    "EVIDENCE": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "registry layer EVIDENCE n_parquet=0 while the US folders hold products outside that layer",
+   "checked_scope_for_absence": "registry layer EVIDENCE n_parquet=0",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "MANUAL_OR_LICENSED_DOCUMENT_ONLY",
+   "policy_status": "REQUIRED",
+   "resource_constraints": "none beyond credential/endpoint verification",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "TUSHARE_INDEX_WEIGHT_ADAPTER",
+   "title": "TUSHARE_INDEX_WEIGHT_ADAPTER dataset (supplier: Tushare); identifier and lineage preserved",
+   "source_id": "SRC_TUSHARE_PRO",
+   "lineage": "EXTERNAL_TUSHARE",
+   "asset_domain_frequency": {
+    "asset": "INDEX",
+    "domain": "TUSHARE_INDEX_WEIGHT_ADAPTER",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "CONDITIONAL",
+    "reason": "adapter for index weight snapshots"
+   },
+   "layer_roots": {
+    "EVIDENCE": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\19_tushare_index_weight_adapter_lock"
+   },
+   "layer_file_counts": {
+    "EVIDENCE": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "layer present with 0 parquet",
+   "checked_scope_for_absence": "registry layer EVIDENCE n_parquet=0",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "HISTORICAL_ACCESS_ONLY",
+   "policy_status": "CONDITIONAL",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "verify credential/endpoint then bounded incremental through the approved candidate workflow"
+  },
+  {
+   "dataset_id": "LEGACY_JQ_RAW_CN",
+   "title": "LEGACY_JQ_RAW_CN dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "LEGACY_PRE_BASELINE_RAW_CLASSIFICATION",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "LEGACY_JQ_RAW_CN",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "NOT_REQUIRED",
+    "reason": "legacy pre-baseline raw classification; not a foundation input"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读"
+   },
+   "layer_file_counts": {
+    "RAW": 363965
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "UNVERIFIED",
+   "policy_status": "NOT_REQUIRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "EXPERIMENTAL_WINDOW_RAW",
+   "title": "EXPERIMENTAL_WINDOW_RAW dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "HISTORICAL_EXPERIMENTAL_WINDOW_DO_NOT_USE_AS_MASTER",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "EXPERIMENTAL_WINDOW_RAW",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "DEFERRED",
+    "reason": "historical experimental window; DO_NOT_USE_AS_MASTER"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_WINDOW_FULL_RAW_20260325_20260501"
+   },
+   "layer_file_counts": {
+    "RAW": 0
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "layer present with 0 parquet",
+   "checked_scope_for_absence": "registry layer RAW n_parquet=0",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "NOT_PRESENT_IN_CHECKED_SCOPE",
+   "acquisition_status": "UNVERIFIED",
+   "policy_status": "DEFERRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "STRATEGY_DATA_PLANE_ADDITIONS",
+   "title": "STRATEGY_DATA_PLANE_ADDITIONS dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "FORMAL_POST_BASELINE_INHERITANCE",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "STRATEGY_DATA_PLANE_ADDITIONS",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "NOT_REQUIRED",
+    "reason": "post-baseline strategy additions"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions"
+   },
+   "layer_file_counts": {
+    "RAW": 2013
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "UNVERIFIED",
+   "policy_status": "NOT_REQUIRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "FORENSIC_CANARY",
+   "title": "FORENSIC_CANARY dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "AUDIT_ONLY_NOT_FOUNDATION",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "FORENSIC_CANARY",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "NOT_REQUIRED",
+    "reason": "audit only"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\_forensic_canary"
+   },
+   "layer_file_counts": {
+    "RAW": 510
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "UNVERIFIED",
+   "policy_status": "NOT_REQUIRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "EXPERIMENT_CANARY",
+   "title": "EXPERIMENT_CANARY dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "EXPERIMENTAL_NOT_FOUNDATION",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "EXPERIMENT_CANARY",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "NOT_REQUIRED",
+    "reason": "experimental only"
+   },
+   "layer_roots": {
+    "RAW": "E:\\BLACKBOX\\数据\\原始只读\\试验"
+   },
+   "layer_file_counts": {
+    "RAW": 93
+   },
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": null,
+   "checked_scope_for_absence": null,
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "PRESENT_COVERAGE_UNVERIFIED",
+   "acquisition_status": "UNVERIFIED",
+   "policy_status": "NOT_REQUIRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  },
+  {
+   "dataset_id": "UNDETERMINED_SCOPE",
+   "title": "UNDETERMINED_SCOPE dataset (supplier: VARIOUS); identifier and lineage preserved",
+   "source_id": "SRC_LOCAL_RELEASES",
+   "lineage": "UNDETERMINED",
+   "asset_domain_frequency": {
+    "asset": "MULTI",
+    "domain": "UNDETERMINED_SCOPE",
+    "frequency": "N/A"
+   },
+   "authority_references": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+    "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+    "MASTER_RULE_LIBRARY_REGISTRY_R1"
+   ],
+   "declared_required_scope": {
+    "policy": "DEFERRED",
+    "reason": "undetermined scope; no layer"
+   },
+   "layer_roots": {},
+   "layer_file_counts": {},
+   "previous_validated_coverage_evidence": "see ECOLOGY_REGISTRY_R3 observed bounds; per-dataset validation artifacts exist only where recorded there",
+   "known_gap": "no layer declared",
+   "checked_scope_for_absence": "registry has no layer",
+   "schema_provenance_status": "candidate reader R04 records field admission and file provenance; no MASTER admission decision exists",
+   "engine_eligibility_status": "PRE_INGESTION gate not satisfied for any dataset in this cycle (FOUNDATION_ACCEPTANCE=false)",
+   "possession_status": "UNVERIFIED",
+   "acquisition_status": "UNVERIFIED",
+   "policy_status": "DEFERRED",
+   "resource_constraints": "not in the required build; no resource spend authorized",
+   "next_contracted_action": "hold; excluded by policy"
+  }
+ ]
+}
