@@ -1,0 +1,474 @@
+{
+ "structure_id": "SYSTEM_STRUCTURE_R4",
+ "built_at": "2026-10-24T15:05:56+08:00",
+ "language": "en",
+ "round": "R04/10",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "formal_backtest_active": false,
+ "correction_of": "SYSTEM_STRUCTURE.json (R03)",
+ "corrections": [
+  "every edge now carries one of FILE_EXISTS / STATIC_CALL_EDGE / RUNTIME_OBSERVED_EDGE / DESIRED_EDGE / UNRESOLVED_EDGE",
+  "local_parquet is now a declared node; R03 used it as an undeclared endpoint",
+  "registry_builder input is recorded as the R01 registry JSON, not a fresh CURRENT resolution",
+  "a fresh CURRENT cleaning/cache read is compared with the registry layer roots in this build",
+  "node_id is present on every node (R03 nodes used id)"
+ ],
+ "edge_kind_counts": {
+  "STATIC_CALL_EDGE": 9,
+  "RUNTIME_OBSERVED_EDGE": 5,
+  "UNRESOLVED_EDGE": 3,
+  "FILE_EXISTS": 2,
+  "DESIRED_EDGE": 2
+ },
+ "nodes": [
+  {
+   "node_id": "cand.launcher",
+   "kind": "launcher",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\tests\\test_conformance_r3.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "candidate_suite_r3",
+   "evidence": "R03 suite unchanged this round",
+   "sha256_16": "5576a61c24809272",
+   "bytes": 28938
+  },
+  {
+   "node_id": "cand.patch_generator",
+   "kind": "generator",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R04_GPT_PATCH\\build_r04_patch.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "gpt_supplied",
+   "evidence": "executed, exit 0",
+   "sha256_16": "fbb02501d2386d60",
+   "bytes": 5881
+  },
+  {
+   "node_id": "cand.patch_verifier",
+   "kind": "verifier",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R04_GPT_PATCH\\verify_safety_patch.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "gpt_supplied",
+   "evidence": "executed, exit 0",
+   "sha256_16": "75cfeee54c4ca8a6",
+   "bytes": 4970
+  },
+  {
+   "node_id": "cand.r4.provider",
+   "kind": "reader",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\provider.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "candidate_r4",
+   "evidence": "patched provider",
+   "sha256_16": "bd5a98537d9be931",
+   "bytes": 37470
+  },
+  {
+   "node_id": "cand.r4.adapter",
+   "kind": "contract_adapter",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\engine_adapter.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "candidate_r4",
+   "evidence": "patched engine boundary",
+   "sha256_16": "9a971305a215d3c9",
+   "bytes": 11813
+  },
+  {
+   "node_id": "cand.r4.file_index",
+   "kind": "reader_index",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4\\file_index.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "candidate_r4",
+   "evidence": "unchanged from r3",
+   "sha256_16": "8e1828a73817cc87",
+   "bytes": 13633
+  },
+  {
+   "node_id": "cand.registry",
+   "kind": "registry",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "candidate_artifact",
+   "evidence": "54 dataset registry",
+   "sha256_16": "8a1a4d9337d25839",
+   "bytes": 115833
+  },
+  {
+   "node_id": "cand.registry_builder",
+   "kind": "registry_builder",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\build_registry_r3.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "candidate_tool",
+   "evidence": "input = R01 registry JSON line 80",
+   "sha256_16": "c15f66c236fb4d9c",
+   "bytes": 11094
+  },
+  {
+   "node_id": "prod.r01_registry",
+   "kind": "historical_registry",
+   "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY.json",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "historical_input",
+   "evidence": "predecessor input of build_registry_r3.py",
+   "sha256_16": "74404a616ef2b7e7",
+   "bytes": 150076
+  },
+  {
+   "node_id": "prod.cleaning_current",
+   "kind": "current_pointer",
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "production_current",
+   "evidence": "CURRENT pointer read fresh in this build",
+   "sha256_16": "9abad90cd952a1d6",
+   "bytes": 1160
+  },
+  {
+   "node_id": "prod.cache_current",
+   "kind": "current_pointer",
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "production_current",
+   "evidence": "CURRENT pointer read fresh in this build",
+   "sha256_16": "b2ce53f05e50e0d3",
+   "bytes": 1531
+  },
+  {
+   "node_id": "prod.cleaning_release_root",
+   "kind": "release_root",
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "production_current_release",
+   "evidence": "resolved through the registry layer root",
+   "sha256_16": null,
+   "bytes": null
+  },
+  {
+   "node_id": "local_parquet",
+   "kind": "data_file_plane",
+   "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "production_files",
+   "evidence": "declared node (was an undeclared endpoint in R03)",
+   "sha256_16": null,
+   "bytes": null
+  },
+  {
+   "node_id": "eng.base",
+   "kind": "engine_contract",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\providers\\base.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "engine_leaf",
+   "evidence": "DataProvider ABC",
+   "sha256_16": "be053cf0693aa1ad",
+   "bytes": 10037
+  },
+  {
+   "node_id": "eng.api",
+   "kind": "engine_consumer",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\api.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "engine_consumer",
+   "evidence": "provider factory + get_price",
+   "sha256_16": "49c49697504202fb",
+   "bytes": 120960
+  },
+  {
+   "node_id": "eng.core",
+   "kind": "engine_core",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\engine.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "engine_core",
+   "evidence": "not instantiated this cycle",
+   "sha256_16": "7e31f9ee391f3bc6",
+   "bytes": 133571
+  },
+  {
+   "node_id": "eng.clock",
+   "kind": "engine_clock",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\jq_clock.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "engine_clock_labels",
+   "evidence": "240-bar label contract",
+   "sha256_16": "43ee7d7539faacd4",
+   "bytes": 3912
+  },
+  {
+   "node_id": "eng.rules.master",
+   "kind": "rule_registry",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\MASTER_RULE_LIBRARY_REGISTRY_R1.json",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "rule_authority",
+   "evidence": "MASTER registry",
+   "sha256_16": "10a228344711b1e2",
+   "bytes": 21783
+  },
+  {
+   "node_id": "eng.rules.gate",
+   "kind": "rule_gate",
+   "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "rule_authority",
+   "evidence": "15 gates PRE_INGESTION",
+   "sha256_16": "993906e443d51a3c",
+   "bytes": 9512
+  },
+  {
+   "node_id": "prod.update_entry",
+   "kind": "update_entry",
+   "path": "E:\\BLACKBOX\\脚本\\run_blackbox_research_os.py",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "production_entry",
+   "evidence": "not executed this cycle",
+   "sha256_16": "5fbf8c3149c70819",
+   "bytes": 23323
+  },
+  {
+   "node_id": "prod.daily_manifest",
+   "kind": "current_manifest",
+   "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "production_current",
+   "evidence": "asof 2026-09-24",
+   "sha256_16": "0f0813cb822f535e",
+   "bytes": 5583
+  },
+  {
+   "node_id": "prod.handbook",
+   "kind": "contract_doc",
+   "path": "E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_HANDBOOK_CURRENT.md",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "production_authority",
+   "evidence": "revision 2026-08-24",
+   "sha256_16": "6f3664e50a85434c",
+   "bytes": 3173
+  },
+  {
+   "node_id": "prod.publication_boundary",
+   "kind": "publication",
+   "path": "E:\\BLACKBOX\\数据\\清洗成品",
+   "exists": true,
+   "callable_or_key": null,
+   "status": "production_boundary",
+   "evidence": "no write from the candidate",
+   "sha256_16": null,
+   "bytes": null
+  }
+ ],
+ "edges": [
+  {
+   "from": "cand.launcher",
+   "to": "cand.r4.provider",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "import candidate.r4.provider",
+   "evidence": "test suite import path",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.launcher",
+   "to": "cand.r4.adapter",
+   "edge_kind": "RUNTIME_OBSERVED_EDGE",
+   "mechanism": "native import + bounded daily call",
+   "evidence": "PATCH_EXECUTION.json native_call frame returned",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.r4.provider",
+   "to": "cand.r4.file_index",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "file_index.build_index/select",
+   "evidence": "provider module import",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.r4.provider",
+   "to": "cand.registry",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "LocalValueProvider(registry_path)",
+   "evidence": "registry supplies layer roots",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.r4.provider",
+   "to": "local_parquet",
+   "edge_kind": "RUNTIME_OBSERVED_EDGE",
+   "mechanism": "pyarrow.parquet read of selected files",
+   "evidence": "3-row 000001.XSHE frame 2026-06-01..03",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.r4.adapter",
+   "to": "eng.base",
+   "edge_kind": "RUNTIME_OBSERVED_EDGE",
+   "mechanism": "importlib leaf load + subclass",
+   "evidence": "isinstance(adapter, DataProvider) True",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.r4.adapter",
+   "to": "cand.r4.provider",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "self.impl delegation",
+   "evidence": "adapter holds LocalValueProvider as impl",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "eng.api",
+   "to": "cand.r4.adapter",
+   "edge_kind": "UNRESOLVED_EDGE",
+   "mechanism": "factory branch not registered",
+   "evidence": "data/api.py provider factory branches to jqdata/tushare/qmt only",
+   "note": "engine cannot select the adapter; set_data_provider object injection not yet examined end-to-end",
+   "confirmed": false
+  },
+  {
+   "from": "eng.api",
+   "to": "eng.base",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "DataProvider contract import",
+   "evidence": "api.py line 31 imports providers.base",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "eng.core",
+   "to": "eng.clock",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "bar label generation",
+   "evidence": "jq_clock module in core package",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "eng.rules.gate",
+   "to": "eng.rules.master",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "gate required_rule_file fields",
+   "evidence": "each gate names a rule file",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.registry_builder",
+   "to": "prod.r01_registry",
+   "edge_kind": "RUNTIME_OBSERVED_EDGE",
+   "mechanism": "json.load of R01 registry (build_registry_r3.py:80)",
+   "evidence": "R01 JSON is the only builder input; not a fresh CURRENT resolution",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.registry_builder",
+   "to": "cand.registry",
+   "edge_kind": "FILE_EXISTS",
+   "mechanism": "writes JSON artifact",
+   "evidence": "artifact present",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.registry",
+   "to": "prod.cleaning_release_root",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "layer.root string",
+   "evidence": "registry layer root",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "prod.cleaning_current",
+   "to": "prod.cleaning_release_root",
+   "edge_kind": "RUNTIME_OBSERVED_EDGE",
+   "mechanism": "release name compared with registry layer root in this build",
+   "evidence": "match=True",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "prod.cache_current",
+   "to": "cand.registry",
+   "edge_kind": "UNRESOLVED_EDGE",
+   "mechanism": "cache release name compared with registry CACHE layer root",
+   "evidence": "match=True",
+   "note": "a non-match means the registry CACHE root is not the CURRENT cache release",
+   "confirmed": false
+  },
+  {
+   "from": "prod.update_entry",
+   "to": "prod.daily_manifest",
+   "edge_kind": "STATIC_CALL_EDGE",
+   "mechanism": "six-lane daily plane manifest",
+   "evidence": "manifest read, not executed",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "prod.update_entry",
+   "to": "prod.publication_boundary",
+   "edge_kind": "DESIRED_EDGE",
+   "mechanism": "release publication + CURRENT switch",
+   "evidence": "documented obligation; publication defects remain open",
+   "note": "",
+   "confirmed": false
+  },
+  {
+   "from": "prod.handbook",
+   "to": "prod.update_entry",
+   "edge_kind": "DESIRED_EDGE",
+   "mechanism": "handbook defines the required sequence",
+   "evidence": "not executed this cycle",
+   "note": "",
+   "confirmed": false
+  },
+  {
+   "from": "local_parquet",
+   "to": "prod.cleaning_release_root",
+   "edge_kind": "FILE_EXISTS",
+   "mechanism": "files live under the release root",
+   "evidence": "path prefix check",
+   "note": "",
+   "confirmed": true
+  },
+  {
+   "from": "cand.r4.adapter",
+   "to": "eng.core",
+   "edge_kind": "UNRESOLVED_EDGE",
+   "mechanism": "no engine core instantiation performed",
+   "evidence": "engine_core_active=false",
+   "note": "",
+   "confirmed": false
+  }
+ ],
+ "dangling_edges": [],
+ "node_count": 23,
+ "edge_count": 21,
+ "missing_node_paths": []
+}
