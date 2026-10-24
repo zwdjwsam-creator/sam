@@ -1,0 +1,131 @@
+{
+ "schema": "RESTART_READINESS_FULL_SCAN_LOG_1",
+ "at_cn": "2026-10-25T07:22:44+08:00",
+ "rule_applied": "no absence or defect is reported from a probe miss; a bounded but complete enumeration is run first and its exclusions are stated",
+ "scans": [
+  {
+   "id": "S1_pointer_name_scan",
+   "method": "os.walk over E:\\BLACKBOX (name match)",
+   "dirs_walked": 307205,
+   "targets": {
+    "DAILY_DATA_PLANE_CURRENT.json": {
+     "hits": 1,
+     "found": [
+      "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json"
+     ]
+    },
+    "DAILY_DATA_MANIFEST_CURRENT.json": {
+     "hits": 2,
+     "found": [
+      "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+      "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r04_delivery\\source_contracts\\S4_UPDATE_PUBLICATION\\DAILY_DATA_MANIFEST_CURRENT.json"
+     ]
+    },
+    "BLACKBOX_SELLSIDE_THESIS_TIMELINE_R1": {
+     "hits": 1,
+     "found": [
+      "E:\\BLACKBOX\\任务\\BLACKBOX_SELLSIDE_THESIS_TIMELINE_R1"
+     ]
+    }
+   },
+   "conclusion": "two earlier probe misses were path guesses, not absent files; no defect recorded"
+  },
+  {
+   "id": "S2_v4_artifact_name_scan_all_drives",
+   "method": "os.walk over C:\\ D:\\ E:\\ F:\\ (name match); exclusions on C: Windows, Program Files, Program Files (x86), ProgramData, Recycle; recycle/system-volume excluded on all",
+   "dirs_walked": {
+    "C": 39235,
+    "D_E_F": "combined walk, completed without exception",
+    "E_BLACKBOX": 307205
+   },
+   "patterns_and_hits": {
+    "CROSS_PRODUCTION_CANDIDATE_R1 (directory)": 0,
+    "run_v4_three_eod*.py": 0,
+    "V4_THREE_EOD* (any extension)": 0,
+    "v4 + (eod|three|cross_prod) in name": 2
+   },
+   "hits": [
+    "E:\\BLACKBOX\\.cursor\\rules\\blackbox_v4_eod_query_gate.mdc",
+    "E:\\BLACKBOX\\脚本\\blackbox_v4_eod_query_gate_r1.py"
+   ],
+   "also_observed": {
+    "D:\\CURSOR_TASK_ARCHIVE": "exists, empty",
+    "D:\\CURSOR_TASK_REPLAY": "exists, 6 files, unrelated task",
+    "E:\\BLACKBOX_ENGINES\\CURSOR_TASK_ARCHIVE": "exists, 18 files, JQ_DAILY_20260903 successor build only"
+   },
+   "conclusion": "the production candidate root that the V4 gate hardcodes is not present on any local drive; this is a complete name enumeration, not a sample. File presence is still not treated as execution evidence."
+  },
+  {
+   "id": "S3_v4_strategy_body_name_scan",
+   "method": "os.walk over E:\\BLACKBOX (name contains 低位 / 反转 / bias60 / BIAS60 / hotstart / HOTSTART / 模拟盘)",
+   "hits": {
+    "低位": 0,
+    "反转": 0,
+    "bias60": 1,
+    "BIAS60": 0,
+    "hotstart": 0,
+    "HOTSTART": 1,
+    "模拟盘": 4
+   },
+   "conclusion": "the only retained V4 strategy body is the JoinQuant paste template; no local port/runner by those names"
+  },
+  {
+   "id": "S4_publish_binding_py_text_scan",
+   "method": "os.walk over E:\\BLACKBOX, *.py and *.ps1 only, text contains 'daily_increment_publish_gate'",
+   "files_scanned": 2173,
+   "refs": 21,
+   "live_caller_chain": [
+    "任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py:36 -> from blackbox_daily_increment_publish_gate_r1 import publish_atomic",
+    "脚本\\blackbox_etf_minute_phase9_to_15_runners_r1.py:25 -> from blackbox_daily_increment_publish_gate_r1 import publish_atomic, run_production_matrix"
+   ],
+   "orchestrator_note": "脚本\\blackbox_daily_increment_orchestrator_r1.py:21 defines GATE but never invokes it; the publish path is delegated to the TIP compiler",
+   "conclusion": "publish is bound at import level; an unused local constant is not an unbound edge"
+  },
+  {
+   "id": "S5_chain_body_location_scan",
+   "method": "os.walk over E:\\BLACKBOX (exact filename match)",
+   "found": {
+    "post_seal_daily_download_r8.py": [
+     "任务\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py",
+     "_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py"
+    ],
+    "formal_cleaning_r15_build_and_seal_r1.py": [
+     "任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\formal_cleaning_r15_build_and_seal_r1.py",
+     "_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\formal_cleaning_r15_build_and_seal_r1.py"
+    ],
+    "r15_antileak_and_ssot_r1.py": [
+     "任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\r15_antileak_and_ssot_r1.py"
+    ],
+    "blackbox_acquisition_finance_adapter_r1.py": [
+     "脚本\\blackbox_acquisition_finance_adapter_r1.py"
+    ],
+    "blackbox_daily_increment_publish_gate_r1.py": [
+     "脚本\\blackbox_daily_increment_publish_gate_r1.py",
+     "_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r09\\control_successor\\blackbox_daily_increment_publish_gate_r1.py",
+     "two retained source_reads copies"
+    ],
+    "cache_compiler_tip_rebase_from_current_r1.py": [
+     "任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+     "two retained source_reads copies"
+    ],
+    "run_blackbox_daily_incremental_data_plane_r1.py": [
+     "脚本\\run_blackbox_daily_incremental_data_plane_r1.py"
+    ]
+   },
+   "conclusion": "writer, cleaning+seal, anti-leak, cache compiler and publish gate all have a live body on disk"
+  },
+  {
+   "id": "S6_credential_presence",
+   "method": "path existence only; no content read, no value printed",
+   "credential_file_expected_by_code": "E:\\BLACKBOX\\配置\\secrets\\已验证\\聚宽账号.txt",
+   "exists": true,
+   "referenced_at": "脚本\\jq_download_base.py:19 CRED_FILE",
+   "interpretation": "supplier authentication material is present; entitlement and quota were not re-measured in this read-only review"
+  }
+ ],
+ "not_scanned_in_this_review": [
+  "contents of RAW/CLEAN/CACHE payloads beyond the release/product/partition inventory",
+  "the 42 datasets with NOT_OBSERVED_THIS_CYCLE coverage (R3 owns that measurement)",
+  "supplier entitlement and quota"
+ ]
+}
