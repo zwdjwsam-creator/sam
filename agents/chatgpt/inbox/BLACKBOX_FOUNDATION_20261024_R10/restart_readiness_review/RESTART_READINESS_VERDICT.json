@@ -1,0 +1,70 @@
+{
+ "schema": "RESTART_READINESS_VERDICT_1",
+ "task_id": "BLACKBOX_RESTART_READINESS_REVIEW_20261025",
+ "at_cn": "2026-10-25T07:22:44+08:00",
+ "execution_host": "ZHANGWEI",
+ "workspace": "E:\\BLACKBOX",
+ "question": "Restarting V4 backtesting and the daily incremental data update: can each be completed to the existing standard, using only already-measured data plus the local contracts and rules?",
+ "answers": {
+  "V4_BACKTEST": {
+   "formal_standard": "NO",
+   "diagnostic_only": "YES_WITH_SCOPE_LIMITS",
+   "one_line": "The daily data plane and the three gate scripts are present, but the adjustment chain, universe/tradeability coverage, two sessions inside the mounted CURRENT, the formal engine and the local strategy body are not certifiable; a bounded diagnostic backtest is the only honest output.",
+   "blocking_ids": [
+    "BT-2",
+    "BT-4",
+    "BT-5",
+    "BT-6",
+    "BT-7",
+    "BT-8",
+    "BT-9"
+   ]
+  },
+  "DAILY_INCREMENT": {
+   "single_day": "YES_WITH_3_PRECONDITIONS",
+   "31_day_catch_up": "NO",
+   "one_line": "Every lane body, the writer, cleaning, cache compiler and the publish gate are on disk and the six-lane manifest was fully PASS at as-of 2026-09-24, but there is no per-dataset cursor, the writer/checkpoint/resume evidence is open (B6), and the 31-day backlog cannot be certified in one standard run.",
+   "blocking_ids": [
+    "DI-2",
+    "DI-7",
+    "DI-8",
+    "DI-9",
+    "DI-10",
+    "DI-11"
+   ]
+  }
+ },
+ "common_blocker": {
+  "id": "ENV-1",
+  "detail": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe cannot start (pyvenv.cfg home -> C:\\Users\\ThinkPad\\... missing). Every documented rule command that names this path fails at launch. System Python 3.12.10 exists but has no pandas and no jqdatasdk.",
+  "fix_class": "local environment repair, no production data change"
+ },
+ "staleness": {
+  "CACHE_CLEAN_ASOF": "2026-09-24",
+  "today": "2026-10-25",
+  "calendar_days_behind": 31
+ },
+ "not_claimed": [
+  "that any file is missing (absence claims require a completed full scan and are not made here)",
+  "that downloads were never truncated",
+  "that all fields/units/PIT are correct",
+  "that every external provider is covered",
+  "that the 42 non-observed R3 datasets have no coverage",
+  "that the V4 strategy cannot be rebuilt elsewhere (JoinQuant)",
+  "any return, ranking or trade"
+ ],
+ "flags": {
+  "FOUNDATION_ACCEPTANCE": false,
+  "FORMAL_ENGINE_ADMISSION": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false,
+  "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+ },
+ "b1_b7": "UNCHANGED_UNRESOLVED_CARRIED_FORWARD",
+ "pending_hub_tip_not_executed": {
+  "tip": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_EXACT_RUNTIME_SOURCE_HANDOFF_20261025.md",
+  "created_cn": "2026-10-25T06:14:50+08:00",
+  "reason": "the owner issued this retrospective directly; the five-source inert export is neither done nor claimed here"
+ }
+}
