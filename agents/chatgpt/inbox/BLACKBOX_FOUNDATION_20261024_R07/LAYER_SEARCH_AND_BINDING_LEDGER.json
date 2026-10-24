@@ -1,0 +1,881 @@
+{
+ "schema": "BLACKBOX_LAYER_SEARCH_AND_BINDING_LEDGER_R07",
+ "round": "R07/10",
+ "generated_at": "2026-10-24T17:41:40.171346+08:00",
+ "authority": {
+  "hand": "HAND.txt lines 142-159 (BLACKBOX_DATA_COVERAGE_CONTROL=ACTIVE)",
+  "gate_rule": "规则库/hand_hard_rules/BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+  "calendar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+  "diagnosis_order": [
+   "RAW",
+   "CLEANING",
+   "CACHE",
+   "READER",
+   "FILTER"
+  ]
+ },
+ "scope": {
+  "products_enumerated": 51,
+  "products_with_parquet": 48,
+  "products_empty": 3,
+  "catalog_entries": 41,
+  "raw_datasets_probed": 11,
+  "searched_roots": [
+   {
+    "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "layer": "CACHE_CURRENT_RELEASE",
+    "searched": true,
+    "index_used": "CACHE_PRODUCT_CATALOG.csv (41 products) + directory enumeration (51 dirs)",
+    "freshness_proof": "release id carries asof 20260924; product max dates reach 2026-09-24"
+   },
+   {
+    "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases",
+    "layer": "CLEAN_HISTORICAL_AND_SEALED_RELEASES",
+    "searched": true,
+    "index_used": "release name enumeration; index-minute align releases located by asof date"
+   },
+   {
+    "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases",
+    "layer": "CACHE_HISTORICAL_PINNED_RELEASES",
+    "searched": true,
+    "index_used": "release name enumeration (140+ releases)"
+   },
+   {
+    "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw",
+    "layer": "RAW_CANONICAL_FULL_HISTORY",
+    "searched": true,
+    "index_used": "per-dataset root enumeration with date-token filename matching",
+    "note": "dated-token search only; undated annual files verified separately"
+   },
+   {
+    "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange",
+    "layer": "META_CALENDAR_AUTHORITY",
+    "searched": true,
+    "index_used": "asof-versioned directory listing; sha256 recorded"
+   },
+   {
+    "root": "E:\\BLACKBOX\\运行",
+    "layer": "COVERAGE_LEDGERS",
+    "searched": true,
+    "index_used": "BLACKBOX_RAW_COVERAGE_LEDGER_CURRENT.json / CLEANING / CACHE"
+   },
+   {
+    "root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions",
+    "layer": "SIDE_PLANE_RAW",
+    "searched": true,
+    "index_used": "directory enumeration"
+   },
+   {
+    "root": "E:\\BLACKBOX\\数据\\外部证据",
+    "layer": "EXTERNAL_EVIDENCE",
+    "searched": true,
+    "index_used": "directory enumeration only (no product claim depends on it)"
+   }
+  ]
+ },
+ "classification_totals": {
+  "SOURCE_AVAILABLE_AND_AUTHORITATIVE": 1,
+  "CLEANING_COMPLETE_CACHE_MISSING": 5,
+  "CACHE_PRODUCT_UNAVAILABLE": 2,
+  "CACHE_COVERAGE_REGRESSION": 1,
+  "SOURCE_LIMITATION": 1,
+  "SEPARATE_NAMESPACE_OR_REGISTRY": 1,
+  "SOURCE_AVAILABLE_AND_SERVED": 1,
+  "REQUEST_OUTSIDE_PRODUCT_COVERAGE": 1,
+  "READER_LOAD_MISSING": 1
+ },
+ "source_absence_claims": 0,
+ "redownload_authorized": false,
+ "entries": [
+  {
+   "id": "L01",
+   "kind": "AUTHORITY_CALENDAR",
+   "dataset": "EXCHANGE_TRADE_CALENDAR",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily",
+   "universe": "CN exchange sessions",
+   "requested_scope": "2014-01-02..2026-09-24",
+   "query_time_field": "trade_date",
+   "semantics": {
+    "event": "session open day",
+    "known_at": "exchange calendar"
+   },
+   "observed": {
+    "file": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+    "sha256_prefix": "d044d628279d48c1",
+    "rows": 3097,
+    "min": "2014-01-02",
+    "max": "2026-09-24",
+    "sessions_2026": 178,
+    "is_session_2026_08_31": true,
+    "is_session_2026_09_01": true
+   },
+   "competing_non_authority_calendars": [
+    {
+     "file": "P0_meta/calendar_cn_exchange/CALENDAR_ALL_DATES.parquet",
+     "max": "2026-08-10",
+     "sessions_2026": 145,
+     "says_0831_session": false,
+     "says_0901_session": false,
+     "defect": "TIME_INDEX_AND_IMPORT_DEFECTS.json#D02"
+    },
+    {
+     "file": "P0_meta/calendar_cn_exchange/CALENDAR_TRADE_DAYS.parquet (bare root file)",
+     "max": "2026-08-10",
+     "rows": 3064,
+     "says_0831_session": false,
+     "says_0901_session": false,
+     "defect": "TIME_INDEX_AND_IMPORT_DEFECTS.json#D02"
+    }
+   ],
+   "classification": "SOURCE_AVAILABLE_AND_AUTHORITATIVE",
+   "consumer_binding": "any date-set comparison must bind to the asof-versioned calendar; ADJUST_FACTOR dates are not a calendar proxy",
+   "evidence": "row-level read of both calendar files; counters recorded"
+  },
+  {
+   "id": "L02",
+   "kind": "TWO_DATE_RECOVERY_TARGET",
+   "dataset": "STOCK_DAILY_PIT_R1 / STOCK_DAILY_RAW_PIT_R1",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily",
+   "universe": "A-share stocks",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "date (cache) / time (raw)",
+   "semantics": {
+    "event": "daily close",
+    "known_at": "session end"
+   },
+   "searched_roots": [
+    "CACHE current (2 products)",
+    "CLEAN current + sealed",
+    "RAW P2_stock_daily",
+    "R06 candidate view"
+   ],
+   "observed": {
+    "raw": {
+     "2026-08-31": {
+      "file": "P2_stock_daily/stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "rows": 5212,
+      "sha256_prefix": "553bad1973f68345"
+     },
+     "2026-09-01": {
+      "file": "P2_stock_daily/stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "rows": 5214,
+      "sha256_prefix": "25e695dd9de457b2"
+     }
+    },
+    "cache_current": {
+     "rows_on_0831": 0,
+     "rows_on_0901": 0,
+     "product_dates": 3095,
+     "product_window": [
+      "2014-01-02",
+      "2026-09-24"
+     ],
+     "missing_sessions_in_window": [
+      "2026-08-31",
+      "2026-09-01"
+     ]
+    },
+    "cache_r06_candidate": {
+     "rows_2026_partition": 959896,
+     "restored_sessions": [
+      "2026-08-31",
+      "2026-09-01"
+     ],
+     "readback_verified_in_R06": true
+    }
+   },
+   "earliest_layer_serving": "RAW (5212 + 5214 rows) -> CLEAN intermediate -> R06 candidate CACHE",
+   "current_consumer_binding": "default CURRENT release does not serve the two dates; only the explicit R06 candidate view does",
+   "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+   "scoped_code_detail": "CACHE missing in the published release; CACHE present in candidate view; source present",
+   "allowed_action": "REPAIR_IMPORT_INDEX_OR_BINDING; PRESERVE_SOURCE (already repaired in candidate form by R06)",
+   "forbidden_action": [
+    "SOURCE_MISSING claim",
+    "re-download"
+   ],
+   "evidence": "per-product date enumeration against the authority calendar; R06 delivery readback"
+  },
+  {
+   "id": "L03",
+   "kind": "ETF_DATE_SET",
+   "dataset": "ETF_DAILY_PIT_R1 / ETF_FACTOR_DAILY_R1",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily",
+   "universe": "ETFs",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "date",
+   "semantics": {
+    "event": "ETF daily bar",
+    "known_at": "session end"
+   },
+   "searched_roots": [
+    "CACHE current",
+    "RAW P4_fund_etf_raw_none/fund_etf_price_daily",
+    "RAW P4_fund_etf (nav/share/master)"
+   ],
+   "observed": {
+    "raw": {
+     "2026-08-31": {
+      "rows": 1623,
+      "file": "P4_fund_etf_raw_none/fund_etf_price_daily/etf_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet"
+     },
+     "2026-09-01": {
+      "rows": 1624,
+      "file": "P4_fund_etf_raw_none/fund_etf_price_daily/etf_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+     }
+    },
+    "cache": {
+     "product_window": [
+      "2026-07-30",
+      "2026-09-24"
+     ],
+     "distinct_dates": 39,
+     "expected_sessions_in_window": 41,
+     "missing_sessions": [
+      "2026-08-31",
+      "2026-09-01"
+     ],
+     "rows_on_requested_dates": 0
+    }
+   },
+   "earliest_layer_serving": "RAW",
+   "current_consumer_binding": "ETF cache is a 39-session slice, not full history",
+   "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+   "additional_finding": "product window starts 2026-07-30 although RAW full history exists -> small-package cache (TIME_INDEX_AND_IMPORT_DEFECTS.json#D08)",
+   "allowed_action": "MATERIALIZE_FULL_HISTORY_FROM_RAW; NO_DOWNLOAD",
+   "evidence": "row counts + distinct date enumeration"
+  },
+  {
+   "id": "L04",
+   "kind": "INDEX_DATE_SET",
+   "dataset": "INDEX_DAILY_R1 / INDEX_FACTOR_DAILY_R1",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily",
+   "universe": "7 core indices",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "date",
+   "semantics": {
+    "event": "index daily bar",
+    "known_at": "session end"
+   },
+   "searched_roots": [
+    "CACHE current",
+    "RAW P3_index/index_daily",
+    "RAW P3_index_minute",
+    "CLEAN index-minute align releases"
+   ],
+   "observed": {
+    "raw": {
+     "2026-08-31": {
+      "rows": 7,
+      "file": "P3_index/index_daily__incremental_gap_20260831_20260831__20260831_155057.parquet"
+     },
+     "2026-09-01": {
+      "rows": 7,
+      "file": "P3_index/index_daily__incremental_gap_20260901_20260901__20260901_161813.parquet"
+     }
+    },
+    "raw_minute": {
+     "2026_1m_files": 26166,
+     "distinct_2026_sessions": 178,
+     "min": "2026-01-05",
+     "max": "2026-09-24",
+     "includes_requested_dates": true
+    },
+    "clean_minute_align": {
+     "2026-08-31": "清洗成品/releases/BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260831_20260831_165049 (31480 parquet)",
+     "2026-09-01": "清洗成品/releases/BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260901_20260901_173357 (31480 parquet)"
+    },
+    "cache": {
+     "product_window": [
+      "2005-01-04",
+      "2026-09-24"
+     ],
+     "distinct_dates": 5140,
+     "missing_sessions_in_2014_2026_window": 139,
+     "missing_breakdown": {
+      "continuous_2026-01-05..2026-07-29": 137,
+      "2026-08-31": 1,
+      "2026-09-01": 1
+     },
+     "rows_on_requested_dates": 0
+    }
+   },
+   "earliest_layer_serving": "RAW daily for the two dates; RAW/derivable minute plane for 2026 H1",
+   "current_consumer_binding": "index daily cache serves 2005..2025 plus 2026-07-30 onward only",
+   "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+   "allowed_action": "MATERIALIZE_FROM_RAW (two dates) and DERIVE_FROM_MINUTE_PLANE_UNDER_EXPLICIT_CONTRACT (2026 H1)",
+   "note": "137-session 2026 H1 hole is a separate, larger defect than the two-date recovery; 2026 H1 index daily has no dated RAW unit in P3_index but the minute plane covers all 178 sessions",
+   "evidence": "row-level counts, date enumeration, minute-plane session enumeration, clean release directory evidence"
+  },
+  {
+   "id": "L05",
+   "kind": "VALUATION_DATE_SET",
+   "dataset": "VALUATION_PIT_R1",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily (snapshot)",
+   "universe": "A-share stocks",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "date (signal_date/data_date both present)",
+   "semantics": {
+    "event": "daily valuation snapshot",
+    "known_at": "SAME_DAY_KNOWN_EOD per row"
+   },
+   "searched_roots": [
+    "CACHE current",
+    "RAW P6_factor_reference/valuation"
+   ],
+   "observed": {
+    "raw": {
+     "2026-08-31": {
+      "rows": 5212,
+      "file": "P6_factor_reference/valuation/valuation__incremental_20260831__20260831_163050.parquet"
+     },
+     "2026-09-01": {
+      "rows": 5214,
+      "file": "P6_factor_reference/valuation/valuation__incremental_20260901__20260901_170950.parquet"
+     },
+     "annual_full_history_files": "valuation__ALL__2014..2026 present"
+    },
+    "cache": {
+     "files": 3,
+     "rows": 444084,
+     "distinct_dates": 48,
+     "window": [
+      "2018-06-28",
+      "2026-09-24"
+     ],
+     "expected_sessions_in_window": 2003,
+     "missing_sessions": 1955,
+     "rows_on_requested_dates": 0,
+     "first_rows_show": "SOURCE_FULL.parquet, pit_status=OK, asof_rule=SAME_DAY_KNOWN_EOD"
+    }
+   },
+   "earliest_layer_serving": "RAW",
+   "current_consumer_binding": "product exposes 48 dates only; not a full-history valuation plane",
+   "classification": "CACHE_PRODUCT_UNAVAILABLE",
+   "allowed_action": "MATERIALIZE_FROM_PINNED_RAW; NO_DOWNLOAD",
+   "evidence": "distinct-date enumeration per product file; raw row counts"
+  },
+  {
+   "id": "L06",
+   "kind": "NAV_DATE_SET",
+   "dataset": "FUND_NAV_PIT_R1",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "per fund per publication day",
+   "universe": "funds/ETFs",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01",
+    "2026-08-24",
+    "2026-08-26",
+    "2026-08-27",
+    "2026-09-09",
+    "2026-09-10",
+    "2026-09-17"
+   ],
+   "query_time_field": "day",
+   "semantics": {
+    "event": "NAV publication for a fund",
+    "known_at": "publication",
+    "caveat": "publication day is not interchangeable with trade-date row presence"
+   },
+   "searched_roots": [
+    "CACHE current (5980 files)",
+    "RAW P4_fund_etf/fund_etf_nav",
+    "RAW P4_fund_etf/fund_etf_share"
+   ],
+   "observed": {
+    "cache": {
+     "files": 5980,
+     "rows": 6496121,
+     "distinct_dates": 3089,
+     "window": [
+      "2014-01-02",
+      "2026-09-24"
+     ],
+     "missing_sessions": [
+      "2026-08-24",
+      "2026-08-26",
+      "2026-08-27",
+      "2026-08-31",
+      "2026-09-01",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-17"
+     ],
+     "value_quality_note": "sample rows for 2014 carry day rows with NaN unit_net_value -> row presence != observation"
+    },
+    "raw": {
+     "2026-08-24": {
+      "files": 537
+     },
+     "2026-08-26": {
+      "files": 537
+     },
+     "2026-08-27": {
+      "files": 537
+     },
+     "2026-08-31": {
+      "files": 537
+     },
+     "2026-09-01": {
+      "files": 537
+     },
+     "2026-09-09": {
+      "files": 1074
+     },
+     "2026-09-10": {
+      "files": 127
+     },
+     "2026-09-17": {
+      "files": 664
+     }
+    }
+   },
+   "earliest_layer_serving": "RAW (dated NAV batch units exist for all eight dates)",
+   "current_consumer_binding": "FUND_NAV_PIT_R1 keyed on `day`; consumers expecting a daily trade-date row will mis-read publication semantics",
+   "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+   "scope_limitation": "RAW NAV batch row completeness was not proven to pagination exhaustion; counts are file counts, not certified full acquisition",
+   "allowed_action": "REPAIR_CACHE_MATERIALIZATION; DO_NOT_TREAT AS SOURCE_ABSENCE",
+   "evidence": "date enumeration + RAW dated-unit existence"
+  },
+  {
+   "id": "L07",
+   "kind": "FUND_VIEW_BINDING",
+   "dataset": "FUND_LIKE_ASSET_VIEW_R1 -> {ETF_DAILY_PIT_R1, FUND_DAILY_PIT_R1}",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily",
+   "universe": "ETF + funds",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "date (inherited)",
+   "semantics": {
+    "event": "logical union view"
+   },
+   "searched_roots": [
+    "CACHE current: view definition + member products"
+   ],
+   "observed": {
+    "view_definition": {
+     "unions": [
+      "ETF_DAILY_PIT_R1",
+      "FUND_DAILY_PIT_R1"
+     ],
+     "preserves_asset_type": true
+    },
+    "member_status": {
+     "ETF_DAILY_PIT_R1": {
+      "parquet": 1,
+      "rows": 63204,
+      "dates": 39,
+      "window": [
+       "2026-07-30",
+       "2026-09-24"
+      ]
+     },
+     "FUND_DAILY_PIT_R1": {
+      "parquet": 0,
+      "files": 0,
+      "status": "EMPTY_PRODUCT_DIRECTORY"
+     }
+    },
+    "effective_behaviour": "the view silently degrades to ETF-only"
+   },
+   "earliest_layer_serving": "RAW ETF + RAW fund NAV (fund daily price absent)",
+   "current_consumer_binding": "any fund-like history query through this view returns ETF-only coverage; an ETF-only lookup must NOT be read as fund history absence",
+   "classification": "CACHE_PRODUCT_UNAVAILABLE",
+   "observed_empty_products": [
+    "FUND_DAILY_PIT_R1",
+    "FUND_FACTOR_DAILY_R1",
+    "FUND_LIKE_ASSET_VIEW_R1(view-only)"
+   ],
+   "allowed_action": "MATERIALIZE_FUND_PRODUCTS_OR_FAIL_CLOSED_THE_VIEW",
+   "evidence": "VIEW.json staged; per-product parquet enumeration"
+  },
+  {
+   "id": "L08",
+   "kind": "UNIVERSE_FRESHNESS",
+   "dataset": "MARKET_UNIVERSE_PIT_R1",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily (PIT membership)",
+   "universe": "A-share stocks",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "date",
+   "semantics": {
+    "event": "universe membership",
+    "known_at": "PIT"
+   },
+   "searched_roots": [
+    "CACHE current",
+    "RAW security-state roots (STK_LIST / STK_STATUS_CHANGE captured in R05)"
+   ],
+   "observed": {
+    "files": 3,
+    "rows": 3836582,
+    "distinct_dates": 373,
+    "window": [
+     "2025-01-02",
+     "2026-07-20"
+    ],
+    "holes_inside_window": 0,
+    "rows_on_requested_dates": 0,
+    "staleness_vs_asof": "66 sessions"
+   },
+   "earliest_layer_serving": "RAW security-state planes",
+   "current_consumer_binding": "universe ends 2026-07-20; any downstream join on the two recovered dates yields UNIVERSE_EMPTY",
+   "classification": "CACHE_COVERAGE_REGRESSION",
+   "allowed_action": "EXTEND_UNIVERSE_FROM_PINNED_SECURITY_STATE; NO_DOWNLOAD",
+   "evidence": "date enumeration"
+  },
+  {
+   "id": "L09",
+   "kind": "TRADEABILITY_COVERAGE",
+   "dataset": "STOCK_TRADEABILITY_PIT_R1",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily",
+   "universe": "A-share stocks",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "date",
+   "semantics": {
+    "event": "tradability/suspension state",
+    "known_at": "session"
+   },
+   "searched_roots": [
+    "CACHE current",
+    "RAW P2_stock_daily (paused/high_limit/low_limit fields)",
+    "RAW P5_attributes_events (ST_MARK)"
+   ],
+   "observed": {
+    "files": 4,
+    "rows": 249858,
+    "window": [
+     "2026-07-13",
+     "2026-09-03"
+    ],
+    "distinct_dates": 24,
+    "expected_sessions_in_window": 39,
+    "missing_sessions": [
+     "2026-08-13",
+     "2026-08-14",
+     "2026-08-17",
+     "2026-08-18",
+     "2026-08-19",
+     "2026-08-20",
+     "2026-08-21",
+     "2026-08-24",
+     "2026-08-25",
+     "2026-08-26",
+     "2026-08-27",
+     "2026-08-28",
+     "2026-08-31",
+     "2026-09-01",
+     "2026-09-02"
+    ]
+   },
+   "earliest_layer_serving": "RAW price unit carries paused/high_limit/low_limit for both dates",
+   "current_consumer_binding": "tradeability plane cannot gate the two dates",
+   "classification": "CLEANING_COMPLETE_CACHE_MISSING",
+   "field_note": "tradability source fields are NOT cached in the price plane (see L10)",
+   "allowed_action": "MATERIALIZE_FROM_RAW_FIELDS; NO_DOWNLOAD",
+   "evidence": "date enumeration"
+  },
+  {
+   "id": "L10",
+   "kind": "FIELD_LEVEL",
+   "dataset": "STOCK_DAILY_PIT_R1 (price schema)",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily",
+   "universe": "A-share stocks",
+   "requested_scope": [
+    "field availability for the two dates"
+   ],
+   "query_time_field": "date",
+   "semantics": {
+    "event": "daily bar fields"
+   },
+   "observed": {
+    "raw_columns": [
+     "time",
+     "code",
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "paused",
+     "high_limit",
+     "low_limit",
+     "avg",
+     "pre_close",
+     "factor",
+     "fq"
+    ],
+    "cache_columns": [
+     "date",
+     "code",
+     "open",
+     "high",
+     "low",
+     "close",
+     "volume",
+     "money",
+     "signal_date",
+     "data_date",
+     "asset_type",
+     "price_adj_tag",
+     "asof_rule",
+     "pit_status",
+     "source_version",
+     "known_at"
+    ],
+    "raw_only_fields": [
+     "paused",
+     "high_limit",
+     "low_limit",
+     "avg",
+     "pre_close",
+     "factor",
+     "fq"
+    ]
+   },
+   "earliest_layer_serving": "RAW price unit",
+   "current_consumer_binding": "price cache cannot serve pre_close / ST / paused / limit fields",
+   "classification": "SOURCE_LIMITATION",
+   "scoped_code_detail": "FIELD_NOT_CACHED (not missing); a PIT hybrid join to the RAW unit is required and must be GPT-authored",
+   "allowed_action": "DEFINE_EXPLICIT_HYBRID_JOIN; DO_NOT_REDOWNLOAD",
+   "evidence": "schema comparison"
+  },
+  {
+   "id": "L11",
+   "kind": "CATALOG_DIRECTORY_ABSENCE",
+   "dataset": "18 catalog entries without a directory under the inspected CACHE release",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "mixed",
+   "universe": "mixed",
+   "requested_scope": "catalog completeness",
+   "query_time_field": "n/a",
+   "semantics": {
+    "event": "n/a"
+   },
+   "observed": {
+    "catalog_entries": 41,
+    "release_product_directories": 51,
+    "with_parquet": 48,
+    "empty": 3,
+    "without_directory": [
+     "CACHE_MANIFEST_REGISTRY_R1",
+     "CACHE_DEPENDENCY_REGISTRY_R1",
+     "TUSHARE_CBOND_BASIC_R1",
+     "TUSHARE_CBOND_DAILY_MARKET_R1",
+     "TUSHARE_CBOND_ISSUE_R1",
+     "TUSHARE_CBOND_CALL_R1",
+     "TUSHARE_CBOND_RATE_R1",
+     "TUSHARE_CBOND_SHARE_R1",
+     "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+     "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+     "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+     "TUSHARE_CBOND_RATING_R1",
+     "TUSHARE_CBOND_RATING_PIT_R1",
+     "TUSHARE_CBOND_CALL_PIT_R1",
+     "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+     "TUSHARE_CBOND_TOP10_HOLDERS_R1",
+     "ETF_MINUTE_1M_R1",
+     "STOCK_MINUTE_1M_R1"
+    ],
+    "classification_map": {
+     "CACHE_MANIFEST_REGISTRY_R1": "REGISTRY_METADATA_PRODUCT",
+     "CACHE_DEPENDENCY_REGISTRY_R1": "REGISTRY_METADATA_PRODUCT",
+     "TUSHARE_CBOND_*": "SEPARATE_NAMESPACE_RESOLVED",
+     "ETF_MINUTE_1M_R1": "SEPARATE_NAMESPACE_UNRESOLVED_BINDING",
+     "STOCK_MINUTE_1M_R1": "SEPARATE_NAMESPACE_UNRESOLVED_BINDING"
+    },
+    "separate_namespace_roots": [
+     "数据/回测缓存/releases/BLACKBOX_CACHE_R1_途施可转债_ASOF_20260814_R1",
+     "数据/回测缓存/releases/BLACKBOX_CACHE_R2_途施可转债_ASOF_20260814_R1",
+     "数据/清洗成品/releases/途施可转债清洗_R1",
+     "数据/清洗成品/releases/途施可转债清洗_R2",
+     "数据/原始只读/JQData_9999_official_raw/P7_stock_minute (26613 parquet)",
+     "数据/原始只读/JQData_9999_official_raw/P7_stock_minute_raw_none (25669 parquet)",
+     "数据/原始只读/JQData_9999_official_raw/P4_fund_etf_raw_none/fund_etf_price_1m",
+     "数据/清洗成品/releases/BLACKBOX_FORMAL_CLEANING_R31_ETF_MINUTE_BACKFILL_ASOF_20260818_20260820_104711"
+    ]
+   },
+   "earliest_layer_serving": "depends per entry; no entry justified a source-absence claim",
+   "current_consumer_binding": "a directory-absence check under one root is not a dataset-absence proof",
+   "classification": "SEPARATE_NAMESPACE_OR_REGISTRY",
+   "allowed_action": "BIND_EACH_ENTRY_TO_ITS_DECLARED_ROOT; NO_ABSENCE_CLAIM",
+   "evidence": "catalog CSV vs release directories; separate-root enumeration"
+  },
+  {
+   "id": "L12",
+   "kind": "NEGATIVE_CONTROL_COMPLETE",
+   "dataset": "ADJUST_FACTOR_PIT_R1 / SW_L1_L2_L3_STRUCTURE_DAILY_R1",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "daily",
+   "universe": "stocks / SW industries",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "date",
+   "semantics": {
+    "event": "daily"
+   },
+   "observed": {
+    "ADJUST_FACTOR_PIT_R1": {
+     "dates": 3097,
+     "expected": 3097,
+     "missing": 0,
+     "rows_on_0831": 5208,
+     "rows_on_0901": 11
+    },
+    "SW_L1_STRUCTURE_DAILY_R1": {
+     "dates": 3097,
+     "expected": 3097,
+     "missing": 0,
+     "rows_on_0831": 62,
+     "rows_on_0901": 62
+    },
+    "SW_L2_STRUCTURE_DAILY_R1": {
+     "missing": 0,
+     "rows_on_0831": 262,
+     "rows_on_0901": 262
+    },
+    "SW_L3_STRUCTURE_DAILY_R1": {
+     "missing": 0,
+     "rows_on_0831": 672,
+     "rows_on_0901": 672
+    }
+   },
+   "earliest_layer_serving": "CACHE current",
+   "current_consumer_binding": "these products DO serve both dates inside the same release",
+   "classification": "SOURCE_AVAILABLE_AND_SERVED",
+   "significance": "proves the two-date drop is product-specific consumption, not a whole-release truncation",
+   "allowed_action": "NONE",
+   "evidence": "date enumeration with row counts on both dates"
+  },
+  {
+   "id": "L13",
+   "kind": "COVERAGE_AUTHORITY_FRESHNESS",
+   "dataset": "BLACKBOX_RAW_COVERAGE_LEDGER_CURRENT.json",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "ledger",
+   "universe": "STOCK_DAILY",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "window.start/end",
+   "semantics": {
+    "event": "declared coverage"
+   },
+   "observed": {
+    "generated_at": "2026-08-12T15:17:56+08:00",
+    "dataset_entries": 1,
+    "STOCK_DAILY_window": [
+     "2026-06-01",
+     "2026-08-11"
+    ],
+    "requested_dates_inside_ledger_scope": false,
+    "cleaning_ledger": "运行/BLACKBOX_CLEANING_COVERAGE_LEDGER_CURRENT.json (2485 bytes)",
+    "cache_ledger": "运行/BLACKBOX_CACHE_COVERAGE_LEDGER_CURRENT.json (38228 bytes)"
+   },
+   "earliest_layer_serving": "n/a",
+   "current_consumer_binding": "the pinned ledger cannot certify or deny the two dates",
+   "classification": "REQUEST_OUTSIDE_PRODUCT_COVERAGE",
+   "allowed_action": "REFRESH_LEDGER_UNDER_CONTRACT; DO_NOT_TREAT_LEDGER_SILENCE_AS_ABSENCE",
+   "evidence": "ledger read; window comparison"
+  },
+  {
+   "id": "L14",
+   "kind": "DIAGNOSER_UNAVAILABLE",
+   "dataset": "脚本/blackbox_data_coverage_diagnose_r1.py",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "calendar_authority": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+   "frequency": "tool",
+   "universe": "STOCK_DAILY",
+   "requested_scope": [
+    "2026-08-31",
+    "2026-09-01"
+   ],
+   "query_time_field": "start-date/end-date",
+   "semantics": {
+    "event": "coverage diagnosis"
+   },
+   "observed": {
+    "command": "blackbox_data_coverage_diagnose_r1.py --dataset STOCK_DAILY --start-date 2026-08-31 --end-date 2026-09-01",
+    "root_cause": "STOCK_DAILY_CLASSIFIER_UNAVAILABLE",
+    "download_required": false,
+    "authority_ready": false,
+    "action": "STOP_RESTORE_COVERAGE_COMMON_OR_USE_CACHE_RESOLVER",
+    "error": "cannot import name 'classify_stock_daily' from 'blackbox_data_coverage_common_r1' (file is 2 bytes)",
+    "tool_enum": [
+     "OK_MULTI_PLANE",
+     "PARTIAL_WINDOW_GAP",
+     "TRUE_MISS_AFTER_ALL_PLANES",
+     "ENVELOPE_REVIEW",
+     "UNIFIED_PLANE_DIAGNOSE_FAIL",
+     "UNKNOWN_STOP",
+     "STOCK_DAILY_CLASSIFIER_UNAVAILABLE"
+    ],
+    "hand_enum_members_reachable_by_tool": [
+     "UNKNOWN_STOP"
+    ]
+   },
+   "earliest_layer_serving": "n/a",
+   "current_consumer_binding": "the pinned diagnoser cannot classify stock daily; agents fall back to shallow cache checks, which is the origin of 'the database is missing data'",
+   "classification": "READER_LOAD_MISSING",
+   "allowed_action": "RESTORE_COVERAGE_COMMON_AND_ALIGN_ENUM; GPT_OWNED",
+   "evidence": "read-only CLI run captured verbatim; static read of the 2-byte module"
+  }
+ ],
+ "cross_cutting_conclusion": [
+  "Every one of the two-date misses for stock, ETF, index and valuation has a positive RAW unit for both dates.",
+  "No examined product justifies SOURCE_MISSING; the widest class is CLEANING_COMPLETE_CACHE_MISSING / CACHE_PRODUCT_UNAVAILABLE.",
+  "The two-date drop is product-specific: ADJUST_FACTOR and all SW structure planes inside the same release serve both dates.",
+  "A consumer returning zero rows is a reader/binding fact and is recorded as such."
+ ],
+ "remaining_unresolved": [
+  "STOCK_MINUTE_1M_R1 and ETF_MINUTE_1M_R1 have no single cache product directory; their declared cache binding is unresolved (RAW roots identified).",
+  "FUND_NAV RAW batch pagination completeness was not proven to exhaustion.",
+  "INDEX_DAILY 2026 H1 (137 sessions) has no dated RAW daily unit; only the minute plane covers it. Classification withheld from source absence.",
+  "The exact ingest step that stamps null OHLCV grid rows (D01) was not identified; only the row families and the stamping release id are proven."
+ ]
+}
