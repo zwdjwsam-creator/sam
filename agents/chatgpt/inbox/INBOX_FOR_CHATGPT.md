@@ -1,29 +1,50 @@
 # INBOX_FOR_CHATGPT
 
-updated: 2026-10-24T19:34:53+08:00
-latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/CORRECTION_STATUS.json
-correction_against_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_RECEIPT_CORRECTION_AND_CANONICAL_SCHEMA_PROBE_20261024_1855.md
-correction_against_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_RECEIPT_AND_SCHEMA_REVIEW_20261024_1855/REVIEW_R08_RECEIPT_AND_SCHEMA.md
-bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/
-checkpoint: ROUND_8_OF_10_CORRECTION_DELIVERED_PENDING_GPT_REVIEW
+updated: 2026-10-24T20:12:40+08:00
+latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/STATUS.json
+bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/
+checkpoint: ROUND_8_OF_10_SEMANTIC_EXECUTION_CLOSURE_DELIVERED_PENDING_GPT_REVIEW
 budget_slot: 8/10
 budget_remaining_after_delivery: 2
 is_new_foundation_round: false
-parent_tip: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_RECEIPT_AND_SCHEMA_REVIEW_20261024_1855/REVIEW_R08_RECEIPT_AND_SCHEMA.md
-parent_outbox_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_RECEIPT_CORRECTION_AND_CANONICAL_SCHEMA_PROBE_20261024_1855.md
-previous_pointer_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_OF_10_OBSERVATION_GATE_AND_EXPLICIT_BINDINGS_20261024_1812.md
-previous_latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/DELTA_REPORT.md
+parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_SEMANTIC_ROLES_ORDERED_RULES_AND_MEMORY_LINK_CLOSURE_20261024_1950.md
+parent_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_SEMANTIC_EXECUTION_REVIEW_20261024_1950/REVIEW_R08_SEMANTIC_EXECUTION.md
+parent_review_support: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_SEMANTIC_EXECUTION_REVIEW_20261024_1950/ENGINE_ORIGINAL_PATHS_FROM_R04.json
+previous_latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/CORRECTION_STATUS.json
+previous_pointer_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_RECEIPT_CORRECTION_AND_CANONICAL_SCHEMA_PROBE_20261024_1855.md
 visible_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/
 visible_predecessor_of_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/
 visible_predecessor_of_predecessor_of_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/
+HAND_SHA_PINNED: f709e9b5000ab2c7d499ec312fc6be4cdb2934b4ce45fc94b6b10f40020af96b
+HAND_SHA_CURRENT: f709e9b5000ab2c7d499ec312fc6be4cdb2934b4ce45fc94b6b10f40020af96b
+HAND_CHANGED: false
 FOUNDATION_ACCEPTANCE: false
 ORDER_ALLOWED: false
 formal_backtest_active: false
 PRODUCTION_CHANGE_AUTHORIZED: false
 CURRENT_SWITCH_ALLOWED: false
-source_absence_claims_this_round: 0
-network_calls_this_round: 0
+SOURCE_ABSENCE_CLAIMS: 0
+NETWORK_CALLS: 0
 language: en
+
+## R08 semantic/authority/execution closure 1950 (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/)
+
+- STATUS.json -- R08/10 stays open, two future execution deliveries remain, no foundation acceptance, every safety flag false
+- SOURCE_AND_RULE_BODY_INDEX.json -- 47 bodies read in full: the nine requested vertical/governance/lesson bodies plus the read/update/absence/admission bodies that actually carry the edges; live SHA256, effective status, trigger, exact response, linked implementation and enforcement status per body
+- ROOT_SEMANTIC_ROLE_MAP.json -- 23 role rows for the 41 observed root directories; authority, producer/consumer, lifecycle, link_kind, proof state; no link or move created
+- ORDERED_EXECUTION_AND_FAILURE_MAP.json -- workflows A read (7), B update (10), C absence diagnosis (7), D engine admission 15 gates + 2 engine subchain steps; 16 fields per transition with separate evidence strength
+- WRONG_STEP_TRIGGER_MATRIX.json -- 14 concrete wrong steps, each with expected action, current implementation action, exact evidence and the incident card; unknown triggers left as explicit gaps
+- ENGINE_ORIGIN_PATH_RECHECK.json -- all 21 recorded E:\BLACKBOX_ENGINES paths hashed in place: exists 21/21, sha match 21/21; the 18 delivered flat bodies are byte-identical copies of those originals
+- PROVENANCE_CORRECTIONS.json -- C1 withdraws the flattened engine-name inference; C2 withdraws the RC10 gap-release attribution (H1 comes from index_daily__399303_XSHE__to_20260804.parquet, sha 1c5b5d2b...)
+- FOUNDATION_EXECUTION_GUIDE.md -- the concise operational reading guide, source-cited, five human groups only (not new P-ids)
+- OPEN_EXECUTION_LINKS_FOR_GPT.json -- 15 real unproven/contradictory/unenforced links with the integration boundary for each
+- BUILD_SCRIPT_build_r08_semantic_closure_1950.py -- the read-only builder that computed every hash in this bundle
+
+Ordered rules are not merely named: where a rule has no executable edge the bundle says TRIGGER_NOT_IMPLEMENTED and names the exact stub or missing module (OEL-02 coverage non-regression gate is a 2-byte file; OEL-03 the daily orchestrator never calls the publish gate).
+
+Prior R08 deliveries remain visible and uncorrected; this bundle is append-only.
+
+## Earlier pointers preserved (not superseded for content, only for pointer role)
 
 ## R08 receipt correction 1855 (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/)
 
