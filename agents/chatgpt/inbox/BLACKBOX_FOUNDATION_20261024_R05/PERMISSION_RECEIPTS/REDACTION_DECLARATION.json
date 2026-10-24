@@ -1,0 +1,73 @@
+{
+  "purpose": "the exact receipt bodies already referenced by the source register and by the factor amendment; retrieval only, no new permission probe",
+  "redaction": {
+    "redaction_performed": false,
+    "why": "neither file contains a credential value; the JQ probe records secret_value_printed=false, and the Tushare probe stores product status rows only",
+    "secrets_checked_for": [
+      "password",
+      "token",
+      "auth header",
+      "cookie",
+      "signed url"
+    ],
+    "secret_values_found": false,
+    "third_party_error_text_retained": "the JQ probe detail fields contain supplier help-page URLs quoted from JoinQuant error strings; these are public documentation links, not signed URLs"
+  },
+  "files": [
+    {
+      "name": "BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+      "source_path": "E:\\BLACKBOX\\运行\\BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+      "bytes": 9273,
+      "sha256": "3a48507a10e1471852383cb0359418a70b45d9fb7f9e978e17924f4cf18246d4"
+    },
+    {
+      "name": "TUSHARE_PERMISSION_PROBE_CURRENT.json",
+      "source_path": "E:\\BLACKBOX\\数据\\外部证据\\CURRENT\\TUSHARE_PERMISSION_PROBE_CURRENT.json",
+      "bytes": 43421,
+      "sha256": "4951302abc5ad00acc15f4d5b2a6fd6f4a81a30c357dc00528e8fb2eab7e8cab"
+    }
+  ],
+  "jq_seal_summary": {
+    "rule_id": "BLACKBOX_DOMAIN_PERMISSION_PROBE_SEAL_R17",
+    "probed_at_cn": "2026-08-13T00:26:50+0800",
+    "asof_context": "2026-08-12",
+    "jq_auth": true,
+    "secret_value_printed": false,
+    "blocked_domains": [
+      "fq_pre_post",
+      "full_factor_values_library",
+      "jq260_factor_values",
+      "jq260_factor_values_library",
+      "money_flow_abnormal_lock_subscribe"
+    ],
+    "permission_ok_examples": [
+      "get_all_securities_stock",
+      "get_extras_is_st",
+      "get_price_paused_flag",
+      "finance.STK_STATUS_CHANGE",
+      "finance.STK_LIST",
+      "finance.STK_SHAREHOLDER_FLOATING_TOP10",
+      "finance.STK_SHAREHOLDER_TOP10",
+      "valuation_control"
+    ],
+    "paid_module_blocked_examples": [
+      "get_money_flow",
+      "get_all_factors",
+      "get_factor_values_market_cap"
+    ],
+    "retrieved_not_reprobed": true,
+    "current_day_reverification_claimed": false
+  },
+  "tushare_seal_summary": {
+    "phase": "tushare_probe",
+    "probed_at_cn": "2026-08-24T04:09:20+0800",
+    "products_found": 16,
+    "products_available": 14,
+    "products_no_permission": 1,
+    "products_no_product": 0,
+    "products_no_record": 1,
+    "products_error": 0,
+    "note": "sample probe only; full download requires explicit increment auth",
+    "retrieved_not_reprobed": true
+  }
+}
