@@ -1,0 +1,243 @@
+{
+  "rule_id": "BLACKBOX_DOMAIN_PERMISSION_PROBE_SEAL_R17",
+  "probed_at_cn": "2026-08-13T00:26:50+0800",
+  "probed_at_utc": "2026-08-12T16:26:50+00:00",
+  "jq_auth": true,
+  "secret_value_printed": false,
+  "asof_context": "2026-08-12",
+  "probes": [
+    {
+      "name": "get_all_securities_stock",
+      "status": "OK",
+      "class": "PERMISSION_OK",
+      "detail": "rows=5208 cols=['display_name', 'name', 'start_date', 'end_date', 'type']"
+    },
+    {
+      "name": "get_extras_is_st",
+      "status": "OK",
+      "class": "PERMISSION_OK",
+      "detail": "rows=2 cols=['000001.XSHE']"
+    },
+    {
+      "name": "get_extras_paused",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "Exception: 不支持的 info 参数：'paused'"
+    },
+    {
+      "name": "get_price_paused_flag",
+      "status": "OK",
+      "class": "PERMISSION_OK",
+      "detail": "rows=2 cols=['paused']"
+    },
+    {
+      "name": "finance.STK_STATUS_CHANGE",
+      "status": "OK",
+      "class": "PERMISSION_OK",
+      "detail": "rows=1 cols=['id', 'company_id', 'code', 'name', 'pub_date', 'change_date', 'change_reason', 'change_type_id']"
+    },
+    {
+      "name": "finance.STK_LIST",
+      "status": "OK",
+      "class": "PERMISSION_OK",
+      "detail": "rows=1 cols=['id', 'code', 'name', 'short_name', 'category', 'exchange', 'start_date', 'end_date']"
+    },
+    {
+      "name": "get_money_flow",
+      "status": "FAIL",
+      "class": "PERMISSION_BLOCKED_PAID_MODULE",
+      "detail": "Exception: get_money_flow(资金流向) 属于付费模块，如果您有购买需求，请联系聚宽JQData运营人员：\nhttps://www.joinquant.com/help/api/doc?name=logon&id=9831"
+    },
+    {
+      "name": "finance.STK_MONEY_FLOW",
+      "status": "FAIL",
+      "class": "PERMISSION_BLOCKED_ACCOUNT",
+      "detail": "Exception: 所获取数据的权限类型未知"
+    },
+    {
+      "name": "finance.STK_LOCK_SHARE",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "RuntimeError: missing finance.STK_LOCK_SHARE"
+    },
+    {
+      "name": "finance.STK_LOCKED_SHARE",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "RuntimeError: missing finance.STK_LOCKED_SHARE"
+    },
+    {
+      "name": "finance.STK_SHARES_LOCKED",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "RuntimeError: missing finance.STK_SHARES_LOCKED"
+    },
+    {
+      "name": "finance.STK_LIMITED_SHARES",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "RuntimeError: missing finance.STK_LIMITED_SHARES"
+    },
+    {
+      "name": "finance.STK_ABNORMAL_CHANGE",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "RuntimeError: missing finance.STK_ABNORMAL_CHANGE"
+    },
+    {
+      "name": "finance.STK_SHAREHOLDER_FLOATING_TOP10",
+      "status": "OK",
+      "class": "PERMISSION_OK",
+      "detail": "rows=3 cols=['id', 'company_id', 'company_name', 'code', 'end_date', 'pub_date', 'change_reason_id', 'change_reason']"
+    },
+    {
+      "name": "finance.STK_SHAREHOLDER_TOP10",
+      "status": "OK",
+      "class": "PERMISSION_OK",
+      "detail": "rows=3 cols=['id', 'company_name', 'company_id', 'code', 'end_date', 'pub_date', 'change_reason_id', 'change_reason']"
+    },
+    {
+      "name": "get_all_factors",
+      "status": "FAIL",
+      "class": "PERMISSION_BLOCKED_PAID_MODULE",
+      "detail": "Exception: get_all_factors(聚宽因子库中所有的因子) 属于付费模块，如果您有购买需求，请联系聚宽JQData运营人员：\nhttps://www.joinquant.com/help/api/doc?name=logon&id=9831"
+    },
+    {
+      "name": "get_factor_values_roe",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "Exception: 无效的因子 ['roe']"
+    },
+    {
+      "name": "get_factor_values_ROE",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "Exception: 无效的因子 ['ROE']"
+    },
+    {
+      "name": "get_factor_values_BV",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "Exception: 无效的因子 ['BV']"
+    },
+    {
+      "name": "get_factor_values_market_cap",
+      "status": "FAIL",
+      "class": "PERMISSION_BLOCKED_PAID_MODULE",
+      "detail": "Exception: get_factor_values(基础科目及衍生类因子) 属于付费模块，如果您有购买需求，请联系聚宽JQData运营人员：\nhttps://www.joinquant.com/help/api/doc?name=logon&id=9831"
+    },
+    {
+      "name": "get_factor_values_pe_ratio",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "Exception: 无效的因子 ['pe_ratio']"
+    },
+    {
+      "name": "get_factor_values_circ_market_cap",
+      "status": "FAIL",
+      "class": "PROBE_FAIL",
+      "detail": "Exception: 无效的因子 ['circ_market_cap']"
+    },
+    {
+      "name": "valuation_control",
+      "status": "OK",
+      "class": "PERMISSION_OK",
+      "detail": "rows=1 cols=['id', 'code', 'day', 'pe_ratio', 'turnover_ratio', 'pb_ratio', 'ps_ratio', 'pcf_ratio']"
+    }
+  ],
+  "domains": {
+    "security_state": {
+      "hand_domain_id": "security_state",
+      "live_permission": "PERMISSION_OK",
+      "download_action": "DAILY_INCREMENTAL_REQUIRED",
+      "daily_update_include": true,
+      "reason": "API get_extras/get_all_securities usable; local asof lag is download gap not permission",
+      "local": {
+        "parquet_n": 949,
+        "latest_name": "stock_limit_pause__incremental_gap_20260713_20260730__20260729_170725.parquet",
+        "latest_mtime_cn": "2026-07-30T01:08:27+08:00",
+        "has_20260812_tag": true,
+        "gapfill_at_cn": "2026-08-13T00:38:14+0800",
+        "gapfill_result": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_FULL_DATA_INCREMENT_R17_ASOF_20260812\\out\\SECURITY_STATE_GAPFILL_RESULT.json",
+        "latest_note": "gap 2026-07-31..2026-08-12 filled + R23 clean ingest"
+      },
+      "evidence_probes": [
+        "get_all_securities_stock",
+        "get_extras_is_st",
+        "get_extras_paused",
+        "get_price_paused_flag",
+        "finance.STK_STATUS_CHANGE",
+        "finance.STK_LIST",
+        "finance.STK_MONEY_FLOW",
+        "finance.STK_LOCK_SHARE",
+        "finance.STK_LOCKED_SHARE",
+        "finance.STK_SHARES_LOCKED",
+        "finance.STK_LIMITED_SHARES",
+        "finance.STK_ABNORMAL_CHANGE",
+        "finance.STK_SHAREHOLDER_FLOATING_TOP10",
+        "finance.STK_SHAREHOLDER_TOP10"
+      ]
+    },
+    "money_flow_abnormal_lock_subscribe": {
+      "hand_domain_id": "money_flow_abnormal_lock_subscribe",
+      "live_permission": "PERMISSION_BLOCKED_PAID_MODULE",
+      "download_action": "SKIP_UNTIL_PERMISSION_UPGRADE",
+      "daily_update_include": false,
+      "reason": "get_money_flow / STK_MONEY_FLOW paid module on this account",
+      "do_not_reask_download_each_time": true,
+      "upgrade_trigger": "JQData money_flow paid module enabled → re-probe then download"
+    },
+    "full_factor_values_library": {
+      "hand_domain_id": "full_factor_values_library",
+      "live_permission": "PERMISSION_BLOCKED_PAID_MODULE",
+      "download_action": "SKIP_UNTIL_PERMISSION_UPGRADE",
+      "daily_update_include": false,
+      "reason": "get_all_factors / get_factor_values paid or invalid on this account",
+      "do_not_reask_download_each_time": true,
+      "upgrade_trigger": "JQData factor pack / get_factor_values enabled → re-probe then download"
+    },
+    "jq260_factor_values": {
+      "hand_domain_id": "jq260_factor_values",
+      "live_permission": "PERMISSION_BLOCKED_PAID_MODULE",
+      "download_action": "SKIP_UNTIL_PERMISSION_UPGRADE",
+      "daily_update_include": false,
+      "reason": "same gate as full_factor_values_library (get_factor_values)",
+      "do_not_reask_download_each_time": true,
+      "reprobe_required_on": "account_permission_change"
+    },
+    "jq260_factor_values_library": {
+      "hand_domain_id": "jq260_factor_values_library",
+      "live_permission": "PERMISSION_BLOCKED_PAID_MODULE",
+      "download_action": "SKIP_UNTIL_PERMISSION_UPGRADE",
+      "daily_update_include": false,
+      "do_not_reask_download_each_time": true
+    },
+    "fq_pre_post": {
+      "hand_domain_id": "fq_pre_post",
+      "live_permission": "N/A",
+      "download_action": "NOT_NEEDED_NOW",
+      "daily_update_include": false,
+      "do_not_reask_download_each_time": true,
+      "reason": "USER + HAND NOT_NEEDED_NOW"
+    }
+  },
+  "policy_effect": {
+    "daily_data_update_must_include": [
+      "security_state"
+    ],
+    "daily_data_update_skip_permission_blocked": [
+      "money_flow_abnormal_lock_subscribe",
+      "full_factor_values_library",
+      "jq260_factor_values",
+      "jq260_factor_values_library",
+      "fq_pre_post"
+    ],
+    "security_state_note": "permission OK; if asof lag → incremental download allowed without re-asking permission"
+  },
+  "next_reprobe_triggers": [
+    "用户说权限已升级 / 聚宽开通资金流或因子库",
+    "账号套餐变更",
+    "距上次探针 >= 90 天（可选）"
+  ],
+  "amended_security_state_gapfill_at_cn": "2026-08-13T00:38:14+0800"
+}
