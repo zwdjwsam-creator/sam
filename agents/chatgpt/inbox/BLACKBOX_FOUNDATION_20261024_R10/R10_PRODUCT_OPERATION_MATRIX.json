@@ -1,0 +1,600 @@
+{
+ "schema": "R10_PRODUCT_OPERATION_MATRIX_1",
+ "row_count": 41,
+ "with_update_binding": 13,
+ "unbound": 28,
+ "rows": [
+  {
+   "product_id": "STOCK_DAILY_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "A_share_daily_raw_none"
+   ],
+   "source_domain_records": [
+    "PRICE_STOCK_DAILY"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "STOCK_FACTOR_DAILY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "ETF_DAILY_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "ETF_daily_raw_none"
+   ],
+   "source_domain_records": [
+    "PRICE_ETF_DAILY"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "ETF_FACTOR_DAILY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "ETF_daily_raw_none"
+   ],
+   "source_domain_records": [
+    "PRICE_ETF_DAILY"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "FUND_DAILY_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "FUND_FACTOR_DAILY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "INDEX_DAILY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "index_daily_raw_none"
+   ],
+   "source_domain_records": [
+    "PRICE_INDEX_DAILY"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": true,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": true
+  },
+  {
+   "product_id": "INDEX_FACTOR_DAILY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "index_daily_raw_none"
+   ],
+   "source_domain_records": [
+    "PRICE_INDEX_DAILY"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "INDEX_CONSTITUENT_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "SW_L1_MEMBERSHIP_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "sw_l1_membership_pit_densify / sw_l2 / sw_l3"
+   ],
+   "source_domain_records": [
+    "INDUSTRY_CONCEPT"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": true
+  },
+  {
+   "product_id": "SW_L1_STRUCTURE_DAILY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "MARKET_UNIVERSE_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": true,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": true
+  },
+  {
+   "product_id": "STOCK_TRADEABILITY_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "security_state"
+   ],
+   "source_domain_records": [
+    "TRADABLE_STATUS"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": true
+  },
+  {
+   "product_id": "MARKET_STRUCTURE_DAILY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "FUND_LIKE_ASSET_VIEW_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": true,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": true
+  },
+  {
+   "product_id": "CACHE_MANIFEST_REGISTRY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "CACHE_DEPENDENCY_REGISTRY_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "ADJUST_FACTOR_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "adjust_factor"
+   ],
+   "source_domain_records": [
+    "ADJUST_FACTOR"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": true,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": true
+  },
+  {
+   "product_id": "STOCK_DAILY_RAW_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "A_share_daily_raw_none"
+   ],
+   "source_domain_records": [
+    "PRICE_STOCK_DAILY"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": true,
+   "evaluated_by_r10_query": true,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "SW_L2_MEMBERSHIP_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "sw_l1_membership_pit_densify / sw_l2 / sw_l3"
+   ],
+   "source_domain_records": [
+    "INDUSTRY_CONCEPT"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "VALUATION_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "valuation_factor_reference"
+   ],
+   "source_domain_records": [
+    "VALUATION"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "FINANCIAL_INDICATOR_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "finance_income_balance_cashflow_pit"
+   ],
+   "source_domain_records": [
+    "FINANCE_PIT"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_BASIC_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_DAILY_MARKET_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_ISSUE_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_CALL_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_RATE_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_SHARE_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_STOCK_BRIDGE_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_BASIC_JQCOMPAT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_DAILY_MARKET_JQCOMPAT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_RATING_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_RATING_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_CALL_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_REMAIN_SIZE_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "TUSHARE_CBOND_TOP10_HOLDERS_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "INDEX_WEIGHT_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "ETF_TRACKING_INDEX_MAP_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "ETF_MINUTE_1M_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "STOCK_MINUTE_1M_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "UNBOUND_IN_THIS_EVIDENCE_JOIN",
+   "explicit_updater_joins": [],
+   "source_domain_records": [],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  },
+  {
+   "product_id": "FUND_NAV_PIT_R1",
+   "catalog_present": true,
+   "schema_and_physical_binding_present": true,
+   "update_binding_status": "DECLARED_ROUTE_NOT_EXECUTED",
+   "explicit_updater_joins": [
+    "etf_fund_aux / fund nav"
+   ],
+   "source_domain_records": [
+    "FUND_ETF_NAV"
+   ],
+   "serving_authority": "REQUEST_NOT_EVALUATED",
+   "use_for_formal_backtest": false,
+   "evaluated_by_r10_describe": false,
+   "evaluated_by_r10_query": false,
+   "update_plan_shown": false
+  }
+ ],
+ "reset_rule": "serving authority is REQUEST_NOT_EVALUATED for every product; only the product actually read (STOCK_DAILY_RAW_PIT_R1) has a measured request outcome, and that outcome is bounded observations, not eligibility",
+ "scope": "EVIDENCE_JOIN_PLUS_SIX_DESCRIBE_SIX_UPDATE_PLANS_ONE_QUERY",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
