@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "rule_id": "BLACKBOX_DAILY_DATA_PLANE_PATH_MAP_R1",
+  "updated_at_cn": "2026-08-27T12:37:00+0800",
+  "principle": "ALL_LANES_FIXED_PATHS_NO_AD_HOC",
+  "lanes": {
+    "A_JQ_CANONICAL": {
+      "scope_current": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+      "cleaning_current": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "cache_current": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json"
+    },
+    "B_T_EXTERNAL": {
+      "product_root": "E:\\BLACKBOX\\数据\\外部证据",
+      "asof_align_current": "E:\\BLACKBOX\\运行\\BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json",
+      "final_current": "E:\\BLACKBOX\\数据\\外部证据\\CURRENT\\EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json",
+      "resolver_current": "E:\\BLACKBOX\\运行\\BLACKBOX_EXTERNAL_EVIDENCE_RESOLVER_CURRENT.json",
+      "agent_current": "E:\\BLACKBOX\\运行\\BLACKBOX_EXTERNAL_MARKET_EVIDENCE_DATA_AGENT_CURRENT.json",
+      "compass": "E:\\BLACKBOX\\研究系统\\数据平面\\CONFIG\\LANE_B_C_DATA_COMPASS_CURRENT.md"
+    },
+    "C_GLOBAL_SELLSIDE": {
+      "product_root": "E:\\BLACKBOX\\数据\\研究报告",
+      "path_map": "E:\\BLACKBOX\\任务\\BLACKBOX_SELLSIDE_THESIS_TIMELINE_R1\\契约\\PATH_MAP.json",
+      "raw_ms": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\MORGAN_STANLEY",
+      "raw_gs": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\GOLDMAN_SACHS",
+      "raw_clsa": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\CLSA_METADATA",
+      "daily_incremental": "E:\\BLACKBOX\\数据\\研究报告\\日增量",
+      "current": "E:\\BLACKBOX\\数据\\研究报告\\CURRENT\\SELLSIDE_DAILY_INCREMENTAL_CURRENT.json",
+      "last_success": "E:\\BLACKBOX\\数据\\研究报告\\日增量\\LAST_SUCCESSFUL_UPDATE.json",
+      "manifest_master": "E:\\BLACKBOX\\数据\\研究报告\\清单\\REPORT_MASTER.csv",
+      "compass": "E:\\BLACKBOX\\研究系统\\数据平面\\CONFIG\\LANE_B_C_DATA_COMPASS_CURRENT.md"
+    },
+    "LANE_B_C_COMPASS": {
+      "md": "E:\\BLACKBOX\\研究系统\\数据平面\\CONFIG\\LANE_B_C_DATA_COMPASS_CURRENT.md",
+      "json": "E:\\BLACKBOX\\研究系统\\数据平面\\CONFIG\\LANE_B_C_DATA_COMPASS_CURRENT.json",
+      "role": "PREMARKET_RESEARCH_FIXED_PATH_COMPASS"
+    },
+    "D_DOMESTIC_RESEARCH": {
+      "domestic_sellside_root": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方",
+      "domestic_sellside_current": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\CURRENT\\DOMESTIC_SELLSIDE_CURRENT.json",
+      "domestic_sellside_daily": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\日增量",
+      "domestic_news_root": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻",
+      "domestic_news_current": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\CURRENT\\DOMESTIC_NEWS_CURRENT.json",
+      "domestic_news_daily": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\日增量",
+      "observer_ledger_fallback": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\cache\\DOMESTIC_SELLSIDE_LEDGER.csv"
+    },
+    "E_US_NEWS": {
+      "product_root": "E:\\BLACKBOX\\数据\\美国市场\\新闻",
+      "current": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\CURRENT\\US_NEWS_CURRENT.json",
+      "daily_incremental": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\日增量",
+      "screenshot_fallback": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\抓屏",
+      "raw_readonly": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\原始只读"
+    },
+    "F_US_MARKET_STATE": {
+      "product_root": "E:\\BLACKBOX\\数据\\美国市场\\市场状态",
+      "current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_MARKET_STATE_CURRENT.json",
+      "daily_incremental": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\日增量",
+      "screenshot_fallback": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\抓屏",
+      "session_alignment": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_TO_CN_SESSION_ALIGNMENT.csv"
+    }
+  }
+}
