@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "round": "R08/10",
+  "policy": "static inspection plus existing negative-test receipts only; no write-capable script was executed to produce this matrix",
+  "cases": [
+    {
+      "case_id": "WS-01",
+      "wrong_step_example": "skip a required predecessor or enter the wrong original phase (e.g. build cache before P4/P5, or run research before L1-L4 seal)",
+      "expected_policy_action": "NO_PHASE_SKIP; research Layer 5 forbidden until Layers 1-4 PASS; phase advance only via the next phase's pass predicate",
+      "current_implementation_action": "no runtime phase guard was found; phase state is data in CURRENT files and is not checked before task execution",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_BASE_VERTICAL_PIPELINE_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 3319,
+          "sha256": "2bc031a1abac3d62002d41d13e83e5adec4de910e1aca65068d1c133f6fefd78"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\运行\\BLACKBOX_DATA_BASE_VERTICAL_PIPELINE_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1391,
+          "sha256": "02ab33b9bc91283422132c3ead3deeed39fc4bfd57116bad56f1a61e1a2f88a2"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_L5_RESEARCH_PLANE_RESUME_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1151,
+          "sha256": "50903529074fc24ca4c7eb2deb9e09d9912249ceb11f8721ac43f83ae1efac60"
+        }
+      ],
+      "linked_experience_card": "LESSON_JQDATA_010 (wrong phase, external evidence); error_repair_lessons EXTERNAL_EVIDENCE_WRONG_PHASE_FULL_TIP_GUARD_R1",
+      "evidence_strength": "TEXT_REFERENCE_ONLY",
+      "explicit_gap_for_gpt": "OEL-01: implement a phase guard that reads active_phase and blocks research/update entry when the predecessor is not PASS"
+    },
+    {
+      "case_id": "WS-02",
+      "wrong_step_example": "hash/Manifest mismatch, or an invalid runtime interpreter, treated as 'close enough'",
+      "expected_policy_action": "FAIL_CLOSED: MUST_READ_PRECHECK=FAIL, TASK_EXECUTION_FORBIDDEN=TRUE; no HAND_READ=YES override",
+      "current_implementation_action": "implemented in the preflight self-probe (tampered file -> G2_SHA_FAIL_CLOSED)",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 11767,
+          "sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\契约\\必读\\MUST_READ_MANIFEST_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2943,
+          "sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08"
+        }
+      ],
+      "linked_experience_card": "error_repair_lessons L-ACTIVE-SEED-...-11 (no false PASS) and -12 (no REVIEW_REQUIRED rewrite)",
+      "evidence_strength": "ISOLATED_TESTED"
+    },
+    {
+      "case_id": "WS-03",
+      "wrong_step_example": "an unregistered or ambiguous source/schema alias is 'resolved' by guessing, or a legacy reader silently returns zero rows",
+      "expected_policy_action": "explicit alias table only; ambiguous finance datasets require --scope; a schema mismatch is a reader error, not an empty dataset",
+      "current_implementation_action": "resolver enforces explicit aliases and scope; measured in R08: the legacy price reader returned 0 rows on the canonical index schema while the successor adapter preserved every row and field",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 43924,
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_PLANE_GOVERNANCE_AND_CONTROL_ENFORCEMENT_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1596,
+          "sha256": "a1dcbb86c5d0cabe69aaedcd379b1042a9a1681794efb93fb621d52bbbd078ac"
+        }
+      ],
+      "linked_experience_card": "LESSON_JQDATA_005 (interface/field pitfalls)",
+      "evidence_strength": "ISOLATED_TESTED",
+      "explicit_gap_for_gpt": "OEL-09: register reader/schema compatibility per product instead of relying on a per-task adapter"
+    },
+    {
+      "case_id": "WS-04",
+      "wrong_step_example": "wrong date axis / ordinal, stale calendar, date or frequency substitution",
+      "expected_policy_action": "frequency and date axis are admission predicates (frequency_gate); adjust factors must use the correct ordinal/known-at axis; substitution is a block, not a fallback",
+      "current_implementation_action": "engine rule declares frequency_gate BLOCK_FREQUENCY_GATE; no code emits it; adjust-factor ordinal handling is counted in R08 evidence (17 ordinal vs 20 timestamp incrementals) but no gate reads it",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 9512,
+          "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_FULL_HISTORY_R1\\REL_INDEX_DAILY_FULL_HISTORY_R1_20260805_073123\\RAW_FILES\\index_daily__399303_XSHE__to_20260804.parquet",
+          "exists": true,
+          "kind": "file",
+          "bytes": 220560,
+          "sha256": "1c5b5d2b3d89c9001e23f5c221f27e2d27104fd27b77d78187abc5e85352f200"
+        }
+      ],
+      "linked_experience_card": "LESSON_JQDATA_006 (pubDate/field PIT)",
+      "evidence_strength": "TEXT_REFERENCE_ONLY",
+      "explicit_gap_for_gpt": "OEL-07 (no gate emission) and OEL-10 (no ordinal-axis admission check)"
+    },
+    {
+      "case_id": "WS-05",
+      "wrong_step_example": "the selected file/subset looks empty while another registered layer or shard serves the data",
+      "expected_policy_action": "read all registered overlapping shards and all registered layers before any absence statement",
+      "current_implementation_action": "resolver resolves one product path; the STOCK_MINUTE_1M branch is the only one returning multiple source_paths; no generic enumerator",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6911,
+          "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 43924,
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5"
+        }
+      ],
+      "linked_experience_card": "LESSON_JQDATA_004 (coverage tolerance)",
+      "evidence_strength": "CALLSITE_PROVEN",
+      "explicit_gap_for_gpt": "OEL-04: generic registered-layer/shard enumeration for completeness statements"
+    },
+    {
+      "case_id": "WS-06",
+      "wrong_step_example": "cap/pagination incomplete (e.g. returned_rows == 5000) recorded as COMPLETE",
+      "expected_policy_action": "UNKNOWN_INCOMPLETE_ACQUISITION; page further; SILENT_TRUNCATION=0 before PASS",
+      "current_implementation_action": "implemented: absence gate treats cap hit as UNKNOWN_INCOMPLETE_ACQUISITION; acquisition rule sets SILENT_TRUNCATION=0",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_data_absence_gate_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6687,
+          "sha256": "f7f84f2e2d340605cfdbef607c7f9586a357bf310e3bd00b8f4cec3c8d99e04b"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_UNIFIED_ACQUISITION_ARCHITECTURE_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2348,
+          "sha256": "adf4b9e19bad1992be420cc0fc7bd15e59c53b84fbfe4f20600b48497c0bb52b"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\经验卡\\JQData_download_lessons\\cards\\LESSON_JQDATA_010_EXTERNAL_WRONG_PHASE_FULL_TIP.md",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2637,
+          "sha256": "039dd583313c885fc92f29488dc4158e98efa7d0b1f240bf6c660e1ea1927fd6"
+        }
+      ],
+      "linked_experience_card": "LESSON_JQDATA_009 + ACQUISITION_SILENT_TRUNCATION_5000_GUARD_R1",
+      "evidence_strength": "ISOLATED_TESTED"
+    },
+    {
+      "case_id": "WS-07",
+      "wrong_step_example": "EOD data used before its known_at, missing PIT, or an unsupported adjustment mode",
+      "expected_policy_action": "PIT gate + adjustment gate BLOCK; non-RAW_NONE adjustment blocked in the current architecture phase",
+      "current_implementation_action": "PreIngestionGate emits PIT_NOT_PROVEN / PRICE_BASIS_NOT_AVAILABLE and blocks non-RAW_NONE adjustment; the 15 canonical BLOCK_*_GATE codes are absent",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\pre_ingestion_gate.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 10728,
+          "sha256": "9385131008d24b82b616bc1f175be4e8ce237d81556711ed6781270322ad0637"
+        },
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\block_reason_codes.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1816,
+          "sha256": "1dd483be9df1fffddfe846c44cfec2a71f543ee2821aa087d73038534e0bfab3"
+        },
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_INGESTION_GATE_RULES_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 9512,
+          "sha256": "993906e443d51a3caaae91b6500cd7d1f557d8732f50bc0b8409be273fcd6619"
+        }
+      ],
+      "linked_experience_card": "LESSON_JQDATA_006",
+      "evidence_strength": "CALLSITE_PROVEN",
+      "explicit_gap_for_gpt": "OEL-07"
+    },
+    {
+      "case_id": "WS-08",
+      "wrong_step_example": "parent history lost, a dependent product not recomputed, or cache coverage regressing versus the parent",
+      "expected_policy_action": "PUBLISH_ALLOWED=false on lost dates; CURRENT_SWITCH_ALLOWED=false on critical regression; untouched products must exactly inherit the parent",
+      "current_implementation_action": "the non-regression gate module is a 2-byte stub with no gate/self_test, so the lost-date check cannot run; only FORMAL_COVERAGE_MAX>=target is checked at publish",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2008,
+          "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_cache_coverage_non_regression_gate_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 5716,
+          "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654"
+        }
+      ],
+      "linked_experience_card": "CACHE_REGRESSION forensics in coverage control plane build; error_repair_lessons L-ACTIVE-SEED-...-09",
+      "evidence_strength": "TRIGGER_NOT_IMPLEMENTED",
+      "explicit_gap_for_gpt": "OEL-02: implement gate(parent, candidate, products) and wire it into publish_atomic before any CURRENT switch"
+    },
+    {
+      "case_id": "WS-09",
+      "wrong_step_example": "Cleaning/Cache/CURRENT disagree, or a candidate release is treated as published",
+      "expected_policy_action": "BUILD != PUBLISH; publish only through the authorized atomic gate, with backup of the previous pointer; embedded release ids must not override live CURRENT",
+      "current_implementation_action": "publish_atomic enforces generation equality and a full production matrix, but the daily orchestrator never calls it; rule bodies also embed stale R22 release ids while live CURRENT is FUND_NAV 2026-09-24",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 5716,
+          "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_orchestrator_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 3000,
+          "sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\运行\\BLACKBOX_DATA_BASE_VERTICAL_PIPELINE_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1391,
+          "sha256": "02ab33b9bc91283422132c3ead3deeed39fc4bfd57116bad56f1a61e1a2f88a2"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 1531,
+          "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564"
+        }
+      ],
+      "linked_experience_card": "LOG_REPORT_CROSS_FILE_ALIGNMENT_BEFORE_GITHUB_UPLOAD_R1 (cross-file disagreement class)",
+      "evidence_strength": "CALLSITE_PROVEN",
+      "explicit_gap_for_gpt": "OEL-03 + OEL-11 (stale embedded CURRENT inside rule bodies)"
+    },
+    {
+      "case_id": "WS-10",
+      "wrong_step_example": "a failed MASTER prerequisite is passed into engine ingestion",
+      "expected_policy_action": "MASTER resolution must fail before pre-ingestion validation; parse must be impossible without a gate PASS",
+      "current_implementation_action": "implemented: task_entry runs master.resolve first and returns MASTER_RESOLUTION on failure; parse_after_gate raises PARSE_WITHOUT_PRE_INGESTION",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\task_entry.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 3686,
+          "sha256": "692dec3ac85e1788e9f90a25f23757c93603c1d6079ea44079653be3e85c5382"
+        },
+        {
+          "locator": "E:\\BLACKBOX_ENGINES\\backtest_lab\\03_shadow_engine\\shadow_architecture_R1\\wiring\\pre_ingestion_gate.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 10728,
+          "sha256": "9385131008d24b82b616bc1f175be4e8ce237d81556711ed6781270322ad0637"
+        }
+      ],
+      "linked_experience_card": "block_reason_codes MASTER_REGISTRY_* + PRE_INGESTION_FAILED",
+      "evidence_strength": "CALLSITE_PROVEN",
+      "explicit_gap_for_gpt": "OEL-08 (chain not imported by engine.py)"
+    },
+    {
+      "case_id": "WS-11",
+      "wrong_step_example": "an ETF-only result advertised as a complete FUND-like union",
+      "expected_policy_action": "forbid ETF-only scan for fund-like assets; commodity/fund long history must go through FUND + FUND_LIKE_ASSET_VIEW",
+      "current_implementation_action": "declared in the cache-first rule only; no code implements the block",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 6665,
+          "sha256": "a1b494a455ea1f490296c13b8b5ebb77a715279b982d1bb30d9bb4404df4aa27"
+        }
+      ],
+      "linked_experience_card": "none found",
+      "evidence_strength": "TEXT_REFERENCE_ONLY",
+      "explicit_gap_for_gpt": "OEL-12: implement the fund-like union check (no CODE, currently text-only)"
+    },
+    {
+      "case_id": "WS-12",
+      "wrong_step_example": "retry/re-download when local RAW is already present, or when a sealed paid-permission exclusion applies",
+      "expected_policy_action": "RAW_REDOWNLOAD_DEFAULT=FORBIDDEN_IF_RAW_COMPLETE; first no_permission writes an exclusion and is never retried",
+      "current_implementation_action": "declared in rules/lessons; no runtime reader of the exclusion list was found in the acquisition path (pagination engine's live canary is a stub)",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_DATA_COVERAGE_AND_CACHE_NON_REGRESSION_GATE_R1.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2008,
+          "sha256": "8a19615afe074b7846bc9df52d81f60d5392f8750e55c15b03b3ef6965db422c"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\记忆盘\\03_操作流程经验包\\error_repair_lessons.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 53159,
+          "sha256": "c85cd258383f56b3164ae7f935542fd0ee76acbb6630a7d687fe5b715a82fa01"
+        }
+      ],
+      "linked_experience_card": "L-ACTIVE-SEED-...-01/03/06 (checkpoint, quota, no_permission)",
+      "evidence_strength": "TRIGGER_NOT_IMPLEMENTED",
+      "explicit_gap_for_gpt": "OEL-13: wire exclusion/checkpoint into the acquisition entry"
+    },
+    {
+      "case_id": "WS-13",
+      "wrong_step_example": "a lane-level success announced as 'daily update complete' (JQ-only claim)",
+      "expected_policy_action": "six lanes have distinct meanings; completion requires ALL_LANES_READY=YES plus per-lane status",
+      "current_implementation_action": "manifest carries six lanes, but no gate prevents a JQ-only statement",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 5583,
+          "sha256": "0f0813cb822f535e6978edb501b1af3e8c666461851602f5a816b10babaeecc8"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\.cursor\\rules\\blackbox_daily_incremental_data_plane.mdc",
+          "exists": true,
+          "kind": "file",
+          "bytes": 2316,
+          "sha256": "12847189edeba38b484967b170f52d1ab39772c1b7b9419d30eb05e0d6b89f7a"
+        }
+      ],
+      "linked_experience_card": "AGENTS.md item 10",
+      "evidence_strength": "TEXT_REFERENCE_ONLY",
+      "explicit_gap_for_gpt": "OEL-14: completion gate on manifest lanes"
+    },
+    {
+      "case_id": "WS-14",
+      "wrong_step_example": "a directory that exists is treated as an authority (folder=truth)",
+      "expected_policy_action": "authority comes from a body (rule/CURRENT/manifest), never from a directory name; archive and strategy outputs are not data authority",
+      "current_implementation_action": "resolver reads CURRENT pointers and explicit aliases from disk instead of guessing paths",
+      "exact_evidence": [
+        {
+          "locator": "E:\\BLACKBOX\\脚本\\blackbox_data_access_resolver_r1.py",
+          "exists": true,
+          "kind": "file",
+          "bytes": 43924,
+          "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5"
+        },
+        {
+          "locator": "E:\\BLACKBOX\\目录映射.json",
+          "exists": true,
+          "kind": "file",
+          "bytes": 7820,
+          "sha256": "d020bcad9baab10e7677240d8f888092b15e7999a27f8e2a6504ef7edd131055"
+        }
+      ],
+      "linked_experience_card": "n/a",
+      "evidence_strength": "CALLSITE_PROVEN",
+      "explicit_gap_for_gpt": "OEL-15: mojibake/orphan roots (杩愯, 浠诲姟) have no mapping row; classify, do not silently delete"
+    }
+  ],
+  "coverage_check": {
+    "required_cases_present": [
+      "skip predecessor/wrong phase",
+      "hash/interpreter mismatch",
+      "unregistered/ambiguous source or alias",
+      "wrong date axis/stale calendar/substitution",
+      "subset misses while another layer serves",
+      "cap/pagination incomplete",
+      "EOD before known_at/missing PIT/unsupported adjustment",
+      "parent history lost/dependent not recomputed/coverage regresses",
+      "Cleaning/Cache/CURRENT disagree or candidate treated as published",
+      "failed MASTER prerequisite to engine",
+      "ETF-only advertised as FUND union",
+      "retry/redownload when RAW present or sealed exclusion"
+    ],
+    "all_present": true,
+    "extra_cases": [
+      "WS-13 lane collapse",
+      "WS-14 folder=authority"
+    ]
+  }
+}
