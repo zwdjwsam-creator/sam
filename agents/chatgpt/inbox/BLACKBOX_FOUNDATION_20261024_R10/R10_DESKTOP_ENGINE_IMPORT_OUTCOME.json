@@ -1,0 +1,128 @@
+{
+ "schema": "R10_DESKTOP_ENGINE_IMPORT_OUTCOME_1",
+ "command": {
+  "argv": [
+   "engine_import_probe_r10.py",
+   "--desktop-import"
+  ],
+  "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry",
+  "exit_code": 0
+ },
+ "retained_stdout": {
+  "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_ENGINE_IMPORT_PROBE.txt",
+  "sha256": "553f9fea52d9241ed2ebdd536f21588e85ba958c2c70ab7abfe466157922deb3",
+  "bytes": 816
+ },
+ "probe_result": {
+  "status": "IMPORT_ATTEMPTED_FORBIDDEN_SIDE_EFFECT",
+  "BacktestEngine_class_present": true,
+  "DataProvider_class_present": true,
+  "data_api_callable_present": true,
+  "blocked_events": [
+   "os.mkdir"
+  ],
+  "engine_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine",
+  "source_pins": {
+   "bullet_trade/core/engine.py": "7e31f9ee391f3bc6b913fbc8bb308eab92b3e492cdf635e19b5ac5174eb258e2",
+   "bullet_trade/data/api.py": "49c49697504202fb24a73241d14f0025729a08d03ff12a67a7f694e325383dee",
+   "bullet_trade/data/providers/base.py": "be053cf0693aa1adcd54b077c3fa3748f0db42922aff369f1fca07049185002e"
+  },
+  "engine_constructed": false,
+  "explicit_provider_registration_calls": 0,
+  "explicit_auth_calls_by_probe": 0,
+  "formal_backtest_active": false,
+  "FOUNDATION_ACCEPTANCE": false,
+  "ORDER_ALLOWED": false
+ },
+ "verdict": "IMPORT_ATTEMPTED_FORBIDDEN_SIDE_EFFECT",
+ "reading": {
+  "what_succeeded": [
+   "all three pinned module sources matched their declared sha256",
+   "bullet_trade.core.engine, bullet_trade.data.api and bullet_trade.data.providers.base imported in the guarded child",
+   "imported module paths resolved inside the pinned engine root",
+   "BacktestEngine class, DataProvider class and get_price callable are present",
+   "no engine constructed, no provider registered, no auth call, no network, no order"
+  ],
+  "what_forbade_a_clean_import_claim": [
+   "os.mkdir"
+  ],
+  "root_cause": "module-level `log = Logger()` at bullet_trade/core/globals.py:421 enters Logger.__init__ and calls os.makedirs(log_dir, exist_ok=True) at globals.py:156 during package import; the mkdir audit event fires and the guard denies it. The engine wraps that block in `except Exception: pass`, so import continues while a write/directory-creation side effect was attempted.",
+  "is_this_a_missing_dependency": false,
+  "is_this_startup_failure": "NOT_ESTABLISHED; import itself completed structurally",
+  "package_installed_or_removed": 0,
+  "guard_relaxed": false
+ },
+ "side_effect_localisation": {
+  "command": {
+   "argv": [
+    "tools/r10_locate_engine_import_side_effect.py"
+   ],
+   "retained_stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R10\\operating_entry\\DESKTOP_ENGINE_IMPORT_SIDE_EFFECT_LOCATED.txt",
+    "sha256": "19dc596a21a4d0d84fc12de982d9654da0849bfd1185fac2a248b152398e9624"
+   }
+  },
+  "result": {
+   "status": "ENGINE_IMPORT_SIDE_EFFECT_LOCATED",
+   "outcome": "IMPORT_COMPLETED",
+   "blocked_events": [
+    {
+     "event": "os.mkdir",
+     "arg0": "./logs"
+    }
+   ],
+   "locations": [
+    {
+     "event": "os.mkdir",
+     "frames": [
+      {
+       "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\api.py",
+       "line": 20,
+       "function": "<module>",
+       "source": "from ..core.exceptions import FutureDataError, UserError"
+      },
+      {
+       "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\__init__.py",
+       "line": 12,
+       "function": "<module>",
+       "source": "from .globals import g, log"
+      },
+      {
+       "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\globals.py",
+       "line": 421,
+       "function": "<module>",
+       "source": "log = Logger()"
+      },
+      {
+       "file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\core\\globals.py",
+       "line": 156,
+       "function": "__init__",
+       "source": "os.makedirs(log_dir, exist_ok=True)"
+      }
+     ]
+    }
+   ],
+   "guard_relaxed": false,
+   "packages_installed": 0,
+   "engine_constructed": false,
+   "network_used": false,
+   "FOUNDATION_ACCEPTANCE": false,
+   "ORDER_ALLOWED": false
+  },
+  "additive_only": "reports WHERE the supplied probe blocked; it relaxes no guard and installs nothing"
+ },
+ "import_readiness": "MODULES_IMPORT_STRUCTURALLY__CONTAINS_A_BLOCKED_IMPORT_TIME_MKDIR",
+ "formal_engine_admission": "NOT_ADMITTED",
+ "still_unproven": [
+  "an unguarded real start",
+  "provider/data-plane wiring",
+  "PIT/session/matching contracts",
+  "generation-bound admission",
+  "any backtest result"
+ ],
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false
+}
