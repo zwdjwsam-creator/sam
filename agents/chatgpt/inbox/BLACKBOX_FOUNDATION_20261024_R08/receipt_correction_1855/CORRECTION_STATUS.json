@@ -4,7 +4,7 @@
  "issued_against_tip_blob": "c9d48862dc291493fdc38a60edd0edf380b7e353",
  "issued_against_review": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_RECEIPT_AND_SCHEMA_REVIEW_20261024_1855/REVIEW_R08_RECEIPT_AND_SCHEMA.md",
  "issued_against_review_blob": "7a66f5d7ee926d6d7ae56b07eae4a4c9ee651511",
- "generated_at": "2026-10-24T19:25:56+08:00",
+ "generated_at": "2026-10-24T19:32:14+08:00",
  "slot": "R08",
  "slot_ordinal": "8/10",
  "slot_state": "OPEN_PENDING_GPT_REVIEW",
@@ -13,6 +13,7 @@
  "future_execution_deliveries_remaining": 2,
  "delivered": [
   "CORRECTION_STATUS.json",
+  "TRANSPORT_ENCODING_NOTE.json",
   "ORIGINAL_CANDIDATE_MANIFEST.json",
   "ORIGINAL_MANIFEST_BYTE_PRESERVATION.json",
   "RECONCILED_EVIDENCE.json",
@@ -20,21 +21,21 @@
   "R09_IMPLEMENTATION_BINDINGS_CORRECTED.json",
   "FIRST_BUILD_RECEIPT_STATUS.json",
   "executed_code/ (6 files)",
-  "execution/ (8 files)",
+  "execution/ (12 files)",
   "source_bodies/ (5 files)"
  ],
  "executions": [
   {
    "id": "CTRL_TEST_R08_RECEIPT_AUDIT",
    "purpose": "control test suite: six synthetic controls",
-   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.raw",
+   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.raw.b64",
    "stdout_utf8_transcription": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.txt",
    "stderr": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stderr.txt",
    "captured_encoding": "utf-16",
-   "transcription_note": "byte-for-byte capture kept in .stdout.raw; the .txt is a lossless transcription of the same bytes (PowerShell 5.1 redirection wrote UTF-16LE)",
+   "transcription_note": "exact bytes are carried base64-encoded because the HUB transport re-encodes BOM'd UTF-16 payloads (see TRANSPORT_ENCODING_NOTE.json); base64-decode to recover the literal capture; the .txt is a lossless transcription of the same bytes",
    "stdout_raw_bytes": 258,
    "stderr_raw_bytes": 0,
-   "stdout_raw_sha256": "8874142623e9e9b1a5ca90875dd9eeac62be57a79f013eef9acec77267cd6739",
+   "stdout_raw_sha256_of_decoded_bytes": "8874142623e9e9b1a5ca90875dd9eeac62be57a79f013eef9acec77267cd6739",
    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
    "exit_code": 0,
    "parsed_status": "PASS"
@@ -42,14 +43,14 @@
   {
    "id": "CTRL_TEST_CANONICAL_INDEX_SCHEMA",
    "purpose": "control test suite: nine synthetic controls incl. legacy reader reproduction",
-   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.raw",
+   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.raw.b64",
    "stdout_utf8_transcription": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.txt",
    "stderr": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stderr.txt",
    "captured_encoding": "utf-16",
-   "transcription_note": "byte-for-byte capture kept in .stdout.raw; the .txt is a lossless transcription of the same bytes (PowerShell 5.1 redirection wrote UTF-16LE)",
+   "transcription_note": "exact bytes are carried base64-encoded because the HUB transport re-encodes BOM'd UTF-16 payloads (see TRANSPORT_ENCODING_NOTE.json); base64-decode to recover the literal capture; the .txt is a lossless transcription of the same bytes",
    "stdout_raw_bytes": 440,
    "stderr_raw_bytes": 0,
-   "stdout_raw_sha256": "ec06001a963acd7a2e8848e347f7c412958bf822d186dd86c33987db2432f794",
+   "stdout_raw_sha256_of_decoded_bytes": "ec06001a963acd7a2e8848e347f7c412958bf822d186dd86c33987db2432f794",
    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
    "exit_code": 0,
    "parsed_status": "PASS"
@@ -57,14 +58,14 @@
   {
    "id": "AUDIT_R08_RECEIPT",
    "purpose": "independent reconciliation of the R08 manifest and physical artifacts",
-   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.raw",
+   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.raw.b64",
    "stdout_utf8_transcription": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.txt",
    "stderr": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stderr.txt",
    "captured_encoding": "utf-16",
-   "transcription_note": "byte-for-byte capture kept in .stdout.raw; the .txt is a lossless transcription of the same bytes (PowerShell 5.1 redirection wrote UTF-16LE)",
+   "transcription_note": "exact bytes are carried base64-encoded because the HUB transport re-encodes BOM'd UTF-16 payloads (see TRANSPORT_ENCODING_NOTE.json); base64-decode to recover the literal capture; the .txt is a lossless transcription of the same bytes",
    "stdout_raw_bytes": 64818,
    "stderr_raw_bytes": 0,
-   "stdout_raw_sha256": "089c94aea9b050c8dbe361a940f930851385ad8b5dc1a484a81b48867eb06644",
+   "stdout_raw_sha256_of_decoded_bytes": "089c94aea9b050c8dbe361a940f930851385ad8b5dc1a484a81b48867eb06644",
    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
    "exit_code": 0,
    "parsed_status": "RECONCILED"
@@ -72,14 +73,14 @@
   {
    "id": "PROBE_CANONICAL_INDEX",
    "purpose": "hash-pinned 399303.XSHE source read through the candidate adapter",
-   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.raw",
+   "stdout_literal_bytes": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.raw.b64",
    "stdout_utf8_transcription": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.txt",
    "stderr": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stderr.txt",
    "captured_encoding": "utf-16",
-   "transcription_note": "byte-for-byte capture kept in .stdout.raw; the .txt is a lossless transcription of the same bytes (PowerShell 5.1 redirection wrote UTF-16LE)",
+   "transcription_note": "exact bytes are carried base64-encoded because the HUB transport re-encodes BOM'd UTF-16 payloads (see TRANSPORT_ENCODING_NOTE.json); base64-decode to recover the literal capture; the .txt is a lossless transcription of the same bytes",
    "stdout_raw_bytes": 3168,
    "stderr_raw_bytes": 0,
-   "stdout_raw_sha256": "e7da723f17bf9a6c7f0310bcd139fa4ef665b7d9ef3be78e53b35f20318d6232",
+   "stdout_raw_sha256_of_decoded_bytes": "e7da723f17bf9a6c7f0310bcd139fa4ef665b7d9ef3be78e53b35f20318d6232",
    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
    "exit_code": 0,
    "parsed_status": "SCHEMA_ADAPTER_PROBE_PASS"
@@ -159,9 +160,9 @@
    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   {
-   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.raw",
-   "bytes": 64818,
-   "sha256": "089c94aea9b050c8dbe361a940f930851385ad8b5dc1a484a81b48867eb06644"
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.raw.b64",
+   "bytes": 86426,
+   "sha256": "451726c8dcb6d8fba1f78731060157d221770c1bac200f001eac08b1b2a90eed"
   },
   {
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/AUDIT_R08_RECEIPT.stdout.txt",
@@ -174,9 +175,9 @@
    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   {
-   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.raw",
-   "bytes": 440,
-   "sha256": "ec06001a963acd7a2e8848e347f7c412958bf822d186dd86c33987db2432f794"
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.raw.b64",
+   "bytes": 590,
+   "sha256": "9cc082c7ebcd7fa8a118cb29ccab96299e842372839b1753bff70edb28c2395d"
   },
   {
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_CANONICAL_INDEX_SCHEMA.stdout.txt",
@@ -189,9 +190,9 @@
    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   {
-   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.raw",
-   "bytes": 258,
-   "sha256": "8874142623e9e9b1a5ca90875dd9eeac62be57a79f013eef9acec77267cd6739"
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.raw.b64",
+   "bytes": 346,
+   "sha256": "411f4b2cb6522f496d3bd2c090daddae6d5d8b48e75d8928cb23e153e6f4a257"
   },
   {
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/CTRL_TEST_R08_RECEIPT_AUDIT.stdout.txt",
@@ -204,9 +205,9 @@
    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   {
-   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.raw",
-   "bytes": 3168,
-   "sha256": "e7da723f17bf9a6c7f0310bcd139fa4ef665b7d9ef3be78e53b35f20318d6232"
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.raw.b64",
+   "bytes": 4226,
+   "sha256": "8b73dc3fb00df01c4dee6b9f6b68ca80d2d8a1ae334dde1b11ef7e0effe25c00"
   },
   {
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/execution/PROBE_CANONICAL_INDEX.stdout.txt",
@@ -231,17 +232,17 @@
   {
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/ORIGINAL_SOURCE_BODY_INDEX_CORRECTED.json",
    "bytes": 22294,
-   "sha256": "492797252f009123642ca132e74f70b1ca864f93ee4106f46bc16c80a4b89c51"
+   "sha256": "99dca905ed6ccaabc913cc7192aecb92d646748107ffb81cf045e84b68cf9561"
   },
   {
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/R09_IMPLEMENTATION_BINDINGS_CORRECTED.json",
    "bytes": 5687,
-   "sha256": "71f5f44732678149b8013101790171da342070c16f4caa2b5a02a1e713a8724d"
+   "sha256": "fc7290834baaab119eb562d55fbbc774475d74210041ebf09db3009719e1ba01"
   },
   {
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/RECONCILED_EVIDENCE.json",
    "bytes": 19773,
-   "sha256": "ea83475756d7e8b925e2c9de424ad38e6779c28e14963e867d7c278843f14c9a"
+   "sha256": "46df0a90d40b4f49385a4bc048763378b404050a0a361d2f01207e071f22578d"
   },
   {
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/blackbox_data_access_resolver_r1.py",
@@ -267,6 +268,11 @@
    "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/cache_compiler_sw_l1_integrate_r1.py",
    "bytes": 22223,
    "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69"
+  },
+  {
+   "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/TRANSPORT_ENCODING_NOTE.json",
+   "bytes": 1158,
+   "sha256": "5d9b9a653abd3953542e67f1fe7216d34c5e90b2465c710984980be88a1c387d"
   }
  ]
 }
