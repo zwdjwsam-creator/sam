@@ -1,0 +1,145 @@
+{
+ "generation": "R09_IMPLEMENTATION_BINDINGS_CORRECTED",
+ "generated_at": "2026-10-24T19:25:56+08:00",
+ "supersedes": "R08_IMPLEMENTATION_BINDINGS (r08_delivery/R09_IMPLEMENTATION_BINDINGS.json)",
+ "mode": "CARRY_FORWARD_PLUS_EXACT_DELTAS",
+ "carry_forward_intact": true,
+ "carry_forward_sources": [
+  "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R05/GAP_REPAIR_INPUTS.json",
+  "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/SOURCE_ACCESS_REGISTER.json",
+  "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R04/access_resources/ACCESS_AND_DOWNLOAD_RUNBOOK.md",
+  "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R06/NEXT_UPDATE_BINDINGS.json"
+ ],
+ "domains_carried_forward": [
+  "adjustment",
+  "dictionary_and_factor_value",
+  "etf_daily",
+  "external_tushare_cbond",
+  "index_full_history_daily",
+  "minute_namespaces",
+  "nav",
+  "security_universe",
+  "stock_daily",
+  "sw_structure",
+  "tradeability_st_limits",
+  "valuation"
+ ],
+ "deltas": [
+  {
+   "binding": "adjustment.ordinal_axis_defect.count",
+   "from": "20 of 37 (prose)",
+   "to": "17 ordinal + 20 timestamp of 37 (measured)",
+   "evidence": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/RECONCILED_EVIDENCE.json#RC09_adjust_factor_ordinal_count",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "adjustment.transform_reader_entry.current_builder",
+   "from": "UNRESOLVED",
+   "to": "UNRESOLVED_REFRESH_REQUEST_RECEIPT_NOT_RETAINED",
+   "evidence": "the sealed release _build directory has no jq_factor_refresh_2025_20260814.parquet",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "adjustment.transform_evidence.reader",
+   "from": "local path only",
+   "to": "local path plus uploaded body with matching sha256 bb8a52a1",
+   "evidence": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/cache_compiler_adjust_factor_pit_r1.py",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "tradeability_st_limits.creator",
+   "from": "absent",
+   "to": "UNRESOLVED_WITH_SEARCHED_PROVENANCE",
+   "evidence": "only a reader assignment found; no writer located",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "security_universe.creator",
+   "from": "absent",
+   "to": "UNRESOLVED_WITH_SEARCHED_PROVENANCE",
+   "evidence": "readers only for SECURITY_MASTER_SNAPSHOT_R1 and MARKET_UNIVERSE_PIT_R1",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "sw_structure",
+   "from": "PARTIAL",
+   "to": "PARTIAL (L1 creator located and uploaded; L2/L3 creator unresolved)",
+   "evidence": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/cache_compiler_sw_l1_integrate_r1.py",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "valuation.creator",
+   "from": "absent",
+   "to": "LOCATED (uploaded; CURRENT-slice authorship not proven)",
+   "evidence": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/source_bodies/blackbox_valuation_historical_authority_cache_productization_r1.py",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "coverage.common_module",
+   "from": "absent",
+   "to": "CONTRACT_RECORDED_NOT_IMPLEMENTED",
+   "evidence": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/ORIGINAL_SOURCE_BODY_INDEX_CORRECTED.json#A_current_coverage_callers",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "coverage.non_regression_gate",
+   "from": "absent",
+   "to": "CONTRACT_RECORDED_NOT_IMPLEMENTED",
+   "evidence": "self_test() and gate(fat, thin, families) signatures recorded from the call site",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "precision_language",
+   "from": "implementation-ready",
+   "to": "PARTIAL: 5 resolved, 4 unresolved",
+   "evidence": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/RECONCILED_EVIDENCE.json#RC08_implementation_ready_overstated",
+   "carry_forward_preserved": true
+  },
+  {
+   "binding": "canonical_adapter",
+   "from": "pure candidate transform",
+   "to": "pure candidate transform (unchanged); not installed, not wired, no PIT semantics created",
+   "evidence": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/receipt_correction_1855/ORIGINAL_SOURCE_BODY_INDEX_CORRECTED.json#canonical_adapter_status",
+   "carry_forward_preserved": true
+  }
+ ],
+ "counting": {
+  "deltas": 11,
+  "resolved": 5,
+  "still_unresolved": 4,
+  "counted_twice": 0
+ },
+ "unresolved_index": [
+  {
+   "id": "U1",
+   "domain": "security_universe",
+   "dependency": "creator of SECURITY_MASTER_SNAPSHOT_R1 / MARKET_UNIVERSE_PIT_R1",
+   "searched": "脚本, 任务, 运行 outside HUB copies, cached source reads"
+  },
+  {
+   "id": "U2",
+   "domain": "tradeability_st_limits",
+   "dependency": "creator of STOCK_TRADEABILITY_PIT_R1",
+   "searched": "same scope; only a reader at blackbox_external_market_evidence_data_agent_r1.py line 405"
+  },
+  {
+   "id": "U3",
+   "domain": "adjustment",
+   "dependency": "credentialed refresh request receipt behind 2026-08-15..2026-09-24 factors",
+   "searched": "sealed release _build, P1 sidecars, raw incrementals"
+  },
+  {
+   "id": "U4",
+   "domain": "sw_structure",
+   "dependency": "creator of SW_L2/_L3 structure products",
+   "searched": "脚本, 任务; only flat-string mentions found"
+  }
+ ],
+ "flags": {
+  "ORDER_ALLOWED": false,
+  "FOUNDATION_ACCEPTANCE": false,
+  "PRODUCTION_CHANGE_AUTHORIZED": false,
+  "NETWORK_ACQUISITION_AUTHORIZED": false,
+  "SOURCE_ABSENCE_CLAIMS": 0
+ }
+}
