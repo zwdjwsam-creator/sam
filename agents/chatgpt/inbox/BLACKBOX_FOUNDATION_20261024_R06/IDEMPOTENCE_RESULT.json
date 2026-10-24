@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "language": "en",
+  "replay_command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R06\\r06_gap_repair.py --gap-inputs reviews\\R06\\GAP_REPAIR_INPUTS_R05.json",
+  "replay_exit_code": 0,
+  "replay_status": "ALREADY_BUILT_VERIFIED",
+  "replay_stdout": "{\"status\": \"ALREADY_BUILT_VERIFIED\", \"manifest\": \"E:\\\\BLACKBOX\\\\_OPS\\\\FOUNDATION_RECOVERY_20261024\\\\candidate_releases\\\\R06\\\\R06_TWO_DAY_RECOVERY_20261024\\\\CANDIDATE_MANIFEST.json\", \"generation\": \"R06_TWO_DAY_RECOVERY_20261024\"}",
+  "artifact_count": 5,
+  "all_artifacts_match_manifest_pins_after_replay": true,
+  "artifact_drift": [],
+  "all_source_pins_match_after_replay": true,
+  "source_pin_drift": [],
+  "duplicate_rows_added": 0,
+  "new_generation_created": false,
+  "parent_daily_fingerprints_match": true,
+  "evidence": [
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cleaning\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "expected_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cleaning\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "expected_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+      "expected_sha256": "ee46d3639133fc57cc7c015a173e23620f8013e1b52b783f53f9b4cd512b00ca",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+      "expected_sha256": "2405ad954d2618868e36a72b9a7d4364f7d352256876baf601cf9fe3b7a7086b",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\ECOLOGY_REGISTRY_R06_DIAGNOSTIC.json",
+      "expected_sha256": "8a590957ee8a1f996fef929a0c37e536227492feab9238d054ad4e18e2744f79",
+      "match": true
+    }
+  ],
+  "source_evidence": [
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
+      "expected_sha256": "8a1a4d9337d258390ac390232522daa026e4ebf5b5f70ef45942061bc52c56b6",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "expected_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
+      "expected_sha256": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "expected_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json",
+      "expected_sha256": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+      "expected_sha256": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+      "expected_sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+      "expected_sha256": "c28b37cd925c187e399dbf24aeb0cbde790de4b22a81d674795ee549041e4dbe",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+      "expected_sha256": "bf080579ece5249a0b4b7e44316c89f5df8f38e9473c3bc208db22fd1a66bae8",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "expected_sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "match": true
+    }
+  ]
+}
