@@ -1,0 +1,107 @@
+{
+ "schema": "R09_SW_ROUTE_VS_INHERITANCE_1",
+ "round": "R09/10_CORRECTION",
+ "separated_layers": {
+  "ROUTE": {
+   "status": "PRESENT",
+   "owner": "TIP_COMPILER.inject_sw",
+   "detail": "three pointer-driven routes read CURRENT_SW_L{1,2,3}_PIT_ALIGN_RELEASE.json and copy membership + structure FULL plus year partitions"
+  },
+  "BOUNDED_OBSERVATION": {
+   "status": "MEASURED",
+   "pointers": {
+    "L1": {
+     "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L1_PIT_ALIGN_RELEASE.json",
+     "pointer_sha256": "e993859e87d7d04d61828983adf765fa3f5fea254820670a620744ebcc474035",
+     "release_id": "BLACKBOX_SW_L1_PIT_ALIGN_R1_ASOF_20260924_20260925_031250",
+     "formal_data_asof": "2026-09-24",
+     "gate_pass": true,
+     "n_membership_rows": 12587795,
+     "thin_days": 0,
+     "standard_root_exists": true,
+     "mem_full_exists": true,
+     "st_full_exists": true,
+     "mem_partition_years": 13,
+     "st_partition_years": 13,
+     "mem_rows": 12587795,
+     "mem_date_col": "date",
+     "mem_derived_max": "2026-09-24",
+     "mem_derived_matches_pointer": true,
+     "st_rows": 90046,
+     "st_derived_max": "2026-09-24",
+     "st_derived_matches_pointer": true
+    },
+    "L2": {
+     "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L2_PIT_ALIGN_RELEASE.json",
+     "pointer_sha256": "59d61bac2688383d6bb219e9570bfee471687bc3b840dc6bd0a34b02b24c5311",
+     "release_id": "BLACKBOX_SW_L2_PIT_ALIGN_R1_ASOF_20260924_20260925_031431",
+     "formal_data_asof": "2026-09-24",
+     "gate_pass": true,
+     "n_membership_rows": 12575466,
+     "thin_days": 0,
+     "standard_root_exists": true,
+     "mem_full_exists": true,
+     "st_full_exists": true,
+     "mem_partition_years": 13,
+     "st_partition_years": 13,
+     "mem_rows": 12575466,
+     "mem_date_col": "date",
+     "mem_derived_max": "2026-09-24",
+     "mem_derived_matches_pointer": true,
+     "st_rows": 351502,
+     "st_derived_max": "2026-09-24",
+     "st_derived_matches_pointer": true
+    },
+    "L3": {
+     "pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L3_PIT_ALIGN_RELEASE.json",
+     "pointer_sha256": "b1d96d3f8f64f2221946cd1b2d620c0df029f1fb2d7016b5a25bd3f084024fbf",
+     "release_id": "BLACKBOX_SW_L3_PIT_ALIGN_R1_ASOF_20260924_20260925_031609",
+     "formal_data_asof": "2026-09-24",
+     "gate_pass": true,
+     "n_membership_rows": 12564290,
+     "thin_days": 0,
+     "standard_root_exists": true,
+     "mem_full_exists": true,
+     "st_full_exists": true,
+     "mem_partition_years": 13,
+     "st_partition_years": 13,
+     "mem_rows": 12564290,
+     "mem_date_col": "date",
+     "mem_derived_max": "2026-09-24",
+     "mem_derived_matches_pointer": true,
+     "st_rows": 825939,
+     "st_derived_max": "2026-09-24",
+     "st_derived_matches_pointer": true
+    }
+   },
+   "proves": [
+    "pointer resolves",
+    "standard root and both FULL files exist",
+    "partition year directories exist",
+    "footer row counts and measured max date"
+   ],
+   "does_not_prove": [
+    "all dates",
+    "all symbols",
+    "PIT semantics",
+    "byte-identical content across releases"
+   ]
+  },
+  "INHERITANCE_INTO_CURRENT_CACHE": {
+   "status": "REFERENCE_ONLY_NOT_BYTE_VERIFIED",
+   "evidence": "cache RELEASE.json declares sw_l1/l2/l3_status=READY_INTEGRATED; the R08 candidate lists the six SW products among 51 inherited products with status PRESERVED_REFERENCE_NOT_REVERIFIED_OR_PROMOTED"
+  },
+  "ADMISSION": {
+   "status": "NONE",
+   "detail": "no SW product is admitted to any engine in this round"
+  }
+ },
+ "no_new_sw_parquet_reads": true,
+ "measured_properties_only": true,
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "SOURCE_ABSENCE_CLAIMS": 0
+}
