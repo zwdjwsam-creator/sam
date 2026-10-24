@@ -1,0 +1,783 @@
+{
+  "status": "RECONCILED",
+  "manifest_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\CANDIDATE_MANIFEST.json",
+  "manifest_sha256": "89d2a903fe01701c43c6cf8a90906c096aede74db082012fb6bc31d31735787f",
+  "parent_manifest_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\CANDIDATE_MANIFEST.json",
+  "parent_manifest_sha256": "ec7485ef50c03b36dfe8357822cd2bdd7dba5dbade83b3cc0c1671eb03b1bbde",
+  "checks": {
+    "manifest_matches_reported_sha": {
+      "pass": true,
+      "detail": {
+        "actual": "89d2a903fe01701c43c6cf8a90906c096aede74db082012fb6bc31d31735787f",
+        "expected": "89d2a903fe01701c43c6cf8a90906c096aede74db082012fb6bc31d31735787f"
+      }
+    },
+    "generation": {
+      "pass": true,
+      "detail": null
+    },
+    "not_production_admitted": {
+      "pass": true,
+      "detail": null
+    },
+    "parent_generation": {
+      "pass": true,
+      "detail": null
+    },
+    "parent_manifest_pinned": {
+      "pass": true,
+      "detail": null
+    },
+    "R08_inputs_all_hashes": {
+      "pass": true,
+      "detail": null
+    },
+    "R06_sources_all_hashes": {
+      "pass": true,
+      "detail": null
+    },
+    "all_inherited_and_new_artifact_hashes": {
+      "pass": true,
+      "detail": null
+    },
+    "full_prefix_rows_match_accounting": {
+      "pass": true,
+      "detail": {
+        "physical_prefix_rows": 12362212,
+        "manifest_prefix_rows": 12362212,
+        "partitions": 13
+      }
+    },
+    "observed_plus_unobserved_arithmetic": {
+      "pass": true,
+      "detail": null
+    },
+    "schema_matches_parent:STOCK_FACTOR_DAILY_R1": {
+      "pass": true,
+      "detail": null
+    },
+    "physical_rows_match_manifest:STOCK_FACTOR_DAILY_R1": {
+      "pass": true,
+      "detail": null
+    },
+    "schema_matches_parent:MARKET_STRUCTURE_DAILY_R1": {
+      "pass": true,
+      "detail": null
+    },
+    "physical_rows_match_manifest:MARKET_STRUCTURE_DAILY_R1": {
+      "pass": true,
+      "detail": null
+    },
+    "2026_price_values_and_keys_exactly_preserved": {
+      "pass": true,
+      "detail": null
+    },
+    "2026_factor_grid_not_full_prefix_comparison": {
+      "pass": true,
+      "detail": {
+        "source_2026_rows": 959896,
+        "factor_2026_rows": 959896,
+        "full_prefix_rows_for_formula_context": 12362212
+      }
+    },
+    "2026_unobserved_rows_conserved": {
+      "pass": true,
+      "detail": null
+    },
+    "unobserved_grid_has_no_fabricated_factors": {
+      "pass": true,
+      "detail": null
+    },
+    "unobserved_grid_explicit_status": {
+      "pass": true,
+      "detail": null
+    },
+    "grid_audit_exact_keys": {
+      "pass": true,
+      "detail": null
+    },
+    "grid_audit_physical_rows": {
+      "pass": true,
+      "detail": null
+    }
+  },
+  "failed_checks": [],
+  "input_partitions": [
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+      "rows": 959896,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2014\\part_2014.parquet",
+      "rows": 620803,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2015\\part_2015.parquet",
+      "rows": 665913,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2016\\part_2016.parquet",
+      "rows": 704876,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2017\\part_2017.parquet",
+      "rows": 799798,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2018\\part_2018.parquet",
+      "rows": 857319,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2019\\part_2019.parquet",
+      "rows": 890482,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2020\\part_2020.parquet",
+      "rows": 951992,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2021\\part_2021.parquet",
+      "rows": 1062380,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2022\\part_2022.parquet",
+      "rows": 1149235,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2023\\part_2023.parquet",
+      "rows": 1211865,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2024\\part_2024.parquet",
+      "rows": 1236214,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    },
+    {
+      "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2025\\part_2025.parquet",
+      "rows": 1251439,
+      "schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "signal_date",
+        "data_date",
+        "asset_type",
+        "price_adj_tag",
+        "asof_rule",
+        "pit_status",
+        "source_version",
+        "known_at"
+      ]
+    }
+  ],
+  "pin_report": {
+    "R08_inputs": [
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\CANDIDATE_MANIFEST.json",
+        "expected": "ec7485ef50c03b36dfe8357822cd2bdd7dba5dbade83b3cc0c1671eb03b1bbde",
+        "actual": "ec7485ef50c03b36dfe8357822cd2bdd7dba5dbade83b3cc0c1671eb03b1bbde",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+        "expected": "2405ad954d2618868e36a72b9a7d4364f7d352256876baf601cf9fe3b7a7086b",
+        "actual": "2405ad954d2618868e36a72b9a7d4364f7d352256876baf601cf9fe3b7a7086b",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R08\\cache_compiler_source_R06.py",
+        "expected": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+        "actual": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R08\\r06_bundle_store.py",
+        "expected": "6c76c0de3aca7d96223e5883b68918c794585156e29c292962d438e6986269a2",
+        "actual": "6c76c0de3aca7d96223e5883b68918c794585156e29c292962d438e6986269a2",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R08\\r07_rebuild_local.py",
+        "expected": "a9759390564b1ac1dc20c1098e37a52199d4bb439990522babffc90352e18a03",
+        "actual": "a9759390564b1ac1dc20c1098e37a52199d4bb439990522babffc90352e18a03",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R08\\r08_coverage_gate.py",
+        "expected": "9d90046c252b7f4c08786906cd3a95d28a5b3099493e4cb1f0ca8931fae982af",
+        "actual": "9d90046c252b7f4c08786906cd3a95d28a5b3099493e4cb1f0ca8931fae982af",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R08\\r08_rebuild_local.py",
+        "expected": "46da05cb40ce73472ccb896916676d0f42a100d42ece4e46dcb764c64f5d8407",
+        "actual": "46da05cb40ce73472ccb896916676d0f42a100d42ece4e46dcb764c64f5d8407",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+        "expected": "d044d628279d48c1644eb7913af9e45d27d17b04b086f6d316936e31d6eddcea",
+        "actual": "d044d628279d48c1644eb7913af9e45d27d17b04b086f6d316936e31d6eddcea",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\MARKET_STRUCTURE_DAILY_R1\\year=2026\\part_2026.parquet",
+        "expected": "4651b7b3c464ea601b1161395d8567c06cb90bd2bb987c9bde9c03a9e49ba8c1",
+        "actual": "4651b7b3c464ea601b1161395d8567c06cb90bd2bb987c9bde9c03a9e49ba8c1",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2014\\part_2014.parquet",
+        "expected": "1929e4b3d3417d4c3d7f56df45b895cdc639ffbf2735858809108c95838500f5",
+        "actual": "1929e4b3d3417d4c3d7f56df45b895cdc639ffbf2735858809108c95838500f5",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2015\\part_2015.parquet",
+        "expected": "8b6c22fb67544f3e40b6f250da530975f2ebc8a1d087946be6be93f598e6d04b",
+        "actual": "8b6c22fb67544f3e40b6f250da530975f2ebc8a1d087946be6be93f598e6d04b",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2016\\part_2016.parquet",
+        "expected": "7c2cc4957e0c8fc83531e8e3f956d085c8e1bde33717fe5abcbb8a9336cd4fc3",
+        "actual": "7c2cc4957e0c8fc83531e8e3f956d085c8e1bde33717fe5abcbb8a9336cd4fc3",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2017\\part_2017.parquet",
+        "expected": "e5a85592db50390d46025792584a555b43c6a700f3c4952a4dc65e84b39ba8fe",
+        "actual": "e5a85592db50390d46025792584a555b43c6a700f3c4952a4dc65e84b39ba8fe",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2018\\part_2018.parquet",
+        "expected": "19a7a863dc685b81ed2eba03d1dac9ff9020ec0fcc4fc94ab81f0508df36ee1e",
+        "actual": "19a7a863dc685b81ed2eba03d1dac9ff9020ec0fcc4fc94ab81f0508df36ee1e",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2019\\part_2019.parquet",
+        "expected": "78a0b560b1038176c4b2bad7abac7fb18be183b07af9aa70ac49efc3f27c6896",
+        "actual": "78a0b560b1038176c4b2bad7abac7fb18be183b07af9aa70ac49efc3f27c6896",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2020\\part_2020.parquet",
+        "expected": "f517d2802a59d55043cc6bece6b5c1bc7e23a50d709fdb184581269f8bdd3448",
+        "actual": "f517d2802a59d55043cc6bece6b5c1bc7e23a50d709fdb184581269f8bdd3448",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2021\\part_2021.parquet",
+        "expected": "d9b96c2633afcfb3192a1ab177b598dccb1259dd9db54672d1e9e8c8810ec450",
+        "actual": "d9b96c2633afcfb3192a1ab177b598dccb1259dd9db54672d1e9e8c8810ec450",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2022\\part_2022.parquet",
+        "expected": "9995e685a7d49e1718e06e7043478cac6997f477d8dcc4b025e6eb32e351a8aa",
+        "actual": "9995e685a7d49e1718e06e7043478cac6997f477d8dcc4b025e6eb32e351a8aa",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2023\\part_2023.parquet",
+        "expected": "d0c0c6d9211effe4743cbd8883519b2f9911e46ae7d41857810b57502dcfa244",
+        "actual": "d0c0c6d9211effe4743cbd8883519b2f9911e46ae7d41857810b57502dcfa244",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2024\\part_2024.parquet",
+        "expected": "bc08a1abff0b26777a27d16ed2852f26192af81c200ae50534956abaf77f2fe9",
+        "actual": "bc08a1abff0b26777a27d16ed2852f26192af81c200ae50534956abaf77f2fe9",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2025\\part_2025.parquet",
+        "expected": "e1a46bb5d2e8cd018d47690500a5cfd4fa1c7252a17a1994e99a3d4abd617db2",
+        "actual": "e1a46bb5d2e8cd018d47690500a5cfd4fa1c7252a17a1994e99a3d4abd617db2",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_FACTOR_DAILY_R1\\year=2026\\part_2026.parquet",
+        "expected": "355c77ffbb58aefa673ec8c450ea7e33acae1470bdb8ddefaa6baf88ad72a55f",
+        "actual": "355c77ffbb58aefa673ec8c450ea7e33acae1470bdb8ddefaa6baf88ad72a55f",
+        "match": true
+      }
+    ],
+    "R06_sources": [
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
+        "expected": "8a1a4d9337d258390ac390232522daa026e4ebf5b5f70ef45942061bc52c56b6",
+        "actual": "8a1a4d9337d258390ac390232522daa026e4ebf5b5f70ef45942061bc52c56b6",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+        "expected": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+        "actual": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
+        "expected": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
+        "actual": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+        "expected": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+        "actual": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json",
+        "expected": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
+        "actual": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+        "expected": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+        "actual": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\CURRENT_CACHE_RELEASE.json",
+        "expected": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+        "actual": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+        "expected": "c28b37cd925c187e399dbf24aeb0cbde790de4b22a81d674795ee549041e4dbe",
+        "actual": "c28b37cd925c187e399dbf24aeb0cbde790de4b22a81d674795ee549041e4dbe",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+        "expected": "bf080579ece5249a0b4b7e44316c89f5df8f38e9473c3bc208db22fd1a66bae8",
+        "actual": "bf080579ece5249a0b4b7e44316c89f5df8f38e9473c3bc208db22fd1a66bae8",
+        "match": true
+      },
+      {
+        "path": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\CURRENT_CLEANING_RELEASE.json",
+        "expected": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+        "actual": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+        "match": true
+      }
+    ]
+  },
+  "artifact_hashes": [
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cleaning\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "expected": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "actual": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cleaning\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "expected": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "actual": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+      "expected": "ee46d3639133fc57cc7c015a173e23620f8013e1b52b783f53f9b4cd512b00ca",
+      "actual": "ee46d3639133fc57cc7c015a173e23620f8013e1b52b783f53f9b4cd512b00ca",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\cache\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+      "expected": "2405ad954d2618868e36a72b9a7d4364f7d352256876baf601cf9fe3b7a7086b",
+      "actual": "2405ad954d2618868e36a72b9a7d4364f7d352256876baf601cf9fe3b7a7086b",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R06\\R06_TWO_DAY_RECOVERY_20261024\\ECOLOGY_REGISTRY_R06_DIAGNOSTIC.json",
+      "expected": "8a590957ee8a1f996fef929a0c37e536227492feab9238d054ad4e18e2744f79",
+      "actual": "8a590957ee8a1f996fef929a0c37e536227492feab9238d054ad4e18e2744f79",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\STOCK_FACTOR_DAILY_R1\\year=2026\\part_2026.parquet",
+      "expected": "e70bc796a00c95448c78e802e00504d72c5907158e844f9c9c610c1d46fe7de3",
+      "actual": "e70bc796a00c95448c78e802e00504d72c5907158e844f9c9c610c1d46fe7de3",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\MARKET_STRUCTURE_DAILY_R1\\year=2026\\part_2026.parquet",
+      "expected": "0ea3bd07e5b5b4d49a132485629d7cd08f15961bc5ebf4b303b55b362b84b99c",
+      "actual": "0ea3bd07e5b5b4d49a132485629d7cd08f15961bc5ebf4b303b55b362b84b99c",
+      "match": true
+    },
+    {
+      "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\UNOBSERVED_GRID_ROWS.parquet",
+      "expected": "1235c8e99198d0cab336aa9a98e91b8941c72dd5b07ed5c5fe67beff4d5d46b7",
+      "actual": "1235c8e99198d0cab336aa9a98e91b8941c72dd5b07ed5c5fe67beff4d5d46b7",
+      "match": true
+    }
+  ],
+  "physical_schemas": {
+    "STOCK_FACTOR_DAILY_R1": {
+      "candidate_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\STOCK_FACTOR_DAILY_R1\\year=2026\\part_2026.parquet",
+      "candidate_schema": "date: timestamp[ns]\ncode: large_string\nopen: double\nhigh: double\nlow: double\nclose: double\nvolume: double\nmoney: double\nr1: double\nr3: double\nr5: double\nr10: double\nr20: double\nr24: double\nr25: double\nr60: double\nma5: double\nma10: double\nma20: double\nma50: double\nma60: double\nma120: double\nma250: double\nbias5: double\nbias10: double\nbias20: double\nbias60: double\nvol_ma5: double\nvol_ma10: double\nvol_ma20: double\nvol_ma60: double\nvol_ma120: double\nvolume_ratio_5_20: double\nrolling_vol_20: double\ndrawdown_60: double\nema12: double\nema26: double\nmacd_raw: double\nformula_version: large_string\nprice_adj_tag: large_string\npit_status: large_string",
+      "candidate_schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "r1",
+        "r3",
+        "r5",
+        "r10",
+        "r20",
+        "r24",
+        "r25",
+        "r60",
+        "ma5",
+        "ma10",
+        "ma20",
+        "ma50",
+        "ma60",
+        "ma120",
+        "ma250",
+        "bias5",
+        "bias10",
+        "bias20",
+        "bias60",
+        "vol_ma5",
+        "vol_ma10",
+        "vol_ma20",
+        "vol_ma60",
+        "vol_ma120",
+        "volume_ratio_5_20",
+        "rolling_vol_20",
+        "drawdown_60",
+        "ema12",
+        "ema26",
+        "macd_raw",
+        "formula_version",
+        "price_adj_tag",
+        "pit_status"
+      ],
+      "candidate_column_count": 41,
+      "parent_path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_FACTOR_DAILY_R1\\year=2026\\part_2026.parquet",
+      "parent_schema": "date: timestamp[ns]\ncode: large_string\nopen: double\nhigh: double\nlow: double\nclose: double\nvolume: double\nmoney: double\nr1: double\nr3: double\nr5: double\nr10: double\nr20: double\nr24: double\nr25: double\nr60: double\nma5: double\nma10: double\nma20: double\nma50: double\nma60: double\nma120: double\nma250: double\nbias5: double\nbias10: double\nbias20: double\nbias60: double\nvol_ma5: double\nvol_ma10: double\nvol_ma20: double\nvol_ma60: double\nvol_ma120: double\nvolume_ratio_5_20: double\nrolling_vol_20: double\ndrawdown_60: double\nema12: double\nema26: double\nmacd_raw: double\nformula_version: large_string\nprice_adj_tag: large_string\npit_status: large_string",
+      "parent_schema_names": [
+        "date",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "r1",
+        "r3",
+        "r5",
+        "r10",
+        "r20",
+        "r24",
+        "r25",
+        "r60",
+        "ma5",
+        "ma10",
+        "ma20",
+        "ma50",
+        "ma60",
+        "ma120",
+        "ma250",
+        "bias5",
+        "bias10",
+        "bias20",
+        "bias60",
+        "vol_ma5",
+        "vol_ma10",
+        "vol_ma20",
+        "vol_ma60",
+        "vol_ma120",
+        "volume_ratio_5_20",
+        "rolling_vol_20",
+        "drawdown_60",
+        "ema12",
+        "ema26",
+        "macd_raw",
+        "formula_version",
+        "price_adj_tag",
+        "pit_status"
+      ],
+      "parent_column_count": 41
+    },
+    "MARKET_STRUCTURE_DAILY_R1": {
+      "candidate_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate_releases\\R08\\R08_OBSERVED_STOCK_DERIVED_RECOVERY_20261024\\MARKET_STRUCTURE_DAILY_R1\\year=2026\\part_2026.parquet",
+      "candidate_schema": "date: timestamp[ns]\ndata_date: timestamp[ns]\nallA_count: int64\nallA_positive_ratio: double\nallA_money: double\nasof_rule: large_string\npit_status: large_string\nknown_gaps: large_string",
+      "candidate_schema_names": [
+        "date",
+        "data_date",
+        "allA_count",
+        "allA_positive_ratio",
+        "allA_money",
+        "asof_rule",
+        "pit_status",
+        "known_gaps"
+      ],
+      "candidate_column_count": 8,
+      "parent_path": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\MARKET_STRUCTURE_DAILY_R1\\year=2026\\part_2026.parquet",
+      "parent_schema": "date: timestamp[ns]\ndata_date: timestamp[ns]\nallA_count: int64\nallA_positive_ratio: double\nallA_money: double\nasof_rule: large_string\npit_status: large_string\nknown_gaps: large_string",
+      "parent_schema_names": [
+        "date",
+        "data_date",
+        "allA_count",
+        "allA_positive_ratio",
+        "allA_money",
+        "asof_rule",
+        "pit_status",
+        "known_gaps"
+      ],
+      "parent_column_count": 8
+    }
+  },
+  "observation_accounting": {
+    "all_price_keys_preserved": true,
+    "input_rows": 12362212,
+    "listing_or_delisting_inferred": false,
+    "null_to_zero_fills": 0,
+    "observed_rows": 12327735,
+    "state_policy": "CONTIGUOUS_OBSERVED_SEGMENTS; NO_BRIDGING_EXPLICIT_NULL_RUNS",
+    "unobserved_codes": 344,
+    "unobserved_dates": 143,
+    "unobserved_rows": 34477
+  },
+  "price_plane_row_conservation_2026": true,
+  "replay_semantics_from_supplied_code": "Hash validation only; replay does not reconstruct panel, rederive audit, or compare parent fingerprints.",
+  "NETWORK_CALLS": 0,
+  "SOURCE_ABSENCE_CLAIMS": 0,
+  "DATA_WRITES": 0,
+  "FOUNDATION_ACCEPTANCE": false,
+  "ENGINE_ADMISSION": false
+}
