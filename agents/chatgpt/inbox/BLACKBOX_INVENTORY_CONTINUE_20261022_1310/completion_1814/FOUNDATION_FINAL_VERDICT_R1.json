@@ -1,0 +1,142 @@
+{
+  "at": "2026-10-24T13:55:08.739158+08:00",
+  "task_id": "TIP_1814_FOUNDATION_REMAINDER_CLOSURE",
+  "FOUNDATION_ACCEPTANCE": false,
+  "PRODUCTION_CHANGE_AUTHORIZED": false,
+  "closed_branches": [
+    {
+      "branch": "26 域 RAW 文件集保留",
+      "status": "ACCEPTED_NOT_RECHECKED",
+      "basis": "1803 DOMAIN_SAMESET_DIFF：26 份 CANONICAL_FILE_LIST 逐路径 exists，missing=0"
+    },
+    {
+      "branch": "目录概览",
+      "status": "CLOSED",
+      "basis": "GPT 已压缩为 66 条 DIRECTORY_OVERVIEW_COMPACT.md；不再做目录展示迭代"
+    }
+  ],
+  "three_conclusions": {
+    "1_RAW_file_retention": {
+      "passed_lists": [
+        "26 份 CANONICAL_FILE_LIST.parquet（逐路径 exists）",
+        "1803 26 域同集对照（expected=matched, missing=0）",
+        "21 个 JQ 增量 dataset 目录 + receipt/sidecar/checksum 结构"
+      ],
+      "not_covered": [
+        "7 月底之后的增量完整性（未做逐日对账）",
+        "外源 Tushare 可转债 R1/R2 之外的供应商清单",
+        "外部证据平面各 PRODUCT_META 的内容完整性"
+      ],
+      "not_upgraded_to": [
+        "下载从未截断",
+        "全部字段/单位/PIT 正确",
+        "所有外源已覆盖"
+      ]
+    },
+    "2_dictionary_raw_clean_standard_mapping": {
+      "matched": [
+        "G01_SECURITY_MASTER",
+        "G06_ADJUST_FACTOR",
+        "G08_VALUATION",
+        "G12_INDUSTRY_CONCEPT"
+      ],
+      "matched_with_conflicts": {
+        "G02_STOCK_DAILY_OHLCV": [
+          "C16_VOLUME_DTYPE",
+          "C17_DATE_TYPE",
+          "C18_PAUSED_BOOLEAN"
+        ],
+        "G03_STOCK_MINUTE": [
+          "C1_MINUTE_MISSING_FACTOR_LIMIT_PAUSED",
+          "C2_MINUTE_SCHEMA_EVIDENCE_ROOT_MISMATCH"
+        ],
+        "G04_ETF_PRICE": [
+          "C3_ETF_MINUTE_SAME_AS_STOCK"
+        ],
+        "G05_INDEX_PRICE": [
+          "C4_INDEX_MINUTE_8_COLS_PLUS_FQ"
+        ],
+        "G07_TRADABLE_STATUS": [
+          "C15_IS_ST_WIDE_VS_LONG"
+        ],
+        "G09_FINANCE_PIT": [
+          "C5_FINANCE_NAMING_INCONSISTENT",
+          "C6_FINANCE_DUPLICATE_STATDATE",
+          "C7_REVISION_CHAIN_NOT_IN_RAW"
+        ],
+        "G10_ETF_FUND_NAV": [
+          "C8_NAV_TWO_NAMING_FAMILIES",
+          "C9_DAY_IS_STRING"
+        ],
+        "G11_INDEX_MEMBERSHIP": [
+          "C10_INDEX_WEIGHTS_NO_MEMBER_CODE",
+          "C11_INDEX_WEIGHTS_SINGLE_SNAPSHOT"
+        ],
+        "G13_MTSS_MONEYFLOW_BILLBOARD": [
+          "C12_MTSS_FIELDS_INCOMPLETE",
+          "C13_MONEYFLOW_PAID_MODULE"
+        ]
+      },
+      "evidence_insufficient": [
+        "G14_CORPORATE_ACTIONS"
+      ],
+      "dictionary_only_by_original_rule": [
+        "G15_FACTOR_260"
+      ],
+      "headline_conflicts": [
+        "26 域全部分钟 RAW = 8 列，缺 factor/high_limit/low_limit/paused（20 契约与引擎 minute_bar 均要求 factor）→ 必须由日频平面 join 派生",
+        "index_weights 缺 member_code，PK 契约不可满足；且仅 1 个快照",
+        "mtss 缺 fin_refund_value/margin_value/margin_sell_value/margin_refund_value",
+        "finance 表命名不一致（pubDate vs pub_date / statDate vs report_date）且 statDate.1 重复列",
+        "RAW volume=double、date=timestamp、NAV day=string，均偏离 09 dtype 契约",
+        "13 清单的 12 列分钟 schema 取自标注 DO_NOT_USE_AS_MASTER 的试验窗口，不得作 26 域依据"
+      ]
+    },
+    "3_engine_body_and_value_interface": {
+      "original_delivery_scope": "dictionary 层交付（master_registry_active=true），值数据接入未交付",
+      "activation_declared": "formal_backtest_active=false / engine_core_active=false / admission_stage=PRE_INGESTION_ONLY",
+      "currently_connected": [
+        "字典快照纯读取层（local_dictionary_registry，拒绝 E:\\，可跑通非 E 根）",
+        "15 道 PRE_INGESTION 准入矩阵（domain/field/frequency/pit/matching/code）"
+      ],
+      "originally_not_connected": [
+        "本地值数据 provider（_create_provider 仅 jqdata/tushare/miniqmt/remote_qmt）",
+        "引擎值数据 adapter_function 绑定（全部 null）"
+      ],
+      "migration_path_needs_adaptation": [
+        "E:\\ 路径策略（字典层显式拒绝 E:）",
+        "PHASE1_CURRENT_ENGINE_REGISTRY 仍指向 D:\\backtest_lab_backups",
+        "pyproject 包名 bullet_trade 与目录 blackbox_jq_engine 不一致（需安装/路径适配）"
+      ]
+    }
+  },
+  "discoveries_logged_and_closed": [
+    {
+      "id": "D1_MINUTE_FIELD_DERIVATION",
+      "action": "登记为 join 派生要求，不再返工"
+    },
+    {
+      "id": "D2_INDEX_WEIGHTS_PK",
+      "action": "登记为契约缺口（需补 member_code 或明确契约变更）"
+    },
+    {
+      "id": "D3_MTSS_FIELDS",
+      "action": "登记为源字段缺口"
+    },
+    {
+      "id": "D4_TINY_PARQUET",
+      "action": "fund_etf_price_1m 6B ×1/3633、index_minute 4B ×1/133968，登记为个别空壳文件，未下结论为数据缺失"
+    },
+    {
+      "id": "D5_EVIDENCE_SCOPE_OVERREACH",
+      "action": "13 清单 12 列分钟 schema 的适用范围已更正"
+    }
+  ],
+  "no_rework_of": [
+    "26 域路径存在性",
+    "目录展示版本",
+    "历史策略调用证明",
+    "收益重现",
+    "历史下载脚本找回"
+  ]
+}
