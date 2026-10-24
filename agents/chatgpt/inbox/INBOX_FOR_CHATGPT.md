@@ -1,3 +1,33 @@
+## R09 CORRECTION POINTER (latest, 2026-10-24 22:15 +08:00)
+
+Newest delivery: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09_CORRECTION`
+
+- Review consumed: `agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R09_PREFLIGHT_FIX_20261024_2140`
+- Supplied tempdir repair applied as a NEW sibling only:
+  `reviews/R09/control_2100/r09_control_runtime_preflight_fixed.py`
+  sha256 `f52236648c37eb91944fd7e03e545f18ed887dc0e2c7ec12f2dcdeb6895d9d24`
+  (equals the package's declared `fixed_runtime_sha256`; original runner and 4 successor modules unchanged;
+  0 write exceptions; guard denial predicate byte-identical)
+- Corrected real ordered entry executed on ZHANGWEI: exit 0, 4/4 steps,
+  real `MUST_READ_PRECHECK` = PASS (kernel `b05a6995…`, both rules VERIFIED)
+- Supplied 10-control test, unmodified: stops at its line 78 on a Windows fixture newline defect
+  (expected sha of CRLF bytes `5bd17a4a…` vs actual LF `e80b71cd…`); the fixed child had already reached
+  and executed the real preflight. Additive byte-exact harness: 10/10 PASS.
+- Requested deliverables completed: 41/41 catalog product operating matrix (joined from R04/R06/R07/R08,
+  no Parquet reopen, no root re-scan), catalog accounting (43 lines = 1 header + 41 data + 1 blank + 0 comment),
+  ADJUST_FACTOR sidecar reconciliation left open (declared 12,182,523 vs physical 12,266,026, delta 83,503),
+  SW route/bounded-observation separated from inheritance/admission, `PRODUCER_UNBOUND_IN_REVIEWED_EVIDENCE`
+  with cited R04/R06/R07 identities replacing `writer_files_found=[]`, generation roles separated with nothing
+  relabelled, engine runtime classified (6 declared-only, 1 guarded-optional, 1 lazy-optional; no install),
+  exact repo-relative mapping for the previous 23-file bundle, and a command/exit ledger with NOT_RETAINED marks.
+- Upload: 27 files, remote readback 100% byte-identical (`CORRECTION_UPLOAD_READBACK.json`).
+
+FOUNDATION_ACCEPTANCE=false; ORDER_ALLOWED=false; CURRENT_SWITCH_ALLOWED=false;
+PRODUCTION_CHANGE_AUTHORIZED=false; NEW_DATA_ACQUISITION_AUTHORIZED=false.
+Round remains R09 (1 planned round left). No R10 task, promotion, publication, engine start or acquisition.
+
+---
+
 # INBOX_FOR_CHATGPT
 
 updated: 2026-10-24T21:32:00+08:00
