@@ -1,0 +1,84 @@
+{
+ "schema": "R10_FACTOR_BOUNDARY_COMMAND_LEDGER_1",
+ "round": "R10 continuation (not R11)",
+ "executor": "ZHANGWEI",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "env": {
+  "PYTHONDONTWRITEBYTECODE": "1",
+  "PYTHONUTF8": "1"
+ },
+ "capture_method": "PowerShell Start-Process with separate raw stdout/stderr redirection; no re-encoding, no newline rewriting, no stdout reconstruction",
+ "entries": [
+  {
+   "step": "TEST_16_CONTROLS",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\factor_boundary\\test_r10_factor_input_contract.py"
+   ],
+   "literal_command_line": "reviews\\R10\\factor_boundary\\test_r10_factor_input_contract.py",
+   "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+   "note": "expected 16 tests all passed",
+   "started_at_cn": "2026-10-24T23:35:45.0581347+08:00",
+   "ended_at_cn": "2026-10-24T23:35:46.0739824+08:00",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "exit_code": 0,
+   "stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_boundary_delivery\\captures\\TEST_16_CONTROLS.stdout.bin",
+    "bytes": 128,
+    "sha256": "6dbc93f8739bc850ef841631bea353d6cce335a2e51642871679504d0a090311",
+    "bom": false,
+    "crlf_count": 1,
+    "lf_count": 1,
+    "encoding": "UTF-8 without BOM"
+   },
+   "stderr": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_boundary_delivery\\captures\\TEST_16_CONTROLS.stderr.bin",
+    "bytes": 120,
+    "sha256": "db29437c90433367dc36244164215cfe138f7f8e41448449cf6dac4121ddf154"
+   }
+  },
+  {
+   "step": "DESKTOP_FACTOR_BOUNDARY_CHECK",
+   "argv": [
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "reviews\\R10\\factor_boundary\\r10_factor_desktop_check.py",
+    "--desktop-check"
+   ],
+   "literal_command_line": "reviews\\R10\\factor_boundary\\r10_factor_desktop_check.py --desktop-check",
+   "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+   "note": "fixed four-file read-only check, executed once",
+   "started_at_cn": "2026-10-24T23:35:59.3008711+08:00",
+   "ended_at_cn": "2026-10-24T23:36:02.3417595+08:00",
+   "timezone": "Asia/Shanghai (+08:00)",
+   "exit_code": 0,
+   "stdout": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_boundary_delivery\\captures\\DESKTOP_FACTOR_BOUNDARY_CHECK.stdout.bin",
+    "bytes": 9444,
+    "sha256": "225124815107e7fa94fb5e8bc05c5b006c28cffba1cec6372df7ac70be2de87c",
+    "bom": false,
+    "crlf_count": 1,
+    "lf_count": 1,
+    "encoding": "UTF-8 without BOM"
+   },
+   "stderr": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r10_factor_boundary_delivery\\captures\\DESKTOP_FACTOR_BOUNDARY_CHECK.stderr.bin",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   }
+  }
+ ],
+ "executed_once_each": true,
+ "packages_installed": 0,
+ "windows_harness_added": false,
+ "supplier_calls": 0,
+ "FOUNDATION_ACCEPTANCE": false,
+ "FORMAL_ENGINE_ADMISSION": false,
+ "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+ "CURRENT_SWITCH_ALLOWED": false,
+ "ORDER_ALLOWED": false
+}
