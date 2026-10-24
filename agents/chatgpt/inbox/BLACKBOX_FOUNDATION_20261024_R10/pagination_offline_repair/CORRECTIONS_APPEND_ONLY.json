@@ -1,0 +1,55 @@
+{
+  "artifact": "CORRECTIONS_APPEND_ONLY",
+  "task_id": "BLACKBOX_FOUNDATION_R10_PAGINATION_OFFLINE_REPAIR_20261025",
+  "generated_at_cn": "2026-10-25T06:01:35+0800",
+  "rule": "append-only; no earlier receipt, manifest or readback is edited or deleted",
+  "corrected_prior_artifact": "r10_writer_cursor_bindings_delivery (writer/cursor bindings, R10)",
+  "corrections": [
+    {
+      "id": "C1_BOM",
+      "wrong_statement": "the delivered pagination engine body was described as 'UTF-8 with BOM'",
+      "correction": "the engine bytes carry no UTF-8 BOM",
+      "measured_evidence": {
+        "first_three_bytes_hex": "23212f",
+        "decodes_as_utf8_sig_identically": true,
+        "sha256_unchanged": "978aedee181eac7815daed14a5b057f4ab3f8c663afa6f8c18e541561a02beae",
+        "bytes_unchanged": 7786,
+        "note": "the delivered carrier already recorded encodes_with_bom=false; only the receipt prose was wrong. An earlier strict utf-8 parse failure occurred on a different, BOM-carrying retained body, not on this engine."
+      },
+      "effect_on_artifacts": "none on hashes or bytes; the descriptive field was wrong and is superseded by this line"
+    },
+    {
+      "id": "C2_PRESENCE_IS_NOT_EXECUTION",
+      "wrong_statement": "artifact presence was listed under an EXECUTED_HISTORICAL_EVIDENCE key for some transformation stages",
+      "correction": "file presence is not executed historical evidence",
+      "measured_evidence": {
+        "example": "CURRENT_INDEX_MINUTE_ALIGN_RELEASE.json existing on disk proves only that a pointer file exists; it does not prove that the align callable ran, when, with which inputs, or with which result",
+        "rule_adopted": "presence may be reported as ARTIFACT_PRESENT and nothing stronger; execution evidence would require an execution record tied to a specific invocation"
+      },
+      "effect_on_artifacts": "evidence class downgraded for those stages; no hash changes"
+    },
+    {
+      "id": "C3_INDEX_TRUE",
+      "wrong_statement": "'index=True is exactly the shape that produces an integer/index-derived date column'",
+      "correction": "index=True alone does not imply an ordinal or integer date",
+      "measured_evidence": {
+        "what_index_true_does": "it keeps the pandas index as parquet metadata; the index values are whatever the frame carried, which for a JQ get_price frame is typically a (time, code) multi-index, not an integer ordinal",
+        "what_is_not_admitted": "no malformed-date or integer-date cause is inferred from index=True",
+        "residual_observation_kept": "that writer requests neither 'code' nor 'time' as fields, so the date and code axes live only in the index; that observation stands on its own without the stronger causal claim"
+      },
+      "effect_on_artifacts": "no hash changes; the causal sentence is withdrawn"
+    },
+    {
+      "id": "C4_MISSING_SCAN_ARTIFACTS",
+      "wrong_statement": "the receipt cited CROSS_REFERENCE_HITS.json and ARTIFACT_PRESENCE_PROBE.json as if they were delivered evidence",
+      "correction": "those scan artifacts were not part of the delivery, so reference to them supports no claim, and their absence supports no global absence claim",
+      "measured_evidence": {
+        "delivered_members_checked": 6,
+        "scan_artifacts_present_in_delivery": [],
+        "inference_permitted": "none"
+      },
+      "effect_on_artifacts": "the referencing sentences stand only as unreferenced working notes"
+    }
+  ],
+  "scan_scope_exceeded_not_repeated": "the previous round's name scans and extra source reads exceeded the exact-source handoff scope. They are not repeated in this task, and no absence conclusion is drawn from them."
+}
