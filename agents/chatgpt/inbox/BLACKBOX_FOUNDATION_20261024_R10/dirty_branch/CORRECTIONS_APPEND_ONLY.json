@@ -1,0 +1,27 @@
+{
+ "schema": "R10_CORRECTIONS_APPEND_ONLY_1",
+ "round": "R10_DIRTY_BRANCH_AND_SOURCE_GENERATOR_20261025",
+ "append_only": true,
+ "earlier_corrections_preserved": true,
+ "corrections": [
+  {
+   "id": "C6_CHRONOLOGY_LABEL_AND_EXECUTION_ORDER",
+   "target": "r10_writer_guards_delivery/CORRECTIONS_APPEND_ONLY.json C1 (left in place, not edited)",
+   "defect_1_label": "C1 labelled two Beijing wall-clock readings as UTC: \"test_capture_started_utc 2026-10-25T00:30:27Z\" and \"desktop_capture_started_utc 2026-10-25T00:30:51Z\". Those are +08:00 readings.",
+   "correct_equivalence": "2026-10-24T16:30:27Z = 2026-10-25T00:30:27+08:00 and 2026-10-24T16:30:51Z = 2026-10-25T00:30:51+08:00. The two clock readings are the same instants, only the zone labels were wrong.",
+   "consistent_utc_values_in_c1": [
+    "downloads 2026-10-24T16:27:58Z .. 2026-10-24T16:28:11Z",
+    "verify tool written 2026-10-24T16:30:01Z",
+    "staged copies created 2026-10-24T16:30:05Z"
+   ],
+   "defect_2_scope": "C1 turned retained file existence times into a claim about when a checker executed, and its ORDER_STATUS wording (PRE_TEST_ORDERING_PROVEN_FOR_STAGING) could still be read as ordering of the first checker run.",
+   "corrected_scope": "retained file times support that the staged files existed before the tests ran. They do not show that the pin checker executed at any particular moment.",
+   "ORDER_STATUS": "ORDER_NOT_PROVEN",
+   "FIRST_VERIFY_EXECUTION_TIME": "NOT_RETAINED",
+   "no_further_lookup": true,
+   "no_re_execution": true,
+   "no_fabricated_timestamp": true,
+   "unaffected": "the factor comparison driver re-verifies package hashes inside its own run, so that output stays valid within its own measured scope regardless of this reporting issue"
+  }
+ ]
+}
