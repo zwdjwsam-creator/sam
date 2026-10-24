@@ -1,3 +1,14 @@
+## R10 continuation — connected factor candidate (2026-10-25)
+- pointer: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/connected_factor_candidate/`
+- receipt: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/connected_factor_candidate/R10_CONNECTED_CANDIDATE_RECEIPT.md`
+- connected 11-control check: `tests_run=11`, `passed=true`, exit 0, clean stderr; executed once, the prior standalone 20-control suite was reused and not rerun
+- genuine preflight: ok=true, `MUST_READ_PRECHECK=PASS`, task_class=[CACHE], problems=[]
+- chain: `response_gate -> refresh_assembly -> candidate_merge`; five stages ending `PUBLICATION_NOT_AUTHORIZED`
+- reuse proof: response gate and input contract byte-identical to the new manifest AND the prior-round copies
+- guide `BLACKBOX_LOCAL_OPERATIONS_R10.md` append-only 5,333 -> 6,765 B (+1,432); pinned entry unchanged
+- production writer, real-data authority, expected universe, publish gate, formal engine: NOT exercised or admitted; synthetic only
+- FOUNDATION_ACCEPTANCE=false · FORMAL_ENGINE_ADMISSION=false · ORDER_ALLOWED=false · B1..B7 OPEN
+
 ## R10 continuation — offline factor response gate + reviewer corrections (2026-10-25)
 - pointer: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_response_gate/`
 - receipt: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_response_gate/R10_RESPONSE_GATE_RECEIPT.md`
