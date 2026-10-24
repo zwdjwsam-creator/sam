@@ -1,0 +1,37 @@
+--- BLACKBOX_LOCAL_OPERATIONS_R10.md (before)
++++ BLACKBOX_LOCAL_OPERATIONS_R10.md (after)
+@@ -46,2 +46,34 @@
+ 
+ This entry authorizes no acquisition, CURRENT publication, formal engine run or orders. Never expose credentials or secret-dependent hashes. Old strategy reconstruction is not a prerequisite for diagnosing the data foundation.
++
++## Candidate factor diagnostic (R10, recovery workspace only)
++
++Exact 11-check command (read-only, synthetic, in-memory):
++
++    E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\runtime\.venv\Scripts\python.exe -X utf8 ^
++      reviews\R10\connected_factor_candidate\test_r10_factor_candidate_pipeline.py
++
++Expected: `tests_run=11`, `passed=true`, exit 0, scope `CONNECTED_CANDIDATE_GATES_SYNTHETIC_ONLY`.
++
++Actual function chain, all modules under `reviews/R10/connected_factor_candidate/`:
++
++    r10_factor_response_gate.assemble_responses
++      -> r10_factor_refresh_assembly.assemble_candidate
++        -> r10_factor_candidate_merge.candidate_merge
++
++`candidate_pipeline` returns these five stage names, in this fixed order:
++
++    REQUEST_RESPONSES_VALIDATED
++    OVERLAP_BOUNDARY_VALIDATED
++    DIRTY_DAY_BOUNDARY_VALIDATED
++    HISTORY_PRESERVING_MERGE_PASSED
++    PUBLICATION_NOT_AUTHORIZED
++
++The last stage is an intentional no-publication boundary. There is no publisher API in this chain, so it does not
++execute or certify the production publish gate.
++
++Synthetic diagnostic only; no real-data authority, publication or formal engine admission.
++
++The unchanged global acquisition prohibition applies: this diagnostic performs no supplier call, download,
++refetch, business-data write, CURRENT switch, production patch, engine construction or order, and it establishes
++nothing about historical input authority or the expected market universe.
