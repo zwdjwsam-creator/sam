@@ -1,0 +1,202 @@
+{
+ "execution_id": "PATCH_EXECUTION_R4",
+ "at": "2026-10-24T15:06:37+08:00",
+ "working_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "language": "en",
+ "patch_source": {
+  "dir": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\reviews\\R04_GPT_PATCH",
+  "generator": {
+   "file": "build_r04_patch.py",
+   "raw_sha256": "fbb02501d2386d607633a40179c9529f8d6970d0a8df88b46fc538e37d872bf8"
+  },
+  "verifier": {
+   "file": "verify_safety_patch.py",
+   "raw_sha256": "75cfeee54c4ca8a6814425508d2ab9b8a45dfec1ecd8f50fa337e8471a265e74"
+  },
+  "manifest": {
+   "file": "PATCH_INPUTS.json",
+   "raw_sha256": "7fb955817bade2afab669bb148127e43515bb0a1b4ac5ef430c762f3865c8395"
+  },
+  "hub_download_byte_check": "all four staged files matched the HUB git blob sha1 computed from the local bytes",
+  "hub_blob_sha1": {
+   "build_r04_patch.py": "a830b635529ddd19f75a",
+   "verify_safety_patch.py": "edf663e55fe2e7f3d232",
+   "PATCH_INPUTS.json": "dd8d5caae79b209e9d3d",
+   "REVIEW_R03.md": "2f545234cdcf61a6ee56"
+  }
+ },
+ "inputs": {
+  "dir": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r3",
+  "normalized_sha256_expected": {
+   "provider.py": "af446950d9f7439c6487006e482220602e5f90f94cec36e9cc87f6a3d03c7c63",
+   "engine_adapter.py": "cfaad464b26706b3c1ba2cf5fe123ac0b9305e72a3805f7eb0257e9eca9223df",
+   "file_index.py": "1c74bebab1a39aacc56c303e8fab51a7401fac39546e5ab31b7bc2f776083803",
+   "securities.py": "eebfa2ae3fb356b81966086dae91427e4a0d72474fe91f939fd8196a9b3ed499",
+   "errors.py": "7eb7ac69f42931842b2bb279cee39a9c247be816325c0c247d127c2cd00cb281"
+  },
+  "normalized_sha256_match": {
+   "provider.py": true,
+   "engine_adapter.py": true,
+   "file_index.py": true,
+   "securities.py": true,
+   "errors.py": true
+  },
+  "all_match": true
+ },
+ "generator_run": {
+  "command": "runtime\\.venv\\Scripts\\python.exe reviews\\R04_GPT_PATCH\\build_r04_patch.py candidate\\r3 candidate\\r4 reviews\\R04_GPT_PATCH\\PATCH_INPUTS.json",
+  "exit_code": 0,
+  "stdout": {
+   "status": "PATCH_CREATED",
+   "normalized_sha256": {
+    "provider.py": "dc1e35bd58027507d20e1972b78c04d4bbeadad5bfe70b244778c05f4395788a",
+    "engine_adapter.py": "c8536166045e62624a54fbba19a3d64ef365da56e80faf4af8d19efbb7aed9e6",
+    "file_index.py": "1c74bebab1a39aacc56c303e8fab51a7401fac39546e5ab31b7bc2f776083803",
+    "securities.py": "eebfa2ae3fb356b81966086dae91427e4a0d72474fe91f939fd8196a9b3ed499",
+    "errors.py": "7eb7ac69f42931842b2bb279cee39a9c247be816325c0c247d127c2cd00cb281"
+   }
+  },
+  "second_invocation": {
+   "exit_code": 1,
+   "stderr_head": "python.exe : DESTINATION_ALREADY_EXISTS",
+   "meaning": "DESTINATION_ALREADY_EXISTS guard behaved as designed; r4 was not regenerated"
+  }
+ },
+ "outputs": {
+  "dir": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\candidate\\r4",
+  "normalized_sha256": {
+   "provider.py": "dc1e35bd58027507d20e1972b78c04d4bbeadad5bfe70b244778c05f4395788a",
+   "engine_adapter.py": "c8536166045e62624a54fbba19a3d64ef365da56e80faf4af8d19efbb7aed9e6",
+   "file_index.py": "1c74bebab1a39aacc56c303e8fab51a7401fac39546e5ab31b7bc2f776083803",
+   "securities.py": "eebfa2ae3fb356b81966086dae91427e4a0d72474fe91f939fd8196a9b3ed499",
+   "errors.py": "7eb7ac69f42931842b2bb279cee39a9c247be816325c0c247d127c2cd00cb281"
+  },
+  "match_gpt_recorded_outputs": {
+   "provider.py": true,
+   "engine_adapter.py": true,
+   "file_index.py": true,
+   "securities.py": true,
+   "errors.py": true
+  },
+  "changed_files": [
+   "provider.py",
+   "engine_adapter.py"
+  ],
+  "unchanged_files_copied_by_generator": [
+   "file_index.py",
+   "securities.py",
+   "errors.py"
+  ],
+  "raw_sha256": {
+   "provider.py": "bd5a98537d9be9318e34189935585840d415379efdd7a1f656da6ee99cec713e",
+   "engine_adapter.py": "9a971305a215d3c9d554fb9af860c20086d66a19f2c5b7fdd546f93e1fa03ab0",
+   "file_index.py": "8e1828a73817cc874bce2c4d732352851789382a7c2825b300e6fd74d2ba0f71",
+   "securities.py": "9b2046292d7ec0c9263765b0d4e609e76b58724a64bad0d4807969ef0e850b53",
+   "errors.py": "fba01d9f020aa29d3dc0ad4e0fb9b47d1d67b9c40f5d78e747a11a737cf23d2a"
+  },
+  "added_by_generator": {
+   "__init__.py": "e552d9776d88f89b2d162e82853db321d51ca0982ba45886e358a92cdaa55d5b"
+  },
+  "r3_preserved": true
+ },
+ "verifier_run": {
+  "command": "runtime\\.venv\\Scripts\\python.exe reviews\\R04_GPT_PATCH\\verify_safety_patch.py candidate\\r3 candidate\\r4",
+  "exit_code": 0,
+  "result": {
+   "status": "PASS",
+   "scope": "AST-extracted methods; synthetic frames; no engine import",
+   "original_partial": "RETURNED",
+   "patched_partial": "REJECTED",
+   "original_future_announced_rows": 2,
+   "patched_rows": 1,
+   "checks": [
+    "partial guard",
+    "future announcement",
+    "unadmitted requested field",
+    "unproven coverage",
+    "file budget",
+    "complete envelope control",
+    "event budget reason",
+    "index quarantine",
+    "event quarantine"
+   ]
+  },
+  "scope": "nine AST-extracted method checks on synthetic frames; no engine import, no business data, no network"
+ },
+ "native_adapter_call": {
+  "why": "prescribed diagnostic engine-contract call, not MASTER admission",
+  "interpreter": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+  "python": "3.12.10",
+  "isinstance_DataProvider": true,
+  "strict_partial": true,
+  "engine_base_file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\providers\\base.py",
+  "call": {
+   "security": "000001.XSHE",
+   "window": [
+    "2026-06-01",
+    "2026-06-03"
+   ],
+   "fq": "none",
+   "fill_paused": false,
+   "result": "FRAME",
+   "status": "OK",
+   "type": "DataFrame",
+   "index": "DatetimeIndex",
+   "columns": [
+    "open",
+    "close",
+    "high",
+    "low",
+    "volume",
+    "money"
+   ],
+   "rows": 3,
+   "payload_sha256": "9d57b6fd8877b590c0781524eac8c9145481534a1442681958f55b1736128e26",
+   "first_index": "2026-06-01 00:00:00",
+   "last_index": "2026-06-03 00:00:00",
+   "close": [
+    10.64,
+    10.73,
+    10.64
+   ]
+  },
+  "quarantine_and_reference_calls": {
+   "get_index_stocks": {
+    "result": "REJECTED",
+    "reason": "ENGINE_INDEX_CONTRACT_PENDING",
+    "detail": {
+     "scope": "candidate engine admission; contract review pending"
+    }
+   },
+   "get_split_dividend": {
+    "result": "REJECTED",
+    "reason": "ENGINE_EVENT_CONTRACT_PENDING",
+    "detail": {
+     "scope": "candidate engine admission; contract review pending"
+    }
+   },
+   "get_all_securities": {
+    "result": "RETURNED",
+    "type": "DataFrame",
+    "len": 5222
+   }
+  },
+  "beyond_watermark": {
+   "result": "REJECTED",
+   "reason": "COVERAGE_INCOMPLETE"
+  }
+ },
+ "blocked_or_not_performed": [
+  "no factory registration",
+  "no full engine invocation (no benchmark, no strategy, no schedule)",
+  "no adjustment formula implementation",
+  "no corporate-action unit conversion",
+  "no CURRENT pointer change",
+  "no real incremental update",
+  "no engine core instantiation"
+ ],
+ "notes": [
+  "the R03 test suite was not modified to hide the intentionally blocked index/event engine methods",
+  "R03 evidence labels are corrected in EVIDENCE_LABEL_CORRECTION_R4.md without rewriting the original report"
+ ]
+}
