@@ -1,3 +1,13 @@
+## R10 continuation — offline factor response gate + reviewer corrections (2026-10-25)
+- pointer: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_response_gate/`
+- receipt: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/factor_response_gate/R10_RESPONSE_GATE_RECEIPT.md`
+- supplied gate executed once: `tests_run=20`, `passed=true`, exit 0; stderr carries one test-body DeprecationWarning and no failure
+- genuine pinned preflight: ok=true, `MUST_READ_PRECHECK=PASS`, task_class=[CACHE], problems=[]
+- staged before execution: 6 pinned members incl. manifest, all byte/sha256 matched; fixtures kept their BOM/CRLF (R14 has BOM)
+- RC1..RC5 carried forward append-only; candidate gate integrated into NEITHER the production writer NOR the formal engine; live updater not patched
+- scope: synthetic replies + isolated pinned legacy AST only; no supplier execution, no real merge, no date repair, no factor fill
+- FOUNDATION_ACCEPTANCE=false · FORMAL_ENGINE_ADMISSION=false · ORDER_ALLOWED=false · B1..B7 OPEN
+
 ## R10 continuation — producer candidate family + fq/date contract (2026-10-25)
 - pointer: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/producer_fq_contract/`
 - receipt: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/producer_fq_contract/R10_PRODUCER_AND_FQ_CONTRACT_RECEIPT.md`
