@@ -1,0 +1,4407 @@
+{
+  "at": "2026-10-24T13:55:08.739158+08:00",
+  "task": "TIP_1814_REMAINDER_1_DICTIONARY_FIELD_MAPPING",
+  "FOUNDATION_ACCEPTANCE": false,
+  "method": {
+    "reused_not_reread": [
+      "13_local_schema_header_final_check (attribute/minute/finance schema inventory + dictionary_v2)",
+      "20_unified_data_schema_contract_freeze_full_R1 (17 契约文件)",
+      "03_field_dictionary / 05_pit_field_dictionary / 06_unit_dictionary",
+      "rule_library/master_registry_R1 五张 admission matrix",
+      "completion_1803 DOMAIN_SAMESET_DIFF（26 域路径已通过，本轮不再扫描）"
+    ],
+    "new_reads": "26域 parquet header 按 prefix 枚举（不是逐文件重读）；估值/财务复用 13 清单枚举结果；无 finance 正文读取",
+    "seal_schema_note": "seal SCHEMA 只有 domain 键，本轮不把 domain 键当作字段已核；字段对应一律回到 20 契约 + parquet header"
+  },
+  "evidence": {
+    "freeze20_domain_schema": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+      "exists": true,
+      "sha256": "6367c574c27b7ddbb7a926e4899f59502f3febc76a4cf2b0092998d275458146",
+      "bytes": 4182
+    },
+    "freeze20_dtype": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\09_dtype_precision_schema\\dtype_precision_contract.csv",
+      "exists": true,
+      "sha256": "3864ff80edeb0538881d30b70e894c4a0783eec80fb51908035ebae23e74b57f",
+      "bytes": 1076
+    },
+    "freeze20_pk": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\10_primary_key_rules\\primary_key_uniqueness_contract.csv",
+      "exists": true,
+      "sha256": "230ed4ac0a7f744844408e1f356f4b143bf6e0bd95c243fcfac31c92b3b313d9",
+      "bytes": 1183
+    },
+    "freeze20_status": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\12_status_field_schema\\status_field_contract.csv",
+      "exists": true,
+      "sha256": "9124046f9420ea1fd97a83cd39eb0c8f342082e76ed1df079dec0cb6687c0402",
+      "bytes": 863
+    },
+    "freeze20_known_gap": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\15_known_gap_schema\\known_gap_schema_contract.csv",
+      "exists": true,
+      "sha256": "371684bca24a8e523b61dcb5a060808f8da92b16624a4ae7774b6b9f75d73f08",
+      "bytes": 1731
+    },
+    "check13_attr": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\13_local_schema_header_final_check\\01_schema_inventory\\local_9999_attribute_schema_inventory.csv",
+      "exists": true,
+      "sha256": "376181656a3c5a45346825dd5c0a12283de6e4b0f689334ab65e2e3d3c078251",
+      "bytes": 1586
+    },
+    "check13_minute": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\13_local_schema_header_final_check\\01_schema_inventory\\local_9999_minute_schema_inventory.csv",
+      "exists": true,
+      "sha256": "fbb025ef32a8145f02d25fe4b0585f9d95d330764dcc329b1564ada1bf51ac12",
+      "bytes": 1803
+    },
+    "check13_finance": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\13_local_schema_header_final_check\\01_schema_inventory\\local_9999_finance_schema_inventory.csv",
+      "exists": true,
+      "sha256": "bf1e1d10df135144cc1d5fbb932e90b7041ab72fe7dc9a4eaa45fd64b0c337fd",
+      "bytes": 3277
+    },
+    "price_dict": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\03_field_dictionary\\price_field_dictionary.csv",
+      "exists": true,
+      "sha256": "1c173f07a41d94fd08c38974346b1342bcaa0002e3d1671b6765149100b3b174",
+      "bytes": 342
+    },
+    "unit_dict": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\06_unit_dictionary\\unit_dictionary.csv",
+      "exists": true,
+      "sha256": "5d0cfab169d8fe5db337d38d0abc18ca8ab011ac42203bd27f88e263075602de",
+      "bytes": 351
+    },
+    "pit_dict": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\05_pit_field_dictionary\\pit_field_tags.csv",
+      "exists": true,
+      "sha256": "021c38f42fb4cdd49d2f2d8a03fa1ba8f5a68f12fce9ba1d24cbc11d573ce952",
+      "bytes": 243
+    },
+    "engine_domain_matrix": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\DATA_DOMAIN_ADMISSION_MATRIX_R1.csv",
+      "exists": true,
+      "sha256": "55ab95e94f649601cae5d4647dfba17e26b27dfd9affb95c9e2e250d3f172bfa",
+      "bytes": 2853
+    },
+    "engine_field_matrix": {
+      "path": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\FIELD_ADMISSION_MATRIX_R1.csv",
+      "exists": true,
+      "sha256": "ecde092cf620f8acc6eeed49793046e5cc3498bbeef75fa0eff9fad39a482fe8",
+      "bytes": 47830
+    }
+  },
+  "known_gap_registry": [
+    {
+      "gap_id": "KG01",
+      "module": "港股行情",
+      "status": "out_of_scope"
+    },
+    {
+      "gap_id": "KG02",
+      "module": "美股行情",
+      "status": "out_of_scope"
+    },
+    {
+      "gap_id": "KG03",
+      "module": "期货",
+      "status": "out_of_scope"
+    },
+    {
+      "gap_id": "KG04",
+      "module": "期权",
+      "status": "out_of_scope"
+    },
+    {
+      "gap_id": "KG05",
+      "module": "债券",
+      "status": "out_of_scope"
+    },
+    {
+      "gap_id": "KG06",
+      "module": "可转债",
+      "status": "out_of_scope"
+    },
+    {
+      "gap_id": "KG07",
+      "module": "北交所完整历史映射",
+      "status": "partial_support"
+    },
+    {
+      "gap_id": "KG08",
+      "module": "Tushare财务扩展",
+      "status": "forbidden"
+    },
+    {
+      "gap_id": "KG09",
+      "module": "Tushare行情扩展",
+      "status": "forbidden"
+    },
+    {
+      "gap_id": "KG10",
+      "module": "因子值API下载",
+      "status": "paid_module"
+    },
+    {
+      "gap_id": "KG11",
+      "module": "Tick/历史tick",
+      "status": "institutional_paid"
+    },
+    {
+      "gap_id": "KG12",
+      "module": "大宗交易",
+      "status": "out_of_scope"
+    },
+    {
+      "gap_id": "KG13",
+      "module": "龙虎榜机构席位明细",
+      "status": "pending_evaluate"
+    },
+    {
+      "gap_id": "KG14",
+      "module": "FX跨币种转换",
+      "status": "out_of_scope"
+    },
+    {
+      "gap_id": "KG15",
+      "module": "unknown_field",
+      "status": "review_required"
+    },
+    {
+      "gap_id": "KG16",
+      "module": "exchange_link",
+      "status": "operational"
+    },
+    {
+      "gap_id": "KG17",
+      "module": "get_all_factors/Alpha101/191",
+      "status": "paid_module"
+    },
+    {
+      "gap_id": "KG18",
+      "module": "get_money_flow基础版",
+      "status": "paid_module"
+    },
+    {
+      "gap_id": "KG19",
+      "module": "merger/spinoff/tender_offer/special_liquidation",
+      "status": "complex_corporate_action"
+    }
+  ],
+  "groups": [
+    {
+      "group_id": "G01_SECURITY_MASTER",
+      "dataset_scope": "security_master / securities_* / fund_etf_master / index_master",
+      "schema_basis": "13_local_schema_header_final_check.01_schema_inventory (enumerated, 1 distinct schema)",
+      "source_schema_actual": [
+        "code",
+        "display_name",
+        "name",
+        "start_date",
+        "end_date",
+        "type"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "display_name",
+          "type",
+          "start_date",
+          "end_date"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "display_name",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "name",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "start_date",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "end_date",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "type",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "securities_master",
+        "primary_key": "symbol",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "benchmark_data"
+        ],
+        "required_fields": [
+          "index_master",
+          "index_components"
+        ],
+        "field_alias_map": {},
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "index_master"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "index_components"
+        }
+      ],
+      "conflicts": [],
+      "assessment": "MATCHED",
+      "extra": {
+        "note": "code 列为 13 清单中的首列空名（已识别为 code）；securities_futures 存在于 P0_meta 但期货属 KG03 out_of_scope，不作映射目标",
+        "naming": "P4_fund_etf/fund_etf_master 与 P3_index/index_master 增加 __index_level_0__（pandas index 残留），需在 clean 前丢弃"
+      }
+    },
+    {
+      "group_id": "G02_STOCK_DAILY_OHLCV",
+      "dataset_scope": "stock_ohlcv_daily (P2_stock_daily)",
+      "schema_basis": "26域 parquet header 实读（1 prefix = 1 distinct schema）",
+      "source_schema_actual": [
+        "date",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money",
+        "avg",
+        "pre_close",
+        "high_limit",
+        "low_limit",
+        "paused",
+        "factor"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "trade_date",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "money",
+          "factor",
+          "high_limit",
+          "low_limit",
+          "paused"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "date",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "open",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "open"
+        },
+        {
+          "name": "close",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "close"
+        },
+        {
+          "name": "high",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "high"
+        },
+        {
+          "name": "low",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "low"
+        },
+        {
+          "name": "volume",
+          "unit": "股",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "volume"
+        },
+        {
+          "name": "money",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "turnover_amount"
+        },
+        {
+          "name": "avg",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "",
+          "engine_canonical": "avg_price"
+        },
+        {
+          "name": "pre_close",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "previous_close"
+        },
+        {
+          "name": "high_limit",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "high_limit_price"
+        },
+        {
+          "name": "low_limit",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "low_limit_price"
+        },
+        {
+          "name": "paused",
+          "unit": "布尔",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "is_suspended"
+        },
+        {
+          "name": "factor",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": "adjust_factor"
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "stock_daily",
+        "primary_key": "symbol+trade_date",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "daily_bar",
+          "tradable_status",
+          "adjustment_factor",
+          "matching_requirements"
+        ],
+        "required_fields": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "money",
+          "factor",
+          "pre_close",
+          "paused",
+          "is_st",
+          "high_limit",
+          "low_limit",
+          "fq"
+        ],
+        "field_alias_map": {
+          "open": {
+            "canonical": "open",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "close": {
+            "canonical": "close",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "high": {
+            "canonical": "high",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "low": {
+            "canonical": "low",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "volume": {
+            "canonical": "volume",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "money": {
+            "canonical": "turnover_amount",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "factor": {
+            "canonical": "adjust_factor",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "pre_close": {
+            "canonical": "previous_close",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "avg": {
+            "canonical": "avg_price",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "false",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "open_interest": {
+            "canonical": "open_interest",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "false",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "high_limit": {
+            "canonical": "high_limit_price",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "low_limit": {
+            "canonical": "low_limit_price",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "paused": {
+            "canonical": "is_suspended",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "is_st": {
+            "canonical": "is_st",
+            "domain": "tradable_status",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "is_suspended": {
+            "canonical": "is_suspended",
+            "domain": "tradable_status",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "adjust_factor": {
+            "canonical": "adjust_factor",
+            "domain": "adjustment_factor",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          }
+        },
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "trade_date"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "is_st"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "fq"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C16_VOLUME_DTYPE",
+          "detail": "RAW volume=double，09 dtype 契约要求 int64 且 forbidden float",
+          "class": "DTYPE_DEVIATION"
+        },
+        {
+          "id": "C17_DATE_TYPE",
+          "detail": "RAW date=timestamp[ns]，契约要求 date/YYYY-MM-DD",
+          "class": "DTYPE_DEVIATION"
+        },
+        {
+          "id": "C18_PAUSED_BOOLEAN",
+          "detail": "RAW paused=double(0/1)；12_status 契约禁止 clean 层强制 boolean，最终语义用 halt_status/risk_warning",
+          "class": "CLEAN_LAYER_DERIVATION_NOT_CONFLICT"
+        }
+      ],
+      "assessment": "MATCHED_WITH_PROVEN_CONFLICTS",
+      "extra": {}
+    },
+    {
+      "group_id": "G03_STOCK_MINUTE",
+      "dataset_scope": "A股_stock_1m/5m/30m/60m (P7_*)",
+      "schema_basis": "26域 parquet header 实读：4 prefix × 1 distinct schema，全部 8 列",
+      "source_schema_actual": [
+        "time",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "datetime",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "money",
+          "factor",
+          "high_limit",
+          "low_limit",
+          "paused",
+          "code",
+          "time"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "time",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "open",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "open"
+        },
+        {
+          "name": "close",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "close"
+        },
+        {
+          "name": "high",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "high"
+        },
+        {
+          "name": "low",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "low"
+        },
+        {
+          "name": "volume",
+          "unit": "股",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "volume"
+        },
+        {
+          "name": "money",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "turnover_amount"
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "stock_minute",
+        "primary_key": "symbol+datetime_utc",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "minute_bar",
+          "matching_requirements"
+        ],
+        "required_fields": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "money",
+          "factor",
+          "high_limit",
+          "low_limit",
+          "paused",
+          "pre_close"
+        ],
+        "field_alias_map": {
+          "open": {
+            "canonical": "open",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "close": {
+            "canonical": "close",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "high": {
+            "canonical": "high",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "low": {
+            "canonical": "low",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "volume": {
+            "canonical": "volume",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "money": {
+            "canonical": "turnover_amount",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "factor": {
+            "canonical": "adjust_factor",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "pre_close": {
+            "canonical": "previous_close",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "avg": {
+            "canonical": "avg_price",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "false",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "open_interest": {
+            "canonical": "open_interest",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "false",
+            "admission": "ADMIT_IF_MATCHED"
+          }
+        },
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "datetime"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "factor"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "high_limit"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "low_limit"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "paused"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "factor"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "high_limit"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "low_limit"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "paused"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "pre_close"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C1_MINUTE_MISSING_FACTOR_LIMIT_PAUSED",
+          "detail": "26域分钟 RAW 实读全部 8 列 (time,code,open,close,high,low,volume,money)；20_freeze minute_price 要求 factor/high_limit/low_limit/paused，引擎 minute_bar 要求 factor，matching 要求 factor",
+          "present_in_raw": false,
+          "class": "DERIVATION_REQUIRED_FROM_DAILY_PLANE",
+          "resolution": "factor<-P1_adjust_factor，high_limit/low_limit/paused<-P2_security_state/stock_limit_pause，按 (code,trade_date) join；不宣称数据丢失"
+        },
+        {
+          "id": "C2_MINUTE_SCHEMA_EVIDENCE_ROOT_MISMATCH",
+          "detail": "13 清单的 12 列分钟 schema 取自 JQData_9999_WINDOW_FULL_RAW_20260325_20260501（该目录自带 DO_NOT_USE_AS_MASTER），与 26 域 P7 分钟的 8 列不同",
+          "class": "EVIDENCE_SCOPE_OVERREACH_CORRECTED",
+          "resolution": "以 26 域 parquet 实读为准；13 清单的 12 列不得作为 26 域字段依据"
+        }
+      ],
+      "assessment": "MATCHED_WITH_PROVEN_CONFLICTS",
+      "extra": {}
+    },
+    {
+      "group_id": "G04_ETF_PRICE",
+      "dataset_scope": "ETF_1m/5m/30m/60m + ETF 日线",
+      "schema_basis": "26域 parquet header 实读：4 minute prefix 8 列；etf_price_daily_raw_none 15 列；etf_daily 14 列",
+      "source_schema_actual": [
+        "time",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "trade_date",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "money",
+          "factor",
+          "high_limit",
+          "low_limit",
+          "paused"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "time",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "open",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "open"
+        },
+        {
+          "name": "close",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "close"
+        },
+        {
+          "name": "high",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "high"
+        },
+        {
+          "name": "low",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "low"
+        },
+        {
+          "name": "volume",
+          "unit": "股",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "volume"
+        },
+        {
+          "name": "money",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "turnover_amount"
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "stock_daily/stock_minute(etf)",
+        "primary_key": "symbol+trade_date",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "daily_bar",
+          "minute_bar",
+          "tradable_status"
+        ],
+        "required_fields": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "money",
+          "factor",
+          "pre_close",
+          "paused",
+          "is_st",
+          "high_limit",
+          "low_limit"
+        ],
+        "field_alias_map": {
+          "open": {
+            "canonical": "open",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "close": {
+            "canonical": "close",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "high": {
+            "canonical": "high",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "low": {
+            "canonical": "low",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "volume": {
+            "canonical": "volume",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "money": {
+            "canonical": "turnover_amount",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "factor": {
+            "canonical": "adjust_factor",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "pre_close": {
+            "canonical": "previous_close",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "avg": {
+            "canonical": "avg_price",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "false",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "open_interest": {
+            "canonical": "open_interest",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "false",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "high_limit": {
+            "canonical": "high_limit_price",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "low_limit": {
+            "canonical": "low_limit_price",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "paused": {
+            "canonical": "is_suspended",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          }
+        },
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "trade_date"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "factor"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "high_limit"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "low_limit"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "paused"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "factor"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "pre_close"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "paused"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "is_st"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "high_limit"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "low_limit"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C3_ETF_MINUTE_SAME_AS_STOCK",
+          "detail": "ETF 1m/5m/30m/60m 同为 8 列，缺 factor/limit/paused",
+          "class": "DERIVATION_REQUIRED_FROM_DAILY_PLANE"
+        }
+      ],
+      "assessment": "MATCHED_WITH_PROVEN_CONFLICTS",
+      "extra": {
+        "note": "ETF 日线有两条不同 schema：etf_price_daily_raw_none(含 fq 列) 与 etf_daily(无 fq)；minute 全部 8 列"
+      }
+    },
+    {
+      "group_id": "G05_INDEX_PRICE",
+      "dataset_scope": "index_components/weights + 指数日线/分钟",
+      "schema_basis": "26域 parquet header 实读：index_daily 15 列 / index_minute 9 列",
+      "source_schema_actual": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "trade_date",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "money",
+          "factor",
+          "high_limit",
+          "low_limit",
+          "paused"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "time",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "open",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "open"
+        },
+        {
+          "name": "high",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "high"
+        },
+        {
+          "name": "low",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "low"
+        },
+        {
+          "name": "close",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "close"
+        },
+        {
+          "name": "volume",
+          "unit": "股",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "volume"
+        },
+        {
+          "name": "money",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "turnover_amount"
+        },
+        {
+          "name": "paused",
+          "unit": "布尔",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "is_suspended"
+        },
+        {
+          "name": "high_limit",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "high_limit_price"
+        },
+        {
+          "name": "low_limit",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "low_limit_price"
+        },
+        {
+          "name": "avg",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "",
+          "engine_canonical": "avg_price"
+        },
+        {
+          "name": "pre_close",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "previous_close"
+        },
+        {
+          "name": "factor",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": "adjust_factor"
+        },
+        {
+          "name": "fq",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "stock_daily(index)",
+        "primary_key": "symbol+trade_date",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "benchmark_data"
+        ],
+        "required_fields": [
+          "index_master",
+          "index_components"
+        ],
+        "field_alias_map": {
+          "open": {
+            "canonical": "open",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "close": {
+            "canonical": "close",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "high": {
+            "canonical": "high",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "low": {
+            "canonical": "low",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "volume": {
+            "canonical": "volume",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "money": {
+            "canonical": "turnover_amount",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "factor": {
+            "canonical": "adjust_factor",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "pre_close": {
+            "canonical": "previous_close",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "avg": {
+            "canonical": "avg_price",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "false",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "open_interest": {
+            "canonical": "open_interest",
+            "domain": "stock_ohlcv",
+            "required_for_matching": "false",
+            "admission": "ADMIT_IF_MATCHED"
+          }
+        },
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "trade_date"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "index_master"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "index_components"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C4_INDEX_MINUTE_8_COLS_PLUS_FQ",
+          "detail": "指数分钟 9 列（8 价格列 + fq），仍缺 factor/limit；指数无 tradable_status 语义，不作缺口",
+          "class": "DOCUMENTED_LIMIT_NOT_GAP"
+        }
+      ],
+      "assessment": "MATCHED_WITH_PROVEN_CONFLICTS",
+      "extra": {
+        "note": "指数无 tradable_status 语义；KG03 futures/options 仍 out_of_scope"
+      }
+    },
+    {
+      "group_id": "G06_ADJUST_FACTOR",
+      "dataset_scope": "adjust_factor (P1_adjust_factor / P2_security_state)",
+      "schema_basis": "parquet header 实读：adjust_factor_stock/etf = (date,code,factor,sec_type)；P2_security_state/adjust_factor=(time,code,factor)",
+      "source_schema_actual": [
+        "date",
+        "code",
+        "factor",
+        "sec_type"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "factor",
+          "fq"
+        ],
+        "optional": [
+          "sec_type"
+        ],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "date",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "factor",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": "adjust_factor"
+        },
+        {
+          "name": "sec_type",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "stock_daily.factor",
+        "primary_key": "symbol + trade_date",
+        "clean_action": "raw_keep_separate_column"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "adjustment_factor"
+        ],
+        "required_fields": [
+          "factor",
+          "fq"
+        ],
+        "field_alias_map": {
+          "adjust_factor": {
+            "canonical": "adjust_factor",
+            "domain": "adjustment_factor",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          }
+        },
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "fq"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "fq"
+        }
+      ],
+      "conflicts": [],
+      "assessment": "MATCHED",
+      "extra": {
+        "rule": "13_adj_factor_methodology: raw close 不被 factor 覆盖；factor 跳变须可追溯到 corporate_actions 的 ex_date"
+      }
+    },
+    {
+      "group_id": "G07_TRADABLE_STATUS",
+      "dataset_scope": "stock_st_status / stock_limit_pause_status",
+      "schema_basis": "parquet header 实读：stock_limit_pause=(date,code,paused,high_limit,low_limit)；stock_st_status=(date,code,is_st)；P2_security_state/is_st 为宽表（列名=证券代码）",
+      "source_schema_actual": [
+        "date",
+        "code",
+        "paused",
+        "high_limit",
+        "low_limit"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "paused",
+          "is_st",
+          "high_limit",
+          "low_limit"
+        ],
+        "optional": [
+          "halt_reason",
+          "risk_warning"
+        ],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "date",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "paused",
+          "unit": "布尔",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "is_suspended"
+        },
+        {
+          "name": "high_limit",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "high_limit_price"
+        },
+        {
+          "name": "low_limit",
+          "unit": "元",
+          "in_price_dictionary": true,
+          "pit_tag": "PIT_YES",
+          "engine_canonical": "low_limit_price"
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "status_daily",
+        "primary_key": "symbol + status_date + status_type",
+        "clean_action": "raw_keep + derive_semantic"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "tradable_status"
+        ],
+        "required_fields": [
+          "paused",
+          "is_st",
+          "high_limit",
+          "low_limit"
+        ],
+        "field_alias_map": {
+          "high_limit": {
+            "canonical": "high_limit_price",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "low_limit": {
+            "canonical": "low_limit_price",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "paused": {
+            "canonical": "is_suspended",
+            "domain": "fund_etf_price",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "is_st": {
+            "canonical": "is_st",
+            "domain": "tradable_status",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          },
+          "is_suspended": {
+            "canonical": "is_suspended",
+            "domain": "tradable_status",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          }
+        },
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "is_st"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "is_st"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C15_IS_ST_WIDE_VS_LONG",
+          "detail": "P2_security_state/is_st 宽表（列名=代码，数千列）；stock_st_status 为长表 (date,code,is_st)",
+          "class": "LEGACY_DUAL_REPRESENTATION_CLEAN_TAKES_LONG"
+        }
+      ],
+      "assessment": "MATCHED_WITH_PROVEN_CONFLICTS",
+      "extra": {
+        "note": "P2_security_state/is_st 宽表与 stock_st_status 长表并存，clean 只取长表；宽表记历史遗留"
+      }
+    },
+    {
+      "group_id": "G08_VALUATION",
+      "dataset_scope": "valuation (P6_factor_reference/valuation, 52 files)",
+      "schema_basis": "13_local_schema_header_final_check.01 (enumerated, distinct_schema=1, 52 files)",
+      "source_schema_actual": [
+        "id",
+        "code",
+        "day",
+        "pe_ratio",
+        "turnover_ratio",
+        "pb_ratio",
+        "ps_ratio",
+        "pcf_ratio",
+        "capitalization",
+        "market_cap",
+        "circulating_cap",
+        "circulating_market_cap",
+        "pe_ratio_lyr",
+        "pcf_ratio2",
+        "dividend_ratio",
+        "free_cap",
+        "free_market_cap",
+        "a_cap",
+        "a_market_cap"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "day",
+          "pe_ratio",
+          "pb_ratio",
+          "ps_ratio",
+          "pcf_ratio",
+          "turnover_ratio",
+          "market_cap",
+          "circulating_market_cap",
+          "capitalization",
+          "free_market_cap"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "id",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "day",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "pe_ratio",
+          "unit": "倍",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "turnover_ratio",
+          "unit": "%",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "pb_ratio",
+          "unit": "倍",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "ps_ratio",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "pcf_ratio",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "capitalization",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "market_cap",
+          "unit": "元",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": "market_cap"
+        },
+        {
+          "name": "circulating_cap",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "circulating_market_cap",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": "circulating_market_cap"
+        },
+        {
+          "name": "pe_ratio_lyr",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "pcf_ratio2",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "dividend_ratio",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "free_cap",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "free_market_cap",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "a_cap",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "a_market_cap",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "valuation_daily",
+        "primary_key": "symbol+trade_date",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [],
+        "required_fields": [],
+        "field_alias_map": {},
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        }
+      ],
+      "conflicts": [],
+      "assessment": "MATCHED",
+      "extra": {
+        "unit_detected": "元"
+      }
+    },
+    {
+      "group_id": "G09_FINANCE_PIT",
+      "dataset_scope": "fundamentals_pit (P3_finance_pit income/balance/cash_flow/indicator)",
+      "schema_basis": "13_local_schema_header_final_check.01 (enumerated, 18 prefixes, distinct_schema=1 per table)",
+      "source_schema_actual": [
+        "id",
+        "code",
+        "statDate",
+        "pubDate",
+        "statDate.1",
+        "cash_equivalents",
+        "total_assets",
+        "total_liability",
+        "total_owner_equities"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "code",
+          "day",
+          "pubDate",
+          "statDate",
+          "eps",
+          "roe",
+          "roa",
+          "total_operating_revenue",
+          "net_profit",
+          "total_assets",
+          "total_liability",
+          "total_owner_equities",
+          "net_operate_cash_flow",
+          "net_invest_cash_flow",
+          "net_finance_cash_flow"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "id",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "statDate",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "pubDate",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "statDate.1",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "cash_equivalents",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "total_assets",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "total_liability",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "total_owner_equities",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "finance_{income|balance|cash_flow|indicator}",
+        "primary_key": "symbol+statDate+report_type+revision",
+        "clean_action": "jqdata_native_pit_load"
+      },
+      "engine_admission": {
+        "data_domains": [],
+        "required_fields": [],
+        "field_alias_map": {},
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "day"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "eps"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "roe"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "roa"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "total_operating_revenue"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "net_profit"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "net_operate_cash_flow"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "net_invest_cash_flow"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "net_finance_cash_flow"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C5_FINANCE_NAMING_INCONSISTENT",
+          "detail": "income/balance/indicator 用 statDate/pubDate，cash_flow 用 pub_date/report_date/report_type；契约统一为 pubDate/statDate",
+          "class": "CLEAN_ALIAS_REQUIRED"
+        },
+        {
+          "id": "C6_FINANCE_DUPLICATE_STATDATE",
+          "detail": "balance/indicator 同时存在 statDate 与 statDate.1",
+          "class": "DUPLICATE_COLUMN_DEDUPE_REQUIRED"
+        },
+        {
+          "id": "C7_REVISION_CHAIN_NOT_IN_RAW",
+          "detail": "PK 契约 symbol+report_period+type+revision_version，RAW 无 revision_version；08_restatement_schema 为契约而非已实现链路",
+          "class": "CONTRACT_AHEAD_OF_RAW"
+        }
+      ],
+      "assessment": "MATCHED_WITH_UNRESOLVED_CONTRACT_GAP",
+      "extra": {
+        "unit_detected": "元",
+        "pit": "pubDate 为可见日 / statDate 为报告期"
+      }
+    },
+    {
+      "group_id": "G10_ETF_FUND_NAV",
+      "dataset_scope": "ETF_NAV / open_fund / QDII / other + ETF_SHARE",
+      "schema_basis": "parquet header 实读：fund_etf_nav=(day,code,unit_net_value,acc_net_value)；open_fund/qdii/other 同构；fund_fund_net_value=(id,code,day,net_value,sum_value,factor,acc_factor,refactor_net_value)",
+      "source_schema_actual": [
+        "day",
+        "code",
+        "unit_net_value",
+        "acc_net_value"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "trade_date",
+          "unit_net_value",
+          "acc_net_value"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "day",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "unit_net_value",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "PIT_DELAYED_1D",
+          "engine_canonical": ""
+        },
+        {
+          "name": "acc_net_value",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "fund_data_daily",
+        "primary_key": "symbol+trade_date",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [],
+        "required_fields": [],
+        "field_alias_map": {},
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "trade_date"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C8_NAV_TWO_NAMING_FAMILIES",
+          "detail": "fund_etf_nav/open_fund/qdii = unit_net_value+acc_net_value；fund_fund_net_value = net_value+sum_value+factor+acc_factor+refactor_net_value",
+          "class": "CLEAN_ALIAS_REQUIRED"
+        },
+        {
+          "id": "C9_DAY_IS_STRING",
+          "detail": "day 实际为 large_string，dtype 契约要求 date/YYYY-MM-DD 且禁止 string_mixed",
+          "class": "DTYPE_DEVIATION"
+        }
+      ],
+      "assessment": "MATCHED_WITH_PROVEN_CONFLICTS",
+      "extra": {
+        "pit": "unit_net_value 在 05_pit_field_dictionary 标 PIT_DELAYED_1D"
+      }
+    },
+    {
+      "group_id": "G11_INDEX_MEMBERSHIP",
+      "dataset_scope": "index_components / index_weights",
+      "schema_basis": "parquet header 实读：index_components=(index_code,component_code,asof_date)；index_constituents=(index_code,code,asof_date)；index_weights=(date,weight,display_name)",
+      "source_schema_actual": [
+        "date",
+        "weight",
+        "display_name"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "index_code",
+          "con_code",
+          "trade_date",
+          "weight",
+          "snapshot_date",
+          "year"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "date",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "weight",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "display_name",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "index_member_history / index_weight_history",
+        "primary_key": "index_code+member_code+weight_date",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "benchmark_data"
+        ],
+        "required_fields": [
+          "index_master",
+          "index_components"
+        ],
+        "field_alias_map": {},
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "index_code"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "con_code"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "trade_date"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "snapshot_date"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "year"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "index_master"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "index_components"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C10_INDEX_WEIGHTS_NO_MEMBER_CODE",
+          "detail": "index_weights 实读仅 (date,weight,display_name)，无 component_code/member；PK 契约要求 index_code+member_code+weight_date",
+          "class": "CONTRACT_GAP_BLOCKING_PK"
+        },
+        {
+          "id": "C11_INDEX_WEIGHTS_SINGLE_SNAPSHOT",
+          "detail": "P3_index/index_weights 仅 1 个 snapshot 文件 (20260831)，无历史序列",
+          "class": "COVERAGE_BOUNDED"
+        }
+      ],
+      "assessment": "MATCHED_WITH_UNRESOLVED_CONTRACT_GAP",
+      "extra": {
+        "note": "index_weights 仅 1 个 snapshot 文件（20260831）"
+      }
+    },
+    {
+      "group_id": "G12_INDUSTRY_CONCEPT",
+      "dataset_scope": "industry_concept / industry_concept_events",
+      "schema_basis": "parquet header 实读：components=(industry_code,stock_code)；list=(industry_code,name,start_date)；events=(index,name,start_date,event_type,as_of)",
+      "source_schema_actual": [
+        "industry_code",
+        "stock_code"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "industry_code",
+          "stock_code",
+          "name",
+          "start_date"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "industry_code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "stock_code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "industry_concept_member",
+        "primary_key": "industry_code+member_code",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [],
+        "required_fields": [],
+        "field_alias_map": {},
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "name"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "start_date"
+        }
+      ],
+      "conflicts": [],
+      "assessment": "MATCHED",
+      "extra": {
+        "note": "P5_attributes_events/industry_sw_l1 只有 (name,start_date)，成分在 P0_meta 侧；两侧需 join"
+      }
+    },
+    {
+      "group_id": "G13_MTSS_MONEYFLOW_BILLBOARD",
+      "dataset_scope": "mtss / money_flow / billboard",
+      "schema_basis": "parquet header 实读：stk_mt_total=(id,date,exchange_code,fin_value,fin_buy_value,sec_volume,sec_value,sec_sell_volume,fin_sec_value)；billboard 14 列完整",
+      "source_schema_actual": [
+        "id",
+        "date",
+        "exchange_code",
+        "fin_value",
+        "fin_buy_value",
+        "sec_volume",
+        "sec_value",
+        "sec_sell_volume",
+        "fin_sec_value"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "date",
+          "fin_value",
+          "fin_buy_value",
+          "fin_refund_value",
+          "margin_value",
+          "margin_sell_value",
+          "margin_refund_value"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "id",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "date",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "exchange_code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "fin_value",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "fin_buy_value",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "sec_volume",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "sec_value",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "sec_sell_volume",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "fin_sec_value",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "mtss_daily / money_flow_daily / billboard_daily",
+        "primary_key": "symbol+trade_date",
+        "clean_action": "jqdata_native_load"
+      },
+      "engine_admission": {
+        "data_domains": [],
+        "required_fields": [],
+        "field_alias_map": {},
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "fin_refund_value"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "margin_value"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "margin_sell_value"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "margin_refund_value"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C12_MTSS_FIELDS_INCOMPLETE",
+          "detail": "stk_mt_total 缺 fin_refund_value / margin_value / margin_sell_value / margin_refund_value（契约 mtss 必需）",
+          "class": "SOURCE_FIELD_GAP"
+        },
+        {
+          "id": "C13_MONEYFLOW_PAID_MODULE",
+          "detail": "KG18 money_flow 基础版为 paid_module；本轮未见 money_flow RAW",
+          "class": "KNOWN_GAP_KG18"
+        }
+      ],
+      "assessment": "MATCHED_WITH_UNRESOLVED_CONTRACT_GAP",
+      "extra": {
+        "known_gap": "KG18 get_money_flow 基础版 paid_module；KG13 龙虎榜机构席位明细 pending"
+      }
+    },
+    {
+      "group_id": "G14_CORPORATE_ACTIONS",
+      "dataset_scope": "corporate actions / XR_XD event",
+      "schema_basis": "无法从已枚举 schema 取得 long-format 事件表（P2_security_state/corporate_action 实为 (time,code,factor)，与事件契约不符）",
+      "source_schema_actual": [
+        "date",
+        "code",
+        "factor",
+        "sec_type"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "symbol",
+          "action_type",
+          "announce_date",
+          "ex_date",
+          "record_date",
+          "pay_date",
+          "dividend_per_share",
+          "stock_dividend_ratio",
+          "transfer_ratio",
+          "rights_ratio",
+          "rights_price"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "date",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "factor",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": "adjust_factor"
+        },
+        {
+          "name": "sec_type",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "corporate_actions_pit",
+        "primary_key": "symbol+ex_date+action_type",
+        "clean_action": "jqdata_native_pit_load"
+      },
+      "engine_admission": {
+        "data_domains": [],
+        "required_fields": [],
+        "field_alias_map": {
+          "adjust_factor": {
+            "canonical": "adjust_factor",
+            "domain": "adjustment_factor",
+            "required_for_matching": "true",
+            "admission": "ADMIT_IF_MATCHED"
+          }
+        },
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "symbol"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "action_type"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "announce_date"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "ex_date"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "record_date"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "pay_date"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "dividend_per_share"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "stock_dividend_ratio"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "transfer_ratio"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "rights_ratio"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "rights_price"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "C14_NO_LONG_FORMAT_CA_TABLE",
+          "detail": "以已枚举 schema 无法确认 announce_date/ex_date/action_type 长表；adj factor 的 ex_date 可追溯性因此无法验证（13_adj_factor_methodology 规则2 → review_required）",
+          "class": "EVIDENCE_INSUFFICIENT"
+        }
+      ],
+      "assessment": "EVIDENCE_INSUFFICIENT",
+      "extra": {
+        "note": "KG19 merger/spinoff 等复杂公司行为 v1.1_evaluate"
+      }
+    },
+    {
+      "group_id": "G15_FACTOR_260",
+      "dataset_scope": "factor dictionary/formula/cleaning/pit (260)",
+      "schema_basis": "rule_library/blackbox_current_dictionary_R1/factor_260_*_CURRENT.csv (260 行)",
+      "source_schema_actual": [
+        "id",
+        "code",
+        "statDate",
+        "pubDate",
+        "statDate.1",
+        "eps",
+        "roe",
+        "roa",
+        "adjusted_profit",
+        "gross_profit_margin"
+      ],
+      "dictionary_requirement": {
+        "required": [
+          "canonical_factor_name",
+          "formula",
+          "cleaning_policy",
+          "pit_policy"
+        ],
+        "optional": [],
+        "source_rule_files": [
+          "02_domain_schema/domain_schema_contract.csv",
+          "09_dtype_precision_schema/dtype_precision_contract.csv",
+          "10_primary_key_rules/primary_key_uniqueness_contract.csv",
+          "12_status_field_schema/status_field_contract.csv"
+        ]
+      },
+      "source_fields": [
+        {
+          "name": "id",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "code",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "statDate",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "pubDate",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "statDate.1",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "eps",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "roe",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "roa",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "adjusted_profit",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        },
+        {
+          "name": "gross_profit_margin",
+          "unit": "",
+          "in_price_dictionary": false,
+          "pit_tag": "",
+          "engine_canonical": ""
+        }
+      ],
+      "clean_standard_mapping": {
+        "target_table": "reference_only",
+        "primary_key": "canonical_factor_name",
+        "clean_action": "factor_reference_only"
+      },
+      "engine_admission": {
+        "data_domains": [
+          "factor_dictionary",
+          "factor_formula",
+          "factor_cleaning_rules",
+          "factor_pit_rules"
+        ],
+        "required_fields": [
+          "canonical_factor_name",
+          "formula",
+          "cleaning_policy",
+          "pit_policy"
+        ],
+        "field_alias_map": {
+          "ACCA": {
+            "canonical": "ACCA",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "account_receivable_turnover_days": {
+            "canonical": "account_receivable_turnover_days",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "account_receivable_turnover_rate": {
+            "canonical": "account_receivable_turnover_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "accounts_payable_turnover_days": {
+            "canonical": "accounts_payable_turnover_days",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "accounts_payable_turnover_rate": {
+            "canonical": "accounts_payable_turnover_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "adjusted_profit_to_total_profit": {
+            "canonical": "adjusted_profit_to_total_profit",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "admin_expense_rate": {
+            "canonical": "admin_expense_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "administration_expense_ttm": {
+            "canonical": "administration_expense_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "AR": {
+            "canonical": "AR",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ARBR": {
+            "canonical": "ARBR",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "arron_down_25": {
+            "canonical": "arron_down_25",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "arron_up_25": {
+            "canonical": "arron_up_25",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "asset_impairment_loss_ttm": {
+            "canonical": "asset_impairment_loss_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "asset_turnover_ttm": {
+            "canonical": "asset_turnover_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ATR14": {
+            "canonical": "ATR14",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ATR6": {
+            "canonical": "ATR6",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "average_share_turnover_annual": {
+            "canonical": "average_share_turnover_annual",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "average_share_turnover_quarterly": {
+            "canonical": "average_share_turnover_quarterly",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "BBIC": {
+            "canonical": "BBIC",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "bear_power": {
+            "canonical": "bear_power",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "beta": {
+            "canonical": "beta",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "BIAS10": {
+            "canonical": "BIAS10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "BIAS20": {
+            "canonical": "BIAS20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "BIAS5": {
+            "canonical": "BIAS5",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "BIAS60": {
+            "canonical": "BIAS60",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "boll_down": {
+            "canonical": "boll_down",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "boll_up": {
+            "canonical": "boll_up",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "book_leverage": {
+            "canonical": "book_leverage",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "book_to_price_ratio": {
+            "canonical": "book_to_price_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "BR": {
+            "canonical": "BR",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "bull_power": {
+            "canonical": "bull_power",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "capital_reserve_fund_per_share": {
+            "canonical": "capital_reserve_fund_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cash_and_equivalents_per_share": {
+            "canonical": "cash_and_equivalents_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cash_earnings_to_price_ratio": {
+            "canonical": "cash_earnings_to_price_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cash_flow_to_price_ratio": {
+            "canonical": "cash_flow_to_price_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cash_rate_of_sales": {
+            "canonical": "cash_rate_of_sales",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cash_to_current_liability": {
+            "canonical": "cash_to_current_liability",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cashflow_per_share_ttm": {
+            "canonical": "cashflow_per_share_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "CCI10": {
+            "canonical": "CCI10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "CCI15": {
+            "canonical": "CCI15",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "CCI20": {
+            "canonical": "CCI20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "CCI88": {
+            "canonical": "CCI88",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cfo_to_ev": {
+            "canonical": "cfo_to_ev",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "circulating_market_cap": {
+            "canonical": "circulating_market_cap",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "CR20": {
+            "canonical": "CR20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cube_of_size": {
+            "canonical": "cube_of_size",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "cumulative_range": {
+            "canonical": "cumulative_range",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "current_asset_turnover_rate": {
+            "canonical": "current_asset_turnover_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "current_ratio": {
+            "canonical": "current_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "daily_standard_deviation": {
+            "canonical": "daily_standard_deviation",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "DAVOL10": {
+            "canonical": "DAVOL10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "DAVOL20": {
+            "canonical": "DAVOL20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "DAVOL5": {
+            "canonical": "DAVOL5",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "debt_to_asset_ratio": {
+            "canonical": "debt_to_asset_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "debt_to_assets": {
+            "canonical": "debt_to_assets",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "debt_to_equity_ratio": {
+            "canonical": "debt_to_equity_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "debt_to_tangible_equity_ratio": {
+            "canonical": "debt_to_tangible_equity_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "DEGM": {
+            "canonical": "DEGM",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "DEGM_8y": {
+            "canonical": "DEGM_8y",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "DSRI": {
+            "canonical": "DSRI",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "earnings_growth": {
+            "canonical": "earnings_growth",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "earnings_to_price_ratio": {
+            "canonical": "earnings_to_price_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "earnings_yield": {
+            "canonical": "earnings_yield",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "EBIT": {
+            "canonical": "EBIT",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "EBITDA": {
+            "canonical": "EBITDA",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "EMA5": {
+            "canonical": "EMA5",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "EMAC10": {
+            "canonical": "EMAC10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "EMAC12": {
+            "canonical": "EMAC12",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "EMAC120": {
+            "canonical": "EMAC120",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "EMAC20": {
+            "canonical": "EMAC20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "EMAC26": {
+            "canonical": "EMAC26",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "eps_ttm": {
+            "canonical": "eps_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "equity_to_asset_ratio": {
+            "canonical": "equity_to_asset_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "equity_to_fixed_asset_ratio": {
+            "canonical": "equity_to_fixed_asset_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "equity_turnover_rate": {
+            "canonical": "equity_turnover_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "fifty_two_week_close_rank": {
+            "canonical": "fifty_two_week_close_rank",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "financial_assets": {
+            "canonical": "financial_assets",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "financial_expense_rate": {
+            "canonical": "financial_expense_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "financial_expense_ttm": {
+            "canonical": "financial_expense_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "financial_liability": {
+            "canonical": "financial_liability",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "financing_cash_growth_rate": {
+            "canonical": "financing_cash_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "fixed_asset_ratio": {
+            "canonical": "fixed_asset_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "fixed_assets_turnover_rate": {
+            "canonical": "fixed_assets_turnover_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "GMI": {
+            "canonical": "GMI",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "goods_sale_and_service_render_cash_ttm": {
+            "canonical": "goods_sale_and_service_render_cash_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "goods_service_cash_to_operating_revenue_ttm": {
+            "canonical": "goods_service_cash_to_operating_revenue_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "gross_income_ratio": {
+            "canonical": "gross_income_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "gross_profit_ttm": {
+            "canonical": "gross_profit_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "growth": {
+            "canonical": "growth",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "historical_sigma": {
+            "canonical": "historical_sigma",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "intangible_asset_ratio": {
+            "canonical": "intangible_asset_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "interest_carry_current_liability": {
+            "canonical": "interest_carry_current_liability",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "interest_free_current_liability": {
+            "canonical": "interest_free_current_liability",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "inventory_turnover_days": {
+            "canonical": "inventory_turnover_days",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "inventory_turnover_rate": {
+            "canonical": "inventory_turnover_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "invest_income_associates_to_total_profit": {
+            "canonical": "invest_income_associates_to_total_profit",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Kurtosis120": {
+            "canonical": "Kurtosis120",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Kurtosis20": {
+            "canonical": "Kurtosis20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Kurtosis60": {
+            "canonical": "Kurtosis60",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "leverage": {
+            "canonical": "leverage",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "liquidity": {
+            "canonical": "liquidity",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "long_debt_to_asset_ratio": {
+            "canonical": "long_debt_to_asset_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "long_debt_to_working_capital_ratio": {
+            "canonical": "long_debt_to_working_capital_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "long_term_debt_to_asset_ratio": {
+            "canonical": "long_term_debt_to_asset_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "long_term_predicted_earnings_growth": {
+            "canonical": "long_term_predicted_earnings_growth",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "LVGI": {
+            "canonical": "LVGI",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MAC10": {
+            "canonical": "MAC10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MAC120": {
+            "canonical": "MAC120",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MAC20": {
+            "canonical": "MAC20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MAC5": {
+            "canonical": "MAC5",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MAC60": {
+            "canonical": "MAC60",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MACDC": {
+            "canonical": "MACDC",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "margin_stability": {
+            "canonical": "margin_stability",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "market_cap": {
+            "canonical": "market_cap",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "market_leverage": {
+            "canonical": "market_leverage",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MASS": {
+            "canonical": "MASS",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MAWVAD": {
+            "canonical": "MAWVAD",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "maximum_margin": {
+            "canonical": "maximum_margin",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MFI14": {
+            "canonical": "MFI14",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "MLEV": {
+            "canonical": "MLEV",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "momentum": {
+            "canonical": "momentum",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "money_flow_20": {
+            "canonical": "money_flow_20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "natural_log_of_market_cap": {
+            "canonical": "natural_log_of_market_cap",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_asset_growth_rate": {
+            "canonical": "net_asset_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_asset_per_share": {
+            "canonical": "net_asset_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_debt": {
+            "canonical": "net_debt",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_finance_cash_flow_ttm": {
+            "canonical": "net_finance_cash_flow_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_interest_expense": {
+            "canonical": "net_interest_expense",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_invest_cash_flow_ttm": {
+            "canonical": "net_invest_cash_flow_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_non_operating_income_to_total_profit": {
+            "canonical": "net_non_operating_income_to_total_profit",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operate_cash_flow_per_share": {
+            "canonical": "net_operate_cash_flow_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operate_cash_flow_to_asset": {
+            "canonical": "net_operate_cash_flow_to_asset",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operate_cash_flow_to_net_debt": {
+            "canonical": "net_operate_cash_flow_to_net_debt",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operate_cash_flow_to_operate_income": {
+            "canonical": "net_operate_cash_flow_to_operate_income",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operate_cash_flow_to_total_current_liability": {
+            "canonical": "net_operate_cash_flow_to_total_current_liability",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operate_cash_flow_to_total_liability": {
+            "canonical": "net_operate_cash_flow_to_total_liability",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operate_cash_flow_ttm": {
+            "canonical": "net_operate_cash_flow_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operate_cashflow_growth_rate": {
+            "canonical": "net_operate_cashflow_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_operating_cash_flow_coverage": {
+            "canonical": "net_operating_cash_flow_coverage",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_profit_growth_rate": {
+            "canonical": "net_profit_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_profit_ratio": {
+            "canonical": "net_profit_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_profit_to_total_operate_revenue_ttm": {
+            "canonical": "net_profit_to_total_operate_revenue_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_profit_ttm": {
+            "canonical": "net_profit_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "net_working_capital": {
+            "canonical": "net_working_capital",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "non_current_asset_ratio": {
+            "canonical": "non_current_asset_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "non_linear_size": {
+            "canonical": "non_linear_size",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "non_operating_net_profit_ttm": {
+            "canonical": "non_operating_net_profit_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "non_recurring_gain_loss": {
+            "canonical": "non_recurring_gain_loss",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "np_parent_company_owners_growth_rate": {
+            "canonical": "np_parent_company_owners_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "np_parent_company_owners_ttm": {
+            "canonical": "np_parent_company_owners_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "OperateNetIncome": {
+            "canonical": "OperateNetIncome",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_assets": {
+            "canonical": "operating_assets",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_cost_to_operating_revenue_ratio": {
+            "canonical": "operating_cost_to_operating_revenue_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_cost_ttm": {
+            "canonical": "operating_cost_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_liability": {
+            "canonical": "operating_liability",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_profit_growth_rate": {
+            "canonical": "operating_profit_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_profit_per_share": {
+            "canonical": "operating_profit_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_profit_per_share_ttm": {
+            "canonical": "operating_profit_per_share_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_profit_ratio": {
+            "canonical": "operating_profit_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_profit_to_operating_revenue": {
+            "canonical": "operating_profit_to_operating_revenue",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_profit_to_total_profit": {
+            "canonical": "operating_profit_to_total_profit",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_profit_ttm": {
+            "canonical": "operating_profit_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_revenue_growth_rate": {
+            "canonical": "operating_revenue_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_revenue_per_share": {
+            "canonical": "operating_revenue_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_revenue_per_share_ttm": {
+            "canonical": "operating_revenue_per_share_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_revenue_ttm": {
+            "canonical": "operating_revenue_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "operating_tax_to_operating_revenue_ratio_ttm": {
+            "canonical": "operating_tax_to_operating_revenue_ratio_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "OperatingCycle": {
+            "canonical": "OperatingCycle",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "PEG": {
+            "canonical": "PEG",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "PLRC12": {
+            "canonical": "PLRC12",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "PLRC24": {
+            "canonical": "PLRC24",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "PLRC6": {
+            "canonical": "PLRC6",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "predicted_earnings_to_price_ratio": {
+            "canonical": "predicted_earnings_to_price_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Price1M": {
+            "canonical": "Price1M",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Price1Y": {
+            "canonical": "Price1Y",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Price3M": {
+            "canonical": "Price3M",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "price_no_fq": {
+            "canonical": "price_no_fq",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "profit_margin_ttm": {
+            "canonical": "profit_margin_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "PSY": {
+            "canonical": "PSY",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "quick_ratio": {
+            "canonical": "quick_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Rank1M": {
+            "canonical": "Rank1M",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "raw_beta": {
+            "canonical": "raw_beta",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "relative_strength": {
+            "canonical": "relative_strength",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "residual_volatility": {
+            "canonical": "residual_volatility",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "retained_earnings": {
+            "canonical": "retained_earnings",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "retained_earnings_per_share": {
+            "canonical": "retained_earnings_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "retained_profit_per_share": {
+            "canonical": "retained_profit_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "rnoa_ttm": {
+            "canonical": "rnoa_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "roa_ttm": {
+            "canonical": "roa_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "roa_ttm_8y": {
+            "canonical": "roa_ttm_8y",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ROAEBITTTM": {
+            "canonical": "ROAEBITTTM",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ROC12": {
+            "canonical": "ROC12",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ROC120": {
+            "canonical": "ROC120",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ROC20": {
+            "canonical": "ROC20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ROC6": {
+            "canonical": "ROC6",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "ROC60": {
+            "canonical": "ROC60",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "roe_ttm": {
+            "canonical": "roe_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "roe_ttm_8y": {
+            "canonical": "roe_ttm_8y",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "roic_ttm": {
+            "canonical": "roic_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "sale_expense_to_operating_revenue": {
+            "canonical": "sale_expense_to_operating_revenue",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "sale_expense_ttm": {
+            "canonical": "sale_expense_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "sales_growth": {
+            "canonical": "sales_growth",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "sales_to_price_ratio": {
+            "canonical": "sales_to_price_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "SGAI": {
+            "canonical": "SGAI",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "SGI": {
+            "canonical": "SGI",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "share_turnover_monthly": {
+            "canonical": "share_turnover_monthly",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "sharpe_ratio_120": {
+            "canonical": "sharpe_ratio_120",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "sharpe_ratio_20": {
+            "canonical": "sharpe_ratio_20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "sharpe_ratio_60": {
+            "canonical": "sharpe_ratio_60",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "short_term_predicted_earnings_growth": {
+            "canonical": "short_term_predicted_earnings_growth",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "single_day_VPT": {
+            "canonical": "single_day_VPT",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "single_day_VPT_12": {
+            "canonical": "single_day_VPT_12",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "single_day_VPT_6": {
+            "canonical": "single_day_VPT_6",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "size": {
+            "canonical": "size",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Skewness120": {
+            "canonical": "Skewness120",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Skewness20": {
+            "canonical": "Skewness20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Skewness60": {
+            "canonical": "Skewness60",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "super_quick_ratio": {
+            "canonical": "super_quick_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "surplus_reserve_fund_per_share": {
+            "canonical": "surplus_reserve_fund_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_asset_growth_rate": {
+            "canonical": "total_asset_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_asset_turnover_rate": {
+            "canonical": "total_asset_turnover_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_operating_cost_ttm": {
+            "canonical": "total_operating_cost_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_operating_revenue_per_share": {
+            "canonical": "total_operating_revenue_per_share",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_operating_revenue_per_share_ttm": {
+            "canonical": "total_operating_revenue_per_share_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_operating_revenue_ttm": {
+            "canonical": "total_operating_revenue_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_profit_growth_rate": {
+            "canonical": "total_profit_growth_rate",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_profit_to_cost_ratio": {
+            "canonical": "total_profit_to_cost_ratio",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "total_profit_ttm": {
+            "canonical": "total_profit_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "TRIX10": {
+            "canonical": "TRIX10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "TRIX5": {
+            "canonical": "TRIX5",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "turnover_volatility": {
+            "canonical": "turnover_volatility",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "TVMA20": {
+            "canonical": "TVMA20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "TVMA6": {
+            "canonical": "TVMA6",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "TVSTD20": {
+            "canonical": "TVSTD20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "TVSTD6": {
+            "canonical": "TVSTD6",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "value_change_profit_ttm": {
+            "canonical": "value_change_profit_ttm",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Variance120": {
+            "canonical": "Variance120",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Variance20": {
+            "canonical": "Variance20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Variance60": {
+            "canonical": "Variance60",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VDEA": {
+            "canonical": "VDEA",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VDIFF": {
+            "canonical": "VDIFF",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VEMA10": {
+            "canonical": "VEMA10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VEMA12": {
+            "canonical": "VEMA12",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VEMA26": {
+            "canonical": "VEMA26",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VEMA5": {
+            "canonical": "VEMA5",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VMACD": {
+            "canonical": "VMACD",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VOL10": {
+            "canonical": "VOL10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VOL120": {
+            "canonical": "VOL120",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VOL20": {
+            "canonical": "VOL20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VOL240": {
+            "canonical": "VOL240",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VOL5": {
+            "canonical": "VOL5",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VOL60": {
+            "canonical": "VOL60",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "Volume1M": {
+            "canonical": "Volume1M",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VOSC": {
+            "canonical": "VOSC",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VR": {
+            "canonical": "VR",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VROC12": {
+            "canonical": "VROC12",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VROC6": {
+            "canonical": "VROC6",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VSTD10": {
+            "canonical": "VSTD10",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "VSTD20": {
+            "canonical": "VSTD20",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          },
+          "WVAD": {
+            "canonical": "WVAD",
+            "domain": "factor_260",
+            "required_for_matching": "false",
+            "admission": "ADMIT_DICTIONARY_ONLY"
+          }
+        },
+        "frequency_allowed": [
+          "daily",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "60m"
+        ],
+        "admission_stage": "PRE_INGESTION_ONLY"
+      },
+      "gaps_vs_raw": [
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "canonical_factor_name"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "formula"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "cleaning_policy"
+        },
+        {
+          "kind": "DICTIONARY_REQUIRED_NOT_IN_RAW",
+          "field": "pit_policy"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "canonical_factor_name"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "formula"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "cleaning_policy"
+        },
+        {
+          "kind": "ENGINE_REQUIRED_NOT_IN_RAW",
+          "field": "pit_policy"
+        }
+      ],
+      "conflicts": [],
+      "assessment": "ADMITTED_DICTIONARY_ONLY_BY_ORIGINAL_RULE",
+      "extra": {
+        "activation": "ADMIT_DICTIONARY_ONLY / factor_value_download_forbidden=true / factor_cleaning_not_active=true"
+      }
+    }
+  ],
+  "summary": {
+    "n_groups": 15,
+    "matched": 4,
+    "matched_with_conflicts": 9,
+    "evidence_insufficient": 1,
+    "dictionary_only_by_rule": 1,
+    "n_conflicts": 18
+  }
+}
