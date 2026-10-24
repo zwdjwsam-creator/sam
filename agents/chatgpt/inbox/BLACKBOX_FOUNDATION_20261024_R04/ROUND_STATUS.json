@@ -1,0 +1,86 @@
+{
+ "round_status_id": "ROUND_STATUS_R4",
+ "at": "2026-10-24T15:06:37+08:00",
+ "budget_slot": "4/10",
+ "remaining_cycles_after_delivery": 6,
+ "predecessor": "BLACKBOX_FOUNDATION_20261024_R03",
+ "instruction_commit": "43e97f24",
+ "review_commit": "4fa5cbb2",
+ "language": "en",
+ "FOUNDATION_ACCEPTANCE": false,
+ "ORDER_ALLOWED": false,
+ "formal_backtest_active": false,
+ "PRODUCTION_CHANGE_AUTHORIZED": false,
+ "operations": [
+  {
+   "op": "read R04 contract, REVIEW_R03.md, build_r04_patch.py, verify_safety_patch.py, PATCH_INPUTS.json",
+   "result": "DONE"
+  },
+  {
+   "op": "stage patch files and verify HUB blob identity",
+   "result": "4/4 MATCH"
+  },
+  {
+   "op": "verify R03 normalized hashes against GPT manifest",
+   "result": "5/5 MATCH"
+  },
+  {
+   "op": "run GPT generator",
+   "result": "PATCH_CREATED, exit 0"
+  },
+  {
+   "op": "run GPT verifier",
+   "result": "PASS, exit 0, nine checks"
+  },
+  {
+   "op": "native adapter import + bounded daily call",
+   "result": "FRAME, 3 rows, status OK"
+  },
+  {
+   "op": "engine membership/event quarantine check",
+   "result": "both rejected with contract-pending reasons"
+  },
+  {
+   "op": "coverage watermark probe",
+   "result": "COVERAGE_INCOMPLETE observed; tail clipping defect recorded"
+  },
+  {
+   "op": "clean-plane gap probe 2026-08-31 / 2026-09-01",
+   "result": "rows absent from all touching files"
+  },
+  {
+   "op": "contract source inventory",
+   "result": "98 items resolved, 0 missing, 92 staged for upload, 5 already in HUB"
+  },
+  {
+   "op": "conflict register",
+   "result": "13 conflicts, 13 unresolved/observed"
+  },
+  {
+   "op": "structure map correction",
+   "result": "23 nodes, 21 edges, 0 dangling endpoints"
+  }
+ ],
+ "blockers": [
+  "engine factory injection path still unresolved (NM-01)",
+  "no implemented clock contract; label generator only (NM-02)",
+  "fq=pre cannot be served from a NULL-fq, constant-factor plane (NM-03)",
+  "no validated per-dataset incremental cursor (NM-04)"
+ ],
+ "deliverables": [
+  "ROUND_STATUS.json",
+  "PATCH_EXECUTION.json",
+  "changed_code/provider.py",
+  "changed_code/engine_adapter.py",
+  "CONTRACT_SOURCE_MANIFEST.json",
+  "CONTRACT_CONFLICTS.json",
+  "SYSTEM_STRUCTURE_R4.json",
+  "DELTA_REPORT_R4.md",
+  "EVIDENCE_LABEL_CORRECTION_R4.md",
+  "NEXT_MISSING_EVIDENCE_R4.json",
+  "source_contracts/",
+  "source_engine/",
+  "patch_logs/"
+ ],
+ "safety_flags_unchanged": true
+}
