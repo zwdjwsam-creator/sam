@@ -1,0 +1,574 @@
+{
+ "run_at": "2026-10-24T14:14:35.629010+08:00",
+ "round": "1/10",
+ "checks": {
+  "1_identity_separation": {
+   "pass": true,
+   "detail": {
+    "per_dataset": [
+     {
+      "dataset_id": "PRICE_STOCK_DAILY",
+      "supplier": "JQData",
+      "lineage": "JQ_OFFICIAL_RAW",
+      "layers": [
+       "CACHE",
+       "CLEAN",
+       "RAW"
+      ],
+      "pass": true
+     },
+     {
+      "dataset_id": "PRICE_STOCK_1M",
+      "supplier": "JQData",
+      "lineage": "JQ_OFFICIAL_RAW",
+      "layers": [
+       "CACHE",
+       "CLEAN",
+       "RAW"
+      ],
+      "pass": true
+     },
+     {
+      "dataset_id": "TS_CBOND_R1",
+      "supplier": "Tushare",
+      "lineage": "EXTERNAL_TUSHARE",
+      "layers": [
+       "RAW"
+      ],
+      "pass": true
+     },
+     {
+      "dataset_id": "EXTERNAL_EVIDENCE_PLANE",
+      "supplier": "MULTI_EXTERNAL",
+      "lineage": "EXTERNAL_MULTI_EXTERNAL",
+      "layers": [
+       "EVIDENCE"
+      ],
+      "pass": true
+     },
+     {
+      "dataset_id": "FACTOR_260_DICTIONARY",
+      "supplier": "JQData",
+      "lineage": "BLACKBOX_RULE_LIBRARY_COPY",
+      "layers": [
+       "FACTOR_DICTIONARY"
+      ],
+      "pass": true
+     },
+     {
+      "dataset_id": "FACTOR_VALUE",
+      "supplier": "JQData",
+      "lineage": "NOT_DOWNLOADED_BY_POLICY",
+      "layers": [
+       "FACTOR_VALUE"
+      ],
+      "pass": true
+     },
+     {
+      "dataset_id": "STRATEGY_OUTPUT",
+      "supplier": "BLACKBOX_INTERNAL",
+      "lineage": "INTERNAL_RESEARCH_OUTPUT",
+      "layers": [
+       "STRATEGY_OUTPUT"
+      ],
+      "pass": true
+     },
+     {
+      "dataset_id": "US_MARKET",
+      "supplier": "EXTERNAL",
+      "lineage": "EXTERNAL_EXTERNAL",
+      "layers": [
+       "EVIDENCE"
+      ],
+      "pass": true
+     }
+    ],
+    "external_supplier_using_jq_contract": [],
+    "factor_value_blocked_by_policy": true
+   }
+  },
+  "2_real_local_read_pipeline": {
+   "pass": true,
+   "detail": {
+    "request": {
+     "dataset_id": "PRICE_STOCK_DAILY",
+     "security": "000001.XSHE",
+     "window": [
+      "2026-06-01",
+      "2026-06-30"
+     ],
+     "frequency": "daily",
+     "fields": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "amount"
+     ]
+    },
+    "registry_resolve": {
+     "dataset": "PRICE_STOCK_DAILY",
+     "layer": "CLEAN",
+     "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+     "release": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439"
+    },
+    "standard_object_keys": [
+     "adjust_note",
+     "columns",
+     "data",
+     "dataset",
+     "duplicates_removed",
+     "field_null_ratio",
+     "fq_in_source",
+     "fq_requested",
+     "frequency",
+     "knowable_time_rule",
+     "n_source_files",
+     "notes",
+     "null_fields",
+     "price_basis_in_source",
+     "reject_reason",
+     "returned_rows",
+     "row_count",
+     "source_asof",
+     "source_files",
+     "source_layer",
+     "source_release",
+     "status",
+     "truncated"
+    ],
+    "daily": {
+     "status": "OK",
+     "source_layer": "CLEAN",
+     "source_release": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+     "source_asof": "2026-09-24",
+     "n_source_files": 182,
+     "row_count": 10,
+     "returned_rows": 10,
+     "columns": [
+      "timestamp",
+      "code",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "amount",
+      "fq"
+     ],
+     "fq_requested": "none",
+     "adjust_note": "RAW_NONE 未复权；factor 为独立列，不并入 close，不得默认 factor=1",
+     "field_null_ratio": {
+      "open": 0.0,
+      "high": 0.0,
+      "low": 0.0,
+      "close": 0.0,
+      "volume": 0.0,
+      "amount": 0.0
+     },
+     "duplicates_removed": 0
+    },
+    "daily_first_rows": [
+     {
+      "timestamp": "2026-06-01",
+      "code": "000001.XSHE",
+      "open": 10.55,
+      "high": 10.64,
+      "low": 10.47,
+      "close": 10.64,
+      "volume": 98600834.0,
+      "amount": 1042306455.86,
+      "fq": "None"
+     },
+     {
+      "timestamp": "2026-06-02",
+      "code": "000001.XSHE",
+      "open": 10.63,
+      "high": 10.75,
+      "low": 10.59,
+      "close": 10.73,
+      "volume": 91456500.0,
+      "amount": 978159336.86,
+      "fq": "None"
+     },
+     {
+      "timestamp": "2026-06-03",
+      "code": "000001.XSHE",
+      "open": 10.68,
+      "high": 10.71,
+      "low": 10.57,
+      "close": 10.64,
+      "volume": 85242874.0,
+      "amount": 906870268.35,
+      "fq": "None"
+     }
+    ],
+    "minute": {
+     "status": "OK",
+     "source_layer": "CLEAN",
+     "n_source_files": 40,
+     "row_count": 240,
+     "columns": [
+      "timestamp",
+      "code",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "amount",
+      "fq",
+      "price_basis"
+     ],
+     "fq_in_source": [
+      "None"
+     ],
+     "price_basis_in_source": [
+      "RAW_NONE"
+     ],
+     "knowable_time_rule": "minute_bar_end_visible_at_bar_close（分钟收盘可见）"
+    },
+    "minute_first_row": [
+     {
+      "timestamp": "2026-09-11 09:31:00",
+      "code": "000001.XSHE",
+      "open": 11.82,
+      "high": 11.86,
+      "low": 11.82,
+      "close": 11.84,
+      "volume": 2040800.0,
+      "amount": 24171122.0,
+      "fq": null,
+      "price_basis": "RAW_NONE"
+     }
+    ],
+    "calendar_days_in_sep_2026": 18,
+    "security_master_rows": 15626,
+    "rich_dayfile_fields": {
+     "status": "OK",
+     "null_ratio": {
+      "close": 0.0,
+      "factor": 0.0,
+      "paused": 0.0,
+      "high_limit": 0.0,
+      "low_limit": 0.0
+     },
+     "row": [
+      {
+       "timestamp": "2026-09-10 00:00:00",
+       "code": "000001.XSHE",
+       "close": 11.85,
+       "factor": 1.0,
+       "paused": 0.0,
+       "high_limit": 12.87,
+       "low_limit": 10.53,
+       "fq": null
+      }
+     ]
+    },
+    "dividend_pit": {
+     "asof_2026_01_01_rows": 0,
+     "asof_2026_09_30_rows": 3,
+     "sample_late": [
+      {
+       "code": "000001.XSHE",
+       "report_date": "2025-12-31",
+       "bonus_type": "年度分红",
+       "announce_date": "2026-06-05",
+       "board_plan_pub_date": "2026-03-21",
+       "implementation_pub_date": "2026-06-05",
+       "ex_date": "2026-06-12",
+       "dividend_ratio": null,
+       "transfer_ratio": null,
+       "bonus_ratio_rmb": "3.6",
+       "plan_progress": "实施方案",
+       "knowable_at": "announce_date"
+      }
+     ],
+     "rule": "事件发生日=ex_date；可知时点=最晚公告日（asof 过滤生效）"
+    },
+    "raw_vs_clean_crosscheck": {
+     "window": [
+      "2026-09-10",
+      "2026-09-10"
+     ],
+     "raw_files": [
+      "stock_daily__incremental_gap_20260910_20260910__full__20260917_145054.parquet",
+      "stock_daily__batch_0__2026__none_adj__v1__20260612_183025.parquet",
+      "stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet"
+     ],
+     "clean_files": [
+      "stock_ohlcv_daily__stock_daily__incremental_gap_20260910_20260910__full__20260917_145054.parquet",
+      "stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet",
+      "stock_daily__batch_10__2026__none_adj__v1__gapfill_20260702_154610.parquet"
+     ],
+     "raw_close": [
+      11.85
+     ],
+     "clean_close": [
+      11.85
+     ],
+     "agree": true
+    }
+   }
+  },
+  "3_explicit_rejections": {
+   "pass": true,
+   "detail": {
+    "cases": [
+     {
+      "case": "unknown_code",
+      "status": "REJECTED",
+      "reason": "CODE_NOT_FOUND_IN_SELECTED_SEGMENT",
+      "rows": 0
+     },
+     {
+      "case": "unknown_dataset",
+      "status": "REJECTED",
+      "reason": "UNKNOWN_DATASET"
+     },
+     {
+      "case": "unsupported_frequency",
+      "status": "REJECTED",
+      "reason": "UNSUPPORTED_FREQUENCY"
+     },
+     {
+      "case": "unbounded_no_security",
+      "status": "REJECTED",
+      "reason": "UNBOUNDED_REQUEST_NO_SECURITY"
+     },
+     {
+      "case": "unbounded_no_window",
+      "status": "REJECTED",
+      "reason": "UNBOUNDED_REQUEST_NO_WINDOW"
+     },
+     {
+      "case": "window_too_wide",
+      "status": "REJECTED",
+      "reason": "WINDOW_TOO_WIDE"
+     },
+     {
+      "case": "missing_required_field",
+      "status": "REJECTED",
+      "reason": "MISSING_REQUIRED_FIELD",
+      "missing": [
+       "pe_ratio"
+      ]
+     },
+     {
+      "case": "window_outside_cleaned_coverage",
+      "status": "PARTIAL",
+      "reason": "NO_ROW_FOR_CODE_IN_WINDOW",
+      "note": "clean 平面仅 2026 批次；应显式拒绝/部分，不得伪造"
+     },
+     {
+      "case": "field_null_in_selected_segment(factor_only_in_dayfile)",
+      "status": "PARTIAL",
+      "reason": "FIELD_NULL_IN_SELECTED_SEGMENT",
+      "null_fields": [
+       "factor"
+      ],
+      "note": "batch 段 factor 全空 → PARTIAL，不得默认 factor=1"
+     },
+     {
+      "case": "control_dayfile_segment_has_factor_and_limits",
+      "status": "OK",
+      "null_fields": [],
+      "sample": [
+       {
+        "timestamp": "2026-09-10 00:00:00",
+        "code": "000001.XSHE",
+        "close": 11.85,
+        "factor": 1.0,
+        "paused": 0.0,
+        "high_limit": 12.87,
+        "low_limit": 10.53,
+        "fq": null
+       }
+      ]
+     },
+     {
+      "case": "extras_column_family_mismatch",
+      "status": "PARTIAL",
+      "reason": null,
+      "available": []
+     },
+     {
+      "case": "split_dividend_unbounded",
+      "status": "REJECTED",
+      "reason": "UNBOUNDED_REQUEST_NO_SECURITY"
+     },
+     {
+      "case": "unsupported_fq",
+      "status": "REJECTED",
+      "reason": "UNSUPPORTED_FQ"
+     }
+    ],
+    "fake_pass_cases": []
+   }
+  },
+  "4_readonly_source_unchanged": {
+   "pass": true,
+   "detail": {
+    "sources": {
+     "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json": {
+      "mtime_ns": 1792241075070219000,
+      "size": 1160
+     },
+     "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json": {
+      "mtime_ns": 1792438560746964100,
+      "size": 1531
+     },
+     "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json": {
+      "mtime_ns": 1792402305821588800,
+      "size": 5583
+     },
+     "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\master_registry_R1\\MASTER_RULE_LIBRARY_REGISTRY_R1.json": {
+      "mtime_ns": 1792440156571540300,
+      "size": 21783
+     }
+    },
+    "unchanged": true,
+    "outputs_confined_to": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+    "n_output_files": 11,
+    "network_used": false,
+    "download_called": false,
+    "order_called": false,
+    "env_read": false,
+    "production_pointer_written": false
+   }
+  }
+ },
+ "engine_interface": {
+  "base_file": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine\\bullet_trade\\data\\providers\\base.py",
+  "mode": "STATIC_AST_CONTRACT_CHECK",
+  "abstract_methods": {
+   "get_price": [
+    "security",
+    "start_date",
+    "end_date",
+    "frequency",
+    "fields",
+    "skip_paused",
+    "fq",
+    "count",
+    "panel",
+    "fill_paused",
+    "pre_factor_ref_date",
+    "prefer_engine",
+    "force_no_engine"
+   ],
+   "get_trade_days": [
+    "start_date",
+    "end_date",
+    "count"
+   ],
+   "get_all_securities": [
+    "types",
+    "date"
+   ],
+   "get_index_stocks": [
+    "index_symbol",
+    "date"
+   ],
+   "get_split_dividend": [
+    "security",
+    "start_date",
+    "end_date"
+   ]
+  },
+  "candidate_implementation": {
+   "get_price": {
+    "present": true,
+    "params": [
+     "self",
+     "security",
+     "start_date",
+     "end_date",
+     "frequency",
+     "fields",
+     "fq",
+     "layer"
+    ],
+    "engine_params_missing_in_candidate": [
+     "skip_paused",
+     "count",
+     "panel",
+     "fill_paused",
+     "pre_factor_ref_date",
+     "prefer_engine",
+     "force_no_engine"
+    ]
+   },
+   "get_trade_days": {
+    "present": true,
+    "params": [
+     "self",
+     "start_date",
+     "end_date",
+     "count"
+    ],
+    "engine_params_missing_in_candidate": []
+   },
+   "get_all_securities": {
+    "present": true,
+    "params": [
+     "self",
+     "types",
+     "date"
+    ],
+    "engine_params_missing_in_candidate": []
+   },
+   "get_index_stocks": {
+    "present": true,
+    "params": [
+     "self",
+     "index_symbol",
+     "date"
+    ],
+    "engine_params_missing_in_candidate": []
+   },
+   "get_split_dividend": {
+    "present": true,
+    "params": [
+     "self",
+     "security",
+     "start_date",
+     "end_date",
+     "asof"
+    ],
+    "engine_params_missing_in_candidate": []
+   }
+  },
+  "all_abstract_implemented": true,
+  "missing_methods": [],
+  "return_type_contract": "engine abstract methods declare -> pd.DataFrame; candidate returns dict envelope (adapter conversion required before engine wiring)",
+  "dependency_probe": {
+   "system_py312": "IMPORT_FAIL: ModuleNotFoundError: No module named 'pandas'",
+   "blackbox_venv": "IMPORT_FAIL: No Python at '\"C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python312\\python.exe'"
+  },
+  "runtime_import": "BLOCKED_PANDAS_ABSENT",
+  "engine_wired": false,
+  "formal_backtest_active": false,
+  "status": "INTERFACE_GAP_IDENTIFIED",
+  "blocking_items": [
+   "pandas 未安装在 system py312 → 引擎 base.py 无法导入（真依赖缺口，非命名问题）",
+   "E:\\BLACKBOX\\.venv 的 pyvenv.cfg 指向 C:\\Users\\ThinkPad\\... → 本机 venv 失效",
+   "候选缺 get_split_dividend；返回 dict 而非 DataFrame（适配层待做）"
+  ],
+  "note": "接口包裹需解决依赖+返回类型；本轮不翻 formal_backtest_active、不改工厂、不接入引擎调用链"
+ },
+ "readonly_proof": {},
+ "verdict": {
+  "checks_passed": 4,
+  "checks_total": 4,
+  "all_pass": true,
+  "engine_interface_fit": "INTERFACE_GAP_IDENTIFIED",
+  "engine_wired": false,
+  "factor_value_available": false,
+  "production_changed": false,
+  "downloads": 0,
+  "api_calls": 0
+ }
+}
