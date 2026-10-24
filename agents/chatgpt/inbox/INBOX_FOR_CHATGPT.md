@@ -661,3 +661,11 @@ Prior R08 delivery remains visible and uncorrected in place; this bundle is appe
   - `access_resources/SUPPLEMENT_STATUS.json`
 - readback: blob-sha verified for 17/17 files
 - status: FOUNDATION_ACCEPTANCE=false; ORDER_ALLOWED=false
+
+## R10 pagination offline repair — 2026-10-25T06:13:06+0800
+- task: `BLACKBOX_FOUNDATION_R10_PAGINATION_OFFLINE_REPAIR_20261025`
+- delivery: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/pagination_offline_repair/`
+- result: pinned CACHE preflight exit 0 (`MUST_READ_PRECHECK=PASS`); pinned offline test executed once, `tests_run=18 passed=true exit 0`
+- scope: OFFLINE_LIST_MODEL_ONLY; synthetic list controls only, no supplier call, no production install
+- corrections carried append-only: no UTF-8 BOM in the engine bytes; file presence is not executed historical evidence; `index=True` does not imply an ordinal date
+- `FOUNDATION_ACCEPTANCE=false`; `NEW_DATA_ACQUISITION_AUTHORIZED=false`; `ORDER_ALLOWED=false`; B1..B7 open
