@@ -1,0 +1,855 @@
+{
+  "schema_version": "1.0.0",
+  "round_id": "BLACKBOX_FOUNDATION_20261024_R05",
+  "dataset_id": "stock_ohlcv_daily",
+  "fq": null,
+  "price_basis": "RAW_NONE",
+  "trade_dates": [
+    "2026-08-31",
+    "2026-09-01"
+  ],
+  "purpose": "exact inputs for a GPT-authored CLEAN/CACHE repair; no cleaning, no CACHE write, no quota spent",
+  "observed_claim_form": {
+    "L1_CACHE_STOCK_DAILY_PIT_R1": "UNKNOWN_PARTITION_GAP / directly observed 0 rows on both dates",
+    "L2_CLEANING_CURRENT_RELEASE": "units absent from the active release; present in two intermediate tip releases",
+    "L3_VENDOR_RAW_P2": "AVAILABLE",
+    "DATA_ABSENT_CLAIM_ALLOWED": false,
+    "NO_DATA_forbidden": true,
+    "SOURCE_MISSING_forbidden": true
+  },
+  "existing_records_that_already_state_this_incident": [
+    {
+      "path": "E:\\BLACKBOX\\运行\\BLACKBOX_STOCK_DAILY_TIP_PARTITION_ATTRIBUTION_CURRENT.json",
+      "sha256": "7afe1cd09d92ab993ca82e83c11bc6c4201c5bce6f93a998a2fe911f551e24c1",
+      "incident_id": "STOCK_DAILY_TIP_HOLE_20260831_20260901",
+      "relation": "pre-existing attribution (2026-09-03). R05 confirms it and replaces its approximate cause wording with the observed release-graph evidence below. Its forbidden claims and required claim form are preserved."
+    },
+    {
+      "path": "E:\\BLACKBOX\\运行\\每日下载日志\\DAILY_DOWNLOAD_CONTINUITY.jsonl",
+      "relation": "entries 592-594 record R30 asof=2026-08-31 daily A/ETF/index PASS (5212/1623/7) and R30 COMPLETE; entry 601 records STOCK_DAILY_TIP_HOLE_20260831_20260901 with DATA_ABSENT_CLAIM_ALLOWED=false"
+    }
+  ],
+  "raw_inputs": {
+    "2026-08-31": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "bytes": 310665,
+      "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "rows": 5212,
+      "distinct_codes": 5212,
+      "distinct_dates": [
+        "2026-08-31"
+      ],
+      "duplicate_time_code_rows": 0,
+      "schema": [
+        {
+          "name": "time",
+          "type": "timestamp[ns]"
+        },
+        {
+          "name": "code",
+          "type": "large_string"
+        },
+        {
+          "name": "open",
+          "type": "double"
+        },
+        {
+          "name": "high",
+          "type": "double"
+        },
+        {
+          "name": "low",
+          "type": "double"
+        },
+        {
+          "name": "close",
+          "type": "double"
+        },
+        {
+          "name": "volume",
+          "type": "double"
+        },
+        {
+          "name": "money",
+          "type": "double"
+        },
+        {
+          "name": "paused",
+          "type": "double"
+        },
+        {
+          "name": "high_limit",
+          "type": "double"
+        },
+        {
+          "name": "low_limit",
+          "type": "double"
+        },
+        {
+          "name": "avg",
+          "type": "double"
+        },
+        {
+          "name": "pre_close",
+          "type": "double"
+        },
+        {
+          "name": "factor",
+          "type": "double"
+        },
+        {
+          "name": "fq",
+          "type": "null"
+        }
+      ],
+      "null_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0,
+        "money": 0,
+        "paused": 0,
+        "high_limit": 0,
+        "low_limit": 0,
+        "avg": 0,
+        "pre_close": 0,
+        "factor": 0
+      },
+      "fq_column_type": "null",
+      "factor_distinct_values": [
+        1.0
+      ],
+      "paused_distinct_values": [
+        0.0,
+        1.0
+      ],
+      "pre_close_present": true,
+      "high_low_limit_present": true,
+      "st_flag_column_present": false,
+      "adjustment_basis_observed": {
+        "fq": null,
+        "factor_all_one": true,
+        "interpretation": "raw vendor plane, unadjusted; factor column is a passthrough of the vendor unit and equals 1.0"
+      }
+    },
+    "2026-09-01": {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "bytes": 311528,
+      "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "rows": 5214,
+      "distinct_codes": 5214,
+      "distinct_dates": [
+        "2026-09-01"
+      ],
+      "duplicate_time_code_rows": 0,
+      "schema": [
+        {
+          "name": "time",
+          "type": "timestamp[ns]"
+        },
+        {
+          "name": "code",
+          "type": "large_string"
+        },
+        {
+          "name": "open",
+          "type": "double"
+        },
+        {
+          "name": "high",
+          "type": "double"
+        },
+        {
+          "name": "low",
+          "type": "double"
+        },
+        {
+          "name": "close",
+          "type": "double"
+        },
+        {
+          "name": "volume",
+          "type": "double"
+        },
+        {
+          "name": "money",
+          "type": "double"
+        },
+        {
+          "name": "paused",
+          "type": "double"
+        },
+        {
+          "name": "high_limit",
+          "type": "double"
+        },
+        {
+          "name": "low_limit",
+          "type": "double"
+        },
+        {
+          "name": "avg",
+          "type": "double"
+        },
+        {
+          "name": "pre_close",
+          "type": "double"
+        },
+        {
+          "name": "factor",
+          "type": "double"
+        },
+        {
+          "name": "fq",
+          "type": "null"
+        }
+      ],
+      "null_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0,
+        "money": 0,
+        "paused": 0,
+        "high_limit": 0,
+        "low_limit": 0,
+        "avg": 0,
+        "pre_close": 0,
+        "factor": 0
+      },
+      "fq_column_type": "null",
+      "factor_distinct_values": [
+        1.0
+      ],
+      "paused_distinct_values": [
+        0.0,
+        1.0
+      ],
+      "pre_close_present": true,
+      "high_low_limit_present": true,
+      "st_flag_column_present": false,
+      "adjustment_basis_observed": {
+        "fq": null,
+        "factor_all_one": true,
+        "interpretation": "raw vendor plane, unadjusted; factor column is a passthrough of the vendor unit and equals 1.0"
+      }
+    }
+  },
+  "raw_sidecar_provenance": {
+    "2026-08-31": {
+      "sidecar_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
+      "sidecar_sha256": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
+      "unit_id": "stock_ohlcv_daily__20260831_20260831",
+      "generated_at": "2026-08-31T07:51:11+00:00",
+      "gap_start": "2026-08-31",
+      "gap_end": "2026-08-31",
+      "declared_clean_rel": "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "declared_stage_path": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_FULL_DATA_INCREMENT_R30_ASOF_20260831\\04_REPAIR_STAGING_DATA\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "declared_stage_path_exists_now": false,
+      "producing_task_slug": "BLACKBOX_FULL_DATA_INCREMENT_R30_ASOF_20260831"
+    },
+    "2026-09-01": {
+      "sidecar_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json",
+      "sidecar_sha256": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
+      "unit_id": "stock_ohlcv_daily__20260901_20260901",
+      "generated_at": "2026-09-01T08:18:30+00:00",
+      "gap_start": "2026-09-01",
+      "gap_end": "2026-09-01",
+      "declared_clean_rel": "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "declared_stage_path": "D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_FULL_DATA_INCREMENT_R31_ASOF_20260901\\04_REPAIR_STAGING_DATA\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "declared_stage_path_exists_now": false,
+      "producing_task_slug": "BLACKBOX_FULL_DATA_INCREMENT_R31_ASOF_20260901"
+    }
+  },
+  "clean_plane": {
+    "active_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+    "active_standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard",
+    "expected_target_paths": {
+      "2026-08-31": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "2026-09-01": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+    },
+    "expected_target_paths_present_now": {
+      "2026-08-31": false,
+      "2026-09-01": false
+    },
+    "direct_observation": "directory listing of the active release standard/price/stock_ohlcv_daily: 232 parquet files, neither target present",
+    "active_release_file_count": 232,
+    "intermediate_releases_that_DO_contain_the_units": [
+      {
+        "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260831_20260831_092618",
+        "contains": "2026-08-31",
+        "file": "stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet"
+      },
+      {
+        "release_id": "BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260831_20260831_164223",
+        "contains": "2026-08-31",
+        "file": "stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet"
+      },
+      {
+        "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260901_20260901_100100",
+        "contains": "2026-09-01",
+        "file": "stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+      },
+      {
+        "release_id": "BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260901_20260901_172742",
+        "contains": "2026-09-01",
+        "file": "stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+      }
+    ],
+    "note": "these four releases are sealed and read-only; they are evidence only, not repair targets"
+  },
+  "cache_plane": {
+    "active_cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "direct_observation": {
+      "STOCK_DAILY_RAW_PIT_R1": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_RAW_PIT_R1\\year=2026\\part_2026.parquet",
+        "rows": 949470,
+        "distinct_dates_in_2026_partition": 176,
+        "min_date": "2026-01-05",
+        "max_date": "2026-09-24",
+        "target_date_observation": {
+          "2026-08-28": {
+            "present": true,
+            "rows": 5212
+          },
+          "2026-08-31": {
+            "present": false,
+            "rows": 0
+          },
+          "2026-09-01": {
+            "present": false,
+            "rows": 0
+          },
+          "2026-09-02": {
+            "present": true,
+            "rows": 5215
+          }
+        },
+        "observation_method": "direct pyarrow read of the 2026 partition, date equality per calendar day"
+      },
+      "STOCK_DAILY_PIT_R1": {
+        "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+        "rows": 949470,
+        "distinct_dates_in_2026_partition": 176,
+        "min_date": "2026-01-05",
+        "max_date": "2026-09-24",
+        "target_date_observation": {
+          "2026-08-28": {
+            "present": true,
+            "rows": 5212
+          },
+          "2026-08-31": {
+            "present": false,
+            "rows": 0
+          },
+          "2026-09-01": {
+            "present": false,
+            "rows": 0
+          },
+          "2026-09-02": {
+            "present": true,
+            "rows": 5215
+          }
+        },
+        "observation_method": "direct pyarrow read of the 2026 partition, date equality per calendar day"
+      }
+    },
+    "absence_is_directly_verified": true
+  },
+  "adjacent_unit_mapping_proof": {
+    "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+    "clean_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+    "raw_sha256": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+    "clean_sha256": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+    "row_identical_after_load": true,
+    "note": "byte-level content identical after load: CLEAN is a straight passthrough copy of the RAW unit for this domain",
+    "established_rule": "CLEAN standard/price/stock_ohlcv_daily/<domain>__<raw unit basename>.parquet is a passthrough copy of the RAW unit; row count, column set and values match exactly",
+    "raw_profiles": {
+      "raw": {
+        "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+        "bytes": 310621,
+        "sha256": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+        "rows": 5215,
+        "distinct_codes": 5215,
+        "distinct_dates": [
+          "2026-09-02"
+        ],
+        "duplicate_time_code_rows": 0,
+        "schema": [
+          {
+            "name": "time",
+            "type": "timestamp[ns]"
+          },
+          {
+            "name": "code",
+            "type": "large_string"
+          },
+          {
+            "name": "open",
+            "type": "double"
+          },
+          {
+            "name": "high",
+            "type": "double"
+          },
+          {
+            "name": "low",
+            "type": "double"
+          },
+          {
+            "name": "close",
+            "type": "double"
+          },
+          {
+            "name": "volume",
+            "type": "double"
+          },
+          {
+            "name": "money",
+            "type": "double"
+          },
+          {
+            "name": "paused",
+            "type": "double"
+          },
+          {
+            "name": "high_limit",
+            "type": "double"
+          },
+          {
+            "name": "low_limit",
+            "type": "double"
+          },
+          {
+            "name": "avg",
+            "type": "double"
+          },
+          {
+            "name": "pre_close",
+            "type": "double"
+          },
+          {
+            "name": "factor",
+            "type": "double"
+          },
+          {
+            "name": "fq",
+            "type": "null"
+          }
+        ],
+        "null_counts": {
+          "open": 0,
+          "high": 0,
+          "low": 0,
+          "close": 0,
+          "volume": 0,
+          "money": 0,
+          "paused": 0,
+          "high_limit": 0,
+          "low_limit": 0,
+          "avg": 0,
+          "pre_close": 0,
+          "factor": 0
+        },
+        "fq_column_type": "null",
+        "factor_distinct_values": [
+          1.0
+        ],
+        "paused_distinct_values": [
+          0.0,
+          1.0
+        ],
+        "pre_close_present": true,
+        "high_low_limit_present": true,
+        "st_flag_column_present": false,
+        "adjustment_basis_observed": {
+          "fq": null,
+          "factor_all_one": true,
+          "interpretation": "raw vendor plane, unadjusted; factor column is a passthrough of the vendor unit and equals 1.0"
+        }
+      },
+      "clean": {
+        "path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily\\stock_ohlcv_daily__stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+        "bytes": 310621,
+        "sha256": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+        "rows": 5215,
+        "distinct_codes": 5215,
+        "distinct_dates": [
+          "2026-09-02"
+        ],
+        "duplicate_time_code_rows": 0,
+        "schema": [
+          {
+            "name": "time",
+            "type": "timestamp[ns]"
+          },
+          {
+            "name": "code",
+            "type": "large_string"
+          },
+          {
+            "name": "open",
+            "type": "double"
+          },
+          {
+            "name": "high",
+            "type": "double"
+          },
+          {
+            "name": "low",
+            "type": "double"
+          },
+          {
+            "name": "close",
+            "type": "double"
+          },
+          {
+            "name": "volume",
+            "type": "double"
+          },
+          {
+            "name": "money",
+            "type": "double"
+          },
+          {
+            "name": "paused",
+            "type": "double"
+          },
+          {
+            "name": "high_limit",
+            "type": "double"
+          },
+          {
+            "name": "low_limit",
+            "type": "double"
+          },
+          {
+            "name": "avg",
+            "type": "double"
+          },
+          {
+            "name": "pre_close",
+            "type": "double"
+          },
+          {
+            "name": "factor",
+            "type": "double"
+          },
+          {
+            "name": "fq",
+            "type": "null"
+          }
+        ],
+        "null_counts": {
+          "open": 0,
+          "high": 0,
+          "low": 0,
+          "close": 0,
+          "volume": 0,
+          "money": 0,
+          "paused": 0,
+          "high_limit": 0,
+          "low_limit": 0,
+          "avg": 0,
+          "pre_close": 0,
+          "factor": 0
+        },
+        "fq_column_type": "null",
+        "factor_distinct_values": [
+          1.0
+        ],
+        "paused_distinct_values": [
+          0.0,
+          1.0
+        ],
+        "pre_close_present": true,
+        "high_low_limit_present": true,
+        "st_flag_column_present": false,
+        "adjustment_basis_observed": {
+          "fq": null,
+          "factor_all_one": true,
+          "interpretation": "raw vendor plane, unadjusted; factor column is a passthrough of the vendor unit and equals 1.0"
+        }
+      }
+    }
+  },
+  "missing_clean_units_vs_raw_units": {
+    "raw_incremental_gap_units": 42,
+    "clean_incremental_gap_units": 38,
+    "raw_units_without_clean_counterpart": [
+      "stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "stock_ohlcv_daily__stock_daily__incremental_gap_20260910_20260910__full__20260917_144821.parquet",
+      "stock_ohlcv_daily__stock_daily__incremental_gap_20260924_20260924__full__20260924_214242.parquet"
+    ],
+    "how_the_other_two_differ": "2026-09-10 and 2026-09-24 each have a second, later RAW unit of the same trade date (145054 and 20260925_030125) and the later unit IS present in CLEAN. Those two are superseded duplicates, not omissions. The two target dates have exactly one RAW unit each and no CLEAN file at all, so a dedupe rule cannot explain their absence."
+  },
+  "release_lineage_window_20260820_20260909": [
+    {
+      "cleaning_as_of": "2026-08-20",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R32_ASOF_20260820_20260821_004621",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R31_ASOF_20260819_20260820_010011",
+      "sealed_at": "2026-08-20T16:50:23+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 209,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-08-21",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R34_ASOF_20260821_20260822_004208",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R32_ASOF_20260820_20260821_004621",
+      "sealed_at": "2026-08-21T16:45:46+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 210,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-08-21",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R34_ASOF_20260821_20260822_004221",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R32_ASOF_20260820_20260821_004621",
+      "sealed_at": "2026-08-21T16:45:46+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 210,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-08-24",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R35_ASOF_20260824_20260824_173809",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R34_ASOF_20260821_20260822_004221",
+      "sealed_at": "2026-08-24T09:42:14+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 211,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-08-25",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R36_ASOF_20260825_20260826_011428",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R35_ASOF_20260824_20260824_173809",
+      "sealed_at": "2026-08-25T17:21:20+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 212,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-08-26",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R37_ASOF_20260826_20260826_171720",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R36_ASOF_20260825_20260826_011428",
+      "sealed_at": "2026-08-26T09:21:38+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 213,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-08-27",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R38_ASOF_20260827_20260827_182308",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R37_ASOF_20260826_20260826_171720",
+      "sealed_at": "2026-08-27T10:26:42+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 214,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-08-28",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260828_20260829_043126",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R38_ASOF_20260827_20260827_182308",
+      "sealed_at": "2026-08-28T20:38:28+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 215,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-08-31",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260831_20260831_164223",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260828_20260828_211339",
+      "sealed_at": "2026-08-31T08:50:36+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 216,
+      "has_20260831_unit": true,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-09-01",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260901_20260901_172742",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260828_20260828_211339",
+      "sealed_at": "2026-09-01T09:33:52+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 216,
+      "has_20260831_unit": false,
+      "has_20260901_unit": true
+    },
+    {
+      "cleaning_as_of": "2026-09-02",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260828_20260828_211339",
+      "sealed_at": "2026-09-02T17:20:52+00:00",
+      "carry_forward_method": "HARD_LINK_PLUS_NEW_FILE_HASH_ONLY",
+      "stock_ohlcv_daily_file_count": 216,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-09-03",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R40_DAILY_TIP_ASOF_20260903_20260904_004118",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260902_20260902_181530",
+      "sealed_at": "2026-09-03T16:41:20+00:00",
+      "carry_forward_method": null,
+      "stock_ohlcv_daily_file_count": 217,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-09-04",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R42_DAILY_TIP_ASOF_20260904_20260907_003048",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R41_TRADEABILITY_WEIGHT_ASOF_20260903_20260904_042230",
+      "sealed_at": "2026-09-06T16:30:51+00:00",
+      "carry_forward_method": null,
+      "stock_ohlcv_daily_file_count": 218,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-09-07",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R43_DAILY_TIP_ASOF_20260907_20260908_094555",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260904_20260906_175025",
+      "sealed_at": "2026-09-08T01:45:57+00:00",
+      "carry_forward_method": null,
+      "stock_ohlcv_daily_file_count": 219,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-09-08",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R44_DAILY_TIP_ASOF_20260908_20260909_171553",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260907_20260908_020116",
+      "sealed_at": "2026-09-09T09:15:55+00:00",
+      "carry_forward_method": null,
+      "stock_ohlcv_daily_file_count": 220,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    },
+    {
+      "cleaning_as_of": "2026-09-09",
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260909_20260909_182717",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260908_20260909_093101",
+      "sealed_at": "2026-09-09T10:27:21+00:00",
+      "carry_forward_method": null,
+      "stock_ohlcv_daily_file_count": 221,
+      "has_20260831_unit": false,
+      "has_20260901_unit": false
+    }
+  ],
+  "observed_mechanism": {
+    "statement": "Every 2026-08-31 / 2026-09-01 / 2026-09-02 tip release in this window was parented to the SAME older release BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260828_20260828_211339 (215 stock_ohlcv_daily files) and then added only its own new unit, giving 216 files each time. Parent hardlink carry-forward therefore cannot see a unit that a sibling release introduced, so each day's unit survives only in the release that created it and disappears from every later release.",
+    "numeric_proof": {
+      "parent_20260828_R33_file_count": 215,
+      "release_20260831_file_count": 216,
+      "release_20260901_file_count": 216,
+      "release_20260902_file_count": 216,
+      "expected_if_lineage_were_contiguous": {
+        "20260901": 217,
+        "20260902": 218
+      }
+    },
+    "why_this_is_not_a_cleaning_or_supplier_defect": [
+      "the units were cleaned successfully at the time: sealed releases R33/R39 asof 2026-08-31 and 2026-09-01 each contain them",
+      "the RAW units are present and their sidecars hash-match their bytes",
+      "no quarantine or ledger row exists for either unit; the omission happens in the release graph, not in the row-level cleaning"
+    ],
+    "confidence": "HIGH for the release-graph mechanism; the exact parent-selection function that produced the stale parent could not be quoted (see UE-01)"
+  },
+  "producer_chain": {
+    "step_1_write_raw_and_staging": {
+      "script_family": "post_seal_daily_download_r<N>.py",
+      "supplied_family_copy": "source_bodies/post_seal_daily_download_r8.py",
+      "functions": [
+        "main",
+        "save_unit",
+        "download_universe_daily"
+      ],
+      "observed_reference_lines": {
+        "clean_rel_convention": "post_seal_daily_download_r8.py:414 -> clean_rel=f\"price/stock_ohlcv_daily/stock_ohlcv_daily__{fp.name}\"",
+        "save_unit_body": "post_seal_daily_download_r8.py:204-254 writes the RAW parquet, hard-copies it to 04_REPAIR_STAGING_DATA/<domain>/, writes both .sidecar.json files and appends a PASS item with clean_rel",
+        "staging_manifest": "post_seal_daily_download_r8.py:472 -> wjson(TASK/'08_DAILY_SOURCE_HANDOFF'/'STAGING_MANIFEST.json', handoff)"
+      },
+      "input_selection": "single trade day per run: GAP_START=GAP_END=the as-of date; universe = jq.get_all_securities(types=['stock'], date=GAP_END); batches of 200",
+      "date_filter": "none beyond the single-day request window; there is no multi-day loop and no date-skipping rule"
+    },
+    "step_2_release_ingest": {
+      "script_family": "formal_cleaning_r<N>_build_and_seal_r1.py",
+      "supplied_family_copy": "source_bodies/formal_cleaning_r15_build_and_seal_r1.py",
+      "functions": [
+        "main",
+        "load_staging",
+        "ingest_item",
+        "place_file",
+        "hardlink_tree",
+        "seal_release"
+      ],
+      "observed_reference_lines": {
+        "parent_is_a_constant": "formal_cleaning_r15_build_and_seal_r1.py:23-25 -> PARENT_ID = 'BLACKBOX_FORMAL_CLEANING_R14_...' ; PARENT = RELEASES / PARENT_ID",
+        "carry_forward": "formal_cleaning_r15_build_and_seal_r1.py:337-339 -> hardlink_tree(PARENT/'standard', release_root/'standard') then abort if any copy fails",
+        "input_selection": "formal_cleaning_r15_build_and_seal_r1.py:89-95 -> load_staging() reads 08_DAILY_SOURCE_HANDOFF/STAGING_MANIFEST.json and keeps only items with status == 'PASS'",
+        "placement": "formal_cleaning_r15_build_and_seal_r1.py:108-135 -> ingest_item() places stage_path at release_root/'standard'/clean_rel"
+      },
+      "release_input_records_that_should_have_contained_the_units": [
+        "08_DAILY_SOURCE_HANDOFF/STAGING_MANIFEST.json of the R30 task (asof 2026-08-31) with a PASS item whose clean_rel is the 2026-08-31 target",
+        "08_DAILY_SOURCE_HANDOFF/STAGING_MANIFEST.json of the R31 task (asof 2026-09-01) with a PASS item whose clean_rel is the 2026-09-01 target",
+        "and, critically, a parent_release_id that points at the immediately preceding tip release rather than at R33_FUND_NAV_ASOF_20260828_20260828_211339"
+      ],
+      "record_status_now": "both STAGING_MANIFEST.json files are gone with the archived task directories; ten STAGING_MANIFEST.json files remain elsewhere under E:\\BLACKBOX\\任务 and none references 20260831 or 20260901"
+    },
+    "no_local_cleaning_rule_was_applied_or_invented_by_this_round": true
+  },
+  "minimal_gpt_repair_input_set": {
+    "units_to_ingest": [
+      {
+        "trade_date": "2026-08-31",
+        "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+        "raw_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+        "rows": 5212,
+        "target_clean_rel": "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet"
+      },
+      {
+        "trade_date": "2026-09-01",
+        "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+        "raw_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+        "rows": 5214,
+        "target_clean_rel": "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+      }
+    ],
+    "source_of_truth_for_the_target_path": "the existing RAW sidecar clean_rel field; not a name inferred by this round",
+    "no_download_required": true,
+    "no_quota_required": true,
+    "downstream_after_clean": [
+      "CACHE STOCK_DAILY_RAW_PIT_R1 year=2026 partition rebuild for the two dates",
+      "CACHE STOCK_DAILY_PIT_R1 year=2026 partition rebuild for the two dates",
+      "any derived product whose COVERAGE.json or anti-lookahead proof binds to the 2026 partition bounds"
+    ],
+    "gate_the_repair_must_satisfy": [
+      "parent carry-forward must not be a fixed stale parent; the new release must be parented to the immediately preceding tip release or must reconcile against the union of sibling tip releases",
+      "the resulting release must contain both target files plus everything the parent contained",
+      "a day must not be dropped because a sibling release introduced it; the graph needs either a linear parent chain or an explicit union step",
+      "sealed releases R33/R45 must stay read-only; do not append to them",
+      "do not call download_history and do not re-download existing RAW"
+    ]
+  },
+  "explicitly_not_done_by_this_round": [
+    "no cleaning run",
+    "no release build",
+    "no CACHE write",
+    "no substitution schema",
+    "no append to a sealed release",
+    "no re-download",
+    "no CURRENT switch"
+  ]
+}
