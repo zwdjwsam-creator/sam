@@ -1,0 +1,63 @@
+---
+description: 下载结束必须清洗对齐防穿越防污染 — alwaysApply 全AG硬规则
+alwaysApply: false
+---
+
+
+# BLACKBOX 下载结束必须清洗（防污染）
+
+> rule=`BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1` · 生效 **2026-08-09T08:21:52+0800**  
+> 用户口令原文：数据下载结束后都必须清洗防止污染
+
+## 0. 一句话
+
+**下载批次未完成清洗/对齐 + 防穿越 = 不得宣称 PASS；禁止只堆原始只读造成污染。**
+
+## 1. 强制流水线尾
+
+1. 下载结束  
+2. 正式清洗封板 **或** 域专用对齐封板（如指数分钟 CURRENT_INDEX_MINUTE_ALIGN）  
+3. 防穿越核对  
+4. 切换对应 CURRENT 指针  
+5. `blackbox_data_inventory_top_refresh.py`  
+6. **进入 Cache Compiler → QA → atomic publish CACHE CURRENT**（见 `blackbox_cache_first_workflow_policy.mdc`；未过 CLEAN/ALIGN/PIT 则 `CACHE_PUBLISH=BLOCKED`）
+
+## 2. 「数据更新」R2 绑定
+
+全数据增量口令完成条件 = 下载缺口 **且** 清洗/对齐入 CURRENT。  
+仅 raw 增量、未 ingest → **FAIL / REVIEW_REQUIRED**，不得报「数据更新完成」。
+
+## 3. 禁止
+
+- 用「价格已齐跳过清洗」跳过 **本批新下域**（龙虎榜/复权因子/事件等）  
+- 假称清洗 CURRENT 已含未 ingest 的新 raw  
+- 手改 HAND 伪造清洗 PASS  
+
+## 4. 例外
+
+- 260 聚宽因子数值库：本来就不下载（研究层）  
+- 「更新报告」：不下载，不适用本条  
+
+## 5. SSOT
+
+- `规则库/hand_hard_rules/BLACKBOX_HAND_DOWNLOAD_MUST_CLEAN_ANTILEAK_R1.json`  
+- `运行/BLACKBOX_DOWNLOAD_MUST_CLEAN_ANTILEAK_CURRENT.json`  
+- 与 `blackbox_full_data_update_scope.mdc` 一并生效
+
+## 6. 清洗后进入缓存编译（Cache-First 链）
+
+清洗/对齐/防穿越 PASS 后 **必须** 默认进入 `BLACKBOX_BACKTEST_CACHE_COMPILER_R1` → QA → 发布 CACHE CURRENT。  
+顶层：`blackbox_cache_first_workflow_policy.mdc` · 编译器：`blackbox_backtest_cache_policy.mdc`。
+
+## 7. 外源证据增量（同级强制）
+
+外源（`数据/外部证据/` · TUSHARE/EXCHANGE/COMPANY_PRIMARY/…）增量结束同样必须：
+
+1. CLEAN → PIT（`publication_at`，禁用 end_date 单字段可见）  
+2. 对齐 / 防穿越  
+3. **`SILENT_TRUNCATION=0`**；`returned_rows==5000`（或 ==query_cap）禁止当 COMPLETE  
+4. 禁止写入任何 JQ 产品  
+
+参考：`FUND_ETF_NAV` tip、`BLACKBOX_ACQUISITION_MUST_READ` 分页、年报/披露 5000 静默门。  
+SSOT：`规则库/hand_hard_rules/BLACKBOX_HAND_EXTERNAL_EVIDENCE_CLEAN_ANTILEAK_R1.json`  
+MDC：`blackbox_external_evidence_clean_antileak.mdc`
