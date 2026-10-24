@@ -1,0 +1,36 @@
+{
+ "schema": "R10_SOURCE_BATCH_CHAIN_CORRECTIONS_APPEND_ONLY_1",
+ "rows": [
+  {
+   "id": "C1",
+   "type": "SEQUENCING_DISCLOSURE",
+   "text": "Order executed exactly as instructed: pre-execution byte/SHA pin check, then the single 8-control run, then one --desktop-check. No member was re-pinned and no second driver run was made. PACKAGE.json was placed in the stage directory before any execution, so no staging-incomplete stopped attempt occurred in this round (unlike the prior dirty_branch round)."
+  },
+  {
+   "id": "C2",
+   "type": "READ_SCOPE_DISCLOSURE",
+   "text": "The fixed driver read UNIVERSE.json and DOWNLOAD_STATE.json and reported only parsed metadata. Those two exact paths were then re-read read-only by this executor solely to satisfy the instruction to deliver the original metadata bytes. No directory was enumerated for that step, no other file was opened, and no value was recomputed or repaired."
+  },
+  {
+   "id": "C3",
+   "type": "PRIOR_DELIVERY_REUSE",
+   "text": "The dirty_branch final upload/readback had already been completed under r10_dirty_branch_delivery/FINAL_BYTE_READBACK.json; it was reused and not re-uploaded. No dirty_branch measurement, old-writer run, 13-year Cleaning-vs-CACHE comparison, catalog inventory or original-source lookup was repeated here."
+  },
+  {
+   "id": "C4",
+   "type": "SIDECAR_AGREEMENT_BASIS",
+   "text": "The driver does not emit a per-batch sidecar agreement flag; validate_batch raises and the run would have exited 3 with status STOP on any count/bound/fq/sidecar conflict. A MEASURED result therefore means every one of the 182 sidecars agreed within the driver contract. This is a control-flow property of the supplied code, not an additional independent assertion."
+  },
+  {
+   "id": "C5",
+   "type": "EMPTY_BATCH_INTERPRETATION",
+   "text": "15 of 182 batch parquet files are empty (1,851 B, identical bytes, years 2014-2018, batch indices 006/012/013). They were measured as empty, not rejected, and Cleaning has no keys in those ranges (clean_only_keys=0 everywhere). Empty is measurable-but-not-complete; no cause is asserted here."
+  },
+  {
+   "id": "C6",
+   "type": "SCOPE_BOUNDARY",
+   "text": "Key and value identity holds only inside the declared request window ending 2026-08-14. It does not certify post-2026-08-14 records, the 83,503 physical-minus-declared discrepancy, supplier execution, expected historical daily universe or PIT authority. B1..B7 remain OPEN."
+  }
+ ],
+ "append_only": true
+}
