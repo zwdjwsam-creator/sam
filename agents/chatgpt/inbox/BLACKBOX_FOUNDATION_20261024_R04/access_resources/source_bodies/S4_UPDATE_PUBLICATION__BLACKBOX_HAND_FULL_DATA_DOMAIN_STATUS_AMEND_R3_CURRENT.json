@@ -1,0 +1,83 @@
+{
+  "active_rule_id": "BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3",
+  "active_rule_path": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_DOMAIN_STATUS_AMEND_R3.json",
+  "authorized_at_cn": "2026-08-12T01:18:42+0800",
+  "domains": {
+    "full_factor_values_library": {
+      "status_new": "REQUIRED",
+      "role": "REQUIRED_FULL_HISTORY_THEN_DAILY_INCREMENTAL",
+      "in_full_data_update": true,
+      "live_permission_probe": "PERMISSION_BLOCKED_PAID_MODULE",
+      "download_action": "SKIP_UNTIL_PERMISSION_UPGRADE",
+      "daily_update_include": false,
+      "do_not_reask_download_each_time": true,
+      "probed_at_cn": "2026-08-13T00:26:50+0800",
+      "probe_receipt": "E:\\BLACKBOX\\运行\\BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+      "sealed_in_full_table": true
+    },
+    "financial_indicator": {
+      "status_new": "REQUIRED",
+      "role": "REQUIRED_FULL_HISTORY",
+      "in_full_data_update": true
+    },
+    "money_flow_abnormal_lock_subscribe": {
+      "status_new": "REQUIRED",
+      "role": "REQUIRED_FULL_HISTORY",
+      "in_full_data_update": true,
+      "live_permission_probe": "PERMISSION_BLOCKED_PAID_MODULE",
+      "download_action": "SKIP_UNTIL_PERMISSION_UPGRADE",
+      "daily_update_include": false,
+      "do_not_reask_download_each_time": true,
+      "probed_at_cn": "2026-08-13T00:26:50+0800",
+      "probe_receipt": "E:\\BLACKBOX\\运行\\BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+      "sealed_in_full_table": true
+    },
+    "jq260_factor_values_library": {
+      "status_new": "TARGET_REQUIRED + REPROBE",
+      "role": "TARGET_REQUIRED_SUBJECT_TO_PERMISSION_REPROBE",
+      "in_full_data_update": true,
+      "live_permission_probe": "PERMISSION_BLOCKED_PAID_MODULE",
+      "download_action": "SKIP_UNTIL_PERMISSION_UPGRADE",
+      "daily_update_include": false,
+      "do_not_reask_download_each_time": true,
+      "probed_at_cn": "2026-08-13T00:26:50+0800",
+      "probe_receipt": "E:\\BLACKBOX\\运行\\BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+      "sealed_in_full_table": true
+    },
+    "jq260_factor_values": {
+      "status_new": "TARGET_REQUIRED + REPROBE",
+      "role": "TARGET_REQUIRED_SUBJECT_TO_PERMISSION_REPROBE",
+      "in_full_data_update": true,
+      "live_permission_probe": "PERMISSION_BLOCKED_PAID_MODULE",
+      "download_action": "SKIP_UNTIL_PERMISSION_UPGRADE",
+      "daily_update_include": false,
+      "do_not_reask_download_each_time": true,
+      "probed_at_cn": "2026-08-13T00:26:50+0800",
+      "probe_receipt": "E:\\BLACKBOX\\运行\\BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+      "sealed_in_full_table": true
+    },
+    "fq_pre_post": {
+      "status_new": "NOT_NEEDED_NOW",
+      "role": "NOT_REQUIRED",
+      "in_full_data_update": false
+    },
+    "QMT_live": {
+      "status_new": "HARD_BLOCK / OUT_OF_SCOPE",
+      "role": "OUT_OF_SCOPE_HISTORY_FULL_BUILD",
+      "in_full_data_update": false
+    },
+    "security_state": {
+      "live_permission_probe": "PERMISSION_OK",
+      "download_action": "DAILY_INCREMENTAL_REQUIRED",
+      "daily_update_include": true,
+      "do_not_reask_download_each_time": null,
+      "probed_at_cn": "2026-08-13T00:26:50+0800",
+      "probe_receipt": "E:\\BLACKBOX\\运行\\BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json",
+      "gapfill_status": "FILLED_20260731_20260812",
+      "cleaning_release": "BLACKBOX_FORMAL_CLEANING_R23_SECURITY_STATE_ASOF_20260812_20260813_003511",
+      "amended_at_cn": "2026-08-13T00:38:14+0800"
+    }
+  },
+  "permission_probe_sealed_at_cn": "2026-08-13T00:26:50+0800",
+  "permission_probe_receipt": "E:\\BLACKBOX\\运行\\BLACKBOX_DOMAIN_PERMISSION_PROBE_CURRENT.json"
+}
