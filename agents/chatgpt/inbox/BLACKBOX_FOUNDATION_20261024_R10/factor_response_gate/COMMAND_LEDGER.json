@@ -1,0 +1,59 @@
+{
+ "schema": "R10_RESPONSE_GATE_COMMAND_LEDGER_1",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "python": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "commands": [
+  {
+   "seq": 0,
+   "kind": "hub_poll",
+   "exit_code": 0,
+   "result": "new outbox BLACKBOX_FOUNDATION_R10_RESPONSE_GATE_AND_PINNED_REGRESSIONS_20261025.md (6,755 B) and reviews/BLACKBOX_FOUNDATION_R10_RESPONSE_GATE_20261025/ (5 members)"
+  },
+  {
+   "seq": 1,
+   "kind": "stage_and_pin",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_rg_stage.py",
+   "exit_code": 0,
+   "result": "manifest staged first, then 6 pinned members; declared vs observed bytes and sha256 all equal; fixtures reused from local prior delivery"
+  },
+  {
+   "seq": 2,
+   "kind": "genuine_preflight",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\operating_entry\\blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1",
+   "exit_code": 0,
+   "result": "ok=true MUST_READ_PRECHECK=PASS task_class=[CACHE] problems=[]"
+  },
+  {
+   "seq": 3,
+   "kind": "supplied_gate_test",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\factor_response_gate\\test_r10_factor_response_gate.py",
+   "exit_code": 0,
+   "result": "executed once; tests_run=20 passed=true; stderr has one DeprecationWarning from the test body, no failure"
+  }
+ ],
+ "not_executed": [
+  "the supplied gate against real supplier replies",
+  "any historical source repair",
+  "any real-file concat or merge",
+  "installation into the live updater",
+  "new source search",
+  "parquet upload",
+  "original receipt export",
+  "supplier access",
+  "business-data write",
+  "date repair",
+  "factor fill",
+  "CURRENT change",
+  "engine construction",
+  "order"
+ ],
+ "supplier_calls": 0,
+ "flags": {
+  "FOUNDATION_ACCEPTANCE": false,
+  "FORMAL_ENGINE_ADMISSION": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false,
+  "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+ }
+}
