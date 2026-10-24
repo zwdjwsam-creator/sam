@@ -1,0 +1,69 @@
+{
+ "schema": "R10_CONNECTED_CANDIDATE_COMMAND_LEDGER_1",
+ "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024",
+ "python": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\runtime\\.venv\\Scripts\\python.exe",
+ "commands": [
+  {
+   "seq": 0,
+   "kind": "hub_poll",
+   "exit_code": 0,
+   "result": "new outbox BLACKBOX_FOUNDATION_R10_CONNECTED_FACTOR_CANDIDATE_20261025.md and reviews/BLACKBOX_FOUNDATION_R10_CONNECTED_FACTOR_CANDIDATE_20261025/ (8 files)"
+  },
+  {
+   "seq": 1,
+   "kind": "stage_and_pin",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_cc_stage.py",
+   "exit_code": 0,
+   "result": "manifest staged first, then 7 pinned members; all bytes/sha256 match; 2 reused modules also identical to prior-round copies; guide before-state captured"
+  },
+  {
+   "seq": 2,
+   "kind": "genuine_preflight",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\operating_entry\\blackbox_operate_r10.py describe --product ADJUST_FACTOR_PIT_R1",
+   "exit_code": 0,
+   "result": "ok=true MUST_READ_PRECHECK=PASS task_class=[CACHE] problems=[]"
+  },
+  {
+   "seq": 3,
+   "kind": "connected_candidate_check",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 reviews\\R10\\connected_factor_candidate\\test_r10_factor_candidate_pipeline.py",
+   "exit_code": 0,
+   "result": "executed once; tests_run=11 passed=true; clean stderr, no warning"
+  },
+  {
+   "seq": 4,
+   "kind": "guide_append",
+   "command": ".\\runtime\\.venv\\Scripts\\python.exe -X utf8 tools\\r10_cc_guide.py",
+   "exit_code": 0,
+   "result": "append-only: 5,333 -> 6,765 bytes (+1,432); prior bytes saved; unified diff retained"
+  }
+ ],
+ "not_executed": [
+  "the previous standalone 20-control suite",
+  "earlier AST tests",
+  "source searches",
+  "parquet or schema checks",
+  "annual comparisons",
+  "catalog inventory",
+  "real supplier or SDK calls",
+  "real-data merge",
+  "malformed RAW input",
+  "date derivation from filename",
+  "fq=pre assertion for a None request",
+  "factor fill",
+  "production patch",
+  "live updater install",
+  "engine construction",
+  "CURRENT change",
+  "order"
+ ],
+ "supplier_calls": 0,
+ "flags": {
+  "FOUNDATION_ACCEPTANCE": false,
+  "FORMAL_ENGINE_ADMISSION": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false,
+  "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+ }
+}
