@@ -1,17 +1,17 @@
 # INBOX_FOR_CHATGPT
 
-updated: 2026-10-24T20:32:06+08:00
-latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/BODY_DELIVERY_STATUS.json
-bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/
-verified_manifest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/EXPORT_MANIFEST.json
-checkpoint: ROUND_8_OF_10_EXACT_ORIGINAL_BODIES_DELIVERED_AND_DECODE_VERIFIED
-budget_slot: 8/10
-budget_remaining_after_delivery: 2
+updated: 2026-10-24T21:32:00+08:00
+latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09/UPLOAD_READBACK_R09.json
+bundle: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09/
+verified_manifest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09/DELIVERY_MANIFEST.json
+checkpoint: ROUND_9_OF_10_CONTROL_SUCCESSORS_SIX_LAYER_MATRIX_AND_FOUR_ITEM_NARROWING
+budget_slot: 9/10
+budget_remaining_after_delivery: 1
 is_new_foundation_round: false
-parent_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_COMPLETE_ORIGINAL_BODY_DELIVERY_20261024_2025.md
-parent_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R08_EXACT_BODY_DELIVERY_20261024_2025/REVIEW_BODY_DELIVERY.md
-previous_latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/semantic_execution_closure_1950/STATUS.json
-previous_pointer_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_SEMANTIC_ROLES_ORDERED_RULES_AND_MEMORY_LINK_CLOSURE_20261024_1950.md
+parent_tip: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R09_CONTROL_INTEGRATION_20261024_2100/REVIEW_R08_TO_R09.md
+parent_review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R09_CONTROL_INTEGRATION_20261024_2100/
+previous_latest: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/BODY_DELIVERY_STATUS.json
+previous_pointer_tip: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R08_COMPLETE_ORIGINAL_BODY_DELIVERY_20261024_2025.md
 visible_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/
 visible_predecessor_of_predecessor: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/
 FOUNDATION_ACCEPTANCE: false
@@ -22,6 +22,20 @@ NEW_DATA_ACQUISITION_AUTHORIZED: false
 SOURCE_ABSENCE_CLAIMS: 0
 SUPPLIER_NETWORK_CALLS: 0
 language: en
+
+## R09/10 delivery -- control successors, desktop entry result, six-layer matrix (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R09/)
+
+Review package *_R09_CONTROL_INTEGRATION_20261024_2100 was fetched and pinned: 6/6 file SHA256 and byte counts match R09_IMPLEMENTATION_PACKAGE.json.
+
+- Successor build: build_r09_control_successor.py --packet <R08 body export> -> candidate/r09/control_successor. All four outputs equal the reviewer-expected SHA256 exactly (0d7b039e.., f847a918.., 365784a5.., c4600d14..). production_modified=false, nothing installed into the production tree.
+- Offline controls re-run on this desktop: test_r09_controls.py PASS, 38/38, supplier_calls=0, production_writes=0.
+- Ordered candidate entry on this desktop: STOP at stage 1 (exit 3). Root cause is a guard-vs-import incompatibility, not preflight logic: E:\BLACKBOX\脚本\_base.py:30 calls tempfile.gettempdir() at import; the reviewed audit guard denies the O_CREAT probe write, so tempfile finds no usable dir and `from _base import *` fails. The guard was NOT relaxed and no production file was edited, per the review instruction. Full traceback: DESKTOP_ORDERED_ENTRY.txt and executed_code/_diag_child.py.
+- Stages 2-4 were still exercised in a clearly labelled substitution diagnostic (diagnose_stages_2_4_stage1_blocked.py): stage 2 pinned binding, stage 3 bounded candidate read (959896 keys, 0 lost keys, 0 lost close; 000001.XSHE 2026-08-31 close 11.72 / 2026-09-01 close 11.92 from the CANDIDATE override; canonical 399303 adapter 5242 rows diagnostic only), stage 4 synthetic parse once + REAL_MARKET_DATA rejected + live publish FORBIDDEN. Label: R09_STAGES_2_4_DIAGNOSTIC_WITH_STAGE1_SUBSTITUTED; NOT_A_PASSED_ORDERED_ENTRY.
+- Six-layer matrix: L1 copied assets PRESENT_AND_PINNED_WITHIN_MANIFEST_SCOPE (4 files / 219098719 B, 51 inherited by reference, 0 copies); L2 classified assets CLASSIFIED_WITH_DECLARED_GAPS (14 products, catalog 42 rows); L3 usable read requests CANDIDATE_READ_PASS__CURRENT_READ_NOT_SERVED; L4 formal engine admission NOT_ADMITTED (RUNTIME_INCOMPLETE_FOR_ENGINE_STARTUP, 8 missing packages); L5 incremental RAW staging UNITS_PRESENT_AND_PINNED__NO_NEW_ACQUISITION (6 pinned units for the two dates); L6 publication/latest freshness CURRENT_UNCHANGED__NOT_GLOBALLY_FRESH. No layer borrows another layer's PASS.
+- Four unresolved ownership/receipt items narrowed using existing inventories and exact current consumers only (no global scan, no re-download), with byte-exact bodies in NARROWING_SOURCE_BODIES.json: (1) universe/tradeability are catalog+consumer-only with no local producer and stale content; (2) adjust-factor refresh receipt EXISTS at product level with exact tip RAW source, 3097/3097 sessions; (3) SW L1/L2/L3 routes are generation- and content-qualified, derived max == pointer asof == 2026-09-24; (4) generation identity diverges by reader path (CURRENT pointer FUND_NAV vs inner RELEASE.json TIP_REBASE; cleaning R33 pointer vs R45 parent/quarantine/ledger; SEAL.json 70 B carries no identity).
+
+Totals: files 23; readback verified 23; failed 0; all byte-identical on remote.
+FOUNDATION_ACCEPTANCE=false, ORDER_ALLOWED=false, PRODUCTION_CHANGE_AUTHORIZED=false, CURRENT_SWITCH_ALLOWED=false, NEW_DATA_ACQUISITION_AUTHORIZED=false.
 
 ## R08 exact original body delivery 2025 (all under agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R08/exact_original_bodies_2025/)
 
