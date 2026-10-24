@@ -1,0 +1,81 @@
+{
+ "view_product": "FUND_LIKE_ASSET_VIEW_R1",
+ "view_dir": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_LIKE_ASSET_VIEW_R1",
+ "view_files": [
+  "VIEW.json"
+ ],
+ "view_contract": {
+  "unions": [
+   "ETF_DAILY_PIT_R1",
+   "FUND_DAILY_PIT_R1"
+  ],
+  "preserves_asset_type": true,
+  "note": "Consumer-side logical view; base tables keep ETF vs FUND"
+ },
+ "catalog_row": "FUND_LIKE_ASSET_VIEW_R1,L1,ETF_FUND_VIEW,ACTIVE,view,Logical union of ETF+FUND retaining asset_type",
+ "view_is_materialised": false,
+ "view_is_metadata_only": true,
+ "view_reader_implemented": false,
+ "view_writer_call_site": {
+  "script": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_daily_incremental_r1.py",
+  "lines": "547-552",
+  "body": "wjson(rel/'FUND_LIKE_ASSET_VIEW_R1'/'VIEW.json', {'unions':['ETF_DAILY_PIT_R1','FUND_DAILY_PIT_R1'],'preserves_asset_type':True,'note':'Consumer-side logical view; base tables keep ETF vs FUND'})",
+  "note": "only a JSON marker is written; no parquet and no consumer reader exists in the measured tree"
+ },
+ "members": {
+  "ETF_DAILY_PIT_R1": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ETF_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+   "sha256": "25677dab84469eb70011319cc3e06a74522dac6a0513d81d49a26a6d526e43c2",
+   "rows": 63204,
+   "distinct_2026_dates": 39,
+   "date_min": "2026-07-30",
+   "date_max": "2026-09-24",
+   "rows_2026_08_31": 0,
+   "rows_2026_09_01": 0,
+   "status": "SERVED_BUT_MISSING_THE_TWO_DATES"
+  },
+  "FUND_DAILY_PIT_R1": {
+   "path": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_DAILY_PIT_R1",
+   "parquet_files": 0,
+   "status": "UNSERVED_EMPTY_DIRECTORY"
+  }
+ },
+ "union_test": {
+  "required_members": [
+   "ETF_DAILY_PIT_R1",
+   "FUND_DAILY_PIT_R1"
+  ],
+  "empty_members": [
+   "FUND_DAILY_PIT_R1"
+  ],
+  "view_must_reject": true,
+  "reason": "the contract row states a logical union of ETF+FUND retaining asset_type; it does not permit a qualified ETF-only result",
+  "candidate_control": "r08_coverage_gate.require_union_members raises CACHE_PRODUCT_UNAVAILABLE for this exact shape (fixture control 17)"
+ },
+ "nav_is_not_ohlcv": {
+  "FUND_NAV_PIT_R1_dir": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FUND_NAV_PIT_R1",
+  "nav_files": [
+   "PRODUCT_META.json",
+   "data\\history\\PRODUCT_META.json",
+   "data\\history\\QUARANTINE_LEGACY_FUND_NET_VALUE_GAP.json",
+   "data\\history\\history\\PRODUCT_META.json",
+   "data\\history\\history\\QUARANTINE_LEGACY_FUND_NET_VALUE_GAP.json",
+   "data\\history\\history\\history\\ETF_NAV__fund_etf_nav__150001.XSHE_150007.XSHE__2014__v1__20260712_102553.parquet",
+   "data\\history\\history\\history\\ETF_NAV__fund_etf_nav__150001.XSHE_150007.XSHE__2015__v1__20260712_103023.parquet",
+   "data\\history\\history\\history\\ETF_NAV__fund_etf_nav__150001.XSHE_150007.XSHE__2016__v1__20260712_103023.parquet",
+   "data\\history\\history\\history\\ETF_NAV__fund_etf_nav__150001.XSHE_150007.XSHE__2017__v1__20260712_103023.parquet",
+   "data\\history\\history\\history\\ETF_NAV__fund_etf_nav__150001.XSHE_150007.XSHE__2018__v1__20260712_103023.parquet"
+  ],
+  "premium_policy": "premium is DERIVED (close - unit_net_value)/unit_net_value with known_at = next_trade_day(nav_day); NAV must never be turned into traded OHLCV and no fund price product may be synthesised from it",
+  "evidence_source": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py PRODUCT_META (premium_join='ETF_DAILY_PIT_R1.close @ signal_date with FUND_NAV known_at<=signal_time (lag-1)')"
+ },
+ "catalog_status_defect": {
+  "products_declared_ACTIVE_without_physical_parquet": [
+   "FUND_DAILY_PIT_R1",
+   "FUND_FACTOR_DAILY_R1",
+   "FUND_LIKE_ASSET_VIEW_R1"
+  ],
+  "classification": "CATALOG_VS_PHYSICAL_MISMATCH; not a data-loss finding"
+ },
+ "empty_directory_is_not_lost_original_data": true
+}
