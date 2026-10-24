@@ -1,0 +1,14 @@
+﻿domain,report_period_field,visible_date_field,trade_date_field,effective_date_field,forbidden_visible_date_fields,pit_rule,lookahead_risk,notes
+price_fq_factor,none,trade_date,trade_date,,none,行情日频PIT: trade_date索引,false,
+minute_price,none,datetime_local,trade_date,,none,分钟线PIT: datetime_local索引,false,
+finance_pit_unit,statDate,pubDate,day,,file_generated_time,"财务PIT: pubDate作为可见日, statDate作报告期",true,pubDate必须<=回测日
+valuation,none,day,day,,none,估值PIT: 按日频处理,false,
+index_valuation,none,day,day,,none,指数估值PIT: 按日频处理,false,
+index_constituent,none,effective_date,effective_date,,none,指数成分PIT: 以effective_date为准,false,
+index_weight,none,weight_date/trade_date,weight_date,,file_generated_time,指数权重PIT: weight_date为可见日,true,不得用文件生成时间
+etf_fund_nav,none,trade_date,trade_date,,none,ETF净值PIT: trade_date,false,
+st_suspend,none,status_date(date),date,,none,ST/停牌PIT: date为可见日,false,
+money_flow,none,date,date,,none,资金流PIT: date为可见日,false,
+billboard,none,day,day,,none,龙虎榜PIT: day为事件日,false,
+corporate_actions,none,announce_date,announce_date,,"ex_date,record_date","公司行为PIT: announce_date为可见日, ex_date作除权日",true,announce_date与ex_date不得混用
+external_patch,none,weight_date/trade_date,weight_date,,file_generated_time,外源补丁PIT: weight_date,true,仅补历史缺口
