@@ -1,0 +1,161 @@
+{
+ "schema": "RESTART_READINESS_CONTRACT_MATRIX_1",
+ "task_class_BACKTEST": {
+  "requirements": [
+   {
+    "id": "BT-1",
+    "requirement": "MUST_READ preflight PASS with AUTHORITY_READY=YES",
+    "status": "PASS",
+    "basis": "S gate probe, exit 0"
+   },
+   {
+    "id": "BT-2",
+    "requirement": "documented interpreter can execute data/backtest code",
+    "status": "FAIL",
+    "basis": "venv launcher broken; system python lacks pandas/jqdatasdk"
+   },
+   {
+    "id": "BT-3",
+    "requirement": "causal gate / execution preflight / price-plane gate scripts present",
+    "status": "PASS",
+    "basis": "脚本 dir full enumeration: causal 1, preflight 5, price_plane 2"
+   },
+   {
+    "id": "BT-4",
+    "requirement": "PRE_PIT price chain certifiable over the test window",
+    "status": "OPEN_B1",
+    "basis": "ADJUST_FACTOR_PIT_R1 sidecar 12,182,523 vs physical 12,266,026 (+83,503), no per-date lineage; pre/post unimplemented and factor=null in batch segments per R3"
+   },
+   {
+    "id": "BT-5",
+    "requirement": "universe and tradeability cover the test window",
+    "status": "OPEN_B2",
+    "basis": "universe measured window ends 2026-07-20; tradeability 2026-07-13..2026-09-03 with 15 missing sessions"
+   },
+   {
+    "id": "BT-6",
+    "requirement": "mounted CURRENT serves every session in the window",
+    "status": "OPEN_B4",
+    "basis": "2026-08-31 and 2026-09-01 are not served for 11 products incl. STOCK_DAILY_PIT_R1; the candidate release serves them but is unpromoted"
+   },
+   {
+    "id": "BT-7",
+    "requirement": "formal engine run",
+    "status": "OPEN_B5",
+    "basis": "import attempts os.mkdir (bullet_trade/core/globals.py:156 from 421) and is swallowed; engine never constructed; no local value provider branch; adapter_function null"
+   },
+   {
+    "id": "BT-8",
+    "requirement": "strategy body available for the local plane",
+    "status": "PARTIAL",
+    "basis": "JoinQuant paste template only (V4_R21, SOURCE_SHA c0ac8b48..., 2140+ lines); no local port or runner"
+   },
+   {
+    "id": "BT-9",
+    "requirement": "signal date inside served data",
+    "status": "STALE_31D",
+    "basis": "CACHE/CLEAN as-of 2026-09-24 vs today 2026-10-25"
+   }
+  ],
+  "daily_plane_inventory": {
+   "cache_release": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+   "cache_product_dirs": 51,
+   "cache_empty_products": [
+    "FUND_DAILY_PIT_R1",
+    "FUND_FACTOR_DAILY_R1",
+    "FUND_LIKE_ASSET_VIEW_R1"
+   ],
+   "stock_daily_partitions": "year=2014..year=2026 (13)",
+   "stock_factor_partitions": "year=2014..year=2026 (13)",
+   "adjust_factor_partitions": "data/year=2014..data/year=2026 (13) + COVERAGE.json",
+   "clean_standard_parquet": 158826,
+   "minute_plane_note": "CLEAN stock 1m observed 2026-09-11..2026-09-24 only; index minute RAW observed 2014-01-02..2026-09-24; stock 1m history beyond that window is UNVERIFIED this cycle, not absent"
+  },
+  "verdict": "NOT_CERTIFIABLE_AS_FORMAL_BACKTEST",
+  "certifiable_alternative": "bounded diagnostic backtest on 2014-01-02..2026-09-24, 2026-08-31/09-01 declared, non-adjusted or declared-basis prices, three gate receipts attached, labelled DIAGNOSTIC_ONLY with no formal return claim"
+ },
+ "task_class_DAILY_INCREMENT": {
+  "requirements": [
+   {
+    "id": "DI-1",
+    "requirement": "MUST_READ preflight PASS (ACQUISITION)",
+    "status": "PASS",
+    "basis": "gate probe exit 0"
+   },
+   {
+    "id": "DI-2",
+    "requirement": "six-lane manifest exists with per-lane status",
+    "status": "PASS_AT_ASOF",
+    "basis": "DAILY_DATA_MANIFEST_20260924: A/B/C/D/E/F all PASS, DEGRADED_LANES=0, ALL_LANES_READY=YES, built 2026-09-25T04:08:21+0800 for CN_RESEARCH_DATE 2026-09-24"
+   },
+   {
+    "id": "DI-3",
+    "requirement": "writer body present",
+    "status": "PASS",
+    "basis": "post_seal_daily_download_r8.py live copy located"
+   },
+   {
+    "id": "DI-4",
+    "requirement": "cleaning + anti-leak + seal body present",
+    "status": "PASS",
+    "basis": "formal_cleaning_r15_build_and_seal_r1.py + r15_antileak_and_ssot_r1.py located"
+   },
+   {
+    "id": "DI-5",
+    "requirement": "cache compile + publish bound",
+    "status": "PASS",
+    "basis": "TIP compiler imports publish_atomic from the publish gate (line 36); orchestrator delegates to TIP"
+   },
+   {
+    "id": "DI-6",
+    "requirement": "supplier credential present",
+    "status": "PASS",
+    "basis": "CRED_FILE exists (presence only, no content read)"
+   },
+   {
+    "id": "DI-7",
+    "requirement": "per-dataset increment cursor",
+    "status": "OPEN",
+    "basis": "scope.increment_cursor is null for every dataset in R3; RAW coverage ledger stops at 2026-08-12; the legacy JQ_DATA_DOWNLOAD_EXECUTION_R1 COMPLETED checkpoint is not a valid cursor"
+   },
+   {
+    "id": "DI-8",
+    "requirement": "writer/checkpoint/resume/non-regression evidence",
+    "status": "OPEN_B6",
+    "basis": "update-plan output proves navigation only; 13 products bound, 28 unbound"
+   },
+   {
+    "id": "DI-9",
+    "requirement": "supplier pagination correctness",
+    "status": "OFFLINE_MODEL_ONLY",
+    "basis": "R10 pagination repair accepted as OFFLINE_LIST_MODEL_ONLY; no live supplier order proof"
+   },
+   {
+    "id": "DI-10",
+    "requirement": "Lane B materialization complete",
+    "status": "PARTIAL",
+    "basis": "EXTERNAL_EVIDENCE_MATERIALIZATION_PARTIAL: 10 READY / 12 PARTIAL / 1 NO_PERMISSION; fund_nav, fund_share, fund_portfolio NO_RECORD_CONFIRMED"
+   },
+   {
+    "id": "DI-11",
+    "requirement": "31-day backlog catch-up as one standard run",
+    "status": "NOT_CERTIFIABLE",
+    "basis": "the chain is single-run-target-date with a two-phase candidate then publish; multi-session catch-up needs repeated bounded appends plus B6 resume evidence and B1 whole-table factor revision"
+   }
+  ],
+  "verdict": "SINGLE_DAY_YES_WITH_3_PRECONDITIONS__CATCH_UP_NOT_CERTIFIABLE",
+  "preconditions": [
+   "restore an import-capable interpreter (recreate E:\\BLACKBOX\\.venv or repoint pyvenv.cfg home to the Admin base interpreter) so pandas and jqdatasdk resolve",
+   "derive one per-dataset cursor from the CURRENT watermark (2026-09-24) and the exchange calendar instead of the invalid legacy checkpoint",
+   "declare B1/B2/B6 as open in the run record and publish only through the import-bound publish_atomic path; CURRENT_SWITCH_ALLOWED stays false under this review session"
+  ]
+ },
+ "flags": {
+  "FOUNDATION_ACCEPTANCE": false,
+  "FORMAL_ENGINE_ADMISSION": false,
+  "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+  "CURRENT_SWITCH_ALLOWED": false,
+  "ORDER_ALLOWED": false,
+  "SOURCE_ABSENCE_CLAIM_ALLOWED": false
+ }
+}
