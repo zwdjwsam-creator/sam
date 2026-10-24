@@ -1,0 +1,44 @@
+{
+ "schema": "R10_FIXED_READINESS_OBSERVED_METADATA_FACE_VALUE_1",
+ "at_cn": "2026-10-25T03:55:52+08:00",
+ "rule": "recorded as the exported bytes state them, at face value; nothing is selected, derived, promoted or compared to a current release to create a target range",
+ "legacy_checkpoint": {
+  "task": "JQ_DATA_DOWNLOAD_EXECUTION_R1",
+  "batch_id": "20260613_005426",
+  "status_field": "COMPLETED",
+  "current_T_stage": "DONE",
+  "current_domain": "ALL",
+  "stop_reason": "RESUME_COMPLETION",
+  "updated_at": "2026-06-12T17:48:17.336095+00:00",
+  "interpretation": "This is a legacy execution checkpoint of a June 2026 batch task. Its name, its COMPLETED flag and its timestamp do not establish a valid daily cursor and it is not bound to its writer here; NOT SELECTED AS AUTHORITATIVE."
+ },
+ "pipeline_matrix": {
+  "rule_id": "BLACKBOX_FULL_DATA_PIPELINE_MATRIX_R1",
+  "asof_field": "2026-08-12",
+  "generated_at_cn": "2026-09-25T04:04:43+0800",
+  "overall": "PASS",
+  "interpretation": "A recorded pipeline matrix statement at its own as-of. Kept as metadata evidence; not a fresh serving verdict and not used to derive an increment start."
+ },
+ "increment_rule": {
+  "rule_id": "BLACKBOX_HAND_JQ_INCREMENTAL_DOWNLOAD_RULE_R1",
+  "status_field": "ACTIVE",
+  "layer": "HAND_TOP",
+  "dataset_entries": 21,
+  "interpretation": "The declared incremental rule with per-dataset increment classes, PIT policies and raw/clean/cache namespaces. Recorded as the rule text; no range computed from it."
+ },
+ "raw_coverage_ledger": {
+  "schema": "BLACKBOX_RAW_COVERAGE_LEDGER_R1",
+  "generated_at": "2026-08-12T15:17:56+08:00",
+  "trade_calendar_authority_recorded": true,
+  "interpretation": "A recorded RAW coverage window and its calendar authority. Not re-measured; its window is not adopted as an increment plan."
+ },
+ "not_computed": [
+  "increment target range",
+  "expected market universe",
+  "supplier lag",
+  "missing-data verdict",
+  "checkpoint authority",
+  "per-date lineage"
+ ],
+ "source_absence_claim_allowed": false
+}
