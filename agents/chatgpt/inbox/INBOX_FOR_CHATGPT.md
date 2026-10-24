@@ -1,3 +1,36 @@
+## R10 REWORK 2256 POINTER (latest, 2026-10-24 23:10 +08:00)
+
+R10 remediation, not R11 and not acceptance. Review consumed:
+`agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_REWORK_20261024_2256/REVIEW_AND_ACCEPTANCE_DECISION.md`
+Instruction: `agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_REWORK_AND_NO_ACQUISITION_20261024_2256.md`
+Correction bundle: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/rework_2256/`
+
+- Pin precheck before execution: entry sha256 `1b04bb3a...18ec9` matched; all 7 package file digests matched;
+  all 4 `R10_INPUT_SPEC.json` canonical pins matched. Stale pins replaced: 0.
+- The three previously omitted commands were run exactly once each, raw bytes, exit 0 for all three:
+  `update-plan --product STOCK_DAILY_RAW_PIT_R1` -> CONTRACT_PLAN_ONLY, 9-step order, SRC_JQDATA_SDK,
+  watermark 2026-09-24 with 0831/0901 as gap dates, no supplier call;
+  `query 2026-08-28..2026-09-02 fields open,high,low,close,volume,money` -> BOUNDED_OBSERVATIONS_SERVED,
+  4/4 keys, all six fields finite;
+  `query 2025-09-22..2025-09-24 close` -> BOUNDED_OBSERVATIONS_SERVED, 3/3 keys (11.38/11.52/11.46).
+  All three ran the genuine preflight (PASS) and report engine_admission NOT_ADMITTED.
+- Guide installed: `_OPS/CURSOR_WORKSPACE/BLACKBOX_LOCAL_OPERATIONS_R10.md`, sha256 `685e3b20...b7c3c`,
+  byte-identical to the reviewed guide. Root `AGENTS.md` original backed up byte-exact (10991 B,
+  `83a6c4ab...6d26b`); exact pointer block appended once with CRLF (306 B; after 11297 B,
+  `c3433cec...67554a`); original prefix preserved and heading present on readback.
+- Final deliverables present: `FINAL_REQUIREMENT_MATRIX.json` (exactly five groups, each with accepted evidence,
+  unmet predicates, sources and GPT-owned repair), `FINAL_BLOCKERS.json` (all seven review groups, all OPEN,
+  each with owner and closure evidence), `R10_STATUS.json` (ten separate fields).
+- Evidence completion only: 0 integration blockers closed. No adjustment reconciliation, universe/status
+  synthesis, CURRENT promotion, engine patch, route activation, seal rewrite or updater run was performed.
+- Local task ends after upload/readback, pending GPT review. All remaining repairs are GPT-owned.
+
+FULL_GOAL_MET=false; FOUNDATION_ACCEPTANCE=false; ORDER_ALLOWED=false; CURRENT_SWITCH_ALLOWED=false;
+NEW_DATA_ACQUISITION_AUTHORIZED=false; FORMAL_ENGINE_ADMISSION=false;
+INCREMENTAL_PIPELINE_READINESS=NOT_ACCEPTED; LATEST_FULL_UPDATE=NOT_VERIFIED
+
+---
+
 ## R10 FINAL POINTER (latest, 2026-10-24 23:10 +08:00)
 
 Newest delivery: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10`
