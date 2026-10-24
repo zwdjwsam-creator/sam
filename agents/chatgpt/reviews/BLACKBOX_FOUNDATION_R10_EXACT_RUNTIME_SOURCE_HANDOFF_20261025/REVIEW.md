@@ -13,3 +13,6 @@ B1..B7 and foundation acceptance remain open. NEW_DATA_ACQUISITION_AUTHORIZED=fa
 ## Reason for next task
 The real finance consumer and several transformation/publication edges are described by writer_cursor_bindings but their complete original bytes were not delivered there. That prior report is not a substitute for these bodies. Obtain only the five enumerated inert source bodies, completing current delivery first.
 Already retained R05 daily writer and formal cleaning bodies are reused. Review of formal cleaning confirms ingest_item/ingest_minute_staging place files rather than normalize their row values; their existence alone cannot certify dates or fq. No new production execution is requested.
+
+## Final receipt received after publication
+FINAL_BYTE_READBACK.json is now independently retrieved, Git blob c5150b79177571cfb04702ce6c75a71b85862722. Its 20 payload/manifest byte-length and SHA256 rows reconcile to the bytes independently fetched above. Together with the final receipt, 21 files have been read and checked. The earlier pending-delivery note is superseded; no upload repair or repeated test is required. Bounded component acceptance and all production/acquisition restrictions remain unchanged.
