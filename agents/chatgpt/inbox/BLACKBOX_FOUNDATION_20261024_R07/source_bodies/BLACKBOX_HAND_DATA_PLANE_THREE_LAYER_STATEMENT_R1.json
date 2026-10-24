@@ -1,0 +1,124 @@
+{
+  "rule_id": "BLACKBOX_HAND_DATA_PLANE_THREE_LAYER_STATEMENT_R1",
+  "task_id": "BLACKBOX_DATA_PLANE_THREE_LAYER_STATEMENT_R1",
+  "task_type": "TOP_LEVEL_GOVERNANCE_POLICY",
+  "status": "ACTIVE_HARD_RULE",
+  "schema_version": "1.0.0",
+  "layer": "HAND_USER_AUTHORIZED",
+  "priority": "CRITICAL",
+  "formality": "FORMAL_HARD_GATE_NOT_PATCH",
+  "authorized_by": "USER_AS_HAND",
+  "authorized_at_cn": "2026-08-12T12:35:00+0800",
+  "authorized_at_user_utterance": "根因是：小包规则 + Cache 切片 盖住了 FULL_HISTORY 平面，没有按 HAND/SCOPE 把三层分开陈述。将这个问题解决，不要出现类似的情况",
+  "defect": "Agents cited INDEX_DAILY_RAW_NONE (8 codes) and thin CACHE INDEX_DAILY_R1 (1-day/7 codes) as if they were the full index-daily authority, while SCOPE already registered INDEX_DAILY_RAW_FULL_HISTORY_R1 (732). CSI2000/399303 falsely reported missing.",
+  "definition_one_line_cn": "凡陈述「某数据是否已有/覆盖多少码/是否缺码」，必须按 CACHE产品切片、RAW全量平面、RAW小包便利层 三层分开写清；禁止用小包或薄 Cache 切片否定 FULL_HISTORY/官方全量平面。",
+  "mandatory_layers": [
+    {
+      "layer_id": "L1_CACHE_PRODUCT",
+      "name_cn": "CACHE 产品切片",
+      "authority_for": [
+        "formal_research_read_when_coverage_sufficient",
+        "backtest_default_read_path"
+      ],
+      "not_authority_for": [
+        "whether_full_history_was_downloaded",
+        "full_universe_code_count",
+        "raw_plane_existence"
+      ],
+      "must_report_fields": [
+        "cache_release_id",
+        "product_id",
+        "n_codes_or_PATH_PROBE",
+        "date_min",
+        "date_max",
+        "coverage_status"
+      ],
+      "index_daily_example": {
+        "product_id": "INDEX_DAILY_R1",
+        "pointer": "E:\\\\BLACKBOX\\\\数据\\\\回测缓存\\\\CURRENT_CACHE_RELEASE.json",
+        "note": "READY≠多年全码；必须读实际 coverage。2026-08-12 前曾为 1日×7码薄切片。"
+      }
+    },
+    {
+      "layer_id": "L2_RAW_FULL_PLANE",
+      "name_cn": "RAW 全量平面（SCOPE/HAND 登记）",
+      "authority_for": [
+        "downloaded_or_not",
+        "full_universe_history",
+        "code_in_full_plane",
+        "gapfill_base"
+      ],
+      "index_daily_ssot": {
+        "domain": "INDEX_DAILY_RAW_FULL_HISTORY_R1",
+        "path": "E:\\\\BLACKBOX\\\\数据\\\\原始只读\\\\strategy_data_plane_additions\\\\INDEX_DAILY_RAW_FULL_HISTORY_R1",
+        "scope_ref": "规则库/hand_hard_rules/BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json",
+        "universe_n": 732,
+        "includes_399303": true
+      },
+      "must_open_before_claim_missing": true
+    },
+    {
+      "layer_id": "L3_RAW_SMALLPACK",
+      "name_cn": "RAW 小包 / 窄增量便利层",
+      "authority_for": [
+        "wide_benchmark_convenience_only",
+        "narrow_incremental_patch_only"
+      ],
+      "forbidden_as": [
+        "full_universe_authority",
+        "csi2000_existence_authority",
+        "sole_local_probe_for_index_daily"
+      ],
+      "index_daily_examples": [
+        {
+          "domain": "INDEX_DAILY_RAW_NONE",
+          "n_codes": 8,
+          "path": "E:\\\\BLACKBOX\\\\数据\\\\原始只读\\\\strategy_data_plane_additions\\\\INDEX_DAILY_RAW_NONE"
+        },
+        {
+          "domain": "P3_index_incremental_gap",
+          "n_codes": 7,
+          "path": "E:\\\\BLACKBOX\\\\数据\\\\原始只读\\\\JQData_9999_official_raw\\\\P3_index\\\\index_daily__incremental_gap_*"
+        }
+      ]
+    }
+  ],
+  "ag_forced_statement_template": {
+    "when": "any claim about index/stock daily existence, coverage, missing codes, or whether to redownload",
+    "required_block": [
+      "L1_CACHE: <release/product + coverage>",
+      "L2_RAW_FULL: <domain path + n_codes + date_max + target_code_present?>",
+      "L3_SMALLPACK: <pack id + n_codes + NOT_FULL_UNIVERSE>"
+    ]
+  },
+  "hard_forbids": [
+    "Cite INDEX_DAILY_RAW_NONE 8-code pack as the priority/sole local index-daily authority",
+    "Conclude code missing (e.g. 399303.XSHE) without opening INDEX_DAILY_RAW_FULL_HISTORY_R1",
+    "Equate CACHE product READY or thin slice with RAW full-plane coverage",
+    "Skip SCOPE strategy_data_plane_additions FULL_HISTORY when answering 数据有没有/下没下",
+    "Use P3 7-wide incremental as 732 gapfill complete"
+  ],
+  "violation_markers": [
+    "DATA_PLANE_LAYERS_COLLAPSED",
+    "SMALLPACK_MASKED_FULL_HISTORY",
+    "CACHE_SLICE_MASKED_FULL_PLANE",
+    "FALSE_LOCAL_MISS_WITHOUT_FULL_PLANE_PROBE"
+  ],
+  "final_status_on_violation": "REVIEW_REQUIRED",
+  "cursor_rule": ".cursor/rules/blackbox_data_plane_three_layer_statement.mdc",
+  "amends": [
+    "BLACKBOX_LOCAL_DAILY_OHLC_FIRST_R1",
+    "blackbox_agent_resource_map.mdc §4b"
+  ],
+  "does_not_modify": [
+    "HAND_DECISION.json",
+    "QMT_ORDER",
+    "strategy_parameters"
+  ],
+  "related": [
+    "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2",
+    "BLACKBOX_HAND_CACHE_FIRST_WORKFLOW_POLICY_R1",
+    "BLACKBOX_DETERMINISTIC_DATA_ACCESS_RESOLVER_GATE_R1",
+    "BLACKBOX_LOCAL_DAILY_OHLC_FIRST_R1"
+  ]
+}
