@@ -1,0 +1,33 @@
+{
+  "schema": "BLACKBOX_BAD_DATE_CLEANUP_LEDGER_R1",
+  "cleaned_at_cn": "2026-10-25T15:06:39+0800",
+  "root_cause": {
+    "file": "脚本/run_blackbox_daily_incremental_data_plane_r1.py",
+    "line": 932,
+    "code": "cn_date = args.date or today_yyyymmdd(); cn_iso = f\"{cn_date[:4]}-{cn_date[4:6]}-{cn_date[6:8]}\"",
+    "trigger": "本机误传 --date 2026-09-24（ISO）；该参数只接受紧凑 YYYYMMDD",
+    "invalid_iso": "2026--0-9-",
+    "secondary": "--mode status 并非只读：会写 STATE / DAILY / 两个 DOMESTIC CURRENT / INPUT_PACK / PLANE"
+  },
+  "fixed": [
+    "删除 数据/研究报告/国内卖方|国内新闻/日增量/2026--0-9-/（产物已挪回 2026-09-24）",
+    "STATE: DOMESTIC_RESEARCH / US_NEWS DISCOVERY_ASOF -> 2026-09-24",
+    "DAILY/2026-09-24/04_DOMESTIC_RESEARCH_DELTA.json / 05_US_NEWS_DELTA.json -> 2026-09-24",
+    "CURRENT/DAILY_RESEARCH_INPUT_PACK_CURRENT.json: CN_RESEARCH_DATE / DATA_MANIFEST_ID / BUILD_TIME 对齐 manifest",
+    "CURRENT/DAILY_DATA_PLANE_CURRENT.json: CN_RESEARCH_DATE 对齐 manifest",
+    "数据/研究报告/国内卖方/CURRENT/DOMESTIC_SELLSIDE_CURRENT.json: DISCOVERY_ASOF=2026-09-24, SOURCE_PATH 指向 2026-09-24 ledger, N_ROWS=4",
+    "数据/研究报告/国内新闻/CURRENT/DOMESTIC_NEWS_CURRENT.json: DISCOVERY_ASOF=2026-09-25（= obs asof，代码 obs_news.asof or cn_iso）, daily_slice 指向 2026-09-24",
+    "研究系统/数据平面/DAILY/2026-09-24/08_MANIFEST.json <- 现行 CURRENT manifest"
+  ],
+  "plane_cn_research_date": {
+    "before": "2026--0-9-",
+    "after": "2026-09-24"
+  },
+  "residual_hits": [
+    "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\输出\\CURRENT_RESTORE_LEDGER.json",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\restore_20261025_145538\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+    "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\restore_20261025_145538\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json"
+  ],
+  "residual_production_hits": [],
+  "residual_note": "仅保留在 备份/ 与 输出/ 台账中作为事故证据，生产 CURRENT/STATE 已清零"
+}
