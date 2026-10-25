@@ -1,0 +1,147 @@
+{
+  "artifact": "R10_END_TO_END_ACCEPTANCE",
+  "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "generated_at_cn": "2026-10-25T08:46:44+08:00",
+  "overall": "PASS",
+  "checks": {
+    "ENV_REAL_VENV": true,
+    "DATASET_STATE_PER_DATASET_RANGES": true,
+    "TIME_AXIS_AVAILABLE_FOR_ALL_READABLE": false,
+    "NO_UNIFORM_20260924_START_ASSUMED": true,
+    "CANDIDATE_REPLAY_REPRODUCES_R06": true,
+    "REPLAY_CALENDAR_COMPLETE": true,
+    "ENGINE_RUN_COMPLETED": true,
+    "NETWORK_GUARD_NO_ATTEMPT": true,
+    "MARK_TO_MARKET_MOVES": true,
+    "BENCHMARK_PRESENT": true,
+    "NO_FUTURE_DATA_INTERCEPTION": true
+  },
+  "measured": {
+    "environment": {
+      "prefix_differs_from_base_prefix": true,
+      "base_interpreter_exists_at_cfg_home": true,
+      "site_packages_is_venv_owned": [
+        "E:\\BLACKBOX\\.venv\\Lib\\site-packages"
+      ],
+      "no_project_tree_import_leak": true,
+      "data_stack": {
+        "pandas": "2.3.3",
+        "pyarrow": "21.0.0",
+        "numpy": "2.5.4"
+      },
+      "parquet_footer_read": {
+        "exit": 0,
+        "rows_on_newest_2026_partition": "871182"
+      }
+    },
+    "dataset_counts": {
+      "datasets": 54,
+      "measured_layers": 84,
+      "not_applicable": 14,
+      "blocked": 3
+    },
+    "replay_verdict": "REPRODUCES_R06_CANDIDATE",
+    "replay_rebuilt": {
+      "n_rows": 959896,
+      "n_dates": 178,
+      "n_codes": 5535,
+      "window_start": "2026-01-05",
+      "window_end": "2026-09-24",
+      "missing_exchange_days": [],
+      "days_not_in_calendar": []
+    },
+    "backtest": {
+      "n_days": 16,
+      "initial_total_value": 1000000.0,
+      "final_total_value": 953384.16,
+      "total_return_pct": -4.661583999999996,
+      "max_drawdown_pct": -5.465989024829476,
+      "distinct_positions_value": 12,
+      "distinct_total_value": 12,
+      "benchmark_columns": [
+        "benchmark_price",
+        "benchmark_value",
+        "benchmark_returns_pct",
+        "excess_returns_pct"
+      ],
+      "n_trade_fills": 2,
+      "traded_securities": [
+        "002701.XSHE"
+      ],
+      "turnover_value": 998865.0,
+      "n_order_ids_in_trades": 1,
+      "position_rows": 15,
+      "distinct_position_prices": 11
+    },
+    "backtest_metrics_reported_by_engine": {
+      "策略收益": "-4.66%",
+      "策略年化收益": "-52.57%",
+      "最大回撤": "-5.47%",
+      "夏普比率": "-8.53",
+      "日胜率": "18.75%",
+      "交易胜率": "0.00%",
+      "交易天数": "16",
+      "初始资金": "1,000,000.00",
+      "最终资金": "953,384.16"
+    },
+    "coverage_gap": {
+      "price_plane_max": "2026-09-24",
+      "tradeability_plane_max": "2026-09-03",
+      "tradeability_covers_whole_window": false,
+      "engine_degradations": {
+        "na_ambiguous_warnings": 14,
+        "limit_flag_missing_warnings": 2,
+        "avoid_future_data_blocks": 0
+      }
+    }
+  },
+  "flags": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "PUBLISHED_TO_CURRENT": false,
+    "SEALED_DATA_MODIFIED": false
+  },
+  "not_proven": [
+    "This is not a completeness certificate for the whole data plane: layer ranges are footer extrema, and `MIN_MAX_IS_NOT_COMPLETENESS` still holds.",
+    "No dataset has a bound incremental cursor. `observed_max` is what the plane holds, not a cursor the writer maintains, so a daily update still needs an authorised per-dataset start date plus a validated overlap window.",
+    "The engine run covers 16 trading days on sealed data. It proves the data plane and the engine are executable end to end; it says nothing about strategy edge over a longer window.",
+    "The tradeability plane stops at 2026-09-03 while prices run to 2026-09-24: inside this window the engine could not validate limit-up/limit-down withdrawals or ST state. Closing that gap needs an authorised download, which this task does not have.",
+    "The two recovered days are replayed from retained raw batches into a candidate partition. Nothing was merged into a sealed release and no CURRENT pointer moved.",
+    "Intraday execution on a daily plane uses the same-day open as the fill price and the prior day's volume for the volume cap; that is a causal simulation, not tick-level execution."
+  ],
+  "artifacts": {
+    "ENV/ENV_VERIFICATION.json": {
+      "bytes": 2330,
+      "sha256": "64e8234e44eb6e951f88423a95c14882b148e7b0ebe8a0f2b4142150bd9823a3"
+    },
+    "deliverables/DATASET_STATE.json": {
+      "bytes": 308333,
+      "sha256": "46712650a669cfc6d013e6e0611b69cf1d7aaac4920e1e564e7622fa5009e439"
+    },
+    "deliverables/CANDIDATE_REPLAY.json": {
+      "bytes": 6227,
+      "sha256": "1e3b23addc4027ccad62c6edbaa9276a525019fd34fc879c6c313c6a62743292"
+    },
+    "engine_runs/v4_r21_20260903_20260924/run_result.json": {
+      "bytes": 51099,
+      "sha256": "52ca6f668f06804ce33ca5553e6d8083ba126956b2842c0958cd5314a95f9d0a"
+    },
+    "engine_runs/v4_r21_20260903_20260924/daily_records.csv": {
+      "bytes": 2783,
+      "sha256": "7209cd011c051a88f71dc36c9b81203292acf369806c4dae80035ba4de86cc1d"
+    },
+    "engine_runs/v4_r21_20260903_20260924/trades.csv": {
+      "bytes": 288,
+      "sha256": "512d749ee276599314a1ac9cb0785a8aab4c6ba34ee25655d98a82b962787ac6"
+    },
+    "engine_runs/v4_r21_20260903_20260924/daily_positions.csv": {
+      "bytes": 1189,
+      "sha256": "da075d9f59d6bc84fe344e21be992b4c65d5db584ab484e58f9b72f07dd321d6"
+    },
+    "engine_runs/v4_r21_20260903_20260924/backtest.log": {
+      "bytes": 140031,
+      "sha256": "83a06540d71a252e91f0629147ff09ed3001bfc1d22ae5a3fa7f7da037e8c90e"
+    }
+  }
+}
