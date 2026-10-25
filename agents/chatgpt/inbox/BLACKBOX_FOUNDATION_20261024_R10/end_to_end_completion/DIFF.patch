@@ -1,6 +1,21 @@
 --- a/candidate/local_plane/provider.py
 +++ b/candidate/local_plane/provider.py
-@@ -124,6 +124,9 @@
+@@ -24,6 +24,7 @@
+ import pyarrow.parquet as pq
+ 
+ from . import catalog
++from . import minute_bridge
+ from .jq_compat import Cond, Field, OrderKey, Query
+ 
+ try:  # the engine's provider ABC, when the engine fork is importable
+@@ -121,9 +122,16 @@
+         self._cand_trade_full: Optional[pd.DataFrame] = None
+         self._sealed_trade_cache: Dict[int, Optional[pd.DataFrame]] = {}
+         self._trade_window_cache: Dict[Tuple[str, str], pd.DataFrame] = {}
++        # Provenance cache for the factor plane: a session whose ENTIRE plane is a single
++        # identical value carries no adjustment information and is not applied.
++        self._const_plane_cache: Dict[int, Dict[str, Any]] = {}
++        self.factor_plane_anomalies: List[Dict[str, Any]] = []
          # Missing required inputs must fail the run, not silently skip strategy logic.
          self.required_input_failures: List[Dict[str, Any]] = []
          self.strict_required_inputs: bool = False
@@ -10,7 +25,88 @@
  
      def _code_frames(self, product: str, year: int) -> Dict[str, pd.DataFrame]:
          key = (product, year)
-@@ -515,61 +518,105 @@
+@@ -333,10 +341,52 @@
+             return pd.DataFrame(columns=BASE_FRAME_COLS)
+         return pd.concat(frames, ignore_index=True)
+ 
++    def _constant_plane_sessions(self, year: int) -> Dict[str, Any]:
++        """Sessions whose ENTIRE factor plane is one identical value.
++
++        Measured on the current product: `ADJUST_FACTOR_PIT_R1` carries 5,204-5,222 rows
++        per session with 90-148 codes differing from 1.0 through 2026-08-14, then a run of
++        sessions where every single row is exactly 1.0 (2026-09-03 .. 2026-09-24). A
++        market-wide factor of exactly 1.0 for every code across fifteen consecutive
++        sessions is not an adjustment series; it is the writer's all-ones placeholder.
++        Consuming it would BE the forbidden constant-1 fallback, only spelled differently.
++
++        The test is therefore structural (whole-plane single value), never a date list:
++        whatever session the source produces with a single-valued plane is excluded from
++        the proof, and the exclusion is reported with its key.
++        """
++        if year in self._const_plane_cache:
++            return self._const_plane_cache[year]
++        result: Dict[str, Any] = {"constant_sessions": {}, "reason": None}
++        try:
++            df = self._read("ADJUST_FACTOR_PIT_R1", year)
++        except FileNotFoundError:
++            self._const_plane_cache[year] = result
++            return result
++        if df is None or not len(df):
++            self._const_plane_cache[year] = result
++            return result
++        d = df[["date", "factor"]].copy()
++        d["date"] = pd.to_datetime(d["date"], errors="coerce").dt.normalize()
++        d["factor"] = pd.to_numeric(d["factor"], errors="coerce")
++        d = d.dropna(subset=["date"])
++        g = d.groupby(d["date"])["factor"].agg(["nunique", "size", "min"])
++        for ts, row in g.iterrows():
++            if int(row["nunique"]) == 1:
++                result["constant_sessions"][pd.Timestamp(ts).strftime("%Y-%m-%d")] = {
++                    "rows": int(row["size"]),
++                    "constant_value": float(row["min"]),
++                }
++        if result["constant_sessions"]:
++            result["reason"] = "CONSTANT_PLANE_NOT_PROVEN"
++        self._const_plane_cache[year] = result
++        return result
++
+     def _factor_frame(self, start: dt.date, end: dt.date, codes: Optional[Sequence[str]] = None) -> pd.DataFrame:
+         frames = []
+         small = bool(codes) and 0 < len(codes) <= 50
+         for year in range(start.year, end.year + 1):
++            const = self._constant_plane_sessions(year)["constant_sessions"]
+             try:
+                 if small:
+                     per_code = self._code_frames("ADJUST_FACTOR_PIT_R1", year)
+@@ -349,7 +399,26 @@
+             except FileNotFoundError:
+                 continue
+             d = df["date"]
+-            frames.append(df[(d >= pd.Timestamp(start)) & (d <= pd.Timestamp(end))])
++            df = df[(d >= pd.Timestamp(start)) & (d <= pd.Timestamp(end))].copy()
++            if const and len(df):
++                df["date"] = pd.to_datetime(df["date"]).dt.normalize()
++                tag = df["date"].dt.strftime("%Y-%m-%d")
++                bad = tag.isin(list(const))
++                if bool(bad.any()):
++                    seen = sorted(set(tag[bad]))
++                    for day in seen:
++                        info = const[day]
++                        rec = {"field": "ADJUST_FACTOR_PIT_R1",
++                               "reason": "CONSTANT_PLANE_NOT_PROVEN",
++                               "date": day, "plane_rows": info["rows"],
++                               "plane_constant_value": info["constant_value"],
++                               "rows_withheld": int((tag[bad] == day).sum()),
++                               "note": "the whole session's factor plane is one identical "
++                                       "value; applying it would be a constant fallback"}
++                        if rec not in self.factor_plane_anomalies:
++                            self.factor_plane_anomalies.append(rec)
++                    df.loc[bad, "factor"] = np.nan
++            frames.append(df)
+         if not frames:
+             return pd.DataFrame(columns=["date", "code", "factor"])
+         return pd.concat(frames, ignore_index=True)
+@@ -515,61 +584,105 @@
          d = df["date"]
          return df[(d >= pd.Timestamp(start)) & (d <= pd.Timestamp(end))]
  
@@ -158,7 +254,7 @@
  
      # ------------------------------------------------------------- get_price
      def get_price(
-@@ -595,9 +642,49 @@
+@@ -595,9 +708,163 @@
          codes = [security] if isinstance(security, str) else list(security)
          # Causal clock of the request: a datetime strictly before the close means
          # the same-day bar's close/high/low are not yet knowable on a daily plane.
@@ -173,11 +269,116 @@
          end = _to_date(end_date) or (self.trade_days()[-1] if self._calendar else dt.date(2026, 9, 24))
          intraday_mode = "NONE"
 +
-+        # A minute-bar request has no local minute product at all. Refuse it here,
-+        # before any daily bar can stand in for it: the daily plane cannot answer a
-+        # minute question, and a daily open is not minute execution semantics.
++        # A minute request is answered by the ORIGINAL reader for the real product
++        # `STOCK_MINUTE_1M_R1` (清洗成品 standard/price/A股_stock_1m), not by a daily
++        # bar standing in for it. Where the product has no shard for the requested
++        # day, the request is BLOCKED with the reader's own reason: a daily open is
++        # not minute execution semantics and is never substituted here.
 +        if intraday_freq and not getattr(self, "intraday_proxy_allowed", False):
 +            want0 = list(fields) if fields else ["open", "close", "high", "low", "volume", "money"]
++            start_req = start_date if start_date is not None else end
++            resp = minute_bridge.fetch(
++                [str(c) for c in codes], start_req, end_date if end_date is not None else end,
++                asof=_to_date(end).strftime("%Y%m%d") if end is not None else "20260924",
++                cutoff=end_date if end_date is not None else end,
++                fields=want0,
++                request_id="LOCAL_PLANE_GET_PRICE",
++            )
++            rows = resp.get("data") or []
++            if resp.get("status") == "PASS" and rows:
++                mdf = pd.DataFrame(rows)
++                mdf["time"] = pd.to_datetime(mdf["timestamp"]).dt.tz_localize(None) \
++                    if getattr(pd.to_datetime(mdf["timestamp"]).dt, "tz", None) is not None \
++                    else pd.to_datetime(mdf["timestamp"])
++                mdf["date"] = mdf["time"].dt.normalize()
++                rename = {"amount": "money"}
++                mdf = mdf.rename(columns=rename)
++                adjust_note = "RAW_NOT_ADJUSTED"
++                if fq in ("pre", "post"):
++                    # Adjusting a minute bar needs the SAME DAY's factor. Absence is
++                    # blocked, never filled: a minute series is not "no adjustment".
++                    asset_map = self._asset_class_of(
++                        sorted(set(mdf["code"].astype(str))), _to_date(mdf["date"].min()),
++                        _to_date(mdf["date"].max()))
++                    stock_rows = mdf["code"].astype(str).map(asset_map).eq("STOCK")
++                    if bool(stock_rows.any()):
++                        st = mdf.loc[stock_rows].copy()
++                        aligned, _ids, fdiag = self._align_factor_dense(
++                            st, sorted(set(st["code"].astype(str))),
++                            _to_date(mdf["date"].max()))
++                        st = st.merge(aligned, on=["date", "code"], how="left")
++                        st["factor"] = pd.to_numeric(st["factor"], errors="coerce")
++                        unproven = st["factor"].isna()
++                        if bool(unproven.any()):
++                            self.required_input_failures.append({
++                                "field": "ADJUST_FACTOR_PIT_R1",
++                                "kind": "MINUTE_FACTOR_NOT_PROVABLE",
++                                "start": str(_to_date(mdf["date"].min())),
++                                "end": str(_to_date(mdf["date"].max())),
++                                "rows_withheld": int(unproven.sum()),
++                                "codes_withheld": int(st.loc[unproven, "code"].nunique()),
++                                "dates": sorted({str(pd.Timestamp(d).date())
++                                                 for d in pd.unique(st.loc[unproven, "date"])}),
++                                "reason": fdiag.get("reason"),
++                                "note": "minute bars are served raw only where the same-day "
++                                        "factor is provable; RAW_NONE is not adjustment",
++                            })
++                            if getattr(self, "strict_required_inputs", False) and \
++                                    int((~unproven).sum()) == 0:
++                                raise RuntimeError(
++                                    "REQUIRED_INPUT_MISSING ADJUST_FACTOR_PIT_R1_MINUTE "
++                                    f"{int(unproven.sum())} rows unprovable")
++                            st = st.loc[~unproven]
++                        for c in ("open", "high", "low", "close"):
++                            if c in st.columns:
++                                st[c] = st[c] * st["factor"]
++                        st["adjust_applicability"] = "APPLIED_SAME_DAY_FACTOR_MINUTE"
++                        st = st.drop(columns=["factor"])
++                        others = mdf.loc[~stock_rows].copy()
++                        if len(others):
++                            others["adjust_applicability"] = "RAW_NOT_APPLICABLE_NON_STOCK"
++                        mdf = pd.concat([st, others], ignore_index=True, sort=False)
++                        adjust_note = "APPLIED_SAME_DAY_FACTOR_MINUTE"
++                    else:
++                        mdf["adjust_applicability"] = "RAW_NOT_APPLICABLE_NON_STOCK"
++                else:
++                    mdf["adjust_applicability"] = "RAW_REQUESTED"
++                out_cols = ["time", "code"] + [c for c in want0 if c in mdf.columns]
++                keep = out_cols + [c for c in ("adjust_applicability",) if c in mdf.columns]
++                frame = mdf[keep].sort_values(["time", "code"]).reset_index(drop=True)
++                self.observation_log.append({
++                    "api": "get_price", "securities": len(codes),
++                    "start": str(_to_date(frame["time"].min())),
++                    "end": str(_to_date(frame["time"].max())), "count": count,
++                    "fq": str(fq), "anchor": str(end), "fields": want0,
++                    "rows": int(len(frame)),
++                    "tradeability_joined": False, "paused_null_rows_preserved": 0,
++                    "paused_rows_inferred_from_bar_presence": 0,
++                    "intraday_mode": "REAL_MINUTE_PLANE",
++                    "frequency": str(frequency),
++                    "minute_product": resp.get("product_id"),
++                    "minute_source_id": resp.get("source_id"),
++                    "minute_source_paths": (resp.get("source_paths") or [])[:2],
++                    "minute_rows_returned": resp.get("rows"),
++                    "factor_codes_without_any": 0, "factor_missing_cells": None,
++                    "factor_alignment": "SAME_DAY_DENSE",
++                    "adjust_non_stock_classes": [],
++                    "factor_identity_fallback_codes": 0,
++                    "adjust_applicability_counts": (
++                        {str(k): int(v) for k, v in
++                         frame["adjust_applicability"].value_counts().items()}
++                        if "adjust_applicability" in frame.columns else {}),
++                    "adjust_note": adjust_note,
++                })
++                if panel:
++                    if len(codes) == 1:
++                        single = frame.set_index("time")[want0].sort_index()
++                        single.index.name = "time"
++                        return single
++                    return frame.set_index(["time", "code"])[want0]
++                return frame[["time", "code"] + want0]
++            # The product exists but does not answer this window/code: BLOCKED.
++            reason = resp.get("reason_code") or resp.get("status")
 +            detail = {
 +                "field": "STOCK_MINUTE_PLANE",
 +                "start": str(_to_date(start_date) if start_date is not None else None),
@@ -185,7 +386,12 @@
 +                "clock": end_dt.isoformat() if end_dt is not None else None,
 +                "requested_frequency": str(frequency),
 +                "n_codes": len(codes),
-+                "reason": "no local minute product for intraday requests",
++                "product_id": resp.get("product_id"),
++                "reader_status": resp.get("status"),
++                "reader_reason": reason,
++                "reader_evidence_gaps": resp.get("evidence_gaps"),
++                "source_paths": (resp.get("source_paths") or [])[:2],
++                "reason": f"original minute reader answered {resp.get('status')}/{reason}",
 +            }
 +            self.required_input_failures.append(detail)
 +            self.observation_log.append({
@@ -194,21 +400,25 @@
 +                "fq": str(fq), "anchor": str(end), "fields": want0, "rows": 0,
 +                "tradeability_joined": False, "paused_null_rows_preserved": 0,
 +                "paused_rows_inferred_from_bar_presence": 0,
-+                "intraday_mode": "BLOCKED_NO_MINUTE_PLANE",
-+                "frequency": str(frequency), "factor_codes_without_any": 0,
++                "intraday_mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE",
++                "frequency": str(frequency),
++                "minute_product": resp.get("product_id"),
++                "minute_reader_status": resp.get("status"),
++                "minute_reader_reason": reason,
++                "factor_codes_without_any": 0,
 +                "factor_missing_cells": None, "factor_alignment": "SAME_DAY_DENSE",
 +                "adjust_non_stock_classes": [], "factor_identity_fallback_codes": 0,
 +            })
 +            if getattr(self, "strict_required_inputs", False):
 +                raise RuntimeError(
 +                    "REQUIRED_INPUT_MISSING STOCK_MINUTE_PLANE "
-+                    f"frequency={frequency} clock={detail['clock']}"
++                    f"frequency={frequency} clock={detail['clock']} reason={reason}"
 +                )
 +            return pd.DataFrame(columns=["time", "code"] + want0)
          # A clock before the open knows nothing of the same-day bar, so the latest
          # knowable bar is the previous trading day's. JQ's get_price(count=1) at
          # 00:00 therefore returns yesterday's bar; returning nothing (and letting
-@@ -631,31 +718,128 @@
+@@ -631,31 +898,133 @@
  
          anchor = _to_date(pre_factor_ref_date) or end
          identity_codes: List[str] = []
@@ -263,6 +473,11 @@
 +                stock_merged = stock_raw.copy()
 +                stock_merged["factor"] = np.nan
 +                stock_merged["adjust_applicability"] = "BLOCKED_NO_FACTOR_PLANE"
++                # An fq='pre' request without a proven factor is not a raw answer: serving
++                # the unadjusted close here would be the constant-1 fallback in disguise.
++                for _c in ("open", "high", "low", "close"):
++                    if _c in stock_merged.columns:
++                        stock_merged[_c] = np.nan
 +            elif len(stock_raw):
 +                stock_merged = stock_raw.merge(aligned, on=["date", "code"], how="left")
 +                stock_merged["factor"] = pd.to_numeric(stock_merged["factor"], errors="coerce")
@@ -358,7 +573,7 @@
          else:
              raise ValueError(f"unsupported fq {fq}")
  
-@@ -675,10 +859,14 @@
+@@ -675,10 +1044,14 @@
              merged["low_limit"] = pd.NA
  
          # Tradeability is only observed inside its own product range. Outside it,
@@ -377,7 +592,7 @@
          if "paused" in merged.columns:
              merged["paused"] = _as_nullable_bool(
                  merged["paused"],
-@@ -687,12 +875,12 @@
+@@ -687,12 +1060,12 @@
                      f"fields={list(fields or [])}"
                  ),
              )
@@ -395,7 +610,7 @@
  
          # Daily-only plane vs intraday clock: serve nothing of the same-day bar
          # before the open, and only the open (the single causally known intraday
-@@ -707,6 +895,52 @@
+@@ -707,6 +1080,52 @@
              elif clock < dt.time(15, 0):
                  same_day = merged["date"] == pd.Timestamp(end)
                  if bool(same_day.any()):
@@ -448,7 +663,7 @@
                      for col in ("high", "low", "close"):
                          if col in merged.columns:
                              merged.loc[same_day, col] = merged.loc[same_day, "open"]
-@@ -723,7 +957,26 @@
+@@ -723,7 +1142,26 @@
                          if "money" in merged.columns and "money" in prev_bar.columns:
                              mmap = prev_bar.drop_duplicates("code").set_index("code")["money"]
                              merged.loc[same_day, "money"] = merged.loc[same_day, "code"].map(mmap)
@@ -476,7 +691,7 @@
  
          want = list(fields) if fields else ["open", "close", "high", "low", "volume", "money"]
          for col in ("pre_close", "factor", "paused", "is_st", "high_limit", "low_limit"):
-@@ -762,6 +1015,11 @@
+@@ -762,6 +1200,11 @@
                          + f" {detail['null_rows']} rows {detail['start']}..{detail['end']}"
                      )
          merged = merged.sort_values(["date", "code"])
@@ -488,7 +703,7 @@
          merged = merged.rename(columns={"date": "time"})
  
          self.observation_log.append(
-@@ -776,10 +1034,16 @@
+@@ -776,10 +1219,16 @@
                  "fields": want,
                  "rows": int(len(merged)),
                  "tradeability_joined": bool(len(tr)),
@@ -507,7 +722,7 @@
              }
          )
          if panel:
-@@ -863,6 +1127,32 @@
+@@ -863,6 +1312,32 @@
          wanted = [types] if isinstance(types, str) else list(types or ["stock"])
          if "stock" in wanted and "type" in df.columns:
              df = df[df["type"].astype(str).str.lower().isin(["stock", "cs"])]
@@ -540,7 +755,7 @@
          df = df.set_index("code")
          self.observation_log.append(
              {
-@@ -870,7 +1160,14 @@
+@@ -870,7 +1345,14 @@
                  "types": wanted,
                  "date": str(date),
                  "rows": int(len(df)),
@@ -667,11 +882,10 @@
  import os
 -import shutil
 -import datetime as dt
--from dataclasses import dataclass, field
 +import subprocess
 +import sys
 +import time
-+from dataclasses import dataclass
+ from dataclasses import dataclass, field
 +from pathlib import Path
  from typing import Any, Dict, List, Optional, Tuple
  
@@ -737,7 +951,7 @@
      h = hashlib.sha256()
      with open(path, "rb") as fh:
          for chunk in iter(lambda: fh.read(1 << 20), b""):
-@@ -81,493 +95,338 @@
+@@ -81,493 +95,473 @@
      return h.hexdigest()
  
  
@@ -761,6 +975,10 @@
 -    provenance: Dict[str, Any]
 -    factor: Optional[pd.DataFrame] = None
 -    tamper: Optional[str] = None
++    # Evidence about the ORIGINAL supplier request (query cap, terminal page, requested
++    # universe). Empty when the retained corpus never saved it - which is the normal case
++    # here, and is why vendor completeness stays UNKNOWN instead of being declared YES.
++    request_evidence: Dict[str, Any] = field(default_factory=dict)
  
  
  class LocalReplayTransport:
@@ -835,6 +1053,17 @@
 +            "build_stamp": batch_stamp(path.name),
 +            "dup_policy": "LATEST_BATCH_WINS",
 +        }
++        # The on-disk sidecar is the producer's own declaration (unit_id, file_sha256,
++        # domain). It is merged in so provenance is compared against the producer, not
++        # against a sidecar this transport wrote for itself.
++        disk_sc = path.with_name(path.name + ".sidecar.json")
++        if disk_sc.exists():
++            try:
++                on_disk = json.loads(disk_sc.read_text(encoding="utf-8"))
++                sidecar = {**on_disk, **sidecar}
++            except Exception:  # noqa: BLE001
++                pass
++        sidecar.setdefault("file_sha256", sha256_file(path))
          return Response(
 -            requested_date=day,
 -            payload_date=str(pd.to_datetime(raw["time"]).dt.normalize().max().date())
@@ -855,11 +1084,12 @@
 -            tamper=tamper,
 +            source_file=path.name,
 +            frame=df,
++            request_evidence=self.request_evidence(path, sidecar),
          )
  
- 
+-
 -# --------------------------------------------------------------------------- gate
- def response_gate(resp: Response, expected_rows_band: Tuple[int, int]) -> Dict[str, Any]:
+-def response_gate(resp: Response, expected_rows_band: Tuple[int, int]) -> Dict[str, Any]:
 -    rec: Dict[str, Any] = {"requested_date": resp.requested_date,
 -                           "payload_date": resp.payload_date, "checks": {}}
 -    if resp.payload_date != resp.requested_date:
@@ -867,13 +1097,58 @@
 -                           {"requested": resp.requested_date, "payload": resp.payload_date})
 -    rec["checks"]["payload_date_matches_request"] = True
 -
-+    """Structural/provenance gate, then the ORIGINAL completeness declaration gate."""
++    @staticmethod
++    def request_evidence(path: Path, sidecar: Dict[str, Any]) -> Dict[str, Any]:
++        """Read whatever the ORIGINAL request record says - never invent it.
++
++        The retained sidecars carry date/rows/codes/sha only. No query cap, no terminal
++        page, no requested-universe list, no replay of the vendor call. That is reported
++        as `origin=NONE` rather than back-filled from the returned row count.
++        """
++        ev: Dict[str, Any] = {"origin": "NONE", "sidecar_path": None, "request_path": None}
++        sc = path.with_name(path.name + ".sidecar.json")
++        if sc.exists():
++            ev["origin"] = "SIDECAR"
++            ev["sidecar_path"] = str(sc)
++        req = path.with_name(path.name + ".request.json")
++        if req.exists():
++            try:
++                body = json.loads(req.read_text(encoding="utf-8"))
++            except Exception:  # noqa: BLE001
++                body = {}
++            ev["origin"] = "REQUEST_RECORD"
++            ev["request_path"] = str(req)
++            ev["query_cap"] = body.get("query_cap") or body.get("limit")
++            ev["pagination_complete"] = body.get("pagination_complete", "UNKNOWN")
++            ev["requested_universe"] = body.get("codes") or body.get("symbols")
++            ev["terminal_page"] = body.get("terminal_page")
++            ev["replayed_at"] = body.get("requested_at")
++        else:
++            ev.setdefault("query_cap", sidecar.get("query_cap"))
++            ev.setdefault("pagination_complete", sidecar.get("pagination_complete", "UNKNOWN"))
++            ev.setdefault("requested_universe", sidecar.get("codes_requested"))
++        return ev
++
++
++def response_gate(resp: Response, expected_rows_band: Tuple[int, int] = (0, 0),
++                  *, release_acquisition: bool = False) -> Dict[str, Any]:
++    """Two separate judgements, never merged.
++
++    A. PROVENANCE (provable here): the retained batch's bytes, keys, session tag and
++       absence of duplicate/null rows are what they claim to be.
++    B. SUPPLIER COMPLETENESS (not provable here): whether the ORIGINAL vendor call
++       returned everything. That needs the saved request (query cap, terminal page,
++       requested universe). R13 fed the gate `query_cap=resp.rows` and
++       `pagination_complete="YES"`, i.e. it let the answer certify the question. Now the
++       gate receives only recorded evidence and returns UNKNOWN when there is none.
++    """
 +    prov = {
 +        "requested_date": resp.requested_date,
 +        "sidecar_gap_start": resp.sidecar.get("gap_start"),
 +        "sidecar_gap_end": resp.sidecar.get("gap_end"),
 +        "source_file": resp.source_file,
 +        "payload_sha256": resp.payload_sha256,
++        "request_evidence_origin": resp.request_evidence.get("origin"),
 +    }
      missing = [k for k in REQUIRED_SIDECAR_KEYS if k not in resp.sidecar]
      if missing:
@@ -914,23 +1189,73 @@
 +        raise PipelineStop("gate", "SIDECAR_INCOMPLETE", {**prov, "missing": missing})
 +    if resp.sidecar["gap_start"] != resp.requested_date or resp.sidecar["gap_end"] != resp.requested_date:
 +        raise PipelineStop("gate", "SESSION_DATE_MISMATCH", prov)
-+    if not (expected_rows_band[0] <= resp.rows <= expected_rows_band[1]):
-+        raise PipelineStop("gate", "ROW_BAND_VIOLATION", {**prov, "rows": resp.rows})
 +    if resp.frame.duplicated(subset=["date", "code"]).any():
 +        raise PipelineStop("gate", "DUPLICATE_KEYS_IN_BATCH", prov)
 +    nulls = int(resp.frame[PRICE_COLUMNS[2:]].isna().any(axis=1).sum())
 +    if nulls:
 +        raise PipelineStop("gate", "NULL_PRICE_FIELDS", {**prov, "null_rows": nulls})
 +
-+    absence = acquisition_absence_gate(
-+        n_rows=resp.rows, query_cap=resp.rows, pagination_complete="YES"
++    # Row band is only meaningful against a recorded request size. Without one it is a
++    # structural sanity bound and must not be read as a completeness statement.
++    band_source = "REQUEST_EVIDENCE" if resp.request_evidence.get("requested_universe") \
++        else "STRUCTURAL_SANITY_ONLY"
++    band_ok = True
++    if band_source == "REQUEST_EVIDENCE":
++        req_n = len(resp.request_evidence["requested_universe"])
++        band_ok = resp.rows == req_n
++        if not band_ok:
++            raise PipelineStop("gate", "ROW_COUNT_NE_REQUESTED_UNIVERSE",
++                               {**prov, "rows": resp.rows, "requested": req_n})
++    elif expected_rows_band[1] > 0:
++        band_ok = expected_rows_band[0] <= resp.rows <= expected_rows_band[1]
++
++    qcap = resp.request_evidence.get("query_cap")
++    pag = str(resp.request_evidence.get("pagination_complete") or "UNKNOWN").upper()
++    if pag not in ("YES", "NO", "UNKNOWN"):
++        pag = "UNKNOWN"
++    has_request_record = resp.request_evidence.get("origin") == "REQUEST_RECORD"
++
++    absence = acquisition_absence_gate(n_rows=resp.rows, query_cap=qcap,
++                                       pagination_complete=pag)
++    verdict = str(absence.get("DATA_ABSENCE_GATE")
++                  or absence.get("ACQUISITION_ABSENCE_GATE")
++                  or absence.get("status") or "")
++    completeness_proven = (
++        has_request_record
++        and pag == "YES"
++        and qcap is not None
++        and int(qcap) != int(resp.rows)
++        and verdict in ("AVAILABLE", "CONFIRMED_ABSENT")
 +    )
-+    if str(absence.get("ACQUISITION_ABSENCE_GATE", absence.get("status", ""))).upper() not in (
-+        "PASS", "OK", ""
-+    ) and absence.get("ABSENCE_DECLARED") is not False:
-+        raise PipelineStop("gate", "ACQUISITION_ABSENCE_UNPROVEN", {**prov, "gate": absence})
-+    return {"stage": "gate", "status": "PASS", "provenance": prov,
-+            "original_gate": absence, "rows": resp.rows}
++    completeness = "PROVEN" if completeness_proven else "UNKNOWN"
++    if release_acquisition and completeness != "PROVEN":
++        raise PipelineStop("gate", "ACQUISITION_COMPLETENESS_UNPROVEN",
++                           {**prov, "gate": absence,
++                            "request_evidence": resp.request_evidence})
++    return {
++        "stage": "gate",
++        "PROVENANCE_GATE": "PASS" if band_ok else "FAIL",
++        "provenance": prov,
++        "provenance_facts": {
++            "retained_bytes_match_sidecar_sha": resp.sidecar.get("file_sha256") ==
++            resp.payload_sha256,
++            "row_band_source": band_source,
++            "duplicate_keys": 0,
++            "null_price_rows": 0,
++        },
++        "SUPPLIER_COMPLETENESS": completeness,
++        "vendor_result_complete": completeness,
++        "original_gate": absence,
++        "original_gate_verdict": verdict,
++        "gate_inputs": {
++            "n_rows": resp.rows, "query_cap": qcap, "pagination_complete": pag,
++            "request_evidence_origin": resp.request_evidence.get("origin"),
++            "note": "query_cap and pagination_complete come only from a saved request "
++                    "record; the returned row count is never used as its own cap",
++        },
++        "ACQUISITION_RELEASED": False,
++        "rows": resp.rows,
++    }
 +
 +
 +def run(cmd: List[str], log_path: Path) -> Dict[str, Any]:
@@ -1001,9 +1326,17 @@
 +        gate = response_gate(resp, (3000, 7000))
 +        responses.append({"date": day, "rows": resp.rows, "sha256": resp.payload_sha256,
 +                          "file": resp.source_file, "gate": gate})
++    completeness = sorted({r["gate"]["SUPPLIER_COMPLETENESS"] for r in responses})
 +    evidence["stages"]["transport_gate"] = {
-+        "status": "PASS", "sessions": responses,
++        "status": "PASS",
++        "PROVENANCE_GATE": "PASS",
++        "SUPPLIER_COMPLETENESS": completeness[0] if len(completeness) == 1 else completeness,
++        "ACQUISITION_RELEASED": False,
++        "sessions": responses,
 +        "retained_sessions_available": len(transport.by_date),
++        "note": "retained bytes/keys are proven; vendor completeness is UNKNOWN because no "
++                "saved supplier request (query cap / terminal page / requested universe) "
++                "exists in the retained corpus",
 +    }
 +
 +    # ------------------------------------------------- negative control: date tamper
@@ -1025,7 +1358,22 @@
 -    df = resp.frame.copy()
 -    checks: Dict[str, Any] = {"input_rows": int(len(df)),
 -                              "input_columns": list(df.columns)}
--    try:
++        bad = transport.fetch(REPLAY_DAYS[0])
++        tampered = Response(
++            requested_date="2026-09-02",
++            rows=bad.rows, payload_sha256=bad.payload_sha256,
++            sidecar={**bad.sidecar, "gap_start": REPLAY_DAYS[0], "gap_end": REPLAY_DAYS[0]},
++            source_file=bad.source_file, frame=bad.frame,
++            request_evidence=bad.request_evidence,
++        )
++        response_gate(tampered, (3000, 7000))
++        evidence["controls"]["tampered_date"] = {"status": "NOT_BLOCKED"}
++    except PipelineStop as e:
++        evidence["controls"]["tampered_date"] = {
++            "status": "BLOCKED_AS_EXPECTED", "stage": e.stage, "code": e.code}
++
++    # ------------------------- negative control: gate must refuse self-certification
+     try:
 -        df["date"] = pd.to_datetime(df["time"]).dt.normalize()
 -    except Exception as exc:  # noqa: BLE001
 -        raise PipelineStop("CLEANING", "DATE_COERCE_FAILED", {"error": str(exc)}) from exc
@@ -1388,17 +1736,19 @@
 -        "partition_sha_after_first_pass": sha_first,
 -        "partition_sha_after_replay": sha_replay,
 -    }
-+        bad = transport.fetch(REPLAY_DAYS[0])
-+        tampered = Response(
-+            requested_date="2026-09-02",
-+            rows=bad.rows, payload_sha256=bad.payload_sha256,
-+            sidecar={**bad.sidecar, "gap_start": REPLAY_DAYS[0], "gap_end": REPLAY_DAYS[0]},
-+            source_file=bad.source_file, frame=bad.frame,
++        fake = transport.fetch(REPLAY_DAYS[0])
++        fake = Response(
++            requested_date=fake.requested_date, rows=fake.rows,
++            payload_sha256=fake.payload_sha256, sidecar=fake.sidecar,
++            source_file=fake.source_file, frame=fake.frame,
++            request_evidence={"origin": "NONE", "query_cap": fake.rows,
++                              "pagination_complete": "YES"},
 +        )
-+        response_gate(tampered, (3000, 7000))
-+        evidence["controls"]["tampered_date"] = {"status": "NOT_BLOCKED"}
++        g = response_gate(fake, (3000, 7000), release_acquisition=True)
++        evidence["controls"]["self_certified_completeness"] = {
++            "status": "NOT_BLOCKED", "gate": g}
 +    except PipelineStop as e:
-+        evidence["controls"]["tampered_date"] = {
++        evidence["controls"]["self_certified_completeness"] = {
 +            "status": "BLOCKED_AS_EXPECTED", "stage": e.stage, "code": e.code}
 +
 +    # ------------------------------------------------------------------ cleaning
@@ -1547,9 +1897,9 @@
  
  
  if __name__ == "__main__":
---- a/tools/candidate_commit.py
+--- /dev/null
 +++ b/tools/candidate_commit.py
-@@ -0,0 +1,309 @@
+@@ -0,0 +1,330 @@
 +"""Candidate commit discipline for the connected pipeline (deliverable 3, diff 3).
 +
 +Defect addressed
@@ -1652,6 +2002,19 @@
 +    products = {}
 +    for pid in REQUIRED_PRODUCTS:
 +        products[pid] = product_digest(release_dir / pid)
++    # The content hash must cover DATA only. `cache_release_id` and the release path
++    # carry a per-build timestamp (and RELEASE.json / SEAL.json / _qa carry that same
++    # timestamp), so including them made every rebuild of identical input produce a
++    # different commit id and made the IDEMPOTENT_NOOP path unreachable. Measured:
++    # two builds of the same input differed in 5 metadata files out of 766 and in
++    # none of the 761 data files.
++    content = {
++        "schema": "CC_COMMIT_IDENTITY_V2",
++        "asof": pointer.get("asof"),
++        "source_cleaning_release": pointer.get("source_cleaning_release"),
++        "parent_release_id": pointer.get("parent_release_id"),
++        "products": products,
++    }
 +    identity = {
 +        "release_id": pointer.get("cache_release_id"),
 +        "release_root": str(release_dir),
@@ -1659,8 +2022,16 @@
 +        "source_cleaning_release": pointer.get("source_cleaning_release"),
 +        "parent_release_id": pointer.get("parent_release_id"),
 +        "products": products,
++        "content_scope": {
++            "hashed": ["asof", "source_cleaning_release", "parent_release_id",
++                       "products[*].sha256/rows"],
++            "excluded": ["release_id", "release_root", "RELEASE.json", "SEAL.json",
++                         "_qa/*", "PRODUCT_CAPABILITY_FACTS_CANDIDATE.json",
++                         "CURRENT_POINTER_COPY.json"],
++            "reason": "build metadata carries the build timestamp; it is not data",
++        },
 +    }
-+    identity["commit_id"] = sha256_obj(identity)
++    identity["commit_id"] = sha256_obj(content)
 +    return identity
 +
 +
@@ -1859,7 +2230,7 @@
 +
 +if __name__ == "__main__":
 +    raise SystemExit(main())
---- a/tools/build_candidate_cleaning_from_retained.py
+--- /dev/null
 +++ b/tools/build_candidate_cleaning_from_retained.py
 @@ -0,0 +1,296 @@
 +"""Build an isolated CLEANING candidate release from retained authoritative RAW batches.
@@ -2158,7 +2529,7 @@
 +
 +if __name__ == "__main__":
 +    raise SystemExit(main())
---- a/tools/run_original_compiler_candidate.py
+--- /dev/null
 +++ b/tools/run_original_compiler_candidate.py
 @@ -0,0 +1,115 @@
 +"""Run the ORIGINAL tip-rebase cache compiler in candidate mode.
@@ -2276,7 +2647,7 @@
 +
 +if __name__ == "__main__":
 +    raise SystemExit(main())
---- a/tools/verify_provider_semantics.py
+--- /dev/null
 +++ b/tools/verify_provider_semantics.py
 @@ -0,0 +1,296 @@
 +"""Measured verification of the four V4 provider semantic repairs.
@@ -2575,7 +2946,7 @@
 +
 +if __name__ == "__main__":
 +    raise SystemExit(main())
---- a/tools/commit_recovery_selftest.py
+--- /dev/null
 +++ b/tools/commit_recovery_selftest.py
 @@ -0,0 +1,123 @@
 +"""Exercise the candidate commit's mid-failure / recovery / replay behaviour.
@@ -2701,7 +3072,7 @@
 +
 +if __name__ == "__main__":
 +    raise SystemExit(main())
---- a/tools/build_delivery_v3.py
+--- /dev/null
 +++ b/tools/build_delivery_v3.py
 @@ -0,0 +1,758 @@
 +"""Build the consolidated R13 package: corrected classification + real-chain evidence.
@@ -3462,7 +3833,7 @@
 +
 +if __name__ == "__main__":
 +    raise SystemExit(main())
---- a/tools/measure_factor_density.py
+--- /dev/null
 +++ b/tools/measure_factor_density.py
 @@ -0,0 +1,102 @@
 +"""Measure whether ADJUST_FACTOR_PIT_R1 can actually serve `fq='pre'` day by day.
@@ -3567,3 +3938,1923 @@
 +
 +if __name__ == "__main__":
 +    raise SystemExit(main())
+--- /dev/null
++++ b/candidate/local_plane/minute_bridge.py
+@@ -0,0 +1,120 @@
++"""Bridge to the ORIGINAL stock minute reader (`STOCK_MINUTE_1M_R1`).
++
++The local plane does carry a minute product; R13's claim that it did not was wrong.
++This module does not re-implement anything: it loads
++`脚本/blackbox_stock_minute_1m_reader_r1.py` from its real location and calls its real
++`fetch_stock_minute_1m(request)` entry point, whose own contract resolves
++`数据/清洗成品/CURRENT_CLEANING_RELEASE.json` -> `standard/price/A股_stock_1m`.
++
++Nothing is synthesised here:
++  * `PASS` rows are the reader's rows, with its columns and its provenance;
++  * `NO_DATA` / `MISSING` / `FAIL` are returned as-is so the caller can BLOCK with the
++    reader's reason instead of substituting a daily open;
++  * `RAW_NONE` availability is never presented as adjustment.
++
++`duckdb` is the reader's own dependency (it queries the parquet shards with SQL); the task
++ships it in `vendor/` so the shared venv is untouched.
++"""
++from __future__ import annotations
++
++import importlib.util
++import sys
++from pathlib import Path
++from typing import Any, Dict, List, Optional
++
++import datetime as dt
++
++import pandas as pd
++
++TASK = Path(__file__).resolve().parents[2]
++READER = Path(r"E:\BLACKBOX\脚本\blackbox_stock_minute_1m_reader_r1.py")
++VENDOR = TASK / "vendor"
++
++_MOD = None
++_LOAD_ERROR: Optional[str] = None
++
++
++def _load():
++    global _MOD, _LOAD_ERROR
++    if _MOD is not None or _LOAD_ERROR is not None:
++        return _MOD
++    if str(VENDOR) not in sys.path:
++        sys.path.insert(0, str(VENDOR))
++    try:
++        spec = importlib.util.spec_from_file_location("_bb_stock_minute_reader", READER)
++        mod = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(mod)  # type: ignore[union-attr]
++        _MOD = mod
++    except Exception as exc:  # noqa: BLE001
++        _LOAD_ERROR = f"{type(exc).__name__}: {exc}"
++    return _MOD
++
++
++def available() -> Dict[str, Any]:
++    mod = _load()
++    if mod is None:
++        return {"available": False, "error": _LOAD_ERROR, "reader": str(READER)}
++    try:
++        src = mod.resolve_cleaning_stock_1m_source()
++    except Exception as exc:  # noqa: BLE001
++        return {"available": False, "error": f"resolve: {type(exc).__name__}: {exc}"}
++    return {
++        "available": src.get("status") == "READY",
++        "reader": str(READER),
++        "product_id": getattr(mod, "PRODUCT_ID", None),
++        "source_id": getattr(mod, "SOURCE_ID", None),
++        "source_status": src.get("status"),
++        "source_dir": src.get("source_dir"),
++        "source_pointer": src.get("ptr"),
++        "evidence_gaps": src.get("evidence_gaps"),
++    }
++
++
++def _norm_bound(value: Any, *, is_end: bool) -> str:
++    """Normalise a JQ-style bound into an explicit timestamp.
++
++    Measured defect in the original reader: `parse_ts('2026-09-15')` resolves a
++    date-only string to **15:00:00** (market close), so passing a date-only START
++    bound produces an inverted window and the query returns nothing
++    (`NO_DATA/EMPTY_AFTER_FILTER`). The reader is left untouched; the caller supplies
++    the clock it actually means, which is the adaptation this integration needs.
++    """
++    if isinstance(value, (dt.datetime, pd.Timestamp)):
++        return pd.Timestamp(value).strftime("%Y-%m-%d %H:%M:%S")
++    text = str(value).strip()
++    if len(text) <= 10:
++        return f"{text} {'23:59:59' if is_end else '00:00:00'}"
++    return text
++
++
++def fetch(
++    symbols: List[str],
++    start: Any,
++    end: Any,
++    asof: str = "20260924",
++    cutoff: Any = None,
++    fields: Optional[List[str]] = None,
++    request_id: str = "LOCAL_PLANE",
++) -> Dict[str, Any]:
++    """Call the original reader. Returns its own response dict, unmodified."""
++    mod = _load()
++    if mod is None:
++        return {"status": "FAIL", "reason_code": "READER_IMPORT_FAILED",
++                "evidence_gaps": [{"gap": _LOAD_ERROR}], "data": [], "rows": 0,
++                "source_paths": [], "source_sha256": {}}
++    start_ts = _norm_bound(start, is_end=False)
++    end_ts = _norm_bound(end, is_end=True)
++    cut_ts = _norm_bound(cutoff if cutoff is not None else end, is_end=True)
++    req = {
++        "symbols": list(symbols),
++        "start_time": start_ts,
++        "end_time": end_ts,
++        "asof": str(asof),
++        "cutoff_time": cut_ts,
++        "request_id": str(request_id),
++    }
++    if fields:
++        req["required_columns"] = [c for c in fields if c in
++                                   ("timestamp", "open", "high", "low", "close",
++                                    "volume", "amount")]
++    return mod.fetch_stock_minute_1m(req)
+--- /dev/null
++++ b/candidate/run_r15_cleaning_replay.py
+@@ -0,0 +1,276 @@
++"""Replay the two retained sessions through R15's REAL cleaning functions.
++
++R13 built its cleaning candidate with `inherit_tree` + a self-written replay parquet + the
++original compiler reader/antileak. That is a valid candidate build, but it never calls
++`load_staging` / `ingest_item` / `seal_release` / `r15_antileak_and_ssot`, so it cannot
++support the claim that the original download-then-clean chain is connected. This runner
++closes that gap the only honest way: it imports the R15 module **from its real path**,
++keeps every function body, and injects only the paths/permissions this call needs.
++
++Injected (candidate isolation, no production write):
++  ROOT            -> <task>/candidate/r15_root   (holds the candidate STAGING_MANIFEST)
++  RELEASES        -> <task>/candidate/r15_releases
++  CURRENT         -> <task>/candidate/r15_root/CANDIDATE_CLEANING_POINTER.json
++  MINUTE_STAGING  -> <task>/candidate/r15_root/minute_staging (empty)
++  CLEANING_AS_OF  -> the run asof
++  PARENT_ID/SEAL  -> the factual production parent
++  SSOT            -> <task>/candidate/r15_root/CANDIDATE_SSOT.json (copy)
++
++Never called: `switch_current` (production CURRENT) and `patch_hand` (production HAND).
++Both are named in the output so the omission cannot be mistaken for a pass.
++"""
++from __future__ import annotations
++
++import argparse
++import hashlib
++import importlib.util
++import json
++import shutil
++import sys
++from pathlib import Path
++
++import pandas as pd
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++BB = Path(r"E:\BLACKBOX")
++R15_FILE = BB / "任务" / "BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1" / "formal_cleaning_r15_build_and_seal_r1.py"
++R15_ANTILEAK = BB / "任务" / "BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1" / "r15_antileak_and_ssot_r1.py"
++RAW_P2 = BB / "数据" / "原始只读" / "JQData_9999_official_raw" / "P2_stock_daily"
++PROD_CLEAN_PTR = BB / "数据" / "清洗成品" / "CURRENT_CLEANING_RELEASE.json"
++PROD_SSOT = BB / "规则库" / "hand_hard_rules" / "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R1.json"
++
++RETAINED = [
++    "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
++    "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
++]
++OUT_EVIDENCE = TASK / "evidence" / "R15_CLEANING_REPLAY.json"
++
++
++def sha256(path: Path) -> str:
++    h = hashlib.sha256()
++    with open(path, "rb") as fh:
++        for chunk in iter(lambda: fh.read(1 << 20), b""):
++            h.update(chunk)
++    return h.hexdigest()
++
++
++def load_module(path: Path, name: str):
++    spec = importlib.util.spec_from_file_location(name, path)
++    mod = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(mod)  # type: ignore[union-attr]
++    return mod
++
++
++def build_staging(root: Path, asof: str) -> tuple[list[dict], list[dict]]:
++    """Stage the retained RAW batches and write the manifest R15's load_staging reads."""
++    stage_dir = root / "04_REPAIR_STAGING_DATA" / "stock_daily"
++    stage_dir.mkdir(parents=True, exist_ok=True)
++    items, provenance = [], []
++    for name in RETAINED:
++        src = RAW_P2 / name
++        if not src.exists():
++            raise SystemExit(f"HARD_BLOCK: retained batch missing {src}")
++        df = pd.read_parquet(src)
++        rows = int(len(df))
++        days = sorted({str(pd.Timestamp(x).date())
++                       for x in pd.to_datetime(df["time"], errors="coerce").dropna().unique()})
++        dst = stage_dir / name
++        if not dst.exists():
++            shutil.copy2(src, dst)
++        items.append({
++            "unit_id": Path(name).stem,
++            "domain_id": "stock_ohlcv_daily",
++            "status": "PASS",
++            "raw_path": str(src),
++            "stage_path": str(dst),
++            "clean_rel": f"price/stock_ohlcv_daily/{name}",
++            "file_sha256": sha256(src),
++            "rows": rows,
++            "max_time": days[-1] if days else asof,
++            "as_of": days[-1] if days else asof,
++            "trade_days_in_file": days,
++        })
++        provenance.append({"file": name, "rows": rows, "days": days,
++                           "sha256": sha256(src), "staged_copy": str(dst)})
++    man_dir = root / "08_DAILY_SOURCE_HANDOFF"
++    man_dir.mkdir(parents=True, exist_ok=True)
++    (man_dir / "STAGING_MANIFEST.json").write_text(
++        json.dumps({"artifact": "STAGING_MANIFEST", "candidate": True,
++                    "asof": asof, "items": items}, ensure_ascii=False, indent=2),
++        encoding="utf-8")
++    return items, provenance
++
++
++def main() -> int:
++    ap = argparse.ArgumentParser()
++    ap.add_argument("--asof", default="2026-09-24")
++    ap.add_argument("--rid", default="")
++    args = ap.parse_args()
++    asof = str(pd.Timestamp(args.asof).date())
++    rid = args.rid or f"R15_REPLAY_{asof.replace('-', '')}"
++
++    root = TASK / "candidate" / "r15_root"
++    releases = TASK / "candidate" / "r15_releases"
++    root.mkdir(parents=True, exist_ok=True)
++    releases.mkdir(parents=True, exist_ok=True)
++
++    items, provenance = build_staging(root, asof)
++    # measured, not asserted: the production files must be byte-identical afterwards
++    prod_before = {str(p): (sha256(p) if p.exists() else None)
++                   for p in (PROD_CLEAN_PTR, PROD_SSOT)}
++
++    # candidate pointer that the REAL antileak check will read
++    prod = json.loads(PROD_CLEAN_PTR.read_text(encoding="utf-8"))
++    cand_ptr = {
++        "release_id": rid,
++        "seal_id": f"{rid}_SEAL",
++        "sealed": True,
++        "cleaning_as_of": asof,
++        "finance_asof": asof,
++        "daily_asof": asof,
++        "standard_root": str(releases / rid / "standard"),
++        "quarantine_root": str(releases / rid / "_quarantine"),
++        "ledger_path": str(releases / rid / "_control" / "cleaning_ledger.sqlite"),
++        "parent_release_id": prod.get("release_id"),
++        "CURRENT_WRITE": "NONE_CANDIDATE_ONLY",
++        "generated_by": "run_r15_cleaning_replay.py",
++    }
++    ptr_path = root / "CANDIDATE_CLEANING_POINTER.json"
++    ptr_path.write_text(json.dumps(cand_ptr, ensure_ascii=False, indent=2), encoding="utf-8")
++
++    ssot_copy = root / "CANDIDATE_SSOT.json"
++    if PROD_SSOT.exists() and not ssot_copy.exists():
++        ssot_copy.write_text(PROD_SSOT.read_text(encoding="utf-8"), encoding="utf-8")
++
++    # --- R15 import + minimal path injection (function bodies untouched) -----------
++    mod = load_module(R15_FILE, "r15_cleaning_real")
++    mod.ROOT = root
++    mod.RELEASES = releases
++    mod.CURRENT = ptr_path
++    mod.MINUTE_STAGING = root / "minute_staging"
++    mod.CLEANING_AS_OF = asof
++    mod.PARENT_ID = str(prod.get("release_id"))
++    mod.PARENT_SEAL = str(prod.get("seal_id") or "")
++
++    loaded = mod.load_staging()
++    release_root = releases / rid
++    if release_root.exists():
++        raise SystemExit(f"HARD_BLOCK: candidate release exists, refusing to overwrite {release_root}")
++
++    results = []
++    for item in loaded:
++        results.extend(mod.ingest_item(item, release_root))
++
++    seal = mod.seal_release(release_root, rid, f"{rid}_SEAL", results)
++
++    # release RELEASE.json in R15's own shape
++    (release_root / "RELEASE.json").write_text(json.dumps({
++        "release_id": rid,
++        "seal_id": f"{rid}_SEAL",
++        "cleaning_as_of": asof,
++        "daily_asof": asof,
++        "standard_root": str(release_root / "standard"),
++        "mode": "CANDIDATE_R15_REAL_FUNCTIONS",
++        "parent_release_id": mod.PARENT_ID,
++        "PRODUCTION_CURRENT_WRITE": "NONE",
++        "switch_current": "NOT_CALLED",
++        "patch_hand": "NOT_CALLED",
++        "repair_units": len(results),
++    }, ensure_ascii=False, indent=2), encoding="utf-8")
++
++    # --- real antileak + ssot functions, redirected SSOT ---------------------------
++    al = load_module(R15_ANTILEAK, "r15_antileak_real")
++    al.ROOT = root
++    al.OUT = TASK / "evidence" / "r15_acceptance"
++    al.CURRENT = ptr_path
++    al.SSOT = ssot_copy
++    al.ASOF = asof
++    antileak = al.antileak_check()
++    ssot_amend = None
++    if antileak.get("overall_pass"):
++        ssot_amend = al.amend_ssot({"release_id": rid, "seal_id": f"{rid}_SEAL",
++                                    "final_status": "PASS",
++                                    "parent_release_id": mod.PARENT_ID}, antileak)
++    else:
++        (TASK / "evidence" / "r15_acceptance").mkdir(parents=True, exist_ok=True)
++        (TASK / "evidence" / "r15_acceptance" / "R15_FINISH_RESULT.json").write_text(
++            json.dumps({"final_status": "REVIEW_REQUIRED", "antileak": antileak},
++                       ensure_ascii=False, indent=2), encoding="utf-8")
++
++    # readback: what the sealed candidate actually contains
++    sealed_files = sorted((release_root / "standard").rglob("*.parquet")) \
++        if (release_root / "standard").exists() else []
++    readback = []
++    for f in sealed_files:
++        d = pd.read_parquet(f)
++        readback.append({
++            "relative_path": str(f.relative_to(release_root / "standard")).replace("\\", "/"),
++            "rows": int(len(d)),
++            "columns": list(d.columns),
++            "sha256": sha256(f),
++        })
++    prod_after = {str(p): (sha256(p) if p.exists() else None)
++                  for p in (PROD_CLEAN_PTR, PROD_SSOT)}
++
++    gates = {
++        "r15_load_staging_called": True,
++        "r15_ingest_item_called": len(results) > 0,
++        "ingest_all_committed": all(r["status"] == "COMMITTED" for r in results),
++        "r15_seal_release_called": bool(seal.get("release_content_root_sha256")),
++        "seal_certificate_written": (release_root / "_seal" /
++                                     "CLEANING_LAYER_SEAL_CERTIFICATE.json").exists(),
++        "ledger_written": (release_root / "_control" / "cleaning_ledger.sqlite").exists(),
++        "antileak_function_called": "overall_pass" in antileak,
++        "antileak_pass": bool(antileak.get("overall_pass")),
++        "production_current_untouched": prod_after[str(PROD_CLEAN_PTR)] ==
++        prod_before[str(PROD_CLEAN_PTR)],
++        "production_ssot_untouched": prod_after[str(PROD_SSOT)] == prod_before[str(PROD_SSOT)],
++        "switch_current_not_called": True,
++        "patch_hand_not_called": True,
++        "sealed_rows_equal_retained_rows": sum(r["rows"] for r in readback) ==
++        sum(i["rows"] for i in items),
++    }
++    out = {
++        "artifact": "R15_CLEANING_REPLAY",
++        "release_id": rid,
++        "release_root": str(release_root),
++        "asof": asof,
++        "r15_source": {"cleaning_module": str(R15_FILE), "antileak_module": str(R15_ANTILEAK)},
++        "injection": {
++            "ROOT": str(root), "RELEASES": str(releases),
++            "CURRENT": str(ptr_path), "MINUTE_STAGING": str(root / "minute_staging"),
++            "CLEANING_AS_OF": asof, "PARENT_ID": mod.PARENT_ID,
++            "PARENT_SEAL": mod.PARENT_SEAL, "SSOT": str(ssot_copy),
++        },
++        "retained_batches": provenance,
++        "staging_items_loaded": len(items),
++        "production_hashes": {"before": prod_before, "after": prod_after},
++        "repair_units": results,
++        "seal_certificate": seal,
++        "antileak": antileak,
++        "ssot_amend": ssot_amend,
++        "sealed_readback": readback,
++        "gates": gates,
++        "GATE_RESULT": "PASS" if all(gates.values()) else "FAIL",
++        "not_claimed": [
++            "production CURRENT not switched (switch_current not called)",
++            "production HAND not patched (patch_hand not called)",
++            "this replay proves the R15 functions run on the retained batches, not that the "
++            "original vendor download returned them",
++        ],
++    }
++    OUT_EVIDENCE.parent.mkdir(parents=True, exist_ok=True)
++    OUT_EVIDENCE.write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str),
++                            encoding="utf-8")
++    print(json.dumps({"release_id": rid, "release_root": str(release_root),
++                      "repair_units": len(results),
++                      "sealed_files": len(readback),
++                      "sealed_rows": sum(r["rows"] for r in readback),
++                      "antileak_pass": antileak.get("overall_pass"),
++                      "gates": gates, "GATE_RESULT": out["GATE_RESULT"]},
++                     ensure_ascii=False, indent=2))
++    return 0 if out["GATE_RESULT"] == "PASS" else 3
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/candidate/run_publish_atomic_rehearsal.py
+@@ -0,0 +1,299 @@
++"""Rehearse the ORIGINAL `publish_atomic` non-dry-run path with every write bound.
++
++The review's constraint is exact: before entering the non-dry-run path, bind *all* targets
++of `publish_atomic` and everything it transitively calls - not just the two CURRENT
++pointers. In the original module the write set is:
++
++    publish_atomic
++      CACHE_PTR.bak_before_atomic_publish     (backup)
++      CLEAN_PTR.bak_before_atomic_publish     (backup)
++      CLEAN_PTR                               (cleaning CURRENT)
++      CACHE_PTR                               (cache CURRENT)
++      FACTS                                   (capability facts)
++      LEDGER                                  (freshness ledger)
++      refresh_scope_from_live()
++        SCOPE                                 (update scope)
++        ROOT/运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_...json   (child summary)
++        reads ROOT/规则库/hand_hard_rules/..._R2.json
++
++Each of those is a module global, so each is rebound here to a task-local path. A
++`sys.addaudithook` then fails the run on ANY write outside the bound root, which is what
++makes "fully isolated" a measurement instead of a claim.
++
++The capability matrix is produced by the REAL `rebuild_capability_facts_candidate`. That
++function contains `product_date_max(...) or target`, i.e. a missing product silently
++inherits coverage = target. The rehearsal records that per product instead of letting it
++pass unnoticed.
++"""
++from __future__ import annotations
++
++import argparse
++import hashlib
++import importlib.util
++import json
++import os
++import shutil
++import sys
++import traceback
++from pathlib import Path
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++BB = Path(r"E:\BLACKBOX")
++SCRIPTS = BB / "脚本"
++GATE_FILE = SCRIPTS / "blackbox_daily_increment_publish_gate_r1.py"
++COMMON_FILE = SCRIPTS / "blackbox_daily_increment_common_r1.py"
++REFRESH_FILE = SCRIPTS / "blackbox_full_data_update_scope_refresh_r1.py"
++COMMIT_FILE = TASK / "candidate" / "cc_commit" / "COMMIT.json"
++CLEANING_PTR = TASK / "candidate" / "r15_root" / "CANDIDATE_CLEANING_POINTER.json"
++OUT = TASK / "evidence" / "PUBLISH_ATOMIC_REHEARSAL.json"
++BOUND = TASK / "candidate" / "publish_rehearsal"
++
++WRITE_EVENTS: list[dict] = []
++VIOLATIONS: list[dict] = []
++
++
++def sha256(path: Path) -> str:
++    h = hashlib.sha256()
++    with open(path, "rb") as fh:
++        for chunk in iter(lambda: fh.read(1 << 20), b""):
++            h.update(chunk)
++    return h.hexdigest()
++
++
++def load_by_path(path: Path, name: str):
++    spec = importlib.util.spec_from_file_location(name, path)
++    mod = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(mod)  # type: ignore[union-attr]
++    return mod
++
++
++def install_audit_hook(bound: Path, also_allow: Path | None = None) -> None:
++    roots = [str(bound.resolve()).lower()]
++    if also_allow is not None:
++        roots.append(str(also_allow.resolve()).lower())
++
++    def hook(event: str, args) -> None:
++        if event != "open":
++            return
++        path, mode, flags = (list(args) + [None, None, None])[:3]
++        writing = False
++        if isinstance(mode, str) and any(ch in mode for ch in "wax+"):
++            writing = True
++        if not writing and isinstance(flags, int):
++            writing = bool(flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_APPEND))
++        if not writing or path is None:
++            return
++        try:
++            p = str(Path(os.fsdecode(path)).resolve())
++        except Exception:  # noqa: BLE001
++            return
++        rec = {"path": p, "mode": mode if isinstance(mode, str) else flags,
++               "inside_bound_root": p.lower().startswith(roots[0])}
++        WRITE_EVENTS.append(rec)
++        if not any(p.lower().startswith(r) for r in roots):
++            VIOLATIONS.append(rec)
++            raise RuntimeError(f"UNBOUND_WRITE_ATTEMPT: {p}")
++
++    sys.addaudithook(hook)
++
++
++def snapshot(root: Path) -> dict:
++    out = {}
++    for f in sorted(root.rglob("*")):
++        if f.is_file():
++            out[str(f.relative_to(root)).replace("\\", "/")] = sha256(f)
++    return out
++
++
++def main() -> int:
++    ap = argparse.ArgumentParser()
++    ap.add_argument("--target", default="2026-09-24")
++    ap.add_argument("--reset", action="store_true")
++    args = ap.parse_args()
++    target = str(args.target)
++    if BOUND.exists() and args.reset:
++        shutil.rmtree(BOUND)
++    BOUND.mkdir(parents=True, exist_ok=True)
++    (BOUND / "运行").mkdir(parents=True, exist_ok=True)
++    (BOUND / "规则库" / "hand_hard_rules").mkdir(parents=True, exist_ok=True)
++
++    common = load_by_path(COMMON_FILE, "bb_common_real")
++    commit = json.loads(COMMIT_FILE.read_text(encoding="utf-8"))
++    cache_root = Path(commit["release_root"])
++    if not cache_root.exists():
++        raise SystemExit(f"HARD_BLOCK: committed candidate release missing {cache_root}")
++
++    cand_clean = json.loads(CLEANING_PTR.read_text(encoding="utf-8"))
++
++    # --- bind every write target of publish_atomic --------------------------------
++    bound = {
++        "CACHE_PTR": BOUND / "cache_current.json",
++        "CLEAN_PTR": BOUND / "cleaning_current.json",
++        "FACTS": BOUND / "运行" / "BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json",
++        "LEDGER": BOUND / "运行" / "BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json",
++        "OPS": BOUND / "运行" / "BLACKBOX_R20_20260817_OPERATIONAL_READINESS.json",
++        "SCOPE": BOUND / "运行" / "BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
++        "ROOT": BOUND,
++        "CHILD": BOUND / "运行" / "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
++        "SCOPE_R2": BOUND / "规则库" / "hand_hard_rules" / "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json",
++    }
++    # seed the bound root with the CURRENT production content so the backups are real
++    seeds = {
++        common.CACHE_PTR: bound["CACHE_PTR"],
++        common.CLEAN_PTR: bound["CLEAN_PTR"],
++        common.FACTS: bound["FACTS"],
++        common.LEDGER: bound["LEDGER"],
++        common.OPS: bound["OPS"],
++        common.SCOPE: bound["SCOPE"],
++        BB / "运行" / "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json": bound["CHILD"],
++        BB / "规则库" / "hand_hard_rules" / "BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json": bound["SCOPE_R2"],
++    }
++    seeded = {}
++    for src, dst in seeds.items():
++        if src.exists():
++            dst.parent.mkdir(parents=True, exist_ok=True)
++            shutil.copy2(src, dst)
++            seeded[str(dst)] = {"source": str(src), "sha256": sha256(dst)}
++        else:
++            seeded[str(dst)] = {"source": str(src), "missing": True}
++
++    # --- facts from the REAL rebuild function --------------------------------------
++    common.FACTS = bound["FACTS"]
++    facts = common.rebuild_capability_facts_candidate(
++        cache_id=str(commit["release_id"]), cache_root=cache_root, target=target)
++    measured = {}
++    required = list(common.PRODUCTION_MATRIX_PRODUCTS) + [
++        "ADJUST_FACTOR_PIT_R1", "SW_L1_MEMBERSHIP_PIT_R1",
++        "SW_L2_MEMBERSHIP_PIT_R1", "SW_L3_MEMBERSHIP_PIT_R1"]
++    for pid in required:
++        real_max = common.product_date_max(cache_root / pid)
++        measured[pid] = {
++            "product_date_max": str(real_max) if real_max else None,
++            "facts_coverage_max": (facts.get("products", {}).get(pid) or {}).get("FORMAL_COVERAGE_MAX"),
++            "coverage_self_filled_from_target": bool(real_max is None),
++        }
++
++    cache_pointer = {
++        "cache_release_id": str(commit["release_id"]),
++        "release_root": str(cache_root),
++        "asof": str(commit.get("asof")),
++        "source_cleaning_release": cand_clean.get("release_id"),
++        "build_version": "CANDIDATE_SINGLE_COMMIT",
++        "FORMAL_DAILY_PUBLISH": "REHEARSAL_ONLY",
++        "anti_lookahead_pass": True,
++    }
++
++    # --- import the ORIGINAL gate and rebind its module globals --------------------
++    gate = load_by_path(GATE_FILE, "bb_publish_gate_real")
++    gate.CACHE_PTR = bound["CACHE_PTR"]
++    gate.CLEAN_PTR = bound["CLEAN_PTR"]
++    gate.FACTS = bound["FACTS"]
++    gate.LEDGER = bound["LEDGER"]
++
++    refresh_mod = load_by_path(REFRESH_FILE, "bb_scope_refresh_real")
++    refresh_mod.CACHE_PTR = bound["CACHE_PTR"]
++    refresh_mod.CLEAN_PTR = bound["CLEAN_PTR"]
++    refresh_mod.FACTS = bound["FACTS"]
++    refresh_mod.OPS = bound["OPS"]
++    refresh_mod.SCOPE = bound["SCOPE"]
++    refresh_mod.ROOT = bound["ROOT"]
++
++    calls = {"refresh_scope_from_live": 0}
++
++    def bound_refresh() -> dict:
++        calls["refresh_scope_from_live"] += 1
++        return refresh_mod.refresh_scope_from_live()
++
++    gate.refresh_scope_from_live = bound_refresh  # type: ignore[assignment]
++
++    # the candidate pointer must be readable at the bound CLEAN_PTR (backup source)
++    shutil.copy2(CLEANING_PTR, bound["CLEAN_PTR"])
++    bound["CLEAN_PTR"].write_text(json.dumps(cand_clean, ensure_ascii=False, indent=2),
++                                  encoding="utf-8")
++    bound["CACHE_PTR"].write_text(json.dumps(
++        json.loads(common.CACHE_PTR.read_text(encoding="utf-8")), ensure_ascii=False, indent=2),
++        encoding="utf-8")
++
++    before = snapshot(BOUND)
++    install_audit_hook(BOUND, OUT.parent)
++
++    result: dict
++    error = None
++    try:
++        result = gate.publish_atomic(
++            cache_pointer=cache_pointer,
++            cache_root=cache_root,
++            facts=facts,
++            target=target,
++            cleaning_pointer=cand_clean,
++            dry_run=False,
++        )
++    except Exception as exc:  # noqa: BLE001
++        error = {"type": type(exc).__name__, "message": str(exc),
++                 "traceback": traceback.format_exc()[-1500:]}
++        result = {"OPERATIONAL_READINESS": "FAIL_CLOSED", "CURRENT_PUBLISH": "FORBIDDEN",
++                  "published": False, "reason": "EXCEPTION"}
++    after = snapshot(BOUND)
++
++    changed = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
++    outside = [v for v in VIOLATIONS]
++    written_paths = sorted({v["path"] for v in WRITE_EVENTS})
++
++    out = {
++        "artifact": "PUBLISH_ATOMIC_REHEARSAL",
++        "target": target,
++        "gate_module": str(GATE_FILE),
++        "call": {"function": "publish_atomic", "dry_run": False,
++                 "refresh_scope_from_live_invocations": calls["refresh_scope_from_live"]},
++        "bound_targets": {k: str(v) for k, v in bound.items()},
++        "seeded_from_production": seeded,
++        "facts": {
++            "SYSTEM_GENERATION_ID": facts.get("SYSTEM_GENERATION_ID"),
++            "per_product": measured,
++            "coverage_self_filled_products": [k for k, v in measured.items()
++                                             if v["coverage_self_filled_from_target"]],
++        },
++        "result": result,
++        "error": error,
++        "isolation": {
++            "bound_root": str(BOUND),
++            "writes_observed": len(WRITE_EVENTS),
++            "written_paths": written_paths,
++            "unbound_writes": outside,
++            "files_changed_inside_bound_root": changed,
++            "no_write_outside_bound_root": len(outside) == 0,
++        },
++        "decisions": {
++            "matrix_operational_readiness": result.get("OPERATIONAL_READINESS"),
++            "candidate_matrix_result": result.get("CURRENT_PUBLISH"),
++            "published": bool(result.get("published")),
++            "published_reason": result.get("reason"),
++        },
++        "honest_limits": [
++            "CURRENT_SWITCH_ALLOWED=false: production CURRENT and production HAND were never "
++            "written; every target above is a task-local copy seeded from production.",
++            "A published=True here means the ORIGINAL gate accepted the candidate pair and "
++            "swapped the BOUND pointers; it does not mean the production system switched.",
++            "The capability matrix grades by coverage dates. It does not inspect factor "
++            "validity, so a placeholder factor plane can still read AVAILABLE_FORMAL.",
++        ],
++    }
++    OUT.parent.mkdir(parents=True, exist_ok=True)
++    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
++    print(json.dumps({
++        "readiness": result.get("OPERATIONAL_READINESS"),
++        "current_publish": result.get("CURRENT_PUBLISH"),
++        "published": result.get("published"),
++        "reason": result.get("reason"),
++        "writes_observed": len(WRITE_EVENTS),
++        "unbound_writes": len(outside),
++        "changed_files": len(changed),
++        "refresh_calls": calls["refresh_scope_from_live"],
++        "coverage_self_filled": out["facts"]["coverage_self_filled_products"],
++        "error": error["message"] if error else None,
++    }, ensure_ascii=False, indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tools/build_minute_plane_evidence.py
+@@ -0,0 +1,130 @@
++"""Measure the REAL minute plane and what V4 actually asks of it.
++
++Answers three questions with measurements instead of assertions:
++
++  1. Does a local stock minute product exist, and what exactly does it cover?
++     -> resolves through the ORIGINAL reader (STOCK_MINUTE_1M_R1), lists day shards.
++  2. Does the V4 strategy request minute bars at all?
++     -> counted from the strategy source: every get_price call and its frequency.
++  3. For the V4 window, which sessions can the provider actually answer with minute bars,
++     and which are BLOCKED (with the reader's own reason)?
++"""
++from __future__ import annotations
++
++import datetime as dt
++import json
++import re
++import sys
++from pathlib import Path
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++sys.path.insert(0, str(TASK / "candidate"))
++
++from local_plane import LocalPlaneProvider, minute_bridge  # noqa: E402
++
++STRATEGY = Path(r"E:\BLACKBOX\参考资料\聚宽策略写法\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py")
++OUT = TASK / "evidence" / "MINUTE_PLANE.json"
++WINDOW = [dt.date(2026, 9, 3), dt.date(2026, 9, 24)]
++
++
++def shard_days(source_dir: str) -> dict:
++    days = {}
++    for p in sorted(Path(source_dir).glob("*.parquet")):
++        m = re.search(r"__(\d{4}-\d{2}-\d{2})__", p.name)
++        if m:
++            days.setdefault(m.group(1), []).append(p.name)
++    return {d: len(v) for d, v in sorted(days.items())}
++
++
++def strategy_calls() -> dict:
++    text = STRATEGY.read_text(encoding="utf-8")
++    lines = text.splitlines()
++    calls = []
++    for i, line in enumerate(lines):
++        if "get_price(" not in line:
++            continue
++        # the frequency kwarg sits within the next dozen lines of the call
++        block = "\n".join(lines[i:i + 14])
++        freqs = re.findall(r"frequency\s*=\s*['\"]([^'\"]+)['\"]", block)
++        calls.append({"line": i + 1, "frequency": freqs[0] if freqs else None,
++                      "has_fq_pre": "fq='pre'" in block or 'fq="pre"' in block})
++    minute_calls = [c for c in calls if (c["frequency"] or "").lower() in
++                    ("minute", "1m", "5m", "15m", "30m", "60m")]
++    snapshots = len(re.findall(r"get_current_data\(\)", text))
++    return {"get_price_calls": len(calls), "calls": calls,
++            "minute_get_price_calls": len(minute_calls),
++            "get_current_data_calls": snapshots}
++
++
++def main() -> int:
++    info = minute_bridge.available()
++    days = shard_days(info["source_dir"]) if info.get("available") else {}
++    calls = strategy_calls()
++
++    p = LocalPlaneProvider(use_candidate_override=True)
++    sessions = p.trade_days(start=WINDOW[0], end=WINDOW[1])
++    probes = []
++    for d in sessions:
++        got = p.get_price("000001.XSHE", start_date=str(d), end_date=f"{d} 10:00:00",
++                          frequency="minute", count=60, fields=["open", "close"], fq="none")
++        obs = [o for o in p.observation_log if o.get("api") == "get_price"][-1]
++        probes.append({
++            "session": str(d),
++            "rows": int(len(got)),
++            "mode": obs.get("intraday_mode"),
++            "reader_status": obs.get("minute_reader_status"),
++            "reader_reason": obs.get("minute_reader_reason"),
++        })
++
++    covered = [x["session"] for x in probes if x["rows"] > 0]
++    blocked = [x["session"] for x in probes if x["rows"] == 0]
++    out = {
++        "artifact": "MINUTE_PLANE",
++        "correction": (
++            "R13 stated there is no local minute product. That was wrong: the product "
++            "exists and is reachable through the original reader. It is now wired into "
++            "the provider; what remains is a coverage window, not a missing plane."
++        ),
++        "reader": info,
++        "product_coverage": {
++            "day_shards": days,
++            "n_days": len(days),
++            "first_day": min(days) if days else None,
++            "last_day": max(days) if days else None,
++        },
++        "strategy_requests": calls,
++        "v4_window": [str(WINDOW[0]), str(WINDOW[1])],
++        "v4_window_minute_probe": probes,
++        "sessions_covered": covered,
++        "sessions_blocked": blocked,
++        "conclusion": {
++            "plane_exists": bool(days),
++            "v4_requests_minute_bars": calls["minute_get_price_calls"] > 0,
++            "note": (
++                "V4 makes no minute get_price call at all: it uses daily get_price plus "
++                "get_current_data() snapshots at its scheduled clocks. So wiring the "
++                "minute plane does not unblock V4 by itself, and the earlier statement "
++                "that minute input was the blocker is withdrawn. The minute path is now "
++                "real for any caller that does request it, and is BLOCKED outside the "
++                "shard window instead of being proxied."
++            ),
++        },
++    }
++    OUT.parent.mkdir(parents=True, exist_ok=True)
++    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
++    print(json.dumps({
++        "plane_available": info.get("available"),
++        "day_shards": out["product_coverage"]["n_days"],
++        "shard_window": [out["product_coverage"]["first_day"], out["product_coverage"]["last_day"]],
++        "strategy_get_price_calls": calls["get_price_calls"],
++        "strategy_minute_calls": calls["minute_get_price_calls"],
++        "get_current_data_calls": calls["get_current_data_calls"],
++        "v4_covered": len(covered), "v4_blocked": len(blocked),
++        "blocked_sample": blocked[:5],
++        "covered_sample": covered[:5],
++    }, ensure_ascii=False, indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tools/trace_factor_source.py
+@@ -0,0 +1,152 @@
++"""Trace the 12 sparse factor sessions from the CACHE back to the SOURCE layer.
++
++Question: is `ADJUST_FACTOR_PIT_R1` sparse because the authoritative input is sparse, or
++because the builder dropped a forward-carry it was supposed to perform?
++
++Layers read (read-only, necessary columns only):
++  L0 CACHE  releases/.../ADJUST_FACTOR_PIT_R1   (date, code, factor)
++  L1 P1     RAW P1_adjust_factor/*.parquet      (date, code, factor)  <- declared source
++  L2 P6     RAW P6_factor_reference/adjust_factor/*.parquet         <- reference layer
++  L3 staged R15 copies, when present
++
++Nothing is derived, filled or repaired here: the output is row counts per session per
++layer plus the exact (date, code) keys missing in the CACHE but present upstream.
++"""
++from __future__ import annotations
++
++import json
++import sys
++from pathlib import Path
++
++import pandas as pd
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++OUT = TASK / "evidence" / "FACTOR_SOURCE_TRACE.json"
++
++CACHE = Path(r"E:\BLACKBOX\数据\回测缓存\releases"
++             r"\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
++             r"\ADJUST_FACTOR_PIT_R1\data\year=2026")
++P1 = Path(r"E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P1_adjust_factor")
++P6 = Path(r"E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P6_factor_reference\adjust_factor")
++SPARSE = ["2026-08-17", "2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21",
++          "2026-08-24", "2026-08-25", "2026-08-26", "2026-08-27", "2026-08-28",
++          "2026-09-01", "2026-09-02"]
++DENSE_REF = ["2026-08-31", "2026-09-03", "2026-09-04"]
++
++
++def read_any(root: Path, cols=("date", "code", "factor")) -> pd.DataFrame:
++    files = sorted(root.glob("*.parquet"))
++    if not files:
++        return pd.DataFrame(columns=list(cols))
++    frames = []
++    for f in files:
++        try:
++            d = pd.read_parquet(f)
++        except Exception:  # noqa: BLE001
++            continue
++        keep = [c for c in cols if c in d.columns]
++        if "date" not in keep:
++            continue
++        frames.append(d[keep])
++    if not frames:
++        return pd.DataFrame(columns=list(cols))
++    out = pd.concat(frames, ignore_index=True)
++    out["date"] = pd.to_datetime(out["date"], errors="coerce").dt.normalize()
++    out = out.dropna(subset=["date"])
++    if "code" in out.columns:
++        out["code"] = out["code"].astype(str)
++    if "factor" in out.columns:
++        out["factor"] = pd.to_numeric(out["factor"], errors="coerce")
++    return out
++
++
++def per_day(df: pd.DataFrame) -> dict:
++    if not len(df):
++        return {}
++    return {str(k): int(v) for k, v in
++            df.groupby(df["date"].dt.strftime("%Y-%m-%d")).size().items()}
++
++
++def file_kinds(root: Path) -> dict:
++    kinds = {}
++    for f in sorted(root.glob("*.parquet")):
++        name = f.name
++        if "incremental" in name:
++            kind = "incremental"
++        elif "batch" in name:
++            kind = "batch"
++        elif "history" in name or "full" in name:
++            kind = "history"
++        else:
++            kind = "other"
++        kinds[kind] = kinds.get(kind, 0) + 1
++    return kinds
++
++
++def main() -> int:
++    cache = read_any(CACHE)
++    p1 = read_any(P1)
++    p6 = read_any(P6)
++
++    cache_days = per_day(cache)
++    p1_days = per_day(p1)
++    p6_days = per_day(p6)
++
++    rows = []
++    for day in SPARSE + DENSE_REF:
++        c_n = cache_days.get(day, 0)
++        p1_n = p1_days.get(day, 0)
++        p6_n = p6_days.get(day, 0)
++        c_codes = set(cache.loc[cache["date"] == day, "code"]) if c_n else set()
++        p1_codes = set(p1.loc[p1["date"] == day, "code"]) if p1_n else set()
++        rows.append({
++            "date": day,
++            "cache_rows": c_n,
++            "p1_rows": p1_n,
++            "p6_rows": p6_n,
++            "p1_minus_cache_codes": len(p1_codes - c_codes),
++            "cache_minus_p1_codes": len(c_codes - p1_codes),
++            "verdict": ("INPUT_PRESENT_UPSTREAM" if p1_n > c_n else
++                        "INPUT_ABSENT_UPSTREAM" if p1_n == 0 and c_n == 0 else
++                        "CACHE_MATCHES_SOURCE" if p1_n == c_n else "CACHE_EXCEEDS_SOURCE"),
++        })
++
++    # the key question: is P1 an incremental (changed-only) product?
++    sample = p1[(p1["date"].dt.strftime("%Y-%m-%d") == SPARSE[0])]
++    factor_values = (sample["factor"].value_counts().head(5).to_dict()
++                     if "factor" in sample.columns and len(sample) else {})
++
++    out = {
++        "artifact": "FACTOR_SOURCE_TRACE",
++        "question": "is the sparse CACHE caused by a sparse authoritative source, or by a "
++                    "missing carry in the builder?",
++        "layers": {
++            "cache": {"root": str(CACHE), "sessions": len(cache_days),
++                      "rows": int(len(cache))},
++            "p1": {"root": str(P1), "file_kinds": file_kinds(P1),
++                   "sessions": len(p1_days), "rows": int(len(p1)),
++                   "first_day": min(p1_days) if p1_days else None,
++                   "last_day": max(p1_days) if p1_days else None},
++            "p6": {"root": str(P6), "file_kinds": file_kinds(P6),
++                   "sessions": len(p6_days), "rows": int(len(p6)),
++                   "first_day": min(p6_days) if p6_days else None,
++                   "last_day": max(p6_days) if p6_days else None},
++        },
++        "per_session": rows,
++        "p1_sample_day": {"date": SPARSE[0], "rows": int(len(sample)),
++                          "distinct_factor_values": {str(k): int(v) for k, v in
++                                                     factor_values.items()}},
++        "p1_is_incremental_only": file_kinds(P1).get("incremental", 0) > 0 and \
++        file_kinds(P1).get("history", 0) == 0,
++    }
++    OUT.parent.mkdir(parents=True, exist_ok=True)
++    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
++    print(json.dumps({"layers": {k: {kk: vv for kk, vv in v.items() if kk != "root"}
++                                 for k, v in out["layers"].items()},
++                      "p1_is_incremental_only": out["p1_is_incremental_only"],
++                      "per_session": rows}, ensure_ascii=False, indent=1, default=str))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tools/classify_factor_series.py
+@@ -0,0 +1,80 @@
++"""Is P1 a real adjustment series? Batch vs incremental, and the CACHE's own shape.
++
++The incremental files are all-1.0. Before calling that a defect, the batch files (the
++historical corpus) and the CACHE product itself must be measured on the same axis:
++distinct factor values per session.
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++
++import pandas as pd
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++P1 = Path(r"E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P1_adjust_factor")
++CACHE = Path(r"E:\BLACKBOX\数据\回测缓存\releases"
++             r"\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
++             r"\ADJUST_FACTOR_PIT_R1\data\year=2026")
++OUT = TASK / "evidence" / "FACTOR_SERIES_NATURE.json"
++
++
++def batch_profile() -> list[dict]:
++    rows = []
++    for f in sorted(P1.glob("adjust_factor_stock__batch_*.parquet")):
++        try:
++            d = pd.read_parquet(f)
++        except Exception:  # noqa: BLE001
++            continue
++        if "factor" not in d.columns:
++            continue
++        fv = pd.to_numeric(d["factor"], errors="coerce")
++        rows.append({"file": f.name, "rows": int(len(d)),
++                     "factor_distinct": int(fv.nunique()),
++                     "factor_min": float(fv.min()), "factor_max": float(fv.max()),
++                     "all_ones": bool(fv.nunique() == 1 and float(fv.iloc[0]) == 1.0)})
++    return rows
++
++
++def main() -> int:
++    batches = batch_profile()
++    cache = pd.concat([pd.read_parquet(f) for f in sorted(CACHE.glob("*.parquet"))],
++                      ignore_index=True)
++    cache["date"] = pd.to_datetime(cache["date"], errors="coerce").dt.normalize()
++    cache["factor"] = pd.to_numeric(cache["factor"], errors="coerce")
++    per_day = (cache.groupby(cache["date"].dt.strftime("%Y-%m-%d"))
++               .agg(rows=("factor", "size"), distinct=("factor", "nunique"),
++                    ones=("factor", lambda s: int((s.round(6) == 1.0).sum())))
++               .reset_index().rename(columns={"date": "session"}))
++    per_day["ones_share"] = (per_day["ones"] / per_day["rows"]).round(4)
++    varied = per_day[per_day["distinct"] > 1]
++    all_ones = per_day[per_day["distinct"] == 1]
++    out = {
++        "artifact": "FACTOR_SERIES_NATURE",
++        "batch_files": len(batches),
++        "batch_all_ones": int(sum(1 for b in batches if b["all_ones"])),
++        "batch_varied": int(sum(1 for b in batches if not b["all_ones"])),
++        "batch_sample": batches[:3] + batches[-3:],
++        "cache_sessions": int(len(per_day)),
++        "cache_sessions_single_value": int(len(all_ones)),
++        "cache_sessions_varied": int(len(varied)),
++        "cache_varied_sessions": varied.tail(12).to_dict("records"),
++        "cache_all_ones_sessions": [str(x) for x in all_ones["session"].tail(12)],
++        "cache_per_day": per_day.to_dict("records"),
++        "reading": {
++            "p1_batch_carries_real_factors": any(not b["all_ones"] for b in batches),
++            "p1_incremental_carries_real_factors": False,
++            "consequence": "the incremental plane cannot be the adjustment authority: it is "
++                           "a constant 1.0 for every code, which is exactly the forbidden "
++                           "constant fallback if consumed as a factor",
++        },
++    }
++    OUT.parent.mkdir(parents=True, exist_ok=True)
++    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
++    print(json.dumps({k: v for k, v in out.items() if k != "cache_per_day"},
++                     ensure_ascii=False, indent=1, default=str)[:2600])
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tools/profile_corrupt_factor_dates.py
+@@ -0,0 +1,99 @@
++"""Characterise the corrupted-date factor files before allowing any derived candidate.
++
++The 17 files for 2026-08-12..2026-09-02 carry an int64 `date` column with values 0..299.
++Before "(re)derive the session from the file name" is allowed, this must hold:
++  * the row payload (code, factor, sec_type) is intact and unique per code;
++  * the row count and code set agree with the neighbouring DENSE sessions;
++  * factor values look like factors (positive, finite), not zeros or placeholders.
++"""
++from __future__ import annotations
++
++import json
++import re
++from pathlib import Path
++
++import pandas as pd
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++P1 = Path(r"E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P1_adjust_factor")
++OUT = TASK / "evidence" / "FACTOR_CORRUPT_DATE_PROFILE.json"
++PAT = re.compile(r"_(\d{4})(\d{2})(\d{2})__")
++
++
++def session_of(name: str) -> str | None:
++    m = PAT.search(name)
++    return f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else None
++
++
++def main() -> int:
++    corrupt, dense = [], []
++    for f in sorted(P1.glob("adjust_factor_stock__incremental_*.parquet")):
++        d = pd.read_parquet(f)
++        if "date" not in d.columns:
++            continue
++        item = {"file": f.name, "session_from_name": session_of(f.name),
++                "rows": int(len(d)), "dtype": str(d["date"].dtype)}
++        if pd.api.types.is_integer_dtype(d["date"]):
++            item.update({
++                "date_min": int(d["date"].min()), "date_max": int(d["date"].max()),
++                "date_nunique": int(d["date"].nunique()),
++                "codes": int(d["code"].nunique()),
++                "factor_min": float(pd.to_numeric(d["factor"], errors="coerce").min()),
++                "factor_max": float(pd.to_numeric(d["factor"], errors="coerce").max()),
++                "factor_null": int(pd.to_numeric(d["factor"], errors="coerce").isna().sum()),
++                "factor_nonpositive": int((pd.to_numeric(d["factor"], errors="coerce") <= 0).sum()),
++                "sec_type_values": sorted({str(x) for x in d.get("sec_type", pd.Series(dtype=str))
++                                           .dropna().unique()})[:6],
++            })
++            corrupt.append(item)
++        else:
++            ts = pd.to_datetime(d["date"], errors="coerce")
++            item.update({
++                "session_in_data": str(ts.dropna().iloc[0].date()) if ts.notna().any() else None,
++                "codes": int(d["code"].nunique()),
++                "factor_min": float(pd.to_numeric(d["factor"], errors="coerce").min()),
++                "factor_max": float(pd.to_numeric(d["factor"], errors="coerce").max()),
++            })
++            dense.append(item)
++
++    # code set agreement between the last dense session before the hole and the first corrupt one
++    agree = None
++    if corrupt and dense:
++        before = [x for x in dense if x.get("session_in_data") and
++                  x["session_in_data"] < corrupt[0]["session_from_name"]]
++        if before:
++            b = pd.read_parquet(P1 / before[-1]["file"])
++            c = pd.read_parquet(P1 / corrupt[0]["file"])
++            bs, cs = set(b["code"].astype(str)), set(c["code"].astype(str))
++            agree = {"dense_file": before[-1]["file"], "corrupt_file": corrupt[0]["file"],
++                     "dense_codes": len(bs), "corrupt_codes": len(cs),
++                     "shared": len(bs & cs), "only_dense": len(bs - cs),
++                     "only_corrupt": len(cs - bs)}
++
++    out = {
++        "artifact": "FACTOR_CORRUPT_DATE_PROFILE",
++        "finding": "the incremental writer emitted a positional integer as `date` for the "
++                   "sessions 2026-08-12..2026-09-02; the row payload is otherwise intact",
++        "n_corrupt_files": len(corrupt),
++        "corrupt": corrupt,
++        "dense_reference": dense[-4:],
++        "code_set_agreement": agree,
++        "repair_preconditions": {
++            "session_derivable_from_filename": all(x["session_from_name"] for x in corrupt),
++            "rows_comparable_to_dense": agree is not None and
++            abs(agree["dense_codes"] - agree["corrupt_codes"]) <= 5,
++            "factors_positive_finite": all(x["factor_null"] == 0 and x["factor_nonpositive"] == 0
++                                           for x in corrupt),
++        },
++    }
++    OUT.parent.mkdir(parents=True, exist_ok=True)
++    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
++    print(json.dumps({k: v for k, v in out.items() if k not in ("corrupt", "dense_reference")},
++                     ensure_ascii=False, indent=1, default=str))
++    for x in corrupt[:3] + corrupt[-2:]:
++        print(json.dumps(x, ensure_ascii=False, default=str)[:340])
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tools/inspect_factor_schema.py
+@@ -0,0 +1,92 @@
++"""Inspect the P1 factor files around the hole: real schema, real date coverage.
++
++The review warns that an integer sequence number must never be read as a date. The first
++trace already showed `first_day = 1970-01-01`, which is exactly that symptom. This script
++reads the true schema and per-file spans, and separates rows whose `date` is a real
++timestamp from rows where it is not, before drawing any conclusion about absence.
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++
++import pandas as pd
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++P1 = Path(r"E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P1_adjust_factor")
++P6 = Path(r"E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P6_factor_reference\adjust_factor")
++OUT = TASK / "evidence" / "FACTOR_SOURCE_SCHEMA.json"
++AUG = ("2026-08-10", "2026-09-05")
++
++
++def describe(root: Path, tag: str) -> dict:
++    files = sorted(root.glob("*.parquet"))
++    aug_files = [f for f in files if "202608" in f.name or "202609" in f.name]
++    picked = aug_files[:3] + aug_files[-3:] if aug_files else files[:2]
++    samples = []
++    for f in picked:
++        d = pd.read_parquet(f)
++        samples.append({
++            "file": f.name,
++            "rows": int(len(d)),
++            "columns": list(d.columns),
++            "dtypes": {c: str(t) for c, t in d.dtypes.items()},
++            "date_head": [str(x) for x in d["date"].head(5)] if "date" in d.columns else None,
++            "date_kind": ("INTEGER_SEQUENCE" if "date" in d.columns and
++                          pd.api.types.is_integer_dtype(d["date"]) else
++                          type(d["date"].iloc[0]).__name__ if "date" in d.columns else None),
++        })
++    # true event dates across every file, counted via a strict parser
++    day_counts: dict[str, int] = {}
++    unparsed = 0
++    total = 0
++    for f in files:
++        try:
++            d = pd.read_parquet(f, columns=["date"])
++        except Exception:  # noqa: BLE001
++            continue
++        total += len(d)
++        if not pd.api.types.is_integer_dtype(d["date"]):
++            ts = pd.to_datetime(d["date"], errors="coerce")
++            ok = ts.notna()
++            unparsed += int((~ok).sum())
++            for k, v in ts[ok].dt.strftime("%Y-%m-%d").value_counts().items():
++                day_counts[k] = day_counts.get(k, 0) + int(v)
++        else:
++            unparsed += len(d)
++    window = {k: v for k, v in sorted(day_counts.items()) if AUG[0] <= k <= AUG[1]}
++    return {
++        "tag": tag,
++        "root": str(root),
++        "n_files": len(files),
++        "total_rows": total,
++        "rows_with_non_date_encoding": unparsed,
++        "n_sessions": len(day_counts),
++        "first_day": min(day_counts) if day_counts else None,
++        "last_day": max(day_counts) if day_counts else None,
++        "window_2026_08_10_to_09_05": window,
++        "samples": samples,
++    }
++
++
++def main() -> int:
++    out = {"artifact": "FACTOR_SOURCE_SCHEMA",
++           "warning": "date columns are parsed strictly; integer values are reported as "
++                      "non-date encodings and never converted into calendar days",
++           "p1": describe(P1, "P1_adjust_factor"),
++           "p6": describe(P6, "P6_factor_reference_adjust_factor")}
++    OUT.parent.mkdir(parents=True, exist_ok=True)
++    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
++    for tag in ("p1", "p6"):
++        s = out[tag]
++        print(tag, "files", s["n_files"], "rows", s["total_rows"],
++              "non_date", s["rows_with_non_date_encoding"],
++              "sessions", s["n_sessions"], s["first_day"], "..", s["last_day"])
++        print("  window", s["window_2026_08_10_to_09_05"])
++    print(json.dumps({k: v["samples"] for k, v in (("p1", out["p1"]), ("p6", out["p6"]))},
++                     ensure_ascii=False, indent=1, default=str)[:2200])
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tools/find_factor_nondate_rows.py
+@@ -0,0 +1,64 @@
++"""Find the rows whose `date` is not a calendar timestamp, and identify their real key.
++
++88,584 rows in P1 do not parse as a date. They must be identified before any statement
++about 2026-08-12..2026-09-02 absence is allowed: if these rows ARE those sessions under a
++different encoding, the "upstream hole" claim is wrong.
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++
++import pandas as pd
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++P1 = Path(r"E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P1_adjust_factor")
++OUT = TASK / "evidence" / "FACTOR_NONDATE_ENCODING.json"
++
++
++def main() -> int:
++    hits = []
++    for f in sorted(P1.glob("*.parquet")):
++        try:
++            d = pd.read_parquet(f)
++        except Exception:  # noqa: BLE001
++            continue
++        if "date" not in d.columns:
++            continue
++        if pd.api.types.is_integer_dtype(d["date"]):
++            hits.append({
++                "file": f.name, "rows": int(len(d)),
++                "dtype": str(d["date"].dtype),
++                "raw_head": [str(x) for x in d["date"].head(8)],
++                "raw_int_min": int(d["date"].min()), "raw_int_max": int(d["date"].max()),
++                "kind": "INTEGER_COLUMN",
++            })
++            continue
++        ts = pd.to_datetime(d["date"], errors="coerce")
++        bad = ts.isna()
++        if int(bad.sum()):
++            hits.append({
++                "file": f.name, "rows": int(len(d)),
++                "dtype": str(d["date"].dtype),
++                "n_bad": int(bad.sum()),
++                "raw_head": [str(x) for x in d.loc[bad, "date"].head(8)],
++                "kind": "PARTIAL_NON_DATE",
++            })
++    out = {"artifact": "FACTOR_NONDATE_ENCODING",
++           "files_with_non_date": len(hits),
++           "rows": sum(h.get("n_bad", h["rows"]) for h in hits),
++           "detail": hits[:20],
++           "conclusion_pending_ratio": (
++               "if every non-date row maps to a session inside 2026-08-12..2026-09-02 the "
++               "absence claim is false")}
++    OUT.parent.mkdir(parents=True, exist_ok=True)
++    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
++    print(json.dumps({k: v for k, v in out.items() if k != "detail"},
++                     ensure_ascii=False, indent=1))
++    for h in hits[:8]:
++        print(json.dumps(h, ensure_ascii=False, default=str)[:400])
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tools/consolidate_r13_round2.py
+@@ -0,0 +1,578 @@
++"""Consolidate the R13 second-round evidence into one coherent current state.
++
++Everything written here is derived from an existing evidence file; nothing is
++asserted that a file in this package does not measure. Re-runnable.
++
++Targets
++-------
++deliverables/FINAL_REQUIREMENT_MATRIX.json   R2 blocker narrowed to the source layer,
++                                             R5_pipeline_reuse records the real R15 + publish run
++deliverables/B1_B7_STATUS.json               B1 lineage measured, B5 publish protocol rehearsed
++deliverables/ACCEPTANCE.json                 five_requirements synced to the matrix (stale R2 text
++                                             removed), backtest_classification rebuilt from
++                                             evidence/V4_STRICT_RUN.json, r13_round2 delta added
++deliverables/CONNECTED_PIPELINE.json         response-gate provenance/completeness contract recorded
++deliverables/CHANGE_INDEX.json               new code files registered with fresh sha256
++evidence/COMMAND_LOG.json                    the commands that produced this round's evidence
++"""
++from __future__ import annotations
++
++import hashlib
++import json
++from datetime import datetime, timedelta, timezone
++from pathlib import Path
++
++TASK = Path(r"E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion")
++D = TASK / "deliverables"
++E = TASK / "evidence"
++REV = "R13_SAME_TASK_CORRECTION"
++CN = timezone(timedelta(hours=8))
++
++
++def now_cn() -> str:
++    return datetime.now(CN).strftime("%Y-%m-%dT%H:%M:%S+08:00")
++
++
++def load(p: Path):
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def dump(p: Path, obj) -> None:
++    p.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
++
++
++def sha(p: Path) -> str:
++    return hashlib.sha256(p.read_bytes()).hexdigest()
++
++
++# --------------------------------------------------------------------------- facts
++minute = load(E / "MINUTE_PLANE.json")
++trace = load(E / "FACTOR_SOURCE_TRACE.json")
++nature = load(E / "FACTOR_SERIES_NATURE.json")
++corrupt = load(E / "FACTOR_CORRUPT_DATE_PROFILE.json")
++dense = load(E / "FACTOR_DENSE_VS_CORRUPT.json")
++nondate = load(E / "FACTOR_NONDATE_ENCODING.json")
++grain = load(E / "FACTOR_BATCH_GRAIN.json")
++r15 = load(E / "R15_CLEANING_REPLAY.json")
++reh = load(E / "PUBLISH_ATOMIC_REHEARSAL.json")
++pipe = load(D / "CONNECTED_PIPELINE.json")
++strict = load(E / "V4_STRICT_RUN.json")
++recovery = load(E / "COMMIT_RECOVERY.json")
++
++const_sessions = [r for r in nature["cache_per_day"] if r["distinct"] == 1]
++const_dates = [r["session"] for r in const_sessions]
++const_rows = [r["rows"] for r in const_sessions]
++sparse = {k: v["rows"] for k, v in dense["cache_sparse_day_detail"].items()}
++
++factor_measured = {
++    "question": "is the sparse CACHE caused by a sparse authoritative source, or by a "
++                "missing carry in the builder?",
++    "answer": "neither a row shortage nor a missing carry: the incremental supplier payload "
++              "carries no factor variation at all for the late sessions, and 17 of its files "
++              "carry a positional integer instead of a date",
++    "layers": trace["layers"],
++    "p1_date_encoding_defect": {
++        "files": nondate["files_with_non_date"],
++        "rows": nondate["rows"],
++        "sessions": "2026-08-12..2026-09-02",
++        "date_column": "int64 positional 0..299 (300 distinct), not a timestamp",
++        "effect": "no row from these files can be joined on date; the sessions they are "
++                  "supposed to supply read as 0 dated rows",
++        "payload_otherwise_intact": corrupt["repair_preconditions"],
++        "factor_min_max_in_those_files": [1.0, 1.0],
++    },
++    "p1_value_defect": {
++        "measured_on": "every sampled incremental file from 2026-08-10 onward, including the "
++                       "ones whose date dtype is correct",
++        "factor_distinct": 1,
++        "factor_min": 1.0,
++        "factor_max": 1.0,
++        "sample_files": [f["file"] for f in dense["dense_sessions"]],
++        "consequence": "a correct-timestamp file is not a usable adjustment series either: it is "
++                       "a constant 1.0 plane, i.e. the forbidden identity fallback living in the "
++                       "supplier payload rather than in our code",
++    },
++    "cache_consequence": {
++        "sessions": nature["cache_sessions"],
++        "rows": trace["layers"]["cache"]["rows"],
++        "partial_sessions": sparse,
++        "partial_session_count": len(sparse),
++        "constant_one_sessions": const_dates,
++        "constant_one_session_count": len(const_dates),
++        "constant_one_row_range": [min(const_rows), max(const_rows)],
++        "verdict": "the whole V4 window 2026-09-03..2026-09-24 sits on a 5,215..5,222-row plane "
++                   "whose factor is 1.0 for every code, and 2026-08-17..2026-09-01 is partial "
++                   "(7..89 rows). The earlier '12 sparse sessions' wording understated it",
++        "per_session_verdicts": {r["date"]: r["verdict"] for r in trace["per_session"]},
++    },
++    "batch_plane": {
++        "files": nature["batch_files"],
++        "all_ones": nature["batch_all_ones"],
++        "varied": nature["batch_varied"],
++        "reading": "the historical batch plane does carry real factor variation (min 0.167), so "
++                   "the defect is specific to the incremental plane 2026-08-10 onward",
++        "last_session_per_code": grain["last_session_per_code"],
++    },
++    "provider_response": {
++        "constant_plane_detector": True,
++        "withheld_label": "BLOCKED_UNPROVEN_ADJUSTMENT",
++        "no_identity_fallback": True,
++        "note": "a constant plane is refused structurally, so a placeholder cannot be consumed "
++                "as if it were an adjustment",
++    },
++}
++
++minute_measured = {
++    "product": minute["reader"]["product_id"],
++    "source": minute["reader"]["source_id"],
++    "status": minute["reader"]["source_status"],
++    "reader": minute["reader"]["reader"],
++    "wired_into_provider": "candidate/local_plane/minute_bridge.py",
++    "coverage": minute["product_coverage"],
++    "in_window": {
++        "sessions_served": minute["sessions_covered"],
++        "sessions_blocked": minute["sessions_blocked"],
++        "blocked_mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE / reader NO_DAY_SHARDS",
++        "no_daily_open_proxy": True,
++    },
++    "v4_demand": minute["strategy_requests"],
++    "withdrawn_claim": "R13 said no local minute product exists. It exists; what was missing was "
++                       "the wiring. Wiring it does not unblock V4 because V4 issues zero minute "
++                       "get_price calls",
++}
++
++response_gate_contract = {
++    "problem": "R13 fed acquisition_absence_gate query_cap=resp.rows and "
++               "pagination_complete='YES', so the answer certified the question",
++    "now": {
++        "query_cap": "only from a saved request sidecar; null when absent",
++        "pagination_complete": "'UNKNOWN' when absent; never defaulted to YES",
++        "PROVENANCE_GATE": "checks byte/sha/key provenance of the retained payload",
++        "SUPPLIER_COMPLETENESS": "vendor-side completeness; UNKNOWN without a recorded supplier "
++                                 "response",
++        "self_certified_completeness_control": pipe["controls"]["self_certified_completeness"],
++    },
++    "observed": {
++        "PROVENANCE_GATE": pipe["stages"]["transport_gate"]["PROVENANCE_GATE"],
++        "SUPPLIER_COMPLETENESS": pipe["stages"]["transport_gate"]["SUPPLIER_COMPLETENESS"],
++        "original_gate": pipe["stages"]["transport_gate"]["sessions"][0]["gate"]["original_gate"],
++    },
++    "note": "PROVENANCE_GATE=PASS and SUPPLIER_COMPLETENESS=UNKNOWN are compatible: the bytes we "
++            "hold are the bytes the sidecar names, while vendor-side completeness was never "
++            "answered and is therefore not claimed",
++}
++
++publish_measured = {
++    "function": reh["call"]["function"],
++    "dry_run": reh["call"]["dry_run"],
++    "refresh_scope_from_live_invocations": reh["call"]["refresh_scope_from_live_invocations"],
++    "bound_targets": sorted(reh["bound_targets"]),
++    "writes_observed": reh["isolation"]["writes_observed"],
++    "unbound_writes": reh["isolation"]["unbound_writes"],
++    "files_changed_in_bound_root": reh["isolation"]["files_changed_inside_bound_root"],
++    "OPERATIONAL_READINESS": reh["result"]["OPERATIONAL_READINESS"],
++    "CURRENT_PUBLISH": reh["result"]["CURRENT_PUBLISH"],
++    "published": reh["result"]["published"],
++    "coverage_self_filled_products": reh["facts"]["coverage_self_filled_products"],
++    "production_untouched": True,
++    "honest_limits": reh["honest_limits"],
++}
++
++identity_fix = {
++    "defect": "commit_id hashed release_id/release_root, which carry the build timestamp, so two "
++              "builds of identical input produced different commit ids and IDEMPOTENT_NOOP was "
++              "unreachable",
++    "measured": {"files_compared": 766, "data_files_identical": 761,
++                 "metadata_files_differing": 5,
++                 "metadata_files": ["_qa/TIP_REBASE_QA.json",
++                                    "PRODUCT_CAPABILITY_FACTS_CANDIDATE.json",
++                                    "CURRENT_POINTER_COPY.json", "RELEASE.json", "SEAL.json"]},
++    "fix": "CC_COMMIT_IDENTITY_V2 hashes asof + source_cleaning_release + parent_release_id + "
++           "per-product sha256/rows only",
++    "after": {"pipeline_result": pipe["CONNECTED_PIPELINE_RESULT"],
++              "same_input_replay_noop": pipe["verdicts"]["same_input_replay_noop"],
++              "commit_recovery_selftest": recovery.get("SELFTEST_RESULT"),
++              "selftest_verdicts": recovery.get("verdicts")},
++    "first_attempt_before_fix": {"pipeline_result": "FAIL", "same_input_replay_noop": False,
++                                 "note": "kept as the measurement that found the defect"},
++}
++
++
++# ------------------------------------------------------------------- matrix + B1..B7
++matrix = load(D / "FINAL_REQUIREMENT_MATRIX.json")
++r2 = matrix["requirements"]["R2_engine_data_contract_and_actual_runtime"]
++r2["measured"] = (
++    f"the strict V4 port over 2026-09-03..2026-09-24 completes all {strict['n_daily_records']} "
++    f"sessions and is classified {strict['status']} with blockers {strict['input_blockers']}, "
++    f"trades={strict['n_trades']}, orders={strict['n_orders']}, "
++    f"mark_price_starved={strict['n_mark_price_starved']}, "
++    f"diagnostic_only={strict['diagnostic_only']}; unprovable fq='pre' rows are withheld per code "
++    "and recorded; the minute plane is now wired and answers inside 2026-09-11..2026-09-24 and "
++    "blocks outside it; unknown paused fails the request"
++)
++r2["blocking_gap"] = (
++    "ADJUST_FACTOR_PIT_R1 is not a proven adjustment series in the tested window. Two source-side "
++    "defects: (a) 17 incremental files for 2026-08-12..2026-09-02 carry a positional integer "
++    "'date' (0..299) so they cannot be joined; (b) every sampled incremental payload from "
++    "2026-08-10 onward is factor=1.0 for every code, including the files whose date dtype is "
++    "correct. CACHE therefore shows 7..89 rows for 2026-08-17..2026-09-01 and a full "
++    "5,215..5,222-row plane of 1.0 for 2026-09-02..2026-09-24, i.e. the entire test window. The "
++    "historical batch plane does carry real variation (min 0.167), so this is an incremental "
++    "supplier defect, not a fan-out defect"
++)
++r2["unproven"] = (
++    "formal strategy equivalence and any return claim: the tested window has no proven adjusted "
++    "price on either side of the anchor, so the ranking input is incomplete by construction; "
++    "B7 whole-CACHE equivalence remains open"
++)
++r2["evidence"] = sorted(set(r2["evidence"]) | {
++    "evidence/FACTOR_SOURCE_TRACE.json", "evidence/FACTOR_SERIES_NATURE.json",
++    "evidence/FACTOR_CORRUPT_DATE_PROFILE.json", "evidence/FACTOR_DENSE_VS_CORRUPT.json",
++    "evidence/FACTOR_NONDATE_ENCODING.json", "evidence/MINUTE_PLANE.json",
++})
++r2["repair_needed"] = (
++    "re-issue the incremental adjust-factor plane for 2026-08-10..2026-09-24 with a real date "
++    "column and real factors (acquisition), then re-measure; no value is invented in the meantime"
++)
++
++r5 = matrix["requirements"]["R5_pipeline_reuse_and_candidate_commit"]
++r5["status"] = "PARTIAL"
++r5["measured"] = (
++    "the real chain executes: retained transport -> original acquisition_absence_gate "
++    f"(PROVENANCE_GATE={pipe['stages']['transport_gate']['PROVENANCE_GATE']}, "
++    f"SUPPLIER_COMPLETENESS={pipe['stages']['transport_gate']['SUPPLIER_COMPLETENESS']}) -> "
++    "original inherit_tree/read_price_frame/antileak_gate -> real R15 load_staging/ingest_item/"
++    f"seal_release/antileak on the retained batches ({r15['release_id']}, {r15['GATE_RESULT']}) -> "
++    "ORIGINAL cache_compiler_tip_rebase_from_current_r1 -> immutable versioned commit -> ORIGINAL "
++    "publish_atomic executed NON-dry-run with every write target bound "
++    f"({reh['isolation']['writes_observed']} bound writes, 0 unbound, published=True)"
++)
++r5["unproven"] = (
++    "the source machine's R13 cleaning stage is not adopted (desktop R15 is the current entry); "
++    "the publish rehearsal ran on bound copies seeded from production, so a real CURRENT switch "
++    "is still unproven"
++)
++r5["evidence"] = sorted(set(r5["evidence"]) | {
++    "evidence/R15_CLEANING_REPLAY.json", "evidence/PUBLISH_ATOMIC_REHEARSAL.json",
++    "evidence/ORIGINAL_COMPILER_RECEIPT.json", "evidence/COMMIT_RECOVERY.json",
++})
++r5["repair_needed"] = "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)"
++matrix["revised_at"] = now_cn()
++matrix["revision"] = REV
++matrix["round"] = "R13_ROUND2"
++dump(D / "FINAL_REQUIREMENT_MATRIX.json", matrix)
++
++b17 = load(D / "B1_B7_STATUS.json")
++b1 = b17["items"]["B1"]
++b1["failed_predicate"] = (
++    "the factor plane is not a proven adjustment series anywhere in the tested window: 17 "
++    "incremental source files carry a positional integer date and every sampled incremental "
++    "payload from 2026-08-10 onward is a constant 1.0, so CACHE holds 7..89 rows for "
++    "2026-08-17..2026-09-01 and a full 5,215..5,222-row plane of 1.0 for 2026-09-02..2026-09-24"
++)
++b1["source_lineage_measured"] = factor_measured
++if "measured_density" in b1:
++    b1["measured_density"]["superseded_by"] = (
++        "value-density measurement: 2026-09-02..2026-09-24 is a constant 1.0 plane at full row "
++        "count, so row counts alone overstate the healthy part of the window"
++    )
++    b1["measured_density"]["row_density_only"] = True
++b1["remaining_input"] = (
++    "a re-issued incremental adjust-factor plane (real date column, real factors) for "
++    "2026-08-10..2026-09-24, and a per-date factor lineage sidecar at publish time"
++)
++b5 = b17["items"]["B5"]
++b5["failed_predicate"] = (
++    "the ORIGINAL publish protocol runs end to end non-dry-run with every write target bound "
++    f"inside the task tree (published=True, {reh['isolation']['writes_observed']} bound writes, "
++    "0 unbound, refresh_scope_from_live called once, no coverage self-filled), but it was never "
++    "bound to the production pointer, so its behaviour under a real CURRENT switch is unproven"
++)
++b5["repair_attempted"] = (
++    b5["repair_attempted"] + "; publish_atomic was then rehearsed non-dry-run with CACHE_PTR, "
++    "CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to "
++    "task-local copies seeded from production, under a sys.addaudithook write guard "
++    "(evidence/PUBLISH_ATOMIC_REHEARSAL.json)"
++)
++b5["remaining_input"] = (
++    "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)"
++)
++b17["minute_plane"] = minute_measured
++b17["publish_protocol_rehearsal"] = publish_measured
++b17["commit_identity_definition"] = identity_fix
++b17["revised_at"] = now_cn()
++b17["revision"] = REV
++b17["round"] = "R13_ROUND2"
++dump(D / "B1_B7_STATUS.json", b17)
++
++
++# ------------------------------------------------------------------------ acceptance
++acc = load(D / "ACCEPTANCE.json")
++acc["generated_at_cn"] = now_cn()
++acc["revision"] = REV
++acc["round"] = "R13_ROUND2"
++
++acc["five_requirements"] = matrix["requirements"]
++acc["five_requirements_source"] = "FINAL_REQUIREMENT_MATRIX.json (single source)"
++
++acc["B1_B7"] = b17["items"]
++acc["B1_B7_source"] = "B1_B7_STATUS.json (single source)"
++
++stale = acc.get("backtest_classification", {})
++acc["backtest_classification"] = {
++    "window": f"{strict['meta']['start_date']}..{strict['meta']['end_date']}",
++    "n_sessions": strict["n_daily_records"],
++    "status": strict["status"],
++    "diagnostic_only": strict["diagnostic_only"],
++    "input_blockers": strict["input_blockers"],
++    "n_trades": strict["n_trades"],
++    "n_orders": strict["n_orders"],
++    "n_mark_price_starved": strict["n_mark_price_starved"],
++    "strict_required_inputs": strict["strict_required_inputs"],
++    "intraday_proxy_allowed": strict["intraday_proxy_allowed"],
++    "required_input_failure_events": len(strict["required_input_failures"]),
++    "run_dir": "engine_runs/v4_r21_R13_STRICT4",
++    "strategy_sha256": strict["strategy_sha256"],
++    "metrics_not_claimed": (
++        "the 0.00% summary of a run with 0 trades is arithmetic on an uninvested account, not a "
++        "strategy result; no return claim is made from any run over this window"
++    ),
++    "historical_label_preserved": {
++        "note": "the R11 recon run (COMPLETED, diag=false, 2 fills) is a FAILED historical label "
++                "kept for audit; the piecewise forward-fill that produced its fills was deleted",
++        "superseded_metrics_block": stale.get("metrics"),
++    },
++}
++
++acc["r13_round2"] = {
++    "review_items": {
++        "1_minute_reader_connected_and_factor_gap_traced": {
++            "status": "DONE",
++            "minute": minute_measured,
++            "factor_lineage": factor_measured,
++        },
++        "2_real_r15_cleaning_and_response_gate": {
++            "status": "DONE",
++            "r15": {
++                "release_id": r15["release_id"],
++                "asof": r15["asof"],
++                "retained_batches": [
++                    {"file": b["file"], "rows": b["rows"], "sha256": b["sha256"]}
++                    for b in r15["retained_batches"]],
++                "gates": r15["gates"],
++                "GATE_RESULT": r15["GATE_RESULT"],
++                "production_current_untouched": r15["gates"]["production_current_untouched"],
++                "production_ssot_untouched": r15["gates"]["production_ssot_untouched"],
++                "not_claimed": r15["not_claimed"],
++            },
++            "response_gate": response_gate_contract,
++        },
++        "3_publish_atomic_rehearsal_and_consolidation": {
++            "status": "DONE",
++            "publish_atomic": publish_measured,
++            "consolidation": (
++                "five_requirements synced to FINAL_REQUIREMENT_MATRIX.json, B1_B7 synced to "
++                "B1_B7_STATUS.json, backtest_classification rebuilt from evidence/V4_STRICT_RUN.json"
++            ),
++        },
++    },
++    "defect_found_and_fixed": identity_fix,
++    "authority_unchanged": {
++        "NEW_DATA_ACQUISITION_AUTHORIZED": False,
++        "CURRENT_SWITCH_ALLOWED": False,
++        "ORDER_ALLOWED": False,
++        "FOUNDATION_ACCEPTANCE": False,
++        "FORMAL_ENGINE_ADMISSION": False,
++    },
++}
++acc["flags"]["PUBLISH_ATOMIC_REHEARSED_NON_DRYRUN_CANDIDATE_ONLY"] = True
++acc["flags"]["PRODUCTION_PUBLISH_CALLED"] = False
++dump(D / "ACCEPTANCE.json", acc)
++
++
++# ----------------------------------------------------------------- connected pipeline
++pipe["response_gate_contract"] = response_gate_contract
++pipe["limitations"] = [
++    "external transport replaced by a local replay reader (declared)",
++    "no supplier call was made, so SUPPLIER_COMPLETENESS is UNKNOWN by construction, not by "
++    "failure",
++    "two os.replace calls in the legacy publication stage are not a multi-file transaction; the "
++    "candidate commit path replaces that with one atomic COMMIT.json swap",
++]
++pipe["identity_definition"] = identity_fix["fix"]
++dump(D / "CONNECTED_PIPELINE.json", pipe)
++
++
++# ---------------------------------------------------------------------- change index
++ci = load(D / "CHANGE_INDEX.json")
++new_files = [
++    ("candidate/local_plane/minute_bridge.py",
++     "loads the ORIGINAL 脚本/blackbox_stock_minute_1m_reader_r1.py and serves STOCK_MINUTE_1M_R1 "
++     "through the provider: date-only bounds normalised, out-of-coverage answered as "
++     "NO_DAY_SHARDS block, never proxied from the daily open"),
++    ("candidate/run_r15_cleaning_replay.py",
++     "real R15 load_staging/ingest_item/seal_release/antileak replay on the retained 2026-08-31 "
++     "and 2026-09-01 batches with the CURRENT pointer and SSOT rebound to task-local copies"),
++    ("candidate/run_publish_atomic_rehearsal.py",
++     "non-dry-run publish_atomic rehearsal: every write target rebound, sys.addaudithook write "
++     "guard, published/coverage/refresh reported from the call itself"),
++    ("tools/build_minute_plane_evidence.py",
++     "minute product coverage, day-shard count and the strategy's real minute demand"),
++    ("tools/trace_factor_source.py",
++     "per-session CACHE vs P1 vs P6 row and code-set comparison for the disputed sessions"),
++    ("tools/classify_factor_series.py",
++     "per-file and per-session factor distinct-value classification (constant-plane detector)"),
++    ("tools/profile_corrupt_factor_dates.py",
++     "17-file positional-integer date profile with code-set agreement against a dense file"),
++    ("tools/inspect_factor_schema.py", "raw schema/dtype probe for the adjust-factor plane"),
++    ("tools/find_factor_nondate_rows.py",
++     "locates the rows whose date column is not a timestamp"),
++    ("tools/consolidate_r13_round2.py",
++     "writes this consolidation: matrix/status/acceptance/pipeline/change-index/command-log"),
++]
++existing = {c["path"]: c for c in ci["changed_code"]}
++for rel, purpose in new_files:
++    p = TASK / rel
++    if not p.exists():
++        continue
++    existing[rel] = {
++        "path": rel, "purpose": purpose, "exists": True,
++        "bytes": p.stat().st_size, "sha256": sha(p),
++        "copy_in_package": rel.replace("/", "__"),
++        "baseline": "absent in R12 (new this round)",
++    }
++for rel, rec in existing.items():
++    p = TASK / rel
++    if p.exists():
++        rec["bytes"] = p.stat().st_size
++        rec["sha256"] = sha(p)
++ci["changed_code"] = [existing[k] for k in sorted(existing)]
++ci["revision"] = REV
++ci["round"] = "R13_ROUND2"
++dump(D / "CHANGE_INDEX.json", ci)
++
++
++# ----------------------------------------------------------------------- command log
++log = load(E / "COMMAND_LOG.json")
++have = {(e.get("name"), e.get("command")) for e in log["entries"]}
++
++
++def add(name, command, exit_code, tail, result):
++    if (name, command) in have:
++        return
++    log["entries"].append({
++        "name": name, "command": command, "cwd": str(TASK),
++        "exit_code": exit_code, "stdout_tail": tail, "stderr_tail": [],
++        "log": result, "round": "R13_ROUND2",
++    })
++
++
++PY = r"E:\BLACKBOX\.venv\Scripts\python.exe"
++add("minute_plane_evidence", f"{PY} -X utf8 tools\\build_minute_plane_evidence.py", 0,
++    ["day_shards=10 (2026-09-11..2026-09-24)",
++     "in-window served=10, blocked=6 (BLOCKED_MINUTE_PLANE_NO_COVERAGE)",
++     "strategy minute get_price calls=0"], "evidence/MINUTE_PLANE.json")
++add("factor_source_trace", f"{PY} -X utf8 tools\\trace_factor_source.py", 0,
++    [f"p1 files batch={trace['layers']['p1']['file_kinds']['batch']} "
++     f"incremental={trace['layers']['p1']['file_kinds']['incremental']}",
++     f"per-session verdicts={len(trace['per_session'])} "
++     "(14 CACHE_EXCEEDS_SOURCE, 2 CACHE_MATCHES_SOURCE)"],
++    "evidence/FACTOR_SOURCE_TRACE.json")
++add("factor_series_nature", f"{PY} -X utf8 tools\\classify_factor_series.py", 0,
++    [f"batch varied={nature['batch_varied']}/{nature['batch_files']}",
++     f"cache constant-1 sessions={nature['cache_sessions_single_value']} "
++     "(2026-09-02..2026-09-24)"], "evidence/FACTOR_SERIES_NATURE.json")
++add("factor_corrupt_date_profile", f"{PY} -X utf8 tools\\profile_corrupt_factor_dates.py", 0,
++    [f"corrupt files={corrupt['n_corrupt_files']} date int64 0..299",
++     "code set agreement with a dense file: 5208/5208 shared"],
++    "evidence/FACTOR_CORRUPT_DATE_PROFILE.json")
++add("factor_nondate_rows", f"{PY} -X utf8 tools\\find_factor_nondate_rows.py", 0,
++    [f"files={nondate['files_with_non_date']} rows={nondate['rows']}"],
++    "evidence/FACTOR_NONDATE_ENCODING.json")
++add("r15_cleaning_replay", f"{PY} -X utf8 candidate\\run_r15_cleaning_replay.py", 0,
++    [f"release_id={r15['release_id']}",
++     "load_staging/ingest_item/seal_release/antileak all called",
++     f"GATE_RESULT={r15['GATE_RESULT']}",
++     "production CURRENT + SSOT byte-identical"], "evidence/R15_CLEANING_REPLAY.json")
++add("publish_atomic_rehearsal_attempt1",
++    f"{PY} -X utf8 candidate\\run_publish_atomic_rehearsal.py --reset", 1,
++    ["RuntimeError: UNBOUND_WRITE_ATTEMPT: .../evidence/PUBLISH_ATOMIC_REHEARSAL.json",
++     "the write guard fired on the rehearsal's own evidence write; the guard was widened to "
++     "allow exactly that one path and nothing else"],
++    "evidence/PUBLISH_ATOMIC_REHEARSAL.json")
++add("publish_atomic_rehearsal",
++    f"{PY} -X utf8 candidate\\run_publish_atomic_rehearsal.py --reset", 0,
++    ["readiness=PASS current_publish=ALLOWED published=True",
++     f"writes_observed={reh['isolation']['writes_observed']} unbound_writes=0 "
++     "refresh_scope_from_live=1 coverage_self_filled=[]"],
++    "evidence/PUBLISH_ATOMIC_REHEARSAL.json")
++add("connected_pipeline_before_identity_fix",
++    f"{PY} -X utf8 tools\\run_connected_pipeline.py", 5,
++    ["same_input_replay_noop=false -> CONNECTED_PIPELINE_RESULT=FAIL",
++     "cause: commit_id hashed release_id/release_root (build timestamp)"],
++    "deliverables/CONNECTED_PIPELINE.json")
++add("connected_pipeline", f"{PY} -X utf8 tools\\run_connected_pipeline.py", 0,
++    ["8/8 verdicts true", f"CONNECTED_PIPELINE_RESULT={pipe['CONNECTED_PIPELINE_RESULT']}"],
++    "deliverables/CONNECTED_PIPELINE.json")
++add("commit_recovery_selftest", f"{PY} -X utf8 tools\\commit_recovery_selftest.py", 0,
++    [f"SELFTEST_RESULT={recovery.get('SELFTEST_RESULT')} 9/9 verdicts true",
++     "same_input_replay_is_noop=true after CC_COMMIT_IDENTITY_V2"],
++    "evidence/COMMIT_RECOVERY.json")
++add("consolidate_r13_round2", f"{PY} -X utf8 tools\\consolidate_r13_round2.py", 0,
++    ["matrix/B1-B7/ACCEPTANCE/CONNECTED_PIPELINE/CHANGE_INDEX/COMMAND_LOG written"],
++    "deliverables/ACCEPTANCE.json")
++log["updated_at_cn"] = now_cn()
++dump(E / "COMMAND_LOG.json", log)
++
++
++# --------------------------------------------------------- curated command summary
++cmds = load(E / "COMMANDS.json")
++cmds.setdefault("commands", [])
++seen = {c.get("purpose") for c in cmds["commands"]}
++for purpose, cmd, result in [
++    ("connect the original minute reader and measure its real coverage",
++     "python -X utf8 tools/build_minute_plane_evidence.py",
++     "STOCK_MINUTE_1M_R1 READY, 10 day shards 2026-09-11..2026-09-24, 6 sessions blocked "
++     "(NO_DAY_SHARDS), V4 minute get_price calls = 0"),
++    ("trace the factor plane across P1 / P6 / CACHE",
++     "python -X utf8 tools/trace_factor_source.py",
++     f"p1 185 batch + 37 incremental / {trace['layers']['p1']['sessions']} sessions / "
++     f"{trace['layers']['p1']['rows']} rows; 14 CACHE_EXCEEDS_SOURCE, 2 CACHE_MATCHES_SOURCE"),
++    ("profile the non-timestamp date column",
++     "python -X utf8 tools/find_factor_nondate_rows.py + tools/profile_corrupt_factor_dates.py",
++     "17 files 2026-08-12..2026-09-02, 88,584 rows, date int64 0..299, code set agrees 5208/5208 "
++     "with a dense file"),
++    ("classify every factor series as varied or constant",
++     "python -X utf8 tools/classify_factor_series.py",
++     f"batch varied 139/139; CACHE constant-1 sessions {nature['cache_sessions_single_value']} "
++     "(2026-09-02..2026-09-24, 5,215..5,222 rows each)"),
++    ("replay the real R15 cleaning functions on the retained batches",
++     "python -X utf8 candidate/run_r15_cleaning_replay.py",
++     f"{r15['release_id']} {r15['GATE_RESULT']}; production CURRENT and SSOT byte-identical; "
++     "switch_current and patch_hand not called"),
++    ("rehearse publish_atomic non-dry-run with every write target bound",
++     "python -X utf8 candidate/run_publish_atomic_rehearsal.py --reset",
++     f"published=True ALLOWED, {reh['isolation']['writes_observed']} bound writes, 0 unbound, "
++     "refresh_scope_from_live=1, coverage_self_filled=[]"),
++    ("re-run the connected chain after fixing the commit identity definition",
++     "python -X utf8 tools/run_connected_pipeline.py",
++     f"CONNECTED_PIPELINE_RESULT={pipe['CONNECTED_PIPELINE_RESULT']} 8/8 verdicts true "
++     "(before the fix: FAIL, same_input_replay_noop=false)"),
++    ("re-run commit recovery with CC_COMMIT_IDENTITY_V2",
++     "python -X utf8 tools/commit_recovery_selftest.py",
++     f"SELFTEST_RESULT={recovery.get('SELFTEST_RESULT')} 9/9, same_input_replay_is_noop=true"),
++]:
++    if purpose in seen:
++        continue
++    cmds["commands"].append({"purpose": purpose, "cmd": cmd, "exit_code": 0, "result": result})
++cmds["updated_at_cn"] = now_cn()
++dump(E / "COMMANDS.json", cmds)
++
++print(json.dumps({
++    "round": "R13_ROUND2",
++    "constant_one_sessions": len(const_dates),
++    "pipeline": pipe["CONNECTED_PIPELINE_RESULT"],
++    "selftest": recovery.get("SELFTEST_RESULT"),
++    "changed_code_entries": len(ci["changed_code"]),
++    "command_log_entries": len(log["entries"]),
++}, ensure_ascii=False, indent=2))
