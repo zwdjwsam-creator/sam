@@ -1,3 +1,50 @@
+## 当前待办：SAM完整交接 + ZHANGWEI R13 合并审核（同一任务，2026-10-25）
+
+双方本轮反馈已到。SAM 的源码交接、FOUNDATION_RUNTIME_MAP.md 及24件必要源码/配置补充已经交付；源机本项交接收口，不再要求重建未保留的09-24控制台历史。ZHANGWEI 持续执行原任务，保留环境、原编译器候选运行、未知值不再补造、单COMMIT候选恢复的已有成果，不重做迁移/盘点/旧测试。
+
+GPT读取了R13重点源码与实际回传，确认原tip compiler被真实调用；单COMMIT恢复证据、严格V4阻断结果是进展。整体仍未验收，R13声称“三个差异全部关闭”范围过强。当前只收口以下三项，不向owner再提技术路线或重复授权选择：
+
+### 1. 接回已存在的分钟输入，定位复权缺口到实际来源层
+
+R13的“无本地分钟产品/须授权新建或下载”与其DATASET_STATE冲突：
+PRICE_STOCK_1M.CLEAN = 40个文件、24,998,880行，外边界2026-09-11..09-24，根为现行standard/price/A股_stock_1m；
+RAW的P7_stock_raw_none_replacement_1m = 11,790文件，已有抽样记录；
+SAM原件脚本/blackbox_stock_minute_1m_reader_r1.py（PRODUCT_ID=STOCK_MINUTE_1M_R1，fetch_stock_minute_1m）及runtime map E17已给出实际入口。
+这证明存在来源，不证明原请求全窗口/全代码完整。请将原reader接入本地provider，按策略实际请求时间/代码核对现有范围，沿reader已实现且契约允许的来源顺序查已登记根。只补查原请求尚未回答的分区；不全盘扫描，不把09-11之前的缺口外推成整个分钟面不存在。确实不支持的请求显式BLOCKED；RAW_NONE与复权要求不能混同，禁止开盘价代理或伪造分钟线。保留原V4请求窗口，短窗仅可标诊断。
+
+12个复权稀疏日已在CACHE测到，但“因此必须采集/需要换复权契约”尚无跨层依据。
+仅对FACTOR_DENSITY列出的12日及实际缺失(date,code)检查已定位P1_adjust_factor、R15 staging/retained batches、reference/adjust_factor和此前已核实候选/源批次；优先复用既有R04–R10证据。读取必要列，核日期、fq/基准/锚点及来源身份后才允许派生候选。不要把整数序号当日期，不用常数1、ffill/bfill或未知状态替代。日线RAW中的factor列也须按真实请求语义验证，不能看见列名就认为等价。
+能在本地有效恢复的直接修复；确实无权威输入则列出精确键/字段/日期及检查过的既定来源，作为待我审核的采集缺项。CACHE稀疏只证明消费层缺值；峰值90%“dense”阈值也不是历史完整性证书。
+证券主表按上市区间过滤已有改善，但单快照不证明包含历史退市证券或历史指数成分；is_st未知仍是实际依赖。不得以过滤后剩余证券构造正式策略结论，缺输入的排名/绩效仍不准入。
+
+### 2. 用现有R15完成真实入库/清洗调用，并让覆盖门读取真实证据
+
+R13的build_candidate_cleaning_from_retained.py实际做的是inherit_tree + 自写replay parquet + 原compiler reader/antileak。
+这是有效候选构建，但没有调用R15的load_staging/ingest_item/封版与r15_antileak_and_ssot完整流程，不能声称整个原下载后清洗已接通。现有SAM补包已经给出R15真实源码，保留台式机版本，使用当前实际R15函数，最小化注入候选STAGING_MANIFEST、输出、ledger/quarantine/seal路径；禁用或重定向main中的生产指针/规则改写。保留原真实检查，不以新的同名实现替代。直接重放已有08-31/09-01两批，保留原字段/sidecar与来源，不再索要源码。
+
+run_connected_pipeline.response_gate目前调用：
+acquisition_absence_gate(n_rows=resp.rows, query_cap=resp.rows, pagination_complete="YES")。
+返回行数自充query_cap、代码自填分页YES，不构成完整性证明；4000..7000行带也不是供应商请求规模。让实际适用writer/分页/断点控制接收保存的原请求与返回证据，区分“保留批次字节与键一致”与“原供应商结果完整”。缺少原请求清单/终止页/重放证据的断言保留UNKNOWN，不能制造YES放行采集。
+本地transport可替换网络，真实writer/transform和错误传播须实际调用；仅代码存在或absence gate返回PASS不足以准入。复用已通过局部控制，只跑此次连接受影响的检查。
+
+### 3. 完成已授权的候选发布演练并交回统一现态
+
+R13报告请求“再授权候选publish_atomic演练”无需转交owner：原任务已授权隔离候选指针发布，生产CURRENT仍禁止。
+调用原publish_atomic的非dry-run路径前，将它及其传递调用的CLEAN_PTR/CACHE_PTR/FACTS/LEDGER、backup、scope/child摘要等所有写入目标显式绑定任务目录；特别是refresh_scope_from_live仍会写scope，不能只重定向两个指针。保留真实gate，不把它替换成总返回PASS。可写目标不能完全隔离时停止此调用并给出具体路径阻断，不能冒险运行。
+基于已完成的不可变候选/单COMMIT机制验证实际成功/中途失败/恢复；不重复9项未受影响的旧检查，不把旧多文件顺序替换标为事务。生产读者尚未使用新COMMIT时如实说明，候选机制不能冒充生产原子性。
+
+集中更新同一包的REPORT/ACCEPTANCE和原有B1–B7状态，以及CONNECTED_PIPELINE、COMMAND_LOG/RUN_RESULT的当前索引：它们现在仍指向R12内容，R13实际结果在evidence里。保留旧件并指向当前实际运行，不重跑只是为改标签。
+命令需是实际可运行的完整参数；日志/真实退出码直接引用已保留原件，“python -c 'count ...'”、省略号及<sealed>不能当精确执行记录。已未保留的如实注明，无需倒造。
+
+### 本次固定收尾
+
+仅完成上述三项在本地可修部分，仍缺权威输入的分支精确BLOCKED，并继续其他独立分支；不反复执行同一个失败，不增加第四项调查。一次集中回传：原链条哪些确已执行、查询/分钟请求哪些可用、V4原请求具体卡在哪些输入、断点/候选提交是否一致、真正仍需外部获取的最小缺项。不得以新建一批报告代替运行，不再让owner选择技术步骤。
+
+尚未执行的最新采集和生产CURRENT切换分别记“授权阶段未开启”，不能循环拿它们当必须先执行的前置修复。实际数据/分页/清洗前置缺口仍必须如实通过或阻断。NEW_DATA_ACQUISITION_AUTHORIZED=false；CURRENT_SWITCH_ALLOWED=false；ORDER_ALLOWED=false；FOUNDATION_ACCEPTANCE=false；FORMAL_ENGINE_ADMISSION=false。原任务ID不变，无新轮次。
+源机当前无需追加任务；台式机本地连续修复，完成后供GPT集中审核。
+
+---
+
 # R10 — complete the local system with existing data, then submit one acceptance package
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
