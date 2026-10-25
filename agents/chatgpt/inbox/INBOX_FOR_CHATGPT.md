@@ -770,3 +770,13 @@ Prior R08 delivery remains visible and uncorrected in place; this bundle is appe
 - matrix repairs: CALENDAR_CN_EXCHANGE time axis, per-product roots, FACTOR_VALUE=BLOCKED_NO_ADMITTED_PRODUCT, UNDETERMINED_SCOPE=UNRESOLVED_SCOPE
 - package: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/` (24 members, all_byte_equal=True)
 - B1..B7: none closed; acquisition/CURRENT/orders remain unauthorised
+
+## Supplement uploaded (same task)
+
+- HUB: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/source_supplement/` (24 called-source files + SUPPLEMENT_INDEX.json + SOURCE_SUPPLEMENT_R2.zip)
+- zip bytes=124113 sha256=d1f88bcecb80a65bba55e2c9b44f04fb3560734cccd56cd0cc7186969e660fd9
+- Also mirrored to the OPS share dir under `source_workflow_from_SAM/source_supplement/`.
+- Contents: R15 daily/minute/finance/aux download writers, R15 cleaning+antileak, R15 control/contract/acceptance,
+  research module registry + OS state, sellside daily writer, lane-B materialization, morning selection validation,
+  research memory, QMT dual-pool + Laotao route C, lane E/F collector, lane D news observer, module 04 ontology, 2 live json samples.
+- Not included on purpose: the two 2B coverage stubs, market parquet, any credential contents.
