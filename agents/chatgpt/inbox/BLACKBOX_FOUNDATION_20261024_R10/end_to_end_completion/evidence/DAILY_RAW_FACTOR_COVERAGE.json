@@ -1,0 +1,37 @@
+{
+  "artifact": "DAILY_RAW_FACTOR_COVERAGE",
+  "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+  "file_kinds": {
+    "batch": 480,
+    "other": 2,
+    "incremental": 42
+  },
+  "window": [
+    "2026-08-05",
+    "2026-09-24"
+  ],
+  "per_session": [
+    {
+      "date": "2026-08-05",
+      "rows": 10,
+      "distinct": 1,
+      "min": 1.0,
+      "max": 1.0,
+      "source": "stock_daily__gapfill_codes__2026__000638XSHE_301583XSHE__none_adj__v1__20260807_040139.parquet"
+    },
+    {
+      "date": "2026-08-06",
+      "rows": 10,
+      "distinct": 1,
+      "min": 1.0,
+      "max": 1.0,
+      "source": "stock_daily__gapfill_codes__2026__000638XSHE_301583XSHE__none_adj__v1__20260807_040139.parquet"
+    }
+  ],
+  "sessions_with_varied_factor": 0,
+  "sessions_all_ones": 2,
+  "conclusion": {
+    "daily_raw_can_repair_factor_gap": false,
+    "note": "measured per session; a varied plane here is a real, existing authority"
+  }
+}
