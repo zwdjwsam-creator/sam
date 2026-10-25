@@ -1,0 +1,596 @@
+{
+  "artifact": "CONNECTED_PIPELINE",
+  "deliverable": "D3_CONNECTED_UPDATE_CLEANING_CANDIDATE",
+  "run_id": "20261025_112047",
+  "transport": "LocalReplayTransport over retained RAW batch + sidecar + factor increment",
+  "stages": [
+    "response_gate",
+    "cleaning_antileak",
+    "factor_refresh",
+    "compiler",
+    "candidate_checkpoint",
+    "isolated_publication"
+  ],
+  "receipts": {
+    "run_id": "20261025_112047",
+    "fresh_sequence": [
+      {
+        "day": "2026-08-31",
+        "tamper": null,
+        "stages": {
+          "response_gate": {
+            "requested_date": "2026-08-31",
+            "payload_date": "2026-08-31",
+            "checks": {
+              "payload_date_matches_request": true,
+              "coverage_declared": true,
+              "coverage_interval_matches_request": true,
+              "sidecar_rows_match_payload": true,
+              "row_band_ok": true,
+              "index_date_survives_serialization": true
+            },
+            "sidecar_batch_identity": {
+              "declared_file_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+              "actual_batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+              "sidecar_points_to_same_batch": true,
+              "note": "a retained sidecar may describe an earlier build of the same day; recorded, not used to rewrite the payload"
+            },
+            "rows": 5212
+          },
+          "cleaning_antileak": {
+            "input_rows": 5212,
+            "input_columns": [
+              "time",
+              "code",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "money",
+              "paused",
+              "high_limit",
+              "low_limit",
+              "avg",
+              "pre_close",
+              "factor",
+              "fq"
+            ],
+            "anti_leak_max_date": "2026-08-31",
+            "rows_outside_batch_day": 0,
+            "anti_leak_ok": true,
+            "duplicate_rows": 0,
+            "ohlc_inconsistent_rows": 0,
+            "null_price_rows": 0,
+            "nonpositive_price_rows": 0,
+            "clean_rows": 5212,
+            "clean_codes": 5212,
+            "factor_contract": {
+              "required_columns": [
+                "code",
+                "factor"
+              ],
+              "missing": [],
+              "fq_column_required": false,
+              "fq_column_present": false,
+              "note": "physical fq-column absence is not a contract violation",
+              "factor_rows": 5212
+            }
+          },
+          "factor_refresh": {
+            "required_columns": [
+              "code",
+              "factor"
+            ],
+            "missing": [],
+            "fq_column_required": false,
+            "fq_column_present": false,
+            "note": "physical fq-column absence is not a contract violation",
+            "factor_rows": 5212
+          },
+          "compiler": {
+            "rows_before": 949470,
+            "rows_after": 954682,
+            "rows_added": 5212,
+            "partial_day_rows_replaced": 0,
+            "partial_day_was_replaced_not_skipped": false,
+            "duplicate_keys_after_merge": 0,
+            "sha_before": "b04793214a6a95e17a7f5b2c1e7d9f08681742772b0b9fff3ecc29695e133843",
+            "sha_after": "486eef28c532717474fdb572b67100689c1714006906f7eb95dab7e93d04bbdf",
+            "idempotent_noop": false
+          },
+          "publication": {
+            "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
+            "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
+            "paired_registry_consistent": true,
+            "atomicity_note": "two sequential os.replace calls; not a multi-file transaction",
+            "current_pointer_touched": false
+          }
+        },
+        "provenance": {
+          "batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+          "batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+          "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
+          "sidecar_sha256": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
+          "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+          "factor_sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+          "tamper": null
+        },
+        "checkpoint": {
+          "committed_days": [
+            "2026-08-31"
+          ],
+          "resume_point": "2026-08-31",
+          "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
+          "checkpoint_sha256": "a59d3c28a2543b455765bf3e1b482f507e35c05637176d30e9abb759aeb9339d"
+        },
+        "status": "COMMITTED"
+      },
+      {
+        "day": "2026-09-01",
+        "tamper": null,
+        "stages": {
+          "response_gate": {
+            "requested_date": "2026-09-01",
+            "payload_date": "2026-09-01",
+            "checks": {
+              "payload_date_matches_request": true,
+              "coverage_declared": true,
+              "coverage_interval_matches_request": true,
+              "sidecar_rows_match_payload": true,
+              "row_band_ok": true,
+              "index_date_survives_serialization": true
+            },
+            "sidecar_batch_identity": {
+              "declared_file_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+              "actual_batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+              "sidecar_points_to_same_batch": true,
+              "note": "a retained sidecar may describe an earlier build of the same day; recorded, not used to rewrite the payload"
+            },
+            "rows": 5214
+          },
+          "cleaning_antileak": {
+            "input_rows": 5214,
+            "input_columns": [
+              "time",
+              "code",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "money",
+              "paused",
+              "high_limit",
+              "low_limit",
+              "avg",
+              "pre_close",
+              "factor",
+              "fq"
+            ],
+            "anti_leak_max_date": "2026-09-01",
+            "rows_outside_batch_day": 0,
+            "anti_leak_ok": true,
+            "duplicate_rows": 0,
+            "ohlc_inconsistent_rows": 0,
+            "null_price_rows": 0,
+            "nonpositive_price_rows": 0,
+            "clean_rows": 5214,
+            "clean_codes": 5214,
+            "factor_contract": {
+              "required_columns": [
+                "code",
+                "factor"
+              ],
+              "missing": [],
+              "fq_column_required": false,
+              "fq_column_present": false,
+              "note": "physical fq-column absence is not a contract violation",
+              "factor_rows": 5214
+            }
+          },
+          "factor_refresh": {
+            "required_columns": [
+              "code",
+              "factor"
+            ],
+            "missing": [],
+            "fq_column_required": false,
+            "fq_column_present": false,
+            "note": "physical fq-column absence is not a contract violation",
+            "factor_rows": 5214
+          },
+          "compiler": {
+            "rows_before": 954682,
+            "rows_after": 959896,
+            "rows_added": 5214,
+            "partial_day_rows_replaced": 0,
+            "partial_day_was_replaced_not_skipped": false,
+            "duplicate_keys_after_merge": 0,
+            "sha_before": "486eef28c532717474fdb572b67100689c1714006906f7eb95dab7e93d04bbdf",
+            "sha_after": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
+            "idempotent_noop": false
+          },
+          "publication": {
+            "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
+            "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
+            "paired_registry_consistent": true,
+            "atomicity_note": "two sequential os.replace calls; not a multi-file transaction",
+            "current_pointer_touched": false
+          }
+        },
+        "provenance": {
+          "batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+          "batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+          "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json",
+          "sidecar_sha256": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
+          "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+          "factor_sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
+          "tamper": null
+        },
+        "checkpoint": {
+          "committed_days": [
+            "2026-08-31",
+            "2026-09-01"
+          ],
+          "resume_point": "2026-09-01",
+          "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
+          "checkpoint_sha256": "4c6d93cdd448297e7f7712150f5f28e234f401682f60557c4d883710fd0d75ed"
+        },
+        "status": "COMMITTED"
+      }
+    ],
+    "idempotent_replay": [
+      {
+        "day": "2026-08-31",
+        "tamper": null,
+        "stages": {
+          "response_gate": {
+            "requested_date": "2026-08-31",
+            "payload_date": "2026-08-31",
+            "checks": {
+              "payload_date_matches_request": true,
+              "coverage_declared": true,
+              "coverage_interval_matches_request": true,
+              "sidecar_rows_match_payload": true,
+              "row_band_ok": true,
+              "index_date_survives_serialization": true
+            },
+            "sidecar_batch_identity": {
+              "declared_file_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+              "actual_batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+              "sidecar_points_to_same_batch": true,
+              "note": "a retained sidecar may describe an earlier build of the same day; recorded, not used to rewrite the payload"
+            },
+            "rows": 5212
+          },
+          "cleaning_antileak": {
+            "input_rows": 5212,
+            "input_columns": [
+              "time",
+              "code",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "money",
+              "paused",
+              "high_limit",
+              "low_limit",
+              "avg",
+              "pre_close",
+              "factor",
+              "fq"
+            ],
+            "anti_leak_max_date": "2026-08-31",
+            "rows_outside_batch_day": 0,
+            "anti_leak_ok": true,
+            "duplicate_rows": 0,
+            "ohlc_inconsistent_rows": 0,
+            "null_price_rows": 0,
+            "nonpositive_price_rows": 0,
+            "clean_rows": 5212,
+            "clean_codes": 5212,
+            "factor_contract": {
+              "required_columns": [
+                "code",
+                "factor"
+              ],
+              "missing": [],
+              "fq_column_required": false,
+              "fq_column_present": false,
+              "note": "physical fq-column absence is not a contract violation",
+              "factor_rows": 5212
+            }
+          },
+          "factor_refresh": {
+            "required_columns": [
+              "code",
+              "factor"
+            ],
+            "missing": [],
+            "fq_column_required": false,
+            "fq_column_present": false,
+            "note": "physical fq-column absence is not a contract violation",
+            "factor_rows": 5212
+          },
+          "compiler": {
+            "rows_before": 959896,
+            "rows_after": 959896,
+            "rows_added": 0,
+            "partial_day_rows_replaced": 5212,
+            "partial_day_was_replaced_not_skipped": true,
+            "duplicate_keys_after_merge": 0,
+            "sha_before": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
+            "sha_after": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
+            "idempotent_noop": true
+          },
+          "publication": {
+            "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
+            "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
+            "paired_registry_consistent": true,
+            "atomicity_note": "two sequential os.replace calls; not a multi-file transaction",
+            "current_pointer_touched": false
+          }
+        },
+        "provenance": {
+          "batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+          "batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+          "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
+          "sidecar_sha256": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
+          "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+          "factor_sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
+          "tamper": null
+        },
+        "checkpoint": {
+          "committed_days": [
+            "2026-08-31",
+            "2026-09-01"
+          ],
+          "resume_point": "2026-09-01",
+          "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
+          "checkpoint_sha256": "4c6d93cdd448297e7f7712150f5f28e234f401682f60557c4d883710fd0d75ed"
+        },
+        "status": "IDEMPOTENT_REPLAY"
+      },
+      {
+        "day": "2026-09-01",
+        "tamper": null,
+        "stages": {
+          "response_gate": {
+            "requested_date": "2026-09-01",
+            "payload_date": "2026-09-01",
+            "checks": {
+              "payload_date_matches_request": true,
+              "coverage_declared": true,
+              "coverage_interval_matches_request": true,
+              "sidecar_rows_match_payload": true,
+              "row_band_ok": true,
+              "index_date_survives_serialization": true
+            },
+            "sidecar_batch_identity": {
+              "declared_file_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+              "actual_batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+              "sidecar_points_to_same_batch": true,
+              "note": "a retained sidecar may describe an earlier build of the same day; recorded, not used to rewrite the payload"
+            },
+            "rows": 5214
+          },
+          "cleaning_antileak": {
+            "input_rows": 5214,
+            "input_columns": [
+              "time",
+              "code",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "money",
+              "paused",
+              "high_limit",
+              "low_limit",
+              "avg",
+              "pre_close",
+              "factor",
+              "fq"
+            ],
+            "anti_leak_max_date": "2026-09-01",
+            "rows_outside_batch_day": 0,
+            "anti_leak_ok": true,
+            "duplicate_rows": 0,
+            "ohlc_inconsistent_rows": 0,
+            "null_price_rows": 0,
+            "nonpositive_price_rows": 0,
+            "clean_rows": 5214,
+            "clean_codes": 5214,
+            "factor_contract": {
+              "required_columns": [
+                "code",
+                "factor"
+              ],
+              "missing": [],
+              "fq_column_required": false,
+              "fq_column_present": false,
+              "note": "physical fq-column absence is not a contract violation",
+              "factor_rows": 5214
+            }
+          },
+          "factor_refresh": {
+            "required_columns": [
+              "code",
+              "factor"
+            ],
+            "missing": [],
+            "fq_column_required": false,
+            "fq_column_present": false,
+            "note": "physical fq-column absence is not a contract violation",
+            "factor_rows": 5214
+          },
+          "compiler": {
+            "rows_before": 959896,
+            "rows_after": 959896,
+            "rows_added": 0,
+            "partial_day_rows_replaced": 5214,
+            "partial_day_was_replaced_not_skipped": true,
+            "duplicate_keys_after_merge": 0,
+            "sha_before": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
+            "sha_after": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
+            "idempotent_noop": true
+          },
+          "publication": {
+            "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
+            "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
+            "paired_registry_consistent": true,
+            "atomicity_note": "two sequential os.replace calls; not a multi-file transaction",
+            "current_pointer_touched": false
+          }
+        },
+        "provenance": {
+          "batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+          "batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+          "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json",
+          "sidecar_sha256": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
+          "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+          "factor_sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
+          "tamper": null
+        },
+        "checkpoint": {
+          "committed_days": [
+            "2026-08-31",
+            "2026-09-01"
+          ],
+          "resume_point": "2026-09-01",
+          "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
+          "checkpoint_sha256": "4c6d93cdd448297e7f7712150f5f28e234f401682f60557c4d883710fd0d75ed"
+        },
+        "status": "IDEMPOTENT_REPLAY"
+      }
+    ],
+    "negative_controls": [
+      {
+        "tamper": "short_batch",
+        "expected_stop": [
+          "SHORT_OR_OVERSIZED_BATCH",
+          "SIDECAR_ROW_MISMATCH"
+        ],
+        "stopped": true,
+        "stage": "RESPONSE_GATE",
+        "code": "SIDECAR_ROW_MISMATCH",
+        "code_matches_expected": true,
+        "partition_unchanged": true,
+        "detail": {
+          "sidecar_rows": 5214,
+          "payload_rows": 260
+        }
+      },
+      {
+        "tamper": "malformed_date",
+        "expected_stop": [
+          "INDEX_DATE_NOT_PRESERVED",
+          "PAYLOAD_DATE_MISMATCH"
+        ],
+        "stopped": true,
+        "stage": "RESPONSE_GATE",
+        "code": "INDEX_DATE_NOT_PRESERVED",
+        "code_matches_expected": true,
+        "partition_unchanged": true,
+        "detail": {
+          "distinct_dates": [
+            "2026-09-02"
+          ],
+          "requested": "2026-09-01"
+        }
+      },
+      {
+        "tamper": "missing_coverage",
+        "expected_stop": [
+          "COVERAGE_UNPROVEN"
+        ],
+        "stopped": true,
+        "stage": "RESPONSE_GATE",
+        "code": "COVERAGE_UNPROVEN",
+        "code_matches_expected": true,
+        "partition_unchanged": true,
+        "detail": {
+          "missing_sidecar_keys": [
+            "rows",
+            "price_basis",
+            "gap_start",
+            "gap_end"
+          ],
+          "note": "no coverage declaration -> the batch may not be merged"
+        }
+      },
+      {
+        "tamper": "wrong_index",
+        "expected_stop": [
+          "INDEX_DATE_UNPARSEABLE"
+        ],
+        "stopped": true,
+        "stage": "RESPONSE_GATE",
+        "code": "INDEX_DATE_UNPARSEABLE",
+        "code_matches_expected": true,
+        "partition_unchanged": true,
+        "detail": {
+          "error": "Unknown datetime string format, unable to parse: not-a-date, at position 0"
+        }
+      }
+    ],
+    "verdict": "PASS",
+    "partial_day_control": {
+      "injected_rows": 200,
+      "rows_after_rerun": 5214,
+      "expected_full_rows": 5214,
+      "replaced_not_skipped": true,
+      "compiler": {
+        "rows_before": 954882,
+        "rows_after": 959896,
+        "rows_added": 5014,
+        "partial_day_rows_replaced": 200,
+        "partial_day_was_replaced_not_skipped": true,
+        "duplicate_keys_after_merge": 0,
+        "sha_before": "e64aefdc636ba7fdb67042d618278daffe4284ef6c5e73bb8a93c192e35ad3c9",
+        "sha_after": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
+        "idempotent_noop": false
+      },
+      "duplicate_keys": 0
+    },
+    "all_controls_passed": true,
+    "partial_day_replaced_not_skipped": true,
+    "idempotent": true,
+    "no_duplicate_keys": true,
+    "resume_evidence": {
+      "committed_after_first_pass": [
+        "2026-08-31",
+        "2026-09-01"
+      ],
+      "committed_after_replay": [
+        "2026-08-31",
+        "2026-09-01"
+      ],
+      "no_duplicate_commit_entries": true
+    },
+    "partition_sha_after_first_pass": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
+    "partition_sha_after_replay": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82"
+  },
+  "outputs": {
+    "partition": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+    "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
+    "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
+    "checkpoint": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json"
+  },
+  "flags": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "PRODUCTION_PUBLISH_CALLED": false,
+    "CURRENT_POINTER_TOUCHED": false
+  },
+  "limitations": [
+    "external transport replaced by a local replay reader (declared)",
+    "two os.replace calls are not a multi-file transaction",
+    "no supplier call, so supplier-side completeness remains unproven"
+  ]
+}
