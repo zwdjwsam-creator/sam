@@ -165,3 +165,60 @@ Stopping rule unchanged: finish repairable local integration and submit one hone
 ## Artifact review after the remaining indexed logs arrived — same task
 
 Read agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/ARTIFACT_REVIEW_1006.md with this task. All eleven indexed payloads now match their byte counts and SHA256; this does not constitute final handoff or stage-1 acceptance. RUN_RESULT records positive paused_rows_inferred_from_bar_presence in 75/80 observations and five minute requests using INTRADAY_OPEN_PROXY. Apply the existing no-invented-status/original-execution-contract requirements to those exact observations. Preserve the original diag=false/PASS outputs as failed historical labels and return corrected current classification with the already-requested provider/wrapper code and actual outcomes. This review issues no new executable command, test rerun, source-only task or supplier permission. Do not interrupt an active process or restart the upload. Continue the same completion task and finish one consolidated handoff; Cursor final remains exactly END.
+
+
+## 双机合并审阅 — SAM 原件已到，继续同一任务（2026-10-25）
+
+本段是同一完成任务的最新纠正，优先于此前“恢复原本地股票引擎”等不符合源机事实的描述。两边材料已经到齐，不再等待源机、不新增盘点/源码导出轮、不重跑已通过且未受改动影响的检查。
+
+### 已核实并保留的成果
+
+GPT 已读取 SAM 的交接说明、适配说明、运行记录和 SOURCE_INDEX；从 HUB 获取 ZIP，实测 567589 bytes，SHA256 bdfafc3122266eff9005215949401d685739a29503c5807f6c0477d41b41d89d。解包后逐项核对 90 个代码文件及 28 个配置文件，118/118 长度与 SHA256 一致。原 V4 策略 SHA256 为 8d9334dd6ed2053b6cb297ea5780408c106c9cf2e0b7138629685e4f589d992e，与台式机 RUN_RESULT 一致。这里只认证原件身份，不认证源机报告中的每项运行能力。
+
+交接位置：
+- HUB: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/
+- SAM 已提供共享目录（按 DELIVERY_NOTE 的实际 UNC 读取）；若不可达，直接使用 HUB ZIP。
+ZHANGWEI 记录实际接收和使用的原件。保留已恢复的可用环境、provider 修复、真实批次与已通过结果；不重建整个环境，不盲目覆盖原件，尤其不能以源机 2B 空壳覆盖已有实现。
+
+GPT 同时读取了台式机 R12 报告、验收矩阵、RUN_RESULT、CONNECTED_PIPELINE 以及 provider、engine wrapper、replay script 的完整源码。此次未宣称整个台式机 34 成员包均已完成独立字节核验，亦未准入其收益。
+
+### 合并判断与本次仅需处理的三个差异
+
+1. **源机流程复用：完成实际调用链，停止用替代脚本证明原流程接通。**
+
+源机源码确认 Lane A 的 blackbox_full_data_update_scope_refresh_r1.py 从 CLEAN/CACHE CURRENT 派生摘要并写 scope，它不下载。“SOURCE_ASOF 等于 CLEAN_ASOF 等于 CACHE_ASOF”不能独立证明下载完成。该程序也不是纯只读，不能照交接说明直接在生产区试跑；六 Lane 的其他分支会采集，禁止为了验证 A 启动全部 INGEST。
+
+台式机 tools/run_connected_pipeline.py 没有导入/调用原 writer、R13/R15 cleaning、原 cache compiler 或 publish gate：response_gate、clean_and_antileak、merge/compiler、checkpoint、publisher 均在新文件自行实现。它使用真 RAW 的结果值得保留，但不能标成“只替换了外部 transport 的原链路 PASS”。其中 factor_refresh 仅检查 code/factor 列存在，未证明原复权刷新或真实分页接入。
+
+现在使用已到的 SAM 原件和台式机现有生产源码，按实际当前入口选择原 writer/cleaner/compiler（源机 R13 不应机械覆盖台式机 R15）。只对本次调用需要的环境和路径作候选适配，保留真实函数体，接入本地 retained transport；API 网络、生产默认输出及 CURRENT 写入必须隔离。原 tip compiler 已提供 --cleaning-json / --parent-root / --out-root / --no-publish，优先使用其原有候选入口；检查并重定向其日志等其他写路径，不能只看 --no-publish 就认定无副作用。对没有候选参数的原件作最小路径/依赖注入，不复制业务算法再以同名阶段冒充。
+
+复用已有 08-31/09-01 两批及原有负向控制，完成原函数实际执行、失败传播及重复运行。若 retained 输入无法覆盖某个原函数，精确标 BLOCKED，不重开全库调查。可复用已经验证的输入，不再要求 owner 传源码。
+
+2. **V4：认清本地移植，去掉未经支持的数据替代。**
+
+SAM 的原 V4 在聚宽云端，没有可直接复制的本地股票引擎。现有 BulletTrade + adapter 是本地移植候选，应保留；纠正“原聚宽引擎恢复/跑通”的表述。不得拿可转债引擎替代 V4 来交付，也不要求 owner 因此重新选择技术路线。
+
+R12 的 input_blockers=[] / diagnostic_only=false 不能作为语义通过：
+- provider.py:518–571 把 ADJUST_FACTOR_PIT_R1 解释成 event-ish，使用 ffill/bfill 并对无因子的代码回退 1.0；与已核实的 DAILY_DENSE 契约不符。此前稀疏物化不能自动变成事件序列。必须使用已有权威同日因子或已证明有效的修订/基准关系；缺证时明确阻断相关复权请求，不能 bfill 未来值或将未知回退为 1。
+- provider.py:680–694 仍将未知 paused 填 False；RUN_RESULT 的 80 条观测中仍有 4 条正的 paused_rows_inferred_from_bar_presence。严格模式不得在空值检查前先填成非停牌。
+- provider.py:698–726 对盘中请求以当日 open 替换 high/low/close，并以前一日 volume/money 替换当日值；RUN_RESULT 有 11 条 INTRADAY_OPEN_PROXY 观测。没有未来数据并不等于保留原策略的盘中价量和成交语义。需要分钟输入的请求使用已有真实分钟源；没有相应输入则该请求明确 BLOCKED，代理模式只能显式诊断。
+- get_all_securities(date) 实际返回 08-12 单一 snapshot 且未按请求日期过滤；is_st 仍未知。只对策略真实需要的历史股票池和 ST 过滤建立权威绑定，不能忽略参数或豁免字段来获得正式通过。已知不足保留为具体数据依赖。
+
+修复后由实际输入、API/调度/撮合语义决定分类，不能由 --diag=false 决定能否准入。真实引擎已执行16日是成果；2笔成交和零空值告警不能证明策略等价。无需为改变标签重跑长回测；仅在实际逻辑修复且必需输入满足后重跑受影响窗口。缺权威输入则提交确切产品/字段/日期及已查来源，不无限重试，不宣称正式收益。
+
+3. **候选提交：保证失败后上一次结果仍可读。**
+
+run_connected_pipeline.py:382 将新分区直接写回 ACCUM_PART，随后先写 checkpoint，再顺序替换 pointer/registry。异常发生在分区覆盖、checkpoint 或第二个指针替换期间时，旧指针可能已指向被改写数据或与断点不一致。现有“提交前拒绝坏批次”检查并未验证这个失败点，不能证明整个提交过程安全。
+
+在上项原调用链的同一候选适配中修复，不另造发布系统：将每次结果写为独立候选版本，完整验证后由单一权威提交引用或可恢复的原协议切换；checkpoint 与所提交的数据身份一致。只验证这条实际候选提交的中途失败/恢复，以及同输入重放和有修订输入续跑的行为。不要触碰生产 CURRENT；不要宣称两个 os.replace 是跨文件事务。
+
+### 收敛与停止
+
+以上均为原任务已有“原流程复用、禁止未知补值、真实链路、失败不损坏上次候选”的具体失败，不增加第四项交付或新数据域。技术步骤由本地连续执行，不再向 owner 发 A/B/C 选择，不再提交仅源码或准备度报告。
+
+结束时沿用同一 package，给出：实际复用的原函数/路径及必要改动；原流程候选运行的真实命令/日志和进程退出码（不要由 COMPLETED 反推退出码）；V4 本地移植的实际支持范围/未满足输入；各原有阻断的具体状态。保留失败证据和原 R12 标签，不覆盖历史事实。不能修的分支精确停止，独立可修分支继续，完成一次集中回传。
+
+“未做最新下载”和“生产 CURRENT 未切换”是本阶段授权边界，本身不能循环当作本阶段必须先执行的修复。分别列清候选能力是否验证、数据/语义是否满足、后续生产动作是否尚未授权。不能通过这一区分抹去真正的数据或采集前置缺口，也不能自启第二阶段。禁止为了等全库更新而重做迁移或扩展调查。
+
+NEW_DATA_ACQUISITION_AUTHORIZED=false；CURRENT_SWITCH_ALLOWED=false；ORDER_ALLOWED=false。
+FOUNDATION_ACCEPTANCE=false；FORMAL_ENGINE_ADMISSION=false，等待独立审核。沿用现有任务 ID；无新轮次。
