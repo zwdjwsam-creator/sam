@@ -1,0 +1,54 @@
+﻿{
+    "schema":  "BLACKBOX_SAM_SMB_READONLY_PROVISION_R1",
+    "provisioned_at_cn":  "2026-10-25T16:46:34+08:00",
+    "elevated_user":  "ZHANGWEI\\Admin",
+    "account":  "ZHANGWEI\\sam_ro",
+    "access_mode":  "READ_ONLY",
+    "share":  "E_DRIVE",
+    "share_path":  "E:\\",
+    "unc":  "\\\\192.168.100.1\\E_DRIVE",
+    "share_access_map":  [
+                             "BUILTIN\\Administrators=Full",
+                             "Everyone=Read",
+                             "ZHANGWEI\\sam_ro=Read"
+                         ],
+    "ntfs_basis":  "E:\\ 继承 BUILTIN\\Users=ReadAndExecute（sam_ro 经 Users 组获得读）；未写入根 ACL（避免大树递归传播）",
+    "firewall_rule":  "BLACKBOX SMB 445 from SAM 192.168.100.0/24",
+    "firewall_scope":  "192.168.100.0/24",
+    "listen_445":  1,
+    "steps":  {
+                  "account":  {
+                                  "detail":  "enabled=True pw_last_set=10/25/2026 16:43:31",
+                                  "status":  "OK"
+                              },
+                  "share_acl":  {
+                                    "detail":  "E_DRIVE(path=E:\\) :: BUILTIN\\Administrators=Full; Everyone=Read; ZHANGWEI\\sam_ro=Read",
+                                    "status":  "OK"
+                                },
+                  "firewall":  {
+                                   "detail":  "enabled=True profile=Any remote=192.168.100.0/24",
+                                   "status":  "OK"
+                               },
+                  "smb_service":  {
+                                      "detail":  "LanmanServer=Running listen445=1",
+                                      "status":  "OK"
+                                  },
+                  "secret_file":  {
+                                      "detail":  "C:\\LAN_SHARE_REPORT\\配置\\secrets\\sam_smb_readonly.TXT (735 B)",
+                                      "status":  "OK"
+                                  },
+                  "local_access_probe":  {
+                                             "detail":  "READ_OK: # HAND.txt 鈥?BLACKBOX HAND top-level pointer index / NTFS_WRITE_DENIED",
+                                             "status":  "OK"
+                                         }
+              },
+    "failed_steps":  [
+
+                     ],
+    "secret_file":  "C:\\LAN_SHARE_REPORT\\配置\\secrets\\sam_smb_readonly.TXT",
+    "log_file":  "C:\\LAN_SHARE_REPORT\\配置\\logs\\sam_smb_provision_v4_20261025_164629.log",
+    "flags":  {
+                  "WRITE_ALLOWED_ON_DESKTOP_VIA_SHARE":  false,
+                  "ORDER_ALLOWED":  false
+              }
+}
