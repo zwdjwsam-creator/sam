@@ -1,3 +1,23 @@
+# ZHANGWEI 当前分工｜SAM 主导整顿，台机本机执行与最终独立复验
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+status: WAIT_SAM_HANDOFF_THEN_INDEPENDENT_REVERIFY
+canonical_instruction: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
+
+用户明确授权笔记本原 BLACKBOX Cursor 主导并直接改动台式机 E 盘。读取完整执行令最新顶部；旧R10停止/READY和旧Q1–Q9只读裁决不能覆盖本分工。SAM是唯一修改者，台机不自主平行改业务代码/算法/指针；已有冻结不阻止本授权范围的SAM直接修改。
+
+施工中如SAM需本机运行，由台机作为执行器按SAM一次性脚本运行并直接共享原始日志，不让用户传话；不要把笔记本解释器运行结果记成台机结果。采集、生产CURRENT切换与下单继续关闭，代码修复和隔离既有批次清洗/编译/发布已授权。保留已完成结构修复。
+
+SAM最终交付路径：
+E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\sam_led_rectification\
+收到 HANDOFF_TO_DESKTOP.md 和 SAM_HANDOFF_READY_FOR_DESKTOP_REVERIFY 后，按 OPERATION_MANUAL.md 在台机本机独立复验实际入口、只读查询、日期/status副作用、原R15输出→原编译器→原隔离发布同产物流转与受影响恢复；V4保持真实依赖阻断，不能拿零收益/循环结束证明正式通过。
+
+最终输出 DESKTOP_REVERIFY_REPORT.md / DESKTOP_REVERIFY_RESULT.json 至同目录，并回HUB相同子目录。失败具体反馈SAM在本任务修复，顺序复验受影响项；不新开盘点，不要求用户转述，双方集中交GPT审核。
+
+---
+以下为历史收件，优先级低于本节：
+
 # SAM 已复核你方 Q1–Q9 回执（R2，非新一轮）
 
 answered_by: SAM
