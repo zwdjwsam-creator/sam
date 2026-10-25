@@ -2,7 +2,7 @@
   "artifact": "R10_END_TO_END_ACCEPTANCE",
   "revision": "R13_SAME_TASK_CORRECTION",
   "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
-  "generated_at_cn": "2026-10-25T12:45:00+08:00",
+  "generated_at_cn": "2026-10-25T13:13:22+08:00",
   "overall": "BLOCKED_PARTIAL_EXECUTION",
   "stage1": {
     "verdict": "BLOCKED",
@@ -12,34 +12,23 @@
   "backtest_classification": {
     "window": "2026-09-03..2026-09-24",
     "n_sessions": 16,
-    "status": "COMPLETED",
-    "diagnostic_only": false,
-    "not_a_substitute_for": "the documented requested backtest scope",
-    "input_blockers": [],
-    "strategy_input_warnings": {
-      "yesterday_limit_up_step_aborted": 0,
-      "limit_up_flag_missing": 0,
-      "ambiguous_na": 0,
-      "lines": 902
-    },
-    "residual_log_warnings": {
-      "event_cash_patrol_float_none": 152,
-      "light_probe_path_not_string": 34,
-      "price_fetch_failed": 0,
-      "yesterday_limit_up_aborted": 0,
-      "limit_up_flag_missing": 0,
-      "ambiguous_na_boolean": 0
-    },
-    "metrics": {
-      "策略收益": "-4.66%",
-      "策略年化收益": "-52.57%",
-      "最大回撤": "-5.47%",
-      "夏普比率": "-8.53",
-      "日胜率": "18.75%",
-      "交易胜率": "0.00%",
-      "交易天数": "16",
-      "初始资金": "1,000,000.00",
-      "最终资金": "953,384.16"
+    "status": "BLOCKED_INPUT_INCOMPLETE",
+    "diagnostic_only": true,
+    "input_blockers": [
+      "REQUIRED_INPUT_MISSING"
+    ],
+    "n_trades": 0,
+    "n_orders": 0,
+    "n_mark_price_starved": 0,
+    "strict_required_inputs": true,
+    "intraday_proxy_allowed": false,
+    "required_input_failure_events": 20,
+    "run_dir": "engine_runs/v4_r21_R13_STRICT4",
+    "strategy_sha256": "8d9334dd6ed2053b6cb297ea5780408c106c9cf2e0b7138629685e4f589d992e",
+    "metrics_not_claimed": "the 0.00% summary of a run with 0 trades is arithmetic on an uninvested account, not a strategy result; no return claim is made from any run over this window",
+    "historical_label_preserved": {
+      "note": "the R11 recon run (COMPLETED, diag=false, 2 fills) is a FAILED historical label kept for audit; the piecewise forward-fill that produced its fills was deleted",
+      "superseded_metrics_block": null
     }
   },
   "deliverables": {
@@ -191,23 +180,34 @@
       "repair_needed": "writer-emitted content cursor, or an authorised start date with a validated overlap"
     },
     "R2_engine_data_contract_and_actual_runtime": {
-      "status": "PARTIAL",
-      "measured": "engine reached COMPLETED over 2026-09-03..2026-09-24 on the real local plane with zero input blockers and 2 executed trades",
-      "unproven": "performance admission grade: B1 per-date factor lineage and B7 whole-CACHE equivalence gate are still open",
+      "status": "BLOCKED",
+      "measured": "the strict V4 port over 2026-09-03..2026-09-24 completes all 16 sessions and is classified BLOCKED_INPUT_INCOMPLETE with blockers ['REQUIRED_INPUT_MISSING'], trades=0, orders=0, mark_price_starved=0, diagnostic_only=True; unprovable fq='pre' rows are withheld per code and recorded; the minute plane is now wired and answers inside 2026-09-11..2026-09-24 and blocks outside it; unknown paused fails the request",
+      "blocking_gap": "ADJUST_FACTOR_PIT_R1 is not a proven adjustment series in the tested window. Two source-side defects: (a) 17 incremental files for 2026-08-12..2026-09-02 carry a positional integer 'date' (0..299) so they cannot be joined; (b) every sampled incremental payload from 2026-08-10 onward is factor=1.0 for every code, including the files whose date dtype is correct. CACHE therefore shows 7..89 rows for 2026-08-17..2026-09-01 and a full 5,215..5,222-row plane of 1.0 for 2026-09-02..2026-09-24, i.e. the entire test window. The historical batch plane does carry real variation (min 0.167), so this is an incremental supplier defect, not a fan-out defect",
+      "unproven": "formal strategy equivalence and any return claim: the tested window has no proven adjusted price on either side of the anchor, so the ranking input is incomplete by construction; B7 whole-CACHE equivalence remains open",
       "evidence": [
-        "engine_runs/v4_r21_20260903_20260924_R11_TRADEABILITY_RECON/run_result.json",
-        "evidence/TRADEABILITY_RESTORE.json",
+        "evidence/FACTOR_CORRUPT_DATE_PROFILE.json",
+        "evidence/FACTOR_DENSE_VS_CORRUPT.json",
+        "evidence/FACTOR_DENSITY.json",
+        "evidence/FACTOR_NONDATE_ENCODING.json",
+        "evidence/FACTOR_SERIES_NATURE.json",
+        "evidence/FACTOR_SOURCE_TRACE.json",
         "evidence/INPUT_PLANE_REPAIR.json",
-        "evidence/PRICE_FETCH_FAILURE.json"
+        "evidence/MINUTE_PLANE.json",
+        "evidence/PRICE_FETCH_FAILURE.json",
+        "evidence/PROVIDER_SEMANTIC_REPAIR.json",
+        "evidence/V4_STRICT_RUN.json",
+        "evidence/V4_STRICT_RUNS_ALL.json"
       ],
-      "repair_needed": "none recorded"
+      "repair_needed": "re-issue the incremental adjust-factor plane for 2026-08-10..2026-09-24 with a real date column and real factors (acquisition), then re-measure; no value is invented in the meantime",
+      "historical_label_preserved": "R11_TRADEABILITY_RECON run is COMPLETED/diag=false with 2 fills — kept as a failed historical label, not as acceptance"
     },
     "R3_strategy_artifact_identification": {
       "status": "PASS",
-      "measured": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py sha256 8d9334dd6ed2053b",
-      "unproven": "nothing at identity level",
+      "measured": "strategy sha256 8d9334dd6ed2053b6cb297ea5780408c106c9cf2e0b7138629685e4f589d992e, identical to the SAM source-machine RUN_RESULT; BulletTrade+adapter is a LOCAL PORT, not the original JoinQuant cloud engine",
+      "unproven": "nothing at identity level; engine equivalence is R2",
       "evidence": [
-        "ACCEPTANCE.json#strategy_identity"
+        "ACCEPTANCE.json#strategy_identity",
+        "hub_tips/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md"
       ],
       "repair_needed": "none"
     },
@@ -230,24 +230,189 @@
         "CONNECTED_PIPELINE.json"
       ],
       "repair_needed": "stage-2 acquisition + cleaning, then a zero-blocker regression"
+    },
+    "R5_pipeline_reuse_and_candidate_commit": {
+      "status": "PARTIAL",
+      "measured": "the real chain executes: retained transport -> original acquisition_absence_gate (PROVENANCE_GATE=PASS, SUPPLIER_COMPLETENESS=UNKNOWN) -> original inherit_tree/read_price_frame/antileak_gate -> real R15 load_staging/ingest_item/seal_release/antileak on the retained batches (R15_REPLAY_20260924_R2, PASS) -> ORIGINAL cache_compiler_tip_rebase_from_current_r1 -> immutable versioned commit -> ORIGINAL publish_atomic executed NON-dry-run with every write target bound (6 bound writes, 0 unbound, published=True)",
+      "unproven": "the source machine's R13 cleaning stage is not adopted (desktop R15 is the current entry); the publish rehearsal ran on bound copies seeded from production, so a real CURRENT switch is still unproven",
+      "evidence": [
+        "CONNECTED_PIPELINE.json",
+        "evidence/CLEANING_CANDIDATE.json",
+        "evidence/COMMIT_RECOVERY.json",
+        "evidence/ORIGINAL_COMPILER_RECEIPT.json",
+        "evidence/ORIGINAL_PUBLISH_GATE_PROBE.json",
+        "evidence/PUBLISH_ATOMIC_REHEARSAL.json",
+        "evidence/R15_CLEANING_REPLAY.json"
+      ],
+      "repair_needed": "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)"
     }
   },
   "B1_B7": {
     "B1": {
       "requirement": "PRE-adjustment price chain certifiable over the test window",
-      "status": "OPEN",
-      "failed_predicate": "factor sidecar vs physical row count +83,503 with no per-date lineage; pre/post not implemented",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "the factor plane is not a proven adjustment series anywhere in the tested window: 17 incremental source files carry a positional integer date and every sampled incremental payload from 2026-08-10 onward is a constant 1.0, so CACHE holds 7..89 rows for 2026-08-17..2026-09-01 and a full 5,215..5,222-row plane of 1.0 for 2026-09-02..2026-09-24",
       "affected_deliverable": "D2",
-      "repair_attempted": "engine ran with fq='pre' and a piecewise factor fill anchored at end_date; no new lineage invented",
-      "remaining_input": "per-date factor lineage (or the whole-table factor revision)"
+      "repair_attempted": "provider joins ADJUST_FACTOR_PIT_R1 same-day only, no ffill/bfill, no 1.0 fallback, and divides by factor(anchor) with the divisor guarded: rows whose same-day factor or anchor factor is absent are WITHHELD (NaN price + BLOCKED_UNPROVEN_ADJUSTMENT tag + recorded failure), and a batch with no provable code is a hard block. ETF/INDEX are served raw by contract",
+      "remaining_input": "a re-issued incremental adjust-factor plane (real date column, real factors) for 2026-08-10..2026-09-24, and a per-date factor lineage sidecar at publish time",
+      "measured_density": {
+        "sessions_in_plane": 178,
+        "peak_rows_in_a_session": 5222,
+        "n_dense_sessions": 166,
+        "sparse_sessions": {
+          "2026-08-17": 89,
+          "2026-08-18": 88,
+          "2026-08-19": 81,
+          "2026-08-20": 72,
+          "2026-08-21": 64,
+          "2026-08-24": 49,
+          "2026-08-25": 45,
+          "2026-08-26": 39,
+          "2026-08-27": 29,
+          "2026-08-28": 19,
+          "2026-09-01": 11,
+          "2026-09-02": 7
+        },
+        "consequence": "166/178 2026 sessions are dense; 12 sessions (2026-08-17..2026-09-02) carry 7-89 rows, so fq='pre' cannot be reconstructed there. A pre-open read on 2026-09-03 anchors at 2026-09-02 and loses the codes that have no factor that day.",
+        "superseded_by": "value-density measurement: 2026-09-02..2026-09-24 is a constant 1.0 plane at full row count, so row counts alone overstate the healthy part of the window",
+        "row_density_only": true
+      },
+      "source_lineage_measured": {
+        "question": "is the sparse CACHE caused by a sparse authoritative source, or by a missing carry in the builder?",
+        "answer": "neither a row shortage nor a missing carry: the incremental supplier payload carries no factor variation at all for the late sessions, and 17 of its files carry a positional integer instead of a date",
+        "layers": {
+          "cache": {
+            "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\data\\year=2026",
+            "sessions": 178,
+            "rows": 863710
+          },
+          "p1": {
+            "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+            "file_kinds": {
+              "batch": 185,
+              "incremental": 37
+            },
+            "sessions": 3044,
+            "rows": 13548093,
+            "first_day": "1970-01-01",
+            "last_day": "2026-09-24"
+          },
+          "p6": {
+            "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor",
+            "file_kinds": {
+              "incremental": 38
+            },
+            "sessions": 20,
+            "rows": 192925,
+            "first_day": "1970-01-01",
+            "last_day": "2026-09-24"
+          }
+        },
+        "p1_date_encoding_defect": {
+          "files": 17,
+          "rows": 88584,
+          "sessions": "2026-08-12..2026-09-02",
+          "date_column": "int64 positional 0..299 (300 distinct), not a timestamp",
+          "effect": "no row from these files can be joined on date; the sessions they are supposed to supply read as 0 dated rows",
+          "payload_otherwise_intact": {
+            "session_derivable_from_filename": true,
+            "rows_comparable_to_dense": true,
+            "factors_positive_finite": true
+          },
+          "factor_min_max_in_those_files": [
+            1.0,
+            1.0
+          ]
+        },
+        "p1_value_defect": {
+          "measured_on": "every sampled incremental file from 2026-08-10 onward, including the ones whose date dtype is correct",
+          "factor_distinct": 1,
+          "factor_min": 1.0,
+          "factor_max": 1.0,
+          "sample_files": [
+            "adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+            "adjust_factor_stock__incremental_20260811__20260811_233713.parquet",
+            "adjust_factor_stock__incremental_20260903__20260904_013451.parquet"
+          ],
+          "consequence": "a correct-timestamp file is not a usable adjustment series either: it is a constant 1.0 plane, i.e. the forbidden identity fallback living in the supplier payload rather than in our code"
+        },
+        "cache_consequence": {
+          "sessions": 178,
+          "rows": 863710,
+          "partial_sessions": {
+            "2026-08-17": 89,
+            "2026-08-31": 5208,
+            "2026-09-02": 7
+          },
+          "partial_session_count": 3,
+          "constant_one_sessions": [
+            "2026-09-02",
+            "2026-09-03",
+            "2026-09-04",
+            "2026-09-07",
+            "2026-09-08",
+            "2026-09-09",
+            "2026-09-10",
+            "2026-09-11",
+            "2026-09-14",
+            "2026-09-15",
+            "2026-09-16",
+            "2026-09-17",
+            "2026-09-18",
+            "2026-09-21",
+            "2026-09-22",
+            "2026-09-23",
+            "2026-09-24"
+          ],
+          "constant_one_session_count": 17,
+          "constant_one_row_range": [
+            7,
+            5222
+          ],
+          "verdict": "the whole V4 window 2026-09-03..2026-09-24 sits on a 5,215..5,222-row plane whose factor is 1.0 for every code, and 2026-08-17..2026-09-01 is partial (7..89 rows). The earlier '12 sparse sessions' wording understated it",
+          "per_session_verdicts": {
+            "2026-08-17": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-18": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-19": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-20": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-21": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-24": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-25": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-26": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-27": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-28": "CACHE_EXCEEDS_SOURCE",
+            "2026-09-01": "CACHE_EXCEEDS_SOURCE",
+            "2026-09-02": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-31": "CACHE_EXCEEDS_SOURCE",
+            "2026-09-03": "CACHE_MATCHES_SOURCE",
+            "2026-09-04": "CACHE_MATCHES_SOURCE"
+          }
+        },
+        "batch_plane": {
+          "files": 139,
+          "all_ones": 0,
+          "varied": 139,
+          "reading": "the historical batch plane does carry real factor variation (min 0.167), so the defect is specific to the incremental plane 2026-08-10 onward",
+          "last_session_per_code": {
+            "median_last_date": "2026-06-12",
+            "max_last_date": "2026-06-12"
+          }
+        },
+        "provider_response": {
+          "constant_plane_detector": true,
+          "withheld_label": "BLOCKED_UNPROVEN_ADJUSTMENT",
+          "no_identity_fallback": true,
+          "note": "a constant plane is refused structurally, so a placeholder cannot be consumed as if it were an adjustment"
+        }
+      }
     },
     "B2": {
       "requirement": "universe and tradeability cover the test window",
       "status": "PARTIALLY_REPAIRED",
-      "failed_predicate": "sealed tradeability stopped at 2026-09-03 while prices run to 2026-09-24",
+      "failed_predicate": "historical universe before the master listing interval is not an as-of constituent binding; is_st remains unobserved in every local plane",
       "affected_deliverable": "D2",
-      "repair_attempted": "rebuilt paused/high_limit/low_limit for 2026-08-04..2026-09-24 from 40 retained RAW batches; agreement on sealed overlap 41656 keys with 35 field-level disagreements",
-      "remaining_input": "historical universe is still not covered (measured window ends 2026-07-20); is_st is not in the RAW daily schema and was not inferred"
+      "repair_attempted": "paused/high_limit/low_limit reconciled per cell for 2026-08-04..2026-09-24; unknown paused is now preserved as NA and fails the strict request instead of being pre-filled from bar presence (measured: 0 inferred rows, NA kept)",
+      "remaining_input": "as-of historical constituent membership; an is_st source"
     },
     "B3": {
       "requirement": "fund products materialised or explicitly excluded by contract",
@@ -267,11 +432,11 @@
     },
     "B5": {
       "requirement": "formal engine run",
-      "status": "REPAIRED",
-      "failed_predicate": "the earlier run aborted the 09:05 step and skipped the limit check because limit/status inputs were missing; run status=COMPLETED",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "the ORIGINAL publish protocol runs end to end non-dry-run with every write target bound inside the task tree (published=True, 6 bound writes, 0 unbound, refresh_scope_from_live called once, no coverage self-filled), but it was never bound to the production pointer, so its behaviour under a real CURRENT switch is unproven",
       "affected_deliverable": "D2",
-      "repair_attempted": "tradeability restored from retained RAW with per-cell reconciliation (sealed value wins, candidate only fills null cells), atomic candidate publish, strict input gate, non-binary paused normalisation; run status=COMPLETED, input blockers=0, mark-price starved lookups=0, executed trades=2",
-      "remaining_input": "none for the requested window (performance stays non-admission-grade while B1/B7 are open)"
+      "repair_attempted": "commit is now an immutable versioned release + ONE atomic COMMIT.json whose checkpoint names the committed payload identity; mid-failure, crash-after-swap and revised-input resume were executed (9/9 scenarios PASS); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json)",
+      "remaining_input": "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)"
     },
     "B6": {
       "requirement": "writer / checkpoint / resume / non-regression",
@@ -531,7 +696,8 @@
     "ORDER_ALLOWED": false,
     "PUBLISHED_TO_CURRENT": false,
     "SEALED_DATA_MODIFIED": false,
-    "PRODUCTION_PUBLISH_CALLED": false
+    "PRODUCTION_PUBLISH_CALLED": false,
+    "PUBLISH_ATOMIC_REHEARSED_NON_DRYRUN_CANDIDATE_ONLY": true
   },
   "r13_delta": {
     "substitute_pipeline_removed": "run_connected_pipeline now calls the original acquisition gate, cleaning functions, compiler (`cache_compiler_tip_rebase_from_current_r1`) and publish gate (dry_run); the re-implemented copies are deleted",
@@ -566,5 +732,391 @@
       "B1_B7_STATUS_R12_PRESERVED.json",
       "FINAL_REQUIREMENT_MATRIX_R12_PRESERVED.json"
     ]
+  },
+  "round": "R13_ROUND2",
+  "five_requirements_source": "FINAL_REQUIREMENT_MATRIX.json (single source)",
+  "B1_B7_source": "B1_B7_STATUS.json (single source)",
+  "r13_round2": {
+    "review_items": {
+      "1_minute_reader_connected_and_factor_gap_traced": {
+        "status": "DONE",
+        "minute": {
+          "product": "STOCK_MINUTE_1M_R1",
+          "source": "CLEANING_CURRENT_A_SHARE_STOCK_1M",
+          "status": "READY",
+          "reader": "E:\\BLACKBOX\\脚本\\blackbox_stock_minute_1m_reader_r1.py",
+          "wired_into_provider": "candidate/local_plane/minute_bridge.py",
+          "coverage": {
+            "day_shards": {
+              "2026-09-11": 2,
+              "2026-09-14": 2,
+              "2026-09-15": 2,
+              "2026-09-16": 2,
+              "2026-09-17": 2,
+              "2026-09-18": 2,
+              "2026-09-21": 2,
+              "2026-09-22": 2,
+              "2026-09-23": 2,
+              "2026-09-24": 2
+            },
+            "n_days": 10,
+            "first_day": "2026-09-11",
+            "last_day": "2026-09-24"
+          },
+          "in_window": {
+            "sessions_served": [
+              "2026-09-11",
+              "2026-09-14",
+              "2026-09-15",
+              "2026-09-16",
+              "2026-09-17",
+              "2026-09-18",
+              "2026-09-21",
+              "2026-09-22",
+              "2026-09-23",
+              "2026-09-24"
+            ],
+            "sessions_blocked": [
+              "2026-09-03",
+              "2026-09-04",
+              "2026-09-07",
+              "2026-09-08",
+              "2026-09-09",
+              "2026-09-10"
+            ],
+            "blocked_mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE / reader NO_DAY_SHARDS",
+            "no_daily_open_proxy": true
+          },
+          "v4_demand": {
+            "get_price_calls": 6,
+            "calls": [
+              {
+                "line": 891,
+                "frequency": "daily",
+                "has_fq_pre": true
+              },
+              {
+                "line": 1355,
+                "frequency": "daily",
+                "has_fq_pre": false
+              },
+              {
+                "line": 1484,
+                "frequency": "daily",
+                "has_fq_pre": true
+              },
+              {
+                "line": 1532,
+                "frequency": "daily",
+                "has_fq_pre": true
+              },
+              {
+                "line": 1545,
+                "frequency": "daily",
+                "has_fq_pre": true
+              },
+              {
+                "line": 1840,
+                "frequency": "daily",
+                "has_fq_pre": true
+              }
+            ],
+            "minute_get_price_calls": 0,
+            "get_current_data_calls": 9
+          },
+          "withdrawn_claim": "R13 said no local minute product exists. It exists; what was missing was the wiring. Wiring it does not unblock V4 because V4 issues zero minute get_price calls"
+        },
+        "factor_lineage": {
+          "question": "is the sparse CACHE caused by a sparse authoritative source, or by a missing carry in the builder?",
+          "answer": "neither a row shortage nor a missing carry: the incremental supplier payload carries no factor variation at all for the late sessions, and 17 of its files carry a positional integer instead of a date",
+          "layers": {
+            "cache": {
+              "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\data\\year=2026",
+              "sessions": 178,
+              "rows": 863710
+            },
+            "p1": {
+              "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+              "file_kinds": {
+                "batch": 185,
+                "incremental": 37
+              },
+              "sessions": 3044,
+              "rows": 13548093,
+              "first_day": "1970-01-01",
+              "last_day": "2026-09-24"
+            },
+            "p6": {
+              "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor",
+              "file_kinds": {
+                "incremental": 38
+              },
+              "sessions": 20,
+              "rows": 192925,
+              "first_day": "1970-01-01",
+              "last_day": "2026-09-24"
+            }
+          },
+          "p1_date_encoding_defect": {
+            "files": 17,
+            "rows": 88584,
+            "sessions": "2026-08-12..2026-09-02",
+            "date_column": "int64 positional 0..299 (300 distinct), not a timestamp",
+            "effect": "no row from these files can be joined on date; the sessions they are supposed to supply read as 0 dated rows",
+            "payload_otherwise_intact": {
+              "session_derivable_from_filename": true,
+              "rows_comparable_to_dense": true,
+              "factors_positive_finite": true
+            },
+            "factor_min_max_in_those_files": [
+              1.0,
+              1.0
+            ]
+          },
+          "p1_value_defect": {
+            "measured_on": "every sampled incremental file from 2026-08-10 onward, including the ones whose date dtype is correct",
+            "factor_distinct": 1,
+            "factor_min": 1.0,
+            "factor_max": 1.0,
+            "sample_files": [
+              "adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+              "adjust_factor_stock__incremental_20260811__20260811_233713.parquet",
+              "adjust_factor_stock__incremental_20260903__20260904_013451.parquet"
+            ],
+            "consequence": "a correct-timestamp file is not a usable adjustment series either: it is a constant 1.0 plane, i.e. the forbidden identity fallback living in the supplier payload rather than in our code"
+          },
+          "cache_consequence": {
+            "sessions": 178,
+            "rows": 863710,
+            "partial_sessions": {
+              "2026-08-17": 89,
+              "2026-08-31": 5208,
+              "2026-09-02": 7
+            },
+            "partial_session_count": 3,
+            "constant_one_sessions": [
+              "2026-09-02",
+              "2026-09-03",
+              "2026-09-04",
+              "2026-09-07",
+              "2026-09-08",
+              "2026-09-09",
+              "2026-09-10",
+              "2026-09-11",
+              "2026-09-14",
+              "2026-09-15",
+              "2026-09-16",
+              "2026-09-17",
+              "2026-09-18",
+              "2026-09-21",
+              "2026-09-22",
+              "2026-09-23",
+              "2026-09-24"
+            ],
+            "constant_one_session_count": 17,
+            "constant_one_row_range": [
+              7,
+              5222
+            ],
+            "verdict": "the whole V4 window 2026-09-03..2026-09-24 sits on a 5,215..5,222-row plane whose factor is 1.0 for every code, and 2026-08-17..2026-09-01 is partial (7..89 rows). The earlier '12 sparse sessions' wording understated it",
+            "per_session_verdicts": {
+              "2026-08-17": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-18": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-19": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-20": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-21": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-24": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-25": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-26": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-27": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-28": "CACHE_EXCEEDS_SOURCE",
+              "2026-09-01": "CACHE_EXCEEDS_SOURCE",
+              "2026-09-02": "CACHE_EXCEEDS_SOURCE",
+              "2026-08-31": "CACHE_EXCEEDS_SOURCE",
+              "2026-09-03": "CACHE_MATCHES_SOURCE",
+              "2026-09-04": "CACHE_MATCHES_SOURCE"
+            }
+          },
+          "batch_plane": {
+            "files": 139,
+            "all_ones": 0,
+            "varied": 139,
+            "reading": "the historical batch plane does carry real factor variation (min 0.167), so the defect is specific to the incremental plane 2026-08-10 onward",
+            "last_session_per_code": {
+              "median_last_date": "2026-06-12",
+              "max_last_date": "2026-06-12"
+            }
+          },
+          "provider_response": {
+            "constant_plane_detector": true,
+            "withheld_label": "BLOCKED_UNPROVEN_ADJUSTMENT",
+            "no_identity_fallback": true,
+            "note": "a constant plane is refused structurally, so a placeholder cannot be consumed as if it were an adjustment"
+          }
+        }
+      },
+      "2_real_r15_cleaning_and_response_gate": {
+        "status": "DONE",
+        "r15": {
+          "release_id": "R15_REPLAY_20260924_R2",
+          "asof": "2026-09-24",
+          "retained_batches": [
+            {
+              "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+              "rows": 5212,
+              "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063"
+            },
+            {
+              "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+              "rows": 5214,
+              "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7"
+            }
+          ],
+          "gates": {
+            "r15_load_staging_called": true,
+            "r15_ingest_item_called": true,
+            "ingest_all_committed": true,
+            "r15_seal_release_called": true,
+            "seal_certificate_written": true,
+            "ledger_written": true,
+            "antileak_function_called": true,
+            "antileak_pass": true,
+            "production_current_untouched": true,
+            "production_ssot_untouched": true,
+            "switch_current_not_called": true,
+            "patch_hand_not_called": true,
+            "sealed_rows_equal_retained_rows": true
+          },
+          "GATE_RESULT": "PASS",
+          "production_current_untouched": true,
+          "production_ssot_untouched": true,
+          "not_claimed": [
+            "production CURRENT not switched (switch_current not called)",
+            "production HAND not patched (patch_hand not called)",
+            "this replay proves the R15 functions run on the retained batches, not that the original vendor download returned them"
+          ]
+        },
+        "response_gate": {
+          "problem": "R13 fed acquisition_absence_gate query_cap=resp.rows and pagination_complete='YES', so the answer certified the question",
+          "now": {
+            "query_cap": "only from a saved request sidecar; null when absent",
+            "pagination_complete": "'UNKNOWN' when absent; never defaulted to YES",
+            "PROVENANCE_GATE": "checks byte/sha/key provenance of the retained payload",
+            "SUPPLIER_COMPLETENESS": "vendor-side completeness; UNKNOWN without a recorded supplier response",
+            "self_certified_completeness_control": {
+              "status": "BLOCKED_AS_EXPECTED",
+              "stage": "gate",
+              "code": "ACQUISITION_COMPLETENESS_UNPROVEN"
+            }
+          },
+          "observed": {
+            "PROVENANCE_GATE": "PASS",
+            "SUPPLIER_COMPLETENESS": "UNKNOWN",
+            "original_gate": {
+              "DATA_ABSENCE_GATE": "UNKNOWN_INCOMPLETE_ACQUISITION",
+              "ACQUISITION_COMPLETE": "NO",
+              "RESULT_LIMIT_HIT": false,
+              "DATA_ABSENT_CLAIM_ALLOWED": false,
+              "NO_DATA_FORBIDDEN": true,
+              "n_rows": 5212,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "completeness_state": "UNKNOWN",
+              "grain_symbol": null,
+              "grain_date": null,
+              "grain_frequency": null,
+              "downstream_formal_ingest_forbidden": true
+            }
+          },
+          "note": "PROVENANCE_GATE=PASS and SUPPLIER_COMPLETENESS=UNKNOWN are compatible: the bytes we hold are the bytes the sidecar names, while vendor-side completeness was never answered and is therefore not claimed"
+        }
+      },
+      "3_publish_atomic_rehearsal_and_consolidation": {
+        "status": "DONE",
+        "publish_atomic": {
+          "function": "publish_atomic",
+          "dry_run": false,
+          "refresh_scope_from_live_invocations": 1,
+          "bound_targets": [
+            "CACHE_PTR",
+            "CHILD",
+            "CLEAN_PTR",
+            "FACTS",
+            "LEDGER",
+            "OPS",
+            "ROOT",
+            "SCOPE",
+            "SCOPE_R2"
+          ],
+          "writes_observed": 6,
+          "unbound_writes": [],
+          "files_changed_in_bound_root": [
+            "cache_current.json",
+            "cache_current.json.bak_before_atomic_publish",
+            "cleaning_current.json",
+            "cleaning_current.json.bak_before_atomic_publish",
+            "运行/BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json",
+            "运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+            "运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+            "运行/BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json"
+          ],
+          "OPERATIONAL_READINESS": "PASS",
+          "CURRENT_PUBLISH": "ALLOWED",
+          "published": true,
+          "coverage_self_filled_products": [],
+          "production_untouched": true,
+          "honest_limits": [
+            "CURRENT_SWITCH_ALLOWED=false: production CURRENT and production HAND were never written; every target above is a task-local copy seeded from production.",
+            "A published=True here means the ORIGINAL gate accepted the candidate pair and swapped the BOUND pointers; it does not mean the production system switched.",
+            "The capability matrix grades by coverage dates. It does not inspect factor validity, so a placeholder factor plane can still read AVAILABLE_FORMAL."
+          ]
+        },
+        "consolidation": "five_requirements synced to FINAL_REQUIREMENT_MATRIX.json, B1_B7 synced to B1_B7_STATUS.json, backtest_classification rebuilt from evidence/V4_STRICT_RUN.json"
+      }
+    },
+    "defect_found_and_fixed": {
+      "defect": "commit_id hashed release_id/release_root, which carry the build timestamp, so two builds of identical input produced different commit ids and IDEMPOTENT_NOOP was unreachable",
+      "measured": {
+        "files_compared": 766,
+        "data_files_identical": 761,
+        "metadata_files_differing": 5,
+        "metadata_files": [
+          "_qa/TIP_REBASE_QA.json",
+          "PRODUCT_CAPABILITY_FACTS_CANDIDATE.json",
+          "CURRENT_POINTER_COPY.json",
+          "RELEASE.json",
+          "SEAL.json"
+        ]
+      },
+      "fix": "CC_COMMIT_IDENTITY_V2 hashes asof + source_cleaning_release + parent_release_id + per-product sha256/rows only",
+      "after": {
+        "pipeline_result": "PASS",
+        "same_input_replay_noop": true,
+        "commit_recovery_selftest": "PASS",
+        "selftest_verdicts": {
+          "baseline_no_commit": true,
+          "crash_before_commit_leaves_no_reference": true,
+          "first_commit_consistent": true,
+          "same_input_replay_is_noop": true,
+          "revised_input_failures_leave_R1_consistent": true,
+          "crash_after_swap_is_complete": true,
+          "revised_input_commit_consistent": true,
+          "both_payloads_readable_and_distinct": true,
+          "final_consistent": true
+        }
+      },
+      "first_attempt_before_fix": {
+        "pipeline_result": "FAIL",
+        "same_input_replay_noop": false,
+        "note": "kept as the measurement that found the defect"
+      }
+    },
+    "authority_unchanged": {
+      "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+      "CURRENT_SWITCH_ALLOWED": false,
+      "ORDER_ALLOWED": false,
+      "FOUNDATION_ACCEPTANCE": false,
+      "FORMAL_ENGINE_ADMISSION": false
+    }
   }
 }
