@@ -1,0 +1,80 @@
+$ E:\BLACKBOX\.venv\Scripts\python.exe -X utf8 E:\BLACKBOX\脚本\run_blackbox_daily_incremental_data_plane_r1.py --mode status --date 20260924
+{
+  "mode": "status",
+  "READ_ONLY": true,
+  "requested_date_arg": "20260924",
+  "requested_cn_iso": "2026-09-24",
+  "manifest_id": "DAILY_DATA_MANIFEST_20260924",
+  "CN_RESEARCH_DATE": "2026-09-24",
+  "DAILY_INCREMENTAL_READY": "YES",
+  "DATA_GENERATION_ID": "DG1-373cf01dd3e066bd6a21c74154b8e3606b8ede05dffa91ffd4338a225db1811b",
+  "input_pack_generation": "DG1-0b90ed8e186b9b7808cdc8129cabd619f36cd3a6dea07067ba3539baa0523378",
+  "lane_a": {
+    "SOURCE_ASOF": "2026-09-24",
+    "CLEAN_ASOF": "2026-09-24",
+    "CACHE_ASOF": "2026-09-24",
+    "PIT_PASS": true,
+    "STATUS": "PASS",
+    "reason_code": "ALL_EQUAL"
+  },
+  "scope_data_asof": "2026-09-24",
+  "scope_operational_readiness": "PASS",
+  "lanes": {
+    "A_JQ_INCREMENTAL": {
+      "lane_id": "JQ_INCREMENTAL",
+      "state_file": "STATE/JQ_INCREMENTAL_STATE.json",
+      "present": true,
+      "STATUS": "PASS",
+      "MODE": "VERIFY_ONLY",
+      "reason_code": "ALL_EQUAL",
+      "updated_at_cn": "2026-10-25T14:55:03+0800"
+    },
+    "B_T_EXTERNAL_INCREMENTAL": {
+      "lane_id": "T_EXTERNAL_INCREMENTAL",
+      "state_file": "STATE/T_EXTERNAL_INCREMENTAL_STATE.json",
+      "present": true,
+      "STATUS": "PASS",
+      "MODE": "VERIFY_ONLY",
+      "reason_code": null,
+      "updated_at_cn": "2026-10-25T14:55:03+0800"
+    },
+    "C_GLOBAL_SELLSIDE_INCREMENTAL": {
+      "lane_id": "GLOBAL_SELLSIDE_INCREMENTAL",
+      "state_file": "STATE/GLOBAL_SELLSIDE_INCREMENTAL_STATE.json",
+      "present": true,
+      "STATUS": "PASS",
+      "MODE": "VERIFY_ONLY",
+      "reason_code": null,
+      "updated_at_cn": "2026-10-25T14:55:03+0800"
+    },
+    "D_DOMESTIC_RESEARCH_NEWS_INCREMENTAL": {
+      "lane_id": "DOMESTIC_RESEARCH_NEWS_INCREMENTAL",
+      "state_file": "STATE/DOMESTIC_RESEARCH_INCREMENTAL_STATE.json",
+      "present": true,
+      "STATUS": "PASS",
+      "MODE": null,
+      "reason_code": null,
+      "updated_at_cn": "2026-10-25T14:55:03+0800"
+    },
+    "E_US_NEWS_INCREMENTAL": {
+      "lane_id": "US_NEWS_INCREMENTAL",
+      "state_file": "STATE/US_NEWS_INCREMENTAL_STATE.json",
+      "present": true,
+      "STATUS": "PASS",
+      "MODE": null,
+      "reason_code": null,
+      "updated_at_cn": "2026-10-25T14:55:03+0800"
+    },
+    "F_US_MARKET_STATE_INCREMENTAL": {
+      "lane_id": "US_MARKET_STATE_INCREMENTAL",
+      "state_file": "STATE/US_MARKET_STATE_INCREMENTAL_STATE.json",
+      "present": true,
+      "STATUS": "PASS",
+      "MODE": null,
+      "reason_code": null,
+      "updated_at_cn": "2026-10-25T14:55:03+0800"
+    }
+  },
+  "WATCHED_UNCHANGED": true
+}
+STATUS_MODE_READ_ONLY_OK
