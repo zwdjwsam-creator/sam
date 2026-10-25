@@ -1,3 +1,86 @@
+# OWNER 当前执行令：SAM 原 BLACKBOX Cursor 直接整顿台式机，文档交台式机独立复验
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+status: READY_SAM_DIRECT_RECTIFICATION
+lead_agent: SAM 原 BLACKBOX Cursor（笔记本）
+target_execution_host: ZHANGWEI（台式机）
+target_root: E:\BLACKBOX
+reviewer_after_handoff: ZHANGWEI Cursor，之后 GPT 集中审阅
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+FULL_MIGRATION=false
+
+## 最新用户授权与优先级
+
+用户已明确确认：笔记本端可读取、写入、修改台式机 E 盘，不用再来回确认；现在由 GPT 经 HUB 向笔记本端安排整顿，最终由笔记本将整理好的文档和操作手册交台式机复验；迁移前全盘扫描应直接复用。
+
+本节是明确的新执行授权，优先于下文“本轮停止、不自动返工”、旧 READY_FINAL_REPAIR_PASS、旧“源机交接已收口/只读裁决/不施工”等限制。沿用原任务目标，改变主导执行者，不重开迁移或资料盘点。BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1 的成果与台账作为本任务输入；不要另起两个互相修改的任务。
+
+已确认的 E 盘读写条件直接采用，不再请求 owner 确认、不再重复权限探针。共享只读账号 sam_ro 的历史记录不否定 owner 最新确认的可写通道；用已建立的可写会话/BLACKBOX_DEST 路径，不导出密码。执行过程中真的发生访问失败时，依据该次错误修复既有通道，不先重做一轮接入验收。
+
+## 一、分工与执行方式
+
+1. SAM 原 BLACKBOX Cursor 是唯一主导修改者。直接对照自己的原系统、既有源码/配置/字典/运行图及台式机现状，修改台式机 E:\BLACKBOX 的代码、环境绑定、路径配置、reader/provider 和实际调用连接。不要把工作再变成“给台式机提问题、等其猜逻辑”的循环，不盲目覆盖已经修好的实现。
+2. ZHANGWEI 保持业务代码/数据/指针的自主写冻结；该冻结不阻止 SAM 在本授权范围内直接整顿。SAM 可按实际修复范围更新已有 delegation 旗标并留修改记录。台式机负责必要的本机执行和最终独立复验，不同时另改算法。
+3. 所有“台式机运行成功”的证据必须来自 ZHANGWEI 本机进程：记录 hostname、sys.executable、cwd、argv、输入/输出绝对路径、exit code 与原始日志。笔记本 Python 读取共享数据可用于定位，不能冒充台机运行。优先复用已有远程执行能力；若仅共享文件读写，则 SAM 将一次性执行包放到台机，由台机 AG 作为执行器运行并直接共享日志，SAM 连续处理结果，无需用户转述或逐步批准。最终复验与这类施工中本机执行分别记录。
+4. 普通代码修复、必要运行时依赖、现有批次重放、隔离清洗/编译/候选发布与失败恢复验证均已授权。沿用可用环境，保留改动前可恢复版本和简明变更记录。不要整库覆盖、删原库、格式化或重新搬迁。
+
+## 二、先使用已完成的扫描和交接，不重扫
+
+GPT 已核读并定位以下迁移前证据：
+- agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014/SAM_REPORT.md
+- 同目录 SOURCE_RECONCILE_SUMMARY.json、DB_FACTS_ON_C.json、DELTA_SHARD_ALL_234.csv、SCRIPT_REFS.json。
+- 记录枚举完成 8,953,561 paths / 233,665 dirs，queue_pending=0、dirs_error=0；这是当次 E:\BLACKBOX 和登记的 D: 关联根扫描结果，不声称整个所有磁盘或当前内容身份均已认证。
+- SAM 本机索引：C:\LAN_SHARE_REPORT\R9_LOCAL_SOURCE_RECONCILE_20261014\db\CURRENT_ENUM.sqlite；差异库 DELTA.sqlite 同目录。DB 未上传 HUB，不要求重传约9.8GB库。
+- 基线记录 8,953,552 paths / 4,825 links，曾核对 baseline SHA；234 条差异已有后续解析。继续引用 agents/chatgpt/inbox/R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015/ 下 RESOLVE_SUMMARY、SOURCE_PLAN_UPDATE_HANDOFF、SOURCE_PLAN_PATCH 和 42 条 resolution，不把已解析差异重新报成新缺陷。
+- 关联元数据：agents/chatgpt/inbox/R9_SAM_METADATA_HANDOFF_20261013/；必要时查 R9_NOTEBOOK_LOCAL_52_METADATA_HANDOFF_20261015/。
+
+以这些索引定位目录/链接/迁移落点；以现有 FOUNDATION_RUNTIME_MAP.md、SOURCE_INDEX、source_supplement 和 meta/PIPELINE_STRUCTURE.json、CODE_SEMANTICS.json 理解真实调用。原90份代码、28份配置与24件补充不要再导出或重复打包。
+原交接根：agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/
+最新台机/源机对照：
+agents/chatgpt/inbox/BLACKBOX_DESKTOP_STRUCTURE_REMAP_20261025_1405/desktop_reply_Q1_Q9/HANDOFF_TO_SAM_CURSOR.md
+同任务 sam_reply_r2/SAM_REPLY_TO_DESKTOP_Q1_Q9_R2.md 和既有 snapshot/patch/cleanup ledger。
+
+历史扫描证明当时的索引和覆盖范围，不证明今日每个文件的内容。只对将要使用/修改的入口、分区及未解键作当前必要读取；禁止另启全盘枚举、全文件哈希或“重新收集全部源码”。若本机索引已不存在，直接使用 HUB 摘要与现有清单、已知根定位，继续独立工作，不因缺大库重扫。
+
+## 三、按原系统整顿实际底座，连续完成可修部分
+
+范围仍是原底座：启动/规则字典/权限预检、查询读取、原下载后的入库清洗校验封版、缓存编译/候选发布、研究策略入口与恢复。建立可实际使用的入口和操作关系；已有自动、AG串联、聚宽云端、未实现分支如实区分，不设计新平台，不将文件存在或身份相同写成能力已通过。
+
+优先闭合已确认的具体问题：
+- 让本次原 R15 输出真实成为原 compiler 输入，再由其输出进入原隔离发布；必须是同一产物的可追踪流转。禁止继续分别运行三个组件而宣称贯通。保留原函数体，最小化路径注入，所有传递写入留在候选范围；使用已保留08-31/09-01真实批次，留原始日志和输入输出身份。保留供应商分页/完整性未知，不能自填 YES。
+- 修复迁移导致的旧用户 Python 路径、工作目录、环境/归档根、指针和字段错接；复用已恢复环境/reader/原compiler/提交恢复成果。保留10-25已授权做完的结构与CURRENT修复，不回退到旧报告快照，也不再自行切生产CURRENT。D:\CURSOR_TASK_ARCHIVE 目前存在可写，若不阻断不为此另造改造。
+- 日增入口日期支持真实有效的 YYYYMMDD / YYYY-MM-DD，非法日期在写入前非零退出；status 默认只读，避免重写CURRENT/STATE/DAILY。承接已批准补丁，先查有无实际落地，未修的直接修，已修且未受影响的不重测全套。状态命令不能为了核验而污染生产。
+- 原分钟 reader 使用已存在来源。对复权、停牌、历史股票池/ST、盘中价格等依赖，检查已登记 RAW/CLEAN/CACHE/候选的相应真实字段和基准关系，局部恢复可恢复的输入。禁止未知补1、ffill/bfill未来值、开盘代理盘中价或缩小策略请求制造正式通过；合法因子1也不得仅因常数被一律认假。原来V4在聚宽云端，本地移植保留原规则并按实际支持程度交付，不能承诺复制出原本地V4引擎。
+- 不更改 DG1 身份语义排除集，不把未执行动作改成 INGEST 凑哈希。真实 MODE 保留；现有 DIVERGENT_MODE_ONLY 及旁路指纹只能说明已核实的差异范围。覆盖/研究记忆必须按权威交易日历及实际产物集合核算，不能把 INDEX_DAILY 观测日期直接当完整交易日历；不继承17/16等未经完整日历核实的数字作新结论。
+
+现有授权仍不包含新增供应商采集、生产CURRENT/正式发布、实盘下单；不因旧任务中 CLEANING_AUTHORIZED=false/COPY_AUTHORIZED=false 拒绝本次明确授权的代码写入与隔离既有批次重放。也不将此次E盘整顿解释成整库复制许可。
+
+完成本地可修事项，相关独立分支连续推进。若确有原系统和现有文件都无法提供的必要输入，列出具体产品、字段、日期/证券键、检查过的既定来源及最小外部依赖；该分支明确BLOCKED，交付其他完成部分。不要等待owner选择技术步骤，不再提交只读审计代替修复；也不伪造正式回测或完整更新结果。
+
+## 四、SAM 必须交到台式机的成果
+
+在台式机 E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\sam_led_rectification\ 直接交付一套实用材料，HUB同任务目录只放代码差异、文档和必要运行证据，不上传市场数据/凭据：
+1. RECTIFICATION_REPORT.md：功能/真实入口/结果/适用范围/未解决依赖；改了什么、为何、可恢复版本与关键日志。
+2. FOUNDATION_RUNTIME_MAP.md：台机实际现状的启动→配置字典→数据读取/处理→输出/消费/恢复关系，引用已有原件，标明自动/AG/云端/未实现及真实断边，不复制全盘清单。
+3. OPERATION_MANUAL.md：台式机可直接照做的工作目录、解释器、完整命令；启动/只读状态/查询样例、既有批次隔离全链重放、V4支持范围、日增准备与恢复；每步预期输出及常见失败的处理。分清已经实跑命令、未验证入口和仍被授权边界禁用的生产动作。不要把生产下载或切CURRENT写成可立即执行的常规步骤。
+4. LOCAL_RUN_EVIDENCE.json 和日志索引：实际台机运行身份、命令、输入输出、退出码；原 R15→原编译→原候选发布同产物流转及必要受影响的失败/恢复结果。已有未受影响证据直接引用。
+5. HANDOFF_TO_DESKTOP.md：明确交付路径、当前版本、台式机复验命令与通过/阻断条件、修改范围。必要的补丁与可执行入口必须已落地，不能只剩建议清单。
+
+操作手册要能让台式机不依靠笔记本原会话记忆完成复现。SAM 完成修改后停止并发改动，将状态置 SAM_HANDOFF_READY_FOR_DESKTOP_REVERIFY，通过现有双机通道/HUB通知台式机；不让owner复制文件或转述。记录一次简明清单与必要文件身份，不为反复自证哈希另启任务。
+
+## 五、台式机最终独立复验
+
+ZHANGWEI 在 SAM交付前不自主返工；SAM交付后按其操作手册，用台式机本机环境独立运行相关已授权入口，核验真实数据查询、原链同产物流转、日期校验/status无写副作用以及受影响恢复行为。V4只有必需输入和执行语义满足才可正式评估，阻断必须保留。不要只看SAM写的PASS或文档通顺；也不重跑无关全库盘点。
+输出 DESKTOP_REVERIFY_REPORT.md / DESKTOP_REVERIFY_RESULT.json 至同目录，逐项写PASS/BLOCKED/FAIL及证据；材料/命令不够用则直接向SAM报告具体问题，SAM在同一任务补好，台机复验受影响项，双方不用owner传话。SAM修复、台机复验顺序执行，不同时改同一文件。
+最终双方集中回传 GPT；FOUNDATION_ACCEPTANCE 和 FORMAL_ENGINE_ADMISSION 在真实结果审核前仍为 false。写入HUB仅表示已下发/已交付，不冒充对端已收到或已执行。
+
+---
+
+以下保留历史审阅和执行令，均不得覆盖上述最新用户授权及分工：
+
 # GPT FINAL REPAIR REVIEW — 本轮收口为部分完成，未通过整体验收
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
