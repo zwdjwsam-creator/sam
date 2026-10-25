@@ -14,7 +14,7 @@
     "R2_engine_data_contract_and_actual_runtime": {
       "status": "BLOCKED",
       "measured": "the strict V4 port over 2026-09-03..2026-09-24 completes all 16 sessions and is classified BLOCKED_INPUT_INCOMPLETE with blockers ['REQUIRED_INPUT_MISSING'], trades=0, orders=0, mark_price_starved=0, diagnostic_only=True; unprovable fq='pre' rows are withheld per code and recorded; the minute plane is now wired and answers inside 2026-09-11..2026-09-24 and blocks outside it; unknown paused fails the request",
-      "blocking_gap": "ADJUST_FACTOR_PIT_R1 is not a proven adjustment series in the tested window. Two source-side defects: (a) 17 incremental files for 2026-08-12..2026-09-02 carry a positional integer 'date' (0..299) so they cannot be joined; (b) every sampled incremental payload from 2026-08-10 onward is factor=1.0 for every code, including the files whose date dtype is correct. CACHE therefore shows 7..89 rows for 2026-08-17..2026-09-01 and a full 5,215..5,222-row plane of 1.0 for 2026-09-02..2026-09-24, i.e. the entire test window. The historical batch plane does carry real variation (min 0.167), so this is an incremental supplier defect, not a fan-out defect",
+      "blocking_gap": "ADJUST_FACTOR_PIT_R1 is not a **proven** adjustment series in the tested window. Measured observations: 17 incremental files for 2026-08-12..2026-09-02 carry a positional integer 'date' (0..299) so they cannot be joined by date; every sampled incremental payload from 2026-08-10 onward is factor=1.0 for every row, including files whose date dtype is correct; CACHE shows 7..89 rows for 2026-08-17..2026-09-01 and a full 5,215..5,222-row 1.0 plane for 2026-09-02..2026-09-24. **Cause NOT established**: those observations cannot by themselves separate (a) the requested fq parameters and normalisation basis, (b) the SDK return shape, (c) local serialisation, (d) the supplier content. The source machine's aux_billboard_adjust_index_minute_r15.py:110-115 requests a single day with fields=['factor'], fq=None, so concatenating a multi-year batch cross-section with a one-day incremental is unproven. The formal claim is therefore limited to: the current adjustment input and its basis are not proven to satisfy the contract",
       "unproven": "formal strategy equivalence and any return claim: the tested window has no proven adjusted price on either side of the anchor, so the ranking input is incomplete by construction; B7 whole-CACHE equivalence remains open",
       "evidence": [
         "evidence/FACTOR_CORRUPT_DATE_PROFILE.json",
@@ -30,8 +30,15 @@
         "evidence/V4_STRICT_RUN.json",
         "evidence/V4_STRICT_RUNS_ALL.json"
       ],
-      "repair_needed": "re-issue the incremental adjust-factor plane for 2026-08-10..2026-09-24 with a real date column and real factors (acquisition), then re-measure; no value is invented in the meantime",
-      "historical_label_preserved": "R11_TRADEABILITY_RECON run is COMPLETED/diag=false with 2 fills — kept as a failed historical label, not as acceptance"
+      "repair_needed": "declare the pre-adjustment contract (anchor basis, fq semantics, batch/incremental concatenability) first; only then is a re-acquisition meaningful. No value is invented meanwhile",
+      "historical_label_preserved": "R11_TRADEABILITY_RECON run is COMPLETED/diag=false with 2 fills — kept as a failed historical label, not as acceptance",
+      "attribution_status": "NOT_ESTABLISHED",
+      "withdrawn_claims": [
+        "'the supplier fabricated a placeholder plane'",
+        "'2026-08-10..2026-09-24 must be re-downloaded'",
+        "'the historical batch and the incremental share one proven basis'"
+      ],
+      "withheld_by_design": "provider._constant_plane_sessions withholds a single-valued plane (nunique == 1). That is the local blocking mechanism, not a vendor error certificate; a genuine all-1.0 session would also be withheld, by design, rather than silently consumed"
     },
     "R3_strategy_artifact_identification": {
       "status": "PASS",
@@ -65,8 +72,8 @@
     },
     "R5_pipeline_reuse_and_candidate_commit": {
       "status": "PARTIAL",
-      "measured": "the real chain executes: retained transport -> original acquisition_absence_gate (PROVENANCE_GATE=PASS, SUPPLIER_COMPLETENESS=UNKNOWN) -> original inherit_tree/read_price_frame/antileak_gate -> real R15 load_staging/ingest_item/seal_release/antileak on the retained batches (R15_REPLAY_20260924_R2, PASS) -> ORIGINAL cache_compiler_tip_rebase_from_current_r1 -> immutable versioned commit -> ORIGINAL publish_atomic executed NON-dry-run with every write target bound (6 bound writes, 0 unbound, published=True)",
-      "unproven": "the source machine's R13 cleaning stage is not adopted (desktop R15 is the current entry); the publish rehearsal ran on bound copies seeded from production, so a real CURRENT switch is still unproven",
+      "measured": "the original components each execute on real input, but **not as one chain**: retained transport -> original acquisition_absence_gate (PROVENANCE_GATE=PASS, SUPPLIER_COMPLETENESS=UNKNOWN) -> original inherit_tree/read_price_frame/antileak_gate -> real R15 load_staging/ingest_item/seal_release/antileak producing candidate/r15_releases/R15_REPLAY_20260924_R2 (GATE PASS) — while the connected pipeline's compiler argv consumes candidate/cc/CC_REPLAY_20260924/RELEASE.json and run_connected_pipeline.py never calls the R15 runner; the original compiler then produces a candidate release (SEAL.all_pass=true) and an immutable versioned commit (8/8 pipeline verdicts, 9/9 recovery scenarios); ORIGINAL publish_atomic was executed non-dry-run in a separate step on bound task-local targets (published=true, 0 unbound writes)",
+      "unproven": "R5_CHAIN_INTEGRITY: no run in this package feeds the R15 output into the compiler and then into the publisher as one product. The source machine's R13 cleaning stage is not adopted (desktop R15 is the current entry), and a production CURRENT switch is not authorised",
       "evidence": [
         "CONNECTED_PIPELINE.json",
         "evidence/CLEANING_CANDIDATE.json",
@@ -76,11 +83,24 @@
         "evidence/PUBLISH_ATOMIC_REHEARSAL.json",
         "evidence/R15_CLEANING_REPLAY.json"
       ],
-      "repair_needed": "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)"
+      "repair_needed": "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)",
+      "open_sub_item": {
+        "id": "R5_CHAIN_INTEGRITY",
+        "statement": "R15_REPLAY_20260924_R2 is not the compiler's --cleaning-json input",
+        "reported_by": "GPT final review 2026-10-25 (REVIEWED_FINAL_PASS_BLOCKED, reason 1)",
+        "would_require": "a single run whose compiler argv names the R15 release and whose publish step consumes that same compiler release"
+      }
     }
   },
-  "revised_at": "2026-10-25T13:13:22+08:00",
-  "revision": "R13_SAME_TASK_CORRECTION",
+  "revised_at": "2026-10-25T13:27:35+08:00",
+  "revision": "R13_REVIEW_CONSUMED",
   "historical_labels_preserved": "FINAL_REQUIREMENT_MATRIX_R12_PRESERVED.json",
-  "round": "R13_ROUND2"
+  "round": "R13_ROUND2",
+  "review": {
+    "reviewed_by": "GPT",
+    "review_status": "REVIEWED_FINAL_PASS_BLOCKED",
+    "consumed_at_cn": "2026-10-25T13:27:35+08:00",
+    "no_new_round_dispatched": true,
+    "evidence": "evidence/GPT_REVIEW_R13_FINAL_CONSUMED.json"
+  }
 }
