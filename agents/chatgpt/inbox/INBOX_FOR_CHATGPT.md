@@ -1,3 +1,53 @@
+# SAM｜R10 修订项交付：笔记本原流程一次性交接（不重写、不覆盖台式机成果）
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+amendment: owner_correction_recover_laptop_workflow_first_20261025
+execution_host: SAM
+delivered_at_cn: 2026-10-25
+status: SOURCE_WORKFLOW_HANDOFF_DELIVERED
+COPY_AUTHORIZED=false
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+## 交付内容（原件直传）
+- 90 个代码原件 + 28 个配置/指针，逐文件 size/SHA256/mtime/referenced_by：SOURCE_INDEX.json
+- 入口链：run_blackbox_research_os.py --mode daily_incremental（双门：DATA_PLANE_RC==0 AND CANONICAL_MANIFEST_GATE==PASS）
+  -> run_blackbox_daily_incremental_data_plane_r1.py（六 Lane -> Manifest -> CURRENT，atomic_write_json + rollback）
+- 全量下载：jq_download_execution_r1.py  T0..T9，2014-01-01..2026-06-12，
+  checkpoint=_checkpoint/latest_checkpoint.json，quota_log_*.jsonl，_failed_fragment/_quarantine，MAX_RETRIES=3/RETRY_DELAY_BASE=5s
+- 分页/续传/幂等：_download_batch.py 子进程逐调用落临时 parquet；分钟每批 5 只、ETF 每批 50 只、批失败逐只回退、
+  已存在 glob 命中即跳过、文件名带 schema_version+batch_id
+- 清洗：formal_cleaning_r13_build_and_seal_r1.py + r13_antileak_and_ssot_r1.py（ledger.sqlite/_quarantine/content_root_sha256）
+- 缓存：cache_compiler_daily_incremental_r1.py / cache_compiler_tip_rebase_from_current_r1.py
+- 发布：publish_current_if_gates_pass_r1.py / blackbox_daily_increment_publish_gate_r1.py(publish_atomic)
+- 查询：blackbox_data_access_resolver_r1.py + CACHE 直读 STOCK_DAILY_PIT_R1/year=YYYY/part_YYYY.parquet
+- 回测：股票 V4 引擎在聚宽云端（聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py）；本地离线仅可转债双低两版 + 三道回测门
+
+## 运行证据（真实落盘）
+- 15 条日增量 tip 完成记录：14 PASS，1 PARTIAL（2026-09-10，无 cache release）
+- 现行 tip：SOURCE=CLEAN=CACHE=2026-09-24，PIT_PASS=true，STATUS=PASS，reason_code=ALL_EQUAL
+- cleaning=BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439
+- cache=BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439（build_version=TIP_REBASE_FROM_CURRENT_R1）
+
+## 三条必须直读的事实（防误判）
+1. --mode daily_incremental 的 Lane A **不下载**：只刷新 scope 摘要 + 校验 SOURCE==CLEAN==CACHE + operational_readiness==PASS。
+2. cache_stock_daily_pit_r1_reader_r1 只是 resolver 用 f"cache_{id.lower()}_reader_r1" 拼出的字符串；源机无该文件；真实读法是直读 parquet。
+3. 两个 coverage 模块在源机就是 2B/CRLF 空壳（同 SHA256 7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6）；非传输丢失，未恢复未重写。
+
+## 通道与校验
+- 共享直读：\\192.168.100.2\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\source_workflow_from_SAM\
+- HUB：agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/
+- SAM_SOURCE_CODE_BUNDLE.zip size=567589 sha256=bdfafc3122266eff9005215949401d685739a29503c5807f6c0477d41b41d89d
+- READBACK_ALL_MATCH=true（12/12 逐一回读 byte+sha256 一致）
+
+## 未做（边界）
+- 未上传行情 parquet；未导出任何凭据内容（仅保留 E:\BLACKBOX\配置\secrets\已验证\聚宽账号.txt 路径绑定）
+- 未改 Manifest/SHA、未生成 coverage READY、未切 CURRENT、未下载
+- 未执行 R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625（独立尾任务，仍 pending）
+
+---
+（以下为既有内容，未修改）
 ## R10 continuation — fixed readiness metadata capture (2026-10-25)
 - pointer: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/fixed_readiness_metadata/`
 - receipt: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/fixed_readiness_metadata/R10_FIXED_READINESS_METADATA_RECEIPT.md`
