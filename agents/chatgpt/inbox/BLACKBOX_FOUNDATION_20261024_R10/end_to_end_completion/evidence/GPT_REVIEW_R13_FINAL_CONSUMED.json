@@ -1,0 +1,117 @@
+{
+  "artifact": "GPT_REVIEW_R13_FINAL_CONSUMED",
+  "consumed_at_cn": "2026-10-25T13:27:35+08:00",
+  "tip": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md",
+  "tip_bytes": 54700,
+  "tip_previous_bytes": 48946,
+  "review_status": "REVIEWED_FINAL_PASS_BLOCKED",
+  "verdict_as_read": {
+    "FOUNDATION_ACCEPTANCE": false,
+    "FORMAL_ENGINE_ADMISSION": false,
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "new_repair_round_dispatched": false,
+    "upload_wait_phase": "ENDED",
+    "instruction": "本次不派发新的修复轮；不得由本回执或旧READY段自动续开执行"
+  },
+  "accepted_bounded_results": [
+    "原分钟 reader 已接入；单代码探测 2026-09-11..09-24 共 10 个交易日各 30 行；09-03..09-10 六日 NO_DAY_SHARDS。认证范围仅限已测请求，不外推全证券/分钟完整性",
+    "R15_REPLAY_20260924_R2 实际调用 load_staging/ingest_item/seal_release 与原 antileak，两批共 10,426 行，输出字节身份与输入对应，生产 CLEAN 指针与 SSOT 前后摘要相同。认证两批候选调用能力，不认证继承完整库/供应商完整性/全部 PIT 语义",
+    "原 tip compiler 的候选调用、两个缺日出现在其输出，证据可保留",
+    "原 publish_atomic 非 dry-run 已在重绑定任务目录指针上执行，published=true。仅证明本次隔离演练成功",
+    "内容身份修复后，同输入 NOOP 与 9 项提交恢复情景有记录，无需为收据重跑"
+  ],
+  "rejection_reasons_as_read": [
+    {
+      "n": 1,
+      "title": "原 R15 和编译器尚无同一产物贯通证明",
+      "detail": "R15 真实输出 candidate/r15_releases/R15_REPLAY_20260924_R2；CONNECTED_PIPELINE 的 compiler argv 仍读 candidate/cc/CC_REPLAY_20260924/RELEASE.json；run_connected_pipeline.py 未调用 R15 runner；publish 演练另行执行。现有证据只支持各原组件分别运行",
+      "status": "UNFIXED_IN_THIS_ROUND"
+    },
+    {
+      "n": 2,
+      "title": "V4 正式结果仍被必需输入阻断",
+      "detail": "严格运行 BLOCKED_INPUT_INCOMPLETE、16 日、0 成交、0 订单、diagnostic_only=true；复权同日输入、基准/锚点一致性、历史股票池/ST、正式语义未满足；writer 游标未落地，供应商分页完整性 UNKNOWN",
+      "status": "UNFIXED_IN_THIS_ROUND"
+    },
+    {
+      "n": 3,
+      "title": "“因子全 1 -> 供应商造假/占位 -> 必须重下”的归因不成立",
+      "detail": "全 1、17 份整数日期、CACHE 稀疏只是观察事实，不能独立区分 请求复权参数/归一化基准、SDK 返回结构、本地序列化、供应商内容；源机 aux_billboard_adjust_index_minute_r15.py:110-115 为单日起止、fields=['factor']、fq=None，多年批次与单日增量横截面不同，基准可拼接性未证；provider._constant_plane_sessions 的 nunique==1 置空是本地阻断机制，不是供应商错误证书；DAILY_RAW_FACTOR_COVERAGE 目标窗标 08-05..09-24 但 per_session 仅 08-05/08-06 各 10 行，不支持整窗无可用日线来源的结论",
+      "status": "CORRECTED_IN_THIS_PACKAGE"
+    },
+    {
+      "n": 4,
+      "title": "“V4 没有 minute get_price”不等于“不依赖盘中数据”",
+      "detail": "源码同时有 get_current_data 调用，其快照字段的读取时刻与 engine 映射未判定；直接分钟调用为 0 不足以排除盘中 last_price/限价/停牌与撮合输入",
+      "status": "CORRECTED_IN_THIS_PACKAGE"
+    },
+    {
+      "n": 5,
+      "title": "生产 CURRENT 未切换属于未开启的后续动作",
+      "detail": "不作为本轮失败的唯一原因；即使立即允许切换，真实输入与同产物流转缺口不会自动消失；原发布门按最大日期放行不等于因子/历史覆盖有效",
+      "status": "CORRECTED_IN_THIS_PACKAGE"
+    }
+  ],
+  "corrections_applied": [
+    {
+      "target": "REPORT.md §2 / §7 / §8",
+      "was": "supply defect; re-issue the plane (asserted necessity)",
+      "now": "cause NOT established; only 'the current adjustment input and its basis are not proven to satisfy the contract' is claimed; re-acquisition is offered as one option after the contract is declared"
+    },
+    {
+      "target": "FINAL_REQUIREMENT_MATRIX.json R2",
+      "was": "two source-side defects + 're-issue the plane'",
+      "now": "observations kept, attribution removed, cause listed as NOT_ESTABLISHED with the four candidate explanations"
+    },
+    {
+      "target": "FINAL_REQUIREMENT_MATRIX.json / B1_B7_STATUS.json / ACCEPTANCE.json R5-B5",
+      "was": "'the real chain executes (R15 -> compiler -> commit -> publish)'",
+      "now": "components ran separately; R15 output is candidate/r15_releases/R15_REPLAY_20260924_R2 while the compiler consumed candidate/cc/CC_REPLAY_20260924/RELEASE.json, so no single-product chain is proven"
+    },
+    {
+      "target": "REPORT.md §1 / §7, MINUTE_PLANE claim",
+      "was": "'V4 makes 0 minute calls, so minute input is irrelevant to V4'",
+      "now": "direct minute calls are 0; get_current_data snapshot dependence is unresolved and not claimed as passing"
+    },
+    {
+      "target": "B1_B7_STATUS.json B1",
+      "was": "constant-1.0 plane described as the supplier's identity fallback",
+      "now": "the nunique==1 withhold rule is described as the local blocking mechanism, not as a vendor error certificate"
+    }
+  ],
+  "what_is_not_claimed_now": [
+    "that any vendor content was fabricated or is a placeholder",
+    "that 2026-08-10..2026-09-24 must be re-downloaded",
+    "that R15 output has flowed through the compiler",
+    "that V4's intraday semantics pass",
+    "that the candidate published=true supports production admission"
+  ],
+  "review_header_excerpt": [
+    "# GPT FINAL REPAIR REVIEW — 本轮收口为部分完成，未通过整体验收",
+    "task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+    "execution_host: ZHANGWEI",
+    "review_date_cn: 2026-10-25",
+    "status: REVIEWED_FINAL_PASS_BLOCKED",
+    "FOUNDATION_ACCEPTANCE=false",
+    "FORMAL_ENGINE_ADMISSION=false",
+    "NEW_DATA_ACQUISITION_AUTHORIZED=false",
+    "CURRENT_SWITCH_ALLOWED=false",
+    "ORDER_ALLOWED=false",
+    "本节是对最后一轮回传的最终审阅状态，优先于下方历史 READY 执行段。本条不是新一轮施工令，不追加扫描、源码交接、测试套件或上传回执任务，不自动重新启动已收尾作业。保留当前代码、候选与失败证据。owner要求的一轮修复已回传；其结果未达到整个底座可用的交付标准，不能标完成。",
+    "## 到件与审阅范围",
+    "最新 REPORT.md blob e47278619dd82e03137ffce97613c281cdceab66、PACKAGE_INDEX.json blob 9f8c6191b3d034cb4866fccaf28583121f5d0bb7、UPLOAD_READBACK.json blob 65f512146532e201853091544d68e6bde69b8e7e 已读取。最终索引89项，回执报告verified_count=89、mismatch=[]；这是交付方的字节回读结果，不冒充GPT独立核算全部89件。GPT已核读关键原件、R15和发布演练记录、分钟记录、原编译器调用、候选恢复记录、状态矩阵及相关源码。上传等待阶段结束。",
+    "## 可保留的有界成果",
+    "- 原分钟reader已接入；单代码探测在2026-09-11..09-24的10个交易日各返回30行。仅认证已测请求，不外推所有证券/分钟完整性；09-03..09-10的6个交易日在该reader分支返回NO_DAY_SHARDS。",
+    "- R15_REPLAY_20260924_R2实际调用load_staging/ingest_item/seal_release及原antileak，两个保留日批共10426行；输出字节身份与输入对应，生产CLEAN指针与SSOT记录的前后摘要相同。认证两批候选调用能力，不认证继承完整库、供应商完整性或所有PIT语义。",
+    "- 原tip compiler的候选调用及两个缺日出现在其输出的证据可保留。",
+    "- 原publish_atomic非dry-run已在重绑定的任务目录指针上实际执行，published=true。只说明本次隔离演练成功；不证明生产多文件事务、因子有效性或全库正式准入。",
+    "- 内容身份修复后，候选同输入NOOP和9项提交恢复情景有记录；不需要为了收据再重复运行。",
+    "## 未达到交付的具体原因",
+    "1. 原R15和编译器尚无同一产物贯通证明。",
+    "R15真实输出为candidate/r15_releases/R15_REPLAY_20260924_R2；CONNECTED_PIPELINE的实际compiler argv仍读candidate/cc/CC_REPLAY_20260924/RELEASE.json。run_connected_pipeline.py没有调用R15 runner，publish演练另行执行。现有证据支持若干原组件分别运行，不能把它们写成已贯通的“R15输出 -> 编译 -> 发布”同一链。此为原任务未完成项，不是新增第四项。",
+    "2. V4正式结果仍被必需输入阻断。",
+    "保留严格运行BLOCKED_INPUT_INCOMPLETE、16日、0成交、0订单和diagnostic_only=true。复权同日输入、基准/锚点一致性、历史股票池/ST及正式语义尚未满足，不能用0收益或引擎循环结束代替策略完成。数据集更新依据和writer游标仍有未落地项，供应商分页完整性仍UNKNOWN，因此也不开放正式增量。"
+  ]
+}
