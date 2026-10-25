@@ -1,0 +1,3210 @@
+{
+  "started_at": "2026-10-25T12:20:59.384885",
+  "status": "BLOCKED_INPUT_INCOMPLETE",
+  "args": {
+    "start": "2026-09-03",
+    "end": "2026-09-24",
+    "strategy": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py",
+    "cash": 1000000.0,
+    "benchmark": "000300.XSHG",
+    "out": "engine_runs\\v4_r21_R13_STRICT4",
+    "allow_candidate_override": true,
+    "diag": false,
+    "strict_inputs": true,
+    "intraday_proxy": false,
+    "local_dictionary": "D:\\BB_LOCAL_DICTIONARY\\R10_ASOF_20260924"
+  },
+  "summary": {
+    "策略收益": "0.00%",
+    "策略年化收益": "0.00%",
+    "最大回撤": "0.00%",
+    "夏普比率": "-135253761669203312.00",
+    "日胜率": "0.00%",
+    "交易胜率": "0.00%",
+    "交易天数": "16",
+    "初始资金": "1,000,000.00",
+    "最终资金": "1,000,000.00"
+  },
+  "metrics": {
+    "策略收益": "0.00%",
+    "策略年化收益": "0.00%",
+    "最大回撤": "0.00%",
+    "夏普比率": "-135253761669203312.00",
+    "日胜率": "0.00%",
+    "交易胜率": "0.00%",
+    "交易天数": "16",
+    "初始资金": "1,000,000.00",
+    "最终资金": "1,000,000.00"
+  },
+  "n_daily_records": 16,
+  "first_record": {
+    "total_value": "1000000.0",
+    "cash": "1000000.0",
+    "positions_value": "0.0",
+    "returns": "0.0",
+    "returns_pct": "0.0",
+    "benchmark_price": "4552.5784",
+    "benchmark_value": "999999.9999999999",
+    "benchmark_returns_pct": "-1.1102230246251565e-14",
+    "excess_returns_pct": "1.1102230246251565e-14",
+    "daily_returns": "nan"
+  },
+  "last_record": {
+    "total_value": "1000000.0",
+    "cash": "1000000.0",
+    "positions_value": "0.0",
+    "returns": "0.0",
+    "returns_pct": "0.0",
+    "benchmark_price": "4439.1443",
+    "benchmark_value": "975083.5482591578",
+    "benchmark_returns_pct": "-2.4916451740842227",
+    "excess_returns_pct": "2.4916451740842227",
+    "daily_returns": "0.0"
+  },
+  "n_trades": 0,
+  "n_orders": 0,
+  "n_daily_positions": 0,
+  "meta": {
+    "strategy_file": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py",
+    "start_date": "2026-09-03",
+    "end_date": "2026-09-24",
+    "algorithm_id": "None",
+    "extras": "None",
+    "runtime_seconds": "558.8722469806671",
+    "run_started_at": "2026-10-25 12:20:59",
+    "run_finished_at": "2026-10-25 12:30:18",
+    "benchmark": "000300.XSHG",
+    "initial_total_value": "1000000.0",
+    "final_total_value": "1000000.0"
+  },
+  "finished_at": "2026-10-25T12:30:18.296132",
+  "network_blocked_attempts": [],
+  "provider_bindings": {
+    "bindings": [
+      {
+        "product": "INDEX_DAILY_R1",
+        "year": 2025,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_DAILY_R1\\year=2025\\part_2025.parquet"
+        ]
+      },
+      {
+        "product": "INDEX_DAILY_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_DAILY_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "STOCK_DAILY_PIT_R1",
+        "year": 2026,
+        "source_kind": "CANDIDATE_OVERRIDE",
+        "file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R06\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+        "fallback_files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "ETF_DAILY_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ETF_DAILY_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "STOCK_TRADEABILITY_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1\\year=2026\\part_2026.parquet",
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1\\year=2026\\tip_20260903.parquet"
+        ]
+      },
+      {
+        "product": "SECURITY_MASTER_SNAPSHOT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SECURITY_MASTER_SNAPSHOT_R1\\security_master__stock__snapshot_asof_20260812__20260813_003208.parquet"
+        ]
+      },
+      {
+        "product": "ADJUST_FACTOR_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\data\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "VALUATION_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\VALUATION_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "FINANCIAL_INDICATOR_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FINANCIAL_INDICATOR_PIT_R1\\data\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "FINANCIAL_INDICATOR_PIT_R1",
+        "year": 2024,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FINANCIAL_INDICATOR_PIT_R1\\data\\year=2024\\part_2024.parquet"
+        ]
+      },
+      {
+        "product": "FINANCIAL_INDICATOR_PIT_R1",
+        "year": 2025,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FINANCIAL_INDICATOR_PIT_R1\\data\\year=2025\\part_2025.parquet"
+        ]
+      },
+      {
+        "product": "SW_L1_MEMBERSHIP_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L1_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "SW_L2_MEMBERSHIP_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L2_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "SW_L3_MEMBERSHIP_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      }
+    ]
+  },
+  "provider_observations": [
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 1
+      }
+    },
+    {
+      "api": "get_fundamentals",
+      "date": "2026-09-23",
+      "fields": [
+        "code",
+        "pb_ratio",
+        "eps"
+      ],
+      "rows": 3179,
+      "valuation_dates_observed": 5222
+    },
+    {
+      "api": "get_history_fundamentals",
+      "securities": 1000,
+      "watch_date": "2026-09-23",
+      "count": 5,
+      "interval": "1q",
+      "rows": 5000
+    },
+    {
+      "api": "get_history_fundamentals",
+      "securities": 570,
+      "watch_date": "2026-09-23",
+      "count": 5,
+      "interval": "1q",
+      "rows": 2834
+    },
+    {
+      "api": "get_industry",
+      "date": "2026-09-23",
+      "rows": 156
+    },
+    {
+      "api": "get_fundamentals",
+      "date": "2026-09-23",
+      "fields": [
+        "code",
+        "circulating_market_cap"
+      ],
+      "rows": 111,
+      "valuation_dates_observed": 5222
+    },
+    {
+      "api": "get_price",
+      "securities": 111,
+      "start": "2026-09-22",
+      "end": "2026-09-23",
+      "count": 2,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "close"
+      ],
+      "rows": 222,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 0,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 0,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 222
+      }
+    },
+    {
+      "api": "get_price",
+      "securities": 111,
+      "start": "2026-03-05",
+      "end": "2026-09-23",
+      "count": 140,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "close",
+        "volume"
+      ],
+      "rows": 15535,
+      "tradeability_joined": true,
+      "paused_null_rows_preserved": 9763,
+      "paused_rows_inferred_from_bar_presence": 0,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_codes_without_any": 0,
+      "factor_missing_cells": 1329,
+      "adjust_non_stock_classes": [],
+      "factor_alignment": "SAME_DAY_DENSE",
+      "factor_identity_fallback_codes": 0,
+      "adjust_applicability_counts": {
+        "APPLIED_SAME_DAY_DENSE": 14206,
+        "BLOCKED_UNPROVEN_ADJUSTMENT": 1329
+      }
+    }
+  ],
+  "tradeability_binding": {
+    "sealed_rows": 124929,
+    "sealed_dates": 24,
+    "candidate_extension_rows": 192887,
+    "candidate_extension_dates": 37,
+    "sealed_authoritative": true,
+    "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+    "reconciled_rows": 276160,
+    "keys_both_planes": 41656,
+    "keys_sealed_only": 83273,
+    "keys_candidate_only": 151231,
+    "limit_cells_filled_from_candidate": 70,
+    "paused_conflicts_sealed_wins": 6,
+    "limit_prices_inferred": 0,
+    "st_flags_inferred": 0
+  },
+  "strict_required_inputs": true,
+  "intraday_proxy_allowed": false,
+  "required_input_failures": [
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-09-02",
+      "end": "2026-09-02",
+      "anchor": "2026-09-03",
+      "rows_withheld": 1,
+      "codes_withheld": 1,
+      "codes_still_served": 0,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1,
+      "dates": [
+        "2026-09-02"
+      ],
+      "sample_codes": [
+        "605599.XSHG"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-09-02",
+      "end": "2026-09-02",
+      "anchor": "2026-09-03",
+      "rows_withheld": 1,
+      "codes_withheld": 1,
+      "codes_still_served": 0,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1,
+      "dates": [
+        "2026-09-02"
+      ],
+      "sample_codes": [
+        "689009.XSHG"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-09-01",
+      "end": "2026-09-02",
+      "anchor": "2026-09-02",
+      "rows_withheld": 224,
+      "codes_withheld": 112,
+      "codes_still_served": 0,
+      "rows_with_missing_anchor_factor": 224,
+      "rows_with_missing_same_day_factor": 224,
+      "dates": [
+        "2026-09-01",
+        "2026-09-02"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-04",
+      "end": "2026-09-02",
+      "anchor": "2026-09-02",
+      "rows_withheld": 15675,
+      "codes_withheld": 112,
+      "codes_still_served": 0,
+      "rows_with_missing_anchor_factor": 15675,
+      "rows_with_missing_same_day_factor": 1341,
+      "dates": [
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-24",
+        "2026-02-25"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-09-02",
+      "end": "2026-09-03",
+      "anchor": "2026-09-03",
+      "rows_withheld": 112,
+      "codes_withheld": 112,
+      "codes_still_served": 112,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 112,
+      "dates": [
+        "2026-09-02"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-05",
+      "end": "2026-09-03",
+      "anchor": "2026-09-03",
+      "rows_withheld": 1341,
+      "codes_withheld": 112,
+      "codes_still_served": 112,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1341,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-06",
+      "end": "2026-09-04",
+      "anchor": "2026-09-04",
+      "rows_withheld": 1329,
+      "codes_withheld": 111,
+      "codes_still_served": 111,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1329,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-09",
+      "end": "2026-09-07",
+      "anchor": "2026-09-07",
+      "rows_withheld": 1329,
+      "codes_withheld": 111,
+      "codes_still_served": 111,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1329,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-10",
+      "end": "2026-09-08",
+      "anchor": "2026-09-08",
+      "rows_withheld": 1353,
+      "codes_withheld": 113,
+      "codes_still_served": 113,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1353,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-11",
+      "end": "2026-09-09",
+      "anchor": "2026-09-09",
+      "rows_withheld": 1353,
+      "codes_withheld": 113,
+      "codes_still_served": 113,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1353,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-12",
+      "end": "2026-09-10",
+      "anchor": "2026-09-10",
+      "rows_withheld": 1353,
+      "codes_withheld": 113,
+      "codes_still_served": 113,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1353,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-13",
+      "end": "2026-09-11",
+      "anchor": "2026-09-11",
+      "rows_withheld": 1329,
+      "codes_withheld": 111,
+      "codes_still_served": 111,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1329,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-24",
+      "end": "2026-09-14",
+      "anchor": "2026-09-14",
+      "rows_withheld": 1341,
+      "codes_withheld": 112,
+      "codes_still_served": 112,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1341,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-25",
+      "end": "2026-09-15",
+      "anchor": "2026-09-15",
+      "rows_withheld": 1329,
+      "codes_withheld": 111,
+      "codes_still_served": 111,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1329,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-26",
+      "end": "2026-09-16",
+      "anchor": "2026-09-16",
+      "rows_withheld": 1341,
+      "codes_withheld": 112,
+      "codes_still_served": 112,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1341,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-02-27",
+      "end": "2026-09-17",
+      "anchor": "2026-09-17",
+      "rows_withheld": 1341,
+      "codes_withheld": 112,
+      "codes_still_served": 112,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1341,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-03-02",
+      "end": "2026-09-18",
+      "anchor": "2026-09-18",
+      "rows_withheld": 1341,
+      "codes_withheld": 112,
+      "codes_still_served": 112,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1341,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-03-03",
+      "end": "2026-09-21",
+      "anchor": "2026-09-21",
+      "rows_withheld": 1341,
+      "codes_withheld": 112,
+      "codes_still_served": 112,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1341,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-03-04",
+      "end": "2026-09-22",
+      "anchor": "2026-09-22",
+      "rows_withheld": 1329,
+      "codes_withheld": 111,
+      "codes_still_served": 111,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1329,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    },
+    {
+      "field": "ADJUST_FACTOR_PIT_R1",
+      "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+      "start": "2026-03-05",
+      "end": "2026-09-23",
+      "anchor": "2026-09-23",
+      "rows_withheld": 1329,
+      "codes_withheld": 111,
+      "codes_still_served": 111,
+      "rows_with_missing_anchor_factor": 0,
+      "rows_with_missing_same_day_factor": 1329,
+      "dates": [
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28"
+      ],
+      "sample_codes": [
+        "000055.XSHE",
+        "000421.XSHE",
+        "000505.XSHE",
+        "000553.XSHE",
+        "000596.XSHE",
+        "000599.XSHE",
+        "000612.XSHE",
+        "000639.XSHE",
+        "000665.XSHE",
+        "000717.XSHE"
+      ],
+      "note": "fq=pre cannot be reconstructed for these rows without a forward fill, so their prices are withheld and counted; the failure still marks the run as input-incomplete"
+    }
+  ],
+  "mark_price_starved_events": [],
+  "n_mark_price_starved": 0,
+  "strategy_input_warnings": {
+    "yesterday_limit_up_step_aborted": 0,
+    "limit_up_flag_missing": 0,
+    "ambiguous_na": 0,
+    "lines": 660
+  },
+  "input_blockers": [
+    "REQUIRED_INPUT_MISSING"
+  ],
+  "diagnostic_only": true,
+  "strategy_file": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py",
+  "strategy_sha256": "8d9334dd6ed2053b6cb297ea5780408c106c9cf2e0b7138629685e4f589d992e",
+  "engine_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine"
+}
