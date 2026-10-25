@@ -1,0 +1,328 @@
+{
+  "artifact": "FACTOR_SOURCE_SCHEMA",
+  "warning": "date columns are parsed strictly; integer values are reported as non-date encodings and never converted into calendar days",
+  "p1": {
+    "tag": "P1_adjust_factor",
+    "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+    "n_files": 222,
+    "total_rows": 13548093,
+    "rows_with_non_date_encoding": 88584,
+    "n_sessions": 3043,
+    "first_day": "2014-01-02",
+    "last_day": "2026-09-24",
+    "window_2026_08_10_to_09_05": {
+      "2026-08-10": 5206,
+      "2026-08-11": 5208,
+      "2026-09-03": 5215,
+      "2026-09-04": 5215
+    },
+    "samples": [
+      {
+        "file": "adjust_factor_stock__incremental_20260807__20260809_072723.parquet",
+        "rows": 5206,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-08-07 00:00:00",
+          "2026-08-07 00:00:00",
+          "2026-08-07 00:00:00",
+          "2026-08-07 00:00:00",
+          "2026-08-07 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+        "rows": 5206,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-08-10 00:00:00",
+          "2026-08-10 00:00:00",
+          "2026-08-10 00:00:00",
+          "2026-08-10 00:00:00",
+          "2026-08-10 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor_stock__incremental_20260811__20260811_233713.parquet",
+        "rows": 5208,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-08-11 00:00:00",
+          "2026-08-11 00:00:00",
+          "2026-08-11 00:00:00",
+          "2026-08-11 00:00:00",
+          "2026-08-11 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor_stock__incremental_20260922__20260924_173734.parquet",
+        "rows": 5222,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-09-22 00:00:00",
+          "2026-09-22 00:00:00",
+          "2026-09-22 00:00:00",
+          "2026-09-22 00:00:00",
+          "2026-09-22 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor_stock__incremental_20260923__20260924_183758.parquet",
+        "rows": 5222,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-09-23 00:00:00",
+          "2026-09-23 00:00:00",
+          "2026-09-23 00:00:00",
+          "2026-09-23 00:00:00",
+          "2026-09-23 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor_stock__incremental_20260924__20260925_030214.parquet",
+        "rows": 5222,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-09-24 00:00:00",
+          "2026-09-24 00:00:00",
+          "2026-09-24 00:00:00",
+          "2026-09-24 00:00:00",
+          "2026-09-24 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      }
+    ]
+  },
+  "p6": {
+    "tag": "P6_factor_reference_adjust_factor",
+    "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor",
+    "n_files": 38,
+    "total_rows": 192925,
+    "rows_with_non_date_encoding": 88584,
+    "n_sessions": 19,
+    "first_day": "2026-08-07",
+    "last_day": "2026-09-24",
+    "window_2026_08_10_to_09_05": {
+      "2026-08-10": 5206,
+      "2026-08-11": 5208,
+      "2026-09-03": 5215,
+      "2026-09-04": 5215
+    },
+    "samples": [
+      {
+        "file": "adjust_factor__incremental_20260807__20260809_072723.parquet",
+        "rows": 5206,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-08-07 00:00:00",
+          "2026-08-07 00:00:00",
+          "2026-08-07 00:00:00",
+          "2026-08-07 00:00:00",
+          "2026-08-07 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor__incremental_20260810__20260811_005710.parquet",
+        "rows": 5206,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-08-10 00:00:00",
+          "2026-08-10 00:00:00",
+          "2026-08-10 00:00:00",
+          "2026-08-10 00:00:00",
+          "2026-08-10 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor__incremental_20260811__20260811_233713.parquet",
+        "rows": 5208,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-08-11 00:00:00",
+          "2026-08-11 00:00:00",
+          "2026-08-11 00:00:00",
+          "2026-08-11 00:00:00",
+          "2026-08-11 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor__incremental_20260922__20260924_173734.parquet",
+        "rows": 5222,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-09-22 00:00:00",
+          "2026-09-22 00:00:00",
+          "2026-09-22 00:00:00",
+          "2026-09-22 00:00:00",
+          "2026-09-22 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor__incremental_20260923__20260924_183758.parquet",
+        "rows": 5222,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-09-23 00:00:00",
+          "2026-09-23 00:00:00",
+          "2026-09-23 00:00:00",
+          "2026-09-23 00:00:00",
+          "2026-09-23 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      },
+      {
+        "file": "adjust_factor__incremental_20260924__20260925_030214.parquet",
+        "rows": 5222,
+        "columns": [
+          "date",
+          "code",
+          "factor",
+          "sec_type"
+        ],
+        "dtypes": {
+          "date": "datetime64[ns]",
+          "code": "object",
+          "factor": "float64",
+          "sec_type": "object"
+        },
+        "date_head": [
+          "2026-09-24 00:00:00",
+          "2026-09-24 00:00:00",
+          "2026-09-24 00:00:00",
+          "2026-09-24 00:00:00",
+          "2026-09-24 00:00:00"
+        ],
+        "date_kind": "Timestamp"
+      }
+    ]
+  }
+}
