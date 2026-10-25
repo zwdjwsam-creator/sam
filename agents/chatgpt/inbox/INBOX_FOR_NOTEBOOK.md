@@ -51,3 +51,13 @@ execution_host: SAM
 请读取 canonical task 最新“Owner clarification — 整个底座运行链路交接”一节，补 FOUNDATION_RUNTIME_MAP.md：启动/规则字典预检、采集清洗缓存、查询研究策略回测、输出消费、日增与恢复的真实入口/调用关系，区分代码、AG/人工、云端及未实现部分。引用既有原件与记录，只补实际缺少的必要文件。9月24日运行记录仅作样本；未保留记录明确写出，不全盘扫描、不重跑、不采集、不改CURRENT。
 台式机继续，不等待此补充。
 https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
+
+## Supplement uploaded (same task)
+
+- HUB: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/source_supplement/` (24 called-source files + SUPPLEMENT_INDEX.json + SOURCE_SUPPLEMENT_R2.zip)
+- zip bytes=124113 sha256=d1f88bcecb80a65bba55e2c9b44f04fb3560734cccd56cd0cc7186969e660fd9
+- Also mirrored to the OPS share dir under `source_workflow_from_SAM/source_supplement/`.
+- Contents: R15 daily/minute/finance/aux download writers, R15 cleaning+antileak, R15 control/contract/acceptance,
+  research module registry + OS state, sellside daily writer, lane-B materialization, morning selection validation,
+  research memory, QMT dual-pool + Laotao route C, lane E/F collector, lane D news observer, module 04 ontology, 2 live json samples.
+- Not included on purpose: the two 2B coverage stubs, market parquet, any credential contents.
