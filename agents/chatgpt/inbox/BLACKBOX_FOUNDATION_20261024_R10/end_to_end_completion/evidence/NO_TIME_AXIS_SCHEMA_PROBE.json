@@ -1,0 +1,485 @@
+{
+  "artifact": "NO_TIME_AXIS_SCHEMA_PROBE",
+  "rows": [
+    {
+      "dataset_id": "CALENDAR_CN_EXCHANGE",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+      "n_parquet": 119,
+      "sample_file": "CALENDAR_ALL_DATES.parquet",
+      "columns": [
+        "calendar_date",
+        "is_trade_day",
+        "previous_trade_date",
+        "next_trade_date"
+      ]
+    },
+    {
+      "dataset_id": "CALENDAR_CN_EXCHANGE",
+      "layer": "CLEAN",
+      "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
+      "n_parquet": 2,
+      "sample_file": "calendar_cn_exchange__CALENDAR_ALL_DATES.parquet",
+      "columns": [
+        "calendar_date",
+        "is_trade_day",
+        "previous_trade_date",
+        "next_trade_date",
+        "days_since_previous_trade_day",
+        "days_to_next_trade_day"
+      ]
+    },
+    {
+      "dataset_id": "SECURITY_MASTER",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta",
+      "n_parquet": 119,
+      "sample_file": "CALENDAR_ALL_DATES.parquet",
+      "columns": [
+        "calendar_date",
+        "is_trade_day",
+        "previous_trade_date",
+        "next_trade_date"
+      ]
+    },
+    {
+      "dataset_id": "SECURITY_MASTER",
+      "layer": "CLEAN",
+      "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master",
+      "n_parquet": 11,
+      "sample_file": "security_master__security_master__2014-01-01_2026-07-02__none_adj__v1__20260702_164638.parquet",
+      "columns": [
+        "index",
+        "display_name",
+        "name",
+        "start_date",
+        "end_date",
+        "type"
+      ]
+    },
+    {
+      "dataset_id": "INDUSTRY_CONCEPT",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+      "n_parquet": 217,
+      "sample_file": "stk_audit_opinion__full__1.0.0__20260612_183025.parquet",
+      "columns": [
+        "id",
+        "code",
+        "pub_date",
+        "end_date",
+        "report_type",
+        "accounting_firm",
+        "accountant",
+        "opinion_type_id",
+        "opinion_type"
+      ]
+    },
+    {
+      "dataset_id": "INDUSTRY_CONCEPT",
+      "layer": "CLEAN",
+      "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept",
+      "n_parquet": 13,
+      "sample_file": "industry_concept__industry_sw_l1__incremental__20260730__20260729_170458.parquet",
+      "columns": [
+        "name",
+        "start_date",
+        "historical_backtest_eligible",
+        "historical_coverage_status",
+        "snapshot_backfill_allowed"
+      ]
+    },
+    {
+      "dataset_id": "INDUSTRY_CONCEPT_EVENTS",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+      "n_parquet": 217,
+      "sample_file": "stk_audit_opinion__full__1.0.0__20260612_183025.parquet",
+      "columns": [
+        "id",
+        "code",
+        "pub_date",
+        "end_date",
+        "report_type",
+        "accounting_firm",
+        "accountant",
+        "opinion_type_id",
+        "opinion_type"
+      ]
+    },
+    {
+      "dataset_id": "INDUSTRY_CONCEPT_EVENTS",
+      "layer": "CLEAN",
+      "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept_events",
+      "n_parquet": 1,
+      "sample_file": "industry_concept_events__industry_concept_events__incremental__20260730__20260729_170725.parquet",
+      "columns": [
+        "index",
+        "name",
+        "start_date",
+        "event_type",
+        "as_of",
+        "historical_backtest_eligible",
+        "historical_coverage_status",
+        "snapshot_backfill_allowed"
+      ]
+    },
+    {
+      "dataset_id": "BILLBOARD",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+      "n_parquet": 217,
+      "sample_file": "stk_audit_opinion__full__1.0.0__20260612_183025.parquet",
+      "columns": [
+        "id",
+        "code",
+        "pub_date",
+        "end_date",
+        "report_type",
+        "accounting_firm",
+        "accountant",
+        "opinion_type_id",
+        "opinion_type"
+      ]
+    },
+    {
+      "dataset_id": "XR_XD",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+      "n_parquet": 217,
+      "sample_file": "stk_audit_opinion__full__1.0.0__20260612_183025.parquet",
+      "columns": [
+        "id",
+        "code",
+        "pub_date",
+        "end_date",
+        "report_type",
+        "accounting_firm",
+        "accountant",
+        "opinion_type_id",
+        "opinion_type"
+      ]
+    },
+    {
+      "dataset_id": "CORPORATE_REFERENCE",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+      "n_parquet": 217,
+      "sample_file": "stk_audit_opinion__full__1.0.0__20260612_183025.parquet",
+      "columns": [
+        "id",
+        "code",
+        "pub_date",
+        "end_date",
+        "report_type",
+        "accounting_firm",
+        "accountant",
+        "opinion_type_id",
+        "opinion_type"
+      ]
+    },
+    {
+      "dataset_id": "SHAREHOLDER_TOP10",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+      "n_parquet": 217,
+      "sample_file": "stk_audit_opinion__full__1.0.0__20260612_183025.parquet",
+      "columns": [
+        "id",
+        "code",
+        "pub_date",
+        "end_date",
+        "report_type",
+        "accounting_firm",
+        "accountant",
+        "opinion_type_id",
+        "opinion_type"
+      ]
+    },
+    {
+      "dataset_id": "SHAREHOLDER_TOP10",
+      "layer": "CLEAN",
+      "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_top10",
+      "n_parquet": 1,
+      "sample_file": "shareholder_top10__pub_date_20260903__clean_tip__20260904_042230.parquet",
+      "columns": [
+        "id",
+        "company_name",
+        "company_id",
+        "code",
+        "end_date",
+        "pub_date",
+        "change_reason_id",
+        "change_reason",
+        "shareholder_rank",
+        "shareholder_name",
+        "shareholder_name_en",
+        "shareholder_id",
+        "shareholder_class_id",
+        "shareholder_class",
+        "share_number",
+        "share_ratio",
+        "sharesnature_id",
+        "sharesnature",
+        "share_pledge_freeze",
+        "share_pledge",
+        "share_freeze",
+        "transform_version",
+        "discovery_asof"
+      ]
+    },
+    {
+      "dataset_id": "SHAREHOLDER_FLOATING_TOP10",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+      "n_parquet": 217,
+      "sample_file": "stk_audit_opinion__full__1.0.0__20260612_183025.parquet",
+      "columns": [
+        "id",
+        "code",
+        "pub_date",
+        "end_date",
+        "report_type",
+        "accounting_firm",
+        "accountant",
+        "opinion_type_id",
+        "opinion_type"
+      ]
+    },
+    {
+      "dataset_id": "SHAREHOLDER_FLOATING_TOP10",
+      "layer": "CLEAN",
+      "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_floating_top10",
+      "n_parquet": 1,
+      "sample_file": "shareholder_floating_top10__pub_date_20260903__clean_tip__20260904_042230.parquet",
+      "columns": [
+        "id",
+        "company_id",
+        "company_name",
+        "code",
+        "end_date",
+        "pub_date",
+        "change_reason_id",
+        "change_reason",
+        "shareholder_rank",
+        "shareholder_id",
+        "shareholder_name",
+        "shareholder_name_en",
+        "shareholder_class_id",
+        "shareholder_class",
+        "share_number",
+        "share_ratio",
+        "sharesnature_id",
+        "sharesnature",
+        "transform_version",
+        "discovery_asof"
+      ]
+    },
+    {
+      "dataset_id": "MTSS",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events",
+      "n_parquet": 217,
+      "sample_file": "stk_audit_opinion__full__1.0.0__20260612_183025.parquet",
+      "columns": [
+        "id",
+        "code",
+        "pub_date",
+        "end_date",
+        "report_type",
+        "accounting_firm",
+        "accountant",
+        "opinion_type_id",
+        "opinion_type"
+      ]
+    },
+    {
+      "dataset_id": "ETF_SHARE",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+      "n_parquet": 27218,
+      "sample_file": "fund_etf_master__2026-06-27__none_adj__v1__20260702_191738.parquet",
+      "columns": [
+        "code",
+        "display_name",
+        "name",
+        "start_date",
+        "end_date",
+        "type"
+      ]
+    },
+    {
+      "dataset_id": "FUND_TRACKING_INDEX_MAPPING",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf",
+      "n_parquet": 27218,
+      "sample_file": "fund_etf_master__2026-06-27__none_adj__v1__20260702_191738.parquet",
+      "columns": [
+        "code",
+        "display_name",
+        "name",
+        "start_date",
+        "end_date",
+        "type"
+      ]
+    },
+    {
+      "dataset_id": "FUND_TRACKING_INDEX_MAPPING",
+      "layer": "CLEAN",
+      "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\fund_tracking_index_mapping",
+      "n_parquet": 3,
+      "sample_file": "fund_tracking_index_mapping__fund_tracking_index_mapping__ALL__2026-06-27__v1__20260702_191900.parquet",
+      "columns": [
+        "id",
+        "code",
+        "name",
+        "pub_date",
+        "start_date",
+        "end_date",
+        "traced_index_name",
+        "traced_index_code",
+        "quality_flag",
+        "traced_index_key"
+      ]
+    },
+    {
+      "dataset_id": "TS_CBOND_R1",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R1",
+      "n_parquet": 1279,
+      "sample_file": "raw.parquet",
+      "columns": [
+        "ts_code",
+        "bond_full_name",
+        "bond_short_name",
+        "cb_code",
+        "cb_type",
+        "stk_code",
+        "stk_short_name",
+        "maturity",
+        "par",
+        "issue_price",
+        "issue_size",
+        "remain_size",
+        "value_date",
+        "maturity_date",
+        "rate_type",
+        "coupon_rate",
+        "add_rate",
+        "pay_per_year",
+        "list_date",
+        "delist_date",
+        "exchange",
+        "conv_start_date",
+        "conv_end_date",
+        "conv_stop_date",
+        "first_conv_price",
+        "conv_price",
+        "rate_clause",
+        "put_clause",
+        "maturity_call_price",
+        "call_clause",
+        "reset_clause",
+        "conv_clause",
+        "guarantor",
+        "guarantee_type",
+        "issue_rating",
+        "newest_rating",
+        "rating_comp"
+      ]
+    },
+    {
+      "dataset_id": "TS_CBOND_R2",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\途施可转债官方原始_R2",
+      "n_parquet": 1371,
+      "sample_file": "raw.parquet",
+      "columns": [
+        "ts_code",
+        "call_type",
+        "is_call",
+        "ann_date",
+        "call_date",
+        "call_price",
+        "call_price_tax",
+        "call_vol",
+        "call_amount",
+        "payment_date",
+        "call_reg_date"
+      ]
+    },
+    {
+      "dataset_id": "EXTERNAL_EVIDENCE_PLANE",
+      "layer": "EVIDENCE",
+      "root": "E:\\BLACKBOX\\数据\\外部证据",
+      "n_parquet": 10726,
+      "sample_file": "CANONICAL_CORPORATE_EVIDENCE_R1__full.parquet",
+      "columns": [
+        "canonical_record_id",
+        "underlying_fact_or_event_id",
+        "company_code",
+        "fact_type",
+        "economic_period",
+        "canonical_value",
+        "canonical_unit",
+        "RAW_VALUE",
+        "RAW_UNIT",
+        "source_used",
+        "source_priority",
+        "all_source_ids",
+        "source_count",
+        "source_conflict",
+        "publication_at",
+        "market_available_at",
+        "PIT_valid",
+        "ORIGINAL_PRIMARY_REFERENCE"
+      ]
+    },
+    {
+      "dataset_id": "LEGACY_JQ_RAW_CN",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读",
+      "n_parquet": 363965,
+      "sample_file": "CALENDAR_ALL_DATES.parquet",
+      "columns": [
+        "calendar_date",
+        "is_trade_day",
+        "previous_trade_date",
+        "next_trade_date"
+      ]
+    },
+    {
+      "dataset_id": "FORENSIC_CANARY",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\_forensic_canary",
+      "n_parquet": 510,
+      "sample_file": "000001_XSHE_20140704__1m__fq_none.parquet",
+      "columns": [
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money",
+        "__index_level_0__"
+      ]
+    },
+    {
+      "dataset_id": "EXPERIMENT_CANARY",
+      "layer": "RAW",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\试验",
+      "n_parquet": 93,
+      "sample_file": "etf_1m__510300__2024__fq_none.parquet",
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money"
+      ]
+    }
+  ]
+}
