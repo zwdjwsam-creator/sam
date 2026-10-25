@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-08-10T16:43:44+00:00",
+  "status": "PASS",
+  "rule": "download_forbidden_unless_fq_None_explicit",
+  "samples": [
+    {
+      "code": "510300.XSHG",
+      "trade_date": "2026-08-10",
+      "frequency": "5m",
+      "none_rows": 48,
+      "pre_rows": 48,
+      "first_close_equal": true,
+      "fq_none_used": true,
+      "contract": "explicit_fq_None_required"
+    },
+    {
+      "code": "510300.XSHG",
+      "trade_date": "2026-08-10",
+      "frequency": "1m",
+      "none_rows": 240,
+      "pre_rows": 240,
+      "first_close_equal": true,
+      "fq_none_used": true,
+      "contract": "explicit_fq_None_required"
+    },
+    {
+      "code": "510300.XSHG",
+      "trade_date": "2026-08-10",
+      "frequency": "30m",
+      "none_rows": 8,
+      "pre_rows": 8,
+      "first_close_equal": true,
+      "fq_none_used": true,
+      "contract": "explicit_fq_None_required"
+    },
+    {
+      "code": "510300.XSHG",
+      "trade_date": "2026-08-10",
+      "frequency": "60m",
+      "none_rows": 4,
+      "pre_rows": 4,
+      "first_close_equal": true,
+      "fq_none_used": true,
+      "contract": "explicit_fq_None_required"
+    }
+  ],
+  "jq_get_price_fq_kwarg": null,
+  "note": "equal close on some ETF days does not waive fq=None contract"
+}
