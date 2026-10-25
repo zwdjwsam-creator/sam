@@ -4,10 +4,10 @@
     "B1": {
       "requirement": "PRE-adjustment price chain certifiable over the test window",
       "status": "PARTIALLY_REPAIRED",
-      "failed_predicate": "the product is not dense across the whole window, so a pre-open mark read whose anchor falls in the sparse window cannot be served for every code; and per-date factor LINEAGE is still not emitted",
+      "failed_predicate": "the factor plane is not a proven adjustment series anywhere in the tested window: 17 incremental source files carry a positional integer date and every sampled incremental payload from 2026-08-10 onward is a constant 1.0, so CACHE holds 7..89 rows for 2026-08-17..2026-09-01 and a full 5,215..5,222-row plane of 1.0 for 2026-09-02..2026-09-24",
       "affected_deliverable": "D2",
       "repair_attempted": "provider joins ADJUST_FACTOR_PIT_R1 same-day only, no ffill/bfill, no 1.0 fallback, and divides by factor(anchor) with the divisor guarded: rows whose same-day factor or anchor factor is absent are WITHHELD (NaN price + BLOCKED_UNPROVEN_ADJUSTMENT tag + recorded failure), and a batch with no provable code is a hard block. ETF/INDEX are served raw by contract",
-      "remaining_input": "densified ADJUST_FACTOR_PIT_R1 for 2026-08-17..2026-09-02 (a data gap, not a code fix) and a per-date factor lineage sidecar",
+      "remaining_input": "a re-issued incremental adjust-factor plane (real date column, real factors) for 2026-08-10..2026-09-24, and a per-date factor lineage sidecar at publish time",
       "measured_density": {
         "sessions_in_plane": 178,
         "peak_rows_in_a_session": 5222,
@@ -26,7 +26,137 @@
           "2026-09-01": 11,
           "2026-09-02": 7
         },
-        "consequence": "166/178 2026 sessions are dense; 12 sessions (2026-08-17..2026-09-02) carry 7-89 rows, so fq='pre' cannot be reconstructed there. A pre-open read on 2026-09-03 anchors at 2026-09-02 and loses the codes that have no factor that day."
+        "consequence": "166/178 2026 sessions are dense; 12 sessions (2026-08-17..2026-09-02) carry 7-89 rows, so fq='pre' cannot be reconstructed there. A pre-open read on 2026-09-03 anchors at 2026-09-02 and loses the codes that have no factor that day.",
+        "superseded_by": "value-density measurement: 2026-09-02..2026-09-24 is a constant 1.0 plane at full row count, so row counts alone overstate the healthy part of the window",
+        "row_density_only": true
+      },
+      "source_lineage_measured": {
+        "question": "is the sparse CACHE caused by a sparse authoritative source, or by a missing carry in the builder?",
+        "answer": "neither a row shortage nor a missing carry: the incremental supplier payload carries no factor variation at all for the late sessions, and 17 of its files carry a positional integer instead of a date",
+        "layers": {
+          "cache": {
+            "root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\data\\year=2026",
+            "sessions": 178,
+            "rows": 863710
+          },
+          "p1": {
+            "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
+            "file_kinds": {
+              "batch": 185,
+              "incremental": 37
+            },
+            "sessions": 3044,
+            "rows": 13548093,
+            "first_day": "1970-01-01",
+            "last_day": "2026-09-24"
+          },
+          "p6": {
+            "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor",
+            "file_kinds": {
+              "incremental": 38
+            },
+            "sessions": 20,
+            "rows": 192925,
+            "first_day": "1970-01-01",
+            "last_day": "2026-09-24"
+          }
+        },
+        "p1_date_encoding_defect": {
+          "files": 17,
+          "rows": 88584,
+          "sessions": "2026-08-12..2026-09-02",
+          "date_column": "int64 positional 0..299 (300 distinct), not a timestamp",
+          "effect": "no row from these files can be joined on date; the sessions they are supposed to supply read as 0 dated rows",
+          "payload_otherwise_intact": {
+            "session_derivable_from_filename": true,
+            "rows_comparable_to_dense": true,
+            "factors_positive_finite": true
+          },
+          "factor_min_max_in_those_files": [
+            1.0,
+            1.0
+          ]
+        },
+        "p1_value_defect": {
+          "measured_on": "every sampled incremental file from 2026-08-10 onward, including the ones whose date dtype is correct",
+          "factor_distinct": 1,
+          "factor_min": 1.0,
+          "factor_max": 1.0,
+          "sample_files": [
+            "adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+            "adjust_factor_stock__incremental_20260811__20260811_233713.parquet",
+            "adjust_factor_stock__incremental_20260903__20260904_013451.parquet"
+          ],
+          "consequence": "a correct-timestamp file is not a usable adjustment series either: it is a constant 1.0 plane, i.e. the forbidden identity fallback living in the supplier payload rather than in our code"
+        },
+        "cache_consequence": {
+          "sessions": 178,
+          "rows": 863710,
+          "partial_sessions": {
+            "2026-08-17": 89,
+            "2026-08-31": 5208,
+            "2026-09-02": 7
+          },
+          "partial_session_count": 3,
+          "constant_one_sessions": [
+            "2026-09-02",
+            "2026-09-03",
+            "2026-09-04",
+            "2026-09-07",
+            "2026-09-08",
+            "2026-09-09",
+            "2026-09-10",
+            "2026-09-11",
+            "2026-09-14",
+            "2026-09-15",
+            "2026-09-16",
+            "2026-09-17",
+            "2026-09-18",
+            "2026-09-21",
+            "2026-09-22",
+            "2026-09-23",
+            "2026-09-24"
+          ],
+          "constant_one_session_count": 17,
+          "constant_one_row_range": [
+            7,
+            5222
+          ],
+          "verdict": "the whole V4 window 2026-09-03..2026-09-24 sits on a 5,215..5,222-row plane whose factor is 1.0 for every code, and 2026-08-17..2026-09-01 is partial (7..89 rows). The earlier '12 sparse sessions' wording understated it",
+          "per_session_verdicts": {
+            "2026-08-17": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-18": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-19": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-20": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-21": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-24": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-25": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-26": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-27": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-28": "CACHE_EXCEEDS_SOURCE",
+            "2026-09-01": "CACHE_EXCEEDS_SOURCE",
+            "2026-09-02": "CACHE_EXCEEDS_SOURCE",
+            "2026-08-31": "CACHE_EXCEEDS_SOURCE",
+            "2026-09-03": "CACHE_MATCHES_SOURCE",
+            "2026-09-04": "CACHE_MATCHES_SOURCE"
+          }
+        },
+        "batch_plane": {
+          "files": 139,
+          "all_ones": 0,
+          "varied": 139,
+          "reading": "the historical batch plane does carry real factor variation (min 0.167), so the defect is specific to the incremental plane 2026-08-10 onward",
+          "last_session_per_code": {
+            "median_last_date": "2026-06-12",
+            "max_last_date": "2026-06-12"
+          }
+        },
+        "provider_response": {
+          "constant_plane_detector": true,
+          "withheld_label": "BLOCKED_UNPROVEN_ADJUSTMENT",
+          "no_identity_fallback": true,
+          "note": "a constant plane is refused structurally, so a placeholder cannot be consumed as if it were an adjustment"
+        }
       }
     },
     "B2": {
@@ -56,10 +186,10 @@
     "B5": {
       "requirement": "formal engine run",
       "status": "PARTIALLY_REPAIRED",
-      "failed_predicate": "the ORIGINAL publish protocol itself writes pointer/facts/ledger sequentially; it is exercised only in dry-run, so its own crash window stays unproven",
+      "failed_predicate": "the ORIGINAL publish protocol runs end to end non-dry-run with every write target bound inside the task tree (published=True, 6 bound writes, 0 unbound, refresh_scope_from_live called once, no coverage self-filled), but it was never bound to the production pointer, so its behaviour under a real CURRENT switch is unproven",
       "affected_deliverable": "D2",
-      "repair_attempted": "commit is now an immutable versioned release + ONE atomic COMMIT.json whose checkpoint names the committed payload identity; mid-failure, crash-after-swap and revised-input resume were executed (9/9 scenarios PASS)",
-      "remaining_input": "authorisation to exercise the original publish protocol on a candidate pointer set"
+      "repair_attempted": "commit is now an immutable versioned release + ONE atomic COMMIT.json whose checkpoint names the committed payload identity; mid-failure, crash-after-swap and revised-input resume were executed (9/9 scenarios PASS); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json)",
+      "remaining_input": "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)"
     },
     "B6": {
       "requirement": "writer / checkpoint / resume / non-regression",
@@ -79,7 +209,169 @@
     }
   },
   "note": "no item is closed by this round",
-  "revised_at": "2026-10-25T12:00:00+0800",
+  "revised_at": "2026-10-25T13:13:22+08:00",
   "revision": "R13_SAME_TASK_CORRECTION",
-  "historical_labels_preserved": "B1_B7_STATUS_R12_PRESERVED.json"
+  "historical_labels_preserved": "B1_B7_STATUS_R12_PRESERVED.json",
+  "minute_plane": {
+    "product": "STOCK_MINUTE_1M_R1",
+    "source": "CLEANING_CURRENT_A_SHARE_STOCK_1M",
+    "status": "READY",
+    "reader": "E:\\BLACKBOX\\脚本\\blackbox_stock_minute_1m_reader_r1.py",
+    "wired_into_provider": "candidate/local_plane/minute_bridge.py",
+    "coverage": {
+      "day_shards": {
+        "2026-09-11": 2,
+        "2026-09-14": 2,
+        "2026-09-15": 2,
+        "2026-09-16": 2,
+        "2026-09-17": 2,
+        "2026-09-18": 2,
+        "2026-09-21": 2,
+        "2026-09-22": 2,
+        "2026-09-23": 2,
+        "2026-09-24": 2
+      },
+      "n_days": 10,
+      "first_day": "2026-09-11",
+      "last_day": "2026-09-24"
+    },
+    "in_window": {
+      "sessions_served": [
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24"
+      ],
+      "sessions_blocked": [
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10"
+      ],
+      "blocked_mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE / reader NO_DAY_SHARDS",
+      "no_daily_open_proxy": true
+    },
+    "v4_demand": {
+      "get_price_calls": 6,
+      "calls": [
+        {
+          "line": 891,
+          "frequency": "daily",
+          "has_fq_pre": true
+        },
+        {
+          "line": 1355,
+          "frequency": "daily",
+          "has_fq_pre": false
+        },
+        {
+          "line": 1484,
+          "frequency": "daily",
+          "has_fq_pre": true
+        },
+        {
+          "line": 1532,
+          "frequency": "daily",
+          "has_fq_pre": true
+        },
+        {
+          "line": 1545,
+          "frequency": "daily",
+          "has_fq_pre": true
+        },
+        {
+          "line": 1840,
+          "frequency": "daily",
+          "has_fq_pre": true
+        }
+      ],
+      "minute_get_price_calls": 0,
+      "get_current_data_calls": 9
+    },
+    "withdrawn_claim": "R13 said no local minute product exists. It exists; what was missing was the wiring. Wiring it does not unblock V4 because V4 issues zero minute get_price calls"
+  },
+  "publish_protocol_rehearsal": {
+    "function": "publish_atomic",
+    "dry_run": false,
+    "refresh_scope_from_live_invocations": 1,
+    "bound_targets": [
+      "CACHE_PTR",
+      "CHILD",
+      "CLEAN_PTR",
+      "FACTS",
+      "LEDGER",
+      "OPS",
+      "ROOT",
+      "SCOPE",
+      "SCOPE_R2"
+    ],
+    "writes_observed": 6,
+    "unbound_writes": [],
+    "files_changed_in_bound_root": [
+      "cache_current.json",
+      "cache_current.json.bak_before_atomic_publish",
+      "cleaning_current.json",
+      "cleaning_current.json.bak_before_atomic_publish",
+      "运行/BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json",
+      "运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+      "运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+      "运行/BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json"
+    ],
+    "OPERATIONAL_READINESS": "PASS",
+    "CURRENT_PUBLISH": "ALLOWED",
+    "published": true,
+    "coverage_self_filled_products": [],
+    "production_untouched": true,
+    "honest_limits": [
+      "CURRENT_SWITCH_ALLOWED=false: production CURRENT and production HAND were never written; every target above is a task-local copy seeded from production.",
+      "A published=True here means the ORIGINAL gate accepted the candidate pair and swapped the BOUND pointers; it does not mean the production system switched.",
+      "The capability matrix grades by coverage dates. It does not inspect factor validity, so a placeholder factor plane can still read AVAILABLE_FORMAL."
+    ]
+  },
+  "commit_identity_definition": {
+    "defect": "commit_id hashed release_id/release_root, which carry the build timestamp, so two builds of identical input produced different commit ids and IDEMPOTENT_NOOP was unreachable",
+    "measured": {
+      "files_compared": 766,
+      "data_files_identical": 761,
+      "metadata_files_differing": 5,
+      "metadata_files": [
+        "_qa/TIP_REBASE_QA.json",
+        "PRODUCT_CAPABILITY_FACTS_CANDIDATE.json",
+        "CURRENT_POINTER_COPY.json",
+        "RELEASE.json",
+        "SEAL.json"
+      ]
+    },
+    "fix": "CC_COMMIT_IDENTITY_V2 hashes asof + source_cleaning_release + parent_release_id + per-product sha256/rows only",
+    "after": {
+      "pipeline_result": "PASS",
+      "same_input_replay_noop": true,
+      "commit_recovery_selftest": "PASS",
+      "selftest_verdicts": {
+        "baseline_no_commit": true,
+        "crash_before_commit_leaves_no_reference": true,
+        "first_commit_consistent": true,
+        "same_input_replay_is_noop": true,
+        "revised_input_failures_leave_R1_consistent": true,
+        "crash_after_swap_is_complete": true,
+        "revised_input_commit_consistent": true,
+        "both_payloads_readable_and_distinct": true,
+        "final_consistent": true
+      }
+    },
+    "first_attempt_before_fix": {
+      "pipeline_result": "FAIL",
+      "same_input_replay_noop": false,
+      "note": "kept as the measurement that found the defect"
+    }
+  },
+  "round": "R13_ROUND2"
 }
