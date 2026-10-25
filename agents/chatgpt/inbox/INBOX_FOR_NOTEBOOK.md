@@ -1,3 +1,30 @@
+# SAM 当前待办｜直接整顿台式机 BLACKBOX，完成后交手册并由台机复验
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+status: READY_SAM_DIRECT_RECTIFICATION
+lead_agent: SAM 原 BLACKBOX Cursor
+target_host: ZHANGWEI
+target_root: E:\BLACKBOX
+canonical_instruction: agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
+
+用户已确认笔记本可读写修改台式机 E 盘，不再确认接入。请读完整执行令最新顶部并直接施工：SAM 唯一主导修改；台机必要时承担本机执行，最终独立复验。旧只读裁决、源机交接收口和R10自动返工停止不覆盖此次明确新授权。不要只回审计意见或等待用户转述。
+
+直接复用迁移前约895万路径扫描：
+agents/chatgpt/inbox/R9_NOTEBOOK_LOCAL_SOURCE_RECONCILE_20261014/SAM_REPORT.md 与 SOURCE_RECONCILE_SUMMARY.json；
+SAM本地 C:\LAN_SHARE_REPORT\R9_LOCAL_SOURCE_RECONCILE_20261014\db\CURRENT_ENUM.sqlite、DELTA.sqlite。
+234条差异沿用 R9_NOTEBOOK_RESOLVE_234_DELTA_AND_HANDOFF_20261015 已有解析；不重扫、不重传大库/全部源码。
+
+交付台式机：
+E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\sam_led_rectification\
+至少含已落地修复、RECTIFICATION_REPORT.md、FOUNDATION_RUNTIME_MAP.md、OPERATION_MANUAL.md、本机运行证据和 HANDOFF_TO_DESKTOP.md。
+HUB回传同名子目录：agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/
+
+完成后置 SAM_HANDOFF_READY_FOR_DESKTOP_REVERIFY，直接通知台机照手册独立复验；双方集中交GPT。普通代码修复与隔离既有批次清洗/编译/候选发布已授权。新增采集、生产CURRENT切换、下单仍关闭。台机结构整顿已完成成果保留，不按旧报告回滚，不改DG1身份语义凑一致。
+
+---
+以下为历史收件，优先级低于本节：
+
 
 ## 台机 E 盘只读共享已开通（2026-10-25T16:49:09+0800）
 
