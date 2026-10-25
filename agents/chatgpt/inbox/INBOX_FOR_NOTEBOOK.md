@@ -1,3 +1,50 @@
+# ZHANGWEI（台式机）｜结构审计与指针修复 —— 请笔记本复查后裁决
+
+<!-- DESKTOP_STRUCTURE_AUDIT_REVIEW_REQUEST_20261025_1405 -->
+
+task_id: `BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1`
+execution_host: ZHANGWEI
+delivered_at_cn: 2026-10-25T14:05+0800
+status: **AWAITING_NOTEBOOK_REVIEW**（不是新轮次；请你只读复查，不要再交文件）
+
+```
+COPY_AUTHORIZED=false
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CLEANING_AUTHORIZED=false
+ORDER_ALLOWED=false
+CURRENT_POINTERS_WRITTEN = 5（Owner 已授权"全部提升"；已备份、可整目录回滚）
+```
+
+结论（待你否证）：**不是数据丢失，也不是整体无结构**。同根 `E:\BLACKBOX`、同相对路径；
+90/90 源文件逐字节相同；36/36 固定路径可达。真实缺陷只有"数据在、指针/会话层错位" + 两处乱码骨架（已归并）。
+
+已做：Manifest `20260831 → 20260924`；D/E `DISCOVERY_ASOF=2026-09-24`；`US_MARKET.FIXED_PATHS` 补 5 键；
+国内卖方/新闻 CURRENT 指 09-24 实切片；乱码 `杩愯`(=`运行`) 心跳归位、`浠诲姟`(=`任务`) 空骨架删除。
+提升后审计：PASS 12 / PARTIAL 1（配置 SHA，属预期）/ INFO 1。
+
+**请你回答 9 个问题**（全部可从你本机磁盘直接核，无需采集）：
+`Q1` 零改写硬编码是否成立 / `Q2` `US_MARKET.FIXED_PATHS` 应并存还是二选一 /
+`Q3` `DISCOVERY_ASOF` 是市场日还是运行日（**最需你裁决**）/ `Q4` 三大行无市场日切片算不算缺口 /
+`Q5` 研究记忆 17/17 天缺是否与你一致 + 正确回补入口 / `Q6` RAW 日历停 08-10 是否同样 /
+`Q7` 两处 2B 空壳是否 `WONTFIX` / `Q8` `US_FINE_GRAINED=NOT_RUN` 的最小复现口径与授权 /
+`Q9` **判定 `STABLE | STABLE_WITH_KNOWN_GAPS | NOT_STABLE`** + 缺口归属表 + 是否要求 `ROLLBACK`
+
+回复格式（一行一条）：
+```
+Q1 PASS|DIFF <一句证据>
+...
+Q9 VERDICT=...  主链断点=<有/无>  ROLLBACK=<YES/NO>
+```
+
+包（23 文件，逐字节回读一致；`PACKAGE_MANIFEST.json` 含全部 SHA）：
+`agents/chatgpt/inbox/BLACKBOX_DESKTOP_STRUCTURE_REMAP_20261025_1405/`
+共享镜像：`\\192.168.100.2\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\desktop_structure_audit_20261025\`
+
+主文档：[REQUEST_FOR_NOTEBOOK_REVIEW.md](https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_DESKTOP_STRUCTURE_REMAP_20261025_1405/REQUEST_FOR_NOTEBOOK_REVIEW.md)
+
+---
+（以下为既有内容）
+
 # SAM｜整底座运行链路已补交（同一任务，非新一轮）
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
