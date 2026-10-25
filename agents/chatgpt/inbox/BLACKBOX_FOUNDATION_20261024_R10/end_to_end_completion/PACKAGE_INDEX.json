@@ -3,7 +3,7 @@
   "task": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
   "revision": "R13_SAME_TASK_CORRECTION",
   "hub_destination": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion",
-  "member_count": 63,
+  "member_count": 62,
   "members": [
     {
       "path": "ACCEPTANCE.json",
@@ -38,7 +38,7 @@
     {
       "path": "CHANGE_INDEX.json",
       "bytes": 6069,
-      "sha256": "c82333cd05b6c153032175d72ae16edbc0ed1873931cd9d193bb3b122885372a"
+      "sha256": "0d91beb590dc1dc878124a66801bf3f28d47f681870e646223784591ca2a13cc"
     },
     {
       "path": "changed_code/candidate__local_plane__provider.py",
@@ -137,8 +137,8 @@
     },
     {
       "path": "changed_code/tools__upload_end_to_end_v3.py",
-      "bytes": 10634,
-      "sha256": "4748aa68b7a8525fb521c5c6f8e4c7b9d891adaee0d3c55f4e9a3f4a9410b082"
+      "bytes": 10310,
+      "sha256": "c404a167f2e8c8db254eee7c615103218ae56954e99121a010a04619330da30f"
     },
     {
       "path": "changed_code/tools__verify_provider_semantics.py",
@@ -314,12 +314,7 @@
       "path": "evidence/V4_STRICT_RUNS_ALL.json",
       "bytes": 25448,
       "sha256": "1ac0cd4f17db4428356a84aab5634683e4f9f8c82e0f8f5225cabdf2882703bb"
-    },
-    {
-      "path": "UPLOAD_READBACK.json",
-      "bytes": 43045,
-      "sha256": "bdcb34f992b6969c28f64b1b4727c51647efb7d8adfd2d06f25a5fa82253bba3"
     }
   ],
-  "note": "every member was uploaded and read back byte-identically before the index was published (see UPLOAD_READBACK.json)"
+  "note": "members were uploaded and read back byte-identically; PACKAGE_INDEX.json and UPLOAD_READBACK.json describe each other, so neither lists itself and the receipt carries the index hash."
 }
