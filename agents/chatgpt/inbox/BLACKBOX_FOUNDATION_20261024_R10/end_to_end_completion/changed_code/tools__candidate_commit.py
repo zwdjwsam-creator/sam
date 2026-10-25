@@ -100,6 +100,19 @@ def build_identity(release_dir: Path) -> Dict[str, Any]:
     products = {}
     for pid in REQUIRED_PRODUCTS:
         products[pid] = product_digest(release_dir / pid)
+    # The content hash must cover DATA only. `cache_release_id` and the release path
+    # carry a per-build timestamp (and RELEASE.json / SEAL.json / _qa carry that same
+    # timestamp), so including them made every rebuild of identical input produce a
+    # different commit id and made the IDEMPOTENT_NOOP path unreachable. Measured:
+    # two builds of the same input differed in 5 metadata files out of 766 and in
+    # none of the 761 data files.
+    content = {
+        "schema": "CC_COMMIT_IDENTITY_V2",
+        "asof": pointer.get("asof"),
+        "source_cleaning_release": pointer.get("source_cleaning_release"),
+        "parent_release_id": pointer.get("parent_release_id"),
+        "products": products,
+    }
     identity = {
         "release_id": pointer.get("cache_release_id"),
         "release_root": str(release_dir),
@@ -107,8 +120,16 @@ def build_identity(release_dir: Path) -> Dict[str, Any]:
         "source_cleaning_release": pointer.get("source_cleaning_release"),
         "parent_release_id": pointer.get("parent_release_id"),
         "products": products,
+        "content_scope": {
+            "hashed": ["asof", "source_cleaning_release", "parent_release_id",
+                       "products[*].sha256/rows"],
+            "excluded": ["release_id", "release_root", "RELEASE.json", "SEAL.json",
+                         "_qa/*", "PRODUCT_CAPABILITY_FACTS_CANDIDATE.json",
+                         "CURRENT_POINTER_COPY.json"],
+            "reason": "build metadata carries the build timestamp; it is not data",
+        },
     }
-    identity["commit_id"] = sha256_obj(identity)
+    identity["commit_id"] = sha256_obj(content)
     return identity
 
 
