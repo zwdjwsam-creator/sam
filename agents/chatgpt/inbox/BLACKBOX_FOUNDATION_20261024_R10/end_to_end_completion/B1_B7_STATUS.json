@@ -4,7 +4,7 @@
     "B1": {
       "requirement": "PRE-adjustment price chain certifiable over the test window",
       "status": "PARTIALLY_REPAIRED",
-      "failed_predicate": "the factor plane is not a proven adjustment series anywhere in the tested window: 17 incremental source files carry a positional integer date and every sampled incremental payload from 2026-08-10 onward is a constant 1.0, so CACHE holds 7..89 rows for 2026-08-17..2026-09-01 and a full 5,215..5,222-row plane of 1.0 for 2026-09-02..2026-09-24",
+      "failed_predicate": "the factor plane is not a proven adjustment series in the tested window. Observed: 17 incremental source files carry a positional integer date (0..299), every sampled incremental payload from 2026-08-10 onward is a constant 1.0, CACHE holds 7..89 rows for 2026-08-17..2026-09-01 and a 5,215..5,222-row 1.0 plane for 2026-09-02..2026-09-24. The cause of those observations is NOT established by this package",
       "affected_deliverable": "D2",
       "repair_attempted": "provider joins ADJUST_FACTOR_PIT_R1 same-day only, no ffill/bfill, no 1.0 fallback, and divides by factor(anchor) with the divisor guarded: rows whose same-day factor or anchor factor is absent are WITHHELD (NaN price + BLOCKED_UNPROVEN_ADJUSTMENT tag + recorded failure), and a batch with no provable code is a hard block. ETF/INDEX are served raw by contract",
       "remaining_input": "a re-issued incremental adjust-factor plane (real date column, real factors) for 2026-08-10..2026-09-24, and a per-date factor lineage sidecar at publish time",
@@ -156,7 +156,16 @@
           "withheld_label": "BLOCKED_UNPROVEN_ADJUSTMENT",
           "no_identity_fallback": true,
           "note": "a constant plane is refused structurally, so a placeholder cannot be consumed as if it were an adjustment"
-        }
+        },
+        "attribution_status": "NOT_ESTABLISHED",
+        "withdrawn_attribution": "the earlier reading named this a supplier defect and proposed re-downloading the window. Withdrawn: the observations are equally consistent with the requested fq parameters and normalisation basis, the SDK return shape, local serialisation, or supplier content",
+        "cross_section_concatenation": {
+          "source_site": "source machine aux_billboard_adjust_index_minute_r15.py:110-115",
+          "request_shape": "single-day start/end, fields=['factor'], fq=None",
+          "issue": "a multi-year batch cross-section and a one-day incremental are different cross sections; their basis is not proven directly concatenable"
+        },
+        "local_blocking_mechanism": "provider._constant_plane_sessions nulls a plane whose factor has nunique == 1. This is a local refusal rule, not evidence about the vendor: a genuinely all-1.0 session is withheld too",
+        "coverage_file_limit": "DAILY_RAW_FACTOR_COVERAGE.json marks 2026-08-05..2026-09-24 but its per_session holds only 2026-08-05 and 2026-08-06 at 10 rows each, so it cannot support 'no usable daily source across the window'"
       }
     },
     "B2": {
@@ -189,7 +198,8 @@
       "failed_predicate": "the ORIGINAL publish protocol runs end to end non-dry-run with every write target bound inside the task tree (published=True, 6 bound writes, 0 unbound, refresh_scope_from_live called once, no coverage self-filled), but it was never bound to the production pointer, so its behaviour under a real CURRENT switch is unproven",
       "affected_deliverable": "D2",
       "repair_attempted": "commit is now an immutable versioned release + ONE atomic COMMIT.json whose checkpoint names the committed payload identity; mid-failure, crash-after-swap and revised-input resume were executed (9/9 scenarios PASS); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json); publish_atomic was then rehearsed non-dry-run with CACHE_PTR, CLEAN_PTR, FACTS, LEDGER, SCOPE, child summary, OPS and HAND-SCOPE-R2 all rebound to task-local copies seeded from production, under a sys.addaudithook write guard (evidence/PUBLISH_ATOMIC_REHEARSAL.json)",
-      "remaining_input": "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)"
+      "remaining_input": "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)",
+      "scope_limit": "the rehearsal is isolated from the compiler run: it published a candidate pair seeded from production, and the compiler it graded was the cc_out release, not the R15 release. published=true therefore supports no production admission"
     },
     "B6": {
       "requirement": "writer / checkpoint / resume / non-regression",
@@ -209,8 +219,8 @@
     }
   },
   "note": "no item is closed by this round",
-  "revised_at": "2026-10-25T13:13:22+08:00",
-  "revision": "R13_SAME_TASK_CORRECTION",
+  "revised_at": "2026-10-25T13:27:35+08:00",
+  "revision": "R13_REVIEW_CONSUMED",
   "historical_labels_preserved": "B1_B7_STATUS_R12_PRESERVED.json",
   "minute_plane": {
     "product": "STOCK_MINUTE_1M_R1",
@@ -373,5 +383,18 @@
       "note": "kept as the measurement that found the defect"
     }
   },
-  "round": "R13_ROUND2"
+  "round": "R13_ROUND2",
+  "review": {
+    "reviewed_by": "GPT",
+    "review_status": "REVIEWED_FINAL_PASS_BLOCKED",
+    "consumed_at_cn": "2026-10-25T13:27:35+08:00",
+    "no_new_round_dispatched": true,
+    "evidence": "evidence/GPT_REVIEW_R13_FINAL_CONSUMED.json"
+  },
+  "chain_integrity_gap": {
+    "id": "R5_CHAIN_INTEGRITY",
+    "statement": "R15_REPLAY_20260924_R2 is not the compiler's --cleaning-json input",
+    "reported_by": "GPT final review 2026-10-25 (REVIEWED_FINAL_PASS_BLOCKED, reason 1)",
+    "would_require": "a single run whose compiler argv names the R15 release and whose publish step consumes that same compiler release"
+  }
 }
