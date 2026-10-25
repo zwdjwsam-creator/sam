@@ -1,26 +1,82 @@
 {
   "artifact": "R10_END_TO_END_PACKAGE_INDEX",
+  "revision": "R12_INPUT_PLANE_REPAIR_REVISION",
   "hub_destination": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion",
   "files": [
     {
       "name": "REPORT.md",
-      "bytes": 7741,
-      "sha256": "515919773ded23d9e25f29100781ff58a9d2436a34b173bbd9f446e00a8ff0e2"
+      "bytes": 18416,
+      "sha256": "d2efa44ed8ba7d1fe47b06c5c2e1fb4c200e8aebb41ea9759dc1abc919b13545"
     },
     {
       "name": "ACCEPTANCE.json",
-      "bytes": 5764,
-      "sha256": "67c90b4f59ad16ccd21cedf7b0a8956bd630800ede0edcade702005dbfa3e8b9"
+      "bytes": 29571,
+      "sha256": "033a3d4bfc55261f5ddf70fd7902f8bb2b24ed0226cd980c31f824d5784b12e9"
     },
     {
       "name": "DATASET_STATE.json",
-      "bytes": 308333,
-      "sha256": "46712650a669cfc6d013e6e0611b69cf1d7aaac4920e1e564e7622fa5009e439"
+      "bytes": 358382,
+      "sha256": "74064709f7f847ee2474789b2bbedcbe27518d8c32ceb320afea68a07e6670db"
     },
     {
       "name": "CANDIDATE_REPLAY.json",
       "bytes": 6227,
       "sha256": "1e3b23addc4027ccad62c6edbaa9276a525019fd34fc879c6c313c6a62743292"
+    },
+    {
+      "name": "CONNECTED_PIPELINE.json",
+      "bytes": 25159,
+      "sha256": "43866c4a1cd109029ad2a3bf5efd9a2fb59b0c92c406886502fdc8bef7c3183d"
+    },
+    {
+      "name": "CANDIDATE_CHECKPOINT_BINDINGS.json",
+      "bytes": 31278,
+      "sha256": "40852a798f1d44cc0e95fb368f2f2941163ab3e5649e6b7f8ff48130fee70eb4"
+    },
+    {
+      "name": "B1_B7_STATUS.json",
+      "bytes": 4111,
+      "sha256": "c592fc624ee7c823206450ea7b927baea5f37237094bc63c3168b6c67176b747"
+    },
+    {
+      "name": "FINAL_REQUIREMENT_MATRIX.json",
+      "bytes": 2562,
+      "sha256": "caf7f9ba62b04bfcf9f93dd6483230cfe2ab1b9566e84854e32b6b3ebfab0a1b"
+    },
+    {
+      "name": "CHANGE_INDEX.json",
+      "bytes": 4502,
+      "sha256": "69d74052f6eb512205e087e4c111bcee389b5e7b2b828241b10525e8c249e56c"
+    },
+    {
+      "name": "RUN_GUIDE.md",
+      "bytes": 2537,
+      "sha256": "9308fc3e32c17fef491fa834cb998e8e8c47e1500899208bd9459ac9743471ee"
+    },
+    {
+      "name": "COMMAND_LOG.json",
+      "bytes": 11449,
+      "sha256": "c0e74bad24dad87d799b43c6038002bf55e9c25322baf7023101a14a3bed53a7"
+    },
+    {
+      "name": "INPUT_PLANE_REPAIR.json",
+      "bytes": 12937,
+      "sha256": "f03ae0ce4225c59afb6c0de46e0cc7856637305c83228e9cb4b2d51a288fa8b3"
+    },
+    {
+      "name": "PRICE_FETCH_FAILURE.json",
+      "bytes": 2041,
+      "sha256": "f6841a04ab8f36cd669c693e73e1eb36a851480cc0efd5da1e0e291fe1061d71"
+    },
+    {
+      "name": "TRADEABILITY_RESTORE.json",
+      "bytes": 11800,
+      "sha256": "154e0e2f977ca09b810c60317b5c4e705510b887ff8184f1dd1074cc24327e0a"
+    },
+    {
+      "name": "RAW_STATUS_FIELD_INVENTORY.json",
+      "bytes": 53744,
+      "sha256": "690e5333b218a5e6827a7c90084fd2507f63b7693bc51d7bc4f0eb200aa89bb5"
     },
     {
       "name": "ENV_VERIFICATION.json",
@@ -34,8 +90,8 @@
     },
     {
       "name": "RUN_RESULT.json",
-      "bytes": 51099,
-      "sha256": "52ca6f668f06804ce33ca5553e6d8083ba126956b2842c0958cd5314a95f9d0a"
+      "bytes": 51781,
+      "sha256": "aedb1e368cf554806f95484cfda9f39c27bc0cb7d98dd95144fa63c308ed3c8d"
     },
     {
       "name": "daily_records.csv",
@@ -45,7 +101,7 @@
     {
       "name": "trades.csv",
       "bytes": 288,
-      "sha256": "512d749ee276599314a1ac9cb0785a8aab4c6ba34ee25655d98a82b962787ac6"
+      "sha256": "6a8b12e7dc760d84ce14e72b0a7a77335a1454c2ad1601035aed9c62ceb93555"
     },
     {
       "name": "daily_positions.csv",
@@ -54,8 +110,68 @@
     },
     {
       "name": "backtest.log",
-      "bytes": 140031,
-      "sha256": "83a06540d71a252e91f0629147ff09ed3001bfc1d22ae5a3fa7f7da037e8c90e"
+      "bytes": 138339,
+      "sha256": "e80a5b3249065b9aad78da5426c012694150f3c8deec011789462490d71769da"
+    },
+    {
+      "name": "changed_code/candidate__local_plane__provider.py",
+      "bytes": 53563,
+      "sha256": "630725cd6c0558f935d36e1052d0d07b64036ce81376097b53892bbf5186c863"
+    },
+    {
+      "name": "changed_code/candidate__run_engine_backtest.py",
+      "bytes": 21811,
+      "sha256": "169b15a13773d356607955fa68423e864948b9b2239c3bc25a6ad39e978f0e92"
+    },
+    {
+      "name": "changed_code/tools__build_checkpoint_bindings.py",
+      "bytes": 6081,
+      "sha256": "9f1f72b937d35dd1b5040ce021a05f1b7a46efd039960d898660665e193b4e3c"
+    },
+    {
+      "name": "changed_code/tools__build_dataset_state.py",
+      "bytes": 30694,
+      "sha256": "49f9c03f0dd8c4616d4dd60ccd767893be98093f8b0dfaff27b7ce49c220349f"
+    },
+    {
+      "name": "changed_code/tools__build_delivery_report_v2.py",
+      "bytes": 38071,
+      "sha256": "c1f9759c58048061aeea8c44ebfb7fa2b84b1a885cbfd658ea81449f5e3d2be2"
+    },
+    {
+      "name": "changed_code/tools__build_input_plane_repair_evidence.py",
+      "bytes": 7199,
+      "sha256": "d1993c8093cedcbcf771ce9ba49eb7b2bc4985586e67dc8bc590aa683fc0db62"
+    },
+    {
+      "name": "changed_code/tools__build_tradeability_candidate.py",
+      "bytes": 9873,
+      "sha256": "6412225c67794aee7d9e2f9b9468c04747855c213f6991dd0a0463c530f78f4c"
+    },
+    {
+      "name": "changed_code/tools__explain_price_fetch_failure.py",
+      "bytes": 5549,
+      "sha256": "4372040b53006f0e60e21a432b5a7d676a6f9e3179cbe4f4acc14e49f4b0b8fa"
+    },
+    {
+      "name": "changed_code/tools__explain_required_input_gap.py",
+      "bytes": 5677,
+      "sha256": "48106aa2884ecc9188cc185315f173db20a3cb47702c35494552ef7df8e9af25"
+    },
+    {
+      "name": "changed_code/tools__raw_status_field_inventory.py",
+      "bytes": 3618,
+      "sha256": "afa0533ae17cdb5e422f79b63f2f78b369fa7b1f2ac4a07d25a89bdf3d18392e"
+    },
+    {
+      "name": "changed_code/tools__record_commands.py",
+      "bytes": 6294,
+      "sha256": "422cb82a3e871dce55daa40c35dc7f92aa79e13c6c3208deb15b6bace796e997"
+    },
+    {
+      "name": "changed_code/tools__run_connected_pipeline.py",
+      "bytes": 27263,
+      "sha256": "f17a984cae7b73a31704cc5348260086bc38f00db2a64c0115eb131c5ef5a582"
     }
   ],
   "read_order": [
@@ -63,12 +179,36 @@
     "ACCEPTANCE.json",
     "DATASET_STATE.json",
     "CANDIDATE_REPLAY.json",
+    "CONNECTED_PIPELINE.json",
+    "CANDIDATE_CHECKPOINT_BINDINGS.json",
+    "B1_B7_STATUS.json",
+    "FINAL_REQUIREMENT_MATRIX.json",
+    "CHANGE_INDEX.json",
+    "RUN_GUIDE.md",
+    "COMMAND_LOG.json",
+    "INPUT_PLANE_REPAIR.json",
+    "PRICE_FETCH_FAILURE.json",
+    "TRADEABILITY_RESTORE.json",
+    "RAW_STATUS_FIELD_INVENTORY.json",
     "ENV_VERIFICATION.json",
     "PIP_FREEZE_ROOT_VENV_R10.txt",
     "RUN_RESULT.json",
     "daily_records.csv",
     "trades.csv",
     "daily_positions.csv",
-    "backtest.log"
-  ]
+    "backtest.log",
+    "changed_code/candidate__local_plane__provider.py",
+    "changed_code/candidate__run_engine_backtest.py",
+    "changed_code/tools__build_checkpoint_bindings.py",
+    "changed_code/tools__build_dataset_state.py",
+    "changed_code/tools__build_delivery_report_v2.py",
+    "changed_code/tools__build_input_plane_repair_evidence.py",
+    "changed_code/tools__build_tradeability_candidate.py",
+    "changed_code/tools__explain_price_fetch_failure.py",
+    "changed_code/tools__explain_required_input_gap.py",
+    "changed_code/tools__raw_status_field_inventory.py",
+    "changed_code/tools__record_commands.py",
+    "changed_code/tools__run_connected_pipeline.py"
+  ],
+  "note": "single consolidated package; earlier members from the 08:46 upload are superseded by these bytes"
 }
