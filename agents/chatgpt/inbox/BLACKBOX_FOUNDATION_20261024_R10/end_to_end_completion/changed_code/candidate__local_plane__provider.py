@@ -24,6 +24,7 @@ import numpy as np
 import pyarrow.parquet as pq
 
 from . import catalog
+from . import minute_bridge
 from .jq_compat import Cond, Field, OrderKey, Query
 
 try:  # the engine's provider ABC, when the engine fork is importable
@@ -121,6 +122,10 @@ class LocalPlaneProvider(_EngineDataProvider):
         self._cand_trade_full: Optional[pd.DataFrame] = None
         self._sealed_trade_cache: Dict[int, Optional[pd.DataFrame]] = {}
         self._trade_window_cache: Dict[Tuple[str, str], pd.DataFrame] = {}
+        # Provenance cache for the factor plane: a session whose ENTIRE plane is a single
+        # identical value carries no adjustment information and is not applied.
+        self._const_plane_cache: Dict[int, Dict[str, Any]] = {}
+        self.factor_plane_anomalies: List[Dict[str, Any]] = []
         # Missing required inputs must fail the run, not silently skip strategy logic.
         self.required_input_failures: List[Dict[str, Any]] = []
         self.strict_required_inputs: bool = False
@@ -336,10 +341,52 @@ class LocalPlaneProvider(_EngineDataProvider):
             return pd.DataFrame(columns=BASE_FRAME_COLS)
         return pd.concat(frames, ignore_index=True)
 
+    def _constant_plane_sessions(self, year: int) -> Dict[str, Any]:
+        """Sessions whose ENTIRE factor plane is one identical value.
+
+        Measured on the current product: `ADJUST_FACTOR_PIT_R1` carries 5,204-5,222 rows
+        per session with 90-148 codes differing from 1.0 through 2026-08-14, then a run of
+        sessions where every single row is exactly 1.0 (2026-09-03 .. 2026-09-24). A
+        market-wide factor of exactly 1.0 for every code across fifteen consecutive
+        sessions is not an adjustment series; it is the writer's all-ones placeholder.
+        Consuming it would BE the forbidden constant-1 fallback, only spelled differently.
+
+        The test is therefore structural (whole-plane single value), never a date list:
+        whatever session the source produces with a single-valued plane is excluded from
+        the proof, and the exclusion is reported with its key.
+        """
+        if year in self._const_plane_cache:
+            return self._const_plane_cache[year]
+        result: Dict[str, Any] = {"constant_sessions": {}, "reason": None}
+        try:
+            df = self._read("ADJUST_FACTOR_PIT_R1", year)
+        except FileNotFoundError:
+            self._const_plane_cache[year] = result
+            return result
+        if df is None or not len(df):
+            self._const_plane_cache[year] = result
+            return result
+        d = df[["date", "factor"]].copy()
+        d["date"] = pd.to_datetime(d["date"], errors="coerce").dt.normalize()
+        d["factor"] = pd.to_numeric(d["factor"], errors="coerce")
+        d = d.dropna(subset=["date"])
+        g = d.groupby(d["date"])["factor"].agg(["nunique", "size", "min"])
+        for ts, row in g.iterrows():
+            if int(row["nunique"]) == 1:
+                result["constant_sessions"][pd.Timestamp(ts).strftime("%Y-%m-%d")] = {
+                    "rows": int(row["size"]),
+                    "constant_value": float(row["min"]),
+                }
+        if result["constant_sessions"]:
+            result["reason"] = "CONSTANT_PLANE_NOT_PROVEN"
+        self._const_plane_cache[year] = result
+        return result
+
     def _factor_frame(self, start: dt.date, end: dt.date, codes: Optional[Sequence[str]] = None) -> pd.DataFrame:
         frames = []
         small = bool(codes) and 0 < len(codes) <= 50
         for year in range(start.year, end.year + 1):
+            const = self._constant_plane_sessions(year)["constant_sessions"]
             try:
                 if small:
                     per_code = self._code_frames("ADJUST_FACTOR_PIT_R1", year)
@@ -352,7 +399,26 @@ class LocalPlaneProvider(_EngineDataProvider):
             except FileNotFoundError:
                 continue
             d = df["date"]
-            frames.append(df[(d >= pd.Timestamp(start)) & (d <= pd.Timestamp(end))])
+            df = df[(d >= pd.Timestamp(start)) & (d <= pd.Timestamp(end))].copy()
+            if const and len(df):
+                df["date"] = pd.to_datetime(df["date"]).dt.normalize()
+                tag = df["date"].dt.strftime("%Y-%m-%d")
+                bad = tag.isin(list(const))
+                if bool(bad.any()):
+                    seen = sorted(set(tag[bad]))
+                    for day in seen:
+                        info = const[day]
+                        rec = {"field": "ADJUST_FACTOR_PIT_R1",
+                               "reason": "CONSTANT_PLANE_NOT_PROVEN",
+                               "date": day, "plane_rows": info["rows"],
+                               "plane_constant_value": info["constant_value"],
+                               "rows_withheld": int((tag[bad] == day).sum()),
+                               "note": "the whole session's factor plane is one identical "
+                                       "value; applying it would be a constant fallback"}
+                        if rec not in self.factor_plane_anomalies:
+                            self.factor_plane_anomalies.append(rec)
+                    df.loc[bad, "factor"] = np.nan
+            frames.append(df)
         if not frames:
             return pd.DataFrame(columns=["date", "code", "factor"])
         return pd.concat(frames, ignore_index=True)
@@ -653,11 +719,116 @@ class LocalPlaneProvider(_EngineDataProvider):
         end = _to_date(end_date) or (self.trade_days()[-1] if self._calendar else dt.date(2026, 9, 24))
         intraday_mode = "NONE"
 
-        # A minute-bar request has no local minute product at all. Refuse it here,
-        # before any daily bar can stand in for it: the daily plane cannot answer a
-        # minute question, and a daily open is not minute execution semantics.
+        # A minute request is answered by the ORIGINAL reader for the real product
+        # `STOCK_MINUTE_1M_R1` (清洗成品 standard/price/A股_stock_1m), not by a daily
+        # bar standing in for it. Where the product has no shard for the requested
+        # day, the request is BLOCKED with the reader's own reason: a daily open is
+        # not minute execution semantics and is never substituted here.
         if intraday_freq and not getattr(self, "intraday_proxy_allowed", False):
             want0 = list(fields) if fields else ["open", "close", "high", "low", "volume", "money"]
+            start_req = start_date if start_date is not None else end
+            resp = minute_bridge.fetch(
+                [str(c) for c in codes], start_req, end_date if end_date is not None else end,
+                asof=_to_date(end).strftime("%Y%m%d") if end is not None else "20260924",
+                cutoff=end_date if end_date is not None else end,
+                fields=want0,
+                request_id="LOCAL_PLANE_GET_PRICE",
+            )
+            rows = resp.get("data") or []
+            if resp.get("status") == "PASS" and rows:
+                mdf = pd.DataFrame(rows)
+                mdf["time"] = pd.to_datetime(mdf["timestamp"]).dt.tz_localize(None) \
+                    if getattr(pd.to_datetime(mdf["timestamp"]).dt, "tz", None) is not None \
+                    else pd.to_datetime(mdf["timestamp"])
+                mdf["date"] = mdf["time"].dt.normalize()
+                rename = {"amount": "money"}
+                mdf = mdf.rename(columns=rename)
+                adjust_note = "RAW_NOT_ADJUSTED"
+                if fq in ("pre", "post"):
+                    # Adjusting a minute bar needs the SAME DAY's factor. Absence is
+                    # blocked, never filled: a minute series is not "no adjustment".
+                    asset_map = self._asset_class_of(
+                        sorted(set(mdf["code"].astype(str))), _to_date(mdf["date"].min()),
+                        _to_date(mdf["date"].max()))
+                    stock_rows = mdf["code"].astype(str).map(asset_map).eq("STOCK")
+                    if bool(stock_rows.any()):
+                        st = mdf.loc[stock_rows].copy()
+                        aligned, _ids, fdiag = self._align_factor_dense(
+                            st, sorted(set(st["code"].astype(str))),
+                            _to_date(mdf["date"].max()))
+                        st = st.merge(aligned, on=["date", "code"], how="left")
+                        st["factor"] = pd.to_numeric(st["factor"], errors="coerce")
+                        unproven = st["factor"].isna()
+                        if bool(unproven.any()):
+                            self.required_input_failures.append({
+                                "field": "ADJUST_FACTOR_PIT_R1",
+                                "kind": "MINUTE_FACTOR_NOT_PROVABLE",
+                                "start": str(_to_date(mdf["date"].min())),
+                                "end": str(_to_date(mdf["date"].max())),
+                                "rows_withheld": int(unproven.sum()),
+                                "codes_withheld": int(st.loc[unproven, "code"].nunique()),
+                                "dates": sorted({str(pd.Timestamp(d).date())
+                                                 for d in pd.unique(st.loc[unproven, "date"])}),
+                                "reason": fdiag.get("reason"),
+                                "note": "minute bars are served raw only where the same-day "
+                                        "factor is provable; RAW_NONE is not adjustment",
+                            })
+                            if getattr(self, "strict_required_inputs", False) and \
+                                    int((~unproven).sum()) == 0:
+                                raise RuntimeError(
+                                    "REQUIRED_INPUT_MISSING ADJUST_FACTOR_PIT_R1_MINUTE "
+                                    f"{int(unproven.sum())} rows unprovable")
+                            st = st.loc[~unproven]
+                        for c in ("open", "high", "low", "close"):
+                            if c in st.columns:
+                                st[c] = st[c] * st["factor"]
+                        st["adjust_applicability"] = "APPLIED_SAME_DAY_FACTOR_MINUTE"
+                        st = st.drop(columns=["factor"])
+                        others = mdf.loc[~stock_rows].copy()
+                        if len(others):
+                            others["adjust_applicability"] = "RAW_NOT_APPLICABLE_NON_STOCK"
+                        mdf = pd.concat([st, others], ignore_index=True, sort=False)
+                        adjust_note = "APPLIED_SAME_DAY_FACTOR_MINUTE"
+                    else:
+                        mdf["adjust_applicability"] = "RAW_NOT_APPLICABLE_NON_STOCK"
+                else:
+                    mdf["adjust_applicability"] = "RAW_REQUESTED"
+                out_cols = ["time", "code"] + [c for c in want0 if c in mdf.columns]
+                keep = out_cols + [c for c in ("adjust_applicability",) if c in mdf.columns]
+                frame = mdf[keep].sort_values(["time", "code"]).reset_index(drop=True)
+                self.observation_log.append({
+                    "api": "get_price", "securities": len(codes),
+                    "start": str(_to_date(frame["time"].min())),
+                    "end": str(_to_date(frame["time"].max())), "count": count,
+                    "fq": str(fq), "anchor": str(end), "fields": want0,
+                    "rows": int(len(frame)),
+                    "tradeability_joined": False, "paused_null_rows_preserved": 0,
+                    "paused_rows_inferred_from_bar_presence": 0,
+                    "intraday_mode": "REAL_MINUTE_PLANE",
+                    "frequency": str(frequency),
+                    "minute_product": resp.get("product_id"),
+                    "minute_source_id": resp.get("source_id"),
+                    "minute_source_paths": (resp.get("source_paths") or [])[:2],
+                    "minute_rows_returned": resp.get("rows"),
+                    "factor_codes_without_any": 0, "factor_missing_cells": None,
+                    "factor_alignment": "SAME_DAY_DENSE",
+                    "adjust_non_stock_classes": [],
+                    "factor_identity_fallback_codes": 0,
+                    "adjust_applicability_counts": (
+                        {str(k): int(v) for k, v in
+                         frame["adjust_applicability"].value_counts().items()}
+                        if "adjust_applicability" in frame.columns else {}),
+                    "adjust_note": adjust_note,
+                })
+                if panel:
+                    if len(codes) == 1:
+                        single = frame.set_index("time")[want0].sort_index()
+                        single.index.name = "time"
+                        return single
+                    return frame.set_index(["time", "code"])[want0]
+                return frame[["time", "code"] + want0]
+            # The product exists but does not answer this window/code: BLOCKED.
+            reason = resp.get("reason_code") or resp.get("status")
             detail = {
                 "field": "STOCK_MINUTE_PLANE",
                 "start": str(_to_date(start_date) if start_date is not None else None),
@@ -665,7 +836,12 @@ class LocalPlaneProvider(_EngineDataProvider):
                 "clock": end_dt.isoformat() if end_dt is not None else None,
                 "requested_frequency": str(frequency),
                 "n_codes": len(codes),
-                "reason": "no local minute product for intraday requests",
+                "product_id": resp.get("product_id"),
+                "reader_status": resp.get("status"),
+                "reader_reason": reason,
+                "reader_evidence_gaps": resp.get("evidence_gaps"),
+                "source_paths": (resp.get("source_paths") or [])[:2],
+                "reason": f"original minute reader answered {resp.get('status')}/{reason}",
             }
             self.required_input_failures.append(detail)
             self.observation_log.append({
@@ -674,15 +850,19 @@ class LocalPlaneProvider(_EngineDataProvider):
                 "fq": str(fq), "anchor": str(end), "fields": want0, "rows": 0,
                 "tradeability_joined": False, "paused_null_rows_preserved": 0,
                 "paused_rows_inferred_from_bar_presence": 0,
-                "intraday_mode": "BLOCKED_NO_MINUTE_PLANE",
-                "frequency": str(frequency), "factor_codes_without_any": 0,
+                "intraday_mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE",
+                "frequency": str(frequency),
+                "minute_product": resp.get("product_id"),
+                "minute_reader_status": resp.get("status"),
+                "minute_reader_reason": reason,
+                "factor_codes_without_any": 0,
                 "factor_missing_cells": None, "factor_alignment": "SAME_DAY_DENSE",
                 "adjust_non_stock_classes": [], "factor_identity_fallback_codes": 0,
             })
             if getattr(self, "strict_required_inputs", False):
                 raise RuntimeError(
                     "REQUIRED_INPUT_MISSING STOCK_MINUTE_PLANE "
-                    f"frequency={frequency} clock={detail['clock']}"
+                    f"frequency={frequency} clock={detail['clock']} reason={reason}"
                 )
             return pd.DataFrame(columns=["time", "code"] + want0)
         # A clock before the open knows nothing of the same-day bar, so the latest
@@ -757,6 +937,11 @@ class LocalPlaneProvider(_EngineDataProvider):
                 stock_merged = stock_raw.copy()
                 stock_merged["factor"] = np.nan
                 stock_merged["adjust_applicability"] = "BLOCKED_NO_FACTOR_PLANE"
+                # An fq='pre' request without a proven factor is not a raw answer: serving
+                # the unadjusted close here would be the constant-1 fallback in disguise.
+                for _c in ("open", "high", "low", "close"):
+                    if _c in stock_merged.columns:
+                        stock_merged[_c] = np.nan
             elif len(stock_raw):
                 stock_merged = stock_raw.merge(aligned, on=["date", "code"], how="left")
                 stock_merged["factor"] = pd.to_numeric(stock_merged["factor"], errors="coerce")
