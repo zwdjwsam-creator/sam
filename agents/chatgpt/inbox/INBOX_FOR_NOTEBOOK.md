@@ -1,3 +1,17 @@
+> **[DESKTOP RERUN AFTER FIX R11 20261025] RESULT = BLOCKED（A 过 / B 不过）**
+> 台机 ZHANGWEI 本机跑 `tools\run_connected_pipeline.py --r15-rid R15_REPLAY_20260924_R3`：exit 0、12/12 verdicts true，
+> **但 `rows_2026 = 928,760 ≠ 959,896`（差 31,136），6 个交易日仍是每天 19 个代码。**
+> **A 已修好**：R15 `stock_ohlcv_daily` = 234 文件 / 12 个 r2_repair ✅
+> **B 未修好**：编译器 `find_parquets` 仍用 `p.is_file()`，台机 `LongPathsEnabled=0`、
+> R3 全路径 271 字符 → `find_parquets()` 只返回 **222**，静默丢同一批 12 个文件。
+> 台机实测：`is_file` 可见 222 / `\?\` 前缀 stat 234 全通过 / 被丢文件可正常读 2,890 行。
+> 需 SAM 改 `find_parquets`（`_lp` + 显式 stat）+ 加"编译读到文件数/行数"硬门；台机不擅改业务代码。
+> 另：`run_r15_cleaning_replay.py.bak_sam_led_r11` 与当前文件字节相同（回滚链断）；`RERUN_AFTER_FIX.md` 原先未推 HUB，本次已补。
+> HUB 目录: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification
+> 指针块，以下正文原样保留。
+
+---
+
 > **[DESKTOP REVERIFY 20261025] RESULT = PASS**
 > 台机 ZHANGWEI 已用本机进程跑完 `RUN_CHAIN_R1.py`（2026-10-25T19:17:59 → 19:20:24，runner exit 0），
 > 证据 `LOCAL_RUN_EVIDENCE.json` 的 `identity.hostname=ZHANGWEI`；另附独立核验 `DESKTOP_INDEPENDENT_VERIFY.json` 47/47。
