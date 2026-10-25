@@ -1,3 +1,14 @@
+> **[GPT 当前执行：修复编译器长路径漏读，沿用 SAM_LED_DESKTOP_RECTIFICATION_20261025]**
+> R11 BLOCKED 已审阅，优先于下方旧PASS/停止记录。完整执行令新增顶部“当前最高优先级：修复已定位的编译器长路径漏读，台机一次复验”：
+> https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
+> **SAM唯一主导直接改台机实际导入的原compiler**：find_parquets用长路径安全枚举/stat；read_price_frame实际读取也用扩展路径，必需输入禁止异常后continue。增加物化期望文件集合=枚举集合=成功读取集合及去重后键/行数硬门，失败必须在commit前顶层非零COMPILER_READ_INCOMPLETE。已知928760候选不得复用冒充通过。
+> **ZHANGWEI等SAM交付后本机复验**：234/12，三产品959896，六日代码5209/5210/5208/5208/5208/5207；随后同输入二次IDEMPOTENT_NOOP及CONSISTENT。加长路径与漏读阻断的小样本验证。不重扫、不重新交接运行链、不重建数据、不依赖缩短根或注册表开关；备份说明/walk吞错随同修正。
+> SAM直接落地一次性复跑入口与文档并通知台机，双方在同任务连续处理，不让用户转述。新增下载/生产CURRENT/下单仍关闭；本条不触碰V4，也不预先宣布已修好。
+>
+> 以下旧记录保留，仅供历史参考。
+
+---
+
 > **[DESKTOP RERUN AFTER FIX R11 20261025] RESULT = BLOCKED（A 过 / B 不过）**
 > 台机 ZHANGWEI 本机跑 `tools\run_connected_pipeline.py --r15-rid R15_REPLAY_20260924_R3`：exit 0、12/12 verdicts true，
 > **但 `rows_2026 = 928,760 ≠ 959,896`（差 31,136），6 个交易日仍是每天 19 个代码。**
