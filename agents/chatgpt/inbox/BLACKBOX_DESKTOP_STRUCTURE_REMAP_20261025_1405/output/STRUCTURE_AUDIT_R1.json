@@ -1,0 +1,179 @@
+{
+  "schema": "BLACKBOX_DESKTOP_STRUCTURE_AUDIT_R1",
+  "generated_at_cn": "2026-10-25T13:55:27+0800",
+  "desktop_root": "E:\\BLACKBOX",
+  "notebook_source": "\\\\192.168.100.2\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\source_workflow_from_SAM",
+  "notebook_source_root": "E:\\BLACKBOX",
+  "verdict_counts": {
+    "PASS": 12,
+    "PARTIAL": 1,
+    "INFO": 1
+  },
+  "checks": [
+    {
+      "id": "ROOT_IDENTITY",
+      "status": "PASS",
+      "detail": "SAM source_root=E:\\BLACKBOX | desktop root=E:\\BLACKBOX | 同根=True",
+      "remap_required": false
+    },
+    {
+      "id": "CODE_SHA",
+      "status": "PASS",
+      "detail": "CODE: same=90 diff=0 missing=0 (共 90)",
+      "same": 90,
+      "diff": 0,
+      "missing": 0,
+      "diff_files": [],
+      "missing_files": []
+    },
+    {
+      "id": "CONFIG_SHA",
+      "status": "PARTIAL",
+      "detail": "CONFIG: same=26 diff=2 missing=0 (共 28)",
+      "same": 26,
+      "diff": 2,
+      "missing": 0,
+      "diff_files": [
+        "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json",
+        "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json"
+      ],
+      "missing_files": []
+    },
+    {
+      "id": "PATH_MAP_RESOLVE",
+      "status": "PASS",
+      "detail": "DATA_PLANE_PATH_MAP: 36 条绝对路径, 缺失 0",
+      "missing": []
+    },
+    {
+      "id": "CLEANING_CHAIN",
+      "status": "PASS",
+      "detail": "cleaning_as_of=2026-09-24 release_id=BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439 涉及 release 目录=['BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439', 'BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534'] 缺失=0",
+      "missing": [],
+      "multi_root": true
+    },
+    {
+      "id": "CACHE_CHAIN",
+      "status": "PASS",
+      "detail": "asof=2026-09-24 release_root_exists=True root=E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+    },
+    {
+      "id": "CACHE_ID_VS_DIRNAME",
+      "status": "PASS",
+      "detail": "目录名=BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439 | MANIFEST.cache_release_id=BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439 (名≠内部 id 时按目录名建指针会指错, 不得用顶层 asof 外推)"
+    },
+    {
+      "id": "SESSION_CONSISTENCY",
+      "status": "PASS",
+      "detail": "manifest_id=DAILY_DATA_MANIFEST_20260924 CN_RESEARCH_DATE=2026-09-24 JQ cache_asof=2026-09-24 READY=YES BUILD_TIME=2026-10-25T13:55:21+0800"
+    },
+    {
+      "id": "LANE_ASOF_SPREAD",
+      "status": "PASS",
+      "detail": "manifest=2026-09-24 D=2026-09-24 E=2026-09-24 F.fine_grained=NOT_RUN"
+    },
+    {
+      "id": "DOMAIN_CURRENT_VS_SLICE",
+      "status": "PASS",
+      "detail": "5 个域 CURRENT; 指针落后/自相矛盾的有 0 个: ",
+      "domains": [
+        {
+          "id": "C_GLOBAL_SELLSIDE",
+          "current_path": "E:\\BLACKBOX\\数据\\研究报告\\CURRENT\\SELLSIDE_DAILY_INCREMENTAL_CURRENT.json",
+          "current_exists": true,
+          "current_asof": "2026-09-25",
+          "current_status": null,
+          "source_path": null,
+          "slice_date": null,
+          "daily_root": "E:\\BLACKBOX\\数据\\研究报告\\日增量",
+          "max_slice": "2026-09-25",
+          "slice_lag": false,
+          "asof_vs_slice_mismatch": false
+        },
+        {
+          "id": "D_DOMESTIC_SELLSIDE",
+          "current_path": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\CURRENT\\DOMESTIC_SELLSIDE_CURRENT.json",
+          "current_exists": true,
+          "current_asof": "2026-09-24",
+          "current_status": "PASS",
+          "source_path": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\日增量\\2026-09-24\\DOMESTIC_SELLSIDE_LEDGER.csv",
+          "slice_date": "2026-09-24",
+          "daily_root": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\日增量",
+          "max_slice": "2026-09-24",
+          "slice_lag": false,
+          "asof_vs_slice_mismatch": false
+        },
+        {
+          "id": "D_DOMESTIC_NEWS",
+          "current_path": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\CURRENT\\DOMESTIC_NEWS_CURRENT.json",
+          "current_exists": true,
+          "current_asof": "2026-09-24",
+          "current_status": "PASS",
+          "source_path": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\日增量\\2026-09-24",
+          "slice_date": "2026-09-24",
+          "daily_root": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\日增量",
+          "max_slice": "2026-09-24",
+          "slice_lag": false,
+          "asof_vs_slice_mismatch": false
+        },
+        {
+          "id": "E_US_NEWS",
+          "current_path": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\CURRENT\\US_NEWS_CURRENT.json",
+          "current_exists": true,
+          "current_asof": "2026-09-24",
+          "current_status": "PASS",
+          "source_path": null,
+          "slice_date": null,
+          "daily_root": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\日增量",
+          "max_slice": "2026-09-24",
+          "slice_lag": false,
+          "asof_vs_slice_mismatch": false
+        },
+        {
+          "id": "F_US_MARKET",
+          "current_path": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_MARKET_STATE_CURRENT.json",
+          "current_exists": true,
+          "current_asof": "2026-09-24",
+          "current_status": "PASS",
+          "source_path": null,
+          "slice_date": null,
+          "daily_root": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\日增量",
+          "max_slice": "2026-09-24",
+          "slice_lag": false,
+          "asof_vs_slice_mismatch": false
+        }
+      ]
+    },
+    {
+      "id": "MOJIBAKE_DIRS",
+      "status": "PASS",
+      "detail": "疑似乱码目录 0 个: ",
+      "found": []
+    },
+    {
+      "id": "EMPTY_TOP_DIRS",
+      "status": "INFO",
+      "detail": "空顶层目录 7: ['downloads', 'tools', '下载', '导出', '日志', '沙盒', '笔记本']",
+      "dirs": [
+        "downloads",
+        "tools",
+        "下载",
+        "导出",
+        "日志",
+        "沙盒",
+        "笔记本"
+      ]
+    },
+    {
+      "id": "STALE_ROOT_REFS",
+      "status": "PASS",
+      "detail": "根文档仍引用 F:\\BLACKBOX 的: []",
+      "files": []
+    },
+    {
+      "id": "PATH_REMAP",
+      "status": "PASS",
+      "detail": "生成 118 条 笔记本→台式机 路径匹配"
+    }
+  ]
+}
