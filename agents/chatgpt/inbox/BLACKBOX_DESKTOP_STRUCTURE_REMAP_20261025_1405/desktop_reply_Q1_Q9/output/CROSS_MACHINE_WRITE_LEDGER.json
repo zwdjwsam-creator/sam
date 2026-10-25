@@ -1,0 +1,35 @@
+{
+  "schema": "BLACKBOX_CROSS_MACHINE_WRITE_LEDGER_R1",
+  "recorded_at_cn": "2026-10-25T15:07:36+0800",
+  "share_reachable": true,
+  "share_path": "\\\\192.168.100.2\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\desktop_structure_audit_20261025",
+  "entries": [
+    {
+      "target_host": "SAM (192.168.100.2)",
+      "target_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\desktop_structure_audit_20261025",
+      "transport": "SMB share \\\\192.168.100.2\\BLACKBOX",
+      "direction": "desktop_to_notebook",
+      "write_scope": "_OPS 候选区（审计交付物 + 回执），未写入业务数据目录",
+      "touched_business_data": false,
+      "overwrote_existing_source_content": false,
+      "authorization": "SAM 审阅答复第 9 节：位置合规，请留账",
+      "sha_receipt": "\\\\192.168.100.2\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\desktop_structure_audit_20261025\\PACKAGE_MANIFEST.json"
+    },
+    {
+      "target_host": "SAM (192.168.100.2)",
+      "target_path": "\\\\192.168.100.2\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\desktop_structure_audit_20261025\\notebook_review",
+      "transport": "SMB share \\\\192.168.100.2\\BLACKBOX",
+      "direction": "notebook_to_desktop_readonly",
+      "write_scope": "只读：NOTEBOOK_REVIEW_ANSWER_Q1_Q9.md / REVIEW_PROBE(.json) / REVIEW_PROBE_R2.json / review_probe_r1.py / review_probe_r2.py",
+      "touched_business_data": false,
+      "overwrote_existing_source_content": false,
+      "authorization": "SAM 已发布",
+      "sha_receipt": null
+    }
+  ],
+  "rules": [
+    "只在 _OPS 候选区写，不进入业务数据树",
+    "不覆盖源机既有内容；同名冲突先读后写并留 diff",
+    "每次跨机写入必须在本地台账登记"
+  ]
+}
