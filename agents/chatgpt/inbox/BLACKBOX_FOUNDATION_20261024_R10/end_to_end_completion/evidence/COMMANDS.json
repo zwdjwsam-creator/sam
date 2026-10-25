@@ -1,0 +1,71 @@
+{
+  "commands": [
+    {
+      "purpose": "verify SAM bundle identity",
+      "cmd": "python -c 'fetch SAM_SOURCE_CODE_BUNDLE.zip from HUB and sha256'",
+      "exit_code": 0,
+      "result": "567589 bytes, sha256 bdfafc31...b41d89d, MATCH"
+    },
+    {
+      "purpose": "measure production cleaning plane before replay",
+      "cmd": "python -c 'count 2026-08-31/09-01/09-24 rows in cleaning stock_ohlcv_daily'",
+      "exit_code": 0,
+      "result": "0 / 0 / 5222 -> the two replay days are genuinely missing"
+    },
+    {
+      "purpose": "build isolated cleaning candidate from retained RAW",
+      "cmd": "python -X utf8 tools/build_candidate_cleaning_from_retained.py --asof 2026-09-24 --run-target-date 2026-09-24 --replay-days 2026-08-31 2026-09-01",
+      "exit_code": 0,
+      "result": "CC_REPLAY_20260924, replay_rows=10426, 7/7 gates PASS (original read_price_frame + antileak_gate)"
+    },
+    {
+      "purpose": "run the ORIGINAL compiler in candidate mode",
+      "cmd": "python -X utf8 tools/run_original_compiler_candidate.py --cleaning-json candidate/cc/CC_REPLAY_20260924/RELEASE.json --parent-root <sealed> --out-root candidate/cc_out/releases --acceptance-out candidate/cc_out/acceptance --run-target-date 2026-09-24",
+      "exit_code": 0,
+      "result": "CANDIDATE_READY BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258, 44.5s, SEAL.all_pass=true, 08-31 rows=5212, 09-01 rows=5214"
+    },
+    {
+      "purpose": "build revised-input cleaning candidate (earlier retained batch preference)",
+      "cmd": "python -X utf8 tools/build_candidate_cleaning_from_retained.py --asof 2026-09-24 --run-target-date 2026-09-24 --replay-days 2026-08-31 2026-09-01 --prefer earliest --rid CC_REV1",
+      "exit_code": 0,
+      "result": "CC_REV1, 7/7 gates PASS"
+    },
+    {
+      "purpose": "compile the revised input",
+      "cmd": "python -X utf8 tools/run_original_compiler_candidate.py --cleaning-json candidate/cr/CC_REV1/RELEASE.json --out-root candidate/cr_out/releases ...",
+      "exit_code": 0,
+      "result": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527, 44.4s"
+    },
+    {
+      "purpose": "commit recovery / mid-failure / replay selftest",
+      "cmd": "python -X utf8 tools/commit_recovery_selftest.py",
+      "exit_code": 0,
+      "result": "9/9 verdicts PASS, SELFTEST_RESULT=PASS"
+    },
+    {
+      "purpose": "original publish gate evaluated on the candidate (dry-run, no write)",
+      "cmd": "python -X utf8 tools/candidate_commit.py --action probe-gate --release-dir candidate/cc_out/releases/BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258",
+      "exit_code": 0,
+      "result": "blackbox_daily_increment_publish_gate_r1.publish_atomic -> OPERATIONAL_READINESS=PASS, CURRENT_PUBLISH=ALLOWED, published=False"
+    },
+    {
+      "purpose": "measure factor-plane density (is fq='pre' even constructible?)",
+      "cmd": "python -X utf8 tools/measure_factor_density.py",
+      "exit_code": 0,
+      "result": "166/178 2026 sessions dense, 12 sparse (2026-08-17..2026-09-02); pre-open probe on 2026-09-03 blocked for the codes without an anchor factor"
+    },
+    {
+      "purpose": "provider semantic repair verification (13 checks incl. withholding)",
+      "cmd": "python -X utf8 tools/verify_provider_semantics.py",
+      "exit_code": 0,
+      "result": "PROVIDER_SEMANTIC_REPAIR=PASS"
+    },
+    {
+      "purpose": "strict V4 engine run (no proxy, no inference, no fabrication)",
+      "cmd": "python -X utf8 candidate/run_engine_backtest.py --start 2026-09-03 --end 2026-09-24 --out engine_runs/v4_r21_R13_STRICT4 --strict-inputs",
+      "exit_code": 3,
+      "result": "status=BLOCKED_INPUT_INCOMPLETE blockers=['REQUIRED_INPUT_MISSING'] trades=0 starved=0"
+    }
+  ],
+  "note": "exit codes recorded as observed, not inferred from a COMPLETED label"
+}
