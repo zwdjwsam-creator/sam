@@ -1,0 +1,33 @@
+{
+  "schema": "BLACKBOX_DG1_FIELD_REVERT_LEDGER_R1",
+  "applied_at_cn": "2026-10-25T14:54:54+0800",
+  "backup_dir": "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\revert_20261025_145454",
+  "actions": [
+    "US_MARKET 细粒度状态由产物派生 ('PASS', 'PASS') -> ('PASS', 'PASS')"
+  ],
+  "verify": {
+    "dg1": "DG1-373cf01dd3e066bd6a21c74154b8e3606b8ede05dffa91ffd4338a225db1811b",
+    "dg1_equal_source": false,
+    "alignment_csv_present": false,
+    "fine_status": "PASS",
+    "mapping_status": "PASS",
+    "plane_dg1": "DG1-373cf01dd3e066bd6a21c74154b8e3606b8ede05dffa91ffd4338a225db1811b"
+  },
+  "residual_diff_keys": [
+    {
+      "key": ".GLOBAL_SELLSIDE.MODE",
+      "source": "INGEST",
+      "desktop": "VERIFY_ONLY"
+    },
+    {
+      "key": ".JQ.MODE",
+      "source": "INGEST",
+      "desktop": "VERIFY_ONLY"
+    },
+    {
+      "key": ".T_EXTERNAL.MODE",
+      "source": "INGEST",
+      "desktop": "VERIFY_ONLY"
+    }
+  ]
+}
