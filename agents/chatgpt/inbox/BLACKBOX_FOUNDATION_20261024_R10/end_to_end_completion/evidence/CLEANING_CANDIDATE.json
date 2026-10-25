@@ -1,0 +1,69 @@
+{
+  "candidate_release": "CC_REPLAY_20260924",
+  "standard_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc\\CC_REPLAY_20260924\\standard",
+  "release_json": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc\\CC_REPLAY_20260924\\RELEASE.json",
+  "asof": "2026-09-24",
+  "replay_days": [
+    "2026-08-31",
+    "2026-09-01"
+  ],
+  "production": {
+    "counts": {
+      "2026-08-31": 0,
+      "2026-09-01": 0
+    },
+    "max": "2026-09-24 00:00:00",
+    "date_columns": {
+      "time": 74,
+      "date": 158
+    }
+  },
+  "retained_batches": [
+    {
+      "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "rows_for_requested_days": 5212,
+      "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063"
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "rows_for_requested_days": 5214,
+      "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7"
+    }
+  ],
+  "retained_meta": {
+    "skipped_files": [
+      {
+        "file": "stock_daily__incremental_gap_20260713_20260730__full__20260729_170458.parquet",
+        "reason": "null price fields"
+      },
+      {
+        "file": "stock_daily__incremental_gap_20260730_20260804__full__20260804_062955.parquet",
+        "reason": "null price fields"
+      }
+    ],
+    "retained_gap_files": 42,
+    "batch_rows_before_dedup": 10426,
+    "batch_duplicates_dropped": 0
+  },
+  "replay_rows": 10426,
+  "reader_frame_rows": 17040667,
+  "inherited_null_price_rows": 4712932,
+  "inherited_null_price_rows_2026": 34477,
+  "null_price_rows_on_replay_days": 0,
+  "original_antileak_gate": {
+    "pass": true,
+    "rows": 17040667,
+    "max_date": "2026-09-24",
+    "leak_rows": 0
+  },
+  "gates": {
+    "stock_date_max_matches_asof": true,
+    "no_duplicate_date_code_after_reader_dedup": true,
+    "replay_keys_all_present": true,
+    "replay_rows_match_retained": true,
+    "no_rows_after_asof": true,
+    "no_null_price_fields_in_replay_delta": true,
+    "original_antileak_gate_pass": true
+  },
+  "GATE_RESULT": "PASS"
+}
