@@ -1,0 +1,98 @@
+{
+  "artifact": "FACTOR_DENSITY",
+  "product": "ADJUST_FACTOR_PIT_R1",
+  "window": [
+    "2026-01-05",
+    "2026-09-24"
+  ],
+  "sessions_in_plane": 178,
+  "peak_rows_in_a_session": 5222,
+  "dense_threshold": 4699,
+  "n_dense_sessions": 166,
+  "first_dense_session": "2026-01-05",
+  "sparse_sessions": {
+    "2026-08-17": 89,
+    "2026-08-18": 88,
+    "2026-08-19": 81,
+    "2026-08-20": 72,
+    "2026-08-21": 64,
+    "2026-08-24": 49,
+    "2026-08-25": 45,
+    "2026-08-26": 39,
+    "2026-08-27": 29,
+    "2026-08-28": 19,
+    "2026-09-01": 11,
+    "2026-09-02": 7
+  },
+  "per_session_rows_tail": {
+    "2026-08-28": 19,
+    "2026-08-31": 5208,
+    "2026-09-01": 11,
+    "2026-09-02": 7,
+    "2026-09-03": 5215,
+    "2026-09-04": 5215,
+    "2026-09-07": 5216,
+    "2026-09-08": 5216,
+    "2026-09-09": 5217,
+    "2026-09-10": 5218,
+    "2026-09-11": 5219,
+    "2026-09-14": 5219,
+    "2026-09-15": 5219,
+    "2026-09-16": 5220,
+    "2026-09-17": 5221,
+    "2026-09-18": 5221,
+    "2026-09-21": 5221,
+    "2026-09-22": 5222,
+    "2026-09-23": 5222,
+    "2026-09-24": 5222
+  },
+  "probe": {
+    "single_code": {
+      "blocked": true,
+      "error": "REQUIRED_INPUT_MISSING ADJUST_FACTOR_PIT_R1 fq=pre 2026-09-02..2026-09-02 reason=ADJUST_FACTOR_PIT_R1_ABSENT",
+      "failure": {
+        "field": "ADJUST_FACTOR_PIT_R1",
+        "start": "2026-09-02",
+        "end": "2026-09-02",
+        "anchor": "2026-09-02",
+        "reason": "ADJUST_FACTOR_PIT_R1_ABSENT",
+        "n_codes": 1
+      }
+    },
+    "universe_200": {
+      "blocked": true,
+      "error": "REQUIRED_INPUT_MISSING ADJUST_FACTOR_PIT_R1_ANCHOR 200 rows fq=pre anchor=2026-09-02",
+      "failure": {
+        "field": "ADJUST_FACTOR_PIT_R1",
+        "kind": "ANCHOR_FACTOR_MISSING",
+        "start": "2026-09-02",
+        "end": "2026-09-02",
+        "anchor": "2026-09-02",
+        "rows_with_missing_anchor_factor": 200,
+        "codes_with_missing_anchor_factor": 200,
+        "dates": [
+          "2026-09-02"
+        ],
+        "sample_codes": [
+          "000001.XSHE",
+          "000002.XSHE",
+          "000006.XSHE",
+          "000007.XSHE",
+          "000008.XSHE",
+          "000009.XSHE",
+          "000010.XSHE",
+          "000011.XSHE",
+          "000012.XSHE",
+          "000014.XSHE"
+        ],
+        "note": "fq=pre needs factor(anchor); it is absent for these rows, so the adjusted price is not provable"
+      }
+    },
+    "anchored_on_dense_session": {
+      "blocked": false,
+      "rows": 1,
+      "close": 11.88
+    }
+  },
+  "conclusion": "The plane is dense only for the sessions listed in n_dense_sessions (first 2026-01-05); every other session carries a handful of rows. Without forward filling, fq='pre' cannot be reconstructed for the sparse sessions, so pre-open adjusted marks are BLOCKED rather than approximated."
+}
