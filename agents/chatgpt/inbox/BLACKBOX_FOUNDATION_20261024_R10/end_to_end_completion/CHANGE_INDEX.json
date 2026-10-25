@@ -1,0 +1,102 @@
+{
+  "artifact": "CHANGE_INDEX",
+  "changed_code": [
+    {
+      "path": "candidate/local_plane/provider.py",
+      "purpose": "candidate extension of the tradeability plane + strict required-input gate",
+      "exists": true,
+      "bytes": 53563,
+      "sha256": "630725cd6c0558f935d36e1052d0d07b64036ce81376097b53892bbf5186c863",
+      "copy_in_package": "candidate__local_plane__provider.py"
+    },
+    {
+      "path": "candidate/run_engine_backtest.py",
+      "purpose": "strict input mode, mark-price starvation counter, log-based strategy input counters",
+      "exists": true,
+      "bytes": 21811,
+      "sha256": "169b15a13773d356607955fa68423e864948b9b2239c3bc25a6ad39e978f0e92",
+      "copy_in_package": "candidate__run_engine_backtest.py"
+    },
+    {
+      "path": "tools/build_dataset_state.py",
+      "purpose": "time-axis roles, per-product subdir resolution, FACTOR_VALUE/UNDETERMINED_SCOPE reclassification",
+      "exists": true,
+      "bytes": 30694,
+      "sha256": "49f9c03f0dd8c4616d4dd60ccd767893be98093f8b0dfaff27b7ce49c220349f",
+      "copy_in_package": "tools__build_dataset_state.py"
+    },
+    {
+      "path": "tools/build_tradeability_candidate.py",
+      "purpose": "new: rebuild paused/high_limit/low_limit for the engine window from retained RAW",
+      "exists": true,
+      "bytes": 9873,
+      "sha256": "6412225c67794aee7d9e2f9b9468c04747855c213f6991dd0a0463c530f78f4c",
+      "copy_in_package": "tools__build_tradeability_candidate.py"
+    },
+    {
+      "path": "tools/run_connected_pipeline.py",
+      "purpose": "new: gate -> cleaning -> factor -> compiler -> checkpoint -> isolated publication",
+      "exists": true,
+      "bytes": 27263,
+      "sha256": "f17a984cae7b73a31704cc5348260086bc38f00db2a64c0115eb131c5ef5a582",
+      "copy_in_package": "tools__run_connected_pipeline.py"
+    },
+    {
+      "path": "tools/build_checkpoint_bindings.py",
+      "purpose": "new: validated vs blocked candidate checkpoint bindings",
+      "exists": true,
+      "bytes": 6081,
+      "sha256": "9f1f72b937d35dd1b5040ce021a05f1b7a46efd039960d898660665e193b4e3c",
+      "copy_in_package": "tools__build_checkpoint_bindings.py"
+    },
+    {
+      "path": "tools/raw_status_field_inventory.py",
+      "purpose": "new: retained RAW status/limit field inventory",
+      "exists": true,
+      "bytes": 3618,
+      "sha256": "afa0533ae17cdb5e422f79b63f2f78b369fa7b1f2ac4a07d25a89bdf3d18392e",
+      "copy_in_package": "tools__raw_status_field_inventory.py"
+    },
+    {
+      "path": "tools/record_commands.py",
+      "purpose": "new: exact command/exit-code/log recorder",
+      "exists": true,
+      "bytes": 6294,
+      "sha256": "422cb82a3e871dce55daa40c35dc7f92aa79e13c6c3208deb15b6bace796e997",
+      "copy_in_package": "tools__record_commands.py"
+    },
+    {
+      "path": "tools/build_input_plane_repair_evidence.py",
+      "purpose": "new: per-session sweep proving the input plane has no null limit/paused key over the window",
+      "exists": true,
+      "bytes": 7199,
+      "sha256": "d1993c8093cedcbcf771ce9ba49eb7b2bc4985586e67dc8bc590aa683fc0db62",
+      "copy_in_package": "tools__build_input_plane_repair_evidence.py"
+    },
+    {
+      "path": "tools/explain_price_fetch_failure.py",
+      "purpose": "new: captures the real traceback behind 获取价格数据失败 (owner: provider paused dtype cast)",
+      "exists": true,
+      "bytes": 5549,
+      "sha256": "4372040b53006f0e60e21a432b5a7d676a6f9e3179cbe4f4acc14e49f4b0b8fa",
+      "copy_in_package": "tools__explain_price_fetch_failure.py"
+    },
+    {
+      "path": "tools/explain_required_input_gap.py",
+      "purpose": "new: splits the 8 REQUIRED_INPUT_MISSING entries by cause instead of narrating them",
+      "exists": true,
+      "bytes": 5677,
+      "sha256": "48106aa2884ecc9188cc185315f173db20a3cb47702c35494552ef7df8e9af25",
+      "copy_in_package": "tools__explain_required_input_gap.py"
+    },
+    {
+      "path": "tools/build_delivery_report_v2.py",
+      "purpose": "consolidated package builder; statuses are derived from run artefacts, not asserted",
+      "exists": true,
+      "bytes": 38071,
+      "sha256": "c1f9759c58048061aeea8c44ebfb7fa2b84b1a885cbfd658ea81449f5e3d2be2",
+      "copy_in_package": "tools__build_delivery_report_v2.py"
+    }
+  ],
+  "diff_basis": "no byte-level baseline retained in the previous package; full current sources are supplied under changed_code/"
+}
