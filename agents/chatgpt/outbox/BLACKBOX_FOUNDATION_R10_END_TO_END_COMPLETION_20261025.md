@@ -12,6 +12,20 @@ NEW_DATA_ACQUISITION_AUTHORIZED=false
 CURRENT_SWITCH_ALLOWED=false
 ORDER_ALLOWED=false
 
+## Owner correction — recover and reuse the laptop workflow first (2026-10-25)
+
+The owner asks why SAM laptop AG has not provided its original tasks, runtime and download logic as one complete handoff for ZHANGWEI to reuse. That source-workflow handoff was not explicitly required in the previous instruction. Correct this omission within THIS task; do not create another sequential source-review round or discard completed desktop work.
+
+Execution hosts: SAM supplies the existing source workflow; ZHANGWEI performs destination adaptation and validation. Use the established inter-machine share / AG coordination channel where available; do not ask the owner to relay individual files or commands. This HUB amendment is not evidence that SAM has received or completed the request. Record actual delivery/receipt. If the laptop or its AG is unreachable, report that exact access blocker without guessing its state and continue independent authorized desktop work.
+
+Obtain the laptop's original retained task definitions and actually used entry scripts, the transitive project modules/configuration needed by those entries, dependency specifications, and the existing command/run records identifying the last demonstrated working version. Include the actual download request semantics (dates, fields, adjustment/PIT), pagination, checkpoint/resume and revision behavior, then cleaning, validation, compilation/publication order and local query/backtest bindings to the extent they really existed. Reuse existing manifests and logs; identify absent or unproven capabilities honestly. Do not demand new broad inventory or a narrative reconstruction in place of executable source. Do not export credential contents; preserve bindings to local credential locations.
+
+Make these files directly available to the desktop through the existing share or a compact source/config handoff. Reference them in the SAME consolidated package already requested; do not wait for GPT to approve every source file. Prefer reuse of the original implementation and established semantics over reimplementation. Compare the desktop differences that matter: drive/path mappings, Windows user/runtime, compatible dependencies, source/release locations and invocation configuration. Preserve valid current desktop fixes and unrelated work; no blind overwrite or migration restart.
+
+Validate the adapted original workflow on retained real data in the already authorized isolated candidate context. Existing successful laptop run records establish only their recorded scope; file presence or a last-asof label is not proof that every old capability worked. If backtesting existed only on JoinQuant and no local provider existed, say so and complete only the necessary desktop adaptation rather than inventing a historical local implementation. Keep unresolved original defects visible; copying the source does not certify its completeness.
+
+Do not interrupt an active safe run or restart uploads to perform this correction. Use the source workflow for remaining work as available. The completion deliverables and stopping conditions do not expand. New supplier acquisition, production CURRENT switching and orders remain unauthorized.
+
 ## Outcome and authority
 
 The owner rejected the repeated source-export / component-review loop and requested a concrete completion solution, then sent HUB to proceed. This is the consolidated execution instruction for the existing R10 work, not another inventory round.
