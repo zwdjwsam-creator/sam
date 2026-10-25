@@ -1,0 +1,56 @@
+{
+  "artifact": "FINAL_REQUIREMENT_MATRIX",
+  "requirements": {
+    "R1_data_ecology_dictionary_rules_lessons": {
+      "status": "PARTIAL",
+      "measured": "54 datasets, 75 measured layers, 12 contractually not applicable, 9 product dirs unresolved",
+      "unproven": "per-dataset increment cursor is still not emitted by any writer (NOT_BOUND)",
+      "evidence": [
+        "DATASET_STATE.json",
+        "CANDIDATE_CHECKPOINT_BINDINGS.json"
+      ],
+      "repair_needed": "writer-emitted content cursor, or an authorised start date with a validated overlap"
+    },
+    "R2_engine_data_contract_and_actual_runtime": {
+      "status": "PARTIAL",
+      "measured": "engine reached COMPLETED over 2026-09-03..2026-09-24 on the real local plane with zero input blockers and 2 executed trades",
+      "unproven": "performance admission grade: B1 per-date factor lineage and B7 whole-CACHE equivalence gate are still open",
+      "evidence": [
+        "engine_runs/v4_r21_20260903_20260924_R11_TRADEABILITY_RECON/run_result.json",
+        "evidence/TRADEABILITY_RESTORE.json",
+        "evidence/INPUT_PLANE_REPAIR.json",
+        "evidence/PRICE_FETCH_FAILURE.json"
+      ],
+      "repair_needed": "none recorded"
+    },
+    "R3_strategy_artifact_identification": {
+      "status": "PASS",
+      "measured": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py sha256 8d9334dd6ed2053b",
+      "unproven": "nothing at identity level",
+      "evidence": [
+        "ACCEPTANCE.json#strategy_identity"
+      ],
+      "repair_needed": "none"
+    },
+    "R4_download_incremental_rules_and_access": {
+      "status": "BLOCKED",
+      "measured": "no acquisition was attempted or authorised in this round",
+      "unproven": "the increment cannot start without an authorised start date / supplier lag",
+      "evidence": [
+        "DATASET_STATE.json#datasets[*].update_basis",
+        "CANDIDATE_CHECKPOINT_BINDINGS.json"
+      ],
+      "repair_needed": "stage-2 authorised scoped acquisition task"
+    },
+    "R5_desktop_actual_running_latest_update": {
+      "status": "BLOCKED",
+      "measured": "local runtime, provider, engine and cleaning path all execute offline",
+      "unproven": "the latest incremental update has not been run (acquisition not authorised)",
+      "evidence": [
+        "evidence/COMMAND_LOG.json",
+        "CONNECTED_PIPELINE.json"
+      ],
+      "repair_needed": "stage-2 acquisition + cleaning, then a zero-blocker regression"
+    }
+  }
+}
