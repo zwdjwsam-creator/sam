@@ -1,0 +1,536 @@
+{
+  "artifact": "R10_END_TO_END_ACCEPTANCE",
+  "revision": "R12_INPUT_PLANE_REPAIR_REVISION",
+  "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "generated_at_cn": "2026-10-25T11:22:19+08:00",
+  "overall": "BLOCKED_PARTIAL_EXECUTION",
+  "stage1": {
+    "verdict": "BLOCKED",
+    "READY_FOR_GPT_REVIEW": false,
+    "reason": "repairable blockers remain (input completeness, cursor binding, CURRENT gap)"
+  },
+  "backtest_classification": {
+    "window": "2026-09-03..2026-09-24",
+    "n_sessions": 16,
+    "status": "COMPLETED",
+    "diagnostic_only": false,
+    "not_a_substitute_for": "the documented requested backtest scope",
+    "input_blockers": [],
+    "strategy_input_warnings": {
+      "yesterday_limit_up_step_aborted": 0,
+      "limit_up_flag_missing": 0,
+      "ambiguous_na": 0,
+      "lines": 902
+    },
+    "residual_log_warnings": {
+      "event_cash_patrol_float_none": 152,
+      "light_probe_path_not_string": 34,
+      "price_fetch_failed": 0,
+      "yesterday_limit_up_aborted": 0,
+      "limit_up_flag_missing": 0,
+      "ambiguous_na_boolean": 0
+    },
+    "metrics": {
+      "策略收益": "-4.66%",
+      "策略年化收益": "-52.57%",
+      "最大回撤": "-5.47%",
+      "夏普比率": "-8.53",
+      "日胜率": "18.75%",
+      "交易胜率": "0.00%",
+      "交易天数": "16",
+      "初始资金": "1,000,000.00",
+      "最终资金": "953,384.16"
+    }
+  },
+  "deliverables": {
+    "D1_dataset_state": {
+      "artifact": "DATASET_STATE.json",
+      "counts": {
+        "datasets": 54,
+        "measured_layers": 75,
+        "product_dir_unresolved_layers": 9,
+        "not_applicable": 12,
+        "blocked": 8,
+        "unresolved_scope": 1,
+        "cursor_blocked": 33
+      },
+      "repairs": [
+        "CALENDAR_CN_EXCHANGE now carries a CALENDAR_AXIS range instead of NO_TIME_AXIS",
+        "time column resolved from the union of sampled schemas",
+        "per-product subdir resolution replaces shared family-root sampling (9 layers explicitly unresolved)",
+        "FACTOR_VALUE reclassified BLOCKED_NO_ADMITTED_PRODUCT (absence is not a contract)",
+        "UNDETERMINED_SCOPE reclassified UNRESOLVED_SCOPE"
+      ],
+      "no_completeness_claim_from_footer_extrema": true
+    },
+    "D2_engine": {
+      "run_result": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\engine_runs\\v4_r21_20260903_20260924_R11_TRADEABILITY_RECON\\run_result.json",
+      "status": "COMPLETED",
+      "diagnostic_only": false,
+      "tradeability_binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5222,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5222
+      },
+      "restored_fields": [
+        "paused",
+        "high_limit",
+        "low_limit"
+      ],
+      "restored_not": {
+        "is_st": "absent from the RAW daily schema; left null, UNKNOWN, not inferred",
+        "historical_universe": "not inferred from a current code list"
+      },
+      "reconciliation": {
+        "overlap_days": [
+          "2026-08-04",
+          "2026-08-05",
+          "2026-08-06",
+          "2026-08-07",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-09-03"
+        ],
+        "overlap_rows": 41656,
+        "paused_mismatch": 35,
+        "high_limit_mismatch": 35,
+        "low_limit_mismatch": 35,
+        "agrees_on_overlap": false,
+        "sealed_collapse": {
+          "note": "sealed keeps per-snapshot tip files; collapsed by (date, code) preferring a row with limits, then latest snapshot",
+          "rows_after_collapse": 124929
+        }
+      },
+      "retained_raw_batches": 42,
+      "strict_input_gate": true,
+      "input_plane_repair": {
+        "artifact": "evidence/INPUT_PLANE_REPAIR.json",
+        "sweep_verdict": "GATE_SWEEP_PASS",
+        "sessions": 16,
+        "sessions_with_gap": 0,
+        "null_limit_rows": 0,
+        "null_paused_rows": 0,
+        "original_failure_entries": 8,
+        "substitution_class": "SAME_FIELD_SAME_DAY_SAME_SECURITY_FROM_LOCAL_RAW",
+        "limit_prices_inferred": 0,
+        "st_flags_inferred": 0
+      },
+      "price_fetch_defect": {
+        "artifact": "evidence/PRICE_FETCH_FAILURE.json",
+        "owner": "candidate/local_plane/provider.py",
+        "frame": "provider.get_price -> merged['paused'].astype('boolean')",
+        "why": "sealed STOCK_TRADEABILITY_PIT_R1 stores `paused` as 0.0/1.0 in some snapshot tips and as bool in others; concatenating them yields object dtype with mixed entries, and pandas refuses the boolean cast (`Need to pass bool-like values`)",
+        "effect": "the 09:20 selection lost its whole price map (funnel l3=0), so the engine reported COMPLETED with 0 trades while strategy logic never ran",
+        "fix": "explicit 0/1/True/False/NA normalisation (`_as_nullable_bool`) applied once to the reconciled tradeability frame and once in get_price; any other value fails loudly instead of degrading to an empty price frame",
+        "post_fix_probe_events": 0
+      },
+      "execution_proof": {
+        "n_trades": 2,
+        "n_orders": 0,
+        "price_fetch_failures_in_log": 0,
+        "performance_admission_grade": false,
+        "why_not_admission_grade": "B1 (per-date factor lineage) and B7 (whole-CACHE equivalence gate) remain open, so the return series is a correctness witness, not an admissible performance claim"
+      }
+    },
+    "D3_connected_pipeline": {
+      "verdict": "PASS",
+      "stages": [
+        "response_gate",
+        "cleaning_antileak",
+        "factor_refresh",
+        "compiler",
+        "candidate_checkpoint",
+        "isolated_publication"
+      ],
+      "idempotent": true,
+      "all_controls_passed": true,
+      "partial_day_replaced_not_skipped": true,
+      "negative_controls": [
+        {
+          "tamper": "short_batch",
+          "stopped": true,
+          "code": "SIDECAR_ROW_MISMATCH",
+          "partition_unchanged": true
+        },
+        {
+          "tamper": "malformed_date",
+          "stopped": true,
+          "code": "INDEX_DATE_NOT_PRESERVED",
+          "partition_unchanged": true
+        },
+        {
+          "tamper": "missing_coverage",
+          "stopped": true,
+          "code": "COVERAGE_UNPROVEN",
+          "partition_unchanged": true
+        },
+        {
+          "tamper": "wrong_index",
+          "stopped": true,
+          "code": "INDEX_DATE_UNPARSEABLE",
+          "partition_unchanged": true
+        }
+      ],
+      "prior_two_day_reconstruction_reused": "REPRODUCES_R06_CANDIDATE"
+    }
+  },
+  "five_requirements": {
+    "R1_data_ecology_dictionary_rules_lessons": {
+      "status": "PARTIAL",
+      "measured": "54 datasets, 75 measured layers, 12 contractually not applicable, 9 product dirs unresolved",
+      "unproven": "per-dataset increment cursor is still not emitted by any writer (NOT_BOUND)",
+      "evidence": [
+        "DATASET_STATE.json",
+        "CANDIDATE_CHECKPOINT_BINDINGS.json"
+      ],
+      "repair_needed": "writer-emitted content cursor, or an authorised start date with a validated overlap"
+    },
+    "R2_engine_data_contract_and_actual_runtime": {
+      "status": "PARTIAL",
+      "measured": "engine reached COMPLETED over 2026-09-03..2026-09-24 on the real local plane with zero input blockers and 2 executed trades",
+      "unproven": "performance admission grade: B1 per-date factor lineage and B7 whole-CACHE equivalence gate are still open",
+      "evidence": [
+        "engine_runs/v4_r21_20260903_20260924_R11_TRADEABILITY_RECON/run_result.json",
+        "evidence/TRADEABILITY_RESTORE.json",
+        "evidence/INPUT_PLANE_REPAIR.json",
+        "evidence/PRICE_FETCH_FAILURE.json"
+      ],
+      "repair_needed": "none recorded"
+    },
+    "R3_strategy_artifact_identification": {
+      "status": "PASS",
+      "measured": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py sha256 8d9334dd6ed2053b",
+      "unproven": "nothing at identity level",
+      "evidence": [
+        "ACCEPTANCE.json#strategy_identity"
+      ],
+      "repair_needed": "none"
+    },
+    "R4_download_incremental_rules_and_access": {
+      "status": "BLOCKED",
+      "measured": "no acquisition was attempted or authorised in this round",
+      "unproven": "the increment cannot start without an authorised start date / supplier lag",
+      "evidence": [
+        "DATASET_STATE.json#datasets[*].update_basis",
+        "CANDIDATE_CHECKPOINT_BINDINGS.json"
+      ],
+      "repair_needed": "stage-2 authorised scoped acquisition task"
+    },
+    "R5_desktop_actual_running_latest_update": {
+      "status": "BLOCKED",
+      "measured": "local runtime, provider, engine and cleaning path all execute offline",
+      "unproven": "the latest incremental update has not been run (acquisition not authorised)",
+      "evidence": [
+        "evidence/COMMAND_LOG.json",
+        "CONNECTED_PIPELINE.json"
+      ],
+      "repair_needed": "stage-2 acquisition + cleaning, then a zero-blocker regression"
+    }
+  },
+  "B1_B7": {
+    "B1": {
+      "requirement": "PRE-adjustment price chain certifiable over the test window",
+      "status": "OPEN",
+      "failed_predicate": "factor sidecar vs physical row count +83,503 with no per-date lineage; pre/post not implemented",
+      "affected_deliverable": "D2",
+      "repair_attempted": "engine ran with fq='pre' and a piecewise factor fill anchored at end_date; no new lineage invented",
+      "remaining_input": "per-date factor lineage (or the whole-table factor revision)"
+    },
+    "B2": {
+      "requirement": "universe and tradeability cover the test window",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "sealed tradeability stopped at 2026-09-03 while prices run to 2026-09-24",
+      "affected_deliverable": "D2",
+      "repair_attempted": "rebuilt paused/high_limit/low_limit for 2026-08-04..2026-09-24 from 40 retained RAW batches; agreement on sealed overlap 41656 keys with 35 field-level disagreements",
+      "remaining_input": "historical universe is still not covered (measured window ends 2026-07-20); is_st is not in the RAW daily schema and was not inferred"
+    },
+    "B3": {
+      "requirement": "fund products materialised or explicitly excluded by contract",
+      "status": "OPEN",
+      "failed_predicate": "FUND_DAILY_PIT_R1 / FUND_FACTOR_DAILY_R1 / FUND_LIKE_ASSET_VIEW_R1 hold 0 parquet",
+      "affected_deliverable": "D1",
+      "repair_attempted": "no materialisation; source result kept as measured absence, no synthetic rows",
+      "remaining_input": "materialisation run or a contract that permits exclusion"
+    },
+    "B4": {
+      "requirement": "mounted CURRENT serves every session in the window",
+      "status": "OPEN",
+      "failed_predicate": "2026-08-31 and 2026-09-01 are still not served by the mounted CURRENT",
+      "affected_deliverable": "D3",
+      "repair_attempted": "the two days were rebuilt into a candidate partition and republished as candidate only",
+      "remaining_input": "an authorised CURRENT switch (CURRENT_SWITCH_ALLOWED=false here)"
+    },
+    "B5": {
+      "requirement": "formal engine run",
+      "status": "REPAIRED",
+      "failed_predicate": "the earlier run aborted the 09:05 step and skipped the limit check because limit/status inputs were missing; run status=COMPLETED",
+      "affected_deliverable": "D2",
+      "repair_attempted": "tradeability restored from retained RAW with per-cell reconciliation (sealed value wins, candidate only fills null cells), atomic candidate publish, strict input gate, non-binary paused normalisation; run status=COMPLETED, input blockers=0, mark-price starved lookups=0, executed trades=2",
+      "remaining_input": "none for the requested window (performance stays non-admission-grade while B1/B7 are open)"
+    },
+    "B6": {
+      "requirement": "writer / checkpoint / resume / non-regression",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "no production cursor; resume evidence did not exist for any product",
+      "affected_deliverable": "D1+D3",
+      "repair_attempted": "local candidate checkpoint + resume implemented and exercised for STOCK_DAILY_PIT_R1 (verdict PASS, idempotent True); 53 other bindings reported blocked",
+      "remaining_input": "a production writer that emits a cursor, or an authorised start date with overlap"
+    },
+    "B7": {
+      "requirement": "equivalence / coverage / non-regression of the candidate vs its parent",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "the non-regression gate that would distinguish a regression from a missing product is unimplemented",
+      "affected_deliverable": "D3",
+      "repair_attempted": "compiler refuses duplicate keys; partial-day replacement proven; idempotent replay proven; no date lost vs the parent partition (rows only added for the two recovery days)",
+      "remaining_input": "whole-CACHE RAW<->CACHE equivalence gate and a publish-time regression classifier"
+    }
+  },
+  "changed_code": [
+    {
+      "path": "candidate/local_plane/provider.py",
+      "purpose": "candidate extension of the tradeability plane + strict required-input gate",
+      "exists": true,
+      "bytes": 53563,
+      "sha256": "630725cd6c0558f935d36e1052d0d07b64036ce81376097b53892bbf5186c863",
+      "copy_in_package": "candidate__local_plane__provider.py"
+    },
+    {
+      "path": "candidate/run_engine_backtest.py",
+      "purpose": "strict input mode, mark-price starvation counter, log-based strategy input counters",
+      "exists": true,
+      "bytes": 21811,
+      "sha256": "169b15a13773d356607955fa68423e864948b9b2239c3bc25a6ad39e978f0e92",
+      "copy_in_package": "candidate__run_engine_backtest.py"
+    },
+    {
+      "path": "tools/build_dataset_state.py",
+      "purpose": "time-axis roles, per-product subdir resolution, FACTOR_VALUE/UNDETERMINED_SCOPE reclassification",
+      "exists": true,
+      "bytes": 30694,
+      "sha256": "49f9c03f0dd8c4616d4dd60ccd767893be98093f8b0dfaff27b7ce49c220349f",
+      "copy_in_package": "tools__build_dataset_state.py"
+    },
+    {
+      "path": "tools/build_tradeability_candidate.py",
+      "purpose": "new: rebuild paused/high_limit/low_limit for the engine window from retained RAW",
+      "exists": true,
+      "bytes": 9873,
+      "sha256": "6412225c67794aee7d9e2f9b9468c04747855c213f6991dd0a0463c530f78f4c",
+      "copy_in_package": "tools__build_tradeability_candidate.py"
+    },
+    {
+      "path": "tools/run_connected_pipeline.py",
+      "purpose": "new: gate -> cleaning -> factor -> compiler -> checkpoint -> isolated publication",
+      "exists": true,
+      "bytes": 27263,
+      "sha256": "f17a984cae7b73a31704cc5348260086bc38f00db2a64c0115eb131c5ef5a582",
+      "copy_in_package": "tools__run_connected_pipeline.py"
+    },
+    {
+      "path": "tools/build_checkpoint_bindings.py",
+      "purpose": "new: validated vs blocked candidate checkpoint bindings",
+      "exists": true,
+      "bytes": 6081,
+      "sha256": "9f1f72b937d35dd1b5040ce021a05f1b7a46efd039960d898660665e193b4e3c",
+      "copy_in_package": "tools__build_checkpoint_bindings.py"
+    },
+    {
+      "path": "tools/raw_status_field_inventory.py",
+      "purpose": "new: retained RAW status/limit field inventory",
+      "exists": true,
+      "bytes": 3618,
+      "sha256": "afa0533ae17cdb5e422f79b63f2f78b369fa7b1f2ac4a07d25a89bdf3d18392e",
+      "copy_in_package": "tools__raw_status_field_inventory.py"
+    },
+    {
+      "path": "tools/record_commands.py",
+      "purpose": "new: exact command/exit-code/log recorder",
+      "exists": true,
+      "bytes": 6294,
+      "sha256": "422cb82a3e871dce55daa40c35dc7f92aa79e13c6c3208deb15b6bace796e997",
+      "copy_in_package": "tools__record_commands.py"
+    },
+    {
+      "path": "tools/build_input_plane_repair_evidence.py",
+      "purpose": "new: per-session sweep proving the input plane has no null limit/paused key over the window",
+      "exists": true,
+      "bytes": 7199,
+      "sha256": "d1993c8093cedcbcf771ce9ba49eb7b2bc4985586e67dc8bc590aa683fc0db62",
+      "copy_in_package": "tools__build_input_plane_repair_evidence.py"
+    },
+    {
+      "path": "tools/explain_price_fetch_failure.py",
+      "purpose": "new: captures the real traceback behind 获取价格数据失败 (owner: provider paused dtype cast)",
+      "exists": true,
+      "bytes": 5549,
+      "sha256": "4372040b53006f0e60e21a432b5a7d676a6f9e3179cbe4f4acc14e49f4b0b8fa",
+      "copy_in_package": "tools__explain_price_fetch_failure.py"
+    },
+    {
+      "path": "tools/explain_required_input_gap.py",
+      "purpose": "new: splits the 8 REQUIRED_INPUT_MISSING entries by cause instead of narrating them",
+      "exists": true,
+      "bytes": 5677,
+      "sha256": "48106aa2884ecc9188cc185315f173db20a3cb47702c35494552ef7df8e9af25",
+      "copy_in_package": "tools__explain_required_input_gap.py"
+    },
+    {
+      "path": "tools/build_delivery_report_v2.py",
+      "purpose": "consolidated package builder; statuses are derived from run artefacts, not asserted",
+      "exists": true,
+      "bytes": 38071,
+      "sha256": "c1f9759c58048061aeea8c44ebfb7fa2b84b1a885cbfd658ea81449f5e3d2be2",
+      "copy_in_package": "tools__build_delivery_report_v2.py"
+    }
+  ],
+  "command_log": [
+    {
+      "name": "must_read_preflight",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py --task-class BACKTEST --json",
+      "cwd": "E:\\BLACKBOX",
+      "exit_code": 0,
+      "stdout_tail": [
+        "      \"status\": \"VERIFIED\",",
+        "      \"lines\": 37",
+        "    }",
+        "  ],",
+        "  \"preflight_block\": \"MUST_READ_PRECHECK = PASS\\nTASK_CLASS = BACKTEST\\nKERNEL_SHA256 = b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a\\nKERNEL_STATUS = VERIFIED\\nKERNEL_BYTES = 1167\\nHAND_READ = NOT_SUFFICIENT\\nAUTHORITY_READY = YES\\nTASK_EXECUTION = ALLOWED\\nTASK_EXECUTION_FORBIDDEN = FALSE\\nrules_loaded:\\n  - BOOTSTRAP\\n    expected_sha256 = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\\n    actual_sha256   = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\\n    status = VERIFIED\\n  - DATA_ACCESS\\n    expected_sha256 = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\\n    actual_sha256   = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\\n    status = VERIFIED\\n  - BACKTEST\\n    expected_sha256 = c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37\\n    actual_sha256   = c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37\\n    status = VERIFIED\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\must_read_preflight.log"
+    },
+    {
+      "name": "environment_verify",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\verify_environment.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"verdict\": \"PASS_REAL_VENV_WITH_DATA_STACK\", \"libs\": {\"pandas\": \"2.3.3\", \"pyarrow\": \"21.0.0\", \"numpy\": \"2.5.4\"}, \"rows\": \"871182\"}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\environment_verify.log"
+    },
+    {
+      "name": "raw_status_field_inventory",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\raw_status_field_inventory.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"n_gap_batches\": 42, \"date_min\": \"20260713\", \"date_max\": \"20260924\", \"dates\": [\"20260713\", \"20260730\", \"20260804\", \"20260805\", \"20260806\", \"20260807\", \"20260810\", \"20260811\", \"20260812\", \"20260813\", \"20260814\", \"20260817\", \"20260818\", \"20260819\", \"20260820\", \"20260821\", \"20260824\", \"20260825\", \"20260826\", \"20260827\", \"20260828\", \"20260831\", \"20260901\", \"20260902\", \"20260903\", \"20260904\", \"20260907\", \"20260908\", \"20260909\", \"20260910\", \"20260911\", \"20260914\", \"20260915\", \"20260916\", \"20260917\", \"20260918\", \"20260921\", \"20260922\", \"20260923\", \"20260924\"], \"dup\": [\"20260910\", \"20260924\"], \"name_matches_content\": false, \"n_complete_status\": 40, \"complete\": [\"20260804\", \"20260805\", \"20260806\", \"20260807\", \"20260810\", \"20260811\", \"20260812\", \"20260813\", \"20260814\", \"20260817\", \"20260818\", \"20260819\", \"20260820\", \"20260821\", \"20260824\", \"20260825\", \"20260826\", \"20260827\", \"20260828\", \"20260831\", \"20260901\", \"20260902\", \"20260903\", \"20260904\", \"20260907\", \"20260908\", \"20260909\", \"20260910\", \"20260910\", \"20260911\", \"20260914\", \"20260915\", \"20260916\", \"20260917\", \"20260918\", \"20260921\", \"20260922\", \"20260923\", \"20260924\", \"20260924\"]}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\raw_status_field_inventory.log"
+    },
+    {
+      "name": "build_tradeability_candidate",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\build_tradeability_candidate.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"candidate_rows\": 198109, \"candidate_dates\": 38, \"candidate_date_min\": \"2026-08-04\", \"candidate_date_max\": \"2026-09-24\", \"duplicates_dropped\": 10440, \"engine_window_covered\": true, \"reconciliation_vs_sealed\": {\"overlap_days\": [\"2026-08-04\", \"2026-08-05\", \"2026-08-06\", \"2026-08-07\", \"2026-08-10\", \"2026-08-11\", \"2026-08-12\", \"2026-09-03\"], \"overlap_rows\": 41656, \"paused_mismatch\": 35, \"high_limit_mismatch\": 35, \"low_limit_mismatch\": 35, \"agrees_on_overlap\": false, \"sealed_collapse\": {\"note\": \"sealed keeps per-snapshot tip files; collapsed by (date, code) preferring a row with limits, then latest snapshot\", \"rows_after_collapse\": 124929}}}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\build_tradeability_candidate.log"
+    },
+    {
+      "name": "build_dataset_state",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\build_dataset_state.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"datasets\": 54, \"measured_layers\": 75, \"product_dir_unresolved_layers\": 9, \"not_applicable\": 12, \"blocked\": 8, \"unresolved_scope\": 1, \"cursor_blocked\": 33} elapsed 14.5"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\build_dataset_state.log"
+    },
+    {
+      "name": "run_connected_pipeline",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\run_connected_pipeline.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"verdict\": \"PASS\", \"all_controls_passed\": true, \"idempotent\": true, \"resume_evidence\": {\"committed_after_first_pass\": [\"2026-08-31\", \"2026-09-01\"], \"committed_after_replay\": [\"2026-08-31\", \"2026-09-01\"], \"no_duplicate_commit_entries\": true}}"
+      ],
+      "stderr_tail": [
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\run_connected_pipeline.py:122: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.",
+        "  frame[\"time\"] = pd.to_datetime(frame[\"time\"]).dt.normalize() + pd.Timedelta(days=1)"
+      ],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\run_connected_pipeline.log"
+    },
+    {
+      "name": "build_checkpoint_bindings",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\build_checkpoint_bindings.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"validated\": \"IMPLEMENTED_AND_RESUME_VALIDATED\", \"blocked\": 53, \"families\": {\"P1_adjust_factor\": 37, \"P2_security_state\": 8, \"P2_stock_daily\": 42, \"P3_finance_pit\": 206, \"P3_index\": 46, \"P3_index_minute\": 102490, \"P4_fund_etf\": 3, \"P4_fund_etf_raw_none\": 1878, \"P4b_fund_expand\": 3, \"P5_attributes_events\": 54, \"P6_factor_reference\": 149, \"P7_stock_minute_raw_none\": 2202, \"P7_stock_minute_raw_none_replacement_5m\": 1102, \"P9_derivative_aux\": 18}}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\build_checkpoint_bindings.log"
+    },
+    {
+      "name": "v4_backtest_requested_scope",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\run_engine_backtest.py --start 2026-09-03 --end 2026-09-24 --strategy E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py --cash 1000000 --benchmark 000300.XSHG --out engine_runs\\v4_r21_20260903_20260924_R11_TRADEABILITY_RECON --allow-candidate-override --strict-inputs --local-dictionary D:\\BB_LOCAL_DICTIONARY\\R10_ASOF_20260924",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "env": {
+        "BLACKBOX_CANDIDATE_TRADEABILITY": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R11_TRADEABILITY\\STOCK_TRADEABILITY_PIT_R1\\year=2026\\part_2026.parquet"
+      },
+      "exit_code": 0,
+      "recorded_from": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\engine_runs\\v4_r21_20260903_20260924_R11_TRADEABILITY_RECON\\run_result.json",
+      "note": "long-running (about 70 minutes); exit code and status are read from the run's own artefact instead of re-executing it for the log",
+      "status": "COMPLETED",
+      "input_blockers": [],
+      "strategy_input_warnings": {
+        "yesterday_limit_up_step_aborted": 0,
+        "limit_up_flag_missing": 0,
+        "ambiguous_na": 0,
+        "lines": 902
+      },
+      "tradeability_binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5222,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5222
+      },
+      "started_at": "2026-10-25T11:07:00.060070",
+      "finished_at": "2026-10-25T11:14:58.332112",
+      "required_input_failures": [],
+      "n_mark_price_starved": 0,
+      "n_trades": 2,
+      "n_orders": 0
+    },
+    {
+      "name": "input_plane_sweep",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\build_input_plane_repair_evidence.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"sweep_verdict\": \"GATE_SWEEP_PASS\", \"sessions\": 16, \"sessions_with_gap\": 0, \"total_missing_keys\": 0, \"null_limit_rows\": 0, \"null_paused_rows\": 0}"
+      ],
+      "stderr_tail": [],
+      "artifact": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\INPUT_PLANE_REPAIR.json"
+    }
+  ],
+  "independent_review": {
+    "GPT_REVIEWED": false,
+    "FOUNDATION_ACCEPTANCE": false,
+    "FORMAL_ENGINE_ADMISSION": false
+  },
+  "flags": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "PUBLISHED_TO_CURRENT": false,
+    "SEALED_DATA_MODIFIED": false,
+    "PRODUCTION_PUBLISH_CALLED": false
+  }
+}
