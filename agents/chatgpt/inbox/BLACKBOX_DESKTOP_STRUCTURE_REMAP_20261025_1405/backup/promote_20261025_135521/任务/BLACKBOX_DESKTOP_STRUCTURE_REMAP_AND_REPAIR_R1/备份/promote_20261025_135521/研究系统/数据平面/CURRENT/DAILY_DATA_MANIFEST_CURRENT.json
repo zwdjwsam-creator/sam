@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "DAILY_DATA_MANIFEST_20260831",
+  "CN_RESEARCH_DATE": "2026-08-31",
+  "BUILD_TIME": "2026-10-25T08:22:29+0800",
+  "PATH_MAP": "E:\\BLACKBOX\\研究系统\\数据平面\\CONFIG\\DATA_PLANE_PATH_MAP.json",
+  "JQ": {
+    "lane": "A_JQ_INCREMENTAL",
+    "MODE": "VERIFY_ONLY",
+    "SOURCE_ASOF": "2026-09-24",
+    "CLEAN_ASOF": "2026-09-24",
+    "CACHE_ASOF": "2026-09-24",
+    "PIT_PASS": true,
+    "STATUS": "PASS",
+    "reason_code": "ALL_EQUAL",
+    "FIXED_PATHS": {
+      "scope": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+      "cleaning": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "cache": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json"
+    }
+  },
+  "T_EXTERNAL": {
+    "lane": "B_T_EXTERNAL_INCREMENTAL",
+    "MODE": "VERIFY_ONLY",
+    "SOURCE_ASOF": "20260924",
+    "ALIGN_PASS": true,
+    "STATUS": "PASS",
+    "FINAL_STATUS": "EXTERNAL_EVIDENCE_MATERIALIZATION_PARTIAL",
+    "FIXED_PATHS": {
+      "root": "E:\\BLACKBOX\\数据\\外部证据",
+      "final": "E:\\BLACKBOX\\数据\\外部证据\\CURRENT\\EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json"
+    },
+    "JQ_CANONICAL_IMMUTABLE_FROM_T": true
+  },
+  "GLOBAL_SELLSIDE": {
+    "lane": "C_GLOBAL_SELLSIDE_INCREMENTAL",
+    "MODE": "VERIFY_ONLY",
+    "DISCOVERY_ASOF": "2026-09-25",
+    "NEW_REPORTS": 17,
+    "MS_STATUS": "METADATA_CAPTURED",
+    "GS_STATUS": "METADATA_CAPTURED",
+    "CLSA_STATUS": "METADATA_CAPTURED",
+    "STATUS": "PASS",
+    "FIXED_PATHS": {
+      "product_root": "E:\\BLACKBOX\\数据\\研究报告",
+      "raw_ms": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\MORGAN_STANLEY",
+      "raw_gs": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\GOLDMAN_SACHS",
+      "raw_clsa": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\CLSA_METADATA",
+      "daily_incremental": "E:\\BLACKBOX\\数据\\研究报告\\日增量",
+      "current": "E:\\BLACKBOX\\数据\\研究报告\\CURRENT\\SELLSIDE_DAILY_INCREMENTAL_CURRENT.json"
+    }
+  },
+  "DOMESTIC_RESEARCH": {
+    "lane": "D_DOMESTIC_RESEARCH_NEWS_INCREMENTAL",
+    "DISCOVERY_ASOF": "2026-08-31",
+    "NEW_REPORTS": 4,
+    "NEW_EVENTS": 26,
+    "STATUS": "PASS",
+    "FIXED_PATHS": {
+      "domestic_sellside": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方",
+      "domestic_news": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻",
+      "sellside_current": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\CURRENT\\DOMESTIC_SELLSIDE_CURRENT.json",
+      "news_current": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\CURRENT\\DOMESTIC_NEWS_CURRENT.json"
+    }
+  },
+  "US_NEWS": {
+    "lane": "E_US_NEWS_INCREMENTAL",
+    "DISCOVERY_ASOF": "2026-08-31",
+    "US_MARKET_DATE": "2026-09-24",
+    "CN_RESEARCH_DATE": "2026-09-25",
+    "NEW_EVENTS": 8,
+    "DOMAIN_COUNTS": {
+      "L1_MACRO_RATES": 4,
+      "L1_TRADE_GEOPOLITICS": 1,
+      "L1_HEALTHCARE_PHARMA": 1,
+      "L1_AI_TECH_INFRA": 1,
+      "L1_ENERGY_POWER": 1
+    },
+    "STATUS": "PASS",
+    "ACQUISITION_MODE": "RSS_API",
+    "PRODUCT": "US_L1_IMPORTANT_NEWS",
+    "FIXED_PATHS": {
+      "root": "E:\\BLACKBOX\\数据\\美国市场\\新闻",
+      "current": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\CURRENT\\US_NEWS_CURRENT.json",
+      "important_news_csv": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\CURRENT\\US_IMPORTANT_NEWS_CURRENT.csv",
+      "taxonomy": "E:\\BLACKBOX\\数据\\美国市场\\CONFIG\\US_L1_TAXONOMY.json"
+    }
+  },
+  "US_MARKET": {
+    "lane": "F_US_MARKET_STATE_INCREMENTAL",
+    "US_MARKET_DATE": "2026-09-24",
+    "CN_RESEARCH_DATE": "2026-09-25",
+    "SESSION_STATE": "CLOSE_COLLECTED",
+    "OPEN_READY": true,
+    "CLOSE_READY": true,
+    "STATUS": "PASS",
+    "ACQUISITION_MODE": "YFINANCE_API",
+    "PRODUCTS": [
+      "US_OPEN_STATE",
+      "US_CLOSE_STATE",
+      "US_FINE_GRAINED_SNAPSHOT",
+      "TOP_REAL_FLOW_SECTORS",
+      "TOP_PRICE_ACCEPTANCE_SECTORS",
+      "FINE_GRAINED_LEADERSHIP_TABLE",
+      "A_SHARE_MAPPING_PRIOR",
+      "ONE_LINE_CONCLUSION"
+    ],
+    "US_FINE_GRAINED_STATUS": "NOT_RUN",
+    "A_SHARE_MAPPING_PRIOR_STATUS": "SKIPPED",
+    "FIXED_PATHS": {
+      "root": "E:\\BLACKBOX\\数据\\美国市场\\市场状态",
+      "current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_MARKET_STATE_CURRENT.json",
+      "open_current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_OPEN_STATE_CURRENT.json",
+      "close_current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_CLOSE_STATE_CURRENT.json",
+      "alignment": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_TO_CN_SESSION_ALIGNMENT.csv"
+    }
+  },
+  "ALL_LANES_READY": "YES",
+  "DEGRADED_LANES": [],
+  "DAILY_INCREMENTAL_READY": "YES",
+  "DATA_GENERATION_ID": "DG1-a0dc58f4b016d2728346658f4a9bfa5aa3a95f43f4572bafddf7331b9f780e7c",
+  "MANIFEST_SEMANTIC_SHA256": "a0dc58f4b016d2728346658f4a9bfa5aa3a95f43f4572bafddf7331b9f780e7c",
+  "DATA_GENERATION_ID_ISSUER": "DATA_PLANE"
+}
