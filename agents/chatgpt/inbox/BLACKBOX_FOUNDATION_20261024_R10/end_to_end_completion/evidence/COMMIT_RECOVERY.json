@@ -1,0 +1,331 @@
+{
+  "scenarios": [
+    {
+      "step": "baseline_verify",
+      "result": {
+        "status": "NO_COMMIT",
+        "consistent": false
+      },
+      "raised": null,
+      "verify": {
+        "status": "NO_COMMIT",
+        "consistent": false
+      },
+      "commit_file_sha256": null
+    },
+    {
+      "step": "R1_fail_after_checkpoint",
+      "result": null,
+      "raised": "CommitError: INJECTED_FAILURE_AFTER_CHECKPOINT",
+      "verify": {
+        "status": "NO_COMMIT",
+        "consistent": false
+      },
+      "commit_file_sha256": null
+    },
+    {
+      "step": "R1_fail_before_commit_replace",
+      "result": null,
+      "raised": "CommitError: INJECTED_FAILURE_BEFORE_COMMIT_REPLACE",
+      "verify": {
+        "status": "NO_COMMIT",
+        "consistent": false
+      },
+      "commit_file_sha256": null
+    },
+    {
+      "step": "R1_commit",
+      "result": {
+        "status": "COMMITTED",
+        "commit_id": "ecc5ea66ce4c3cfdd4bcc581aaacfe018836952e371942af19a0eab13b8f6c34",
+        "seq": 1,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258",
+        "commit_file_sha256": "e2fb158e25554eb85e9c942de19b87a093cdd21e8c57f807e05636fe57ba1783",
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\ecc5ea66ce4c3cfd\\CHECKPOINT.json",
+        "single_reference_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "production_current_written": false
+      },
+      "raised": null,
+      "verify": {
+        "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "commit_id": "ecc5ea66ce4c3cfdd4bcc581aaacfe018836952e371942af19a0eab13b8f6c34",
+        "status": "CONSISTENT",
+        "consistent": true,
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\ecc5ea66ce4c3cfd\\CHECKPOINT.json",
+        "checkpoint_sha_matches": true,
+        "checkpoint_identity_matches": true,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258",
+        "asof": "2026-09-24",
+        "payload_matches": true,
+        "payload_detail": {
+          "STOCK_DAILY_PIT_R1": {
+            "expected": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "actual": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "match": true
+          },
+          "STOCK_DAILY_RAW_PIT_R1": {
+            "expected": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "actual": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "match": true
+          },
+          "STOCK_FACTOR_DAILY_R1": {
+            "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "match": true
+          }
+        }
+      },
+      "commit_file_sha256": "e2fb158e25554eb85e9c942de19b87a093cdd21e8c57f807e05636fe57ba1783"
+    },
+    {
+      "step": "R1_commit_replay_same_input",
+      "result": {
+        "status": "IDEMPOTENT_NOOP",
+        "commit_id": "ecc5ea66ce4c3cfdd4bcc581aaacfe018836952e371942af19a0eab13b8f6c34",
+        "commit_file_sha256": "e2fb158e25554eb85e9c942de19b87a093cdd21e8c57f807e05636fe57ba1783",
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258"
+      },
+      "raised": null,
+      "verify": {
+        "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "commit_id": "ecc5ea66ce4c3cfdd4bcc581aaacfe018836952e371942af19a0eab13b8f6c34",
+        "status": "CONSISTENT",
+        "consistent": true,
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\ecc5ea66ce4c3cfd\\CHECKPOINT.json",
+        "checkpoint_sha_matches": true,
+        "checkpoint_identity_matches": true,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258",
+        "asof": "2026-09-24",
+        "payload_matches": true,
+        "payload_detail": {
+          "STOCK_DAILY_PIT_R1": {
+            "expected": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "actual": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "match": true
+          },
+          "STOCK_DAILY_RAW_PIT_R1": {
+            "expected": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "actual": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "match": true
+          },
+          "STOCK_FACTOR_DAILY_R1": {
+            "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "match": true
+          }
+        }
+      },
+      "commit_file_sha256": "e2fb158e25554eb85e9c942de19b87a093cdd21e8c57f807e05636fe57ba1783"
+    },
+    {
+      "step": "R2_fail_after_checkpoint",
+      "result": null,
+      "raised": "CommitError: INJECTED_FAILURE_AFTER_CHECKPOINT",
+      "verify": {
+        "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "commit_id": "ecc5ea66ce4c3cfdd4bcc581aaacfe018836952e371942af19a0eab13b8f6c34",
+        "status": "CONSISTENT",
+        "consistent": true,
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\ecc5ea66ce4c3cfd\\CHECKPOINT.json",
+        "checkpoint_sha_matches": true,
+        "checkpoint_identity_matches": true,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258",
+        "asof": "2026-09-24",
+        "payload_matches": true,
+        "payload_detail": {
+          "STOCK_DAILY_PIT_R1": {
+            "expected": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "actual": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "match": true
+          },
+          "STOCK_DAILY_RAW_PIT_R1": {
+            "expected": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "actual": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "match": true
+          },
+          "STOCK_FACTOR_DAILY_R1": {
+            "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "match": true
+          }
+        }
+      },
+      "commit_file_sha256": "e2fb158e25554eb85e9c942de19b87a093cdd21e8c57f807e05636fe57ba1783"
+    },
+    {
+      "step": "R2_fail_before_commit_replace",
+      "result": null,
+      "raised": "CommitError: INJECTED_FAILURE_BEFORE_COMMIT_REPLACE",
+      "verify": {
+        "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "commit_id": "ecc5ea66ce4c3cfdd4bcc581aaacfe018836952e371942af19a0eab13b8f6c34",
+        "status": "CONSISTENT",
+        "consistent": true,
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\ecc5ea66ce4c3cfd\\CHECKPOINT.json",
+        "checkpoint_sha_matches": true,
+        "checkpoint_identity_matches": true,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258",
+        "asof": "2026-09-24",
+        "payload_matches": true,
+        "payload_detail": {
+          "STOCK_DAILY_PIT_R1": {
+            "expected": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "actual": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "match": true
+          },
+          "STOCK_DAILY_RAW_PIT_R1": {
+            "expected": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "actual": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "match": true
+          },
+          "STOCK_FACTOR_DAILY_R1": {
+            "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "match": true
+          }
+        }
+      },
+      "commit_file_sha256": "e2fb158e25554eb85e9c942de19b87a093cdd21e8c57f807e05636fe57ba1783"
+    },
+    {
+      "step": "R2_crash_after_commit_replace",
+      "result": null,
+      "raised": "CommitError: INJECTED_FAILURE_AFTER_COMMIT_REPLACE committed={\"status\": \"COMMITTED\", \"commit_id\": \"1f73bf4883ee701e242534d581e858e81d3d10c68805d76732bafa628c6a0303\", \"seq\": 2, \"release_id\": \"BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527\", \"commit_file_sha256\": \"69cd3c6b70bbeb92a6ae19170e4f3f385bb20abf2f62c4accd7c8b0501cf27d5\", \"checkpoint_path\": \"E:\\\\BLACKBOX\\\\_OPS\\\\FOUNDATION_RECOVERY_20261024\\\\end_to_end_completion\\\\candidate\\\\cc_commit\\\\versions\\\\1f73bf4883ee701e\\\\CHECKPOINT.json\", \"single_reference_file\": \"E:\\\\BLACKBOX\\\\_OPS\\\\FOUNDATION_RECOVERY_20261024\\\\end_to_end_completion\\\\candidate\\\\cc_commit\\\\COMMIT.json\", \"production_current_written\": false}",
+      "verify": {
+        "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "commit_id": "1f73bf4883ee701e242534d581e858e81d3d10c68805d76732bafa628c6a0303",
+        "status": "CONSISTENT",
+        "consistent": true,
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\1f73bf4883ee701e\\CHECKPOINT.json",
+        "checkpoint_sha_matches": true,
+        "checkpoint_identity_matches": true,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527",
+        "asof": "2026-09-24",
+        "payload_matches": true,
+        "payload_detail": {
+          "STOCK_DAILY_PIT_R1": {
+            "expected": "1ec3c5d63999d41c9898497d5e666e06cd793065ef9dd149340d2564ff31ee79",
+            "actual": "1ec3c5d63999d41c9898497d5e666e06cd793065ef9dd149340d2564ff31ee79",
+            "match": true
+          },
+          "STOCK_DAILY_RAW_PIT_R1": {
+            "expected": "5dfcfa38a58bed8cd4632dcbf5cae0c89c0cab461a85135b8b4b6d77124dc724",
+            "actual": "5dfcfa38a58bed8cd4632dcbf5cae0c89c0cab461a85135b8b4b6d77124dc724",
+            "match": true
+          },
+          "STOCK_FACTOR_DAILY_R1": {
+            "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "match": true
+          }
+        }
+      },
+      "commit_file_sha256": "69cd3c6b70bbeb92a6ae19170e4f3f385bb20abf2f62c4accd7c8b0501cf27d5"
+    },
+    {
+      "step": "R2_commit_after_recovery",
+      "result": {
+        "status": "IDEMPOTENT_NOOP",
+        "commit_id": "1f73bf4883ee701e242534d581e858e81d3d10c68805d76732bafa628c6a0303",
+        "commit_file_sha256": "69cd3c6b70bbeb92a6ae19170e4f3f385bb20abf2f62c4accd7c8b0501cf27d5",
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527"
+      },
+      "raised": null,
+      "verify": {
+        "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "commit_id": "1f73bf4883ee701e242534d581e858e81d3d10c68805d76732bafa628c6a0303",
+        "status": "CONSISTENT",
+        "consistent": true,
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\1f73bf4883ee701e\\CHECKPOINT.json",
+        "checkpoint_sha_matches": true,
+        "checkpoint_identity_matches": true,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527",
+        "asof": "2026-09-24",
+        "payload_matches": true,
+        "payload_detail": {
+          "STOCK_DAILY_PIT_R1": {
+            "expected": "1ec3c5d63999d41c9898497d5e666e06cd793065ef9dd149340d2564ff31ee79",
+            "actual": "1ec3c5d63999d41c9898497d5e666e06cd793065ef9dd149340d2564ff31ee79",
+            "match": true
+          },
+          "STOCK_DAILY_RAW_PIT_R1": {
+            "expected": "5dfcfa38a58bed8cd4632dcbf5cae0c89c0cab461a85135b8b4b6d77124dc724",
+            "actual": "5dfcfa38a58bed8cd4632dcbf5cae0c89c0cab461a85135b8b4b6d77124dc724",
+            "match": true
+          },
+          "STOCK_FACTOR_DAILY_R1": {
+            "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "match": true
+          }
+        }
+      },
+      "commit_file_sha256": "69cd3c6b70bbeb92a6ae19170e4f3f385bb20abf2f62c4accd7c8b0501cf27d5"
+    }
+  ],
+  "final_verify": {
+    "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+    "commit_id": "1f73bf4883ee701e242534d581e858e81d3d10c68805d76732bafa628c6a0303",
+    "status": "CONSISTENT",
+    "consistent": true,
+    "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\1f73bf4883ee701e\\CHECKPOINT.json",
+    "checkpoint_sha_matches": true,
+    "checkpoint_identity_matches": true,
+    "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527",
+    "asof": "2026-09-24",
+    "payload_matches": true,
+    "payload_detail": {
+      "STOCK_DAILY_PIT_R1": {
+        "expected": "1ec3c5d63999d41c9898497d5e666e06cd793065ef9dd149340d2564ff31ee79",
+        "actual": "1ec3c5d63999d41c9898497d5e666e06cd793065ef9dd149340d2564ff31ee79",
+        "match": true
+      },
+      "STOCK_DAILY_RAW_PIT_R1": {
+        "expected": "5dfcfa38a58bed8cd4632dcbf5cae0c89c0cab461a85135b8b4b6d77124dc724",
+        "actual": "5dfcfa38a58bed8cd4632dcbf5cae0c89c0cab461a85135b8b4b6d77124dc724",
+        "match": true
+      },
+      "STOCK_FACTOR_DAILY_R1": {
+        "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+        "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+        "match": true
+      }
+    }
+  },
+  "payloads": {
+    "R1": {
+      "root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258",
+      "digest": {
+        "parts": 13,
+        "rows": 17040667,
+        "sha256": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef"
+      }
+    },
+    "R2": {
+      "root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cr_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527",
+      "digest": {
+        "parts": 13,
+        "rows": 17040667,
+        "sha256": "1ec3c5d63999d41c9898497d5e666e06cd793065ef9dd149340d2564ff31ee79"
+      }
+    },
+    "R1_equals_R2": false,
+    "versions": [
+      "1f73bf4883ee701e",
+      "ecc5ea66ce4c3cfd"
+    ]
+  },
+  "PRODUCTION_CURRENT_WRITE": "NONE",
+  "verdicts": {
+    "baseline_no_commit": true,
+    "crash_before_commit_leaves_no_reference": true,
+    "first_commit_consistent": true,
+    "same_input_replay_is_noop": true,
+    "revised_input_failures_leave_R1_consistent": true,
+    "crash_after_swap_is_complete": true,
+    "revised_input_commit_consistent": true,
+    "both_payloads_readable_and_distinct": true,
+    "final_consistent": true
+  },
+  "SELFTEST_RESULT": "PASS"
+}
