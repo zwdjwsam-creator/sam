@@ -12,6 +12,54 @@ CURRENT_SWITCH_ALLOWED=false
 ORDER_ALLOWED=false
 FULL_MIGRATION=false
 
+## 当前最高优先级：修复已定位的编译器长路径漏读，台机一次复验
+
+status: READY_SAM_FIX_COMPILER_READ_COMPLETENESS
+same_dispatch: SAM_LED_DESKTOP_RECTIFICATION_20261025
+lead_modifier: SAM（笔记本原 BLACKBOX Cursor）
+execution_and_independent_verifier: ZHANGWEI（台式机本机）
+
+本段承接用户最新指令与台机 R11 BLOCKED 实测，优先于后文把链路标成 PASS、只补材料或停止返工的历史文字。继续原任务，直接修目标代码，不再交接执行链、重扫或另开诊断工程。已确认的台机 E 盘读写权限继续使用。
+
+### 已定位事实，不再当文档口径差异
+
+GPT 已读取 sam_led_rectification/DESKTOP_RERUN_AFTER_FIX_RESULT.json、DESKTOP_RERUN_AFTER_FIX.md、READ_PLANE_DIFF.md、RERUN_AFTER_FIX.md、probe_longpath_compiler_r1.py、quantify_read_gap_r1.py，以及 HUB 已存原 daily compiler 和 tip-rebase 源码。R11 台机实测：物化234/12成功；同一子树 is_file 可见222，扩展路径 stat 成功234；2026三产品仍928760，而固定输入参照959896。31,163漏读行减27个重叠键=31,136净缺口。该轮数据文件可读，故本缺陷不归因为源数据缺失或需重下载。
+
+原 tip-rebase 的 rebuild_price_2026 调用 cc.find_parquets -> cc.read_price_frame；HUB daily compiler 源码243–257行除 find_parquets 的 rglob/is_file 外，read_price_frame 还有 pd.read_parquet(p) 异常后 log(skip unreadable)+continue。因此修枚举必须同时闭合实际读取，不能让下一跳继续丢文件。HUB原件不保证就是当前部署字节，SAM直接读取台机当前实际导入模块后最小修改；不要求另传源码才能施工。
+
+### 连续落地的最小修改
+
+1. 修改台机 E:\BLACKBOX\任务\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\cache_compiler_daily_incremental_r1.py 实际被导入的 find_parquets/read_price_frame。
+   - 统一沿用已有效的 _lp 语义，支持本地绝对路径与 UNC、已加前缀不重复。目录枚举用扩展路径 scandir，逐条显式 os.stat，必要数据输入不存在/不可访问/枚举失败必须报具体路径和异常并非零停止，不能用 exists/is_file/DirEntry.is_file 的布尔过滤把错误当作无文件。保持确定排序、现有来源选择和已知链接语义，不扩展扫描到全库。
+   - 所有本次消费 parquet 的实际 open/read 也走长路径安全方式；可用扩展路径 open 的二进制文件句柄交原 parquet reader，依当前依赖验证。不可仅把枚举换掉却继续用未经适配路径读取。
+   - 对本次必需股票价格输入，读取失败、必需键/schema解析失败必须 HARD_BLOCK: COMPILER_READ_INCOMPLETE，保留路径/异常/成功与失败计数，禁止 skip unreadable+continue。可选产品维持原契约，不能把所有产品臆定成必需，也不能对必需输入降级为可选。保留原日期、去重优先级、复权和因子计算规则。
+2. 在实际原 tip-rebase/connected runner 连接处加入内容完整性硬门，必须在候选 commit/reference更新及任何发布前执行；失败从子进程传到顶层非零退出，CONNECTED_PIPELINE_RESULT不能仍PASS。
+   - 期望集合来自成功物化留下的同一 stock_ohlcv_daily 子树清单/计数；compiler枚举的相对文件名集合与其相等，实际成功读取文件集合也相等。集合比较优先于只比数量；统计按同一子树，不拿全树dst_files作股票子树分母。不能用同一个有缺陷的枚举同时生成期望与实测。
+   - 同一固定R3输入：234 parquet、12 r2_repair；枚举234、成功读取234、失败0。
+   - 输出行数按原 date/code规范化、日期截取、合法去重规则独立核对预期键集合及每日键数；不得把简单源行数总和或“<=源上界”作为通过条件，928760也满足上界，且已有27个重叠键。若此分支重建2026而不合并父分区，就按其原规则建预期，不凭空引入父分区；父版本及被继承输入保持原样。
+   - 本固定测试窗三产品 rows_2026 必须各为959896，并从实际parquet核对，不只读取QA摘要：STOCK_DAILY_PIT_R1、STOCK_DAILY_RAW_PIT_R1、STOCK_FACTOR_DAILY_R1。六日实际(date,code)数为07-03=5209、07-06=5210、07-07=5208、07-08=5208、07-09=5208、07-10=5207。与独立预期键集合相符。此数字是本固定输入回归基线，不得硬编码为所有未来日增的通用行数。
+   - 保留通用数据完整性门，不以新增assert固定数字替代。门不能只写在报告/独立验收脚本中，真实运行入口必须调用。
+3. 仅顺手闭合同范围已报漏洞：materializer --full-carry-forward 的 walk 不再 except OSError: continue（保留具体错误并中止）；不启动全树full-carry-forward运行。改动前把当前真字节另存唯一备份并确认可恢复，保留现有备份。更正文档：.bak_sam_led_r11与当前相同，不能当修前备份；.bak_sam_led_r10是旧修前版本，不要为了恢复回滚链而实际回退并丢掉已有效的物化修复。
+
+### 已知坏候选与复验顺序
+
+- 现存 ...215655 / 928760 候选必须保留作为失败证据，记录其身份和NOT_ADMISSIBLE。不要因它有SEAL/CONSISTENT而复用为成功候选，也不要手改其数字/SEAL使其通过。
+- 使用现有runner受支持的候选重建/失效机制，从同一已修好的R3输入重新编译受影响产物，避免旧缓存/旧SEAL短路；必要时仅将本任务已知坏候选移入明确隔离归档，移动前把候选引用关系记录并保持可恢复。不改sealed市场数据，不删数据，不缩短根目录掩盖故障，不依赖修改注册表/重启。
+- 第一次从坏内容修成正确内容，commit_id应允许变化，不能为追求NOOP而保留旧错内容或改identity排除项。正确新结果通过硬门后才进入原候选提交协议。随后相同输入第二遍必须IDEMPOTENT_NOOP且verify=CONSISTENT；第一遍的修复提交与第二遍幂等分开记录。
+- 加两个贴近故障的短验证：超过260字符路径在ZHANGWEI实际可枚举且可读；隔离小样本故意缺一个期望文件或注入一次read异常，必须COMPILER_READ_INCOMPLETE、顶层非零且不产生新候选提交。不能只测异常函数返回，须看到实际调用门阻断。用小fixture，绝不更动真实sealed输入。
+- SAM把修改、同一命令的一次性复跑入口和通过判据直接落台机现有sam_led_rectification目录，并通知ZHANGWEI，不让用户传话。沿用既有工作目录、台机解释器和命令：
+  E:\BLACKBOX\.venv\Scripts\python.exe -X utf8 tools\run_connected_pipeline.py --r15-rid R15_REPLAY_20260924_R3
+  如本机当前接口需要显式重建参数，SAM把确切支持参数写入该一次性入口，不让ZHANGWEI猜。
+- ZHANGWEI只在SAM交付后本机顺序复验上述受影响编译及同输入幂等，记录真实hostname/sys.executable/argv/导入模块__file__/补丁身份/原始日志。B仍不匹配就停止提交并直接反馈SAM具体错误，由SAM在同任务处理，无需owner再次下令；两边不能并发改业务代码。
+
+### 集中回传与结论范围
+
+沿用sam_led_rectification交付，更新现有操作手册/复跑说明并附实际部署diff或改动源码、COMPILER_READ_COMPLETENESS结果（期望/枚举/成功读取集合与数量、失败项、源键/输出键核对）、三产品真实行数及六日键数、负向阻断与二次幂等结果。一次集中回传，不把重新索取全套证据作为修复前置。源清单必要摘要可以上传，市场数据不上传。
+
+234/12、959896×3、六日精确键数、漏读负向阻断、正确结果二次幂等全部满足后，才关闭本条COMPILER_ENUMERATION_DROPS_LONG_PATHS/NO_ROW_COUNT_GATE。CONSISTENT或exit0单独不能关闭它。该缺陷关闭也不自动关闭独立的V4输入/复权语义等既存阻断；此次不触碰V4，不启动下载和生产切换。FOUNDATION_ACCEPTANCE=false / FORMAL_ENGINE_ADMISSION=false，等待实际回传审核；NEW_DATA_ACQUISITION_AUTHORIZED=false / CURRENT_SWITCH_ALLOWED=false / ORDER_ALLOWED=false。
+
+---
+
 ## 当前收敛：由 SAM 纠正目标端读取差异，沿用同一任务
 
 用户最新要求：笔记本使用台式机数据能跑通，应优先由笔记本端纠正台式机读取方式，定位两端的具体差异。继续由 SAM 主导目标端最小修复，ZHANGWEI 仅执行及复验。这是同一任务的新明确推进要求，优先于后文仅补交证据、不发进一步修复的历史收口说明；不启动新盘点或新轮次。
