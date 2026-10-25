@@ -780,3 +780,14 @@ Prior R08 delivery remains visible and uncorrected in place; this bundle is appe
   research module registry + OS state, sellside daily writer, lane-B materialization, morning selection validation,
   research memory, QMT dual-pool + Laotao route C, lane E/F collector, lane D news observer, module 04 ontology, 2 live json samples.
 - Not included on purpose: the two 2B coverage stubs, market parquet, any credential contents.
+
+
+## BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025 — R13 revision (same task, corrected classification)
+
+- overall: **BLOCKED_PARTIAL_EXECUTION** · stage1: **BLOCKED** (READY_FOR_GPT_REVIEW=false)
+- the three reviewed diffs are closed with code, not description: real original gate/cleaning/compiler/publish-gate calls, provider substitutions removed, single-authority COMMIT.json
+- strict V4 port 2026-09-03..2026-09-24: **BLOCKED_INPUT_INCOMPLETE**, trades=0, blockers=['REQUIRED_INPUT_MISSING']
+- measured blocker: ADJUST_FACTOR_PIT_R1 is sparse for 12 sessions (2026-08-17..2026-09-02, 7-89 rows); fq='pre' rows that cannot be reconstructed are withheld and counted, never filled
+- the earlier COMPLETED/2-fill result depended on the ffill this revision removed; it is preserved as a failed historical label
+- package: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/` (31 top-level members, all_byte_equal=True, index+receipt verified=True)
+- acquisition / CURRENT / orders remain unauthorised; B1/B2/B5 partially repaired, B3/B4/B6/B7 open
