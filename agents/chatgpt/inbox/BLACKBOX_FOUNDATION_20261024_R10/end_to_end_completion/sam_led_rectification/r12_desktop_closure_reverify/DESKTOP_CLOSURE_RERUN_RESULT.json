@@ -1,0 +1,175 @@
+{
+  "schema": "BLACKBOX_DESKTOP_CLOSURE_RERUN_RESULT_R1",
+  "dispatch_id": "SAM_LED_DESKTOP_RECTIFICATION_20261025",
+  "rev": "R12_COMPILER_READ_CLOSURE",
+  "status": "PASS",
+  "verdict": "CLOSURE_FIX_CONFIRMED_ON_DESKTOP",
+  "reviewer_host": "ZHANGWEI",
+  "reviewed_at_cn": "2026-10-25T23:55:00+0800",
+  "provenance": "ZHANGWEI_HOST_RUN_EVIDENCE_FROM_OWN_PROCESS",
+
+  "patch_identity_verified": {
+    "note": "三个补丁先核 sha256，再核修复代码实际存在，最后才跑",
+    "files": {
+      "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py": {
+        "bytes": 42333, "sha16": "2a82d12b4c4ce12a", "declared": "2a82d12b", "match": true
+      },
+      "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py": {
+        "bytes": 26486, "sha16": "c1d431a204d09897", "declared": "c1d431a2", "match": true
+      },
+      "_OPS/.../tools/run_connected_pipeline.py": {
+        "bytes": 30487, "sha16": "b7a7179b8e8c6f1e", "declared": "b7a7179b", "match": true
+      }
+    },
+    "compile_ok": true,
+    "code_presence_checked": {
+      "def_lp": true, "def_unlp": true, "os_walk_in_enumerate": true,
+      "def_assert_read_closure": true, "READ_REPORT": true, "READ_FAILED_logged": true,
+      "PRICE_READ_INCOMPLETE_raise": true, "MATERIALISED_UNREADABLE_raise": true
+    },
+    "backups_present": {
+      "cache_compiler_daily_incremental_r1.py.bak_sam_led_20261025": 38650,
+      "cache_compiler_tip_rebase_from_current_r1.py.bak_sam_led_20261025": 25087,
+      "run_connected_pipeline.py.bak_sam_led_20261025_evidence": 28893
+    }
+  },
+
+  "eight_criteria": {
+    "1_r15_files": {"expected": "234 + 12 r2_repair", "actual": {"files": 234, "r2_repair": 12}, "result": "PASS"},
+    "2_read_closure": {
+      "expected": "materialised=enumerated=read_ok=234, failed=0, CLOSURE_OK=true; ETF 37/37/37",
+      "actual": {
+        "STOCK_DAILY_PIT_R1": {"materialised": 234, "enumerated": 234, "read_ok": 234, "failed": 0, "CLOSURE_OK": true},
+        "ETF_DAILY_PIT_R1": {"materialised": 37, "enumerated": 37, "read_ok": 37, "failed": 0, "CLOSURE_OK": true}
+      },
+      "cross_check_enumerated_equals_disk": true,
+      "result": "PASS"
+    },
+    "3_zero_error_markers": {
+      "counts": {"READ_FAILED": 0, "ENUM_INCOMPLETE": 0, "PRICE_READ_INCOMPLETE": 0, "READ_CLOSURE_BROKEN": 0},
+      "result": "PASS"
+    },
+    "4_rows_2026": {
+      "expected": 959896,
+      "actual": {"STOCK_DAILY_PIT_R1": 959896, "STOCK_DAILY_RAW_PIT_R1": 959896, "STOCK_FACTOR_DAILY_R1": 959896},
+      "method": "台机用 pyarrow 直接数 part_2026.parquet，不读 QA",
+      "qa_agrees": true,
+      "result": "PASS"
+    },
+    "5_july_distinct_codes": {
+      "expected": {"2026-07-03": 5209, "2026-07-06": 5210, "2026-07-07": 5208, "2026-07-08": 5208, "2026-07-09": 5208, "2026-07-10": 5207},
+      "actual": {"2026-07-03": 5209, "2026-07-06": 5210, "2026-07-07": 5208, "2026-07-08": 5208, "2026-07-09": 5208, "2026-07-10": 5207},
+      "method": "台机从 part_2026 自己去重数 code，不读 QA",
+      "qa_agrees": true,
+      "result": "PASS"
+    },
+    "6_production_digest_changed": {
+      "runner_value": {},
+      "independent_pre_vs_post": "9 个 CURRENT/STATE digest 全等（跑前抓快照，跑后比对）",
+      "result": "PASS"
+    },
+    "7_negative_control_log": {
+      "path": "pipeline_runs/compiler_HARD_BLOCK_negative_control.log",
+      "bytes": 7612,
+      "has_exit_code_1": true,
+      "failure_mode_this_round": "MATERIALISED_UNREADABLE: STOCK_DAILY_PIT_R1 ...\\nope\\price\\stock_ohlcv_daily [WinError 3]",
+      "note": "负控这次踩的是不存在的 materialised 目录，比原 SKIP_NO_SOURCE 更早更硬；日志独立未被主日志覆盖",
+      "result": "PASS"
+    },
+    "8_idempotency": {
+      "pass_a": {"commit_status": "COMMITTED", "commit_id": "572619c9...", "release_id": "..._234902", "seq": 4},
+      "pass_b": {"commit_status": "IDEMPOTENT_NOOP", "commit_id": "572619c9...", "commit_file_sha256_unchanged": "5798fa7c...", "second_release_id": "..._235444"},
+      "candidate_commit_verify": {"status": "CONSISTENT", "exit_code": 0, "payload_matches": true},
+      "result": "PASS"
+    }
+  },
+
+  "independent_verify": {
+    "script": "DESKTOP_CLOSURE_VERIFY_R1.py",
+    "checks": 15,
+    "passed": 15,
+    "failed": 0,
+    "note": "不读 runner 的 verdict；15 项全部从产物/日志/文件系统重算，含 commit 账本行数与锚点"
+  },
+
+  "commit_anchor": {
+    "before_my_correction": {
+      "commit_id": "2f755779...",
+      "release_root": ".../cc_out/releases/_prev_BLACKBOX_..._215655",
+      "rows_total": 17009531,
+      "content": "PRE_FIX (rows_2026=928760)",
+      "why": "管线 newest_release() = sorted(by name)[-1]；我把归档目录命名为 _prev_* 放在 releases/ 内，'_'(0x5F) 排在 'B'(0x42) 之后，于是归档树被当成最新 release 提交"
+    },
+    "after_correction": {
+      "commit_id": "572619c945d48f1b14f41c6f8c94b66dbacab00da4303366bcf2687ff8ec0876",
+      "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234902",
+      "rows_total": {"STOCK_DAILY_PIT_R1": 17040667, "STOCK_DAILY_RAW_PIT_R1": 12362212, "STOCK_FACTOR_DAILY_R1": 17040667},
+      "sha16": {"STOCK_DAILY_PIT_R1": "f929f8ccdef69dda", "STOCK_DAILY_RAW_PIT_R1": "f1df1854fcd2447a", "STOCK_FACTOR_DAILY_R1": "0c68f02825dfc53c"},
+      "status": "COMMITTED_THEN_IDEMPOTENT_NOOP"
+    },
+    "disclosure": "这一项是我的操作失误，不是 SAM 代码缺陷；但暴露了真实脆弱性（见 findings_for_sam #1）。上一轮我报告的 PASS 里 commit_consistent 也是在这种锚点下成立的，需要在 SAM 侧确认是否同样受影响。"
+  },
+
+  "findings_for_sam": [
+    {
+      "id": "NEWEST_RELEASE_BY_NAME",
+      "severity": "MEDIUM",
+      "detail": "run_connected_pipeline.newest_release() 用 sorted(key=p.name)[-1]。任何名字排在 'BLACKBOX_*' 之后的目录（_prev_、_bad_、zz_、甚至小写开头）都会顶替真正的最新 release，进而让 candidate_commit 在归档树上计算 identity，触发 REBOUND_SAME_CONTENT_NEW_ROOT / IDEMPOTENT_NOOP，把旧内容当成当前内容。",
+      "evidence": "COMMIT.json 在 23:41 出现 rebound_at_cn 且 release_root=_prev_..._215655，rows=17,009,531(修前)，而同期实编译为 17,040,667",
+      "suggested_fix": "newest_release 只考虑匹配 ^BLACKBOX_CACHE_R1_ 且不含 _prev_/_bad_/archive 的目录；或按 RELEASE.json 的 sealed_at 排序；并在 commit 前断言 identity.products.rows 合计 >= 已知最低行数"
+    },
+    {
+      "id": "INDEX_CLOSURE_GAP_CONFIRMED",
+      "severity": "MEDIUM",
+      "detail": "READ_CLOSURE 只含 STOCK_DAILY_PIT_R1 与 ETF_DAILY_PIT_R1 两个产品；指数路径日志显示 read stock=234 etf=37 index=1501，但 index 没有 materialised/enumerated/read_ok 三元组，也没有 CLOSURE_OK。你自己说的这个缺口已核实为真实存在，同类静默漏读仍可在指数上隐藏。",
+      "evidence": "compiler_releases.log READ_CLOSURE 仅两键；另有 'read stock files=234 etf=37 index=1501' 但无对应闭包断言",
+      "suggested_fix": "把 index 读取也纳入 assert_read_closure（materialised vs enumerated vs read_ok），并把 index rows 写入 QA 供对账"
+    },
+    {
+      "id": "ARCHIVE_LOCATION_IS_MY_ERROR",
+      "severity": "LOW",
+      "detail": "我把归档放在 candidate/cc_out/releases/ 内并加 _prev_ 前缀，是这次假 IDEMPOTENT_NOOP 的直接触发条件。已改为移到 candidate/cc_out/_archive_pre_fix_closure/，releases/ 内只保留真实 release。"
+    },
+    {
+      "id": "LONGPATH_TRAP_BITES_EVIDENCE_SCRIPTS_TOO",
+      "severity": "LOW",
+      "detail": "我自己写取证脚本时用 pathlib.read_bytes() 读那 12 个 r2_repair 文件，同样踩 FileNotFoundError —— 不经过 _lp 的任何新代码都会复现同一个坑。建议在仓库放一个 lstat/lp 公共小工具并禁止业务代码直接 read_bytes/read_parquet 裸路径。",
+      "evidence": "probe 脚本首次运行 FileNotFoundError on stock_ohlcv_daily__XSHE__DAILY__2026-07-03__...r2_repair...parquet"
+    },
+    {
+      "id": "LONGPATHSENABLED_IS_0_ON_DESKTOP",
+      "severity": "INFO",
+      "detail": "你文档 §7 仍标 UNVERIFIED 的这项，台机实测为 0（HKLM\\SYSTEM\\CurrentControlSet\\Control\\FileSystem\\LongPathsEnabled=0，OS 10.0.26200）。这也是为什么同 234 文件在 SAM 得到 959,896、台机修前只有 928,760。"
+    }
+  ],
+
+  "still_open": [
+    "V4 BLOCKED_INPUT_INCOMPLETE 未变（diagnostic_only），正式回测未通过，本轮未触碰",
+    "指数读取无闭包探针（已核实，见 findings #2）",
+    "供应商分页完整性 UNKNOWN",
+    "08-31/09-01 仅候选分区，生产 CURRENT 未切换（未授权）",
+    "is_st / 历史成分未绑定",
+    "复权因子 2026-08-10 起恒 1.0 成因未分离"
+  ],
+
+  "state_left_on_desktop": {
+    "r15_releases": ["R15_REPLAY_20260924", "R15_REPLAY_20260924_R2", "_BAD_222files_archived_20261025_202837",
+                     "_prev_R15_REPLAY_20260924_R3_from_aborted_run_1911", "_prev_R3_pre_closure_run_20261025_233944",
+                     "_pass2_R3_20261025_234900", "_passA_R3_20261025_235347"],
+    "cc_out_releases_kept": ["..._234016", "..._234111", "..._234457", "..._234552", "..._234902", "..._235444"],
+    "cc_out_archive_moved_out": ["_prev_..._215558", "_prev_..._215655"],
+    "authoritative_commit": "572619c9 (17,040,667 rows, post-fix content)",
+    "production_CURRENT_WRITE": "NONE",
+    "new_data_acquisition": "NONE",
+    "deleted_anything": false
+  },
+
+  "flags": {
+    "PRODUCTION_CURRENT_WRITE": "NONE",
+    "NEW_DATA_ACQUISITION": "NONE",
+    "ORDER_ALLOWED": false,
+    "PUBLISH_AUTHORIZED": false
+  },
+
+  "blockers": []
+}
