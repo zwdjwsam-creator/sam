@@ -12,23 +12,28 @@
       "repair_needed": "writer-emitted content cursor, or an authorised start date with a validated overlap"
     },
     "R2_engine_data_contract_and_actual_runtime": {
-      "status": "PARTIAL",
-      "measured": "engine reached COMPLETED over 2026-09-03..2026-09-24 on the real local plane with zero input blockers and 2 executed trades",
-      "unproven": "performance admission grade: B1 per-date factor lineage and B7 whole-CACHE equivalence gate are still open",
+      "status": "BLOCKED",
+      "measured": "the strict V4 port over 2026-09-03..2026-09-24 completes all 16 sessions and is classified BLOCKED_INPUT_INCOMPLETE with blockers ['REQUIRED_INPUT_MISSING'], trades=0, orders=0, mark_price_starved=0; unprovable fq='pre' rows are withheld per code and recorded, minute requests are blocked, unknown paused fails the request",
+      "blocking_gap": "ADJUST_FACTOR_PIT_R1 is sparse for 12 sessions (2026-08-17..2026-09-02, 7-89 rows vs a 5,222 peak); a pre-open read on 2026-09-03 anchors at 2026-09-02, so the affected codes have no provable adjusted price and are withheld. The strategy ranks only what is served, so a run over this window cannot be a strategy verdict",
+      "unproven": "formal strategy equivalence and any return claim: minute-input steps have no local product, the factor gap removes part of the universe, and B7 whole-CACHE equivalence remains open",
       "evidence": [
-        "engine_runs/v4_r21_20260903_20260924_R11_TRADEABILITY_RECON/run_result.json",
-        "evidence/TRADEABILITY_RESTORE.json",
-        "evidence/INPUT_PLANE_REPAIR.json",
-        "evidence/PRICE_FETCH_FAILURE.json"
+        "evidence/V4_STRICT_RUN.json",
+        "evidence/V4_STRICT_RUNS_ALL.json",
+        "evidence/FACTOR_DENSITY.json",
+        "evidence/PROVIDER_SEMANTIC_REPAIR.json",
+        "evidence/PRICE_FETCH_FAILURE.json",
+        "evidence/INPUT_PLANE_REPAIR.json"
       ],
-      "repair_needed": "none recorded"
+      "repair_needed": "densify ADJUST_FACTOR_PIT_R1 for 2026-08-17..2026-09-02 (acquisition) plus a local minute product; no value is invented in the meantime",
+      "historical_label_preserved": "R11_TRADEABILITY_RECON run is COMPLETED/diag=false with 2 fills — kept as a failed historical label, not as acceptance"
     },
     "R3_strategy_artifact_identification": {
       "status": "PASS",
-      "measured": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py sha256 8d9334dd6ed2053b",
-      "unproven": "nothing at identity level",
+      "measured": "strategy sha256 8d9334dd6ed2053b6cb297ea5780408c106c9cf2e0b7138629685e4f589d992e, identical to the SAM source-machine RUN_RESULT; BulletTrade+adapter is a LOCAL PORT, not the original JoinQuant cloud engine",
+      "unproven": "nothing at identity level; engine equivalence is R2",
       "evidence": [
-        "ACCEPTANCE.json#strategy_identity"
+        "ACCEPTANCE.json#strategy_identity",
+        "hub_tips/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md"
       ],
       "repair_needed": "none"
     },
@@ -51,6 +56,22 @@
         "CONNECTED_PIPELINE.json"
       ],
       "repair_needed": "stage-2 acquisition + cleaning, then a zero-blocker regression"
+    },
+    "R5_pipeline_reuse_and_candidate_commit": {
+      "status": "PARTIAL",
+      "measured": "the real chain executes: retained transport -> original acquisition_absence_gate -> original inherit_tree/read_price_frame/antileak_gate cleaning candidate -> ORIGINAL cache_compiler_tip_rebase_from_current_r1 (exit 0, CANDIDATE_READY) -> immutable versioned commit; original publish_atomic evaluated in dry-run only",
+      "unproven": "the source machine's R13 cleaning stage is not used (desktop R15 semantics kept); the original publish protocol beyond dry-run is not authorised",
+      "evidence": [
+        "CONNECTED_PIPELINE.json",
+        "evidence/CLEANING_CANDIDATE.json",
+        "evidence/ORIGINAL_COMPILER_RECEIPT.json",
+        "evidence/ORIGINAL_PUBLISH_GATE_PROBE.json",
+        "evidence/COMMIT_RECOVERY.json"
+      ],
+      "repair_needed": "authorisation for a candidate-set publish-protocol exercise"
     }
-  }
+  },
+  "revised_at": "2026-10-25T12:00:00+0800",
+  "revision": "R13_SAME_TASK_CORRECTION",
+  "historical_labels_preserved": "FINAL_REQUIREMENT_MATRIX_R12_PRESERVED.json"
 }
