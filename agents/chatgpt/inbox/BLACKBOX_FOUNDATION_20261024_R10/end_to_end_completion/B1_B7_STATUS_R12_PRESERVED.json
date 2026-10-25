@@ -1,0 +1,62 @@
+{
+  "artifact": "B1_B7_STATUS",
+  "items": {
+    "B1": {
+      "requirement": "PRE-adjustment price chain certifiable over the test window",
+      "status": "OPEN",
+      "failed_predicate": "factor sidecar vs physical row count +83,503 with no per-date lineage; pre/post not implemented",
+      "affected_deliverable": "D2",
+      "repair_attempted": "engine ran with fq='pre' and a piecewise factor fill anchored at end_date; no new lineage invented",
+      "remaining_input": "per-date factor lineage (or the whole-table factor revision)"
+    },
+    "B2": {
+      "requirement": "universe and tradeability cover the test window",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "sealed tradeability stopped at 2026-09-03 while prices run to 2026-09-24",
+      "affected_deliverable": "D2",
+      "repair_attempted": "rebuilt paused/high_limit/low_limit for 2026-08-04..2026-09-24 from 40 retained RAW batches; agreement on sealed overlap 41656 keys with 35 field-level disagreements",
+      "remaining_input": "historical universe is still not covered (measured window ends 2026-07-20); is_st is not in the RAW daily schema and was not inferred"
+    },
+    "B3": {
+      "requirement": "fund products materialised or explicitly excluded by contract",
+      "status": "OPEN",
+      "failed_predicate": "FUND_DAILY_PIT_R1 / FUND_FACTOR_DAILY_R1 / FUND_LIKE_ASSET_VIEW_R1 hold 0 parquet",
+      "affected_deliverable": "D1",
+      "repair_attempted": "no materialisation; source result kept as measured absence, no synthetic rows",
+      "remaining_input": "materialisation run or a contract that permits exclusion"
+    },
+    "B4": {
+      "requirement": "mounted CURRENT serves every session in the window",
+      "status": "OPEN",
+      "failed_predicate": "2026-08-31 and 2026-09-01 are still not served by the mounted CURRENT",
+      "affected_deliverable": "D3",
+      "repair_attempted": "the two days were rebuilt into a candidate partition and republished as candidate only",
+      "remaining_input": "an authorised CURRENT switch (CURRENT_SWITCH_ALLOWED=false here)"
+    },
+    "B5": {
+      "requirement": "formal engine run",
+      "status": "REPAIRED",
+      "failed_predicate": "the earlier run aborted the 09:05 step and skipped the limit check because limit/status inputs were missing; run status=COMPLETED",
+      "affected_deliverable": "D2",
+      "repair_attempted": "tradeability restored from retained RAW with per-cell reconciliation (sealed value wins, candidate only fills null cells), atomic candidate publish, strict input gate, non-binary paused normalisation; run status=COMPLETED, input blockers=0, mark-price starved lookups=0, executed trades=2",
+      "remaining_input": "none for the requested window (performance stays non-admission-grade while B1/B7 are open)"
+    },
+    "B6": {
+      "requirement": "writer / checkpoint / resume / non-regression",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "no production cursor; resume evidence did not exist for any product",
+      "affected_deliverable": "D1+D3",
+      "repair_attempted": "local candidate checkpoint + resume implemented and exercised for STOCK_DAILY_PIT_R1 (verdict PASS, idempotent True); 53 other bindings reported blocked",
+      "remaining_input": "a production writer that emits a cursor, or an authorised start date with overlap"
+    },
+    "B7": {
+      "requirement": "equivalence / coverage / non-regression of the candidate vs its parent",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "the non-regression gate that would distinguish a regression from a missing product is unimplemented",
+      "affected_deliverable": "D3",
+      "repair_attempted": "compiler refuses duplicate keys; partial-day replacement proven; idempotent replay proven; no date lost vs the parent partition (rows only added for the two recovery days)",
+      "remaining_input": "whole-CACHE RAW<->CACHE equivalence gate and a publish-time regression classifier"
+    }
+  },
+  "note": "no item is closed by this round"
+}
