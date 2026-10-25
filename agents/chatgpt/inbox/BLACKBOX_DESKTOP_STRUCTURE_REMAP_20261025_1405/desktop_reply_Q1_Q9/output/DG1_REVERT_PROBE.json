@@ -1,0 +1,43 @@
+{
+  "actions": [
+    "US_MARKET 细粒度状态由产物派生 ('PASS', 'PASS') -> ('PASS', 'PASS')"
+  ],
+  "new_dg1": "DG1-373cf01dd3e066bd6a21c74154b8e3606b8ede05dffa91ffd4338a225db1811b",
+  "source_dg1": "DG1-7fd2bf71248bbe7d8b52798ae0a77aaf0c8362ba407112fffe6445122e2c2b13",
+  "dg1_equal": false,
+  "residual_diff_keys": [
+    {
+      "key": ".GLOBAL_SELLSIDE.MODE",
+      "source": "INGEST",
+      "desktop": "VERIFY_ONLY"
+    },
+    {
+      "key": ".JQ.MODE",
+      "source": "INGEST",
+      "desktop": "VERIFY_ONLY"
+    },
+    {
+      "key": ".T_EXTERNAL.MODE",
+      "source": "INGEST",
+      "desktop": "VERIFY_ONLY"
+    }
+  ],
+  "fine_grained_evidence": {
+    "flow_current": {
+      "path": "E:\\BLACKBOX\\运行\\BLACKBOX_US_MARKET_FINE_GRAINED_FLOW_PROFIT_POOL_CURRENT.json",
+      "exists": true,
+      "bytes": 1482,
+      "STATUS": "PASS"
+    },
+    "snapshot_current": {
+      "path": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池\\CURRENT\\US_FINE_GRAINED_SNAPSHOT_CURRENT.json",
+      "exists": true,
+      "STATUS": "PASS"
+    },
+    "mapping_prior": {
+      "path": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池\\CURRENT\\A_SHARE_MAPPING_PRIOR_CURRENT.json",
+      "exists": true,
+      "bytes": 2375
+    }
+  }
+}
