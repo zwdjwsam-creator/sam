@@ -124,6 +124,9 @@ class LocalPlaneProvider(_EngineDataProvider):
         # Missing required inputs must fail the run, not silently skip strategy logic.
         self.required_input_failures: List[Dict[str, Any]] = []
         self.strict_required_inputs: bool = False
+        # An intraday request has no local minute plane; the daily-open proxy is a
+        # diagnostic approximation only and must be enabled explicitly.
+        self.intraday_proxy_allowed: bool = False
 
     def _code_frames(self, product: str, year: int) -> Dict[str, pd.DataFrame]:
         key = (product, year)
@@ -515,61 +518,105 @@ class LocalPlaneProvider(_EngineDataProvider):
         d = df["date"]
         return df[(d >= pd.Timestamp(start)) & (d <= pd.Timestamp(end))]
 
-    def _align_factor_piecewise(
+    def _asset_class_of(self, codes: Sequence[str], start: dt.date, end: dt.date) -> Dict[str, str]:
+        """Which authoritative price plane holds this code (drives fq applicability)."""
+        years = range(pd.Timestamp(start).year, pd.Timestamp(end).year + 1)
+        pools = {"STOCK": set(), "ETF": set(), "INDEX": set()}
+        for product, key in (("STOCK_DAILY_PIT_R1", "STOCK"),
+                             ("ETF_DAILY_PIT_R1", "ETF"),
+                             ("INDEX_DAILY_R1", "INDEX")):
+            for y in years:
+                try:
+                    pools[key] |= set(self._code_frames(product, y).keys())
+                except FileNotFoundError:
+                    continue
+                except Exception:
+                    continue
+        out: Dict[str, str] = {}
+        for c in codes:
+            c = str(c)
+            if c in pools["STOCK"]:
+                out[c] = "STOCK"
+            elif c in pools["ETF"]:
+                out[c] = "ETF"
+            elif c in pools["INDEX"]:
+                out[c] = "INDEX"
+            else:
+                out[c] = "UNKNOWN"
+        return out
+
+    def _align_factor_dense(
         self, raw: pd.DataFrame, codes: Sequence[str], anchor: dt.date
-    ) -> Tuple[pd.DataFrame, List[str]]:
-        """Attach the PIT adjustment factor to every price row.
+    ) -> Tuple[pd.DataFrame, List[str], Dict[str, Any]]:
+        """Attach the PIT adjustment factor with a SAME-DAY dense join.
 
-        `ADJUST_FACTOR_PIT_R1` is an event-ish series: a factor row exists only on
-        dates the upstream plane materialised, not on every trading day. The factor
-        is piecewise constant between corporate-action events, so the correct
-        reconstruction is a per-code forward fill (plus a leading fill from the
-        earliest observed factor), not a date-exact join. A date-exact join is what
-        produced NaN adjusted prices on the un-materialised days.
+        `ADJUST_FACTOR_PIT_R1` is a DAILY_DENSE product (measured: 16/16 engine-window
+        sessions present for the median code), so a date-exact join is the correct
+        reconstruction.  Sparse materialisation in an older snapshot is NOT evidence
+        that the product is an event series, so:
 
-        Returns (aligned[date, code, factor, factor_anchor], codes_with_no_factor).
+          * no forward fill, no backward fill -> a missing same-day factor stays
+            missing (a bfill would import a future corporate action);
+          * no fallback to factor=1.0 -> "unknown" is not "no adjustment";
+          * the caller decides: in strict mode an adjusted-price request whose
+            same-day factor is absent is BLOCKED, never silently served.
+
+        Returns (aligned[date, code, factor, factor_anchor], codes_without_any_factor,
+        diagnostics).
         """
+        empty = pd.DataFrame(columns=["date", "code", "factor", "factor_anchor"])
         if raw is None or not len(raw):
-            return pd.DataFrame(columns=["date", "code", "factor", "factor_anchor"]), []
+            return empty, [], {"reason": "EMPTY_PRICE_FRAME"}
 
         codes_in_raw = [str(c) for c in pd.unique(raw["code"])]
-        first_day = pd.Timestamp(raw["date"].min()) - pd.Timedelta(days=400)
-        last_day = max(pd.Timestamp(anchor), pd.Timestamp(raw["date"].max()))
-        factor = self._factor_frame(first_day.date(), last_day.date(), codes_in_raw)
+        start = pd.Timestamp(raw["date"].min()).date()
+        end = max(pd.Timestamp(anchor).date(), pd.Timestamp(raw["date"].max()).date())
+        factor = self._factor_frame(start, end, codes_in_raw)
         if factor is None or not len(factor):
-            return pd.DataFrame(columns=["date", "code", "factor", "factor_anchor"]), list(codes_in_raw)
+            return empty, list(codes_in_raw), {"reason": "ADJUST_FACTOR_PIT_R1_ABSENT"}
+
         factor = factor.copy()
         factor["date"] = pd.to_datetime(factor["date"]).dt.normalize()
         factor["factor"] = pd.to_numeric(factor["factor"], errors="coerce")
         factor = factor.dropna(subset=["factor"]).drop_duplicates(["date", "code"], keep="last")
+        if not len(factor):
+            return empty, list(codes_in_raw), {"reason": "ADJUST_FACTOR_PIT_R1_ALL_NULL"}
 
+        dates = pd.DatetimeIndex(sorted(pd.unique(pd.to_datetime(raw["date"]).dt.normalize())))
         anchor_ts = pd.Timestamp(anchor)
         rows: List[pd.DataFrame] = []
-        identity: List[str] = []
-        for code, grp in raw.groupby("code", sort=False):
-            ev = factor[factor["code"] == code].sort_values("date")
-            dates = pd.DatetimeIndex(sorted(pd.unique(grp["date"])))
-            if ev.empty:
-                identity.append(str(code))
-                rows.append(pd.DataFrame({"date": dates, "code": str(code),
-                                          "factor": 1.0, "factor_anchor": 1.0}))
+        no_factor: List[str] = []
+        missing_days: Dict[str, List[str]] = {}
+        for code in codes_in_raw:
+            f = factor[factor["code"] == code]
+            if f.empty:
+                no_factor.append(str(code))
+                missing_days[str(code)] = [str(pd.Timestamp(d).date()) for d in dates]
+                rows.append(pd.DataFrame({
+                    "date": dates, "code": str(code),
+                    "factor": np.nan, "factor_anchor": np.nan,
+                }))
                 continue
-            idx = dates.union(pd.DatetimeIndex(ev["date"])).union(pd.DatetimeIndex([anchor_ts])).sort_values()
-            s = pd.Series(np.nan, index=idx, dtype="float64")
-            s.loc[pd.DatetimeIndex(ev["date"])] = ev["factor"].to_numpy()
-            s = s.ffill()
-            # Before the first observed factor the series has no history; the
-            # earliest observed value is the PIT-consistent initial level.
-            s = s.bfill()
-            fac = s.reindex(dates).to_numpy()
-            anchor_series = s.reindex(pd.DatetimeIndex([anchor_ts]))
-            fac_anchor = float(anchor_series.iloc[0]) if len(anchor_series) and pd.notna(anchor_series.iloc[0]) else float(s.iloc[-1])
-            rows.append(pd.DataFrame({"date": dates, "code": str(code),
-                                      "factor": fac, "factor_anchor": fac_anchor}))
-        aligned = pd.concat(rows, ignore_index=True) if rows else pd.DataFrame(
-            columns=["date", "code", "factor", "factor_anchor"]
-        )
-        return aligned, identity
+            series = f.set_index("date")["factor"]
+            vals = series.reindex(dates)  # same-day only
+            absent = [str(pd.Timestamp(d).date()) for d, v in vals.items() if pd.isna(v)]
+            if absent:
+                missing_days[str(code)] = absent
+            a = series.get(anchor_ts, np.nan)
+            rows.append(pd.DataFrame({
+                "date": dates, "code": str(code),
+                "factor": vals.to_numpy(), "factor_anchor": a,
+            }))
+        aligned = pd.concat(rows, ignore_index=True)
+        return aligned, no_factor, {
+            "reason": None,
+            "missing_factor_cells": int(
+                sum(len(v) for v in missing_days.values())
+            ),
+            "codes_with_missing_factor_days": len(missing_days),
+            "codes_without_any_factor": len(no_factor),
+            "sample_missing": dict(list(missing_days.items())[:5]),
+        }
 
     # ------------------------------------------------------------- get_price
     def get_price(
@@ -595,9 +642,49 @@ class LocalPlaneProvider(_EngineDataProvider):
         codes = [security] if isinstance(security, str) else list(security)
         # Causal clock of the request: a datetime strictly before the close means
         # the same-day bar's close/high/low are not yet knowable on a daily plane.
+        # A string carrying a time component is a clock too; treating it as a date
+        # would silently serve the same-day close.
         end_dt = end_date if isinstance(end_date, dt.datetime) else None
+        if end_dt is None and isinstance(end_date, str) and len(end_date.strip()) > 10:
+            try:
+                end_dt = pd.Timestamp(end_date).to_pydatetime()
+            except Exception:
+                end_dt = None
         end = _to_date(end_date) or (self.trade_days()[-1] if self._calendar else dt.date(2026, 9, 24))
         intraday_mode = "NONE"
+
+        # A minute-bar request has no local minute product at all. Refuse it here,
+        # before any daily bar can stand in for it: the daily plane cannot answer a
+        # minute question, and a daily open is not minute execution semantics.
+        if intraday_freq and not getattr(self, "intraday_proxy_allowed", False):
+            want0 = list(fields) if fields else ["open", "close", "high", "low", "volume", "money"]
+            detail = {
+                "field": "STOCK_MINUTE_PLANE",
+                "start": str(_to_date(start_date) if start_date is not None else None),
+                "end": str(end),
+                "clock": end_dt.isoformat() if end_dt is not None else None,
+                "requested_frequency": str(frequency),
+                "n_codes": len(codes),
+                "reason": "no local minute product for intraday requests",
+            }
+            self.required_input_failures.append(detail)
+            self.observation_log.append({
+                "api": "get_price", "securities": len(codes),
+                "start": detail["start"], "end": str(end), "count": count,
+                "fq": str(fq), "anchor": str(end), "fields": want0, "rows": 0,
+                "tradeability_joined": False, "paused_null_rows_preserved": 0,
+                "paused_rows_inferred_from_bar_presence": 0,
+                "intraday_mode": "BLOCKED_NO_MINUTE_PLANE",
+                "frequency": str(frequency), "factor_codes_without_any": 0,
+                "factor_missing_cells": None, "factor_alignment": "SAME_DAY_DENSE",
+                "adjust_non_stock_classes": [], "factor_identity_fallback_codes": 0,
+            })
+            if getattr(self, "strict_required_inputs", False):
+                raise RuntimeError(
+                    "REQUIRED_INPUT_MISSING STOCK_MINUTE_PLANE "
+                    f"frequency={frequency} clock={detail['clock']}"
+                )
+            return pd.DataFrame(columns=["time", "code"] + want0)
         # A clock before the open knows nothing of the same-day bar, so the latest
         # knowable bar is the previous trading day's. JQ's get_price(count=1) at
         # 00:00 therefore returns yesterday's bar; returning nothing (and letting
@@ -631,31 +718,128 @@ class LocalPlaneProvider(_EngineDataProvider):
 
         anchor = _to_date(pre_factor_ref_date) or end
         identity_codes: List[str] = []
-        if fq == "pre":
-            aligned, identity_codes = self._align_factor_piecewise(raw, codes, anchor)
-            if len(aligned):
-                merged = raw.merge(aligned, on=["date", "code"], how="left")
-                merged["factor"] = pd.to_numeric(merged["factor"], errors="coerce")
-                merged["factor_anchor"] = pd.to_numeric(merged["factor_anchor"], errors="coerce")
-                # Pre-adjustment: raw * factor(t) / factor(anchor). Both columns are
-                # the piecewise-constant factor series forward filled per code; the
-                # product is NaN only where the raw price itself is absent.
-                for c in ("open", "high", "low", "close"):
-                    merged[c] = merged[c] * merged["factor"] / merged["factor_anchor"]
-                merged = merged.drop(columns=["factor_anchor"])
+        factor_diag: Dict[str, Any] = {}
+        non_stock_classes: List[str] = []
+        if fq in ("pre", "post"):
+            asset_map = self._asset_class_of(
+                [str(c) for c in pd.unique(raw["code"])], start, end)
+            raw = raw.copy()
+            raw["_asset"] = raw["code"].astype(str).map(asset_map).fillna("UNKNOWN")
+            # Only the authoritative stock universe carries ADJUST_FACTOR_PIT_R1.
+            # ETF / INDEX rows come from planes that publish no adjust factor at all,
+            # so "adjusted" would be a fabricated arithmetic; they are served raw and
+            # the reason is recorded per request instead of being silently multiplied
+            # by an unknown 1.0.
+            stock_raw = raw.loc[raw["_asset"] == "STOCK"].drop(columns=["_asset"])
+            other_raw = raw.loc[raw["_asset"] != "STOCK"].drop(columns=["_asset"])
+            non_stock_classes = sorted(set(raw.loc[raw["_asset"] != "STOCK", "_asset"]))
+            aligned, identity_codes, factor_diag = (
+                self._align_factor_dense(stock_raw, codes, anchor)
+                if len(stock_raw) else (
+                    pd.DataFrame(columns=["date", "code", "factor", "factor_anchor"]), [], {"reason": "NO_STOCK_ROWS"})
+            )
+            if len(stock_raw) and not len(aligned):
+                # No authoritative factor plane for stock rows: cannot serve.
+                detail = {
+                    "field": "ADJUST_FACTOR_PIT_R1",
+                    "start": str(start),
+                    "end": str(end),
+                    "anchor": str(anchor),
+                    "reason": factor_diag.get("reason"),
+                    "n_codes": len(codes),
+                }
+                self.required_input_failures.append(detail)
+                if getattr(self, "strict_required_inputs", False):
+                    raise RuntimeError(
+                        "REQUIRED_INPUT_MISSING ADJUST_FACTOR_PIT_R1 "
+                        f"fq={fq} {start}..{end} reason={factor_diag.get('reason')}"
+                    )
+                stock_merged = stock_raw.copy()
+                stock_merged["factor"] = np.nan
+                stock_merged["adjust_applicability"] = "BLOCKED_NO_FACTOR_PLANE"
+            elif len(stock_raw):
+                stock_merged = stock_raw.merge(aligned, on=["date", "code"], how="left")
+                stock_merged["factor"] = pd.to_numeric(stock_merged["factor"], errors="coerce")
+                price_cols = [c for c in ("open", "high", "low", "close")
+                              if c in stock_merged.columns]
+                has_raw_price = (stock_merged[price_cols].notna().any(axis=1)
+                                 if price_cols else pd.Series(False, index=stock_merged.index))
+                if fq == "pre":
+                    stock_merged["factor_anchor"] = pd.to_numeric(
+                        stock_merged["factor_anchor"], errors="coerce")
+                    fa = stock_merged["factor_anchor"]
+                    anchor_bad = fa.isna() | (fa == 0)
+                    # Pre-adjustment: raw * factor(t) / factor(anchor), both same-day.
+                    # A missing divisor would silently produce NaN prices that read as
+                    # "no bar", so absence is tracked per row and never divided through.
+                    missing_anchor = anchor_bad & has_raw_price
+                    missing_same_day = stock_merged["factor"].isna() & has_raw_price
+                    unproven = missing_anchor | missing_same_day
+                    divisor = fa.mask(anchor_bad)
+                    for c in price_cols:
+                        stock_merged[c] = (stock_merged[c] * stock_merged["factor"]
+                                           / divisor)
+                else:
+                    missing_anchor = pd.Series(False, index=stock_merged.index)
+                    missing_same_day = stock_merged["factor"].isna() & has_raw_price
+                    unproven = missing_same_day
+                    for c in price_cols:
+                        stock_merged[c] = stock_merged[c] * stock_merged["factor"]
+                # Withhold instead of fabricating: an unprovable adjustment yields no
+                # price for THAT code, while the rest of the request is still served.
+                for c in price_cols:
+                    stock_merged.loc[unproven, c] = np.nan
+                stock_merged["adjust_applicability"] = np.where(
+                    unproven, "BLOCKED_UNPROVEN_ADJUSTMENT", "APPLIED_SAME_DAY_DENSE")
+                unproven_n = int(unproven.sum())
+                if unproven_n:
+                    unproven_codes = [str(c) for c in
+                                      pd.unique(stock_merged.loc[unproven, "code"])]
+                    provable_codes = int(stock_merged.loc[~unproven, "code"].nunique())
+                    detail = {
+                        "field": "ADJUST_FACTOR_PIT_R1",
+                        "kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+                        "start": str(start),
+                        "end": str(end),
+                        "anchor": str(anchor),
+                        "rows_withheld": unproven_n,
+                        "codes_withheld": len(unproven_codes),
+                        "codes_still_served": provable_codes,
+                        "rows_with_missing_anchor_factor": int(missing_anchor.sum()),
+                        "rows_with_missing_same_day_factor": int(missing_same_day.sum()),
+                        "dates": sorted({
+                            str(pd.Timestamp(d).date())
+                            for d in pd.unique(stock_merged.loc[unproven, "date"])
+                        })[:10],
+                        "sample_codes": unproven_codes[:10],
+                        "note": "fq=pre cannot be reconstructed for these rows without a "
+                                "forward fill, so their prices are withheld and counted; "
+                                "the failure still marks the run as input-incomplete",
+                    }
+                    self.required_input_failures.append(detail)
+                    if getattr(self, "strict_required_inputs", False) and provable_codes == 0:
+                        # Nothing at all could be served: that is a hard block.
+                        raise RuntimeError(
+                            "REQUIRED_INPUT_MISSING ADJUST_FACTOR_PIT_R1_ANCHOR "
+                            f"{unproven_n} rows fq={fq} anchor={anchor} (no provable code)"
+                        )
+                if "factor_anchor" in stock_merged.columns:
+                    stock_merged = stock_merged.drop(columns=["factor_anchor"])
             else:
-                merged = raw.copy()
-                merged["factor"] = 1.0
-        elif fq == "post":
-            aligned, identity_codes = self._align_factor_piecewise(raw, codes, anchor)
-            merged = raw.merge(aligned, on=["date", "code"], how="left")
-            merged["factor"] = pd.to_numeric(merged["factor"], errors="coerce")
-            merged = merged.drop(columns=["factor_anchor"])
-            for c in ("open", "high", "low", "close"):
-                merged[c] = merged[c] * merged["factor"]
+                stock_merged = stock_raw.copy()
+                stock_merged["factor"] = np.nan
+            if len(other_raw):
+                other_merged = other_raw.copy()
+                other_merged["factor"] = 1.0
+                other_merged["adjust_applicability"] = "RAW_NOT_APPLICABLE_NON_STOCK"
+                merged = pd.concat([stock_merged, other_merged], ignore_index=True)
+            else:
+                merged = stock_merged
+            raw = raw.drop(columns=["_asset"])
         elif fq in (None, "none"):
             merged = raw.copy()
             merged["factor"] = 1.0
+            non_stock_classes = []
         else:
             raise ValueError(f"unsupported fq {fq}")
 
@@ -675,10 +859,14 @@ class LocalPlaneProvider(_EngineDataProvider):
             merged["low_limit"] = pd.NA
 
         # Tradeability is only observed inside its own product range. Outside it,
-        # `is_st` / limit prices stay NA (not inferable). `paused` is not inferred
-        # either: a row existing in the price plane means the security traded that
-        # day, so paused=False for those rows and only those rows.
-        paused_inferred = 0
+        # `is_st` / limit prices stay NA (not inferable), and `paused` stays NA too.
+        #
+        # A bar existing does NOT authorise `paused=False`: a suspended security can
+        # still carry a carried-forward or placeholder row, and an unknown value that
+        # is silently turned into "not suspended" suppresses the strategy's own
+        # suspension check. Strict mode therefore surfaces the null through the
+        # required-input gate below instead of pre-filling it.
+        paused_null_rows = 0
         if "paused" in merged.columns:
             merged["paused"] = _as_nullable_bool(
                 merged["paused"],
@@ -687,12 +875,12 @@ class LocalPlaneProvider(_EngineDataProvider):
                     f"fields={list(fields or [])}"
                 ),
             )
-            na_rows = merged["paused"].isna()
-            paused_inferred = int(na_rows.sum())
-            if paused_inferred:
-                merged.loc[na_rows, "paused"] = False
+            paused_null_rows = int(merged["paused"].isna().sum())
         if skip_paused:
-            merged = merged[merged["paused"] != True]  # noqa: E712
+            # keep unknown rows: NA is not evidence of trading, and dropping them
+            # would discard the very rows the required-input gate must report.
+            suspended = merged["paused"].eq(True).fillna(False).astype(bool)
+            merged = merged[~suspended]
 
         # Daily-only plane vs intraday clock: serve nothing of the same-day bar
         # before the open, and only the open (the single causally known intraday
@@ -707,6 +895,52 @@ class LocalPlaneProvider(_EngineDataProvider):
             elif clock < dt.time(15, 0):
                 same_day = merged["date"] == pd.Timestamp(end)
                 if bool(same_day.any()):
+                    # A daily bar's high/low/close and its whole-day volume/money are
+                    # not knowable at an intraday clock. Substituting the day's open
+                    # (and yesterday's volume) keeps the result causal but is NOT the
+                    # requested minute execution semantics, so it is only produced
+                    # when the caller explicitly opts into the proxy for diagnostics.
+                    if not getattr(self, "intraday_proxy_allowed", False):
+                        detail = {
+                            "field": "STOCK_MINUTE_PLANE",
+                            "start": str(start),
+                            "end": str(end),
+                            "clock": end_dt.isoformat(),
+                            "requested_frequency": str(frequency),
+                            "n_codes": len(codes),
+                            "reason": "no local minute product for intraday requests",
+                        }
+                        self.required_input_failures.append(detail)
+                        want0 = list(fields) if fields else [
+                            "open", "close", "high", "low", "volume", "money"]
+                        self.observation_log.append({
+                            "api": "get_price",
+                            "securities": len(codes),
+                            "start": str(start),
+                            "end": str(end),
+                            "count": count,
+                            "fq": str(fq),
+                            "anchor": str(anchor),
+                            "fields": want0,
+                            "rows": 0,
+                            "tradeability_joined": False,
+                            "paused_null_rows_preserved": 0,
+                            "paused_rows_inferred_from_bar_presence": 0,
+                            "intraday_mode": "BLOCKED_NO_MINUTE_PLANE",
+                            "frequency": str(frequency),
+                            "factor_codes_without_any": 0,
+                            "factor_missing_cells": None,
+                            "factor_alignment": "SAME_DAY_DENSE",
+                            "factor_identity_fallback_codes": 0,
+                        })
+                        if getattr(self, "strict_required_inputs", False):
+                            raise RuntimeError(
+                                "REQUIRED_INPUT_MISSING STOCK_MINUTE_PLANE "
+                                f"frequency={frequency} {start}..{end} clock={end_dt.isoformat()}"
+                            )
+                        # No proxy, no fabricated bar: an explicitly empty answer that
+                        # the run-level blocker turns into BLOCKED_INPUT_INCOMPLETE.
+                        return pd.DataFrame(columns=["time", "code"] + want0)
                     for col in ("high", "low", "close"):
                         if col in merged.columns:
                             merged.loc[same_day, col] = merged.loc[same_day, "open"]
@@ -723,7 +957,26 @@ class LocalPlaneProvider(_EngineDataProvider):
                         if "money" in merged.columns and "money" in prev_bar.columns:
                             mmap = prev_bar.drop_duplicates("code").set_index("code")["money"]
                             merged.loc[same_day, "money"] = merged.loc[same_day, "code"].map(mmap)
-                    intraday_mode = "INTRADAY_OPEN_PROXY"
+                    intraday_mode = "INTRADAY_OPEN_PROXY_DIAGNOSTIC_ONLY"
+
+        if intraday_freq and intraday_mode == "NONE":
+            # minute request that the clock rules left unclassified: still not a
+            # daily question, so it stays blocked rather than answered with a day bar.
+            want0 = list(fields) if fields else ["open", "close", "high", "low", "volume", "money"]
+            detail = {
+                "field": "STOCK_MINUTE_PLANE",
+                "start": str(start), "end": str(end),
+                "clock": end_dt.isoformat() if end_dt is not None else None,
+                "requested_frequency": str(frequency), "n_codes": len(codes),
+                "reason": "minute request outside the proxy window",
+            }
+            self.required_input_failures.append(detail)
+            if getattr(self, "strict_required_inputs", False):
+                raise RuntimeError(
+                    "REQUIRED_INPUT_MISSING STOCK_MINUTE_PLANE "
+                    f"frequency={frequency} clock={detail['clock']}"
+                )
+            return pd.DataFrame(columns=["time", "code"] + want0)
 
         want = list(fields) if fields else ["open", "close", "high", "low", "volume", "money"]
         for col in ("pre_close", "factor", "paused", "is_st", "high_limit", "low_limit"):
@@ -762,6 +1015,11 @@ class LocalPlaneProvider(_EngineDataProvider):
                         + f" {detail['null_rows']} rows {detail['start']}..{detail['end']}"
                     )
         merged = merged.sort_values(["date", "code"])
+        adjust_counts = (
+            {str(k): int(v) for k, v in
+             merged["adjust_applicability"].value_counts().items()}
+            if "adjust_applicability" in merged.columns else {}
+        )
         merged = merged.rename(columns={"date": "time"})
 
         self.observation_log.append(
@@ -776,10 +1034,16 @@ class LocalPlaneProvider(_EngineDataProvider):
                 "fields": want,
                 "rows": int(len(merged)),
                 "tradeability_joined": bool(len(tr)),
-                "paused_rows_inferred_from_bar_presence": paused_inferred,
+                "paused_null_rows_preserved": paused_null_rows,
+                "paused_rows_inferred_from_bar_presence": 0,
                 "intraday_mode": intraday_mode,
                 "frequency": str(frequency),
-                "factor_identity_fallback_codes": len(identity_codes),
+                "factor_codes_without_any": len(identity_codes),
+                "factor_missing_cells": factor_diag.get("missing_factor_cells"),
+                "adjust_non_stock_classes": non_stock_classes,
+                "factor_alignment": "SAME_DAY_DENSE",
+                "factor_identity_fallback_codes": 0,
+                "adjust_applicability_counts": adjust_counts,
             }
         )
         if panel:
@@ -863,6 +1127,32 @@ class LocalPlaneProvider(_EngineDataProvider):
         wanted = [types] if isinstance(types, str) else list(types or ["stock"])
         if "stock" in wanted and "type" in df.columns:
             df = df[df["type"].astype(str).str.lower().isin(["stock", "cs"])]
+        target = _to_date(date)
+        asof_filter = "NOT_APPLIED_NO_DATE"
+        if target is not None:
+            # The master snapshot carries authoritative listing intervals, so an
+            # as-of universe is the securities actually listed on that date. This is
+            # the JQ get_all_securities(date=...) contract; ignoring the argument
+            # would hand the strategy a later universe.
+            if "start_date" not in df.columns or "end_date" not in df.columns:
+                detail = {
+                    "field": "SECURITY_MASTER_LISTING_INTERVAL",
+                    "reason": "start_date/end_date absent; as-of universe not authoritative",
+                    "date": str(target),
+                }
+                self.required_input_failures.append(detail)
+                if getattr(self, "strict_required_inputs", False):
+                    raise RuntimeError(
+                        "REQUIRED_INPUT_MISSING SECURITY_MASTER_LISTING_INTERVAL "
+                        f"date={target}"
+                    )
+                asof_filter = "BLOCKED_NOT_AUTHORITATIVE"
+            else:
+                start = pd.to_datetime(df["start_date"], errors="coerce").dt.normalize()
+                end = pd.to_datetime(df["end_date"], errors="coerce").dt.normalize()
+                ts = pd.Timestamp(target)
+                df = df[(start.isna() | (start <= ts)) & (end.isna() | (end >= ts))]
+                asof_filter = "LISTED_INTERVAL"
         df = df.set_index("code")
         self.observation_log.append(
             {
@@ -870,7 +1160,14 @@ class LocalPlaneProvider(_EngineDataProvider):
                 "types": wanted,
                 "date": str(date),
                 "rows": int(len(df)),
-                "snapshot_limitation": "SECURITY_MASTER_SNAPSHOT_R1 has a single snapshot (asof 2026-08-12); date is recorded but not filtered",
+                "asof_filter": asof_filter,
+                "snapshot_limitation": (
+                    "SECURITY_MASTER_SNAPSHOT_R1 carries one snapshot (asof 2026-08-12) "
+                    "plus authoritative per-security listing intervals; is_st is not "
+                    "carried by the master and is never inferred"
+                    if target is not None
+                    else "date=None -> current snapshot, no as-of filter requested"
+                ),
             }
         )
         return df
