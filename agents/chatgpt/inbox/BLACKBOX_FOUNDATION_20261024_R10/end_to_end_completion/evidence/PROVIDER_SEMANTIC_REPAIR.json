@@ -1,0 +1,166 @@
+{
+  "static_checks": {
+    "aligner_is_dense_named": true,
+    "no_ffill_call": true,
+    "no_bfill_call": true,
+    "no_identity_1_0_fallback": true,
+    "old_piecewise_aligner_gone": true,
+    "no_paused_bar_presence_fill": true,
+    "anchor_division_guarded": true
+  },
+  "cases": [
+    {
+      "case": "factor_same_day_dense_join",
+      "outcome": {
+        "rows": 6,
+        "max_abs_diff_vs_same_day_factor": 0.0,
+        "same_day_join_verified": true,
+        "anchor_factor": 1.0
+      }
+    },
+    {
+      "case": "factor_strict_block_without_same_day_factor",
+      "outcome": {
+        "skipped": "every listed code on 2026-09-04 carries a factor row"
+      }
+    },
+    {
+      "case": "factor_anchor_missing_is_blocked",
+      "outcome": {
+        "rows": 1,
+        "close_all_nan": false,
+        "failure_recorded": [
+          {
+            "field": "ADJUST_FACTOR_PIT_R1",
+            "start": "2026-09-02",
+            "end": "2026-09-02",
+            "anchor": "2026-09-02",
+            "reason": "ADJUST_FACTOR_PIT_R1_ABSENT",
+            "n_codes": 1
+          }
+        ],
+        "adjust_applicability_counts": {
+          "BLOCKED_NO_FACTOR_PLANE": 1
+        },
+        "tagged_blocked_not_adjusted": true,
+        "strict_blocked": true,
+        "strict_error": "REQUIRED_INPUT_MISSING ADJUST_FACTOR_PIT_R1 fq=pre 2026-09-02..2026-09-02 reason=ADJUST_FACTOR_PIT_R1_ABSENT",
+        "strict_failure": {
+          "field": "ADJUST_FACTOR_PIT_R1",
+          "start": "2026-09-02",
+          "end": "2026-09-02",
+          "anchor": "2026-09-02",
+          "reason": "ADJUST_FACTOR_PIT_R1_ABSENT",
+          "n_codes": 1
+        },
+        "not_silently_adjusted": true
+      }
+    },
+    {
+      "case": "factor_partial_withheld_not_aborted",
+      "outcome": {
+        "codes_in_batch": 200,
+        "anchor_provable_codes_in_batch": 7,
+        "rows": 200,
+        "rows_served": 7,
+        "rows_withheld": 193,
+        "codes_withheld": 193,
+        "codes_still_served": 7,
+        "failure_kind": "UNPROVEN_ADJUSTMENT_WITHHELD",
+        "adjust_applicability_counts": {
+          "BLOCKED_UNPROVEN_ADJUSTMENT": 193,
+          "APPLIED_SAME_DAY_DENSE": 7
+        },
+        "batch_not_aborted": true
+      }
+    },
+    {
+      "case": "paused_not_inferred_from_bar_presence",
+      "outcome": {
+        "rows": 2,
+        "paused_nulls": 2,
+        "paused_false_rows": 0,
+        "observation": {
+          "paused_null_rows_preserved": 2,
+          "paused_rows_inferred_from_bar_presence": 0,
+          "tradeability_joined": false
+        },
+        "strict": {
+          "raised": true,
+          "error": "REQUIRED_INPUT_MISSING paused 2 rows 2014-06-03..2014-06-04",
+          "failure": {
+            "field": "paused",
+            "start": "2014-06-03",
+            "end": "2014-06-04",
+            "null_rows": 2,
+            "dates": [
+              "2014-06-03",
+              "2014-06-04"
+            ],
+            "sample_codes": [
+              "600000.XSHG"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "case": "minute_request_blocked_without_minute_plane",
+      "outcome": {
+        "rows": 0,
+        "intraday_mode": "BLOCKED_NO_MINUTE_PLANE",
+        "no_fabricated_bar": true,
+        "failure_recorded": [
+          {
+            "field": "STOCK_MINUTE_PLANE",
+            "start": "2026-09-04",
+            "end": "2026-09-04",
+            "clock": "2026-09-04T10:00:00",
+            "requested_frequency": "minute",
+            "n_codes": 1,
+            "reason": "no local minute product for intraday requests"
+          }
+        ],
+        "proxy_requires_explicit_optin": true
+      }
+    },
+    {
+      "case": "intraday_proxy_only_when_explicit",
+      "outcome": {
+        "rows": 1,
+        "intraday_mode": "INTRADAY_OPEN_PROXY_DIAGNOSTIC_ONLY",
+        "tagged_diagnostic": true
+      }
+    },
+    {
+      "case": "universe_honours_asof_date",
+      "outcome": {
+        "rows_2014_06_03": 2289,
+        "rows_2026_09_04": 5208,
+        "date_filter_applied": true,
+        "universe_differs_by_date": true,
+        "observed_filters": [
+          "LISTED_INTERVAL",
+          "LISTED_INTERVAL"
+        ],
+        "is_st_present": false
+      }
+    }
+  ],
+  "verdicts": {
+    "static_no_ffill": true,
+    "static_no_bfill": true,
+    "static_no_1_0_fallback": true,
+    "static_old_aligner_removed": true,
+    "static_no_paused_prefill": true,
+    "static_anchor_guarded": true,
+    "factor_join_matches_same_day": true,
+    "paused_kept_null": true,
+    "minute_blocked_by_default": true,
+    "universe_date_filter_applied": true,
+    "factor_missing_is_blocked_or_absent": true,
+    "anchor_missing_is_blocked_not_silent_nan": true,
+    "partial_withheld_not_aborted": true
+  },
+  "PROVIDER_SEMANTIC_REPAIR": "PASS"
+}
