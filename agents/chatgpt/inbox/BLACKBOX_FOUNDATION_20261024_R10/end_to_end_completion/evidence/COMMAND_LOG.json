@@ -1,0 +1,136 @@
+{
+  "artifact": "COMMAND_LOG",
+  "python": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+  "entries": [
+    {
+      "name": "must_read_preflight",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py --task-class BACKTEST --json",
+      "cwd": "E:\\BLACKBOX",
+      "exit_code": 0,
+      "stdout_tail": [
+        "      \"status\": \"VERIFIED\",",
+        "      \"lines\": 37",
+        "    }",
+        "  ],",
+        "  \"preflight_block\": \"MUST_READ_PRECHECK = PASS\\nTASK_CLASS = BACKTEST\\nKERNEL_SHA256 = b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a\\nKERNEL_STATUS = VERIFIED\\nKERNEL_BYTES = 1167\\nHAND_READ = NOT_SUFFICIENT\\nAUTHORITY_READY = YES\\nTASK_EXECUTION = ALLOWED\\nTASK_EXECUTION_FORBIDDEN = FALSE\\nrules_loaded:\\n  - BOOTSTRAP\\n    expected_sha256 = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\\n    actual_sha256   = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\\n    status = VERIFIED\\n  - DATA_ACCESS\\n    expected_sha256 = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\\n    actual_sha256   = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\\n    status = VERIFIED\\n  - BACKTEST\\n    expected_sha256 = c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37\\n    actual_sha256   = c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37\\n    status = VERIFIED\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\must_read_preflight.log"
+    },
+    {
+      "name": "environment_verify",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\verify_environment.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"verdict\": \"PASS_REAL_VENV_WITH_DATA_STACK\", \"libs\": {\"pandas\": \"2.3.3\", \"pyarrow\": \"21.0.0\", \"numpy\": \"2.5.4\"}, \"rows\": \"871182\"}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\environment_verify.log"
+    },
+    {
+      "name": "raw_status_field_inventory",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\raw_status_field_inventory.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"n_gap_batches\": 42, \"date_min\": \"20260713\", \"date_max\": \"20260924\", \"dates\": [\"20260713\", \"20260730\", \"20260804\", \"20260805\", \"20260806\", \"20260807\", \"20260810\", \"20260811\", \"20260812\", \"20260813\", \"20260814\", \"20260817\", \"20260818\", \"20260819\", \"20260820\", \"20260821\", \"20260824\", \"20260825\", \"20260826\", \"20260827\", \"20260828\", \"20260831\", \"20260901\", \"20260902\", \"20260903\", \"20260904\", \"20260907\", \"20260908\", \"20260909\", \"20260910\", \"20260911\", \"20260914\", \"20260915\", \"20260916\", \"20260917\", \"20260918\", \"20260921\", \"20260922\", \"20260923\", \"20260924\"], \"dup\": [\"20260910\", \"20260924\"], \"name_matches_content\": false, \"n_complete_status\": 40, \"complete\": [\"20260804\", \"20260805\", \"20260806\", \"20260807\", \"20260810\", \"20260811\", \"20260812\", \"20260813\", \"20260814\", \"20260817\", \"20260818\", \"20260819\", \"20260820\", \"20260821\", \"20260824\", \"20260825\", \"20260826\", \"20260827\", \"20260828\", \"20260831\", \"20260901\", \"20260902\", \"20260903\", \"20260904\", \"20260907\", \"20260908\", \"20260909\", \"20260910\", \"20260910\", \"20260911\", \"20260914\", \"20260915\", \"20260916\", \"20260917\", \"20260918\", \"20260921\", \"20260922\", \"20260923\", \"20260924\", \"20260924\"]}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\raw_status_field_inventory.log"
+    },
+    {
+      "name": "build_tradeability_candidate",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\build_tradeability_candidate.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"candidate_rows\": 198109, \"candidate_dates\": 38, \"candidate_date_min\": \"2026-08-04\", \"candidate_date_max\": \"2026-09-24\", \"duplicates_dropped\": 10440, \"engine_window_covered\": true, \"reconciliation_vs_sealed\": {\"overlap_days\": [\"2026-08-04\", \"2026-08-05\", \"2026-08-06\", \"2026-08-07\", \"2026-08-10\", \"2026-08-11\", \"2026-08-12\", \"2026-09-03\"], \"overlap_rows\": 41656, \"paused_mismatch\": 35, \"high_limit_mismatch\": 35, \"low_limit_mismatch\": 35, \"agrees_on_overlap\": false, \"sealed_collapse\": {\"note\": \"sealed keeps per-snapshot tip files; collapsed by (date, code) preferring a row with limits, then latest snapshot\", \"rows_after_collapse\": 124929}}}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\build_tradeability_candidate.log"
+    },
+    {
+      "name": "build_dataset_state",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\build_dataset_state.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"datasets\": 54, \"measured_layers\": 75, \"product_dir_unresolved_layers\": 9, \"not_applicable\": 12, \"blocked\": 8, \"unresolved_scope\": 1, \"cursor_blocked\": 33} elapsed 14.5"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\build_dataset_state.log"
+    },
+    {
+      "name": "run_connected_pipeline",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\run_connected_pipeline.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"verdict\": \"PASS\", \"all_controls_passed\": true, \"idempotent\": true, \"resume_evidence\": {\"committed_after_first_pass\": [\"2026-08-31\", \"2026-09-01\"], \"committed_after_replay\": [\"2026-08-31\", \"2026-09-01\"], \"no_duplicate_commit_entries\": true}}"
+      ],
+      "stderr_tail": [
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\run_connected_pipeline.py:122: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.",
+        "  frame[\"time\"] = pd.to_datetime(frame[\"time\"]).dt.normalize() + pd.Timedelta(days=1)"
+      ],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\run_connected_pipeline.log"
+    },
+    {
+      "name": "build_checkpoint_bindings",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\build_checkpoint_bindings.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"validated\": \"IMPLEMENTED_AND_RESUME_VALIDATED\", \"blocked\": 53, \"families\": {\"P1_adjust_factor\": 37, \"P2_security_state\": 8, \"P2_stock_daily\": 42, \"P3_finance_pit\": 206, \"P3_index\": 46, \"P3_index_minute\": 102490, \"P4_fund_etf\": 3, \"P4_fund_etf_raw_none\": 1878, \"P4b_fund_expand\": 3, \"P5_attributes_events\": 54, \"P6_factor_reference\": 149, \"P7_stock_minute_raw_none\": 2202, \"P7_stock_minute_raw_none_replacement_5m\": 1102, \"P9_derivative_aux\": 18}}"
+      ],
+      "stderr_tail": [],
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\command_logs\\build_checkpoint_bindings.log"
+    },
+    {
+      "name": "v4_backtest_requested_scope",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\run_engine_backtest.py --start 2026-09-03 --end 2026-09-24 --strategy E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py --cash 1000000 --benchmark 000300.XSHG --out engine_runs\\v4_r21_20260903_20260924_R11_TRADEABILITY_RECON --allow-candidate-override --strict-inputs --local-dictionary D:\\BB_LOCAL_DICTIONARY\\R10_ASOF_20260924",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "env": {
+        "BLACKBOX_CANDIDATE_TRADEABILITY": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R11_TRADEABILITY\\STOCK_TRADEABILITY_PIT_R1\\year=2026\\part_2026.parquet"
+      },
+      "exit_code": 0,
+      "recorded_from": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\engine_runs\\v4_r21_20260903_20260924_R11_TRADEABILITY_RECON\\run_result.json",
+      "note": "long-running (about 70 minutes); exit code and status are read from the run's own artefact instead of re-executing it for the log",
+      "status": "COMPLETED",
+      "input_blockers": [],
+      "strategy_input_warnings": {
+        "yesterday_limit_up_step_aborted": 0,
+        "limit_up_flag_missing": 0,
+        "ambiguous_na": 0,
+        "lines": 902
+      },
+      "tradeability_binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5222,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5222
+      },
+      "started_at": "2026-10-25T11:07:00.060070",
+      "finished_at": "2026-10-25T11:14:58.332112",
+      "required_input_failures": [],
+      "n_mark_price_starved": 0,
+      "n_trades": 2,
+      "n_orders": 0
+    },
+    {
+      "name": "input_plane_sweep",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\build_input_plane_repair_evidence.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "{\"sweep_verdict\": \"GATE_SWEEP_PASS\", \"sessions\": 16, \"sessions_with_gap\": 0, \"total_missing_keys\": 0, \"null_limit_rows\": 0, \"null_paused_rows\": 0}"
+      ],
+      "stderr_tail": [],
+      "artifact": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\INPUT_PLANE_REPAIR.json"
+    }
+  ]
+}
