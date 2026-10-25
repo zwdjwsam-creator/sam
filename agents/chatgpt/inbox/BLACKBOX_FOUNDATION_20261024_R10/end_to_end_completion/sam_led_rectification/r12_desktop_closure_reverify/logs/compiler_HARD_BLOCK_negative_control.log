@@ -1,0 +1,93 @@
+$ E:\BLACKBOX\.venv\Scripts\python.exe -X utf8 E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\tools\run_original_compiler_candidate.py --cleaning-json E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\evidence\BAD_CLEANING_RELEASE.json --parent-root E:\BLACKBOX\数据\回测缓存\releases\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439 --out-root E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\candidate\bad_out\releases --acceptance-out E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\candidate\bad_out\acceptance --run-target-date 2026-09-24 --receipt E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\evidence\ORIGINAL_COMPILER_RECEIPT_BAD.json
+[2026-10-25T15:54:38+00:00] FORMAL_DAILY_PUBLISH=TIP_REBASE_ONLY new=BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235438 parent=BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439 asof=2026-09-24 no_publish=True
+[2026-10-25T15:54:40+00:00] finance delta=0 future=0 nat=0 inherit=ALLOWED
+[2026-10-25T15:54:40+00:00] inherit ADJUST_FACTOR_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit BILLBOARD_DAILY_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit CORP_SHAREHOLDER_TOP10_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit CORP_XR_XD_EVENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit ETF_TRACKING_INDEX_MAP_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit FINANCIAL_INDICATOR_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit FUND_DAILY_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit FUND_FACTOR_DAILY_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit FUND_LIKE_ASSET_VIEW_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit FUND_NAV_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit INDEX_CONSTITUENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit INDEX_WEIGHT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit JQ20_FINANCE_BALANCE_SHEET_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit JQ20_FINANCE_INCOME_STATEMENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit JQ20_FUND_DIVIDEND_EVENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:40+00:00] inherit JQ20_FUND_FIN_INDICATOR_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_FUND_MF_DAILY_PROFIT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_AH_PRICE_COMP_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_EL_TOP_ACTIVATE_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_EMPLOYEE_INFO_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_EXCHANGE_LINK_CALENDAR_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_LIST_REFERENCE_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_NAME_HISTORY_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_PERFORMANCE_LETTERS_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_REPORT_DISCLOSURE_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit MARKET_UNIVERSE_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit SECURITY_MASTER_SNAPSHOT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] inherit STOCK_TRADEABILITY_PIT_R1 -> JUNCTION
+[2026-10-25T15:54:41+00:00] read stock files=0 etf=0 index=1464
+Traceback (most recent call last):
+  File "E:\BLACKBOX\任务\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\cache_compiler_tip_rebase_from_current_r1.py", line 179, in rebuild_price_2026
+    _mat = len([x for x in os.scandir(cc._lp(_dir))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] 系统找不到指定的路径。: '\\\\?\\E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\nope\\price\\stock_ohlcv_daily'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\tools\run_original_compiler_candidate.py", line 77, in main
+    rc = int(mod.main() or 0)
+             ^^^^^^^^^^
+  File "E:\BLACKBOX\任务\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\cache_compiler_tip_rebase_from_current_r1.py", line 523, in main
+    price = rebuild_price_2026(rel, std, cc, parent, asof, str(clean.get("release_id") or ""))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\BLACKBOX\任务\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\cache_compiler_tip_rebase_from_current_r1.py", line 182, in rebuild_price_2026
+    raise RuntimeError(f"MATERIALISED_UNREADABLE: {_pid} {_dir} {_e}") from _e
+RuntimeError: MATERIALISED_UNREADABLE: STOCK_DAILY_PIT_R1 E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\nope\price\stock_ohlcv_daily [WinError 3] 系统找不到指定的路径。: '\\\\?\\E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\nope\\price\\stock_ohlcv_daily'
+{
+  "compiler_module": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+  "argv": [
+    "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+    "--run-target-date",
+    "2026-09-24",
+    "--cleaning-json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\BAD_CLEANING_RELEASE.json",
+    "--parent-root",
+    "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "--out-root",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\bad_out\\releases",
+    "--no-publish"
+  ],
+  "exit_code": 1,
+  "error": "RuntimeError: MATERIALISED_UNREADABLE: STOCK_DAILY_PIT_R1 E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\nope\\price\\stock_ohlcv_daily [WinError 3] 系统找不到指定的路径。: '\\\\\\\\?\\\\E:\\\\BLACKBOX\\\\_OPS\\\\FOUNDATION_RECOVERY_20261024\\\\end_to_end_completion\\\\nope\\\\price\\\\stock_ohlcv_daily'",
+  "elapsed_sec": 5.9,
+  "redirected_OUT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\bad_out\\acceptance",
+  "production_OUT_untouched": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\12_ACCEPTANCE",
+  "publish_called": false,
+  "no_publish": true,
+  "releases_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\bad_out\\releases",
+  "releases_present": [
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130650",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130900",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_191850",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_215647",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234105",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234546",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234951",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235320",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235438"
+  ],
+  "running_python": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe"
+}
