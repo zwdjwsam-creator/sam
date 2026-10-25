@@ -1,0 +1,107 @@
+{
+  "schema": "BLACKBOX_DESKTOP_REVERIFY_RESULT_R1",
+  "status": "PASS",
+  "evidence": "LOCAL_RUN_EVIDENCE.json",
+  "reviewer_host": "ZHANGWEI",
+  "independent_verify": "DESKTOP_INDEPENDENT_VERIFY.json",
+  "dispatch_id": "SAM_LED_DESKTOP_RECTIFICATION_20261025",
+  "answered_handoff_status": "SAM_HANDOFF_READY_FOR_DESKTOP_REVERIFY",
+  "verified_at_cn": "2026-10-25T19:20:24+0800",
+  "provenance": "ZHANGWEI_HOST_RUN_EVIDENCE_FROM_OWN_PROCESS",
+  "run_identity": {
+    "hostname": "ZHANGWEI",
+    "sys_executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "python_version": "3.12.10 (MSC v.1943 64 bit)",
+    "started_at_cn": "2026-10-25T19:17:59+0800",
+    "finished_at_cn": "2026-10-25T19:20:24+0800",
+    "runner": "sam_led_rectification/RUN_CHAIN_R1.py",
+    "runner_exit_code": 0
+  },
+  "runner_verdicts": {
+    "chain_exit_zero": true,
+    "status_iso_accepted": true,
+    "status_wrote_nothing": true,
+    "bad_date_failed_closed": true,
+    "bad_date_wrote_nothing": true,
+    "compact_date_accepted": true,
+    "compact_wrote_nothing": true,
+    "no_bad_date_dir_created": true
+  },
+  "connected_pipeline": {
+    "CONNECTED_PIPELINE_RESULT": "PASS",
+    "verdict_count_true": 12,
+    "verdict_count_expected": 12,
+    "cleaning_release_id": "R15_REPLAY_20260924_R3",
+    "r15_release_content_root_sha256": "3b88a0432158d11d10bd26dfe3a210dbdc5e11f5153b88f26d5ceca449f7c7fa",
+    "lineage_ok": true,
+    "compiler_seal_all_pass": true,
+    "compiler_exit_code": 0,
+    "compiler_elapsed_sec": 44.2,
+    "valuation_status": "READY",
+    "valuation_rows": 222042,
+    "sw_l1_l2_l3_parts": 13,
+    "same_input_replay_status": "PASS",
+    "same_input_replay_commit": "IDEMPOTENT_NOOP",
+    "commit_id": "2f75577954f26ba6648b83aa07f06c4ffe56ad0bcc9854cfc7a68066c11e6a0b",
+    "production_current_write": "NONE",
+    "new_data_acquisition": "NONE"
+  },
+  "negative_controls": {
+    "tampered_date": "BLOCKED_AS_EXPECTED",
+    "self_certified_completeness": "BLOCKED_AS_EXPECTED",
+    "compiler_hard_block": "BLOCKED_AS_EXPECTED"
+  },
+  "independent_checks": {
+    "total": 47,
+    "passed": 47,
+    "failed": 0,
+    "note": "All 47 re-derived from artifacts and filesystem, not from RUN_CHAIN_R1 verdict flags"
+  },
+  "r15_release_facts": {
+    "file_count": 368,
+    "bytes": 356881775,
+    "sealed_marker": true,
+    "carried_subtrees": {
+      "price/stock_ohlcv_daily": { "files": 222, "is_real_dir": true, "hardlink_nlink_sample": 51, "max_date_in_name": "20260924" },
+      "price/ETF_daily": { "files": 37, "is_real_dir": true },
+      "reference/index_daily": { "files": 37, "is_real_dir": true },
+      "factor/valuation": { "files": 65, "is_real_dir": true }
+    },
+    "replay_days_present": { "2026-08-31": true, "2026-09-01": true }
+  },
+  "delivered_file_identity": {
+    "candidate/run_r15_cleaning_replay.py": { "sha16_crlf": "2719c17eec5589ac", "declared": "2719c17eec5589ac", "match": true },
+    "tools/run_connected_pipeline.py": { "sha16_crlf": "4964f27cc325c8e8", "declared": "4964f27cc325c8e8", "match": true },
+    "脚本/run_blackbox_daily_incremental_data_plane_r1.py": { "sha16": "949e95c758b2064c", "declared": "949e95c758b2064c", "match": true }
+  },
+  "desktop_side_actions": [
+    {
+      "action": "MOVE_ASIDE_RESIDUAL_RELEASE",
+      "detail": "第一次启动被工具层中断留下已封版 R15_REPLAY_20260924_R3（19:12:00-19:12:02, 368 文件）。按 OPERATION_MANUAL §3 移入 candidate/r15_releases/_prev_R15_REPLAY_20260924_R3_from_aborted_run_1911，未删除，保证本次证据来自一次不中断的完整运行。"
+    },
+    {
+      "action": "ADD_INDEPENDENT_VERIFIER",
+      "detail": "新增 sam_led_rectification/DESKTOP_INDEPENDENT_VERIFY_R1.py，不复用 RUN_CHAIN_R1 的 verdict，从产物/文件系统重新推导 47 项。"
+    }
+  ],
+  "observations_for_sam": [
+    "carry_forward.missing 记录 'price/stock_ohlcv_daily OSError FileNotFoundError'，但该子树最终以 222 个真实硬链文件（nlink=51）落地；异常被吞掉后仍报成功，建议把该分支从 warning 改为显式 resolved_with_error 标记，避免以后把部分失败当全成功。",
+    "实际落地 stock_ohlcv_daily = 222 文件；OPERATION_MANUAL 故障排查表写的是 232。若不是口径差异（是否含 sidecar/json），建议校准文档。",
+    "台机编译器 44.2s（笔记本 302s）；清洗 2s。差异同机不同负载可以解释，但若日后以耗时做判据，应改为看 seal/verdict 而非秒数。"
+  ],
+  "still_unresolved": [
+    "SUPPLIER_COMPLETENESS=UNKNOWN（retained 语料无请求记录，不可断言缺数）",
+    "复权因子 2026-08-10 起恒 1.0 且 17 份文件日期为整数 0..299，成因未分离",
+    "V4 BLOCKED_INPUT_INCOMPLETE（diagnostic_only=true，0 成交 0 订单，正式回测未通过）",
+    "08-31 / 09-01 仍在候选分区，生产 CURRENT 未切换（未授权）",
+    "is_st / 历史成分未绑定",
+    "BLACKBOX_DEST 共享卸载后仍可匿名读，建议收紧（未擅自改）"
+  ],
+  "flags": {
+    "PRODUCTION_CURRENT_WRITE": "NONE",
+    "NEW_DATA_ACQUISITION": "NONE",
+    "ORDER_ALLOWED": false,
+    "PUBLISH_AUTHORIZED": false
+  },
+  "blockers": []
+}
