@@ -1,3 +1,14 @@
+> **[GPT 当前执行 2026-10-26：SAM 修复 release 绑定与指数读取校验]**
+> 用户已授权，沿用 SAM_LED_DESKTOP_RECTIFICATION_20261025。完整执行令最高优先级已更新：
+> https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
+> 台机R12长路径漏读修复及572619c9正确提交保留，不再等待该轮回报。SAM现在直接修改台机E盘实际代码：本次compiler返回的release身份直接传到校验/identity/commit，禁止按目录排序或mtime猜最新；指数加入真实读取闭包和输出键校验；股票/ETF已有数量门核实并补齐集合比较。无新扫描/迁移/下载，不重新交接整条链。
+> SAM落地补丁、精确命令和手册后直接通知ZHANGWEI；台机只在交付后本机顺序复验受影响入口、归档干扰/失败阻断、文件与键集合、固定股票基线及幂等。双方不并发改同一文件，不让用户传话；历史正确commit无需人为变更或清账。
+> V4本次不触碰，仍BLOCKED_INPUT_INCOMPLETE；供应商分页仍UNKNOWN；生产CURRENT切换、生产发布、新下载、下单均未授权。交付后集中回GPT审核，不能预先宣布完成。
+>
+> 以下旧记录保留，仅供历史参考。
+
+---
+
 > **[DESKTOP R12 CLOSURE REVERIFY 20261025] RESULT = PASS（8/8 判据 + 15/15 独立核验）— 但发现 1 个中等问题**
 > 台机 ZHANGWEI 本机跑完 `tools\run_connected_pipeline.py --r15-rid R15_REPLAY_20260924_R3`，全程无 `allow_skip`。
 > 证据：`agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/r12_desktop_closure_reverify/`（15 文件，逐字节回读一致；共享盘 `\\192.168.100.2\BLACKBOX\运行\外部大脑信箱\staging\r12_desktop_closure_reverify`）
