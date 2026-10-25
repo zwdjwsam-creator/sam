@@ -1,0 +1,146 @@
+{
+  "artifact": "R10_END_TO_END_COMPLETION_R13_ROUND2_POINTER",
+  "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "revision": "R13_SAME_TASK_CORRECTION",
+  "round": "R13_ROUND2",
+  "generated_at_cn": "2026-10-25T13:18:34+08:00",
+  "package_dir": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion",
+  "entry_points": {
+    "report": "end_to_end_completion/REPORT.md",
+    "acceptance": "end_to_end_completion/ACCEPTANCE.json",
+    "requirement_matrix": "end_to_end_completion/FINAL_REQUIREMENT_MATRIX.json",
+    "b1_b7": "end_to_end_completion/B1_B7_STATUS.json",
+    "package_index": "end_to_end_completion/PACKAGE_INDEX.json",
+    "upload_readback": "end_to_end_completion/UPLOAD_READBACK.json",
+    "diff": "end_to_end_completion/DIFF.patch",
+    "run_guide": "end_to_end_completion/RUN_GUIDE.md"
+  },
+  "readback": {
+    "verified_all_members": true,
+    "member_count": 89,
+    "resynced_this_round": 44,
+    "byte_equal_after_readback": true,
+    "index_and_receipt_byte_equal": true,
+    "method": "GitHub contents API GET after PUT, compared byte for byte against the local file",
+    "package_index_sha256": "c3ec8383949fdad0b49856b112b9e03b37e96a10bae03dc268bd95657b294497",
+    "upload_readback_sha256": "1a67ae2aaa317c9e345598112621169eeb972acb07c7f87035b7bbc87c0ed31a",
+    "report_sha256": "f0be91f3979597a048a10399d8f9e65782fd49d1f875a8d2dc884a088b61ca5f",
+    "acceptance_sha256": "3d71069dcdb34f06552c1fe018571d4dce479a239be4b6735c66e68fe7015662"
+  },
+  "review_items_answered": {
+    "1_minute_reader_and_factor_lineage": {
+      "minute_product": "STOCK_MINUTE_1M_R1",
+      "minute_served_sessions": [
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24"
+      ],
+      "minute_blocked_sessions": [
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10"
+      ],
+      "no_proxy": "blocked sessions return no rows; the daily open is never substituted",
+      "v4_minute_get_price_calls": 0,
+      "factor_defect_1": "17 incremental files 2026-08-12..2026-09-02 carry date as int64 0..299 (88,584 rows) -> unjoinable",
+      "factor_defect_2": "every sampled incremental payload from 2026-08-10 onward is factor=1.0 for every row",
+      "cache_consequence": "12 partial sessions (7..89 rows) 2026-08-17..2026-09-01 and 17 constant-1.0 sessions (5,215..5,222 rows) 2026-09-02..2026-09-24, i.e. the whole V4 window",
+      "evidence": [
+        "evidence/MINUTE_PLANE.json",
+        "evidence/FACTOR_SOURCE_TRACE.json",
+        "evidence/FACTOR_SERIES_NATURE.json",
+        "evidence/FACTOR_NONDATE_ENCODING.json",
+        "evidence/FACTOR_CORRUPT_DATE_PROFILE.json",
+        "evidence/FACTOR_DENSE_VS_CORRUPT.json"
+      ]
+    },
+    "2_real_r15_and_response_gate": {
+      "r15_release": "R15_REPLAY_20260924_R2",
+      "r15_functions_called": [
+        "load_staging",
+        "ingest_item",
+        "seal_release",
+        "antileak"
+      ],
+      "r15_gate_result": "PASS",
+      "r15_production_untouched": {
+        "CURRENT_CLEANING_RELEASE.json": true,
+        "SSOT": true,
+        "switch_current_called": false,
+        "patch_hand_called": false
+      },
+      "response_gate": {
+        "PROVENANCE_GATE": "PASS",
+        "SUPPLIER_COMPLETENESS": "UNKNOWN",
+        "query_cap_source": "request sidecar only",
+        "pagination_complete_default": "UNKNOWN",
+        "self_certified_completeness_control": "BLOCKED_AS_EXPECTED (ACQUISITION_COMPLETENESS_UNPROVEN)"
+      },
+      "evidence": [
+        "evidence/R15_CLEANING_REPLAY.json",
+        "CONNECTED_PIPELINE.json"
+      ]
+    },
+    "3_publish_atomic_and_consolidation": {
+      "publish_atomic": {
+        "dry_run": false,
+        "bound_targets": 9,
+        "writes_observed": 6,
+        "unbound_writes": 0,
+        "refresh_scope_from_live": 1,
+        "published": true,
+        "CURRENT_PUBLISH": "ALLOWED",
+        "coverage_self_filled": [],
+        "production_written": false
+      },
+      "consolidation": {
+        "five_requirements": "from FINAL_REQUIREMENT_MATRIX.json",
+        "B1_B7": "from B1_B7_STATUS.json",
+        "backtest_classification": "from evidence/V4_STRICT_RUN.json",
+        "before": "ACCEPTANCE said COMPLETED/diag=false/2 trades while the matrix said BLOCKED"
+      },
+      "defect_found_and_fixed": {
+        "defect": "commit_id hashed release_id/release_root (build timestamp) so same-input replay could never be a no-op",
+        "measured": "761 of 766 files byte-identical; 5 metadata files differed",
+        "fix": "CC_COMMIT_IDENTITY_V2 hashes data only",
+        "after": {
+          "pipeline": "PASS 8/8",
+          "commit_recovery": "PASS 9/9"
+        }
+      },
+      "evidence": [
+        "evidence/PUBLISH_ATOMIC_REHEARSAL.json",
+        "evidence/COMMIT_RECOVERY.json",
+        "deliverables/CONNECTED_PIPELINE.json"
+      ]
+    }
+  },
+  "current_verdict": {
+    "overall": "BLOCKED_PARTIAL_EXECUTION",
+    "stage1": "BLOCKED",
+    "foundation_acceptance": false,
+    "formal_engine_admission": false,
+    "R2": "BLOCKED",
+    "B5": "PARTIALLY_REPAIRED",
+    "largest_blocker": "incremental adjust-factor plane 2026-08-10..2026-09-24 (date encoding + constant 1.0)",
+    "no_item_closed_this_round": true
+  },
+  "authority": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "PRODUCTION_PUBLISH_CALLED": false,
+    "SEALED_DATA_MODIFIED": false
+  },
+  "note_on_other_root_files": "Only the files listed in end_to_end_completion/PACKAGE_INDEX.json belong to this revision. Other files at the R10 inbox root (e.g. COMMAND_LOG.json, RUN_RESULT.json, trades.csv, source_workflow_sam/) are artifacts of earlier rounds and are not updated by this upload; nothing was deleted."
+}
