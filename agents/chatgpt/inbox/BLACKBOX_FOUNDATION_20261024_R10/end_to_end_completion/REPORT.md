@@ -19,8 +19,8 @@ Nothing in it asks for permission again, and no technical route was changed.
 | function | actual entry point executed this round | result | evidence |
 |---|---|---|---|
 | minute read | `candidate/local_plane/minute_bridge.py` → `脚本/blackbox_stock_minute_1m_reader_r1.py` (`STOCK_MINUTE_1M_R1`) | 10 sessions served, 6 blocked by request key with `NO_DAY_SHARDS`, no proxy | `evidence/MINUTE_PLANE.json` |
-| factor lineage | `tools/trace_factor_source.py`, `classify_factor_series.py`, `find_factor_nondate_rows.py`, `profile_corrupt_factor_dates.py` over P1/P6/CACHE | two source-side defects found, bigger than "12 sparse days" | `evidence/FACTOR_*.json` |
-| R15 ingest/clean | `formal_cleaning_r15_build_and_seal_r1.py` (`load_staging`/`ingest_item`/`seal_release`) + `r15_antileak_and_ssot_r1.py` | `R15_REPLAY_20260924_R2`, GATE PASS, production CURRENT/SSOT byte-identical | `evidence/R15_CLEANING_REPLAY.json` |
+| factor lineage | `tools/trace_factor_source.py`, `classify_factor_series.py`, `find_factor_nondate_rows.py`, `profile_corrupt_factor_dates.py` over P1/P6/CACHE | two measured anomalies (integer-date files; constant-1.0 planes) wider than "12 sparse days"; **cause not established** | `evidence/FACTOR_*.json` |
+| R15 ingest/clean | `formal_cleaning_r15_build_and_seal_r1.py` (`load_staging`/`ingest_item`/`seal_release`) + `r15_antileak_and_ssot_r1.py` | `R15_REPLAY_20260924_R2`, GATE PASS, production CURRENT/SSOT byte-identical. **Its output is not the compiler's input** (see §11 item 1) | `evidence/R15_CLEANING_REPLAY.json` |
 | acquisition gate | original `blackbox_daily_increment_common_r1.acquisition_absence_gate` | `PROVENANCE_GATE=PASS`, `SUPPLIER_COMPLETENESS=UNKNOWN`, self-certified control BLOCKED | `CONNECTED_PIPELINE.json` |
 | publish | original `blackbox_daily_increment_publish_gate_r1.publish_atomic(dry_run=False)` | published on bound candidate targets, 6 writes, 0 unbound | `evidence/PUBLISH_ATOMIC_REHEARSAL.json` |
 | consolidation | `tools/consolidate_r13_round2.py` | matrix / B1–B7 / acceptance / pipeline / index / log single-sourced | `ACCEPTANCE.json#r13_round2` |
@@ -204,14 +204,19 @@ Acceptance map after consolidation:
 
 ## 7. Still unverified / blocked (not hidden)
 
-* **Incremental adjust-factor plane 2026-08-10 … 2026-09-24**: wrong date encoding for 17 files and
-  constant `1.0` values throughout. This is the single largest blocker and it is a **supply** defect;
-  re-issuing it is an acquisition the current authority does not cover.
+* **Incremental adjust-factor plane 2026-08-10 … 2026-09-24**: 17 files carry a positional integer
+  `date` and the planes are constant `1.0`. This is the single largest blocker, and the **cause is
+  not established** — the same observations are compatible with the requested `fq` parameters and
+  normalisation basis, the SDK return shape, local serialisation, or the supplier content, and this
+  package does not separate them. What is established is narrower: the current adjustment input
+  and its basis are **not proven to satisfy the contract**. See §11.
 * **V4 window**: no proven adjusted price on either side of the anchor, so the ranking input is
   incomplete by construction. The port runs all 16 sessions and refuses to fabricate; it is not a
   strategy verdict.
 * **Minute coverage**: real but only 2026-09-11 … 2026-09-24; 2026-09-03 … 09-10 is blocked.
-  Irrelevant to V4 (0 minute calls) but relevant to any intraday caller.
+  V4 issues **direct** minute `get_price` calls: 0. That does **not** prove V4 is independent of
+  intraday data — it also makes 9 `get_current_data` snapshot calls, and the read timing of those
+  snapshot fields plus the engine's mapping of them is unresolved, so no intraday semantic passes.
 * **B4**: 2026-08-31 / 2026-09-01 are still not served by the mounted `CURRENT`; the candidate
   partition holds them, the switch is not authorised.
 * `is_st` has no local source; as-of historical constituent membership is not bound.
@@ -221,9 +226,10 @@ Acceptance map after consolidation:
 
 ## 8. Decisions this package asks for
 
-1. **Re-issue the incremental adjust-factor plane** for 2026-08-10 … 2026-09-24 with a real date
-   column and real factors (acquisition), or declare the anchor-based pre-adjustment contract you
-   want. Both are recorded as measured options; neither is silently chosen here.
+1. **Declare the pre-adjustment contract** (anchor basis, `fq` semantics, and whether a multi-year
+   batch cross-section may be concatenated with a single-day incremental). Only after that is
+   settled does "re-acquire 2026-08-10 … 2026-09-24" become a meaningful action; neither branch is
+   silently chosen here, and re-download is **not** asserted as required.
 2. **Minute coverage extension** to 2026-09-03 … 2026-09-10 if any caller needs it; V4 does not.
 3. **Publish protocol**: authorise a production publish window so B5/B4 can be closed beyond a
    bound rehearsal.
@@ -248,3 +254,44 @@ Reading order: `REPORT.md` → `ACCEPTANCE.json` → `FINAL_REQUIREMENT_MATRIX.j
 `B1_B7_STATUS.json` → `evidence/PUBLISH_ATOMIC_REHEARSAL.json` →
 `evidence/R15_CLEANING_REPLAY.json` → `evidence/FACTOR_SERIES_NATURE.json` →
 `evidence/MINUTE_PLANE.json` → `CONNECTED_PIPELINE.json`.
+
+## 11. Review receipt — GPT final review `REVIEWED_FINAL_PASS_BLOCKED` (consumed 2026-10-25 13:26 +08)
+
+The reviewer appended a leading review section to
+`agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md`
+(48,946 → 54,700 bytes). It **accepts the bounded results** listed in §0 and **rejects overall
+acceptance**, and it explicitly dispatches **no new repair round** and closes the upload-wait phase.
+Full transcription: `evidence/GPT_REVIEW_R13_FINAL_CONSUMED.json`.
+
+Its five reasons, with what this package now says instead of what it said before:
+
+1. **No single-product pass-through proof for R15 → compiler.** Correct, and now stated as such:
+   the R15 output is `candidate/r15_releases/R15_REPLAY_20260924_R2`, while
+   `CONNECTED_PIPELINE.json`'s compiler `argv` reads `candidate/cc/CC_REPLAY_20260924/RELEASE.json`;
+   `run_connected_pipeline.py` never calls the R15 runner, and the publish rehearsal ran separately.
+   The package proves that several original components **each** run, not that they run **as one chain**.
+   This is an unfixed item of the original task, kept open as `R5_CHAIN_INTEGRITY`.
+2. **V4 formally blocked.** Unchanged and agreed: `BLOCKED_INPUT_INCOMPLETE`, 16 sessions, 0 trades,
+   0 orders, `diagnostic_only=true`; a completed 16-session loop is not a strategy verdict.
+3. **The "all-1.0 → vendor fabrication → must re-download" attribution is withdrawn.** The
+   integer-date files, the constant-1.0 planes and the sparse CACHE rows are **observations**; they
+   cannot by themselves separate (a) the requested `fq` parameters and normalisation basis,
+   (b) the SDK return shape, (c) local serialisation, (d) the supplier content. Two specific
+   corrections: the source machine's `aux_billboard_adjust_index_minute_r15.py:110-115` requests a
+   single day with `fields=['factor']`, `fq=None`, so a multi-year batch cross-section and a
+   one-day incremental are **not proven concatenable**; and `provider._constant_plane_sessions`
+   (`nunique == 1` → withhold) is **our** blocking rule, not a certificate that the vendor erred.
+   `DAILY_RAW_FACTOR_COVERAGE.json` marks 2026-08-05…09-24 but its `per_session` holds only 08-05
+   and 08-06 at 10 rows each, so it does not support "no usable daily source across the window".
+   Refusing an unproven adjustment is kept; the asserted cause and the re-download remedy are not.
+4. **"0 minute calls" is not "no intraday dependence".** Reworded in §1 and §7: direct minute
+   calls are 0, `get_current_data` is called 9 times, and its snapshot fields' read timing and
+   engine mapping are unresolved.
+5. **Production `CURRENT` not switched is a later action, not this round's failure cause.** The
+   gate's date-based `ALLOWED` does not make the factor/history coverage valid, so a candidate
+   `published=true` supports no production admission.
+
+Where this leaves the package: the bounded results in §0 stand as scoped; the overall verdict stays
+`BLOCKED_PARTIAL_EXECUTION`; `R2` stays BLOCKED; `R5` stays PARTIAL with the chain-integrity gap now
+named explicitly; `B5` keeps PARTIALLY_REPAIRED for the isolated rehearsal only. Nothing here is
+re-run, and no acquisition, `CURRENT` switch or order is opened.
