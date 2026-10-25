@@ -68,6 +68,13 @@ def main() -> int:
         help="treat a null required input (high_limit/low_limit/paused) as a run failure",
     )
     ap.add_argument(
+        "--intraday-proxy",
+        action="store_true",
+        default=False,
+        help="diagnostic only: allow the daily-open proxy for intraday requests "
+             "(no local minute plane; the result is not minute execution semantics)",
+    )
+    ap.add_argument(
         "--local-dictionary",
         default=r"D:\BB_LOCAL_DICTIONARY\R10_ASOF_20260924",
         help="derived dictionary snapshot for the engine's asset-scope guard (must live outside E:)",
@@ -100,6 +107,7 @@ def main() -> int:
 
     provider = LocalPlaneProvider(use_candidate_override=args.allow_candidate_override)
     provider.strict_required_inputs = bool(args.strict_inputs)
+    provider.intraday_proxy_allowed = bool(args.intraday_proxy)
 
     # Mark-to-market starvation is a silent failure mode: an empty price frame makes
     # the engine skip _update_positions and keeps yesterday's valuation. Count every
@@ -398,6 +406,7 @@ def main() -> int:
         result["provider_observations"] = provider.observation_log[-80:]
         result["tradeability_binding"] = getattr(provider, "last_tradeability_binding", {})
         result["strict_required_inputs"] = bool(args.strict_inputs)
+        result["intraday_proxy_allowed"] = bool(args.intraday_proxy)
         result["required_input_failures"] = getattr(provider, "required_input_failures", [])[-20:]
         result["mark_price_starved_events"] = MARK_STARVED[:20]
         result["n_mark_price_starved"] = len(MARK_STARVED)
