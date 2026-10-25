@@ -1,596 +1,328 @@
 {
-  "artifact": "CONNECTED_PIPELINE",
-  "deliverable": "D3_CONNECTED_UPDATE_CLEANING_CANDIDATE",
-  "run_id": "20261025_112047",
-  "transport": "LocalReplayTransport over retained RAW batch + sidecar + factor increment",
-  "stages": [
-    "response_gate",
-    "cleaning_antileak",
-    "factor_refresh",
-    "compiler",
-    "candidate_checkpoint",
-    "isolated_publication"
+  "run_id": "R13_CONNECTED_REAL_FUNCTIONS",
+  "asof": "2026-09-24",
+  "replay_days": [
+    "2026-08-31",
+    "2026-09-01"
   ],
-  "receipts": {
-    "run_id": "20261025_112047",
-    "fresh_sequence": [
-      {
-        "day": "2026-08-31",
-        "tamper": null,
-        "stages": {
-          "response_gate": {
-            "requested_date": "2026-08-31",
-            "payload_date": "2026-08-31",
-            "checks": {
-              "payload_date_matches_request": true,
-              "coverage_declared": true,
-              "coverage_interval_matches_request": true,
-              "sidecar_rows_match_payload": true,
-              "row_band_ok": true,
-              "index_date_survives_serialization": true
+  "stages": {
+    "transport_gate": {
+      "status": "PASS",
+      "PROVENANCE_GATE": "PASS",
+      "SUPPLIER_COMPLETENESS": "UNKNOWN",
+      "ACQUISITION_RELEASED": false,
+      "sessions": [
+        {
+          "date": "2026-08-31",
+          "rows": 5212,
+          "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+          "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+          "gate": {
+            "stage": "gate",
+            "PROVENANCE_GATE": "PASS",
+            "provenance": {
+              "requested_date": "2026-08-31",
+              "sidecar_gap_start": "2026-08-31",
+              "sidecar_gap_end": "2026-08-31",
+              "source_file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+              "payload_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+              "request_evidence_origin": "SIDECAR"
             },
-            "sidecar_batch_identity": {
-              "declared_file_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
-              "actual_batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
-              "sidecar_points_to_same_batch": true,
-              "note": "a retained sidecar may describe an earlier build of the same day; recorded, not used to rewrite the payload"
+            "provenance_facts": {
+              "retained_bytes_match_sidecar_sha": true,
+              "row_band_source": "STRUCTURAL_SANITY_ONLY",
+              "duplicate_keys": 0,
+              "null_price_rows": 0
             },
+            "SUPPLIER_COMPLETENESS": "UNKNOWN",
+            "vendor_result_complete": "UNKNOWN",
+            "original_gate": {
+              "DATA_ABSENCE_GATE": "UNKNOWN_INCOMPLETE_ACQUISITION",
+              "ACQUISITION_COMPLETE": "NO",
+              "RESULT_LIMIT_HIT": false,
+              "DATA_ABSENT_CLAIM_ALLOWED": false,
+              "NO_DATA_FORBIDDEN": true,
+              "n_rows": 5212,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "completeness_state": "UNKNOWN",
+              "grain_symbol": null,
+              "grain_date": null,
+              "grain_frequency": null,
+              "downstream_formal_ingest_forbidden": true
+            },
+            "original_gate_verdict": "UNKNOWN_INCOMPLETE_ACQUISITION",
+            "gate_inputs": {
+              "n_rows": 5212,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "request_evidence_origin": "SIDECAR",
+              "note": "query_cap and pagination_complete come only from a saved request record; the returned row count is never used as its own cap"
+            },
+            "ACQUISITION_RELEASED": false,
             "rows": 5212
-          },
-          "cleaning_antileak": {
-            "input_rows": 5212,
-            "input_columns": [
-              "time",
-              "code",
-              "open",
-              "high",
-              "low",
-              "close",
-              "volume",
-              "money",
-              "paused",
-              "high_limit",
-              "low_limit",
-              "avg",
-              "pre_close",
-              "factor",
-              "fq"
-            ],
-            "anti_leak_max_date": "2026-08-31",
-            "rows_outside_batch_day": 0,
-            "anti_leak_ok": true,
-            "duplicate_rows": 0,
-            "ohlc_inconsistent_rows": 0,
-            "null_price_rows": 0,
-            "nonpositive_price_rows": 0,
-            "clean_rows": 5212,
-            "clean_codes": 5212,
-            "factor_contract": {
-              "required_columns": [
-                "code",
-                "factor"
-              ],
-              "missing": [],
-              "fq_column_required": false,
-              "fq_column_present": false,
-              "note": "physical fq-column absence is not a contract violation",
-              "factor_rows": 5212
-            }
-          },
-          "factor_refresh": {
-            "required_columns": [
-              "code",
-              "factor"
-            ],
-            "missing": [],
-            "fq_column_required": false,
-            "fq_column_present": false,
-            "note": "physical fq-column absence is not a contract violation",
-            "factor_rows": 5212
-          },
-          "compiler": {
-            "rows_before": 949470,
-            "rows_after": 954682,
-            "rows_added": 5212,
-            "partial_day_rows_replaced": 0,
-            "partial_day_was_replaced_not_skipped": false,
-            "duplicate_keys_after_merge": 0,
-            "sha_before": "b04793214a6a95e17a7f5b2c1e7d9f08681742772b0b9fff3ecc29695e133843",
-            "sha_after": "486eef28c532717474fdb572b67100689c1714006906f7eb95dab7e93d04bbdf",
-            "idempotent_noop": false
-          },
-          "publication": {
-            "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
-            "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
-            "paired_registry_consistent": true,
-            "atomicity_note": "two sequential os.replace calls; not a multi-file transaction",
-            "current_pointer_touched": false
           }
         },
-        "provenance": {
-          "batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
-          "batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
-          "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
-          "sidecar_sha256": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
-          "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
-          "factor_sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
-          "tamper": null
-        },
-        "checkpoint": {
-          "committed_days": [
-            "2026-08-31"
-          ],
-          "resume_point": "2026-08-31",
-          "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
-          "checkpoint_sha256": "a59d3c28a2543b455765bf3e1b482f507e35c05637176d30e9abb759aeb9339d"
-        },
-        "status": "COMMITTED"
-      },
-      {
-        "day": "2026-09-01",
-        "tamper": null,
-        "stages": {
-          "response_gate": {
-            "requested_date": "2026-09-01",
-            "payload_date": "2026-09-01",
-            "checks": {
-              "payload_date_matches_request": true,
-              "coverage_declared": true,
-              "coverage_interval_matches_request": true,
-              "sidecar_rows_match_payload": true,
-              "row_band_ok": true,
-              "index_date_survives_serialization": true
+        {
+          "date": "2026-09-01",
+          "rows": 5214,
+          "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+          "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+          "gate": {
+            "stage": "gate",
+            "PROVENANCE_GATE": "PASS",
+            "provenance": {
+              "requested_date": "2026-09-01",
+              "sidecar_gap_start": "2026-09-01",
+              "sidecar_gap_end": "2026-09-01",
+              "source_file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+              "payload_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+              "request_evidence_origin": "SIDECAR"
             },
-            "sidecar_batch_identity": {
-              "declared_file_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
-              "actual_batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
-              "sidecar_points_to_same_batch": true,
-              "note": "a retained sidecar may describe an earlier build of the same day; recorded, not used to rewrite the payload"
+            "provenance_facts": {
+              "retained_bytes_match_sidecar_sha": true,
+              "row_band_source": "STRUCTURAL_SANITY_ONLY",
+              "duplicate_keys": 0,
+              "null_price_rows": 0
             },
+            "SUPPLIER_COMPLETENESS": "UNKNOWN",
+            "vendor_result_complete": "UNKNOWN",
+            "original_gate": {
+              "DATA_ABSENCE_GATE": "UNKNOWN_INCOMPLETE_ACQUISITION",
+              "ACQUISITION_COMPLETE": "NO",
+              "RESULT_LIMIT_HIT": false,
+              "DATA_ABSENT_CLAIM_ALLOWED": false,
+              "NO_DATA_FORBIDDEN": true,
+              "n_rows": 5214,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "completeness_state": "UNKNOWN",
+              "grain_symbol": null,
+              "grain_date": null,
+              "grain_frequency": null,
+              "downstream_formal_ingest_forbidden": true
+            },
+            "original_gate_verdict": "UNKNOWN_INCOMPLETE_ACQUISITION",
+            "gate_inputs": {
+              "n_rows": 5214,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "request_evidence_origin": "SIDECAR",
+              "note": "query_cap and pagination_complete come only from a saved request record; the returned row count is never used as its own cap"
+            },
+            "ACQUISITION_RELEASED": false,
             "rows": 5214
-          },
-          "cleaning_antileak": {
-            "input_rows": 5214,
-            "input_columns": [
-              "time",
-              "code",
-              "open",
-              "high",
-              "low",
-              "close",
-              "volume",
-              "money",
-              "paused",
-              "high_limit",
-              "low_limit",
-              "avg",
-              "pre_close",
-              "factor",
-              "fq"
-            ],
-            "anti_leak_max_date": "2026-09-01",
-            "rows_outside_batch_day": 0,
-            "anti_leak_ok": true,
-            "duplicate_rows": 0,
-            "ohlc_inconsistent_rows": 0,
-            "null_price_rows": 0,
-            "nonpositive_price_rows": 0,
-            "clean_rows": 5214,
-            "clean_codes": 5214,
-            "factor_contract": {
-              "required_columns": [
-                "code",
-                "factor"
-              ],
-              "missing": [],
-              "fq_column_required": false,
-              "fq_column_present": false,
-              "note": "physical fq-column absence is not a contract violation",
-              "factor_rows": 5214
-            }
-          },
-          "factor_refresh": {
-            "required_columns": [
-              "code",
-              "factor"
-            ],
-            "missing": [],
-            "fq_column_required": false,
-            "fq_column_present": false,
-            "note": "physical fq-column absence is not a contract violation",
-            "factor_rows": 5214
-          },
-          "compiler": {
-            "rows_before": 954682,
-            "rows_after": 959896,
-            "rows_added": 5214,
-            "partial_day_rows_replaced": 0,
-            "partial_day_was_replaced_not_skipped": false,
-            "duplicate_keys_after_merge": 0,
-            "sha_before": "486eef28c532717474fdb572b67100689c1714006906f7eb95dab7e93d04bbdf",
-            "sha_after": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
-            "idempotent_noop": false
-          },
-          "publication": {
-            "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
-            "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
-            "paired_registry_consistent": true,
-            "atomicity_note": "two sequential os.replace calls; not a multi-file transaction",
-            "current_pointer_touched": false
           }
-        },
-        "provenance": {
-          "batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
-          "batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
-          "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json",
-          "sidecar_sha256": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
-          "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
-          "factor_sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
-          "tamper": null
-        },
-        "checkpoint": {
-          "committed_days": [
-            "2026-08-31",
-            "2026-09-01"
-          ],
-          "resume_point": "2026-09-01",
-          "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
-          "checkpoint_sha256": "4c6d93cdd448297e7f7712150f5f28e234f401682f60557c4d883710fd0d75ed"
-        },
-        "status": "COMMITTED"
-      }
-    ],
-    "idempotent_replay": [
-      {
-        "day": "2026-08-31",
-        "tamper": null,
-        "stages": {
-          "response_gate": {
-            "requested_date": "2026-08-31",
-            "payload_date": "2026-08-31",
-            "checks": {
-              "payload_date_matches_request": true,
-              "coverage_declared": true,
-              "coverage_interval_matches_request": true,
-              "sidecar_rows_match_payload": true,
-              "row_band_ok": true,
-              "index_date_survives_serialization": true
-            },
-            "sidecar_batch_identity": {
-              "declared_file_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
-              "actual_batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
-              "sidecar_points_to_same_batch": true,
-              "note": "a retained sidecar may describe an earlier build of the same day; recorded, not used to rewrite the payload"
-            },
-            "rows": 5212
-          },
-          "cleaning_antileak": {
-            "input_rows": 5212,
-            "input_columns": [
-              "time",
-              "code",
-              "open",
-              "high",
-              "low",
-              "close",
-              "volume",
-              "money",
-              "paused",
-              "high_limit",
-              "low_limit",
-              "avg",
-              "pre_close",
-              "factor",
-              "fq"
-            ],
-            "anti_leak_max_date": "2026-08-31",
-            "rows_outside_batch_day": 0,
-            "anti_leak_ok": true,
-            "duplicate_rows": 0,
-            "ohlc_inconsistent_rows": 0,
-            "null_price_rows": 0,
-            "nonpositive_price_rows": 0,
-            "clean_rows": 5212,
-            "clean_codes": 5212,
-            "factor_contract": {
-              "required_columns": [
-                "code",
-                "factor"
-              ],
-              "missing": [],
-              "fq_column_required": false,
-              "fq_column_present": false,
-              "note": "physical fq-column absence is not a contract violation",
-              "factor_rows": 5212
-            }
-          },
-          "factor_refresh": {
-            "required_columns": [
-              "code",
-              "factor"
-            ],
-            "missing": [],
-            "fq_column_required": false,
-            "fq_column_present": false,
-            "note": "physical fq-column absence is not a contract violation",
-            "factor_rows": 5212
-          },
-          "compiler": {
-            "rows_before": 959896,
-            "rows_after": 959896,
-            "rows_added": 0,
-            "partial_day_rows_replaced": 5212,
-            "partial_day_was_replaced_not_skipped": true,
-            "duplicate_keys_after_merge": 0,
-            "sha_before": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
-            "sha_after": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
-            "idempotent_noop": true
-          },
-          "publication": {
-            "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
-            "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
-            "paired_registry_consistent": true,
-            "atomicity_note": "two sequential os.replace calls; not a multi-file transaction",
-            "current_pointer_touched": false
-          }
-        },
-        "provenance": {
-          "batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
-          "batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
-          "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
-          "sidecar_sha256": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
-          "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
-          "factor_sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec",
-          "tamper": null
-        },
-        "checkpoint": {
-          "committed_days": [
-            "2026-08-31",
-            "2026-09-01"
-          ],
-          "resume_point": "2026-09-01",
-          "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
-          "checkpoint_sha256": "4c6d93cdd448297e7f7712150f5f28e234f401682f60557c4d883710fd0d75ed"
-        },
-        "status": "IDEMPOTENT_REPLAY"
-      },
-      {
-        "day": "2026-09-01",
-        "tamper": null,
-        "stages": {
-          "response_gate": {
-            "requested_date": "2026-09-01",
-            "payload_date": "2026-09-01",
-            "checks": {
-              "payload_date_matches_request": true,
-              "coverage_declared": true,
-              "coverage_interval_matches_request": true,
-              "sidecar_rows_match_payload": true,
-              "row_band_ok": true,
-              "index_date_survives_serialization": true
-            },
-            "sidecar_batch_identity": {
-              "declared_file_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
-              "actual_batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
-              "sidecar_points_to_same_batch": true,
-              "note": "a retained sidecar may describe an earlier build of the same day; recorded, not used to rewrite the payload"
-            },
-            "rows": 5214
-          },
-          "cleaning_antileak": {
-            "input_rows": 5214,
-            "input_columns": [
-              "time",
-              "code",
-              "open",
-              "high",
-              "low",
-              "close",
-              "volume",
-              "money",
-              "paused",
-              "high_limit",
-              "low_limit",
-              "avg",
-              "pre_close",
-              "factor",
-              "fq"
-            ],
-            "anti_leak_max_date": "2026-09-01",
-            "rows_outside_batch_day": 0,
-            "anti_leak_ok": true,
-            "duplicate_rows": 0,
-            "ohlc_inconsistent_rows": 0,
-            "null_price_rows": 0,
-            "nonpositive_price_rows": 0,
-            "clean_rows": 5214,
-            "clean_codes": 5214,
-            "factor_contract": {
-              "required_columns": [
-                "code",
-                "factor"
-              ],
-              "missing": [],
-              "fq_column_required": false,
-              "fq_column_present": false,
-              "note": "physical fq-column absence is not a contract violation",
-              "factor_rows": 5214
-            }
-          },
-          "factor_refresh": {
-            "required_columns": [
-              "code",
-              "factor"
-            ],
-            "missing": [],
-            "fq_column_required": false,
-            "fq_column_present": false,
-            "note": "physical fq-column absence is not a contract violation",
-            "factor_rows": 5214
-          },
-          "compiler": {
-            "rows_before": 959896,
-            "rows_after": 959896,
-            "rows_added": 0,
-            "partial_day_rows_replaced": 5214,
-            "partial_day_was_replaced_not_skipped": true,
-            "duplicate_keys_after_merge": 0,
-            "sha_before": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
-            "sha_after": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
-            "idempotent_noop": true
-          },
-          "publication": {
-            "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
-            "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
-            "paired_registry_consistent": true,
-            "atomicity_note": "two sequential os.replace calls; not a multi-file transaction",
-            "current_pointer_touched": false
-          }
-        },
-        "provenance": {
-          "batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
-          "batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
-          "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json",
-          "sidecar_sha256": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
-          "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
-          "factor_sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289",
-          "tamper": null
-        },
-        "checkpoint": {
-          "committed_days": [
-            "2026-08-31",
-            "2026-09-01"
-          ],
-          "resume_point": "2026-09-01",
-          "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
-          "checkpoint_sha256": "4c6d93cdd448297e7f7712150f5f28e234f401682f60557c4d883710fd0d75ed"
-        },
-        "status": "IDEMPOTENT_REPLAY"
-      }
-    ],
-    "negative_controls": [
-      {
-        "tamper": "short_batch",
-        "expected_stop": [
-          "SHORT_OR_OVERSIZED_BATCH",
-          "SIDECAR_ROW_MISMATCH"
-        ],
-        "stopped": true,
-        "stage": "RESPONSE_GATE",
-        "code": "SIDECAR_ROW_MISMATCH",
-        "code_matches_expected": true,
-        "partition_unchanged": true,
-        "detail": {
-          "sidecar_rows": 5214,
-          "payload_rows": 260
         }
-      },
-      {
-        "tamper": "malformed_date",
-        "expected_stop": [
-          "INDEX_DATE_NOT_PRESERVED",
-          "PAYLOAD_DATE_MISMATCH"
-        ],
-        "stopped": true,
-        "stage": "RESPONSE_GATE",
-        "code": "INDEX_DATE_NOT_PRESERVED",
-        "code_matches_expected": true,
-        "partition_unchanged": true,
-        "detail": {
-          "distinct_dates": [
-            "2026-09-02"
-          ],
-          "requested": "2026-09-01"
-        }
-      },
-      {
-        "tamper": "missing_coverage",
-        "expected_stop": [
-          "COVERAGE_UNPROVEN"
-        ],
-        "stopped": true,
-        "stage": "RESPONSE_GATE",
-        "code": "COVERAGE_UNPROVEN",
-        "code_matches_expected": true,
-        "partition_unchanged": true,
-        "detail": {
-          "missing_sidecar_keys": [
-            "rows",
-            "price_basis",
-            "gap_start",
-            "gap_end"
-          ],
-          "note": "no coverage declaration -> the batch may not be merged"
-        }
-      },
-      {
-        "tamper": "wrong_index",
-        "expected_stop": [
-          "INDEX_DATE_UNPARSEABLE"
-        ],
-        "stopped": true,
-        "stage": "RESPONSE_GATE",
-        "code": "INDEX_DATE_UNPARSEABLE",
-        "code_matches_expected": true,
-        "partition_unchanged": true,
-        "detail": {
-          "error": "Unknown datetime string format, unable to parse: not-a-date, at position 0"
-        }
-      }
-    ],
-    "verdict": "PASS",
-    "partial_day_control": {
-      "injected_rows": 200,
-      "rows_after_rerun": 5214,
-      "expected_full_rows": 5214,
-      "replaced_not_skipped": true,
-      "compiler": {
-        "rows_before": 954882,
-        "rows_after": 959896,
-        "rows_added": 5014,
-        "partial_day_rows_replaced": 200,
-        "partial_day_was_replaced_not_skipped": true,
-        "duplicate_keys_after_merge": 0,
-        "sha_before": "e64aefdc636ba7fdb67042d618278daffe4284ef6c5e73bb8a93c192e35ad3c9",
-        "sha_after": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
-        "idempotent_noop": false
-      },
-      "duplicate_keys": 0
-    },
-    "all_controls_passed": true,
-    "partial_day_replaced_not_skipped": true,
-    "idempotent": true,
-    "no_duplicate_keys": true,
-    "resume_evidence": {
-      "committed_after_first_pass": [
-        "2026-08-31",
-        "2026-09-01"
       ],
-      "committed_after_replay": [
-        "2026-08-31",
-        "2026-09-01"
-      ],
-      "no_duplicate_commit_entries": true
+      "retained_sessions_available": 54,
+      "note": "retained bytes/keys are proven; vendor completeness is UNKNOWN because no saved supplier request (query cap / terminal page / requested universe) exists in the retained corpus"
     },
-    "partition_sha_after_first_pass": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82",
-    "partition_sha_after_replay": "88617605661398a2a89a341a03c9c42e540077d4c7a214a3064aa211d1de6e82"
+    "cleaning": {
+      "status": "REUSED",
+      "release_json": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc\\CC_REPLAY_20260924\\RELEASE.json",
+      "release_sha256": "794a1080ee34a94f56400164594e99c68a9d1b6e42feb21dfa6e5c0e25f00fed",
+      "gates": {
+        "stock_date_max_matches_asof": true,
+        "no_duplicate_date_code_after_reader_dedup": true,
+        "replay_keys_all_present": true,
+        "replay_rows_match_retained": true,
+        "no_rows_after_asof": true,
+        "no_null_price_fields_in_replay_delta": true,
+        "original_antileak_gate_pass": true
+      },
+      "gate_result": "PASS",
+      "replay_rows": 10426,
+      "real_functions": [
+        "blackbox_daily_increment_common_r1.inherit_tree",
+        "cache_compiler_daily_incremental_r1.read_price_frame",
+        "cache_compiler_daily_incremental_r1.antileak_gate"
+      ]
+    },
+    "compiler": {
+      "status": "REUSED",
+      "release": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130709",
+      "receipt": {
+        "compiler_module": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+        "argv": [
+          "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+          "--run-target-date",
+          "2026-09-24",
+          "--cleaning-json",
+          "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc\\CC_REPLAY_20260924\\RELEASE.json",
+          "--parent-root",
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "--out-root",
+          "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases",
+          "--no-publish"
+        ],
+        "exit_code": 0,
+        "error": null,
+        "elapsed_sec": 43.6,
+        "redirected_OUT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\acceptance",
+        "production_OUT_untouched": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\12_ACCEPTANCE",
+        "publish_called": false,
+        "no_publish": true,
+        "releases_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases",
+        "releases_present": [
+          "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114258",
+          "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130709"
+        ],
+        "running_python": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe"
+      },
+      "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130709",
+      "seal_all_pass": true,
+      "price_gates": {
+        "stock": true,
+        "etf": true,
+        "fund": true,
+        "index": true
+      },
+      "stock_2026": {
+        "status": "READY",
+        "rows_2026": 959896,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "replay_days_in_release": {
+        "2026-08-31": 5212,
+        "2026-09-01": 5214
+      },
+      "original_entry": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+      "publish_called_by_compiler": false
+    },
+    "commit": {
+      "status": "PASS",
+      "commit": {
+        "status": "COMMITTED",
+        "commit_id": "e2c45c56f94df11681b842e2dbe6696506c4dff221a4e247e7eb0df4d1047906",
+        "seq": 3,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130709",
+        "commit_file_sha256": "cabfb1d850951fa50145d7dde78eb6668718594ab942ebca20a662058d24fa90",
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\e2c45c56f94df116\\CHECKPOINT.json",
+        "single_reference_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "production_current_written": false
+      },
+      "verify": {
+        "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "commit_id": "e2c45c56f94df11681b842e2dbe6696506c4dff221a4e247e7eb0df4d1047906",
+        "status": "CONSISTENT",
+        "consistent": true,
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\e2c45c56f94df116\\CHECKPOINT.json",
+        "checkpoint_sha_matches": true,
+        "checkpoint_identity_matches": true,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130709",
+        "asof": "2026-09-24",
+        "payload_matches": true,
+        "payload_detail": {
+          "STOCK_DAILY_PIT_R1": {
+            "expected": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "actual": "ddad4a79ac2a33595393e7414702401ce35cc37707cc155a3dc2b737e50b6eef",
+            "match": true
+          },
+          "STOCK_DAILY_RAW_PIT_R1": {
+            "expected": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "actual": "2451be8991c2ba9b28322e7648b2c4cae660286a569355be3f5d1129a0ca7b4d",
+            "match": true
+          },
+          "STOCK_FACTOR_DAILY_R1": {
+            "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "match": true
+          }
+        }
+      }
+    },
+    "publish_gate_probe": {
+      "status": "EVALUATED_NOT_PUBLISHED",
+      "original_function": "blackbox_daily_increment_publish_gate_r1.publish_atomic",
+      "OPERATIONAL_READINESS": "PASS",
+      "CURRENT_PUBLISH": "ALLOWED",
+      "published": false,
+      "production_CURRENT_written": false
+    },
+    "same_input_replay": {
+      "status": "PASS",
+      "compiler_exit_code": 0,
+      "second_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130912",
+      "commit": {
+        "status": "IDEMPOTENT_NOOP",
+        "commit_id": "e2c45c56f94df11681b842e2dbe6696506c4dff221a4e247e7eb0df4d1047906",
+        "commit_file_sha256": "cabfb1d850951fa50145d7dde78eb6668718594ab942ebca20a662058d24fa90",
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130912"
+      },
+      "commit_id_unchanged": true,
+      "note": "a new release id is produced per build; the committed DATA identity is content-addressed, so the same input commits nothing new"
+    }
   },
-  "outputs": {
-    "partition": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
-    "pointer": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_POINTER.json",
-    "registry": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CANDIDATE_REGISTRY.json",
-    "checkpoint": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json"
+  "controls": {
+    "tampered_date": {
+      "status": "BLOCKED_AS_EXPECTED",
+      "stage": "gate",
+      "code": "SESSION_DATE_MISMATCH"
+    },
+    "self_certified_completeness": {
+      "status": "BLOCKED_AS_EXPECTED",
+      "stage": "gate",
+      "code": "ACQUISITION_COMPLETENESS_UNPROVEN"
+    },
+    "compiler_hard_block": {
+      "status": "BLOCKED_AS_EXPECTED",
+      "exit_code": 2,
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\pipeline_runs\\compiler_releases.log"
+    }
   },
-  "flags": {
-    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
-    "CURRENT_SWITCH_ALLOWED": false,
-    "ORDER_ALLOWED": false,
-    "PRODUCTION_PUBLISH_CALLED": false,
-    "CURRENT_POINTER_TOUCHED": false
+  "PRODUCTION_CURRENT_WRITE": "NONE",
+  "NEW_DATA_ACQUISITION": "NONE",
+  "verdicts": {
+    "transport_gate_pass": true,
+    "tampered_date_blocked": true,
+    "compiler_hard_block_propagated": true,
+    "original_compiler_all_pass": true,
+    "replay_days_present_in_release": true,
+    "commit_consistent": true,
+    "same_input_replay_noop": true,
+    "production_current_untouched": true
+  },
+  "CONNECTED_PIPELINE_RESULT": "PASS",
+  "response_gate_contract": {
+    "problem": "R13 fed acquisition_absence_gate query_cap=resp.rows and pagination_complete='YES', so the answer certified the question",
+    "now": {
+      "query_cap": "only from a saved request sidecar; null when absent",
+      "pagination_complete": "'UNKNOWN' when absent; never defaulted to YES",
+      "PROVENANCE_GATE": "checks byte/sha/key provenance of the retained payload",
+      "SUPPLIER_COMPLETENESS": "vendor-side completeness; UNKNOWN without a recorded supplier response",
+      "self_certified_completeness_control": {
+        "status": "BLOCKED_AS_EXPECTED",
+        "stage": "gate",
+        "code": "ACQUISITION_COMPLETENESS_UNPROVEN"
+      }
+    },
+    "observed": {
+      "PROVENANCE_GATE": "PASS",
+      "SUPPLIER_COMPLETENESS": "UNKNOWN",
+      "original_gate": {
+        "DATA_ABSENCE_GATE": "UNKNOWN_INCOMPLETE_ACQUISITION",
+        "ACQUISITION_COMPLETE": "NO",
+        "RESULT_LIMIT_HIT": false,
+        "DATA_ABSENT_CLAIM_ALLOWED": false,
+        "NO_DATA_FORBIDDEN": true,
+        "n_rows": 5212,
+        "query_cap": null,
+        "pagination_complete": "UNKNOWN",
+        "completeness_state": "UNKNOWN",
+        "grain_symbol": null,
+        "grain_date": null,
+        "grain_frequency": null,
+        "downstream_formal_ingest_forbidden": true
+      }
+    },
+    "note": "PROVENANCE_GATE=PASS and SUPPLIER_COMPLETENESS=UNKNOWN are compatible: the bytes we hold are the bytes the sidecar names, while vendor-side completeness was never answered and is therefore not claimed"
   },
   "limitations": [
     "external transport replaced by a local replay reader (declared)",
-    "two os.replace calls are not a multi-file transaction",
-    "no supplier call, so supplier-side completeness remains unproven"
-  ]
+    "no supplier call was made, so SUPPLIER_COMPLETENESS is UNKNOWN by construction, not by failure",
+    "two os.replace calls in the legacy publication stage are not a multi-file transaction; the candidate commit path replaces that with one atomic COMMIT.json swap"
+  ],
+  "identity_definition": "CC_COMMIT_IDENTITY_V2 hashes asof + source_cleaning_release + parent_release_id + per-product sha256/rows only"
 }
