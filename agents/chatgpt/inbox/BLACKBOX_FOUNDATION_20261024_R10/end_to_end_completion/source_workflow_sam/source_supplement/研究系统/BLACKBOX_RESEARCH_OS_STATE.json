@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "system_id": "BLACKBOX_RESEARCH_OS_R1",
+  "status": "ACTIVE",
+  "updated_at_cn": "2026-08-27T12:06:00+0800",
+  "timezone": "Asia/Shanghai",
+  "today_state": "INIT",
+  "state_machine": [
+    "INIT",
+    "PREMARKET_RESEARCH",
+    "ARMED",
+    "MORNING_LIVE",
+    "MIDDAY_PAUSE",
+    "AFTERNOON_LIVE",
+    "CLOSE",
+    "DAILY_RECAP",
+    "ARCHIVED",
+    "DEGRADED"
+  ],
+  "live_interval_sec": 120,
+  "order_allowed": false,
+  "last_transition_at_cn": null,
+  "degraded_modules": [],
+  "precheck": {
+    "HAND": "REQUIRED",
+    "CONSTITUTION": "REQUIRED",
+    "RESEARCH_OS": "REQUIRED",
+    "AUTHORITY": "REQUIRED",
+    "MUST_READ_PRECHECK": "REQUIRED"
+  },
+  "paths": {
+    "os_current_md": "E:\\BLACKBOX\\研究系统\\BLACKBOX_RESEARCH_OS_CURRENT.md",
+    "module_registry": "E:\\BLACKBOX\\研究系统\\BLACKBOX_RESEARCH_OS_MODULE_REGISTRY.json",
+    "schedule_config": "E:\\BLACKBOX\\研究系统\\CONFIG\\research_os_schedule.json",
+    "current_state": "E:\\BLACKBOX\\研究系统\\RESEARCH_OS_CURRENT_STATE.json",
+    "constitution": "E:\\BLACKBOX\\研究记忆\\01_RESEARCH_CONSTITUTION.md",
+    "project_graph": "E:\\BLACKBOX\\研究记忆\\03_PROJECT_GRAPH_CURRENT.md"
+  }
+}
