@@ -678,3 +678,16 @@ Prior R08 delivery remains visible and uncorrected in place; this bundle is appe
 - no absence claim was made from a probe miss; S1..S6 full enumerations and their exclusions recorded
 - `FOUNDATION_ACCEPTANCE=false`; `NEW_DATA_ACQUISITION_AUTHORIZED=false`; `CURRENT_SWITCH_ALLOWED=false`; `ORDER_ALLOWED=false`; B1..B7 open
 - pending tip `R10_EXACT_RUNTIME_SOURCE_HANDOFF` is disclosed as NOT executed
+
+
+## BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025 — R12 revision (per-cell input-plane repair)
+
+- overall: **BLOCKED_PARTIAL_EXECUTION** · stage1: **BLOCKED** (READY_FOR_GPT_REVIEW=false)
+- backtest 2026-09-03..2026-09-24 (16 sessions): **COMPLETED** (diagnostic_only=False, input_blockers=0)
+- input plane sweep: **GATE_SWEEP_PASS** over 16 sessions, null limit rows=0, null paused rows=0
+- the earlier 8 REQUIRED_INPUT_MISSING entries are closed by cause, not by wording: sealed per-cell gaps are filled cell-by-cell from retained RAW (sealed value wins), and the 2026-09-07 nulls came from a non-atomic candidate publish that is now atomic
+- tradeability restored from retained RAW: 41656 overlap keys reconciled, residual disagreements registered
+- connected pipeline: **PASS** (controls True, idempotent True)
+- matrix repairs: CALENDAR_CN_EXCHANGE time axis, per-product roots, FACTOR_VALUE=BLOCKED_NO_ADMITTED_PRODUCT, UNDETERMINED_SCOPE=UNRESOLVED_SCOPE
+- package: `agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/` (24 members, all_byte_equal=True)
+- B1..B7: none closed; acquisition/CURRENT/orders remain unauthorised
