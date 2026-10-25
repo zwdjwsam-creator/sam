@@ -1,16 +1,16 @@
-# SAM｜覆盖模块原件核验已交付
-task_id: BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914
+# SAM｜R10 修订项：原流程交接已交付
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
 execution_host: SAM
-status: SOURCE_CHECK_DONE
-observed_at: 2026-10-20T19:20:00+0800
-COPY_AUTHORIZED=false
-R9_STATUS=FULL_MIGRATION_TECHNICALLY_ACCEPTED
+status: SOURCE_WORKFLOW_HANDOFF_DELIVERED
+delivered_at_cn: 2026-10-25
 
-两源文件均为既有 2B/CRLF（同 SHA），非传输丢失。定向范围无非空同名候选=NONE。
-STOCK_DAILY 实际读法=直读 Cache parquet；resolver 的 cache_stock_daily_pit_r1_reader_r1 仅为命名约定，源机无该文件。
-未改源、未 READY、未跑 R9LP_RO。
+90 代码原件 + 28 配置，逐文件 SHA256；15 条日增量记录（14 PASS / 1 PARTIAL）。
+Lane A 不下载；cache_stock_daily_pit_r1_reader_r1 源机不存在；两个 coverage 模块源机即 2B 空壳。
 
-https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914
-https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_NOTEBOOK_COVERAGE_SOURCE_CHECK_20261020_1914/SOURCE_CHECK.md
+共享：\\192.168.100.2\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\source_workflow_from_SAM\
+HUB：agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/
 
-pending_not_run: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625（独立清理，本任务禁止；待后续尾任务）
+https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/SOURCE_WORKFLOW_HANDOFF.md
+
+pending_not_run: R9_NOTEBOOK_REMOVE_TEMP_R9LP_RO_20261020_1625
