@@ -1,0 +1,198 @@
+{
+  "artifact": "PUBLISH_ATOMIC_REHEARSAL",
+  "target": "2026-09-24",
+  "gate_module": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+  "call": {
+    "function": "publish_atomic",
+    "dry_run": false,
+    "refresh_scope_from_live_invocations": 1
+  },
+  "bound_targets": {
+    "CACHE_PTR": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\cache_current.json",
+    "CLEAN_PTR": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\cleaning_current.json",
+    "FACTS": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json",
+    "LEDGER": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json",
+    "OPS": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_R20_20260817_OPERATIONAL_READINESS.json",
+    "SCOPE": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+    "ROOT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal",
+    "CHILD": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+    "SCOPE_R2": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json"
+  },
+  "seeded_from_production": {
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\cache_current.json": {
+      "source": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+      "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564"
+    },
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\cleaning_current.json": {
+      "source": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128"
+    },
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json": {
+      "source": "E:\\BLACKBOX\\运行\\BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json",
+      "sha256": "92877216ce71be4b220031cfedc80ce3f68605e5e2fe5e8e31f14f20e03735fc"
+    },
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json": {
+      "source": "E:\\BLACKBOX\\运行\\BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json",
+      "sha256": "dd6d0b058755d00cf5feef82709112e8f6d21e09e1c5497c201c71339b7bea58"
+    },
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_R20_20260817_OPERATIONAL_READINESS.json": {
+      "source": "E:\\BLACKBOX\\运行\\BLACKBOX_R20_20260817_OPERATIONAL_READINESS.json",
+      "sha256": "8b3d9222e88b07d4ee65d57bdb32d1bdfa87fdd5bdf5edfafa0d56c57925a2c1"
+    },
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json": {
+      "source": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+      "sha256": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23"
+    },
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json": {
+      "source": "E:\\BLACKBOX\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+      "sha256": "9cca2be379941133aa144dbb195116e9739624fb3e37a9a0b78d7536e7b30e31"
+    },
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json": {
+      "source": "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json",
+      "sha256": "63974a71ab39626855645dab4f46028cd04323ec19ed2409695282353faed992"
+    }
+  },
+  "facts": {
+    "SYSTEM_GENERATION_ID": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527",
+    "per_product": {
+      "STOCK_DAILY_RAW_PIT_R1": {
+        "product_date_max": "2026-09-24",
+        "facts_coverage_max": "2026-09-24",
+        "coverage_self_filled_from_target": false
+      },
+      "STOCK_DAILY_PIT_R1": {
+        "product_date_max": "2026-09-24",
+        "facts_coverage_max": "2026-09-24",
+        "coverage_self_filled_from_target": false
+      },
+      "ETF_DAILY_PIT_R1": {
+        "product_date_max": "2026-09-24",
+        "facts_coverage_max": "2026-09-24",
+        "coverage_self_filled_from_target": false
+      },
+      "VALUATION_PIT_R1": {
+        "product_date_max": "2026-09-24",
+        "facts_coverage_max": "2026-09-24",
+        "coverage_self_filled_from_target": false
+      },
+      "ADJUST_FACTOR_PIT_R1": {
+        "product_date_max": "2026-09-24",
+        "facts_coverage_max": "2026-09-24",
+        "coverage_self_filled_from_target": false
+      },
+      "SW_L1_MEMBERSHIP_PIT_R1": {
+        "product_date_max": "2026-09-24",
+        "facts_coverage_max": "2026-09-24",
+        "coverage_self_filled_from_target": false
+      },
+      "SW_L2_MEMBERSHIP_PIT_R1": {
+        "product_date_max": "2026-09-24",
+        "facts_coverage_max": "2026-09-24",
+        "coverage_self_filled_from_target": false
+      },
+      "SW_L3_MEMBERSHIP_PIT_R1": {
+        "product_date_max": "2026-09-24",
+        "facts_coverage_max": "2026-09-24",
+        "coverage_self_filled_from_target": false
+      }
+    },
+    "coverage_self_filled_products": []
+  },
+  "result": {
+    "OPERATIONAL_READINESS": "PASS",
+    "CURRENT_PUBLISH": "ALLOWED",
+    "matrix": [
+      {
+        "PRODUCT_ID": "STOCK_DAILY_RAW_PIT_R1",
+        "REQUEST_READINESS": "AVAILABLE_FORMAL",
+        "TASK_DATA_GATE": "PASS",
+        "CAN_SERVE": "YES",
+        "FORMAL_COVERAGE_MAX": "2026-09-24"
+      },
+      {
+        "PRODUCT_ID": "STOCK_DAILY_PIT_R1",
+        "REQUEST_READINESS": "AVAILABLE_FORMAL",
+        "TASK_DATA_GATE": "PASS",
+        "CAN_SERVE": "YES",
+        "FORMAL_COVERAGE_MAX": "2026-09-24"
+      },
+      {
+        "PRODUCT_ID": "ETF_DAILY_PIT_R1",
+        "REQUEST_READINESS": "AVAILABLE_FORMAL",
+        "TASK_DATA_GATE": "PASS",
+        "CAN_SERVE": "YES",
+        "FORMAL_COVERAGE_MAX": "2026-09-24"
+      },
+      {
+        "PRODUCT_ID": "VALUATION_PIT_R1",
+        "REQUEST_READINESS": "AVAILABLE_FORMAL",
+        "TASK_DATA_GATE": "PASS",
+        "CAN_SERVE": "YES",
+        "FORMAL_COVERAGE_MAX": "2026-09-24"
+      }
+    ],
+    "coverage_products": [
+      {
+        "PRODUCT_ID": "ADJUST_FACTOR_PIT_R1",
+        "FORMAL_COVERAGE_MAX": "2026-09-24",
+        "CAN_SERVE": "YES"
+      },
+      {
+        "PRODUCT_ID": "SW_L1_MEMBERSHIP_PIT_R1",
+        "FORMAL_COVERAGE_MAX": "2026-09-24",
+        "CAN_SERVE": "YES"
+      },
+      {
+        "PRODUCT_ID": "SW_L2_MEMBERSHIP_PIT_R1",
+        "FORMAL_COVERAGE_MAX": "2026-09-24",
+        "CAN_SERVE": "YES"
+      },
+      {
+        "PRODUCT_ID": "SW_L3_MEMBERSHIP_PIT_R1",
+        "FORMAL_COVERAGE_MAX": "2026-09-24",
+        "CAN_SERVE": "YES"
+      }
+    ],
+    "INDEX_DAILY_R1": "NON_BLOCKING_KNOWN_EXCEPTION",
+    "SYSTEM_GENERATION_ID": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527",
+    "target": "2026-09-24",
+    "published": true,
+    "cache_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_114527"
+  },
+  "error": null,
+  "isolation": {
+    "bound_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal",
+    "writes_observed": 6,
+    "written_paths": [
+      "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\cache_current.json.17976.tmp",
+      "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\cleaning_current.json.17976.tmp",
+      "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json.17976.tmp",
+      "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json.17976.tmp",
+      "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json.17976.tmp",
+      "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\publish_rehearsal\\运行\\BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json.17976.tmp"
+    ],
+    "unbound_writes": [],
+    "files_changed_inside_bound_root": [
+      "cache_current.json",
+      "cache_current.json.bak_before_atomic_publish",
+      "cleaning_current.json",
+      "cleaning_current.json.bak_before_atomic_publish",
+      "运行/BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json",
+      "运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+      "运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+      "运行/BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json"
+    ],
+    "no_write_outside_bound_root": true
+  },
+  "decisions": {
+    "matrix_operational_readiness": "PASS",
+    "candidate_matrix_result": "ALLOWED",
+    "published": true,
+    "published_reason": null
+  },
+  "honest_limits": [
+    "CURRENT_SWITCH_ALLOWED=false: production CURRENT and production HAND were never written; every target above is a task-local copy seeded from production.",
+    "A published=True here means the ORIGINAL gate accepted the candidate pair and swapped the BOUND pointers; it does not mean the production system switched.",
+    "The capability matrix grades by coverage dates. It does not inspect factor validity, so a placeholder factor plane can still read AVAILABLE_FORMAL."
+  ]
+}
