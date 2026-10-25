@@ -1,0 +1,145 @@
+{
+  "artifact": "SAM_LED_RECTIFICATION_LOCAL_RUN_EVIDENCE",
+  "EVIDENCE_PROVENANCE": "SAM_HOST_RUN_NOT_DESKTOP",
+  "provenance_note": "IMPORTANT: this evidence was produced on the SAM laptop, NOT on ZHANGWEI. Per the dispatch rules (section 3), a 'desktop ran successfully' claim must come from a ZHANGWEI local process. Use this file only as the reference expectation; the desktop must run RUN_CHAIN_R1.py and produce its own LOCAL_RUN_EVIDENCE.json with identity.hostname == ZHANGWEI. Do not submit this as desktop evidence.",
+  "run_id": "R14_SAM_LED_CHAIN",
+  "pipeline_version": "R2_R15_TO_COMPILER_ONE_ARTIFACT",
+  "asof": "2026-09-24",
+  "replay_days": ["2026-08-31", "2026-09-01"],
+  "host": {
+    "hostname": "SAM",
+    "python": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "cwd": "E:\\BLACKBOX",
+    "note": "hostname is SAM by design; desktop re-run required"
+  },
+  "elapsed_sec": 660,
+  "exit_code": 0,
+  "CONNECTED_PIPELINE_RESULT": "PASS",
+  "verdicts": {
+    "transport_gate_pass": true,
+    "tampered_date_blocked": true,
+    "self_cert_blocked": true,
+    "r15_cleaning_pass": true,
+    "compiler_read_r15_tree": true,
+    "lineage_same_artifact": true,
+    "compiler_hard_block_propagated": true,
+    "original_compiler_all_pass": true,
+    "replay_days_present_in_release": true,
+    "commit_consistent": true,
+    "same_input_replay_noop": true,
+    "production_current_untouched": true
+  },
+  "stages": {
+    "transport_gate": {
+      "status": "PASS",
+      "PROVENANCE_GATE": "PASS",
+      "SUPPLIER_COMPLETENESS": "UNKNOWN",
+      "ACQUISITION_RELEASED": false,
+      "retained_sessions_available": 524,
+      "sessions": [
+        {"date": "2026-08-31", "rows": 5212, "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet"},
+        {"date": "2026-09-01", "rows": 5214, "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"}
+      ],
+      "note": "vendor completeness is UNKNOWN because the retained corpus saved no request_evidence (query cap / terminal page / requested universe). It is not declared YES."
+    },
+    "controls": {
+      "tampered_date": {"status": "BLOCKED_AS_EXPECTED", "code": "SESSION_DATE_MISMATCH"},
+      "self_certified_completeness": {"status": "BLOCKED_AS_EXPECTED", "code": "ACQUISITION_COMPLETENESS_UNPROVEN"},
+      "compiler_hard_block": {"status": "BLOCKED_AS_EXPECTED", "exit_code": 2}
+    },
+    "cleaning_r15": {
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_sec": 5.6,
+      "release_id": "R15_REPLAY_20260924_R3",
+      "antileak_pass": true,
+      "repair_units": 2,
+      "replayed_rows": 10426,
+      "release_content_root_sha256": "d6e537eb707683fb35e3df9f30a8e7de5f7de1d20b8b36e8588c8fb8cf8fc146",
+      "carry_forward": {
+        "method": "SELECTED_SUBTREES_COMPILER_INPUTS_ONLY",
+        "selected": ["price/stock_ohlcv_daily", "price/ETF_daily", "reference/index_daily", "factor/valuation"],
+        "files_linked": 354,
+        "original_hardlink_tree_usable": false,
+        "original_hardlink_tree_reason": "rglob follows NTFS reparse points; the production standard tree has ~32-release junction chains plus a real 2-cycle at the minute-parquet level, so it never terminates (observed: 25 min CPU spin, 0 bytes produced)"
+      },
+      "switch_current": "NOT_CALLED",
+      "patch_hand": "NOT_CALLED"
+    },
+    "compiler": {
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_sec": 302.2,
+      "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_184500",
+      "seal_all_pass": true,
+      "tip_ok": true,
+      "stock_date_max": "2026-09-24",
+      "asof": "2026-09-24",
+      "stock_rows_2026": 959896,
+      "valuation": {"status": "READY", "rows": 222042, "n_source_files": 48},
+      "cleaning_json_consumed": "candidate/r15_releases/R15_REPLAY_20260924_R3/RELEASE.json",
+      "publish_called_by_compiler": false
+    },
+    "commit": {
+      "status": "PASS",
+      "commit_id": "c87b3a56...3983bc4",
+      "verify": "CONSISTENT"
+    },
+    "same_input_replay": {
+      "status": "PASS",
+      "result": "IDEMPOTENT_NOOP",
+      "commit_id_unchanged": true
+    },
+    "publish_gate_probe": {
+      "status": "EVALUATED_NOT_PUBLISHED",
+      "original_function": "blackbox_daily_increment_publish_gate_r1.publish_atomic",
+      "OPERATIONAL_READINESS": "PASS",
+      "CURRENT_PUBLISH": "ALLOWED",
+      "published": false,
+      "production_CURRENT_written": false
+    }
+  },
+  "LINEAGE": {
+    "LINEAGE_OK": true,
+    "retained_batches": [
+      {"retained_file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet", "retained_equals_r15_sealed": true},
+      {"retained_file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet", "retained_equals_r15_sealed": true}
+    ],
+    "compiler_read_standard_root": "candidate/r15_releases/R15_REPLAY_20260924_R3/standard",
+    "cache_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_184500"
+  },
+  "date_status_patch_validation": {
+    "artifact": "SAM_LED_PATCH_SEMANTIC_VALIDATION",
+    "scratch_sha16": "949e95c758b2064c",
+    "note": "scratch file is byte-identical to the patched desktop data-plane script",
+    "cases": {
+      "D1a_iso_2026-09-24": {"exit_code": 0, "read_only_ok": true},
+      "D1b_compact_20260924": {"exit_code": 0, "read_only_ok": true},
+      "D1c_garbage_2026--0-9-": {"exit_code": 1, "fail_closed": true},
+      "D1d_badcal_2026-13-45": {"exit_code": 1, "fail_closed": true},
+      "D1e_short_2026-9-4": {"exit_code": 1},
+      "D1f_empty": {"exit_code": 2}
+    },
+    "external_digest_unchanged": true,
+    "no_bad_dirs_created": true,
+    "ALL_PASS": true
+  },
+  "authority_boundaries": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "FOUNDATION_ACCEPTANCE": false,
+    "FORMAL_ENGINE_ADMISSION": false,
+    "PRODUCTION_CURRENT_WRITE": "NONE",
+    "PRODUCTION_HAND_PATCH": "NONE",
+    "SEALED_DATA_MODIFIED": false
+  },
+  "known_blockers": [
+    "supplier pagination completeness UNKNOWN (no retained request record)",
+    "adjust factor constant 1.0 from 2026-08-10 and 17 integer-dated files; cause not separated (fq params / SDK shape / local serialization / vendor content) - do NOT assert re-download",
+    "V4 BLOCKED_INPUT_INCOMPLETE (0 trades, 0 orders, diagnostic_only=true)",
+    "2026-08-31 / 2026-09-01 present only in candidate partitions; production CURRENT not switched (unauthorised)",
+    "is_st and historical constituent membership have no local source",
+    "BLACKBOX_DEST share remains anonymously readable after unmount - recommend tightening (not changed)"
+  ]
+}
