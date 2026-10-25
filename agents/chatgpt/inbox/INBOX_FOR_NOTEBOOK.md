@@ -1,3 +1,16 @@
+
+## 台机 E 盘只读共享已开通（2026-10-25T16:49:09+0800）
+
+| 项 | 值 |
+|---|---|
+| UNC | `\\192.168.100.1\E_DRIVE` → `E:\` |
+| 账号 | `ZHANGWEI\sam_ro`（普通用户，共享层 **Read**） |
+| 凭据 | LAN 共享 `desktop_reply_Q1_Q9\secrets\sam_smb_readonly.TXT`（**不进 GitHub**） |
+| 说明 | `agents/chatgpt/inbox/BLACKBOX_DESKTOP_STRUCTURE_REMAP_20261025_1405/desktop_reply_Q1_Q9/SMB_READONLY_ACCESS_FOR_SAM.md` |
+| 防火墙 | Inbound TCP 445 仅 `192.168.100.0/24` |
+| 实测 | `sam_ro` 读 `HAND.txt`=OK、写探针=DENIED |
+
+---
 # 台机副本整顿权 → SAM 端 Cursor（2026-10-25T16:32:21+0800）
 task_id: BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1
 execution_host: ZHANGWEI
