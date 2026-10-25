@@ -1,0 +1,10 @@
+$ E:\BLACKBOX\.venv\Scripts\python.exe -X utf8 E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\tools\run_connected_pipeline.py
+
+--- STDOUT ---
+{"verdict": "PASS", "all_controls_passed": true, "idempotent": true, "resume_evidence": {"committed_after_first_pass": ["2026-08-31", "2026-09-01"], "committed_after_replay": ["2026-08-31", "2026-09-01"], "no_duplicate_commit_entries": true}}
+
+--- STDERR ---
+E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\tools\run_connected_pipeline.py:122: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  frame["time"] = pd.to_datetime(frame["time"]).dt.normalize() + pd.Timedelta(days=1)
+
+--- EXIT 0 ---
