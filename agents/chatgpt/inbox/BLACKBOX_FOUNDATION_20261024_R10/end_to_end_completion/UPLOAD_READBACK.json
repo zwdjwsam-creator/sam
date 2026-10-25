@@ -1050,6 +1050,7 @@
     "RUN_GUIDE.md",
     "RUN_RESULT.json",
     "TRADEABILITY_RESTORE.json",
+    "UPLOAD_READBACK.json",
     "backtest.log",
     "changed_code",
     "daily_positions.csv",
@@ -1058,7 +1059,7 @@
     "source_workflow_sam",
     "trades.csv"
   ],
-  "post_member_count": 31,
+  "post_member_count": 32,
   "earlier_inbox_content_preserved": true,
   "tail_uploads": [
     {
@@ -1096,5 +1097,70 @@
       "byte_equal": true
     }
   ],
-  "tail_byte_equal": true
+  "tail_byte_equal": true,
+  "tail_uploads_final": [
+    {
+      "name": "UPLOAD_READBACK.json",
+      "bytes": 43045,
+      "sha256_local": "bdcb34f992b6969c28f64b1b4727c51647efb7d8adfd2d06f25a5fa82253bba3",
+      "replaced_existing": true,
+      "put_ok": true,
+      "blob_sha": "21a787eea788ac41f34a1d3bd8af03251352f5a4"
+    },
+    {
+      "name": "PACKAGE_INDEX.json",
+      "bytes": 11581,
+      "sha256_local": "ab05cf1026ce2b795d992aa192b516b535b8df9e2f03949a9b7c0093f44e7ad0",
+      "replaced_existing": true,
+      "put_ok": true,
+      "blob_sha": "7223e4f33b3a614eba9b265408583e41769b6cc4"
+    }
+  ],
+  "tail_readback_final": [
+    {
+      "name": "UPLOAD_READBACK.json",
+      "bytes_local": 43045,
+      "bytes_remote": 43045,
+      "sha256_local": "bdcb34f992b6969c28f64b1b4727c51647efb7d8adfd2d06f25a5fa82253bba3",
+      "sha256_remote": "bdcb34f992b6969c28f64b1b4727c51647efb7d8adfd2d06f25a5fa82253bba3",
+      "byte_equal": true
+    },
+    {
+      "name": "PACKAGE_INDEX.json",
+      "bytes_local": 11581,
+      "bytes_remote": 11581,
+      "sha256_local": "ab05cf1026ce2b795d992aa192b516b535b8df9e2f03949a9b7c0093f44e7ad0",
+      "sha256_remote": "ab05cf1026ce2b795d992aa192b516b535b8df9e2f03949a9b7c0093f44e7ad0",
+      "byte_equal": true
+    }
+  ],
+  "tail_byte_equal_final": true,
+  "inbox_update": {
+    "put_ok": true,
+    "bytes_added": 1087
+  },
+  "sync_resync_uploads": [
+    {
+      "name": "CHANGE_INDEX.json",
+      "bytes": 6069,
+      "sha256_local": "0d91beb590dc1dc878124a66801bf3f28d47f681870e646223784591ca2a13cc",
+      "put_ok": true,
+      "blob_sha": "7358361c449bbaf906056fc726df80fb67d6632d"
+    },
+    {
+      "name": "changed_code/tools__upload_end_to_end_v3.py",
+      "bytes": 10310,
+      "sha256_local": "c404a167f2e8c8db254eee7c615103218ae56954e99121a010a04619330da30f",
+      "put_ok": true,
+      "blob_sha": "48003b9f8d2b238d819b1f3a2c65b8eb6766270d"
+    }
+  ],
+  "resynced_count": 2,
+  "verified_count": 62,
+  "mismatch": [],
+  "index": {
+    "path": "PACKAGE_INDEX.json",
+    "members": 62,
+    "sha256_local": "4dc9ea21a24fe15211b48305ef8cf61feb09309dd50da91fab42b3b28012fe3c"
+  }
 }
