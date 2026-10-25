@@ -1,0 +1,123 @@
+{
+  "artifact": "FACTOR_DENSE_VS_CORRUPT",
+  "dense_sessions": [
+    {
+      "file": "adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+      "rows": 5206,
+      "factor_distinct": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "factor_mean": 1.0,
+      "top_values": {
+        "1.0": 5206
+      },
+      "date_dtype": "datetime64[ns]"
+    },
+    {
+      "file": "adjust_factor_stock__incremental_20260811__20260811_233713.parquet",
+      "rows": 5208,
+      "factor_distinct": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "factor_mean": 1.0,
+      "top_values": {
+        "1.0": 5208
+      },
+      "date_dtype": "datetime64[ns]"
+    },
+    {
+      "file": "adjust_factor_stock__incremental_20260903__20260904_013451.parquet",
+      "rows": 5215,
+      "factor_distinct": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "factor_mean": 1.0,
+      "top_values": {
+        "1.0": 5215
+      },
+      "date_dtype": "datetime64[ns]"
+    }
+  ],
+  "corrupt_sessions": [
+    {
+      "file": "adjust_factor_stock__incremental_20260817__20260818_004854.parquet",
+      "rows": 5208,
+      "factor_distinct": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "factor_mean": 1.0,
+      "top_values": {
+        "1.0": 5208
+      },
+      "date_dtype": "int64"
+    },
+    {
+      "file": "adjust_factor_stock__incremental_20260902__20260903_010420.parquet",
+      "rows": 5215,
+      "factor_distinct": 1,
+      "factor_min": 1.0,
+      "factor_max": 1.0,
+      "factor_mean": 1.0,
+      "top_values": {
+        "1.0": 5215
+      },
+      "date_dtype": "int64"
+    }
+  ],
+  "cache_rows": 863710,
+  "cache_sessions": 178,
+  "cache_sparse_day_detail": {
+    "2026-08-17": {
+      "rows": 89,
+      "factor_values": {
+        "0.995851": 1,
+        "0.991266": 1,
+        "0.977077": 1,
+        "0.98441": 1,
+        "0.997266": 1
+      },
+      "code_sample": [
+        "000009.XSHE",
+        "000035.XSHE",
+        "000156.XSHE",
+        "000166.XSHE",
+        "000426.XSHE"
+      ]
+    },
+    "2026-08-31": {
+      "rows": 5208,
+      "factor_values": {
+        "1.0": 5197,
+        "0.984604": 1,
+        "0.997541": 1,
+        "0.991251": 1,
+        "0.987995": 1
+      },
+      "code_sample": [
+        "000001.XSHE",
+        "000002.XSHE",
+        "000006.XSHE",
+        "000007.XSHE",
+        "000008.XSHE"
+      ]
+    },
+    "2026-09-02": {
+      "rows": 7,
+      "factor_values": {
+        "1.0": 7
+      },
+      "code_sample": [
+        "002891.XSHE",
+        "002895.XSHE",
+        "300773.XSHE",
+        "300888.XSHE",
+        "301029.XSHE"
+      ]
+    }
+  },
+  "reading": {
+    "healthy_factor_plane_varied": false,
+    "corrupt_plane_all_ones": true,
+    "note": "an all-1.0 plane is not an adjustment series; deriving a candidate from these rows would fabricate factors, so the session is reported as an input defect with its exact keys rather than silently repaired"
+  }
+}
