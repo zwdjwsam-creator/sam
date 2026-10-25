@@ -3,19 +3,39 @@
   "items": {
     "B1": {
       "requirement": "PRE-adjustment price chain certifiable over the test window",
-      "status": "OPEN",
-      "failed_predicate": "factor sidecar vs physical row count +83,503 with no per-date lineage; pre/post not implemented",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "the product is not dense across the whole window, so a pre-open mark read whose anchor falls in the sparse window cannot be served for every code; and per-date factor LINEAGE is still not emitted",
       "affected_deliverable": "D2",
-      "repair_attempted": "engine ran with fq='pre' and a piecewise factor fill anchored at end_date; no new lineage invented",
-      "remaining_input": "per-date factor lineage (or the whole-table factor revision)"
+      "repair_attempted": "provider joins ADJUST_FACTOR_PIT_R1 same-day only, no ffill/bfill, no 1.0 fallback, and divides by factor(anchor) with the divisor guarded: rows whose same-day factor or anchor factor is absent are WITHHELD (NaN price + BLOCKED_UNPROVEN_ADJUSTMENT tag + recorded failure), and a batch with no provable code is a hard block. ETF/INDEX are served raw by contract",
+      "remaining_input": "densified ADJUST_FACTOR_PIT_R1 for 2026-08-17..2026-09-02 (a data gap, not a code fix) and a per-date factor lineage sidecar",
+      "measured_density": {
+        "sessions_in_plane": 178,
+        "peak_rows_in_a_session": 5222,
+        "n_dense_sessions": 166,
+        "sparse_sessions": {
+          "2026-08-17": 89,
+          "2026-08-18": 88,
+          "2026-08-19": 81,
+          "2026-08-20": 72,
+          "2026-08-21": 64,
+          "2026-08-24": 49,
+          "2026-08-25": 45,
+          "2026-08-26": 39,
+          "2026-08-27": 29,
+          "2026-08-28": 19,
+          "2026-09-01": 11,
+          "2026-09-02": 7
+        },
+        "consequence": "166/178 2026 sessions are dense; 12 sessions (2026-08-17..2026-09-02) carry 7-89 rows, so fq='pre' cannot be reconstructed there. A pre-open read on 2026-09-03 anchors at 2026-09-02 and loses the codes that have no factor that day."
+      }
     },
     "B2": {
       "requirement": "universe and tradeability cover the test window",
       "status": "PARTIALLY_REPAIRED",
-      "failed_predicate": "sealed tradeability stopped at 2026-09-03 while prices run to 2026-09-24",
+      "failed_predicate": "historical universe before the master listing interval is not an as-of constituent binding; is_st remains unobserved in every local plane",
       "affected_deliverable": "D2",
-      "repair_attempted": "rebuilt paused/high_limit/low_limit for 2026-08-04..2026-09-24 from 40 retained RAW batches; agreement on sealed overlap 41656 keys with 35 field-level disagreements",
-      "remaining_input": "historical universe is still not covered (measured window ends 2026-07-20); is_st is not in the RAW daily schema and was not inferred"
+      "repair_attempted": "paused/high_limit/low_limit reconciled per cell for 2026-08-04..2026-09-24; unknown paused is now preserved as NA and fails the strict request instead of being pre-filled from bar presence (measured: 0 inferred rows, NA kept)",
+      "remaining_input": "as-of historical constituent membership; an is_st source"
     },
     "B3": {
       "requirement": "fund products materialised or explicitly excluded by contract",
@@ -35,11 +55,11 @@
     },
     "B5": {
       "requirement": "formal engine run",
-      "status": "REPAIRED",
-      "failed_predicate": "the earlier run aborted the 09:05 step and skipped the limit check because limit/status inputs were missing; run status=COMPLETED",
+      "status": "PARTIALLY_REPAIRED",
+      "failed_predicate": "the ORIGINAL publish protocol itself writes pointer/facts/ledger sequentially; it is exercised only in dry-run, so its own crash window stays unproven",
       "affected_deliverable": "D2",
-      "repair_attempted": "tradeability restored from retained RAW with per-cell reconciliation (sealed value wins, candidate only fills null cells), atomic candidate publish, strict input gate, non-binary paused normalisation; run status=COMPLETED, input blockers=0, mark-price starved lookups=0, executed trades=2",
-      "remaining_input": "none for the requested window (performance stays non-admission-grade while B1/B7 are open)"
+      "repair_attempted": "commit is now an immutable versioned release + ONE atomic COMMIT.json whose checkpoint names the committed payload identity; mid-failure, crash-after-swap and revised-input resume were executed (9/9 scenarios PASS)",
+      "remaining_input": "authorisation to exercise the original publish protocol on a candidate pointer set"
     },
     "B6": {
       "requirement": "writer / checkpoint / resume / non-regression",
@@ -58,5 +78,8 @@
       "remaining_input": "whole-CACHE RAW<->CACHE equivalence gate and a publish-time regression classifier"
     }
   },
-  "note": "no item is closed by this round"
+  "note": "no item is closed by this round",
+  "revised_at": "2026-10-25T12:00:00+0800",
+  "revision": "R13_SAME_TASK_CORRECTION",
+  "historical_labels_preserved": "B1_B7_STATUS_R12_PRESERVED.json"
 }
