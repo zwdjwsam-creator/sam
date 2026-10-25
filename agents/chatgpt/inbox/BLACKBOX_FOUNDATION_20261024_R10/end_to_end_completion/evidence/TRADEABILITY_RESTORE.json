@@ -1,0 +1,304 @@
+{
+  "artifact": "TRADEABILITY_RESTORE_FROM_RETAINED_RAW",
+  "generated_at_cn": "2026-10-25T11:20:32+08:00",
+  "sealed_product": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1",
+  "sealed_range": [
+    "2026-07-13",
+    "2026-09-03"
+  ],
+  "candidate_partition": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R11_TRADEABILITY\\STOCK_TRADEABILITY_PIT_R1\\year=2026\\part_2026.parquet",
+  "candidate_sha256": "0e8428e38205a7f87526488d60b3faf1e083dbf51710a3bd7db12724aa12cf35",
+  "candidate_rows": 198109,
+  "candidate_dates": 38,
+  "candidate_date_min": "2026-08-04",
+  "candidate_date_max": "2026-09-24",
+  "duplicates_dropped": 10440,
+  "dedupe_rule": "same (date, code) keeps the batch with the later embedded build stamp",
+  "restored_interval": "candidate covers every session the sealed plane does not serve",
+  "engine_window_covered": true,
+  "fields_restored": [
+    "paused",
+    "high_limit",
+    "low_limit"
+  ],
+  "fields_not_restored": {
+    "is_st": "absent from the RAW daily schema; left null, UNKNOWN, not inferred",
+    "historical_universe": "not inferred from a current code list"
+  },
+  "reconciliation_vs_sealed": {
+    "overlap_days": [
+      "2026-08-04",
+      "2026-08-05",
+      "2026-08-06",
+      "2026-08-07",
+      "2026-08-10",
+      "2026-08-11",
+      "2026-08-12",
+      "2026-09-03"
+    ],
+    "overlap_rows": 41656,
+    "paused_mismatch": 35,
+    "high_limit_mismatch": 35,
+    "low_limit_mismatch": 35,
+    "agrees_on_overlap": false,
+    "sealed_collapse": {
+      "note": "sealed keeps per-snapshot tip files; collapsed by (date, code) preferring a row with limits, then latest snapshot",
+      "rows_after_collapse": 124929
+    }
+  },
+  "sources": [
+    {
+      "file": "stock_daily__incremental_gap_20260713_20260730__full__20260729_170458.parquet",
+      "skipped": "missing status columns"
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260730_20260804__full__20260804_062955.parquet",
+      "skipped": "null status values"
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260804_20260804__full__20260804_232001.parquet",
+      "rows": 5204,
+      "sha256": "53a0b2dba40a5adfede78cfbf8a3daa7c959fea8f175480f3e14a9e412ec336a",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260805_20260805__full__20260806_002103.parquet",
+      "rows": 5204,
+      "sha256": "5b9490ca0d56d0130ae4534c74e99e46bf0fa8d03ca7ddb9569458581cad4ee5",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260806_20260806__full__20260806_234303.parquet",
+      "rows": 5205,
+      "sha256": "928827754a91e2f346ece52dbc04ff23c74d03bd7c71f1b20de8677cc0ca4465",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260807_20260807__full__20260808_001532.parquet",
+      "rows": 5206,
+      "sha256": "e1606ad5c0ae6918ffd3e6177f47614b9e2c67861b89f51d6a0fa55eac9e4df2",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+      "rows": 5206,
+      "sha256": "c75d605fffc7c54812841bba4326a1ece9e6152216f2b6ac78ba3885bf904855",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260811_20260811__full__20260811_233004.parquet",
+      "rows": 5208,
+      "sha256": "0bbf121cb35d91b9a7019bf19176bf2d6ef2b8179692aceaa2764fb9c75d3ef5",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260812_20260812__full__20260812_221357.parquet",
+      "rows": 5208,
+      "sha256": "c411f8951c13da089608439449d92034ca718329d1eddf1509b87c63c2565a51",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260813_20260813__full__20260814_001722.parquet",
+      "rows": 5208,
+      "sha256": "ee15261c3c81ed4d58d56764d5c0a4c44a454a7b9b76d1f86921c6dfeeee6ea5",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260814_20260814__full__20260815_002949.parquet",
+      "rows": 5208,
+      "sha256": "bf0d141c02a683d6bb1f53cc3abeb813f3789e60051b58ba5b831a174b874d7a",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260817_20260817__full__20260817_235512.parquet",
+      "rows": 5208,
+      "sha256": "fc4215f8840e3ab13b038f619104f05ccd1af5b373c2b2b8156450d85f7676bf",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260818_20260818__full__20260818_231819.parquet",
+      "rows": 5209,
+      "sha256": "c18657863af59c9bddd1b121c83b94d759aa53150413a93506d8665f0e6f16a1",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260819_20260819__full__20260820_001803.parquet",
+      "rows": 5210,
+      "sha256": "fbe5c5fd61dd8007bb8c63bcb9701c45e49c3697d7fe3ff067536864060e1c09",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260820_20260820__full__20260821_000102.parquet",
+      "rows": 5211,
+      "sha256": "a4bc62d77fe844f54db44704ee842ec5d8afc0a0a4dfc5b2597952778a50737f",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260821_20260821__full__20260821_235739.parquet",
+      "rows": 5211,
+      "sha256": "8cba71b91d06715eaf7db28a0d0a157c1d7840822988b89481e384ad92f24516",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260824_20260824__full__20260824_163703.parquet",
+      "rows": 5211,
+      "sha256": "530e401762ecb49678686517e18364085d4accf55895916bb7f1bad7634e6add",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260825_20260825__full__20260826_001241.parquet",
+      "rows": 5212,
+      "sha256": "081be8a44d160814a463afd14da42d82c65d712a7a38e4d65358e4b0e3dde68b",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260826_20260826__full__20260826_163653.parquet",
+      "rows": 5212,
+      "sha256": "74df626df9a7123fbea188ed1036d6005fb5369de77624afbf4117bfa699ddd6",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260827_20260827__full__20260827_173734.parquet",
+      "rows": 5212,
+      "sha256": "fbb8c0b8ab062d4f2fa2afeb81f1bbdba85a45ad1a3114e1be6482529f95011a",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260828_20260828__full__20260829_003304.parquet",
+      "rows": 5212,
+      "sha256": "dad094185b73ec84a215fc58f43d58284a309a2b9f4dabd572cbbefc0ef6abd9",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "rows": 5212,
+      "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "rows": 5214,
+      "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+      "rows": 5215,
+      "sha256": "c2d831a8f10ab0b215b1bf268417d7bbc9302cfdc523fd0e35c8d7501e086db6",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260903_20260903__full__20260904_004009.parquet",
+      "rows": 5215,
+      "sha256": "77cfada909e716de8259da7558af7a511619f881abfc31b5c3149ff4a0018195",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260904_20260904__full__20260907_002846.parquet",
+      "rows": 5215,
+      "sha256": "38815c77b47292865cc4e6e5d494e98305f92022532642e06aa4b9945fbd93d0",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260907_20260907__full__20260908_085104.parquet",
+      "rows": 5216,
+      "sha256": "579bf2f483c97bd354207add0addbfb9e82e72d9c8211d354c3fbe952f4b48f8",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260908_20260908__full__20260909_161615.parquet",
+      "rows": 5216,
+      "sha256": "467e0942317a9be5846cfe7f480fad4c4cb6c040a91ac7cd14d94825ec2b5713",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260909_20260909__full__20260909_173526.parquet",
+      "rows": 5217,
+      "sha256": "63f189dce198fc1d0e765c7d8d097b1ab4b56f404803b47fb2058cc421f6975a",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260910_20260910__full__20260917_144821.parquet",
+      "rows": 5218,
+      "sha256": "107cd8c372e3707d78d79049f5c1a05ff971fa21a3cc513dd940800c607abdab",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260910_20260910__full__20260917_145054.parquet",
+      "rows": 5218,
+      "sha256": "107cd8c372e3707d78d79049f5c1a05ff971fa21a3cc513dd940800c607abdab",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260911_20260911__full__20260918_072703.parquet",
+      "rows": 5219,
+      "sha256": "ba671740b0dc6c4c81677cf212d33964f0a36795dc648ce4e21471fea16fe173",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260914_20260914__full__20260924_082242.parquet",
+      "rows": 5219,
+      "sha256": "13424fbbc2b794bda224263784a1f620671815b8a40de30967a546aa123db1e3",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260915_20260915__full__20260924_093008.parquet",
+      "rows": 5219,
+      "sha256": "27d717c1baf705bd1bdcb77fe40eac0f74ffa37a5b3312cc299ea3e1c5951e92",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260916_20260916__full__20260924_103015.parquet",
+      "rows": 5220,
+      "sha256": "9f05cc74e0b1a08ce0891d7ae2f92d82cc2eb5eb85ff1e2cc3bbaa090f4d0f63",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260917_20260917__full__20260924_114350.parquet",
+      "rows": 5221,
+      "sha256": "68876a551f736ab9deb12c4b1eb1a9b84fdf5764bafc1c792ab46b7a7b8deabb",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260918_20260918__full__20260924_130124.parquet",
+      "rows": 5221,
+      "sha256": "d8c1de7d29032853ae34d0add4c8b21734112a6a6c827238e97cf9130ae9d731",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260921_20260921__full__20260924_163523.parquet",
+      "rows": 5221,
+      "sha256": "2e241c6315a4529ee7a972886df2fea97293e03bca21dd2e2ec0ce268c6d48a7",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260922_20260922__full__20260924_173644.parquet",
+      "rows": 5222,
+      "sha256": "be3cab3b4d8b0885b4ef0b22a7f633c410ecb11f8a66d66a5e3da84d1128943e",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260923_20260923__full__20260924_183710.parquet",
+      "rows": 5222,
+      "sha256": "91b4ec4cbd67f3a66d02a059162feb0ea130128287ea129055a6a76f58e07b06",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260924_20260924__full__20260924_214242.parquet",
+      "rows": 5222,
+      "sha256": "8a976c95810ddc850e95f009921f92c80a8610b85e2213b5ce08fd2a82c66330",
+      "used": true
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260924_20260924__full__20260925_030125.parquet",
+      "rows": 5222,
+      "sha256": "8a976c95810ddc850e95f009921f92c80a8610b85e2213b5ce08fd2a82c66330",
+      "used": true
+    }
+  ],
+  "flags": {
+    "SEALED_DATA_MODIFIED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false
+  }
+}
