@@ -1,3 +1,17 @@
+> **[DESKTOP R12 CLOSURE REVERIFY 20261025] RESULT = PASS（8/8 判据 + 15/15 独立核验）— 但发现 1 个中等问题**
+> 台机 ZHANGWEI 本机跑完 `tools\run_connected_pipeline.py --r15-rid R15_REPLAY_20260924_R3`，全程无 `allow_skip`。
+> 证据：`agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/r12_desktop_closure_reverify/`（15 文件，逐字节回读一致；共享盘 `\\192.168.100.2\BLACKBOX\运行\外部大脑信箱\staging\r12_desktop_closure_reverify`）
+> 报告：[DESKTOP_CLOSURE_RERUN_REPORT.md](https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/r12_desktop_closure_reverify/DESKTOP_CLOSURE_RERUN_REPORT.md)
+> 判据实测：R15 **234/12**；`READ_CLOSURE` **234=234=234**（ETF 37/37/37），failed=0；错误标记 0 条；三产品 `year=2026` 各 **959,896**；七月六天 **5209/5210/5208/5208/5208/5207**；`production_digest_changed={}` 且我跑前跑后 9 文件 digest 全等；负控 7,880B 含 `"exit_code": 1`；A=COMMITTED → B=`IDEMPOTENT_NOOP` + verify `CONSISTENT`。
+> **新问题（MEDIUM）**：`newest_release()` = `sorted(by name)[-1]`。我把归档命名为 `_prev_*` 留在 `releases/` 内，`_`(0x5F) 排在 `B`(0x42) 之后，于是归档树被当成最新 release，`build_identity` 在**修前树**上算 identity → `REBOUND_SAME_CONTENT_NEW_ROOT` → 假 `IDEMPOTENT_NOOP`（`commit_id=2f755779`、rows=17,009,531，而实编译 17,040,667）。我把归档移出 `releases/` 后重跑才得到真 commit `572619c9`。**任何排序在 `BLACKBOX_*` 之后的目录名（`_prev_`/`_bad_`/`zz_`/小写）都能顶替最新 release** —— 建议加白名单前缀并断言 `identity.products.rows` 不低于已知下界。
+> 指数闭包缺口**核实为真**：`READ_CLOSURE` 只有 STOCK/ETF 两键，日志另有一行 `read stock files=234 etf=37 index=1501` 但无三元组、无 `CLOSURE_OK`。
+> 补你 §7 的 UNVERIFIED：台机 `LongPathsEnabled = 0`（`HKLM\SYSTEM\CurrentControlSet\Control\FileSystem`，OS 10.0.26200）。
+> 反讽一条：我自己的取证脚本用 `pathlib.read_bytes()` 读那 12 个 `r2_repair` 也直接 `FileNotFoundError` —— 不走 `_lp` 的新代码都会复现，建议收一个公共 `lp/lstat` 工具。
+> `V4 BLOCKED_INPUT_INCOMPLETE` 未变，本轮未触碰；`PRODUCTION_CURRENT_WRITE=NONE`、无新下载、未删任何文件、`ORDER_ALLOWED=false`。
+> 以下旧记录保留，仅供历史参考。
+
+---
+
 > **[GPT 当前执行：修复编译器长路径漏读，沿用 SAM_LED_DESKTOP_RECTIFICATION_20261025]**
 > R11 BLOCKED 已审阅，优先于下方旧PASS/停止记录。完整执行令新增顶部“当前最高优先级：修复已定位的编译器长路径漏读，台机一次复验”：
 > https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
