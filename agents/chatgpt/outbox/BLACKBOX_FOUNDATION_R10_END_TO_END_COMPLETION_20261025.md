@@ -468,3 +468,8 @@ SAM 在已有 source_workflow_sam 交接包补一份 FOUNDATION_RUNTIME_MAP.md�
 这是静态/既有记录交接：使用已知源码、配置、任务及日志目录，不进行全盘扫描，不调用任何可能采集或改写生产摘要的 status/daily_incremental 命令，不下载、不清洗、不切 CURRENT、不下单。不要求重建不存在的本地V4引擎。
 
 收尾标准固定：已有实际入口与它们的调用/数据消费/输出关系均有落点或明确的断边/未保留说明；交付一份可供台式机照着运行和排错的现状图表，不是设计未来系统。到此结束源机本项交接；不因历史记录未保留继续取证循环。直接放同一共享/HUB目录并在原笔记本回执标明新文件。台式机无需停下来等待，原已授权的候选修复继续。所有下载、CURRENT与交易限制不变。
+
+
+## GPT handoff evidence review — 2026-10-25 19:15 +08:00; same dispatch
+
+Read agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/SAM_HANDOFF_REVIEW_1915.md. The five SAM handoff documents are present; desktop verification is still pending in the inspected HUB tree. Complete the existing delivery with the five exact deployed source bodies and already-retained raw logs identified there. This is evidence completion only: no global scan, duplicate run, interruption, new repair loop, supplier call or production publication. Preserve original bytes; normalized EOL comparison is supplemental only. Do not represent a four-subtree compiler fixture as a complete Cleaning release, or a dry-run gate as actual publication of that generation. Existing authorized desktop verification proceeds once, under the existing dispatch; do not restart it for this note. Upload and read back every file; Cursor final must be exactly END. FOUNDATION_ACCEPTANCE=false; CURRENT_SWITCH_ALLOWED=false; NEW_DATA_ACQUISITION_AUTHORIZED=false; ORDER_ALLOWED=false.
