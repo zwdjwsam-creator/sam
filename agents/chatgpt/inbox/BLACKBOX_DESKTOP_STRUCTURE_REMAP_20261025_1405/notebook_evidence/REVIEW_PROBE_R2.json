@@ -1,0 +1,405 @@
+{
+  "A1_archive_write": {
+    "write_calls": [
+      {
+        "file": "cache_compiler_adjust_factor_pit_r1.py",
+        "line": 252,
+        "text": "ARCHIVE.mkdir(parents=True, exist_ok=True)"
+      },
+      {
+        "file": "cache_compiler_adjust_factor_pit_r1.py",
+        "line": 327,
+        "text": "wjson(ARCHIVE / \"GOLDEN_CASES_R1.json\", qa)"
+      },
+      {
+        "file": "cache_compiler_adjust_factor_pit_r1.py",
+        "line": 328,
+        "text": "wjson(ARCHIVE / \"QA.json\", qa)"
+      },
+      {
+        "file": "cache_compiler_adjust_factor_pit_r1.py",
+        "line": 353,
+        "text": "wjson(ARCHIVE / \"HARD_BLOCK_NO_CURRENT_SWITCH.json\", pointer)"
+      },
+      {
+        "file": "cache_compiler_daily_incremental_r1.py",
+        "line": 747,
+        "text": "wjson(ARCHIVE / \"STATUS_FLAGS_R1.json\", status)"
+      },
+      {
+        "file": "cache_compiler_full_history_r1.py",
+        "line": 233,
+        "text": "wjson(ARCHIVE / \"FULL_HISTORY_ACCEPTANCE.json\", qa)"
+      },
+      {
+        "file": "cache_compiler_full_history_r1.py",
+        "line": 438,
+        "text": "wjson(ARCHIVE / \"STATUS_FLAGS_R1.json\", status)"
+      },
+      {
+        "file": "cache_compiler_full_resume_r1.py",
+        "line": 296,
+        "text": "fh.wjson(ARCHIVE / \"FULL_HISTORY_ACCEPTANCE.json\", qa)"
+      },
+      {
+        "file": "cache_compiler_full_resume_r1.py",
+        "line": 430,
+        "text": "wjson(ARCHIVE / \"STATUS_FLAGS_R1.json\", status)"
+      },
+      {
+        "file": "cache_compiler_sw_l1_integrate_r1.py",
+        "line": 402,
+        "text": "wjson(ARCHIVE / \"SW_L1_INTEGRATE_ACCEPTANCE.json\", qa_res)"
+      },
+      {
+        "file": "cache_compiler_sw_l1_integrate_r1.py",
+        "line": 539,
+        "text": "wjson(ARCHIVE / \"STATUS_FLAGS_R1.json\", status)"
+      }
+    ],
+    "count": 11
+  },
+  "A2_compiler_header": {
+    "file": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+    "range": [
+      20,
+      40
+    ],
+    "lines": [
+      "20|import pandas as pd",
+      "21|",
+      "22|sys.stdout.reconfigure(encoding=\"utf-8\")",
+      "23|",
+      "24|ROOT = Path(r\"E:\\BLACKBOX\")",
+      "25|TASK = ROOT / \"任务\" / \"BLACKBOX_BACKTEST_CACHE_COMPILER_R1\"",
+      "26|ARCHIVE = Path(r\"D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\")",
+      "27|CACHE_ROOT = ROOT / \"数据\" / \"回测缓存\"",
+      "28|RELEASES = CACHE_ROOT / \"releases\"",
+      "29|CANARY_ROOT = CACHE_ROOT / \"_canary\"",
+      "30|REGISTRY = CACHE_ROOT / \"registry\"",
+      "31|POINTER = CACHE_ROOT / \"CURRENT_CACHE_RELEASE.json\"",
+      "32|# HARD: canary is a smoke artifact only — never authority / never CURRENT.",
+      "33|CANARY_CURRENT_PUBLISH = \"STRUCTURALLY_FORBIDDEN\"",
+      "34|CURRENT = ROOT / \"数据\" / \"清洗成品\" / \"CURRENT_CLEANING_RELEASE.json\"",
+      "35|PLANE = ROOT / \"数据\" / \"原始只读\" / \"strategy_data_plane_additions\"",
+      "36|RAW = ROOT / \"数据\" / \"原始只读\" / \"JQData_9999_official_raw\"",
+      "37|CN = ZoneInfo(\"Asia/Shanghai\")",
+      "38|SCHEMA_VERSION = \"1.0.0\"",
+      "39|BUILD_VERSION = \"CACHE_COMPILER_R1\"",
+      "40|FORMULA_VERSION = \"univ_factor_r1_v1\""
+    ],
+    "tag": "ARCHIVE constant"
+  },
+  "A3_autorun_D_drive": {
+    "file": "脚本/run_blackbox_master_research_autorun_r1.py",
+    "range": [
+      360,
+      395
+    ],
+    "lines": [
+      "360|    clean = load_json(ROOT / \"数据\" / \"清洗成品\" / \"CURRENT_CLEANING_RELEASE.json\")",
+      "361|    cache = load_json(ROOT / \"数据\" / \"回测缓存\" / \"CURRENT_CACHE_RELEASE.json\")",
+      "362|    ext_align = load_json(ROOT / \"运行\" / \"BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json\")",
+      "363|    sell = load_json(ROOT / \"数据\" / \"研究报告\" / \"CURRENT\" / \"SELLSIDE_DAILY_INCREMENTAL_CURRENT.json\")",
+      "364|    us_fine = load_json(ROOT / \"运行\" / \"BLACKBOX_US_MARKET_FINE_GRAINED_FLOW_PROFIT_POOL_CURRENT.json\")",
+      "365|    us_mkt = load_json(ROOT / \"数据\" / \"美国市场\" / \"市场状态\" / \"CURRENT\" / \"US_MARKET_STATE_CURRENT.json\")",
+      "366|    us_news = load_json(ROOT / \"数据\" / \"美国市场\" / \"新闻\" / \"CURRENT\" / \"US_NEWS_CURRENT.json\")",
+      "367|    domestic = load_json(plane_state / \"DOMESTIC_RESEARCH_INCREMENTAL_STATE.json\")",
+      "368|    r29_path = Path(r\"D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_FULL_DATA_INCREMENT_R29_ASOF_20260828\\out\\R29_CHAIN_STATE.json\")",
+      "369|    r29 = load_json(r29_path)",
+      "370|    r29_final = norm_status(r29.get(\"final_status\"))",
+      "371|    r29_running = r29_final == \"RUNNING\"",
+      "372|    r29_process_status = None",
+      "373|    r29_hint = None",
+      "374|    r29_step_codes: list[Any] = []",
+      "375|    # Observe stale RUNNING / dead PID for diagnostics ONLY — never write D:\\ R29 state, never promote to PASS.",
+      "376|    if r29_running:",
+      "377|        steps = r29.get(\"steps\") or []",
+      "378|        r29_step_codes = [s.get(\"exit\") for s in steps]",
+      "379|        all_ok = bool(steps) and all(int(s.get(\"exit\", 1)) == 0 for s in steps)",
+      "380|        pid_alive = False",
+      "381|        try:",
+      "382|            pid_path = r29_path.parent / \"R29_CHAIN_PID.json\"",
+      "383|            pid_obj = load_json(pid_path)",
+      "384|            pid = int(pid_obj.get(\"pid\") or 0)",
+      "385|            if pid > 0:",
+      "386|                import subprocess as _sp",
+      "387|",
+      "388|                chk = _sp.run(",
+      "389|                    [\"powershell\", \"-NoProfile\", \"-Command\", f\"Get-Process -Id {pid} -ErrorAction SilentlyContinue\"],",
+      "390|                    capture_output=True,",
+      "391|                    timeout=15,",
+      "392|                )",
+      "393|                pid_alive = chk.returncode == 0",
+      "394|        except Exception:",
+      "395|            pid_alive = False"
+    ],
+    "tag": "D: drive usage"
+  },
+  "B_daily_research": {
+    "root": "E:\\BLACKBOX\\DAILY_RESEARCH",
+    "exists": true,
+    "top": [
+      {
+        "dir": "_TMP",
+        "n_children": 0,
+        "sample": []
+      },
+      {
+        "dir": "ARCHIVE",
+        "n_children": 0,
+        "sample": []
+      },
+      {
+        "dir": "CACHE",
+        "n_children": 6,
+        "sample": [
+          "domestic_market",
+          "event_chains",
+          "fundamentals",
+          "news",
+          "sellside",
+          "us_market"
+        ]
+      },
+      {
+        "dir": "CONFIG",
+        "n_children": 1,
+        "sample": [
+          "POST_INCREMENT_RESEARCH_RULES_R1.md"
+        ]
+      },
+      {
+        "dir": "CORRECTIONS",
+        "n_children": 4,
+        "sample": [
+          "20260903_CRUDE_CHAIN_FULL_MARKET_CORRECTION.md",
+          "CORRECTION_20260907_FAILURE_LESSONS_POST_INCREMENT_R1.json",
+          "CORRECTION_20260907_P1_CODE_SECOND_REVIEW_R1_1.json",
+          "CORRECTION_20260907_SESSION_REF_REOPEN_R2.json"
+        ]
+      },
+      {
+        "dir": "CURRENT",
+        "n_children": 7,
+        "sample": [
+          "CURRENT_RESEARCH_BRIEF.md",
+          "EVENT_STATE_CURRENT.md",
+          "HYPOTHESIS_CURRENT.md",
+          "MARKET_STATE_CURRENT.md",
+          "RESEARCH_QUEUE_CURRENT.md",
+          "STOCK_STATE_CURRENT.md",
+          "THEME_STATE_CURRENT.md"
+        ]
+      },
+      {
+        "dir": "DAILY_BRIEF",
+        "n_children": 1,
+        "sample": [
+          "2026-08-30.md"
+        ]
+      },
+      {
+        "dir": "DAILY_REPORTS",
+        "n_children": 1,
+        "sample": [
+          "2026-08-30"
+        ]
+      },
+      {
+        "dir": "EVALUATION",
+        "n_children": 13,
+        "sample": [
+          "BLACKBOX_RESEARCH_EFFICIENCY_AND_DATA_COMPASS_SUMMARY_R1.txt",
+          "CROSS_THEME_LINK_LEDGER.csv",
+          "EXTERNAL_HUMAN_PRIOR_CALIBRATION_LEDGER",
+          "HYPOTHESIS_LEDGER.csv",
+          "L4_MAPPING_CALIBRATION",
+          "LIVE_SELECTION_CALIBRATION_LEDGER",
+          "MIGRATION_20260829_VALIDATION.json",
+          "MODEL_TELEMETRY_SCHEMA_EXAMPLE.json",
+          "RESEARCH_EFFICIENCY_HISTORY.jsonl",
+          "SELECTION_ODDS_LEARNING_SCHEMA_R1.md",
+          "STOCK_CALL_LEDGER.csv",
+          "STOCK_CALL_MIGRATION_20260829.jsonl"
+        ]
+      },
+      {
+        "dir": "INDEX",
+        "n_children": 5,
+        "sample": [
+          "DAILY_BRIEF_INDEX.jsonl",
+          "EVENT_INDEX.jsonl",
+          "RESEARCH_TRACE_INDEX.jsonl",
+          "STOCK_INDEX.jsonl",
+          "THEME_INDEX.jsonl"
+        ]
+      },
+      {
+        "dir": "INTRADAY_SELECTION_PATROL",
+        "n_children": 3,
+        "sample": [
+          "CURRENT",
+          "DAILY",
+          "INDEX.md"
+        ]
+      },
+      {
+        "dir": "MARKET_DATE_INDEX",
+        "n_children": 1,
+        "sample": [
+          "2026-08-28.json"
+        ]
+      },
+      {
+        "dir": "MARKET_TAPE_MEMORY",
+        "n_children": 2,
+        "sample": [
+          "DAILY",
+          "STOCK_INDEX"
+        ]
+      },
+      {
+        "dir": "OPEN_WATCH_20260904",
+        "n_children": 4,
+        "sample": [
+          "ACCEPTANCE",
+          "LIVE",
+          "PREMARKET",
+          "QMT_MANUAL_START_REQUIRED.txt"
+        ]
+      },
+      {
+        "dir": "RESEARCH_DATE_INDEX",
+        "n_children": 2,
+        "sample": [
+          "2026-08-29.json",
+          "2026-08-29_GUIDE.md"
+        ]
+      },
+      {
+        "dir": "RESEARCH_TRACE",
+        "n_children": 2,
+        "sample": [
+          "2026-08-30",
+          "TRACE_20260904_DUAL_LINE_R1.md"
+        ]
+      },
+      {
+        "dir": "SHADOW",
+        "n_children": 8,
+        "sample": [
+          "CALLS",
+          "CONFIG",
+          "CURRENT.json",
+          "ELIGIBILITY",
+          "EVALUATION_CURRENT.json",
+          "EVALUATION_INDEX.jsonl",
+          "INDEX.jsonl",
+          "OUTCOMES"
+        ]
+      },
+      {
+        "dir": "THEME_MEMORY",
+        "n_children": 4,
+        "sample": [
+          "AI_SOFTWARE.md",
+          "ENERGY_OIL.md",
+          "POWER_AIDC.md",
+          "SEMICONDUCTOR.md"
+        ]
+      }
+    ]
+  },
+  "C_calendar": {
+    "raw": {
+      "files": 5,
+      "rows": 16214,
+      "min": "2014-11-17 00:00:00",
+      "max": "2026-12-31 00:00:00"
+    },
+    "cache": {
+      "dir": "数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+      "files": 14,
+      "columns": [
+        "id",
+        "day",
+        "link_id",
+        "link_name",
+        "type_id",
+        "type",
+        "observation_date",
+        "publication_date",
+        "effective_date",
+        "pit_valid_from",
+        "source_table",
+        "dataset_id",
+        "source_row_hash"
+      ],
+      "date_col": "day",
+      "rows": 32428,
+      "min": "2014-11-17 00:00:00",
+      "max": "2026-12-31 00:00:00",
+      "distinct": 4428
+    },
+    "STOCK_DAILY_PIT_R1": {
+      "rows": 949470,
+      "max": "2026-09-24 00:00:00"
+    },
+    "INDEX_DAILY_R1": {
+      "rows": 273,
+      "max": "2026-09-24 00:00:00"
+    }
+  },
+  "D_alignment": {
+    "hits": [
+      {
+        "line": 461,
+        "text": "align_p = Path(lane[\"session_alignment\"])"
+      },
+      {
+        "line": 497,
+        "text": "\"alignment\": str(align_p),"
+      }
+    ]
+  },
+  "E_memory_backfill": {
+    "choices_line": "625|ap.add_argument(\"--mode\", required=True, choices=[\"status\", \"bootstrap\", \"seal\", \"run-day\"])",
+    "backfill_gate": [
+      "178|u = brief_text.upper()",
+      "179|has_research = (\"RESEARCH_DATE=\" in u) or (\"RESEARCH_DATE =\" in u)",
+      "180|has_asof = (\"AS_OF_MARKET_DATE=\" in u) or (\"AS_OF_MARKET_DATE =\" in u) or (\"US_MARKET_DATE=\" in u)",
+      "181|mode_m = re.search(r\"MODE\\s*=\\s*([A-Z0-9_]+)\", brief_text, re.I)",
+      "182|mode = (mode_m.group(1).upper() if mode_m else \"\")",
+      "183|backfill = mode in {\"BACKFILL\", \"WEEKEND_BACKFILL\"} or \"BACKFILL\" in mode",
+      "184|pre_m = re.search(r\"PRE_OUTCOME_ELIGIBLE\\s*=\\s*(TRUE|FALSE)\", brief_text, re.I)",
+      "185|pre_ok = True",
+      "186|if backfill:",
+      "187|pre_ok = bool(pre_m) and pre_m.group(1).upper() == \"FALSE\"",
+      "188|# Fake same-day research folder under earlier market date is out of scope here;",
+      "189|# require explicit dual timestamps when as-of differs or backfill.",
+      "190|axis_ok = has_research and (has_asof if backfill else True) and pre_ok",
+      "191|return {",
+      "192|\"TIME_AXIS_GATE\": \"PASS\" if axis_ok else \"FAIL\",",
+      "193|\"RESEARCH_DATE_FIELD\": has_research,",
+      "194|\"AS_OF_MARKET_DATE_FIELD\": has_asof,",
+      "195|\"MODE\": mode or \"UNSET\",",
+      "196|\"BACKFILL\": backfill,",
+      "197|\"PRE_OUTCOME_ELIGIBLE_OK\": pre_ok,",
+      "198|\"MARKET_DATE_NE_RESEARCH_DATE_RULE\": True,",
+      "199|\"research_day_key\": research_day,",
+      "200|}",
+      "201|",
+      "202|",
+      "203|def dual_memory_gates(report_day: str) -> dict[str, Any]:",
+      "204|brief_p = BRIEF_DIR / f\"{report_day}.md\"",
+      "205|trace_dir = TRACE_ROOT / report_day"
+    ],
+    "date_required": [
+      "600|\"THEN_SEAL\": f\"python -u {ROOT / '脚本' / 'run_blackbox_daily_incremental_research_memory_r1.py'} --mode seal --date {day}\",",
+      "626|ap.add_argument(\"--date\", default=None, help=\"YYYY-MM-DD\")",
+      "633|return mode_seal(report_day=args.date)",
+      "635|return mode_run_day(report_day=args.date)"
+    ]
+  }
+}
