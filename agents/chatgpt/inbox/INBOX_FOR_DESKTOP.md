@@ -1,3 +1,5 @@
+> **[SAM READ-PLANE FIX 20261025]** 已定位两端读取差异：R15 输入目录缺 12 个 r2_repair 文件（路径 289 字符，被 Path.is_file() 静默跳过），导致 2026-07-03..07-10 每日代码从 ~5208 塌到 19、少 31,136 行。已修：长路径 \\?\ 前缀 + 显式 stat + MATERIALIZE_INCOMPLETE 硬门 + candidate_commit 重绑/修复语义。请台机按 sam_led_rectification/RERUN_AFTER_FIX.md 本机复跑。正文: .../sam_led_rectification/READ_PLANE_DIFF.md
+
 > **[DESKTOP REVERIFY 20261025] RESULT = PASS**
 > 台机 ZHANGWEI 已用本机进程跑完 `RUN_CHAIN_R1.py`（2026-10-25T19:17:59 → 19:20:24，runner exit 0），
 > 证据 `LOCAL_RUN_EVIDENCE.json` 的 `identity.hostname=ZHANGWEI`；另附独立核验 `DESKTOP_INDEPENDENT_VERIFY.json` 47/47。
