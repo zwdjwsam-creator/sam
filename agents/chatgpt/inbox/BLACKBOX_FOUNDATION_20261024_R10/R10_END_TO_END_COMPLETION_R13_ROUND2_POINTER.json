@@ -3,7 +3,7 @@
   "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
   "revision": "R13_SAME_TASK_CORRECTION",
   "round": "R13_ROUND2",
-  "generated_at_cn": "2026-10-25T13:21:20+08:00",
+  "generated_at_cn": "2026-10-25T13:30:22+08:00",
   "package_dir": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion",
   "entry_points": {
     "report": "end_to_end_completion/REPORT.md",
@@ -17,15 +17,15 @@
   },
   "readback": {
     "verified_all_members": true,
-    "member_count": 89,
+    "member_count": 91,
     "resynced_this_round": 44,
     "byte_equal_after_readback": true,
     "index_and_receipt_byte_equal": true,
     "method": "GitHub contents API GET after PUT, compared byte for byte against the local file",
-    "package_index_sha256": "3e7b3b25c108281d6e008df999f0c7ec434321b5a4d763da8e50b73ed61128fb",
-    "upload_readback_sha256": "63aaea4f8a7858525c4fc37bb23a44d7a88631509aba7f2d01c086d69bd6f7d0",
-    "report_sha256": "f583fd1c3f6588562d8d1e10b983070e2a194e9ca01ca3bdda472f7d7ff8f75a",
-    "acceptance_sha256": "3d71069dcdb34f06552c1fe018571d4dce479a239be4b6735c66e68fe7015662"
+    "package_index_sha256": "927e5254c4a7ca0516dd8ad5c0d1d35d2d87dea33b1dc660ea65c738395c309c",
+    "upload_readback_sha256": "b38f985c72bd1b64b7907178d965ebf36994cc3d85a51adeb82933ccd357fa7e",
+    "report_sha256": "518a3d6c3488460ad4dd3c4bd9b7b8d130aae0332c03394272c51a2847a14764",
+    "acceptance_sha256": "782c6fd0340e6cba7314fa8f1bc7d1817c00a2d87133b83e1542e5fd15c23eba"
   },
   "review_items_answered": {
     "1_minute_reader_and_factor_lineage": {
@@ -142,5 +142,14 @@
     "PRODUCTION_PUBLISH_CALLED": false,
     "SEALED_DATA_MODIFIED": false
   },
-  "note_on_other_root_files": "Only the files listed in end_to_end_completion/PACKAGE_INDEX.json belong to this revision. Other files at the R10 inbox root (e.g. COMMAND_LOG.json, RUN_RESULT.json, trades.csv, source_workflow_sam/) are artifacts of earlier rounds and are not updated by this upload; nothing was deleted."
+  "note_on_other_root_files": "Only the files listed in end_to_end_completion/PACKAGE_INDEX.json belong to this revision. Other files at the R10 inbox root (e.g. COMMAND_LOG.json, RUN_RESULT.json, trades.csv, source_workflow_sam/) are artifacts of earlier rounds and are not updated by this upload; nothing was deleted.",
+  "review_consumed": {
+    "status": "REVIEWED_FINAL_PASS_BLOCKED",
+    "consumed_at_cn": "2026-10-25T13:30:22+08:00",
+    "evidence": "evidence/GPT_REVIEW_R13_FINAL_CONSUMED.json",
+    "overall_after_review": "BLOCKED_PARTIAL_EXECUTION (整体验收拒绝，局部有界成果保留)",
+    "open_sub_item": "R5_CHAIN_INTEGRITY",
+    "withdrawn_claims": 5,
+    "no_new_round_dispatched": true
+  }
 }
