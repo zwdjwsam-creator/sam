@@ -1,0 +1,95 @@
+$ E:\BLACKBOX\.venv\Scripts\python.exe -X utf8 E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\candidate\run_r15_cleaning_replay.py --asof 2026-09-24 --rid R15_REPLAY_20260924_R3
+{
+  "release_id": "R15_REPLAY_20260924_R3",
+  "release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3",
+  "carry_forward": {
+    "subtrees": {
+      "price/stock_ohlcv_daily": {
+        "src_files": 232,
+        "dst_files": 232,
+        "absent_count": 0,
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+      },
+      "price/ETF_daily": {
+        "src_files": 37,
+        "dst_files": 37,
+        "absent_count": 0,
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\ETF_daily"
+      },
+      "reference/index_daily": {
+        "src_files": 37,
+        "dst_files": 37,
+        "absent_count": 0,
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\reference\\index_daily"
+      },
+      "factor/valuation": {
+        "src_files": 65,
+        "dst_files": 65,
+        "absent_count": 0,
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\factor\\valuation"
+      }
+    },
+    "files_linked": 371,
+    "files_copied": 0,
+    "missing": [],
+    "resolved_via_junction": [
+      {
+        "rel": "price/stock_ohlcv_daily",
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+      },
+      {
+        "rel": "price/ETF_daily",
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\ETF_daily"
+      },
+      {
+        "rel": "reference/index_daily",
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\reference\\index_daily"
+      },
+      {
+        "rel": "factor/valuation",
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\factor\\valuation"
+      }
+    ],
+    "stat_errors": [],
+    "gate_ok": true,
+    "skipped": false,
+    "method": "SELECTED_SUBTREES_COMPILER_INPUTS_ONLY",
+    "selected": [
+      "price/stock_ohlcv_daily",
+      "price/ETF_daily",
+      "reference/index_daily",
+      "factor/valuation"
+    ],
+    "original_hardlink_tree_usable": false,
+    "original_hardlink_tree_reason": "rglob follows reparse points; production standard has ~32-release junction chains and a real junction cycle, so it never terminates (observed: 25 min CPU spin, 0 bytes produced)",
+    "elapsed_sec": 0.1,
+    "parent_standard": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+    "write_path_real": true
+  },
+  "repair_units": 2,
+  "replayed_files": 2,
+  "replayed_rows": 10426,
+  "release_content_root_sha256": "3b88a0432158d11d10bd26dfe3a210dbdc5e11f5153b88f26d5ceca449f7c7fa",
+  "antileak_pass": true,
+  "gates": {
+    "standard_tree_built": true,
+    "materialize_complete": true,
+    "write_path_is_real_dir": true,
+    "compiler_inputs_present": true,
+    "r15_load_staging_called": true,
+    "r15_ingest_item_called": true,
+    "ingest_all_committed": true,
+    "r15_seal_release_called": true,
+    "seal_certificate_written": true,
+    "ledger_written": true,
+    "antileak_function_called": true,
+    "antileak_pass": true,
+    "replayed_bytes_match_retained": true,
+    "production_current_untouched": true,
+    "production_ssot_untouched": true,
+    "production_sample_inodes_untouched": true,
+    "switch_current_not_called": true,
+    "patch_hand_not_called": true
+  },
+  "GATE_RESULT": "PASS"
+}
