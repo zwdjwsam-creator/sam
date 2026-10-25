@@ -3,11 +3,20 @@
   "revision": "R13_SAME_TASK_CORRECTION",
   "changed_code": [
     {
+      "path": "candidate/local_plane/minute_bridge.py",
+      "purpose": "loads the ORIGINAL 脚本/blackbox_stock_minute_1m_reader_r1.py and serves STOCK_MINUTE_1M_R1 through the provider: date-only bounds normalised, out-of-coverage answered as NO_DAY_SHARDS block, never proxied from the daily open",
+      "exists": true,
+      "bytes": 4652,
+      "sha256": "f0318559edceebf7eb167f254729dd15a2b9e6f4af5a71460a3298c78efad059",
+      "copy_in_package": "candidate__local_plane__minute_bridge.py",
+      "baseline": "absent in R12 (new this round)"
+    },
+    {
       "path": "candidate/local_plane/provider.py",
       "purpose": "same-day factor join with guarded anchor divisor (unproven rows withheld and counted, never filled), paused never inferred from bar presence, minute requests blocked without a minute plane, as-of listing-interval universe",
       "exists": true,
-      "bytes": 70365,
-      "sha256": "f05dd28e2a223b79d89f07cf4471a9047d45c9ba8eb6d66ac181f336360e2508",
+      "bytes": 81821,
+      "sha256": "23ca8de8da1c9a0292970bfdb16acfa6da4d67f49f284c183b91dd0868a1a909",
       "copy_in_package": "candidate__local_plane__provider.py",
       "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
     },
@@ -21,22 +30,22 @@
       "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
     },
     {
-      "path": "tools/run_connected_pipeline.py",
-      "purpose": "connected chain that CALLS the original gate/cleaning/compiler/publish-gate instead of re-implementing them, and commits through one atomic reference",
+      "path": "candidate/run_publish_atomic_rehearsal.py",
+      "purpose": "non-dry-run publish_atomic rehearsal: every write target rebound, sys.addaudithook write guard, published/coverage/refresh reported from the call itself",
       "exists": true,
-      "bytes": 20643,
-      "sha256": "a05b455178c97e798aff3bc9fe8401256dfea9dd018f7b1c91341bceb15924d5",
-      "copy_in_package": "tools__run_connected_pipeline.py",
-      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
+      "bytes": 13081,
+      "sha256": "3ef0ebe5129146357ded48be8a0e38d48fa9840c0edaa3675816f630d596a6ee",
+      "copy_in_package": "candidate__run_publish_atomic_rehearsal.py",
+      "baseline": "absent in R12 (new this round)"
     },
     {
-      "path": "tools/candidate_commit.py",
-      "purpose": "immutable versioned release + single atomic COMMIT.json swap + verify from disk",
+      "path": "candidate/run_r15_cleaning_replay.py",
+      "purpose": "real R15 load_staging/ingest_item/seal_release/antileak replay on the retained 2026-08-31 and 2026-09-01 batches with the CURRENT pointer and SSOT rebound to task-local copies",
       "exists": true,
-      "bytes": 12718,
-      "sha256": "7e8cbaaa34c2225565fe73245dc7c03ca33c221fa34da5ed4d454f3173df2adb",
-      "copy_in_package": "tools__candidate_commit.py",
-      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
+      "bytes": 12533,
+      "sha256": "c4ad3755479e696d9114151de0f6cbcbf458e92ea7aaba74b8dc8f4a72b35998",
+      "copy_in_package": "candidate__run_r15_cleaning_replay.py",
+      "baseline": "absent in R12 (new this round)"
     },
     {
       "path": "tools/build_candidate_cleaning_from_retained.py",
@@ -45,42 +54,6 @@
       "bytes": 13374,
       "sha256": "dc52ad2d0c619d69c302056d42a00a10eefb8191510874b37d69f4c53096f422",
       "copy_in_package": "tools__build_candidate_cleaning_from_retained.py",
-      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
-    },
-    {
-      "path": "tools/run_original_compiler_candidate.py",
-      "purpose": "runs the ORIGINAL cache_compiler_tip_rebase_from_current_r1 with redirected outputs and --no-publish",
-      "exists": true,
-      "bytes": 4138,
-      "sha256": "6eef49f210248098a53209b983b2bb6a6baba07a127e964016f1f5434614a68d",
-      "copy_in_package": "tools__run_original_compiler_candidate.py",
-      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
-    },
-    {
-      "path": "tools/verify_provider_semantics.py",
-      "purpose": "13 measured checks of the provider repairs (static + live), including partial withholding",
-      "exists": true,
-      "bytes": 15365,
-      "sha256": "b4b81449cea4fd3f4736f9fff33e97a8830892bd6364f9dc2c64bbb47674fe10",
-      "copy_in_package": "tools__verify_provider_semantics.py",
-      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
-    },
-    {
-      "path": "tools/commit_recovery_selftest.py",
-      "purpose": "9 commit/recovery scenarios incl. crash after the swap and revised input",
-      "exists": true,
-      "bytes": 5680,
-      "sha256": "cd3d8d4f0843dcbac374531876bda9a7d008f64b79a0364aaddce09a7fca499e",
-      "copy_in_package": "tools__commit_recovery_selftest.py",
-      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
-    },
-    {
-      "path": "tools/measure_factor_density.py",
-      "purpose": "measures whether ADJUST_FACTOR_PIT_R1 can serve fq='pre' per session",
-      "exists": true,
-      "bytes": 4727,
-      "sha256": "b7c90187ae56f84dfe794edaa1a53adb8696dbd8e48012f142cb1205fe355437",
-      "copy_in_package": "tools__measure_factor_density.py",
       "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
     },
     {
@@ -94,29 +67,119 @@
     },
     {
       "path": "tools/build_diff_against_r12.py",
-      "purpose": "",
+      "purpose": "package tooling",
       "exists": true,
-      "bytes": 5379,
-      "sha256": "605914ee0168975a2d0c6415b4ab77e4f7daa7edc541a4e36f47b0b3227d8d77",
-      "copy_in_package": "tools__build_diff_against_r12.py",
+      "bytes": 6203,
+      "sha256": "eaf9a0ddc26b9767acf3be1cf57ba6c528d99eba5c119a1bc3f769e23322db46",
+      "copy_in_package": "tools__build_diff_against_r12.py"
+    },
+    {
+      "path": "tools/build_minute_plane_evidence.py",
+      "purpose": "minute product coverage, day-shard count and the strategy's real minute demand",
+      "exists": true,
+      "bytes": 5769,
+      "sha256": "2954b00f7cc532477645139ef57e05191804b0a00909b09db099c9c2fa3ff24f",
+      "copy_in_package": "tools__build_minute_plane_evidence.py",
+      "baseline": "absent in R12 (new this round)"
+    },
+    {
+      "path": "tools/candidate_commit.py",
+      "purpose": "immutable versioned release + single atomic COMMIT.json swap + verify from disk",
+      "exists": true,
+      "bytes": 13930,
+      "sha256": "c3a70f43a5fdbf88720c818557bbc5ce1b4c3b462e5f113c2b76bcb3878e09e6",
+      "copy_in_package": "tools__candidate_commit.py",
       "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
     },
     {
-      "path": "tools/upload_end_to_end_v3.py",
-      "purpose": "",
+      "path": "tools/classify_factor_series.py",
+      "purpose": "per-file and per-session factor distinct-value classification (constant-plane detector)",
       "exists": true,
-      "bytes": 10310,
-      "sha256": "c404a167f2e8c8db254eee7c615103218ae56954e99121a010a04619330da30f",
-      "copy_in_package": "tools__upload_end_to_end_v3.py",
+      "bytes": 3784,
+      "sha256": "3b1cb8f1e8701faa39423124dbc06249c91f9f3abd129804069a61317407e754",
+      "copy_in_package": "tools__classify_factor_series.py",
+      "baseline": "absent in R12 (new this round)"
+    },
+    {
+      "path": "tools/commit_recovery_selftest.py",
+      "purpose": "9 commit/recovery scenarios incl. crash after the swap and revised input",
+      "exists": true,
+      "bytes": 5680,
+      "sha256": "cd3d8d4f0843dcbac374531876bda9a7d008f64b79a0364aaddce09a7fca499e",
+      "copy_in_package": "tools__commit_recovery_selftest.py",
       "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
     },
     {
-      "path": "tools/build_diff_against_r12.py",
-      "purpose": "package tooling",
+      "path": "tools/consolidate_r13_round2.py",
+      "purpose": "writes this consolidation: matrix/status/acceptance/pipeline/change-index/command-log",
       "exists": true,
-      "bytes": 5379,
-      "sha256": "605914ee0168975a2d0c6415b4ab77e4f7daa7edc541a4e36f47b0b3227d8d77",
-      "copy_in_package": null
+      "bytes": 30096,
+      "sha256": "d4fa905a5ce46989686ed609c763e1c6f851f00ab9472df528d4d899c0fc2de0",
+      "copy_in_package": "tools__consolidate_r13_round2.py",
+      "baseline": "absent in R12 (new this round)"
+    },
+    {
+      "path": "tools/find_factor_nondate_rows.py",
+      "purpose": "locates the rows whose date column is not a timestamp",
+      "exists": true,
+      "bytes": 2577,
+      "sha256": "2f29d28b35be56908e9c3a0311520b017dff89b9f3bf3d0f3659c7d98797ee3e",
+      "copy_in_package": "tools__find_factor_nondate_rows.py",
+      "baseline": "absent in R12 (new this round)"
+    },
+    {
+      "path": "tools/inspect_factor_schema.py",
+      "purpose": "raw schema/dtype probe for the adjust-factor plane",
+      "exists": true,
+      "bytes": 4061,
+      "sha256": "04f4d79ea8f1f93443cc22533eefa356e9c209260fb43d945a5cbed1e2ef3b75",
+      "copy_in_package": "tools__inspect_factor_schema.py",
+      "baseline": "absent in R12 (new this round)"
+    },
+    {
+      "path": "tools/measure_factor_density.py",
+      "purpose": "measures whether ADJUST_FACTOR_PIT_R1 can serve fq='pre' per session",
+      "exists": true,
+      "bytes": 4727,
+      "sha256": "b7c90187ae56f84dfe794edaa1a53adb8696dbd8e48012f142cb1205fe355437",
+      "copy_in_package": "tools__measure_factor_density.py",
+      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
+    },
+    {
+      "path": "tools/profile_corrupt_factor_dates.py",
+      "purpose": "17-file positional-integer date profile with code-set agreement against a dense file",
+      "exists": true,
+      "bytes": 4890,
+      "sha256": "2d484b1be6586fc2f3c7560c82c5563fa78f125c9ca742e516468580be97fb64",
+      "copy_in_package": "tools__profile_corrupt_factor_dates.py",
+      "baseline": "absent in R12 (new this round)"
+    },
+    {
+      "path": "tools/run_connected_pipeline.py",
+      "purpose": "connected chain that CALLS the original gate/cleaning/compiler/publish-gate instead of re-implementing them, and commits through one atomic reference",
+      "exists": true,
+      "bytes": 27688,
+      "sha256": "5fd09821a92d6b1dc0c0057fcbefb3624bdc07a3533f76186f9a26c343845b24",
+      "copy_in_package": "tools__run_connected_pipeline.py",
+      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
+    },
+    {
+      "path": "tools/run_original_compiler_candidate.py",
+      "purpose": "runs the ORIGINAL cache_compiler_tip_rebase_from_current_r1 with redirected outputs and --no-publish",
+      "exists": true,
+      "bytes": 4138,
+      "sha256": "6eef49f210248098a53209b983b2bb6a6baba07a127e964016f1f5434614a68d",
+      "copy_in_package": "tools__run_original_compiler_candidate.py",
+      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
+    },
+    {
+      "path": "tools/trace_factor_source.py",
+      "purpose": "per-session CACHE vs P1 vs P6 row and code-set comparison for the disputed sessions",
+      "exists": true,
+      "bytes": 6388,
+      "sha256": "b31de1a4d0029c69845c384de66af6d50d27466a4e99e75bc9f8f9824408b96a",
+      "copy_in_package": "tools__trace_factor_source.py",
+      "baseline": "absent in R12 (new this round)"
     },
     {
       "path": "tools/upload_end_to_end_v3.py",
@@ -124,8 +187,18 @@
       "exists": true,
       "bytes": 10310,
       "sha256": "c404a167f2e8c8db254eee7c615103218ae56954e99121a010a04619330da30f",
-      "copy_in_package": null
+      "copy_in_package": "tools__upload_end_to_end_v3.py"
+    },
+    {
+      "path": "tools/verify_provider_semantics.py",
+      "purpose": "13 measured checks of the provider repairs (static + live), including partial withholding",
+      "exists": true,
+      "bytes": 15365,
+      "sha256": "b4b81449cea4fd3f4736f9fff33e97a8830892bd6364f9dc2c64bbb47674fe10",
+      "copy_in_package": "tools__verify_provider_semantics.py",
+      "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
     }
   ],
-  "diff_basis": "DIFF.patch is generated against the R12 copies published on the HUB (evidence/DIFF_PROVENANCE.json records per-file provenance)"
+  "diff_basis": "DIFF.patch is generated against the R12 copies published on the HUB (evidence/DIFF_PROVENANCE.json records per-file provenance)",
+  "round": "R13_ROUND2"
 }
