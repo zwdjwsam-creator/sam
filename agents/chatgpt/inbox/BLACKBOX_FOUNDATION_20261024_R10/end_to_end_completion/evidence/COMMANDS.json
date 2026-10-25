@@ -65,7 +65,56 @@
       "cmd": "python -X utf8 candidate/run_engine_backtest.py --start 2026-09-03 --end 2026-09-24 --out engine_runs/v4_r21_R13_STRICT4 --strict-inputs",
       "exit_code": 3,
       "result": "status=BLOCKED_INPUT_INCOMPLETE blockers=['REQUIRED_INPUT_MISSING'] trades=0 starved=0"
+    },
+    {
+      "purpose": "connect the original minute reader and measure its real coverage",
+      "cmd": "python -X utf8 tools/build_minute_plane_evidence.py",
+      "exit_code": 0,
+      "result": "STOCK_MINUTE_1M_R1 READY, 10 day shards 2026-09-11..2026-09-24, 6 sessions blocked (NO_DAY_SHARDS), V4 minute get_price calls = 0"
+    },
+    {
+      "purpose": "trace the factor plane across P1 / P6 / CACHE",
+      "cmd": "python -X utf8 tools/trace_factor_source.py",
+      "exit_code": 0,
+      "result": "p1 185 batch + 37 incremental / 3044 sessions / 13548093 rows; 14 CACHE_EXCEEDS_SOURCE, 2 CACHE_MATCHES_SOURCE"
+    },
+    {
+      "purpose": "profile the non-timestamp date column",
+      "cmd": "python -X utf8 tools/find_factor_nondate_rows.py + tools/profile_corrupt_factor_dates.py",
+      "exit_code": 0,
+      "result": "17 files 2026-08-12..2026-09-02, 88,584 rows, date int64 0..299, code set agrees 5208/5208 with a dense file"
+    },
+    {
+      "purpose": "classify every factor series as varied or constant",
+      "cmd": "python -X utf8 tools/classify_factor_series.py",
+      "exit_code": 0,
+      "result": "batch varied 139/139; CACHE constant-1 sessions 17 (2026-09-02..2026-09-24, 5,215..5,222 rows each)"
+    },
+    {
+      "purpose": "replay the real R15 cleaning functions on the retained batches",
+      "cmd": "python -X utf8 candidate/run_r15_cleaning_replay.py",
+      "exit_code": 0,
+      "result": "R15_REPLAY_20260924_R2 PASS; production CURRENT and SSOT byte-identical; switch_current and patch_hand not called"
+    },
+    {
+      "purpose": "rehearse publish_atomic non-dry-run with every write target bound",
+      "cmd": "python -X utf8 candidate/run_publish_atomic_rehearsal.py --reset",
+      "exit_code": 0,
+      "result": "published=True ALLOWED, 6 bound writes, 0 unbound, refresh_scope_from_live=1, coverage_self_filled=[]"
+    },
+    {
+      "purpose": "re-run the connected chain after fixing the commit identity definition",
+      "cmd": "python -X utf8 tools/run_connected_pipeline.py",
+      "exit_code": 0,
+      "result": "CONNECTED_PIPELINE_RESULT=PASS 8/8 verdicts true (before the fix: FAIL, same_input_replay_noop=false)"
+    },
+    {
+      "purpose": "re-run commit recovery with CC_COMMIT_IDENTITY_V2",
+      "cmd": "python -X utf8 tools/commit_recovery_selftest.py",
+      "exit_code": 0,
+      "result": "SELFTEST_RESULT=PASS 9/9, same_input_replay_is_noop=true"
     }
   ],
-  "note": "exit codes recorded as observed, not inferred from a COMPLETED label"
+  "note": "exit codes recorded as observed, not inferred from a COMPLETED label",
+  "updated_at_cn": "2026-10-25T13:13:22+08:00"
 }
