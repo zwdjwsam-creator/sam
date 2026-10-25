@@ -131,6 +131,164 @@
       ],
       "stderr_tail": [],
       "artifact": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\INPUT_PLANE_REPAIR.json"
+    },
+    {
+      "name": "minute_plane_evidence",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\build_minute_plane_evidence.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "day_shards=10 (2026-09-11..2026-09-24)",
+        "in-window served=10, blocked=6 (BLOCKED_MINUTE_PLANE_NO_COVERAGE)",
+        "strategy minute get_price calls=0"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/MINUTE_PLANE.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "factor_source_trace",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\trace_factor_source.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "p1 files batch=185 incremental=37",
+        "per-session verdicts=15 (14 CACHE_EXCEEDS_SOURCE, 2 CACHE_MATCHES_SOURCE)"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/FACTOR_SOURCE_TRACE.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "factor_series_nature",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\classify_factor_series.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "batch varied=139/139",
+        "cache constant-1 sessions=17 (2026-09-02..2026-09-24)"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/FACTOR_SERIES_NATURE.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "factor_corrupt_date_profile",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\profile_corrupt_factor_dates.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "corrupt files=17 date int64 0..299",
+        "code set agreement with a dense file: 5208/5208 shared"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/FACTOR_CORRUPT_DATE_PROFILE.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "factor_nondate_rows",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\find_factor_nondate_rows.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "files=17 rows=88584"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/FACTOR_NONDATE_ENCODING.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "r15_cleaning_replay",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 candidate\\run_r15_cleaning_replay.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "release_id=R15_REPLAY_20260924_R2",
+        "load_staging/ingest_item/seal_release/antileak all called",
+        "GATE_RESULT=PASS",
+        "production CURRENT + SSOT byte-identical"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/R15_CLEANING_REPLAY.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "publish_atomic_rehearsal_attempt1",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 candidate\\run_publish_atomic_rehearsal.py --reset",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 1,
+      "stdout_tail": [
+        "RuntimeError: UNBOUND_WRITE_ATTEMPT: .../evidence/PUBLISH_ATOMIC_REHEARSAL.json",
+        "the write guard fired on the rehearsal's own evidence write; the guard was widened to allow exactly that one path and nothing else"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/PUBLISH_ATOMIC_REHEARSAL.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "publish_atomic_rehearsal",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 candidate\\run_publish_atomic_rehearsal.py --reset",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "readiness=PASS current_publish=ALLOWED published=True",
+        "writes_observed=6 unbound_writes=0 refresh_scope_from_live=1 coverage_self_filled=[]"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/PUBLISH_ATOMIC_REHEARSAL.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "connected_pipeline_before_identity_fix",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\run_connected_pipeline.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 5,
+      "stdout_tail": [
+        "same_input_replay_noop=false -> CONNECTED_PIPELINE_RESULT=FAIL",
+        "cause: commit_id hashed release_id/release_root (build timestamp)"
+      ],
+      "stderr_tail": [],
+      "log": "deliverables/CONNECTED_PIPELINE.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "connected_pipeline",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\run_connected_pipeline.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "8/8 verdicts true",
+        "CONNECTED_PIPELINE_RESULT=PASS"
+      ],
+      "stderr_tail": [],
+      "log": "deliverables/CONNECTED_PIPELINE.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "commit_recovery_selftest",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\commit_recovery_selftest.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "SELFTEST_RESULT=PASS 9/9 verdicts true",
+        "same_input_replay_is_noop=true after CC_COMMIT_IDENTITY_V2"
+      ],
+      "stderr_tail": [],
+      "log": "evidence/COMMIT_RECOVERY.json",
+      "round": "R13_ROUND2"
+    },
+    {
+      "name": "consolidate_r13_round2",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 tools\\consolidate_r13_round2.py",
+      "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion",
+      "exit_code": 0,
+      "stdout_tail": [
+        "matrix/B1-B7/ACCEPTANCE/CONNECTED_PIPELINE/CHANGE_INDEX/COMMAND_LOG written"
+      ],
+      "stderr_tail": [],
+      "log": "deliverables/ACCEPTANCE.json",
+      "round": "R13_ROUND2"
     }
-  ]
+  ],
+  "updated_at_cn": "2026-10-25T13:13:22+08:00"
 }
