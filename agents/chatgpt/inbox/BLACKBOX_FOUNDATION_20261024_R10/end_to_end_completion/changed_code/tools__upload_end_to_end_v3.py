@@ -108,12 +108,6 @@ def write_index() -> Path:
     for rel, path in members():
         b = path.read_bytes()
         rows.append({"path": rel, "bytes": len(b), "sha256": hashlib.sha256(b).hexdigest()})
-    # the receipt travels with the package too
-    rc = D / "UPLOAD_READBACK.json"
-    if rc.exists():
-        b = rc.read_bytes()
-        rows.append({"path": "UPLOAD_READBACK.json", "bytes": len(b),
-                     "sha256": hashlib.sha256(b).hexdigest()})
     idx = D / "PACKAGE_INDEX.json"
     idx.write_text(json.dumps({
         "artifact": "PACKAGE_INDEX",
@@ -123,7 +117,8 @@ def write_index() -> Path:
         "member_count": len(rows),
         "members": rows,
         "note": "every member was uploaded and read back byte-identically before the index "
-                "was published (see UPLOAD_READBACK.json)",
+                "was published. PACKAGE_INDEX.json and UPLOAD_READBACK.json describe each "
+                "other, so neither lists itself; the receipt carries the index hash.",
     }, ensure_ascii=False, indent=2), encoding="utf-8")
     return idx
 
@@ -154,28 +149,22 @@ def main() -> int:
     (D / "UPLOAD_READBACK.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    # receipt + index are published last, then verified
-    tail = [put("UPLOAD_READBACK.json", D / "UPLOAD_READBACK.json")]
+    # receipt + index are published last; the index never lists either of them, so the
+    # pair converges: index hash -> receipt -> upload receipt -> upload index -> verify.
     idx = write_index()
-    tail.append(put("PACKAGE_INDEX.json", idx))
-    tail_rb = [readback("UPLOAD_READBACK.json", D / "UPLOAD_READBACK.json"),
-               readback("PACKAGE_INDEX.json", idx)]
-    report["tail_uploads"] = tail
-    report["tail_readback"] = tail_rb
-    report["tail_byte_equal"] = all(r.get("byte_equal") for r in tail_rb)
+    report["index"] = {"path": "PACKAGE_INDEX.json",
+                       "members": json.loads(idx.read_text(encoding="utf-8"))["member_count"],
+                       "sha256_local": hashlib.sha256(idx.read_bytes()).hexdigest()}
     (D / "UPLOAD_READBACK.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    # the receipt changed after the index was written; republish both so the index matches
-    tail = [put("UPLOAD_READBACK.json", D / "UPLOAD_READBACK.json")]
-    idx = write_index()
-    tail.append(put("PACKAGE_INDEX.json", idx))
-    report["tail_uploads_final"] = tail
+    report["tail_uploads_final"] = [put("UPLOAD_READBACK.json", D / "UPLOAD_READBACK.json"),
+                                    put("PACKAGE_INDEX.json", idx)]
     report["tail_readback_final"] = [readback("UPLOAD_READBACK.json", D / "UPLOAD_READBACK.json"),
                                      readback("PACKAGE_INDEX.json", idx)]
     report["tail_byte_equal_final"] = all(r.get("byte_equal")
                                           for r in report["tail_readback_final"])
-    (D / "UPLOAD_READBACK.json").write_text(
-        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    report["receipt_sha256"] = hashlib.sha256(
+        (D / "UPLOAD_READBACK.json").read_bytes()).hexdigest()
 
     # ------------------------------------------------------------ inbox pointer
     acc = json.loads((D / "ACCEPTANCE.json").read_text(encoding="utf-8"))
