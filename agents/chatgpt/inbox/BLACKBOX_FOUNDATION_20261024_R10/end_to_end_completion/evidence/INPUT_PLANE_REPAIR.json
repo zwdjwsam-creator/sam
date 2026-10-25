@@ -1,0 +1,352 @@
+{
+  "artifact": "INPUT_PLANE_REPAIR",
+  "window": {
+    "start": "2026-09-03",
+    "end": "2026-09-24",
+    "sessions": 16
+  },
+  "original_failures": {
+    "run": "engine_runs/v4_r21_20260903_20260924_R11_TRADEABILITY/run_result.json",
+    "field": "high_limit",
+    "entries": 8,
+    "split": {
+      "2026-09-03": {
+        "keys": [
+          "002731.XSHE",
+          "002870.XSHE",
+          "600929.XSHG"
+        ],
+        "cause": "SEALED_CELL_GAP",
+        "detail": "the sealed STOCK_TRADEABILITY_PIT_R1 carries the key with paused=0 but a null high_limit/low_limit; the candidate extension was excluded for that whole session because the sealed plane served the date at all."
+      },
+      "2026-09-07": {
+        "keys": [
+          "603037.XSHG",
+          "603038.XSHG",
+          "603039.XSHG",
+          "603040.XSHG",
+          "603041.XSHG"
+        ],
+        "cause": "CANDIDATE_PUBLISH_RACE",
+        "detail": "the candidate partition was being rewritten (non-atomic to_parquet) while the engine was already simulating 2026-09-07; that read failed and the provider treated the extension as empty for those calls."
+      }
+    }
+  },
+  "repair": {
+    "provider_change": [
+      "per (date, code) cell reconciliation via combine_first: the sealed value wins whenever it exists, the candidate value only fills null cells",
+      "whole-session exclusion removed; candidate rows now reach sessions the sealed plane only partially serves",
+      "binding reports keys_both_planes / keys_sealed_only / keys_candidate_only / limit_cells_filled_from_candidate / paused_conflicts_sealed_wins"
+    ],
+    "builder_change": [
+      "candidate partition published atomically (temp file + os.replace) so a concurrent reader can never observe a half-written parquet"
+    ],
+    "substitution_class": "SAME_FIELD_SAME_DAY_SAME_SECURITY_FROM_LOCAL_RAW",
+    "limit_prices_inferred": 0,
+    "st_flags_inferred": 0,
+    "supplier_calls": 0
+  },
+  "sweep": [
+    {
+      "date": "2026-09-03",
+      "price_plane_codes": 5215,
+      "tradeability_rows": 5215,
+      "usable_limit_keys": 5215,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 5215,
+        "sealed_dates": 1,
+        "candidate_extension_rows": 5215,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5215,
+        "keys_both_planes": 5215,
+        "keys_sealed_only": 0,
+        "keys_candidate_only": 0,
+        "limit_cells_filled_from_candidate": 12,
+        "paused_conflicts_sealed_wins": 6,
+        "limit_prices_inferred": 0,
+        "st_flags_inferred": 0
+      }
+    },
+    {
+      "date": "2026-09-04",
+      "price_plane_codes": 5215,
+      "tradeability_rows": 5215,
+      "usable_limit_keys": 5215,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5215,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5215
+      }
+    },
+    {
+      "date": "2026-09-07",
+      "price_plane_codes": 5216,
+      "tradeability_rows": 5216,
+      "usable_limit_keys": 5216,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5216,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5216
+      }
+    },
+    {
+      "date": "2026-09-08",
+      "price_plane_codes": 5216,
+      "tradeability_rows": 5216,
+      "usable_limit_keys": 5216,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5216,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5216
+      }
+    },
+    {
+      "date": "2026-09-09",
+      "price_plane_codes": 5217,
+      "tradeability_rows": 5217,
+      "usable_limit_keys": 5217,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5217,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5217
+      }
+    },
+    {
+      "date": "2026-09-10",
+      "price_plane_codes": 5218,
+      "tradeability_rows": 5218,
+      "usable_limit_keys": 5218,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5218,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5218
+      }
+    },
+    {
+      "date": "2026-09-11",
+      "price_plane_codes": 5219,
+      "tradeability_rows": 5219,
+      "usable_limit_keys": 5219,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5219,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5219
+      }
+    },
+    {
+      "date": "2026-09-14",
+      "price_plane_codes": 5219,
+      "tradeability_rows": 5219,
+      "usable_limit_keys": 5219,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5219,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5219
+      }
+    },
+    {
+      "date": "2026-09-15",
+      "price_plane_codes": 5219,
+      "tradeability_rows": 5219,
+      "usable_limit_keys": 5219,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5219,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5219
+      }
+    },
+    {
+      "date": "2026-09-16",
+      "price_plane_codes": 5220,
+      "tradeability_rows": 5220,
+      "usable_limit_keys": 5220,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5220,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5220
+      }
+    },
+    {
+      "date": "2026-09-17",
+      "price_plane_codes": 5221,
+      "tradeability_rows": 5221,
+      "usable_limit_keys": 5221,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5221,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5221
+      }
+    },
+    {
+      "date": "2026-09-18",
+      "price_plane_codes": 5221,
+      "tradeability_rows": 5221,
+      "usable_limit_keys": 5221,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5221,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5221
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "price_plane_codes": 5221,
+      "tradeability_rows": 5221,
+      "usable_limit_keys": 5221,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5221,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5221
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "price_plane_codes": 5222,
+      "tradeability_rows": 5222,
+      "usable_limit_keys": 5222,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5222,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5222
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "price_plane_codes": 5222,
+      "tradeability_rows": 5222,
+      "usable_limit_keys": 5222,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5222,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5222
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "price_plane_codes": 5222,
+      "tradeability_rows": 5222,
+      "usable_limit_keys": 5222,
+      "keys_without_usable_limit": 0,
+      "rows_with_null_limit": 0,
+      "rows_with_null_paused": 0,
+      "binding": {
+        "sealed_rows": 0,
+        "sealed_dates": 0,
+        "candidate_extension_rows": 5222,
+        "candidate_extension_dates": 1,
+        "sealed_authoritative": true,
+        "override_scope": "sealed values win; the candidate only supplies cells the sealed plane leaves null and keys it does not carry at all",
+        "reconciled_rows": 5222
+      }
+    }
+  ],
+  "sweep_verdict": "GATE_SWEEP_PASS",
+  "residual_risks": [
+    "is_st stays null everywhere: it is not in the retained RAW schema and must not be inferred from price behaviour",
+    "the sealed plane disagrees with retained RAW on `paused` for a few keys on 2026-09-03; sealed wins by policy and the conflict is reported, not silently resolved"
+  ],
+  "generated_at": "2026-10-25T11:20:57.387997+08:00"
+}
