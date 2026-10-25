@@ -1,0 +1,1766 @@
+{
+  "data_plane": {
+    "path": "E:\\BLACKBOX\\脚本\\run_blackbox_daily_incremental_data_plane_r1.py",
+    "defs": [
+      {
+        "line": 25,
+        "name": "now_cn",
+        "args": []
+      },
+      {
+        "line": 29,
+        "name": "today_yyyymmdd",
+        "args": []
+      },
+      {
+        "line": 33,
+        "name": "today_iso",
+        "args": []
+      },
+      {
+        "line": 37,
+        "name": "load_json",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "line": 43,
+        "name": "normalize_asof",
+        "args": [
+          "value"
+        ]
+      },
+      {
+        "line": 56,
+        "name": "read_json_object",
+        "args": [
+          "path"
+        ]
+      },
+      {
+        "line": 70,
+        "name": "evaluate_lane_a_asof_gate",
+        "args": []
+      },
+      {
+        "line": 175,
+        "name": "atomic_write_json",
+        "args": [
+          "p",
+          "obj"
+        ]
+      },
+      {
+        "line": 182,
+        "name": "heartbeat",
+        "args": [
+          "module",
+          "state",
+          "done",
+          "total"
+        ]
+      },
+      {
+        "line": 186,
+        "name": "run_cmd",
+        "args": [
+          "script",
+          "extra"
+        ]
+      },
+      {
+        "line": 195,
+        "name": "scan_screenshots",
+        "args": [
+          "folder"
+        ]
+      },
+      {
+        "line": 201,
+        "name": "sellside_already_done_today",
+        "args": [
+          "lane",
+          "cn_iso"
+        ]
+      },
+      {
+        "line": 207,
+        "name": "collect_lane_a",
+        "args": [
+          "lane"
+        ]
+      },
+      {
+        "line": 238,
+        "name": "collect_lane_b",
+        "args": [
+          "lane"
+        ]
+      },
+      {
+        "line": 265,
+        "name": "collect_lane_c",
+        "args": [
+          "lane"
+        ]
+      },
+      {
+        "line": 301,
+        "name": "collect_lane_d",
+        "args": [
+          "lane"
+        ]
+      },
+      {
+        "line": 381,
+        "name": "run_us_l1_collector",
+        "args": [
+          "lane_e"
+        ]
+      },
+      {
+        "line": 390,
+        "name": "collect_lane_e",
+        "args": [
+          "lane"
+        ]
+      },
+      {
+        "line": 438,
+        "name": "collect_lane_f",
+        "args": [
+          "lane"
+        ]
+      },
+      {
+        "line": 510,
+        "name": "build_manifest",
+        "args": [
+          "cn_iso",
+          "lanes"
+        ]
+      },
+      {
+        "line": 535,
+        "name": "build_input_pack",
+        "args": [
+          "manifest",
+          "cfg"
+        ]
+      },
+      {
+        "line": 562,
+        "name": "build_temp_identity_manifest_from_lanes",
+        "args": [
+          "cn_iso",
+          "lanes",
+          "cfg"
+        ]
+      },
+      {
+        "line": 569,
+        "name": "archive_daily",
+        "args": [
+          "cn_date",
+          "manifest",
+          "lanes"
+        ]
+      },
+      {
+        "line": 578,
+        "name": "print_data_precheck",
+        "args": [
+          "manifest"
+        ]
+      },
+      {
+        "line": 599,
+        "name": "publish_current",
+        "args": [
+          "manifest",
+          "pack"
+        ]
+      },
+      {
+        "line": 621,
+        "name": "_rollback_data_plane_current",
+        "args": [
+          "backup_dir"
+        ]
+      },
+      {
+        "line": 634,
+        "name": "publish_identity_generation_no_collect",
+        "args": []
+      },
+      {
+        "line": 745,
+        "name": "p0a_selftest",
+        "args": []
+      },
+      {
+        "line": 751,
+        "name": "write",
+        "args": [
+          "p",
+          "obj"
+        ]
+      },
+      {
+        "line": 758,
+        "name": "run_case",
+        "args": [
+          "name"
+        ]
+      },
+      {
+        "line": 899,
+        "name": "main",
+        "args": []
+      }
+    ],
+    "lines_of_interest": [
+      {
+        "line": 3,
+        "text": "\"\"\"BLACKBOX Daily Incremental Data Plane R1 — 六 Lane 统一数据总线（固定路径）。\"\"\""
+      },
+      {
+        "line": 10,
+        "text": "import subprocess"
+      },
+      {
+        "line": 17,
+        "text": "PLANE = ROOT / \"研究系统\" / \"数据平面\""
+      },
+      {
+        "line": 20,
+        "text": "LANES_CFG = PLANE / \"CONFIG\" / \"daily_lanes.json\""
+      },
+      {
+        "line": 21,
+        "text": "PATH_MAP = PLANE / \"CONFIG\" / \"DATA_PLANE_PATH_MAP.json\""
+      },
+      {
+        "line": 43,
+        "text": "def normalize_asof(value: Any) -> str | None:"
+      },
+      {
+        "line": 70,
+        "text": "def evaluate_lane_a_asof_gate("
+      },
+      {
+        "line": 76,
+        "text": "\"\"\"P0-A gate: cleaning_as_of only; SOURCE==CLEAN==CACHE required for PASS."
+      },
+      {
+        "line": 78,
+        "text": "AUTHORIZED: no asof/data_asof fallback for cleaning. Fail → STATUS=NO."
+      },
+      {
+        "line": 86,
+        "text": "\"SOURCE_ASOF\": None,"
+      },
+      {
+        "line": 87,
+        "text": "\"CLEAN_ASOF\": None,"
+      },
+      {
+        "line": 88,
+        "text": "\"CACHE_ASOF\": None,"
+      },
+      {
+        "line": 90,
+        "text": "\"STATUS\": \"NO\","
+      },
+      {
+        "line": 112,
+        "text": "if \"asof\" in clean and \"data_asof\" not in clean:"
+      },
+      {
+        "line": 113,
+        "text": "out[\"reason_code\"] = \"CLEANING_ONLY_HAS_asof\""
+      },
+      {
+        "line": 114,
+        "text": "elif \"data_asof\" in clean and \"asof\" not in clean:"
+      },
+      {
+        "line": 115,
+        "text": "out[\"reason_code\"] = \"CLEANING_ONLY_HAS_data_asof\""
+      },
+      {
+        "line": 116,
+        "text": "elif \"asof\" in clean or \"data_asof\" in clean:"
+      },
+      {
+        "line": 119,
+        "text": "out[\"reason_code\"] = \"CLEAN_ASOF_NULL\""
+      },
+      {
+        "line": 122,
+        "text": "source_asof = normalize_asof(scope.get(\"data_asof\"))"
+      },
+      {
+        "line": 123,
+        "text": "clean_asof = normalize_asof(clean.get(\"cleaning_as_of\"))"
+      },
+      {
+        "line": 125,
+        "text": "cache_asof = normalize_asof(cache.get(\"asof\"))"
+      },
+      {
+        "line": 128,
+        "text": "out[\"SOURCE_ASOF\"] = source_asof"
+      },
+      {
+        "line": 129,
+        "text": "out[\"CLEAN_ASOF\"] = clean_asof"
+      },
+      {
+        "line": 130,
+        "text": "out[\"CACHE_ASOF\"] = cache_asof"
+      },
+      {
+        "line": 133,
+        "text": "if source_asof is None:"
+      },
+      {
+        "line": 136,
+        "text": "if clean_asof is None:"
+      },
+      {
+        "line": 137,
+        "text": "out[\"reason_code\"] = \"CLEAN_ASOF_NULL\""
+      },
+      {
+        "line": 139,
+        "text": "if cache_asof is None:"
+      },
+      {
+        "line": 143,
+        "text": "if source_asof != clean_asof and source_asof != cache_asof and clean_asof != cache_asof:"
+      },
+      {
+        "line": 147,
+        "text": "if source_asof != clean_asof and source_asof == cache_asof:"
+      },
+      {
+        "line": 150,
+        "text": "if source_asof != cache_asof and source_asof == clean_asof:"
+      },
+      {
+        "line": 153,
+        "text": "if source_asof != clean_asof and clean_asof == cache_asof:"
+      },
+      {
+        "line": 156,
+        "text": "if source_asof != clean_asof:"
+      },
+      {
+        "line": 159,
+        "text": "if source_asof != cache_asof:"
+      },
+      {
+        "line": 162,
+        "text": "if clean_asof != cache_asof:"
+      },
+      {
+        "line": 170,
+        "text": "out[\"STATUS\"] = \"PASS\""
+      },
+      {
+        "line": 192,
+        "text": "return subprocess.run(cmd, cwd=str(ROOT)).returncode"
+      },
+      {
+        "line": 201,
+        "text": "def sellside_already_done_today(lane: dict, cn_iso: str) -> bool:"
+      },
+      {
+        "line": 202,
+        "text": "last = load_json(Path(lane[\"last_success\"]))"
+      },
+      {
+        "line": 203,
+        "text": "cur = load_json(Path(lane[\"current\"]))"
+      },
+      {
+        "line": 204,
+        "text": "return last.get(\"last_successful_date\") == cn_iso and last.get(\"status\") == \"PASS\" and cur.get(\"asof\") == cn_iso"
+      },
+      {
+        "line": 207,
+        "text": "def collect_lane_a(lane: dict, *, ingest: bool) -> dict[str, Any]:"
+      },
+      {
+        "line": 209,
+        "text": "run_cmd(Path(lane[\"scope_refresh_script\"]))"
+      },
+      {
+        "line": 212,
+        "text": "gate = evaluate_lane_a_asof_gate("
+      },
+      {
+        "line": 213,
+        "text": "scope_path=Path(lane[\"scope_current\"]),"
+      },
+      {
+        "line": 214,
+        "text": "cleaning_path=Path(lane[\"cleaning_current\"]),"
+      },
+      {
+        "line": 215,
+        "text": "cache_path=Path(lane[\"cache_current\"]),"
+      },
+      {
+        "line": 218,
+        "text": "\"lane\": \"A_JQ_INCREMENTAL\","
+      },
+      {
+        "line": 220,
+        "text": "\"SOURCE_ASOF\": gate[\"SOURCE_ASOF\"],"
+      },
+      {
+        "line": 221,
+        "text": "\"CLEAN_ASOF\": gate[\"CLEAN_ASOF\"],"
+      },
+      {
+        "line": 222,
+        "text": "\"CACHE_ASOF\": gate[\"CACHE_ASOF\"],"
+      },
+      {
+        "line": 223,
+        "text": "\"PIT_PASS\": gate[\"PIT_PASS\"],"
+      },
+      {
+        "line": 224,
+        "text": "\"STATUS\": gate[\"STATUS\"],"
+      },
+      {
+        "line": 225,
+        "text": "\"reason_code\": gate[\"reason_code\"],"
+      },
+      {
+        "line": 226,
+        "text": "\"FIXED_PATHS\": gate[\"FIXED_PATHS\"],"
+      },
+      {
+        "line": 228,
+        "text": "atomic_write_json(PLANE / lane[\"state_file\"], {**body, \"updated_at_cn\": now_cn()})"
+      },
+      {
+        "line": 230,
+        "text": "f\"[DATA][JQ] source={body['SOURCE_ASOF']} clean={body['CLEAN_ASOF']} \""
+      },
+      {
+        "line": 231,
+        "text": "f\"cache={body['CACHE_ASOF']} mode={body['MODE']} status={body['STATUS']} \""
+      },
+      {
+        "line": 238,
+        "text": "def collect_lane_b(lane: dict, *, ingest: bool, asof: str) -> dict[str, Any]:"
+      },
+      {
+        "line": 240,
+        "text": "mat = Path(lane[\"materialization_script\"])"
+      },
+      {
+        "line": 241,
+        "text": "run_cmd(mat, [\"--phase\", \"asof_align\", \"--asof\", asof])"
+      },
+      {
+        "line": 242,
+        "text": "run_cmd(mat, [\"--phase\", \"acceptance\", \"--asof\", asof])"
+      },
+      {
+        "line": 245,
+        "text": "align = load_json(Path(lane[\"asof_align_current\"]))"
+      },
+      {
+        "line": 246,
+        "text": "final = load_json(Path(lane[\"final_current\"]))"
+      },
+      {
+        "line": 248,
+        "text": "final_st = final.get(\"FINAL_STATUS\", \"UNKNOWN\")"
+      },
+      {
+        "line": 251,
+        "text": "\"lane\": \"B_T_EXTERNAL_INCREMENTAL\","
+      },
+      {
+        "line": 253,
+        "text": "\"SOURCE_ASOF\": align.get(\"hist_end\") or align.get(\"aligned_to_jq_asof_yyyymmdd\"),"
+      },
+      {
+        "line": 255,
+        "text": "\"STATUS\": st,"
+      },
+      {
+        "line": 256,
+        "text": "\"FINAL_STATUS\": final_st,"
+      },
+      {
+        "line": 257,
+        "text": "\"FIXED_PATHS\": {\"root\": lane[\"product_root\"], \"final\": lane[\"final_current\"]},"
+      },
+      {
+        "line": 260,
+        "text": "atomic_write_json(PLANE / lane[\"state_file\"], {**body, \"updated_at_cn\": now_cn()})"
+      },
+      {
+        "line": 265,
+        "text": "def collect_lane_c(lane: dict, *, ingest: bool, cn_iso: str) -> dict[str, Any]:"
+      },
+      {
+        "line": 266,
+        "text": "if ingest and not sellside_already_done_today(lane, cn_iso):"
+      },
+      {
+        "line": 267,
+        "text": "run_cmd(Path(lane[\"script\"]))"
+      },
+      {
+        "line": 272,
+        "text": "cur = load_json(Path(lane[\"current\"]))"
+      },
+      {
+        "line": 273,
+        "text": "asof = cur.get(\"asof\")"
+      },
+      {
+        "line": 276,
+        "text": "st = \"PASS\" if asof and failed == 0 else (\"DEGRADED\" if asof else \"NO\")"
+      },
+      {
+        "line": 279,
+        "text": "\"lane\": \"C_GLOBAL_SELLSIDE_INCREMENTAL\","
+      },
+      {
+        "line": 280,
+        "text": "\"MODE\": \"SKIP_ALREADY_DONE\" if sellside_already_done_today(lane, cn_iso) and not ingest else (\"INGEST\" if ingest else \"VERIFY_ONLY\"),"
+      },
+      {
+        "line": 281,
+        "text": "\"DISCOVERY_ASOF\": asof,"
+      },
+      {
+        "line": 283,
+        "text": "\"MS_STATUS\": by_firm.get(\"MORGAN_STANLEY\"),"
+      },
+      {
+        "line": 284,
+        "text": "\"GS_STATUS\": by_firm.get(\"GOLDMAN_SACHS\"),"
+      },
+      {
+        "line": 285,
+        "text": "\"CLSA_STATUS\": by_firm.get(\"CLSA\"),"
+      },
+      {
+        "line": 286,
+        "text": "\"STATUS\": st,"
+      },
+      {
+        "line": 288,
+        "text": "\"product_root\": lane[\"product_root\"],"
+      },
+      {
+        "line": 289,
+        "text": "\"raw_ms\": lane[\"raw_ms\"],"
+      },
+      {
+        "line": 290,
+        "text": "\"raw_gs\": lane[\"raw_gs\"],"
+      },
+      {
+        "line": 291,
+        "text": "\"raw_clsa\": lane[\"raw_clsa\"],"
+      },
+      {
+        "line": 292,
+        "text": "\"daily_incremental\": lane[\"daily_incremental\"],"
+      },
+      {
+        "line": 293,
+        "text": "\"current\": lane[\"current\"],"
+      },
+      {
+        "line": 296,
+        "text": "atomic_write_json(PLANE / lane[\"state_file\"], {**body, \"updated_at_cn\": now_cn()})"
+      },
+      {
+        "line": 297,
+        "text": "print(f\"[DATA][SELLSIDE] MS/GS/CLSA asof={asof} new={new_n} mode={body['MODE']} status={st}\", flush=True)"
+      },
+      {
+        "line": 301,
+        "text": "def collect_lane_d(lane: dict, *, ingest: bool, cn_iso: str, cn_folder: str) -> dict[str, Any]:"
+      },
+      {
+        "line": 302,
+        "text": "ds_root = Path(lane[\"domestic_sellside_root\"])"
+      },
+      {
+        "line": 303,
+        "text": "dn_root = Path(lane[\"domestic_news_root\"])"
+      },
+      {
+        "line": 309,
+        "text": "ledger_src = Path(lane[\"observer_ledger_fallback\"])"
+      },
+      {
+        "line": 316,
+        "text": "ns = Path(lane.get(\"news_script\", \"\"))"
+      },
+      {
+        "line": 320,
+        "text": "ds_cur_p = Path(lane[\"domestic_sellside_current\"])"
+      },
+      {
+        "line": 321,
+        "text": "dn_cur_p = Path(lane[\"domestic_news_current\"])"
+      },
+      {
+        "line": 329,
+        "text": "\"DISCOVERY_ASOF\": cn_iso,"
+      },
+      {
+        "line": 331,
+        "text": "\"STATUS\": \"PASS\" if n_ledger > 0 else \"DEGRADED\","
+      },
+      {
+        "line": 339,
+        "text": "obs_news = load_json(Path(lane[\"news_obs_current\"]))"
+      },
+      {
+        "line": 347,
+        "text": "\"DISCOVERY_ASOF\": obs_news.get(\"asof\") or cn_iso,"
+      },
+      {
+        "line": 349,
+        "text": "\"STATUS\": \"PASS\" if n_headlines > 0 else \"DEGRADED\","
+      },
+      {
+        "line": 353,
+        "text": "\"source_obs\": lane[\"news_obs_current\"],"
+      },
+      {
+        "line": 357,
+        "text": "st = \"PASS\" if ds_cur[\"STATUS\"] == \"PASS\" and dn_cur[\"STATUS\"] == \"PASS\" else \"DEGRADED\""
+      },
+      {
+        "line": 358,
+        "text": "if ds_cur[\"STATUS\"] == \"PASS\" or dn_cur[\"STATUS\"] == \"PASS\":"
+      },
+      {
+        "line": 359,
+        "text": "st = \"PASS\" if (ds_cur[\"STATUS\"] == \"PASS\" and dn_cur[\"STATUS\"] == \"PASS\") else \"DEGRADED\""
+      },
+      {
+        "line": 361,
+        "text": "\"lane\": \"D_DOMESTIC_RESEARCH_NEWS_INCREMENTAL\","
+      },
+      {
+        "line": 362,
+        "text": "\"DISCOVERY_ASOF\": cn_iso,"
+      },
+      {
+        "line": 365,
+        "text": "\"STATUS\": st,"
+      },
+      {
+        "line": 373,
+        "text": "atomic_write_json(PLANE / lane[\"state_file\"], {**body, \"updated_at_cn\": now_cn()})"
+      },
+      {
+        "line": 374,
+        "text": "print(f\"[DATA][DOMESTIC] sellside_rows={n_ledger} news={dn_cur['STATUS']} status={st}\", flush=True)"
+      },
+      {
+        "line": 381,
+        "text": "def run_us_l1_collector(lane_e: dict, *, ingest: bool, cn_iso: str) -> None:"
+      },
+      {
+        "line": 385,
+        "text": "script = Path(lane_e.get(\"collector_script\", ROOT / \"脚本\" / \"run_blackbox_us_l1_news_open_close_collector_r1.py\"))"
+      },
+      {
+        "line": 390,
+        "text": "def collect_lane_e(lane: dict, *, ingest: bool, cn_iso: str, cn_folder: str) -> dict[str, Any]:"
+      },
+      {
+        "line": 391,
+        "text": "run_us_l1_collector(lane, ingest=ingest, cn_iso=cn_iso)"
+      },
+      {
+        "line": 392,
+        "text": "root = Path(lane[\"product_root\"])"
+      },
+      {
+        "line": 393,
+        "text": "cur_p = Path(lane[\"current\"])"
+      }
+    ]
+  },
+  "jq_download_execution": {
+    "path": "E:\\BLACKBOX\\脚本\\jq_download_execution_r1.py",
+    "constants": {
+      "ROOT": "Path('E:/BLACKBOX/数据/原始只读/JQData_9999_official_raw')",
+      "CRED_FILE": "Path('E:/BLACKBOX/配置/secrets/已验证/聚宽账号.txt')",
+      "START_DATE": "2014-01-01",
+      "END_DATE": "2026-06-12",
+      "STAGE_DIRS": {
+        "T0": "P0_meta",
+        "T1": "P1_adjust_factor",
+        "T2": "P2_stock_daily",
+        "T3": "P3_finance_pit",
+        "T4": "P4_index",
+        "T5": "P5_attributes_events",
+        "T6": "P6_factor_reference",
+        "T7": "P7_stock_minute",
+        "T8": "P8_etf_fund",
+        "T9": "P9_derivative_aux"
+      },
+      "T_STAGES": [
+        "T0",
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7",
+        "T8",
+        "T9"
+      ],
+      "JQDATA_DAILY_QUOTA_LIMIT": 200000000,
+      "MAX_RETRIES": 3,
+      "RETRY_DELAY_BASE": 5
+    },
+    "defs": [
+      {
+        "line": 130,
+        "name": "_path_is_allowed",
+        "args": [
+          "file_path"
+        ]
+      },
+      {
+        "line": 142,
+        "name": "_looks_like_secret_plaintext",
+        "args": [
+          "text"
+        ]
+      },
+      {
+        "line": 155,
+        "name": "write_json",
+        "args": [
+          "path",
+          "data"
+        ]
+      },
+      {
+        "line": 173,
+        "name": "read_json",
+        "args": [
+          "path"
+        ]
+      },
+      {
+        "line": 184,
+        "name": "now_iso",
+        "args": []
+      },
+      {
+        "line": 189,
+        "name": "now_cn",
+        "args": []
+      },
+      {
+        "line": 199,
+        "name": "sha256_file",
+        "args": [
+          "file_path"
+        ]
+      },
+      {
+        "line": 211,
+        "name": "save_parquet",
+        "args": [
+          "df",
+          "path"
+        ]
+      },
+      {
+        "line": 219,
+        "name": "save_csv_gz",
+        "args": [
+          "df",
+          "path"
+        ]
+      },
+      {
+        "line": 230,
+        "name": "parse_cred",
+        "args": []
+      },
+      {
+        "line": 250,
+        "name": "jq_auth",
+        "args": []
+      },
+      {
+        "line": 270,
+        "name": "load_checkpoint",
+        "args": []
+      },
+      {
+        "line": 278,
+        "name": "save_checkpoint",
+        "args": [
+          "stage",
+          "domain",
+          "status",
+          "detail",
+          "completed_stages",
+          "completed_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes",
+          "stop_reason",
+          "frequency"
+        ]
+      },
+      {
+        "line": 315,
+        "name": "get_resume_point",
+        "args": []
+      },
+      {
+        "line": 338,
+        "name": "log_quota",
+        "args": [
+          "stage",
+          "domain",
+          "api",
+          "rows",
+          "byte_size",
+          "estimated_cost"
+        ]
+      },
+      {
+        "line": 364,
+        "name": "daily_quota_summary",
+        "args": []
+      },
+      {
+        "line": 397,
+        "name": "get_quota_remaining",
+        "args": []
+      },
+      {
+        "line": 408,
+        "name": "write_sidecar",
+        "args": [
+          "data_file",
+          "meta"
+        ]
+      },
+      {
+        "line": 415,
+        "name": "write_manifest_row",
+        "args": [
+          "stage",
+          "domain",
+          "symbol",
+          "date_range",
+          "api",
+          "rows",
+          "byte_size",
+          "checksum",
+          "quota",
+          "frequency",
+          "adj",
+          "extra"
+        ]
+      },
+      {
+        "line": 464,
+        "name": "probe_api",
+        "args": [
+          "api_name",
+          "test_params"
+        ]
+      },
+      {
+        "line": 524,
+        "name": "record_probe_result",
+        "args": [
+          "stage",
+          "domain",
+          "api",
+          "supported",
+          "permission_ok",
+          "fields",
+          "notes"
+        ]
+      },
+      {
+        "line": 554,
+        "name": "save_probe_matrix",
+        "args": [
+          "stage"
+        ]
+      },
+      {
+        "line": 578,
+        "name": "check_checksum",
+        "args": [
+          "file_path",
+          "expected_sha256"
+        ]
+      },
+      {
+        "line": 591,
+        "name": "check_row_count",
+        "args": [
+          "df",
+          "expected_min"
+        ]
+      },
+      {
+        "line": 602,
+        "name": "check_schema",
+        "args": [
+          "df",
+          "expected_columns"
+        ]
+      },
+      {
+        "line": 613,
+        "name": "check_pit_visibility",
+        "args": [
+          "df",
+          "pub_date_col"
+        ]
+      },
+      {
+        "line": 627,
+        "name": "check_duplicate_partition",
+        "args": [
+          "file_path",
+          "domain_key"
+        ]
+      },
+      {
+        "line": 641,
+        "name": "record_failure",
+        "args": [
+          "stage",
+          "domain",
+          "api",
+          "error",
+          "detail"
+        ]
+      },
+      {
+        "line": 671,
+        "name": "with_retry",
+        "args": [
+          "func"
+        ]
+      },
+      {
+        "line": 696,
+        "name": "make_filename",
+        "args": [
+          "stage",
+          "domain",
+          "date_range",
+          "symbol",
+          "adj",
+          "version",
+          "ext"
+        ]
+      },
+      {
+        "line": 717,
+        "name": "stage_dir",
+        "args": [
+          "stage"
+        ]
+      },
+      {
+        "line": 730,
+        "name": "download_adjust_factor",
+        "args": [
+          "stage",
+          "sec_type",
+          "domain",
+          "resume_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 945,
+        "name": "download_stock_daily",
+        "args": [
+          "stage",
+          "year",
+          "resume_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1153,
+        "name": "download_trade_calendar",
+        "args": [
+          "stage",
+          "resume_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1262,
+        "name": "download_securities",
+        "args": [
+          "stage",
+          "sec_type",
+          "domain",
+          "resume_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1370,
+        "name": "download_industries",
+        "args": [
+          "stage",
+          "resume_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1474,
+        "name": "download_concepts",
+        "args": [
+          "stage",
+          "resume_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1565,
+        "name": "download_all_factors",
+        "args": [
+          "stage",
+          "resume_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1654,
+        "name": "run_t0",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1774,
+        "name": "run_t1",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1825,
+        "name": "run_t2",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 1893,
+        "name": "_get_stock_list",
+        "args": []
+      },
+      {
+        "line": 1910,
+        "name": "_get_trade_days_between",
+        "args": [
+          "start_date",
+          "end_date"
+        ]
+      },
+      {
+        "line": 1942,
+        "name": "_quick_row_count",
+        "args": [
+          "file_path"
+        ]
+      },
+      {
+        "line": 1950,
+        "name": "_save_parquet_with_sidecar",
+        "args": [
+          "df",
+          "out_path",
+          "sidecar_path",
+          "stage",
+          "domain",
+          "api",
+          "partition_key",
+          "batch_id"
+        ]
+      },
+      {
+        "line": 1997,
+        "name": "_write_checksum_row",
+        "args": [
+          "stage",
+          "domain",
+          "file_path"
+        ]
+      },
+      {
+        "line": 2017,
+        "name": "_record_failure",
+        "args": [
+          "stage",
+          "domain",
+          "error",
+          "detail"
+        ]
+      },
+      {
+        "line": 2027,
+        "name": "_download_finance_table",
+        "args": [
+          "stage",
+          "table_name",
+          "out_subdir",
+          "key_cols",
+          "trade_days",
+          "resume_partitions",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 2164,
+        "name": "run_t3",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 2227,
+        "name": "run_t4",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 2366,
+        "name": "run_t5",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 2572,
+        "name": "run_t6",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 2644,
+        "name": "run_t7",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 2737,
+        "name": "run_t8",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 2865,
+        "name": "run_t9",
+        "args": [
+          "resume_point",
+          "quota_used",
+          "total_rows",
+          "total_bytes"
+        ]
+      },
+      {
+        "line": 3020,
+        "name": "main",
+        "args": []
+      },
+      {
+        "line": 3131,
+        "name": "resume_from_checkpoint",
+        "args": []
+      }
+    ]
+  },
+  "publish_gate": {
+    "path": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_publish_gate_r1.py",
+    "defs": [
+      {
+        "line": 31,
+        "name": "run_production_matrix",
+        "args": [
+          "facts",
+          "target"
+        ]
+      },
+      {
+        "line": 83,
+        "name": "publish_atomic",
+        "args": []
+      },
+      {
+        "line": 128,
+        "name": "main",
+        "args": []
+      }
+    ],
+    "lines": [
+      {
+        "line": 2,
+        "text": "\"\"\"Atomic CURRENT publish gate for daily increment."
+      },
+      {
+        "line": 55,
+        "text": "and v.get(\"TASK_DATA_GATE\") == \"PASS\""
+      },
+      {
+        "line": 61,
+        "text": "\"TASK_DATA_GATE\": v.get(\"TASK_DATA_GATE\"),"
+      },
+      {
+        "line": 83,
+        "text": "def publish_atomic("
+      },
+      {
+        "line": 101,
+        "text": "return {**matrix, \"published\": False}"
+      },
+      {
+        "line": 103,
+        "text": "return {**matrix, \"published\": False, \"dry_run\": True}"
+      },
+      {
+        "line": 104,
+        "text": "bak_c = CACHE_PTR.with_suffix(\".json.bak_before_atomic_publish\")"
+      },
+      {
+        "line": 105,
+        "text": "bak_k = CLEAN_PTR.with_suffix(\".json.bak_before_atomic_publish\")"
+      },
+      {
+        "line": 125,
+        "text": "return {**matrix, \"published\": True, \"cache_release_id\": cache_pointer.get(\"cache_release_id\")}"
+      },
+      {
+        "line": 141,
+        "text": "out = publish_atomic("
+      }
+    ]
+  },
+  "increment_common": {
+    "path": "E:\\BLACKBOX\\脚本\\blackbox_daily_increment_common_r1.py",
+    "defs": [
+      {
+        "line": 63,
+        "name": "now_cn",
+        "args": []
+      },
+      {
+        "line": 67,
+        "name": "wjson",
+        "args": [
+          "path",
+          "obj"
+        ]
+      },
+      {
+        "line": 74,
+        "name": "inherit_tree",
+        "args": [
+          "src",
+          "dst"
+        ]
+      },
+      {
+        "line": 110,
+        "name": "resolve_run_target_trade_date",
+        "args": []
+      },
+      {
+        "line": 138,
+        "name": "acquisition_absence_gate",
+        "args": []
+      },
+      {
+        "line": 151,
+        "name": "load_trade_days",
+        "args": []
+      },
+      {
+        "line": 161,
+        "name": "next_trade_day",
+        "args": [
+          "pub",
+          "days"
+        ]
+      },
+      {
+        "line": 169,
+        "name": "latest_raw",
+        "args": [
+          "glob_pat"
+        ]
+      },
+      {
+        "line": 174,
+        "name": "row_key",
+        "args": [
+          "df"
+        ]
+      },
+      {
+        "line": 184,
+        "name": "finance_pit_delta",
+        "args": [
+          "parent_cache",
+          "target",
+          "days"
+        ]
+      },
+      {
+        "line": 253,
+        "name": "map_finance_to_jq20",
+        "args": [
+          "included",
+          "jq",
+          "family",
+          "src_name"
+        ]
+      },
+      {
+        "line": 289,
+        "name": "upsert_jq20",
+        "args": [
+          "old",
+          "new"
+        ]
+      },
+      {
+        "line": 306,
+        "name": "apply_finance_pit_to_candidate",
+        "args": [
+          "rel",
+          "parent",
+          "target",
+          "delta"
+        ]
+      },
+      {
+        "line": 343,
+        "name": "tag_raw_pit",
+        "args": [
+          "stock_pit",
+          "cleaning_id"
+        ]
+      },
+      {
+        "line": 361,
+        "name": "product_date_max",
+        "args": [
+          "prod_dir"
+        ]
+      },
+      {
+        "line": 386,
+        "name": "rebuild_capability_facts_candidate",
+        "args": []
+      },
+      {
+        "line": 446,
+        "name": "coverage_ok",
+        "args": [
+          "mx",
+          "target"
+        ]
+      },
+      {
+        "line": 450,
+        "name": "summary_stale_gate",
+        "args": [
+          "summary",
+          "live_cache",
+          "live_clean"
+        ]
+      }
+    ]
+  },
+  "run_records": [
+    {
+      "file": "BLACKBOX_JQ_0904_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-04",
+      "at_cn": "2026-09-07T02:00:17+0800",
+      "FINAL_STATUS": "PASS_CORE_TAILS_COMPLETE_DEGRADED_NOTES",
+      "cleaning_release_id": null,
+      "cache_release_id": null,
+      "unattended": null,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "NEXT",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cn_calendar_note",
+        "done",
+        "known_non_blocking",
+        "run_target_trade_date",
+        "task"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0907_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-07",
+      "at_cn": "2026-09-08T10:04:28+0800",
+      "FINAL_STATUS": "PASS_CORE_TAILS_COMPLETE",
+      "cleaning_release_id": null,
+      "cache_release_id": null,
+      "unattended": null,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "NEXT",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cn_calendar_note",
+        "cn_research_date",
+        "done",
+        "run_target_trade_date",
+        "task"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0908_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-08",
+      "at_cn": "2026-09-09T17:33:07+0800",
+      "FINAL_STATUS": "PASS_CORE_TAILS_COMPLETE",
+      "cleaning_release_id": null,
+      "cache_release_id": null,
+      "unattended": null,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cn_research_date",
+        "external_align",
+        "lanes",
+        "run_target_trade_date",
+        "task"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0909_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-09",
+      "at_cn": "2026-09-09T18:46:14+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260909_20260909_104218",
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260909_20260909_104218",
+      "unattended": null,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_candidate",
+        "cache_release_id",
+        "cleaning_release_id",
+        "cn_research_date",
+        "external_align",
+        "lanes",
+        "run_target_trade_date",
+        "task"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0910_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-10",
+      "at_cn": "2026-09-18T07:06:16+08:00",
+      "FINAL_STATUS": "PARTIAL",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260910_20260918_070205",
+      "cache_release_id": null,
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0911_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-11",
+      "at_cn": "2026-09-24T08:22:34+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260911_20260924_002030",
+      "cache_release_id": null,
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0914_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-14",
+      "at_cn": "2026-09-24T09:29:58+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260914_20260924_012708",
+      "cache_release_id": null,
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0915_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-15",
+      "at_cn": "2026-09-24T10:25:12+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260915_20260924_022244",
+      "cache_release_id": null,
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0916_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-16",
+      "at_cn": "2026-09-24T11:34:17+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260916_20260924_033203",
+      "cache_release_id": null,
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0917_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-17",
+      "at_cn": "2026-09-24T12:56:15+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260917_20260924_123050",
+      "cache_release_id": null,
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0918_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-18",
+      "at_cn": "2026-09-24T16:35:14+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260918_20260924_083238",
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260918_20260924_083238",
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0921_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-21",
+      "at_cn": "2026-09-24T17:36:34+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260921_20260924_093356",
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260921_20260924_093356",
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0922_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-22",
+      "at_cn": "2026-09-24T18:36:59+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260922_20260924_103518",
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260922_20260924_103518",
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0923_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-23",
+      "at_cn": "2026-09-24T21:42:33+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260923_20260924_113420",
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260923_20260924_113420",
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    },
+    {
+      "file": "BLACKBOX_JQ_0924_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "trade_date": "2026-09-24",
+      "at_cn": "2026-09-25T04:07:28+08:00",
+      "FINAL_STATUS": "PASS",
+      "cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+      "unattended": true,
+      "raw_keys": [
+        "FINAL_STATUS",
+        "JQ_MAINCHAIN",
+        "ORDER_ALLOWED",
+        "at_cn",
+        "cache_release_id",
+        "cleaning_release_id",
+        "run_target_trade_date",
+        "task",
+        "unattended"
+      ]
+    }
+  ]
+}
