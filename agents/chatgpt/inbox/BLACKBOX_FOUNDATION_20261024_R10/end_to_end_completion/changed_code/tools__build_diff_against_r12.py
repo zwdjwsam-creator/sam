@@ -33,6 +33,16 @@ CURRENT = {
     "tools/commit_recovery_selftest.py": "tools__commit_recovery_selftest.py",
     "tools/build_delivery_v3.py": "tools__build_delivery_v3.py",
     "tools/measure_factor_density.py": "tools__measure_factor_density.py",
+    "candidate/local_plane/minute_bridge.py": "candidate__local_plane__minute_bridge.py",
+    "candidate/run_r15_cleaning_replay.py": "candidate__run_r15_cleaning_replay.py",
+    "candidate/run_publish_atomic_rehearsal.py": "candidate__run_publish_atomic_rehearsal.py",
+    "tools/build_minute_plane_evidence.py": "tools__build_minute_plane_evidence.py",
+    "tools/trace_factor_source.py": "tools__trace_factor_source.py",
+    "tools/classify_factor_series.py": "tools__classify_factor_series.py",
+    "tools/profile_corrupt_factor_dates.py": "tools__profile_corrupt_factor_dates.py",
+    "tools/inspect_factor_schema.py": "tools__inspect_factor_schema.py",
+    "tools/find_factor_nondate_rows.py": "tools__find_factor_nondate_rows.py",
+    "tools/consolidate_r13_round2.py": "tools__consolidate_r13_round2.py",
 }
 
 
@@ -90,7 +100,7 @@ def main() -> int:
                 base_path.write_bytes(blob)
         old = base_path.read_text(encoding="utf-8", errors="replace")
         new = cur.read_text(encoding="utf-8", errors="replace")
-        missing = (BASE_DIR / (flat + ".MISSING")).exists()
+        missing = base_path.with_suffix(".MISSING").exists()
         if old == new:
             report["files"].append({"file": rel, "changed": False, "baseline": "identical"})
             continue
