@@ -1,0 +1,70 @@
+{
+  "schema": "BLACKBOX_MATERIALIZE_GATE_EVIDENCE_R1",
+  "host": "ZHANGWEI",
+  "exported_at_cn": "2026-10-25T22:26:14+0800",
+  "release_id": "R15_REPLAY_20260924_R3",
+  "release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3",
+  "release_content_root_sha256": "3b88a0432158d11d10bd26dfe3a210dbdc5e11f5153b88f26d5ceca449f7c7fa",
+  "method": "SELECTED_SUBTREES_COMPILER_INPUTS_ONLY",
+  "selected_subtrees": [
+    "price/stock_ohlcv_daily",
+    "price/ETF_daily",
+    "reference/index_daily",
+    "factor/valuation"
+  ],
+  "files_linked": 371,
+  "files_copied": 0,
+  "missing_reported_by_runner": [],
+  "stat_errors": [],
+  "resolved_via_junction": [
+    {
+      "rel": "price/stock_ohlcv_daily",
+      "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+    },
+    {
+      "rel": "price/ETF_daily",
+      "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\ETF_daily"
+    },
+    {
+      "rel": "reference/index_daily",
+      "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\reference\\index_daily"
+    },
+    {
+      "rel": "factor/valuation",
+      "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\factor\\valuation"
+    }
+  ],
+  "original_hardlink_tree_usable": false,
+  "original_hardlink_tree_reason": "rglob follows reparse points; production standard has ~32-release junction chains and a real junction cycle, so it never terminates (observed: 25 min CPU spin, 0 bytes produced)",
+  "verified_on_disk": {
+    "stock_ohlcv_daily_total_parquet": 234,
+    "stock_ohlcv_daily_r2_repair": 12,
+    "subtrees": {
+      "price/stock_ohlcv_daily": {
+        "dst_files_on_disk": 234
+      },
+      "price/ETF_daily": {
+        "dst_files_on_disk": 37
+      },
+      "reference/index_daily": {
+        "dst_files_on_disk": 37
+      },
+      "factor/valuation": {
+        "dst_files_on_disk": 65
+      }
+    },
+    "max_full_path_len": 271
+  },
+  "gate_expectation_vs_actual": {
+    "expected_files": 234,
+    "expected_r2_repair": 12,
+    "match": true
+  },
+  "downstream_fact_this_materialisation_alone_did_NOT_fix": {
+    "compiled_rows_2026": 928760,
+    "expected_rows_2026": 959896,
+    "reason": "编译器 cache_compiler_daily_incremental_r1.py:246 find_parquets 用 p.is_file() 静默丢长路径",
+    "tree_visible_for_compiler": 222
+  },
+  "production_current_write": "NONE"
+}
