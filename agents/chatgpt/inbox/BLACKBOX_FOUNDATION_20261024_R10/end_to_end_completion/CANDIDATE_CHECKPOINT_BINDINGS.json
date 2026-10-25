@@ -1,0 +1,592 @@
+{
+  "artifact": "CANDIDATE_CHECKPOINT_BINDINGS",
+  "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "retained_batch_families": {
+    "P1_adjust_factor": 37,
+    "P2_security_state": 8,
+    "P2_stock_daily": 42,
+    "P3_finance_pit": 206,
+    "P3_index": 46,
+    "P3_index_minute": 102490,
+    "P4_fund_etf": 3,
+    "P4_fund_etf_raw_none": 1878,
+    "P4b_fund_expand": 3,
+    "P5_attributes_events": 54,
+    "P6_factor_reference": 149,
+    "P7_stock_minute_raw_none": 2202,
+    "P7_stock_minute_raw_none_replacement_5m": 1102,
+    "P9_derivative_aux": 18
+  },
+  "validated_binding": {
+    "product": "STOCK_DAILY_PIT_R1",
+    "raw_family": "P2_stock_daily",
+    "status": "IMPLEMENTED_AND_RESUME_VALIDATED",
+    "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\CHECKPOINT.json",
+    "checkpoint_schema": "R12_CANDIDATE_CHECKPOINT_1",
+    "resume_rule": "a day already present in committed_days is not re-committed; the compiler replaces the day's rows by key so a partial day is repaired, not skipped",
+    "validated_by": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R12_PIPELINE\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+    "evidence": {
+      "verdict": "PASS",
+      "idempotent": true,
+      "no_duplicate_keys": true,
+      "resume": {
+        "committed_after_first_pass": [
+          "2026-08-31",
+          "2026-09-01"
+        ],
+        "committed_after_replay": [
+          "2026-08-31",
+          "2026-09-01"
+        ],
+        "no_duplicate_commit_entries": true
+      },
+      "partial_day_replaced_not_skipped": true
+    },
+    "retained_batches_present": true,
+    "note": "This validates the local candidate checkpoint/resume mechanics on the only product with retained real response batches. It does not create a production acquisition cursor."
+  },
+  "blocked_bindings": [
+    {
+      "dataset_id": "PRICE_STOCK_1M",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P7_stock_raw_none_replacement_1m",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_STOCK_5M",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P7_stock_minute_raw_none_replacement_5m",
+      "retained_batch_count": 1102,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_STOCK_30M",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P7_stock_minute",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_STOCK_60M",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P7_stock_minute",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_ETF_DAILY",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "ETF_daily",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_ETF_1M",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4_fund_etf_raw_none",
+      "retained_batch_count": 1878,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_ETF_5M",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4_fund_etf_raw_none",
+      "retained_batch_count": 1878,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_ETF_30M",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4_fund_etf_raw_none",
+      "retained_batch_count": 1878,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_ETF_60M",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4_fund_etf_raw_none",
+      "retained_batch_count": 1878,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_INDEX_DAILY",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "index_daily",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "PRICE_INDEX_MINUTE",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "CALENDAR_CN_EXCHANGE",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P0_meta",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "SECURITY_MASTER",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "security_master",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "ADJUST_FACTOR",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P1_adjust_factor",
+      "retained_batch_count": 37,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "TRADABLE_STATUS",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P2_security_state",
+      "retained_batch_count": 8,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "INDEX_COMPONENTS",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P3_index",
+      "retained_batch_count": 46,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "INDEX_WEIGHTS",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P3_index",
+      "retained_batch_count": 46,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "INDUSTRY_CONCEPT",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "industry_concept",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "INDUSTRY_CONCEPT_EVENTS",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P5_attributes_events",
+      "retained_batch_count": 54,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "BILLBOARD",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P5_attributes_events",
+      "retained_batch_count": 54,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "XR_XD",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P5_attributes_events",
+      "retained_batch_count": 54,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "CORPORATE_REFERENCE",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "SHAREHOLDER_TOP10",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P5_attributes_events",
+      "retained_batch_count": 54,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "SHAREHOLDER_FLOATING_TOP10",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P5_attributes_events",
+      "retained_batch_count": 54,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "VALUATION",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P6_factor_reference",
+      "retained_batch_count": 149,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "FINANCE_PIT",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P3_finance_pit",
+      "retained_batch_count": 206,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "MTSS",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P5_attributes_events",
+      "retained_batch_count": 54,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "FUND_ETF_NAV",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "fund_etf_nav",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "ETF_SHARE",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4_fund_etf",
+      "retained_batch_count": 3,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "OPEN_FUND",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4b_fund_expand",
+      "retained_batch_count": 3,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "QDII",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4b_fund_expand",
+      "retained_batch_count": 3,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "FUND_OTHER",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4b_fund_expand",
+      "retained_batch_count": 3,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "FUND_TRACKING_INDEX_MAPPING",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "P4_fund_etf",
+      "retained_batch_count": 3,
+      "binding_status": "RETAINED_BATCH_PRESENT__BINDING_NOT_VALIDATED",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "FACTOR_260_DICTIONARY",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "FACTOR_260_SEMANTICS",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "FACTOR_260_FORMULA",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "FACTOR_260_PIT_RULES",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "FACTOR_260_CLEANING_RULES",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "FACTOR_260_ENGINE_MAPPING",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "FACTOR_VALUE",
+      "readiness": "BLOCKED_NO_ADMITTED_PRODUCT",
+      "update_basis_status": "BLOCKED_NO_ADMITTED_PRODUCT",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no admitted FACTOR_VALUE product exists in the mounted CACHE release and no retained factor-value writer/batch is bound; ROOT_ABSENT is an absence fact, not a contract permitting NOT_APPLICABLE",
+      "required_input": "an admitted FACTOR_VALUE product (or an explicit contract permitting exclusion)"
+    },
+    {
+      "dataset_id": "STRATEGY_OUTPUT",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "TS_CBOND_R1",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "TS_CBOND_R2",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "EXTERNAL_DICT_EVIDENCE",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "EXTERNAL_EVIDENCE_PLANE",
+      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": "外部证据",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "US_MARKET",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "TUSHARE_INDEX_WEIGHT_ADAPTER",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
+      "update_basis_status": "PARTIAL_BINDING",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained entry invokes the writer; no checkpoint/file/content cursor is emitted by the writer body",
+      "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor"
+    },
+    {
+      "dataset_id": "LEGACY_JQ_RAW_CN",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": "原始只读",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "EXPERIMENTAL_WINDOW_RAW",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "STRATEGY_DATA_PLANE_ADDITIONS",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": "strategy_data_plane_additions",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "FORENSIC_CANARY",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": "_forensic_canary",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "EXPERIMENT_CANARY",
+      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "update_basis_status": "NOT_APPLICABLE",
+      "raw_family": "试验",
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no retained response batch to replay through the connected path",
+      "required_input": "replay-validated batch binding for this product"
+    },
+    {
+      "dataset_id": "UNDETERMINED_SCOPE",
+      "readiness": "UNRESOLVED_SCOPE",
+      "update_basis_status": "UNRESOLVED_SCOPE",
+      "raw_family": null,
+      "retained_batch_count": 0,
+      "binding_status": "BLOCKED_NO_RETAINED_BATCH",
+      "blocked_predicate": "no layers, no identity and no controlling definition; scope stays unresolved and is excluded from the increment plan pending an actual definition",
+      "required_input": "a controlling identity/scope definition"
+    }
+  ],
+  "counts": {
+    "validated": 1,
+    "retained_batch_binding_not_validated": 22,
+    "no_retained_batch": 31,
+    "blocked": 53
+  },
+  "no_common_start_20260924": true,
+  "production_cursor_advanced": false,
+  "flags": {
+    "CURRENT_SWITCH_ALLOWED": false,
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false
+  }
+}
