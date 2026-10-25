@@ -1,8 +1,8 @@
 {
   "artifact": "R10_END_TO_END_ACCEPTANCE",
-  "revision": "R12_INPUT_PLANE_REPAIR_REVISION",
+  "revision": "R13_SAME_TASK_CORRECTION",
   "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
-  "generated_at_cn": "2026-10-25T11:22:19+08:00",
+  "generated_at_cn": "2026-10-25T12:45:00+08:00",
   "overall": "BLOCKED_PARTIAL_EXECUTION",
   "stage1": {
     "verdict": "BLOCKED",
@@ -532,5 +532,39 @@
     "PUBLISHED_TO_CURRENT": false,
     "SEALED_DATA_MODIFIED": false,
     "PRODUCTION_PUBLISH_CALLED": false
+  },
+  "r13_delta": {
+    "substitute_pipeline_removed": "run_connected_pipeline now calls the original acquisition gate, cleaning functions, compiler (`cache_compiler_tip_rebase_from_current_r1`) and publish gate (dry_run); the re-implemented copies are deleted",
+    "provider_semantics": {
+      "same_day_factor_join": true,
+      "no_ffill_bfill": true,
+      "no_identity_fallback": true,
+      "anchor_divisor_guarded": true,
+      "unproven_rows_withheld_and_recorded": true,
+      "paused_never_inferred": true,
+      "minute_blocked_without_product": true,
+      "universe_asof_listing_interval": true,
+      "verifier_verdicts_passed": "13/13"
+    },
+    "measured_blocker": {
+      "product": "ADJUST_FACTOR_PIT_R1",
+      "sparse_sessions": "2026-08-17..2026-09-02 (12 sessions, 7-89 rows)",
+      "effect": "every fq='pre' history read crossing the gap withholds rows; the V4 port ranks nothing in 16/16 sessions and reports BLOCKED_INPUT_INCOMPLETE"
+    },
+    "commit_single_authority": "immutable version dir + one atomic COMMIT.json swap; 9/9 recovery scenarios PASS",
+    "strict_run": {
+      "dir": "engine_runs/v4_r21_R13_STRICT4",
+      "status": "BLOCKED_INPUT_INCOMPLETE",
+      "trades": 0,
+      "blockers": [
+        "REQUIRED_INPUT_MISSING"
+      ]
+    },
+    "historical_labels_preserved": [
+      "REPORT_R12_PRESERVED.md",
+      "ACCEPTANCE_R12_PRESERVED.json",
+      "B1_B7_STATUS_R12_PRESERVED.json",
+      "FINAL_REQUIREMENT_MATRIX_R12_PRESERVED.json"
+    ]
   }
 }
