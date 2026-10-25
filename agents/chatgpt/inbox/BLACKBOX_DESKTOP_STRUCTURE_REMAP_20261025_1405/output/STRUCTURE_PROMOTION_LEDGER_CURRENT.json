@@ -1,0 +1,51 @@
+{
+  "schema": "BLACKBOX_DESKTOP_STRUCTURE_PROMOTION_LEDGER_R1",
+  "mode": "promote",
+  "applied_at_cn": "2026-10-25T13:55:21+0800",
+  "root": "E:\\BLACKBOX",
+  "targets": [
+    "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+    "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+    "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_RESEARCH_INPUT_PACK_CURRENT.json",
+    "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\CURRENT\\DOMESTIC_SELLSIDE_CURRENT.json",
+    "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\CURRENT\\DOMESTIC_NEWS_CURRENT.json"
+  ],
+  "backup_dir": "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\promote_20261025_135521",
+  "backup": [
+    {
+      "orig": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+      "backup": "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\promote_20261025_135521\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+      "sha256": "591a4d3ef980ca507c2567224b1eb9ecea8311d5f17df6f17f2f6928fafacf0f"
+    },
+    {
+      "orig": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+      "backup": "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\promote_20261025_135521\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+      "sha256": "bc06243edda621fa20f38ef4d649cb8ec70a8f22fb094a7189bb815781994e3f"
+    },
+    {
+      "orig": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_RESEARCH_INPUT_PACK_CURRENT.json",
+      "backup": "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\promote_20261025_135521\\研究系统\\数据平面\\CURRENT\\DAILY_RESEARCH_INPUT_PACK_CURRENT.json",
+      "sha256": "12e26d767fd1a181debae06c293728f04dbc983f0e6662c55c8bdc06af61c5d3"
+    },
+    {
+      "orig": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\CURRENT\\DOMESTIC_SELLSIDE_CURRENT.json",
+      "backup": "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\promote_20261025_135521\\数据\\研究报告\\国内卖方\\CURRENT\\DOMESTIC_SELLSIDE_CURRENT.json",
+      "sha256": "bba2ae1cad67eeeb5b68a808d6855dbfc854e40850f8e5c7dc7b88773b5f153c"
+    },
+    {
+      "orig": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\CURRENT\\DOMESTIC_NEWS_CURRENT.json",
+      "backup": "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\promote_20261025_135521\\数据\\研究报告\\国内新闻\\CURRENT\\DOMESTIC_NEWS_CURRENT.json",
+      "sha256": "f3634aa4e9c23f8b87b4b54f2622e0549dee4ced96c077d53bf2336ae930c533"
+    }
+  ],
+  "verify": {
+    "manifest_id": "DAILY_DATA_MANIFEST_20260924",
+    "CN_RESEARCH_DATE": "2026-09-24",
+    "DG1": "DG1-37ee32956592209cfcc46c644f20aff4dc6a7f651825d38ff7195181416e730e",
+    "plane_DG1": "DG1-37ee32956592209cfcc46c644f20aff4dc6a7f651825d38ff7195181416e730e",
+    "domestic_sellside_asof": "2026-09-24",
+    "domestic_news_asof": "2026-09-24",
+    "dg1_consistent": true
+  },
+  "rollback_cmd": "copy E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\备份\\promote_20261025_135521\\<相对路径> -> 原位"
+}
