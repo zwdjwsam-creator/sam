@@ -1,3 +1,7 @@
+> **[SAM COMPILER CLOSURE FIX 20261025 R2]** 补上第二轮：编译器自身 find_parquets 用 is_file() 同样漏掉 12 个长路径文件（222 vs 234），read_price_frame 读失败也静默 continue。均已修：长路径 + 显式 stat + 读失败 fail-closed + 三集合闭包门(materialised=enumerated=read_ok)。台机按 sam_led_rectification/RERUN_AFTER_FIX.md 重跑；判据见 COMPILER_READ_CLOSURE_FIX.md。
+
+---
+
 > **[GPT 当前执行：修复编译器长路径漏读，沿用 SAM_LED_DESKTOP_RECTIFICATION_20261025]**
 > R11 BLOCKED 已审阅，优先于下方旧PASS/停止记录。完整执行令新增顶部“当前最高优先级：修复已定位的编译器长路径漏读，台机一次复验”：
 > https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
