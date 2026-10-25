@@ -1,0 +1,78 @@
+{
+  "schema": "BLACKBOX_DESKTOP_STRUCTURE_CANDIDATE_R1",
+  "generated_at_cn": "2026-10-25T13:55:21+0800",
+  "session": "2026-09-24",
+  "production_manifest": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+  "candidate_manifest": "E:\\BLACKBOX\\任务\\BLACKBOX_DESKTOP_STRUCTURE_REMAP_AND_REPAIR_R1\\候选\\CURRENT\\DAILY_DATA_MANIFEST_CANDIDATE.json",
+  "n_diff_keys": 12,
+  "diff_vs_production": [
+    {
+      "key": ".BUILD_TIME",
+      "production": "2026-10-25T08:22:29+0800",
+      "candidate": "2026-10-25T13:55:21+0800"
+    },
+    {
+      "key": ".CN_RESEARCH_DATE",
+      "production": "2026-08-31",
+      "candidate": "2026-09-24"
+    },
+    {
+      "key": ".DATA_GENERATION_ID",
+      "production": "DG1-a0dc58f4b016d2728346658f4a9bfa5aa3a95f43f4572bafddf7331b9f780e7c",
+      "candidate": "DG1-37ee32956592209cfcc46c644f20aff4dc6a7f651825d38ff7195181416e730e"
+    },
+    {
+      "key": ".DOMESTIC_RESEARCH.DISCOVERY_ASOF",
+      "production": "2026-08-31",
+      "candidate": "2026-09-24"
+    },
+    {
+      "key": ".MANIFEST_SEMANTIC_SHA256",
+      "production": "a0dc58f4b016d2728346658f4a9bfa5aa3a95f43f4572bafddf7331b9f780e7c",
+      "candidate": "37ee32956592209cfcc46c644f20aff4dc6a7f651825d38ff7195181416e730e"
+    },
+    {
+      "key": ".US_MARKET.FIXED_PATHS.alignment_csv",
+      "production": null,
+      "candidate": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_NEWS_MARKET_ALIGNMENT_CURRENT.csv"
+    },
+    {
+      "key": ".US_MARKET.FIXED_PATHS.fine_grained_current",
+      "production": null,
+      "candidate": "E:\\BLACKBOX\\运行\\BLACKBOX_US_MARKET_FINE_GRAINED_FLOW_PROFIT_POOL_CURRENT.json"
+    },
+    {
+      "key": ".US_MARKET.FIXED_PATHS.fine_grained_root",
+      "production": null,
+      "candidate": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池"
+    },
+    {
+      "key": ".US_MARKET.FIXED_PATHS.mapping_prior_current",
+      "production": null,
+      "candidate": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池\\CURRENT\\A_SHARE_MAPPING_PRIOR_CURRENT.json"
+    },
+    {
+      "key": ".US_MARKET.FIXED_PATHS.snapshot_current",
+      "production": null,
+      "candidate": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池\\CURRENT\\US_FINE_GRAINED_SNAPSHOT_CURRENT.json"
+    },
+    {
+      "key": ".US_NEWS.DISCOVERY_ASOF",
+      "production": "2026-08-31",
+      "candidate": "2026-09-24"
+    },
+    {
+      "key": ".manifest_id",
+      "production": "DAILY_DATA_MANIFEST_20260831",
+      "candidate": "DAILY_DATA_MANIFEST_20260924"
+    }
+  ],
+  "source_evidence": {
+    "domestic_sellside_slice": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\日增量\\2026-09-24\\DOMESTIC_SELLSIDE_LEDGER.csv",
+    "domestic_sellside_rows": 4,
+    "domestic_news_slice": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\日增量\\2026-09-24",
+    "domestic_news_headlines": 26,
+    "domestic_news_slice_asof": "2026-09-25"
+  },
+  "promotion_requires": "CURRENT_SWITCH 授权 + 备份目录 + 回滚演练; 本脚本不写生产 CURRENT"
+}
