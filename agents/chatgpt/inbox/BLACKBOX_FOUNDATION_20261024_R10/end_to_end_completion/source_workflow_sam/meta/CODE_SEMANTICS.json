@@ -1,0 +1,5308 @@
+[
+  {
+    "rel": "脚本/jq_download_execution_r1.py",
+    "role": "JQ download execution",
+    "exists": true,
+    "size": 130769,
+    "lines": 3274,
+    "functions": [
+      {
+        "name": "_path_is_allowed",
+        "line": 130,
+        "args": 1
+      },
+      {
+        "name": "_looks_like_secret_plaintext",
+        "line": 142,
+        "args": 1
+      },
+      {
+        "name": "write_json",
+        "line": 155,
+        "args": 2
+      },
+      {
+        "name": "read_json",
+        "line": 173,
+        "args": 1
+      },
+      {
+        "name": "now_iso",
+        "line": 184,
+        "args": 0
+      },
+      {
+        "name": "now_cn",
+        "line": 189,
+        "args": 0
+      },
+      {
+        "name": "sha256_file",
+        "line": 199,
+        "args": 1
+      },
+      {
+        "name": "save_parquet",
+        "line": 211,
+        "args": 2
+      },
+      {
+        "name": "save_csv_gz",
+        "line": 219,
+        "args": 2
+      },
+      {
+        "name": "parse_cred",
+        "line": 230,
+        "args": 0
+      },
+      {
+        "name": "jq_auth",
+        "line": 250,
+        "args": 0
+      },
+      {
+        "name": "load_checkpoint",
+        "line": 270,
+        "args": 0
+      },
+      {
+        "name": "save_checkpoint",
+        "line": 278,
+        "args": 11
+      },
+      {
+        "name": "get_resume_point",
+        "line": 315,
+        "args": 0
+      },
+      {
+        "name": "log_quota",
+        "line": 338,
+        "args": 6
+      },
+      {
+        "name": "daily_quota_summary",
+        "line": 364,
+        "args": 0
+      },
+      {
+        "name": "get_quota_remaining",
+        "line": 397,
+        "args": 0
+      },
+      {
+        "name": "write_sidecar",
+        "line": 408,
+        "args": 2
+      },
+      {
+        "name": "write_manifest_row",
+        "line": 415,
+        "args": 12
+      },
+      {
+        "name": "probe_api",
+        "line": 464,
+        "args": 2
+      },
+      {
+        "name": "record_probe_result",
+        "line": 524,
+        "args": 7
+      },
+      {
+        "name": "save_probe_matrix",
+        "line": 554,
+        "args": 1
+      },
+      {
+        "name": "check_checksum",
+        "line": 578,
+        "args": 2
+      },
+      {
+        "name": "check_row_count",
+        "line": 591,
+        "args": 2
+      },
+      {
+        "name": "check_schema",
+        "line": 602,
+        "args": 2
+      },
+      {
+        "name": "check_pit_visibility",
+        "line": 613,
+        "args": 2
+      },
+      {
+        "name": "check_duplicate_partition",
+        "line": 627,
+        "args": 2
+      },
+      {
+        "name": "record_failure",
+        "line": 641,
+        "args": 5
+      },
+      {
+        "name": "with_retry",
+        "line": 671,
+        "args": 1
+      },
+      {
+        "name": "make_filename",
+        "line": 696,
+        "args": 7
+      },
+      {
+        "name": "stage_dir",
+        "line": 717,
+        "args": 1
+      },
+      {
+        "name": "download_adjust_factor",
+        "line": 730,
+        "args": 7
+      },
+      {
+        "name": "download_stock_daily",
+        "line": 945,
+        "args": 6
+      },
+      {
+        "name": "download_trade_calendar",
+        "line": 1153,
+        "args": 5
+      },
+      {
+        "name": "download_securities",
+        "line": 1262,
+        "args": 7
+      },
+      {
+        "name": "download_industries",
+        "line": 1370,
+        "args": 5
+      },
+      {
+        "name": "download_concepts",
+        "line": 1474,
+        "args": 5
+      },
+      {
+        "name": "download_all_factors",
+        "line": 1565,
+        "args": 5
+      },
+      {
+        "name": "run_t0",
+        "line": 1654,
+        "args": 4
+      },
+      {
+        "name": "run_t1",
+        "line": 1774,
+        "args": 4
+      },
+      {
+        "name": "run_t2",
+        "line": 1825,
+        "args": 4
+      },
+      {
+        "name": "_get_stock_list",
+        "line": 1893,
+        "args": 0
+      },
+      {
+        "name": "_get_trade_days_between",
+        "line": 1910,
+        "args": 2
+      },
+      {
+        "name": "_quick_row_count",
+        "line": 1942,
+        "args": 1
+      },
+      {
+        "name": "_save_parquet_with_sidecar",
+        "line": 1950,
+        "args": 8
+      },
+      {
+        "name": "_write_checksum_row",
+        "line": 1997,
+        "args": 3
+      },
+      {
+        "name": "_record_failure",
+        "line": 2017,
+        "args": 4
+      },
+      {
+        "name": "_download_finance_table",
+        "line": 2027,
+        "args": 9
+      },
+      {
+        "name": "run_t3",
+        "line": 2164,
+        "args": 4
+      },
+      {
+        "name": "run_t4",
+        "line": 2227,
+        "args": 4
+      },
+      {
+        "name": "run_t5",
+        "line": 2366,
+        "args": 4
+      },
+      {
+        "name": "run_t6",
+        "line": 2572,
+        "args": 4
+      },
+      {
+        "name": "run_t7",
+        "line": 2644,
+        "args": 4
+      },
+      {
+        "name": "run_t8",
+        "line": 2737,
+        "args": 4
+      },
+      {
+        "name": "run_t9",
+        "line": 2865,
+        "args": 4
+      },
+      {
+        "name": "main",
+        "line": 3020,
+        "args": 0
+      },
+      {
+        "name": "resume_from_checkpoint",
+        "line": 3131,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [],
+    "api_lines": [
+      {
+        "line": 38,
+        "text": "JDK: jqdatasdk 1.9.8"
+      },
+      {
+        "line": 250,
+        "text": "def jq_auth() -> None:"
+      },
+      {
+        "line": 252,
+        "text": "import jqdatasdk"
+      },
+      {
+        "line": 256,
+        "text": "jqdatasdk.auth(username, password)"
+      },
+      {
+        "line": 259,
+        "text": "info = jqdatasdk.get_query_count()"
+      },
+      {
+        "line": 466,
+        "text": "import jqdatasdk"
+      },
+      {
+        "line": 480,
+        "text": "api_func = getattr(jqdatasdk, api_name, None)"
+      },
+      {
+        "line": 739,
+        "text": "\"\"\"T1: 下载复权因子 (get_price fields=['factor'])\"\"\""
+      },
+      {
+        "line": 740,
+        "text": "import jqdatasdk"
+      },
+      {
+        "line": 758,
+        "text": "record_failure(stage, domain, \"get_price\","
+      },
+      {
+        "line": 767,
+        "text": "jqdatasdk.get_price,"
+      },
+      {
+        "line": 774,
+        "text": "record_failure(stage, domain, \"get_price\", str(e),"
+      },
+      {
+        "line": 779,
+        "text": "record_failure(stage, domain, \"get_price\","
+      },
+      {
+        "line": 785,
+        "text": "record_failure(stage, domain, \"get_price\","
+      },
+      {
+        "line": 790,
+        "text": "record_probe_result(stage, probe_domain, \"get_price\","
+      },
+      {
+        "line": 806,
+        "text": "record_failure(stage, domain, \"get_price\","
+      },
+      {
+        "line": 842,
+        "text": "jqdatasdk.get_price,"
+      },
+      {
+        "line": 849,
+        "text": "record_failure(stage, domain, \"get_price\", str(e),"
+      },
+      {
+        "line": 906,
+        "text": "\"jq_api\": \"get_price(fields=['factor'])\","
+      },
+      {
+        "line": 918,
+        "text": "api=\"get_price(fields=['factor'])\","
+      },
+      {
+        "line": 926,
+        "text": "log_quota(stage, domain, \"get_price(fields=['factor'])\","
+      },
+      {
+        "line": 954,
+        "text": "import jqdatasdk"
+      },
+      {
+        "line": 973,
+        "text": "record_failure(stage, domain, \"get_price\","
+      },
+      {
+        "line": 981,
+        "text": "jqdatasdk.get_price,"
+      },
+      {
+        "line": 992,
+        "text": "record_failure(stage, domain, \"get_price\", str(e),"
+      },
+      {
+        "line": 997,
+        "text": "record_failure(stage, domain, \"get_price\","
+      },
+      {
+        "line": 1001,
+        "text": "record_probe_result(stage, probe_domain, \"get_price\","
+      },
+      {
+        "line": 1019,
+        "text": "record_failure(stage, domain, \"get_price\","
+      },
+      {
+        "line": 1051,
+        "text": "jqdatasdk.get_price,"
+      },
+      {
+        "line": 1062,
+        "text": "record_failure(stage, domain, \"get_price\", str(e),"
+      },
+      {
+        "line": 1111,
+        "text": "\"jq_api\": \"get_price(frequency='daily')\","
+      },
+      {
+        "line": 1122,
+        "text": "api=\"get_price(frequency='daily')\","
+      },
+      {
+        "line": 1129,
+        "text": "log_quota(stage, domain, \"get_price(frequency='daily')\","
+      },
+      {
+        "line": 1157,
+        "text": "import jqdatasdk"
+      },
+      {
+        "line": 1167,
+        "text": "probe = probe_api(\"get_trade_days\", {\"start_date\": START_DATE, \"end_date\": END_DATE})"
+      },
+      {
+        "line": 1168,
+        "text": "record_probe_result(stage, domain, \"get_trade_days\","
+      },
+      {
+        "line": 1172,
+        "text": "record_failure(stage, domain, \"get_trade_days\","
+      },
+      {
+        "line": 1178,
+        "text": "jqdatasdk.get_trade_days,"
+      },
+      {
+        "line": 1183,
+        "text": "record_failure(stage, domain, \"get_trade_days\", str(e),"
+      },
+      {
+        "line": 1186,
+        "text": "stop_reason=f\"get_trade_days 失败: {e}\","
+      },
+      {
+        "line": 1192,
+        "text": "record_failure(stage, domain, \"get_trade_days\","
+      },
+      {
+        "line": 1227,
+        "text": "\"jq_api\": \"get_trade_days\","
+      },
+      {
+        "line": 1239,
+        "text": "api=\"get_trade_days\", rows=rows,"
+      },
+      {
+        "line": 1244,
+        "text": "log_quota(stage, domain, \"get_trade_days\", rows, byte_size, rows)"
+      },
+      {
+        "line": 1272,
+        "text": "import jqdatasdk"
+      },
+      {
+        "line": 1281,
+        "text": "probe = probe_api(\"get_all_securities\", {\"types\": [sec_type]})"
+      },
+      {
+        "line": 1282,
+        "text": "record_probe_result(stage, domain, \"get_all_securities\","
+      },
+      {
+        "line": 1286,
+        "text": "record_failure(stage, domain, \"get_all_securities\","
+      },
+      {
+        "line": 1292,
+        "text": "jqdatasdk.get_all_securities,"
+      },
+      {
+        "line": 1296,
+        "text": "record_failure(stage, domain, \"get_all_securities\", str(e),"
+      },
+      {
+        "line": 1299,
+        "text": "stop_reason=f\"get_all_securities({sec_type}) 失败: {e}\","
+      },
+      {
+        "line": 1305,
+        "text": "record_failure(stage, domain, \"get_all_securities\","
+      },
+      {
+        "line": 1336,
+        "text": "\"jq_api\": \"get_all_securities\","
+      },
+      {
+        "line": 1347,
+        "text": "api=\"get_all_securities\", rows=rows,"
+      },
+      {
+        "line": 1352,
+        "text": "log_quota(stage, domain, \"get_all_securities\", rows, byte_size, rows)"
+      },
+      {
+        "line": 1375,
+        "text": "import jqdatasdk"
+      },
+      {
+        "line": 1402,
+        "text": "df = with_retry(jqdatasdk.get_industries, name=sw_name)"
+      },
+      {
+        "line": 1479,
+        "text": "import jqdatasdk"
+      },
+      {
+        "line": 1499,
+        "text": "df = with_retry(jqdatasdk.get_concepts)"
+      },
+      {
+        "line": 1570,
+        "text": "import jqdatasdk"
+      }
+    ],
+    "control_lines": [
+      {
+        "line": 34,
+        "text": "完整的多阶段 JQData 下载编排器，带 checkpoint/resume/quota/manifest/quality gate 系统。"
+      },
+      {
+        "line": 71,
+        "text": "BATCH_ID = datetime.now().strftime(\"%Y%m%d_%H%M%S\")"
+      },
+      {
+        "line": 76,
+        "text": "\"T1\": \"P1_adjust_factor\","
+      },
+      {
+        "line": 78,
+        "text": "\"T3\": \"P3_finance_pit\","
+      },
+      {
+        "line": 93,
+        "text": "\"_checkpoint\": ROOT / \"_checkpoint\","
+      },
+      {
+        "line": 102,
+        "text": "JQDATA_DAILY_QUOTA_LIMIT = 200_000_000  # JQ_P7_QUOTA_UNIT_FIX_R1: corrected from 150M  # 接近 JQData 9999 套餐上限"
+      },
+      {
+        "line": 105,
+        "text": "MAX_RETRIES = 3"
+      },
+      {
+        "line": 106,
+        "text": "RETRY_DELAY_BASE = 5  # seconds"
+      },
+      {
+        "line": 155,
+        "text": "def write_json(path: Union[str, Path], data: Any, **kwargs) -> None:"
+      },
+      {
+        "line": 177,
+        "text": "return None"
+      },
+      {
+        "line": 203,
+        "text": "for chunk in iter(lambda: f.read(65536), b\"\"):"
+      },
+      {
+        "line": 204,
+        "text": "h.update(chunk)"
+      },
+      {
+        "line": 235,
+        "text": "username = None"
+      },
+      {
+        "line": 236,
+        "text": "password = None"
+      },
+      {
+        "line": 250,
+        "text": "def jq_auth() -> None:"
+      },
+      {
+        "line": 267,
+        "text": "CHECKPOINT_FILE = INFRA_DIRS[\"_checkpoint\"] / \"latest_checkpoint.json\""
+      },
+      {
+        "line": 270,
+        "text": "def load_checkpoint() -> Optional[dict]:"
+      },
+      {
+        "line": 271,
+        "text": "\"\"\"读取最新 checkpoint\"\"\""
+      },
+      {
+        "line": 272,
+        "text": "data = read_json(CHECKPOINT_FILE)"
+      },
+      {
+        "line": 275,
+        "text": "return None"
+      },
+      {
+        "line": 278,
+        "text": "def save_checkpoint("
+      },
+      {
+        "line": 282,
+        "text": "detail: Optional[dict] = None,"
+      },
+      {
+        "line": 283,
+        "text": "completed_stages: Optional[list] = None,"
+      },
+      {
+        "line": 284,
+        "text": "completed_partitions: Optional[list] = None,"
+      },
+      {
+        "line": 288,
+        "text": "stop_reason: Optional[str] = None,"
+      },
+      {
+        "line": 289,
+        "text": "frequency: Optional[str] = None,"
+      },
+      {
+        "line": 291,
+        "text": "\"\"\"保存 checkpoint\"\"\""
+      },
+      {
+        "line": 294,
+        "text": "\"batch_id\": BATCH_ID,"
+      },
+      {
+        "line": 310,
+        "text": "INFRA_DIRS[\"_checkpoint\"].mkdir(parents=True, exist_ok=True)"
+      },
+      {
+        "line": 311,
+        "text": "write_json(CHECKPOINT_FILE, cp, indent=2)"
+      },
+      {
+        "line": 315,
+        "text": "def get_resume_point() -> Optional[dict]:"
+      },
+      {
+        "line": 317,
+        "text": "cp = load_checkpoint()"
+      },
+      {
+        "line": 318,
+        "text": "if cp is None:"
+      },
+      {
+        "line": 319,
+        "text": "return None"
+      },
+      {
+        "line": 345,
+        "text": ") -> None:"
+      },
+      {
+        "line": 348,
+        "text": "\"batch_id\": BATCH_ID,"
+      },
+      {
+        "line": 359,
+        "text": "log_file = daily_dir / f\"quota_log_{BATCH_ID}.jsonl\""
+      },
+      {
+        "line": 408,
+        "text": "def write_sidecar(data_file: Union[str, Path], meta: dict) -> None:"
+      },
+      {
+        "line": 425,
+        "text": "frequency: Optional[str] = None,"
+      },
+      {
+        "line": 426,
+        "text": "adj: str = \"none_adj\","
+      },
+      {
+        "line": 427,
+        "text": "extra: Optional[dict] = None,"
+      },
+      {
+        "line": 445,
+        "text": "\"batch_id\": BATCH_ID,"
+      },
+      {
+        "line": 447,
+        "text": "\"checkpoint_key\": key,"
+      },
+      {
+        "line": 455,
+        "text": "/ f\"manifest_{stage}_{domain}_{BATCH_ID}.json\""
+      },
+      {
+        "line": 464,
+        "text": "def probe_api(api_name: str, test_params: Optional[dict] = None) -> dict:"
+      },
+      {
+        "line": 480,
+        "text": "api_func = getattr(jqdatasdk, api_name, None)"
+      },
+      {
+        "line": 481,
+        "text": "if api_func is None:"
+      },
+      {
+        "line": 492,
+        "text": "if df is None:"
+      },
+      {
+        "line": 493,
+        "text": "result[\"notes\"].append(\"API 返回 None\")"
+      },
+      {
+        "line": 549,
+        "text": "probe_file = probe_dir / f\"probe_{stage}_{domain}_{api}_{BATCH_ID}.json\""
+      },
+      {
+        "line": 554,
+        "text": "def save_probe_matrix(stage: str) -> None:"
+      },
+      {
+        "line": 569,
+        "text": "INFRA_DIRS[\"_probe\"] / f\"probe_matrix_{stage}_{BATCH_ID}.csv\""
+      },
+      {
+        "line": 613,
+        "text": "def check_pit_visibility(df: pd.DataFrame, pub_date_col: str) -> int:"
+      },
+      {
+        "line": 614,
+        "text": "\"\"\"检查 PIT 数据的可见性（有多少行 pub_date < 当前日期）\"\"\""
+      },
+      {
+        "line": 621,
+        "text": "f\"[{now_cn()}] [质量闸] PIT 可见性: {visible}/{total} 行可见 \""
+      },
+      {
+        "line": 646,
+        "text": "detail: Optional[dict] = None,"
+      },
+      {
+        "line": 647,
+        "text": ") -> None:"
+      },
+      {
+        "line": 652,
+        "text": "\"batch_id\": BATCH_ID,"
+      },
+      {
+        "line": 662,
+        "text": "/ f\"failed_{stage}_{domain}_{api}_{BATCH_ID}_{uuid.uuid4().hex[:8]}.json\""
+      },
+      {
+        "line": 671,
+        "text": "def with_retry(func, *args, max_retries=MAX_RETRIES, **kwargs):"
+      },
+      {
+        "line": 673,
+        "text": "last_exception = None"
+      },
+      {
+        "line": 674,
+        "text": "for attempt in range(1, max_retries + 1):"
+      },
+      {
+        "line": 679,
+        "text": "if attempt < max_retries:"
+      },
+      {
+        "line": 680,
+        "text": "delay = RETRY_DELAY_BASE * (2 ** (attempt - 1))"
+      },
+      {
+        "line": 682,
+        "text": "f\"[{now_cn()}] 重试 {attempt}/{max_retries} \""
+      },
+      {
+        "line": 685,
+        "text": "time.sleep(delay)"
+      },
+      {
+        "line": 688,
+        "text": "f\"[{now_cn()}] 重试 {attempt}/{max_retries} 失败: {e}\""
+      },
+      {
+        "line": 699,
+        "text": "date_range: Optional[str] = None,"
+      },
+      {
+        "line": 700,
+        "text": "symbol: Optional[str] = None,"
+      },
+      {
+        "line": 701,
+        "text": "adj: str = \"none_adj\","
+      },
+      {
+        "line": 713,
+        "text": "parts.append(BATCH_ID)"
+      },
+      {
+        "line": 730,
+        "text": "def download_adjust_factor("
+      },
+      {
+        "line": 734,
+        "text": "resume_partitions: list,"
+      },
+      {
+        "line": 747,
+        "text": "if probe_cp_key not in resume_partitions:"
+      },
+      {
+        "line": 766,
+        "text": "probe_df = with_retry("
+      },
+      {
+        "line": 778,
+        "text": "if probe_df is None or probe_df.empty:"
+      },
+      {
+        "line": 787,
+        "text": "{\"columns\": list(probe_df.columns) if hasattr(probe_df, \"columns\") else None})"
+      },
+      {
+        "line": 792,
+        "text": "resume_partitions.append(probe_cp_key)"
+      },
+      {
+        "line": 811,
+        "text": "batch_size = 500"
+      },
+      {
+        "line": 812,
+        "text": "batches = [all_codes[i:i + batch_size] for i in range(0, len(all_codes), batch_size)]"
+      }
+    ]
+  },
+  {
+    "rel": "脚本/jq_download_base.py",
+    "role": "JQ download base",
+    "exists": true,
+    "size": 8460,
+    "lines": 202,
+    "functions": [
+      {
+        "name": "auth",
+        "line": 28,
+        "args": 2
+      },
+      {
+        "name": "auth_and_show_quota",
+        "line": 58,
+        "args": 0
+      },
+      {
+        "name": "quota_left",
+        "line": 69,
+        "args": 1
+      },
+      {
+        "name": "quota_ok",
+        "line": 89,
+        "args": 0
+      },
+      {
+        "name": "subproc_get_price",
+        "line": 95,
+        "args": 6
+      },
+      {
+        "name": "subproc_exec_python",
+        "line": 138,
+        "args": 2
+      },
+      {
+        "name": "save_parquet",
+        "line": 152,
+        "args": 6
+      },
+      {
+        "name": "load_securities",
+        "line": 171,
+        "args": 1
+      },
+      {
+        "name": "load_skip_stocks",
+        "line": 183,
+        "args": 0
+      },
+      {
+        "name": "save_skip_stock",
+        "line": 188,
+        "args": 1
+      },
+      {
+        "name": "files_exist",
+        "line": 196,
+        "args": 2
+      },
+      {
+        "name": "now_cn",
+        "line": 201,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [],
+    "api_lines": [
+      {
+        "line": 7,
+        "text": "auth, quota_left, subproc_get_price,"
+      },
+      {
+        "line": 28,
+        "text": "def auth(username=None, password=None):"
+      },
+      {
+        "line": 53,
+        "text": "import jqdatasdk as jq"
+      },
+      {
+        "line": 56,
+        "text": "jq.auth(_CRED_U, _CRED_P)"
+      },
+      {
+        "line": 60,
+        "text": "auth()"
+      },
+      {
+        "line": 61,
+        "text": "import jqdatasdk as jq"
+      },
+      {
+        "line": 80,
+        "text": "import jqdatasdk as jq"
+      },
+      {
+        "line": 95,
+        "text": "def subproc_get_price(stocks: List[str], start_date: str, end_date: str,"
+      },
+      {
+        "line": 99,
+        "text": "带超时的 JQData get_price。"
+      },
+      {
+        "line": 141,
+        "text": "适用于 run_query、get_mtss 等非 get_price 调用。"
+      }
+    ],
+    "control_lines": [
+      {
+        "line": 21,
+        "text": "DOWNLOAD_BATCH_PY = Path(__file__).parent / \"_download_batch.py\""
+      },
+      {
+        "line": 25,
+        "text": "_CRED_U = None"
+      },
+      {
+        "line": 26,
+        "text": "_CRED_P = None"
+      },
+      {
+        "line": 28,
+        "text": "def auth(username=None, password=None):"
+      },
+      {
+        "line": 67,
+        "text": "_QUOTA_CACHE: dict = {\"spare\": None, \"ts\": 0}"
+      },
+      {
+        "line": 74,
+        "text": "- 无缓存时返回 None（不限制）"
+      },
+      {
+        "line": 77,
+        "text": "if not force and _QUOTA_CACHE[\"spare\"] is not None and now - _QUOTA_CACHE[\"ts\"] < 5:"
+      },
+      {
+        "line": 87,
+        "text": "return _QUOTA_CACHE.get(\"spare\")  # None = unknown, 不限制"
+      },
+      {
+        "line": 92,
+        "text": "return q is None or q > 0"
+      },
+      {
+        "line": 97,
+        "text": "extra_kwargs: Optional[dict] = None) -> Optional[\"pd.DataFrame\"]:"
+      },
+      {
+        "line": 101,
+        "text": "返回 DataFrame 或 None（超时/失败/空）。"
+      },
+      {
+        "line": 104,
+        "text": "batch_id = datetime.now().strftime(\"%Y%m%d_%H%M%S\")"
+      },
+      {
+        "line": 105,
+        "text": "tmp = Path(tempfile.gettempdir()) / f\"_jq_batch_{os.getpid()}_{int(time.time())}.parquet\""
+      },
+      {
+        "line": 107,
+        "text": "sys.executable, \"-u\", str(DOWNLOAD_BATCH_PY),"
+      },
+      {
+        "line": 109,
+        "text": "str(tmp), batch_id, DEFAULT_SCHEMA_VERSION,"
+      },
+      {
+        "line": 123,
+        "text": "return None"
+      },
+      {
+        "line": 126,
+        "text": "return None"
+      },
+      {
+        "line": 134,
+        "text": "return None"
+      },
+      {
+        "line": 136,
+        "text": "return None"
+      },
+      {
+        "line": 147,
+        "text": "return None"
+      },
+      {
+        "line": 149,
+        "text": "return None"
+      },
+      {
+        "line": 153,
+        "text": "source_api: str = \"\", batch_id: str = \"\","
+      },
+      {
+        "line": 161,
+        "text": "\"batch_id\": batch_id or datetime.now().strftime(\"%Y%m%d_%H%M%S\"),"
+      },
+      {
+        "line": 171,
+        "text": "def load_securities(meta_root: Path = None) -> List[str]:"
+      },
+      {
+        "line": 173,
+        "text": "if meta_root is None:"
+      }
+    ]
+  },
+  {
+    "rel": "脚本/jq_resume_r2.py",
+    "role": "JQ resume",
+    "exists": true,
+    "size": 21749,
+    "lines": 449,
+    "functions": [
+      {
+        "name": "_subproc_get_price",
+        "line": 49,
+        "args": 5
+      },
+      {
+        "name": "_load_cred",
+        "line": 97,
+        "args": 0
+      },
+      {
+        "name": "auth",
+        "line": 114,
+        "args": 0
+      },
+      {
+        "name": "init_auth_and_show_quota",
+        "line": 119,
+        "args": 0
+      },
+      {
+        "name": "quota_left",
+        "line": 128,
+        "args": 1
+      },
+      {
+        "name": "now_cn",
+        "line": 145,
+        "args": 0
+      },
+      {
+        "name": "save_with_metadata",
+        "line": 148,
+        "args": 4
+      },
+      {
+        "name": "load_stock_list",
+        "line": 158,
+        "args": 0
+      },
+      {
+        "name": "load_skip_stocks",
+        "line": 172,
+        "args": 0
+      },
+      {
+        "name": "save_skip_stock",
+        "line": 177,
+        "args": 1
+      },
+      {
+        "name": "run_t7",
+        "line": 183,
+        "args": 0
+      },
+      {
+        "name": "run_t8",
+        "line": 295,
+        "args": 0
+      },
+      {
+        "name": "run_t9",
+        "line": 346,
+        "args": 0
+      },
+      {
+        "name": "main",
+        "line": 418,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [],
+    "api_lines": [
+      {
+        "line": 44,
+        "text": "import jqdatasdk as jq"
+      },
+      {
+        "line": 49,
+        "text": "def _subproc_get_price(stocks, start_date, end_date, frequency, timeout=60):"
+      },
+      {
+        "line": 114,
+        "text": "def auth():"
+      },
+      {
+        "line": 117,
+        "text": "jq.auth(u, p)"
+      },
+      {
+        "line": 121,
+        "text": "auth()"
+      },
+      {
+        "line": 223,
+        "text": "sdf = _subproc_get_price([singlestock], start_date=f\"{year_str}-01-01\", end_date=ye, frequency=freq, timeout=60)"
+      },
+      {
+        "line": 225,
+        "text": "save_with_metadata(sdf, s_out, \"P7.stock_minute\", f\"get_price.{freq}\")"
+      },
+      {
+        "line": 241,
+        "text": "df = _subproc_get_price(filtered, start_date=f\"{year_str}-01-01\", end_date=ye, frequency=freq)"
+      },
+      {
+        "line": 245,
+        "text": "save_with_metadata(df, out_dir / fname, \"P7.stock_minute\", f\"get_price.{freq}\")"
+      },
+      {
+        "line": 253,
+        "text": "df2 = _subproc_get_price(filtered, start_date=f\"{year_str}-01-01\", end_date=ye, frequency=freq, timeout=60)"
+      },
+      {
+        "line": 257,
+        "text": "save_with_metadata(df2, out_dir / fname, \"P7.stock_minute\", f\"get_price.{freq}\")"
+      },
+      {
+        "line": 272,
+        "text": "sdf = _subproc_get_price([singlestock], start_date=f\"{year_str}-01-01\", end_date=ye, frequency=freq, timeout=60)"
+      },
+      {
+        "line": 274,
+        "text": "save_with_metadata(sdf, s_out, \"P7.stock_minute\", f\"get_price.{freq}\")"
+      },
+      {
+        "line": 305,
+        "text": "df_etf_list = _subproc_get_price([\"000001.XSHE\"], \"2014-01-01\", \"2014-01-02\", \"daily\", timeout=30)"
+      },
+      {
+        "line": 310,
+        "text": "\"import jqdatasdk as jq; \""
+      },
+      {
+        "line": 311,
+        "text": "\"jq.auth('\" + _CRED_U + \"','\" + _CRED_P + \"'); \""
+      },
+      {
+        "line": 312,
+        "text": "\"df=jq.get_all_securities('etf'); \""
+      },
+      {
+        "line": 330,
+        "text": "df = _subproc_get_price(batch, \"2014-01-01\", \"2026-06-12\", \"daily\", timeout=60)"
+      },
+      {
+        "line": 333,
+        "text": "save_with_metadata(df, out_dir / fname, \"P8.etf\", \"get_price.etf\")"
+      },
+      {
+        "line": 365,
+        "text": "df = _subproc_get_price(indices, \"2014-01-01\", \"2026-06-12\", freq, timeout=120)"
+      },
+      {
+        "line": 368,
+        "text": "save_with_metadata(df, out_dir / fname, \"P9.index_minute\", f\"get_price.index.{freq}\")"
+      },
+      {
+        "line": 384,
+        "text": "\"import jqdatasdk as jq; \""
+      },
+      {
+        "line": 385,
+        "text": "\"jq.auth('\" + _CRED_U + \"','\" + _CRED_P + \"'); \""
+      },
+      {
+        "line": 439,
+        "text": "auth()"
+      }
+    ],
+    "control_lines": [
+      {
+        "line": 47,
+        "text": "DOWNLOAD_BATCH_PY = Path(__file__).parent / \"_download_batch.py\""
+      },
+      {
+        "line": 52,
+        "text": "tmp_parquet = Path(tempfile.gettempdir()) / f\"_jq_batch_{os.getpid()}_{int(time.time())}.parquet\""
+      },
+      {
+        "line": 55,
+        "text": "sys.executable, \"-u\", str(DOWNLOAD_BATCH_PY),"
+      },
+      {
+        "line": 66,
+        "text": "return None  # timeout"
+      },
+      {
+        "line": 69,
+        "text": "return None"
+      },
+      {
+        "line": 77,
+        "text": "return None"
+      },
+      {
+        "line": 79,
+        "text": "return None  # empty result"
+      },
+      {
+        "line": 84,
+        "text": "BATCH_ID = datetime.now().strftime(\"%Y%m%d_%H%M%S\")"
+      },
+      {
+        "line": 95,
+        "text": "_CRED_U = None"
+      },
+      {
+        "line": 96,
+        "text": "_CRED_P = None"
+      },
+      {
+        "line": 105,
+        "text": "k, v = (line.split(\"：\", 1) if \"：\" in line else line.split(\":\", 1) if \":\" in line else (None, None))"
+      },
+      {
+        "line": 127,
+        "text": "_QUOTA_CACHE = {\"spare\": None, \"ts\": 0}"
+      },
+      {
+        "line": 131,
+        "text": "if not force and _QUOTA_CACHE[\"spare\"] is not None and now - _QUOTA_CACHE[\"ts\"] < 5:"
+      },
+      {
+        "line": 140,
+        "text": "if _QUOTA_CACHE[\"spare\"] is not None:"
+      },
+      {
+        "line": 152,
+        "text": "\"batch_id\": BATCH_ID, \"schema_version\": SCHEMA_VERSION,"
+      },
+      {
+        "line": 204,
+        "text": "batches = [all_stocks[i:i+5] for i in range(0, len(all_stocks), 5)]"
+      },
+      {
+        "line": 205,
+        "text": "for bidx, stock_batch in enumerate(batches):"
+      },
+      {
+        "line": 210,
+        "text": "filtered = [s for s in stock_batch if s not in skip_stocks]"
+      },
+      {
+        "line": 213,
+        "text": "if len(filtered) < len(stock_batch):"
+      },
+      {
+        "line": 218,
+        "text": "sname = f\"stock_minute_{freq}__{year_str}__{singlestock}__{SCHEMA_VERSION}__{BATCH_ID}.parquet\""
+      },
+      {
+        "line": 224,
+        "text": "if sdf is not None and len(sdf) > 0:"
+      },
+      {
+        "line": 230,
+        "text": "elif sdf is None:"
+      },
+      {
+        "line": 236,
+        "text": "batch_label = f\"batch{bidx:04d}\""
+      },
+      {
+        "line": 237,
+        "text": "if list(out_dir.glob(f\"stock_minute_{freq}__{year_str}__{batch_label}__{SCHEMA_VERSION}__*.parquet\")):"
+      },
+      {
+        "line": 243,
+        "text": "if df is not None and len(df) > 0:"
+      },
+      {
+        "line": 244,
+        "text": "fname = f\"stock_minute_{freq}__{year_str}__{batch_label}__{SCHEMA_VERSION}__{BATCH_ID}.parquet\""
+      },
+      {
+        "line": 248,
+        "text": "print(f\"  {freq} {year_str} {batch_label}: {len(df)}行, {elapsed:.1f}s (剩余额={quota_left(force=True)})\", flush=True)"
+      },
+      {
+        "line": 249,
+        "text": "elif df is None:"
+      },
+      {
+        "line": 251,
+        "text": "print(f\"  {freq} {year_str} {batch_label}: 超时, 重试...\", flush=True)"
+      },
+      {
+        "line": 255,
+        "text": "if df2 is not None and len(df2) > 0:"
+      },
+      {
+        "line": 256,
+        "text": "fname = f\"stock_minute_{freq}__{year_str}__{batch_label}__{SCHEMA_VERSION}__{BATCH_ID}.parquet\""
+      },
+      {
+        "line": 260,
+        "text": "print(f\"  {freq} {year_str} {batch_label}: {len(df2)}行 (重试), {elapsed:.1f}s\", flush=True)"
+      },
+      {
+        "line": 263,
+        "text": "print(f\"  {freq} {year_str} {batch_label}: 批次失败, 逐只...\", flush=True)"
+      },
+      {
+        "line": 267,
+        "text": "sname = f\"stock_minute_{freq}__{year_str}__{singlestock}__{SCHEMA_VERSION}__{BATCH_ID}.parquet\""
+      },
+      {
+        "line": 273,
+        "text": "if sdf is not None and len(sdf) > 0:"
+      },
+      {
+        "line": 278,
+        "text": "elif sdf is None:"
+      },
+      {
+        "line": 321,
+        "text": "etf_batches = [etf_codes[i:i+50] for i in range(0, len(etf_codes), 50)]"
+      },
+      {
+        "line": 322,
+        "text": "for bidx, batch in enumerate(etf_batches):"
+      },
+      {
+        "line": 325,
+        "text": "batch_label = f\"batch{bidx:04d}\""
+      },
+      {
+        "line": 326,
+        "text": "pattern = f\"etf_daily__full__{batch_label}__{SCHEMA_VERSION}__*.parquet\""
+      },
+      {
+        "line": 330,
+        "text": "df = _subproc_get_price(batch, \"2014-01-01\", \"2026-06-12\", \"daily\", timeout=60)"
+      },
+      {
+        "line": 331,
+        "text": "if df is not None and len(df) > 0:"
+      },
+      {
+        "line": 332,
+        "text": "fname = f\"etf_daily__full__{batch_label}__{SCHEMA_VERSION}__{BATCH_ID}.parquet\""
+      },
+      {
+        "line": 335,
+        "text": "print(f\"  ETF {batch_label}: {len(df)}行 (剩余额={quota_left(force=True)})\", flush=True)"
+      },
+      {
+        "line": 366,
+        "text": "if df is not None and len(df) > 0:"
+      },
+      {
+        "line": 367,
+        "text": "fname = f\"index_minute_{freq}__full__{SCHEMA_VERSION}__{BATCH_ID}.parquet\""
+      },
+      {
+        "line": 387,
+        "text": "\"if df is not None and len(df)>0: print(df.to_json(orient='records',force_ascii=False))\""
+      },
+      {
+        "line": 404,
+        "text": "fname = f\"mtss__sample50__full__{SCHEMA_VERSION}__{BATCH_ID}.parquet\""
+      }
+    ]
+  },
+  {
+    "rel": "脚本/blackbox_daily_increment_common_r1.py",
+    "role": "increment common",
+    "exists": true,
+    "size": 19082,
+    "lines": 463,
+    "functions": [
+      {
+        "name": "now_cn",
+        "line": 63,
+        "args": 0
+      },
+      {
+        "name": "wjson",
+        "line": 67,
+        "args": 2
+      },
+      {
+        "name": "inherit_tree",
+        "line": 74,
+        "args": 2
+      },
+      {
+        "name": "resolve_run_target_trade_date",
+        "line": 110,
+        "args": 0
+      },
+      {
+        "name": "acquisition_absence_gate",
+        "line": 138,
+        "args": 0
+      },
+      {
+        "name": "load_trade_days",
+        "line": 151,
+        "args": 0
+      },
+      {
+        "name": "next_trade_day",
+        "line": 161,
+        "args": 2
+      },
+      {
+        "name": "latest_raw",
+        "line": 169,
+        "args": 1
+      },
+      {
+        "name": "row_key",
+        "line": 174,
+        "args": 1
+      },
+      {
+        "name": "finance_pit_delta",
+        "line": 184,
+        "args": 3
+      },
+      {
+        "name": "map_finance_to_jq20",
+        "line": 253,
+        "args": 4
+      },
+      {
+        "name": "upsert_jq20",
+        "line": 289,
+        "args": 2
+      },
+      {
+        "name": "apply_finance_pit_to_candidate",
+        "line": 306,
+        "args": 4
+      },
+      {
+        "name": "tag_raw_pit",
+        "line": 343,
+        "args": 2
+      },
+      {
+        "name": "product_date_max",
+        "line": 361,
+        "args": 1
+      },
+      {
+        "name": "rebuild_capability_facts_candidate",
+        "line": 386,
+        "args": 0
+      },
+      {
+        "name": "coverage_ok",
+        "line": 446,
+        "args": 2
+      },
+      {
+        "name": "summary_stale_gate",
+        "line": 450,
+        "args": 3
+      }
+    ],
+    "classes": [],
+    "cli_options": [],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 28,
+        "text": "RAW_P3 = ROOT / \"数据\" / \"原始只读\" / \"JQData_9999_official_raw\" / \"P3_finance_pit\""
+      },
+      {
+        "line": 32,
+        "text": "RAW_PIT_FIELDS = ["
+      },
+      {
+        "line": 34,
+        "text": "\"signal_date\", \"data_date\", \"asset_type\", \"price_adj_tag\", \"asof_rule\","
+      },
+      {
+        "line": 35,
+        "text": "\"pit_status\", \"source_version\", \"known_at\","
+      },
+      {
+        "line": 39,
+        "text": "\"product\": \"JQ20_FINANCE_INCOME_STATEMENT_PIT_R1\","
+      },
+      {
+        "line": 44,
+        "text": "\"product\": \"JQ20_FINANCE_BALANCE_SHEET_PIT_R1\","
+      },
+      {
+        "line": 49,
+        "text": "\"product\": \"JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1\","
+      },
+      {
+        "line": 55,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1\","
+      },
+      {
+        "line": 56,
+        "text": "\"STOCK_DAILY_PIT_R1\","
+      },
+      {
+        "line": 57,
+        "text": "\"ETF_DAILY_PIT_R1\","
+      },
+      {
+        "line": 58,
+        "text": "\"VALUATION_PIT_R1\","
+      },
+      {
+        "line": 67,
+        "text": "def wjson(path: Path, obj: Any) -> None:"
+      },
+      {
+        "line": 110,
+        "text": "def resolve_run_target_trade_date("
+      },
+      {
+        "line": 112,
+        "text": "cli_date: str | None = None,"
+      },
+      {
+        "line": 113,
+        "text": "cleaning: dict | None = None,"
+      },
+      {
+        "line": 115,
+        "text": "\"\"\"RUN_TARGET_TRADE_DATE is the only execution authority.\"\"\""
+      },
+      {
+        "line": 118,
+        "text": "d = str(cleaning.get(\"cleaning_as_of\") or cleaning.get(\"daily_asof\") or \"\").strip()"
+      },
+      {
+        "line": 120,
+        "text": "raise SystemExit(\"HARD_BLOCK: RUN_TARGET_TRADE_DATE missing\")"
+      },
+      {
+        "line": 127,
+        "text": "for key in (\"finance_asof_target\", \"stock_asof_target\", \"daily_asof_target\", \"asof_target\"):"
+      },
+      {
+        "line": 132,
+        "text": "\"RUN_TARGET_TRADE_DATE\": d,"
+      },
+      {
+        "line": 138,
+        "text": "def acquisition_absence_gate(*, n_rows: int, query_cap: int | None, pagination_complete: str) -> dict:"
+      },
+      {
+        "line": 152,
+        "text": "cands = sorted(CAL_ROOT.glob(\"calendar_cn_exchange_v2_asof_*/CALENDAR_TRADE_DAYS.parquet\"))"
+      },
+      {
+        "line": 161,
+        "text": "def next_trade_day(pub: pd.Timestamp, days: list[pd.Timestamp]) -> pd.Timestamp | None:"
+      },
+      {
+        "line": 166,
+        "text": "return None"
+      },
+      {
+        "line": 169,
+        "text": "def latest_raw(glob_pat: str) -> Path | None:"
+      },
+      {
+        "line": 171,
+        "text": "return files[-1] if files else None"
+      },
+      {
+        "line": 184,
+        "text": "def finance_pit_delta(parent_cache: Path, target: str, days: list[pd.Timestamp] | None = None) -> dict:"
+      },
+      {
+        "line": 185,
+        "text": "\"\"\"Visible = pit_valid_from <= D. Delta = visible keys not in parent formal identity.\"\"\""
+      },
+      {
+        "line": 188,
+        "text": "out = {\"target\": target, \"families\": {}, \"FINANCE_PIT_DELTA_ROWS\": 0, \"FINANCE_FUTURE_ROWS\": 0, \"FINANCE_NAT_ROWS\": 0}"
+      },
+      {
+        "line": 193,
+        "text": "if raw_path is None:"
+      },
+      {
+        "line": 197,
+        "text": "pit = [next_trade_day(p, days) if pd.notna(p) else pd.NaT for p in pub]"
+      },
+      {
+        "line": 200,
+        "text": "raw[\"pit_valid_from\"] = pit"
+      },
+      {
+        "line": 204,
+        "text": "pit_s = pd.to_datetime(raw[\"pit_valid_from\"], errors=\"coerce\")"
+      },
+      {
+        "line": 205,
+        "text": "vis = pit_s.notna() & (pit_s <= d)"
+      },
+      {
+        "line": 206,
+        "text": "fut = pit_s.notna() & (pit_s > d)"
+      },
+      {
+        "line": 207,
+        "text": "nat = pit_s.isna()"
+      },
+      {
+        "line": 210,
+        "text": "if not included.empty and not (pd.to_datetime(included[\"pit_valid_from\"]) <= d).all():"
+      },
+      {
+        "line": 211,
+        "text": "raise SystemExit(f\"HARD_BLOCK: finance visible pit> D {fam}\")"
+      },
+      {
+        "line": 213,
+        "text": "ok_ex = pd.to_datetime(excluded[\"pit_valid_from\"]).isna() | (pd.to_datetime(excluded[\"pit_valid_from\"]) > d)"
+      },
+      {
+        "line": 225,
+        "text": "reasons.append(\"PIT_VALID_FROM_NAT_CALENDAR_BEYOND_KNOWN_DAYS\")"
+      },
+      {
+        "line": 227,
+        "text": "reasons.append(\"PIT_VALID_FROM_GT_TARGET\")"
+      },
+      {
+        "line": 231,
+        "text": "\"FINANCE_PIT_VISIBLE_ROWS\": int(len(included)),"
+      },
+      {
+        "line": 232,
+        "text": "\"FINANCE_PIT_DELTA_ROWS\": int(len(delta_keys)),"
+      },
+      {
+        "line": 243,
+        "text": "out[\"FINANCE_PIT_DELTA_ROWS\"] += fam_row[\"FINANCE_PIT_DELTA_ROWS\"]"
+      },
+      {
+        "line": 248,
+        "text": "out[\"FINANCE_FORMAL_SUCCESSOR_REQUIRED\"] = out[\"FINANCE_PIT_DELTA_ROWS\"] > 0"
+      },
+      {
+        "line": 270,
+        "text": "df[\"source_plane\"] = \"DAILY_INCREMENT_FINANCE_PIT_DELTA_R1\""
+      },
+      {
+        "line": 273,
+        "text": "df[\"cleaning_product_id\"] = f\"FINANCE_{family}_STATEMENT_PIT_R1\""
+      },
+      {
+        "line": 306,
+        "text": "def apply_finance_pit_to_candidate(rel: Path, parent: Path, target: str, delta: dict) -> dict:"
+      },
+      {
+        "line": 332,
+        "text": "pit = pd.to_datetime(merged[\"pit_valid_from\"], errors=\"coerce\")"
+      },
+      {
+        "line": 333,
+        "text": "if not bool((pit.isna() | (pit <= d)).all()):"
+      },
+      {
+        "line": 334,
+        "text": "raise SystemExit(f\"HARD_BLOCK: served finance pit> D {prod}\")"
+      },
+      {
+        "line": 337,
+        "text": "meta.update({\"product_id\": prod, \"n_rows\": int(len(merged)), \"asof\": target, \"generated_at\": now_cn()})"
+      },
+      {
+        "line": 343,
+        "text": "def tag_raw_pit(stock_pit: pd.DataFrame, cleaning_id: str) -> pd.DataFrame:"
+      },
+      {
+        "line": 344,
+        "text": "o = stock_pit.copy()"
+      },
+      {
+        "line": 350,
+        "text": "o[\"price_adj_tag\"] = \"RAW_NONE\""
+      },
+      {
+        "line": 351,
+        "text": "o[\"asof_rule\"] = \"SAME_DAY_KNOWN_EOD\""
+      },
+      {
+        "line": 352,
+        "text": "o[\"pit_status\"] = \"OK\""
+      },
+      {
+        "line": 355,
+        "text": "missing = [c for c in RAW_PIT_FIELDS if c not in o.columns]"
+      },
+      {
+        "line": 357,
+        "text": "raise SystemExit(f\"HARD_BLOCK: RAW_PIT missing {missing}\")"
+      },
+      {
+        "line": 358,
+        "text": "return o[RAW_PIT_FIELDS]"
+      },
+      {
+        "line": 361,
+        "text": "def product_date_max(prod_dir: Path) -> str | None:"
+      },
+      {
+        "line": 365,
+        "text": "return str(j.get(\"SOURCE_MAX_DATE\") or j.get(\"source_max_date\") or j.get(\"date_max\") or \"\") or None"
+      },
+      {
+        "line": 378,
+        "text": "return None"
+      },
+      {
+        "line": 380,
+        "text": "for col in (\"date\", \"signal_date\", \"trade_date\", \"end_date\"):"
+      },
+      {
+        "line": 383,
+        "text": "return None"
+      },
+      {
+        "line": 391,
+        "text": "extra_products: dict | None = None,"
+      },
+      {
+        "line": 404,
+        "text": "\"ADJUST_FACTOR_PIT_R1\","
+      },
+      {
+        "line": 405,
+        "text": "\"SW_L1_MEMBERSHIP_PIT_R1\","
+      },
+      {
+        "line": 406,
+        "text": "\"SW_L2_MEMBERSHIP_PIT_R1\","
+      },
+      {
+        "line": 407,
+        "text": "\"SW_L3_MEMBERSHIP_PIT_R1\","
+      },
+      {
+        "line": 416,
+        "text": "\"PROCESSING_STATE\": \"PIT_READY\","
+      },
+      {
+        "line": 423,
+        "text": "\"GAP_CLASSIFICATION\": \"NONE\","
+      },
+      {
+        "line": 446,
+        "text": "def coverage_ok(mx: str | None, target: str) -> bool:"
+      }
+    ]
+  },
+  {
+    "rel": "脚本/blackbox_daily_increment_orchestrator_r1.py",
+    "role": "increment orchestrator",
+    "exists": true,
+    "size": 3000,
+    "lines": 79,
+    "functions": [
+      {
+        "name": "main",
+        "line": 26,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [
+      {
+        "opts": [
+          "--run-target-date"
+        ],
+        "default": null,
+        "line": 28
+      },
+      {
+        "opts": [
+          "--cleaning-json"
+        ],
+        "default": null,
+        "line": 29
+      },
+      {
+        "opts": [
+          "--no-publish"
+        ],
+        "default": null,
+        "line": 30
+      },
+      {
+        "opts": [
+          "--out-root"
+        ],
+        "default": null,
+        "line": 31
+      },
+      {
+        "opts": [
+          "--parent-root"
+        ],
+        "default": null,
+        "line": 32
+      }
+    ],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 17,
+        "text": "from blackbox_daily_increment_common_r1 import resolve_run_target_trade_date  # noqa: E402"
+      },
+      {
+        "line": 34,
+        "text": "tgt = resolve_run_target_trade_date(cli_date=args.run_target_date)"
+      },
+      {
+        "line": 37,
+        "text": "\"--run-target-date\", tgt[\"RUN_TARGET_TRADE_DATE\"],"
+      },
+      {
+        "line": 48,
+        "text": "\"--run-target-date\", tgt[\"RUN_TARGET_TRADE_DATE\"],"
+      },
+      {
+        "line": 58,
+        "text": "\"--run-target-date\", tgt[\"RUN_TARGET_TRADE_DATE\"],"
+      }
+    ]
+  },
+  {
+    "rel": "脚本/blackbox_daily_increment_publish_gate_r1.py",
+    "role": "publish gate",
+    "exists": true,
+    "size": 5716,
+    "lines": 154,
+    "functions": [
+      {
+        "name": "run_production_matrix",
+        "line": 31,
+        "args": 2
+      },
+      {
+        "name": "publish_atomic",
+        "line": 83,
+        "args": 0
+      },
+      {
+        "name": "main",
+        "line": 128,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [
+      {
+        "opts": [
+          "--cache-pointer-json"
+        ],
+        "default": null,
+        "line": 130
+      },
+      {
+        "opts": [
+          "--facts-json"
+        ],
+        "default": null,
+        "line": 131
+      },
+      {
+        "opts": [
+          "--target"
+        ],
+        "default": null,
+        "line": 132
+      },
+      {
+        "opts": [
+          "--cleaning-pointer-json"
+        ],
+        "default": null,
+        "line": 133
+      },
+      {
+        "opts": [
+          "--dry-run"
+        ],
+        "default": null,
+        "line": 134
+      }
+    ],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 43,
+        "text": "if pid != \"VALUATION_PIT_R1\""
+      },
+      {
+        "line": 66,
+        "text": "for pid in (\"ADJUST_FACTOR_PIT_R1\", \"SW_L1_MEMBERSHIP_PIT_R1\", \"SW_L2_MEMBERSHIP_PIT_R1\", \"SW_L3_MEMBERSHIP_PIT_R1\"):"
+      },
+      {
+        "line": 89,
+        "text": "cleaning_pointer: dict | None,"
+      },
+      {
+        "line": 138,
+        "text": "cleaning = None"
+      }
+    ]
+  },
+  {
+    "rel": "脚本/run_blackbox_daily_incremental_data_plane_r1.py",
+    "role": "daily incremental data plane",
+    "exists": true,
+    "size": 41183,
+    "lines": 971,
+    "functions": [
+      {
+        "name": "now_cn",
+        "line": 25,
+        "args": 0
+      },
+      {
+        "name": "today_yyyymmdd",
+        "line": 29,
+        "args": 0
+      },
+      {
+        "name": "today_iso",
+        "line": 33,
+        "args": 0
+      },
+      {
+        "name": "load_json",
+        "line": 37,
+        "args": 1
+      },
+      {
+        "name": "normalize_asof",
+        "line": 43,
+        "args": 1
+      },
+      {
+        "name": "read_json_object",
+        "line": 56,
+        "args": 1
+      },
+      {
+        "name": "evaluate_lane_a_asof_gate",
+        "line": 70,
+        "args": 0
+      },
+      {
+        "name": "atomic_write_json",
+        "line": 175,
+        "args": 2
+      },
+      {
+        "name": "heartbeat",
+        "line": 182,
+        "args": 4
+      },
+      {
+        "name": "run_cmd",
+        "line": 186,
+        "args": 2
+      },
+      {
+        "name": "scan_screenshots",
+        "line": 195,
+        "args": 1
+      },
+      {
+        "name": "sellside_already_done_today",
+        "line": 201,
+        "args": 2
+      },
+      {
+        "name": "collect_lane_a",
+        "line": 207,
+        "args": 1
+      },
+      {
+        "name": "collect_lane_b",
+        "line": 238,
+        "args": 1
+      },
+      {
+        "name": "collect_lane_c",
+        "line": 265,
+        "args": 1
+      },
+      {
+        "name": "collect_lane_d",
+        "line": 301,
+        "args": 1
+      },
+      {
+        "name": "run_us_l1_collector",
+        "line": 381,
+        "args": 1
+      },
+      {
+        "name": "collect_lane_e",
+        "line": 390,
+        "args": 1
+      },
+      {
+        "name": "collect_lane_f",
+        "line": 438,
+        "args": 1
+      },
+      {
+        "name": "build_manifest",
+        "line": 510,
+        "args": 2
+      },
+      {
+        "name": "build_input_pack",
+        "line": 535,
+        "args": 2
+      },
+      {
+        "name": "build_temp_identity_manifest_from_lanes",
+        "line": 562,
+        "args": 3
+      },
+      {
+        "name": "archive_daily",
+        "line": 569,
+        "args": 3
+      },
+      {
+        "name": "print_data_precheck",
+        "line": 578,
+        "args": 1
+      },
+      {
+        "name": "publish_current",
+        "line": 599,
+        "args": 2
+      },
+      {
+        "name": "_rollback_data_plane_current",
+        "line": 621,
+        "args": 1
+      },
+      {
+        "name": "publish_identity_generation_no_collect",
+        "line": 634,
+        "args": 0
+      },
+      {
+        "name": "p0a_selftest",
+        "line": 745,
+        "args": 0
+      },
+      {
+        "name": "main",
+        "line": 899,
+        "args": 0
+      },
+      {
+        "name": "write",
+        "line": 751,
+        "args": 2
+      },
+      {
+        "name": "run_case",
+        "line": 758,
+        "args": 1
+      }
+    ],
+    "classes": [],
+    "cli_options": [
+      {
+        "opts": [
+          "--mode"
+        ],
+        "default": "status",
+        "line": 901
+      },
+      {
+        "opts": [
+          "--date"
+        ],
+        "default": null,
+        "line": 906
+      },
+      {
+        "opts": [
+          "--run"
+        ],
+        "default": null,
+        "line": 907
+      },
+      {
+        "opts": [
+          "--lane"
+        ],
+        "default": null,
+        "line": 908
+      },
+      {
+        "opts": [
+          "--skip-jq"
+        ],
+        "default": null,
+        "line": 909
+      },
+      {
+        "opts": [
+          "--skip-t-external"
+        ],
+        "default": null,
+        "line": 910
+      },
+      {
+        "opts": [
+          "--skip-sellside-if-done"
+        ],
+        "default": null,
+        "line": 911
+      },
+      {
+        "opts": [
+          "--p0a-selftest"
+        ],
+        "default": null,
+        "line": 912
+      },
+      {
+        "opts": [
+          "--identity-backup-dir"
+        ],
+        "default": null,
+        "line": 917
+      }
+    ],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 43,
+        "text": "def normalize_asof(value: Any) -> str | None:"
+      },
+      {
+        "line": 44,
+        "text": "\"\"\"Normalize date to YYYY-MM-DD. Invalid/empty → None. No default invent.\"\"\""
+      },
+      {
+        "line": 45,
+        "text": "if value is None:"
+      },
+      {
+        "line": 46,
+        "text": "return None"
+      },
+      {
+        "line": 48,
+        "text": "if not s or s.lower() in {\"none\", \"null\", \"nan\"}:"
+      },
+      {
+        "line": 49,
+        "text": "return None"
+      },
+      {
+        "line": 53,
+        "text": "return None"
+      },
+      {
+        "line": 56,
+        "text": "def read_json_object(path: Path) -> tuple[dict[str, Any] | None, str | None]:"
+      },
+      {
+        "line": 59,
+        "text": "return None, \"MISSING_FILE\""
+      },
+      {
+        "line": 64,
+        "text": "return None, \"INVALID_JSON\""
+      },
+      {
+        "line": 66,
+        "text": "return None, \"INVALID_JSON\""
+      },
+      {
+        "line": 67,
+        "text": "return obj, None"
+      },
+      {
+        "line": 70,
+        "text": "def evaluate_lane_a_asof_gate("
+      },
+      {
+        "line": 78,
+        "text": "AUTHORIZED: no asof/data_asof fallback for cleaning. Fail → STATUS=NO."
+      },
+      {
+        "line": 86,
+        "text": "\"SOURCE_ASOF\": None,"
+      },
+      {
+        "line": 87,
+        "text": "\"CLEAN_ASOF\": None,"
+      },
+      {
+        "line": 88,
+        "text": "\"CACHE_ASOF\": None,"
+      },
+      {
+        "line": 89,
+        "text": "\"PIT_PASS\": False,"
+      },
+      {
+        "line": 91,
+        "text": "\"reason_code\": None,"
+      },
+      {
+        "line": 108,
+        "text": "assert scope is not None and clean is not None and cache is not None"
+      },
+      {
+        "line": 112,
+        "text": "if \"asof\" in clean and \"data_asof\" not in clean:"
+      },
+      {
+        "line": 113,
+        "text": "out[\"reason_code\"] = \"CLEANING_ONLY_HAS_asof\""
+      },
+      {
+        "line": 114,
+        "text": "elif \"data_asof\" in clean and \"asof\" not in clean:"
+      },
+      {
+        "line": 115,
+        "text": "out[\"reason_code\"] = \"CLEANING_ONLY_HAS_data_asof\""
+      },
+      {
+        "line": 116,
+        "text": "elif \"asof\" in clean or \"data_asof\" in clean:"
+      },
+      {
+        "line": 119,
+        "text": "out[\"reason_code\"] = \"CLEAN_ASOF_NULL\""
+      },
+      {
+        "line": 122,
+        "text": "source_asof = normalize_asof(scope.get(\"data_asof\"))"
+      },
+      {
+        "line": 123,
+        "text": "clean_asof = normalize_asof(clean.get(\"cleaning_as_of\"))"
+      },
+      {
+        "line": 125,
+        "text": "cache_asof = normalize_asof(cache.get(\"asof\"))"
+      },
+      {
+        "line": 126,
+        "text": "pit_ok = scope.get(\"operational_readiness\") == \"PASS\""
+      },
+      {
+        "line": 128,
+        "text": "out[\"SOURCE_ASOF\"] = source_asof"
+      },
+      {
+        "line": 129,
+        "text": "out[\"CLEAN_ASOF\"] = clean_asof"
+      },
+      {
+        "line": 130,
+        "text": "out[\"CACHE_ASOF\"] = cache_asof"
+      },
+      {
+        "line": 131,
+        "text": "out[\"PIT_PASS\"] = bool(pit_ok)"
+      },
+      {
+        "line": 133,
+        "text": "if source_asof is None:"
+      },
+      {
+        "line": 136,
+        "text": "if clean_asof is None:"
+      },
+      {
+        "line": 137,
+        "text": "out[\"reason_code\"] = \"CLEAN_ASOF_NULL\""
+      },
+      {
+        "line": 139,
+        "text": "if cache_asof is None:"
+      },
+      {
+        "line": 143,
+        "text": "if source_asof != clean_asof and source_asof != cache_asof and clean_asof != cache_asof:"
+      },
+      {
+        "line": 147,
+        "text": "if source_asof != clean_asof and source_asof == cache_asof:"
+      },
+      {
+        "line": 150,
+        "text": "if source_asof != cache_asof and source_asof == clean_asof:"
+      },
+      {
+        "line": 153,
+        "text": "if source_asof != clean_asof and clean_asof == cache_asof:"
+      },
+      {
+        "line": 156,
+        "text": "if source_asof != clean_asof:"
+      },
+      {
+        "line": 159,
+        "text": "if source_asof != cache_asof:"
+      },
+      {
+        "line": 162,
+        "text": "if clean_asof != cache_asof:"
+      },
+      {
+        "line": 166,
+        "text": "if not pit_ok:"
+      },
+      {
+        "line": 167,
+        "text": "out[\"reason_code\"] = \"PIT_NOT_PASS\""
+      },
+      {
+        "line": 175,
+        "text": "def atomic_write_json(p: Path, obj: dict[str, Any]) -> None:"
+      },
+      {
+        "line": 182,
+        "text": "def heartbeat(module: str, state: str, done: int, total: int, *, note: str = \"\") -> None:"
+      },
+      {
+        "line": 186,
+        "text": "def run_cmd(script: Path, extra: list[str] | None = None) -> int:"
+      },
+      {
+        "line": 204,
+        "text": "return last.get(\"last_successful_date\") == cn_iso and last.get(\"status\") == \"PASS\" and cur.get(\"asof\") == cn_iso"
+      },
+      {
+        "line": 212,
+        "text": "gate = evaluate_lane_a_asof_gate("
+      },
+      {
+        "line": 220,
+        "text": "\"SOURCE_ASOF\": gate[\"SOURCE_ASOF\"],"
+      },
+      {
+        "line": 221,
+        "text": "\"CLEAN_ASOF\": gate[\"CLEAN_ASOF\"],"
+      },
+      {
+        "line": 222,
+        "text": "\"CACHE_ASOF\": gate[\"CACHE_ASOF\"],"
+      },
+      {
+        "line": 223,
+        "text": "\"PIT_PASS\": gate[\"PIT_PASS\"],"
+      },
+      {
+        "line": 230,
+        "text": "f\"[DATA][JQ] source={body['SOURCE_ASOF']} clean={body['CLEAN_ASOF']} \""
+      },
+      {
+        "line": 231,
+        "text": "f\"cache={body['CACHE_ASOF']} mode={body['MODE']} status={body['STATUS']} \""
+      },
+      {
+        "line": 238,
+        "text": "def collect_lane_b(lane: dict, *, ingest: bool, asof: str) -> dict[str, Any]:"
+      },
+      {
+        "line": 241,
+        "text": "run_cmd(mat, [\"--phase\", \"asof_align\", \"--asof\", asof])"
+      },
+      {
+        "line": 242,
+        "text": "run_cmd(mat, [\"--phase\", \"acceptance\", \"--asof\", asof])"
+      },
+      {
+        "line": 245,
+        "text": "align = load_json(Path(lane[\"asof_align_current\"]))"
+      },
+      {
+        "line": 253,
+        "text": "\"SOURCE_ASOF\": align.get(\"hist_end\") or align.get(\"aligned_to_jq_asof_yyyymmdd\"),"
+      },
+      {
+        "line": 273,
+        "text": "asof = cur.get(\"asof\")"
+      },
+      {
+        "line": 276,
+        "text": "st = \"PASS\" if asof and failed == 0 else (\"DEGRADED\" if asof else \"NO\")"
+      },
+      {
+        "line": 281,
+        "text": "\"DISCOVERY_ASOF\": asof,"
+      },
+      {
+        "line": 297,
+        "text": "print(f\"[DATA][SELLSIDE] MS/GS/CLSA asof={asof} new={new_n} mode={body['MODE']} status={st}\", flush=True)"
+      },
+      {
+        "line": 329,
+        "text": "\"DISCOVERY_ASOF\": cn_iso,"
+      },
+      {
+        "line": 347,
+        "text": "\"DISCOVERY_ASOF\": obs_news.get(\"asof\") or cn_iso,"
+      },
+      {
+        "line": 362,
+        "text": "\"DISCOVERY_ASOF\": cn_iso,"
+      },
+      {
+        "line": 381,
+        "text": "def run_us_l1_collector(lane_e: dict, *, ingest: bool, cn_iso: str) -> None:"
+      },
+      {
+        "line": 401,
+        "text": "\"DISCOVERY_ASOF\": cn_iso,"
+      },
+      {
+        "line": 413,
+        "text": "\"DISCOVERY_ASOF\": cn_iso,"
+      },
+      {
+        "line": 455,
+        "text": "\"snapshot_current\": str(Path(lane.get(\"fine_grained_root\", \"\")) / \"CURRENT\" / \"US_FINE_GRAINED_SNAPSHOT_CURRENT.json\") if lane.get(\"fine_grained_root\") else None,"
+      },
+      {
+        "line": 456,
+        "text": "\"mapping_prior_current\": str(Path(lane.get(\"fine_grained_root\", \"\")) / \"CURRENT\" / \"A_SHARE_MAPPING_PRIOR_CURRENT.json\") if lane.get(\"fine_grained_root\") else None,"
+      },
+      {
+        "line": 550,
+        "text": "\"A_SHARE_MAPPING_PRIOR\": str(Path(L[\"F_US_MARKET_STATE_INCREMENTAL\"].get(\"fine_grained_root\", \"\")) / \"CURRENT\" / \"A_SHARE_MAPPING_PRIOR_CURRENT.json\") if L[\"F_US_MARKET_STATE_INCREMENTAL\"].get(\"fine_g"
+      },
+      {
+        "line": 569,
+        "text": "def archive_daily(cn_date: str, manifest: dict[str, Any], lanes: dict[str, dict]) -> None:"
+      },
+      {
+        "line": 578,
+        "text": "def print_data_precheck(manifest: dict[str, Any]) -> None:"
+      },
+      {
+        "line": 585,
+        "text": "f\"JQ_ASOF = source={jq.get('SOURCE_ASOF')} clean={jq.get('CLEAN_ASOF')} \""
+      },
+      {
+        "line": 586,
+        "text": "f\"cache={jq.get('CACHE_ASOF')} mode={jq.get('MODE')} status={jq.get('STATUS')} \""
+      }
+    ]
+  },
+  {
+    "rel": "脚本/index_minute_align_incremental_engine_r1.py",
+    "role": "index minute incremental",
+    "exists": true,
+    "size": 41432,
+    "lines": 1098,
+    "functions": [
+      {
+        "name": "now_iso",
+        "line": 68,
+        "args": 0
+      },
+      {
+        "name": "now_stamp",
+        "line": 72,
+        "args": 0
+      },
+      {
+        "name": "sha256_file",
+        "line": 76,
+        "args": 1
+      },
+      {
+        "name": "code_from_safe",
+        "line": 84,
+        "args": 1
+      },
+      {
+        "name": "code_to_safe",
+        "line": 92,
+        "args": 1
+      },
+      {
+        "name": "wjson",
+        "line": 96,
+        "args": 2
+      },
+      {
+        "name": "load_calendar",
+        "line": 101,
+        "args": 1
+      },
+      {
+        "name": "latest_raw_partition_map",
+        "line": 135,
+        "args": 1
+      },
+      {
+        "name": "list_aligned_partitions",
+        "line": 162,
+        "args": 1
+      },
+      {
+        "name": "hardlink_or_copy",
+        "line": 174,
+        "args": 2
+      },
+      {
+        "name": "load_active_windows",
+        "line": 186,
+        "args": 1
+      },
+      {
+        "name": "align_raw_frame",
+        "line": 206,
+        "args": 1
+      },
+      {
+        "name": "merge_aligned",
+        "line": 283,
+        "args": 2
+      },
+      {
+        "name": "read_previous_cutoff",
+        "line": 356,
+        "args": 1
+      },
+      {
+        "name": "load_current_pointer",
+        "line": 371,
+        "args": 0
+      },
+      {
+        "name": "plan_affected_partitions",
+        "line": 377,
+        "args": 0
+      },
+      {
+        "name": "source_completeness_gate",
+        "line": 416,
+        "args": 0
+      },
+      {
+        "name": "storage_non_regression_gate",
+        "line": 500,
+        "args": 1
+      },
+      {
+        "name": "register_orphan",
+        "line": 532,
+        "args": 1
+      },
+      {
+        "name": "maybe_inject",
+        "line": 572,
+        "args": 3
+      },
+      {
+        "name": "build_incremental",
+        "line": 591,
+        "args": 1
+      },
+      {
+        "name": "run_guarded",
+        "line": 983,
+        "args": 1
+      },
+      {
+        "name": "resolve_universe",
+        "line": 1005,
+        "args": 1
+      },
+      {
+        "name": "main",
+        "line": 1015,
+        "args": 1
+      },
+      {
+        "name": "score",
+        "line": 144,
+        "args": 1
+      },
+      {
+        "name": "finalize",
+        "line": 316,
+        "args": 1
+      }
+    ],
+    "classes": [
+      {
+        "name": "StorageMetrics",
+        "line": 302
+      },
+      {
+        "name": "BuildContext",
+        "line": 328
+      }
+    ],
+    "cli_options": [
+      {
+        "opts": [
+          "--previous-root"
+        ],
+        "default": "",
+        "line": 1018
+      },
+      {
+        "opts": [
+          "--new-cutoff"
+        ],
+        "default": null,
+        "line": 1019
+      },
+      {
+        "opts": [
+          "--increment-dates"
+        ],
+        "default": "",
+        "line": 1020
+      },
+      {
+        "opts": [
+          "--universe"
+        ],
+        "default": "from_previous",
+        "line": 1021
+      },
+      {
+        "opts": [
+          "--codes"
+        ],
+        "default": "",
+        "line": 1022
+      },
+      {
+        "opts": [
+          "--raw-root"
+        ],
+        "default": null,
+        "line": 1023
+      },
+      {
+        "opts": [
+          "--releases-root"
+        ],
+        "default": null,
+        "line": 1024
+      },
+      {
+        "opts": [
+          "--no-cutover"
+        ],
+        "default": null,
+        "line": 1025
+      },
+      {
+        "opts": [
+          "--no-hand-update"
+        ],
+        "default": null,
+        "line": 1026
+      },
+      {
+        "opts": [
+          "--plan-only"
+        ],
+        "default": null,
+        "line": 1027
+      },
+      {
+        "opts": [
+          "--inject-fail"
+        ],
+        "default": "",
+        "line": 1028
+      },
+      {
+        "opts": [
+          "--task-id"
+        ],
+        "default": "BLACKBOX_INDEX_MINUTE_INCREMENTAL_ALIGN_ARCHITECTURE_FIX_R1",
+        "line": 1029
+      },
+      {
+        "opts": [
+          "--skip-source-gate"
+        ],
+        "default": null,
+        "line": 1030
+      },
+      {
+        "opts": [
+          "--extra-trade-dates"
+        ],
+        "default": "",
+        "line": 1031
+      },
+      {
+        "opts": [
+          "--pointer-path"
+        ],
+        "default": "",
+        "line": 1032
+      },
+      {
+        "opts": [
+          "--orphan-registry-path"
+        ],
+        "default": "",
+        "line": 1033
+      }
+    ],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 6,
+        "text": "Transactional staging + orphan registry. Does not change logical BAR_END/PIT semantics."
+      },
+      {
+        "line": 47,
+        "text": "\"trade_date\","
+      },
+      {
+        "line": 61,
+        "text": "\"calendar_asof\","
+      },
+      {
+        "line": 96,
+        "text": "def wjson(path: Path, obj) -> None:"
+      },
+      {
+        "line": 102,
+        "text": "cals = sorted(CAL_DIR.glob(\"calendar_cn_exchange_v2_asof_*\"))"
+      },
+      {
+        "line": 121,
+        "text": "for col in (\"calendar_date\", \"trade_date\", \"date\", \"cal_date\", \"day\"):"
+      },
+      {
+        "line": 135,
+        "text": "def latest_raw_partition_map(raw_root: Path | None = None) -> dict[tuple[str, str, str], Path]:"
+      },
+      {
+        "line": 186,
+        "text": "def load_active_windows(required: Iterable[str]) -> dict[str, tuple[str, str | None]]:"
+      },
+      {
+        "line": 190,
+        "text": "active: dict[str, tuple[str, str | None]] = {}"
+      },
+      {
+        "line": 193,
+        "text": "a0 = str(getattr(r, \"active_from\", None) or getattr(r, \"launch_date\", None) or \"2014-01-01\")[:10]"
+      },
+      {
+        "line": 194,
+        "text": "a1 = getattr(r, \"active_to\", None) or getattr(r, \"termination_date\", None)"
+      },
+      {
+        "line": 196,
+        "text": "None"
+      },
+      {
+        "line": 197,
+        "text": "if a1 is None or (isinstance(a1, float) and pd.isna(a1)) or str(a1) in (\"\", \"None\", \"nan\")"
+      },
+      {
+        "line": 202,
+        "text": "active.setdefault(code, (\"2014-01-01\", None))"
+      },
+      {
+        "line": 213,
+        "text": "active: dict[str, tuple[str, str | None]],"
+      },
+      {
+        "line": 237,
+        "text": "df[\"trade_date\"] = df[\"time\"].dt.strftime(\"%Y-%m-%d\")"
+      },
+      {
+        "line": 238,
+        "text": "cal_ok = df[\"trade_date\"].isin(cal_days)"
+      },
+      {
+        "line": 241,
+        "text": "a0, a1 = active.get(code, (\"2014-01-01\", None))"
+      },
+      {
+        "line": 242,
+        "text": "act = df[\"trade_date\"] >= a0"
+      },
+      {
+        "line": 244,
+        "text": "act &= df[\"trade_date\"] <= a1"
+      },
+      {
+        "line": 260,
+        "text": "\"trade_date\": df[\"trade_date\"],"
+      },
+      {
+        "line": 274,
+        "text": "\"calendar_asof\": cal_path_name,"
+      },
+      {
+        "line": 284,
+        "text": "if base is None or base.empty:"
+      },
+      {
+        "line": 286,
+        "text": "elif delta is None or delta.empty:"
+      },
+      {
+        "line": 296,
+        "text": "if \"trade_date\" not in g.columns:"
+      },
+      {
+        "line": 297,
+        "text": "g[\"trade_date\"] = g[\"time\"].dt.strftime(\"%Y-%m-%d\")"
+      },
+      {
+        "line": 313,
+        "text": "write_amplification: float | None = None"
+      },
+      {
+        "line": 314,
+        "text": "physical_write_to_reused_logical_ratio: float | None = None"
+      },
+      {
+        "line": 316,
+        "text": "def finalize(self) -> None:"
+      },
+      {
+        "line": 320,
+        "text": "self.write_amplification = None if self.new_physical_bytes == 0 else float(\"inf\")"
+      },
+      {
+        "line": 324,
+        "text": "self.physical_write_to_reused_logical_ratio = None"
+      },
+      {
+        "line": 341,
+        "text": "inject_fail: str | None = None"
+      },
+      {
+        "line": 347,
+        "text": "extra_trade_dates: list[str] = field(default_factory=list)"
+      },
+      {
+        "line": 352,
+        "text": "failure_phase: str | None = None"
+      },
+      {
+        "line": 353,
+        "text": "failure_reason: str | None = None"
+      },
+      {
+        "line": 365,
+        "text": "if \"asof_\" in name:"
+      },
+      {
+        "line": 366,
+        "text": "tag = name.split(\"asof_\")[-1].replace(\".parquet\", \"\")"
+      },
+      {
+        "line": 384,
+        "text": "increment_dates: list[str] | None,"
+      },
+      {
+        "line": 385,
+        "text": "force_keys: Iterable[tuple[str, str, str]] | None = None,"
+      },
+      {
+        "line": 388,
+        "text": "if force_keys is not None:"
+      },
+      {
+        "line": 421,
+        "text": "active: dict[str, tuple[str, str | None]],"
+      },
+      {
+        "line": 422,
+        "text": "allow_empty_codes: set[str] | None = None,"
+      },
+      {
+        "line": 423,
+        "text": "sample_limit_per_file: int | None = None,"
+      },
+      {
+        "line": 445,
+        "text": "a0, a1 = active.get(code, (\"2014-01-01\", None))"
+      },
+      {
+        "line": 451,
+        "text": "if src is None:"
+      },
+      {
+        "line": 476,
+        "text": "marker = None"
+      },
+      {
+        "line": 505,
+        "text": "new_current: str | None,"
+      },
+      {
+        "line": 550,
+        "text": "\"current_reference\": load_current_pointer().get(\"release_id\") if POINTER.exists() else None,"
+      },
+      {
+        "line": 572,
+        "text": "def maybe_inject(ctx: BuildContext, phase: str, progress: float) -> None:"
+      },
+      {
+        "line": 587,
+        "text": "if phase == p_phase and progress >= p_prog:"
+      },
+      {
+        "line": 596,
+        "text": "for d in ctx.extra_trade_dates:"
+      },
+      {
+        "line": 608,
+        "text": "increment_dates=ctx.increment_dates or None,"
+      },
+      {
+        "line": 695,
+        "text": "f\"index_minute_aligned__{code_to_safe(code)}__{freq}__{year}__asof_{ctx.new_cutoff.replace('-', '')}.parquet\""
+      },
+      {
+        "line": 701,
+        "text": "if src_prev is None:"
+      },
+      {
+        "line": 724,
+        "text": "if raw_src is not None and dates:"
+      },
+      {
+        "line": 783,
+        "text": "\"prev\": str(prev_parts.get(key)) if key in prev_parts else None,"
+      },
+      {
+        "line": 784,
+        "text": "\"raw\": str(raw_src) if raw_src else None,"
+      },
+      {
+        "line": 792,
+        "text": "probe_code = \"000300.XSHG\" if \"000300.XSHG\" in required_set else (required[0] if required else None)"
+      },
+      {
+        "line": 849,
+        "text": "\"calendar_asof\": str(cal_path),"
+      },
+      {
+        "line": 868,
+        "text": "\"calendar_asof\": str(cal_path),"
+      },
+      {
+        "line": 885,
+        "text": "new_current=None,"
+      },
+      {
+        "line": 917,
+        "text": "last_err: Exception | None = None"
+      },
+      {
+        "line": 921,
+        "text": "last_err = None"
+      },
+      {
+        "line": 925,
+        "text": "time.sleep(min(30, 2 * attempt))"
+      },
+      {
+        "line": 926,
+        "text": "if last_err is not None:"
+      },
+      {
+        "line": 1015,
+        "text": "def main(argv: list[str] | None = None) -> int:"
+      },
+      {
+        "line": 1064,
+        "text": "release_id = f\"BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_{new_cutoff.replace('-', '')}_{stamp}\""
+      },
+      {
+        "line": 1082,
+        "text": "inject_fail=args.inject_fail or None,"
+      },
+      {
+        "line": 1089,
+        "text": "extra_trade_dates=[d.strip() for d in args.extra_trade_dates.split(\",\") if d.strip()],"
+      }
+    ]
+  },
+  {
+    "rel": "脚本/index_minute_align_clean_antileak_seal_r1.py",
+    "role": "index minute clean+antileak",
+    "exists": true,
+    "size": 16480,
+    "lines": 421,
+    "functions": [
+      {
+        "name": "now_iso",
+        "line": 52,
+        "args": 0
+      },
+      {
+        "name": "sha256_file",
+        "line": 56,
+        "args": 1
+      },
+      {
+        "name": "load_calendar",
+        "line": 64,
+        "args": 1
+      },
+      {
+        "name": "latest_partition_map",
+        "line": 68,
+        "args": 0
+      },
+      {
+        "name": "run_full_legacy",
+        "line": 72,
+        "args": 1
+      },
+      {
+        "name": "run_incremental",
+        "line": 310,
+        "args": 1
+      },
+      {
+        "name": "enforce_full_mode_hard_gate",
+        "line": 341,
+        "args": 1
+      },
+      {
+        "name": "main",
+        "line": 375,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [
+      {
+        "opts": [
+          "--mode"
+        ],
+        "default": "incremental",
+        "line": 377
+      },
+      {
+        "opts": [
+          "--cutoff"
+        ],
+        "default": "",
+        "line": 378
+      },
+      {
+        "opts": [
+          "--increment-dates"
+        ],
+        "default": "",
+        "line": 379
+      },
+      {
+        "opts": [
+          "--previous-root"
+        ],
+        "default": "",
+        "line": 380
+      },
+      {
+        "opts": [
+          "--universe"
+        ],
+        "default": "jq_all_732",
+        "line": 381
+      },
+      {
+        "opts": [
+          "--no-cutover"
+        ],
+        "default": null,
+        "line": 386
+      },
+      {
+        "opts": [
+          "--no-hand-update"
+        ],
+        "default": null,
+        "line": 387
+      },
+      {
+        "opts": [
+          "--plan-only"
+        ],
+        "default": null,
+        "line": 388
+      },
+      {
+        "opts": [
+          "--skip-hand-gate"
+        ],
+        "default": null,
+        "line": 389
+      },
+      {
+        "opts": [
+          "--skip-source-gate"
+        ],
+        "default": null,
+        "line": 390
+      },
+      {
+        "opts": [
+          "--explicit-full-rebuild-authorized"
+        ],
+        "default": null,
+        "line": 392
+      },
+      {
+        "opts": [
+          "--full-rebuild-task-class"
+        ],
+        "default": "",
+        "line": 397
+      },
+      {
+        "opts": [
+          "--full-rebuild-reason"
+        ],
+        "default": "",
+        "line": 403
+      },
+      {
+        "opts": [
+          "--full-rebuild-capacity-gb-estimate"
+        ],
+        "default": "",
+        "line": 404
+      }
+    ],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 89,
+        "text": "\"Use --mode incremental for asof bumps.\","
+      },
+      {
+        "line": 115,
+        "text": "release_id = f\"BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_{CUTOFF_DATE.replace('-', '')}_{stamp}\""
+      },
+      {
+        "line": 184,
+        "text": "/ f\"index_minute_aligned__{code.replace('.', '_')}__{freq}__{year}__asof_{CUTOFF_DATE.replace('-', '')}.parquet\""
+      },
+      {
+        "line": 228,
+        "text": "\"calendar_asof\": str(cal_path),"
+      },
+      {
+        "line": 292,
+        "text": "previous_release_id=\"NONE\","
+      },
+      {
+        "line": 341,
+        "text": "def enforce_full_mode_hard_gate(args: argparse.Namespace) -> None:"
+      },
+      {
+        "line": 342,
+        "text": "\"\"\"Daily/asof bumps MUST NOT use --mode full. Explicit rebuild only.\"\"\""
+      },
+      {
+        "line": 352,
+        "text": "\"--mode full is forbidden for routine asof/daily increments. \""
+      },
+      {
+        "line": 378,
+        "text": "ap.add_argument(\"--cutoff\", type=str, default=\"\", help=\"YYYY-MM-DD asof cutoff\")"
+      }
+    ]
+  },
+  {
+    "rel": "脚本/p7_guarded_5m_download.py",
+    "role": "P7 guarded 5m",
+    "exists": true,
+    "size": 30585,
+    "lines": 734,
+    "functions": [],
+    "classes": [],
+    "cli_options": [],
+    "api_lines": [
+      {
+        "line": 122,
+        "text": "jdb.auth()"
+      },
+      {
+        "line": 321,
+        "text": "import jqdatasdk as jq_direct"
+      },
+      {
+        "line": 327,
+        "text": "result = jq_direct.get_price("
+      },
+      {
+        "line": 361,
+        "text": "\"source\": \"JQData get_price\","
+      }
+    ],
+    "control_lines": [
+      {
+        "line": 3,
+        "text": "JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1"
+      },
+      {
+        "line": 15,
+        "text": "PARENT = Path(\"E:/BLACKBOX/数据/原始只读/JQData_9999_official_raw/_manifest/P7_minute_quota_aware_dynamic_batch_scheduler_fix_R1\")"
+      },
+      {
+        "line": 17,
+        "text": "OUT = Path(\"E:/BLACKBOX/数据/原始只读/JQData_9999_official_raw/_manifest/P7_minute_guarded_download_resume_5m_first_R1\")"
+      },
+      {
+        "line": 23,
+        "text": "for s in [\"preflight\",\"execution_log\",\"quota_log\",\"checkpoint\",\"stage_gate\",\"queue_update\",\"sidecar_log\",\"checksum_log\",\"reports\",\"manifest\"]:"
+      },
+      {
+        "line": 48,
+        "text": "\"E:/BLACKBOX/脚本/jq_resume_r2.py\","
+      },
+      {
+        "line": 107,
+        "text": "\"checkpoint_loaded\": False,"
+      },
+      {
+        "line": 127,
+        "text": "if spare is not None and spare <= 0:"
+      },
+      {
+        "line": 128,
+        "text": "print(\"Quota already exhausted, writing checkpoint and exiting\")"
+      },
+      {
+        "line": 131,
+        "text": "\"task\": \"JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1\","
+      },
+      {
+        "line": 142,
+        "text": "\"next_resume_requires_user_confirmation\": False,"
+      },
+      {
+        "line": 143,
+        "text": "\"next_resume_task\": \"JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1\","
+      },
+      {
+        "line": 144,
+        "text": "\"next_resume_queue_path\": str(five_m_queue_path),"
+      },
+      {
+        "line": 147,
+        "text": "cp_path = OUT / f\"checkpoint/p7_guarded_download_checkpoint_{NOW_TS}.json\""
+      },
+      {
+        "line": 150,
+        "text": "print(f\"Checkpoint: {cp_path.name}\")"
+      },
+      {
+        "line": 154,
+        "text": "five_batches = set()"
+      },
+      {
+        "line": 157,
+        "text": "if len(parts) >= 3 and parts[2].startswith(\"batch\"):"
+      },
+      {
+        "line": 158,
+        "text": "five_batches.add(parts[2])"
+      },
+      {
+        "line": 159,
+        "text": "max_batch = 0"
+      },
+      {
+        "line": 160,
+        "text": "for b in five_batches:"
+      },
+      {
+        "line": 162,
+        "text": "n = int(b.replace(\"batch\",\"\"))"
+      },
+      {
+        "line": 163,
+        "text": "if n > max_batch: max_batch = n"
+      },
+      {
+        "line": 165,
+        "text": "five_cov = min((max_batch+1)*5, 5509) if five_batches else 0"
+      },
+      {
+        "line": 167,
+        "text": "report_md = f\"\"\"# JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1 报告"
+      },
+      {
+        "line": 173,
+        "text": "| next_resume_task | JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1 |"
+      },
+      {
+        "line": 174,
+        "text": "| next_resume_requires_user_confirmation | false |"
+      },
+      {
+        "line": 176,
+        "text": "rp_path = OUT / f\"reports/JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1_REPORT_{NOW_TS}.md\""
+      },
+      {
+        "line": 181,
+        "text": "\"task\": \"JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1\","
+      },
+      {
+        "line": 193,
+        "text": "\"checkpoint_written\": True, \"stage_complete\": False,"
+      },
+      {
+        "line": 196,
+        "text": "\"next_resume_requires_user_confirmation\": False,"
+      },
+      {
+        "line": 203,
+        "text": "\"generated_by\": \"JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1\","
+      },
+      {
+        "line": 208,
+        "text": "man_path = OUT / f\"manifest/jq_p7_minute_guarded_download_resume_5m_first_r1_manifest_{NOW_TS}.json\""
+      },
+      {
+        "line": 233,
+        "text": "STOCKS_PER_BATCH = 5"
+      },
+      {
+        "line": 234,
+        "text": "QUOTA_LIMIT = 200_000_000"
+      },
+      {
+        "line": 245,
+        "text": "BATCH_SIZE = 5"
+      },
+      {
+        "line": 254,
+        "text": "batch_id = item.get(\"batch_id\", \"\")"
+      },
+      {
+        "line": 255,
+        "text": "pk = item.get(\"partition_key\", f\"5m/{year}/{batch_id}\")"
+      },
+      {
+        "line": 260,
+        "text": "if curr_quota is not None and curr_quota < max(est_quota, 10000):"
+      },
+      {
+        "line": 278,
+        "text": "batch_idx = int(batch_id.replace(\"batch\", \"\")) if batch_id.startswith(\"batch\") else 0"
+      },
+      {
+        "line": 279,
+        "text": "s = batch_idx * STOCKS_PER_BATCH"
+      },
+      {
+        "line": 284,
+        "text": "existing_5m = list(P7_DIR.glob(f\"stock_minute_5m__{year}__{batch_id}__*.parquet\"))"
+      },
+      {
+        "line": 303,
+        "text": "stock_codes = all_codes[s:s+STOCKS_PER_BATCH]"
+      },
+      {
+        "line": 317,
+        "text": "print(f\"  [{idx+1}/{len(queue_items)}] {year} {batch_id} x{len(stock_codes)} stocks, est={est_quota}\")"
+      },
+      {
+        "line": 333,
+        "text": "skip_paused=True,"
+      },
+      {
+        "line": 334,
+        "text": "fq=None,"
+      },
+      {
+        "line": 335,
+        "text": "count=None,"
+      },
+      {
+        "line": 338,
+        "text": "if result is not None and len(result) > 0:"
+      },
+      {
+        "line": 341,
+        "text": "fn = f\"stock_minute_5m__{year}__{batch_id}__{ver}__{NOW_TS}.parquet\""
+      },
+      {
+        "line": 355,
+        "text": "\"batch_id\": batch_id,"
+      },
+      {
+        "line": 379,
+        "text": "\"batch_id\": batch_id,"
+      },
+      {
+        "line": 399,
+        "text": "\"year\": year, \"batch_id\": batch_id,"
+      },
+      {
+        "line": 411,
+        "text": "\"checkpoint_written\": \"false\","
+      },
+      {
+        "line": 423,
+        "text": "\"year\": year, \"batch_id\": batch_id,"
+      },
+      {
+        "line": 435,
+        "text": "\"checkpoint_written\": \"false\","
+      },
+      {
+        "line": 450,
+        "text": "\"year\": year, \"batch_id\": batch_id,"
+      },
+      {
+        "line": 462,
+        "text": "\"checkpoint_written\": \"false\","
+      },
+      {
+        "line": 476,
+        "text": "print(f\"  Progress: {completed_this_run} completed, {failed_this_run} failed, quota_left~{curr_q}\")"
+      },
+      {
+        "line": 480,
+        "text": "if curr_quota is not None and curr_quota <= 0 and not stop_reason:"
+      },
+      {
+        "line": 489,
+        "text": "five_batches_after = set()"
+      },
+      {
+        "line": 494,
+        "text": "if bt.startswith(\"batch\"):"
+      },
+      {
+        "line": 495,
+        "text": "five_batches_after.add(bt)"
+      },
+      {
+        "line": 496,
+        "text": "max_batch_after = 0"
+      },
+      {
+        "line": 497,
+        "text": "for b in five_batches_after:"
+      },
+      {
+        "line": 499,
+        "text": "n = int(b.replace(\"batch\", \"\"))"
+      },
+      {
+        "line": 500,
+        "text": "if n > max_batch_after: max_batch_after = n"
+      },
+      {
+        "line": 502,
+        "text": "if max_batch_after == 0 and len(five_batches_after) > 0:"
+      },
+      {
+        "line": 503,
+        "text": "max_batch_after = len(five_batches_after) - 1"
+      },
+      {
+        "line": 504,
+        "text": "five_covered_after = min((max_batch_after + 1) * 5, 5509)"
+      },
+      {
+        "line": 506,
+        "text": "TOTAL_BATCHES = TOTAL_STOCKS // 5 + 1"
+      },
+      {
+        "line": 509,
+        "text": "print(f\"\\n5m files: {len(five_m_files_after)}, batches: {len(five_batches_after)}, max_batch={max_batch_after}\")"
+      },
+      {
+        "line": 514,
+        "text": "checkpoint = {"
+      },
+      {
+        "line": 515,
+        "text": "\"task\": \"JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1\","
+      },
+      {
+        "line": 529,
+        "text": "\"next_resume_requires_user_confirmation\": False,"
+      },
+      {
+        "line": 530,
+        "text": "\"next_resume_task\": \"JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1\","
+      },
+      {
+        "line": 531,
+        "text": "\"next_resume_queue_path\": str(five_m_queue_path) if not five_complete else \"\","
+      },
+      {
+        "line": 535,
+        "text": "cp_path = OUT / f\"checkpoint/p7_guarded_download_checkpoint_{NOW_TS}.json\""
+      },
+      {
+        "line": 537,
+        "text": "cp_path.write_text(json.dumps(checkpoint, ensure_ascii=False, indent=2), encoding=\"utf-8\")"
+      },
+      {
+        "line": 538,
+        "text": "print(f\"\\nCheckpoint: {cp_path.name}\")"
+      },
+      {
+        "line": 569,
+        "text": "curr_q_val = curr_quota if curr_quota is not None else 0"
+      },
+      {
+        "line": 574,
+        "text": "\"quota_used_delta\": str(spare - curr_q_val if spare and curr_q_val is not None else quota_used_total),"
+      },
+      {
+        "line": 619,
+        "text": "report_md = f\"\"\"# JQ_P7_MINUTE_GUARDED_DOWNLOAD_RESUME_5M_FIRST_R1 报告"
+      }
+    ]
+  },
+  {
+    "rel": "脚本/p7_guarded_1m_download.py",
+    "role": "P7 guarded 1m",
+    "exists": true,
+    "size": 27862,
+    "lines": 633,
+    "functions": [],
+    "classes": [],
+    "cli_options": [],
+    "api_lines": [
+      {
+        "line": 156,
+        "text": "jdb.auth()"
+      },
+      {
+        "line": 299,
+        "text": "import jqdatasdk as jq_direct"
+      },
+      {
+        "line": 305,
+        "text": "result = jq_direct.get_price("
+      },
+      {
+        "line": 331,
+        "text": "\"generated_at\": NOW_ISO, \"source\": \"JQData get_price\","
+      }
+    ],
+    "control_lines": [
+      {
+        "line": 15,
+        "text": "PARENT = Path(\"E:/BLACKBOX/数据/原始只读/JQData_9999_official_raw/_manifest/P7_minute_quota_aware_dynamic_batch_scheduler_fix_R1\")"
+      },
+      {
+        "line": 23,
+        "text": "for s in [\"preflight\",\"execution_log\",\"quota_log\",\"checkpoint\",\"stage_gate\",\"queue_update\",\"sidecar_log\",\"checksum_log\",\"reports\",\"manifest\"]:"
+      },
+      {
+        "line": 31,
+        "text": "STOCKS_PER_BATCH = 5"
+      },
+      {
+        "line": 32,
+        "text": "TOTAL_BATCHES = (TOTAL_STOCKS + STOCKS_PER_BATCH - 1) // STOCKS_PER_BATCH"
+      },
+      {
+        "line": 35,
+        "text": "QUOTA_LIMIT = 200_000_000"
+      },
+      {
+        "line": 48,
+        "text": "five_m_gate_dir = Path(\"E:/BLACKBOX/数据/原始只读/JQData_9999_official_raw/_manifest/P7_minute_guarded_download_resume_5m_first_R1/stage_gate\")"
+      },
+      {
+        "line": 65,
+        "text": "m = re.match(r\"stock_minute_5m__(\\d{4})__(batch\\d+)__.*\\.parquet\", f.name)"
+      },
+      {
+        "line": 72,
+        "text": "five_batches = set()"
+      },
+      {
+        "line": 75,
+        "text": "if len(parts) >= 3 and parts[2].startswith(\"batch\"):"
+      },
+      {
+        "line": 76,
+        "text": "five_batches.add(parts[2])"
+      },
+      {
+        "line": 77,
+        "text": "max_b = max(int(b.replace(\"batch\",\"\")) for b in five_batches) if five_batches else 0"
+      },
+      {
+        "line": 78,
+        "text": "five_covered = min((max_b + 1) * 5, TOTAL_STOCKS) if five_batches else 0"
+      },
+      {
+        "line": 97,
+        "text": "\"E:/BLACKBOX/脚本/jq_resume_r2.py\","
+      },
+      {
+        "line": 165,
+        "text": "if spare is not None and spare <= 0:"
+      },
+      {
+        "line": 167,
+        "text": "print(\"QUOTA ALREADY 0 — writing checkpoint only\")"
+      },
+      {
+        "line": 177,
+        "text": "\"next_resume_requires_user_confirmation\": False,"
+      },
+      {
+        "line": 178,
+        "text": "\"next_resume_task\": TASK,"
+      },
+      {
+        "line": 179,
+        "text": "\"next_resume_queue_path\": str(one_m_queue_path),"
+      },
+      {
+        "line": 182,
+        "text": "cp_path = OUT / f\"checkpoint/p7_guarded_download_checkpoint_{NOW_TS}.json\""
+      },
+      {
+        "line": 185,
+        "text": "print(f\"Checkpoint: {cp_path.name}\")"
+      },
+      {
+        "line": 192,
+        "text": "| next_resume_task | {TASK} |"
+      },
+      {
+        "line": 193,
+        "text": "| next_resume_requires_user_confirmation | false |"
+      },
+      {
+        "line": 208,
+        "text": "\"checkpoint_written\": True, \"stage_complete\": False,"
+      },
+      {
+        "line": 211,
+        "text": "\"next_resume_requires_user_confirmation\": False,"
+      },
+      {
+        "line": 259,
+        "text": "batch_id = item.get(\"batch_id\", \"\")"
+      },
+      {
+        "line": 260,
+        "text": "pk = item.get(\"partition_key\", f\"1m/{year}/{batch_id}\")"
+      },
+      {
+        "line": 265,
+        "text": "if curr_quota is not None and curr_quota < max(est_quota, 10000):"
+      },
+      {
+        "line": 280,
+        "text": "existing_1m = list(P7_DIR.glob(f\"stock_minute_1m__{year}__{batch_id}__*.parquet\"))"
+      },
+      {
+        "line": 288,
+        "text": "batch_idx = int(batch_id.replace(\"batch\", \"\")) if batch_id.startswith(\"batch\") else 0"
+      },
+      {
+        "line": 289,
+        "text": "s = batch_idx * STOCKS_PER_BATCH"
+      },
+      {
+        "line": 290,
+        "text": "stock_codes = ALL_CODES[s:s+STOCKS_PER_BATCH]"
+      },
+      {
+        "line": 296,
+        "text": "print(f\"  [{idx+1}/{len(queue_items)}] {year} {batch_id} x{len(stock_codes)} stocks, est={est_quota}\")"
+      },
+      {
+        "line": 311,
+        "text": "skip_paused=True,"
+      },
+      {
+        "line": 312,
+        "text": "fq=None,"
+      },
+      {
+        "line": 313,
+        "text": "count=None,"
+      },
+      {
+        "line": 316,
+        "text": "if result is not None and len(result) > 0:"
+      },
+      {
+        "line": 318,
+        "text": "fn = f\"stock_minute_1m__{year}__{batch_id}__{ver}__{NOW_TS}.parquet\""
+      },
+      {
+        "line": 328,
+        "text": "\"year\": year, \"batch_id\": batch_id,"
+      },
+      {
+        "line": 345,
+        "text": "\"year\": year, \"batch_id\": batch_id,"
+      },
+      {
+        "line": 361,
+        "text": "\"year\": year, \"batch_id\": batch_id,"
+      },
+      {
+        "line": 373,
+        "text": "\"checkpoint_written\": \"false\","
+      },
+      {
+        "line": 381,
+        "text": "\"year\": year, \"batch_id\": batch_id,"
+      },
+      {
+        "line": 393,
+        "text": "\"checkpoint_written\": \"false\","
+      },
+      {
+        "line": 402,
+        "text": "\"year\": year, \"batch_id\": batch_id,"
+      },
+      {
+        "line": 411,
+        "text": "\"ledger_updated\": \"false\", \"checkpoint_written\": \"false\","
+      },
+      {
+        "line": 421,
+        "text": "print(f\"  Progress: {completed_this_run} completed, {failed_this_run} failed, quota_left~{curr_q}\")"
+      },
+      {
+        "line": 425,
+        "text": "if curr_quota is not None and curr_quota <= 0 and not stop_reason:"
+      },
+      {
+        "line": 434,
+        "text": "one_batches = set()"
+      },
+      {
+        "line": 437,
+        "text": "if len(parts) >= 3 and parts[2].startswith(\"batch\"):"
+      },
+      {
+        "line": 438,
+        "text": "one_batches.add(parts[2])"
+      },
+      {
+        "line": 439,
+        "text": "max_b = max(int(b.replace(\"batch\",\"\")) for b in one_batches) if one_batches else 0"
+      },
+      {
+        "line": 440,
+        "text": "one_covered = min((max_b + 1) * 5, TOTAL_STOCKS) if one_batches else 0"
+      },
+      {
+        "line": 443,
+        "text": "print(f\"\\n1m files: {len(one_m_real)}, batches: {len(one_batches)}, max_batch={max_b}\")"
+      },
+      {
+        "line": 449,
+        "text": "checkpoint_data = {"
+      },
+      {
+        "line": 460,
+        "text": "\"next_resume_requires_user_confirmation\": False,"
+      },
+      {
+        "line": 461,
+        "text": "\"next_resume_task\": TASK, \"next_resume_queue_path\": next_queue,"
+      },
+      {
+        "line": 464,
+        "text": "cp_path = OUT / f\"checkpoint/p7_guarded_download_checkpoint_{NOW_TS}.json\""
+      },
+      {
+        "line": 466,
+        "text": "cp_path.write_text(json.dumps(checkpoint_data, ensure_ascii=False, indent=2), encoding=\"utf-8\")"
+      },
+      {
+        "line": 467,
+        "text": "print(f\"\\nCheckpoint: {cp_path.name}\")"
+      },
+      {
+        "line": 493,
+        "text": "curr_q_val = curr_quota if curr_quota is not None else 0"
+      },
+      {
+        "line": 497,
+        "text": "\"quota_used_delta\": str(spare - curr_q_val if spare and curr_q_val is not None else quota_used_total),"
+      },
+      {
+        "line": 582,
+        "text": "| self_continue_allowed | {checkpoint_data['self_continue_allowed_next_quota_day']} |"
+      },
+      {
+        "line": 583,
+        "text": "| next_resume_task | {checkpoint_data['next_resume_task']} |"
+      },
+      {
+        "line": 584,
+        "text": "| next_resume_requires_user_confirmation | {checkpoint_data['next_resume_requires_user_confirmation']} |"
+      },
+      {
+        "line": 605,
+        "text": "\"checkpoint_written\": True,"
+      },
+      {
+        "line": 609,
+        "text": "\"self_continue_allowed_next_quota_day\": checkpoint_data[\"self_continue_allowed_next_quota_day\"],"
+      },
+      {
+        "line": 610,
+        "text": "\"next_resume_requires_user_confirmation\": checkpoint_data[\"next_resume_requires_user_confirmation\"],"
+      },
+      {
+        "line": 632,
+        "text": "print(f\"self_continue: {checkpoint_data['self_continue_allowed_next_quota_day']}\")"
+      }
+    ]
+  },
+  {
+    "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+    "role": "cache compiler daily",
+    "exists": true,
+    "size": 38650,
+    "lines": 950,
+    "functions": [
+      {
+        "name": "now_iso",
+        "line": 44,
+        "args": 0
+      },
+      {
+        "name": "now_cn",
+        "line": 48,
+        "args": 0
+      },
+      {
+        "name": "ts",
+        "line": 52,
+        "args": 0
+      },
+      {
+        "name": "wjson",
+        "line": 56,
+        "args": 2
+      },
+      {
+        "name": "wtext",
+        "line": 63,
+        "args": 2
+      },
+      {
+        "name": "log",
+        "line": 70,
+        "args": 1
+      },
+      {
+        "name": "sha256_bytes",
+        "line": 79,
+        "args": 1
+      },
+      {
+        "name": "file_sha",
+        "line": 83,
+        "args": 1
+      },
+      {
+        "name": "ensure_dirs",
+        "line": 94,
+        "args": 0
+      },
+      {
+        "name": "pointer_fingerprint",
+        "line": 107,
+        "args": 0
+      },
+      {
+        "name": "write_static_registries",
+        "line": 124,
+        "args": 0
+      },
+      {
+        "name": "load_current_standard",
+        "line": 235,
+        "args": 0
+      },
+      {
+        "name": "find_parquets",
+        "line": 243,
+        "args": 1
+      },
+      {
+        "name": "read_price_frame",
+        "line": 249,
+        "args": 2
+      },
+      {
+        "name": "compute_factors",
+        "line": 312,
+        "args": 1
+      },
+      {
+        "name": "write_year_partitions",
+        "line": 346,
+        "args": 3
+      },
+      {
+        "name": "antileak_gate",
+        "line": 363,
+        "args": 3
+      },
+      {
+        "name": "market_structure",
+        "line": 372,
+        "args": 1
+      },
+      {
+        "name": "build_release",
+        "line": 397,
+        "args": 3
+      },
+      {
+        "name": "write_hand_policy",
+        "line": 768,
+        "args": 0
+      },
+      {
+        "name": "hand_release_note",
+        "line": 878,
+        "args": 1
+      },
+      {
+        "name": "main",
+        "line": 906,
+        "args": 0
+      },
+      {
+        "name": "clip",
+        "line": 454,
+        "args": 1
+      },
+      {
+        "name": "tag_pit",
+        "line": 473,
+        "args": 2
+      },
+      {
+        "name": "pick",
+        "line": 267,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [
+      {
+        "opts": [
+          "--mode"
+        ],
+        "default": "canary",
+        "line": 908
+      },
+      {
+        "opts": [
+          "--lookback-days"
+        ],
+        "default": 60,
+        "line": 909
+      },
+      {
+        "opts": [
+          "--start"
+        ],
+        "default": null,
+        "line": 910
+      },
+      {
+        "opts": [
+          "--publish",
+          "--force-publish"
+        ],
+        "default": null,
+        "line": 911
+      }
+    ],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 41,
+        "text": "PRICE_ADJ_TAG = \"RAW_NONE\""
+      },
+      {
+        "line": 56,
+        "text": "def wjson(path: Path, obj: Any) -> None:"
+      },
+      {
+        "line": 63,
+        "text": "def wtext(path: Path, text: str) -> None:"
+      },
+      {
+        "line": 70,
+        "text": "def log(msg: str) -> None:"
+      },
+      {
+        "line": 94,
+        "text": "def ensure_dirs() -> None:"
+      },
+      {
+        "line": 110,
+        "text": "return {\"exists\": False, \"sha256\": None, \"cache_release_id\": None, \"release_root\": None}"
+      },
+      {
+        "line": 124,
+        "text": "def write_static_registries() -> None:"
+      },
+      {
+        "line": 126,
+        "text": "STOCK_DAILY_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Stock daily PIT snapshot"
+      },
+      {
+        "line": 128,
+        "text": "ETF_DAILY_PIT_R1,L1,ETF,ACTIVE,year/signal_date,ETF daily PIT snapshot"
+      },
+      {
+        "line": 130,
+        "text": "FUND_DAILY_PIT_R1,L1,FUND,ACTIVE,year/signal_date,Fund daily PIT (first-class asset)"
+      },
+      {
+        "line": 134,
+        "text": "INDEX_CONSTITUENT_PIT_R1,L1,INDEX,ACTIVE,year/asof_date,Index constituents as-of"
+      },
+      {
+        "line": 135,
+        "text": "INDEX_WEIGHT_PIT_R1,L1,INDEX,ACTIVE,index/snapshot,Official index component weights PIT last-known snapshot"
+      },
+      {
+        "line": 137,
+        "text": "SW_L1_MEMBERSHIP_PIT_R1,L1,STOCK,ACTIVE_SOURCE_READY,year/asof_date,SW L1 membership PIT (source ready; structure product separate)"
+      },
+      {
+        "line": 139,
+        "text": "MARKET_UNIVERSE_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Market structure universe (not trade filter)"
+      },
+      {
+        "line": 140,
+        "text": "STOCK_TRADEABILITY_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Tradeability facts ST/suspend/limits"
+      },
+      {
+        "line": 150,
+        "text": "STOCK_DAILY_PIT_R1,signal_date,date,SAME_DAY_KNOWN_EOD,"
+      },
+      {
+        "line": 151,
+        "text": "STOCK_DAILY_PIT_R1,code,str,STATIC_ASOF,"
+      },
+      {
+        "line": 152,
+        "text": "STOCK_DAILY_PIT_R1,open,float,SAME_DAY_KNOWN_EOD,RAW_NONE"
+      },
+      {
+        "line": 153,
+        "text": "STOCK_DAILY_PIT_R1,high,float,SAME_DAY_KNOWN_EOD,RAW_NONE"
+      },
+      {
+        "line": 154,
+        "text": "STOCK_DAILY_PIT_R1,low,float,SAME_DAY_KNOWN_EOD,RAW_NONE"
+      },
+      {
+        "line": 155,
+        "text": "STOCK_DAILY_PIT_R1,close,float,SAME_DAY_KNOWN_EOD,RAW_NONE"
+      },
+      {
+        "line": 156,
+        "text": "STOCK_DAILY_PIT_R1,volume,float,SAME_DAY_KNOWN_EOD,"
+      },
+      {
+        "line": 157,
+        "text": "STOCK_DAILY_PIT_R1,money,float,SAME_DAY_KNOWN_EOD,"
+      },
+      {
+        "line": 158,
+        "text": "STOCK_DAILY_PIT_R1,price_adj_tag,str,STATIC_ASOF,RAW_NONE"
+      },
+      {
+        "line": 159,
+        "text": "STOCK_DAILY_PIT_R1,pit_status,str,STATIC_ASOF,"
+      },
+      {
+        "line": 170,
+        "text": "ETF_DAILY_PIT_R1,nav,float,PUBLICATION_TIME_AWARE,if available"
+      },
+      {
+        "line": 171,
+        "text": "FUND_DAILY_PIT_R1,asset_type,str,STATIC_ASOF,always FUND"
+      },
+      {
+        "line": 172,
+        "text": "FUND_DAILY_PIT_R1,nav,float,PUBLICATION_TIME_AWARE,"
+      },
+      {
+        "line": 214,
+        "text": "{\"from\": \"STOCK_OHLCV\", \"to\": \"STOCK_DAILY_PIT_R1\"},"
+      },
+      {
+        "line": 215,
+        "text": "{\"from\": \"STOCK_DAILY_PIT_R1\", \"to\": \"STOCK_FACTOR_DAILY_R1\", \"lookback\": 250},"
+      },
+      {
+        "line": 217,
+        "text": "{\"from\": \"SW_L1_MEMBERSHIP_PIT_R1\", \"to\": \"SW_L1_STRUCTURE_DAILY_R1\", \"status\": \"BLOCKED_UPSTREAM\"},"
+      },
+      {
+        "line": 218,
+        "text": "{\"from\": \"ETF_OHLCV\", \"to\": \"ETF_DAILY_PIT_R1\"},"
+      },
+      {
+        "line": 219,
+        "text": "{\"from\": \"ETF_DAILY_PIT_R1\", \"to\": \"ETF_FACTOR_DAILY_R1\", \"lookback\": 250},"
+      },
+      {
+        "line": 220,
+        "text": "{\"from\": \"FUND_NAV\", \"to\": \"FUND_DAILY_PIT_R1\"},"
+      },
+      {
+        "line": 221,
+        "text": "{\"from\": \"FUND_DAILY_PIT_R1\", \"to\": \"FUND_FACTOR_DAILY_R1\", \"lookback\": 250},"
+      },
+      {
+        "line": 224,
+        "text": "{\"from\": \"INDEX_CONSTITUENT_SOURCE\", \"to\": \"INDEX_CONSTITUENT_PIT_R1\"},"
+      },
+      {
+        "line": 225,
+        "text": "{\"from\": \"INDEX_WEIGHT_SOURCE\", \"to\": \"INDEX_WEIGHT_PIT_R1\"},"
+      },
+      {
+        "line": 249,
+        "text": "def read_price_frame(paths: list[Path], max_files: Optional[int] = None) -> pd.DataFrame:"
+      },
+      {
+        "line": 251,
+        "text": "use = paths if max_files is None else paths[:max_files]"
+      },
+      {
+        "line": 258,
+        "text": "if df is None or len(df) == 0:"
+      },
+      {
+        "line": 271,
+        "text": "return None"
+      },
+      {
+        "line": 273,
+        "text": "c_date = pick(\"date\", \"time\", \"day\", \"trade_date\", \"datetime\")"
+      },
+      {
+        "line": 275,
+        "text": "if c_date is None:"
+      },
+      {
+        "line": 283,
+        "text": "if c_date is None:"
+      },
+      {
+        "line": 285,
+        "text": "if c_code is None:"
+      },
+      {
+        "line": 293,
+        "text": "if src is not None:"
+      },
+      {
+        "line": 299,
+        "text": "if c_nav is not None:"
+      },
+      {
+        "line": 335,
+        "text": "g[\"ema12\"] = cl.ewm(span=12, adjust=False).mean()"
+      },
+      {
+        "line": 336,
+        "text": "g[\"ema26\"] = cl.ewm(span=26, adjust=False).mean()"
+      },
+      {
+        "line": 342,
+        "text": "out[\"pit_status\"] = \"OK\""
+      },
+      {
+        "line": 363,
+        "text": "def antileak_gate(df: pd.DataFrame, date_col: str, max_asof: str) -> dict:"
+      },
+      {
+        "line": 364,
+        "text": "if df is None or len(df) == 0:"
+      },
+      {
+        "line": 365,
+        "text": "return {\"pass\": True, \"rows\": 0, \"max_date\": None, \"leak_rows\": 0}"
+      },
+      {
+        "line": 367,
+        "text": "leak = int((s > pd.Timestamp(max_asof)).sum())"
+      },
+      {
+        "line": 390,
+        "text": "\"asof_rule\": \"SAME_DAY_KNOWN_EOD\","
+      },
+      {
+        "line": 391,
+        "text": "\"pit_status\": \"OK_NO_INDUSTRY\","
+      },
+      {
+        "line": 408,
+        "text": "asof = cur.get(\"cleaning_as_of\") or cur.get(\"daily_asof\") or \"2026-08-07\""
+      },
+      {
+        "line": 409,
+        "text": "log(f\"mode={mode} standard={std} asof={asof}\")"
+      },
+      {
+        "line": 418,
+        "text": "pointer_before = pointer_fingerprint() if mode == \"canary\" else None"
+      },
+      {
+        "line": 425,
+        "text": "fund_plane = find_parquets(PLANE / \"FUND_NET_VALUE_PIT\")"
+      },
+      {
+        "line": 426,
+        "text": "etf_nav_plane = find_parquets(PLANE / \"ETF_UNIT_NET_VALUE_PIT\")"
+      },
+      {
+        "line": 427,
+        "text": "index_plane = find_parquets(PLANE / \"INDEX_DAILY_RAW_NONE\") + find_parquets("
+      },
+      {
+        "line": 432,
+        "text": "idx_cons = find_parquets(PLANE / \"INDEX_CONSTITUENT_PIT_R1\")"
+      },
+      {
+        "line": 434,
+        "text": "max_files = None"
+      },
+      {
+        "line": 446,
+        "text": "end = pd.Timestamp(asof)"
+      },
+      {
+        "line": 464,
+        "text": "\"stock\": antileak_gate(stock, \"date\", asof),"
+      },
+      {
+        "line": 465,
+        "text": "\"etf\": antileak_gate(etf, \"date\", asof),"
+      },
+      {
+        "line": 466,
+        "text": "\"fund\": antileak_gate(fund, \"date\", asof),"
+      },
+      {
+        "line": 467,
+        "text": "\"index\": antileak_gate(index, \"date\", asof),"
+      },
+      {
+        "line": 473,
+        "text": "def tag_pit(df: pd.DataFrame, asset: str) -> pd.DataFrame:"
+      },
+      {
+        "line": 481,
+        "text": "o[\"asof_rule\"] = \"SAME_DAY_KNOWN_EOD\""
+      },
+      {
+        "line": 482,
+        "text": "o[\"pit_status\"] = \"OK\""
+      },
+      {
+        "line": 487,
+        "text": "stock_pit = tag_pit(stock, \"STOCK\")"
+      },
+      {
+        "line": 488,
+        "text": "etf_pit = tag_pit(etf, \"ETF\")"
+      },
+      {
+        "line": 489,
+        "text": "fund_pit = tag_pit(fund, \"FUND\")"
+      },
+      {
+        "line": 490,
+        "text": "index_pit = tag_pit(index, \"INDEX\")"
+      },
+      {
+        "line": 500,
+        "text": "rid = f\"BLACKBOX_CACHE_CANARY_ASOF_{asof.replace('-', '')}_{ts()}\""
+      },
+      {
+        "line": 503,
+        "text": "rid = f\"BLACKBOX_CACHE_R1_ASOF_{asof.replace('-', '')}_{ts()}\""
+      },
+      {
+        "line": 509,
+        "text": "products[\"STOCK_DAILY_PIT_R1\"] = write_year_partitions(stock_pit, rel / \"STOCK_DAILY_PIT_R1\")"
+      },
+      {
+        "line": 511,
+        "text": "products[\"ETF_DAILY_PIT_R1\"] = write_year_partitions(etf_pit, rel / \"ETF_DAILY_PIT_R1\")"
+      }
+    ]
+  },
+  {
+    "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+    "role": "cache tip rebase",
+    "exists": true,
+    "size": 25087,
+    "lines": 610,
+    "functions": [
+      {
+        "name": "now_iso",
+        "line": 81,
+        "args": 0
+      },
+      {
+        "name": "now_cn",
+        "line": 85,
+        "args": 0
+      },
+      {
+        "name": "log",
+        "line": 89,
+        "args": 1
+      },
+      {
+        "name": "place",
+        "line": 93,
+        "args": 2
+      },
+      {
+        "name": "wjson",
+        "line": 105,
+        "args": 2
+      },
+      {
+        "name": "resolve_parent_and_asof",
+        "line": 112,
+        "args": 2
+      },
+      {
+        "name": "rebuild_price_2026",
+        "line": 150,
+        "args": 6
+      },
+      {
+        "name": "build_valuation",
+        "line": 309,
+        "args": 3
+      },
+      {
+        "name": "inject_sw",
+        "line": 355,
+        "args": 3
+      },
+      {
+        "name": "main",
+        "line": 419,
+        "args": 0
+      },
+      {
+        "name": "clip2026",
+        "line": 174,
+        "args": 1
+      },
+      {
+        "name": "tag_pit",
+        "line": 196,
+        "args": 2
+      }
+    ],
+    "classes": [],
+    "cli_options": [
+      {
+        "opts": [
+          "--run-target-date"
+        ],
+        "default": null,
+        "line": 421
+      },
+      {
+        "opts": [
+          "--cleaning-json"
+        ],
+        "default": null,
+        "line": 422
+      },
+      {
+        "opts": [
+          "--parent-root"
+        ],
+        "default": null,
+        "line": 423
+      },
+      {
+        "opts": [
+          "--out-root"
+        ],
+        "default": null,
+        "line": 424
+      },
+      {
+        "opts": [
+          "--no-publish"
+        ],
+        "default": null,
+        "line": 425
+      }
+    ],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 5,
+        "text": "STOCK_DAILY_RAW_PIT_R1 is a production price product and must be rewritten for D."
+      },
+      {
+        "line": 29,
+        "text": "apply_finance_pit_to_candidate,"
+      },
+      {
+        "line": 30,
+        "text": "finance_pit_delta,"
+      },
+      {
+        "line": 33,
+        "text": "resolve_run_target_trade_date,"
+      },
+      {
+        "line": 34,
+        "text": "tag_raw_pit,"
+      },
+      {
+        "line": 40,
+        "text": "\"STOCK_DAILY_PIT_R1\","
+      },
+      {
+        "line": 41,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1\","
+      },
+      {
+        "line": 43,
+        "text": "\"ETF_DAILY_PIT_R1\","
+      },
+      {
+        "line": 52,
+        "text": "\"ptr\": Path(r\"E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L1_PIT_ALIGN_RELEASE.json\"),"
+      },
+      {
+        "line": 53,
+        "text": "\"mem_dir\": \"sw_l1_membership_pit\","
+      },
+      {
+        "line": 54,
+        "text": "\"mem_full\": \"SW_L1_MEMBERSHIP_PIT_FULL.parquet\","
+      },
+      {
+        "line": 57,
+        "text": "\"prod_mem\": \"SW_L1_MEMBERSHIP_PIT_R1\","
+      },
+      {
+        "line": 61,
+        "text": "\"ptr\": Path(r\"E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L2_PIT_ALIGN_RELEASE.json\"),"
+      },
+      {
+        "line": 62,
+        "text": "\"mem_dir\": \"sw_l2_membership_pit\","
+      },
+      {
+        "line": 63,
+        "text": "\"mem_full\": \"SW_L2_MEMBERSHIP_PIT_FULL.parquet\","
+      },
+      {
+        "line": 66,
+        "text": "\"prod_mem\": \"SW_L2_MEMBERSHIP_PIT_R1\","
+      },
+      {
+        "line": 70,
+        "text": "\"ptr\": Path(r\"E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_SW_L3_PIT_ALIGN_RELEASE.json\"),"
+      },
+      {
+        "line": 71,
+        "text": "\"mem_dir\": \"sw_l3_membership_pit\","
+      },
+      {
+        "line": 72,
+        "text": "\"mem_full\": \"SW_L3_MEMBERSHIP_PIT_FULL.parquet\","
+      },
+      {
+        "line": 75,
+        "text": "\"prod_mem\": \"SW_L3_MEMBERSHIP_PIT_R1\","
+      },
+      {
+        "line": 89,
+        "text": "def log(msg: str) -> None:"
+      },
+      {
+        "line": 105,
+        "text": "def wjson(path: Path, obj) -> None:"
+      },
+      {
+        "line": 112,
+        "text": "def resolve_parent_and_asof(parent_root: str | None = None, cleaning_json: str | None = None) -> tuple[Path, str, dict]:"
+      },
+      {
+        "line": 133,
+        "text": "if \"FINANCIAL_INDICATOR_PIT_R1\" not in prods and \"JQ20_FINANCE_BALANCE_SHEET_PIT_R1\" not in prods:"
+      },
+      {
+        "line": 142,
+        "text": "asof = clean.get(\"cleaning_as_of\") or clean.get(\"daily_asof\")"
+      },
+      {
+        "line": 143,
+        "text": "if not asof:"
+      },
+      {
+        "line": 144,
+        "text": "raise SystemExit(\"HARD_BLOCK: cleaning CURRENT missing cleaning_as_of/daily_asof\")"
+      },
+      {
+        "line": 147,
+        "text": "return root, str(asof), clean"
+      },
+      {
+        "line": 150,
+        "text": "def rebuild_price_2026(rel: Path, std: Path, cc, parent: Path, asof: str, cleaning_id: str) -> dict:"
+      },
+      {
+        "line": 159,
+        "text": "Path(r\"E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions\\INDEX_DAILY_RAW_NONE\")"
+      },
+      {
+        "line": 167,
+        "text": "stock = cc.read_price_frame(stock_paths, max_files=None)"
+      },
+      {
+        "line": 168,
+        "text": "etf = cc.read_price_frame(etf_paths, max_files=None)"
+      },
+      {
+        "line": 169,
+        "text": "index = cc.read_price_frame(index_paths, max_files=None)"
+      },
+      {
+        "line": 171,
+        "text": "end = pd.Timestamp(asof)"
+      },
+      {
+        "line": 188,
+        "text": "\"stock\": cc.antileak_gate(stock, \"date\", asof),"
+      },
+      {
+        "line": 189,
+        "text": "\"etf\": cc.antileak_gate(etf, \"date\", asof),"
+      },
+      {
+        "line": 191,
+        "text": "\"index\": cc.antileak_gate(index, \"date\", asof),"
+      },
+      {
+        "line": 196,
+        "text": "def tag_pit(df: pd.DataFrame, asset: str) -> pd.DataFrame:"
+      },
+      {
+        "line": 204,
+        "text": "o[\"asof_rule\"] = \"SAME_DAY_KNOWN_EOD\""
+      },
+      {
+        "line": 205,
+        "text": "o[\"pit_status\"] = \"OK\""
+      },
+      {
+        "line": 210,
+        "text": "stock_pit = tag_pit(stock, \"STOCK\")"
+      },
+      {
+        "line": 211,
+        "text": "etf_pit = tag_pit(etf, \"ETF\")"
+      },
+      {
+        "line": 212,
+        "text": "index_pit = tag_pit(index, \"INDEX\")"
+      },
+      {
+        "line": 213,
+        "text": "raw_pit = tag_raw_pit(stock_pit, cleaning_id) if not stock_pit.empty else stock_pit"
+      },
+      {
+        "line": 220,
+        "text": "\"STOCK_DAILY_PIT_R1\": stock_pit,"
+      },
+      {
+        "line": 221,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1\": raw_pit,"
+      },
+      {
+        "line": 223,
+        "text": "\"ETF_DAILY_PIT_R1\": etf_pit,"
+      },
+      {
+        "line": 225,
+        "text": "\"INDEX_DAILY_R1\": index_pit,"
+      },
+      {
+        "line": 259,
+        "text": "if prod == \"STOCK_DAILY_RAW_PIT_R1\":"
+      },
+      {
+        "line": 265,
+        "text": "\"fq\": \"none\","
+      },
+      {
+        "line": 267,
+        "text": "f\"HAS_{asof.replace('-', '')}\": True,"
+      },
+      {
+        "line": 271,
+        "text": "\"end\": asof,"
+      },
+      {
+        "line": 302,
+        "text": "\"date_max\": str(m[\"date\"].max().date()) if len(m) else None,"
+      },
+      {
+        "line": 304,
+        "text": "written[\"FUND_DAILY_PIT_R1\"] = {\"status\": \"INHERITED_PARENT\"}"
+      },
+      {
+        "line": 309,
+        "text": "def build_valuation(std: Path, dest: Path, asof: str) -> dict:"
+      },
+      {
+        "line": 331,
+        "text": "out = out.loc[out[\"date\"] <= pd.Timestamp(asof)].copy()"
+      },
+      {
+        "line": 336,
+        "text": "out[\"product_id\"] = \"VALUATION_PIT_R1\""
+      },
+      {
+        "line": 337,
+        "text": "out[\"asof_rule\"] = \"SAME_DAY_KNOWN_EOD\""
+      },
+      {
+        "line": 338,
+        "text": "out[\"pit_status\"] = \"OK\""
+      },
+      {
+        "line": 368,
+        "text": "derived_asof = None"
+      },
+      {
+        "line": 372,
+        "text": "col = next((c for c in (\"trade_date\", \"date\", \"signal_date\") if c in names), None)"
+      },
+      {
+        "line": 374,
+        "text": "derived_asof = str(pd.to_datetime(pq.read_table(mem_src, columns=[col]).column(0).to_pandas()).max().date())"
+      },
+      {
+        "line": 376,
+        "text": "derived_asof = None"
+      },
+      {
+        "line": 377,
+        "text": "if derived_asof and sw.get(\"formal_data_asof\") and str(sw.get(\"formal_data_asof\")) != derived_asof:"
+      },
+      {
+        "line": 378,
+        "text": "log(f\"SW_{level} formal_data_asof pointer={sw.get('formal_data_asof')} derived={derived_asof} USING_DERIVED\")"
+      },
+      {
+        "line": 383,
+        "text": "part = next(yp.glob(\"part_*.parquet\"), None)"
+      },
+      {
+        "line": 384,
+        "text": "if part is None:"
+      },
+      {
+        "line": 389,
+        "text": "st_info = None"
+      },
+      {
+        "line": 402,
+        "text": "part = next(yp.glob(\"part_*.parquet\"), None)"
+      },
+      {
+        "line": 403,
+        "text": "if part is None:"
+      },
+      {
+        "line": 414,
+        "text": "\"formal_data_asof\": derived_asof or sw.get(\"formal_data_asof\"),"
+      },
+      {
+        "line": 415,
+        "text": "\"formal_data_asof_source\": \"MEMBERSHIP_COVERAGE_MAX\" if derived_asof else \"POINTER\","
+      },
+      {
+        "line": 429,
+        "text": "parent, asof_from_clean, clean = resolve_parent_and_asof(args.parent_root, args.cleaning_json)"
+      },
+      {
+        "line": 430,
+        "text": "tgt = resolve_run_target_trade_date(cli_date=args.run_target_date, cleaning=clean)"
+      },
+      {
+        "line": 431,
+        "text": "asof = tgt[\"RUN_TARGET_TRADE_DATE\"]"
+      },
+      {
+        "line": 432,
+        "text": "if asof_from_clean and asof_from_clean != asof:"
+      },
+      {
+        "line": 433,
+        "text": "log(f\"LEGACY_TARGET_IGNORED cleaning_as_of={asof_from_clean} RUN_TARGET={asof}\")"
+      },
+      {
+        "line": 436,
+        "text": "f\"HARD_BLOCK: RUN_TARGET_TRADE_DATE={asof} != cleaning_as_of={asof_from_clean}\""
+      },
+      {
+        "line": 443,
+        "text": "rid = f\"BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_{asof.replace('-', '')}_{ts}\""
+      },
+      {
+        "line": 447,
+        "text": "log(f\"FORMAL_DAILY_PUBLISH={FORMAL_DAILY_PUBLISH} new={rid} parent={parent.name} asof={asof} no_publish={args.no_publish}\")"
+      }
+    ]
+  },
+  {
+    "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/download_source_fq_none_r1.py",
+    "role": "stock daily download",
+    "exists": true,
+    "size": 10515,
+    "lines": 290,
+    "functions": [
+      {
+        "name": "now_cn",
+        "line": 32,
+        "args": 0
+      },
+      {
+        "name": "log",
+        "line": 36,
+        "args": 1
+      },
+      {
+        "name": "wjson",
+        "line": 40,
+        "args": 2
+      },
+      {
+        "name": "empty_frame",
+        "line": 47,
+        "args": 0
+      },
+      {
+        "name": "flatten_ohlc",
+        "line": 51,
+        "args": 2
+      },
+      {
+        "name": "load_universe",
+        "line": 107,
+        "args": 0
+      },
+      {
+        "name": "year_end",
+        "line": 124,
+        "args": 1
+      },
+      {
+        "name": "canary",
+        "line": 130,
+        "args": 1
+      },
+      {
+        "name": "main",
+        "line": 183,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [],
+    "api_lines": [
+      {
+        "line": 26,
+        "text": "JQ_API = \"get_price(frequency='daily', fq='none')\""
+      },
+      {
+        "line": 113,
+        "text": "import jqdatasdk as jq"
+      },
+      {
+        "line": 115,
+        "text": "live = jq.get_all_securities(types=[\"stock\"], date=END)"
+      },
+      {
+        "line": 138,
+        "text": "raw = jq.get_price("
+      },
+      {
+        "line": 146,
+        "text": "pre = jq.get_price("
+      },
+      {
+        "line": 187,
+        "text": "auth()"
+      },
+      {
+        "line": 188,
+        "text": "import jqdatasdk as jq"
+      },
+      {
+        "line": 227,
+        "text": "raw = jq.get_price("
+      }
+    ],
+    "control_lines": [
+      {
+        "line": 2,
+        "text": "\"\"\"Download STOCK_DAILY RAW SOURCE with explicit fq='none'. Do not touch P2.\"\"\""
+      },
+      {
+        "line": 15,
+        "text": "TASK = Path(r\"E:\\BLACKBOX\\任务\\BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1\")"
+      },
+      {
+        "line": 16,
+        "text": "STAGING = TASK / \"staging\" / \"source_batches\""
+      },
+      {
+        "line": 22,
+        "text": "BATCH = 400"
+      },
+      {
+        "line": 23,
+        "text": "FQ = \"none\""
+      },
+      {
+        "line": 26,
+        "text": "JQ_API = \"get_price(frequency='daily', fq='none')\""
+      },
+      {
+        "line": 36,
+        "text": "def log(msg: str) -> None:"
+      },
+      {
+        "line": 40,
+        "text": "def wjson(path: Path, obj) -> None:"
+      },
+      {
+        "line": 51,
+        "text": "def flatten_ohlc(df: pd.DataFrame, code: str | None = None) -> pd.DataFrame:"
+      },
+      {
+        "line": 52,
+        "text": "if df is None or len(df) == 0:"
+      },
+      {
+        "line": 116,
+        "text": "if live is not None and len(live):"
+      },
+      {
+        "line": 137,
+        "text": "for code, d, expect_none, expect_pre in cases:"
+      },
+      {
+        "line": 144,
+        "text": "fq=FQ,"
+      },
+      {
+        "line": 152,
+        "text": "fq=\"pre\","
+      },
+      {
+        "line": 155,
+        "text": "got = None if part.empty else float(part.iloc[-1][\"close\"])"
+      },
+      {
+        "line": 156,
+        "text": "pre_px = None"
+      },
+      {
+        "line": 157,
+        "text": "if pre is not None and len(pre):"
+      },
+      {
+        "line": 161,
+        "text": "match_raw = got is not None and abs(got - expect_none) < 0.015"
+      },
+      {
+        "line": 162,
+        "text": "not_pre = got is not None and abs(got - expect_pre) >= 0.015"
+      },
+      {
+        "line": 167,
+        "text": "\"expect_jq_none\": expect_none,"
+      },
+      {
+        "line": 176,
+        "text": "wjson(TASK / \"CANARY_FQ_NONE.json\", out)"
+      },
+      {
+        "line": 179,
+        "text": "raise SystemExit(\"HARD_BLOCK: canary fq=none failed\")"
+      },
+      {
+        "line": 191,
+        "text": "log(\"quota_spare=%s FULL_HISTORY=%s..%s fq=%r api=%s\" % (q, START, END, FQ, JQ_API))"
+      },
+      {
+        "line": 192,
+        "text": "if q is not None and q < 20000:"
+      },
+      {
+        "line": 193,
+        "text": "log(\"WARN: quota spare low; continue with resume\")"
+      },
+      {
+        "line": 198,
+        "text": "batches = [codes[i : i + BATCH] for i in range(0, len(codes), BATCH)]"
+      },
+      {
+        "line": 199,
+        "text": "log(\"universe=%s batches=%s years=%s..%s\" % (len(codes), len(batches), YEARS[0], YEARS[-1]))"
+      },
+      {
+        "line": 209,
+        "text": "\"batch\": BATCH,"
+      },
+      {
+        "line": 219,
+        "text": "for bi, batch in enumerate(batches):"
+      },
+      {
+        "line": 220,
+        "text": "outp = STAGING / (\"year=%s\" % year) / (\"batch_%03d.parquet\" % bi)"
+      },
+      {
+        "line": 228,
+        "text": "security=batch,"
+      },
+      {
+        "line": 233,
+        "text": "fq=FQ,"
+      },
+      {
+        "line": 237,
+        "text": "log(\"FAIL year=%s batch=%s err=%s:%s\" % (year, bi, type(e).__name__, e))"
+      },
+      {
+        "line": 239,
+        "text": "STAGING / (\"year=%s\" % year) / (\"batch_%03d.fail.json\" % bi),"
+      },
+      {
+        "line": 242,
+        "text": "time.sleep(2)"
+      },
+      {
+        "line": 251,
+        "text": "\"batch\": bi,"
+      },
+      {
+        "line": 252,
+        "text": "\"n_codes_requested\": len(batch),"
+      },
+      {
+        "line": 255,
+        "text": "\"date_min\": None if part.empty else str(part[\"date\"].min().date()),"
+      },
+      {
+        "line": 256,
+        "text": "\"date_max\": None if part.empty else str(part[\"date\"].max().date()),"
+      },
+      {
+        "line": 267,
+        "text": "\"OK year=%s batch=%s/%s rows=%s done=%s skip=%s fail=%s\""
+      },
+      {
+        "line": 268,
+        "text": "% (year, bi, len(batches) - 1, len(part), done, skip, fail)"
+      }
+    ]
+  },
+  {
+    "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/publish_current_if_gates_pass_r1.py",
+    "role": "publish if gates pass",
+    "exists": true,
+    "size": 8472,
+    "lines": 184,
+    "functions": [
+      {
+        "name": "now_cn",
+        "line": 28,
+        "args": 0
+      },
+      {
+        "name": "log",
+        "line": 32,
+        "args": 1
+      },
+      {
+        "name": "wjson",
+        "line": 36,
+        "args": 2
+      },
+      {
+        "name": "load",
+        "line": 43,
+        "args": 1
+      },
+      {
+        "name": "gates",
+        "line": 47,
+        "args": 0
+      },
+      {
+        "name": "append_catalog",
+        "line": 74,
+        "args": 0
+      },
+      {
+        "name": "switch_current",
+        "line": 96,
+        "args": 1
+      },
+      {
+        "name": "resolver_check",
+        "line": 123,
+        "args": 0
+      },
+      {
+        "name": "main",
+        "line": 134,
+        "args": 0
+      }
+    ],
+    "classes": [],
+    "cli_options": [],
+    "api_lines": [],
+    "control_lines": [
+      {
+        "line": 13,
+        "text": "TASK = Path(r\"E:\\BLACKBOX\\任务\\BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1\")"
+      },
+      {
+        "line": 24,
+        "text": "ARCH = Path(r\"D:\\CURSOR_TASK_ARCHIVE\\BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1\")"
+      },
+      {
+        "line": 25,
+        "text": "PRODUCT = \"STOCK_DAILY_RAW_PIT_R1\""
+      },
+      {
+        "line": 32,
+        "text": "def log(msg: str) -> None:"
+      },
+      {
+        "line": 36,
+        "text": "def wjson(path: Path, obj) -> None:"
+      },
+      {
+        "line": 53,
+        "text": "rec = load(\"PRE_PIT_RECONSTRUCTION_GOLDEN.json\")"
+      },
+      {
+        "line": 60,
+        "text": "\"PIT_PASS\": bool(cl.get(\"pit\", {}).get(\"PIT_PASS\")),"
+      },
+      {
+        "line": 61,
+        "text": "\"ANTI_LOOKAHEAD_PASS\": bool(cl.get(\"pit\", {}).get(\"ANTI_LOOKAHEAD_PASS\") and cov.get(\"ANTI_LOOKAHEAD_PASS\")),"
+      },
+      {
+        "line": 66,
+        "text": "\"PRE_PIT_RECONSTRUCTION_PASS\": bool(rec.get(\"PRE_PIT_RECONSTRUCTION_PASS\")),"
+      },
+      {
+        "line": 74,
+        "text": "def append_catalog() -> None:"
+      },
+      {
+        "line": 76,
+        "text": "line = \"STOCK_DAILY_RAW_PIT_R1,L1,STOCK,ACTIVE,year/signal_date,Stock daily RAW PIT fq=none explicit; not P2 none_adj\\n\""
+      },
+      {
+        "line": 77,
+        "text": "if \"STOCK_DAILY_RAW_PIT_R1,\" not in txt:"
+      },
+      {
+        "line": 81,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,signal_date,date,SAME_DAY_KNOWN_EOD,\","
+      },
+      {
+        "line": 82,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,code,str,STATIC_ASOF,\","
+      },
+      {
+        "line": 83,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,open,float,SAME_DAY_KNOWN_EOD,RAW_NONE fq=none explicit\","
+      },
+      {
+        "line": 84,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,high,float,SAME_DAY_KNOWN_EOD,RAW_NONE fq=none explicit\","
+      },
+      {
+        "line": 85,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,low,float,SAME_DAY_KNOWN_EOD,RAW_NONE fq=none explicit\","
+      },
+      {
+        "line": 86,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,close,float,SAME_DAY_KNOWN_EOD,RAW_NONE fq=none explicit\","
+      },
+      {
+        "line": 87,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,volume,float,SAME_DAY_KNOWN_EOD,\","
+      },
+      {
+        "line": 88,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,money,float,SAME_DAY_KNOWN_EOD,\","
+      },
+      {
+        "line": 89,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,price_adj_tag,str,STATIC_ASOF,RAW_NONE\","
+      },
+      {
+        "line": 90,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1,pit_status,str,STATIC_ASOF,\","
+      },
+      {
+        "line": 92,
+        "text": "if \"STOCK_DAILY_RAW_PIT_R1,signal_date\" not in sch:"
+      },
+      {
+        "line": 106,
+        "text": "clean_ptr[\"STOCK_DAILY_RAW_PIT_R1\"] = \"READY\""
+      },
+      {
+        "line": 109,
+        "text": "cache_ptr[\"STOCK_DAILY_RAW_PIT_R1\"] = \"READY\""
+      },
+      {
+        "line": 110,
+        "text": "cache_ptr[\"mode\"] = \"stock_daily_raw_pit_full_history_fq_none\""
+      },
+      {
+        "line": 124,
+        "text": "cmd = [str(PY), \"-u\", str(RESOLVER), \"--dataset\", \"STOCK_DAILY_RAW\", \"--asof\", \"2026-08-14\"]"
+      },
+      {
+        "line": 142,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1_AUTHORITY_READY\": False,"
+      },
+      {
+        "line": 161,
+        "text": "\"final_status\": \"BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_ACCEPTED\","
+      },
+      {
+        "line": 162,
+        "text": "\"STOCK_DAILY_RAW_PIT_R1_AUTHORITY_READY\": True,"
+      },
+      {
+        "line": 163,
+        "text": "\"STOCK_DAILY_PIT_R1_RAW_AUTHORITY\": \"FAIL_LEGACY_EVIDENCE\","
+      },
+      {
+        "line": 164,
+        "text": "\"ADJUST_FACTOR_PIT_R1\": \"PASS\","
+      },
+      {
+        "line": 166,
+        "text": "\"R26b_PRE_PIT_RETURN_23.2753\": \"INVALID_PENDING_BASE_PRICE_REPAIR\","
+      },
+      {
+        "line": 175,
+        "text": "for name in (\"FINAL_STATUS.json\", \"AUTHORITY_GATES.json\", \"RAW_SEMANTICS_GOLDEN.json\", \"SOURCE_COVERAGE.json\", \"NH120_POPULATION_RECALIBRATION.json\", \"PRE_PIT_RECONSTRUCTION_GOLDEN.json\"):"
+      }
+    ]
+  }
+]
