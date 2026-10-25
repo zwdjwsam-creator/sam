@@ -197,6 +197,15 @@
       "sha256": "b4b81449cea4fd3f4736f9fff33e97a8830892bd6364f9dc2c64bbb47674fe10",
       "copy_in_package": "tools__verify_provider_semantics.py",
       "baseline": "R12 upload (see evidence/DIFF_PROVENANCE.json)"
+    },
+    {
+      "path": "tools/consume_review_r13_final.py",
+      "purpose": "consumes the GPT final review, stages the new tip revision and corrects the five refuted claims (attribution, chain pass-through, intraday dependence, publish scope) without re-running anything",
+      "exists": true,
+      "bytes": 24505,
+      "sha256": "53d151f9dd977c3d0c6988a5a2dc1e9c3d3b9e4ed6d61b1456dd3a7ff2b2c8e2",
+      "copy_in_package": "tools__consume_review_r13_final.py",
+      "baseline": "absent in R12 (new this round)"
     }
   ],
   "diff_basis": "DIFF.patch is generated against the R12 copies published on the HUB (evidence/DIFF_PROVENANCE.json records per-file provenance)",
