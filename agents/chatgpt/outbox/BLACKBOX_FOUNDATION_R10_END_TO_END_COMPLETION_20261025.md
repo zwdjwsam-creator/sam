@@ -1,3 +1,57 @@
+# GPT FINAL REPAIR REVIEW — 本轮收口为部分完成，未通过整体验收
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+execution_host: ZHANGWEI
+review_date_cn: 2026-10-25
+status: REVIEWED_FINAL_PASS_BLOCKED
+FOUNDATION_ACCEPTANCE=false
+FORMAL_ENGINE_ADMISSION=false
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+本节是对最后一轮回传的最终审阅状态，优先于下方历史 READY 执行段。本条不是新一轮施工令，不追加扫描、源码交接、测试套件或上传回执任务，不自动重新启动已收尾作业。保留当前代码、候选与失败证据。owner要求的一轮修复已回传；其结果未达到整个底座可用的交付标准，不能标完成。
+
+## 到件与审阅范围
+
+最新 REPORT.md blob e47278619dd82e03137ffce97613c281cdceab66、PACKAGE_INDEX.json blob 9f8c6191b3d034cb4866fccaf28583121f5d0bb7、UPLOAD_READBACK.json blob 65f512146532e201853091544d68e6bde69b8e7e 已读取。最终索引89项，回执报告verified_count=89、mismatch=[]；这是交付方的字节回读结果，不冒充GPT独立核算全部89件。GPT已核读关键原件、R15和发布演练记录、分钟记录、原编译器调用、候选恢复记录、状态矩阵及相关源码。上传等待阶段结束。
+
+## 可保留的有界成果
+
+- 原分钟reader已接入；单代码探测在2026-09-11..09-24的10个交易日各返回30行。仅认证已测请求，不外推所有证券/分钟完整性；09-03..09-10的6个交易日在该reader分支返回NO_DAY_SHARDS。
+- R15_REPLAY_20260924_R2实际调用load_staging/ingest_item/seal_release及原antileak，两个保留日批共10426行；输出字节身份与输入对应，生产CLEAN指针与SSOT记录的前后摘要相同。认证两批候选调用能力，不认证继承完整库、供应商完整性或所有PIT语义。
+- 原tip compiler的候选调用及两个缺日出现在其输出的证据可保留。
+- 原publish_atomic非dry-run已在重绑定的任务目录指针上实际执行，published=true。只说明本次隔离演练成功；不证明生产多文件事务、因子有效性或全库正式准入。
+- 内容身份修复后，候选同输入NOOP和9项提交恢复情景有记录；不需要为了收据再重复运行。
+
+## 未达到交付的具体原因
+
+1. 原R15和编译器尚无同一产物贯通证明。
+R15真实输出为candidate/r15_releases/R15_REPLAY_20260924_R2；CONNECTED_PIPELINE的实际compiler argv仍读candidate/cc/CC_REPLAY_20260924/RELEASE.json。run_connected_pipeline.py没有调用R15 runner，publish演练另行执行。现有证据支持若干原组件分别运行，不能把它们写成已贯通的“R15输出 -> 编译 -> 发布”同一链。此为原任务未完成项，不是新增第四项。
+
+2. V4正式结果仍被必需输入阻断。
+保留严格运行BLOCKED_INPUT_INCOMPLETE、16日、0成交、0订单和diagnostic_only=true。复权同日输入、基准/锚点一致性、历史股票池/ST及正式语义尚未满足，不能用0收益或引擎循环结束代替策略完成。数据集更新依据和writer游标仍有未落地项，供应商分页完整性仍UNKNOWN，因此也不开放正式增量。
+
+3. “因子全1 -> 供应商造假/占位 -> 必须重下”的归因不成立。
+本地样本中的全1、17份整数日期及CACHE稀疏是观察事实；这些不能独立区分请求复权参数/归一化基准、SDK返回结构、本地序列化和供应商内容问题。源机aux_billboard_adjust_index_minute_r15.py:110-115实际用单日起止、fields=['factor']、fq=None；比较多年批次与单日增量的横截面不同，尚未证明二者基准可直接拼接。provider._constant_plane_sessions又以nunique==1一律将因子置空，该规则是当前本地阻断机制，不是供应商错误证书。暂时拒绝未证明可拼接的因子可以保留，但正式结论只能是“当前复权输入及其基准未证明满足契约”，不能把未知值强制补1，也不能把真实合法的1自动当伪造。
+DAILY_RAW_FACTOR_COVERAGE的目标窗标为08-05..09-24，per_session却只有08-05和08-06各10行；该件不支持整个目标窗无可用日线来源的结论。尚不能据此签发08-10..09-24必须全部重新下载的缺项单。
+
+4. “V4没有minute get_price”不等于“不依赖盘中数据”。
+源码计数同时有get_current_data调用。其实际依赖需由快照字段的读取时刻和engine映射判定；直接分钟调用为0不足以排除盘中last_price/限价/停牌和撮合输入。当前V4已因前序输入阻断，没有证据把所有下游语义标为通过；也不据此要求本轮再补一个调查。
+
+5. 生产CURRENT未切换属于未开启的后续动作。
+不把未授权生产动作当本轮失败的唯一原因；即使立即允许切换，上述真实输入和同产物流转缺口也不会自动消失。原发布门按最大日期放行不等于因子/历史覆盖有效，不能用候选published=true批准生产准入。
+
+## 本轮最终状态
+
+分钟有界查询、R15两批调用、原编译器候选调用、隔离发布和候选提交恢复的局部成果保留。整个原链、正式V4、各数据集可执行增量依据尚不满足固定结束条件，整体验收拒绝。报告中的DONE/PASS仅限上述明确范围。
+
+本次不派发新的修复轮、不要求owner选择技术步骤、不请求立即下载或切生产。后续任何新执行安排须围绕已明确的未完成交付形成单独明确指令，不能由本回执或旧READY段自动续开。所有采集、CURRENT和下单边界不变。
+
+---
+
+以下为历史执行令，保留上下文，不再作为本轮自动续跑READY：
+
 # OWNER FINAL REPAIR PASS — 最后一轮连续修复，完成后集中验收
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
