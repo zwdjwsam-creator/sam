@@ -13,18 +13,24 @@
     },
     "R2_engine_data_contract_and_actual_runtime": {
       "status": "BLOCKED",
-      "measured": "the strict V4 port over 2026-09-03..2026-09-24 completes all 16 sessions and is classified BLOCKED_INPUT_INCOMPLETE with blockers ['REQUIRED_INPUT_MISSING'], trades=0, orders=0, mark_price_starved=0; unprovable fq='pre' rows are withheld per code and recorded, minute requests are blocked, unknown paused fails the request",
-      "blocking_gap": "ADJUST_FACTOR_PIT_R1 is sparse for 12 sessions (2026-08-17..2026-09-02, 7-89 rows vs a 5,222 peak); a pre-open read on 2026-09-03 anchors at 2026-09-02, so the affected codes have no provable adjusted price and are withheld. The strategy ranks only what is served, so a run over this window cannot be a strategy verdict",
-      "unproven": "formal strategy equivalence and any return claim: minute-input steps have no local product, the factor gap removes part of the universe, and B7 whole-CACHE equivalence remains open",
+      "measured": "the strict V4 port over 2026-09-03..2026-09-24 completes all 16 sessions and is classified BLOCKED_INPUT_INCOMPLETE with blockers ['REQUIRED_INPUT_MISSING'], trades=0, orders=0, mark_price_starved=0, diagnostic_only=True; unprovable fq='pre' rows are withheld per code and recorded; the minute plane is now wired and answers inside 2026-09-11..2026-09-24 and blocks outside it; unknown paused fails the request",
+      "blocking_gap": "ADJUST_FACTOR_PIT_R1 is not a proven adjustment series in the tested window. Two source-side defects: (a) 17 incremental files for 2026-08-12..2026-09-02 carry a positional integer 'date' (0..299) so they cannot be joined; (b) every sampled incremental payload from 2026-08-10 onward is factor=1.0 for every code, including the files whose date dtype is correct. CACHE therefore shows 7..89 rows for 2026-08-17..2026-09-01 and a full 5,215..5,222-row plane of 1.0 for 2026-09-02..2026-09-24, i.e. the entire test window. The historical batch plane does carry real variation (min 0.167), so this is an incremental supplier defect, not a fan-out defect",
+      "unproven": "formal strategy equivalence and any return claim: the tested window has no proven adjusted price on either side of the anchor, so the ranking input is incomplete by construction; B7 whole-CACHE equivalence remains open",
       "evidence": [
-        "evidence/V4_STRICT_RUN.json",
-        "evidence/V4_STRICT_RUNS_ALL.json",
+        "evidence/FACTOR_CORRUPT_DATE_PROFILE.json",
+        "evidence/FACTOR_DENSE_VS_CORRUPT.json",
         "evidence/FACTOR_DENSITY.json",
-        "evidence/PROVIDER_SEMANTIC_REPAIR.json",
+        "evidence/FACTOR_NONDATE_ENCODING.json",
+        "evidence/FACTOR_SERIES_NATURE.json",
+        "evidence/FACTOR_SOURCE_TRACE.json",
+        "evidence/INPUT_PLANE_REPAIR.json",
+        "evidence/MINUTE_PLANE.json",
         "evidence/PRICE_FETCH_FAILURE.json",
-        "evidence/INPUT_PLANE_REPAIR.json"
+        "evidence/PROVIDER_SEMANTIC_REPAIR.json",
+        "evidence/V4_STRICT_RUN.json",
+        "evidence/V4_STRICT_RUNS_ALL.json"
       ],
-      "repair_needed": "densify ADJUST_FACTOR_PIT_R1 for 2026-08-17..2026-09-02 (acquisition) plus a local minute product; no value is invented in the meantime",
+      "repair_needed": "re-issue the incremental adjust-factor plane for 2026-08-10..2026-09-24 with a real date column and real factors (acquisition), then re-measure; no value is invented in the meantime",
       "historical_label_preserved": "R11_TRADEABILITY_RECON run is COMPLETED/diag=false with 2 fills — kept as a failed historical label, not as acceptance"
     },
     "R3_strategy_artifact_identification": {
@@ -59,19 +65,22 @@
     },
     "R5_pipeline_reuse_and_candidate_commit": {
       "status": "PARTIAL",
-      "measured": "the real chain executes: retained transport -> original acquisition_absence_gate -> original inherit_tree/read_price_frame/antileak_gate cleaning candidate -> ORIGINAL cache_compiler_tip_rebase_from_current_r1 (exit 0, CANDIDATE_READY) -> immutable versioned commit; original publish_atomic evaluated in dry-run only",
-      "unproven": "the source machine's R13 cleaning stage is not used (desktop R15 semantics kept); the original publish protocol beyond dry-run is not authorised",
+      "measured": "the real chain executes: retained transport -> original acquisition_absence_gate (PROVENANCE_GATE=PASS, SUPPLIER_COMPLETENESS=UNKNOWN) -> original inherit_tree/read_price_frame/antileak_gate -> real R15 load_staging/ingest_item/seal_release/antileak on the retained batches (R15_REPLAY_20260924_R2, PASS) -> ORIGINAL cache_compiler_tip_rebase_from_current_r1 -> immutable versioned commit -> ORIGINAL publish_atomic executed NON-dry-run with every write target bound (6 bound writes, 0 unbound, published=True)",
+      "unproven": "the source machine's R13 cleaning stage is not adopted (desktop R15 is the current entry); the publish rehearsal ran on bound copies seeded from production, so a real CURRENT switch is still unproven",
       "evidence": [
         "CONNECTED_PIPELINE.json",
         "evidence/CLEANING_CANDIDATE.json",
+        "evidence/COMMIT_RECOVERY.json",
         "evidence/ORIGINAL_COMPILER_RECEIPT.json",
         "evidence/ORIGINAL_PUBLISH_GATE_PROBE.json",
-        "evidence/COMMIT_RECOVERY.json"
+        "evidence/PUBLISH_ATOMIC_REHEARSAL.json",
+        "evidence/R15_CLEANING_REPLAY.json"
       ],
-      "repair_needed": "authorisation for a candidate-set publish-protocol exercise"
+      "repair_needed": "an authorised production publish window (CURRENT_SWITCH_ALLOWED=false here)"
     }
   },
-  "revised_at": "2026-10-25T12:00:00+0800",
+  "revised_at": "2026-10-25T13:13:22+08:00",
   "revision": "R13_SAME_TASK_CORRECTION",
-  "historical_labels_preserved": "FINAL_REQUIREMENT_MATRIX_R12_PRESERVED.json"
+  "historical_labels_preserved": "FINAL_REQUIREMENT_MATRIX_R12_PRESERVED.json",
+  "round": "R13_ROUND2"
 }
