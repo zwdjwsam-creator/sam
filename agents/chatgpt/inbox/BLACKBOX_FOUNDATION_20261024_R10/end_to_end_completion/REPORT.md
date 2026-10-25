@@ -14,15 +14,32 @@ Historical labels are preserved, not rewritten: `REPORT_R12_PRESERVED.md`,
 This round answers three review items and reports one defect this round found on its own.
 Nothing in it asks for permission again, and no technical route was changed.
 
-## 0. Round-2 answer, in one table
+## 0. Round-2 answer in one table
 
-| review item | what was done | where it is measured |
+| function | actual entry point executed this round | result | evidence |
+|---|---|---|---|
+| minute read | `candidate/local_plane/minute_bridge.py` → `脚本/blackbox_stock_minute_1m_reader_r1.py` (`STOCK_MINUTE_1M_R1`) | 10 sessions served, 6 blocked by request key with `NO_DAY_SHARDS`, no proxy | `evidence/MINUTE_PLANE.json` |
+| factor lineage | `tools/trace_factor_source.py`, `classify_factor_series.py`, `find_factor_nondate_rows.py`, `profile_corrupt_factor_dates.py` over P1/P6/CACHE | two source-side defects found, bigger than "12 sparse days" | `evidence/FACTOR_*.json` |
+| R15 ingest/clean | `formal_cleaning_r15_build_and_seal_r1.py` (`load_staging`/`ingest_item`/`seal_release`) + `r15_antileak_and_ssot_r1.py` | `R15_REPLAY_20260924_R2`, GATE PASS, production CURRENT/SSOT byte-identical | `evidence/R15_CLEANING_REPLAY.json` |
+| acquisition gate | original `blackbox_daily_increment_common_r1.acquisition_absence_gate` | `PROVENANCE_GATE=PASS`, `SUPPLIER_COMPLETENESS=UNKNOWN`, self-certified control BLOCKED | `CONNECTED_PIPELINE.json` |
+| publish | original `blackbox_daily_increment_publish_gate_r1.publish_atomic(dry_run=False)` | published on bound candidate targets, 6 writes, 0 unbound | `evidence/PUBLISH_ATOMIC_REHEARSAL.json` |
+| consolidation | `tools/consolidate_r13_round2.py` | matrix / B1–B7 / acceptance / pipeline / index / log single-sourced | `ACCEPTANCE.json#r13_round2` |
+| defect found by this round | `tools/candidate_commit.py#build_identity` | `commit_id` hashed the build timestamp; fixed, pipeline 8/8 and selftest 9/9 | `evidence/COMMIT_RECOVERY.json` |
+
+Exit codes are recorded as observed in `evidence/COMMAND_LOG.json` (including the two failed attempts:
+the rehearsal's first run, exit 1, and the pre-fix pipeline, exit 5 — both kept, not overwritten).
+
+Original code reused, with the necessary change noted:
+
+| original path / function | reused as-is | necessary change |
 |---|---|---|
-| 1a connect the original minute reader | `STOCK_MINUTE_1M_R1` is loaded through `脚本/blackbox_stock_minute_1m_reader_r1.py` and served by the provider; 10 sessions answered, 6 blocked with `NO_DAY_SHARDS`, no daily-open proxy | `evidence/MINUTE_PLANE.json` |
-| 1b trace the 12-day factor sparsity to source layers | traced across P1 / P6 / CACHE; two source-side defects found, both larger than "12 sparse days" | `evidence/FACTOR_SOURCE_TRACE.json`, `FACTOR_SERIES_NATURE.json`, `FACTOR_NONDATE_ENCODING.json`, `FACTOR_CORRUPT_DATE_PROFILE.json`, `FACTOR_DENSE_VS_CORRUPT.json` |
-| 2 real R15 cleaning + repaired `response_gate` | real `load_staging` / `ingest_item` / `seal_release` / `antileak` executed on the retained batches; the gate no longer certifies the question with the answer | `evidence/R15_CLEANING_REPLAY.json`, `CONNECTED_PIPELINE.json#response_gate_contract` |
-| 3 rehearsed `publish_atomic` + consolidated status | non-dry-run publish with every write target bound; matrix / B1–B7 / acceptance now single-sourced | `evidence/PUBLISH_ATOMIC_REHEARSAL.json`, `ACCEPTANCE.json#r13_round2` |
-| defect found by this round | `commit_id` hashed the build timestamp, so "same input → same commit" could never hold | `ACCEPTANCE.json#r13_round2.defect_found_and_fixed` |
+| `脚本/blackbox_stock_minute_1m_reader_r1.py` | yes, imported | none in the reader; only the caller normalises a date-only lower bound |
+| `任务/BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1/formal_cleaning_r15_build_and_seal_r1.py` | yes, called | task-local `ROOT`/`RELEASES`/`CURRENT`/`SSOT` injected |
+| `任务/BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1/r15_antileak_and_ssot_r1.py` | yes, called | same rebinding |
+| `blackbox_daily_increment_common_r1.acquisition_absence_gate` | yes, called | caller now supplies request-side evidence instead of the response's own row count |
+| `任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py` | yes, `--no-publish` | output/acceptance roots redirected to the candidate tree |
+| `blackbox_daily_increment_publish_gate_r1.publish_atomic` | yes, `dry_run=False` | every write target rebound; no production path bound |
+
 
 ## 1. Minute plane: the product was always there, the wiring was not
 
