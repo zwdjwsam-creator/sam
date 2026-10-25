@@ -1,0 +1,65 @@
+{
+  "artifact": "ENV_VERIFICATION",
+  "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "verdict": "PASS_REAL_VENV_WITH_DATA_STACK",
+  "venv_root": "E:\\BLACKBOX\\.venv",
+  "pyvenv_cfg": {
+    "home": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312",
+    "include-system-site-packages": "false",
+    "version": "3.12.10",
+    "executable": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "command": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m venv E:\\BLACKBOX\\.venv"
+  },
+  "checks": {
+    "prefix_differs_from_base_prefix": true,
+    "base_interpreter_exists_at_cfg_home": true,
+    "site_packages_is_venv_owned": [
+      "E:\\BLACKBOX\\.venv\\Lib\\site-packages"
+    ],
+    "no_project_tree_import_leak": true,
+    "data_stack": {
+      "pandas": "2.3.3",
+      "pyarrow": "21.0.0",
+      "numpy": "2.5.4"
+    },
+    "parquet_footer_read": {
+      "exit": 0,
+      "rows_on_newest_2026_partition": "871182"
+    }
+  },
+  "installed_packages": {
+    "certifi": "2026.10.23",
+    "charset-normalizer": "3.5.2",
+    "idna": "3.20",
+    "jqdatasdk": "1.9.8",
+    "msgpack": "1.2.3",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "pip": "25.0.1",
+    "ply": "3.11",
+    "pyarrow": "21.0.0",
+    "pymysql": "1.2.3",
+    "python-dateutil": "3.0.0",
+    "pytz": "2026.5",
+    "requests": "2.34.2",
+    "six": "1.17.0",
+    "sqlalchemy": "2.1.6",
+    "thriftpy2": "0.4.20",
+    "typing_extensions": "4.16.0",
+    "tzdata": "2026.5",
+    "urllib3": "2.8.0"
+  },
+  "how_it_was_recovered": {
+    "method": "rebuild_then_reuse",
+    "detail": "The venv is a real `python -m venv` product of the admin interpreter recorded in pyvenv.cfg; packages were installed into its own site-packages. It was validated by executing real parquet reads, not by inspecting pyvenv.cfg alone. No project file was modified to make imports resolve.",
+    "not_accepted_as_proof": [
+      "editing `home` in pyvenv.cfg",
+      "`pip list` alone",
+      "a successful `import` without a real data read"
+    ]
+  },
+  "notes": [
+    "No package was installed during this session: the stack was already present and is reused.",
+    "requirements snapshot: ENV/PIP_FREEZE_ROOT_VENV_R10.txt"
+  ]
+}
