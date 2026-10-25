@@ -1,0 +1,1125 @@
+{
+  "schema": "SAM_SOURCE_WORKFLOW_HANDOFF_R1",
+  "generated_at_cn": "2026-10-25T11:24:55+0800",
+  "source_host": "sam",
+  "source_root": "E:\\BLACKBOX",
+  "entries": [
+    {
+      "rel": "脚本/run_blackbox_research_os.py",
+      "role": "research_os_entry",
+      "exists": true,
+      "size": 23323,
+      "sha256": "5fbf8c3149c70819776a56eacacb245cab99550b1e98f189e15119d236999903",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u E:\\BLACKBOX\\脚本\\run_blackbox_research_os.py --mode daily_incremental"
+    },
+    {
+      "rel": "脚本/run_blackbox_daily_incremental_data_plane_r1.py",
+      "role": "daily_incremental_data_plane",
+      "exists": true,
+      "size": 41183,
+      "sha256": "deb363bcb1a71860c9452cd71fb8075933a30f7f329e66ba734a35c521d13d72",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u E:\\BLACKBOX\\脚本\\run_blackbox_daily_incremental_data_plane_r1.py"
+    },
+    {
+      "rel": "脚本/jq_download_execution_r1.py",
+      "role": "jq_download_execution",
+      "exists": true,
+      "size": 130769,
+      "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -u E:\\BLACKBOX\\脚本\\jq_download_execution_r1.py --help"
+    },
+    {
+      "rel": "脚本/jq_download_base.py",
+      "role": "jq_download_base",
+      "exists": true,
+      "size": 8460,
+      "sha256": "9c6c7a76f434fae66236cc6d6a7b97189439684fd7f8038cae72939cc954af18",
+      "command": null
+    },
+    {
+      "rel": "脚本/jq_resume_r2.py",
+      "role": "jq_resume",
+      "exists": true,
+      "size": 21749,
+      "sha256": "28648d49b53a1b03fcbd9d62046ec199b6e07218ec1b7a904f0001d88d88e435",
+      "command": null
+    },
+    {
+      "rel": "脚本/blackbox_daily_increment_common_r1.py",
+      "role": "increment_common",
+      "exists": true,
+      "size": 19082,
+      "sha256": "348d1f7e6ea18ea8db80cfbd7ed68d5a0c6c3f913e874db65796a2428ee13ec7",
+      "command": null
+    },
+    {
+      "rel": "脚本/blackbox_daily_increment_orchestrator_r1.py",
+      "role": "increment_orchestrator",
+      "exists": true,
+      "size": 3000,
+      "sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a",
+      "command": null
+    },
+    {
+      "rel": "脚本/blackbox_daily_increment_publish_gate_r1.py",
+      "role": "publish_gate",
+      "exists": true,
+      "size": 5716,
+      "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654",
+      "command": null
+    },
+    {
+      "rel": "脚本/index_minute_align_incremental_engine_r1.py",
+      "role": "index_minute_incremental_engine",
+      "exists": true,
+      "size": 41432,
+      "sha256": "a5dc7a404dfa4bc97643b189a4832b9c05faa958c4a014af867a7e72a7078ea8",
+      "command": null
+    },
+    {
+      "rel": "脚本/index_minute_align_clean_antileak_seal_r1.py",
+      "role": "index_minute_clean_antileak",
+      "exists": true,
+      "size": 16480,
+      "sha256": "87a8826648c37cce8b19b4516c7c8ff727ddb033c0746b52fd9086cb5ddf35cc",
+      "command": null
+    },
+    {
+      "rel": "脚本/p7_guarded_5m_download.py",
+      "role": "p7_guarded_5m",
+      "exists": true,
+      "size": 30585,
+      "sha256": "b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f",
+      "command": null
+    },
+    {
+      "rel": "脚本/p7_guarded_1m_download.py",
+      "role": "p7_guarded_1m",
+      "exists": true,
+      "size": 27862,
+      "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+      "command": null
+    },
+    {
+      "rel": "脚本/run_blackbox_unified_data_research_orchestrator_r2.py",
+      "role": "unified_orchestrator",
+      "exists": true,
+      "size": 10441,
+      "sha256": "2d5cc8daae9a443be16585f312c212eae940178e50f0dfbd339fd9ad4b6fbba7",
+      "command": null
+    },
+    {
+      "rel": "脚本/blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+      "role": "adjust_factor_incremental",
+      "exists": true,
+      "size": 723,
+      "sha256": "d236dacb2e6033bac09737c0bf6da20f8c5155dbb751a0181d087d5d704c3553",
+      "command": null
+    },
+    {
+      "rel": "脚本/daily_download_log_append.py",
+      "role": "download_log_append",
+      "exists": true,
+      "size": 4605,
+      "sha256": "61a694d63258481d30ae0494ee13977fa523f84b02bc389d2e60edc99003a0c0",
+      "command": null
+    }
+  ],
+  "code_files": [
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/clean_align_antileak_cache_r1.py",
+      "size": 11987,
+      "sha256": "0d5218873e25b94e06696fbcd956e8a9851dcad6919ef6613b134f0127f67ed6",
+      "mtime_utc": "2026-08-18T20:50:38Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/download_source_fq_pre_r1.py",
+      "size": 7131,
+      "sha256": "8a49616147748b46d168542973020aed86cb1e70d09a09a45960cb641201bcea",
+      "mtime_utc": "2026-08-18T20:08:33Z",
+      "referenced_by": [
+        "extra_glob",
+        "nh120_population_calibrate_r1.py"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/gate_pre_pit_from_cache044403_r1.py",
+      "size": 8172,
+      "sha256": "8451a2105f2ad9a62fba06a90262645bde20c992ff39759511629d3f42b060dc",
+      "mtime_utc": "2026-08-18T20:08:33Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/incremental_backward_refresh_r1.py",
+      "size": 11537,
+      "sha256": "1df97ec81882243716cece03afb786638a05028642f97309cf71a3bcea3456f0",
+      "mtime_utc": "2026-08-18T20:50:37Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/nh120_population_calibrate_r1.py",
+      "size": 7289,
+      "sha256": "00c4c9745d61a09346ad94a244d6ad0962c844f5cd47dc71d82ce01a2f0d989b",
+      "mtime_utc": "2026-08-18T20:08:32Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/run_r26b_pre_pit_r1.py",
+      "size": 7852,
+      "sha256": "bbb765468d9a6b2f1717d87bf34aa713cf1c094e23f8493cbefa4df178480dc0",
+      "mtime_utc": "2026-08-18T20:08:32Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/seal_validate_publish_r1.py",
+      "size": 13469,
+      "sha256": "a0b33e072d8be6631921fe8d898c8e9933670a235e3f49e77284faf80bf594c6",
+      "mtime_utc": "2026-08-18T20:50:37Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_adjust_factor_pit_r1.py",
+      "size": 16033,
+      "sha256": "bb8a52a19e92b2003a462ce38a91c1c466831d3ee0fbcb4f22baa6c12ded99b0",
+      "mtime_utc": "2026-08-18T20:50:37Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+      "size": 38650,
+      "sha256": "c8ddf805a6ddc998cda507f2aa5c92f27b13a43b5445e5bfed21477c5822f336",
+      "mtime_utc": "2026-08-24T07:47:07Z",
+      "referenced_by": [
+        "cache_compiler_tip_rebase_from_current_r1.py",
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_history_r1.py",
+      "size": 18522,
+      "sha256": "d72a74ad665a6109c3e028f5532a345e3a035b253038d1ce4ce751fe18ae1340",
+      "mtime_utc": "2026-08-09T00:41:26Z",
+      "referenced_by": [
+        "cache_compiler_full_resume_r1.py",
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_full_resume_r1.py",
+      "size": 17518,
+      "sha256": "27e66b61ba75570c4b796537b4db34dab498cfb651993be9d48576b31fe8c76d",
+      "mtime_utc": "2026-08-09T03:02:52Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+      "size": 22223,
+      "sha256": "d2058a247f00b62ef1d72a1450e8b5dfc0b4f05f92677c65e968009d39e37b69",
+      "mtime_utc": "2026-08-12T16:55:54Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+      "size": 25087,
+      "sha256": "0be0f4f19f9376d50042453d3062e6cffad7939594d3a01df9bb716b0facfd13",
+      "mtime_utc": "2026-08-18T20:50:52Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_corporate_reference_reader_r1.py",
+      "size": 3558,
+      "sha256": "258fd48a4ec34f2d1f1a33c0ec2322deb84b6d4e7c90d633bf8e512669b10d87",
+      "mtime_utc": "2026-08-11T18:34:50Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_jq20_reader_r1.py",
+      "size": 1752,
+      "sha256": "b7a8b577d29177fba27f544816f2ffddc921677489568ad7fffa9173f8efffc7",
+      "mtime_utc": "2026-08-14T16:21:38Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_sw_membership_reader_r1.py",
+      "size": 2084,
+      "sha256": "e66e33b3ab4620c068d285501313adcd44850321b67f7e341b281d0cae5142b7",
+      "mtime_utc": "2026-08-11T17:01:58Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INCREMENTAL_AND_CLEANING_R9_R1/finance_incremental_download_r9.py",
+      "size": 12581,
+      "sha256": "bfa3907f76211327cb93688dc5a8a883f18a81e8350cb1fb546f1e2cd83468be",
+      "mtime_utc": "2026-08-05T21:24:56Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INCREMENTAL_AND_CLEANING_R9_R1/formal_cleaning_r9_build_and_seal_r1.py",
+      "size": 12058,
+      "sha256": "f2db631eddf3cee681dab3caab642ad68bf6f453f0256601c77e39116571be9f",
+      "mtime_utc": "2026-08-05T16:33:50Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INDEX_AUG_INCREMENT_R13_R1/finance_incremental_download_r13.py",
+      "size": 11683,
+      "sha256": "29659fe7cefe1bfa673230486f5e585ca0affb49de53c2012ec1bb0f37799c4e",
+      "mtime_utc": "2026-08-07T16:53:39Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INDEX_AUG_INCREMENT_R13_R1/formal_cleaning_r13_build_and_seal_r1.py",
+      "size": 10655,
+      "sha256": "e2b808572f9ea5156b72c1cf13f42cf1c5afb58b74373b965083905fc04e97f3",
+      "mtime_utc": "2026-08-07T16:54:00Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INDEX_AUG_INCREMENT_R13_R1/r13_antileak_and_ssot_r1.py",
+      "size": 4114,
+      "sha256": "ac242e510920068506a92adb580f88ac177475de0f236c6069acca4ffc835926",
+      "mtime_utc": "2026-08-07T16:54:06Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/clean_cache_candidate_r1.py",
+      "size": 11074,
+      "sha256": "0723c1c071378b5429e43cdb0898ee9340c35b2022bb4805e76adee24fc50f40",
+      "mtime_utc": "2026-08-18T20:08:33Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/download_source_fq_none_r1.py",
+      "size": 10515,
+      "sha256": "089593347c548fa5fd5cac721f73047cbb89716af3b0862a37fecfd55ca8f7ce",
+      "mtime_utc": "2026-08-18T20:08:32Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/publish_current_if_gates_pass_r1.py",
+      "size": 8472,
+      "sha256": "f55799d26de406f11823e5373f5fd59aba2f7d4f53e6c07cc31833a8b80e2306",
+      "mtime_utc": "2026-08-18T20:08:32Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/reconstruct_nh120_r1.py",
+      "size": 7792,
+      "sha256": "733cc9a56d830a13b821ae1798ef2ec405621dc4304520e8a83da071aa7aeb27",
+      "mtime_utc": "2026-08-18T20:08:32Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/repair_r27_price_junction_r1.py",
+      "size": 2484,
+      "sha256": "e0779907e6451b98c772fa1726c9a51891a98a1f667c6557a1c6b2fdc1ed0967",
+      "mtime_utc": "2026-08-18T20:08:33Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/seal_source_and_golden_r1.py",
+      "size": 11117,
+      "sha256": "06b484f4ebcd7e7797409b0e6f55221cdf0053ca36fe801ad2a00a3c2b0d9f01",
+      "mtime_utc": "2026-08-18T20:08:32Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/JOINQUANT_STRATEGY_CODING_SSOT_R1.md",
+      "size": 13430,
+      "sha256": "f8f13ae2f5f63e2a476ac48826ccfd9451e1b1141e465984547f76c22fd1cb29",
+      "mtime_utc": "2026-08-24T07:47:07Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/SOURCE_MANIFEST.json",
+      "size": 2125,
+      "sha256": "935df2d6f303e7a17e349723991fc5320efe2400a390cfb76a25c05689063f7d",
+      "mtime_utc": "2026-08-24T07:47:07Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/TEMPLATES_回测与模拟盘热启动.py",
+      "size": 5330,
+      "sha256": "1bf55e810688c794bf5fcb2298f7e7d0ad4e050d41136288fe47f028a0276105",
+      "mtime_utc": "2026-08-08T20:10:12Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/聚宽代码写法经验_模拟盘热替换_R1.md",
+      "size": 6421,
+      "sha256": "a0c74c91fbefb65ebc14a36c9c53ba741703f153ef607f2457939cb89757085c",
+      "mtime_utc": "2026-08-24T07:47:07Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/聚宽范本_日频必读.md",
+      "size": 3253,
+      "sha256": "7e0f822b6381eeef81b7ba748141fffdf9132db575345bac6060a5aac7ddf577",
+      "mtime_utc": "2026-08-24T07:47:07Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py",
+      "size": 98620,
+      "sha256": "8d9334dd6ed2053b6cb297ea5780408c106c9cf2e0b7138629685e4f589d992e",
+      "mtime_utc": "2026-08-15T18:29:00Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/_base.py",
+      "size": 11800,
+      "sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+      "mtime_utc": "2026-06-09T01:12:14Z",
+      "referenced_by": [
+        "blackbox_daily_increment_common_r1.py",
+        "blackbox_data_absence_gate_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/_download_batch.py",
+      "size": 2627,
+      "sha256": "a904896d88937001b60128837fa438d85ef64437167f1f5c72bd1b40b014fd5c",
+      "mtime_utc": "2026-08-05T21:24:56Z",
+      "referenced_by": [
+        "pathref:jq_download_base.py",
+        "pathref:jq_resume_r2.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_acquisition_pagination_engine_r1.py",
+      "size": 7786,
+      "sha256": "978aedee181eac7815daed14a5b057f4ab3f8c663afa6f8c18e541561a02beae",
+      "mtime_utc": "2026-08-14T16:21:38Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_adjust_factor_incremental_backward_refresh_r1.py",
+      "size": 723,
+      "sha256": "d236dacb2e6033bac09737c0bf6da20f8c5155dbb751a0181d087d5d704c3553",
+      "mtime_utc": "2026-08-18T20:08:33Z",
+      "referenced_by": [
+        "adjust_factor_incremental"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_backtest_causal_information_gate_r1.py",
+      "size": 20182,
+      "sha256": "8e7618b749fb2cbb9cc1af2cb0b34a62b914ec7bc4cda1ae8322a9e53388821e",
+      "mtime_utc": "2026-08-14T16:21:38Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_backtest_preflight_gate.py",
+      "size": 8389,
+      "sha256": "d7be35938f70a533d78f83ad09476cca16257514e6deb7bcf086bb89292c71f1",
+      "mtime_utc": "2026-08-18T20:08:33Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_backtest_price_plane_gate_r1.py",
+      "size": 10897,
+      "sha256": "69b00bb11219aaebf48eac1bcc0e08ef80018d92a87585dae12570e1a9692047",
+      "mtime_utc": "2026-08-18T20:08:32Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_backtest_price_plane_r1.py",
+      "size": 6595,
+      "sha256": "62beda130e6213f59b6f33a5066c5dae0f1b670f5761081537ec6d1d07af739a",
+      "mtime_utc": "2026-08-18T20:08:32Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_cbond_dual_low_eod_tplus1_backtest_r1.py",
+      "size": 30151,
+      "sha256": "6d8d8148ac21ceab9d3856510878a58cd2edc59eb6cf29bdd0d8884b6cff6b7a",
+      "mtime_utc": "2026-08-18T20:50:50Z",
+      "referenced_by": [
+        "blackbox_cbond_dual_low_pit_strict_backtest_r1.py",
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_cbond_dual_low_pit_strict_backtest_r1.py",
+      "size": 26694,
+      "sha256": "5d7813af1c06d55b66a784a0980d89d79d5f0299ddc28d5532345d761459d9da",
+      "mtime_utc": "2026-08-18T20:50:51Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_daily_increment_common_r1.py",
+      "size": 19082,
+      "sha256": "348d1f7e6ea18ea8db80cfbd7ed68d5a0c6c3f913e874db65796a2428ee13ec7",
+      "mtime_utc": "2026-09-24T08:17:05Z",
+      "referenced_by": [
+        "blackbox_etf_minute_daily_increment_check_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_daily_increment_orchestrator_r1.py",
+      "size": 3000,
+      "sha256": "264fd034113bc2d02ce3395e612eaf3c35e18941b88409d5deebd76b87d53d3a",
+      "mtime_utc": "2026-08-19T04:25:20Z",
+      "referenced_by": [
+        "increment_orchestrator"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_daily_increment_publish_gate_r1.py",
+      "size": 5716,
+      "sha256": "6a55ec57ef4740105ec4023563bdebac6038ffe0ca458136b70ee2055a2bd654",
+      "mtime_utc": "2026-08-18T20:50:53Z",
+      "referenced_by": [
+        "cache_compiler_tip_rebase_from_current_r1.py",
+        "publish_gate"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_data_absence_gate_r1.py",
+      "size": 6687,
+      "sha256": "f7f84f2e2d340605cfdbef607c7f9586a357bf310e3bd00b8f4cec3c8d99e04b",
+      "mtime_utc": "2026-08-19T04:23:23Z",
+      "referenced_by": [
+        "blackbox_daily_increment_common_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_data_access_resolver_r1.py",
+      "size": 43924,
+      "sha256": "88ec468f5b18bf7eec2002d605e7922d7ff085f6bbf9fb69d0d57d6d3716f6f5",
+      "mtime_utc": "2026-09-01T16:13:02Z",
+      "referenced_by": [
+        "blackbox_backtest_price_plane_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_data_coverage_common_r1.py",
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "mtime_utc": "2026-08-18T20:08:33Z",
+      "referenced_by": [
+        "blackbox_data_access_resolver_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_data_inventory_top_refresh.py",
+      "size": 30549,
+      "sha256": "562245b98136a49eb480ef594d1d447b1f4dfbb2819d49de68d2610a62f7f61d",
+      "mtime_utc": "2026-08-18T20:50:38Z",
+      "referenced_by": [
+        "pathref:blackbox_fund_etf_nav_premium_plane_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_etf_minute_daily_increment_check_r1.py",
+      "size": 2823,
+      "sha256": "a3ce211eeb385f0f190b537cc0d9e11704218c5bb1aed47e80cb13f980a223a8",
+      "mtime_utc": "2026-08-24T07:47:07Z",
+      "referenced_by": [
+        "pathref:blackbox_daily_increment_orchestrator_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_full_data_update_scope_refresh_r1.py",
+      "size": 3638,
+      "sha256": "23932b983569bb60e03d0d286c1ad2295bbfadd8fb2182eb17d311c9917ca4ad",
+      "mtime_utc": "2026-08-18T20:50:53Z",
+      "referenced_by": [
+        "blackbox_daily_increment_publish_gate_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py",
+      "size": 31204,
+      "sha256": "8e5b360ce0dad95012a94def38dd6b77c7ee71cbb729964c24432b0856c96b11",
+      "mtime_utc": "2026-08-25T16:08:11Z",
+      "referenced_by": [
+        "extra_glob"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_index_weight_daily_increment_check_r1.py",
+      "size": 1213,
+      "sha256": "5bc290e1fa38110b180057d12521c57631606fb8280a92e76d25652ae8177baf",
+      "mtime_utc": "2026-08-24T07:47:07Z",
+      "referenced_by": [
+        "pathref:blackbox_daily_increment_orchestrator_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_index_weight_governance_r1.py",
+      "size": 67528,
+      "sha256": "3c49a663b69582277ed68cde470131b93a174f692db3332b2279ee2d1861ee8a",
+      "mtime_utc": "2026-08-24T07:47:07Z",
+      "referenced_by": [
+        "blackbox_index_weight_daily_increment_check_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_must_read_preflight_r1.py",
+      "size": 11767,
+      "sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+      "mtime_utc": "2026-08-18T20:50:46Z",
+      "referenced_by": [
+        "blackbox_cbond_dual_low_eod_tplus1_backtest_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_request_window_data_capability_resolver_r1.py",
+      "size": 19657,
+      "sha256": "c22fc461db2049c0d3a9ca8988b08c6f9ee0fee95c0d2bdbb8ea8bd00114710e",
+      "mtime_utc": "2026-08-14T16:21:38Z",
+      "referenced_by": [
+        "blackbox_daily_increment_publish_gate_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_run_identity_r1.py",
+      "size": 23044,
+      "sha256": "92083b68b40aa004f69dd9802976a1c85a97a2fd939b5fbaa976428dd97ee7e3",
+      "mtime_utc": "2026-09-17T06:34:42Z",
+      "referenced_by": [
+        "run_blackbox_master_research_autorun_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/blackbox_stock_minute_1m_reader_r1.py",
+      "size": 30086,
+      "sha256": "e214a65ce4f059c636909d47cdbca737a7f20de8b1d0e16c41e34fc495974943",
+      "mtime_utc": "2026-09-17T06:34:42Z",
+      "referenced_by": [
+        "blackbox_data_access_resolver_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/daily_download_log_append.py",
+      "size": 4605,
+      "sha256": "61a694d63258481d30ae0494ee13977fa523f84b02bc389d2e60edc99003a0c0",
+      "mtime_utc": "2026-07-08T12:12:04Z",
+      "referenced_by": [
+        "download_log_append"
+      ]
+    },
+    {
+      "rel": "脚本/index_minute_align_clean_antileak_seal_r1.py",
+      "size": 16480,
+      "sha256": "87a8826648c37cce8b19b4516c7c8ff727ddb033c0746b52fd9086cb5ddf35cc",
+      "mtime_utc": "2026-08-14T00:26:04Z",
+      "referenced_by": [
+        "index_minute_clean_antileak"
+      ]
+    },
+    {
+      "rel": "脚本/index_minute_align_incremental_engine_r1.py",
+      "size": 41432,
+      "sha256": "a5dc7a404dfa4bc97643b189a4832b9c05faa958c4a014af867a7e72a7078ea8",
+      "mtime_utc": "2026-09-17T23:00:06Z",
+      "referenced_by": [
+        "index_minute_align_clean_antileak_seal_r1.py",
+        "index_minute_incremental_engine"
+      ]
+    },
+    {
+      "rel": "脚本/jq_download_base.py",
+      "size": 8460,
+      "sha256": "9c6c7a76f434fae66236cc6d6a7b97189439684fd7f8038cae72939cc954af18",
+      "mtime_utc": "2026-08-05T21:24:56Z",
+      "referenced_by": [
+        "blackbox_index_weight_governance_r1.py"
+      ]
+    },
+    {
+      "rel": "脚本/jq_download_execution_r1.py",
+      "size": 130769,
+      "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+      "mtime_utc": "2026-06-15T16:48:40Z",
+      "referenced_by": [
+        "jq_download_execution"
+      ]
+    },
+    {
+      "rel": "脚本/jq_expand_minute.py",
+      "size": 10976,
+      "sha256": "7b5c2367ccbfd1bc96c21acf19cada2cce32de255b094365aed0973e20c5f44f",
+      "mtime_utc": "2026-07-29T22:05:29Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/jq_expand_minute_v2.py",
+      "size": 9879,
+      "sha256": "cb949eeea568dd8bf9593e5e31177159ad66b4cfdce3d0fb261b93f9efd7568a",
+      "mtime_utc": "2026-06-14T18:59:37Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/jq_expand_minute_v3.py",
+      "size": 12013,
+      "sha256": "420d1b8d638727ba8a47282826ed30ccf5b3b1b7a7ef98be2cb1f0af7b9765b7",
+      "mtime_utc": "2026-06-14T18:59:37Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/jq_resume_r2.py",
+      "size": 21749,
+      "sha256": "28648d49b53a1b03fcbd9d62046ec199b6e07218ec1b7a904f0001d88d88e435",
+      "mtime_utc": "2026-06-14T18:59:37Z",
+      "referenced_by": [
+        "jq_resume"
+      ]
+    },
+    {
+      "rel": "脚本/p7_1m_batch_code_mapping_r6.py",
+      "size": 8345,
+      "sha256": "3ad4e07ab6d0a44de0f6618a1fc04e4e2a77f5d832b5fb2008fa9d6acf2cf216",
+      "mtime_utc": "2026-07-02T08:41:25Z",
+      "referenced_by": [
+        "p7_1m_matrix_worker.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_1m_matrix_launcher.py",
+      "size": 4037,
+      "sha256": "1ddb31b60246bf1986a571172cfeda8eaeb3d9ff5ca590ad9b223a2b7b3e83cb",
+      "mtime_utc": "2026-06-16T18:19:05Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_1m_matrix_worker.py",
+      "size": 16433,
+      "sha256": "4e8c5e2837537b738179543b4adb876e0c3fc2f3a4bc6bbda700181c7df5da98",
+      "mtime_utc": "2026-09-09T16:54:15Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_30m_batch_code_mapping_r13.py",
+      "size": 5140,
+      "sha256": "06a9e1ed9a8d013d7ddcba0cfe1488b95ed279004bbfc3b3ada842e296ac84dd",
+      "mtime_utc": "2026-07-02T10:02:09Z",
+      "referenced_by": [
+        "p7_30m_matrix_worker.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_30m_matrix_launcher.py",
+      "size": 3342,
+      "sha256": "b7a3495dd3e213cb07de5c32e75334b4c27950d9f30a3f40ae7d4281897cdc24",
+      "mtime_utc": "2026-07-02T10:03:14Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_30m_matrix_worker.py",
+      "size": 5987,
+      "sha256": "58e8f03ff0397c25c4f3a6c430f70ec6fb710d5f85c1c955755e58b98ef7ca15",
+      "mtime_utc": "2026-07-02T10:18:20Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_5m_matrix_launcher.py",
+      "size": 5963,
+      "sha256": "5f1b4ca746f878491b4cd81b9f8e4897874e0a1d3185508c28d2c2b5a21904d0",
+      "mtime_utc": "2026-09-09T16:54:15Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_5m_matrix_worker.py",
+      "size": 11952,
+      "sha256": "dcd6133b61b26f0f7ecf25aca2f5c6518936716c46eb6011102bc7f85be8570d",
+      "mtime_utc": "2026-09-09T16:54:15Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_60m_batch_code_mapping_r17.py",
+      "size": 5738,
+      "sha256": "200524996f701595a2c3752110940e305b9a565da3baae507552726135a0bba4",
+      "mtime_utc": "2026-07-02T12:26:56Z",
+      "referenced_by": [
+        "p7_60m_matrix_worker.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_60m_matrix_launcher.py",
+      "size": 3215,
+      "sha256": "f803bdd1c033f6e563658555b0cf1ee5dfc866af8b90ac29c358e7703db5d1f2",
+      "mtime_utc": "2026-07-02T12:27:11Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_60m_matrix_worker.py",
+      "size": 5152,
+      "sha256": "c7b47aaab25d22525938700846c9ebbe141b192633b808630946cdaf070d78ff",
+      "mtime_utc": "2026-07-02T12:27:17Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_gate_common.py",
+      "size": 62651,
+      "sha256": "afb460e08b9aac695f09a9326b1fe0c69701c75edfa54b1a70d8393bf3f90fbd",
+      "mtime_utc": "2026-09-09T16:54:15Z",
+      "referenced_by": [
+        "p7_60m_batch_code_mapping_r17.py",
+        "p7_60m_matrix_worker.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_guarded_1m_download.py",
+      "size": 27862,
+      "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+      "mtime_utc": "2026-06-15T21:31:38Z",
+      "referenced_by": [
+        "p7_guarded_1m"
+      ]
+    },
+    {
+      "rel": "脚本/p7_guarded_5m_download.py",
+      "size": 30585,
+      "sha256": "b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f",
+      "mtime_utc": "2026-06-15T16:48:40Z",
+      "referenced_by": [
+        "p7_guarded_5m"
+      ]
+    },
+    {
+      "rel": "脚本/p7_hand_stage_controller.py",
+      "size": 3494,
+      "sha256": "5383ab53b93be4f9869ed65a290bd2cb43b6a200002cdb9d6f71a91f5ecb1571",
+      "mtime_utc": "2026-06-15T23:56:29Z",
+      "referenced_by": [
+        "pathref:p7_gate_common.py"
+      ]
+    },
+    {
+      "rel": "脚本/p7_runtime_guard.py",
+      "size": 2095,
+      "sha256": "f7922321b8ccbcac793fb15d5b204c8c646ebe55579198c2dd9f2a5b41ee6b24",
+      "mtime_utc": "2026-06-17T18:35:34Z",
+      "referenced_by": [
+        "p7_5m_matrix_worker.py"
+      ]
+    },
+    {
+      "rel": "脚本/run_blackbox_daily_incremental_data_plane_r1.py",
+      "size": 41183,
+      "sha256": "deb363bcb1a71860c9452cd71fb8075933a30f7f329e66ba734a35c521d13d72",
+      "mtime_utc": "2026-09-01T16:13:02Z",
+      "referenced_by": [
+        "daily_incremental_data_plane"
+      ]
+    },
+    {
+      "rel": "脚本/run_blackbox_master_research_autorun_r1.py",
+      "size": 168331,
+      "sha256": "f5d0f72b6852b5e27731c1e3823874c9a6a221ba5565e674cdb3e7a1825f8c94",
+      "mtime_utc": "2026-09-01T16:13:02Z",
+      "referenced_by": [
+        "pathref:run_blackbox_research_os.py"
+      ]
+    },
+    {
+      "rel": "脚本/run_blackbox_research_os.py",
+      "size": 23323,
+      "sha256": "5fbf8c3149c70819776a56eacacb245cab99550b1e98f189e15119d236999903",
+      "mtime_utc": "2026-09-01T16:13:02Z",
+      "referenced_by": [
+        "research_os_entry"
+      ]
+    },
+    {
+      "rel": "脚本/run_blackbox_unified_data_research_orchestrator_r2.py",
+      "size": 10441,
+      "sha256": "2d5cc8daae9a443be16585f312c212eae940178e50f0dfbd339fd9ad4b6fbba7",
+      "mtime_utc": "2026-08-28T23:00:17Z",
+      "referenced_by": [
+        "unified_orchestrator"
+      ]
+    },
+    {
+      "rel": "脚本/run_blackbox_us_fine_grained_flow_profit_pool_r1.py",
+      "size": 24293,
+      "sha256": "576ead38a51f88abe4fb81a72b8ac139601096ab7cbeeb507a5d20402fcbf30b",
+      "mtime_utc": "2026-08-28T23:00:17Z",
+      "referenced_by": [
+        "pathref:run_blackbox_unified_data_research_orchestrator_r2.py"
+      ]
+    },
+    {
+      "rel": "脚本/run_blackbox_us_l1_news_open_close_collector_r1.py",
+      "size": 28499,
+      "sha256": "cde622733d35f00d3e9387e8833e5a7b5dd7ed637c2373f921df2ce482b9cbd4",
+      "mtime_utc": "2026-08-28T23:00:16Z",
+      "referenced_by": [
+        "pathref:run_blackbox_daily_incremental_data_plane_r1.py"
+      ]
+    }
+  ],
+  "config_files": [
+    {
+      "rel": "数据/回测缓存/CURRENT_CACHE_RELEASE.json",
+      "size": 1531,
+      "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+      "mtime_utc": "2026-09-24T20:04:43Z"
+    },
+    {
+      "rel": "数据/清洗成品/CURRENT_CLEANING_RELEASE.json",
+      "size": 1160,
+      "sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "mtime_utc": "2026-09-24T20:04:43Z"
+    },
+    {
+      "rel": "研究系统/数据平面/CONFIG/DATA_PLANE_PATH_MAP.json",
+      "size": 4132,
+      "sha256": "4addbc1ce4a7db4ed3d8981f412f0014e94e21a3a91d67652e060473005630b9",
+      "mtime_utc": "2026-08-28T23:00:17Z"
+    },
+    {
+      "rel": "研究系统/数据平面/CONFIG/daily_lanes.json",
+      "size": 7127,
+      "sha256": "6c3371e85754dac6f2da6f06d34b0fc6e7a4aa1cfe95660aee44a3f15424d5e3",
+      "mtime_utc": "2026-08-28T23:00:17Z"
+    },
+    {
+      "rel": "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json",
+      "size": 5583,
+      "sha256": "0f0813cb822f535e6978edb501b1af3e8c666461851602f5a816b10babaeecc8",
+      "mtime_utc": "2026-09-24T20:08:21Z"
+    },
+    {
+      "rel": "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json",
+      "size": 627,
+      "sha256": "f1231adf9c7ed3abbdcfb8b1248803f9b25917313fb40eec7a0c3bc28ecbefa9",
+      "mtime_utc": "2026-09-24T20:08:21Z"
+    },
+    {
+      "rel": "规则库/hand_hard_rules/BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R2.json",
+      "size": 31955,
+      "sha256": "63974a71ab39626855645dab4f46028cd04323ec19ed2409695282353faed992",
+      "mtime_utc": "2026-09-24T20:06:42Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_CACHE_AUTHORITY_AND_PRICE_FRESHNESS_LEDGER_CURRENT.json",
+      "size": 1563,
+      "sha256": "dd6d0b058755d00cf5feef82709112e8f6d21e09e1c5497c201c71339b7bea58",
+      "mtime_utc": "2026-09-24T19:56:55Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_FULL_DATA_PIPELINE_MATRIX_CURRENT.json",
+      "size": 9153,
+      "sha256": "8d8b0ced9f16c0815bf288ecf47adac1a2fea07d34f92f5f8530674bf2f1378c",
+      "mtime_utc": "2026-09-24T20:04:43Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+      "size": 8204,
+      "sha256": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23",
+      "mtime_utc": "2026-09-24T20:07:35Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json",
+      "size": 8017,
+      "sha256": "9cca2be379941133aa144dbb195116e9739624fb3e37a9a0b78d7536e7b30e31",
+      "mtime_utc": "2026-09-24T20:07:35Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0904_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 2388,
+      "sha256": "74e3f6bee2c393729d86d8fa8fa32a8cb8c86d07c27c8a112e39fc7f0ac5fa80",
+      "mtime_utc": "2026-09-06T18:00:17Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0907_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 2174,
+      "sha256": "5fb8610566aa7df70e5e8b41678882cc4daab69863e1ad966cb43c9307071e93",
+      "mtime_utc": "2026-09-08T02:04:28Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0908_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 3284,
+      "sha256": "01d26a581235ab56058850c4a9a189bf92b01d1af7cbbfd615cab8558f922365",
+      "mtime_utc": "2026-09-09T09:33:07Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0909_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 927,
+      "sha256": "d4e9f44f9c6bef3ec47ae4fcc451edaf5db5522dbff919b85b04088dd041b2ec",
+      "mtime_utc": "2026-09-09T10:46:14Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0910_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 513,
+      "sha256": "d57f10b094cc0b0ed7a31173e939f5650566494f6aa12043a6828957fcc439e0",
+      "mtime_utc": "2026-09-17T23:06:17Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0911_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 510,
+      "sha256": "4c243e81e26f595c403f33819e643d39031c188855494d520c44699da9301e16",
+      "mtime_utc": "2026-09-24T00:22:34Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0914_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 510,
+      "sha256": "5573fc56be54c0f7fa8505472984cc47565852af44d978094b133332b44ce17f",
+      "mtime_utc": "2026-09-24T01:29:58Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0915_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 510,
+      "sha256": "3d940302458aa421f885f1b184023634793bbd3d3280163237606f0d6cb2a58d",
+      "mtime_utc": "2026-09-24T02:25:12Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0916_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 510,
+      "sha256": "643dcebf2277fd5e6f72edf7e942e610a536d5884d468fc3c342f164b365c58d",
+      "mtime_utc": "2026-09-24T03:34:17Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0917_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 511,
+      "sha256": "a80ea0c941109d604f300f4053e3429cfa43724c06520998cb4bc3aedd6baa4f",
+      "mtime_utc": "2026-09-24T04:56:15Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0918_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 568,
+      "sha256": "a2cf59e7e657236de2b6a1b028e6295903f6c8513ea0f88605684033e9744d96",
+      "mtime_utc": "2026-09-24T08:35:14Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0921_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 568,
+      "sha256": "59e76c466a03f7178f4308eaf33f0fb3362c2f5668648a58e3fd6515d9a7adb1",
+      "mtime_utc": "2026-09-24T09:36:34Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0922_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 568,
+      "sha256": "180f38c5a3d89b5d2bf58215dfb13bb48737b0da6871f7591823d61ee816758b",
+      "mtime_utc": "2026-09-24T10:36:59Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0923_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 568,
+      "sha256": "08431f2dacb5f2f6781ebcdae8287c4e6cc270919df033f5ca8b4b6400880aae",
+      "mtime_utc": "2026-09-24T13:42:33Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_0924_TIP_INCREMENT_COMPLETION_CURRENT.json",
+      "size": 568,
+      "sha256": "3157272734d67ee18bfc565055f8d980f3c1d5e3985e91d4057aa9690cebc704",
+      "mtime_utc": "2026-09-24T20:07:28Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_JQ_INCREMENTAL_DOWNLOAD_RULE_CURRENT.json",
+      "size": 9100,
+      "sha256": "2084f9683f1aa8385daf720565021631a0ac1d66ee1a52f241b252107782fa4a",
+      "mtime_utc": "2026-09-24T20:04:43Z"
+    },
+    {
+      "rel": "运行/BLACKBOX_PRODUCT_CAPABILITY_FACTS_CURRENT.json",
+      "size": 9244,
+      "sha256": "92877216ce71be4b220031cfedc80ce3f68605e5e2fe5e8e31f14f20e03735fc",
+      "mtime_utc": "2026-09-24T19:56:55Z"
+    }
+  ],
+  "skipped": [],
+  "counts": {
+    "code_files": 90,
+    "config_files": 28,
+    "skipped": 0
+  }
+}
