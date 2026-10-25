@@ -1,0 +1,107 @@
+{
+  "artifact": "REQUIRED_INPUT_GAP",
+  "run": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\engine_runs\\v4_r21_20260903_20260924_R11_TRADEABILITY\\run_result.json",
+  "run_status": "BLOCKED_INPUT_INCOMPLETE",
+  "reported_failure_entries": 8,
+  "sum_null_rows_reported": 8,
+  "field": [
+    "high_limit"
+  ],
+  "dates_involved": [
+    "2026-09-03",
+    "2026-09-07"
+  ],
+  "date_min": "2026-09-03",
+  "date_max": "2026-09-07",
+  "cause_split_of_sampled_codes": {
+    "OTHER": 8
+  },
+  "sampled_rows": [
+    {
+      "date": "2026-09-03",
+      "code": "002731.XSHE",
+      "field": "high_limit",
+      "null_rows": 1,
+      "tradeability_row_in_candidate": true,
+      "tradeability_row_in_sealed": true,
+      "candidate_value": 0.77,
+      "has_price_bar_same_day": true
+    },
+    {
+      "date": "2026-09-03",
+      "code": "002870.XSHE",
+      "field": "high_limit",
+      "null_rows": 1,
+      "tradeability_row_in_candidate": true,
+      "tradeability_row_in_sealed": true,
+      "candidate_value": 53.0,
+      "has_price_bar_same_day": true
+    },
+    {
+      "date": "2026-09-03",
+      "code": "600929.XSHG",
+      "field": "high_limit",
+      "null_rows": 1,
+      "tradeability_row_in_candidate": true,
+      "tradeability_row_in_sealed": true,
+      "candidate_value": 6.04,
+      "has_price_bar_same_day": true
+    },
+    {
+      "date": "2026-09-07",
+      "code": "603037.XSHG",
+      "field": "high_limit",
+      "null_rows": 1,
+      "tradeability_row_in_candidate": true,
+      "tradeability_row_in_sealed": false,
+      "candidate_value": 11.35,
+      "has_price_bar_same_day": true
+    },
+    {
+      "date": "2026-09-07",
+      "code": "603038.XSHG",
+      "field": "high_limit",
+      "null_rows": 1,
+      "tradeability_row_in_candidate": true,
+      "tradeability_row_in_sealed": false,
+      "candidate_value": 17.73,
+      "has_price_bar_same_day": true
+    },
+    {
+      "date": "2026-09-07",
+      "code": "603039.XSHG",
+      "field": "high_limit",
+      "null_rows": 1,
+      "tradeability_row_in_candidate": true,
+      "tradeability_row_in_sealed": false,
+      "candidate_value": 43.56,
+      "has_price_bar_same_day": true
+    },
+    {
+      "date": "2026-09-07",
+      "code": "603040.XSHG",
+      "field": "high_limit",
+      "null_rows": 1,
+      "tradeability_row_in_candidate": true,
+      "tradeability_row_in_sealed": false,
+      "candidate_value": 53.99,
+      "has_price_bar_same_day": true
+    },
+    {
+      "date": "2026-09-07",
+      "code": "603041.XSHG",
+      "field": "high_limit",
+      "null_rows": 1,
+      "tradeability_row_in_candidate": true,
+      "tradeability_row_in_sealed": false,
+      "candidate_value": 12.4,
+      "has_price_bar_same_day": true
+    }
+  ],
+  "interpretation": "the strict gate is behaving as designed: it refuses to run the strategy's limit logic on a key whose limit price is not observable. The affected keys are the sealed plane's paused=0/limit=null keys on 2026-09-03 plus price-plane keys that have no tradeability observation in either plane.",
+  "not_done": [
+    "no limit price was filled or inferred",
+    "no ST flag was inferred",
+    "no supplier call was made"
+  ]
+}
