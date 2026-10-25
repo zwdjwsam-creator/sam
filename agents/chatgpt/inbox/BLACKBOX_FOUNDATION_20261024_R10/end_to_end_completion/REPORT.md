@@ -1,201 +1,233 @@
-# BLACKBOX FOUNDATION R10 — end-to-end completion (R13, same task)
+# BLACKBOX FOUNDATION R10 — end-to-end completion (R13 round 2, same task)
 
 Task: `BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025`
 Execution host: ZHANGWEI (desktop) · workspace `E:\BLACKBOX`
 Verdict: **PARTIAL_EXECUTION_VERIFIED / STAGE_1_NOT_ACCEPTED**
-Corrected current classification: **BLOCKED_PARTIAL_EXECUTION** (diagnostic + candidate only)
+Classification: **BLOCKED_PARTIAL_EXECUTION** (diagnostic + candidate only)
 Foundation acceptance: FALSE · Formal engine admission: FALSE
 
-Historical labels are preserved, not rewritten:
-`REPORT_R12_PRESERVED.md`, `ACCEPTANCE_R12_PRESERVED.json`,
-`B1_B7_STATUS_R12_PRESERVED.json`, `FINAL_REQUIREMENT_MATRIX_R12_PRESERVED.json`
-(the old `diag=false` / `overall=PASS` / `COMPLETED` labels stay visible as history).
+Historical labels are preserved, not rewritten: `REPORT_R12_PRESERVED.md`,
+`ACCEPTANCE_R12_PRESERVED.json`, `B1_B7_STATUS_R12_PRESERVED.json`,
+`FINAL_REQUIREMENT_MATRIX_R12_PRESERVED.json`. The old `diag=false` / `overall=PASS` /
+`COMPLETED` labels stay visible as history.
 
-## 1. What this revision changed (the three reviewed diffs)
+This round answers three review items and reports one defect this round found on its own.
+Nothing in it asks for permission again, and no technical route was changed.
 
-### 1.1 Real original pipeline reuse — the substitute file is gone
+## 0. Round-2 answer, in one table
 
-The previous `tools/run_connected_pipeline.py` re-implemented the response gate, the
-cleaning/anti-leak step, the cache compiler, the checkpoint and the publisher inside a
-new file. That is replaced by actual calls:
-
-| stage | real code executed | outcome |
+| review item | what was done | where it is measured |
 |---|---|---|
-| transport | retained RAW `P2_stock_daily` batches (no download) | 2 sessions, 10,426 rows |
-| gate | `blackbox_daily_increment_common_r1.acquisition_absence_gate` + structural checks | PASS; tampered-date control BLOCKED |
-| cleaning | `inherit_tree`, then `cache_compiler_daily_incremental_r1.read_price_frame` + `antileak_gate` | CC_REPLAY_20260924, 7/7 gates |
-| compiler | `任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py` via `--cleaning-json --parent-root --out-root --no-publish` | exit 0, `CANDIDATE_READY`, 44.5 s |
-| commit | `tools/candidate_commit.py` (immutable version + one atomic COMMIT.json) | COMMITTED, verify CONSISTENT |
-| publish gate | `blackbox_daily_increment_publish_gate_r1.publish_atomic(..., dry_run=True)` | evaluated only; `published=false` |
+| 1a connect the original minute reader | `STOCK_MINUTE_1M_R1` is loaded through `脚本/blackbox_stock_minute_1m_reader_r1.py` and served by the provider; 10 sessions answered, 6 blocked with `NO_DAY_SHARDS`, no daily-open proxy | `evidence/MINUTE_PLANE.json` |
+| 1b trace the 12-day factor sparsity to source layers | traced across P1 / P6 / CACHE; two source-side defects found, both larger than "12 sparse days" | `evidence/FACTOR_SOURCE_TRACE.json`, `FACTOR_SERIES_NATURE.json`, `FACTOR_NONDATE_ENCODING.json`, `FACTOR_CORRUPT_DATE_PROFILE.json`, `FACTOR_DENSE_VS_CORRUPT.json` |
+| 2 real R15 cleaning + repaired `response_gate` | real `load_staging` / `ingest_item` / `seal_release` / `antileak` executed on the retained batches; the gate no longer certifies the question with the answer | `evidence/R15_CLEANING_REPLAY.json`, `CONNECTED_PIPELINE.json#response_gate_contract` |
+| 3 rehearsed `publish_atomic` + consolidated status | non-dry-run publish with every write target bound; matrix / B1–B7 / acceptance now single-sourced | `evidence/PUBLISH_ATOMIC_REHEARSAL.json`, `ACCEPTANCE.json#r13_round2` |
+| defect found by this round | `commit_id` hashed the build timestamp, so "same input → same commit" could never hold | `ACCEPTANCE.json#r13_round2.defect_found_and_fixed` |
 
-Measured facts behind the cleaning candidate (not assumed):
+## 1. Minute plane: the product was always there, the wiring was not
 
-* production cleaning `price/stock_ohlcv_daily` = 232 parts, max date **2026-09-24**;
-* it contains **0 rows** for 2026-08-31 and 2026-09-01 — the two sessions the replay supplies;
-* the retained batches cover both sessions authoritatively (10,426 rows);
-* no production row is replaced, and no replay row collides with a production key.
+R13 claimed "no local minute product exists". That was wrong and is withdrawn.
 
-The original compiler's own gates ran on the merged plane: `stock/etf/index` anti-lookahead
-`pass`, `date_max == 2026-09-24`, `SEAL.all_pass = true`, and the candidate release contains
-2026-08-31 (5,212 rows) and 2026-09-01 (5,214 rows).
+* product `STOCK_MINUTE_1M_R1`, source `CLEANING_CURRENT_A_SHARE_STOCK_1M`, status `READY`,
+  readers under
+  `数据\清洗成品\releases\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\standard\price\A股_stock_1m`;
+* 10 day shards (2 files per session), **2026-09-11 … 2026-09-24**;
+* `candidate/local_plane/minute_bridge.py` imports the original reader (not a copy), normalises a
+  date-only lower bound to `00:00:00`, and forwards the query; the provider serves what comes back
+  and labels it `REAL_MINUTE_PLANE`;
+* inside the V4 window 10 sessions answer (30 rows per single-code probe), 6 block with
+  `BLOCKED_MINUTE_PLANE_NO_COVERAGE` / reader `NO_DAY_SHARDS` (2026-09-03, 09-04, 09-07, 09-08,
+  09-09, 09-10). A blocked session returns **no rows**; the daily open is never substituted.
 
-What is *not* claimed: the source machine's R13 cleaning stage is deliberately not used
-(desktop R15 semantics are the current entry), and the original publish protocol is only
-exercised in `dry_run` — see §5.
+The defect that made R13's probe return nothing was a timestamp inversion in the bridge: `"2026-09-15"`
+parsed as `15:00:00`, producing a `15:00:00 → 09:35:00` range. Fixed and measured — this is why the
+earlier probe reported `NO_DATA` even for covered sessions.
 
-### 1.2 V4: it is a local port, and unproven data substitution was removed
+**What wiring the minute plane does not do:** unblock V4. The strategy file makes 6 `get_price`
+calls, all `daily`, plus 9 `get_current_data` snapshot calls, and **0** minute `get_price` calls.
+Minute input was never V4's blocker, so that claim is withdrawn as well. The minute path is real
+for any caller that requests it.
 
-The original V4 runs on JoinQuant's cloud; there is no local stock engine to "restore".
-`BulletTrade + local adapter` is a **local port**, and is now described as such. Four
-concrete semantic repairs, each measured (`evidence/PROVIDER_SEMANTIC_REPAIR.json`,
-`PROVIDER_SEMANTIC_REPAIR=PASS`):
+## 2. Factor lineage: the 12 sparse days are a symptom, not the defect
 
-1. **Adjustment factor: same-day join, guarded anchor, no substitution.** The old
-   `_align_factor_piecewise` (ffill + bfill + `factor=1.0` fallback) is deleted. The
-   provider now joins `ADJUST_FACTOR_PIT_R1` on the exact date, divides by
-   `factor(anchor)` only through a guarded divisor, and withholds any row whose same-day
-   factor *or* anchor factor is absent. Withheld rows carry
-   `adjust_applicability=BLOCKED_UNPROVEN_ADJUSTMENT`, are counted in
-   `required_input_failures`, and a batch where nothing is provable is a hard block.
-   ETF/INDEX rows are served raw and tagged `RAW_NOT_APPLICABLE_NON_STOCK`, because no
-   adjustment product covers those universes.
+Layers as measured (`FACTOR_SOURCE_TRACE.json`):
 
-   Measured density (`evidence/FACTOR_DENSITY.json`): 166 of
-   178 2026 sessions are dense (peak
-   5222 rows); **12 sessions are sparse —
-   2026-08-17, 2026-08-18, 2026-08-19, 2026-08-20, 2026-08-21, 2026-08-24, 2026-08-25, 2026-08-26, 2026-08-27, 2026-08-28, 2026-09-01, 2026-09-02** — carrying 7–89
-   rows instead of ~5,200. That gap is why a pre-open read on 2026-09-03 (anchor
-   2026-09-02) loses the codes with no factor that day: the withholding is the data gap
-   surfacing, not a code defect.
+| layer | root | files | sessions | rows |
+|---|---|---|---|---|
+| CACHE `ADJUST_FACTOR_PIT_R1` (2026) | `数据\回测缓存\releases\..._ASOF_20260924_20260924_200439` | — | 178 | 863,710 |
+| P1 `adjust_factor` | `数据\原始只读\JQData_9999_official_raw\P1_adjust_factor` | 185 batch + 37 incremental | 3,044 | 13,548,093 |
+| P6 `factor_reference\adjust_factor` | same RAW tree | 38 incremental | 20 | 192,925 |
 
-2. **Unknown `paused` is never turned into "not suspended".** The bar-presence fill is
-   deleted; the null is preserved and fails the strict request (measured on an uncovered
-   window: `paused_false_rows=0`, `paused_nulls=2`, strict raises `REQUIRED_INPUT_MISSING
-   paused`).
-3. **Intraday requests no longer borrow the day's open.** No local minute product exists, so
-   `frequency=minute` is blocked by default (empty frame + recorded failure; the strict
-   raise is the total-block case). The daily-open substitution survives only behind an
-   explicit `--intraday-proxy` diagnostic flag, tagged
-   `INTRADAY_OPEN_PROXY_DIAGNOSTIC_ONLY`.
-4. **`get_all_securities(date)` honours the date.** The master's authoritative
-   `start_date`/`end_date` interval drives an as-of filter (2014-06-03 → 2,289 securities,
-   2026-09-04 → 5,208). `is_st` stays unobserved and is never inferred.
+Two defects, both in the incremental supply:
 
-Verification: `tools/verify_provider_semantics.py` — 13/13 verdicts PASS
-(`PROVIDER_SEMANTIC_REPAIR=PASS`), including the
-new `partial_withheld_not_aborted` case (7 served / 193 withheld in one 200-code batch,
-without aborting the request).
+1. **Date encoding.** 17 incremental files covering 2026-08-12 … 2026-09-02 (88,584 rows) carry
+   `date` as `int64` positional `0..299` (300 distinct values) instead of a timestamp. No row from
+   them can be joined on date, which is exactly why those sessions read as "0 dated rows" in the
+   source. The row payload is otherwise intact: code sets agree 5,208/5,208 with a dense file and
+   `factor` is positive and finite — so the file is recoverable, but not by us rewriting sealed RAW.
+2. **Value.** Every sampled incremental file **from 2026-08-10 onward** is `factor = 1.0` for every
+   row — including the files whose `date` dtype is correct (2026-08-10, 08-11, 09-03, 09-21 … 09-24,
+   `factor_distinct = 1`, min = max = 1.0). A correct timestamp therefore does not make the file an
+   adjustment series; it is the forbidden identity fallback, living in the supplier payload rather
+   than in our code.
 
-Strict engine run (`--strict-inputs`, no proxy) over 2026-09-03..2026-09-24:
-**status `BLOCKED_INPUT_INCOMPLETE`**, blockers `['REQUIRED_INPUT_MISSING']`,
-trades `0`, orders `0`,
-`mark_price_starved=0`, 16/16 sessions completed,
-`diagnostic_only=True`.
+What that does to CACHE (`FACTOR_SERIES_NATURE.json`, `FACTOR_DENSE_VS_CORRUPT.json`):
 
-What the removal of the substitution actually did, in order:
+* **12 partial sessions**, 2026-08-17 … 2026-09-01: 7, 11, 19, 29, 39, 45, 49, 64, 72, 81, 88, 89
+  rows instead of ~5,200 (and 2026-08-31 is a full 5,208-row day of which 5,197 rows are 1.0);
+* **17 constant sessions**, 2026-09-02 … 2026-09-24: 5,215 … 5,222 rows, `distinct = 1`, every value
+  1.0. That is the **entire V4 test window**;
+* per-session source comparison: 14 of the 16 checked sessions are `CACHE_EXCEEDS_SOURCE`, i.e. CACHE
+  holds rows the dated source cannot account for;
+* the historical batch plane is healthy by contrast: 139/139 files varied, minimum factor 0.167,
+  last session per code 2026-06-12.
 
-* the strategy's own price batches now report `获取价格数据失败` twice and its ranking step
-  logs `空排名保留` in **16/16 sessions** — the 09:20 batch needs a 140-bar adjusted
-  history, that history crosses the 12 sparse sessions, and the withheld rows turn the
-  rolling statistics into NaN, so nothing is ever ranked;
-* no fabricated fill stands in: 0 trades, 0 orders, and the benchmark series stays intact
-  (4552.5784 → 4439.1443), so the engine itself ran the whole window;
-* the earlier "COMPLETED with 2 fills" result depended exactly on the piecewise ffill this
-  revision deleted. Removing it did not break the engine; it exposed the 12-session factor
-  gap, which is the honest reason the run cannot be a strategy verdict.
+So the honest statement is stronger than R13's: the tested window has **no proven adjusted price on
+either side of the anchor**. Earlier wording — "12 sparse sessions, everything else dense" — counted
+rows and missed that the dense part is a constant placeholder.
 
-All strict attempts are kept side by side in `evidence/V4_STRICT_RUNS_ALL.json` so an
-earlier probe is never overwritten by a later one:
-* `v4_r21_R13_STRICT` → BLOCKED_INPUT_INCOMPLETE, trades=0, blockers=['REQUIRED_INPUT_MISSING', 'MARK_PRICE_STARVED']
-* `v4_r21_R13_STRICT2` → BLOCKED_INPUT_INCOMPLETE, trades=0, blockers=['MARK_PRICE_STARVED']
-* `v4_r21_R13_STRICT3` → BLOCKED_INPUT_INCOMPLETE, trades=0, blockers=['REQUIRED_INPUT_MISSING', 'MARK_PRICE_STARVED']
-* `v4_r21_R13_STRICT4` → BLOCKED_INPUT_INCOMPLETE, trades=0, blockers=['REQUIRED_INPUT_MISSING']
+Provider response (unchanged in spirit, now fed by this measurement): same-day join only, no
+ffill/bfill, no 1.0 fallback, anchor divisor guarded, unprovable rows withheld as
+`BLOCKED_UNPROVEN_ADJUSTMENT` and counted, and a **structural constant-plane detector** that refuses a
+single-valued plane instead of consuming it. `evidence/PROVIDER_SEMANTIC_REPAIR.json`:
+`PROVIDER_SEMANTIC_REPAIR = PASS`, 13/13 verdicts.
 
-(`STRICT2` was measured before the anchor guard existed and shows 3,173 silent
-`ALL_CLOSE_NAN` marks; `STRICT3` was measured while the guard aborted the whole batch;
-`STRICT4` withholds per code. Only `STRICT4` describes current behaviour.)
+## 3. Real R15 cleaning on the retained batches
 
-The older `R11_TRADEABILITY_RECON` run (COMPLETED, 2 fills) remains in the package as a
-**failed historical label**, not as acceptance, and it is not a return claim. No run over
-this window is a strategy verdict.
+`candidate/run_r15_cleaning_replay.py` calls the production functions, not copies:
+`formal_cleaning_r15_build_and_seal_r1.py` (`load_staging`, `ingest_item`, `seal_release`) and
+`r15_antileak_and_ssot_r1.py`. Release `R15_REPLAY_20260924_R2`, as-of 2026-09-24, parent
+`..._R33_FUND_NAV_ASOF_20260924_20260924_200439`.
 
-### 1.3 Candidate commit: one authority, nothing rewritten in place
+| retained batch | rows | sha256 |
+|---|---|---|
+| `stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet` | 5,212 | `553bad19…20b063` |
+| `stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet` | 5,214 | `25e695dd…8d4ded7` |
 
-`run_connected_pipeline.py:382` used to write the merged frame back into `ACCUM_PART`,
-then the checkpoint, then pointer and registry one by one — a crash could leave a pointer
-aimed at rewritten data. Now:
+`GATE_RESULT = PASS`: staging loaded (2 items), `ingest_all_committed`, seal certificate written,
+ledger written, anti-leak function called and passing, sealed rows equal retained rows, and the
+production `CURRENT_CLEANING_RELEASE.json` and `SSOT` are **byte-identical before and after**
+(`production_current_untouched = true`, `production_ssot_untouched = true`,
+`switch_current_not_called = true`, `patch_hand_not_called = true`).
 
-* every build result is an **immutable versioned release** produced by the original compiler;
-* `build_identity()` hashes what the release actually contains per product;
-* `commit()` writes an immutable per-version checkpoint and then performs **one**
-  `os.replace` of the single authoritative `COMMIT.json`, which carries the checkpoint digest
-  — pointer and checkpoint cannot disagree;
-* `verify()` re-derives the identity from disk instead of trusting the pointer.
+Not claimed: that the vendor download would have returned these rows; that production is switched;
+that HAND was patched. The replay proves the functions run on the retained input, nothing more.
 
-Executed scenarios (9/9 PASS, `evidence/COMMIT_RECOVERY.json`): crash after checkpoint,
-crash before the swap, real commit, same-input replay (`IDEMPOTENT_NOOP`), revised-input
-failure twice with the previous commit byte-identical, crash **after** the swap (commit
-already complete and consistent), revised-input commit, and both payloads still readable and
-distinct. `PRODUCTION_CURRENT_WRITE=NONE` throughout.
+## 4. `response_gate`: the answer no longer certifies the question
 
-## 2. Commands, exit codes, logs
+R13 fed `acquisition_absence_gate(query_cap=resp.rows, pagination_complete="YES")` — the response
+defined its own completeness. Now:
 
-`evidence/COMMANDS.json` holds the ledger (command, exit code, observed result). Raw logs:
-`pipeline_runs/*.log`, `engine_runs/v4_r21_R13_STRICT4/backtest.log`,
-`engine_runs/v4_r21_R13_STRICT4/run_result.json`. Exit codes are recorded as observed; none
-is inferred from a `COMPLETED` label. The 13-check semantic verifier and the density
-measurement are re-runnable (`tools/verify_provider_semantics.py`,
-`tools/measure_factor_density.py`); their outputs are the two evidence files cited above.
+* `query_cap` and `pagination_complete` come **only** from a saved request sidecar; absent → `null` /
+  `"UNKNOWN"`, never `YES` and never `rows`;
+* two separate verdicts: `PROVENANCE_GATE` (bytes/sha/keys of the retained payload) and
+  `SUPPLIER_COMPLETENESS` (vendor side);
+* observed on the retained transport: `PROVENANCE_GATE = PASS`,
+  `SUPPLIER_COMPLETENESS = UNKNOWN`, original gate
+  `DATA_ABSENCE_GATE = UNKNOWN_INCOMPLETE_ACQUISITION`, `ACQUISITION_COMPLETE = NO`,
+  `RESULT_LIMIT_HIT = false`, `NO_DATA_FORBIDDEN = true`;
+* a negative control now feeds a self-certified completeness claim and is
+  **BLOCKED_AS_EXPECTED** with `ACQUISITION_COMPLETENESS_UNPROVEN`.
 
-## 3. Acceptance map status after this revision
+`PROVENANCE_GATE=PASS` with `SUPPLIER_COMPLETENESS=UNKNOWN` is coherent: the bytes we hold are the
+bytes the sidecar names, while vendor completeness was never answered and is therefore not claimed.
 
-See `FINAL_REQUIREMENT_MATRIX.json` and `B1_B7_STATUS.json` (both revised, with the R12
-originals preserved). Summary: R3 PASS · R2 BLOCKED · R5 PARTIAL · R1/R4 unchanged
-(PARTIAL / BLOCKED) · B1/B2/B5 PARTIALLY_REPAIRED · B3/B4/B6/B7 unchanged and open.
+## 5. `publish_atomic` rehearsed non-dry-run, and one defect found on the way
 
-* **B1** is now backed by a measurement rather than a claim: dense on 166/178 2026
-  sessions, sparse on 12 (2026-08-17..2026-09-02, 7–89 rows), so `fq='pre'` is
-  reconstructible on most sessions and provably not on those 12.
-* **R2** is BLOCKED by that gap, not by missing code: the port runs the whole window and
-  refuses to fabricate the 12 sessions.
+Rehearsal (`evidence/PUBLISH_ATOMIC_REHEARSAL.json`), target 2026-09-24:
 
-## 4. Still unverified / blocked (not hidden)
+* `dry_run = false`, `refresh_scope_from_live` invoked once, 9 targets rebound to task-local copies
+  seeded from production (`CACHE_PTR`, `CLEAN_PTR`, `FACTS`, `LEDGER`, `OPS`, `SCOPE`, `ROOT`,
+  child summary, HAND-SCOPE-R2);
+* `writes_observed = 6` (all `*.tmp` inside the bound root), **`unbound_writes = []`**,
+  8 files changed inside the bound root, `no_write_outside_bound_root = true`;
+* result `OPERATIONAL_READINESS = PASS`, `CURRENT_PUBLISH = ALLOWED`, **`published = true`**,
+  `coverage_self_filled_products = []`;
+* the write guard is `sys.addaudithook`; its first attempt also fired on the rehearsal's own
+  evidence write (`UNBOUND_WRITE_ATTEMPT`, exit 1) — that attempt is kept in the command log, the
+  guard was widened to allow exactly that one path and nothing else, then the run passed.
 
-* **`ADJUST_FACTOR_PIT_R1` is sparse for 12 sessions** (2026-08-17..2026-09-02). Every
-  history read that crosses them loses those rows, so the strategy's 140-bar statistics and
-  its 2-bar return reads fail even on dense days. This is the single largest blocker and it
-  is a **data** gap, not a code defect: densifying those 12 sessions is an acquisition the
-  current credentials/authority do not cover.
-* No local **minute** product, so the strategy's intraday steps cannot execute as requested.
-* `is_st` has no local source; historical **as-of constituent** membership is not bound.
-* Per-date **factor lineage** sidecar is still not emitted (`B1`).
-* The original **publish protocol** (pointer + facts + ledger sequential writes) is only
-  evaluated in `dry_run` (`B5`), and whole-CACHE equivalence (`B7`) is untouched.
-* Source-machine R13 cleaning semantics are not adopted; desktop R15 is the current entry.
-* The committed candidate carries the replayed sessions only; it is not a new production
-  `CURRENT` and no pointer was switched.
+Honest limits (also in the file): production `CURRENT` and HAND were never written;
+`published=true` means the original gate accepted the candidate pair and swapped the **bound**
+pointers; the capability matrix grades by coverage dates and does not inspect factor validity, so a
+placeholder factor plane can still read `AVAILABLE_FORMAL`.
 
-## 5. Decisions this package asks for
+**Defect found by running it twice:** `candidate_commit.build_identity` hashed `release_id` and
+`release_root`, which carry the build timestamp. Two builds of the same input therefore produced
+different `commit_id`s and `IDEMPOTENT_NOOP` was unreachable — the pipeline failed
+`same_input_replay_noop` (kept in the command log, exit 5). Measured cause: of 766 files, **761 data
+files were byte-identical** and only 5 metadata files differed (`RELEASE.json`, `SEAL.json`,
+`_qa/TIP_REBASE_QA.json`, `PRODUCT_CAPABILITY_FACTS_CANDIDATE.json`, `CURRENT_POINTER_COPY.json`).
+Identity is now `CC_COMMIT_IDENTITY_V2`: `asof` + `source_cleaning_release` + `parent_release_id` +
+per-product `sha256/rows`. After the fix: pipeline **PASS** (8/8 verdicts) and commit recovery
+**PASS** (9/9 scenarios, `same_input_replay_is_noop = true`).
 
-1. **Factor gap**: densify `ADJUST_FACTOR_PIT_R1` for 2026-08-17..2026-09-02 (acquisition),
-   or declare the anchor-based pre-adjustment contract you want. Both are recorded as
-   measured options; neither is silently chosen here.
-2. **Minute plane**: authorise a local minute product if the V4 intraday steps must run, or
-   accept that the port only executes its daily steps.
-3. **Publish protocol**: authorise a candidate-pointer exercise of the original
-   `publish_atomic` so `B5` can be closed beyond `dry_run`.
+## 6. Consolidated current state (this was previously self-contradictory)
 
-## 6. Authority boundaries (unchanged)
+`ACCEPTANCE.json` used to disagree with its own attachments: `five_requirements.R2` said
+"COMPLETED … 2 executed trades" and `backtest_classification` said `COMPLETED / diag=false` with a
+metrics block, while `FINAL_REQUIREMENT_MATRIX.json` and `REPORT.md` said `BLOCKED`. Both are now
+derived, not retyped:
 
-`NEW_DATA_ACQUISITION_AUTHORIZED=false` · `CURRENT_SWITCH_ALLOWED=false` ·
-`ORDER_ALLOWED=false` · `FOUNDATION_ACCEPTANCE=false` · `FORMAL_ENGINE_ADMISSION=false`.
-No production `CURRENT` file was written; the publish gate's `CURRENT_PUBLISH=ALLOWED`
-verdict is recorded only, and `published=False`.
+* `five_requirements` ← `FINAL_REQUIREMENT_MATRIX.json`;
+* `B1_B7` ← `B1_B7_STATUS.json`;
+* `backtest_classification` ← `evidence/V4_STRICT_RUN.json` (current run;
+  `engine_runs/v4_r21_R13_STRICT4`): `BLOCKED_INPUT_INCOMPLETE`, blockers
+  `['REQUIRED_INPUT_MISSING']`, 16/16 sessions, trades 0, orders 0, mark-starved 0,
+  `diagnostic_only = true`. The 0.00% account summary of a 0-trade run is explicitly **not** a return
+  claim, and the R11 recon metrics block is preserved only as a failed historical label.
 
-## 7. Package contents
+Acceptance map after consolidation:
 
-`PACKAGE_INDEX.json` lists every member with byte count and SHA256 (deliverables plus
-`evidence/`), so any claim above can be traced to a file. `DIFF.patch` is the unified diff
-against the R12 copies published on the HUB (provenance in
-`evidence/DIFF_PROVENANCE.json` — files that did not exist in R12 appear as additions);
-`RUN_GUIDE.md` reproduces the whole chain in six commands, candidate-only.
+* R1 PARTIAL · **R2 BLOCKED** (blocker narrowed to the source layer) · R3 PASS · R4 BLOCKED ·
+  R5 desktop BLOCKED · R5 pipeline reuse PARTIAL;
+* B1 PARTIALLY_REPAIRED (lineage measured, input still defective) · B2 PARTIALLY_REPAIRED ·
+  B3 OPEN · B4 OPEN · **B5 PARTIALLY_REPAIRED** (protocol now executed non-dry-run; production
+  switch still unproven) · B6 PARTIALLY_REPAIRED · B7 PARTIALLY_REPAIRED.
+
+## 7. Still unverified / blocked (not hidden)
+
+* **Incremental adjust-factor plane 2026-08-10 … 2026-09-24**: wrong date encoding for 17 files and
+  constant `1.0` values throughout. This is the single largest blocker and it is a **supply** defect;
+  re-issuing it is an acquisition the current authority does not cover.
+* **V4 window**: no proven adjusted price on either side of the anchor, so the ranking input is
+  incomplete by construction. The port runs all 16 sessions and refuses to fabricate; it is not a
+  strategy verdict.
+* **Minute coverage**: real but only 2026-09-11 … 2026-09-24; 2026-09-03 … 09-10 is blocked.
+  Irrelevant to V4 (0 minute calls) but relevant to any intraday caller.
+* **B4**: 2026-08-31 / 2026-09-01 are still not served by the mounted `CURRENT`; the candidate
+  partition holds them, the switch is not authorised.
+* `is_st` has no local source; as-of historical constituent membership is not bound.
+* Per-date **factor lineage** is now measured evidence but still not emitted as a product sidecar.
+* **B7** whole-CACHE equivalence and a publish-time regression classifier remain unimplemented.
+* Production publish protocol under a real pointer swap remains unproven.
+
+## 8. Decisions this package asks for
+
+1. **Re-issue the incremental adjust-factor plane** for 2026-08-10 … 2026-09-24 with a real date
+   column and real factors (acquisition), or declare the anchor-based pre-adjustment contract you
+   want. Both are recorded as measured options; neither is silently chosen here.
+2. **Minute coverage extension** to 2026-09-03 … 2026-09-10 if any caller needs it; V4 does not.
+3. **Publish protocol**: authorise a production publish window so B5/B4 can be closed beyond a
+   bound rehearsal.
+
+## 9. Authority boundaries (unchanged)
+
+`NEW_DATA_ACQUISITION_AUTHORIZED=false` · `CURRENT_SWITCH_ALLOWED=false` · `ORDER_ALLOWED=false` ·
+`FOUNDATION_ACCEPTANCE=false` · `FORMAL_ENGINE_ADMISSION=false`.
+No production `CURRENT` file was written; `PRODUCTION_PUBLISH_CALLED=false`;
+`SEALED_DATA_MODIFIED=false`. The rehearsal's `published=true` applies to task-local bound copies
+only.
+
+## 10. Package contents
+
+`PACKAGE_INDEX.json` lists every member with byte count and SHA256 (deliverables plus `evidence/`).
+`DIFF.patch` is the unified diff against the R12 copies published on the HUB, with provenance in
+`evidence/DIFF_PROVENANCE.json` (files that did not exist in R12 appear as additions, including all
+code added in this round). `CHANGE_INDEX.json` names each changed file with its purpose and current
+sha256. `RUN_GUIDE.md` reproduces the whole chain, candidate-only.
+
+Reading order: `REPORT.md` → `ACCEPTANCE.json` → `FINAL_REQUIREMENT_MATRIX.json` →
+`B1_B7_STATUS.json` → `evidence/PUBLISH_ATOMIC_REHEARSAL.json` →
+`evidence/R15_CLEANING_REPLAY.json` → `evidence/FACTOR_SERIES_NATURE.json` →
+`evidence/MINUTE_PLANE.json` → `CONNECTED_PIPELINE.json`.
