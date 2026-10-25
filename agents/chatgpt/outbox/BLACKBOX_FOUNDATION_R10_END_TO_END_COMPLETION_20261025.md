@@ -1,3 +1,61 @@
+# 当前执行：SAM 修复 release 绑定与指数读取校验，ZHANGWEI 本机复验
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+issued_date_cn: 2026-10-26
+status: READY_SAM_FIX_RELEASE_BINDING_AND_INDEX_CLOSURE
+lead_modifier: SAM（笔记本原 BLACKBOX Cursor）
+target_host: ZHANGWEI（台式机）
+target_root: E:\BLACKBOX
+desktop_role: SAM交付后本机顺序复验，不并发修改业务代码
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+用户已明确要求GPT将下一步修复直接下发笔记本HUB。本节优先于下方旧READY、等待台机、停止返工和历史PASS段；沿用同一任务，不重开全库工程。SAM直接使用已经确认的台机E盘读写通道，不再向用户确认接入或让用户转述。
+
+## 已完成基线，保留不重做
+
+读取同目录 sam_led_rectification/COMPILER_READ_CLOSURE_FIX.md 与 r12_desktop_closure_reverify/ 的报告、COMMIT_authoritative.json及必要日志。台机已完成长路径补丁本机复验：股票234/234/234、ETF37/37/37、2026三产品各959896行，六日代码数5209/5210/5208/5208/5208/5207。归档移出releases后真正COMMITTED为572619c945d48f1b14f41c6f8c94b66dbacab00da4303366bcf2687ff8ec0876，随后同输入NOOP且CONSISTENT。无需再等这一轮台机回报，不回退已有效补丁，不重复迁移、扫描或重交整条运行链。
+
+## 一、直接绑定本次编译输出，消除归档误选
+
+实际缺陷：run_connected_pipeline.newest_release()按所有目录名字排序取最后，_prev_归档曾被选中，导致新内容未提交却返回NOOP。移走归档只是本次环境修正，代码仍须修。
+
+- 在台机实际调用入口中，将原编译器本次运行返回的明确release_id/root（已有结构化返回/运行结果，或最小增补原返回字段）沿调用链直接传给identity、commit和后续校验。不得再以目录名字、mtime、“最大日期”或扫描前后目录差集代替输出身份；白名单和行数下界不能作为主修复。
+- 校验子进程成功且返回本次预期任务/输入、真实存在的有效封版产物，内部release身份与路径对应；检查本次必需输入、读取闭包与产物身份，之后才允许commit。无输出、输出不完整、指向错误/归档产物或校验失败，顶层非零且候选提交引用不变；不回退到newest_release猜测。
+- build_identity及commit使用的payload必须来自同一已验证输出。固定R3测试按既有959896三产品及六日基线检查；不要把固定行数硬编码成所有未来增量的通用门。原commit协议不改为另一个系统。
+- 同输入第二遍生成新root但内容相同可以NOOP；保留原有效权威commit引用亦可。需分别证明本次编译输出正确、其规范化内容身份与当前commit相同，不能只核CONSISTENT自证。
+- 旧坏release与失败证据保留、隔离，不删除或修改sealed数据。已有572619c9是正确候选，不为追求“第一次COMMITTED”人为清空账本或强造新commit。
+
+## 二、指数加入真实读取闭包；现有股票/ETF门核实集合语义
+
+先读取台机实际部署的daily compiler、tip rebase及runner，沿原合同定位指数来源和筛选规则，直接最小修复：
+
+- 指数所需文件的长路径枚举、stat、实际读取及schema/键解析使用已有效方式；必需输入异常保留具体路径与错误，向顶层传播失败，禁止skip/continue或allow_skip绕过。
+- 区分候选文件全集、按原规则应消费的子集与有明确理由的合法排除。期望读取集合来自同一物化/输入清单和原合同，实际枚举集合与成功读取集合逐一核对相对文件身份，报告missing/extra/failed及集合摘要，计数仅作摘要。不可让同一个有缺陷的枚举同时制造期望和实测。
+- 股票/ETF已通过数量回归，保留成果；核实assert_read_closure实际是否比较文件集合。若现在只有数量相等，补齐同范围集合差异阻断，避免等数量替换漏检。不新增全库扫描。
+- 按原日期/代码规范化、筛选和去重优先级从真实输入导出预期(date,code)键集合，与实际输出比较；不是只比较行数或每天nunique。至少核对本次受影响指数输出及股票六个回归日的精确键。合法规则导致的排除/冲突按原语义记账，不改业务算法去凑数字。
+- 日志1501个指数文件与273行输出是不同口径，不能预设漏读或强迫273变成1501。说明1501属于何种候选来源、实际选择多少、每项为何排除/去重、最终273是否符合原请求；有问题直接修，无权威依据则精确标该断言BLOCKED，不能发明期望全集。
+- 门必须被实际生产代码的候选运行入口调用，在候选提交前生效。只补验收报告/独立脚本不算修复。不要趁机重构整个路径公共库或改注册表；继续支持台机LongPathsEnabled=0及UNC。
+
+## 三、交付后由台机本机复验，只测受影响部分
+
+SAM完成实际修改、保存真实修前备份，并把精确复跑入口、补丁源码/差异及操作说明放到既有sam_led_rectification目录。通过现有共享/HUB直接通知ZHANGWEI，双方无需用户传话。SAM若仍不能台机执行，交给台机本机执行，不把SAM进程运行当台机证据。
+
+必要验证收敛为：
+1. 隔离小fixture放入_prev_、_bad_、zz_等干扰目录，本次输出仍被准确绑定；返回缺失/错误身份时顶层非零且候选引用不变。不要用真实sealed目录作故障注入。
+2. 指数闭包成功；隔离fixture故意少文件/读失败，以及数量相同但文件身份不同，均被实际门阻断，失败不得产生新提交。实际输出键集合与独立预期一致；等数量但换一个键也须被对应键门检出。复用已有未受影响负控，不扩展测试矩阵。
+3. 台机本机按交付入口完成一次受影响候选编译，固定股票基线不回退，指数给出选择/读取/键对账；commit锚定该次正确产物内容，同输入幂等及verify保持一致。不要求旧正确commit变ID；若新代码未改变内容，正确结果可直接NOOP。沿用既有候选环境，未受改动影响的清洗/旧测试不重复运行；如实际调用确需全入口，则只运行必要的一次并说明。
+4. 继续实测受监测生产CURRENT/STATE前后digest不变，日志互不覆盖。失败须真实退出码，不能硬编码untouched=true。
+
+交付沿用同一目录/package，合并一次回传：改了什么、实际模块路径/身份、release显式传递证据、各域文件集合/键差异、精确命令/退出码/原始日志、提交身份、台机独立结果与剩余阻断。更新既有操作手册和收件指针，历史失败材料不覆盖。不要为新回执反复自证哈希，不重跑无关成功项。
+
+本次仅收口以上读取与产物绑定缺陷。V4仍BLOCKED_INPUT_INCOMPLETE，不触碰其策略/复权/ST/历史池问题；供应商分页UNKNOWN不改成YES。无新下载、生产CURRENT切换、生产发布或交易授权。FOUNDATION_ACCEPTANCE=false、FORMAL_ENGINE_ADMISSION=false，待GPT按实际成果审阅。SAM完成后交台机，台机集中复验再回GPT；无需每个函数等待GPT批复。
+
+---
+以下为历史执行令与回馈，优先级低于上方当前执行段；保留作为依据。
+
 # OWNER 当前执行令：SAM 原 BLACKBOX Cursor 直接整顿台式机，文档交台式机独立复验
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
