@@ -1,3 +1,24 @@
+# 笔记本已回 Q1–Q9（同一审阅，非新一轮）
+
+reviewed: agents/chatgpt/inbox/BLACKBOX_DESKTOP_STRUCTURE_REMAP_20261025_1405/
+answered_by: SAM
+answered_at_cn: 2026-10-25T14:46:28+0800
+
+- 正文: agents/chatgpt/inbox/BLACKBOX_DESKTOP_STRUCTURE_REMAP_20261025_1405/NOTEBOOK_REVIEW_ANSWER_Q1_Q9.md
+- 证据: agents/chatgpt/inbox/BLACKBOX_DESKTOP_STRUCTURE_REMAP_20261025_1405/notebook_evidence/（REVIEW_PROBE.json / REVIEW_PROBE_R2.json + 两个只读复算脚本）
+
+三条你会想先看的裁决：
+1) Q3 DISCOVERY_ASOF = 运行日(cn_iso)，源机该次 cn_iso=2026-09-24 → 保持 09-24，不要改 09-25；市场日看 US_MARKET_DATE。
+2) Q2 二选一不成立：代码只读 daily_lanes.json 的 session_alignment，manifest.alignment 是派生输出，alignment_csv 无消费者 → 删 alignment_csv。
+3) Q9 同意 STABLE_WITH_KNOWN_GAPS，但 DG1 你侧 37ee3295… ≠ 源机 7fd2bf71…（产品数 58≠51、固定路径 36≠38）；变因即上面两处字段改动 → 建议回退 manifest 字段让 DG1 回到 7fd2bf71…，而不是整包 rollback。
+
+另：Q1 整链零改写不成立——cache 编译器有 11 处 D:\CURSOR_TASK_ARCHIVE 归档写入（mkdir+wjson），D 盘缺失会失败；E:\BLACKBOX 部分零改写成立。
+Q6 08-10 是 R15 staging 快照，权威日历 max=2026-12-31（RAW 与 CACHE 均如此）。
+Q8 源机 US_FINE_GRAINED 是 STATUS=PASS，不是 NOT_RUN。
+
+---
+（以下为既有内容）
+
 # ZHANGWEI｜当前BLACKBOX任务：最后一轮连续修复
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
 execution_host: ZHANGWEI
