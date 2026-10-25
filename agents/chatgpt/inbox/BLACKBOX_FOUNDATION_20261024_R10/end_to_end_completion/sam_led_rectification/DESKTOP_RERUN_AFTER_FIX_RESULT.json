@@ -1,0 +1,130 @@
+{
+  "schema": "BLACKBOX_DESKTOP_RERUN_AFTER_FIX_RESULT_R1",
+  "dispatch_id": "SAM_LED_DESKTOP_RECTIFICATION_20261025",
+  "rev": "R11_LONGPATH_FIX_RERUN",
+  "status": "BLOCKED",
+  "verdict": "PARTIAL_FIX_MATERIALISE_PASS_COMPILER_READ_STILL_BROKEN",
+  "reviewer_host": "ZHANGWEI",
+  "run_at_cn": "2026-10-25T21:56:55+0800",
+  "provenance": "ZHANGWEI_HOST_RUN_EVIDENCE_FROM_OWN_PROCESS",
+
+  "one_line": "R15 物化已修好（234/234 文件落地），但编译器自己的 find_parquets 用同一类 is_file() 过滤，在台机 LongPathsEnabled=0 下仍静默丢这 12 个文件；编译 2026 仍 928,760 行，未达 959,896。",
+
+  "checked_claims": {
+    "A_r15_234_files_12_r2_repair": {
+      "expected": { "files": 234, "r2_repair": 12 },
+      "actual": { "files": 234, "r2_repair": 12 },
+      "result": "MATCH"
+    },
+    "B_compiled_rows_2026_959896": {
+      "expected": { "STOCK_DAILY_PIT_R1": 959896, "STOCK_DAILY_RAW_PIT_R1": 959896, "STOCK_FACTOR_DAILY_R1": 959896 },
+      "actual": { "STOCK_DAILY_PIT_R1": 928760, "STOCK_DAILY_RAW_PIT_R1": 928760, "STOCK_FACTOR_DAILY_R1": 928760 },
+      "delta_vs_expected": -31136,
+      "result": "MISMATCH",
+      "gate_action": "STOPPED per RERUN_AFTER_FIX §4 (must match exactly, otherwise STOP)"
+    },
+    "C_same_input_replay_idempotent": {
+      "result": "NOT_RUN_SECOND_PASS",
+      "reason": "B 不匹配，按 §4 停止；首轮 same_input_replay_noop=true、candidate_commit --action verify = CONSISTENT 已记录"
+    }
+  },
+
+  "pipeline_verdicts_all_true": {
+    "count": 12,
+    "CONNECTED_PIPELINE_RESULT": "PASS",
+    "note": "12/12 全真且 exit 0，但 rows_2026 比期望少 31,136。说明现有门全部是结构与身份门，没有任何一项校验'读到的文件数/行数'与树内实际文件数一致。"
+  },
+
+  "root_cause": {
+    "layer": "COMPILER_FILE_ENUMERATION",
+    "not_the_layer_SAM_fixed": "物化层 (run_r15_cleaning_replay.materialize_selected) 已真正修复并生效",
+    "code": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_daily_incremental_r1.py",
+    "function": "find_parquets",
+    "line": "246: return sorted([p for p in root.rglob(\"*.parquet\") if p.is_file()])",
+    "shared_defect": "与 SAM 在物化器里修掉的是同一类缺陷：Path.is_file() 吞掉 OSError 返回 False，把 stat 失败当成'不是文件'",
+    "environment": {
+      "LongPathsEnabled": 0,
+      "read_by": "ZHANGWEI (SAM 标 UNVERIFIED 的这一项，台机已实测)",
+      "registry": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\FileSystem\\LongPathsEnabled = 0",
+      "os_version": "10.0.26200.0"
+    }
+  },
+
+  "measurements": {
+    "r3_stock_ohlcv_daily": {
+      "files_on_disk": 234,
+      "max_full_path_len": 271,
+      "is_file_true": 222,
+      "is_file_dropped": 12,
+      "stat_with_long_path_prefix_ok": 234,
+      "find_parquets_returns": 222,
+      "note": "find_parquets() = 222 就是编译器实际看到的文件数；台机 271 字符，SAM 侧测得 289 字符（根不同），均 > 260 故均被 is_file() 丢弃"
+    },
+    "dropped_files_rows": {
+      "2026-07-03": 5193,
+      "2026-07-06": 5194,
+      "2026-07-07": 5194,
+      "2026-07-08": 5194,
+      "2026-07-09": 5194,
+      "2026-07-10": 5194,
+      "total_dropped_rows": 31163
+    },
+    "compiled_2026_after_rerun": {
+      "part": "STOCK_DAILY_PIT_R1/year=2026/part_2026.parquet",
+      "rows": 928760,
+      "date_min": "2026-01-05",
+      "date_max": "2026-09-24",
+      "six_day_codes_each": { "2026-07-03": 19, "2026-07-06": 19, "2026-07-07": 19, "2026-07-08": 19, "2026-07-09": 19, "2026-07-10": 19 }
+    },
+    "arithmetic_reconciliation": {
+      "dropped_rows": 31163,
+      "expected_gain_per_SAM": 31136,
+      "difference": 27,
+      "explanation": "那 6 天原有 19 个代码来自 gapfill_codes 文件；其中 27 个 (date,code) 与 r2_repair 重叠，去重后净增 31,136。数字自洽。"
+    },
+    "long_path_proof": {
+      "dropped_file_example": "stock_ohlcv_daily__XSHE__DAILY__2026-07-03__fq_none__raw_none__r2_repair__RU_stock_ohlcv_daily_XSHE_DAILY_2026-07-03.parquet",
+      "plain_os_stat": "FileNotFoundError [WinError 3]",
+      "prefixed_read_rows": 2890,
+      "prefixed_read_codes": 2890,
+      "conclusion": "文件完好可读，纯路径长度问题，非数据缺失"
+    }
+  },
+
+  "required_fix": {
+    "owner": "SAM (sole modifier of business code per dispatch)",
+    "desktop_will_not_patch_unilaterally": true,
+    "minimal_change": "把 find_parquets 的枚举改成不过 is_file() 的 scandir/os.stat(_lp) 方式，并对 stat 失败显式报错而不是跳过；与物化器同一套 _lp 语义",
+    "blocking_gate_to_add": "编译后校验：tree_visible_parquet_count == 物化报告的 dst_files，且 compiled rows_2026 与源文件行数上界一致；不等即 HARD_BLOCK，不让 12/12 全真掩盖行数缺口",
+    "alternative_not_recommended": "靠缩短 R3 路径长度绕过（例如挪到更短的根）只能躲过 260 限制，换台机/换目录就会复现，属于掩盖不是修复"
+  },
+
+  "side_findings": [
+    "run_r15_cleaning_replay.py.bak_sam_led_r11 与当前文件字节完全相同（sha256 f2c858e4...5a6de55f2b5cfdf46c08f83fad992c25e5897f19e6ec77804044），不是修前备份；真正的修前版本是 .bak_sam_led_r10 (25,832B, sha 2719c17e...)。按 r11 备份回滚会回到同一个文件，回滚链是断的。",
+    "run_r15_cleaning_replay.py 仍保留遗留的整树 walk()，其 except OSError: continue 依旧静默跳过（仅 --full-carry-forward 路径使用，默认不走），建议一并按 fail-closed 处理。",
+    "candidate_commit --action verify 返回 CONSISTENT / payload_matches=true，但 payload 本身是 928,760 的错误内容。内容寻址只证明'没变'，不证明'对'，不能当正确性证据。",
+    "RERUN_AFTER_FIX.md 已落台机 (21:48) 但未推 HUB；HUB 的 sam_led_rectification 目录下只有 READ_PLANE_DIFF.md，缺 RERUN_AFTER_FIX.md。"
+  ],
+
+  "state_left_on_desktop": {
+    "R15_REPLAY_20260924_R3": "present (234 files, sealed) — 本次新建，未删",
+    "cc_out_releases": "1 subdir (BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_215655)",
+    "cc_commit": "CONSISTENT, commit_id 2f75577954f26ba6...",
+    "production_CURRENT_WRITE": "NONE",
+    "new_data_acquisition": "NONE",
+    "deleted_anything": false
+  },
+
+  "flags": {
+    "PRODUCTION_CURRENT_WRITE": "NONE",
+    "NEW_DATA_ACQUISITION": "NONE",
+    "ORDER_ALLOWED": false,
+    "PUBLISH_AUTHORIZED": false,
+    "V4_STATUS": "BLOCKED_INPUT_INCOMPLETE_UNCHANGED"
+  },
+
+  "blockers": [
+    "COMPILER_ENUMERATION_DROPS_LONG_PATHS: find_parquets 使 12 个 r2_repair 文件不进编译，rows_2026 = 928760 ≠ 959896",
+    "NO_ROW_COUNT_GATE: 12/12 verdicts 无法发现该缺口"
+  ]
+}
