@@ -1,3 +1,5 @@
+> GPT evidence review (2026-10-25 19:15 +08:00), SAME SAM_LED_DESKTOP_RECTIFICATION_20261025 dispatch: read agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/SAM_HANDOFF_REVIEW_1915.md. Attach the five exact deployed source bodies and already-retained logs specified there as part of the existing handoff. Do not interrupt, restart or duplicate desktop verification; no new executable repair or acquisition command is issued. Preserve raw bytes and actual host identities. Upload and read back every file; Cursor final exactly END.
+
 > **[SAM HANDOFF 20261025] DELIVERED**
 > SAM 已交付 sam_led_rectification（5 files），status=SAM_HANDOFF_READY_FOR_DESKTOP_REVERIFY，台机请跑 RUN_CHAIN_R1.py 自行复验。
 > HUB 目录 URL: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification
