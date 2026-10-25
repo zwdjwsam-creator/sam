@@ -25,8 +25,12 @@
 
 **直连写入通道**：台机已开共享 `\\192.168.100.1\BLACKBOX_DEST` → `E:\BLACKBOX`（另有 `E$`、`E_DRIVE`）。你有两条路：
 
-- **MODEL_A（推荐）**：你直接经共享写台机副本 → 速度快，但**每次写入必须回填台账**（第六节）。
-- **MODEL_B**：你在自己树上产出 `DIRECTIVE_*.md` + `PATCH_*.diff`，台机按你指令执行并回执 → 慢一轮，但每一步有落地记录。
+- **只读读取（推荐用于核验）**：`\\192.168.100.1\E_DRIVE` → `E:\`，账号 `ZHANGWEI\sam_ro`（只读，2026-10-25 开通）。
+  凭据与挂载说明：`desktop_reply_Q1_Q9\SMB_READONLY_ACCESS_FOR_SAM.md` + `desktop_reply_Q1_Q9\secrets\sam_smb_readonly.TXT`。
+- **MODEL_A（写入）**：你经 `BLACKBOX_DEST` 直接写台机副本 → 速度快，但**每次写入必须回填台账**（第六节）。
+- **MODEL_B（写入）**：你在自己树上产出 `DIRECTIVE_*.md` + `PATCH_*.diff`，台机按你指令执行并回执 → 慢一轮，但每一步有落地记录。
+
+> 建议：**核验走 `E_DRIVE` 只读**，**真要改才走 `BLACKBOX_DEST`**——只读通道不会误伤台机生产树。
 
 两种都可以；如果走 MODEL_A，请在写之前把"要改哪些文件、为什么"写成一页，台机侧据此留账。
 
