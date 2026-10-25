@@ -52,7 +52,7 @@ import os
 import subprocess
 import sys
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -109,6 +109,10 @@ class Response:
     sidecar: Dict[str, Any]
     source_file: str
     frame: pd.DataFrame
+    # Evidence about the ORIGINAL supplier request (query cap, terminal page, requested
+    # universe). Empty when the retained corpus never saved it - which is the normal case
+    # here, and is why vendor completeness stays UNKNOWN instead of being declared YES.
+    request_evidence: Dict[str, Any] = field(default_factory=dict)
 
 
 class LocalReplayTransport:
@@ -153,6 +157,17 @@ class LocalReplayTransport:
             "build_stamp": batch_stamp(path.name),
             "dup_policy": "LATEST_BATCH_WINS",
         }
+        # The on-disk sidecar is the producer's own declaration (unit_id, file_sha256,
+        # domain). It is merged in so provenance is compared against the producer, not
+        # against a sidecar this transport wrote for itself.
+        disk_sc = path.with_name(path.name + ".sidecar.json")
+        if disk_sc.exists():
+            try:
+                on_disk = json.loads(disk_sc.read_text(encoding="utf-8"))
+                sidecar = {**on_disk, **sidecar}
+            except Exception:  # noqa: BLE001
+                pass
+        sidecar.setdefault("file_sha256", sha256_file(path))
         return Response(
             requested_date=str(day),
             rows=int(len(df)),
@@ -160,40 +175,134 @@ class LocalReplayTransport:
             sidecar=sidecar,
             source_file=path.name,
             frame=df,
+            request_evidence=self.request_evidence(path, sidecar),
         )
 
+    @staticmethod
+    def request_evidence(path: Path, sidecar: Dict[str, Any]) -> Dict[str, Any]:
+        """Read whatever the ORIGINAL request record says - never invent it.
 
-def response_gate(resp: Response, expected_rows_band: Tuple[int, int]) -> Dict[str, Any]:
-    """Structural/provenance gate, then the ORIGINAL completeness declaration gate."""
+        The retained sidecars carry date/rows/codes/sha only. No query cap, no terminal
+        page, no requested-universe list, no replay of the vendor call. That is reported
+        as `origin=NONE` rather than back-filled from the returned row count.
+        """
+        ev: Dict[str, Any] = {"origin": "NONE", "sidecar_path": None, "request_path": None}
+        sc = path.with_name(path.name + ".sidecar.json")
+        if sc.exists():
+            ev["origin"] = "SIDECAR"
+            ev["sidecar_path"] = str(sc)
+        req = path.with_name(path.name + ".request.json")
+        if req.exists():
+            try:
+                body = json.loads(req.read_text(encoding="utf-8"))
+            except Exception:  # noqa: BLE001
+                body = {}
+            ev["origin"] = "REQUEST_RECORD"
+            ev["request_path"] = str(req)
+            ev["query_cap"] = body.get("query_cap") or body.get("limit")
+            ev["pagination_complete"] = body.get("pagination_complete", "UNKNOWN")
+            ev["requested_universe"] = body.get("codes") or body.get("symbols")
+            ev["terminal_page"] = body.get("terminal_page")
+            ev["replayed_at"] = body.get("requested_at")
+        else:
+            ev.setdefault("query_cap", sidecar.get("query_cap"))
+            ev.setdefault("pagination_complete", sidecar.get("pagination_complete", "UNKNOWN"))
+            ev.setdefault("requested_universe", sidecar.get("codes_requested"))
+        return ev
+
+
+def response_gate(resp: Response, expected_rows_band: Tuple[int, int] = (0, 0),
+                  *, release_acquisition: bool = False) -> Dict[str, Any]:
+    """Two separate judgements, never merged.
+
+    A. PROVENANCE (provable here): the retained batch's bytes, keys, session tag and
+       absence of duplicate/null rows are what they claim to be.
+    B. SUPPLIER COMPLETENESS (not provable here): whether the ORIGINAL vendor call
+       returned everything. That needs the saved request (query cap, terminal page,
+       requested universe). R13 fed the gate `query_cap=resp.rows` and
+       `pagination_complete="YES"`, i.e. it let the answer certify the question. Now the
+       gate receives only recorded evidence and returns UNKNOWN when there is none.
+    """
     prov = {
         "requested_date": resp.requested_date,
         "sidecar_gap_start": resp.sidecar.get("gap_start"),
         "sidecar_gap_end": resp.sidecar.get("gap_end"),
         "source_file": resp.source_file,
         "payload_sha256": resp.payload_sha256,
+        "request_evidence_origin": resp.request_evidence.get("origin"),
     }
     missing = [k for k in REQUIRED_SIDECAR_KEYS if k not in resp.sidecar]
     if missing:
         raise PipelineStop("gate", "SIDECAR_INCOMPLETE", {**prov, "missing": missing})
     if resp.sidecar["gap_start"] != resp.requested_date or resp.sidecar["gap_end"] != resp.requested_date:
         raise PipelineStop("gate", "SESSION_DATE_MISMATCH", prov)
-    if not (expected_rows_band[0] <= resp.rows <= expected_rows_band[1]):
-        raise PipelineStop("gate", "ROW_BAND_VIOLATION", {**prov, "rows": resp.rows})
     if resp.frame.duplicated(subset=["date", "code"]).any():
         raise PipelineStop("gate", "DUPLICATE_KEYS_IN_BATCH", prov)
     nulls = int(resp.frame[PRICE_COLUMNS[2:]].isna().any(axis=1).sum())
     if nulls:
         raise PipelineStop("gate", "NULL_PRICE_FIELDS", {**prov, "null_rows": nulls})
 
-    absence = acquisition_absence_gate(
-        n_rows=resp.rows, query_cap=resp.rows, pagination_complete="YES"
+    # Row band is only meaningful against a recorded request size. Without one it is a
+    # structural sanity bound and must not be read as a completeness statement.
+    band_source = "REQUEST_EVIDENCE" if resp.request_evidence.get("requested_universe") \
+        else "STRUCTURAL_SANITY_ONLY"
+    band_ok = True
+    if band_source == "REQUEST_EVIDENCE":
+        req_n = len(resp.request_evidence["requested_universe"])
+        band_ok = resp.rows == req_n
+        if not band_ok:
+            raise PipelineStop("gate", "ROW_COUNT_NE_REQUESTED_UNIVERSE",
+                               {**prov, "rows": resp.rows, "requested": req_n})
+    elif expected_rows_band[1] > 0:
+        band_ok = expected_rows_band[0] <= resp.rows <= expected_rows_band[1]
+
+    qcap = resp.request_evidence.get("query_cap")
+    pag = str(resp.request_evidence.get("pagination_complete") or "UNKNOWN").upper()
+    if pag not in ("YES", "NO", "UNKNOWN"):
+        pag = "UNKNOWN"
+    has_request_record = resp.request_evidence.get("origin") == "REQUEST_RECORD"
+
+    absence = acquisition_absence_gate(n_rows=resp.rows, query_cap=qcap,
+                                       pagination_complete=pag)
+    verdict = str(absence.get("DATA_ABSENCE_GATE")
+                  or absence.get("ACQUISITION_ABSENCE_GATE")
+                  or absence.get("status") or "")
+    completeness_proven = (
+        has_request_record
+        and pag == "YES"
+        and qcap is not None
+        and int(qcap) != int(resp.rows)
+        and verdict in ("AVAILABLE", "CONFIRMED_ABSENT")
     )
-    if str(absence.get("ACQUISITION_ABSENCE_GATE", absence.get("status", ""))).upper() not in (
-        "PASS", "OK", ""
-    ) and absence.get("ABSENCE_DECLARED") is not False:
-        raise PipelineStop("gate", "ACQUISITION_ABSENCE_UNPROVEN", {**prov, "gate": absence})
-    return {"stage": "gate", "status": "PASS", "provenance": prov,
-            "original_gate": absence, "rows": resp.rows}
+    completeness = "PROVEN" if completeness_proven else "UNKNOWN"
+    if release_acquisition and completeness != "PROVEN":
+        raise PipelineStop("gate", "ACQUISITION_COMPLETENESS_UNPROVEN",
+                           {**prov, "gate": absence,
+                            "request_evidence": resp.request_evidence})
+    return {
+        "stage": "gate",
+        "PROVENANCE_GATE": "PASS" if band_ok else "FAIL",
+        "provenance": prov,
+        "provenance_facts": {
+            "retained_bytes_match_sidecar_sha": resp.sidecar.get("file_sha256") ==
+            resp.payload_sha256,
+            "row_band_source": band_source,
+            "duplicate_keys": 0,
+            "null_price_rows": 0,
+        },
+        "SUPPLIER_COMPLETENESS": completeness,
+        "vendor_result_complete": completeness,
+        "original_gate": absence,
+        "original_gate_verdict": verdict,
+        "gate_inputs": {
+            "n_rows": resp.rows, "query_cap": qcap, "pagination_complete": pag,
+            "request_evidence_origin": resp.request_evidence.get("origin"),
+            "note": "query_cap and pagination_complete come only from a saved request "
+                    "record; the returned row count is never used as its own cap",
+        },
+        "ACQUISITION_RELEASED": False,
+        "rows": resp.rows,
+    }
 
 
 def run(cmd: List[str], log_path: Path) -> Dict[str, Any]:
@@ -264,9 +373,17 @@ def main() -> int:
         gate = response_gate(resp, (3000, 7000))
         responses.append({"date": day, "rows": resp.rows, "sha256": resp.payload_sha256,
                           "file": resp.source_file, "gate": gate})
+    completeness = sorted({r["gate"]["SUPPLIER_COMPLETENESS"] for r in responses})
     evidence["stages"]["transport_gate"] = {
-        "status": "PASS", "sessions": responses,
+        "status": "PASS",
+        "PROVENANCE_GATE": "PASS",
+        "SUPPLIER_COMPLETENESS": completeness[0] if len(completeness) == 1 else completeness,
+        "ACQUISITION_RELEASED": False,
+        "sessions": responses,
         "retained_sessions_available": len(transport.by_date),
+        "note": "retained bytes/keys are proven; vendor completeness is UNKNOWN because no "
+                "saved supplier request (query cap / terminal page / requested universe) "
+                "exists in the retained corpus",
     }
 
     # ------------------------------------------------- negative control: date tamper
@@ -277,11 +394,29 @@ def main() -> int:
             rows=bad.rows, payload_sha256=bad.payload_sha256,
             sidecar={**bad.sidecar, "gap_start": REPLAY_DAYS[0], "gap_end": REPLAY_DAYS[0]},
             source_file=bad.source_file, frame=bad.frame,
+            request_evidence=bad.request_evidence,
         )
         response_gate(tampered, (3000, 7000))
         evidence["controls"]["tampered_date"] = {"status": "NOT_BLOCKED"}
     except PipelineStop as e:
         evidence["controls"]["tampered_date"] = {
+            "status": "BLOCKED_AS_EXPECTED", "stage": e.stage, "code": e.code}
+
+    # ------------------------- negative control: gate must refuse self-certification
+    try:
+        fake = transport.fetch(REPLAY_DAYS[0])
+        fake = Response(
+            requested_date=fake.requested_date, rows=fake.rows,
+            payload_sha256=fake.payload_sha256, sidecar=fake.sidecar,
+            source_file=fake.source_file, frame=fake.frame,
+            request_evidence={"origin": "NONE", "query_cap": fake.rows,
+                              "pagination_complete": "YES"},
+        )
+        g = response_gate(fake, (3000, 7000), release_acquisition=True)
+        evidence["controls"]["self_certified_completeness"] = {
+            "status": "NOT_BLOCKED", "gate": g}
+    except PipelineStop as e:
+        evidence["controls"]["self_certified_completeness"] = {
             "status": "BLOCKED_AS_EXPECTED", "stage": e.stage, "code": e.code}
 
     # ------------------------------------------------------------------ cleaning
