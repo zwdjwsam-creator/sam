@@ -1,0 +1,167 @@
+{
+  "generated_at": "2026-10-25T08:26:11",
+  "deliverable": "D3_CONNECTED_UPDATE_CLEANING_CANDIDATE_REPLAY",
+  "verdict": "REPRODUCES_R06_CANDIDATE",
+  "recovery_days": [
+    "2026-08-31",
+    "2026-09-01"
+  ],
+  "inputs": {
+    "current_2026_partition": [
+      "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet"
+    ],
+    "current_2026_sha256": {
+      "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet": "c28b37cd925c187e399dbf24aeb0cbde790de4b22a81d674795ee549041e4dbe"
+    },
+    "retained_batches": [
+      {
+        "day": "2026-08-31",
+        "raw_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+        "raw_batch_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+        "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet.sidecar.json",
+        "sidecar_sha256": "1ff59174cbacc3e6294930bf9c946d90615987fd329c48eaa825f540248e6fa7",
+        "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260831__20260831_163108.parquet",
+        "factor_batch_sha256": "e8f16f6dda011907c598ae3a7b91b752d3a16f6135dd1b4f8773894aba142fec"
+      },
+      {
+        "day": "2026-09-01",
+        "raw_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+        "raw_batch_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+        "sidecar": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet.sidecar.json",
+        "sidecar_sha256": "e24aaf089441a877ca3f338f748e59032f6ea55206f9ae0bfc46a2acf77d069b",
+        "factor_batch": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260901__20260901_171005.parquet",
+        "factor_batch_sha256": "fb127145b83a2b43fc392b4e9a0ff42ec7236c2a73527de781cc149be8ccc289"
+      }
+    ],
+    "r06_candidate": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R06\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+    "r06_candidate_sha256": "ee46d3639133fc57cc7c015a173e23620f8013e1b52b783f53f9b4cd512b00ca"
+  },
+  "cleaning_checks": {
+    "2026-08-31": {
+      "input_rows": 5212,
+      "input_columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "anti_leak_max_date": "2026-08-31",
+      "anti_leak_ok": true,
+      "rows_outside_batch_day": 0,
+      "duplicate_rows": 0,
+      "ohlc_inconsistent_rows": 0,
+      "null_price_rows": 0,
+      "nonpositive_price_rows": 0,
+      "clean_rows": 5212,
+      "clean_codes": 5212,
+      "checks_ok": true,
+      "factor_rows": 5212,
+      "factor_all_one": true,
+      "sidecar_rows": 5212,
+      "sidecar_price_basis": "RAW_NONE"
+    },
+    "2026-09-01": {
+      "input_rows": 5214,
+      "input_columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "anti_leak_max_date": "2026-09-01",
+      "anti_leak_ok": true,
+      "rows_outside_batch_day": 0,
+      "duplicate_rows": 0,
+      "ohlc_inconsistent_rows": 0,
+      "null_price_rows": 0,
+      "nonpositive_price_rows": 0,
+      "clean_rows": 5214,
+      "clean_codes": 5214,
+      "checks_ok": true,
+      "factor_rows": 5214,
+      "factor_all_one": true,
+      "sidecar_rows": 5214,
+      "sidecar_price_basis": "RAW_NONE"
+    }
+  },
+  "rebuilt": {
+    "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R10_REPLAY\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+    "sha256": "4565d6bd2950526ed8760a66e961a17e533a05b51ea1569118ab9c9d5dab8bfb",
+    "n_rows": 959896,
+    "n_dates": 178,
+    "n_codes": 5535,
+    "date_min": "2026-01-05",
+    "date_max": "2026-09-24",
+    "rows_per_recovery_day": {
+      "2026-08-31": 5212,
+      "2026-09-01": 5214
+    },
+    "window_start": "2026-01-05",
+    "window_end": "2026-09-24",
+    "calendar_source": "95 CALENDAR_TRADE_DAYS files under clean releases",
+    "calendar_check": "EXCHANGE_CALENDAR_CHECK",
+    "missing_exchange_days": [],
+    "days_not_in_calendar": [],
+    "contiguous_no_missing_trading_day": true
+  },
+  "comparison": {
+    "same_date_code_keys": true,
+    "values_equal": true,
+    "value_diffs": {
+      "open": {
+        "differing_cells": 0,
+        "max_abs_diff": 0.0
+      },
+      "high": {
+        "differing_cells": 0,
+        "max_abs_diff": 0.0
+      },
+      "low": {
+        "differing_cells": 0,
+        "max_abs_diff": 0.0
+      },
+      "close": {
+        "differing_cells": 0,
+        "max_abs_diff": 0.0
+      },
+      "volume": {
+        "differing_cells": 0,
+        "max_abs_diff": 0.0
+      },
+      "money": {
+        "differing_cells": 0,
+        "max_abs_diff": 0.0
+      }
+    },
+    "compared_rows": 10426
+  },
+  "flags": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "PUBLISHED": false,
+    "NOTES": "Replay only. Output lives under the task candidate tree; no CURRENT pointer, no sealed release and no supplier/broker call was made."
+  }
+}
