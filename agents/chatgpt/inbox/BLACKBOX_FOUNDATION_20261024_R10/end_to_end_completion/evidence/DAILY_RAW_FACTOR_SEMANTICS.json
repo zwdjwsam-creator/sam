@@ -1,0 +1,99 @@
+{
+  "artifact": "DAILY_RAW_FACTOR_SEMANTICS",
+  "products": [
+    {
+      "product": "P2_stock_daily",
+      "sample_file": "stock_daily__batch_0__2014__none_adj__v1__20260612_171020.parquet",
+      "columns": [
+        "date",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money",
+        "avg",
+        "pre_close",
+        "high_limit",
+        "low_limit",
+        "paused",
+        "factor"
+      ],
+      "rows": 122500,
+      "factor_distinct": 694,
+      "factor_min": 0.16724488415559705,
+      "factor_max": 1.0,
+      "factor_all_ones": false
+    },
+    {
+      "product": "P7_stock_minute",
+      "sample_file": "stock_minute_30m__2014__batch0000__1.0.0__20260614_013804.parquet",
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money"
+      ],
+      "rows": 9760,
+      "factor_column": "ABSENT"
+    },
+    {
+      "product": "P7_stock_minute_raw_none",
+      "sample_file": "stock_minute_30m__2014__batch0001__1.0.0__raw_none__v1__20260707_073907.parquet",
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money"
+      ],
+      "rows": 8096,
+      "factor_column": "ABSENT"
+    },
+    {
+      "product": "P7_stock_minute_raw_none_replacement_5m",
+      "sample_file": "stock_minute_5m__2014__batch0000__1.0.0__raw_none__20260713_001631.parquet",
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money"
+      ],
+      "rows": 57936,
+      "factor_column": "ABSENT"
+    },
+    {
+      "product": "P7_stock_raw_none_replacement_1m",
+      "sample_file": "stock_minute_1m__2014__batch0000__1.0.0__raw_none__v1__20260714_222618.parquet",
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money"
+      ],
+      "rows": 289680,
+      "factor_column": "ABSENT"
+    }
+  ],
+  "conclusion": {
+    "any_daily_raw_carries_factor": true,
+    "usable_as_adjust_authority": true,
+    "note": "a daily RAW factor column, where present, is not the PIT adjustment authority; only a varied same-day plane with provenance may be applied"
+  }
+}
