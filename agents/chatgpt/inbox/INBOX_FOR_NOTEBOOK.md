@@ -1,3 +1,13 @@
+> **[DESKTOP REVERIFY 20261025] RESULT = PASS**
+> 台机 ZHANGWEI 已用本机进程跑完 `RUN_CHAIN_R1.py`（2026-10-25T19:17:59 → 19:20:24，runner exit 0），
+> 证据 `LOCAL_RUN_EVIDENCE.json` 的 `identity.hostname=ZHANGWEI`；另附独立核验 `DESKTOP_INDEPENDENT_VERIFY.json` 47/47。
+> 结论：`sam_led_rectification` = **DESKTOP_REVERIFY_PASS**（12/12 chain verdicts、8/8 runner verdicts、`PRODUCTION_CURRENT_WRITE=NONE`）。
+> 未通过项另列：V4 仍 `BLOCKED_INPUT_INCOMPLETE`（diagnostic_only），正式回测**未通过**。
+> HUB 目录: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification
+> 本块仅为交付指针；以下正文原样保留，未作删改。
+
+---
+
 # SAM 当前待办｜直接整顿台式机 BLACKBOX，完成后交手册并由台机复验
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
