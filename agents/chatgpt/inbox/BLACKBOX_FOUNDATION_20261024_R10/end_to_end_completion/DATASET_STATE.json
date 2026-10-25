@@ -1,7 +1,7 @@
 {
   "artifact": "DATASET_STATE",
   "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
-  "generated_at_cn": "2026-10-25T08:25:17.786110+08:00",
+  "generated_at_cn": "2026-10-25T11:20:47.416036+08:00",
   "built_from": {
     "r3_registry": {
       "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\ECOLOGY_REGISTRY_R3.json",
@@ -18,13 +18,20 @@
     "full_footer": "every parquet footer in the layer root was read; min/max is exact for the measured column",
     "stratified_sample": "only the sampled files were read; min/max is an outer bound, not completeness",
     "min_max_is_not_completeness": true,
-    "no_filename_date_inference": true
+    "no_filename_date_inference": true,
+    "product_specific_over_shared_root": "where the R3 root is a multi-product family directory, only the resolved product subdir is measured; unresolved products report PRODUCT_DIR_UNRESOLVED instead of the family-wide bound",
+    "time_column_union": "the time column is resolved from the union of sampled schemas, so a mixed family root does not lose its date axis",
+    "time_role_separation": "CALENDAR_AXIS / PERIOD_END_REFERENCE / ANNOUNCEMENT_TIME / AVAILABILITY_TIME are not EVENT_TIME; only an EVENT_TIME or CALENDAR_AXIS range is reported as an observed date range",
+    "completeness_claim_allowed": false
   },
   "counts": {
     "datasets": 54,
-    "measured_layers": 84,
-    "not_applicable": 14,
-    "blocked": 3
+    "measured_layers": 75,
+    "product_dir_unresolved_layers": 9,
+    "not_applicable": 12,
+    "blocked": 8,
+    "unresolved_scope": 1,
+    "cursor_blocked": 33
   },
   "datasets": [
     {
@@ -65,7 +72,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 524,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -92,7 +101,9 @@
               "low_limit",
               "paused",
               "factor"
-            ]
+            ],
+            "columns_union_n": 17,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -101,7 +112,9 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 232,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -123,7 +136,9 @@
               "volume",
               "money",
               "__index_level_0__"
-            ]
+            ],
+            "columns_union_n": 17,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -132,7 +147,9 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -149,6 +166,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -185,7 +204,9 @@
               "pit_status",
               "source_version",
               "known_at"
-            ]
+            ],
+            "columns_union_n": 16,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         {
@@ -218,7 +239,9 @@
               "pit_status",
               "source_version",
               "known_at"
-            ]
+            ],
+            "columns_union_n": 16,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -246,7 +269,9 @@
               "volume",
               "money",
               "__index_level_0__"
-            ]
+            ],
+            "columns_union_n": 17,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -297,8 +322,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -353,7 +383,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 11790,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/11790)",
@@ -375,7 +407,9 @@
               "volume",
               "money",
               "__index_level_0__"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -384,7 +418,9 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 40,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -410,7 +446,9 @@
               "repair_unit_id",
               "domain_id",
               "exchange"
-            ]
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -419,7 +457,9 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -436,6 +476,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -484,8 +526,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -535,7 +582,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 12847,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/12847)",
@@ -557,7 +606,9 @@
               "volume",
               "money",
               "__index_level_0__"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -566,7 +617,9 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 52,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_5m",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -592,7 +645,9 @@
               "repair_unit_id",
               "domain_id",
               "exchange"
-            ]
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -601,7 +656,9 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -618,6 +675,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -666,8 +725,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -715,7 +779,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 26613,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/26613)",
@@ -736,7 +802,9 @@
               "low",
               "volume",
               "money"
-            ]
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -745,7 +813,9 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 40,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_30m",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -771,7 +841,9 @@
               "repair_unit_id",
               "domain_id",
               "exchange"
-            ]
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -780,7 +852,9 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -797,6 +871,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -845,8 +921,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -894,7 +975,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 26613,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P7_stock_minute",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/26613)",
@@ -915,7 +998,9 @@
               "low",
               "volume",
               "money"
-            ]
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -924,7 +1009,9 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 44,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_60m",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -950,7 +1037,9 @@
               "repair_unit_id",
               "domain_id",
               "exchange"
-            ]
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -959,7 +1048,9 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -976,6 +1067,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -1024,8 +1117,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -1078,34 +1176,19 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 18,
-          "status": "MEASURED",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P8_etf_fund\\fund_etf_price_daily",
+          "product_dir_resolved": false,
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "FULL_FOOTER",
-            "n_files_total": 18,
-            "n_files_measured": 18,
-            "rows_measured": 1646162,
-            "time_column": "time",
-            "time_role": "EVENT_TIME",
-            "min": "2014-01-02",
-            "max": "2026-06-12",
-            "stats_missing_files": 0,
-            "columns_sample": [
-              "time",
-              "code",
-              "open",
-              "high",
-              "low",
-              "close",
-              "volume",
-              "money",
-              "paused",
-              "high_limit",
-              "low_limit",
-              "avg",
-              "pre_close",
-              "factor"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "fund_dividend",
+              "fund_nav",
+              "fund_profit",
+              "fund_share"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         },
         "CLEAN": {
@@ -1114,7 +1197,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_daily\\fund_etf_price_daily",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 37,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_daily",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -1142,7 +1229,9 @@
               "pre_close",
               "factor",
               "fq"
-            ]
+            ],
+            "columns_union_n": 15,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -1151,7 +1240,11 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\fund_etf_price_daily",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -1168,6 +1261,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -1204,7 +1299,9 @@
               "pit_status",
               "source_version",
               "known_at"
-            ]
+            ],
+            "columns_union_n": 16,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         {
@@ -1263,8 +1360,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -1317,18 +1419,22 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 36718,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 7427,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_1m",
           "status": "MEASURED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(400/36718)",
-            "n_files_total": 36718,
+            "mode": "STRATIFIED_SAMPLE(400/7427)",
+            "n_files_total": 7427,
             "n_files_measured": 400,
-            "rows_measured": 5444017,
+            "rows_measured": 22352160,
             "time_column": "time",
             "time_role": "EVENT_TIME",
             "min": "2014-01-02",
-            "max": "2026-09-21",
-            "stats_missing_files": 249,
+            "max": "2026-07-29",
+            "stats_missing_files": 253,
             "columns_sample": [
               "time",
               "code",
@@ -1338,7 +1444,9 @@
               "low",
               "volume",
               "money"
-            ]
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -1347,7 +1455,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m\\fund_etf_price_1m",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 24,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -1373,7 +1485,9 @@
               "repair_unit_id",
               "domain_id",
               "exchange"
-            ]
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -1382,7 +1496,11 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\fund_etf_price_1m",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -1399,6 +1517,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -1447,8 +1567,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -1496,18 +1621,22 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 36718,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_5m",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 7427,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_5m",
           "status": "MEASURED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(400/36718)",
-            "n_files_total": 36718,
+            "mode": "STRATIFIED_SAMPLE(400/7427)",
+            "n_files_total": 7427,
             "n_files_measured": 400,
-            "rows_measured": 5444017,
+            "rows_measured": 4470432,
             "time_column": "time",
             "time_role": "EVENT_TIME",
             "min": "2014-01-02",
-            "max": "2026-09-21",
-            "stats_missing_files": 249,
+            "max": "2026-07-29",
+            "stats_missing_files": 253,
             "columns_sample": [
               "time",
               "code",
@@ -1517,7 +1646,9 @@
               "low",
               "volume",
               "money"
-            ]
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -1526,7 +1657,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m\\fund_etf_price_5m",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 44,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -1552,7 +1687,9 @@
               "repair_unit_id",
               "domain_id",
               "exchange"
-            ]
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -1561,7 +1698,11 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\fund_etf_price_5m",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -1578,6 +1719,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -1626,8 +1769,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -1675,18 +1823,22 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 36718,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_30m",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 7425,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_30m",
           "status": "MEASURED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(400/36718)",
-            "n_files_total": 36718,
+            "mode": "STRATIFIED_SAMPLE(400/7425)",
+            "n_files_total": 7425,
             "n_files_measured": 400,
-            "rows_measured": 5444017,
+            "rows_measured": 745072,
             "time_column": "time",
             "time_role": "EVENT_TIME",
             "min": "2014-01-02",
-            "max": "2026-09-21",
-            "stats_missing_files": 249,
+            "max": "2026-07-29",
+            "stats_missing_files": 253,
             "columns_sample": [
               "time",
               "code",
@@ -1696,7 +1848,9 @@
               "low",
               "volume",
               "money"
-            ]
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -1705,7 +1859,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_30m\\fund_etf_price_30m",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 4395,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_30m",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(42/4395)",
@@ -1729,7 +1887,9 @@
               "bar_timestamp_position",
               "bar_complete_at",
               "fq"
-            ]
+            ],
+            "columns_union_n": 15,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -1738,7 +1898,11 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\fund_etf_price_30m",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -1755,6 +1919,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -1803,8 +1969,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -1852,18 +2023,22 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 36718,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_60m",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 7427,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_60m",
           "status": "MEASURED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(400/36718)",
-            "n_files_total": 36718,
+            "mode": "STRATIFIED_SAMPLE(400/7427)",
+            "n_files_total": 7427,
             "n_files_measured": 400,
-            "rows_measured": 5444017,
+            "rows_measured": 372536,
             "time_column": "time",
             "time_role": "EVENT_TIME",
             "min": "2014-01-02",
-            "max": "2026-09-21",
-            "stats_missing_files": 249,
+            "max": "2026-07-29",
+            "stats_missing_files": 253,
             "columns_sample": [
               "time",
               "code",
@@ -1873,7 +2048,9 @@
               "low",
               "volume",
               "money"
-            ]
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -1882,7 +2059,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_60m\\fund_etf_price_60m",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 4399,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_60m",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(42/4399)",
@@ -1906,7 +2087,9 @@
               "bar_timestamp_position",
               "bar_complete_at",
               "fq"
-            ]
+            ],
+            "columns_union_n": 15,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -1915,7 +2098,11 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\fund_etf_price_60m",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -1932,6 +2119,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -1980,8 +2169,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -2034,23 +2228,17 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 362,
-          "status": "MEASURED",
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "FULL_FOOTER",
-            "n_files_total": 362,
-            "n_files_measured": 362,
-            "rows_measured": 316474,
-            "time_column": "asof_date",
-            "time_role": "SNAPSHOT_SIGNAL",
-            "min": "2014-12-31",
-            "max": "2026-08-12",
-            "stats_missing_files": 6,
-            "columns_sample": [
-              "index_code",
-              "component_code",
-              "asof_date"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "index_constituents",
+              "index_weights",
+              "index_weights_code_preserved__asof_20260702__repair_v1",
+              "index_weights_incremental_r16_asof_20260810"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         },
         "CLEAN": {
@@ -2059,7 +2247,9 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 37,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -2087,7 +2277,9 @@
               "pre_close",
               "factor",
               "fq"
-            ]
+            ],
+            "columns_union_n": 15,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CACHE": {
@@ -2096,7 +2288,9 @@
           "kind": "CACHE",
           "release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 6675,
+          "measured_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
           "status": "MEASURED_RELEASE_ROOT_ONLY",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/6675)",
@@ -2113,6 +2307,8 @@
               "code",
               "factor"
             ],
+            "columns_union_n": 551,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
             "scope": "ENTIRE_CACHE_RELEASE",
             "scope_note": "not a per-dataset figure: every dataset sharing the release root reports the same total; read cache_products for this dataset's own rows/range"
           }
@@ -2149,7 +2345,9 @@
               "pit_status",
               "source_version",
               "known_at"
-            ]
+            ],
+            "columns_union_n": 16,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -2200,8 +2398,13 @@
         "observed_max": {
           "layer": "CACHE",
           "max": "2026-09-24",
-          "basis": "STRATIFIED_SAMPLE(400/6675)"
+          "min": "2005-01-04",
+          "basis": "STRATIFIED_SAMPLE(400/6675)",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -2254,29 +2457,15 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 133968,
-          "status": "MEASURED",
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(400/133968)",
-            "n_files_total": 133968,
-            "n_files_measured": 400,
-            "rows_measured": 3809904,
-            "time_column": "time",
-            "time_role": "EVENT_TIME",
-            "min": "2017-01-03",
-            "max": "2026-08-07",
-            "stats_missing_files": 0,
-            "columns_sample": [
-              "time",
-              "code",
-              "open",
-              "close",
-              "high",
-              "low",
-              "volume",
-              "money",
-              "fq"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "SSE",
+              "SZSE"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         },
         "CLEAN": {
@@ -2329,11 +2518,8 @@
           "read_pattern": "latest_raw_partition_map L135-L159 globs 'index_minute__*.parquet' under RAW/P3_index_minute and keys on (code, freq, year) parsed from the double-underscore file name, preferring 'incremental' over 'full' by an explicit filename score; the aligned output is written with index=False at L773",
           "separation_note": "the index-minute raw writer is download_index_minute_day in the same aux_r15 body (row A second leg), not this stock-minute writer"
         },
-        "observed_max": {
-          "layer": "RAW",
-          "max": "2026-08-07",
-          "basis": "STRATIFIED_SAMPLE(400/133968)"
-        },
+        "observed_max": null,
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -2341,7 +2527,7 @@
         "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor",
         "no_common_start_20260924": true
       },
-      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
       "accepted_evidence_refs": [
         "ECOLOGY_REGISTRY_R3.json",
         "r10_writer_cursor_bindings_delivery/ACQUISITION_WRITER_CURSOR_BINDINGS.json",
@@ -2385,23 +2571,30 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 119,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 66,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 119,
-            "n_files_measured": 119,
-            "rows_measured": 322558,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "n_files_total": 66,
+            "n_files_measured": 66,
+            "rows_measured": 241463,
+            "time_column": "calendar_date",
+            "time_role": "CALENDAR_AXIS",
+            "min": "2014-01-01",
+            "max": "2026-08-10",
             "stats_missing_files": 0,
             "columns_sample": [
-              "concept_code",
-              "name",
-              "start_date"
-            ]
+              "calendar_date",
+              "is_trade_day",
+              "previous_trade_date",
+              "next_trade_date"
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -2410,17 +2603,21 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange\\calendar_cn_exchange",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 2,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
             "n_files_total": 2,
             "n_files_measured": 2,
             "rows_measured": 7725,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "calendar_date",
+            "time_role": "CALENDAR_AXIS",
+            "min": "2014-01-01",
+            "max": "2026-09-02",
             "stats_missing_files": 0,
             "columns_sample": [
               "calendar_date",
@@ -2429,7 +2626,9 @@
               "next_trade_date",
               "days_since_previous_trade_day",
               "days_to_next_trade_day"
-            ]
+            ],
+            "columns_union_n": 7,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -2477,7 +2676,16 @@
             "bytes": 12440
           }
         },
-        "observed_max": null,
+        "observed_max": {
+          "layer": "CLEAN",
+          "max": "2026-09-02",
+          "min": "2014-01-01",
+          "basis": "FULL_FOOTER",
+          "time_column": "calendar_date",
+          "time_role": "CALENDAR_AXIS",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+        },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -2534,23 +2742,16 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 119,
-          "status": "MEASURED",
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "FULL_FOOTER",
-            "n_files_total": 119,
-            "n_files_measured": 119,
-            "rows_measured": 322558,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
-            "stats_missing_files": 0,
-            "columns_sample": [
-              "concept_code",
-              "name",
-              "start_date"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "calendar_cn_exchange",
+              "industry_concept",
+              "industry_concept_meta"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         },
         "CLEAN": {
@@ -2559,17 +2760,19 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 11,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
             "n_files_total": 11,
             "n_files_measured": 11,
             "rows_measured": 60267,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "end_date",
+            "time_role": "PERIOD_END_REFERENCE",
+            "min": "2026-07-02",
+            "max": "2200-01-01",
             "stats_missing_files": 0,
             "columns_sample": [
               "index",
@@ -2578,7 +2781,9 @@
               "start_date",
               "end_date",
               "type"
-            ]
+            ],
+            "columns_union_n": 7,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -2591,10 +2796,10 @@
             "n_files_total": 1,
             "n_files_measured": 1,
             "rows_measured": 5208,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "end_date",
+            "time_role": "PERIOD_END_REFERENCE",
+            "min": "2200-01-01",
+            "max": "2200-01-01",
             "stats_missing_files": 0,
             "columns_sample": [
               "code",
@@ -2603,7 +2808,9 @@
               "start_date",
               "end_date",
               "type"
-            ]
+            ],
+            "columns_union_n": 6,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -2652,6 +2859,15 @@
           }
         },
         "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "end_date",
+            "time_role": "PERIOD_END_REFERENCE",
+            "min": "2026-07-02",
+            "max": "2200-01-01"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -2703,7 +2919,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 222,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -2720,7 +2938,9 @@
               "code",
               "factor",
               "sec_type"
-            ]
+            ],
+            "columns_union_n": 4,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -2729,7 +2949,9 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 18,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -2746,7 +2968,9 @@
               "code",
               "factor",
               "sec_type"
-            ]
+            ],
+            "columns_union_n": 4,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -2768,7 +2992,9 @@
               "date",
               "code",
               "factor"
-            ]
+            ],
+            "columns_union_n": 4,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -2804,8 +3030,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-09-24",
-          "basis": "FULL_FOOTER"
+          "min": "2026-08-10",
+          "basis": "FULL_FOOTER",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -2859,23 +3090,31 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 956,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state\\stock_limit_pause_status",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 3,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_security_state\\stock_limit_pause_status",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 956,
-            "n_files_measured": 956,
-            "rows_measured": 58691396,
-            "time_column": "time",
+            "n_files_total": 3,
+            "n_files_measured": 3,
+            "rows_measured": 119726,
+            "time_column": "date",
             "time_role": "EVENT_TIME",
-            "min": "2014-01-02",
-            "max": "2026-07-29",
-            "stats_missing_files": 85,
+            "min": "2026-07-31",
+            "max": "2026-09-03",
+            "stats_missing_files": 0,
             "columns_sample": [
-              "time",
+              "date",
               "code",
-              "factor"
-            ]
+              "paused",
+              "high_limit",
+              "low_limit"
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -2884,7 +3123,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status\\stock_limit_pause_status",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 3,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -2902,7 +3145,9 @@
               "paused",
               "high_limit",
               "low_limit"
-            ]
+            ],
+            "columns_union_n": 8,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -2934,7 +3179,9 @@
               "pit_status",
               "product_id",
               "source_cleaning_release"
-            ]
+            ],
+            "columns_union_n": 19,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -2981,8 +3228,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-07-29",
-          "basis": "FULL_FOOTER"
+          "min": "2026-07-13",
+          "basis": "FULL_FOOTER",
+          "time_column": "time",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -3041,23 +3293,29 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 362,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index\\index_constituents",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 1,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index\\index_constituents",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 362,
-            "n_files_measured": 362,
-            "rows_measured": 316474,
+            "n_files_total": 1,
+            "n_files_measured": 1,
+            "rows_measured": 6567,
             "time_column": "asof_date",
             "time_role": "SNAPSHOT_SIGNAL",
-            "min": "2014-12-31",
+            "min": "2026-08-12",
             "max": "2026-08-12",
-            "stats_missing_files": 6,
+            "stats_missing_files": 0,
             "columns_sample": [
               "index_code",
-              "component_code",
+              "code",
               "asof_date"
-            ]
+            ],
+            "columns_union_n": 3,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -3066,7 +3324,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_components\\index_constituents",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 106,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_components",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -3085,7 +3347,9 @@
               "historical_backtest_eligible",
               "historical_coverage_status",
               "snapshot_backfill_allowed"
-            ]
+            ],
+            "columns_union_n": 7,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -3125,7 +3389,9 @@
               "pit_ok",
               "current_backfill",
               "notes"
-            ]
+            ],
+            "columns_union_n": 21,
+            "range_basis": "NO_TIME_COLUMN_IN_SAMPLED_SCHEMAS"
           }
         }
       ],
@@ -3173,11 +3439,23 @@
             "bytes": 12440
           }
         },
-        "observed_max": {
-          "layer": "CLEAN",
-          "max": "2026-07-30",
-          "basis": "FULL_FOOTER"
-        },
+        "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "asof_date",
+            "time_role": "SNAPSHOT_SIGNAL",
+            "min": "2014-12-31",
+            "max": "2026-07-30"
+          },
+          {
+            "layer": "RAW",
+            "time_column": "asof_date",
+            "time_role": "SNAPSHOT_SIGNAL",
+            "min": "2026-08-12",
+            "max": "2026-08-12"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -3224,23 +3502,35 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 362,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index\\index_weights",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 1,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index\\index_weights",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 362,
-            "n_files_measured": 362,
-            "rows_measured": 316474,
-            "time_column": "asof_date",
-            "time_role": "SNAPSHOT_SIGNAL",
-            "min": "2014-12-31",
-            "max": "2026-08-12",
-            "stats_missing_files": 6,
+            "n_files_total": 1,
+            "n_files_measured": 1,
+            "rows_measured": 2450,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2026-08-31",
+            "max": "2026-08-31",
+            "stats_missing_files": 0,
             "columns_sample": [
+              "index",
+              "date",
+              "weight",
+              "display_name",
               "index_code",
-              "component_code",
-              "asof_date"
-            ]
+              "query_date",
+              "data_asof",
+              "discovery_asof",
+              "available_at"
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -3249,7 +3539,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_weights\\index_weights",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 105,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_weights",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -3270,7 +3564,9 @@
               "query_date",
               "historical_backtest_eligible",
               "historical_coverage_status"
-            ]
+            ],
+            "columns_union_n": 12,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -3309,7 +3605,9 @@
               "known_at_contract",
               "coverage_status",
               "source"
-            ]
+            ],
+            "columns_union_n": 21,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -3360,8 +3658,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-06-30",
-          "basis": "FULL_FOOTER"
+          "min": "2014-12-31",
+          "basis": "FULL_FOOTER",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -3408,23 +3711,33 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 217,
-          "status": "MEASURED",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\industry_concept",
+          "product_dir_resolved": false,
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "FULL_FOOTER",
-            "n_files_total": 217,
-            "n_files_measured": 217,
-            "rows_measured": 41088969,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
-            "stats_missing_files": 0,
-            "columns_sample": [
-              "name",
-              "start_date",
-              "__index_level_0__"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "abnormal",
+              "audit_opinion",
+              "billboard",
+              "capital_change",
+              "holder_num",
+              "industry_concept_events",
+              "limited_shares",
+              "lock_shares",
+              "management_info",
+              "money_flow",
+              "mt_total",
+              "shareholder_floating_top10",
+              "shareholder_top10",
+              "shares_frozen",
+              "shares_pledge",
+              "status_change",
+              "subscribe",
+              "xr_xd"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         },
         "CLEAN": {
@@ -3433,17 +3746,21 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept\\industry_concept",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 13,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
             "n_files_total": 13,
             "n_files_measured": 13,
             "rows_measured": 16709278,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "start_date",
+            "time_role": "VALIDITY_START",
+            "min": "2004-02-09",
+            "max": "2021-12-11",
             "stats_missing_files": 0,
             "columns_sample": [
               "name",
@@ -3451,7 +3768,9 @@
               "historical_backtest_eligible",
               "historical_coverage_status",
               "snapshot_backfill_allowed"
-            ]
+            ],
+            "columns_union_n": 175,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -3484,7 +3803,9 @@
               "taxonomy_version",
               "no_current_backfill",
               "no_ffill_membership"
-            ]
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         {
@@ -3515,7 +3836,9 @@
               "taxonomy_version",
               "no_current_backfill",
               "no_ffill_membership"
-            ]
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         {
@@ -3546,7 +3869,9 @@
               "taxonomy_version",
               "no_current_backfill",
               "no_ffill_membership"
-            ]
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -3585,6 +3910,15 @@
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
         "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "start_date",
+            "time_role": "VALIDITY_START",
+            "min": "2004-02-09",
+            "max": "2021-12-11"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -3631,23 +3965,31 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 217,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\industry_concept_events",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 1,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\industry_concept_events",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 217,
-            "n_files_measured": 217,
-            "rows_measured": 41088969,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "n_files_total": 1,
+            "n_files_measured": 1,
+            "rows_measured": 429,
+            "time_column": "start_date",
+            "time_role": "VALIDITY_START",
+            "min": "2004-02-09",
+            "max": "2026-07-01",
             "stats_missing_files": 0,
             "columns_sample": [
+              "index",
               "name",
               "start_date",
-              "__index_level_0__"
-            ]
+              "event_type",
+              "as_of"
+            ],
+            "columns_union_n": 5,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -3656,17 +3998,21 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept_events\\industry_concept_events",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 1,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept_events",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
             "n_files_total": 1,
             "n_files_measured": 1,
             "rows_measured": 429,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "start_date",
+            "time_role": "VALIDITY_START",
+            "min": "2004-02-09",
+            "max": "2026-07-01",
             "stats_missing_files": 0,
             "columns_sample": [
               "index",
@@ -3677,7 +4023,9 @@
               "historical_backtest_eligible",
               "historical_coverage_status",
               "snapshot_backfill_allowed"
-            ]
+            ],
+            "columns_union_n": 8,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -3716,6 +4064,22 @@
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
         "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "start_date",
+            "time_role": "VALIDITY_START",
+            "min": "2004-02-09",
+            "max": "2026-07-01"
+          },
+          {
+            "layer": "RAW",
+            "time_column": "start_date",
+            "time_role": "VALIDITY_START",
+            "min": "2004-02-09",
+            "max": "2026-07-01"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -3762,23 +4126,40 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 217,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 45,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 217,
-            "n_files_measured": 217,
-            "rows_measured": 41088969,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "n_files_total": 45,
+            "n_files_measured": 45,
+            "rows_measured": 2191494,
+            "time_column": "day",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-07-29",
             "stats_missing_files": 0,
             "columns_sample": [
-              "name",
-              "start_date",
-              "__index_level_0__"
-            ]
+              "code",
+              "day",
+              "direction",
+              "rank",
+              "abnormal_code",
+              "abnormal_name",
+              "sales_depart_name",
+              "buy_value",
+              "buy_rate",
+              "sell_value",
+              "sell_rate",
+              "total_value",
+              "net_value",
+              "amount"
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -3787,7 +4168,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\billboard\\billboard",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 28,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\billboard",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -3814,7 +4199,9 @@
               "total_value",
               "net_value",
               "amount"
-            ]
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -3852,7 +4239,9 @@
               "effective_known_at",
               "known_at",
               "pit_policy"
-            ]
+            ],
+            "columns_union_n": 19,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -3893,8 +4282,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-09-24",
-          "basis": "FULL_FOOTER"
+          "min": "2026-08-10",
+          "basis": "FULL_FOOTER",
+          "time_column": "day",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -3991,23 +4385,50 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 217,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\xr_xd",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 64,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\xr_xd",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 217,
-            "n_files_measured": 217,
-            "rows_measured": 41088969,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "n_files_total": 64,
+            "n_files_measured": 64,
+            "rows_measured": 140156,
+            "time_column": "report_date",
+            "time_role": "REPORT_PERIOD",
+            "min": "2006-01-05",
+            "max": "2026-07-15",
             "stats_missing_files": 0,
             "columns_sample": [
-              "name",
-              "start_date",
-              "__index_level_0__"
-            ]
+              "id",
+              "company_id",
+              "company_name",
+              "code",
+              "report_date",
+              "bonus_type",
+              "board_plan_pub_date",
+              "board_plan_bonusnote",
+              "distributed_share_base_board",
+              "shareholders_plan_pub_date",
+              "shareholders_plan_bonusnote",
+              "distributed_share_base_shareholders",
+              "implementation_pub_date",
+              "implementation_bonusnote",
+              "distributed_share_base_implement",
+              "dividend_ratio",
+              "transfer_ratio",
+              "bonus_ratio_rmb",
+              "bonus_ratio_usd",
+              "bonus_ratio_hkd",
+              "at_bonus_ratio_rmb",
+              "exchange_rate",
+              "dividend_number",
+              "transfer_number"
+            ],
+            "columns_union_n": 47,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -4016,7 +4437,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\xr_xd\\xr_xd",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 62,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\xr_xd",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -4053,7 +4478,9 @@
               "exchange_rate",
               "dividend_number",
               "transfer_number"
-            ]
+            ],
+            "columns_union_n": 47,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -4066,10 +4493,10 @@
             "n_files_total": 50,
             "n_files_measured": 50,
             "rows_measured": 615461,
-            "time_column": "report_date",
-            "time_role": "REPORT_PERIOD",
-            "min": "2006-01-05",
-            "max": "2026-07-15",
+            "time_column": "effective_date",
+            "time_role": "EFFECTIVE_FROM",
+            "min": "2006-03-30",
+            "max": "2026-08-20",
             "stats_missing_files": 0,
             "columns_sample": [
               "id",
@@ -4096,7 +4523,9 @@
               "exchange_rate",
               "dividend_number",
               "transfer_number"
-            ]
+            ],
+            "columns_union_n": 56,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -4134,11 +4563,23 @@
           "detail": "no retained module reads P2_LIVE_CANARY_INCOME_2018H1.json into a RAW or cleaning product; the legacy production finance writer _download_finance_table L2027-2161 lives inside jq_download_execution_r1.py which is unreachable by its module-top guard",
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
-        "observed_max": {
-          "layer": "CLEAN",
-          "max": "2026-07-15",
-          "basis": "FULL_FOOTER"
-        },
+        "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "report_date",
+            "time_role": "REPORT_PERIOD",
+            "min": "2006-01-05",
+            "max": "2026-07-15"
+          },
+          {
+            "layer": "RAW",
+            "time_column": "report_date",
+            "time_role": "REPORT_PERIOD",
+            "min": "2006-01-05",
+            "max": "2026-07-15"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -4185,23 +4626,31 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 217,
-          "status": "MEASURED",
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "FULL_FOOTER",
-            "n_files_total": 217,
-            "n_files_measured": 217,
-            "rows_measured": 41088969,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
-            "stats_missing_files": 0,
-            "columns_sample": [
-              "name",
-              "start_date",
-              "__index_level_0__"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "abnormal",
+              "audit_opinion",
+              "billboard",
+              "capital_change",
+              "holder_num",
+              "industry_concept_events",
+              "limited_shares",
+              "lock_shares",
+              "management_info",
+              "money_flow",
+              "mt_total",
+              "shareholder_floating_top10",
+              "shareholder_top10",
+              "shares_frozen",
+              "shares_pledge",
+              "status_change",
+              "subscribe",
+              "xr_xd"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         },
         "CLEAN": {
@@ -4210,44 +4659,16 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
-          "n_parquet_now": 42,
-          "status": "MEASURED",
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "FULL_FOOTER",
-            "n_files_total": 42,
-            "n_files_measured": 42,
-            "rows_measured": 10954407,
-            "time_column": "observation_date",
-            "time_role": "SNAPSHOT_SIGNAL",
-            "min": "2002-09-23",
-            "max": "2026-08-13",
-            "stats_missing_files": 0,
-            "columns_sample": [
-              "id",
-              "company_id",
-              "company_name",
-              "code",
-              "end_date",
-              "pub_date",
-              "change_reason_id",
-              "change_reason",
-              "shareholder_rank",
-              "shareholder_id",
-              "shareholder_name",
-              "shareholder_name_en",
-              "shareholder_class_id",
-              "shareholder_class",
-              "share_number",
-              "share_ratio",
-              "sharesnature_id",
-              "sharesnature",
-              "stock_code",
-              "observation_date",
-              "publication_date",
-              "pit_valid_from",
-              "pit_policy_id",
-              "source_table"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "STK_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+              "STK_SHAREHOLDER_TOP10_PIT_R1",
+              "STK_XR_XD_EVENT_PIT_R1"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         }
       },
@@ -4285,11 +4706,8 @@
           "detail": "no retained module reads P2_LIVE_CANARY_INCOME_2018H1.json into a RAW or cleaning product; the legacy production finance writer _download_finance_table L2027-2161 lives inside jq_download_execution_r1.py which is unreachable by its module-top guard",
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
-        "observed_max": {
-          "layer": "CLEAN",
-          "max": "2026-08-13",
-          "basis": "FULL_FOOTER"
-        },
+        "observed_max": null,
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -4297,7 +4715,7 @@
         "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor",
         "no_common_start_20260924": true
       },
-      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
       "accepted_evidence_refs": [
         "ECOLOGY_REGISTRY_R3.json",
         "r10_writer_cursor_bindings_delivery/ACQUISITION_WRITER_CURSOR_BINDINGS.json",
@@ -4336,23 +4754,47 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 217,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\shareholder_top10",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 43,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\shareholder_top10",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 217,
-            "n_files_measured": 217,
-            "rows_measured": 41088969,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "n_files_total": 43,
+            "n_files_measured": 43,
+            "rows_measured": 2694848,
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2006-01-05",
+            "max": "2026-09-03",
             "stats_missing_files": 0,
             "columns_sample": [
-              "name",
-              "start_date",
-              "__index_level_0__"
-            ]
+              "id",
+              "company_name",
+              "company_id",
+              "code",
+              "end_date",
+              "pub_date",
+              "change_reason_id",
+              "change_reason",
+              "shareholder_rank",
+              "shareholder_name",
+              "shareholder_name_en",
+              "shareholder_id",
+              "shareholder_class_id",
+              "shareholder_class",
+              "share_number",
+              "share_ratio",
+              "sharesnature_id",
+              "sharesnature",
+              "share_pledge_freeze",
+              "share_pledge",
+              "share_freeze"
+            ],
+            "columns_union_n": 21,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -4361,17 +4803,21 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_top10\\shareholder_top10",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 1,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_top10",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
             "n_files_total": 1,
             "n_files_measured": 1,
             "rows_measured": 61,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2026-09-03",
+            "max": "2026-09-03",
             "stats_missing_files": 0,
             "columns_sample": [
               "id",
@@ -4397,7 +4843,9 @@
               "share_freeze",
               "transform_version",
               "discovery_asof"
-            ]
+            ],
+            "columns_union_n": 23,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -4410,10 +4858,10 @@
             "n_files_total": 16,
             "n_files_measured": 16,
             "rows_measured": 5677185,
-            "time_column": "observation_date",
-            "time_role": "SNAPSHOT_SIGNAL",
-            "min": "2002-09-23",
-            "max": "2026-08-13",
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2006-01-05",
+            "max": "2026-08-11",
             "stats_missing_files": 0,
             "columns_sample": [
               "id",
@@ -4440,7 +4888,9 @@
               "stock_code",
               "observation_date",
               "publication_date"
-            ]
+            ],
+            "columns_union_n": 35,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -4479,6 +4929,22 @@
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
         "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2026-09-03",
+            "max": "2026-09-03"
+          },
+          {
+            "layer": "RAW",
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2006-01-05",
+            "max": "2026-09-03"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -4525,23 +4991,44 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 217,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\shareholder_floating_top10",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 43,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\shareholder_floating_top10",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 217,
-            "n_files_measured": 217,
-            "rows_measured": 41088969,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "n_files_total": 43,
+            "n_files_measured": 43,
+            "rows_measured": 2653579,
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2006-01-19",
+            "max": "2026-09-03",
             "stats_missing_files": 0,
             "columns_sample": [
-              "name",
-              "start_date",
-              "__index_level_0__"
-            ]
+              "id",
+              "company_id",
+              "company_name",
+              "code",
+              "end_date",
+              "pub_date",
+              "change_reason_id",
+              "change_reason",
+              "shareholder_rank",
+              "shareholder_id",
+              "shareholder_name",
+              "shareholder_name_en",
+              "shareholder_class_id",
+              "shareholder_class",
+              "share_number",
+              "share_ratio",
+              "sharesnature_id",
+              "sharesnature"
+            ],
+            "columns_union_n": 18,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -4550,17 +5037,21 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_floating_top10\\shareholder_floating_top10",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 1,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_floating_top10",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
             "n_files_total": 1,
             "n_files_measured": 1,
             "rows_measured": 40,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2026-09-03",
+            "max": "2026-09-03",
             "stats_missing_files": 0,
             "columns_sample": [
               "id",
@@ -4583,7 +5074,9 @@
               "sharesnature",
               "transform_version",
               "discovery_asof"
-            ]
+            ],
+            "columns_union_n": 20,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -4596,10 +5089,10 @@
             "n_files_total": 16,
             "n_files_measured": 16,
             "rows_measured": 5571119,
-            "time_column": "observation_date",
-            "time_role": "SNAPSHOT_SIGNAL",
-            "min": "2003-03-31",
-            "max": "2026-08-05",
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2006-01-19",
+            "max": "2026-08-11",
             "stats_missing_files": 0,
             "columns_sample": [
               "id",
@@ -4626,7 +5119,9 @@
               "pit_valid_from",
               "pit_policy_id",
               "source_table"
-            ]
+            ],
+            "columns_union_n": 32,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -4665,6 +5160,22 @@
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
         "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2026-09-03",
+            "max": "2026-09-03"
+          },
+          {
+            "layer": "RAW",
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2006-01-19",
+            "max": "2026-09-03"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -4711,24 +5222,45 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 177,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 139,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 177,
-            "n_files_measured": 177,
-            "rows_measured": 14183416,
-            "time_column": "date",
+            "n_files_total": 139,
+            "n_files_measured": 139,
+            "rows_measured": 13922852,
+            "time_column": "day",
             "time_role": "EVENT_TIME",
-            "min": "2026-08-07",
+            "min": "2014-01-02",
             "max": "2026-09-24",
             "stats_missing_files": 0,
             "columns_sample": [
-              "date",
+              "id",
               "code",
-              "factor",
-              "sec_type"
-            ]
+              "day",
+              "pe_ratio",
+              "turnover_ratio",
+              "pb_ratio",
+              "ps_ratio",
+              "pcf_ratio",
+              "capitalization",
+              "market_cap",
+              "circulating_cap",
+              "circulating_market_cap",
+              "pe_ratio_lyr",
+              "pcf_ratio2",
+              "dividend_ratio",
+              "free_cap",
+              "free_market_cap",
+              "a_cap",
+              "a_market_cap"
+            ],
+            "columns_union_n": 22,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -4737,7 +5269,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factor\\valuation\\valuation",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 48,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factor\\valuation",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -4762,7 +5298,9 @@
               "circulating_market_cap",
               "turnover_ratio",
               "pe_ratio_lyr"
-            ]
+            ],
+            "columns_union_n": 12,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -4798,7 +5336,9 @@
               "product_id",
               "asof_rule",
               "pit_status"
-            ]
+            ],
+            "columns_union_n": 17,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -4839,8 +5379,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-09-24",
-          "basis": "FULL_FOOTER"
+          "min": "2018-06-28",
+          "basis": "FULL_FOOTER",
+          "time_column": "day",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -4887,13 +5432,17 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 685,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\financial_indicator",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 50,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\financial_indicator",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 685,
-            "n_files_measured": 685,
-            "rows_measured": 2797839,
+            "n_files_total": 50,
+            "n_files_measured": 50,
+            "rows_measured": 187206,
             "time_column": "statDate",
             "time_role": "REPORT_PERIOD",
             "min": "2014-03-31",
@@ -4905,26 +5454,28 @@
               "statDate",
               "pubDate",
               "statDate.1",
-              "cash_equivalents",
-              "settlement_provi",
-              "lend_capital",
-              "trading_assets",
-              "bill_receivable",
-              "account_receivable",
-              "advance_payment",
-              "insurance_receivables",
-              "reinsurance_receivables",
-              "reinsurance_contract_reserves_receivable",
-              "interest_receivable",
-              "dividend_receivable",
-              "other_receivable",
-              "bought_sellback_assets",
-              "inventories",
-              "non_current_asset_in_one_year",
-              "other_current_assets",
-              "total_current_assets",
-              "loan_and_advance"
-            ]
+              "eps",
+              "adjusted_profit",
+              "operating_profit",
+              "value_change_profit",
+              "roe",
+              "inc_return",
+              "roa",
+              "net_profit_margin",
+              "gross_profit_margin",
+              "expense_to_total_revenue",
+              "operation_profit_to_total_revenue",
+              "net_profit_to_total_revenue",
+              "operating_expense_to_total_revenue",
+              "ga_expense_to_total_revenue",
+              "financing_expense_to_total_revenue",
+              "operating_profit_to_profit",
+              "invesment_profit_to_profit",
+              "adjusted_profit_to_profit",
+              "goods_sale_and_service_to_revenue"
+            ],
+            "columns_union_n": 36,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -4933,23 +5484,50 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
-          "n_parquet_now": 353,
+          "product_dir": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fundamentals\\financial_indicator",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 64,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fundamentals\\financial_indicator",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 353,
-            "n_files_measured": 353,
-            "rows_measured": 15876129,
-            "time_column": "date",
-            "time_role": "EVENT_TIME",
-            "min": "2014-01-02",
-            "max": "2026-08-14",
+            "n_files_total": 64,
+            "n_files_measured": 64,
+            "rows_measured": 561556,
+            "time_column": "statDate",
+            "time_role": "REPORT_PERIOD",
+            "min": "2014-03-31",
+            "max": "2026-06-30",
             "stats_missing_files": 0,
             "columns_sample": [
-              "date",
+              "id",
               "code",
-              "factor"
-            ]
+              "statDate",
+              "pubDate",
+              "eps",
+              "adjusted_profit",
+              "operating_profit",
+              "value_change_profit",
+              "roe",
+              "inc_return",
+              "roa",
+              "net_profit_margin",
+              "gross_profit_margin",
+              "expense_to_total_revenue",
+              "operation_profit_to_total_revenue",
+              "net_profit_to_total_revenue",
+              "operating_expense_to_total_revenue",
+              "ga_expense_to_total_revenue",
+              "financing_expense_to_total_revenue",
+              "operating_profit_to_profit",
+              "invesment_profit_to_profit",
+              "adjusted_profit_to_profit",
+              "goods_sale_and_service_to_revenue",
+              "ocf_to_revenue"
+            ],
+            "columns_union_n": 39,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -4992,7 +5570,9 @@
               "adjusted_profit_to_profit",
               "goods_sale_and_service_to_revenue",
               "ocf_to_revenue"
-            ]
+            ],
+            "columns_union_n": 38,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -5030,11 +5610,23 @@
           "detail": "no retained module reads P2_LIVE_CANARY_INCOME_2018H1.json into a RAW or cleaning product; the legacy production finance writer _download_finance_table L2027-2161 lives inside jq_download_execution_r1.py which is unreachable by its module-top guard",
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
-        "observed_max": {
-          "layer": "CLEAN",
-          "max": "2026-08-14",
-          "basis": "FULL_FOOTER"
-        },
+        "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "statDate",
+            "time_role": "REPORT_PERIOD",
+            "min": "2014-03-31",
+            "max": "2026-06-30"
+          },
+          {
+            "layer": "RAW",
+            "time_column": "statDate",
+            "time_role": "REPORT_PERIOD",
+            "min": "2014-03-31",
+            "max": "2026-06-30"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -5081,23 +5673,35 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 217,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\mt_total",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 2,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\mt_total",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
-            "n_files_total": 217,
-            "n_files_measured": 217,
-            "rows_measured": 41088969,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "n_files_total": 2,
+            "n_files_measured": 2,
+            "rows_measured": 10000,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2010-03-31",
+            "max": "2020-07-13",
             "stats_missing_files": 0,
             "columns_sample": [
-              "name",
-              "start_date",
-              "__index_level_0__"
-            ]
+              "id",
+              "date",
+              "exchange_code",
+              "fin_value",
+              "fin_buy_value",
+              "sec_volume",
+              "sec_value",
+              "sec_sell_volume",
+              "fin_sec_value"
+            ],
+            "columns_union_n": 9,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -5135,7 +5739,16 @@
           "detail": "no retained module reads P2_LIVE_CANARY_INCOME_2018H1.json into a RAW or cleaning product; the legacy production finance writer _download_finance_table L2027-2161 lives inside jq_download_execution_r1.py which is unreachable by its module-top guard",
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
-        "observed_max": null,
+        "observed_max": {
+          "layer": "RAW",
+          "max": "2020-07-13",
+          "min": "2010-03-31",
+          "basis": "FULL_FOOTER",
+          "time_column": "date",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+        },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -5181,7 +5794,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 19752,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_nav",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/19752)",
@@ -5198,7 +5813,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -5207,7 +5824,9 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "shared_family_root": false,
           "n_parquet_now": 5980,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_NAV",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(103/5980)",
@@ -5224,7 +5843,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -5247,7 +5868,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       ],
@@ -5288,8 +5911,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-07-29",
-          "basis": "STRATIFIED_SAMPLE(103/5980)"
+          "min": "2014-01-02",
+          "basis": "STRATIFIED_SAMPLE(103/5980)",
+          "time_column": "day",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -5335,35 +5963,11 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 27218,
-          "status": "MEASURED",
-          "measurement": {
-            "mode": "STRATIFIED_SAMPLE(268/27218)",
-            "n_files_total": 27218,
-            "n_files_measured": 268,
-            "rows_measured": 6258083,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
-            "stats_missing_files": 1,
-            "columns_sample": [
-              "code",
-              "display_name",
-              "name",
-              "start_date",
-              "end_date",
-              "type"
-            ]
-          }
-        },
-        "CLEAN": {
-          "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE",
-          "declared_n_parquet": 3829,
-          "kind": "CLEAN",
-          "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
-          "asof": "2026-09-24",
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_share",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
           "n_parquet_now": 3829,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_share",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/3829)",
@@ -5382,7 +5986,43 @@
               "exchange_code",
               "day",
               "shares"
-            ]
+            ],
+            "columns_union_n": 7,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        },
+        "CLEAN": {
+          "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE",
+          "declared_n_parquet": 3829,
+          "kind": "CLEAN",
+          "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+          "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE\\fund_etf_share",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
+          "n_parquet_now": 3829,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE",
+          "status": "MEASURED",
+          "measurement": {
+            "mode": "STRATIFIED_SAMPLE(400/3829)",
+            "n_files_total": 3829,
+            "n_files_measured": 400,
+            "rows_measured": 281917,
+            "time_column": "day",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-07-10",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "id",
+              "code",
+              "name",
+              "exchange_code",
+              "day",
+              "shares"
+            ],
+            "columns_union_n": 7,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -5423,8 +6063,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-07-10",
-          "basis": "STRATIFIED_SAMPLE(400/3829)"
+          "min": "2014-01-02",
+          "basis": "STRATIFIED_SAMPLE(400/3829)",
+          "time_column": "day",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -5470,13 +6115,17 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 78719,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand\\open_fund",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 76650,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand\\open_fund",
           "status": "MEASURED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(399/78719)",
-            "n_files_total": 78719,
-            "n_files_measured": 399,
-            "rows_measured": 743744,
+            "mode": "STRATIFIED_SAMPLE(400/76650)",
+            "n_files_total": 76650,
+            "n_files_measured": 400,
+            "rows_measured": 573564,
             "time_column": "day",
             "time_role": "EVENT_TIME",
             "min": "2014-01-02",
@@ -5487,7 +6136,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -5496,7 +6147,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\open_fund\\open_fund",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 76650,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\open_fund",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/76650)",
@@ -5513,7 +6168,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -5554,8 +6211,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-07-29",
-          "basis": "STRATIFIED_SAMPLE(400/76650)"
+          "min": "2014-01-02",
+          "basis": "STRATIFIED_SAMPLE(400/76650)",
+          "time_column": "day",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -5601,13 +6263,17 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 78719,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand\\qdii",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 1899,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand\\qdii",
           "status": "MEASURED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(399/78719)",
-            "n_files_total": 78719,
-            "n_files_measured": 399,
-            "rows_measured": 743744,
+            "mode": "FULL_FOOTER",
+            "n_files_total": 1899,
+            "n_files_measured": 1899,
+            "rows_measured": 2310892,
             "time_column": "day",
             "time_role": "EVENT_TIME",
             "min": "2014-01-02",
@@ -5618,7 +6284,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -5627,7 +6295,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\QDII\\qdii",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 1899,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\QDII",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -5644,7 +6316,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -5685,8 +6359,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-07-29",
-          "basis": "FULL_FOOTER"
+          "min": "2014-01-02",
+          "basis": "FULL_FOOTER",
+          "time_column": "day",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -5732,13 +6411,17 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 78719,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand\\other",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 170,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4b_fund_expand\\other",
           "status": "MEASURED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(399/78719)",
-            "n_files_total": 78719,
-            "n_files_measured": 399,
-            "rows_measured": 743744,
+            "mode": "FULL_FOOTER",
+            "n_files_total": 170,
+            "n_files_measured": 170,
+            "rows_measured": 239353,
             "time_column": "day",
             "time_role": "EVENT_TIME",
             "min": "2014-01-02",
@@ -5749,7 +6432,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -5758,7 +6443,11 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\other\\other",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 170,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\other",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -5775,7 +6464,9 @@
               "code",
               "unit_net_value",
               "acc_net_value"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -5816,8 +6507,13 @@
         "observed_max": {
           "layer": "CLEAN",
           "max": "2026-07-29",
-          "basis": "FULL_FOOTER"
+          "min": "2014-01-02",
+          "basis": "FULL_FOOTER",
+          "time_column": "day",
+          "time_role": "EVENT_TIME",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
         },
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -5863,26 +6559,34 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 27218,
+          "product_dir": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_tracking_index_mapping",
+          "product_dir_resolved": true,
+          "shared_family_root": true,
+          "n_parquet_now": 3,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf\\fund_tracking_index_mapping",
           "status": "MEASURED",
           "measurement": {
-            "mode": "STRATIFIED_SAMPLE(268/27218)",
-            "n_files_total": 27218,
-            "n_files_measured": 268,
-            "rows_measured": 6258083,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
-            "stats_missing_files": 1,
+            "mode": "FULL_FOOTER",
+            "n_files_total": 3,
+            "n_files_measured": 3,
+            "rows_measured": 5128,
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2004-11-25",
+            "max": "2026-06-30",
+            "stats_missing_files": 0,
             "columns_sample": [
+              "id",
               "code",
-              "display_name",
               "name",
+              "pub_date",
               "start_date",
               "end_date",
-              "type"
-            ]
+              "traced_index_name",
+              "traced_index_code"
+            ],
+            "columns_union_n": 8,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         },
         "CLEAN": {
@@ -5891,17 +6595,21 @@
           "kind": "CLEAN",
           "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
           "asof": "2026-09-24",
+          "product_dir_expected": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\fund_tracking_index_mapping\\fund_tracking_index_mapping",
+          "product_dir_resolved": false,
+          "shared_family_root": false,
           "n_parquet_now": 3,
+          "measured_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\fund_tracking_index_mapping",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
             "n_files_total": 3,
             "n_files_measured": 3,
             "rows_measured": 5128,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2004-11-25",
+            "max": "2026-06-30",
             "stats_missing_files": 0,
             "columns_sample": [
               "id",
@@ -5914,7 +6622,9 @@
               "traced_index_code",
               "quality_flag",
               "traced_index_key"
-            ]
+            ],
+            "columns_union_n": 10,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
           }
         }
       },
@@ -5953,6 +6663,22 @@
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
         "observed_max": null,
+        "non_event_axes": [
+          {
+            "layer": "CLEAN",
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2004-11-25",
+            "max": "2026-06-30"
+          },
+          {
+            "layer": "RAW",
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2004-11-25",
+            "max": "2026-06-30"
+          }
+        ],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -6000,7 +6726,9 @@
           "kind": "DICTIONARY",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6053,7 +6781,9 @@
           "kind": "DICTIONARY",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_field_semantics_CURRENT.csv",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6106,7 +6836,9 @@
           "kind": "DICTIONARY",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_formula_CURRENT.csv",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6159,7 +6891,9 @@
           "kind": "DICTIONARY",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_pit_rules_CURRENT.json",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6212,7 +6946,9 @@
           "kind": "DICTIONARY",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_cleaning_rules_CURRENT.json",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6265,7 +7001,9 @@
           "kind": "DICTIONARY",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_engine_mapping_CURRENT.csv",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6322,11 +7060,12 @@
         }
       },
       "update_basis": {
-        "status": "NOT_APPLICABLE",
-        "contract": "FACTOR_VALUE plane has no admitted product in the mounted release (absence, not a cursor)",
-        "cursor": "NOT_APPLICABLE"
+        "status": "BLOCKED_NO_ADMITTED_PRODUCT",
+        "predicate": "no admitted FACTOR_VALUE product exists in the mounted CACHE release and no retained factor-value writer/batch is bound; ROOT_ABSENT is an absence fact, not a contract permitting NOT_APPLICABLE",
+        "required_input": "an admitted FACTOR_VALUE product (or an explicit contract permitting exclusion)",
+        "cursor": "UNRESOLVED"
       },
-      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "readiness": "BLOCKED_NO_ADMITTED_PRODUCT",
       "accepted_evidence_refs": [
         "ECOLOGY_REGISTRY_R3.json",
         "r10_writer_cursor_bindings_delivery/ACQUISITION_WRITER_CURSOR_BINDINGS.json",
@@ -6364,7 +7103,9 @@
           "kind": "STRATEGY_OUTPUT",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX\\研究系统\\CURRENT",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6416,44 +7157,20 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 1279,
-          "status": "MEASURED",
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "FULL_FOOTER",
-            "n_files_total": 1279,
-            "n_files_measured": 1279,
-            "rows_measured": 630247,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
-            "stats_missing_files": 0,
-            "columns_sample": [
-              "ts_code",
-              "bond_full_name",
-              "bond_short_name",
-              "cb_code",
-              "cb_type",
-              "stk_code",
-              "stk_short_name",
-              "maturity",
-              "par",
-              "issue_price",
-              "issue_size",
-              "remain_size",
-              "value_date",
-              "maturity_date",
-              "rate_type",
-              "coupon_rate",
-              "add_rate",
-              "pay_per_year",
-              "list_date",
-              "delist_date",
-              "exchange",
-              "conv_start_date",
-              "conv_end_date",
-              "conv_stop_date"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "cb_basic",
+              "cb_call",
+              "cb_daily",
+              "cb_issue",
+              "cb_rate",
+              "cb_share",
+              "trade_cal_helper"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         }
       },
@@ -6492,6 +7209,7 @@
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
         "observed_max": null,
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -6499,7 +7217,7 @@
         "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor",
         "no_common_start_20260924": true
       },
-      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
       "accepted_evidence_refs": [
         "ECOLOGY_REGISTRY_R3.json",
         "r10_writer_cursor_bindings_delivery/ACQUISITION_WRITER_CURSOR_BINDINGS.json",
@@ -6538,31 +7256,18 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
-          "n_parquet_now": 1371,
-          "status": "MEASURED",
+          "shared_family_root": true,
+          "status": "PRODUCT_DIR_UNRESOLVED",
           "measurement": {
-            "mode": "FULL_FOOTER",
-            "n_files_total": 1371,
-            "n_files_measured": 1371,
-            "rows_measured": 101584,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
-            "stats_missing_files": 0,
-            "columns_sample": [
-              "ts_code",
-              "call_type",
-              "is_call",
-              "ann_date",
-              "call_date",
-              "call_price",
-              "call_price_tax",
-              "call_vol",
-              "call_amount",
-              "payment_date",
-              "call_reg_date"
-            ]
+            "mode": "NOT_MEASURED_AMBIGUOUS_FAMILY_ROOT",
+            "family_dirs": [
+              "cb_call",
+              "cb_rating",
+              "cb_share",
+              "top10_cb_holders",
+              "trade_cal_helper"
+            ],
+            "note": "the R3 root is a multi-product family directory; no defensible product subdirectory was resolved, so no product-specific range is claimed"
           }
         }
       },
@@ -6601,6 +7306,7 @@
           "adjacent_bound_consumer": "blackbox_daily_increment_common_r1.finance_pit_delta L184-L250 consumes RAW P3_finance_pit parquet files (latest_raw L169-L171) and not canary output"
         },
         "observed_max": null,
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -6608,7 +7314,7 @@
         "required_input": "an authorised per-dataset start date plus a validated overlap window, or a writer that emits a content-identity cursor",
         "no_common_start_20260924": true
       },
-      "readiness": "PARTIAL_READABLE_CURSOR_BLOCKED",
+      "readiness": "BLOCKED_NO_LAYER_MEASURED",
       "accepted_evidence_refs": [
         "ECOLOGY_REGISTRY_R3.json",
         "r10_writer_cursor_bindings_delivery/ACQUISITION_WRITER_CURSOR_BINDINGS.json",
@@ -6647,7 +7353,9 @@
           "kind": "EVIDENCE",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX\\数据\\外部补充只读",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6688,6 +7396,7 @@
           "read_pattern": "load_json of the two pointer documents, then align_pass = align.get('status') == 'PASS' and st = PASS iff align_pass and FINAL_STATUS != EXTERNAL_EVIDENCE_MATERIALIZATION_FAIL (L245-L249)"
         },
         "observed_max": null,
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -6734,18 +7443,20 @@
           "kind": "EVIDENCE",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 10726,
+          "measured_root": "E:\\BLACKBOX\\数据\\外部证据",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(145/10726)",
             "n_files_total": 10726,
             "n_files_measured": 145,
             "rows_measured": 2578604,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
-            "stats_missing_files": 0,
+            "time_column": "publication_at",
+            "time_role": "AVAILABILITY_TIME",
+            "min": "19901201",
+            "max": "20260904",
+            "stats_missing_files": 2,
             "columns_sample": [
               "canonical_record_id",
               "underlying_fact_or_event_id",
@@ -6765,7 +7476,11 @@
               "market_available_at",
               "PIT_valid",
               "ORIGINAL_PRIMARY_REFERENCE"
-            ]
+            ],
+            "columns_union_n": 703,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+            "scope": "WHOLE_PLANE_UNION",
+            "scope_note": "this dataset's identity is the plane itself; the range is the union over its source subdirectories, not a single product bound"
           }
         }
       },
@@ -6802,6 +7517,7 @@
           "read_pattern": "load_json of the two pointer documents, then align_pass = align.get('status') == 'PASS' and st = PASS iff align_pass and FINAL_STATUS != EXTERNAL_EVIDENCE_MATERIALIZATION_FAIL (L245-L249)"
         },
         "observed_max": null,
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -6848,7 +7564,9 @@
           "kind": "EVIDENCE",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX\\数据\\美国市场",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6889,6 +7607,7 @@
           "read_pattern": "load_json of the two pointer documents, then align_pass = align.get('status') == 'PASS' and st = PASS iff align_pass and FINAL_STATUS != EXTERNAL_EVIDENCE_MATERIALIZATION_FAIL (L245-L249)"
         },
         "observed_max": null,
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -6935,7 +7654,9 @@
           "kind": "EVIDENCE",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\19_tushare_index_weight_adapter_lock",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -6976,6 +7697,7 @@
           "read_pattern": "load_json of the two pointer documents, then align_pass = align.get('status') == 'PASS' and st = PASS iff align_pass and FINAL_STATUS != EXTERNAL_EVIDENCE_MATERIALIZATION_FAIL (L245-L249)"
         },
         "observed_max": null,
+        "non_event_axes": [],
         "last_demonstrated_complete_unit": null,
         "downstream_processed_boundary": "CACHE release asof 2026-09-24 (None)",
         "cursor": "NOT_BOUND",
@@ -7021,23 +7743,29 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 363965,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读",
           "status": "MEASURED",
           "measurement": {
             "mode": "STRATIFIED_SAMPLE(400/363965)",
             "n_files_total": 363965,
             "n_files_measured": 400,
             "rows_measured": 6174572,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "start_date",
+            "time_role": "VALIDITY_START",
+            "min": "2016-07-31",
+            "max": "2026-04-07",
             "stats_missing_files": 0,
             "columns_sample": [
               "concept_code",
               "name",
               "start_date"
-            ]
+            ],
+            "columns_union_n": 156,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+            "scope": "WHOLE_PLANE_UNION",
+            "scope_note": "this dataset's identity is the plane itself; the range is the union over its source subdirectories, not a single product bound"
           }
         }
       },
@@ -7084,7 +7812,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 0,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_WINDOW_FULL_RAW_20260325_20260501",
           "status": "EMPTY_DIRECTORY",
           "measurement": {
             "mode": "EMPTY",
@@ -7135,7 +7865,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 2013,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\strategy_data_plane_additions",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -7151,7 +7883,11 @@
               "date",
               "code",
               "factor"
-            ]
+            ],
+            "columns_union_n": 67,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+            "scope": "WHOLE_PLANE_UNION",
+            "scope_note": "this dataset's identity is the plane itself; the range is the union over its source subdirectories, not a single product bound"
           }
         }
       },
@@ -7198,7 +7934,9 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 510,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\_forensic_canary",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
@@ -7218,7 +7956,11 @@
               "volume",
               "money",
               "__index_level_0__"
-            ]
+            ],
+            "columns_union_n": 7,
+            "range_basis": "NO_TIME_COLUMN_IN_SAMPLED_SCHEMAS",
+            "scope": "WHOLE_PLANE_UNION",
+            "scope_note": "this dataset's identity is the plane itself; the range is the union over its source subdirectories, not a single product bound"
           }
         }
       },
@@ -7265,17 +8007,19 @@
           "kind": "RAW",
           "release_id": null,
           "asof": null,
+          "shared_family_root": false,
           "n_parquet_now": 93,
+          "measured_root": "E:\\BLACKBOX\\数据\\原始只读\\试验",
           "status": "MEASURED",
           "measurement": {
             "mode": "FULL_FOOTER",
             "n_files_total": 93,
             "n_files_measured": 93,
             "rows_measured": 198072,
-            "time_column": null,
-            "time_role": "NO_TIME_AXIS",
-            "min": null,
-            "max": null,
+            "time_column": "time",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2024-12-30",
             "stats_missing_files": 0,
             "columns_sample": [
               "open",
@@ -7284,7 +8028,11 @@
               "low",
               "volume",
               "money"
-            ]
+            ],
+            "columns_union_n": 8,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+            "scope": "WHOLE_PLANE_UNION",
+            "scope_note": "this dataset's identity is the plane itself; the range is the union over its source subdirectories, not a single product bound"
           }
         }
       },
@@ -7326,11 +8074,12 @@
       },
       "layers": {},
       "update_basis": {
-        "status": "NOT_APPLICABLE",
-        "contract": "UNDETERMINED_SCOPE: no layers, no identity; excluded from increment by definition",
-        "cursor": "NOT_APPLICABLE"
+        "status": "UNRESOLVED_SCOPE",
+        "predicate": "no layers, no identity and no controlling definition; scope stays unresolved and is excluded from the increment plan pending an actual definition",
+        "required_input": "a controlling identity/scope definition",
+        "cursor": "UNRESOLVED"
       },
-      "readiness": "NOT_APPLICABLE_WITH_CONTRACT",
+      "readiness": "UNRESOLVED_SCOPE",
       "accepted_evidence_refs": [
         "ECOLOGY_REGISTRY_R3.json",
         "r10_writer_cursor_bindings_delivery/ACQUISITION_WRITER_CURSOR_BINDINGS.json",
@@ -7338,5 +8087,5 @@
       ]
     }
   ],
-  "elapsed_seconds": 15.1
+  "elapsed_seconds": 14.5
 }
