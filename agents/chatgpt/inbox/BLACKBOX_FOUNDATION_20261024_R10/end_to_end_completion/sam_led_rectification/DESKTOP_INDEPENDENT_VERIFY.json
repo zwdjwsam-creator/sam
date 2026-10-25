@@ -1,0 +1,244 @@
+{
+  "artifact": "DESKTOP_INDEPENDENT_VERIFY_R1",
+  "hostname": "ZHANGWEI",
+  "at_cn": "2026-10-25T19:20:55+0800",
+  "checks": {
+    "evidence_hostname_is_ZHANGWEI": {
+      "ok": true,
+      "detail": "ZHANGWEI"
+    },
+    "evidence_python_is_venv": {
+      "ok": true,
+      "detail": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe"
+    },
+    "evidence_started_after_190000": {
+      "ok": true,
+      "detail": "2026-10-25T19:17:59+0800"
+    },
+    "A_chain_exit_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "B_status_iso_exit_zero": {
+      "ok": true,
+      "detail": null
+    },
+    "C_bad_date_exit_nonzero": {
+      "ok": true,
+      "detail": 1
+    },
+    "D_status_compact_exit_zero": {
+      "ok": true,
+      "detail": null
+    },
+    "elapsed_A_under_1200s": {
+      "ok": true,
+      "detail": 104.2
+    },
+    "C_bad_date_message_fail_closed": {
+      "ok": true,
+      "detail": "INVALID_DATE_FAIL_CLOSED: '2026--0-9-' — accept YYYYMMDD or YYYY-MM-DD only"
+    },
+    "B_declares_read_only": {
+      "ok": true,
+      "detail": null
+    },
+    "D_declares_read_only": {
+      "ok": true,
+      "detail": null
+    },
+    "digest_after_status_equals_after_chain": {
+      "ok": true,
+      "detail": null
+    },
+    "digest_after_bad_date_equals_after_status": {
+      "ok": true,
+      "detail": null
+    },
+    "digest_end_equals_after_bad_date": {
+      "ok": true,
+      "detail": null
+    },
+    "digest_watch_count_9": {
+      "ok": true,
+      "detail": 9
+    },
+    "watch_files_unchanged_since_run": {
+      "ok": true,
+      "detail": []
+    },
+    "CONNECTED_PIPELINE_json_exists": {
+      "ok": true,
+      "detail": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\deliverables\\CONNECTED_PIPELINE.json"
+    },
+    "CONNECTED_PIPELINE_RESULT_PASS": {
+      "ok": true,
+      "detail": "PASS"
+    },
+    "cp_verdict_lineage_same_artifact": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_compiler_read_r15_tree": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_transport_gate_pass": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_tampered_date_blocked": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_self_cert_blocked": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_r15_cleaning_pass": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_original_compiler_all_pass": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_commit_consistent": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_same_input_replay_noop": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_production_current_untouched": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_compiler_hard_block_propagated": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_verdict_replay_days_present_in_release": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_compiler_seal_all_pass": {
+      "ok": true,
+      "detail": true
+    },
+    "cp_cleaning_release_id": {
+      "ok": true,
+      "detail": "R15_REPLAY_20260924_R3"
+    },
+    "cp_same_input_replay_PASS": {
+      "ok": true,
+      "detail": "PASS"
+    },
+    "cp_commit_PASS": {
+      "ok": true,
+      "detail": "PASS"
+    },
+    "PRODUCTION_CURRENT_WRITE_NONE": {
+      "ok": true,
+      "detail": "NONE"
+    },
+    "LINEAGE_retained_nonempty": {
+      "ok": true,
+      "detail": 2
+    },
+    "LINEAGE_all_retained_equal_r15_sealed": {
+      "ok": true,
+      "detail": []
+    },
+    "r15_R3_dir_exists": {
+      "ok": true,
+      "detail": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3"
+    },
+    "r15_R3_release_id": {
+      "ok": true,
+      "detail": null
+    },
+    "r15_R3_sealed_marker": {
+      "ok": true,
+      "detail": null
+    },
+    "r15_R3_no_production_write": {
+      "ok": true,
+      "detail": "NONE"
+    },
+    "r15_R3_switch_current_not_called": {
+      "ok": true,
+      "detail": null
+    },
+    "r15_R3_file_count_reasonable": {
+      "ok": true,
+      "detail": 368
+    },
+    "no_bad_date_dirs": {
+      "ok": true,
+      "detail": []
+    },
+    "production_CURRENT_not_touched_by_run": {
+      "ok": true,
+      "detail": []
+    },
+    "rollback_backups_present": {
+      "ok": true,
+      "detail": {
+        "run_r15_cleaning_replay.py.bak_sam_led_r6": true,
+        "run_connected_pipeline.py.bak_sam_led_r7": true,
+        "data_plane.bak_sam_led_20261025": true
+      }
+    },
+    "delivered_identity_match": {
+      "ok": true,
+      "detail": {
+        "candidate/run_r15_cleaning_replay.py": {
+          "raw": "2719c17eec5589ac",
+          "lf_norm": "014466be992632cf",
+          "declared": "2719c17eec5589ac",
+          "match": true
+        },
+        "tools/run_connected_pipeline.py": {
+          "raw": "4964f27cc325c8e8",
+          "lf_norm": "48b1192b62921d2f",
+          "declared": "4964f27cc325c8e8",
+          "match": true
+        },
+        "脚本/data_plane": {
+          "raw": "949e95c758b2064c",
+          "declared": "949e95c758b2064c",
+          "match": true
+        }
+      }
+    }
+  },
+  "notes": [],
+  "blockers": [],
+  "identity_of_delivered_files": {
+    "candidate/run_r15_cleaning_replay.py": {
+      "raw": "2719c17eec5589ac",
+      "lf_norm": "014466be992632cf",
+      "declared": "2719c17eec5589ac",
+      "match": true
+    },
+    "tools/run_connected_pipeline.py": {
+      "raw": "4964f27cc325c8e8",
+      "lf_norm": "48b1192b62921d2f",
+      "declared": "4964f27cc325c8e8",
+      "match": true
+    },
+    "脚本/data_plane": {
+      "raw": "949e95c758b2064c",
+      "declared": "949e95c758b2064c",
+      "match": true
+    }
+  },
+  "summary": {
+    "total_checks": 47,
+    "passed": 47,
+    "failed": 0
+  },
+  "status": "PASS"
+}
