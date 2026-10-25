@@ -1,0 +1,54 @@
+$ E:\BLACKBOX\.venv\Scripts\python.exe -X utf8 E:\BLACKBOX\脚本\blackbox_must_read_preflight_r1.py --task-class BACKTEST --json
+
+--- STDOUT ---
+{
+  "ok": true,
+  "MUST_READ_PRECHECK": "PASS",
+  "task_class": [
+    "BACKTEST"
+  ],
+  "required": [
+    "BOOTSTRAP",
+    "DATA_ACCESS",
+    "BACKTEST"
+  ],
+  "problems": [],
+  "kernel": {
+    "path": "E:\\BLACKBOX\\.cursor\\rules\\BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+    "exists": true,
+    "sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+    "bytes": 1167,
+    "lines": 21
+  },
+  "rules_loaded": [
+    {
+      "key": "BOOTSTRAP",
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_BOOTSTRAP_MUST_READ.md",
+      "expected_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+      "actual_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+      "status": "VERIFIED",
+      "lines": 49
+    },
+    {
+      "key": "DATA_ACCESS",
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+      "expected_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+      "actual_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+      "status": "VERIFIED",
+      "lines": 99
+    },
+    {
+      "key": "BACKTEST",
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_BACKTEST_MUST_READ.md",
+      "expected_sha256": "c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37",
+      "actual_sha256": "c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37",
+      "status": "VERIFIED",
+      "lines": 37
+    }
+  ],
+  "preflight_block": "MUST_READ_PRECHECK = PASS\nTASK_CLASS = BACKTEST\nKERNEL_SHA256 = b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a\nKERNEL_STATUS = VERIFIED\nKERNEL_BYTES = 1167\nHAND_READ = NOT_SUFFICIENT\nAUTHORITY_READY = YES\nTASK_EXECUTION = ALLOWED\nTASK_EXECUTION_FORBIDDEN = FALSE\nrules_loaded:\n  - BOOTSTRAP\n    expected_sha256 = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\n    actual_sha256   = 704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406\n    status = VERIFIED\n  - DATA_ACCESS\n    expected_sha256 = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\n    actual_sha256   = 0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8\n    status = VERIFIED\n  - BACKTEST\n    expected_sha256 = c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37\n    actual_sha256   = c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37\n    status = VERIFIED"
+}
+
+--- STDERR ---
+
+--- EXIT 0 ---
