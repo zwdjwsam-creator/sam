@@ -1,0 +1,184 @@
+{
+  "schema": "DESKTOP_CLOSURE_VERIFY_R1",
+  "checks": {
+    "c1_r15_234_12": {
+      "ok": true,
+      "detail": {
+        "files": 234,
+        "r2_repair": 12
+      }
+    },
+    "c2_closure_stock_234": {
+      "ok": true,
+      "detail": {
+        "product": "STOCK_DAILY_PIT_R1",
+        "materialised": 234,
+        "enumerated": 234,
+        "read_ok": 234,
+        "failed": 0,
+        "failed_sample": [],
+        "CLOSURE_OK": true
+      }
+    },
+    "c2_closure_etf_37": {
+      "ok": true,
+      "detail": {
+        "product": "ETF_DAILY_PIT_R1",
+        "materialised": 37,
+        "enumerated": 37,
+        "read_ok": 37,
+        "failed": 0,
+        "failed_sample": [],
+        "CLOSURE_OK": true
+      }
+    },
+    "c2_enumerated_matches_disk": {
+      "ok": true,
+      "detail": {
+        "log": 234,
+        "disk": 234
+      }
+    },
+    "c3_no_error_markers": {
+      "ok": true,
+      "detail": {
+        "READ_FAILED": 0,
+        "ENUM_INCOMPLETE": 0,
+        "PRICE_READ_INCOMPLETE": 0,
+        "READ_CLOSURE_BROKEN": 0
+      }
+    },
+    "c4_rows_2026_959896": {
+      "ok": true,
+      "detail": {
+        "STOCK_DAILY_PIT_R1": 959896,
+        "STOCK_DAILY_RAW_PIT_R1": 959896,
+        "STOCK_FACTOR_DAILY_R1": 959896
+      }
+    },
+    "c4_qa_agrees_with_computed": {
+      "ok": true,
+      "detail": {
+        "qa": {
+          "STOCK_DAILY_PIT_R1": 959896,
+          "STOCK_DAILY_RAW_PIT_R1": 959896,
+          "STOCK_FACTOR_DAILY_R1": 959896
+        },
+        "computed": {
+          "STOCK_DAILY_PIT_R1": 959896,
+          "STOCK_DAILY_RAW_PIT_R1": 959896,
+          "STOCK_FACTOR_DAILY_R1": 959896
+        }
+      }
+    },
+    "c5_july_distinct_codes": {
+      "ok": true,
+      "detail": {
+        "actual": {
+          "2026-07-03": 5209,
+          "2026-07-06": 5210,
+          "2026-07-07": 5208,
+          "2026-07-08": 5208,
+          "2026-07-09": 5208,
+          "2026-07-10": 5207
+        },
+        "expected": {
+          "2026-07-03": 5209,
+          "2026-07-06": 5210,
+          "2026-07-07": 5208,
+          "2026-07-08": 5208,
+          "2026-07-09": 5208,
+          "2026-07-10": 5207
+        }
+      }
+    },
+    "c5_qa_july_agrees": {
+      "ok": true,
+      "detail": {
+        "qa": {
+          "2026-07-01": 5206,
+          "2026-07-02": 5210,
+          "2026-07-03": 5209,
+          "2026-07-06": 5210,
+          "2026-07-07": 5208,
+          "2026-07-08": 5208,
+          "2026-07-09": 5208,
+          "2026-07-10": 5207,
+          "2026-07-13": 5213,
+          "2026-07-14": 5213,
+          "2026-07-15": 5213,
+          "2026-07-16": 5213,
+          "2026-07-17": 5213,
+          "2026-07-20": 5213,
+          "2026-07-21": 5213,
+          "2026-07-22": 5213,
+          "2026-07-23": 5213,
+          "2026-07-24": 5213,
+          "2026-07-27": 5213,
+          "2026-07-28": 5213,
+          "2026-07-29": 5213,
+          "2026-07-30": 5213,
+          "2026-07-31": 5213
+        },
+        "computed": {
+          "2026-07-03": 5209,
+          "2026-07-06": 5210,
+          "2026-07-07": 5208,
+          "2026-07-08": 5208,
+          "2026-07-09": 5208,
+          "2026-07-10": 5207
+        }
+      }
+    },
+    "c6_production_digest_changed_empty": {
+      "ok": true,
+      "detail": {}
+    },
+    "c6_production_unchanged_vs_pre": {
+      "ok": true,
+      "detail": {
+        "changed": {}
+      }
+    },
+    "c7_negative_control_log": {
+      "ok": true,
+      "detail": {
+        "exists": true,
+        "bytes": 7673,
+        "has_exit_code_1": true,
+        "failure_mode": "RuntimeError: MATERIALISED_UNREADABLE: STOCK_DAILY_PIT_R1 E:\\\\BLACKBOX\\\\_OPS\\\\FOUNDATION_R"
+      }
+    },
+    "x_commit_rows_match_new_content": {
+      "ok": true,
+      "detail": {
+        "commit_rows": {
+          "STOCK_DAILY_PIT_R1": 17040667,
+          "STOCK_DAILY_RAW_PIT_R1": 12362212,
+          "STOCK_FACTOR_DAILY_R1": 17040667
+        },
+        "computed_total_rows": {
+          "STOCK_DAILY_PIT_R1": 17040667,
+          "STOCK_DAILY_RAW_PIT_R1": 12362212,
+          "STOCK_FACTOR_DAILY_R1": 17040667
+        }
+      }
+    },
+    "x_commit_root_is_not_archived": {
+      "ok": true,
+      "detail": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234902"
+    },
+    "x_no_hardcoded_true": {
+      "ok": true,
+      "detail": "literal True assignment absent"
+    }
+  },
+  "blockers": [],
+  "release": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235444",
+  "summary": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0
+  },
+  "status": "PASS"
+}
