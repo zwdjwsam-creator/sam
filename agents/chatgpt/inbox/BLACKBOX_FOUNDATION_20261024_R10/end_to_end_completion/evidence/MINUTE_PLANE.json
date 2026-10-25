@@ -1,0 +1,211 @@
+{
+  "artifact": "MINUTE_PLANE",
+  "correction": "R13 stated there is no local minute product. That was wrong: the product exists and is reachable through the original reader. It is now wired into the provider; what remains is a coverage window, not a missing plane.",
+  "reader": {
+    "available": true,
+    "reader": "E:\\BLACKBOX\\脚本\\blackbox_stock_minute_1m_reader_r1.py",
+    "product_id": "STOCK_MINUTE_1M_R1",
+    "source_id": "CLEANING_CURRENT_A_SHARE_STOCK_1M",
+    "source_status": "READY",
+    "source_dir": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A股_stock_1m",
+    "source_pointer": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+    "evidence_gaps": []
+  },
+  "product_coverage": {
+    "day_shards": {
+      "2026-09-11": 2,
+      "2026-09-14": 2,
+      "2026-09-15": 2,
+      "2026-09-16": 2,
+      "2026-09-17": 2,
+      "2026-09-18": 2,
+      "2026-09-21": 2,
+      "2026-09-22": 2,
+      "2026-09-23": 2,
+      "2026-09-24": 2
+    },
+    "n_days": 10,
+    "first_day": "2026-09-11",
+    "last_day": "2026-09-24"
+  },
+  "strategy_requests": {
+    "get_price_calls": 6,
+    "calls": [
+      {
+        "line": 891,
+        "frequency": "daily",
+        "has_fq_pre": true
+      },
+      {
+        "line": 1355,
+        "frequency": "daily",
+        "has_fq_pre": false
+      },
+      {
+        "line": 1484,
+        "frequency": "daily",
+        "has_fq_pre": true
+      },
+      {
+        "line": 1532,
+        "frequency": "daily",
+        "has_fq_pre": true
+      },
+      {
+        "line": 1545,
+        "frequency": "daily",
+        "has_fq_pre": true
+      },
+      {
+        "line": 1840,
+        "frequency": "daily",
+        "has_fq_pre": true
+      }
+    ],
+    "minute_get_price_calls": 0,
+    "get_current_data_calls": 9
+  },
+  "v4_window": [
+    "2026-09-03",
+    "2026-09-24"
+  ],
+  "v4_window_minute_probe": [
+    {
+      "session": "2026-09-03",
+      "rows": 0,
+      "mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE",
+      "reader_status": "NO_DATA",
+      "reader_reason": "NO_DAY_SHARDS"
+    },
+    {
+      "session": "2026-09-04",
+      "rows": 0,
+      "mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE",
+      "reader_status": "NO_DATA",
+      "reader_reason": "NO_DAY_SHARDS"
+    },
+    {
+      "session": "2026-09-07",
+      "rows": 0,
+      "mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE",
+      "reader_status": "NO_DATA",
+      "reader_reason": "NO_DAY_SHARDS"
+    },
+    {
+      "session": "2026-09-08",
+      "rows": 0,
+      "mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE",
+      "reader_status": "NO_DATA",
+      "reader_reason": "NO_DAY_SHARDS"
+    },
+    {
+      "session": "2026-09-09",
+      "rows": 0,
+      "mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE",
+      "reader_status": "NO_DATA",
+      "reader_reason": "NO_DAY_SHARDS"
+    },
+    {
+      "session": "2026-09-10",
+      "rows": 0,
+      "mode": "BLOCKED_MINUTE_PLANE_NO_COVERAGE",
+      "reader_status": "NO_DATA",
+      "reader_reason": "NO_DAY_SHARDS"
+    },
+    {
+      "session": "2026-09-11",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-14",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-15",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-16",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-17",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-18",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-21",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-22",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-23",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    },
+    {
+      "session": "2026-09-24",
+      "rows": 30,
+      "mode": "REAL_MINUTE_PLANE",
+      "reader_status": null,
+      "reader_reason": null
+    }
+  ],
+  "sessions_covered": [
+    "2026-09-11",
+    "2026-09-14",
+    "2026-09-15",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18",
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-23",
+    "2026-09-24"
+  ],
+  "sessions_blocked": [
+    "2026-09-03",
+    "2026-09-04",
+    "2026-09-07",
+    "2026-09-08",
+    "2026-09-09",
+    "2026-09-10"
+  ],
+  "conclusion": {
+    "plane_exists": true,
+    "v4_requests_minute_bars": false,
+    "note": "V4 makes no minute get_price call at all: it uses daily get_price plus get_current_data() snapshots at its scheduled clocks. So wiring the minute plane does not unblock V4 by itself, and the earlier statement that minute input was the blocker is withdrawn. The minute path is now real for any caller that does request it, and is BLOCKED outside the shard window instead of being proxied."
+  }
+}
