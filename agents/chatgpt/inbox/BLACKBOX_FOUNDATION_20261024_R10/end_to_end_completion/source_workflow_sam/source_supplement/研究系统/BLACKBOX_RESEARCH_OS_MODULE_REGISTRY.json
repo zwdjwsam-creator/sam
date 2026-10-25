@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0.0",
+  "system_id": "BLACKBOX_RESEARCH_OS_R1",
+  "updated_at_cn": "2026-08-27T12:06:00+0800",
+  "incremental_policy": "HISTORICAL_BASE + INCREMENTAL_UPDATE + LIVE_MARKET_UPDATE",
+  "cache_first": true,
+  "modules": {
+    "01_SELLSIDE_GLOBAL": {
+      "display_name": "全球三大行卖方",
+      "firms": ["MORGAN_STANLEY", "GOLDMAN_SACHS", "CLSA"],
+      "role": "STRUCTURAL_PRIOR",
+      "incremental": true,
+      "script": "E:\\BLACKBOX\\任务\\BLACKBOX_SELLSIDE_THESIS_TIMELINE_R1\\脚本\\run_sellside_daily_incremental_r1.py",
+      "current_output": "E:\\BLACKBOX\\数据\\研究报告\\CURRENT\\SELLSIDE_DAILY_INCREMENTAL_CURRENT.json",
+      "cache_path": "E:\\BLACKBOX\\数据\\研究报告\\日增量",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\01_SELLSIDE_GLOBAL_STATE.json",
+      "status": "READY",
+      "clsa_policy": "METADATA_ONLY_UNLESS_LEGAL_FULLTEXT"
+    },
+    "02_SELLSIDE_DOMESTIC": {
+      "display_name": "国内券商卖方",
+      "role": "STRUCTURAL_PRIOR",
+      "incremental": true,
+      "script": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\scripts\\_build_structural_cache.py",
+      "current_output": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\cache\\DOMESTIC_SELLSIDE_LEDGER.csv",
+      "cache_path": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\LIVE\\timelines",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\02_SELLSIDE_DOMESTIC_STATE.json",
+      "status": "PARTIAL",
+      "note": "盘前+盘中+收盘增量；须抽取 WHAT_CHANGED 而非仅推荐股"
+    },
+    "03_PUBLIC_INFORMATION": {
+      "display_name": "新闻/政策/公告",
+      "role": "THEME_HYPOTHESIS_INPUT",
+      "incremental": true,
+      "news_not_signal": true,
+      "script": "E:\\BLACKBOX\\任务\\STRATEGY_RESEARCH_PRO_TRADER_TAO_DECISION_POLICY_AND_DATA_SYSTEM_RECONSTRUCTION_R1\\LIVE\\INTRADAY_NEWS_OBS_R1\\脚本\\run_intraday_news_obs_r1.py",
+      "current_output": "E:\\BLACKBOX\\任务\\STRATEGY_RESEARCH_PRO_TRADER_TAO_DECISION_POLICY_AND_DATA_SYSTEM_RECONSTRUCTION_R1\\LIVE\\INTRADAY_NEWS_OBS_R1\\CURRENT.json",
+      "cache_path": "E:\\BLACKBOX\\任务\\STRATEGY_RESEARCH_PRO_TRADER_TAO_DECISION_POLICY_AND_DATA_SYSTEM_RECONSTRUCTION_R1\\LIVE\\INTRADAY_NEWS_OBS_R1\\日增量",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\03_PUBLIC_INFORMATION_STATE.json",
+      "status": "READY"
+    },
+    "04_STRUCTURAL_ONTOLOGY": {
+      "display_name": "产业身份/主题图谱",
+      "role": "MAPPING_LAYER",
+      "canonical_authority": "SW_JQ",
+      "external_ontology_isolated": true,
+      "focus32_role": "STRUCTURAL_CORE_REFERENCE_SET",
+      "focus32_not_trading_universe": true,
+      "script": "E:\\BLACKBOX\\任务\\STOCK_EXTERNAL_ONTOLOGY_TIER_SUPPLYCHAIN_R3\\脚本\\run_r3_tier_supplychain.py",
+      "current_output": "E:\\BLACKBOX\\运行\\BLACKBOX_EXTERNAL_STOCK_ONTOLOGY_HAND_CURRENT.json",
+      "cache_path": "E:\\BLACKBOX\\数据\\外部证据\\EXTERNAL_STOCK_ONTOLOGY_R1",
+      "focus32_matrix": "E:\\BLACKBOX\\任务\\A_SHARE_AI_PHYSICAL_BOTTLENECK_FOCUS_MAP_R2\\FOCUS_EVIDENCE_MATRIX.csv",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\04_STRUCTURAL_ONTOLOGY_STATE.json",
+      "status": "READY",
+      "industry_asof": "2026-08-24"
+    },
+    "05_COMPANY_REALITY": {
+      "display_name": "公司现实/Reality Chain",
+      "role": "QUALITY_FILTER_TIE_BREAKER",
+      "reality_chain": "NARRATIVE→PRODUCT→QUALIFICATION→ORDER→DELIVERY→REVENUE→PROFIT→CASHFLOW",
+      "financial_stage_ne_bottleneck_reality": true,
+      "script": "E:\\BLACKBOX\\任务\\A_SHARE_AI_PHYSICAL_BOTTLENECK_EVIDENCE_SUPPLEMENT_R1\\_build_evidence_supplement_r1.py",
+      "current_output": "E:\\BLACKBOX\\任务\\A_SHARE_AI_PHYSICAL_BOTTLENECK_EVIDENCE_SUPPLEMENT_R1\\01_EVIDENCE_SUPPLEMENT_SUMMARY.json",
+      "order_buyer_matrix": "E:\\BLACKBOX\\任务\\A_SHARE_AI_PHYSICAL_BOTTLENECK_EVIDENCE_SUPPLEMENT_R1\\ORDER_BUYER_MATRIX_FULL32.csv",
+      "bottleneck_matrix": "E:\\BLACKBOX\\任务\\A_SHARE_AI_PHYSICAL_BOTTLENECK_EVIDENCE_SUPPLEMENT_R1\\BOTTLENECK_BUSINESS_REALITY_MATRIX_FULL32.csv",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\05_COMPANY_REALITY_STATE.json",
+      "status": "READY"
+    },
+    "06_TAO_POLICY_MODEL": {
+      "display_name": "Tao Policy Model",
+      "role": "DECISION_POLICY_REFERENCE",
+      "tao_policy_canonical": true,
+      "tao_same_day_reveal_separate": true,
+      "blind_contamination_forbidden": true,
+      "script": "E:\\BLACKBOX\\任务\\STRATEGY_RESEARCH_PRO_TRADER_TAO_DECISION_POLICY_AND_DATA_SYSTEM_RECONSTRUCTION_R1\\脚本\\run_tao_policy_data_recon_r1.py",
+      "policy_doc": "E:\\BLACKBOX\\任务\\STRATEGY_RESEARCH_PRO_TRADER_TAO_DECISION_POLICY_AND_DATA_SYSTEM_RECONSTRUCTION_R1\\02_POLICY_STATE_MACHINE.md",
+      "same_day_reveal_path": "E:\\BLACKBOX\\研究系统\\MODULES\\TAO_SAME_DAY_REVEAL_LEDGER.jsonl",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\06_TAO_POLICY_MODEL_STATE.json",
+      "status": "READY"
+    },
+    "07_MARKET_REGIME": {
+      "display_name": "市场状态/Regime",
+      "role": "MARKET_CONTEXT",
+      "script": null,
+      "current_output": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\LIVE\\CURRENT\\CURRENT_THEME_STATE.json",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\07_MARKET_REGIME_STATE.json",
+      "status": "READY"
+    },
+    "08_THEME_ENGINE": {
+      "display_name": "主题引擎",
+      "role": "THEME_HYPOTHESIS",
+      "current_output": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\LIVE\\CURRENT\\CURRENT_THEME_STATE.json",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\08_THEME_ENGINE_STATE.json",
+      "status": "READY"
+    },
+    "09_CORE_SYNCHRONIZATION": {
+      "display_name": "核心共振",
+      "role": "THEME_CONFIRMATION",
+      "sync_levels": ["STRONG", "MEDIUM", "WEAK", "FAILED"],
+      "single_stock_spike_ne_theme_confirmed": true,
+      "current_output": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\LIVE\\CURRENT\\CURRENT_CORE_WATCH.csv",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\09_CORE_SYNCHRONIZATION_STATE.json",
+      "status": "READY"
+    },
+    "10_DYNAMIC_DISCOVERY": {
+      "display_name": "动态发现",
+      "role": "MONEY_FLOW_DISCOVERY",
+      "outside_focus32_allowed": true,
+      "do_not_promote_structural_tier": true,
+      "current_output": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\LIVE\\CURRENT\\CURRENT_DYNAMIC_DISCOVERY.csv",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\10_DYNAMIC_DISCOVERY_STATE.json",
+      "status": "READY"
+    },
+    "11_CROSS_SECTION_COMPETITION": {
+      "display_name": "横截面竞争",
+      "role": "RELATIVE_STRENGTH",
+      "modes": ["COMPETITION", "BEST_ALT", "OVERGENERATION", "UNDERDISCOVERY", "CORE_DIVERGENCE", "THEME_STRONG_STOCK_WEAK", "PRICE_TOO_EXTENDED"],
+      "current_output": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\LIVE\\CURRENT\\CURRENT_LIVE_FOCUS.csv",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\11_CROSS_SECTION_COMPETITION_STATE.json",
+      "status": "READY"
+    },
+    "12_LIVE_FOCUS": {
+      "display_name": "盘中压缩名单",
+      "role": "LIVE_COMPRESSION",
+      "target_count": "3-8",
+      "hard_max": 10,
+      "allow_empty": true,
+      "stock_name_printed_required": true,
+      "live_engine": "BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1",
+      "script": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\scripts\\_run_live_observer_loop_2m.py",
+      "current_output": "E:\\BLACKBOX\\任务\\BLACKBOX_INTRADAY_SELLSIDE_MULTISOURCE_STOCK_OBSERVER_R1\\LIVE\\CURRENT\\CURRENT_LIVE_FOCUS.csv",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\12_LIVE_FOCUS_STATE.json",
+      "status": "READY"
+    },
+    "13_POSITION_STATE": {
+      "display_name": "持仓状态",
+      "role": "POSITION_LIFECYCLE",
+      "current_output": "E:\\BLACKBOX\\研究系统\\CURRENT\\POSITION_STATE_CURRENT.json",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\13_POSITION_STATE_STATE.json",
+      "status": "PARTIAL"
+    },
+    "14_REALITY_FEEDBACK": {
+      "display_name": "Reality 反馈",
+      "role": "THESIS_VALIDATION",
+      "script": "E:\\BLACKBOX\\任务\\BLACKBOX_REALITY_TO_EPS_CLOSURE_R2",
+      "current_output": "E:\\BLACKBOX\\任务\\BLACKBOX_REALITY_EVENT_EARNINGS_BRIDGE_R1",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\14_REALITY_FEEDBACK_STATE.json",
+      "status": "PARTIAL"
+    },
+    "15_US_FINE_GRAINED_PROFIT_POOL": {
+      "display_name": "美股细粒度利润池",
+      "role": "SHORT_CYCLE_OVERSEAS_PRIOR",
+      "script": "E:\\BLACKBOX\\脚本\\run_blackbox_us_fine_grained_flow_profit_pool_r1.py",
+      "current_output": "E:\\BLACKBOX\\运行\\BLACKBOX_US_MARKET_FINE_GRAINED_FLOW_PROFIT_POOL_CURRENT.json",
+      "taxonomy": "E:\\BLACKBOX\\数据\\美国市场\\CONFIG\\US_L234_PROFIT_POOL_TAXONOMY.json",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\15_US_FINE_GRAINED_PROFIT_POOL_STATE.json",
+      "status": "READY",
+      "flow_ne_price_strength": true,
+      "a_share_output": "MAPPING_PRIOR_ONLY"
+    },
+    "16_NIGHT_RESEARCH_ORCHESTRATOR": {
+      "display_name": "统一夜间研究 Orchestrator",
+      "role": "MASTER_NIGHT_PRIOR",
+      "script": "E:\\BLACKBOX\\脚本\\run_blackbox_unified_data_research_orchestrator_r2.py",
+      "current_output": "E:\\BLACKBOX\\运行\\BLACKBOX_UNIFIED_DATA_RESEARCH_ORCHESTRATOR_CURRENT.json",
+      "night_products": "E:\\BLACKBOX\\研究系统\\CURRENT\\NIGHT_RESEARCH",
+      "permanent_case": "E:\\BLACKBOX\\任务\\BLACKBOX_UNIFIED_DATA_RESEARCH_ORCHESTRATOR_R2\\案例库\\SHENGYI_ELECTRONICS_DYNAMIC_DISCOVERY_20260826.json",
+      "module_state": "E:\\BLACKBOX\\研究系统\\MODULES\\16_NIGHT_RESEARCH_ORCHESTRATOR_STATE.json",
+      "status": "ACTIVE_SCAFFOLD",
+      "static_prior_ne_live_winner": true,
+      "ORDER_ALLOWED": false
+    }
+  }
+}
