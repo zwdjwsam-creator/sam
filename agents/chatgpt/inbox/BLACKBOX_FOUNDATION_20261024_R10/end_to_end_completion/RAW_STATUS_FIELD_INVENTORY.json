@@ -1,0 +1,2444 @@
+{
+  "artifact": "RAW_STATUS_FIELD_INVENTORY",
+  "raw_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+  "n_gap_batches": 42,
+  "dates": [
+    "20260713",
+    "20260730",
+    "20260804",
+    "20260805",
+    "20260806",
+    "20260807",
+    "20260810",
+    "20260811",
+    "20260812",
+    "20260813",
+    "20260814",
+    "20260817",
+    "20260818",
+    "20260819",
+    "20260820",
+    "20260821",
+    "20260824",
+    "20260825",
+    "20260826",
+    "20260827",
+    "20260828",
+    "20260831",
+    "20260901",
+    "20260902",
+    "20260903",
+    "20260904",
+    "20260907",
+    "20260908",
+    "20260909",
+    "20260910",
+    "20260911",
+    "20260914",
+    "20260915",
+    "20260916",
+    "20260917",
+    "20260918",
+    "20260921",
+    "20260922",
+    "20260923",
+    "20260924"
+  ],
+  "date_min": "20260713",
+  "date_max": "20260924",
+  "duplicate_batch_dates": [
+    "20260910",
+    "20260924"
+  ],
+  "all_name_dates_match_content": false,
+  "dates_with_complete_status_and_limits": [
+    "20260804",
+    "20260805",
+    "20260806",
+    "20260807",
+    "20260810",
+    "20260811",
+    "20260812",
+    "20260813",
+    "20260814",
+    "20260817",
+    "20260818",
+    "20260819",
+    "20260820",
+    "20260821",
+    "20260824",
+    "20260825",
+    "20260826",
+    "20260827",
+    "20260828",
+    "20260831",
+    "20260901",
+    "20260902",
+    "20260903",
+    "20260904",
+    "20260907",
+    "20260908",
+    "20260909",
+    "20260910",
+    "20260910",
+    "20260911",
+    "20260914",
+    "20260915",
+    "20260916",
+    "20260917",
+    "20260918",
+    "20260921",
+    "20260922",
+    "20260923",
+    "20260924",
+    "20260924"
+  ],
+  "n_dates_with_complete_status_and_limits": 40,
+  "batches": [
+    {
+      "file": "stock_daily__incremental_gap_20260713_20260730__full__20260729_170458.parquet",
+      "batch_date": "20260713",
+      "rows": 67639,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "close",
+        "high",
+        "low",
+        "volume",
+        "money",
+        "__index_level_0__"
+      ],
+      "distinct_dates": [
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29"
+      ],
+      "date_matches_name": false,
+      "paused": {
+        "present": false
+      },
+      "high_limit": {
+        "present": false
+      },
+      "low_limit": {
+        "present": false
+      },
+      "pre_close": {
+        "present": false
+      },
+      "factor": {
+        "present": false
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260730_20260804__full__20260804_062955.parquet",
+      "batch_date": "20260730",
+      "rows": 15612,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03"
+      ],
+      "date_matches_name": false,
+      "paused": {
+        "present": true,
+        "null": 3,
+        "nonnull": 15609,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 3,
+        "nonnull": 15609,
+        "n_unique_nonnull": 5496
+      },
+      "low_limit": {
+        "present": true,
+        "null": 3,
+        "nonnull": 15609,
+        "n_unique_nonnull": 4700
+      },
+      "pre_close": {
+        "present": true,
+        "null": 3,
+        "nonnull": 15609,
+        "n_unique_nonnull": 5186
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 15612,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260804_20260804__full__20260804_232001.parquet",
+      "batch_date": "20260804",
+      "rows": 5204,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-04"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 3113
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 2789
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 3010
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260805_20260805__full__20260806_002103.parquet",
+      "batch_date": "20260805",
+      "rows": 5204,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-05"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 3116
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 2810
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 3014
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5204,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260806_20260806__full__20260806_234303.parquet",
+      "batch_date": "20260806",
+      "rows": 5205,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-06"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5205,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5205,
+        "n_unique_nonnull": 3174
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5205,
+        "n_unique_nonnull": 2848
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5205,
+        "n_unique_nonnull": 3070
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5205,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260807_20260807__full__20260808_001532.parquet",
+      "batch_date": "20260807",
+      "rows": 5206,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-07"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 3169
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 2845
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 3064
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+      "batch_date": "20260810",
+      "rows": 5206,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-10"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 3170
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 2893
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 3111
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5206,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260811_20260811__full__20260811_233004.parquet",
+      "batch_date": "20260811",
+      "rows": 5208,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-11"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3192
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2880
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3118
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260812_20260812__full__20260812_221357.parquet",
+      "batch_date": "20260812",
+      "rows": 5208,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-12"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3207
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2891
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3084
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260813_20260813__full__20260814_001722.parquet",
+      "batch_date": "20260813",
+      "rows": 5208,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-13"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3208
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2883
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3117
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260814_20260814__full__20260815_002949.parquet",
+      "batch_date": "20260814",
+      "rows": 5208,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-14"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3205
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2901
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3070
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260817_20260817__full__20260817_235512.parquet",
+      "batch_date": "20260817",
+      "rows": 5208,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-17"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3168
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 2867
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 3081
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5208,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260818_20260818__full__20260818_231819.parquet",
+      "batch_date": "20260818",
+      "rows": 5209,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-18"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5209,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5209,
+        "n_unique_nonnull": 3229
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5209,
+        "n_unique_nonnull": 2903
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5209,
+        "n_unique_nonnull": 3129
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5209,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260819_20260819__full__20260820_001803.parquet",
+      "batch_date": "20260819",
+      "rows": 5210,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-19"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5210,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5210,
+        "n_unique_nonnull": 3202
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5210,
+        "n_unique_nonnull": 2927
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5210,
+        "n_unique_nonnull": 3131
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5210,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260820_20260820__full__20260821_000102.parquet",
+      "batch_date": "20260820",
+      "rows": 5211,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-20"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 3186
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 2840
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 3083
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260821_20260821__full__20260821_235739.parquet",
+      "batch_date": "20260821",
+      "rows": 5211,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-21"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 3179
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 2855
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 3094
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260824_20260824__full__20260824_163703.parquet",
+      "batch_date": "20260824",
+      "rows": 5211,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-24"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 3121
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 2848
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 3059
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5211,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260825_20260825__full__20260826_001241.parquet",
+      "batch_date": "20260825",
+      "rows": 5212,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-25"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3172
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2830
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3052
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260826_20260826__full__20260826_163653.parquet",
+      "batch_date": "20260826",
+      "rows": 5212,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-26"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3202
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2871
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3081
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260827_20260827__full__20260827_173734.parquet",
+      "batch_date": "20260827",
+      "rows": 5212,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-27"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3197
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2871
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3098
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260828_20260828__full__20260829_003304.parquet",
+      "batch_date": "20260828",
+      "rows": 5212,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-28"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3176
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2858
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3111
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "batch_date": "20260831",
+      "rows": 5212,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-08-31"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3213
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 2871
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 3112
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5212,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "batch_date": "20260901",
+      "rows": 5214,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-01"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5214,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5214,
+        "n_unique_nonnull": 3185
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5214,
+        "n_unique_nonnull": 2868
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5214,
+        "n_unique_nonnull": 3091
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5214,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260902_20260902__full__20260903_001626.parquet",
+      "batch_date": "20260902",
+      "rows": 5215,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-02"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 3201
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 2891
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 3138
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260903_20260903__full__20260904_004009.parquet",
+      "batch_date": "20260903",
+      "rows": 5215,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-03"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 3169
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 2845
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 3072
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260904_20260904__full__20260907_002846.parquet",
+      "batch_date": "20260904",
+      "rows": 5215,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-04"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 3202
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 2888
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 3119
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5215,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260907_20260907__full__20260908_085104.parquet",
+      "batch_date": "20260907",
+      "rows": 5216,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-07"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 3201
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 2889
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 3122
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260908_20260908__full__20260909_161615.parquet",
+      "batch_date": "20260908",
+      "rows": 5216,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-08"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 3247
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 2921
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 3120
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5216,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260909_20260909__full__20260909_173526.parquet",
+      "batch_date": "20260909",
+      "rows": 5217,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-09"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5217,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5217,
+        "n_unique_nonnull": 3192
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5217,
+        "n_unique_nonnull": 2879
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5217,
+        "n_unique_nonnull": 3091
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5217,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260910_20260910__full__20260917_144821.parquet",
+      "batch_date": "20260910",
+      "rows": 5218,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-10"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 3206
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 2887
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 3101
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260910_20260910__full__20260917_145054.parquet",
+      "batch_date": "20260910",
+      "rows": 5218,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-10"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 3206
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 2887
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 3101
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5218,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260911_20260911__full__20260918_072703.parquet",
+      "batch_date": "20260911",
+      "rows": 5219,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-11"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 3190
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 2876
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 3086
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260914_20260914__full__20260924_082242.parquet",
+      "batch_date": "20260914",
+      "rows": 5219,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-14"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 3120
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 2826
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 3063
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260915_20260915__full__20260924_093008.parquet",
+      "batch_date": "20260915",
+      "rows": 5219,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-15"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 3169
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 2852
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 3076
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5219,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260916_20260916__full__20260924_103015.parquet",
+      "batch_date": "20260916",
+      "rows": 5220,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-16"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5220,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5220,
+        "n_unique_nonnull": 3141
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5220,
+        "n_unique_nonnull": 2815
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5220,
+        "n_unique_nonnull": 3055
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5220,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260917_20260917__full__20260924_114350.parquet",
+      "batch_date": "20260917",
+      "rows": 5221,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-17"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 3184
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 2887
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 3081
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260918_20260918__full__20260924_130124.parquet",
+      "batch_date": "20260918",
+      "rows": 5221,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-18"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 3176
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 2849
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 3085
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260921_20260921__full__20260924_163523.parquet",
+      "batch_date": "20260921",
+      "rows": 5221,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-21"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 3181
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 2856
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 3071
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5221,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260922_20260922__full__20260924_173644.parquet",
+      "batch_date": "20260922",
+      "rows": 5222,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-22"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 3247
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 2943
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 3123
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260923_20260923__full__20260924_183710.parquet",
+      "batch_date": "20260923",
+      "rows": 5222,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-23"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 3214
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 2910
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 3130
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260924_20260924__full__20260924_214242.parquet",
+      "batch_date": "20260924",
+      "rows": 5222,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-24"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 3219
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 2912
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 3140
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 1
+      }
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260924_20260924__full__20260925_030125.parquet",
+      "batch_date": "20260924",
+      "rows": 5222,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "distinct_dates": [
+        "2026-09-24"
+      ],
+      "date_matches_name": true,
+      "paused": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 2
+      },
+      "high_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 3219
+      },
+      "low_limit": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 2912
+      },
+      "pre_close": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 3140
+      },
+      "factor": {
+        "present": true,
+        "null": 0,
+        "nonnull": 5222,
+        "n_unique_nonnull": 1
+      }
+    }
+  ]
+}
