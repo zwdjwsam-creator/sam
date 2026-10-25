@@ -1,0 +1,183 @@
+{
+  "artifact": "R15_CLEANING_REPLAY",
+  "release_id": "R15_REPLAY_20260924_R2",
+  "release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R2",
+  "asof": "2026-09-24",
+  "r15_source": {
+    "cleaning_module": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\formal_cleaning_r15_build_and_seal_r1.py",
+    "antileak_module": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\r15_antileak_and_ssot_r1.py"
+  },
+  "injection": {
+    "ROOT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root",
+    "RELEASES": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases",
+    "CURRENT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\CANDIDATE_CLEANING_POINTER.json",
+    "MINUTE_STAGING": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\minute_staging",
+    "CLEANING_AS_OF": "2026-09-24",
+    "PARENT_ID": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "PARENT_SEAL": "SEAL_R33_FUND_NAV_20260924_200439",
+    "SSOT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\CANDIDATE_SSOT.json"
+  },
+  "retained_batches": [
+    {
+      "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "rows": 5212,
+      "days": [
+        "2026-08-31"
+      ],
+      "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "staged_copy": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\04_REPAIR_STAGING_DATA\\stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet"
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "rows": 5214,
+      "days": [
+        "2026-09-01"
+      ],
+      "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "staged_copy": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\04_REPAIR_STAGING_DATA\\stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+    }
+  ],
+  "staging_items_loaded": 2,
+  "production_hashes": {
+    "before": {
+      "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R1.json": "d8e71afe71481d7f0cd17baf9df99855fe8d45089d8acb46135cff55a26cf817"
+    },
+    "after": {
+      "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R1.json": "d8e71afe71481d7f0cd17baf9df99855fe8d45089d8acb46135cff55a26cf817"
+    }
+  },
+  "repair_units": [
+    {
+      "repair_unit_id": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057__0",
+      "domain_id": "stock_ohlcv_daily",
+      "trade_date": "2026-08-31",
+      "status": "COMMITTED",
+      "source_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\04_REPAIR_STAGING_DATA\\stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "source_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "active_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R2\\standard\\price\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "active_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "active_row_count": 5212,
+      "quarantine_path": null,
+      "quarantine_row_count": 0
+    },
+    {
+      "repair_unit_id": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813__0",
+      "domain_id": "stock_ohlcv_daily",
+      "trade_date": "2026-09-01",
+      "status": "COMMITTED",
+      "source_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\04_REPAIR_STAGING_DATA\\stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "source_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "active_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R2\\standard\\price\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "active_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "active_row_count": 5214,
+      "quarantine_path": null,
+      "quarantine_row_count": 0
+    }
+  ],
+  "seal_certificate": {
+    "release_id": "R15_REPLAY_20260924_R2",
+    "seal_id": "R15_REPLAY_20260924_R2_SEAL",
+    "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "parent_seal_id": "SEAL_R33_FUND_NAV_20260924_200439",
+    "cleaning_as_of": "2026-09-24",
+    "finance_asof": "2026-09-24",
+    "daily_asof": "2026-09-24",
+    "release_version": "R12",
+    "repair_unit_count": 2,
+    "repair_committed": 2,
+    "release_content_root_sha256": "d6e537eb707683fb35e3df9f30a8e7de5f7de1d20b8b36e8588c8fb8cf8fc146",
+    "sealed_at": "2026-10-25T05:00:07+00:00",
+    "carry_forward_method": "HARD_LINK_FINGERPRINT_REUSE_FROM_PARENT_R11",
+    "scope": "FRESHNESS_DAILY_AND_MINUTE_20260807_ON_TOP_OF_R11"
+  },
+  "antileak": {
+    "generated_at": "2026-10-25T05:00:07+00:00",
+    "cleaning_as_of": "2026-09-24",
+    "finance_asof": "2026-09-24",
+    "daily_asof": "2026-09-24",
+    "target_asof": "2026-09-24",
+    "asof_aligned": true,
+    "release_id": "R15_REPLAY_20260924_R2",
+    "seal_id": "R15_REPLAY_20260924_R2_SEAL",
+    "index_pit_overall_pass": true,
+    "overall_pass": true,
+    "notes": [
+      "R15 asof triple-align required (cleaning/finance/daily == 2026-08-10)",
+      "finance files carried from R11; finance_asof PIT cutoff advanced with trading day",
+      "index PIT inherits prior SSOT anti_leakage_last when present"
+    ]
+  },
+  "ssot_amend": {
+    "ssot_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\CANDIDATE_SSOT.json",
+    "domain": "full_data_update_r15_20260810"
+  },
+  "sealed_readback": [
+    {
+      "relative_path": "price/stock_ohlcv_daily/stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "rows": 5212,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063"
+    },
+    {
+      "relative_path": "price/stock_ohlcv_daily/stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "rows": 5214,
+      "columns": [
+        "time",
+        "code",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "money",
+        "paused",
+        "high_limit",
+        "low_limit",
+        "avg",
+        "pre_close",
+        "factor",
+        "fq"
+      ],
+      "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7"
+    }
+  ],
+  "gates": {
+    "r15_load_staging_called": true,
+    "r15_ingest_item_called": true,
+    "ingest_all_committed": true,
+    "r15_seal_release_called": true,
+    "seal_certificate_written": true,
+    "ledger_written": true,
+    "antileak_function_called": true,
+    "antileak_pass": true,
+    "production_current_untouched": true,
+    "production_ssot_untouched": true,
+    "switch_current_not_called": true,
+    "patch_hand_not_called": true,
+    "sealed_rows_equal_retained_rows": true
+  },
+  "GATE_RESULT": "PASS",
+  "not_claimed": [
+    "production CURRENT not switched (switch_current not called)",
+    "production HAND not patched (patch_hand not called)",
+    "this replay proves the R15 functions run on the retained batches, not that the original vendor download returned them"
+  ]
+}
