@@ -1,0 +1,1894 @@
+{
+  "started_at": "2026-10-25T08:38:32.340480",
+  "status": "COMPLETED",
+  "args": {
+    "start": "2026-09-03",
+    "end": "2026-09-24",
+    "strategy": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py",
+    "cash": 1000000.0,
+    "benchmark": "000300.XSHG",
+    "out": ".\\engine_runs\\v4_r21_20260903_20260924",
+    "allow_candidate_override": true,
+    "diag": false,
+    "local_dictionary": "D:\\BB_LOCAL_DICTIONARY\\R10_ASOF_20260924"
+  },
+  "summary": {
+    "策略收益": "-4.66%",
+    "策略年化收益": "-52.57%",
+    "最大回撤": "-5.47%",
+    "夏普比率": "-8.53",
+    "日胜率": "18.75%",
+    "交易胜率": "0.00%",
+    "交易天数": "16",
+    "初始资金": "1,000,000.00",
+    "最终资金": "953,384.16"
+  },
+  "metrics": {
+    "策略收益": "-4.66%",
+    "策略年化收益": "-52.57%",
+    "最大回撤": "-5.47%",
+    "夏普比率": "-8.53",
+    "日胜率": "18.75%",
+    "交易胜率": "0.00%",
+    "交易天数": "16",
+    "初始资金": "1,000,000.00",
+    "最终资金": "953,384.16"
+  },
+  "n_daily_records": 16,
+  "first_record": {
+    "total_value": "1000000.0",
+    "cash": "1000000.0",
+    "positions_value": "0.0",
+    "returns": "0.0",
+    "returns_pct": "0.0",
+    "benchmark_price": "4552.5784",
+    "benchmark_value": "999999.9999999999",
+    "benchmark_returns_pct": "-1.1102230246251565e-14",
+    "excess_returns_pct": "1.1102230246251565e-14",
+    "daily_returns": "nan"
+  },
+  "last_record": {
+    "total_value": "953384.1600000001",
+    "cash": "824.160000000038",
+    "positions_value": "952560.0000000001",
+    "returns": "-46615.83999999985",
+    "returns_pct": "-4.661583999999985",
+    "benchmark_price": "4439.1443",
+    "benchmark_value": "975083.5482591578",
+    "benchmark_returns_pct": "-2.4916451740842227",
+    "excess_returns_pct": "-2.1699388259157626",
+    "daily_returns": "-0.013686950333936632"
+  },
+  "n_trades": 2,
+  "n_orders": 0,
+  "n_daily_positions": 15,
+  "meta": {
+    "strategy_file": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py",
+    "start_date": "2026-09-03",
+    "end_date": "2026-09-24",
+    "algorithm_id": "None",
+    "extras": "None",
+    "runtime_seconds": "415.72286009788513",
+    "run_started_at": "2026-10-25 08:38:32",
+    "run_finished_at": "2026-10-25 08:45:28",
+    "benchmark": "000300.XSHG",
+    "initial_total_value": "1000000.0",
+    "final_total_value": "953384.1600000001"
+  },
+  "finished_at": "2026-10-25T08:45:28.093341",
+  "network_blocked_attempts": [],
+  "provider_bindings": {
+    "bindings": [
+      {
+        "product": "INDEX_DAILY_R1",
+        "year": 2025,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_DAILY_R1\\year=2025\\part_2025.parquet"
+        ]
+      },
+      {
+        "product": "INDEX_DAILY_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\INDEX_DAILY_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "ADJUST_FACTOR_PIT_R1",
+        "year": 2025,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\data\\year=2025\\part_2025.parquet"
+        ]
+      },
+      {
+        "product": "ADJUST_FACTOR_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\data\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "STOCK_TRADEABILITY_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1\\year=2026\\part_2026.parquet",
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_TRADEABILITY_PIT_R1\\year=2026\\tip_20260903.parquet"
+        ]
+      },
+      {
+        "product": "SECURITY_MASTER_SNAPSHOT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SECURITY_MASTER_SNAPSHOT_R1\\security_master__stock__snapshot_asof_20260812__20260813_003208.parquet"
+        ]
+      },
+      {
+        "product": "STOCK_DAILY_PIT_R1",
+        "year": 2026,
+        "source_kind": "CANDIDATE_OVERRIDE",
+        "file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\data\\R06\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet",
+        "fallback_files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "VALUATION_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\VALUATION_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "FINANCIAL_INDICATOR_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FINANCIAL_INDICATOR_PIT_R1\\data\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "FINANCIAL_INDICATOR_PIT_R1",
+        "year": 2024,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FINANCIAL_INDICATOR_PIT_R1\\data\\year=2024\\part_2024.parquet"
+        ]
+      },
+      {
+        "product": "FINANCIAL_INDICATOR_PIT_R1",
+        "year": 2025,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\FINANCIAL_INDICATOR_PIT_R1\\data\\year=2025\\part_2025.parquet"
+        ]
+      },
+      {
+        "product": "SW_L1_MEMBERSHIP_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L1_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "SW_L2_MEMBERSHIP_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L2_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "SW_L3_MEMBERSHIP_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\SW_L3_MEMBERSHIP_PIT_R1\\year=2026\\part_2026.parquet"
+        ]
+      },
+      {
+        "product": "ADJUST_FACTOR_PIT_R1",
+        "year": 2024,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\ADJUST_FACTOR_PIT_R1\\data\\year=2024\\part_2024.parquet"
+        ]
+      },
+      {
+        "product": "STOCK_DAILY_PIT_R1",
+        "year": 2025,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\STOCK_DAILY_PIT_R1\\year=2025\\part_2025.parquet"
+        ]
+      },
+      {
+        "product": "CORP_XR_XD_EVENT_PIT_R1",
+        "year": 2026,
+        "source_kind": "CURRENT_SEALED",
+        "files": [
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\data\\year=2026\\part_2026.parquet",
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\indexes\\effective_year=2026\\part_2026.parquet",
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439\\CORP_XR_XD_EVENT_PIT_R1\\indexes\\known_year=2026\\part_2026.parquet"
+        ]
+      }
+    ]
+  },
+  "provider_observations": [
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-23",
+      "end": "2026-09-23",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "SAME_DAY_DROPPED_PRE_OPEN",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_fundamentals",
+      "date": "2026-09-23",
+      "fields": [
+        "code",
+        "pb_ratio",
+        "eps"
+      ],
+      "rows": 3179,
+      "valuation_dates_observed": 5222
+    },
+    {
+      "api": "get_history_fundamentals",
+      "securities": 1000,
+      "watch_date": "2026-09-23",
+      "count": 5,
+      "interval": "1q",
+      "rows": 5000
+    },
+    {
+      "api": "get_history_fundamentals",
+      "securities": 570,
+      "watch_date": "2026-09-23",
+      "count": 5,
+      "interval": "1q",
+      "rows": 2834
+    },
+    {
+      "api": "get_industry",
+      "date": "2026-09-23",
+      "rows": 156
+    },
+    {
+      "api": "get_fundamentals",
+      "date": "2026-09-23",
+      "fields": [
+        "code",
+        "circulating_market_cap"
+      ],
+      "rows": 111,
+      "valuation_dates_observed": 5222
+    },
+    {
+      "api": "get_price",
+      "securities": 111,
+      "start": "2026-09-22",
+      "end": "2026-09-23",
+      "count": 2,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "close"
+      ],
+      "rows": 222,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 222,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 111,
+      "start": "2026-03-05",
+      "end": "2026-09-23",
+      "count": 140,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "close",
+        "volume"
+      ],
+      "rows": 15535,
+      "tradeability_joined": true,
+      "paused_rows_inferred_from_bar_presence": 12982,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2025-09-05",
+      "end": "2026-09-23",
+      "count": 255,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 255,
+      "tradeability_joined": true,
+      "paused_rows_inferred_from_bar_presence": 232,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2025-09-05",
+      "end": "2026-09-23",
+      "count": 255,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 255,
+      "tradeability_joined": true,
+      "paused_rows_inferred_from_bar_presence": 232,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-15",
+      "end": "2026-09-23",
+      "count": 7,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "close"
+      ],
+      "rows": 7,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 7,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-17",
+      "end": "2026-09-23",
+      "count": 5,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "close"
+      ],
+      "rows": 5,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 5,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2025-09-05",
+      "end": "2026-09-23",
+      "count": 255,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 255,
+      "tradeability_joined": true,
+      "paused_rows_inferred_from_bar_presence": 232,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-15",
+      "end": "2026-09-23",
+      "count": 7,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "close"
+      ],
+      "rows": 7,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 7,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-17",
+      "end": "2026-09-23",
+      "count": 5,
+      "fq": "pre",
+      "anchor": "2026-09-23",
+      "fields": [
+        "close"
+      ],
+      "rows": 5,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 5,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "minute",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "minute",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "minute",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "minute",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "INTRADAY_OPEN_PROXY",
+      "frequency": "minute",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "pre",
+      "anchor": "2026-09-24",
+      "fields": [
+        "open",
+        "close",
+        "high_limit",
+        "low_limit",
+        "paused"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    },
+    {
+      "api": "get_price",
+      "securities": 1,
+      "start": "2026-09-24",
+      "end": "2026-09-24",
+      "count": 1,
+      "fq": "none",
+      "anchor": "2026-09-24",
+      "fields": [
+        "close"
+      ],
+      "rows": 1,
+      "tradeability_joined": false,
+      "paused_rows_inferred_from_bar_presence": 1,
+      "intraday_mode": "NONE",
+      "frequency": "daily",
+      "factor_identity_fallback_codes": 0
+    }
+  ],
+  "strategy_file": "E:\\BLACKBOX\\参考资料\\聚宽策略写法\\聚宽范本_日频模拟盘_V4_R21_HOTSTART_R5.py",
+  "strategy_sha256": "8d9334dd6ed2053b6cb297ea5780408c106c9cf2e0b7138629685e4f589d992e",
+  "engine_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\blackbox_jq_engine"
+}
