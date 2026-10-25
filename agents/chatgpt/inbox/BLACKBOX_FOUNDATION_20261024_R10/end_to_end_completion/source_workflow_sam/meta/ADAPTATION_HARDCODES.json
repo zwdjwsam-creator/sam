@@ -1,0 +1,883 @@
+{
+  "patterns": {
+    "abs_E_BLACKBOX": "[Ee]:[\\\\/]BLACKBOX",
+    "abs_E_other": "[Ee]:[\\\\/](?![Bb][Ll][Aa][Cc][Kk][Bb][Oo][Xx])[A-Za-z_\\u4e00-\\u9fff]",
+    "abs_D": "[Dd]:[\\\\/]",
+    "abs_C_users": "[Cc]:[\\\\/](Users|用户)",
+    "cred_binding": "secrets|聚宽账号|username|password",
+    "jqdata_import": "jqdatasdk",
+    "py_exe_hard": "\\.venv[\\\\/]Scripts[\\\\/]python\\.exe"
+  },
+  "files_affected": 62,
+  "files": [
+    {
+      "rel": "脚本/jq_download_execution_r1.py",
+      "size": 130769,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 18,
+        "jqdata_import": 30,
+        "py_exe_hard": 1
+      },
+      "total": 52
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_adjust_factor_pit_r1.py",
+      "size": 16033,
+      "counts": {
+        "abs_E_BLACKBOX": 5,
+        "abs_E_other": 0,
+        "abs_D": 1,
+        "abs_C_users": 0,
+        "cred_binding": 10,
+        "jqdata_import": 3,
+        "py_exe_hard": 0
+      },
+      "total": 19
+    },
+    {
+      "rel": "脚本/p7_gate_common.py",
+      "size": 62651,
+      "counts": {
+        "abs_E_BLACKBOX": 12,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 5
+      },
+      "total": 17
+    },
+    {
+      "rel": "脚本/_download_batch.py",
+      "size": 2627,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 14,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 16
+    },
+    {
+      "rel": "脚本/jq_download_base.py",
+      "size": 8460,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 8,
+        "jqdata_import": 3,
+        "py_exe_hard": 0
+      },
+      "total": 14
+    },
+    {
+      "rel": "脚本/p7_guarded_1m_download.py",
+      "size": 27862,
+      "counts": {
+        "abs_E_BLACKBOX": 12,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 13
+    },
+    {
+      "rel": "脚本/p7_guarded_5m_download.py",
+      "size": 30585,
+      "counts": {
+        "abs_E_BLACKBOX": 11,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 12
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_tip_rebase_from_current_r1.py",
+      "size": 25087,
+      "counts": {
+        "abs_E_BLACKBOX": 10,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 10
+    },
+    {
+      "rel": "脚本/p7_1m_matrix_worker.py",
+      "size": 16433,
+      "counts": {
+        "abs_E_BLACKBOX": 9,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 10
+    },
+    {
+      "rel": "脚本/p7_5m_matrix_worker.py",
+      "size": 11952,
+      "counts": {
+        "abs_E_BLACKBOX": 9,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 10
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/publish_current_if_gates_pass_r1.py",
+      "size": 8472,
+      "counts": {
+        "abs_E_BLACKBOX": 7,
+        "abs_E_other": 0,
+        "abs_D": 1,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 1
+      },
+      "total": 9
+    },
+    {
+      "rel": "脚本/jq_expand_minute.py",
+      "size": 10976,
+      "counts": {
+        "abs_E_BLACKBOX": 6,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 2,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 9
+    },
+    {
+      "rel": "脚本/jq_expand_minute_v3.py",
+      "size": 12013,
+      "counts": {
+        "abs_E_BLACKBOX": 4,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 2,
+        "jqdata_import": 3,
+        "py_exe_hard": 0
+      },
+      "total": 9
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/seal_validate_publish_r1.py",
+      "size": 13469,
+      "counts": {
+        "abs_E_BLACKBOX": 6,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 7
+    },
+    {
+      "rel": "脚本/jq_expand_minute_v2.py",
+      "size": 9879,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 2,
+        "jqdata_import": 2,
+        "py_exe_hard": 0
+      },
+      "total": 7
+    },
+    {
+      "rel": "脚本/jq_resume_r2.py",
+      "size": 21749,
+      "counts": {
+        "abs_E_BLACKBOX": 2,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 2,
+        "jqdata_import": 3,
+        "py_exe_hard": 0
+      },
+      "total": 7
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/download_source_fq_pre_r1.py",
+      "size": 7131,
+      "counts": {
+        "abs_E_BLACKBOX": 4,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 2,
+        "py_exe_hard": 0
+      },
+      "total": 6
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/download_source_fq_none_r1.py",
+      "size": 10515,
+      "counts": {
+        "abs_E_BLACKBOX": 4,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 2,
+        "py_exe_hard": 0
+      },
+      "total": 6
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/clean_align_antileak_cache_r1.py",
+      "size": 11987,
+      "counts": {
+        "abs_E_BLACKBOX": 5,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 5
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INCREMENTAL_AND_CLEANING_R9_R1/finance_incremental_download_r9.py",
+      "size": 12581,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 2,
+        "py_exe_hard": 0
+      },
+      "total": 5
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INCREMENTAL_AND_CLEANING_R9_R1/formal_cleaning_r9_build_and_seal_r1.py",
+      "size": 12058,
+      "counts": {
+        "abs_E_BLACKBOX": 5,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 5
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INDEX_AUG_INCREMENT_R13_R1/finance_incremental_download_r13.py",
+      "size": 11683,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 2,
+        "py_exe_hard": 0
+      },
+      "total": 5
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INDEX_AUG_INCREMENT_R13_R1/formal_cleaning_r13_build_and_seal_r1.py",
+      "size": 10655,
+      "counts": {
+        "abs_E_BLACKBOX": 5,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 5
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/clean_cache_candidate_r1.py",
+      "size": 11074,
+      "counts": {
+        "abs_E_BLACKBOX": 5,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 5
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/seal_source_and_golden_r1.py",
+      "size": 11117,
+      "counts": {
+        "abs_E_BLACKBOX": 4,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 5
+    },
+    {
+      "rel": "脚本/_base.py",
+      "size": 11800,
+      "counts": {
+        "abs_E_BLACKBOX": 0,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 5,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 5
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/gate_pre_pit_from_cache044403_r1.py",
+      "size": 8172,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 4
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/incremental_backward_refresh_r1.py",
+      "size": 11537,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 4
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/nh120_population_calibrate_r1.py",
+      "size": 7289,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 4
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/reconstruct_nh120_r1.py",
+      "size": 7792,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 4
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/JOINQUANT_STRATEGY_CODING_SSOT_R1.md",
+      "size": 13430,
+      "counts": {
+        "abs_E_BLACKBOX": 0,
+        "abs_E_other": 1,
+        "abs_D": 1,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 2,
+        "py_exe_hard": 0
+      },
+      "total": 4
+    },
+    {
+      "rel": "脚本/blackbox_data_inventory_top_refresh.py",
+      "size": 30549,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 1
+      },
+      "total": 4
+    },
+    {
+      "rel": "脚本/p7_60m_batch_code_mapping_r17.py",
+      "size": 5738,
+      "counts": {
+        "abs_E_BLACKBOX": 4,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 4
+    },
+    {
+      "rel": "任务/BLACKBOX_ADJUST_FACTOR_PIT_R1_FULL_REBUILD_AND_BACKWARD_REFRESH_R1/run_r26b_pre_pit_r1.py",
+      "size": 7852,
+      "counts": {
+        "abs_E_BLACKBOX": 2,
+        "abs_E_other": 0,
+        "abs_D": 1,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 3
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_daily_incremental_r1.py",
+      "size": 38650,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 2,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 3
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_compiler_sw_l1_integrate_r1.py",
+      "size": 22223,
+      "counts": {
+        "abs_E_BLACKBOX": 0,
+        "abs_E_other": 0,
+        "abs_D": 3,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 3
+    },
+    {
+      "rel": "任务/BLACKBOX_POST_SEAL_FINANCE_INDEX_AUG_INCREMENT_R13_R1/r13_antileak_and_ssot_r1.py",
+      "size": 4114,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 3
+    },
+    {
+      "rel": "任务/BLACKBOX_STOCK_DAILY_RAW_PIT_R1_FULL_REBUILD_R1/repair_r27_price_junction_r1.py",
+      "size": 2484,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 3
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/聚宽代码写法经验_模拟盘热替换_R1.md",
+      "size": 6421,
+      "counts": {
+        "abs_E_BLACKBOX": 0,
+        "abs_E_other": 2,
+        "abs_D": 1,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 3
+    },
+    {
+      "rel": "脚本/p7_1m_matrix_launcher.py",
+      "size": 4037,
+      "counts": {
+        "abs_E_BLACKBOX": 2,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 1
+      },
+      "total": 3
+    },
+    {
+      "rel": "脚本/p7_30m_batch_code_mapping_r13.py",
+      "size": 5140,
+      "counts": {
+        "abs_E_BLACKBOX": 3,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 3
+    },
+    {
+      "rel": "脚本/p7_30m_matrix_launcher.py",
+      "size": 3342,
+      "counts": {
+        "abs_E_BLACKBOX": 2,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 1
+      },
+      "total": 3
+    },
+    {
+      "rel": "脚本/p7_60m_matrix_launcher.py",
+      "size": 3215,
+      "counts": {
+        "abs_E_BLACKBOX": 2,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 1
+      },
+      "total": 3
+    },
+    {
+      "rel": "脚本/p7_runtime_guard.py",
+      "size": 2095,
+      "counts": {
+        "abs_E_BLACKBOX": 2,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 1
+      },
+      "total": 3
+    },
+    {
+      "rel": "脚本/run_blackbox_master_research_autorun_r1.py",
+      "size": 168331,
+      "counts": {
+        "abs_E_BLACKBOX": 0,
+        "abs_E_other": 0,
+        "abs_D": 3,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 3
+    },
+    {
+      "rel": "脚本/blackbox_index_weight_governance_r1.py",
+      "size": 67528,
+      "counts": {
+        "abs_E_BLACKBOX": 0,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 2,
+        "py_exe_hard": 0
+      },
+      "total": 2
+    },
+    {
+      "rel": "脚本/p7_30m_matrix_worker.py",
+      "size": 5987,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 2
+    },
+    {
+      "rel": "脚本/p7_5m_matrix_launcher.py",
+      "size": 5963,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 1
+      },
+      "total": 2
+    },
+    {
+      "rel": "脚本/p7_60m_matrix_worker.py",
+      "size": 5152,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 1,
+        "py_exe_hard": 0
+      },
+      "total": 2
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_corporate_reference_reader_r1.py",
+      "size": 3558,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_jq20_reader_r1.py",
+      "size": 1752,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "任务/BLACKBOX_BACKTEST_CACHE_COMPILER_R1/cache_sw_membership_reader_r1.py",
+      "size": 2084,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "参考资料/聚宽策略写法/SOURCE_MANIFEST.json",
+      "size": 2125,
+      "counts": {
+        "abs_E_BLACKBOX": 0,
+        "abs_E_other": 0,
+        "abs_D": 1,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/blackbox_acquisition_pagination_engine_r1.py",
+      "size": 7786,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/blackbox_backtest_preflight_gate.py",
+      "size": 8389,
+      "counts": {
+        "abs_E_BLACKBOX": 0,
+        "abs_E_other": 0,
+        "abs_D": 1,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/blackbox_full_data_update_scope_refresh_r1.py",
+      "size": 3638,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/blackbox_fund_etf_nav_premium_plane_r1.py",
+      "size": 31204,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/blackbox_run_identity_r1.py",
+      "size": 23044,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/daily_download_log_append.py",
+      "size": 4605,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/index_minute_align_clean_antileak_seal_r1.py",
+      "size": 16480,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/index_minute_align_incremental_engine_r1.py",
+      "size": 41432,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    },
+    {
+      "rel": "脚本/p7_1m_batch_code_mapping_r6.py",
+      "size": 8345,
+      "counts": {
+        "abs_E_BLACKBOX": 1,
+        "abs_E_other": 0,
+        "abs_D": 0,
+        "abs_C_users": 0,
+        "cred_binding": 0,
+        "jqdata_import": 0,
+        "py_exe_hard": 0
+      },
+      "total": 1
+    }
+  ],
+  "note": "Counts are textual occurrences in packaged originals; adaptation must review each before changing."
+}
