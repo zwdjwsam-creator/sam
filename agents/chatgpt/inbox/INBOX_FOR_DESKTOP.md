@@ -1,3 +1,10 @@
+> **[SAM HANDOFF 20261025] DELIVERED**
+> SAM 已交付 sam_led_rectification（5 files），status=SAM_HANDOFF_READY_FOR_DESKTOP_REVERIFY，台机请跑 RUN_CHAIN_R1.py 自行复验。
+> HUB 目录 URL: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification
+> 本块仅为交付指针；以下正文与既有内容原样保留，未作删改。
+
+---
+
 # ZHANGWEI 当前分工｜SAM 主导整顿，台机本机执行与最终独立复验
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
