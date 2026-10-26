@@ -1,3 +1,60 @@
+# 当前执行：SAM 收口 R13 提交身份与空源门缺陷，ZHANGWEI 本机定向复验
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+issued_date_cn: 2026-10-26
+status: READY_SAM_FIX_COMMIT_SCOPE_AND_EMPTY_SOURCE_GATE
+lead_modifier: SAM（笔记本原 BLACKBOX Cursor）
+target_host: ZHANGWEI（台式机）
+target_root: E:\BLACKBOX
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+沿用用户已授权的笔记本主导直接修台机、交手册给台机复验流程。本段优先于下方旧READY/等待/停止及历史PASS；不另开全库工程，不让用户转述，不重复确认台机E盘读写权。SAM唯一修改业务代码，ZHANGWEI交付后本机验证；不并发改同一文件。
+
+## 已审阅与保留
+
+GPT已读 sam_led_rectification/RELEASE_BINDING_AND_INDEX_CLOSURE_FIX.md 和 r13_binding_index_closure/ 的报告、VERIFY JSON及核验源码、fixture结果、COMMIT_authoritative、CONNECTED_PIPELINE_deliverable、负控日志和交付manifest。R13支持限定功能通过：显式绑定本次compiler声明；STOCK/ETF/INDEX文件集合闭包234/37/1501；指数2026键106822（旧273子集，新增106549，移除0）；ETF63204；股票三产品各959896及六日基线不变。保留这些成果，不重扫、不重迁、不重下载、不回退读取修复。
+
+同时提交账本只含三个股票产品，旧指数273与新106822共享572619c9；fixture复现空源0=0=0被判通过、空frame触发NameError。原负控仅因最终missing VALUATION退出，不能计为读取门命中。状态应为功能通过但身份/空源门仍阻断，12/12不能抵消这些缺陷。当前HUB未见针对四项发现的后续SAM修复交付。
+
+## 1. HIGH：完整定义并落实提交身份范围
+
+先读台机实际部署的 tools/candidate_commit.py、runner、原compiler及当前release产品清单；HUB changed_code/tools__candidate_commit.py是历史快照，不可盲目覆盖当前实现。
+
+- REQUIRED_PRODUCTS的“必须存在”与identity的“覆盖哪些内容”分开表达。提交身份必须覆盖本候选release合同实际交付的全部数据产品，至少包括已有三股票产品、ETF_DAILY_PIT_R1、INDEX_DAILY_R1；本次同release内实际交付的ETF/INDEX因子及其他产品也按清单逐项纳入，不能只加两名字又留下其余平面盲区。不新增产品、不修其业务语义。
+- 用现有权威产品清单/编译输出合同定义scope，核对磁盘数据集合，不能通过“只枚举现存目录”让丢失的必需产品自动退出scope。合法可选/不适用产品明确记录presence及理由，其存在、消失、分区增删和内容变化须影响身份或按合同硬阻断。报告精确covered/excluded及依据；元数据时间戳等既有合理排除保留。
+- 每产品覆盖实际分区相对身份、文件内容digest、行数；长路径/UNC枚举、stat和读取失败必须传播，禁止静默漏掉或hash成空值。沿用已有效路径方式，不另造公共库或改注册表。
+- build_identity、checkpoint、commit、verify及NOOP/REBOUND必须使用同一版本化scope。verify不能仅遍历旧COMMIT.products自证；要核实合同范围和产品/分区集合，再从盘上重算覆盖内容。新增/缺失/变更产品不可仍称同内容。
+- identity升级时标明版本。旧572619c9保留为旧范围股票身份，不把旧记录直接标为完整范围CONSISTENT，不篡改旧checkpoint或清账。按原单一权威引用协议，将已正确绑定且通过验证的完整候选内容提交为新范围身份，保留parent/历史；随后同完整内容可NOOP。不得只改状态名或人工强造ID。失败保持上次候选引用可读，生产CURRENT不动。
+
+## 2. HIGH：空源根必须在读门及时阻断，负控必须命中指定原因
+
+- scan_parquet_independent对本次必需源根先做长路径安全stat/type检查；不存在、不可访问或非目录必须带路径与结构化错误失败，不得返回[]伪装正常扫描。两种遍历都应保留失败传播。
+- 本次必需STOCK/ETF/INDEX输入的有效期望集为空必须在写产品/提交前阻断（例如READ_CLOSURE_BROKEN + EXPECTED_SET_EMPTY）；不能让0=0=0宣告完整。若原合同允许某独立可选输入为空，显式按合同区分并报告，不用一刀切零值规则破坏合法空增量；本次必需源不得靠开关豁免。
+- 修正runner和台机负控：隔离fixture的坏根/空必需源必须实际命中预先指定的源检查或闭包门，核对错误code、reason、对应路径、真实非零退出及候选引用不变；仅exit!=0、在后续缺产品退出、NameError或超时都算BLOCKED_FOR_WRONG_REASON。不得靠在日志打印预期字符串制造命中。
+
+## 3. 同时修复空frame分支与绑定证据单槽
+
+- expected_keys_from_frames移除无作用域的p/report引用，合法空frame按原键合同正确处理；空frame不等于必需源缺失。无日期/代码/schema异常保留准确业务错误，不用宽泛except返回空集合。验证合法空frame/None与非空混合无NameError、键不丢；非法空源仍受第2节约束。
+- 主编译和same-input replay分别写唯一run/phase绑定快照（如TIP_REBASE_BIND_<run_id>_<phase>.json），由当次compiler声明形成，关联输入、实际产物及scope/digest；写后不覆盖，runner/checkpoint/交付引用对应文件和digest。LAST可留作便利入口，不能再作为事后唯一证据。不改已sealed历史release；无须新建复杂账本系统。
+
+## 4. 台机只复验受影响范围，一次集中交付
+
+SAM直接修台机实际代码，保存真实修前备份，更新既有手册/精确入口并通知ZHANGWEI。本次必要验证：
+1. 隔离小fixture分别仅改变ETF、仅改变INDEX的内容（保持行数/键数量也测到内容变化），新scope身份必须改变；篡改已提交fixture时deep verify必须失败。删除必需产品/分区必须硬失败；合法可选presence改变不能仍NOOP。正常同全量内容换root可NOOP。只用fixture注入错误，不改真实sealed数据。
+2. 不存在必需根、存在但空的必需根命中指定门；合法空frame混合非空frame不出现NameError，原等数量换文件负控保留。失败时新引用不提交，原候选引用及生产指针前后不变。
+3. 复用R13已验证实际候选或必要的一次定向原编译，展示全产品scope/digest、新范围commit与旧股票身份的区分、checkpoint/deep verify一致和同输入幂等。无需为验证身份再次重跑清洗/重编所有历史；若绑定证据的修改必须触发原compiler，仅运行必要入口并说明。继续核对已有959896×3、63204、106822基线不退；固定行数仅为此fixture，不硬编码为未来通用门。
+4. 主run/replay不可变快照各指本次产物，replay不覆盖主run快照。生产受监测9文件前后digest保持不变。耗时按ZHANGWEI实测约2.5分钟说明；超时上限不等于应等待时长，不要求无谓等待或按SAM耗时推定台机卡死。
+
+同一sam_led_rectification包集中交付：实际部署的改动源码/差异、scope/身份版本及旧账本兼容说明、指定门负控结果与原始日志/真实退出码、不可变绑定快照、台机独立结果及精确操作手册；保留旧失败证据，不用重复哈希回执代替修复。SAM完成直接交台机，无需每函数等GPT审批；台机完成集中回GPT审核。
+
+范围不扩大：V4仍BLOCKED_INPUT_INCOMPLETE，供应商分页UNKNOWN，std/index_daily源选择、复权/ST/历史成分等另项未解不被本次覆盖。不采集新数据、不切生产CURRENT、不发布、不交易、不删除旧数据。FOUNDATION_ACCEPTANCE=false；FORMAL_ENGINE_ADMISSION=false，等待实际修后证据。
+
+---
+以下为历史执行令，优先级低于本段，原文保留。
+
 # 当前执行：SAM 修复 release 绑定与指数读取校验，ZHANGWEI 本机复验
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
