@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "package_id": "BLACKBOX_DESKTOP_RUNBOOK_20261026",
+  "generated_at_cn": "2026-10-26T20:21:59+0800",
+  "issued_by": "notebook_SAM",
+  "audience": "desktop_AI_ZHANGWEI",
+  "remote_dir": "agents/desktop/inbox/BLACKBOX_DESKTOP_RUNBOOK_20261026",
+  "access_mode_expected": "LOCAL_FULL | READ_ONLY_OVER_SMB",
+  "switches_default": {
+    "COPY_AUTHORIZED": false,
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false
+  },
+  "files": [
+    {
+      "path": "BLACKBOX_DESKTOP_AI_RUNBOOK_R1.md",
+      "bytes": 13640,
+      "sha256": "7bbeef10dacf9029c61e452b24eb62251a09c1814913e4cd58b9a766928d3cd5"
+    },
+    {
+      "path": "DAILY_INCREMENTAL_RUNBOOK.md",
+      "bytes": 8834,
+      "sha256": "09d46097cee180821b6279df17caf17cc78512b125c245e6248756c31c155e77"
+    },
+    {
+      "path": "INBOX_FOR_DESKTOP.md",
+      "bytes": 1267,
+      "sha256": "1f7fcf9f23540b35f9f6ada65e21f32c46a29775a6871421ed2d7295ecca6d66"
+    },
+    {
+      "path": "PRECONDITION_MATRIX.csv",
+      "bytes": 2072,
+      "sha256": "c94e1ced40b643ca21572a72ce6f3cd7d42dac13eaae265ab458cc2043f52dcd"
+    },
+    {
+      "path": "START_HERE.md",
+      "bytes": 4285,
+      "sha256": "0ac97d122c8e049eabd02b7a605b6cb63ea2b2e409c2beb42b73e05d93249a69"
+    }
+  ],
+  "source_authority": {
+    "kernel_sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+    "must_read_manifest_rule_id": "BLACKBOX_MUST_READ_MANIFEST_R1",
+    "daily_data_manifest": {
+      "manifest_id": "DAILY_DATA_MANIFEST_20260924",
+      "CN_RESEARCH_DATE": "2026-09-24",
+      "ALL_LANES_READY": "YES",
+      "DAILY_INCREMENTAL_READY": "YES",
+      "DEGRADED_LANES": [],
+      "DATA_GENERATION_ID": "DG1-7fd2bf71248bbe7d8b52798ae0a77aaf0c8362ba407112fffe6445122e2c2b13",
+      "JQ": {
+        "SOURCE_ASOF": "2026-09-24",
+        "CLEAN_ASOF": "2026-09-24",
+        "CACHE_ASOF": "2026-09-24",
+        "PIT_PASS": true,
+        "STATUS": "PASS"
+      }
+    },
+    "daily_incremental": {
+      "active_rule_id": "BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_R1",
+      "asof": "2026-09-24",
+      "current_cleaning_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439"
+    }
+  },
+  "note": "MANIFEST.json 不自我哈希；路径相对本目录。权威以磁盘 HAND/Manifest/CURRENT 为准。"
+}
