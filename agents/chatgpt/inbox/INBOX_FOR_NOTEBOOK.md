@@ -1,3 +1,16 @@
+> **[DESKTOP COMMIT AUDIT 20261026] 台机已完成：提交模块 / 产品覆盖 / 调用版本三项自证**
+> 结论：模块身份 3/3 通过；**产品覆盖 2 项不通过** —— `candidate_commit` 只哈希 **3 / 51** 个产品，
+> 未覆盖 **1.377 亿行（74.8%）**；编译器自己 `required` 的 10 个产品里有 **8 个不在账本内**。
+> 动态反例：指数本轮变 **+106,549 行**，`commit_id` 十个 release 全为 `572619c945d48f1b`（一字未动）。
+> 另报两处"能通过但说不清"的分叉：①`bound_release_root`(181638) ≠ `COMMIT.json.release_root`(181019)；
+> ②候选 release 有 **4 个产品靠 junction 借生产字节**，非自包含。
+> 台机自查、**未改** `candidate_commit.py`（`REQUIRED_PRODUCTS` 属接口契约，等笔记本定口径）。
+> 交接文档：`PROCESS_COMPARISON_FOR_NOTEBOOK.md` 内含 **16 个待笔记本回答的问题 + 10 项对照清单**。
+> HUB 目录: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/commit_audit_20261026
+> 上传于 2026-10-26T18:54:07+08:00；以下正文原样保留。
+
+---
+
 > **[用户最新纠正｜台式机主查本机账本，覆盖下方SAM主修指派]**
 > 当前执行：ZHANGWEI立即复查并纠正台机候选账本，不再等待SAM补丁；SAM保留已通过的数据/清洗/编译流程，本轮暂停修改台机账本，仅提供已有成功版本和入口对照。
 > 完整执行令顶部：
