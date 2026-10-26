@@ -1,0 +1,76 @@
+{
+  "schema": "VERSION_ALIGNMENT_RECORD_R1",
+  "host": "ZHANGWEI",
+  "aligned_at_cn": "2026-10-26T19:32:00+08:00",
+  "authority": "owner instruction: 『PANDAS 你这和笔记本保持统一』",
+  "change": {
+    "before": {"python": "3.12.10", "pandas": "2.3.3", "pyarrow": "21.0.0", "numpy": "2.5.4"},
+    "after": {"python": "3.12.10", "pandas": "3.0.3", "pyarrow": "24.0.0", "numpy": "2.5.4"},
+    "target": "SAM/notebook baseline",
+    "pip_check": "No broken requirements found",
+    "venv": "E:\\BLACKBOX\\.venv (main, shared by all BLACKBOX scripts)"
+  },
+  "why_alignment_is_required_not_cosmetic": {
+    "mechanism": "candidate_commit.product_digest() hashes parquet FILE bytes (sha256 per file)",
+    "consequence": "two machines with different pandas write different bytes for identical logical data, so commit_id can never match cross-host regardless of data equality",
+    "measured": {
+      "same_frame_pandas_2_3_3": {"bytes": 9255, "sha256": "6601ebdd07483c7b270c30c1f20598fd108d4e403d730f237f6e639a9c760dc3"},
+      "same_frame_pandas_3_0_3": {"bytes": 9293, "sha256": "2ddfe76e75974805b2f4a15811cbbcd27a8c86b5272ec302617556284820f8de"},
+      "conclusion": "file bytes differ for the same dataframe"
+    },
+    "root_cause": "cache_compiler_daily_incremental_r1.py:564 `g.to_parquet(fp, index=False)` has no explicit schema; pandas 3 defaults object->str, timestamp[ns]->timestamp[us]",
+    "schema_diff": {
+      "pandas_2": "code: string, date: timestamp[ns]",
+      "pandas_3": "code: large_string, date: timestamp[us]"
+    }
+  },
+  "verification": {
+    "candidate_commit_verify_after_upgrade": {
+      "status": "CONSISTENT", "consistent": true,
+      "checkpoint_sha_matches": true, "checkpoint_identity_matches": true,
+      "payload_matches": true, "payload_root_missing": false,
+      "rc": 0,
+      "note": "verify 哈希既有文件，与 pandas 版本无关，故未受影响"
+    },
+    "read_semantics_equivalence": {
+      "method": "读同一批真实产品 parquet，按编译器规则归一化 code.astype(str).str.upper() + date.dt.strftime('%Y-%m-%d')，比对键集 sha256",
+      "STOCK_DAILY_PIT_R1": {"rows": 4038097, "keys_sha_both": "3fbb8df6fc275512", "equal": true},
+      "INDEX_DAILY_R1": {"rows": 102620, "keys_sha_both": "32c4d806b4fe9388", "equal": true},
+      "dtype_change_only": "code: object -> str；date 读回仍为 datetime64[ns]；值/行数/样本未变"
+    },
+    "write_path_roundtrip": {
+      "main_venv_after_upgrade": {"bytes": 9293, "sha256": "2ddfe76e75974805b2f4a15811cbbcd27a8c86b5272ec302617556284820f8de"},
+      "side_venv_pd3": {"bytes": 9293, "sha256": "2ddfe76e75974805b2f4a15811cbbcd27a8c86b5272ec302617556284820f8de"},
+      "identical": true,
+      "meaning": "主 venv 已与笔记本同版，写路径字节一致"
+    }
+  },
+  "consequences_to_record": [
+    "对齐后新编译 release 的产品字节与 pandas-2 时代不同 => 新 release 的 commit_id 必然变化，属正常而非缺陷",
+    "历史 release（pandas 2.3.3 产出）与新 release 之间不得按字节比较；跨该跃迁点的 commit_id 互比无意义",
+    "本日之前台机产生的全链结果应标注 RUNTIME_PANDAS_2_3_3，不与 SAM 基线互比"
+  ],
+  "blast_radius_disclosed": {
+    "py_files_in_project": 16187,
+    "files_importing_pandas_or_pyarrow": 2910,
+    "residual_risk": "仅验证了身份/读键集/写字节三条主路径；2910 个依赖文件中未做全量回归",
+    "rollback": {
+      "available": true,
+      "snapshot_dir": "sam_led_rectification/VENV_ROLLBACK_20261026/",
+      "pip_freeze_before": "sam_led_rectification/VENV_ROLLBACK_20261026/pip_freeze_main_venv_before.txt",
+      "versions_before": "sam_led_rectification/VENV_ROLLBACK_20261026/versions_before.json",
+      "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -m pip install -r <pip_freeze_before.txt>"
+    }
+  },
+  "freeze_files": {
+    "r10_historical_left_untouched": "ENV/PIP_FREEZE_ROOT_VENV_R10.txt (pandas==2.3.3, pyarrow==21.0.0)",
+    "r11_current": "ENV/PIP_FREEZE_ROOT_VENV_R11_PD3.txt (pandas==3.0.3, pyarrow==24.0.0)",
+    "rationale": "R10 是历史回执，改写等于伪造历史；故另立 R11 冻结"
+  },
+  "artifacts": [
+    "PIPELINE_VERSION_SENSITIVITY_PROBE.py",
+    "KEY_NORMALISATION_EQUIVALENCE.py",
+    "probe_pd2.json", "probe_pd3.json", "probe_main_after.json",
+    "keys_pd2.json", "keys_pd3.json", "keys_main_after.json"
+  ]
+}
