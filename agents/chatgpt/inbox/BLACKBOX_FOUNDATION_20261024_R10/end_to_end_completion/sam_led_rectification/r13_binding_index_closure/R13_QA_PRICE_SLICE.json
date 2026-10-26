@@ -1,0 +1,224 @@
+{
+  "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+  "all_pass": true,
+  "asof": "2026-09-24",
+  "price": {
+    "gates": {
+      "stock": {
+        "pass": true,
+        "rows": 959896,
+        "max_date": "2026-09-24",
+        "leak_rows": 0
+      },
+      "etf": {
+        "pass": true,
+        "rows": 63204,
+        "max_date": "2026-09-24",
+        "leak_rows": 0
+      },
+      "fund": {
+        "pass": true,
+        "skipped": "inherit_parent"
+      },
+      "index": {
+        "pass": true,
+        "rows": 106822,
+        "max_date": "2026-09-24",
+        "leak_rows": 0
+      }
+    },
+    "products": {
+      "STOCK_DAILY_PIT_R1": {
+        "status": "READY",
+        "rows_2026": 959896,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "STOCK_DAILY_RAW_PIT_R1": {
+        "status": "READY",
+        "rows_2026": 959896,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "STOCK_FACTOR_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 959896,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "ETF_DAILY_PIT_R1": {
+        "status": "READY",
+        "rows_2026": 63204,
+        "date_min": "2026-07-30",
+        "date_max": "2026-09-24"
+      },
+      "ETF_FACTOR_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 63204,
+        "date_min": "2026-07-30",
+        "date_max": "2026-09-24"
+      },
+      "INDEX_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 106822,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "INDEX_FACTOR_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 106822,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "MARKET_STRUCTURE_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 178,
+        "date_max": "2026-09-24"
+      },
+      "FUND_DAILY_PIT_R1": {
+        "status": "INHERITED_PARENT"
+      },
+      "FUND_FACTOR_DAILY_R1": {
+        "status": "INHERITED_PARENT"
+      }
+    },
+    "read_closure": {
+      "STOCK_DAILY_PIT_R1": {
+        "product": "STOCK_DAILY_PIT_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 234,
+        "enumerated": 234,
+        "read_ok": 234,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true
+      },
+      "ETF_DAILY_PIT_R1": {
+        "product": "ETF_DAILY_PIT_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 37,
+        "enumerated": 37,
+        "read_ok": 37,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true
+      },
+      "INDEX_DAILY_R1": {
+        "product": "INDEX_DAILY_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 1501,
+        "enumerated": 1501,
+        "read_ok": 1501,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true,
+        "sources": {
+          "RAW_FULL_HISTORY": {
+            "files": 1464
+          },
+          "CLEANING_CURRENT_INDEX_DAILY": {
+            "files": 37
+          }
+        },
+        "selected_files": 1501,
+        "note": "candidate files across the selected index sources; the 2026 output is the result of asof clipping and (date,code) de-duplication, not of reading fewer files"
+      }
+    },
+    "key_check": {
+      "STOCK_DAILY_PIT_R1": {
+        "status": "MATCH",
+        "expected_keys": 959896,
+        "written_keys": 959896,
+        "missing": 0,
+        "extra": 0,
+        "missing_sample": [],
+        "extra_sample": []
+      },
+      "STOCK_DAILY_RAW_PIT_R1": {
+        "status": "MATCH",
+        "expected_keys": 959896,
+        "written_keys": 959896,
+        "missing": 0,
+        "extra": 0,
+        "missing_sample": [],
+        "extra_sample": []
+      },
+      "STOCK_FACTOR_DAILY_R1": {
+        "status": "MATCH",
+        "expected_keys": 959896,
+        "written_keys": 959896,
+        "missing": 0,
+        "extra": 0,
+        "missing_sample": [],
+        "extra_sample": []
+      },
+      "INDEX_DAILY_R1": {
+        "status": "MATCH",
+        "expected_keys": 106822,
+        "written_keys": 106822,
+        "missing": 0,
+        "extra": 0,
+        "missing_sample": [],
+        "extra_sample": []
+      }
+    },
+    "july_distinct_codes": {
+      "2026-07-01": 5206,
+      "2026-07-02": 5210,
+      "2026-07-03": 5209,
+      "2026-07-06": 5210,
+      "2026-07-07": 5208,
+      "2026-07-08": 5208,
+      "2026-07-09": 5208,
+      "2026-07-10": 5207,
+      "2026-07-13": 5213,
+      "2026-07-14": 5213,
+      "2026-07-15": 5213,
+      "2026-07-16": 5213,
+      "2026-07-17": 5213,
+      "2026-07-20": 5213,
+      "2026-07-21": 5213,
+      "2026-07-22": 5213,
+      "2026-07-23": 5213,
+      "2026-07-24": 5213,
+      "2026-07-27": 5213,
+      "2026-07-28": 5213,
+      "2026-07-29": 5213,
+      "2026-07-30": 5213,
+      "2026-07-31": 5213
+    }
+  }
+}
