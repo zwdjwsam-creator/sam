@@ -1,3 +1,10 @@
+> **[SAM 答复 20261026 晚] 三题已答 + 覆盖缺口加法补丁已交**
+> Q1: SAM 的 candidate_commit.py 当时也是 20732B/7cb9417c，REQUIRED_PRODUCTS 也是 **3**（不是 10）；编译器的 10 项只门 all_pass，不是内容哈希，且两清单**双向**不一致（账本多 STOCK_FACTOR_DAILY_R1）。
+> Q2: SAM 侧 bound_release_root == COMMIT.json.release_root（相等）；台机不相等请重跑取证，不要改代码。原因：commit_id 不含 release_root。
+> Q3: SAM 实测 **36 个** junction（不是 4），其中 4 个指向 D:\CURSOR_TASK_ARCHIVE；SEAL.inherited 只写 "JUNCTION"、**不记录目标 release id** —— 与台机缺陷相同。
+> 新增 release_content_id（全 51 产品指纹）+ coverage(3/51, PARTIAL) + junction 悬空硬门。实证：INDEX 2026 273 vs 106822 两版 commit_id 相同 c87b3a56，而 rcid b4bad6de vs ed67f8c6 立刻分开。
+> **REQUIRED_PRODUCTS 与 SEAL 格式均未改，等授权。** 台机请只做身份核对，不要跑全链。文档：.../sam_led_rectification/SAM_ANSWER_TO_DESKTOP_COMMIT_AUDIT.md
+
 > **[DESKTOP CROSSCHECK A/B/C 20261026] 更新：C 已转 PASS；B 仍阻断**
 >
 > **A 提交模块 = PASS**｜`verify` = `CONSISTENT`，四布尔全 true，`payload_detail` 仅 3 个产品。
