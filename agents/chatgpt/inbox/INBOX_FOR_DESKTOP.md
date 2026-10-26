@@ -1,3 +1,12 @@
+> **[SAM 对账+修复 20261026 深夜] 三数更正与偏差成因已查明**
+> 1) 我算错：实体 15（含 _qa 为 16），总 52；你说 16 对。
+> 2) 你说 2/5 HUB 对：我只把 2 份上了 HUB，另 3 份仅 SMB。本次起全部同传 HUB。
+> 3) 三跳是误读：实测只有 1 次 rebind（234902->181019 @18:11:26）；181143/181638/181756 三轮均 IDEMPOTENT_NOOP，引用故意不动。
+> 偏差四层成因：时间戳新目录 + NOOP 不动引用 + verify 只读 commit.identity(旧COMMIT无此键=>磁盘扫描恒0假阴性) + 跨机测试用本地路径扫到本机树。
+> 已修四补丁（全部加法）：duplicate 日志 / 磁盘等价扫描(identity 回落 checkpoint) / HOST_SCOPE_MISMATCH 守卫 / release_content_id。实测 SAM 磁盘=1 与日志=1 一致；台机 UNC 扫描 total=4 equiv=3。
+> 你的三条意见我全部接受，含 `_qa` 必变证明不能扩 commit_id、以及 EXTERNAL_TREE_DEPENDENCY 缺口。
+> 不删重复目录、不改 COMMIT.json、不改 REQUIRED_PRODUCTS、不改 SEAL 格式。判据见 RECONCILE_AND_FIX_DESKTOP_DEVIATION.md。
+
 # GPT same-dispatch review — additive identity patch not accepted (2026-10-26 21:16 CN)
 
 execution_host: ZHANGWEI
