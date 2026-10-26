@@ -1,0 +1,148 @@
+{
+  "schema": "RCID_V3_TARGETED_TESTS_R1",
+  "passed": 13,
+  "total": 13,
+  "all_pass": true,
+  "results": [
+    {
+      "test": "T1 相同内容重复计算 rcid 一致",
+      "pass": true,
+      "detail": {
+        "rcid": "00b3f6b7108c823b",
+        "twice": "00b3f6b7108c823b",
+        "declared": 5,
+        "present": 5,
+        "complete": true
+      }
+    },
+    {
+      "test": "T2 只改指数 -> rcid 变",
+      "pass": true,
+      "detail": {
+        "before": "00b3f6b7108c823b",
+        "after": "d90cd2cf4a25e326",
+        "commit_id_after": "9ad83abf5d4f6051"
+      }
+    },
+    {
+      "test": "T3 只改 ETF -> rcid 变",
+      "pass": true,
+      "detail": {
+        "before": "d90cd2cf4a25e326",
+        "after": "38c5994d05c7911e"
+      }
+    },
+    {
+      "test": "T4 等数量换键 -> rcid 变",
+      "pass": true,
+      "detail": {
+        "before": "38c5994d05c7911e",
+        "after": "4370c4dbe7f3dd78",
+        "index_rows": 3
+      }
+    },
+    {
+      "test": "T5 声明有而缺 -> INCOMPLETE 且列出缺项",
+      "pass": true,
+      "detail": {
+        "complete": false,
+        "missing_declared": [
+          "ETF_FACTOR_DAILY_R1"
+        ],
+        "declared": 6,
+        "present": 5
+      }
+    },
+    {
+      "test": "T6 旧 commit_id 兼容（v2 == v3，fixture）",
+      "pass": true,
+      "detail": {
+        "v2": "9ad83abf5d4f6051",
+        "v3": "9ad83abf5d4f6051"
+      }
+    },
+    {
+      "test": "T7 生产 release commit_id 仍是 572619c9（只读）",
+      "pass": true,
+      "detail": {
+        "commit_id": "572619c945d48f1b",
+        "rcid_v3": "45c896f89695da5e",
+        "declared": 51,
+        "present": 51,
+        "complete": true,
+        "junction_content_proven": false
+      }
+    },
+    {
+      "test": "T8 无 rcid -> 明确未验证且不给 PASS",
+      "pass": true,
+      "detail": {
+        "status": "CONTENT_IDENTITY_UNVERIFIED",
+        "consistent": false,
+        "content_identity_verified": false,
+        "rcid_check": {
+          "status": "CONTENT_IDENTITY_UNVERIFIED",
+          "detail": {
+            "source": "ABSENT",
+            "looked_at": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\sam_led_rectification\\_rcid_test\\t8\\cc_commit\\rcid\\BLACKBOX_CACHE_R1_TEST_20260924.json"
+          },
+          "meaning": "whole-release content identity was NOT verified"
+        }
+      }
+    },
+    {
+      "test": "T10 emit 不改 COMMIT.json（sha 前后一致）",
+      "pass": true,
+      "detail": {
+        "sha_before": "f1c3825c45649296",
+        "sha_after": "f1c3825c45649296",
+        "emit_status": "EMITTED"
+      }
+    },
+    {
+      "test": "T9 emit 后 verify 读到侧文件并 CONSISTENT",
+      "pass": true,
+      "detail": {
+        "status": "CONSISTENT",
+        "consistent": true,
+        "check": {
+          "status": "MATCH",
+          "stored": "00b3f6b7108c823b62cd00bfb40113713d28354a6a672eaea6aa3cde3f4ead25",
+          "now": "00b3f6b7108c823b62cd00bfb40113713d28354a6a672eaea6aa3cde3f4ead25",
+          "source": "SIDE_FILE",
+          "contract_id": "RCID_C1_TEST_e7e062e61125",
+          "declared_count": 5,
+          "junction_content_proven": false
+        }
+      }
+    },
+    {
+      "test": "T11 emit 重复调用 = ALREADY_SAME（不可覆盖）",
+      "pass": true,
+      "detail": {
+        "status": "ALREADY_SAME"
+      }
+    },
+    {
+      "test": "T12 旧账本无 rcid -> 拒绝 NOOP，不写文件",
+      "pass": true,
+      "detail": {
+        "status": "CONTENT_IDENTITY_UNVERIFIED",
+        "commit_file_written": false,
+        "sha_unchanged": true
+      }
+    },
+    {
+      "test": "T13 commit_id 同但 rcid 不同 -> CONTENT_DIVERGENCE，拒绝 NOOP",
+      "pass": true,
+      "detail": {
+        "commit_id_same": true,
+        "commit_id": "9ad83abf5d4f6051",
+        "rcid_A": "00b3f6b7108c823b",
+        "rcid_B": "7bac57665c76d918",
+        "commit_status": "CONTENT_DIVERGENCE_SAME_COMMIT_ID",
+        "commit_json_unchanged": true
+      }
+    }
+  ]
+}
