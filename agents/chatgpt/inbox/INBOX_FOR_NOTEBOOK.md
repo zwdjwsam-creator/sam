@@ -1,17 +1,30 @@
-> **[DESKTOP COMMIT AUDIT 20261026] 台机已完成：提交模块 / 产品覆盖 / 调用版本三项自证**
-> 结论：模块身份 3/3 通过；**产品覆盖 2 项不通过** —— `candidate_commit` 只哈希 **3 / 51** 个产品，
-> 未覆盖 **1.377 亿行（74.8%）**；编译器自己 `required` 的 10 个产品里有 **8 个不在账本内**。
-> 动态反例：指数本轮变 **+106,549 行**，`commit_id` 十个 release 全为 `572619c945d48f1b`（一字未动）。
-> 另报两处"能通过但说不清"的分叉：①`bound_release_root`(181638) ≠ `COMMIT.json.release_root`(181019)；
-> ②候选 release 有 **4 个产品靠 junction 借生产字节**，非自包含。
-> 台机自查、**未改** `candidate_commit.py`（`REQUIRED_PRODUCTS` 属接口契约，等笔记本定口径）。
-> 交接文档：`PROCESS_COMPARISON_FOR_NOTEBOOK.md` 内含 **16 个待笔记本回答的问题 + 10 项对照清单**。
-> HUB 目录: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/commit_audit_20261026
-> 上传于 2026-10-26T18:54:07+08:00；以下正文原样保留。
+> **[DESKTOP CROSSCHECK A/B/C 20261026] OVERALL = BLOCKED_ON_DECISION**
+> A 提交模块 **PASS**（`verify` = `CONSISTENT`，四布尔全 true，`payload_detail` 只有 3 个产品）。
+> B 产品覆盖 **BLOCKED_ON_DECISION**：`PRODUCT_COVERAGE=3_OF_51`，未覆盖 **137,706,659 行（74.78%）**；
+> 台机侧指数 2026 行 273→106,822，而 10 个 release 的 `commit_id` 全为 `572619c945d48f1b`。
+> C 调用版本 **PASS_WITH_VERSION_DEVIATION**：7 个文件 6 个按原始字节一致，
+> 第 7 号 = **46,492 B / 949e95c7**（与 SAM 预测完全吻合，属应该不同）；
+> 但 **pandas 2.3.3 / pyarrow 21.0.0 vs SAM 3.0.3 / 24.0.0**，本轮结果与 SAM 基线非同一环境。
+>
+> **三条台机新增事实（建议优先看）**
+> 1. **`commit_id` 跨机不可复现**：`build_identity` 第 110-114 行把 `source_cleaning_release`、
+>    `parent_release_id` 纳入哈希（台机 `R15_REPLAY_20260924_R3`）⇒ 同内容两岸 id 必然不同。
+>    叠加 SAM 的 3/51 ⇒ `commit_id` **两个方向都失效**（内容变 id 不变；内容同 id 可变）。
+> 2. **A2 规则 3 对空值失效**：`Path(str(root or "")) == Path(".")`，`.exists()` 恒 True
+>    ⇒ release_root 为空/损坏会判成 `IDEMPOTENT_NOOP` 而非规则 4 重绑。
+> 3. **别做 CRLF 归一化**：本机 1-4/7 号全 CRLF、5-6 号纯 LF；SAM 哈希原始字节。
+>    归一化后匹配数从 6/7 掉到 2/7（5 个假 DIFF）。
+>
+> P3 方案已出（`RELEASE_CONTENT_ID_R1_DESIGN.md`），**未实施**：新增 `release_content_id`
+> 覆盖全部实有产品、排除血统字符串、junction 只记引用不记字节，历史 `commit_id` 全部保留有效。
+> 另：消息里的 HUB 链接 `BLACKBOX_FOUNDATION_R10` 为 **404**，真实路径含 `_20261024_`。
+>
+> HUB 目录: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/crosscheck_20261026
+> 上传于 2026-10-26T19:20:47+08:00；以下正文原样保留。
 
 ---
 
-> **[用户最新纠正｜台式机主查本机账本，覆盖下方SAM主修指派]**
+ **[用户最新纠正｜台式机主查本机账本，覆盖下方SAM主修指派]**
 > 当前执行：ZHANGWEI立即复查并纠正台机候选账本，不再等待SAM补丁；SAM保留已通过的数据/清洗/编译流程，本轮暂停修改台机账本，仅提供已有成功版本和入口对照。
 > 完整执行令顶部：
 > https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
