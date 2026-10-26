@@ -8,8 +8,8 @@
 |---|---|
 | A 提交模块 | **PASS** |
 | B 产品覆盖 | **BLOCKED_ON_DECISION**（`PRODUCT_COVERAGE=3_OF_51`） |
-| C 调用版本 | **PASS_WITH_VERSION_DEVIATION** |
-| **总结论** | **BLOCKED_ON_DECISION** —— 不得作为进入全链复验的通行证 |
+| C 调用版本 | **PASS** |
+| **总结论** | **BLOCKED_ON_DECISION** —— B 未决，不得进入全链复验 |
 
 ---
 
@@ -105,16 +105,30 @@ SAM 建议"比对时先归一化 CRLF"。**本机实测：照做会产生 5 个�
 SAM 哈希的是**原始字节**。归一化后 `match_crlf = 2/7`，按原始字节 `match_raw = 6/7`。
 **结论：按原始字节比对，勿归一化。**
 
-### C-2 运行时版本不一致（需要先报差异）
+### C-2 运行时版本（已按 owner 指示对齐）
 
-| | 本机 | SAM 期望 |
-|---|---|---|
-| python | 3.12.10 | 3.12.10 |
-| **pandas** | **2.3.3** | **3.0.3** |
-| **pyarrow** | **21.0.0** | **24.0.0** |
+| | 对齐前 | 对齐后 | SAM 基线 |
+|---|---|---|---|
+| python | 3.12.10 | 3.12.10 | 3.12.10 |
+| pandas | 2.3.3 | **3.0.3** | **3.0.3** |
+| pyarrow | 21.0.0 | **24.0.0** | **24.0.0** |
 
-SAM 自己写了"版本不同先报差异再跑——pandas 3.x 的 groupby/dtype 差异会影响 KEY_CHECK"。
-台机本轮此前的全链结果是在 **pandas 2.3.3** 下产生的，**与 SAM 基线不构成同环境对照**。
+已对齐。`pip check` 无破损；`verify` 仍 `CONSISTENT`（四布尔全 true）。
+
+**这次跃迁不是装饰，是身份可比的前提。** `product_digest()` 哈希的是 parquet **文件字节**，
+而同一份 DataFrame 在 pandas 2 / 3 下写出的字节不同（实测 **9,255 B `6601ebdd`** vs **9,293 B `2ddfe76e`**）。
+根因是 `cache_compiler_daily_incremental_r1.py:564` 的 `to_parquet(index=False)` **没有显式 schema**，
+pandas 3 把 `object→str`、`timestamp[ns]→timestamp[us]`（落盘为 `large_string` / `timestamp[us]`）。
+
+⇒ 两岸 pandas 不同，**无论数据是否相等，`commit_id` 都不可能一致**。
+
+**读侧已验证等价**：同一批真实产品按编译器规则归一化后，键集 sha256 与 pandas 2 完全相同
+（`STOCK_DAILY_PIT_R1` 4,038,097 行 / `3fbb8df6fc275512`；`INDEX_DAILY_R1` 102,620 行 / `32c4d806b4fe9388`）。
+只有 dtype 标签 `object→str` 改变，键值、行数、样本均未变。
+
+**记入档案的后果**：新编译 release 的字节与 pandas-2 时代不同 ⇒ 新 `commit_id` 必然变化（正常）；
+跨该跃迁点的历史/新 release **不得按字节互比**。R10 冻结文件保持原样（历史回执不可改写），另立
+`ENV/PIP_FREEZE_ROOT_VENV_R11_PD3.txt`。回滚快照在 `VENV_ROLLBACK_20261026/`。
 
 ### C-3 加载方式（已核）
 
@@ -135,6 +149,9 @@ SAM 自己写了"版本不同先报差异再跑——pandas 3.x 的 groupby/dtyp
 
 ## E. 下一步
 
-1. **token 轮换**（安全，最高优先）——见同目录 `TOKEN_REDACTION_RECEIPT.json`
-2. **B 的 P1/P2/P3 决策**
-3. 运行时版本对齐（pandas/pyarrow），或明确声明本轮结果不可与 SAM 基线互比
+1. **B 的 P1/P2/P3 决策**（当前唯一阻断项）
+2. 运行时已对齐；首个 pandas-3 编译 release 需重新生成身份，并作为版本跃迁点入档
+3. **token 轮换：owner 已决定暂缓**（`TOKEN_ROTATION_DECISION_R1.json`）。
+   已完成的止损：3 个 compaction 段的明文副本已脱敏至残留 0。
+   仍存在的风险：token 有效、scope 含 `repo`、且本机历史备份未全量复扫。
+   随时可改判 —— 撤销只需在 `https://github.com/settings/applications` 点 Revoke access。
