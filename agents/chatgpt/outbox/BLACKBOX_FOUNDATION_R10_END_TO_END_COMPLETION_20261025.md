@@ -1,3 +1,43 @@
+# 当前最高优先级：ZHANGWEI 复查并纠正台机候选账本；SAM 保留已通过流程
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+issued_date_cn: 2026-10-26
+status: READY_DESKTOP_RECHECK_LOCAL_COMMIT_LEDGER
+lead_agent: ZHANGWEI（台式机 Cursor）
+notebook_role: SAM 提供已有成功流程对照，不承担本轮台机账本修改
+target_root: E:\BLACKBOX
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+用户最新纠正：当前应由台式机复查本机账本，笔记本的数据流程已提供并跑通。GPT此前将账本缺陷继续交SAM主修，分工不当。本段覆盖下方“READY_SAM_FIX_COMMIT_SCOPE_AND_EMPTY_SOURCE_GATE”“SAM唯一修改、台机等待”的指派；沿用原任务，不开新轮次。
+
+## 分工立即调整
+
+- ZHANGWEI不再等待SAM账本补丁，直接在台机本机复查并纠正自己的候选账本接入。SAM暂停本轮账本修改，保留其已通过的数据/清洗/编译流程，只提供现成入口、输出身份、成功版本与日志供台机对照，不重新重构或重跑笔记本系统。
+- 如SAM已经开始修改，先通过现有双机共享/HUB记录实际已改文件、备份与状态，完成当前安全写入后移交，避免两端同时编辑；不强杀进程、不自动回滚有效补丁。台机按收到的实际版本接手，不等待用户传话。
+- 当前证据定位的是台机账本只覆盖三个股票产品；不将它扩大成笔记本数据流程失败，也不凭“走同一流程”推定两端实际加载模块/配置/账本完全相同。
+
+## 台机本机复查重点与处理
+
+1. 从实际运行入口记录解释器、工作目录、candidate_commit实际导入文件(__file__)、版本/必要身份、配置和账本根；核对pipeline是否导入旧副本、使用旧REQUIRED_PRODUCTS、旧checkpoint或其他候选账本。直接对照SAM已有成功流程与本次绑定的release，不重扫磁盘、不重新交接整条链。
+2. 对照实际release产品清单与COMMIT.json、CHECKPOINT.identity.products、build_identity/verify/NOOP的覆盖范围。解释股票959896×3、ETF63204、指数106822都已正确产出，为何账本仍只记录三股票产品；区分台机加载/配置错误、旧记录未升级、当前提交模块本身范围缺失，不只改文档标签。
+3. 若调用了错误/旧副本，直接修正台机入口/配置/绑定；若本机实际提交模块确实仅覆盖三产品，台机在该模块最小修复覆盖范围，保持现有提交协议。以本候选原合同交付的产品范围为依据，使ETF/指数及实际交付的相关产品变化进入内容身份；verify也核实同一范围，不能仅遍历旧COMMIT自证。无需因此修改SAM数据流程。若确认属于双方共用源码缺陷，准确报告源文件与对照差异，不擅自重构笔记本。
+4. 保留572619c9及旧checkpoint历史，标明其原股票范围；不手改旧ID、不清账、不改sealed数据。修正后使用本次已验证完整release按正常候选协议生成/验证完整范围身份，再验证同内容NOOP。生产CURRENT仍不动。
+5. 用隔离fixture分别只改ETF/指数内容，确认身份随之变化、已提交内容被篡改时verify失败；真实候选复用R13产物，展示新旧scope、所指release、checkpoint和内容一致。只验证受影响账本行为，不重复清洗/下载/迁移。失败保留上次引用可读。
+
+R13另三项发现（空必需源盲通过、空frame NameError、单槽绑定证据）保留为明确未解项，不抹去，也不因此重新要求SAM整顿数据流程。台机先完成本机账本复查与最小修复；如同一受影响代码已有必要修正，按上一节既有技术判据局部处理并报告。不要将未解决项目合并宣布通过。
+
+## 交付
+
+ZHANGWEI向同一HUB目录集中回传：实际调用模块/配置/账本路径、与SAM已有流程对照、根因归属、最小改动、前后产品覆盖及候选提交/verify/NOOP结果、剩余未解项。更新台机操作手册，SAM仅接收结果供参考。目标是台机能按既有流程正确记账，而非让SAM重新整顿已通过系统。
+
+保留R13绑定/读取/指数补齐及股票ETF基线。V4仍BLOCKED_INPUT_INCOMPLETE；新下载、生产CURRENT切换、发布、交易均未授权。不得用本次账本修复证明V4可用或整个底座验收通过。
+
+---
+以下为历史指令；其中与本段冲突的分工/等待要求已被用户最新纠正覆盖，其余有效技术判据与历史证据保留。
+
 # 当前执行：SAM 收口 R13 提交身份与空源门缺陷，ZHANGWEI 本机定向复验
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
