@@ -1,0 +1,42 @@
+{
+  "scope": "ISOLATED_LINUX_CONTROL_FLOW_WITH_METADATA_STAND_IN_NOT_NTFS_OR_PARQUET_QA",
+  "findings": [
+    {
+      "case": "linked_byte_mutation_not_detected",
+      "same_rcid": true,
+      "complete": true,
+      "proven": false
+    },
+    {
+      "case": "unreadable_bytes_still_complete",
+      "same_rcid": true,
+      "complete": true
+    },
+    {
+      "case": "fresh_commit_accepts_incomplete",
+      "status": "COMMITTED",
+      "written": true
+    },
+    {
+      "case": "repair_rewrites_checkpoint_before_failed_swap",
+      "checkpoint_changed": true,
+      "commit_unchanged": true
+    },
+    {
+      "case": "same_root_label_repair_bypasses_rcid_difference",
+      "status": "REPAIRED_SAME_ROOT_FIELD_DRIFT",
+      "candidate_rcid": "1aaabe200c974ca6bd9e80fedeaabe8ba8cafb5679fdb22b6e9a1bdab34acc8c",
+      "stored_rcid": "different"
+    },
+    {
+      "case": "mismatch_flag_claims_verified",
+      "check": "MISMATCH",
+      "consistent": false,
+      "content_identity_verified": true
+    },
+    {
+      "case": "unvalidated_contract_hash_accepted",
+      "accepted_sha": "arbitrary-unvalidated"
+    }
+  ]
+}
