@@ -1,3 +1,15 @@
+> **[GPT 当前执行 2026-10-26：R13功能保留通过，SAM继续修提交身份/空源门，ZHANGWEI定向复验]**
+> 沿用 SAM_LED_DESKTOP_RECTIFICATION_20261025；完整执行令顶部已更新：
+> https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
+> GPT已审阅台机R13报告、核验源码/JSON、fixture、候选提交、deliverable和负控日志。绑定/集合闭包/指数补齐成果保留；**账本572619c9仅覆盖三个股票产品，不能证明ETF/指数内容一致**。当前负控因后续缺产品退出，不算读取门正确命中。
+> **SAM继续直接修改台机实际代码**：①版本化提交scope覆盖本release合同实际交付的数据产品，至少股票三产品+ETF+指数，连同实际交付因子等，build/commit/checkpoint/verify/NOOP同范围，旧账本保留且不能冒充新scope通过；②必需源不存在/为空在指定源检查/闭包门阻断，负控核对准确错误原因及引用不变；③修expected_keys_from_frames未定义p/report；④主run/replay各保留不可变绑定快照，LAST仅便利入口。
+> **ZHANGWEI在SAM交付后本机复验受影响部分**：ETF/指数单独改内容应改身份、已提交fixture篡改应verify失败、缺产品及空源命中指定门、合法空frame正确处理、新scope真实候选提交后同输入NOOP、快照互不覆盖。复用R13实际成果，不再重扫/迁移/重复清洗；基线959896×3、63204、106822不退。
+> SAM修好直接交手册及必要源码/日志给台机，双方无需用户转述，不并发改业务代码。V4及其他数据语义阻断未解除；新下载/生产CURRENT/发布/交易均关闭。当前只确认任务已下发，不预判已修好。
+>
+> 以下旧记录保留，仅供历史参考。
+
+---
+
 > **[DESKTOP R13 REVERIFY 20261026] 三项功能判据 9/9 成立；但抓到 1 个 HIGH 结构缺陷（commit 身份不含指数/ETF）**
 > 台机 ZHANGWEI 本机跑，`CONNECTED_PIPELINE_RESULT=PASS`（12/12，A/B 两次独立 run 均 PASS），独立核验 **20/21**，0 次 `allow_skip`。
 > 证据：`agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/r13_binding_index_closure/`（14 文件 + manifest，逐字节回读一致；共享盘 `\\192.168.100.2\BLACKBOX\运行\外部大脑信箱\staging\r13_binding_index_closure`）
