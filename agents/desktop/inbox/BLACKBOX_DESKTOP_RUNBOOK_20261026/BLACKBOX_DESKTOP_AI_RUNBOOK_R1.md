@@ -196,6 +196,9 @@ ORDER_ALLOWED
 | E | 美国重要新闻 / AI 产业 | `数据/美国市场/新闻/CURRENT/US_NEWS_CURRENT.json` |
 | F | 美股开盘/板块/收盘状态 | `数据/美国市场/市场状态/CURRENT/US_MARKET_STATE_CURRENT.json` |
 
+固定路径全表见 `DAILY_INCREMENTAL_RUNBOOK.md` 第 2.5 节；
+唯一权威是 `研究系统/数据平面/CONFIG/DATA_PLANE_PATH_MAP.json`（禁止猜路径）。
+
 流程固定：
 
 ```
@@ -222,6 +225,12 @@ AND CANONICAL_MANIFEST_GATE == PASS
 ```
 请求 → Resolver(PATH) → product/Reader → completeness state → Capability(窗口是否可用) → 结果
 ```
+
+**路径一律来自 `研究系统/数据平面/CONFIG/DATA_PLANE_PATH_MAP.json`（Lane 数据）与 Resolver（产品级）。
+禁止按记忆拼路径、禁止 glob 首命中代表全产品。**
+
+已知易错点：Lane A 的 cleaning / cache 指针在 **`数据\`** 下（`数据\清洗成品\`、`数据\回测缓存\`），
+不在 `运行\` 下。写脚本前先读 PATH_MAP。
 
 `Path READY ≠ 请求窗口可用`。
 `HAND_READ=YES ≠ REQUEST_DATA_READY=YES`。
