@@ -1,3 +1,15 @@
+> **[用户最新纠正｜台式机主查本机账本，覆盖下方SAM主修指派]**
+> 当前执行：ZHANGWEI立即复查并纠正台机候选账本，不再等待SAM补丁；SAM保留已通过的数据/清洗/编译流程，本轮暂停修改台机账本，仅提供已有成功版本和入口对照。
+> 完整执行令顶部：
+> https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
+> 台机从实际解释器/入口、candidate_commit.__file__、配置、COMMIT/CHECKPOINT根和本次release逐项核实：是否加载旧副本/旧scope/旧账本，为什么正确产出的ETF63204与指数106822未入身份。已确认的台机入口/配置/账本模块缺陷由ZHANGWEI最小修复并本机验证；无需修改SAM数据流程。旧572619c9及历史保留，完整产品身份按正常候选协议生成，禁止手改ID/清账。
+> 若SAM已在修改，先记录当前安全写入及已改文件并交接，避免双端并发编辑。原同一任务及技术判据保留；R13另三项缺口单列，不将未解内容宣布通过。台机集中回传实际根因、改动与账本验证结果，无需用户转述。
+> 不重扫/迁移/下载/重复清洗，不切生产CURRENT/发布/下单；V4未解除阻断。
+>
+> 以下冲突的旧分工已失效，历史记录保留。
+
+---
+
 > **[GPT 当前执行 2026-10-26：R13功能保留通过，SAM继续修提交身份/空源门，ZHANGWEI定向复验]**
 > 沿用 SAM_LED_DESKTOP_RECTIFICATION_20261025；完整执行令顶部已更新：
 > https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
