@@ -1,0 +1,346 @@
+{
+  "schema": "DESKTOP_R13_CLOSURE_VERIFY",
+  "checks": {
+    "c1_r15_234_12": {
+      "ok": true,
+      "detail": {
+        "files": 234,
+        "r2_repair": 12
+      }
+    },
+    "c2_closure_STOCK_DAILY_PIT_R1": {
+      "ok": true,
+      "detail": {
+        "product": "STOCK_DAILY_PIT_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 234,
+        "enumerated": 234,
+        "read_ok": 234,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true
+      }
+    },
+    "c2_closure_ETF_DAILY_PIT_R1": {
+      "ok": true,
+      "detail": {
+        "product": "ETF_DAILY_PIT_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 37,
+        "enumerated": 37,
+        "read_ok": 37,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true
+      }
+    },
+    "c2_closure_INDEX_DAILY_R1": {
+      "ok": true,
+      "detail": {
+        "product": "INDEX_DAILY_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 1501,
+        "enumerated": 1501,
+        "read_ok": 1501,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true,
+        "sources": {
+          "RAW_FULL_HISTORY": {
+            "files": 1464
+          },
+          "CLEANING_CURRENT_INDEX_DAILY": {
+            "files": 37
+          }
+        },
+        "selected_files": 1501,
+        "note": "candidate files across the selected index sources; the 2026 output is the result of asof clipping and (date,code) de-duplication, not of reading fewer files"
+      }
+    },
+    "c2_index_sources": {
+      "ok": true,
+      "detail": {
+        "RAW_FULL_HISTORY": {
+          "files": 1464
+        },
+        "CLEANING_CURRENT_INDEX_DAILY": {
+          "files": 37
+        }
+      }
+    },
+    "c3_no_error_markers": {
+      "ok": true,
+      "detail": {
+        "READ_FAILED": 0,
+        "ENUM_INCOMPLETE": 0,
+        "PRICE_READ_INCOMPLETE": 0,
+        "READ_CLOSURE_BROKEN": 0,
+        "KEY_SET_MISMATCH": 0
+      }
+    },
+    "c4_stock_rows_959896": {
+      "ok": true,
+      "detail": {
+        "STOCK_DAILY_PIT_R1": 959896,
+        "STOCK_DAILY_RAW_PIT_R1": 959896,
+        "STOCK_FACTOR_DAILY_R1": 959896
+      }
+    },
+    "c4_etf_rows_63204": {
+      "ok": true,
+      "detail": 63204
+    },
+    "c4_index_rows_106822": {
+      "ok": true,
+      "detail": 106822
+    },
+    "c5_keycheck_match": {
+      "ok": true,
+      "detail": {
+        "STOCK_DAILY_PIT_R1": {
+          "keys": 959896,
+          "qa_status": "MATCH",
+          "qa_expected": 959896,
+          "qa_written": 959896
+        },
+        "STOCK_DAILY_RAW_PIT_R1": {
+          "keys": 959896,
+          "qa_status": "MATCH",
+          "qa_expected": 959896,
+          "qa_written": 959896
+        },
+        "STOCK_FACTOR_DAILY_R1": {
+          "keys": 959896,
+          "qa_status": "MATCH",
+          "qa_expected": 959896,
+          "qa_written": 959896
+        },
+        "INDEX_DAILY_R1": {
+          "keys": 106822,
+          "qa_status": "MATCH",
+          "qa_expected": 106822,
+          "qa_written": 106822
+        }
+      }
+    },
+    "c6_july_distinct_unchanged": {
+      "ok": true,
+      "detail": {
+        "actual": {
+          "2026-07-03": 5209,
+          "2026-07-06": 5210,
+          "2026-07-07": 5208,
+          "2026-07-08": 5208,
+          "2026-07-09": 5208,
+          "2026-07-10": 5207
+        },
+        "expected": {
+          "2026-07-03": 5209,
+          "2026-07-06": 5210,
+          "2026-07-07": 5208,
+          "2026-07-08": 5208,
+          "2026-07-09": 5208,
+          "2026-07-10": 5207
+        }
+      }
+    },
+    "c7_index_additive": {
+      "ok": true,
+      "detail": {
+        "old_keys": 273,
+        "new_keys": 106822,
+        "removed": 0,
+        "added": 106549,
+        "old_is_subset": true
+      }
+    },
+    "c7_index_shape": {
+      "ok": true,
+      "detail": {
+        "codes": 732,
+        "dates": 176
+      }
+    },
+    "c8_binding_from_declaration": {
+      "ok": true,
+      "detail": {
+        "binding_source": "TIP_REBASE_LAST.json",
+        "bound": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+        "declared_at_run": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+        "slot_now_points_to": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181756"
+      }
+    },
+    "c8_stale_declaration_moved": {
+      "ok": true,
+      "detail": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\acceptance\\TIP_REBASE_LAST.prev_12604.json"
+    },
+    "c8_newest_release_no_call_sites": {
+      "ok": true,
+      "detail": {
+        "calls": 1,
+        "defs": 1
+      }
+    },
+    "c9_idempotent": {
+      "ok": true,
+      "detail": {
+        "replay": "PASS",
+        "replay_commit": "IDEMPOTENT_NOOP",
+        "commit_id": "572619c945d48f1b",
+        "second_release": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181756"
+      }
+    },
+    "c10_production_unchanged": {
+      "ok": true,
+      "detail": {
+        "changed": {}
+      }
+    },
+    "c11_negative_control_nonzero": {
+      "ok": true,
+      "detail": {
+        "exit_code": "2",
+        "read_gate_markers": {
+          "READ_CLOSURE_BROKEN": 0,
+          "MATERIALISED_UNREADABLE": 0
+        },
+        "fail_lines": [
+          "missing=['VALUATION_PIT_R1'] tip_ok=False stock_max=None raw_max=None"
+        ]
+      }
+    },
+    "c12_fixture_swapped_key_blocked": {
+      "ok": true,
+      "detail": {
+        "detects_swapped_key": true,
+        "detects_missing_one": true,
+        "healthy_passes": true,
+        "empty_root_is_blind": true,
+        "read_failed_blocks": true,
+        "empty_frame_bug": true
+      }
+    },
+    "c13_commit_covers_index": {
+      "ok": false,
+      "detail": {
+        "new_commit_id": "572619c945d48f1b",
+        "archived_commit_ids": [
+          "572619c945d48f1b"
+        ],
+        "archived_index_rows": [
+          273
+        ],
+        "new_index_rows": 106822,
+        "required_products": [
+          "STOCK_DAILY_PIT_R1",
+          "STOCK_DAILY_RAW_PIT_R1",
+          "STOCK_FACTOR_DAILY_R1"
+        ]
+      }
+    }
+  },
+  "blockers": [
+    {
+      "id": "c13_commit_covers_index",
+      "severity": "BLOCKER",
+      "detail": {
+        "new_commit_id": "572619c945d48f1b",
+        "archived_commit_ids": [
+          "572619c945d48f1b"
+        ],
+        "archived_index_rows": [
+          273
+        ],
+        "new_index_rows": 106822,
+        "required_products": [
+          "STOCK_DAILY_PIT_R1",
+          "STOCK_DAILY_RAW_PIT_R1",
+          "STOCK_FACTOR_DAILY_R1"
+        ]
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "DECLARATION_SLOT_IS_MUTABLE",
+      "severity": "LOW",
+      "detail": "acceptance/TIP_REBASE_LAST.json 是单槽文件：本轮 run 内的 same-input replay 第二次编译会把它覆盖成第二个 release。事后读该文件不等于当时的绑定证据；本次可核性依赖 deliverable 里复制的 declared 快照。建议编译时另写一份TIP_REBASE_BIND_<run_id>.json 作为不可变证据，或保留 prev_* 链并登记。",
+      "evidence": {
+        "bound": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+        "slot_after_run": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181756"
+      }
+    },
+    {
+      "id": "EMPTY_EXPECTED_SET_IS_BLIND",
+      "severity": "HIGH",
+      "detail": "expected_files=[]（源根不存在）时 expected=enumerated=read_ok=0 且 CLOSURE_OK=true。scan_parquet_independent 对不存在路径返回 []，assert_read_closure 没有 expected==0 的守卫，于是'一个文件都没有'与'全部读完'不可区分。本轮负控正是走这条：它没有在读门被拦，而是跑到最后因 missing=['VALUATION_PIT_R1'] 才 exit 2。",
+      "evidence": "HARD_BLOCK 负控日志 2870 行 FAIL missing=['VALUATION_PIT_R1']；fixture case empty_source_root -> NO_RAISE"
+    },
+    {
+      "id": "EMPTY_FRAME_NAMEERROR",
+      "severity": "MEDIUM",
+      "detail": "expected_keys_from_frames 内一段从 read_price_frame 复制的分支引用未定义变量 p/report，任何空 frame 都会抛 NameError，导致本可继续的键对账变成 KEY_SET_UNVERIFIABLE 假失败。",
+      "evidence": "fixture case empty_frame_in_expected_keys -> NameError: name 'report' is not defined"
+    },
+    {
+      "id": "COMMIT_IDENTITY_EXCLUDES_ETF_AND_INDEX",
+      "severity": "HIGH",
+      "detail": "candidate_commit.REQUIRED_PRODUCTS 只含 3 个股票产品。指数从 273 行补到 106,822 行后，commit_id 与归档的 273 行版本完全相同，提交状态为 REBOUND_SAME_CONTENT_NEW_ROOT。因此 commit_consistent / IDEMPOTENT_NOOP 无法发现指数或 ETF 平面的回归——正是我们这两轮一直在抓的'身份没覆盖真正变了的那部分'。",
+      "evidence": {
+        "new": "572619c945d48f1b",
+        "archived": [
+          "572619c945d48f1b"
+        ],
+        "index_rows_archived": [
+          273
+        ],
+        "index_rows_new": 106822
+      }
+    }
+  ],
+  "release": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+  "summary": {
+    "checks": 21,
+    "passed": 20,
+    "blockers": 1,
+    "findings": 4
+  },
+  "status": "PASS_FUNCTIONAL_BLOCKED_ON_COMMIT_IDENTITY_SCOPE",
+  "stated_criteria": {
+    "all_hold": true,
+    "note": "c12/c13 为台机自行增加的判据，不计入 SAM 本轮 9 条声明"
+  }
+}
