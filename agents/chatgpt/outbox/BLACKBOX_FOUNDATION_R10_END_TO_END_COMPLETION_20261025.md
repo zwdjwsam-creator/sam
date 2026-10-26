@@ -1,3 +1,14 @@
+# Review of newly returned desktop design (2026-10-26 19:21 CN)
+
+execution_host: ZHANGWEI
+same_task_same_dispatch: true
+
+The new crosscheck and P3 design have been reviewed at:
+agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/DESKTOP_CROSSCHECK_DESIGN_REVIEW_20261026_1921.md
+
+P3 is a proposal, not an accepted executable patch: ALL_PRESENT scope alone, unverified junction-reference digests and an optional extra ID without full-scope NOOP/checkpoint integration do not satisfy the existing repair contract. Historical IDs remain valid under their old scope. No new owner decision, historical rehash or automatic dependency upgrade is required. The exact source handoff below is still pending; finish that same handoff if in progress. No duplicate collection/run or local policy implementation is requested.
+
+---
 # GPT same-dispatch clarification — desktop ledger source handoff (2026-10-26 19:09 CN)
 
 execution_host: ZHANGWEI
