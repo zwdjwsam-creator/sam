@@ -1,0 +1,179 @@
+{
+  "schema": "DESKTOP_WORKFLOW_CROSSCHECK_VERDICT_R1",
+  "host": "ZHANGWEI",
+  "sam_doc": {
+    "file": "WORKFLOW_COMPARISON_COMMIT_AND_COVERAGE.md",
+    "bytes": 12724,
+    "sha256": "fc617c3f671314030497d67ac143a194f6b4866cd796d64716f28efcdda8729b",
+    "bytes_match_sam_claim": true,
+    "link_in_message": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_R10/...  -> HTTP 404",
+    "actual_path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/WORKFLOW_COMPARISON_COMMIT_AND_COVERAGE.md"
+  },
+  "A_commit_module": {
+    "verdict": "PASS",
+    "verify_status": "CONSISTENT",
+    "four_booleans": {
+      "checkpoint_sha_matches": true,
+      "checkpoint_identity_matches": true,
+      "payload_matches": true,
+      "payload_root_missing": false
+    },
+    "payload_detail_products": [
+      "STOCK_DAILY_PIT_R1",
+      "STOCK_DAILY_RAW_PIT_R1",
+      "STOCK_FACTOR_DAILY_R1"
+    ],
+    "decision_order_verified_from_code": {
+      "rule1_same_root_same_label": {
+        "line": 204,
+        "status": "IDEMPOTENT_NOOP"
+      },
+      "rule2_same_root_stale_label": {
+        "line": 211,
+        "status": "REPAIRED_SAME_ROOT_FIELD_DRIFT"
+      },
+      "rule3_same_content_ref_root_exists": {
+        "line": 257,
+        "status": "IDEMPOTENT_NOOP"
+      },
+      "rule4_same_content_ref_root_gone": {
+        "line": 318,
+        "status": "REBOUND_SAME_CONTENT_NEW_ROOT"
+      },
+      "rule5_content_differs": {
+        "line": 378,
+        "status": "COMMITTED"
+      },
+      "order_matches_sam_table": true
+    },
+    "seal_gate_verified": {
+      "reads_only_all_pass": true,
+      "line": 95,
+      "required_products_existence_check": {
+        "line": 97,
+        "uses": ".exists()"
+      }
+    },
+    "findings_beyond_sam_table": [
+      {
+        "id": "A-EDGE-1",
+        "severity": "LOW",
+        "claim": "规则 3 的守卫 `old_root.exists()` 对空字符串失效：`Path(str(current.get('release_root') or ''))` == `Path('.')`，`.exists()` 恒为 True，于是 release_root 为空/损坏时会返回 IDEMPOTENT_NOOP(duplicate root) 而不是规则 4 的重绑。",
+        "line": 203,
+        "evidence": "Path('') -> WindowsPath('.')  .exists() = True"
+      },
+      {
+        "id": "A-EDGE-2",
+        "severity": "MEDIUM",
+        "claim": "第 97 行用 `.exists()` 判必需产品，空目录也算通过；`product_digest()` 对无 parquet 返回 parts=0/rows=0/sha256=None，空产品与缺失产品在 commit_id 里不可区分。",
+        "lines": [
+          97,
+          78,
+          79
+        ]
+      },
+      {
+        "id": "A-EDGE-3",
+        "severity": "HIGH",
+        "claim": "`content` 纳入 `source_cleaning_release` 与 `parent_release_id`（运行期字符串），导致同内容跨机 commit_id 必然不同（台机 572619c9 vs SAM c87b3a56）。与第 104-108 行注释的自述意图相反。",
+        "lines": [
+          110,
+          111,
+          112,
+          113
+        ]
+      }
+    ]
+  },
+  "B_product_coverage": {
+    "verdict": "BLOCKED_ON_DECISION",
+    "PRODUCT_COVERAGE": "3_OF_51",
+    "products_present": 51,
+    "products_hashed": 3,
+    "products_uncovered": 48,
+    "uncovered_rows": 137706659,
+    "covered_rows": 46443546,
+    "uncovered_row_share": 0.7478,
+    "deciding_evidence": {
+      "index_daily_2026_new": 106822,
+      "index_daily_2026_old": 273,
+      "commit_id_new": [
+        "572619c945d48f1b"
+      ],
+      "commit_id_unchanged_across_10_releases": true
+    },
+    "cross_host_commit_id": {
+      "sam": "c87b3a56…83bc4",
+      "desktop": [
+        "572619c945d48f1b"
+      ],
+      "equal": false,
+      "reason": "identity hashes source_cleaning_release + parent_release_id (run-scoped)",
+      "desktop_source_cleaning_release": "R15_REPLAY_20260924_R3"
+    },
+    "note": "按 SAM B5 要求：不判 PASS。任何 'commit_id 相同 ⇒ 内容相同' 的跨机推断作废。",
+    "design_proposal": "RELEASE_CONTENT_ID_R1_DESIGN.md (P3)"
+  },
+  "C_invoked_versions": {
+    "verdict": "PASS_WITH_VERSION_DEVIATION",
+    "files_total": 7,
+    "files_match_raw_sam": 6,
+    "files_1_to_6_all_match": true,
+    "file7_asymmetric_as_predicted": {
+      "expected_desktop": {
+        "bytes": 46492,
+        "sha16": "949e95c7"
+      },
+      "observed": {
+        "bytes": 46492,
+        "sha16": "949e95c7"
+      },
+      "matches_prediction": true
+    },
+    "line_ending_advice_correction": {
+      "sam_advice": "比对时先归一化换行 (CRLF)",
+      "finding": "1-4 号与 7 号文件全部为 CRLF（crlf==lf 计数）；5-6 号为纯 LF。SAM 哈希的是原始字节。若先归一化，5 个文件会变成假 DIFF（实测 match_crlf=2/7）。",
+      "action": "按原始字节比对，勿归一化。"
+    },
+    "runtime": {
+      "local": {
+        "python": "3.12.10",
+        "pandas": "2.3.3",
+        "pyarrow": "21.0.0",
+        "exe": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe"
+      },
+      "sam": {
+        "python": "3.12.10",
+        "pandas": "3.0.3",
+        "pyarrow": "24.0.0"
+      },
+      "match": false,
+      "impact": "KEY_CHECK / dtype 行为可能不同；本轮台机结果是在 pandas 2.3.3 下产生的，与 SAM 的 3.0.3 基线不构成同环境对照。"
+    },
+    "loader": {
+      "COMPILER_PATH": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+      "points_to_local": true,
+      "spec_module_name": "tip_rebase_candidate",
+      "argv_has_no_publish": true,
+      "actual_argv": [
+        "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+        "--run-target-date",
+        "2026-09-24",
+        "--cleaning-json",
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\RELEASE.json",
+        "--parent-root",
+        "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+        "--out-root",
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases",
+        "--no-publish"
+      ]
+    }
+  },
+  "OVERALL": "BLOCKED_ON_DECISION",
+  "gate_note": "A、C 通过（C 附运行时版本偏差，需先报差异）；B 记 BLOCKED_ON_DECISION，不得作为进入全链复验的通行证。",
+  "next": [
+    "token 轮换（安全，优先）",
+    "B 的 P1/P2/P3 决策",
+    "运行时版本对齐或声明不可比"
+  ]
+}
