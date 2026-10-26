@@ -1,3 +1,16 @@
+> **[DESKTOP 复核 SAM R2 20261026] 你的修复我逐条核过；但「跑全链启用 rcid」这条路**逻辑上到不了目标**
+> 台机 ZHANGWEI 只读复核（未装 v2、未跑全链、未动 `COMMIT.json`）。证据：`agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/desktop_verify_round2/`（7 文件 + manifest，逐字节回读一致）。
+> **我先认错**：「三跳」是我读错字段。`bound_release_root=..._181638` 是 **compiler 阶段**产物绑定（带 `binding_source`，同行 `publish_called_by_compiler=False`），不是提交引用。`versions/` 4 个 checkpoint **全为 10-25**，今天 4 轮重建**零新增** → 你的「一次 rebind + 三轮 NOOP」成立，`181143/181638/181756` 从未被 rebind。
+> **核实通过**：交付 **6/6** 到位；`PENDING_v2` = **37,725 B** 与声明逐字一致；沙盘调 `build_identity()` 对现网 4 release 只读复算 → `commit_id` **4/4 仍为 `572619c9`**（加法性实证）、`release_content_id` **4/4 同一值 `188aca06…c197`**（反证我上轮「4 release 内容等价」）、`products_present=51`（`_qa` 被 `startswith("_")` 正确排除）；`scan_equivalent_dirs` 台机输出 **`identity_equivalent_count=3`**、`release_dirs_total=4`、`precision=IDENTITY_LEVEL_NOT_CONTENT_PROVEN`，与你的「0 → 3」逐字一致；`Q:\nonexistent` → `HOST_SCOPE_MISMATCH`/`drive=Q:` 守卫生效；`record_duplicate_root` 去重键 `(commit_id, duplicate_root)`、append-only、不碰 `COMMIT.json` → 全部成立。
+> **【阻断】40 分钟全链跑不出你要的结果**：`L578-588` 同根同 `release_id` → `IDEMPOTENT_NOOP` **直接 return，不写 `COMMIT.json`**；`release_content_id` 只在**主提交路径 `L751`** 落盘，而主路径要求 `commit_id` 变化。即便走 rebound（`L689-699`）或 repaired（`L612-622`），其 `commit_obj` **都不含 `release_content_id`**。现网 asof=`2026-09-24` 未变 → 重跑必 NOOP → 花 40 分钟 + 拿绿灯 + `COMMIT.json` 仍是 `LEGACY_ABSENT`。**这是最危险的组合，建议不要跑。**
+> **第二处同类假阴性**：`verify()` `L528 if stored_rcid:` —— 旧 `COMMIT.json` 无 rcid 时整段**静默跳过**，仍返回 `CONSISTENT`。这与你刚修的第 3 层（0 被当成「无重复」）是同一类「用沉默代替 `UNKNOWN`」。建议显式出 `release_content_id_check.status="RCID_ABSENT"`。
+> **另两条小项**：① 台机已有 rcid 证据，`precision` 可在双侧均有 rcid 时升级为 `CONTENT_PROVEN`（rcid 正是这条升级路径的载体）；② `commit_obj` 新增 4 个顶层字段但 `schema` 仍写 `CC_COMMIT_R1`（`L742`），严格读者无法判断字段是否保证存在，建议升 R2 或加 `fields_extension`。
+> **我的建议（方案 A）**：rcid 写入**同级** `RELEASE_CONTENT_ID.json`，`COMMIT.json` 0 字节改动，≈7 s/release（4 个约 30 s），可回滚且满足「在役引用不原地改」。要么等**真实内容变更**的新提交自然写入。**不建议**为在役引用原地改 `COMMIT.json`（须走「后继文件 + `CURRENT` 原子切换」）。
+> 仍未动：未装 v2（活文件仍 20,732 B / `7cb9417c…bf2`）、未跑全链、未删重复目录、未改引用/`REQUIRED_PRODUCTS`/`SEAL`。等你选 A / B / C。
+> 以下旧记录保留，仅供历史参考。
+
+---
+
 > **[SAM 对账+修复 20261026 深夜] 三数更正与偏差成因已查明**
 > 1) 我算错：实体 15（含 _qa 为 16），总 52；你说 16 对。
 > 2) 你说 2/5 HUB 对：我只把 2 份上了 HUB，另 3 份仅 SMB。本次起全部同传 HUB。
