@@ -1,3 +1,19 @@
+> **[DESKTOP R13 REVERIFY 20261026] 三项功能判据 9/9 成立；但抓到 1 个 HIGH 结构缺陷（commit 身份不含指数/ETF）**
+> 台机 ZHANGWEI 本机跑，`CONNECTED_PIPELINE_RESULT=PASS`（12/12，A/B 两次独立 run 均 PASS），独立核验 **20/21**，0 次 `allow_skip`。
+> 证据：`agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/r13_binding_index_closure/`（14 文件 + manifest，逐字节回读一致；共享盘 `\\192.168.100.2\BLACKBOX\运行\外部大脑信箱\staging\r13_binding_index_closure`）
+> 报告：[DESKTOP_R13_REPORT.md](https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/r13_binding_index_closure/DESKTOP_R13_REPORT.md)
+> **成立的**：绑定来自 `TIP_REBASE_LAST.json`（`bound=..._181638`，旧声明移位到 `.prev_12604.json`，`newest_release` 调用点 0）；闭包 `FILE_SET_IDENTITY` 234/37/**1501** 全 `CLOSURE_OK`；指数 `KEY_CHECK MATCH 106822/106822`；`rows_2026` 指数 **106,822**、ETF **63,204**、股票 **959,896×3**；七月六天未变；生产 9 文件 digest 跑前跑后全等；二次 `IDEMPOTENT_NOOP` + `CONSISTENT`；fixture 复现「等数量换键被拦」成立。
+> **指数是补齐不是替换**：旧 273 键 ⊂ 新 106,822，**移除 0**，新增 106,549；732 codes / 176 dates；1464 = 732×2 个 release 目录（非 1464 个指数）。
+> **HIGH-1 `commit` 身份不覆盖 ETF 与指数**：`REQUIRED_PRODUCTS` 只有 3 个股票产品。实测 **7 个归档 release（INDEX=273）与本轮（106,822）`commit_id` 完全相同 `572619c9`**，提交状态 `REBOUND_SAME_CONTENT_NEW_ROOT` —— 名字说"同内容"，实际指数差了 106,549 键。**`commit_consistent`/`IDEMPOTENT_NOOP` 永远发现不了指数或 ETF 回归**。建议把这两个产品纳入 identity（或按产品粒度报 digest）。
+> **HIGH-2 空源根闭包盲通过**：`expected=[] enumerated=[] read=[]` → `CLOSURE_OK=true`（缺 `expected==0` 守卫），`scan_parquet_independent(不存在路径)=[]`。**本轮负控正是走这条**：不在读门被拦，而是跑到最后 `FAIL missing=['VALUATION_PIT_R1']` 才 exit 2；上一轮是 `MATERIALISED_UNREADABLE`。**负控"非零退出"判据无法区分"门拦下"与"缺产品"**，建议改为断言命中指定门。
+> **MEDIUM-3**：`expected_keys_from_frames` 内 `report.append(... str(p) ...)` 是从 `read_price_frame` 复制的，`p`/`report` 不在作用域 → 任何空 frame 抛 `NameError`，会把可继续的对账变成 `KEY_SET_UNVERIFIABLE` 假失败（本轮无空 frame 未触发）。
+> **LOW-4**：`TIP_REBASE_LAST.json` 是单槽，run 内 replay 会覆盖成 `..._181756`；事后读该文件已不是绑定证据（本次靠 deliverable 的 `declared` 快照）。建议另写不可变 `TIP_REBASE_BIND_<run_id>.json`。
+> **速度更正**：你说全链约 30 分钟，台机 **18:10:15 → 18:12:42，约 2.5 分钟**（含 1501 个指数文件）。≥40 分钟超时对台机是浪费；快也不代表漏读（`read_ok=1501` + `rows=106,822` 是硬证据）。
+> `V4 BLOCKED_INPUT_INCOMPLETE` 未变、未触碰；`std/index_daily` 仍未被 tip-rebase 使用（已核实：R15 release 里只有 `standard/reference/index_daily` 37 文件/273 行）；`PRODUCTION_CURRENT_WRITE=NONE`、无新下载、未删文件、`ORDER_ALLOWED=false`。
+> 以下旧记录保留，仅供历史参考。
+
+---
+
 > GPT handoff review (2026-10-26 18:04 CN), same SAM_LED_DESKTOP_RECTIFICATION_20261025 dispatch: read agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/SAM_RELEASE_INDEX_HANDOFF_REVIEW_20261026_1804.md. New SAM release/index report and manual received; independent acceptance is pending exact deployed compiler/runner bodies and retained run/closure/key/commit evidence specified there. Complete the existing handoff only; do not restart, duplicate or stop desktop verification, rescan, download, change CURRENT or issue orders. Preserve all failed outcomes and the valid earlier stock baseline. Upload and read back every file; final Cursor message exactly END.
 
 > **[GPT 当前执行 2026-10-26：SAM 修复 release 绑定与指数读取校验]**
