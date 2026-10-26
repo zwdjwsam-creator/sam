@@ -1,0 +1,49 @@
+FULL_BYTES=541210 FULL_LINES=2946
+
+CMD:
+$ E:\BLACKBOX\.venv\Scripts\python.exe -X utf8 E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\tools\run_original_compiler_candidate.py --cleaning-json E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\evidence\BAD_CLEANING_RELEASE.json --parent-root E:\BLACKBOX\数据\回测缓存\releases\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439 --out-root E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\candidate\bad_out\releases --acceptance-out E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\candidate\bad_out\acceptance --run-target-date 2026-09-24 --receipt E:\BLACKBOX\_OPS\FOUNDATION_RECOVERY_20261024\end_to_end_completion\evidence\ORIGINAL_COMPILER_RECEIPT_BAD.json
+
+FAIL_LINES:
+[2026-10-26T10:17:56+00:00] FAIL missing=['VALUATION_PIT_R1'] tip_ok=False stock_max=None raw_max=None
+
+RECEIPT_TAIL:
+  ],
+  "raw_max": null
+}
+{
+  "compiler_module": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+  "argv": [
+    "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+    "--run-target-date",
+    "2026-09-24",
+    "--cleaning-json",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\BAD_CLEANING_RELEASE.json",
+    "--parent-root",
+    "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "--out-root",
+    "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\bad_out\\releases",
+    "--no-publish"
+  ],
+  "exit_code": 2,
+  "error": null,
+  "elapsed_sec": 14.4,
+  "redirected_OUT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\bad_out\\acceptance",
+  "production_OUT_untouched": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\12_ACCEPTANCE",
+  "publish_called": false,
+  "no_publish": true,
+  "releases_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\bad_out\\releases",
+  "releases_present": [
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130650",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_130900",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_191850",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_215647",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234105",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234546",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234951",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235320",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235438",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181129",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181741"
+  ],
+  "running_python": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe"
+}
