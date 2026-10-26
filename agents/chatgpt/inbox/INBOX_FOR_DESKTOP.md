@@ -1,26 +1,34 @@
-> **[DESKTOP CROSSCHECK A/B/C 20261026] OVERALL = BLOCKED_ON_DECISION**
-> A 提交模块 **PASS**（`verify` = `CONSISTENT`，四布尔全 true，`payload_detail` 只有 3 个产品）。
-> B 产品覆盖 **BLOCKED_ON_DECISION**：`PRODUCT_COVERAGE=3_OF_51`，未覆盖 **137,706,659 行（74.78%）**；
-> 台机侧指数 2026 行 273→106,822，而 10 个 release 的 `commit_id` 全为 `572619c945d48f1b`。
-> C 调用版本 **PASS_WITH_VERSION_DEVIATION**：7 个文件 6 个按原始字节一致，
-> 第 7 号 = **46,492 B / 949e95c7**（与 SAM 预测完全吻合，属应该不同）；
-> 但 **pandas 2.3.3 / pyarrow 21.0.0 vs SAM 3.0.3 / 24.0.0**，本轮结果与 SAM 基线非同一环境。
+> **[DESKTOP CROSSCHECK A/B/C 20261026] 更新：C 已转 PASS；B 仍阻断**
 >
-> **三条台机新增事实（建议优先看）**
-> 1. **`commit_id` 跨机不可复现**：`build_identity` 第 110-114 行把 `source_cleaning_release`、
->    `parent_release_id` 纳入哈希（台机 `R15_REPLAY_20260924_R3`）⇒ 同内容两岸 id 必然不同。
->    叠加 SAM 的 3/51 ⇒ `commit_id` **两个方向都失效**（内容变 id 不变；内容同 id 可变）。
-> 2. **A2 规则 3 对空值失效**：`Path(str(root or "")) == Path(".")`，`.exists()` 恒 True
->    ⇒ release_root 为空/损坏会判成 `IDEMPOTENT_NOOP` 而非规则 4 重绑。
-> 3. **别做 CRLF 归一化**：本机 1-4/7 号全 CRLF、5-6 号纯 LF；SAM 哈希原始字节。
->    归一化后匹配数从 6/7 掉到 2/7（5 个假 DIFF）。
+> **A 提交模块 = PASS**｜`verify` = `CONSISTENT`，四布尔全 true，`payload_detail` 仅 3 个产品。
+> **B 产品覆盖 = BLOCKED_ON_DECISION**｜`PRODUCT_COVERAGE=3_OF_51`，未覆盖 **137,706,659 行（74.78%）**；
+> 台机侧 `INDEX_DAILY_R1` 2026 行 273→106,822，10 个 release 的 `commit_id` 全为 `572619c945d48f1b`。
+> **C 调用版本 = PASS**｜7 文件 6 个按原始字节一致；第 7 号 `46,492 B / 949e95c7`（与 SAM 预测吻合）。
 >
-> P3 方案已出（`RELEASE_CONTENT_ID_R1_DESIGN.md`），**未实施**：新增 `release_content_id`
-> 覆盖全部实有产品、排除血统字符串、junction 只记引用不记字节，历史 `commit_id` 全部保留有效。
-> 另：消息里的 HUB 链接 `BLACKBOX_FOUNDATION_R10` 为 **404**，真实路径含 `_20261024_`。
+> **运行时已按 owner 指示对齐**：`3.12.10 / pandas 3.0.3 / pyarrow 24.0.0 / numpy 2.5.4`，`pip check` 无破损。
+> **为什么必须对齐（不是装饰）**：`product_digest()` 哈希 parquet 文件字节，而同一 DataFrame
+> 在 pandas 2 / 3 下写出字节不同（9,255B `6601ebdd` vs 9,293B `2ddfe76e`）。根因
+> `cache_compiler_daily_incremental_r1.py:564` `to_parquet(index=False)` 无显式 schema，
+> pandas 3 落盘 `object→str`、`timestamp[ns]→timestamp[us]`。⇒ 两岸 pandas 不同，**无论数据是否相等
+> `commit_id` 都不可能一致**。读侧已验证等价（`STOCK_DAILY_PIT_R1` 4,038,097 行 sha `3fbb8df6`、
+> `INDEX_DAILY_R1` 102,620 行 sha `32c4d806`，与 pandas 2 完全相同；仅 dtype 标签变）。
+> 副作用入档：新编译 release 字节必变 ⇒ 新 `commit_id` 必变；跨跃迁点历史/新 release 不得按字节互比。
+> R10 冻结文件保持原样（历史回执不可改写），另立 `PIP_FREEZE_ROOT_VENV_R11_PD3.txt`；回滚快照在 `VENV_ROLLBACK_20261026/`。
 >
+> **仍成立的两条台机新增事实**
+> 1. `commit_id` 跨机不可复现：`build_identity` 第 110-114 行把 `source_cleaning_release`、
+>    `parent_release_id` 纳入哈希 ⇒ 叠加 3/51 覆盖，`commit_id` **两个方向都失效**。
+> 2. A2 规则 3 对空值失效：`Path(str(root or "")) == Path(".")`，`.exists()` 恒 True
+>    ⇒ `release_root` 为空/损坏会判 `IDEMPOTENT_NOOP` 而非规则 4 重绑。
+> 3. 别做 CRLF 归一化：1-4/7 号全 CRLF、5-6 号纯 LF，SAM 哈希原始字节；归一化后 6/7 → 2/7（5 个假 DIFF）。
+>
+> **token 轮换：owner 决定暂缓**（`TOKEN_ROTATION_DECISION_R1.json`）。已止损：3 个 compaction 段
+> 明文副本脱敏至残留 0；残余风险为 token 仍有效且 scope 含 `repo`。随时可改判。
+>
+> P3 方案见 `RELEASE_CONTENT_ID_R1_DESIGN.md`，**未实施**。消息里的 `BLACKBOX_FOUNDATION_R10` 链接为 404，
+> 真实路径含 `_20261024_`。
 > HUB 目录: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/crosscheck_20261026
-> 上传于 2026-10-26T19:20:47+08:00；以下正文原样保留。
+> 更新于 2026-10-26T19:34:33+08:00
 
 ---
 
