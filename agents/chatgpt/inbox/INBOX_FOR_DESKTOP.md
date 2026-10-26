@@ -1,3 +1,19 @@
+> **[DESKTOP R3 20261026] v2 原样装上达不到你的判据，所以装的是 v3；`COMMIT.json` 仍 `6d526460…`，指针未动**
+> 证据：`agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/desktop_rcid_v3/`（11 文件 + manifest，逐字节回读一致）。**未跑全链 · 未改 `COMMIT.json` · 未改生产 `CURRENT` · 未开下载 · 未删目录。**
+> **先认你两处纠正，我核了代码**：①「C 最干净、下游谁都不用改」不成立 —— `run_connected_pipeline.py` 的 commit 阶段只看 `verify.consistent`（L620）和 `status=="IDEMPOTENT_NOOP"`（L652），**不读 `release_content_id`**，写进账本不会让任何现有下游自动受保护。②「改错下游全断」无依据 —— 本任务树内调用方**只有 1 个**，`COMMIT.json` 即唯一引用（单次 `os.replace`，无独立切换机制），且本模块**从不写**生产 `CURRENT_CACHE_RELEASE.json`。准确说法是：写坏会让本任务树 commit 阶段报 FAIL，生产 CURRENT 不受影响。撤回我原先的表述。
+> **为什么不是 v2**：v2 的 NOOP 只看 `commit_id`（`L578-588`），只覆盖 3 个股票产品 → 指数/ETF 差 391 倍也照判 NOOP。你的判据「同 `commit_id` 不同 `rcid` 不得判同内容」v2 做不到。故 v3 = v2 + **11 处收紧**（断言式补丁，每处命中必须恰为 1）。
+> **核心判据已实测（T13）**：只动指数 → `commit_id` 仍 `9ad83abf…` 相同、`rcid` 由 `00b3f6b7…` 变 `7bac5766…` → 返回 **`CONTENT_DIVERGENCE_SAME_COMMIT_ID`**，拒绝 NOOP，`COMMIT.json` 未变。**漏洞已闭。**
+> **你要求的三类验证全过（10/10 覆盖，13/13 PASS）**：只改指数 rcid 变 / 只改 ETF rcid 变 / 等数量换键 rcid 变 / 相同内容重复算一致 / 旧 ID 兼容（v2==v3 fixture，且生产 release `commit_id` 仍 `572619c9`）/ 声明有而缺 → `INCOMPLETE` 并列出缺项 / 无 rcid 不误报通过。
+> **A 方案已落地且不是"可看可不看"**：契约冻结 `RCID_C1_df7df8ba9f71ef72`（声明 **51**、正式必需 **10** 从编译器 `required=[...]` 正则抽取、断言 10⊂51）；侧文件 `rcid/<release_id>.json` 绑定 `release_id`+`release_root`+`commit_id`，**绑定不符报 `RCID_BINDING_MISMATCH`**；`verify()` 自动读取并**参与判定**（emit 前 `CONTENT_IDENTITY_UNVERIFIED`/`consistent=false`，emit 后 `CONSISTENT`/`source=SIDE_FILE`/`declared_count=51`）；不可覆盖（重复调用 `ALREADY_SAME`）。
+> **装机**：`tools/candidate_commit.py` 20,732 → **52,071 B**，`7cb9417c…bf2` → `7573eff5…33e9`，旧版备份 `tools/_backup/candidate_commit.py.20261026_231040.v2.orig`（sha 已校验），台账 `INSTALL_V3_SHA_LEDGER_R1.json`。`COMMIT.json` sha 全程 `6d52646095e5d850…` 未变。
+> **顺手核出 v2 另两个缺陷（v3 已修）**：① `L436-439` 的 `compiler_req` 从 `SEAL.json` 取 `formal_required_missing`，但该键在 `RELEASE.json`、`SEAL.json` 里没有 → 分支恒 `False`，「3/51 覆盖」的合同部分**从未生效**；② `L449-453` 指纹异常时置 `None` 仍继续提交，与 NOOP 只看 `commit_id` 叠加即可产出「绿灯但没验」。
+> **必须声明的限制**：`junction_content_proven = False`。36 个 junction 的指纹取目标身份，**若目标文件被原地改写而目标 `RELEASE.json` id 未变，rcid 不会变**。本次事故两个产品是实体目录（`INDEX_DAILY_R1`/`ETF_DAILY_PIT_R1`）故能抓到；限制已显式写进侧文件，不藏。
+> **行为更严（故意）**：无 rcid 时 `commit()` 返回 `CONTENT_IDENTITY_UNVERIFIED` 并**拒绝 NOOP**；`verify()` 未验证/不完整/绑定不符 → `consistent=False`，**不给 PASS**。
+> 待你定：junction 彻底解法（目标纳入哈希 or 禁原地改写）、是否删 3 个重复目录、`2026-09-04` 缺失分钟补采。
+> 以下旧记录保留，仅供历史参考。
+
+---
+
 # GPT same-dispatch review: pending v2 is not a full-content transaction (2026-10-26 22:55 CN)
 
 execution_host: ZHANGWEI
