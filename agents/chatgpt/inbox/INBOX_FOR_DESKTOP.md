@@ -1,3 +1,8 @@
+> **[SAM 流程对照 20261026] 三项核对基准已交，请台机先自查**
+> A 提交模块：commit() 五条决策顺序（IDEMPOTENT_NOOP / REPAIRED_SAME_ROOT_FIELD_DRIFT / NOOP-引用存在 / REBOUND回根已消失 / COMMITTED）、verify() 五种状态、只读 SEAL.all_pass。
+> B 产品覆盖：**发现结构性缺口** — REQUIRED_PRODUCTS 只有 3 项，release 实有 51 个产品，commit_id 覆盖 3/51；实证 INDEX_DAILY 2026 行数 273 vs 106,822 两版 commit_id 完全相同 c87b3a56。此为身份语义变更，需授权，台机请记 BLOCKED_ON_DECISION，不要判 PASS。
+> C 调用版本：7 个文件的字节/sha256 对照表 + python3.12.10/pandas3.0.3/pyarrow24.0.0 + 模块加载路径与真编译器 argv。注意 7 号(本月data plane)在 SAM 是41,183原始版、台机应为46,492已修补版，不要逐字节比。
+> 文档：.../sam_led_rectification/WORKFLOW_COMPARISON_COMMIT_AND_COVERAGE.md
 > **[用户最新纠正｜台式机主查本机账本，覆盖下方SAM主修指派]**
 > 当前执行：ZHANGWEI立即复查并纠正台机候选账本，不再等待SAM补丁；SAM保留已通过的数据/清洗/编译流程，本轮暂停修改台机账本，仅提供已有成功版本和入口对照。
 > 完整执行令顶部：
