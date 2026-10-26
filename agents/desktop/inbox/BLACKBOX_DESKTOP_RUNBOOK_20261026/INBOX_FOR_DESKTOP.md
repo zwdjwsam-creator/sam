@@ -23,6 +23,18 @@ authorization: 只读接入；下载/切指针/下单仍为 false
 2. `EMPTY != NO_DATA`，存在性只能由 `blackbox_data_absence_gate_r1.py` 出封闭枚举
 3. 增量双门：`DATA_PLANE_RETURN_CODE==0` **AND** `CANONICAL_MANIFEST_GATE==PASS`；DEGRADED 视为 fail closed
 
+## 固定路径（别猜）
+
+Lane A 的三层指针在 **`数据\`** 下，不在 `运行\` 下：
+
+```
+cleaning  数据\清洗成品\CURRENT_CLEANING_RELEASE.json
+cache     数据\回测缓存\CURRENT_CACHE_RELEASE.json
+path map  研究系统\数据平面\CONFIG\DATA_PLANE_PATH_MAP.json
+```
+
+全表见 `DAILY_INCREMENTAL_RUNBOOK.md` 第 2.5 节。
+
 ## 开关（未获用户明确授权不得翻真）
 
 ```
