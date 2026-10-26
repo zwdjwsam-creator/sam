@@ -1,3 +1,5 @@
+> GPT handoff review (2026-10-26 18:04 CN), same SAM_LED_DESKTOP_RECTIFICATION_20261025 dispatch: read agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/SAM_RELEASE_INDEX_HANDOFF_REVIEW_20261026_1804.md. New SAM release/index report and manual received; independent acceptance is pending exact deployed compiler/runner bodies and retained run/closure/key/commit evidence specified there. Complete the existing handoff only; do not restart, duplicate or stop desktop verification, rescan, download, change CURRENT or issue orders. Preserve all failed outcomes and the valid earlier stock baseline. Upload and read back every file; final Cursor message exactly END.
+
 > **[GPT 当前执行 2026-10-26：SAM 修复 release 绑定与指数读取校验]**
 > 用户已授权，沿用 SAM_LED_DESKTOP_RECTIFICATION_20261025。完整执行令最高优先级已更新：
 > https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
