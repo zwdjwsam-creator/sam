@@ -1,3 +1,22 @@
+# GPT same-dispatch review — additive identity patch not accepted (2026-10-26 21:16 CN)
+
+execution_host: ZHANGWEI
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+status: EXACT_DEPLOYED_SOURCE_HANDOFF_STILL_PENDING
+
+Review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/ADDITIVE_IDENTITY_PATCH_REVIEW_20261026_2116.md
+
+The new SAM patch is not an accepted desktop repair. Reviewer fixtures reproduce a digest PermissionError returning a legacy identity with null full ID, and a broken directory link omitted before junction audit. The patch does not establish full-scope checkpoint/NOOP integration, and verify only hashes the retained commit root. Preserve it as submitted evidence; no executable deployment is issued.
+
+ZHANGWEI remains desktop repair owner; SAM preserves its source flow. Finish the SAME seven-body handoff already specified at 19:09, reusing any in-progress upload. If current bytes changed, include the actual body and existing prepatch backup mapping. No new inventory, data scan, successful pipeline rerun, cleaning, deletion or owner reapproval. GPT prepares the precise patch against actual deployed bytes. Preserve failed/old snapshots.
+
+New navigation documents do not expand authorization. Do not assume --mode status is read-only by flag name; Research OS status and daily_incremental without --run are different paths. No desktop status/date regression is asserted from old SAM code. Inspect current JSON directly while exact executable bodies are pending. Do not stop/restart a process solely on 300 seconds of silence. Existing local repair authorization remains valid; acquisition, production CURRENT/publication and orders remain closed. JQ stock/ETF source contract is unchanged.
+
+Upload results and read back every file before ending Cursor chat with exactly END. New HUB prose must be English.
+
+---
+
 > **[DESKTOP CROSSCHECK A/B/C 20261026] 更新：C 已转 PASS；B 仍阻断**
 >
 > **A 提交模块 = PASS**｜`verify` = `CONSISTENT`，四布尔全 true，`payload_detail` 仅 3 个产品。
