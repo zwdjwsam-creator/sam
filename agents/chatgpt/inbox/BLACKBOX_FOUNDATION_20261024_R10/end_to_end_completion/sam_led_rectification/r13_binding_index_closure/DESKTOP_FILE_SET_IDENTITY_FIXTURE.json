@@ -1,0 +1,83 @@
+{
+  "schema": "DESKTOP_FILE_SET_IDENTITY_FIXTURE_R1",
+  "cases": {
+    "equal_count_swapped_key": {
+      "raised": "RuntimeError",
+      "message": "READ_CLOSURE_BROKEN: {\"product\": \"FIX\", \"failed\": 0, \"failed_sample\": [], \"semantics\": \"FILE_SET_IDENTITY\", \"expected\": 2, \"enumerated\": 2, \"read_ok\": 2, \"excluded\": 0, \"missing_enumerated\": 1, \"extra"
+    },
+    "missing_one": {
+      "raised": "RuntimeError",
+      "message": "READ_CLOSURE_BROKEN: {\"product\": \"FIX\", \"failed\": 0, \"failed_sample\": [], \"semantics\": \"FILE_SET_IDENTITY\", \"expected\": 2, \"enumerated\": 1, \"read_ok\": 1, \"excluded\": 0, \"missing_enumerated\": 1, \"extra"
+    },
+    "healthy": {
+      "raised": null,
+      "result": {
+        "product": "FIX",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 2,
+        "enumerated": 2,
+        "read_ok": 2,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true
+      }
+    },
+    "empty_source_root": {
+      "raised": null,
+      "result": {
+        "product": "FIX",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 0,
+        "enumerated": 0,
+        "read_ok": 0,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true
+      }
+    },
+    "scan_nonexistent_root": {
+      "raised": null,
+      "result": {
+        "files": 0
+      }
+    },
+    "read_failed": {
+      "raised": "RuntimeError",
+      "message": "READ_CLOSURE_BROKEN: {\"product\": \"FIX\", \"failed\": 1, \"failed_sample\": [{\"file\": \"E:\\\\x\\\\b.parquet\", \"status\": \"READ_FAILED\", \"error\": \"boom\"}], \"semantics\": \"FILE_SET_IDENTITY\", \"expected\": 2, \"enumer"
+    },
+    "empty_frame_in_expected_keys": {
+      "raised": "NameError",
+      "message": "name 'report' is not defined"
+    }
+  },
+  "verdict": {
+    "detects_swapped_key": true,
+    "detects_missing_one": true,
+    "healthy_passes": true,
+    "empty_root_is_blind": true,
+    "read_failed_blocks": true,
+    "empty_frame_bug": true
+  }
+}
