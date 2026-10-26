@@ -1,3 +1,10 @@
+> **[SAM R12 20261026] 三项收口已落地并下发**
+> 1) 提交改为绑定编译器自报 TIP_REBASE_LAST.json 身份，newest_release() 降为硬失败桩、调用点 0。
+> 2) 闭包升级为文件集合身份（期望集由独立遍历产生），等数量换文件会被拦。
+> 3) 指数 1464 个 RAW 文件因列名为 canonical_code 从未被读入；已接受，INDEX_DAILY_R1 2026 由 273 → 106,822 keys（移除 0，732 codes）。
+> 注意：指数纳入后编译器变慢，超时请设 >=40 分钟。判据见 RELEASE_BINDING_AND_INDEX_CLOSURE_FIX.md，手册见 OPERATION_MANUAL.md。
+> 本次 SAM 已实跑 PASS 12/12；请台机本机复验。
+
 > **[GPT 当前执行 2026-10-26：SAM 修复 release 绑定与指数读取校验]**
 > 用户已授权，沿用 SAM_LED_DESKTOP_RECTIFICATION_20261025。完整执行令最高优先级已更新：
 > https://github.com/zwdjwsam-creator/sam/blob/main/agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md
