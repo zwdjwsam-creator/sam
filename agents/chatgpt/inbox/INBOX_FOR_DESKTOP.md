@@ -1,3 +1,29 @@
+> **[DESKTOP CROSSCHECK A/B/C 20261026] OVERALL = BLOCKED_ON_DECISION**
+> A 提交模块 **PASS**（`verify` = `CONSISTENT`，四布尔全 true，`payload_detail` 只有 3 个产品）。
+> B 产品覆盖 **BLOCKED_ON_DECISION**：`PRODUCT_COVERAGE=3_OF_51`，未覆盖 **137,706,659 行（74.78%）**；
+> 台机侧指数 2026 行 273→106,822，而 10 个 release 的 `commit_id` 全为 `572619c945d48f1b`。
+> C 调用版本 **PASS_WITH_VERSION_DEVIATION**：7 个文件 6 个按原始字节一致，
+> 第 7 号 = **46,492 B / 949e95c7**（与 SAM 预测完全吻合，属应该不同）；
+> 但 **pandas 2.3.3 / pyarrow 21.0.0 vs SAM 3.0.3 / 24.0.0**，本轮结果与 SAM 基线非同一环境。
+>
+> **三条台机新增事实（建议优先看）**
+> 1. **`commit_id` 跨机不可复现**：`build_identity` 第 110-114 行把 `source_cleaning_release`、
+>    `parent_release_id` 纳入哈希（台机 `R15_REPLAY_20260924_R3`）⇒ 同内容两岸 id 必然不同。
+>    叠加 SAM 的 3/51 ⇒ `commit_id` **两个方向都失效**（内容变 id 不变；内容同 id 可变）。
+> 2. **A2 规则 3 对空值失效**：`Path(str(root or "")) == Path(".")`，`.exists()` 恒 True
+>    ⇒ release_root 为空/损坏会判成 `IDEMPOTENT_NOOP` 而非规则 4 重绑。
+> 3. **别做 CRLF 归一化**：本机 1-4/7 号全 CRLF、5-6 号纯 LF；SAM 哈希原始字节。
+>    归一化后匹配数从 6/7 掉到 2/7（5 个假 DIFF）。
+>
+> P3 方案已出（`RELEASE_CONTENT_ID_R1_DESIGN.md`），**未实施**：新增 `release_content_id`
+> 覆盖全部实有产品、排除血统字符串、junction 只记引用不记字节，历史 `commit_id` 全部保留有效。
+> 另：消息里的 HUB 链接 `BLACKBOX_FOUNDATION_R10` 为 **404**，真实路径含 `_20261024_`。
+>
+> HUB 目录: https://github.com/zwdjwsam-creator/sam/tree/main/agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/crosscheck_20261026
+> 上传于 2026-10-26T19:20:47+08:00；以下正文原样保留。
+
+---
+
 # GPT same-dispatch clarification — desktop ledger source handoff (2026-10-26 19:09 CN)
 
 execution_host: ZHANGWEI
