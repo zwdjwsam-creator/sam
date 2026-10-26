@@ -1,0 +1,445 @@
+{
+  "run_id": "R14_SAM_LED_CHAIN",
+  "pipeline_version": "R2_R15_TO_COMPILER_ONE_ARTIFACT",
+  "production_digest_before": {
+    "数据/回测缓存/CURRENT_CACHE_RELEASE.json": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+    "数据/清洗成品/CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json": "574842e7802be26d648d5aa2f6d91a9b4c208744e3ecf9f146e02ece41387d89",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json": "8a492440257170577a5c96f66bfd81e3b93fc6dc58e547cc3acd4c7baaf3fe9b",
+    "研究系统/数据平面/CURRENT/DAILY_RESEARCH_INPUT_PACK_CURRENT.json": "8b9a9567a3c7c581afdf6e704a0e81d64531866e588115b02d9fa7ea35e46466",
+    "研究系统/数据平面/STATE/JQ_INCREMENTAL_STATE.json": "94cf11a6d5e70c6ac302ec734e5c85fd17e165aba5f63d0abdf198c9a5825d1d",
+    "运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23",
+    "运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json": "9cca2be379941133aa144dbb195116e9739624fb3e37a9a0b78d7536e7b30e31"
+  },
+  "asof": "2026-09-24",
+  "replay_days": [
+    "2026-08-31",
+    "2026-09-01"
+  ],
+  "host": {
+    "hostname": "ZHANGWEI",
+    "python": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "cwd": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion"
+  },
+  "stages": {
+    "transport_gate": {
+      "status": "PASS",
+      "PROVENANCE_GATE": "PASS",
+      "SUPPLIER_COMPLETENESS": "UNKNOWN",
+      "ACQUISITION_RELEASED": false,
+      "sessions": [
+        {
+          "date": "2026-08-31",
+          "rows": 5212,
+          "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+          "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+          "gate": {
+            "stage": "gate",
+            "PROVENANCE_GATE": "PASS",
+            "provenance": {
+              "requested_date": "2026-08-31",
+              "sidecar_gap_start": "2026-08-31",
+              "sidecar_gap_end": "2026-08-31",
+              "source_file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+              "payload_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+              "request_evidence_origin": "SIDECAR"
+            },
+            "provenance_facts": {
+              "retained_bytes_match_sidecar_sha": true,
+              "row_band_source": "STRUCTURAL_SANITY_ONLY",
+              "duplicate_keys": 0,
+              "null_price_rows": 0
+            },
+            "SUPPLIER_COMPLETENESS": "UNKNOWN",
+            "vendor_result_complete": "UNKNOWN",
+            "original_gate": {
+              "DATA_ABSENCE_GATE": "UNKNOWN_INCOMPLETE_ACQUISITION",
+              "ACQUISITION_COMPLETE": "NO",
+              "RESULT_LIMIT_HIT": false,
+              "DATA_ABSENT_CLAIM_ALLOWED": false,
+              "NO_DATA_FORBIDDEN": true,
+              "n_rows": 5212,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "completeness_state": "UNKNOWN",
+              "grain_symbol": null,
+              "grain_date": null,
+              "grain_frequency": null,
+              "downstream_formal_ingest_forbidden": true
+            },
+            "original_gate_verdict": "UNKNOWN_INCOMPLETE_ACQUISITION",
+            "gate_inputs": {
+              "n_rows": 5212,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "request_evidence_origin": "SIDECAR",
+              "note": "query_cap and pagination_complete come only from a saved request record; the returned row count is never used as its own cap"
+            },
+            "ACQUISITION_RELEASED": false,
+            "rows": 5212
+          }
+        },
+        {
+          "date": "2026-09-01",
+          "rows": 5214,
+          "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+          "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+          "gate": {
+            "stage": "gate",
+            "PROVENANCE_GATE": "PASS",
+            "provenance": {
+              "requested_date": "2026-09-01",
+              "sidecar_gap_start": "2026-09-01",
+              "sidecar_gap_end": "2026-09-01",
+              "source_file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+              "payload_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+              "request_evidence_origin": "SIDECAR"
+            },
+            "provenance_facts": {
+              "retained_bytes_match_sidecar_sha": true,
+              "row_band_source": "STRUCTURAL_SANITY_ONLY",
+              "duplicate_keys": 0,
+              "null_price_rows": 0
+            },
+            "SUPPLIER_COMPLETENESS": "UNKNOWN",
+            "vendor_result_complete": "UNKNOWN",
+            "original_gate": {
+              "DATA_ABSENCE_GATE": "UNKNOWN_INCOMPLETE_ACQUISITION",
+              "ACQUISITION_COMPLETE": "NO",
+              "RESULT_LIMIT_HIT": false,
+              "DATA_ABSENT_CLAIM_ALLOWED": false,
+              "NO_DATA_FORBIDDEN": true,
+              "n_rows": 5214,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "completeness_state": "UNKNOWN",
+              "grain_symbol": null,
+              "grain_date": null,
+              "grain_frequency": null,
+              "downstream_formal_ingest_forbidden": true
+            },
+            "original_gate_verdict": "UNKNOWN_INCOMPLETE_ACQUISITION",
+            "gate_inputs": {
+              "n_rows": 5214,
+              "query_cap": null,
+              "pagination_complete": "UNKNOWN",
+              "request_evidence_origin": "SIDECAR",
+              "note": "query_cap and pagination_complete come only from a saved request record; the returned row count is never used as its own cap"
+            },
+            "ACQUISITION_RELEASED": false,
+            "rows": 5214
+          }
+        }
+      ],
+      "retained_sessions_available": 54,
+      "note": "retained bytes/keys are proven; vendor completeness is UNKNOWN because no saved supplier request exists in the retained corpus"
+    },
+    "cleaning_r15": {
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\pipeline_runs\\r15_cleaning_R15_REPLAY_20260924_R3.log",
+      "elapsed_sec": 1.0,
+      "release_id": "R15_REPLAY_20260924_R3",
+      "standard_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\standard",
+      "carry_forward": {
+        "subtrees": {
+          "price/stock_ohlcv_daily": {
+            "src_files": 232,
+            "dst_files": 232,
+            "absent_count": 0,
+            "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+          },
+          "price/ETF_daily": {
+            "src_files": 37,
+            "dst_files": 37,
+            "absent_count": 0,
+            "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\ETF_daily"
+          },
+          "reference/index_daily": {
+            "src_files": 37,
+            "dst_files": 37,
+            "absent_count": 0,
+            "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\reference\\index_daily"
+          },
+          "factor/valuation": {
+            "src_files": 65,
+            "dst_files": 65,
+            "absent_count": 0,
+            "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\factor\\valuation"
+          }
+        },
+        "files_linked": 371,
+        "files_copied": 0,
+        "missing": [],
+        "resolved_via_junction": [
+          {
+            "rel": "price/stock_ohlcv_daily",
+            "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+          },
+          {
+            "rel": "price/ETF_daily",
+            "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\ETF_daily"
+          },
+          {
+            "rel": "reference/index_daily",
+            "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\reference\\index_daily"
+          },
+          {
+            "rel": "factor/valuation",
+            "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\factor\\valuation"
+          }
+        ],
+        "stat_errors": [],
+        "gate_ok": true,
+        "skipped": false,
+        "method": "SELECTED_SUBTREES_COMPILER_INPUTS_ONLY",
+        "selected": [
+          "price/stock_ohlcv_daily",
+          "price/ETF_daily",
+          "reference/index_daily",
+          "factor/valuation"
+        ],
+        "original_hardlink_tree_usable": false,
+        "original_hardlink_tree_reason": "rglob follows reparse points; production standard has ~32-release junction chains and a real junction cycle, so it never terminates (observed: 25 min CPU spin, 0 bytes produced)",
+        "elapsed_sec": 0.1,
+        "parent_standard": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+        "write_path_real": true
+      },
+      "release_content_root_sha256": "3b88a0432158d11d10bd26dfe3a210dbdc5e11f5153b88f26d5ceca449f7c7fa",
+      "real_functions": [
+        "formal_cleaning_r15_build_and_seal_r1.hardlink_tree",
+        "formal_cleaning_r15_build_and_seal_r1.load_staging",
+        "formal_cleaning_r15_build_and_seal_r1.ingest_item",
+        "formal_cleaning_r15_build_and_seal_r1.ingest_minute_staging",
+        "formal_cleaning_r15_build_and_seal_r1.seal_release",
+        "r15_antileak_and_ssot_r1.antileak_check"
+      ],
+      "switch_current": "NOT_CALLED",
+      "patch_hand": "NOT_CALLED"
+    },
+    "compiler": {
+      "cmd": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\run_original_compiler_candidate.py",
+        "--cleaning-json",
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\RELEASE.json",
+        "--parent-root",
+        "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+        "--out-root",
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases",
+        "--acceptance-out",
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\acceptance",
+        "--run-target-date",
+        "2026-09-24",
+        "--receipt",
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\evidence\\ORIGINAL_COMPILER_RECEIPT.json"
+      ],
+      "exit_code": 0,
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\pipeline_runs\\compiler_releases.log",
+      "elapsed_sec": 59.1,
+      "receipt": {
+        "compiler_module": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+        "argv": [
+          "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+          "--run-target-date",
+          "2026-09-24",
+          "--cleaning-json",
+          "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\RELEASE.json",
+          "--parent-root",
+          "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "--out-root",
+          "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases",
+          "--no-publish"
+        ],
+        "exit_code": 0,
+        "error": null,
+        "elapsed_sec": 58.6,
+        "redirected_OUT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\acceptance",
+        "production_OUT_untouched": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\12_ACCEPTANCE",
+        "publish_called": false,
+        "no_publish": true,
+        "releases_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases",
+        "releases_present": [
+          "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+          "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181143",
+          "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638"
+        ],
+        "running_python": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe"
+      },
+      "tip_rebase_last": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\acceptance\\TIP_REBASE_LAST.json",
+      "stale_moved_to": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\acceptance\\TIP_REBASE_LAST.prev_12604.json",
+      "declared": {
+        "cache_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+        "release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+        "asof": "2026-09-24",
+        "source_cleaning_release": "R15_REPLAY_20260924_R3",
+        "all_pass": true
+      },
+      "bound_release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+      "bound_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+      "binding_source": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\acceptance\\TIP_REBASE_LAST.json",
+      "status": "PASS",
+      "cleaning_json_consumed": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\RELEASE.json",
+      "cleaning_json_sha256": "4c75ed58f1ae0c6dba1935b119798138476b1024f669b86cd17756b72ec04de8",
+      "release": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+      "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+      "seal_all_pass": true,
+      "price_gates": {
+        "stock": true,
+        "etf": true,
+        "fund": true,
+        "index": true
+      },
+      "stock_2026": {
+        "status": "READY",
+        "rows_2026": 959896,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "replay_days_in_release": {
+        "2026-08-31": 5212,
+        "2026-09-01": 5214
+      },
+      "original_entry": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+      "publish_called_by_compiler": false
+    },
+    "commit": {
+      "status": "PASS",
+      "commit": {
+        "status": "IDEMPOTENT_NOOP",
+        "commit_id": "572619c945d48f1b14f41c6f8c94b66dbacab00da4303366bcf2687ff8ec0876",
+        "commit_file_sha256": "6d52646095e5d8509ba7fa5076ee0bbaed843f668e5f72fc95805fa10c500820",
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+        "release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+        "note": "duplicate root with identical content; reference unchanged",
+        "candidate_release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638"
+      },
+      "verify": {
+        "commit_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\COMMIT.json",
+        "commit_id": "572619c945d48f1b14f41c6f8c94b66dbacab00da4303366bcf2687ff8ec0876",
+        "status": "CONSISTENT",
+        "consistent": true,
+        "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\572619c945d48f1b\\CHECKPOINT.json",
+        "checkpoint_sha_matches": true,
+        "checkpoint_identity_matches": true,
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+        "asof": "2026-09-24",
+        "payload_matches": true,
+        "payload_root_missing": false,
+        "payload_detail": {
+          "STOCK_DAILY_PIT_R1": {
+            "expected": "f929f8ccdef69ddae84426ee0454290f078abc589e81111a7ca2d0cae82ec38d",
+            "actual": "f929f8ccdef69ddae84426ee0454290f078abc589e81111a7ca2d0cae82ec38d",
+            "match": true
+          },
+          "STOCK_DAILY_RAW_PIT_R1": {
+            "expected": "f1df1854fcd2447a886862f841079874a19f768a8b0bf169beca12169d077a9a",
+            "actual": "f1df1854fcd2447a886862f841079874a19f768a8b0bf169beca12169d077a9a",
+            "match": true
+          },
+          "STOCK_FACTOR_DAILY_R1": {
+            "expected": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "actual": "0c68f02825dfc53ca05a41a94df5dfcf59eca20d1c6175196ed84b7f19b5e062",
+            "match": true
+          }
+        }
+      }
+    },
+    "publish_gate_probe": {
+      "status": "EVALUATED_NOT_PUBLISHED",
+      "original_function": "blackbox_daily_increment_publish_gate_r1.publish_atomic",
+      "OPERATIONAL_READINESS": "PASS",
+      "CURRENT_PUBLISH": "ALLOWED",
+      "published": false,
+      "production_CURRENT_written": false
+    },
+    "same_input_replay": {
+      "status": "PASS",
+      "compiler_exit_code": 0,
+      "second_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181756",
+      "commit": {
+        "status": "IDEMPOTENT_NOOP",
+        "commit_id": "572619c945d48f1b14f41c6f8c94b66dbacab00da4303366bcf2687ff8ec0876",
+        "commit_file_sha256": "6d52646095e5d8509ba7fa5076ee0bbaed843f668e5f72fc95805fa10c500820",
+        "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+        "release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+        "note": "duplicate root with identical content; reference unchanged",
+        "candidate_release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181756"
+      },
+      "commit_id_unchanged": true,
+      "note": "same cleaning input recompiled; the committed DATA identity is content-addressed, so the same input commits nothing new"
+    }
+  },
+  "controls": {
+    "tampered_date": {
+      "status": "BLOCKED_AS_EXPECTED",
+      "stage": "gate",
+      "code": "SESSION_DATE_MISMATCH"
+    },
+    "self_certified_completeness": {
+      "status": "BLOCKED_AS_EXPECTED",
+      "stage": "gate",
+      "code": "ACQUISITION_COMPLETENESS_UNPROVEN"
+    },
+    "compiler_hard_block": {
+      "status": "BLOCKED_AS_EXPECTED",
+      "exit_code": 2,
+      "log": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\pipeline_runs\\compiler_HARD_BLOCK_negative_control.log"
+    }
+  },
+  "PRODUCTION_CURRENT_WRITE": "NONE",
+  "NEW_DATA_ACQUISITION": "NONE",
+  "LINEAGE": {
+    "retained_batches": [
+      {
+        "retained_file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+        "retained_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+        "r15_sealed_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\standard\\price\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+        "r15_sealed_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+        "retained_equals_r15_sealed": true
+      },
+      {
+        "retained_file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+        "retained_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+        "r15_sealed_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\standard\\price\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+        "r15_sealed_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+        "retained_equals_r15_sealed": true
+      }
+    ],
+    "r15_release_id": "R15_REPLAY_20260924_R3",
+    "r15_standard_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\standard",
+    "r15_release_content_root_sha256": "3b88a0432158d11d10bd26dfe3a210dbdc5e11f5153b88f26d5ceca449f7c7fa",
+    "compiler_cleaning_json": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\RELEASE.json",
+    "compiler_read_standard_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\standard",
+    "cache_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+    "LINEAGE_OK": true
+  },
+  "production_digest_after": {
+    "数据/回测缓存/CURRENT_CACHE_RELEASE.json": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+    "数据/清洗成品/CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json": "574842e7802be26d648d5aa2f6d91a9b4c208744e3ecf9f146e02ece41387d89",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json": "8a492440257170577a5c96f66bfd81e3b93fc6dc58e547cc3acd4c7baaf3fe9b",
+    "研究系统/数据平面/CURRENT/DAILY_RESEARCH_INPUT_PACK_CURRENT.json": "8b9a9567a3c7c581afdf6e704a0e81d64531866e588115b02d9fa7ea35e46466",
+    "研究系统/数据平面/STATE/JQ_INCREMENTAL_STATE.json": "94cf11a6d5e70c6ac302ec734e5c85fd17e165aba5f63d0abdf198c9a5825d1d",
+    "运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json": "e98d438b02738f3975b75356935486f9ff52c7fa8daee5ca8988baef5149cd23",
+    "运行/BLACKBOX_HAND_DAILY_INCREMENTAL_UPDATE_WITH_SW_L123_CACHE_CURRENT.json": "9cca2be379941133aa144dbb195116e9739624fb3e37a9a0b78d7536e7b30e31"
+  },
+  "production_digest_changed": {},
+  "verdicts": {
+    "transport_gate_pass": true,
+    "tampered_date_blocked": true,
+    "self_cert_blocked": true,
+    "r15_cleaning_pass": true,
+    "compiler_read_r15_tree": true,
+    "lineage_same_artifact": true,
+    "compiler_hard_block_propagated": true,
+    "original_compiler_all_pass": true,
+    "replay_days_present_in_release": true,
+    "commit_consistent": true,
+    "same_input_replay_noop": true,
+    "production_current_untouched": true
+  },
+  "CONNECTED_PIPELINE_RESULT": "PASS"
+}
