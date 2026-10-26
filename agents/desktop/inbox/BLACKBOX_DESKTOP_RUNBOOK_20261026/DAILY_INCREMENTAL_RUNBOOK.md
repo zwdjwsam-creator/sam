@@ -55,6 +55,85 @@ $py = "E:\BLACKBOX\.venv\Scripts\python.exe"
 
 ---
 
+## 2.5 固定路径表（禁止猜路径，一律查 PATH_MAP）
+
+唯一权威：`研究系统/数据平面/CONFIG/DATA_PLANE_PATH_MAP.json`
+原则：`ALL_LANES_FIXED_PATHS_NO_AD_HOC`。**不要自己拼路径、不要 glob 找目录。**
+
+| Lane | 指针 | 说明 |
+|---|---|---|
+| A | `数据/清洗成品/CURRENT_CLEANING_RELEASE.json` | 正式清洗 CURRENT |
+| A | `数据/回测缓存/CURRENT_CACHE_RELEASE.json` | Cache CURRENT（含 `source_cleaning` 必须等于上面那个） |
+| A | `运行/BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json` | 全量更新 scope |
+| B | `数据/外部证据/CURRENT/EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json` | 外源终态 |
+| B | `运行/BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json` | asof 对齐 |
+| B | `运行/BLACKBOX_EXTERNAL_EVIDENCE_RESOLVER_CURRENT.json` | Resolver |
+| C | `数据/研究报告/CURRENT/SELLSIDE_DAILY_INCREMENTAL_CURRENT.json` | 三大行日增 |
+| C | `数据/研究报告/日增量/LAST_SUCCESSFUL_UPDATE.json` | 上次成功 |
+| D | `数据/研究报告/国内卖方/CURRENT/DOMESTIC_SELLSIDE_CURRENT.json` | 国内研报 |
+| D | `数据/研究报告/国内新闻/CURRENT/DOMESTIC_NEWS_CURRENT.json` | 国内新闻 |
+| E | `数据/美国市场/新闻/CURRENT/US_NEWS_CURRENT.json` | 美国新闻/AI 产业 |
+| F | `数据/美国市场/市场状态/CURRENT/US_MARKET_STATE_CURRENT.json` | 美股状态 |
+| F | `数据/美国市场/市场状态/CURRENT/US_TO_CN_SESSION_ALIGNMENT.csv` | 美→中 session 对齐 |
+
+产物根（只读，不得写别的层）：
+
+```
+数据/外部证据/          源隔离，禁止写 JQ 产品
+数据/研究报告/          三大行 + 国内，含 原始只读/ 与 日增量/
+数据/美国市场/新闻/
+数据/美国市场/市场状态/
+```
+
+核对路径存在性的正确方式（中文路径必须用 Python + UTF-8，不要用 PowerShell 直接拼中文）：
+
+```powershell
+& $py -X utf8 -c "import json,io;m=json.load(io.open(r'研究系统\数据平面\CONFIG\DATA_PLANE_PATH_MAP.json',encoding='utf-8'));print(json.dumps(m['lanes'],ensure_ascii=False,indent=1))"
+```
+
+---
+
+## 2.5 固定路径表（禁止猜路径）
+
+唯一权威：`研究系统/数据平面/CONFIG/DATA_PLANE_PATH_MAP.json`
+（`principle = ALL_LANES_FIXED_PATHS_NO_AD_HOC`）
+
+**注意层级**：Lane A 的三层指针在 `数据\` 下，不在 `运行\` 下。写脚本前先查这张表，不要按记忆拼路径。
+
+```
+Lane A  scope    运行\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json
+Lane A  cleaning 数据\清洗成品\CURRENT_CLEANING_RELEASE.json
+Lane A  cache    数据\回测缓存\CURRENT_CACHE_RELEASE.json
+
+Lane B  root     数据\外部证据\
+Lane B  final    数据\外部证据\CURRENT\EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json
+Lane B  align    运行\BLACKBOX_EXTERNAL_EVIDENCE_ASOF_ALIGN_CURRENT.json
+Lane B  resolver 运行\BLACKBOX_EXTERNAL_EVIDENCE_RESOLVER_CURRENT.json
+
+Lane C  root     数据\研究报告\
+Lane C  current  数据\研究报告\CURRENT\SELLSIDE_DAILY_INCREMENTAL_CURRENT.json
+Lane C  raw      ...\原始只读\MORGAN_STANLEY | GOLDMAN_SACHS | CLSA_METADATA
+
+Lane D  卖方     数据\研究报告\国内卖方\CURRENT\DOMESTIC_SELLSIDE_CURRENT.json
+Lane D  新闻     数据\研究报告\国内新闻\CURRENT\DOMESTIC_NEWS_CURRENT.json
+
+Lane E  新闻     数据\美国市场\新闻\CURRENT\US_NEWS_CURRENT.json
+Lane F  市场     数据\美国市场\市场状态\CURRENT\US_MARKET_STATE_CURRENT.json
+Lane F  对齐     数据\美国市场\市场状态\CURRENT\US_TO_CN_SESSION_ALIGNMENT.csv
+
+平面    manifest 研究系统\数据平面\CURRENT\DAILY_DATA_MANIFEST_CURRENT.json
+平面    plane    研究系统\数据平面\CURRENT\DAILY_DATA_PLANE_CURRENT.json
+平面    pathmap  研究系统\数据平面\CONFIG\DATA_PLANE_PATH_MAP.json
+```
+
+判读 CURRENT 时用 Python 按 UTF-8 读，不要用 `Get-Content` 直接看中文 JSON：
+
+```powershell
+& $py -X utf8 -c "import json;print(json.load(open(r'数据\回测缓存\CURRENT_CACHE_RELEASE.json',encoding='utf-8')))"
+```
+
+---
+
 ## 3. 六 Lane 是什么（判据表）
 
 | Lane | 内容 | PASS 判据 |
@@ -194,6 +273,30 @@ DATA_GATE_FAIL {"reason_code": "...", "DATA_PLANE_RETURN_CODE": ..., "CANONICAL_
 ```
 
 `reason_code` 常见值：`DATA_PLANE_RC_NONZERO` / `MANIFEST_GATE_FAIL`。
+
+### 6.1 当前终态快照（2026-10-26 只读核对，供台式机对照）
+
+```
+manifest_id            DAILY_DATA_MANIFEST_20260924
+CN_RESEARCH_DATE       2026-09-24
+ALL_LANES_READY        YES
+DAILY_INCREMENTAL_READY YES
+DEGRADED_LANES         []
+JQ SOURCE/CLEAN/CACHE  2026-09-24 / 2026-09-24 / 2026-09-24
+JQ PIT_PASS            true
+cleaning_release_id    BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439
+cache_release_id       BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439
+cache build_version    TIP_REBASE_FROM_CURRENT_R1
+```
+
+**但注意**：Lane B 的 `EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json` 当前为
+
+```
+FINAL_STATUS = EXTERNAL_EVIDENCE_MATERIALIZATION_PARTIAL
+```
+
+→ Lane B 只能报 PASS(ALIGN) + **PARTIAL(MATERIALIZATION)**。
+台式机不得把 Lane B 写成 COMPLETE，也不得据此改写 manifest。
 
 ---
 
