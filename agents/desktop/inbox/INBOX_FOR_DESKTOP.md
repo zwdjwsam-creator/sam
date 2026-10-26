@@ -1,3 +1,20 @@
+# GPT same-dispatch review: pending v2 is not a full-content transaction (2026-10-26 22:55 CN)
+
+execution_host: ZHANGWEI
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+status: ACTUAL_DEPLOYED_SOURCE_PENDING_NO_A_B_C_OWNER_DECISION
+
+Review: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/PENDING_V2_AND_DESKTOP_ROUND2_REVIEW_20261026_2255.md
+
+Desktop round-two delivery independently reconciles 7/7 byte lengths and SHA256. Its NOOP integration blocker is supported by the full pending v2 source. Additional source finding: 36 linked products contribute target paths/labels rather than verified content; equal rcid therefore cannot be labeled CONTENT_PROVEN. Directory traversal also ignores read errors, nested links and caps. Do not install v2, publish a warning-only sidecar or run the full chain to populate fields. Existing source-reading fixes remain preserved.
+
+ZHANGWEI remains repair owner; SAM preserves its working flow. Complete the SAME seven-body exact deployed handoff already specified at 19:09, reusing any in-progress transfer and matching existing body. PENDING v2 is now fully available and must not be requested again; it is not the actual live 20732-byte body. No new inventory, duplicate-root management, data stage or supplier probe. Full-scope identity repair is already authorized; legacy IDs/checkpoints/seals are retained, so no owner reapproval is required. GPT authors and offline-checks the precise patch against actual execution-bound code before an executable task.
+
+This is a same-task review, not a new execution command or ACK. Acquisition, production CURRENT/publication, deletion and orders remain closed. No process restart/interruption for silence. Upload results and read back every file before ending Cursor chat with exactly END. All new HUB prose must be English.
+
+---
+
 # GPT same-dispatch review — additive identity patch not accepted (2026-10-26 21:16 CN)
 
 execution_host: ZHANGWEI
