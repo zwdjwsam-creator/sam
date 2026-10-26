@@ -1,0 +1,23 @@
+{
+  "schema": "BLACKBOX_INSTALL_V3_SHA_LEDGER_R1",
+  "installed_at_cn": "2026-10-26T23:10:40+0800",
+  "live_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\candidate_commit.py",
+  "before": {
+    "bytes": 20732,
+    "sha256": "7cb9417cdb96be7ff4881d792db1f237f8db255f0a75eadcba90fa8c93617bf2",
+    "role": "v2 = SAM PENDING 前的原活文件"
+  },
+  "after": {
+    "bytes": 52071,
+    "sha256": "7573eff5e78933e96cabefaabc9b93f6694c1f8d585ff7716e0d597895df1b7f",
+    "role": "v3 = SAM v2 + contract-aware rcid（让 rcid 参与判断）"
+  },
+  "backup_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\_backup\\candidate_commit.py.20261026_231040.v2.orig",
+  "rollback_cmd": "Copy-Item -LiteralPath \"E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\_backup\\candidate_commit.py.20261026_231040.v2.orig\" -Destination \"E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\candidate_commit.py\" -Force",
+  "sources": {
+    "v2": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\sam_led_rectification\\_sam_pending\\PENDING_candidate_commit_v2.py",
+    "builder": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\sam_led_rectification\\BUILD_CANDIDATE_COMMIT_V3_R1.py",
+    "v3": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\sam_led_rectification\\candidate_commit_v3.py",
+    "contract": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\RCID_PRODUCT_CONTRACT_R1.json"
+  }
+}
