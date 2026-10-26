@@ -1,0 +1,39 @@
+{
+  "remote_dir": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification",
+  "hub_objects": 44,
+  "want": [
+    "RECONCILE_AND_FIX_DESKTOP_DEVIATION.md",
+    "patch_duplicate_roots_r2.py",
+    "patch_verify_disk_scan_r3.py",
+    "patch_verify_identity_fallback_r4.py",
+    "patch_release_content_id_r1.py",
+    "PENDING_candidate_commit_v2.py"
+  ],
+  "present": [
+    "RECONCILE_AND_FIX_DESKTOP_DEVIATION.md",
+    "patch_duplicate_roots_r2.py",
+    "patch_verify_disk_scan_r3.py",
+    "patch_verify_identity_fallback_r4.py",
+    "patch_release_content_id_r1.py",
+    "PENDING_candidate_commit_v2.py"
+  ],
+  "missing": [],
+  "checks": {
+    "duplicate_roots_appends_jsonl": true,
+    "duplicate_roots_does_not_rewrite_COMMIT": true,
+    "duplicate_roots_guards": [
+      "sha256_after",
+      "sha256_before",
+      "unchanged"
+    ],
+    "r3_has_precision_label": true,
+    "r3_scan_sibling": true,
+    "r4_identity_fallback": true,
+    "r4_host_scope_guard": true,
+    "rcid_excludes_underscore": true,
+    "rcid_coverage_flag": true,
+    "pending_v2_bytes_37725": true,
+    "pending_v2_has_rcid": true,
+    "pending_v2_has_junction_audit": true
+  }
+}
