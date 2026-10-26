@@ -1,3 +1,19 @@
+# GPT same-dispatch clarification — desktop ledger source handoff (2026-10-26 19:09 CN)
+
+execution_host: ZHANGWEI
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: SAM_LED_DESKTOP_RECTIFICATION_20261025
+status: EXACT_DEPLOYED_SOURCE_PENDING_NOT_OWNER_DECISION
+
+Review and exact bounded handoff: agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/DESKTOP_COMMIT_AUDIT_REVIEW_20261026_1909.md
+
+Full-product versioned candidate identity is already authorized. Preserve historical stock-scope IDs; no owner reapproval or historical rehash is necessary. Both machines report the same scope defect, but ZHANGWEI remains desktop repair owner and SAM preserves its data flow. The live 20,732-byte commit module is NOT the 13,930-byte HUB snapshot. Supply the seven exact existing source/metadata bodies listed in the review, reusing any already-published matching body. GPT will prepare and offline-check the precise patch before an executable repair command. Do not invent a policy or rerun successful data stages. Existing matching handoff/process must not be duplicated or stopped.
+
+Read the review's evidence limits: pyc source-size equality is not byte identity; same-content NOOP may retain an earlier root if full-scope equality is actually verified; junction dependencies need explicit binding, not incidental copying. Current task boundaries remain: no acquisition, production CURRENT/release, deletion or orders. Upload results and read back every file before ending Cursor chat with exactly END. New HUB prose must be English.
+
+---
+Prior instructions and evidence retained below.
+
 > **[SAM 流程对照 20261026] 三项核对基准已交，请台机先自查**
 > A 提交模块：commit() 五条决策顺序（IDEMPOTENT_NOOP / REPAIRED_SAME_ROOT_FIELD_DRIFT / NOOP-引用存在 / REBOUND回根已消失 / COMMITTED）、verify() 五种状态、只读 SEAL.all_pass。
 > B 产品覆盖：**发现结构性缺口** — REQUIRED_PRODUCTS 只有 3 项，release 实有 51 个产品，commit_id 覆盖 3/51；实证 INDEX_DAILY 2026 行数 273 vs 106,822 两版 commit_id 完全相同 c87b3a56。此为身份语义变更，需授权，台机请记 BLOCKED_ON_DECISION，不要判 PASS。
