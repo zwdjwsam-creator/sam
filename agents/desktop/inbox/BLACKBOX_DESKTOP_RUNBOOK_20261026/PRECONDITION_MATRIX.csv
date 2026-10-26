@@ -1,0 +1,14 @@
+TASK_CLASS,MUST_READ_PACKS,FIRST_MACHINE_GATE,ADDITIONAL_GATES,WRITE_ALLOWED_DEFAULT,KEY_FORBIDDEN,PRIMARY_OUTPUT
+GENERAL,BOOTSTRAP,blackbox_must_read_preflight_r1.py,--,false,未预检即执行,preflight block
+ENGINE,BOOTSTRAP,blackbox_must_read_preflight_r1.py,--,false,绕过 HARness 门,preflight block
+DATA,BOOTSTRAP+DATA_ACCESS,blackbox_must_read_preflight_r1.py,Resolver->completeness->Capability,false,EMPTY->NO_DATA;猜路径,REQUEST_DATA_READY
+CACHE,BOOTSTRAP+DATA_ACCESS,blackbox_must_read_preflight_r1.py,三层存在性分述,false,原位改 CURRENT;薄 Cache 否定 FULL,LAYER_STATUS
+ACQUISITION,BOOTSTRAP+DATA_ACCESS+ACQUISITION,blackbox_must_read_preflight_r1.py,acquisition_pagination_engine 5 硬门,false,returned_rows==cap 当 COMPLETE,RAW receipt
+DOWNLOAD,BOOTSTRAP+DATA_ACCESS+ACQUISITION,blackbox_must_read_preflight_r1.py,分页+静默截断门,false,一次 limit(N) 封 RAW;覆盖已封文件,DOWNLOAD receipt
+FACTOR,BOOTSTRAP+DATA_ACCESS+FACTOR,blackbox_must_read_preflight_r1.py,FACTOR_VALUE_POLICY,false,权限未探通即宣称全量,因子值库状态
+FACTOR_RESEARCH,BOOTSTRAP+DATA_ACCESS+FACTOR,blackbox_must_read_preflight_r1.py,FACTOR_VALUE_POLICY,false,权限未探通即宣称全量,因子研究结论
+JQ260,BOOTSTRAP+DATA_ACCESS+FACTOR,blackbox_must_read_preflight_r1.py,权限重探,false,把原生因子当已落地值,权限 probe
+BACKTEST,BOOTSTRAP+DATA_ACCESS+BACKTEST,blackbox_backtest_causal_information_gate_r1.py,blackbox_backtest_preflight_gate.py;blackbox_backtest_price_plane_gate_r1.py,false,RAW fallback;download_history;未来函数,BACKTEST_RESULT
+STRATEGY,BOOTSTRAP+DATA_ACCESS+BACKTEST,blackbox_backtest_causal_information_gate_r1.py,preflight gate;price plane gate;聚宽范本必读,false,本地/聚宽偏差未归因即调参,STRATEGY_RESULT
+QMT,BOOTSTRAP+QMT,blackbox_must_read_preflight_r1.py,LIVE_EXECUTION_SESSION,false,无 session 下单;回测 download_history,QMT_STATUS
+LIVE,BOOTSTRAP+QMT,blackbox_must_read_preflight_r1.py,LIVE_EXECUTION_SESSION;ORDER_ALLOWED,false,打印密钥;越权下单,LIVE_SESSION
