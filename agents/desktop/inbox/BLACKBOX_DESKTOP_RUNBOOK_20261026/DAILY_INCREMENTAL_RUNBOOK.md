@@ -132,6 +132,27 @@ Lane F  对齐     数据\美国市场\市场状态\CURRENT\US_TO_CN_SESSION_ALI
 & $py -X utf8 -c "import json;print(json.load(open(r'数据\回测缓存\CURRENT_CACHE_RELEASE.json',encoding='utf-8')))"
 ```
 
+### 2.6 已知复制品（禁止读快照当 CURRENT）
+
+磁盘上同名 `CURRENT_*_RELEASE.json` 有 **多份非权威副本**（任务快照 / `_OPS` 备份 / 交接包）。
+2026-10-26 全盘扫描确认存在以下形态：
+
+```
+数据\清洗成品\CURRENT_CLEANING_RELEASE.json                      ← 唯一权威
+数据\回测缓存\CURRENT_CACHE_RELEASE.json                         ← 唯一权威
+任务\<各任务>\01_INPUT_SNAPSHOT\CURRENT_CLEANING_RELEASE.json     ← 历史快照，禁止读
+任务\BLACKBOX_RAW_NONE_..._R1\acceptance\...\10_CURRENT_RELEASE_POINTER\ ← 验收快照，禁止读
+_OPS\FOUNDATION_RECOVERY_20261024\...\config\数据\...            ← 恢复备份，禁止读
+_OPS\...\backup\promote_<ts>\...\DAILY_DATA_PLANE_CURRENT.json   ← 迁移备份，禁止读
+```
+
+**规则**：
+
+1. 只允许读 `DATA_PLANE_PATH_MAP.json` 里写的那一条路径
+2. 禁止 `dir /s`、`glob`、`first_match` 去找 CURRENT → 会命中快照或备份
+3. 若发现读到的 `release_id` / `asof` 与 `DAILY_DATA_MANIFEST_CURRENT.json` 不一致 → 视为读错文件，停止并重取，**不得**修改 manifest 去迁就
+4. 快照与备份只用于审计/回滚，不是运行时输入
+
 ---
 
 ## 3. 六 Lane 是什么（判据表）
