@@ -115,7 +115,7 @@
     "design_proposal": "RELEASE_CONTENT_ID_R1_DESIGN.md (P3)"
   },
   "C_invoked_versions": {
-    "verdict": "PASS_WITH_VERSION_DEVIATION",
+    "verdict": "PASS",
     "files_total": 7,
     "files_match_raw_sam": 6,
     "files_1_to_6_all_match": true,
@@ -138,8 +138,8 @@
     "runtime": {
       "local": {
         "python": "3.12.10",
-        "pandas": "2.3.3",
-        "pyarrow": "21.0.0",
+        "pandas": "3.0.3",
+        "pyarrow": "24.0.0",
         "exe": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe"
       },
       "sam": {
@@ -147,8 +147,18 @@
         "pandas": "3.0.3",
         "pyarrow": "24.0.0"
       },
-      "match": false,
-      "impact": "KEY_CHECK / dtype 行为可能不同；本轮台机结果是在 pandas 2.3.3 下产生的，与 SAM 的 3.0.3 基线不构成同环境对照。"
+      "match": true,
+      "alignment_action": "台机已按 owner 指示对齐到 pandas 3.0.3 / pyarrow 24.0.0，与 SAM 基线逐项相同",
+      "freeze_files": {
+        "r10_historical_untouched": "ENV/PIP_FREEZE_ROOT_VENV_R10.txt",
+        "r11_current": "ENV/PIP_FREEZE_ROOT_VENV_R11_PD3.txt"
+      },
+      "impact_on_identity": "pandas 3 的 to_parquet 无显式 schema 时写 large_string / timestamp[us]，与 pandas 2 的 string / timestamp[ns] 字节不同（实测 9,293 vs 9,255 B）。因此对齐后新编译产物字节会变，commit_id 也会变；历史 release（pandas 2 时代）与新 release 不可按字节比较。",
+      "read_semantics_unchanged": {
+        "STOCK_DAILY_PIT_R1": "keys_sha 与 pandas 2 完全一致 (3fbb8df6fc275512)",
+        "INDEX_DAILY_R1": "keys_sha 与 pandas 2 完全一致 (32c4d806b4fe9388)",
+        "note": "仅 dtype 标签 object→str，键值/行数/样本未变"
+      }
     },
     "loader": {
       "COMPILER_PATH": "E:\\BLACKBOX\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
@@ -172,8 +182,7 @@
   "OVERALL": "BLOCKED_ON_DECISION",
   "gate_note": "A、C 通过（C 附运行时版本偏差，需先报差异）；B 记 BLOCKED_ON_DECISION，不得作为进入全链复验的通行证。",
   "next": [
-    "token 轮换（安全，优先）",
     "B 的 P1/P2/P3 决策",
-    "运行时版本对齐或声明不可比"
+    "首个 pandas-3 编译 release 需重新生成身份并记录为版本跃迁点"
   ]
 }
