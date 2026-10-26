@@ -1,0 +1,774 @@
+{
+  "schema": "DESKTOP_COMMIT_MODULE_AND_COVERAGE_AUDIT_R1",
+  "module_identity": {
+    "loaded_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\candidate_commit.py",
+    "loaded_sha256_16": "7cb9417cdb96be7f",
+    "loaded_bytes": 20732,
+    "pyc_source_size_field": 20732,
+    "pyc_matches_source": true,
+    "import_sites": [
+      {
+        "file": "commit_recovery_selftest.py",
+        "line": 18,
+        "code": "import candidate_commit as cc  # noqa: E402"
+      },
+      {
+        "file": "run_connected_pipeline.py",
+        "line": 616,
+        "code": "import candidate_commit as cc"
+      }
+    ],
+    "tools_is_package": false,
+    "tools_init_bytes": null,
+    "all_copies_on_disk": [
+      {
+        "path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\candidate_commit.py",
+        "bytes": 20732,
+        "sha16": "7cb9417cdb96be7f",
+        "is_live_module": true
+      }
+    ],
+    "shadowing_check": {
+      "BB_脚本_on_sys_path": true,
+      "candidate_commit_in_BB_脚本": false
+    }
+  },
+  "product_coverage": {
+    "release": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638",
+    "identity_schema": [
+      "asof",
+      "source_cleaning_release",
+      "parent_release_id",
+      "products[*].sha256/rows"
+    ],
+    "identity_products_hash_scope": [
+      "STOCK_DAILY_PIT_R1",
+      "STOCK_DAILY_RAW_PIT_R1",
+      "STOCK_FACTOR_DAILY_R1"
+    ],
+    "compiler_required_products": [
+      "STOCK_DAILY_PIT_R1",
+      "STOCK_DAILY_RAW_PIT_R1",
+      "ETF_DAILY_PIT_R1",
+      "INDEX_DAILY_R1",
+      "FINANCIAL_INDICATOR_PIT_R1",
+      "VALUATION_PIT_R1",
+      "SW_L1_MEMBERSHIP_PIT_R1",
+      "SW_L2_MEMBERSHIP_PIT_R1",
+      "SW_L3_MEMBERSHIP_PIT_R1",
+      "JQ20_FINANCE_BALANCE_SHEET_PIT_R1"
+    ],
+    "products_present_in_release": [
+      {
+        "product": "ADJUST_FACTOR_PIT_R1",
+        "rows_total": 12266026,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "BILLBOARD_DAILY_PIT_R1",
+        "rows_total": 3910164,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "rows_total": 5571119,
+        "kind": "CONTAINS_JUNCTION",
+        "junction_targets": [
+          {
+            "at": "data",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data"
+          },
+          {
+            "at": "indexes",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes"
+          }
+        ],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "rows_total": 5677185,
+        "kind": "CONTAINS_JUNCTION",
+        "junction_targets": [
+          {
+            "at": "data",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data"
+          },
+          {
+            "at": "indexes",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes"
+          }
+        ],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "CORP_XR_XD_EVENT_PIT_R1",
+        "rows_total": 615461,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "ETF_DAILY_PIT_R1",
+        "rows_total": 63204,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "ETF_FACTOR_DAILY_R1",
+        "rows_total": 63204,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "ETF_TRACKING_INDEX_MAP_R1",
+        "rows_total": 1708,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "FINANCIAL_INDICATOR_PIT_R1",
+        "rows_total": 374350,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "FUND_DAILY_PIT_R1",
+        "rows_total": 0,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "FUND_FACTOR_DAILY_R1",
+        "rows_total": 0,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "FUND_LIKE_ASSET_VIEW_R1",
+        "rows_total": 0,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "FUND_NAV_PIT_R1",
+        "rows_total": 6496121,
+        "kind": "CONTAINS_JUNCTION",
+        "junction_targets": [
+          {
+            "at": "data\\history",
+            "target": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\fund\\ETF_NAV\\history"
+          }
+        ],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "INDEX_CONSTITUENT_PIT_R1",
+        "rows_total": 2592719,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "INDEX_DAILY_R1",
+        "rows_total": 2909438,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "INDEX_FACTOR_DAILY_R1",
+        "rows_total": 2909438,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "INDEX_WEIGHT_PIT_R1",
+        "rows_total": 61064,
+        "kind": "CONTAINS_JUNCTION",
+        "junction_targets": [
+          {
+            "at": "year=2014",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2014"
+          },
+          {
+            "at": "year=2015",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2015"
+          },
+          {
+            "at": "year=2016",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2016"
+          },
+          {
+            "at": "year=2017",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2017"
+          },
+          {
+            "at": "year=2018",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2018"
+          },
+          {
+            "at": "year=2019",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2019"
+          },
+          {
+            "at": "year=2020",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2020"
+          },
+          {
+            "at": "year=2021",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2021"
+          },
+          {
+            "at": "year=2022",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2022"
+          },
+          {
+            "at": "year=2023",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2023"
+          },
+          {
+            "at": "year=2024",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2024"
+          },
+          {
+            "at": "year=2025",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2025"
+          }
+        ],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+        "rows_total": 234834,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+        "rows_total": 184638,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+        "rows_total": 196052,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+        "rows_total": 174733,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+        "rows_total": 192910,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+        "rows_total": 174991,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+        "rows_total": 120070,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+        "rows_total": 1751476,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+        "rows_total": 6068988,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+        "rows_total": 924648,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+        "rows_total": 15992,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+        "rows_total": 195594,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+        "rows_total": 135270,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+        "rows_total": 32428,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+        "rows_total": 66576,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_LIST_REFERENCE_PIT_R1",
+        "rows_total": 11322,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_NAME_HISTORY_PIT_R1",
+        "rows_total": 28504,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+        "rows_total": 108652,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+        "rows_total": 536441,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+        "rows_total": 512434,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "MARKET_STRUCTURE_DAILY_R1",
+        "rows_total": 3097,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "MARKET_UNIVERSE_PIT_R1",
+        "rows_total": 3836582,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "SECURITY_MASTER_SNAPSHOT_R1",
+        "rows_total": 5208,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "STOCK_DAILY_PIT_R1",
+        "rows_total": 17040667,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": true,
+        "in_commit_json": true
+      },
+      {
+        "product": "STOCK_DAILY_RAW_PIT_R1",
+        "rows_total": 12362212,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": true,
+        "in_commit_json": true
+      },
+      {
+        "product": "STOCK_FACTOR_DAILY_R1",
+        "rows_total": 17040667,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": true,
+        "in_commit_json": true
+      },
+      {
+        "product": "STOCK_TRADEABILITY_PIT_R1",
+        "rows_total": 249858,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "SW_L1_MEMBERSHIP_PIT_R1",
+        "rows_total": 25175590,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "SW_L1_STRUCTURE_DAILY_R1",
+        "rows_total": 180092,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "SW_L2_MEMBERSHIP_PIT_R1",
+        "rows_total": 25150932,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "SW_L2_STRUCTURE_DAILY_R1",
+        "rows_total": 703004,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "SW_L3_MEMBERSHIP_PIT_R1",
+        "rows_total": 25128580,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "SW_L3_STRUCTURE_DAILY_R1",
+        "rows_total": 1651878,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "VALUATION_PIT_R1",
+        "rows_total": 444084,
+        "kind": "REAL_DIR",
+        "junction_targets": [],
+        "in_identity": false,
+        "in_commit_json": false
+      }
+    ],
+    "count_present": 51,
+    "count_in_identity": 3,
+    "count_uncovered": 48,
+    "uncovered_products": [
+      "ADJUST_FACTOR_PIT_R1",
+      "BILLBOARD_DAILY_PIT_R1",
+      "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+      "CORP_SHAREHOLDER_TOP10_PIT_R1",
+      "CORP_XR_XD_EVENT_PIT_R1",
+      "ETF_DAILY_PIT_R1",
+      "ETF_FACTOR_DAILY_R1",
+      "ETF_TRACKING_INDEX_MAP_R1",
+      "FINANCIAL_INDICATOR_PIT_R1",
+      "FUND_DAILY_PIT_R1",
+      "FUND_FACTOR_DAILY_R1",
+      "FUND_LIKE_ASSET_VIEW_R1",
+      "FUND_NAV_PIT_R1",
+      "INDEX_CONSTITUENT_PIT_R1",
+      "INDEX_DAILY_R1",
+      "INDEX_FACTOR_DAILY_R1",
+      "INDEX_WEIGHT_PIT_R1",
+      "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1",
+      "JQ20_FINANCE_BALANCE_SHEET_PIT_R1",
+      "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1",
+      "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1",
+      "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1",
+      "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1",
+      "JQ20_FUND_DIVIDEND_EVENT_PIT_R1",
+      "JQ20_FUND_FIN_INDICATOR_PIT_R1",
+      "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1",
+      "JQ20_STK_AH_PRICE_COMP_PIT_R1",
+      "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1",
+      "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1",
+      "JQ20_STK_EMPLOYEE_INFO_PIT_R1",
+      "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1",
+      "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1",
+      "JQ20_STK_LIST_REFERENCE_PIT_R1",
+      "JQ20_STK_NAME_HISTORY_PIT_R1",
+      "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1",
+      "JQ20_STK_REPORT_DISCLOSURE_PIT_R1",
+      "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1",
+      "MARKET_STRUCTURE_DAILY_R1",
+      "MARKET_UNIVERSE_PIT_R1",
+      "SECURITY_MASTER_SNAPSHOT_R1",
+      "STOCK_TRADEABILITY_PIT_R1",
+      "SW_L1_MEMBERSHIP_PIT_R1",
+      "SW_L1_STRUCTURE_DAILY_R1",
+      "SW_L2_MEMBERSHIP_PIT_R1",
+      "SW_L2_STRUCTURE_DAILY_R1",
+      "SW_L3_MEMBERSHIP_PIT_R1",
+      "SW_L3_STRUCTURE_DAILY_R1",
+      "VALUATION_PIT_R1"
+    ],
+    "uncovered_rows_total": 137706659,
+    "products_borrowing_production": [
+      {
+        "product": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+        "rows_total": 5571119,
+        "kind": "CONTAINS_JUNCTION",
+        "junction_targets": [
+          {
+            "at": "data",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\data"
+          },
+          {
+            "at": "indexes",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1\\indexes"
+          }
+        ],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+        "rows_total": 5677185,
+        "kind": "CONTAINS_JUNCTION",
+        "junction_targets": [
+          {
+            "at": "data",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\data"
+          },
+          {
+            "at": "indexes",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_PAIRED_R22_FINANCE_ASOF_20260813_20260814_140825\\CORP_SHAREHOLDER_TOP10_PIT_R1\\indexes"
+          }
+        ],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "FUND_NAV_PIT_R1",
+        "rows_total": 6496121,
+        "kind": "CONTAINS_JUNCTION",
+        "junction_targets": [
+          {
+            "at": "data\\history",
+            "target": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\fund\\ETF_NAV\\history"
+          }
+        ],
+        "in_identity": false,
+        "in_commit_json": false
+      },
+      {
+        "product": "INDEX_WEIGHT_PIT_R1",
+        "rows_total": 61064,
+        "kind": "CONTAINS_JUNCTION",
+        "junction_targets": [
+          {
+            "at": "year=2014",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2014"
+          },
+          {
+            "at": "year=2015",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2015"
+          },
+          {
+            "at": "year=2016",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2016"
+          },
+          {
+            "at": "year=2017",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2017"
+          },
+          {
+            "at": "year=2018",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2018"
+          },
+          {
+            "at": "year=2019",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2019"
+          },
+          {
+            "at": "year=2020",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2020"
+          },
+          {
+            "at": "year=2021",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2021"
+          },
+          {
+            "at": "year=2022",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2022"
+          },
+          {
+            "at": "year=2023",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2023"
+          },
+          {
+            "at": "year=2024",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2024"
+          },
+          {
+            "at": "year=2025",
+            "target": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_INDEX_WEIGHT_PIT_ASOF_20260702_20260818_103528\\INDEX_WEIGHT_PIT_R1\\year=2025"
+          }
+        ],
+        "in_identity": false,
+        "in_commit_json": false
+      }
+    ],
+    "row_count_failures": {},
+    "seal_all_pass": true,
+    "seal_required_missing": [],
+    "verdict_scope_note": "verify(deep=True) 只遍历 COMMIT.json['products']；不在其中的产品既不参与 commit_id，也不参与 payload_matches。"
+  },
+  "dynamic_evidence": {
+    "pairs": [
+      {
+        "product": "ETF_DAILY_PIT_R1",
+        "old_release": "234016",
+        "old_rows": 63204,
+        "new_rows": 63204,
+        "content_changed": false,
+        "old_sha16": "d28d86b84a47caf0",
+        "new_sha16": "d28d86b84a47caf0"
+      },
+      {
+        "product": "ETF_DAILY_PIT_R1",
+        "old_release": "234111",
+        "old_rows": 63204,
+        "new_rows": 63204,
+        "content_changed": false,
+        "old_sha16": "d28d86b84a47caf0",
+        "new_sha16": "d28d86b84a47caf0"
+      },
+      {
+        "product": "INDEX_DAILY_R1",
+        "old_release": "234016",
+        "old_rows": 2802889,
+        "new_rows": 2909438,
+        "content_changed": true,
+        "old_sha16": "74c43e8a92b3f266",
+        "new_sha16": "7ff41e20ec922064"
+      },
+      {
+        "product": "INDEX_DAILY_R1",
+        "old_release": "234111",
+        "old_rows": 2802889,
+        "new_rows": 2909438,
+        "content_changed": true,
+        "old_sha16": "74c43e8a92b3f266",
+        "new_sha16": "7ff41e20ec922064"
+      }
+    ],
+    "note": "若 content_changed=True 而两个 release 的 commit_id 相同，即证明身份盲区。"
+  },
+  "commit_ids_by_release": {
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181638": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234016": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234111": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234457": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234552": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234902": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_234957": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235232": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235349": "572619c945d48f1b",
+    "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261025_235444": "572619c945d48f1b"
+  },
+  "commit_ids_all_equal": true,
+  "checks": {
+    "single_importable_module": true,
+    "pyc_matches_source": true,
+    "no_package_shadowing": true,
+    "identity_covers_all_release_products": false,
+    "identity_covers_compiler_required": false
+  },
+  "blockers": [
+    "identity_covers_all_release_products",
+    "identity_covers_compiler_required"
+  ],
+  "status": "GAPS_FOUND"
+}
