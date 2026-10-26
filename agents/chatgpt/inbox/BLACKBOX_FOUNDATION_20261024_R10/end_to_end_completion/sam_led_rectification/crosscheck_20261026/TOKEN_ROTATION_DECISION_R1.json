@@ -1,0 +1,55 @@
+{
+  "schema": "TOKEN_ROTATION_DECISION_R1",
+  "host": "ZHANGWEI",
+  "decided_at_cn": "2026-10-26T19:30:00+08:00",
+  "decision": "ROTATION_DEFERRED_BY_OWNER",
+  "decider": "owner (user)",
+  "owner_statement": "先别换，能用就行",
+  "token_identity": {
+    "shape": "gho_ + 36 chars (total 40)",
+    "type": "OAUTH_APP_TOKEN",
+    "account": "zwdjwsam-creator",
+    "oauth_scopes": ["gist", "read:org", "repo"],
+    "sha256_16": "506ab7bb7d6fb800",
+    "value_recorded_in_this_file": false,
+    "created_or_last_changed": "2026-10-11"
+  },
+  "exposure_finding": {
+    "corrects_prior_claim": "前一版报告称『令牌值未被记录、仅命中扫描器临时脚本』，实测不成立",
+    "method": "sha256(value) 逐命中比对活 token，只输出布尔，不打印值",
+    "confirmed_plaintext_locations": [
+      {"file": ".cursor/projects/e-BLACKBOX/agent-transcripts/78ab23c7-d5d4-4bda-be24-720be8c6b7a3/compaction/segment_008.md", "equals_live_token": true},
+      {"file": ".cursor/projects/e-BLACKBOX/agent-transcripts/78ab23c7-d5d4-4bda-be24-720be8c6b7a3/compaction/segment_009.md", "equals_live_token": true},
+      {"file": ".cursor/projects/e-BLACKBOX/agent-transcripts/c872df80-c3ca-4be6-99ee-d32924294432/compaction/segment_003.md", "equals_live_token": true}
+    ],
+    "severity_note": "compaction 段会被反复注入上下文，等于每次读取都重放密钥；风险高于『子代理终端一次性输出』",
+    "clean_locations": {
+      "cursor_terminals": 0,
+      "e2e_task_logs": 0,
+      "temp": 0
+    }
+  },
+  "mitigation_done": {
+    "action": "in-place redaction to [REDACTED_GHO_<sha8>]",
+    "files_redacted": 3,
+    "residual_shape_hits_after": 0,
+    "receipt": "TOKEN_REDACTION_RECEIPT.json",
+    "script": "TOKEN_REDACT_R1.py"
+  },
+  "why_owner_must_do_it": {
+    "gh_cli": "absent on host (no gh.exe, no hosts.yml) -> `gh auth logout` path unavailable",
+    "oauth_revoke_api": "DELETE /applications/{client_id}/token requires the OAuth App client_secret, which is not held locally",
+    "by_design": "a stolen credential must not be able to revoke/extend itself"
+  },
+  "residual_risk_accepted_by_owner": [
+    "该 token 仍然有效，scope 含 repo（对 zwdjwsam-creator/sam 有读写删权限）",
+    "任何已获得该 token 的外部方，在轮换前仍可操作仓库",
+    "本机历史备份/快照/云同步目录未全量复扫，可能存在未发现的明文副本"
+  ],
+  "reversibility": "随时可改判；撤销只需 owner 在 https://github.com/settings/applications 点 Revoke access 后重写 token 文件第 5 行",
+  "recommended_but_not_executed": [
+    "缩小 scope 到仅该仓库（fine-grained PAT）",
+    "将 token 文件移出会被 agent 递归扫描的目录，或改为运行时注入",
+    "add a pre-commit/pre-upload guard that blocks any file containing gh[opsu]_[A-Za-z0-9]{30,}"
+  ]
+}
