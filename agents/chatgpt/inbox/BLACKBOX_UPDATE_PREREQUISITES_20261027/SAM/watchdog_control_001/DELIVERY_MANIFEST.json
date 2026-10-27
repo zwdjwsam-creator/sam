@@ -1,0 +1,65 @@
+{
+  "schema": "DELIVERY_MANIFEST_R1",
+  "contract_id": "WATCHDOG_CONTROL_20261027",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "execution_host": "SAM",
+  "generated_at_cn": "2026-10-27T16:06:15+0800",
+  "status": "COMPLETED_BOUNDED",
+  "literal_exit_code": 0,
+  "actions_count": 0,
+  "mutations_performed": false,
+  "mutations_reason": "zero proven matching scheduled tasks and zero proven watcher processes in both the before and after snapshot",
+  "files": [
+    {
+      "name": "ACK.json",
+      "bytes": 4789,
+      "sha256": "b55ae0d611f879c7b54d9ad700a7289353948b223b3da5619259a09b0824434e"
+    },
+    {
+      "name": "CONTROL_SCRIPT_INVOCATION.json",
+      "bytes": 1751,
+      "sha256": "3d901a31978303106d337b811d3bde082d9fdf6c3f5cc14db949ee44c7a9dd9c"
+    },
+    {
+      "name": "PACKAGE_VERIFY.json",
+      "bytes": 1297,
+      "sha256": "c09107f5f4ebbad0c09001eccd2aa22649f8ad93b8e5eab8ade6e3425cdbb712"
+    },
+    {
+      "name": "POLICY_CONTROLS_LEDGER.json",
+      "bytes": 1693,
+      "sha256": "094873e5859a27cfb38b631e7b88eedbac3d1dcec107738e85b27034c5558f85"
+    },
+    {
+      "name": "REPORT.md",
+      "bytes": 4602,
+      "sha256": "fc53d30511e6d0ec718f916984bd8acac843d7f05cca2b1ef61c5ea97a2c4b5b"
+    },
+    {
+      "name": "RESULT.json",
+      "bytes": 1225,
+      "sha256": "32093dc15e9800fb4588a3a33d6713b2988c86dcd1603606b77a756d5189f943"
+    },
+    {
+      "name": "WATCHDOG_POLICY_CONTROLS_STDERR.txt",
+      "bytes": 1348,
+      "sha256": "e3a39dca22c4d1a69de5398088bd4ad8880625a0936aded6daebe2828a97624d"
+    },
+    {
+      "name": "WATCHDOG_POLICY_CONTROLS_STDOUT.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "count": 8,
+  "excluded_from_this_manifest": {
+    "DELIVERY_MANIFEST.json": "self",
+    "UPLOAD_READBACK.json": "readback receipt, verified after upload without self-hash",
+    "CONTROL_SCRIPT_STDOUT/STDERR": "not shipped: the process emitted zero bytes; no empty file was fabricated (see CONTROL_SCRIPT_INVOCATION.json)"
+  },
+  "authority": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false
+  }
+}
