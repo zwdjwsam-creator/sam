@@ -1,0 +1,411 @@
+{
+  "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+  "all_pass": true,
+  "asof": "2026-09-24",
+  "price": {
+    "gates": {
+      "stock": {
+        "pass": true,
+        "rows": 959896,
+        "max_date": "2026-09-24",
+        "leak_rows": 0
+      },
+      "etf": {
+        "pass": true,
+        "rows": 63204,
+        "max_date": "2026-09-24",
+        "leak_rows": 0
+      },
+      "fund": {
+        "pass": true,
+        "skipped": "inherit_parent"
+      },
+      "index": {
+        "pass": true,
+        "rows": 106822,
+        "max_date": "2026-09-24",
+        "leak_rows": 0
+      }
+    },
+    "products": {
+      "STOCK_DAILY_PIT_R1": {
+        "status": "READY",
+        "rows_2026": 959896,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "STOCK_DAILY_RAW_PIT_R1": {
+        "status": "READY",
+        "rows_2026": 959896,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "STOCK_FACTOR_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 959896,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "ETF_DAILY_PIT_R1": {
+        "status": "READY",
+        "rows_2026": 63204,
+        "date_min": "2026-07-30",
+        "date_max": "2026-09-24"
+      },
+      "ETF_FACTOR_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 63204,
+        "date_min": "2026-07-30",
+        "date_max": "2026-09-24"
+      },
+      "INDEX_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 106822,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "INDEX_FACTOR_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 106822,
+        "date_min": "2026-01-05",
+        "date_max": "2026-09-24"
+      },
+      "MARKET_STRUCTURE_DAILY_R1": {
+        "status": "READY",
+        "rows_2026": 178,
+        "date_max": "2026-09-24"
+      },
+      "FUND_DAILY_PIT_R1": {
+        "status": "INHERITED_PARENT"
+      },
+      "FUND_FACTOR_DAILY_R1": {
+        "status": "INHERITED_PARENT"
+      }
+    },
+    "read_closure": {
+      "STOCK_DAILY_PIT_R1": {
+        "product": "STOCK_DAILY_PIT_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 234,
+        "enumerated": 234,
+        "read_ok": 234,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true
+      },
+      "ETF_DAILY_PIT_R1": {
+        "product": "ETF_DAILY_PIT_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 37,
+        "enumerated": 37,
+        "read_ok": 37,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true
+      },
+      "INDEX_DAILY_R1": {
+        "product": "INDEX_DAILY_R1",
+        "failed": 0,
+        "failed_sample": [],
+        "semantics": "FILE_SET_IDENTITY",
+        "expected": 1501,
+        "enumerated": 1501,
+        "read_ok": 1501,
+        "excluded": 0,
+        "missing_enumerated": 0,
+        "extra_enumerated": 0,
+        "missing_read": 0,
+        "excluded_justified": 0,
+        "skipped_rows": 0,
+        "skipped_sample": [],
+        "missing_enumerated_sample": [],
+        "extra_enumerated_sample": [],
+        "missing_read_sample": [],
+        "counts_equal": true,
+        "CLOSURE_OK": true,
+        "sources": {
+          "RAW_FULL_HISTORY": {
+            "files": 1464
+          },
+          "CLEANING_CURRENT_INDEX_DAILY": {
+            "files": 37
+          }
+        },
+        "selected_files": 1501,
+        "note": "candidate files across the selected index sources; the 2026 output is the result of asof clipping and (date,code) de-duplication, not of reading fewer files"
+      }
+    },
+    "key_check": {
+      "STOCK_DAILY_PIT_R1": {
+        "status": "MATCH",
+        "expected_keys": 959896,
+        "written_keys": 959896,
+        "missing": 0,
+        "extra": 0,
+        "missing_sample": [],
+        "extra_sample": []
+      },
+      "STOCK_DAILY_RAW_PIT_R1": {
+        "status": "MATCH",
+        "expected_keys": 959896,
+        "written_keys": 959896,
+        "missing": 0,
+        "extra": 0,
+        "missing_sample": [],
+        "extra_sample": []
+      },
+      "STOCK_FACTOR_DAILY_R1": {
+        "status": "MATCH",
+        "expected_keys": 959896,
+        "written_keys": 959896,
+        "missing": 0,
+        "extra": 0,
+        "missing_sample": [],
+        "extra_sample": []
+      },
+      "INDEX_DAILY_R1": {
+        "status": "MATCH",
+        "expected_keys": 106822,
+        "written_keys": 106822,
+        "missing": 0,
+        "extra": 0,
+        "missing_sample": [],
+        "extra_sample": []
+      }
+    },
+    "july_distinct_codes": {
+      "2026-07-01": 5206,
+      "2026-07-02": 5210,
+      "2026-07-03": 5209,
+      "2026-07-06": 5210,
+      "2026-07-07": 5208,
+      "2026-07-08": 5208,
+      "2026-07-09": 5208,
+      "2026-07-10": 5207,
+      "2026-07-13": 5213,
+      "2026-07-14": 5213,
+      "2026-07-15": 5213,
+      "2026-07-16": 5213,
+      "2026-07-17": 5213,
+      "2026-07-20": 5213,
+      "2026-07-21": 5213,
+      "2026-07-22": 5213,
+      "2026-07-23": 5213,
+      "2026-07-24": 5213,
+      "2026-07-27": 5213,
+      "2026-07-28": 5213,
+      "2026-07-29": 5213,
+      "2026-07-30": 5213,
+      "2026-07-31": 5213
+    }
+  },
+  "sw": {
+    "L1": {
+      "level": "L1",
+      "status": "READY",
+      "release_id": "BLACKBOX_SW_L1_PIT_ALIGN_R1_ASOF_20260924_20260925_031250",
+      "n_parts": 13,
+      "modes": {
+        "SOURCE_FULL": "HARDLINK",
+        "year=2014": "HARDLINK",
+        "year=2015": "HARDLINK",
+        "year=2016": "HARDLINK",
+        "year=2017": "HARDLINK",
+        "year=2018": "HARDLINK",
+        "year=2019": "HARDLINK",
+        "year=2020": "HARDLINK",
+        "year=2021": "HARDLINK",
+        "year=2022": "HARDLINK",
+        "year=2023": "HARDLINK",
+        "year=2024": "HARDLINK",
+        "year=2025": "HARDLINK",
+        "year=2026": "HARDLINK"
+      },
+      "structure": {
+        "SOURCE_FULL": "HARDLINK"
+      },
+      "formal_data_asof": "2026-09-24",
+      "formal_data_asof_source": "MEMBERSHIP_COVERAGE_MAX"
+    },
+    "L2": {
+      "level": "L2",
+      "status": "READY",
+      "release_id": "BLACKBOX_SW_L2_PIT_ALIGN_R1_ASOF_20260924_20260925_031431",
+      "n_parts": 13,
+      "modes": {
+        "SOURCE_FULL": "HARDLINK",
+        "year=2014": "HARDLINK",
+        "year=2015": "HARDLINK",
+        "year=2016": "HARDLINK",
+        "year=2017": "HARDLINK",
+        "year=2018": "HARDLINK",
+        "year=2019": "HARDLINK",
+        "year=2020": "HARDLINK",
+        "year=2021": "HARDLINK",
+        "year=2022": "HARDLINK",
+        "year=2023": "HARDLINK",
+        "year=2024": "HARDLINK",
+        "year=2025": "HARDLINK",
+        "year=2026": "HARDLINK"
+      },
+      "structure": {
+        "SOURCE_FULL": "HARDLINK"
+      },
+      "formal_data_asof": "2026-09-24",
+      "formal_data_asof_source": "MEMBERSHIP_COVERAGE_MAX"
+    },
+    "L3": {
+      "level": "L3",
+      "status": "READY",
+      "release_id": "BLACKBOX_SW_L3_PIT_ALIGN_R1_ASOF_20260924_20260925_031609",
+      "n_parts": 13,
+      "modes": {
+        "SOURCE_FULL": "HARDLINK",
+        "year=2014": "HARDLINK",
+        "year=2015": "HARDLINK",
+        "year=2016": "HARDLINK",
+        "year=2017": "HARDLINK",
+        "year=2018": "HARDLINK",
+        "year=2019": "HARDLINK",
+        "year=2020": "HARDLINK",
+        "year=2021": "HARDLINK",
+        "year=2022": "HARDLINK",
+        "year=2023": "HARDLINK",
+        "year=2024": "HARDLINK",
+        "year=2025": "HARDLINK",
+        "year=2026": "HARDLINK"
+      },
+      "structure": {
+        "SOURCE_FULL": "HARDLINK"
+      },
+      "formal_data_asof": "2026-09-24",
+      "formal_data_asof_source": "MEMBERSHIP_COVERAGE_MAX"
+    }
+  },
+  "valuation": {
+    "status": "READY",
+    "rows": 222042,
+    "years": {
+      "2018": 60384,
+      "2026": 161658
+    },
+    "n_source_files": 48
+  },
+  "inherited": {
+    "ADJUST_FACTOR_PIT_R1": "JUNCTION",
+    "BILLBOARD_DAILY_PIT_R1": "JUNCTION",
+    "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1": "JUNCTION",
+    "CORP_SHAREHOLDER_TOP10_PIT_R1": "JUNCTION",
+    "CORP_XR_XD_EVENT_PIT_R1": "JUNCTION",
+    "ETF_TRACKING_INDEX_MAP_R1": "JUNCTION",
+    "FINANCIAL_INDICATOR_PIT_R1": "JUNCTION",
+    "FUND_DAILY_PIT_R1": "JUNCTION",
+    "FUND_FACTOR_DAILY_R1": "JUNCTION",
+    "FUND_LIKE_ASSET_VIEW_R1": "JUNCTION",
+    "FUND_NAV_PIT_R1": "JUNCTION",
+    "INDEX_CONSTITUENT_PIT_R1": "JUNCTION",
+    "INDEX_WEIGHT_PIT_R1": "JUNCTION",
+    "JQ20_FINANCE_BALANCE_SHEET_PARENT_PIT_R1": "JUNCTION",
+    "JQ20_FINANCE_BALANCE_SHEET_PIT_R1": "JUNCTION",
+    "JQ20_FINANCE_CASHFLOW_STATEMENT_PARENT_PIT_R1": "JUNCTION",
+    "JQ20_FINANCE_CASHFLOW_STATEMENT_PIT_R1": "JUNCTION",
+    "JQ20_FINANCE_INCOME_STATEMENT_PARENT_PIT_R1": "JUNCTION",
+    "JQ20_FINANCE_INCOME_STATEMENT_PIT_R1": "JUNCTION",
+    "JQ20_FUND_DIVIDEND_EVENT_PIT_R1": "JUNCTION",
+    "JQ20_FUND_FIN_INDICATOR_PIT_R1": "JUNCTION",
+    "JQ20_FUND_MF_DAILY_PROFIT_PIT_R1": "JUNCTION",
+    "JQ20_STK_AH_PRICE_COMP_PIT_R1": "JUNCTION",
+    "JQ20_STK_EL_CONST_CHANGE_EVENT_PIT_R1": "JUNCTION",
+    "JQ20_STK_EL_TOP_ACTIVATE_PIT_R1": "JUNCTION",
+    "JQ20_STK_EMPLOYEE_INFO_PIT_R1": "JUNCTION",
+    "JQ20_STK_EXCHANGE_LINK_CALENDAR_R1": "JUNCTION",
+    "JQ20_STK_EXCHANGE_TRADE_INFO_PIT_R1": "JUNCTION",
+    "JQ20_STK_LIST_REFERENCE_PIT_R1": "JUNCTION",
+    "JQ20_STK_NAME_HISTORY_PIT_R1": "JUNCTION",
+    "JQ20_STK_PERFORMANCE_LETTERS_PIT_R1": "JUNCTION",
+    "JQ20_STK_REPORT_DISCLOSURE_PIT_R1": "JUNCTION",
+    "JQ20_STK_SHAREHOLDERS_SHARE_CHANGE_EVENT_PIT_R1": "JUNCTION",
+    "MARKET_UNIVERSE_PIT_R1": "JUNCTION",
+    "SECURITY_MASTER_SNAPSHOT_R1": "JUNCTION",
+    "STOCK_TRADEABILITY_PIT_R1": "JUNCTION"
+  },
+  "finance": {
+    "target": "2026-09-24",
+    "families": {
+      "INCOME": {
+        "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\income__incremental__2026q2__20260903_004853.parquet",
+        "raw_rows": 5209,
+        "FINANCE_PIT_VISIBLE_ROWS": 5209,
+        "FINANCE_PIT_DELTA_ROWS": 0,
+        "FINANCE_FUTURE_ROWS": 0,
+        "FINANCE_NAT_ROWS": 0,
+        "FINANCE_EXCLUSION_REASONS": [],
+        "pub_0815": 123,
+        "excluded_pub_0817": 0,
+        "excluded_pub_0818": 0,
+        "included_all_le_target": true,
+        "excluded_all_gt_or_nat": true
+      },
+      "BALANCE": {
+        "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\balance__incremental__2026q2__20260903_004853.parquet",
+        "raw_rows": 5210,
+        "FINANCE_PIT_VISIBLE_ROWS": 5210,
+        "FINANCE_PIT_DELTA_ROWS": 0,
+        "FINANCE_FUTURE_ROWS": 0,
+        "FINANCE_NAT_ROWS": 0,
+        "FINANCE_EXCLUSION_REASONS": [],
+        "pub_0815": 123,
+        "excluded_pub_0817": 0,
+        "excluded_pub_0818": 0,
+        "included_all_le_target": true,
+        "excluded_all_gt_or_nat": true
+      },
+      "CASHFLOW": {
+        "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\cash_flow__incremental__2026q2__20260903_004853.parquet",
+        "raw_rows": 5209,
+        "FINANCE_PIT_VISIBLE_ROWS": 5209,
+        "FINANCE_PIT_DELTA_ROWS": 0,
+        "FINANCE_FUTURE_ROWS": 0,
+        "FINANCE_NAT_ROWS": 0,
+        "FINANCE_EXCLUSION_REASONS": [],
+        "pub_0815": 123,
+        "excluded_pub_0817": 0,
+        "excluded_pub_0818": 0,
+        "included_all_le_target": true,
+        "excluded_all_gt_or_nat": true
+      }
+    },
+    "FINANCE_PIT_DELTA_ROWS": 0,
+    "FINANCE_FUTURE_ROWS": 0,
+    "FINANCE_NAT_ROWS": 0,
+    "FINANCE_FORMAL_SUCCESSOR_REQUIRED": false,
+    "FINANCE_FORMAL_INHERIT": "ALLOWED"
+  },
+  "finance_applied": {
+    "applied": false,
+    "reason": "NO_DELTA_INHERIT_OK"
+  },
+  "sealed_at": "2026-10-26T10:11:23+00:00"
+}
