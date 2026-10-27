@@ -1,0 +1,308 @@
+{
+  "artifact": "R15_CLEANING_REPLAY",
+  "runner_version": "R2_CHAIN_INTEGRITY",
+  "release_id": "R15_REPLAY_20260924_R3",
+  "release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3",
+  "asof": "2026-09-24",
+  "r15_source": {
+    "cleaning_module": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\formal_cleaning_r15_build_and_seal_r1.py",
+    "antileak_module": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\r15_antileak_and_ssot_r1.py"
+  },
+  "injection": {
+    "ROOT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root",
+    "RELEASES": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases",
+    "CURRENT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\CANDIDATE_CLEANING_POINTER.json",
+    "MINUTE_STAGING": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\minute_staging",
+    "CLEANING_AS_OF": "2026-09-24",
+    "PARENT_ID": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "PARENT_SEAL": "SEAL_R33_FUND_NAV_20260924_200439",
+    "SSOT": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\CANDIDATE_SSOT.json"
+  },
+  "carry_forward": {
+    "subtrees": {
+      "price/stock_ohlcv_daily": {
+        "src_files": 232,
+        "dst_files": 232,
+        "absent_count": 0,
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+      },
+      "price/ETF_daily": {
+        "src_files": 37,
+        "dst_files": 37,
+        "absent_count": 0,
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\ETF_daily"
+      },
+      "reference/index_daily": {
+        "src_files": 37,
+        "dst_files": 37,
+        "absent_count": 0,
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\reference\\index_daily"
+      },
+      "factor/valuation": {
+        "src_files": 65,
+        "dst_files": 65,
+        "absent_count": 0,
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\factor\\valuation"
+      }
+    },
+    "files_linked": 371,
+    "files_copied": 0,
+    "missing": [],
+    "resolved_via_junction": [
+      {
+        "rel": "price/stock_ohlcv_daily",
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\stock_ohlcv_daily"
+      },
+      {
+        "rel": "price/ETF_daily",
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\price\\ETF_daily"
+      },
+      {
+        "rel": "reference/index_daily",
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\standard\\reference\\index_daily"
+      },
+      {
+        "rel": "factor/valuation",
+        "real": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R39_ASOF_20260902_20260903_011525\\standard\\factor\\valuation"
+      }
+    ],
+    "stat_errors": [],
+    "gate_ok": true,
+    "skipped": false,
+    "method": "SELECTED_SUBTREES_COMPILER_INPUTS_ONLY",
+    "selected": [
+      "price/stock_ohlcv_daily",
+      "price/ETF_daily",
+      "reference/index_daily",
+      "factor/valuation"
+    ],
+    "original_hardlink_tree_usable": false,
+    "original_hardlink_tree_reason": "rglob follows reparse points; production standard has ~32-release junction chains and a real junction cycle, so it never terminates (observed: 25 min CPU spin, 0 bytes produced)",
+    "elapsed_sec": 0.1,
+    "parent_standard": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+    "write_path_real": true
+  },
+  "retained_batches": [
+    {
+      "file": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "rows": 5212,
+      "days": [
+        "2026-08-31"
+      ],
+      "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "staged_copy": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\04_REPAIR_STAGING_DATA\\stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet"
+    },
+    {
+      "file": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "rows": 5214,
+      "days": [
+        "2026-09-01"
+      ],
+      "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "staged_copy": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\04_REPAIR_STAGING_DATA\\stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+    }
+  ],
+  "staging_items_loaded": 2,
+  "production_hashes": {
+    "before": {
+      "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R1.json": "d8e71afe71481d7f0cd17baf9df99855fe8d45089d8acb46135cff55a26cf817"
+    },
+    "after": {
+      "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "E:\\BLACKBOX\\规则库\\hand_hard_rules\\BLACKBOX_HAND_FULL_DATA_UPDATE_SCOPE_R1.json": "d8e71afe71481d7f0cd17baf9df99855fe8d45089d8acb46135cff55a26cf817"
+    },
+    "sample_before": {
+      "price/stock_ohlcv_daily/stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet": "2770c2c61d77ad39c61ef0d9a1d77715852d3ece435ae0015abccedf5534a9e8",
+      "price/stock_ohlcv_daily/stock_daily__batch_10__2026__none_adj__v1__gapfill_20260702_154610.parquet": "3f7d31deeb7770fa907d1f2fe388102d431be648b7863934781abdb7d9233a9c",
+      "price/stock_ohlcv_daily/stock_daily__batch_11__2026__none_adj__v1__gapfill_20260702_154610.parquet": "8424a3d3c58ece5a65c2e346934e299b43a3e6c5b5474e63b79abc315f0d1bc7",
+      "price/stock_ohlcv_daily/stock_daily__batch_1__2026__none_adj__v1__gapfill_20260702_154610.parquet": "0dccb07f7a5b2eb1d3e3f051fa91651030c42de78ea4a01f8a1c06457846dad3",
+      "price/stock_ohlcv_daily/stock_daily__batch_2__2026__none_adj__v1__gapfill_20260702_154610.parquet": "f188925029821880e49ffb2302b90f5a418e8f2085f163d44978fb3b9ad5a29a",
+      "price/stock_ohlcv_daily/stock_daily__batch_3__2026__none_adj__v1__gapfill_20260702_154610.parquet": "d985a4da8b0d8413bf34aae20c5a74b7c81f353b06aa553c805f1a5a109fa222",
+      "price/stock_ohlcv_daily/stock_daily__batch_4__2026__none_adj__v1__gapfill_20260702_154610.parquet": "eb7781c8b2267d675542abec50d530f682b115ff02ab868ef7f4e69863dfbffb",
+      "price/stock_ohlcv_daily/stock_daily__batch_5__2026__none_adj__v1__gapfill_20260702_154610.parquet": "796a80e81ce3312398c54619e7e82ebe074dd8fd97f618d7457b937dd18681db",
+      "price/stock_ohlcv_daily/stock_daily__batch_6__2026__none_adj__v1__gapfill_20260702_154610.parquet": "88808d3f9879c8ef9c31d75543928bbe2c411f9ffb42bcaa3b160a2743a9382c",
+      "price/stock_ohlcv_daily/stock_daily__batch_7__2026__none_adj__v1__gapfill_20260702_154610.parquet": "a0ba20674a4bb4104cf28f46363a47d555fcbd18dd63c74dcfa5a4c332448d0c",
+      "price/stock_ohlcv_daily/stock_daily__batch_8__2026__none_adj__v1__gapfill_20260702_154610.parquet": "9f7570d9a405d15de582c2cb646a967b071cc306a3700da360d2ebe7414ea369",
+      "price/stock_ohlcv_daily/stock_daily__batch_9__2026__none_adj__v1__gapfill_20260702_154610.parquet": "a5ed2df1715999c896fc940df979244f5897306294cefa893387d9037f5a0dfb",
+      "price/stock_ohlcv_daily/stock_daily__gapfill_codes__2026__000638XSHE_301583XSHE__none_adj__v1__20260807_040139.parquet": "b843cda57540a416d776202ff1da446b557dd5f386c0809715acc8dc24bb9ee4",
+      "price/stock_ohlcv_daily/stock_daily__gapfill_codes__2026__301677XSHE_688825XSHG__none_adj__v1__20260807_040139.parquet": "57e53b6baabd51e0b1ec1f3fb1572af434f889a7c6a7e2493164c3b0fcdf7925",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2014__none_adj__v1__20260612_183025.parquet": "14c4d69ec7a3d6588459a75ea99d37ac24005cc3801f5ef35a6e04b6bcbdfa8a",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2015__none_adj__v1__20260612_183025.parquet": "4ea66edde02839fb74b3c1f12313134aef328f94146f76ec5beea1af303610fe",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2016__none_adj__v1__20260612_183025.parquet": "49aa63665f06b168d6a50af766ec13ca482ea276d6640f37e33bc77af584fbfc",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2017__none_adj__v1__20260612_183025.parquet": "88a963b85da551306a35aa6d7c6178319cedc9464f8754df236fb078b66d833e",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2018__none_adj__v1__20260612_183025.parquet": "8bcf6c63f11389f2da41e1d4f989b0cf3221f0e4d248f0f73ad489307b76f98e",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2019__none_adj__v1__20260612_183025.parquet": "b14b12b62ec2afc94ab0a3dd53b106be89980657cd47624531b23ffc4c76b8f1",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2020__none_adj__v1__20260612_183025.parquet": "4ed3af46b82ef70de46be5bf56f4f65c23777ca14ee0193b26a0657f492c2b37",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2021__none_adj__v1__20260612_183025.parquet": "a5da43382a119a496ca91c7bc444640fd3e3d25d62598347c5c5392b458e54e5",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2022__none_adj__v1__20260612_183025.parquet": "c6081ae47b436c9dba8e6c75eef18de0856081ef2b63238a5db634b7ef3ce6e8",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2023__none_adj__v1__20260612_183025.parquet": "e99fb4d2f8f938e382098b75af9cfcf931b970d7080ff38a34a39a9d85a19bbe",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2024__none_adj__v1__20260612_183025.parquet": "00d74792c4747a28d1dce6ce1b9a43c05d1f54eaf6e05f5c2072f87793293b17",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2025__none_adj__v1__20260612_183025.parquet": "e655fe7d650ee54d99f3044046dd5428f3aa7eb91a4adb7925cc76a9227d2e30",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2026__none_adj__v1__20260612_183025.parquet": "075e15a1bef52b023aecff6bdbf05c9e72e6b0e7564ec75b026a406f20c788ca",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet": "f5598c148543c21f07e6b9bdbe9fd0792f17978cf2943c0fbc2bcb073f0f6909",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2014__none_adj__v1__20260612_183025.parquet": "33113cdc07b65e4573d9241b751b31f8b708fd11a1050d19927b488b9097e686",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2015__none_adj__v1__20260612_183025.parquet": "7c0d17ec82da828339d1c4de293bffeed477d62cd80d4f85059364be6b2d3038",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2016__none_adj__v1__20260612_183025.parquet": "a9d0cfd09ef7b688d0e8148ddc17534a67dae56c9126bb1b0c30bb8d203ba9b4",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2017__none_adj__v1__20260612_183025.parquet": "0cfe3cc48b21db16360c17ae87e2757f5f7fc131aab5d83f16ca25d491fcbb6b",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2018__none_adj__v1__20260612_183025.parquet": "0272343f471f6e131db59b7ff671e3334d336e914a2cd91f699dd2e060d9069d",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2019__none_adj__v1__20260612_183025.parquet": "d1a3d92f908aac6ff43fbf6e07c70a15a1a6804651d4e75bd5dcd05d0be673fe",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2020__none_adj__v1__20260612_183025.parquet": "d4ff7d1cd5e227844021a0065c842496e049aedb219cdddf30630e6016bb9d0a",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2021__none_adj__v1__20260612_183025.parquet": "7ebac6dfae22e4f9c24b924b384ca064cfc90413d12065fecdc7b13f50672f5d",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2022__none_adj__v1__20260612_183025.parquet": "3720599c982423303e07ad4af75b81b264056f01cdd501d826f00944a1d61ef5",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2023__none_adj__v1__20260612_183025.parquet": "c8fc62b79f0d45aee32397225e7cefcba1bbc68f85bf720e2cc8e064feb32d5a",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2024__none_adj__v1__20260612_183025.parquet": "0e7138d355a7b623f697953355c18dcac9591d39fd9b1fd08cf7209c99586e2c",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet": "06f68b1cf78b24d943155385c4c7333e64300763a05f82829386a333fb9d3a27"
+    },
+    "sample_after": {
+      "price/stock_ohlcv_daily/stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet": "2770c2c61d77ad39c61ef0d9a1d77715852d3ece435ae0015abccedf5534a9e8",
+      "price/stock_ohlcv_daily/stock_daily__batch_10__2026__none_adj__v1__gapfill_20260702_154610.parquet": "3f7d31deeb7770fa907d1f2fe388102d431be648b7863934781abdb7d9233a9c",
+      "price/stock_ohlcv_daily/stock_daily__batch_11__2026__none_adj__v1__gapfill_20260702_154610.parquet": "8424a3d3c58ece5a65c2e346934e299b43a3e6c5b5474e63b79abc315f0d1bc7",
+      "price/stock_ohlcv_daily/stock_daily__batch_1__2026__none_adj__v1__gapfill_20260702_154610.parquet": "0dccb07f7a5b2eb1d3e3f051fa91651030c42de78ea4a01f8a1c06457846dad3",
+      "price/stock_ohlcv_daily/stock_daily__batch_2__2026__none_adj__v1__gapfill_20260702_154610.parquet": "f188925029821880e49ffb2302b90f5a418e8f2085f163d44978fb3b9ad5a29a",
+      "price/stock_ohlcv_daily/stock_daily__batch_3__2026__none_adj__v1__gapfill_20260702_154610.parquet": "d985a4da8b0d8413bf34aae20c5a74b7c81f353b06aa553c805f1a5a109fa222",
+      "price/stock_ohlcv_daily/stock_daily__batch_4__2026__none_adj__v1__gapfill_20260702_154610.parquet": "eb7781c8b2267d675542abec50d530f682b115ff02ab868ef7f4e69863dfbffb",
+      "price/stock_ohlcv_daily/stock_daily__batch_5__2026__none_adj__v1__gapfill_20260702_154610.parquet": "796a80e81ce3312398c54619e7e82ebe074dd8fd97f618d7457b937dd18681db",
+      "price/stock_ohlcv_daily/stock_daily__batch_6__2026__none_adj__v1__gapfill_20260702_154610.parquet": "88808d3f9879c8ef9c31d75543928bbe2c411f9ffb42bcaa3b160a2743a9382c",
+      "price/stock_ohlcv_daily/stock_daily__batch_7__2026__none_adj__v1__gapfill_20260702_154610.parquet": "a0ba20674a4bb4104cf28f46363a47d555fcbd18dd63c74dcfa5a4c332448d0c",
+      "price/stock_ohlcv_daily/stock_daily__batch_8__2026__none_adj__v1__gapfill_20260702_154610.parquet": "9f7570d9a405d15de582c2cb646a967b071cc306a3700da360d2ebe7414ea369",
+      "price/stock_ohlcv_daily/stock_daily__batch_9__2026__none_adj__v1__gapfill_20260702_154610.parquet": "a5ed2df1715999c896fc940df979244f5897306294cefa893387d9037f5a0dfb",
+      "price/stock_ohlcv_daily/stock_daily__gapfill_codes__2026__000638XSHE_301583XSHE__none_adj__v1__20260807_040139.parquet": "b843cda57540a416d776202ff1da446b557dd5f386c0809715acc8dc24bb9ee4",
+      "price/stock_ohlcv_daily/stock_daily__gapfill_codes__2026__301677XSHE_688825XSHG__none_adj__v1__20260807_040139.parquet": "57e53b6baabd51e0b1ec1f3fb1572af434f889a7c6a7e2493164c3b0fcdf7925",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2014__none_adj__v1__20260612_183025.parquet": "14c4d69ec7a3d6588459a75ea99d37ac24005cc3801f5ef35a6e04b6bcbdfa8a",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2015__none_adj__v1__20260612_183025.parquet": "4ea66edde02839fb74b3c1f12313134aef328f94146f76ec5beea1af303610fe",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2016__none_adj__v1__20260612_183025.parquet": "49aa63665f06b168d6a50af766ec13ca482ea276d6640f37e33bc77af584fbfc",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2017__none_adj__v1__20260612_183025.parquet": "88a963b85da551306a35aa6d7c6178319cedc9464f8754df236fb078b66d833e",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2018__none_adj__v1__20260612_183025.parquet": "8bcf6c63f11389f2da41e1d4f989b0cf3221f0e4d248f0f73ad489307b76f98e",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2019__none_adj__v1__20260612_183025.parquet": "b14b12b62ec2afc94ab0a3dd53b106be89980657cd47624531b23ffc4c76b8f1",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2020__none_adj__v1__20260612_183025.parquet": "4ed3af46b82ef70de46be5bf56f4f65c23777ca14ee0193b26a0657f492c2b37",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2021__none_adj__v1__20260612_183025.parquet": "a5da43382a119a496ca91c7bc444640fd3e3d25d62598347c5c5392b458e54e5",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2022__none_adj__v1__20260612_183025.parquet": "c6081ae47b436c9dba8e6c75eef18de0856081ef2b63238a5db634b7ef3ce6e8",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2023__none_adj__v1__20260612_183025.parquet": "e99fb4d2f8f938e382098b75af9cfcf931b970d7080ff38a34a39a9d85a19bbe",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2024__none_adj__v1__20260612_183025.parquet": "00d74792c4747a28d1dce6ce1b9a43c05d1f54eaf6e05f5c2072f87793293b17",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2025__none_adj__v1__20260612_183025.parquet": "e655fe7d650ee54d99f3044046dd5428f3aa7eb91a4adb7925cc76a9227d2e30",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2026__none_adj__v1__20260612_183025.parquet": "075e15a1bef52b023aecff6bdbf05c9e72e6b0e7564ec75b026a406f20c788ca",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_0__2026__none_adj__v1__gapfill_20260702_154610.parquet": "f5598c148543c21f07e6b9bdbe9fd0792f17978cf2943c0fbc2bcb073f0f6909",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2014__none_adj__v1__20260612_183025.parquet": "33113cdc07b65e4573d9241b751b31f8b708fd11a1050d19927b488b9097e686",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2015__none_adj__v1__20260612_183025.parquet": "7c0d17ec82da828339d1c4de293bffeed477d62cd80d4f85059364be6b2d3038",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2016__none_adj__v1__20260612_183025.parquet": "a9d0cfd09ef7b688d0e8148ddc17534a67dae56c9126bb1b0c30bb8d203ba9b4",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2017__none_adj__v1__20260612_183025.parquet": "0cfe3cc48b21db16360c17ae87e2757f5f7fc131aab5d83f16ca25d491fcbb6b",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2018__none_adj__v1__20260612_183025.parquet": "0272343f471f6e131db59b7ff671e3334d336e914a2cd91f699dd2e060d9069d",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2019__none_adj__v1__20260612_183025.parquet": "d1a3d92f908aac6ff43fbf6e07c70a15a1a6804651d4e75bd5dcd05d0be673fe",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2020__none_adj__v1__20260612_183025.parquet": "d4ff7d1cd5e227844021a0065c842496e049aedb219cdddf30630e6016bb9d0a",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2021__none_adj__v1__20260612_183025.parquet": "7ebac6dfae22e4f9c24b924b384ca064cfc90413d12065fecdc7b13f50672f5d",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2022__none_adj__v1__20260612_183025.parquet": "3720599c982423303e07ad4af75b81b264056f01cdd501d826f00944a1d61ef5",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2023__none_adj__v1__20260612_183025.parquet": "c8fc62b79f0d45aee32397225e7cefcba1bbc68f85bf720e2cc8e064feb32d5a",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2024__none_adj__v1__20260612_183025.parquet": "0e7138d355a7b623f697953355c18dcac9591d39fd9b1fd08cf7209c99586e2c",
+      "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__batch_10__2025__none_adj__v1__20260612_183025.parquet": "06f68b1cf78b24d943155385c4c7333e64300763a05f82829386a333fb9d3a27"
+    }
+  },
+  "repair_units": [
+    {
+      "repair_unit_id": "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057__0",
+      "domain_id": "stock_ohlcv_daily",
+      "trade_date": "2026-08-31",
+      "status": "COMMITTED",
+      "source_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\04_REPAIR_STAGING_DATA\\stock_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "source_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "active_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\standard\\price\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "active_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "active_row_count": 5212,
+      "quarantine_path": null,
+      "quarantine_row_count": 0
+    },
+    {
+      "repair_unit_id": "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813__0",
+      "domain_id": "stock_ohlcv_daily",
+      "trade_date": "2026-09-01",
+      "status": "COMMITTED",
+      "source_file": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\04_REPAIR_STAGING_DATA\\stock_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "source_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "active_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_releases\\R15_REPLAY_20260924_R3\\standard\\price\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "active_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "active_row_count": 5214,
+      "quarantine_path": null,
+      "quarantine_row_count": 0
+    }
+  ],
+  "seal_certificate": {
+    "release_id": "R15_REPLAY_20260924_R3",
+    "seal_id": "R15_REPLAY_20260924_R3_SEAL",
+    "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+    "parent_seal_id": "SEAL_R33_FUND_NAV_20260924_200439",
+    "cleaning_as_of": "2026-09-24",
+    "finance_asof": "2026-09-24",
+    "daily_asof": "2026-09-24",
+    "release_version": "R12",
+    "repair_unit_count": 2,
+    "repair_committed": 2,
+    "release_content_root_sha256": "3b88a0432158d11d10bd26dfe3a210dbdc5e11f5153b88f26d5ceca449f7c7fa",
+    "sealed_at": "2026-10-26T10:16:37+00:00",
+    "carry_forward_method": "HARD_LINK_FINGERPRINT_REUSE_FROM_PARENT_R11",
+    "scope": "FRESHNESS_DAILY_AND_MINUTE_20260807_ON_TOP_OF_R11"
+  },
+  "antileak": {
+    "generated_at": "2026-10-26T10:16:37+00:00",
+    "cleaning_as_of": "2026-09-24",
+    "finance_asof": "2026-09-24",
+    "daily_asof": "2026-09-24",
+    "target_asof": "2026-09-24",
+    "asof_aligned": true,
+    "release_id": "R15_REPLAY_20260924_R3",
+    "seal_id": "R15_REPLAY_20260924_R3_SEAL",
+    "index_pit_overall_pass": true,
+    "overall_pass": true,
+    "notes": [
+      "R15 asof triple-align required (cleaning/finance/daily == 2026-08-10)",
+      "finance files carried from R11; finance_asof PIT cutoff advanced with trading day",
+      "index PIT inherits prior SSOT anti_leakage_last when present"
+    ]
+  },
+  "ssot_amend": {
+    "ssot_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\r15_root\\CANDIDATE_SSOT.json",
+    "domain": "full_data_update_r15_20260810"
+  },
+  "replayed_readback": [
+    {
+      "relative_path": "price/stock_ohlcv_daily/stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "rows": 5212,
+      "sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "source_sha256": "553bad1973f6834506989b15a8298746bc07490534834cde25790b957720b063",
+      "byte_equal_to_retained": true
+    },
+    {
+      "relative_path": "price/stock_ohlcv_daily/stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet",
+      "rows": 5214,
+      "sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "source_sha256": "25e695dd9de457b24cd0d087064d5d68709908c72a53d8c49ca477d818d4ded7",
+      "byte_equal_to_retained": true
+    }
+  ],
+  "gates": {
+    "standard_tree_built": true,
+    "materialize_complete": true,
+    "write_path_is_real_dir": true,
+    "compiler_inputs_present": true,
+    "r15_load_staging_called": true,
+    "r15_ingest_item_called": true,
+    "ingest_all_committed": true,
+    "r15_seal_release_called": true,
+    "seal_certificate_written": true,
+    "ledger_written": true,
+    "antileak_function_called": true,
+    "antileak_pass": true,
+    "replayed_bytes_match_retained": true,
+    "production_current_untouched": true,
+    "production_ssot_untouched": true,
+    "production_sample_inodes_untouched": true,
+    "switch_current_not_called": true,
+    "patch_hand_not_called": true
+  },
+  "GATE_RESULT": "PASS",
+  "not_claimed": [
+    "production CURRENT not switched (switch_current not called)",
+    "production HAND not patched (patch_hand not called)",
+    "this replay proves the R15 functions run on the retained batches, not that the original vendor download returned them",
+    "antileak/SSOT here validate the candidate tree only"
+  ]
+}
