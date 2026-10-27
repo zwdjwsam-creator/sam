@@ -1,0 +1,77 @@
+{
+  "schema": "EXACT_CHAIN_SOURCE_HANDOFF_R1",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "foundation_execution_host": "ZHANGWEI",
+  "source_snapshot_ref": "9de212a5149629067048eaccbbfd70e457cc8480",
+  "allowed_action": "Read/export named source text only after passing existing V2 fixture gate; never import/execute business sources.",
+  "local_output": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\chain_source_001",
+  "hub_return": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/SAM/chain_source_001/",
+  "exact_paths": [
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_daily_r1.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_val_adjust_r1.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_billboard_ingest_r1.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_xr_xd_r1.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\minute_download_20260924.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\ingest_minutes_r1.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\ingest_minutes_flat_r1.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\sw_l123_asof_20260924.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\index_minute_20260924.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\align_index_minute_20260924.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\patch_candidate_val_sw_republish_r1.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\pick_cache_candidate_r1.py",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\DOWNLOAD_ACCEPTANCE.json",
+    "E:\\BLACKBOX\\脚本\\jq_download_base.py"
+  ],
+  "reuse_existing_body": {
+    "path": "E:\\BLACKBOX\\脚本\\jq_download_base.py",
+    "bytes": 8460,
+    "sha256": "9c6c7a76f434fae66236cc6d6a7b97189439684fd7f8038cae72939cc954af18",
+    "hub_source_index": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/SOURCE_INDEX.json",
+    "rule": "If unchanged, cite retained SOURCE_INDEX and original source ZIP member; do not re-upload."
+  },
+  "filename_only_listing": {
+    "directory": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1",
+    "depth": 1,
+    "max_entries": 100,
+    "allowed_fields": [
+      "name",
+      "entry_type"
+    ],
+    "read_unknown_file_bodies": false,
+    "follow_reparse_points": false,
+    "on_limit": "Return DIRECTORY_LIST_LIMIT; do not expand."
+  },
+  "limits": {
+    "max_file_bytes": 2097152,
+    "max_total_bytes": 16777216,
+    "recursive_search": false,
+    "import_business_modules": false,
+    "execute_business_modules": false,
+    "read_credential_files": false,
+    "credential_rotation": false,
+    "auth_or_quota_calls": false,
+    "current_write": false,
+    "orders": false
+  },
+  "source_receipt_fields": [
+    "source_path",
+    "status",
+    "bytes",
+    "raw_sha256",
+    "git_blob_sha_if_known",
+    "reused_hub_reference_or_captured_relative_path",
+    "local_readback_match",
+    "current_snapshot_not_historical_execution_attestation"
+  ],
+  "statuses": [
+    "CAPTURED",
+    "REUSED_HUB_BODY",
+    "NOT_FOUND_AT_EXACT_PATH",
+    "BLOCKED_OR_READ_ERROR",
+    "BLOCKED_SECRET_LITERAL",
+    "SOURCE_CHANGED_DURING_READ"
+  ],
+  "secret_handling": "Do not open credential locators. If a named source embeds a credential literal, do not copy/upload/hash that source or print its literal/derived hash. Return filename and BLOCKED_SECRET_LITERAL only. No password or authentication investigation is assigned.",
+  "boundary": "A missing path is not absence of business data. No fallback scan, wildcard body collection, code authoring, generator execution or supplier call."
+}
