@@ -1,0 +1,83 @@
+{
+  "schema": "WATCHDOG_CONTROL_ACK_R1",
+  "contract_id": "WATCHDOG_CONTROL_20261027",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T16:04:14+0800",
+  "owner_permission_acknowledged": {
+    "SAM_EXACT_WATCHER_STOP_ALLOWED": true,
+    "DESKTOP_STOP_OR_DISABLE_ALLOWED": false,
+    "plain_statement": "The owner permits disabling exact proven legacy SAM scheduled launchers and stopping only the three allowlisted SAM watcher PowerShell processes. The earlier blanket no-stop instruction is superseded ONLY for those proven SAM launch mechanisms, and for SAM only.",
+    "not_authorised": [
+      "terminating any ordinary business, download or cleaning process",
+      "stopping the Python catch-up driver or any of its children",
+      "Stop-ScheduledTask (it could kill business descendants)",
+      "recursive / process-tree kill",
+      "restarting a terminal or the wedged parent Cursor shell",
+      "stopping an unrelated watchdog or an unknown candidate",
+      "deleting a task, script, log or prior failure evidence",
+      "any action on ZHANGWEI",
+      "elevation, Developer Mode, or any system policy/privilege change"
+    ]
+  },
+  "actual_sam_role_and_action": {
+    "role": "SAM (notebook; historical-source/evidence peer)",
+    "will_run_control_script": true,
+    "will_run_with_allow_sam_stop": true,
+    "planned_mutations": [
+      "Disable-ScheduledTask for each task whose EVERY action is proven inside the allowlist/driver",
+      "Stop-Process on each exact allowlisted watcher PowerShell process, verified immediately before the action"
+    ],
+    "explicitly_will_not": [
+      "Stop-ScheduledTask",
+      "python driver kill",
+      "child/tree kill",
+      "terminal restart"
+    ]
+  },
+  "watchdog_allowlist": [
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\watchdog_after_resume.ps1",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\catchup_progress_loop.ps1",
+    "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\monitor_loop.ps1"
+  ],
+  "allowed_disable_target": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\run_unattended_catchup_r1.py (scheduled launcher only; its running process is never stopped)",
+  "preflight_state": {
+    "output_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\watchdog_control_001",
+    "output_dir_existed": false,
+    "output_dir_will_be_pre_created": false,
+    "output_creation_mode": "the script creates it with mkdir(exist_ok=False) and every receipt with exclusive-create",
+    "prior_ack_or_result_for_this_control_task": "none present; this is the first attempt and it is not duplicated",
+    "transient_self_match_disclosure": {
+      "observed": "a pre-flight process scan reported one PID matching the literal text 'watchdog_control'",
+      "resolved": "a follow-up read-only probe immediately returned matches = 0 and REAL_CONTROL_SCRIPT_PROCESSES = 0; the earlier hit was the scanning PowerShell matching its own command line, which contained the filter literal",
+      "real_control_processes": 0,
+      "not_a_running_control": true
+    }
+  },
+  "package_verification_scope": {
+    "package_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_watchdog_control",
+    "files_staged": 5,
+    "payloads_declared": 4,
+    "verification": "raw byte length and SHA256 against PACKAGE.json before execution",
+    "detail": "WATCHDOG_PACKAGE_VERIFY.json"
+  },
+  "next_action": "run the supplied ten Linux policy/mocked-subprocess controls once; only on all-10 pass with no skips and actual exit 0, execute watchdog_control.py once with --role SAM --allow-sam-stop and the exclusive output directory",
+  "expected_exit_semantics": {
+    "0": "bounded completion; on SAM additionally requires no remaining matched enabled launcher or watcher in the after snapshot",
+    "2": "preserved partial: action/query failure or matched targets remain; read RESULT.json and the INTENT files; no retry"
+  },
+  "boundaries_confirmed": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "no_business_data_credential_or_supplier_action": true,
+    "no_historical_chain_execution": true,
+    "no_fixture_or_collector_rerun": true,
+    "sam_data_plane_remains_historical_evidence_only": true
+  },
+  "task_publication_is_not_ack": "This file is the ACK; the published contract was not.",
+  "also_present_at": "SAM/WATCHDOG_ACK.json (uploaded before execution)"
+}
