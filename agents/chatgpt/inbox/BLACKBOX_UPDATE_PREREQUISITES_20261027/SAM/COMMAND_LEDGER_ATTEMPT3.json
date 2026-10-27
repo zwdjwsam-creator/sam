@@ -1,0 +1,138 @@
+{
+  "schema": "COMMAND_LEDGER_ATTEMPT3_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "attempt": 3,
+  "generated_at_cn": "2026-10-27T14:12:58+0800",
+  "entries": [
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_BYTES_R1",
+      "tag": "FIXTURE_CONTROLS_ATTEMPT3",
+      "argv": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "argv_joined": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 -m unittest discover -s C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3 -p test_*.py -v",
+      "cwd": "E:\\BLACKBOX",
+      "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "hostname": "SAM",
+      "started_at_cn": "2026-10-27T14:02:48+0800",
+      "ended_at_cn": "2026-10-27T14:02:51+0800",
+      "elapsed_sec": 2.278,
+      "exit_code": 0,
+      "exit_code_source": "subprocess.run returncode (literal process exit; not derived from any artifact)",
+      "stdout": {
+        "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\FIXTURE_CONTROLS_ATTEMPT3_STDOUT.txt",
+        "format": "RAW_BYTES_VERBATIM",
+        "bytes": 0,
+        "valid_utf8": true,
+        "note": "file content is the exact process bytes; UTF-8 decodable"
+      },
+      "stderr": {
+        "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\FIXTURE_CONTROLS_ATTEMPT3_STDERR.txt",
+        "format": "RAW_BYTES_VERBATIM",
+        "bytes": 3080,
+        "valid_utf8": true,
+        "note": "file content is the exact process bytes; UTF-8 decodable"
+      },
+      "stream_presence": {
+        "stdout_present": false,
+        "stderr_present": true
+      },
+      "capture_mode": "bytes (text=False); no encoding assumption was applied to the child",
+      "kind": "NATIVE_GATE",
+      "package": "package_windows_fixture_v3",
+      "gate_outcome": "PASSED 23/23, exit 0, no skips"
+    },
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_BYTES_R1",
+      "tag": "COLLECTOR_ATTEMPT3",
+      "argv": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3\\collect_prerequisites.py",
+        "--role",
+        "SAM",
+        "--out",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\capture_003"
+      ],
+      "argv_joined": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3\\collect_prerequisites.py --role SAM --out C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\capture_003",
+      "cwd": "E:\\BLACKBOX",
+      "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "hostname": "SAM",
+      "started_at_cn": "2026-10-27T14:06:44+0800",
+      "ended_at_cn": "2026-10-27T14:06:45+0800",
+      "elapsed_sec": 0.976,
+      "exit_code": 2,
+      "exit_code_source": "subprocess.run returncode (literal process exit; not derived from any artifact)",
+      "stdout": {
+        "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\COLLECTOR_ATTEMPT3_STDOUT.txt",
+        "format": "RAW_BYTES_VERBATIM",
+        "bytes": 92,
+        "valid_utf8": true,
+        "note": "file content is the exact process bytes; UTF-8 decodable"
+      },
+      "stderr": {
+        "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\COLLECTOR_ATTEMPT3_STDERR.txt",
+        "format": "RAW_BYTES_VERBATIM",
+        "bytes": 0,
+        "valid_utf8": true,
+        "note": "file content is the exact process bytes; UTF-8 decodable"
+      },
+      "stream_presence": {
+        "stdout_present": true,
+        "stderr_present": false
+      },
+      "capture_mode": "bytes (text=False); no encoding assumption was applied to the child",
+      "kind": "COLLECTOR",
+      "gate_outcome": "actual exit 2 - retained partial / unresolved evidence; not rerun"
+    },
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_BYTES_R1",
+      "kind": "CHAIN_SOURCE_HANDOFF",
+      "tag": "CHAIN_SOURCE_001",
+      "argv": [
+        "python",
+        "chain_source_export_r1.py"
+      ],
+      "cwd": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027",
+      "hostname": "SAM",
+      "exit_code": 0,
+      "exit_code_source": "literal process exit",
+      "scope": "exactly the 14 paths named in EXACT_CHAIN_SOURCE_PLAN_20261027.json",
+      "passes": [
+        {
+          "pass": 1,
+          "result": "8 BLOCKED_SECRET_LITERAL / 6 CAPTURED",
+          "defect": "blocked on the bare token 'auth(', a function call",
+          "preserved_as": "SOURCE_MANIFEST_PASS1_PRESERVED.json"
+        },
+        {
+          "pass": 2,
+          "result": "14 rows resolved: 13 CAPTURED + 1 REUSED_HUB_BODY",
+          "detector": "literal-only patterns"
+        }
+      ],
+      "generator_index": {
+        "directory": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1",
+        "entry_count": 27,
+        "truncated": false
+      },
+      "provenance_gap": "the attempt-3 collector process (14:06:44) was launched from a separate agent session while the parent Cursor shell was wedged; the byte-level ledger records its argv/exit, so the process facts do not depend on the session narrative"
+    }
+  ],
+  "attempt_1_and_2": "unchanged and preserved; both failed 15/17 and neither ran a collector"
+}
