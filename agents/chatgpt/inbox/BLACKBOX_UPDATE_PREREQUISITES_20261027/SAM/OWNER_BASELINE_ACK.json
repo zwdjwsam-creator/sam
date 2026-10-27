@@ -1,0 +1,119 @@
+{
+  "schema": "OWNER_BASELINE_ACK_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T15:40:35+0800",
+  "read_source": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/OWNER_ZHANGWEI_BASELINE_SUMMARY_20261027.txt (11,825 B, read in full, sections 1-10)",
+  "owner_decision_acknowledged": {
+    "execution_host_and_data_plane_baseline": "ZHANGWEI",
+    "future_single_acquisition_executor": "ZHANGWEI",
+    "status": "ACKNOWLEDGED",
+    "plain_statement": "ZHANGWEI is the selected operational data-plane baseline and the only intended executor of any later separately reviewed acquisition/cleaning contract. SAM is the historical-source and evidence peer, not a second acquisition executor.",
+    "scope_of_this_acknowledgement": "This closes the host-selection question only. It is NOT prerequisite acceptance, NOT acquisition authorisation and NOT a supplier-clearing. No account or supplier session is authorised here.",
+    "no_re_asking": "SAM will not ask the owner to select a Stage2 machine again."
+  },
+  "sam_state_disposition": {
+    "classification": "HISTORICAL_EVIDENCE_ONLY",
+    "promote_or_publish": false,
+    "synchronize_to_desktop": false,
+    "copy_desktop_current_to_sam": false,
+    "treat_hash_mismatch_as_data_loss": false,
+    "sam_pinned_state_retained": [
+      {
+        "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+        "bytes": 5583,
+        "sha256": "0f0813cb822f535e6978edb501b1af3e8c666461851602f5a816b10babaeecc8"
+      },
+      {
+        "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+        "bytes": 627,
+        "sha256": "f1231adf9c7ed3abbdcfb8b1248803f9b25917313fb40eec7a0c3bc28ecbefa9"
+      }
+    ],
+    "desktop_baseline_reference_not_asserted_by_sam": [
+      {
+        "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+        "bytes": 5596,
+        "sha256": "574842e7802be26d648d5aa2f6d91a9b4c208744e3ecf9f146e02ece41387d89",
+        "note": "quoted from the owner summary as a review anchor; SAM did not read or re-verify desktop bytes under this task"
+      },
+      {
+        "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+        "bytes": 625,
+        "sha256": "8a492440257170577a5c96f66bfd81e3b93fc6dc58e547cc3acd4c7baaf3fe9b",
+        "note": "same; anchor only, not a permanent date cap"
+      }
+    ]
+  },
+  "existing_handoff_and_process_state_at_ack": {
+    "source_closure_001_exists": false,
+    "source_closure_action": "create once under the same child folder; if it already existed it would be inspected and reused, never deleted",
+    "collector_attempt3": {
+      "ran": true,
+      "exit_code": 2,
+      "meaning": "retained partial / unresolved evidence",
+      "will_rerun": false,
+      "preserved_receipts": [
+        "COLLECTOR_ATTEMPT3_LEDGER.json",
+        "logs/COLLECTOR_ATTEMPT3_STDOUT.txt",
+        "logs/COLLECTOR_ATTEMPT3_STDERR.txt",
+        "capture_003/"
+      ]
+    },
+    "chain_source_001": {
+      "ran": true,
+      "result": "13 captured bodies + 1 REUSED_HUB_BODY (jq_download_base.py) + 27-entry filename-only index",
+      "will_repeat": false
+    },
+    "v1_v2_fixture_failures": "preserved, untouched, not restated as passed",
+    "active_collector_or_fixture_process": false,
+    "active_process_evidence": "no collector/fixture process was started by this task; the earlier wedged Cursor shell is a tooling condition, not a business process",
+    "processes_stopped_by_sam": false,
+    "source_closure_001_checked_at_cn": "2026-10-27T15:40:35+0800"
+  },
+  "shell_hang_disclosure": {
+    "observed": "The parent Cursor terminal session stopped returning output for every command, including a bare `echo`, from approximately 13:37 CN onward; it was still unresponsive when this ACK was written.",
+    "task_authorisation": "The owner summary states the hang is NOT diagnosed by this task and does NOT authorise a terminal or process restart.",
+    "sam_action": "No terminal restart, no process kill, no environment rebuild, no interpreter substitution was performed. Commands were issued through read/export/upload tooling over a separate session so the task could proceed without touching the wedged shell.",
+    "not_a_business_finding": true
+  },
+  "acknowledged_corrections_from_the_summary": [
+    "The ROOT D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\DOWNLOAD_ACCEPTANCE.json has 4 items (calendar, stock daily, ETF daily, index daily); it is not the 10_ACCEPTANCE 16-unit summary. Old equivalence claim withdrawn.",
+    "SAM's two NOT_FOUND_AT_EXACT_PATH outcomes for generic R45 MANIFEST.json/SEAL.json are expected: the captured clean_switch_r1.py writes _seal/CLEANING_LAYER_SEAL_CERTIFICATE.json, .BLACKBOX_SEALED and _control/cleaning_ledger.sqlite instead. They are not evidence of missing business data, and the generic plan expectation was inappropriate for that generator family.",
+    "The daily writer download_daily_r1.py does not explicitly pass skip_paused; the R15 minute writer's skip_paused=true must not be borrowed as its contract.",
+    "Reported factor hypotheses (fq=None explaining constant 1.0; reset/batch index explaining 0..299 dates) remain UNVERIFIED; SAM asserts no cause.",
+    "Candidate_commit.py at 53,208 B / e4772dda... differs from v3 only by 1,137 CRLF expansions; it will not be requested or exported again.",
+    "SAM's scanner first-pass false positives, the late ACK ordering and the separate-session execution provenance remain preserved; no backdated ACK and no remedial rerun."
+  ],
+  "current_task_scope": {
+    "exact_paths": [
+      "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\run_unattended_catchup_r1.py"
+    ],
+    "count": 1,
+    "output": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\source_closure_001",
+    "will_import_or_execute": false,
+    "additional_directory_search": false,
+    "factor_file_scan": false,
+    "download_or_sdk_probe": false
+  },
+  "authority_boundaries": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "download": false,
+    "login_or_supplier_call": false,
+    "quota_probe": false,
+    "credential_file_access": false,
+    "password_action": false,
+    "current_ssot_rule_write": false,
+    "release": false,
+    "historical_chain_run": false,
+    "v4_reconstruction": false,
+    "deletion": false,
+    "terminal_restart_or_process_kill": false
+  },
+  "task_publication_is_not_ack": "This file is the ACK; the published task was not."
+}
