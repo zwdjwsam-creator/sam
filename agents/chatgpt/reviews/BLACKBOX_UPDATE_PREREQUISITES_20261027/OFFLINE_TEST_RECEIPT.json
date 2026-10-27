@@ -1,0 +1,25 @@
+{
+  "schema": "BLACKBOX_OFFLINE_CONTROL_RECEIPT_V1",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "/workspace/scratch/89c630574873/dual_host_work",
+    "-p",
+    "test_collect_prerequisites.py",
+    "-v"
+  ],
+  "cwd": "/workspace/scratch/89c630574873",
+  "host_os": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "python": "3.12.14",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_ast_read_does_not_execute_source (test_collect_prerequisites.Checks.test_ast_read_does_not_execute_source) ... ok\ntest_credentials_never_read (test_collect_prerequisites.Checks.test_credentials_never_read) ... ok\ntest_cycle_link_not_followed_and_disclosed (test_collect_prerequisites.Checks.test_cycle_link_not_followed_and_disclosed) ... ok\ntest_dynamic_bound_metadata_capture (test_collect_prerequisites.Checks.test_dynamic_bound_metadata_capture) ... ok\ntest_dynamic_checkpoint_outside_candidate_blocked (test_collect_prerequisites.Checks.test_dynamic_checkpoint_outside_candidate_blocked) ... ok\ntest_exact_bytes_source_preserved (test_collect_prerequisites.Checks.test_exact_bytes_source_preserved) ... ok\ntest_existing_output_refused (test_collect_prerequisites.Checks.test_existing_output_refused) ... ok\ntest_external_link_blocked (test_collect_prerequisites.Checks.test_external_link_blocked) ... ok\ntest_file_budget_is_explicit_incomplete (test_collect_prerequisites.Checks.test_file_budget_is_explicit_incomplete) ... ok\ntest_guard_change_is_not_hidden (test_collect_prerequisites.Checks.test_guard_change_is_not_hidden) ... ok\ntest_known_body_reused_without_duplicate (test_collect_prerequisites.Checks.test_known_body_reused_without_duplicate) ... ok\ntest_large_file_not_silently_truncated (test_collect_prerequisites.Checks.test_large_file_not_silently_truncated) ... ok\ntest_missing_path_is_not_source_absence (test_collect_prerequisites.Checks.test_missing_path_is_not_source_absence) ... ok\ntest_reference_not_producer_certificate (test_collect_prerequisites.Checks.test_reference_not_producer_certificate) ... ok\ntest_secret_pattern_blocks_before_digest_or_copy (test_collect_prerequisites.Checks.test_secret_pattern_blocks_before_digest_or_copy) ... ok\ntest_source_changed_during_read_is_preserved_as_failure (test_collect_prerequisites.Checks.test_source_changed_during_read_is_preserved_as_failure) ... ok\ntest_unrelated_task_not_read (test_collect_prerequisites.Checks.test_unrelated_task_not_read) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.036s\n\nOK\n",
+  "tests": 17,
+  "windows_test": false,
+  "supplier_calls": 0,
+  "business_modules_imported": false,
+  "source_sha256": "3e20395ef19dec1a81b4d81c5112f4f5dcc00de09c146d7076c6267f7dc96858"
+}
