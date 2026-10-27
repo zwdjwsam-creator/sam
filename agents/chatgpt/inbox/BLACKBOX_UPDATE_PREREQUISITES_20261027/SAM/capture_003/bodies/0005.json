@@ -1,0 +1,238 @@
+{
+  "generated_at": "2026-08-10T16:43:38+00:00",
+  "gap_start": "2026-08-10",
+  "gap_end": "2026-08-10",
+  "fq": null,
+  "items": [
+    {
+      "unit_id": "calendar_cn_exchange__calendar_cn_exchange_v2_asof_20260810",
+      "domain_id": "calendar_cn_exchange",
+      "status": "PASS",
+      "rows": 3064,
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260810\\CALENDAR_TRADE_DAYS.parquet",
+      "stage_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\04_REPAIR_STAGING_DATA\\calendar_cn_exchange\\calendar_cn_exchange__CALENDAR_TRADE_DAYS.parquet",
+      "clean_rel": "reference/calendar_cn_exchange/calendar_cn_exchange__CALENDAR_TRADE_DAYS.parquet",
+      "file_sha256": "327fe0aedaa8f407449593f4e082b5e39215cc27526aac10292f40ac86af0ca1",
+      "max_time": "2026-08-10",
+      "as_of": "2026-08-10",
+      "extra_files": [
+        {
+          "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260810\\CALENDAR_ALL_DATES.parquet",
+          "stage_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\04_REPAIR_STAGING_DATA\\calendar_cn_exchange\\calendar_cn_exchange__CALENDAR_ALL_DATES.parquet",
+          "clean_rel": "reference/calendar_cn_exchange/calendar_cn_exchange__CALENDAR_ALL_DATES.parquet",
+          "file_sha256": "cd312c8fb6eceba9dd0059fa7548f30fa7c02349c9cd43f2a087a21f6b4a61ae"
+        }
+      ]
+    },
+    {
+      "unit_id": "stock_ohlcv_daily__20260810_20260810",
+      "domain_id": "stock_ohlcv_daily",
+      "status": "PASS",
+      "rows": 5206,
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily\\stock_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+      "stage_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\04_REPAIR_STAGING_DATA\\stock_ohlcv_daily\\stock_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+      "clean_rel": "price/stock_ohlcv_daily/stock_ohlcv_daily__stock_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+      "file_sha256": "c75d605fffc7c54812841bba4326a1ece9e6152216f2b6ac78ba3885bf904855",
+      "min_time": "2026-08-10",
+      "max_time": "2026-08-10",
+      "as_of": "2026-08-10"
+    },
+    {
+      "unit_id": "ETF_daily__20260810_20260810",
+      "domain_id": "ETF_daily",
+      "status": "PASS",
+      "rows": 1601,
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_daily\\etf_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+      "stage_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\04_REPAIR_STAGING_DATA\\ETF_daily\\etf_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+      "clean_rel": "price/ETF_daily/ETF_daily__etf_daily__incremental_gap_20260810_20260810__full__20260811_004309.parquet",
+      "file_sha256": "af4426b9b10a217190085adf3251065856fc00a86096b19972fb4dbcf2bf7fd9",
+      "min_time": "2026-08-10",
+      "max_time": "2026-08-10",
+      "as_of": "2026-08-10"
+    },
+    {
+      "unit_id": "index_daily__20260810_20260810",
+      "domain_id": "index_daily",
+      "status": "PASS",
+      "rows": 7,
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index\\index_daily__incremental_gap_20260810_20260810__20260811_004309.parquet",
+      "stage_path": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\04_REPAIR_STAGING_DATA\\index_daily\\index_daily__incremental_gap_20260810_20260810__20260811_004309.parquet",
+      "clean_rel": "reference/index_daily/index_daily__index_daily__incremental_gap_20260810_20260810__20260811_004309.parquet",
+      "file_sha256": "793d55a3b326ce3424e5a50a8ddd3ff68d512f2eef240c703a8ef28ad4209d09",
+      "min_time": "2026-08-10",
+      "max_time": "2026-08-10",
+      "as_of": "2026-08-10"
+    },
+    {
+      "unit_id": "VAL_ASOF_20260810",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\valuation\\valuation__incremental_asof_20260810__20260811_004816.parquet",
+      "clean_rel": "finance/valuation/valuation__incremental_asof_20260810__20260811_004816.parquet",
+      "rows": 5206,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_income_2025q4",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\income__incremental__2025q4__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/income__incremental__2025q4__20260811_004816.parquet",
+      "rows": 5172,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_income_2026q1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\income__incremental__2026q1__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/income__incremental__2026q1__20260811_004816.parquet",
+      "rows": 5193,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_income_2026q2",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\income__incremental__2026q2__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/income__incremental__2026q2__20260811_004816.parquet",
+      "rows": 201,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_balance_2025q4",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\balance__incremental__2025q4__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/balance__incremental__2025q4__20260811_004816.parquet",
+      "rows": 5185,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_balance_2026q1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\balance__incremental__2026q1__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/balance__incremental__2026q1__20260811_004816.parquet",
+      "rows": 5192,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_balance_2026q2",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\balance__incremental__2026q2__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/balance__incremental__2026q2__20260811_004816.parquet",
+      "rows": 201,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_cash_flow_2025q4",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\cash_flow__incremental__2025q4__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/cash_flow__incremental__2025q4__20260811_004816.parquet",
+      "rows": 5172,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_cash_flow_2026q1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\cash_flow__incremental__2026q1__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/cash_flow__incremental__2026q1__20260811_004816.parquet",
+      "rows": 5193,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "FUND_cash_flow_2026q2",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\cash_flow__incremental__2026q2__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/cash_flow__incremental__2026q2__20260811_004816.parquet",
+      "rows": 201,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "STK_balance_sheet_2026_H1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\balance_sheet\\balance_sheet__2026_H1__1.0.0__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/balance_sheet__2026_H1__1.0.0__20260811_004816.parquet",
+      "rows": 5390,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "STK_balance_sheet_parent_2026_H1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\balance_sheet_parent\\balance_sheet_parent__2026_H1__1.0.0__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/balance_sheet_parent__2026_H1__1.0.0__20260811_004816.parquet",
+      "rows": 739,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "STK_income_statement_2026_H1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\income_statement\\income_statement__2026_H1__1.0.0__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/income_statement__2026_H1__1.0.0__20260811_004816.parquet",
+      "rows": 5390,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "STK_income_statement_parent_2026_H1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\income_statement_parent\\income_statement_parent__2026_H1__1.0.0__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/income_statement_parent__2026_H1__1.0.0__20260811_004816.parquet",
+      "rows": 725,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "STK_cashflow_statement_2026_H1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\cashflow_statement\\cashflow_statement__2026_H1__1.0.0__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/cashflow_statement__2026_H1__1.0.0__20260811_004816.parquet",
+      "rows": 5405,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "STK_cashflow_statement_parent_2026_H1",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_finance_pit\\cashflow_statement_parent\\cashflow_statement_parent__2026_H1__1.0.0__20260811_004816.parquet",
+      "clean_rel": "finance/fundamentals_pit/cashflow_statement_parent__2026_H1__1.0.0__20260811_004816.parquet",
+      "rows": 739,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "BILLBOARD_20260810_20260810",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P5_attributes_events\\billboard\\billboard__incremental__20260810_20260810__20260811_005658.parquet",
+      "clean_rel": "events/billboard/billboard__incremental__20260810_20260810__20260811_005658.parquet",
+      "rows": 714,
+      "as_of": "2026-08-10",
+      "extra_files": []
+    },
+    {
+      "unit_id": "ADJUST_FACTOR_20260810",
+      "status": "PASS",
+      "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P1_adjust_factor\\adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+      "clean_rel": "reference/adjust_factor/adjust_factor_stock__incremental_20260810__20260811_005710.parquet",
+      "rows": 5206,
+      "as_of": "2026-08-10",
+      "extra_files": [
+        {
+          "raw_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P6_factor_reference\\adjust_factor\\adjust_factor__incremental_20260810__20260811_005710.parquet",
+          "clean_rel": "finance/adjust_factor/adjust_factor__incremental_20260810__20260811_005710.parquet"
+        }
+      ]
+    }
+  ],
+  "quota_before": 199849050,
+  "quota_after": 199832363,
+  "finance_merged_at": "2026-08-11T00:56:47+0800",
+  "updated_at": "2026-08-10T16:57:30+00:00"
+}
