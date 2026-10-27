@@ -1,0 +1,65 @@
+{
+  "schema": "COMMAND_LEDGER_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "execution_host": "SAM",
+  "generated_at_cn": "2026-10-27T12:46:00+0800",
+  "entries": [
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_R1",
+      "tag": "FIXTURE_CONTROLS",
+      "argv": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package",
+        "-p",
+        "test_collect_prerequisites.py",
+        "-v"
+      ],
+      "argv_joined": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 -m unittest discover -s C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package -p test_collect_prerequisites.py -v",
+      "cwd": "E:\\BLACKBOX",
+      "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "hostname": "SAM",
+      "started_at_cn": "2026-10-27T12:38:50+0800",
+      "ended_at_cn": "2026-10-27T12:39:05+0800",
+      "elapsed_sec": 15.485,
+      "exit_code": 1,
+      "exit_code_source": "subprocess.run returncode (literal process exit, not derived from artifacts)",
+      "stdout_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\FIXTURE_CONTROLS_STDOUT.txt",
+      "stderr_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\FIXTURE_CONTROLS_STDERR.txt",
+      "stdout_bytes": 0,
+      "stderr_bytes": 4137,
+      "kind": "FIXTURE_CONTROLS",
+      "gate_outcome": "FAILED 15/17 pass, 2 errors at fixture setup (os.symlink, WinError 1314)"
+    },
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_R1",
+      "kind": "COLLECTOR",
+      "tag": "COLLECTOR_NOT_RUN",
+      "argv": null,
+      "argv_joined": null,
+      "cwd": null,
+      "executable": null,
+      "hostname": null,
+      "started_at_cn": null,
+      "ended_at_cn": null,
+      "elapsed_sec": null,
+      "exit_code": null,
+      "exit_code_source": "NOT_APPLICABLE - command deliberately not invoked",
+      "stdout_path": null,
+      "stderr_path": null,
+      "not_run_reason": "dispatch: 'A failed test stops collection'. The fixture gate exited 1 before any collector invocation."
+    }
+  ],
+  "environment_probe": {
+    "windows_developer_mode": "not set (AllowDevelopmentWithoutDevLicense absent)",
+    "process_elevated": false,
+    "SeCreateSymbolicLinkPrivilege_present": false,
+    "direct_symlink_probe": "SYMLINK_FAIL errno=22 winerror=1314",
+    "conclusion": "the two failing tests cannot construct their fixture on this host; they exercise the collector zero times before failing"
+  }
+}
