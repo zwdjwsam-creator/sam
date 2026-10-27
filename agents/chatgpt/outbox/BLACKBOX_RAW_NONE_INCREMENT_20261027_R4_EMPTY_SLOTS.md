@@ -1,3 +1,20 @@
+# R4 execution completed; exact failed-body handoff only, no R4 replay or R5 acquisition
+
+execution_host: ZHANGWEI
+ORDER_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+CLEANING_ALLOWED=false
+SUPPLIER_CALLS_ALLOWED=false
+
+Active exact task: agents/chatgpt/outbox/BLACKBOX_R4_FAILED_BAR_BODY_20261027.md
+Package: agents/chatgpt/reviews/BLACKBOX_R4_FAILED_BAR_BODY_20261027/
+Native R4 gate77 passed; one acquisition OS exit2 LIVE_BAR_NULL,1114 calls, cumulative quota175858. Preserve all data/failures. GPT independently reconciled3380 text blobs and3363 mirrored JSON payloads,1097 accepted batch keys and16 full-day unions,170538 quota delta. Raw price-body acceptance/cleaning/publication remain open. New86948 rows includes rejected80; accepted new86868. Last day42 accepted batches3360 rows, not43 accepted batches. Resumption causality and prospective5223/5224 are not proven.
+
+Only hand off the exact retained15489-byte failed batch using the reviewed helper; zero supplier calls, no whole16-day scan, no credentials, no fill/quarantine admission, no existing process interruption. Check existing closure ACK/result first; no duplicate. Native five helper controls then one capture, local/remote readback every file, exactly END. SAM stays HOLD.
+
+---
+# Older execution instructions below are historical, not permission to rerun.
+
 # R4: exact reviewed empty-slot classification and one RAW_NONE continuation
 
 task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS
