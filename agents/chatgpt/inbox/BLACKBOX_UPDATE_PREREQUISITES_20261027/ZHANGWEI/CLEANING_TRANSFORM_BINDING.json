@@ -1,0 +1,52 @@
+{
+  "schema": "BLACKBOX_CLEANING_TRANSFORM_BINDING_R1",
+  "execution_host": "ZHANGWEI",
+  "captured_at_cn": "2026-10-27T12:30:28+0800",
+  "evidence_mode": "DIRECT_READ_ONLY",
+  "collector_evidence": "NOT_AVAILABLE_FIXTURE_CONTROLS_FAILED",
+  "method": "ast.parse only; the original main was never imported or executed",
+  "target_functions": [
+    "ingest_item",
+    "load_staging",
+    "seal_release"
+  ],
+  "callsites_by_body": {
+    "run_r15_cleaning_replay.py": {
+      "load_staging": [
+        {
+          "line": 450,
+          "col": 13,
+          "args": 0,
+          "kwargs": []
+        }
+      ],
+      "seal_release": [
+        {
+          "line": 505,
+          "col": 11,
+          "args": 4,
+          "kwargs": []
+        }
+      ],
+      "ingest_item": [
+        {
+          "line": 498,
+          "col": 23,
+          "args": 2,
+          "kwargs": []
+        }
+      ]
+    },
+    "run_connected_pipeline.py": {},
+    "run_original_compiler_candidate.py": {}
+  },
+  "current_wrapper": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/candidate/run_r15_cleaning_replay.py",
+  "retained_replay_receipt": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/evidence/R15_CLEANING_REPLAY.json",
+  "staging_selectors": "UNKNOWN_NOT_READ_IN_THIS_PASS",
+  "source_to_clean_rel_mapping": "UNKNOWN_NOT_READ_IN_THIS_PASS",
+  "byte_placement_vs_value_transform": "UNKNOWN_NOT_READ_IN_THIS_PASS",
+  "exclusions": "UNKNOWN_NOT_READ_IN_THIS_PASS",
+  "align_pit_handling": "UNKNOWN_NOT_READ_IN_THIS_PASS",
+  "writable_destinations_visible": "UNKNOWN_NOT_READ_IN_THIS_PASS",
+  "why_unknown": "the collector did not run, so body-level classification (REUSED/NEW) and any byte-range evidence the plan expects are absent; stating UNKNOWN rather than inferring from filenames"
+}
