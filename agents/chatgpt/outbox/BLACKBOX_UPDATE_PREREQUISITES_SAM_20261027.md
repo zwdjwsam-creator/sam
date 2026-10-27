@@ -1,3 +1,15 @@
+# SAM: evidence peer hold; no new local execution (2026-10-27)
+
+selected_acquisition_executor: ZHANGWEI
+SAM_role: HISTORICAL_SOURCE_AND_EVIDENCE_PEER
+status: NO_NEW_SAM_EXECUTION_REQUESTED
+ORDER_ALLOWED=false
+
+Owner authorized the reviewed desktop-only task agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1.md.
+SAM must not run it, authenticate concurrently, synchronize CURRENT, repeat V3/source/log/watcher tasks, restart terminals or perform historical downloads. SAM's previous source closures, log extraction and zero-action watcher control are received and retained. No new data or source export is requested. Historical READY blocks below are retained as history, not repeat instructions.
+
+---
+
 # Current owner-authorized legacy watcher task (SAM, 2026-10-27)
 
 task_id: BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027
