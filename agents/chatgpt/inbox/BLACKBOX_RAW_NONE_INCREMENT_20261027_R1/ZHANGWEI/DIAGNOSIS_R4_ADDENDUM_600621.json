@@ -1,0 +1,108 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_R4_DIAGNOSIS_ADDENDUM_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS",
+  "at_cn": "2026-10-27T20:46:47+0800",
+  "supersedes_interpretation_in": "DIAGNOSIS_R4.json -> field interpretation",
+  "does_not_modify": [
+    "DIAGNOSIS_R4.json (published bytes stay as-is)",
+    "RESULT_R4.json",
+    "any raw Parquet"
+  ],
+  "reason_for_addendum": "The original interpretation was written from supplier data alone. An external announcement lookup changes the classification of the row, so the correction is published as a separate file rather than editing the historical one.",
+  "instrument": {
+    "code": "600621.XSHG",
+    "name_cn": "华鑫股份",
+    "exchange": "SSE"
+  },
+  "original_claim": "The 2026-10-27 row was read as a suspended-then-reopened session where the vendor had not yet populated the intraday price set.",
+  "original_claim_status": "INCORRECT",
+  "corrected_fact": "The stock was suspended for two full trading sessions, 2026-10-26 and 2026-10-27. It resumed on 2026-10-28. Therefore 2026-10-27 had no trading at all, and the supplier row for that session is a suspension-flag miss, not a partially populated live bar.",
+  "external_evidence": [
+    {
+      "claim": "Trading halted from the 2026-10-26 open because the controlling shareholder was planning a share transfer that could change control; expected halt not longer than two trading sessions.",
+      "source": "上海证券报 / 中国证券报 / SSE disclosure, 公告编号 临2026-034",
+      "url": "https://paper.cnstock.com/html/2026-10/26/content_2281055.htm",
+      "cross_check": "https://epaper.cs.com.cn/zgzqb/html/2026-10/26/nw.D110000zgzqb_20261026_3-A14.htm",
+      "publisher": "上海华鑫股份有限公司董事会",
+      "date": "2026-10-26"
+    },
+    {
+      "claim": "On 2026-10-27 仪电集团 signed a framework agreement to transfer 286,000,000 A shares (26.99% of total shares) to 国盛集团 and 国茂控股 at 13.85 CNY per share, total 3.966 billion CNY. Controlling shareholder becomes 国盛集团; ultimate controller stays 上海市国资委. Trading resumes from the 2026-10-28 open.",
+      "source": "同花顺 7x24 快讯, quoting the company announcement",
+      "url": "https://stock.10jqka.com.cn/20261027/c681150549.shtml",
+      "cross_check": "https://stock.10jqka.com.cn/20261027/c681149725.shtml",
+      "date": "2026-10-27T19:07+08:00"
+    }
+  ],
+  "why_the_row_is_supplier_side": {
+    "observed_2026_10_27": {
+      "paused": 0.0,
+      "open": null,
+      "high": null,
+      "low": null,
+      "close": 14.9,
+      "volume": 0.0,
+      "money": 0.0,
+      "high_limit": 16.39,
+      "low_limit": 13.41,
+      "pre_close": 14.9
+    },
+    "observed_2026_10_26": {
+      "paused": 1.0,
+      "open": 14.9,
+      "high": 14.9,
+      "low": 14.9,
+      "close": 14.9,
+      "volume": 0.0,
+      "money": 0.0,
+      "high_limit": 14.9,
+      "low_limit": 14.9,
+      "pre_close": 14.9
+    },
+    "internal_invariant_proved_on_all_16_settled_sessions": "Every genuinely suspended row in this dataset carries paused=1 together with high_limit == low_limit == pre_close (a zero-percent band) and zero volume. Counts match exactly on all 16 complete sessions.",
+    "violation": "On 2026-10-27 the same stock came back with paused=0 and a normal +/-10% band, yet zero trades and no OHLC. Both suspension markers disappeared while trading still did not happen.",
+    "external_confirmation": "The halt ran 10-26 and 10-27 and trading resumed 10-28, so the economically correct state for 10-27 is SUSPENDED. The supplier flagged the first halt day correctly and missed the second.",
+    "uniqueness": "Across all 17 planned sessions and 1,098 accepted batches, exactly one row shows this shape. It is not a systematic supplier failure."
+  },
+  "corrected_classification": "SUSPENDED_UNFLAGGED_BY_SUPPLIER — a full-day halt the supplier did not flag, with no trade and no OHLC.",
+  "is_missing_data": false,
+  "is_coverage_gap": false,
+  "is_supplier_outage": false,
+  "is_price_error_in_accepted_rows": false,
+  "note_on_close": "The reported close 14.90 is the carried-over last traded price, not a new 2026-10-27 print. It must not be consumed as a 10-27 close, return or mark.",
+  "impact_on_gate_design": {
+    "problem": "LIVE_BAR_NULL treats \"paused=0 with a null open\" as a fatal product-level condition. Here the supplier pause flag itself is wrong, so a correct dataset can never satisfy the rule, and one code stops an entire product and day.",
+    "discriminator_available_without_external_lookup": "Close equals pre_close, volume and money are exactly zero, and open/high/low are null. That combination cannot occur on a session where the stock traded, so it identifies a no-trade session without consulting announcements.",
+    "recommended": "Classify this shape as NO_TRADE_SESSION_SUPPLIER_UNFLAGGED, record it per code and per session as evidence, keep the remaining 79 rows of the batch, and continue. Do not fill any value. Keep the hard stop for any row that has a non-zero volume with a null price, or a null close, or a band that is inconsistent with pre_close.",
+    "announcement_check": "Where an announcement lookup is available it should confirm the reason and the resume date, as here. The classifier must still work from data alone because announcements are not always reachable."
+  },
+  "downstream_consequences": {
+    "same_day_effect": "The 43 already accepted batches of 2026-10-27 remain valid. Only this one batch was rejected, and 23 batches of that session were never requested.",
+    "next_session_effect": "The resumption is 2026-10-28, which is outside the 17-session plan (the plan ends 2026-10-27). The next increment is the first one that can observe the post-transfer price action.",
+    "transfer_price_reference": {
+      "price": 13.85,
+      "last_close_2026_10_23": 14.9,
+      "last_close_before_halt": 14.9,
+      "mechanical_discount_vs_last_close": -7.05,
+      "unit": "percent",
+      "statement": "Arithmetic only, computed from the announcement and the last traded close. It is not a valuation view and not a trading instruction."
+    },
+    "flags_for_next_increment": [
+      "First post-halt session, so expect an unusual opening auction and possible limit behaviour.",
+      "Controlling shareholder changes from 仪电集团 to 国盛集团; ultimate controller is unchanged at 上海市国资委.",
+      "The 26.99% transfer still needs approvals, so the event may stay open across sessions."
+    ]
+  },
+  "process_self_assessment": {
+    "what_went_wrong": "I closed the diagnosis on supplier data alone and called it a vendor population gap. I did not look for the announcement that would have settled it in one query.",
+    "cost_of_the_miss": "The published R4 resolution options A and B were framed around a resumption that had not happened. A reviewer adopting them would have modelled the wrong state.",
+    "correction_now": "This addendum states the corrected fact, keeps the original bytes untouched, and rewrites the classifier recommendation.",
+    "guard_for_next_time": "Any row rejected for a trading-state anomaly should trigger an announcement lookup before the diagnosis is called final, and the finding should be labelled with whether it was confirmed externally or only inferred from supplier data."
+  },
+  "reviewer_actions": [
+    "Adopt the corrected classification in place of the original interpretation.",
+    "Implement the no-trade discriminator and per-code isolation.",
+    "Re-scope the last-day counting to 43 of 66 batches requested, with 23 never requested.",
+    "Note that 2026-10-28 is outside the current plan and needs its own increment."
+  ]
+}
