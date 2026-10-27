@@ -1,0 +1,40 @@
+{
+  "schema": "WINDOWS_FIXTURE_V3_OFFLINE_RECEIPT",
+  "command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "dual_host_windows_v3",
+    "-p",
+    "test_*.py",
+    "-v"
+  ],
+  "actual_exit_code": 0,
+  "tests": 23,
+  "original_tests": 17,
+  "supplementary_regressions": 6,
+  "result_line": "Ran 23 tests in 0.039s; OK",
+  "evidence": "Literal execution output retained in the GPT tool transcript for this task.",
+  "host_os": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "reviewer_interpreter": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+  "windows_branch_executed": false,
+  "native_mklink_executed": false,
+  "original_17_test_bodies_ast_identical_to_v2": true,
+  "collector_unchanged_from_v1_v2": true,
+  "regression_scope": [
+    "separate argv containing spaces and Unicode",
+    "GBK raw error-byte preservation",
+    "invalid UTF-8 raw error-byte preservation",
+    "None streams preserve original exit",
+    "shell metacharacters rejected before subprocess",
+    "TimeoutExpired retains raw partial output"
+  ],
+  "not_established": [
+    "native Windows twenty-three-control outcome",
+    "native Unicode/space junction creation",
+    "actual host collector execution",
+    "foundation or acquisition acceptance"
+  ]
+}
