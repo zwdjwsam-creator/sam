@@ -1,0 +1,72 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_R4_FAILED_BATCH_REDELIVERY_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS",
+  "purpose": "Deliver the already-downloaded rejected batch original and its three receipts so a reviewer can inspect the exact bytes. This is a re-delivery only.",
+  "at_cn": "2026-10-27T20:58:07+0800",
+  "batch": {
+    "product": "stock",
+    "date": "2026-10-27",
+    "offset": 3360,
+    "request_number": 1114,
+    "rows_returned": 80,
+    "rejection_reason": "LIVE_BAR_NULL",
+    "offending_code": "600621.XSHG",
+    "external_fact": "The stock was still suspended on 2026-10-27 and resumed 2026-10-28; the supplier pause flag was wrong for that session.",
+    "classification": "SUSPENDED_UNFLAGGED_BY_SUPPLIER"
+  },
+  "guarantees": {
+    "no_redownload": true,
+    "no_supplier_library_imported": true,
+    "no_supplier_call_made": true,
+    "quota_consumed_by_this_step": 0,
+    "e_staging_written_to": false,
+    "bytes_altered": false,
+    "line_endings_normalised": false,
+    "parquet_rewritten": false,
+    "decompressed_and_recompressed": false,
+    "path_reused_from_prior_run": false
+  },
+  "quota_baseline_from_original_run": {
+    "supplier_calls": 1114,
+    "quota_start": 199994680,
+    "quota_last_measured": 199824142,
+    "cumulative_quota_spent": 175858,
+    "source": "RESULT_R4.json written by the run itself; the meter was not queried again in this step"
+  },
+  "files": {
+    "raw/stock/2026-10-27_03360_R4.parquet": {
+      "kind": "FAILED_BATCH_ORIGINAL",
+      "meaning": "The rejected supplier response body exactly as received and stored. Not edited, not normalised, not re-encoded.",
+      "source_path": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R4\\raw\\stock\\2026-10-27_03360_R4.parquet",
+      "bytes": 15489,
+      "sha256": "fb1a0ccb4918e6035d7e6a3695d6fbac6cbf9818c3ea2ca01bcf7928b2e8b2c7",
+      "git_blob_sha1": "6902414166f01ea3eeaaa172f960c63b64797741"
+    },
+    "quality/stock_2026-10-27_03360_FAILED_R4.json": {
+      "kind": "FAILED_QUALITY_RECEIPT",
+      "meaning": "The rejection record the run itself wrote for that batch: keys, columns, rows, null census, BLOCKED_PRESERVED.",
+      "source_path": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R4\\quality\\stock_2026-10-27_03360_FAILED_R4.json",
+      "bytes": 4835,
+      "sha256": "f5894b0dbbfd5ccd9a6aa77b6d4b93e699b0cbdef1c12df39471d3e42e519de1",
+      "git_blob_sha1": "fc10feb80e4693bbf5366a82b5ac661627cef886"
+    },
+    "receipts/request_1114_R4.json": {
+      "kind": "FAILED_REQUEST_RECEIPT",
+      "meaning": "The exact request that produced the rejected body, including the 80 securities and all arguments.",
+      "source_path": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R4\\receipts\\request_1114_R4.json",
+      "bytes": 2366,
+      "sha256": "a357559a520473ee03df2f8fa9b96a0852f599298623de21dfe15b946ddf4324",
+      "git_blob_sha1": "b8269ad93d838413d994fedf3510247ef2c1422b"
+    },
+    "receipts/response_1114_R4.json": {
+      "kind": "FAILED_RESPONSE_RECEIPT",
+      "meaning": "The response envelope: finish time, quota before and after, quota delta, status.",
+      "source_path": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R4\\receipts\\response_1114_R4.json",
+      "bytes": 155,
+      "sha256": "4ec25a3242e8551090dc7e0d416a1ea22a9445e278edd4239bd8daa4aff7b6de",
+      "git_blob_sha1": "7bb0c08a28c6d4ed0fddb22f6c6a072487ecea15"
+    }
+  },
+  "file_count": 4,
+  "note": "These bodies are copied, never generated. The Parquet is the supplier response as stored; no read-transform-write cycle touched it."
+}
