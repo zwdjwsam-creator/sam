@@ -1,0 +1,41 @@
+{
+  "schema": "BLACKBOX_PREREQ_COMMAND_LEDGER_R1",
+  "execution_host": "ZHANGWEI",
+  "hostname": "ZHANGWEI",
+  "dispatcher_python": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+  "dispatcher_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "rows": [
+    {
+      "label": "fixture_controls_unittest",
+      "argv": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package",
+        "-p",
+        "test_collect_prerequisites.py",
+        "-v"
+      ],
+      "cwd": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package",
+      "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "hostname": "ZHANGWEI",
+      "platform_node": "ZHANGWEI",
+      "started_at_cn": "2026-10-27T12:28:45.889+0800",
+      "ended_at_cn": "2026-10-27T12:28:46.273+0800",
+      "duration_sec": 0.384,
+      "actual_process_exit_code": 1,
+      "timed_out": false,
+      "stdout_lines": 0,
+      "stderr_lines": 44,
+      "stdout": "",
+      "stderr": "test_ast_read_does_not_execute_source (test_collect_prerequisites.Checks.test_ast_read_does_not_execute_source) ... ok\ntest_credentials_never_read (test_collect_prerequisites.Checks.test_credentials_never_read) ... ok\ntest_cycle_link_not_followed_and_disclosed (test_collect_prerequisites.Checks.test_cycle_link_not_followed_and_disclosed) ... ERROR\ntest_dynamic_bound_metadata_capture (test_collect_prerequisites.Checks.test_dynamic_bound_metadata_capture) ... ok\ntest_dynamic_checkpoint_outside_candidate_blocked (test_collect_prerequisites.Checks.test_dynamic_checkpoint_outside_candidate_blocked) ... ok\ntest_exact_bytes_source_preserved (test_collect_prerequisites.Checks.test_exact_bytes_source_preserved) ... ok\ntest_existing_output_refused (test_collect_prerequisites.Checks.test_existing_output_refused) ... ok\ntest_external_link_blocked (test_collect_prerequisites.Checks.test_external_link_blocked) ... ERROR\ntest_file_budget_is_explicit_incomplete (test_collect_prerequisites.Checks.test_file_budget_is_explicit_incomplete) ... ok\ntest_guard_change_is_not_hidden (test_collect_prerequisites.Checks.test_guard_change_is_not_hidden) ... ok\ntest_known_body_reused_without_duplicate (test_collect_prerequisites.Checks.test_known_body_reused_without_duplicate) ... ok\ntest_large_file_not_silently_truncated (test_collect_prerequisites.Checks.test_large_file_not_silently_truncated) ... ok\ntest_missing_path_is_not_source_absence (test_collect_prerequisites.Checks.test_missing_path_is_not_source_absence) ... ok\ntest_reference_not_producer_certificate (test_collect_prerequisites.Checks.test_reference_not_producer_certificate) ... ok\ntest_secret_pattern_blocks_before_digest_or_copy (test_collect_prerequisites.Checks.test_secret_pattern_blocks_before_digest_or_copy) ... ok\ntest_source_changed_during_read_is_preserved_as_failure (test_collect_prerequisites.Checks.test_source_changed_during_read_is_preserved_as_failure) ... ok\ntest_unrelated_task_not_read (test_collect_prerequisites.Checks.test_unrelated_task_not_read) ... ok\n\n======================================================================\nERROR: test_cycle_link_not_followed_and_disclosed (test_collect_prerequisites.Checks.test_cycle_link_not_followed_and_disclosed)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package\\test_collect_prerequisites.py\", line 63, in test_cycle_link_not_followed_and_disclosed\n    t=self.root/\"\\u4efb\\u52a1\"/\"R45_test\";t.mkdir();(t/\"loop\").symlink_to(t,target_is_directory=True)\n                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1386, in symlink_to\n    os.symlink(target, self, target_is_directory)\nOSError: [WinError 1314] 客户端没有所需的特权。: 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp\\\\tmp7ka0trt8\\\\root\\\\任务\\\\R45_test' -> 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp\\\\tmp7ka0trt8\\\\root\\\\任务\\\\R45_test\\\\loop'\n\n======================================================================\nERROR: test_external_link_blocked (test_collect_prerequisites.Checks.test_external_link_blocked)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package\\test_collect_prerequisites.py\", line 47, in test_external_link_blocked\n    (self.root/\"x.py\").unlink();(self.root/\"x.py\").symlink_to(outside)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1386, in symlink_to\n    os.symlink(target, self, target_is_directory)\nOSError: [WinError 1314] 客户端没有所需的特权。: 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp\\\\tmp50k828d_\\\\outside.py' -> 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp\\\\tmp50k828d_\\\\root\\\\x.py'\n\n----------------------------------------------------------------------\nRan 17 tests in 0.228s\n\nFAILED (errors=2)\n"
+    }
+  ],
+  "outcome": "STOPPED_AT_FIXTURE_CONTROLS",
+  "collector_invoked": false,
+  "note": "fixture controls failed; per the task a failed test stops collection and the failure is uploaded without changing tests or code"
+}
