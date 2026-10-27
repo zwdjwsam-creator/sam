@@ -1,0 +1,75 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_GATE_FAILURE_DIAGNOSIS_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R1",
+  "host": "ZHANGWEI",
+  "role": "ZHANGWEI",
+  "recorded_at_cn": "2026-10-27T18:09:30+0800",
+  "failed_test": "test_acquire_daily.Keys.test_real_parquet_and_footer",
+  "assertion": "pd.testing.assert_frame_equal(x, pd.read_parquet(p)) at test_acquire_daily.py:73",
+  "literal_error": "Attribute \"dtype\" are different [left]: datetime64[s] [right]: datetime64[ms]",
+  "root_cause": {
+    "summary": "the fixture builds 'time' from pd.Timestamp(date(...)). Under pandas 3.0.3 that yields datetime64[s]; Parquet has no second unit, so pyarrow coerces it to timestamp[ms] on write and the re-read frame is datetime64[ms]. Only the datetime UNIT differs.",
+    "file": "test_acquire_daily.py",
+    "line": 14,
+    "expression": "x=pd.DataFrame({'time':[pd.Timestamp(D)]*2,'code':C})",
+    "written_parquet_physical_type": "timestamp[ms]"
+  },
+  "controlled_experiments": [
+    {
+      "case": "A fixture as authored (datetime64[s])",
+      "before": "datetime64[s]",
+      "after": "datetime64[ms]",
+      "assert_check_dtype_true": "FAIL",
+      "values_identical": true
+    },
+    {
+      "case": "B same data cast to datetime64[ns]",
+      "before": "datetime64[ns]",
+      "after": "datetime64[ns]",
+      "assert_check_dtype_true": "PASS",
+      "values_identical": true
+    },
+    {
+      "case": "C fixture as authored, check_dtype=False",
+      "before": "datetime64[s]",
+      "after": "datetime64[ms]",
+      "assert_check_dtype_true": "PASS",
+      "values_identical": true
+    }
+  ],
+  "why_the_reviewer_saw_27_27": "on pandas 2.x pd.Timestamp(date(...)) is datetime64[ns], which does round-trip as ns, so the same assertion passes; the reviewer receipt was not produced natively on this host",
+  "data_correctness": "no value corruption and no field loss: all twelve supplier fields are present and equal elementwise; this is a dtype-unit assertion, not a data defect",
+  "latent_production_risk": {
+    "severity": "HIGH_IF_SUPPLIER_RETURNS_SECONDS",
+    "same_code_repeated_at": "acquire_daily.py:337",
+    "code": "reread=pd.read_parquet(batch); pd.testing.assert_frame_equal(response,reread,check_dtype=True)",
+    "position": "inside the per-batch loop, AFTER supplier.call('get_price') has already returned and AFTER the raw parquet is written",
+    "consequence_if_triggered": "quota is spent, the batch parquet exists, then the run aborts; a retry would additionally hit require(not batch.exists()) -> RAW_REPLAY_COLLISION on that same batch",
+    "unknown": "whether jqdatasdk 1.9.8 under pandas 3.0.3 returns 'time' as datetime64[ns] or datetime64[s] cannot be established without calling the supplier, which this task forbids while the gate fails"
+  },
+  "not_done_deliberately": [
+    "did not patch the test or the script (contract forbids local patches/aliases)",
+    "did not downgrade pandas or swap the interpreter",
+    "did not run acquire_daily.py to 'see what happens'",
+    "did not retry the gate",
+    "did not touch the credential file"
+  ],
+  "options_for_reviewer": [
+    {
+      "id": "A",
+      "description": "pin the fixture to datetime64[ns] explicitly and, independently, make the production readback compare values plus normalised unit rather than exact dtype unit",
+      "touches_production_code": true
+    },
+    {
+      "id": "B",
+      "description": "keep exact-dtype intent but write with an explicit timestamp unit (e.g. coerce_timestamps='us' or cast the time column before writing) so the round trip is unit-stable",
+      "touches_production_code": true
+    },
+    {
+      "id": "C",
+      "description": "declare the required pandas major version and run the gate under it; no code change",
+      "touches_production_code": false
+    }
+  ],
+  "recommendation": "option A or B is needed regardless of environment, because the contract's own 'preserve original dtypes' requirement and 'verify values/dtypes on readback' requirement collide with Parquet's second-unit coercion; a pandas pin alone leaves the production line fragile"
+}
