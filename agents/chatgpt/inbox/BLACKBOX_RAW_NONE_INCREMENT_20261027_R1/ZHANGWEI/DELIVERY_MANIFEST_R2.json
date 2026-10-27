@@ -1,0 +1,242 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_R2_DELIVERY_MANIFEST_R1",
+  "repair_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R1_TIMESTAMP_R2",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R1",
+  "host": "ZHANGWEI",
+  "role": "ZHANGWEI",
+  "delivered_at_cn": "2026-10-27T18:50:00+0800",
+  "return_dir": "agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI",
+  "delivery_status": "GATE_PASSED_RUN_EXIT2_PARTIAL_RETAINED",
+  "sequence": [
+    {
+      "step": 1,
+      "action": "staged and verified package",
+      "result": "6/6 verified"
+    },
+    {
+      "step": 2,
+      "action": "ACK_TIMESTAMP_R2 uploaded before testing",
+      "result": "ok"
+    },
+    {
+      "step": 3,
+      "action": "native 39-control gate, once",
+      "result": "39/39 pass, exit 0"
+    },
+    {
+      "step": 4,
+      "action": "acquire_daily.py --execute, once",
+      "result": "exit 2, ROUNDTRIP_NON_TIMESTAMP_DTYPE_CHANGE"
+    },
+    {
+      "step": 5,
+      "action": "preserve and upload; no retry",
+      "result": "this delivery"
+    }
+  ],
+  "staging_mirror": {
+    "directory": "r2_staging_output/",
+    "file_count": 16,
+    "total_bytes": 7296584,
+    "rule": "byte-verbatim copy of E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1; nothing edited, no JSON reformatted",
+    "files": [
+      {
+        "relative_path": "BASELINE.json",
+        "bytes": 10338,
+        "sha256": "904347eddae7aacd076bc58d3eecf2e60b65c1938235391deb4ed70988cf77a2",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "CALENDAR.json",
+        "bytes": 914,
+        "sha256": "ab00fa8c597c9b01977cc060a202371d2de73a6a32b8a4fe6cc533a705d056d9",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "COVERAGE_etf.json",
+        "bytes": 4183049,
+        "sha256": "ab0eabda99dd461caf84cb3565609d0d719390eab587cb2a3a321c5d8e5b203a",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "COVERAGE_index.json",
+        "bytes": 1105393,
+        "sha256": "27a5b71ae3a3d94c55e5154acac653cf8681e13d415e34dec3966dcfb9a18167",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "COVERAGE_stock.json",
+        "bytes": 1296622,
+        "sha256": "88e3af2a21159645c19dcc5fae14d3312a62638714ef62c3ec3286ae4077f94b",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "PLAN.json",
+        "bytes": 1395,
+        "sha256": "091b90837adce7808f63dac528c096158f5b4ade3b8acbb79aa56b6a50523798",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "raw/stock/2026-09-28_00000.parquet",
+        "bytes": 15544,
+        "sha256": "1e0e6bcec4b6d0b819a97693d0aa6d348429bea9fca783ca09e1a2d6f5921631",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "receipts/request_0001.json",
+        "bytes": 339,
+        "sha256": "f550a7628f803a737a30fada466015d68d2779c9449b9b6ce874035352a27d27",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "receipts/request_0002.json",
+        "bytes": 343,
+        "sha256": "d8523bd49d3b2e31128a78cdb7f808cfaa54e38170e63f6aac4bee050fcb0150",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "receipts/request_0003.json",
+        "bytes": 2363,
+        "sha256": "2809895d24293d8662a8e12d950cbd8ee434afe500c39e600fe643257ed10e43",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "receipts/response_0001.json",
+        "bytes": 155,
+        "sha256": "2674dd1a2b0a96d8ea9b2a1a99e7ff9fafe4b00eea2ef5d5ee74137da27c4af4",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "receipts/response_0002.json",
+        "bytes": 157,
+        "sha256": "b5ecdf55fe76dcd038035a0c00d1f4a706d9965a94dbff1feb05239e92857069",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "receipts/response_0003.json",
+        "bytes": 155,
+        "sha256": "9732fb48a0fa29779069220c4027eca3c2d418c1fca93bff2e64d93130ef2add",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "RESULT.json",
+        "bytes": 395,
+        "sha256": "dc44a70cad1e0e1402292348f0da95abcff5228aa817b31e9d17a154c72c486f",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "SDK.json",
+        "bytes": 481,
+        "sha256": "d163342ddb5ba2ed62ee98be514aea2da5ef21ce4bb9362ea07e35897f02188e",
+        "copy_byte_identical": true
+      },
+      {
+        "relative_path": "universes/stock_2026-09-28.json",
+        "bytes": 678941,
+        "sha256": "e1d214a27eb8d64d7e5241a62fca86e07c73cd60ad814ae0c6514c2f93c248d5",
+        "copy_byte_identical": true
+      }
+    ]
+  },
+  "baseline_pointer_hashes_matched": {
+    "数据/清洗成品/CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+    "数据/回测缓存/CURRENT_CACHE_RELEASE.json": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json": "574842e7802be26d648d5aa2f6d91a9b4c208744e3ecf9f146e02ece41387d89",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json": "8a492440257170577a5c96f66bfd81e3b93fc6dc58e547cc3acd4c7baaf3fe9b"
+  },
+  "calendar": {
+    "sessions_returned": 18,
+    "first": "2026-09-24",
+    "last": "2026-10-27",
+    "completed_candidates": 17,
+    "excluded_2026_09_24": true
+  },
+  "plan": {
+    "cursors": {
+      "stock": "2026-09-24",
+      "etf": "2026-09-24",
+      "index": "2026-09-24"
+    },
+    "increment_days_per_product": 17,
+    "historical_backfill": false,
+    "overlap_download": false,
+    "quota_limit": 700000
+  },
+  "sdk_identity": {
+    "version": "1.9.8",
+    "source_sha256": "9946b81b53eaa87581714923204853c916defcb0ff410ec0bd6b126c7258bdb4",
+    "explicit_price_parameters": {
+      "skip_paused": false,
+      "fill_paused": true,
+      "fq": null,
+      "panel": false
+    },
+    "local_fill": false,
+    "signature": "(security, start_date=None, end_date=None, frequency='daily', fields=None, skip_paused=False, fq='pre', count=None, panel=True, fill_paused=True, round=True)"
+  },
+  "quota": {
+    "start": 200000000,
+    "last_measured": 199994680,
+    "consumed_units": 5320,
+    "ceiling_units": 700000,
+    "within_ceiling": true,
+    "breakdown": {
+      "get_trade_days": 18,
+      "get_all_securities": 5222,
+      "get_price_batch_1": 80
+    }
+  },
+  "coverage_context": {
+    "stock_records": 2795,
+    "etf_records": 9081,
+    "index_records": 2434,
+    "maximum_observed_date_all_three": "2026-09-24",
+    "source_absence_claim": false,
+    "note": "coverage inventories only; filename and footer metadata, not a data absence or completeness proof"
+  },
+  "completion_vs_contract": {
+    "days_planned_per_product": 17,
+    "days_completed": {
+      "stock": "1 partial (1 of 66 batches for 2026-09-28)",
+      "etf": 0,
+      "index": 0
+    },
+    "stock_batches_estimate_total": "66 per day x 17 days = 1122",
+    "fraction_complete": "1 stock batch of the planned stock/ETF/index surface"
+  },
+  "not_delivered_and_why": [
+    {
+      "item": "etf and index data",
+      "reason": "run stopped on the first stock batch"
+    },
+    {
+      "item": "remaining 65 stock batches for 2026-09-28 and all later days",
+      "reason": "run stopped; contract forbids retry"
+    }
+  ],
+  "boundary_compliance": {
+    "production_raw_written": false,
+    "current_switched": false,
+    "cleaning": "NONE",
+    "retry": false,
+    "local_patch": false,
+    "pandas_downgrade": false,
+    "interpreter_substitution": false,
+    "supplier_calls": 3,
+    "credential_uploaded_or_printed": false,
+    "r1_evidence_deleted": false
+  },
+  "receipt_chain": {
+    "acyclic": true,
+    "A_ACK_R2.json": "references nothing built later",
+    "B_PACKAGE_VERIFY_R2.json": "references nothing built later",
+    "C_GATE_R2_and_streams": "raw measured output",
+    "D_RUN_R2_and_streams": "raw measured output",
+    "E_r2_staging_output": "script products, byte-verbatim",
+    "F_DIAGNOSIS_R2.json": "references A-E facts",
+    "G_REPORT_R2.md": "references A-F",
+    "H_DELIVERY_MANIFEST_R2.json": "references A-G",
+    "I_UPLOAD_READBACK_R2.json": "references A-H",
+    "J_LOCAL_READBACK_R2.json": "references A-I; referenced by nothing"
+  }
+}
