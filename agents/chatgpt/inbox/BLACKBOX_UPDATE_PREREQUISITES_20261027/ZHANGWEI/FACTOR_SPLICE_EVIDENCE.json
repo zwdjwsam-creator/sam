@@ -1,0 +1,128 @@
+{
+  "schema": "BLACKBOX_FACTOR_SPLICE_EVIDENCE_R1",
+  "execution_host": "ZHANGWEI",
+  "hostname": "ZHANGWEI",
+  "captured_at_cn": "2026-10-27T12:32:08+0800",
+  "evidence_mode": "CITATION_OF_RETAINED_RESULTS_NO_NEW_MEASUREMENT",
+  "collector_evidence": "NOT_AVAILABLE_FIXTURE_CONTROLS_FAILED",
+  "subject_product": "ADJUST_FACTOR_PIT_R1",
+  "admission_status": "UNRESOLVED_NOT_PROVEN_ADJUSTMENT_SERIES_IN_TESTED_WINDOW",
+  "retained_citations": [
+    {
+      "ref": "deliverables/ACCEPTANCE.json",
+      "locator": "requirement ADJUST_FACTOR_PIT_R1 / blocking_gap field",
+      "scope": "pre-existing retained acceptance artifact, outside the 24 pinned paths",
+      "key": "blocking_gap"
+    },
+    {
+      "ref": "deliverables/FINAL_REQUIREMENT_MATRIX.json",
+      "locator": "requirement ADJUST_FACTOR_PIT_R1 / blocking_gap field",
+      "scope": "pre-existing retained matrix artifact, outside the 24 pinned paths",
+      "key": "blocking_gap"
+    },
+    {
+      "ref": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/evidence/R15_CLEANING_REPLAY.json",
+      "pin": {
+        "path": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/evidence/R15_CLEANING_REPLAY.json",
+        "bytes": 26449,
+        "sha256": "e389116f16aa8ecdbac900574af9bc8439507f7d7f6232218789fd5be980187b",
+        "state": "READ_OK"
+      },
+      "locator": "gates.antileak_pass / antileak.index_pit_overall_pass",
+      "scope": "candidate cleaning replay gate values only"
+    },
+    {
+      "ref": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/candidate/cc_out/acceptance/TIP_REBASE_LAST.json",
+      "pin": {
+        "path": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/candidate/cc_out/acceptance/TIP_REBASE_LAST.json",
+        "bytes": 15126,
+        "sha256": "665e7466ebafd1621e7c17af43a2160a8f979cc1a96182665b00ccfee1de8ffc",
+        "state": "READ_OK"
+      },
+      "locator": "seal.valuation / seal.price.products.STOCK_FACTOR_DAILY_R1",
+      "scope": "candidate cache seal status, not an adjustment correctness proof"
+    }
+  ],
+  "observations_as_recorded": [
+    {
+      "id": "F1_ORDINAL_DATE_AXIS",
+      "observation": "17 incremental files for 2026-08-12..2026-09-02 carry a positional integer 'date' in 0..299, so they cannot be joined by date",
+      "status": "OBSERVED_NOT_EXPLAINED",
+      "agent_action_taken": "NONE_NO_RELABELLING",
+      "explicit_non_conclusion": "the ordinal axis is NOT re-interpreted as an offset from any particular start date; no date is rewritten"
+    },
+    {
+      "id": "F2_FACTOR_EQUALS_ONE",
+      "observation": "every sampled incremental payload from 2026-08-10 onward reports factor=1.0 for every row, including files whose date dtype is correct",
+      "status": "OBSERVED_NOT_EXPLAINED",
+      "agent_action_taken": "NONE_NO_FILL_NO_SUBSTITUTION",
+      "explicit_non_conclusion": "factor=1.0 is NOT declared wrong. A 1.0 factor is a valid value for an unadjusted or unchanged basis; the observation alone does not distinguish that from a defective series"
+    },
+    {
+      "id": "F3_SPARSE_WINDOW",
+      "observation": "CACHE shows 7..89 rows for 2026-08-17..2026-09-01 and a full 5,215..5,222-row 1.0 plane for 2026-09-02..2026-09-24",
+      "status": "OBSERVED_NOT_EXPLAINED",
+      "agent_action_taken": "NONE_NO_OVERLAP_REQUEST_CHOSEN",
+      "explicit_non_conclusion": "no overlap/window request is selected by this host"
+    }
+  ],
+  "cause_status": {
+    "verdict": "NOT_ESTABLISHED",
+    "not_separable_with_current_evidence": [
+      "the requested fq parameters and the normalisation basis",
+      "the SDK return shape",
+      "local serialisation",
+      "the supplier content itself"
+    ],
+    "why_not_separable": "the retained observations do not vary one factor at a time, so none of the four candidate causes is distinguishable",
+    "related_source_request_shape": {
+      "body": "任务/BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1/aux_billboard_adjust_index_minute_r15.py",
+      "locator": "lines 110-115 (as recorded in the retained acceptance artifact)",
+      "shape": "single day, fields=['factor'], fq=None",
+      "note": "concatenating a multi-year batch cross-section with a one-day incremental is unproven; this host did not open that body in this pass and does not assert more than the retained record"
+    }
+  },
+  "related_source_functions_this_pass": [
+    {
+      "file": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/candidate/local_plane/provider.py",
+      "status": "OUTSIDE_THE_24_PINNED_PATHS_READ_FOR_SEMANTICS_ONLY",
+      "functions": [
+        {
+          "name": "_attach_/factor attach path",
+          "locator": "~lines 616-675",
+          "semantics": [
+            "ADJUST_FACTOR_PIT_R1 is treated as DAILY_DENSE with a same-day date-exact join",
+            "no forward fill and no backward fill: a missing same-day factor stays missing",
+            "no fallback to factor=1.0 because unknown is not no-adjustment",
+            "in strict mode an adjusted-price request whose same-day factor is absent is BLOCKED, never silently served",
+            "factor[date,code] de-duplicated keep=last; reindex(dates) is same-day only",
+            "anchor factor is taken at the anchor date and the adjustment is raw * factor(t)/factor(anchor), both same-day"
+          ]
+        }
+      ]
+    }
+  ],
+  "dependent_products_if_adjustment_unresolved": {
+    "adjusted_or_pit_dependent": [
+      "STOCK_DAILY_PIT_R1",
+      "STOCK_FACTOR_DAILY_R1",
+      "ETF_DAILY_PIT_R1",
+      "ETF_FACTOR_DAILY_R1",
+      "INDEX_FACTOR_DAILY_R1",
+      "FUND_FACTOR_DAILY_R1"
+    ],
+    "not_dependent_on_adjustment": [
+      "STOCK_DAILY_RAW_PIT_R1"
+    ],
+    "separation_note": "RAW_NONE acquisition is independently specified: DOWNLOAD_CONTRACT records price_basis=RAW_NONE with fq=null, so an unresolved adjustment basis blocks adjusted-price uses only and does NOT by itself block a RAW_NONE scope",
+    "blocked_usage_class": "any adjusted-price backtest, any factor-dependent ranking, any PIT price series that must be comparable across a corporate action"
+  },
+  "host_actions_not_taken": [
+    "did not declare factor=1.0 wrong",
+    "did not relabel or reinterpret ordinal date values",
+    "did not fill, interpolate or substitute factor values",
+    "did not choose an overlap or re-download window",
+    "did not re-download or probe the supplier",
+    "did not execute any compiler or cleaning module"
+  ]
+}
