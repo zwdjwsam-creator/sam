@@ -1,13 +1,33 @@
 {
   "schema": "BLACKBOX_CLOSURE_LOCAL_READBACK_R1",
-  "recorded_at_cn": "2026-10-27T15:36:33+0800",
+  "recorded_at_cn": "2026-10-27T15:38:26+0800",
+  "supersedes_within_same_delivery": {
+    "reason": "the first version listed only SOURCE_MANIFEST.json, missing HANDOFF_NOTES.md which was authored after it; the requirement is to read back every export",
+    "first_version_file_count": 1,
+    "first_version_paths": [
+      "SOURCE_MANIFEST.json"
+    ],
+    "this_is_a_new_document_not_an_overwrite_of_another_attempt": true
+  },
   "files": [
+    {
+      "path": "HANDOFF_NOTES.md",
+      "bytes": 4284,
+      "sha256": "9cbb6f06151af1ed298175c3d32d75a34fa2754022f1f12c6ee93e94ca9e514a"
+    },
     {
       "path": "SOURCE_MANIFEST.json",
       "bytes": 4462,
       "sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b"
     }
   ],
-  "file_count": 1,
-  "all_re_read_ok": true
+  "file_count": 2,
+  "all_re_read_ok": true,
+  "empty_directories": {
+    "bodies": {
+      "exists": true,
+      "file_count": 0,
+      "meaning": "zero files changed, so zero bodies were captured; an empty bodies directory is the correct outcome, not a missing export"
+    }
+  }
 }
