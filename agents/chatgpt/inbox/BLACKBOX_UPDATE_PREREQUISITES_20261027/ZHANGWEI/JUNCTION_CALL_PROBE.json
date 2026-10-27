@@ -1,0 +1,63 @@
+{
+  "schema": "BLACKBOX_JUNCTION_CALL_PROBE_R1",
+  "execution_host": "ZHANGWEI",
+  "probed_at_cn": "2026-10-27T13:09:07+0800",
+  "question": "attempt 2 failed inside the fixture with JUNCTION_FIXTURE_CREATION_FAILED; decide whether the host cannot create junctions or the call is malformed",
+  "shipped_call_form": "subprocess.run([\"cmd.exe\",\"/d\",\"/c\", command]) where command already contains its own double quotes",
+  "why_that_matters": "Python renders a list to a command line with list2cmdline, which wraps that argument in quotes and rewrites its inner double quotes as backslash-quote. cmd.exe does not interpret backslash-quote as an escaped quote, so mklink receives paths containing literal backslashes and rejects them",
+  "rows": [
+    {
+      "kind": "A_shipped_single_string",
+      "argv_or_command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "mklink /J \"C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\linkA\" \"C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\target\""
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "The filename, directory name, or volume label syntax is incorrect.",
+      "link_created": false
+    },
+    {
+      "kind": "B_separate_argv_elements",
+      "argv_or_command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "mklink",
+        "/J",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\linkB",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\target"
+      ],
+      "exit": 0,
+      "stdout": "Junction created for C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\linkB <<===>> C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\target",
+      "stderr": "",
+      "link_created": true
+    },
+    {
+      "kind": "C_shell_true",
+      "argv_or_command": "mklink /J \"C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\linkC\" \"C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\target\"",
+      "exit": 0,
+      "stdout": "Junction created for C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\linkC <<===>> C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\_tools\\probe2\\tmpa9_lmium\\target",
+      "stderr": "",
+      "link_created": true
+    }
+  ],
+  "verdict": "FIXTURE_CALL_QUOTING_DEFECT_NOT_HOST_POLICY",
+  "meaning_when_verdict_holds": {
+    "same_command_both_ways": "A fails and B succeeds from the same process, on the same host, in the same directory, within one second",
+    "host_can_create_junctions": true,
+    "elevation_needed": false,
+    "developer_mode_needed": false,
+    "collector_defect": false,
+    "defect_location": "test_collect_prerequisites.py:19-21, fixture construction only"
+  },
+  "actions_not_taken": [
+    "did not edit the reviewed test",
+    "did not patch the package",
+    "did not elevate",
+    "did not enable Developer Mode",
+    "did not skip or relax either assertion"
+  ]
+}
