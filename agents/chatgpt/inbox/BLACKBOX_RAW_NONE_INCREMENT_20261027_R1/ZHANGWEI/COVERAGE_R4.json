@@ -1,0 +1,148 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_R4_COVERAGE_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS",
+  "at_cn": "2026-10-27T20:07:57+0800",
+  "gate_semantics": "DATA_ABSENCE_GATE: a session that was never attempted is NOT_ATTEMPTED, never NO_DATA. A session stopped mid-way is PARTIAL_BLOCKED with measured counts.",
+  "stock": {
+    "planned_sessions": 17,
+    "sessions_with_full_coverage": 16,
+    "sessions_partial": 1,
+    "sessions_not_attempted": 0,
+    "rows_downloaded": 86948,
+    "reused_rows": 80,
+    "files": 1098,
+    "bytes": 17085420,
+    "per_day": {
+      "2026-09-28": {
+        "batches": 65,
+        "rows": 5142,
+        "bytes": 1012377,
+        "state": "ACQUIRED",
+        "note": "First 80 codes reused read-only from R1; 5,142 newly downloaded here. Total covered 5,222.",
+        "reused_rows": 80,
+        "covered_rows_total": 5222
+      },
+      "2026-09-29": {
+        "batches": 66,
+        "rows": 5223,
+        "bytes": 1027181,
+        "state": "ACQUIRED"
+      },
+      "2026-09-30": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1027068,
+        "state": "ACQUIRED"
+      },
+      "2026-10-08": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1027769,
+        "state": "ACQUIRED"
+      },
+      "2026-10-09": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1027505,
+        "state": "ACQUIRED"
+      },
+      "2026-10-12": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1026867,
+        "state": "ACQUIRED"
+      },
+      "2026-10-13": {
+        "batches": 66,
+        "rows": 5225,
+        "bytes": 1026814,
+        "state": "ACQUIRED"
+      },
+      "2026-10-14": {
+        "batches": 66,
+        "rows": 5225,
+        "bytes": 1027064,
+        "state": "ACQUIRED"
+      },
+      "2026-10-15": {
+        "batches": 66,
+        "rows": 5226,
+        "bytes": 1026444,
+        "state": "ACQUIRED"
+      },
+      "2026-10-16": {
+        "batches": 66,
+        "rows": 5226,
+        "bytes": 1026801,
+        "state": "ACQUIRED"
+      },
+      "2026-10-19": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1025954,
+        "state": "ACQUIRED"
+      },
+      "2026-10-20": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1026187,
+        "state": "ACQUIRED"
+      },
+      "2026-10-21": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1026401,
+        "state": "ACQUIRED"
+      },
+      "2026-10-22": {
+        "batches": 66,
+        "rows": 5225,
+        "bytes": 1026694,
+        "state": "ACQUIRED"
+      },
+      "2026-10-23": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1027543,
+        "state": "ACQUIRED"
+      },
+      "2026-10-26": {
+        "batches": 66,
+        "rows": 5224,
+        "bytes": 1026754,
+        "state": "ACQUIRED"
+      },
+      "2026-10-27": {
+        "batches": 43,
+        "rows": 3440,
+        "bytes": 669997,
+        "state": "PARTIAL_BLOCKED"
+      }
+    }
+  },
+  "etf": {
+    "planned_sessions": 17,
+    "sessions_attempted": 0,
+    "state": "NOT_ATTEMPTED",
+    "reason": "run stopped on the stock product before the ETF phase"
+  },
+  "index": {
+    "planned_sessions": 17,
+    "sessions_attempted": 0,
+    "state": "NOT_ATTEMPTED",
+    "reason": "run stopped on the stock product before the index phase"
+  },
+  "universes": {
+    "stock_files": 16,
+    "missing_stock_universe": [
+      "2026-09-28"
+    ],
+    "why_missing_2026_09_28": "Contract forbids refetching the first-day stock universe; the R1 5,222-code list was reused read-only."
+  },
+  "reused_vs_new": {
+    "reused_rows": 80,
+    "new_rows": 86948,
+    "failed_rows": 80,
+    "failed_detail": "The 10-27 batch at offset 3360 returned 80 rows and was rejected once; its bytes are preserved as raw evidence but it is not counted as accepted."
+  }
+}
