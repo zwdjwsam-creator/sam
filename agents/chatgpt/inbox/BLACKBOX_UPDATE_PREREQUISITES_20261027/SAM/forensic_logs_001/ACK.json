@@ -1,0 +1,51 @@
+{
+  "schema": "FORENSIC_ACK_R1",
+  "task_id": "BLACKBOX_FORENSIC_READONLY_SAM_20261027_R1",
+  "parent_dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "dispatch_id": "BLACKBOX_FORENSIC_READONLY_20261027_R1",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T16:44:38+0800",
+  "scope_acknowledged": "one-shot read-only extraction of contract-listed literal event tokens from exactly TWO named historical log files; nothing in them is executed, imported or replayed",
+  "existing_return_check": {
+    "remote_forensic_logs_001_existed": false,
+    "remote_names_at_ack": [],
+    "local_output_existed": false,
+    "duplicate_task_active": false,
+    "evidence": "no prior forensic_logs_001 was present locally or remotely at ACK time; the SAM child folder held only capture_003, chain_source_001, source_closure_001 and watchdog_control_001"
+  },
+  "target_files_at_ack": {
+    "UNATTENDED.log": {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\UNATTENDED.log",
+      "exists": true,
+      "size_bytes": 71629
+    },
+    "FULL_CHAIN.log": {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\FULL_CHAIN.log",
+      "exists": true,
+      "size_bytes": 206466
+    }
+  },
+  "planned_actions": [
+    "read each named log read-only, <=2 MiB per source and <=4 MiB total",
+    "emit only lines containing the contract's literal case-sensitive tokens",
+    "cap at 500 matching lines and 128 KiB of excerpts; report PARTIAL_LIMIT if hit",
+    "redact credential-shaped fragments in place and flag those lines",
+    "upload ACK/LOG_MARKERS/REPORT/manifest/readback and verify each by remote GET"
+  ],
+  "explicitly_not_done": [
+    "no execution of any historical PS1/Python, downloader, Research OS, watchdog or chain",
+    "no .pid.txt, credential store or Parquet read",
+    "no download, supplier login or quota probe",
+    "no CURRENT/SSOT/rule write, no release",
+    "no stop/disable/delete, no terminal restart or process kill",
+    "no full disk scan, no extra logger, no recursion into other folders",
+    "no retry of the V3 collector (its exit 2 remains preserved)"
+  ],
+  "tooling_note": "the parent Cursor terminal session returns no output for any command and was NOT restarted or killed; a separate already-available read-only file/session tool is used, as the contract permits",
+  "authority": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false
+  }
+}
