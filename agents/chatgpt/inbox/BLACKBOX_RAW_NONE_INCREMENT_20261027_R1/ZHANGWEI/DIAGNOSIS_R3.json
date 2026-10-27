@@ -1,0 +1,53 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_R3_DIAGNOSIS_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R3_CODE_DTYPE",
+  "at_cn": "2026-10-27T19:37:43+0800",
+  "status": "BLOCKED_PRESERVE_PARTIAL",
+  "exit_code": 2,
+  "reason": "REGISTERED_DIRECTORY_SET_UNPROVEN",
+  "is_regression_from_r2": false,
+  "summary": "R3 added a post-reuse registered-freshness control. It requires every subdirectory under a parent of a registered Parquet file to itself be an ancestor of a registered Parquet file. Five pre-existing, zero-entry product-slot directories under the registered RAW roots violate that rule, so the run blocked before authentication.",
+  "new_vs_r2": "The control is new in R3. R2 did not run it, which is why R2 reached the roundtrip check and R3 stops earlier. No package regression, no environment change and no data drift was involved.",
+  "root_cause": "The control has no concept of a declared-but-unpopulated slot. It cannot distinguish an empty product slate created by the layout from an unknown directory that appeared later.",
+  "timeline": {
+    "2026-10-15T14:17:25+0800": "the five empty slot directories were created together by the FQ-audit/layout writer",
+    "2026-10-27T18:46:28+0800": "R2 run captured COVERAGE_stock/etf/index; zero-entry slots produce no record, so they were never ancestors",
+    "2026-10-27T19:33:50+0800": "R3 gate 63/63 OK, literal exit 0",
+    "2026-10-27T19:34:00+0800": "blocked at the freshness control, before any authentication or supplier call"
+  },
+  "side_effects": {
+    "supplier_calls": 0,
+    "quota_consumed": 0,
+    "e_files_created": [
+      "BASELINE_R3.json",
+      "RESULT_R3.json"
+    ],
+    "receipts": 0,
+    "raw_files": 0,
+    "universe_files": 0,
+    "current_switched": false,
+    "cleaning_done": false
+  },
+  "what_was_not_done_and_why": [
+    "No deletion of the empty slot directories: writing production RAW is out of scope.",
+    "No local code edit to allowlist them: forbidden.",
+    "No retry or parameter change: exit 2 means stop.",
+    "No re-declaration of empty as absence: forbidden."
+  ],
+  "reviewer_resolution_options": [
+    "A) Governed empty-slot allowlist driven by an on-disk product registry; pass if the slot is declared and still zero-entry.",
+    "B) Split the control into DECLARED_EMPTY_SLOT (recorded evidence, non-blocking) vs UNKNOWN_DIRECTORY (blocking).",
+    "C) Move declared-unpopulated slots outside the registered price parents under an explicit write authorization."
+  ],
+  "recommended": "B, with the declared slot list sourced from jq_download_execution_r1.py product registry. A alone hides future empty-dir drift; C moves data but keeps the ambiguous control.",
+  "controls_that_did_pass": {
+    "gate": "63/63",
+    "reuse_pins": "10/10",
+    "four_pointer_hashes": "4/4",
+    "retained_batch_sha256_match": true,
+    "no_get_trade_days": true,
+    "no_new_universe_call": true,
+    "no_hist_download": true,
+    "quota_untouched": true
+  }
+}
