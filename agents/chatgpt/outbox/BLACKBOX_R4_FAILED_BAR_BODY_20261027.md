@@ -1,3 +1,10 @@
+# CLOSED BY EXACT ORIGINAL REDELIVERY — DO NOT RUN ANOTHER CAPTURE
+
+The required15489-byte failed batch is now delivered at agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/failed_batch_600621_R4/raw/stock/2026-10-27_03360_R4.parquet, Git blob6902414166f01ea3eeaaa172f960c63b64797741, SHA256 fb1a0ccb4918e6035d7e6a3695d6fbac6cbf9818c3ea2ca01bcf7928b2e8b2c7. GPT independently decoded exact bytes and reproduced LIVE_BAR_NULL on80x14 original rows. Source handoff is satisfied; different delivery folder is not a reason to rerun the helper. No new supplier/cleaning/current/hand-rule action is issued. Preserve old evidence and actual execution distinctions.
+
+---
+# Historical contract below; capture command no longer active.
+
 # Exact R4 failed-batch body handoff; no new acquisition or broad scan
 
 task_id: BLACKBOX_R4_FAILED_BAR_BODY_20261027
