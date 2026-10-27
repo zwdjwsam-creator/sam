@@ -1,0 +1,49 @@
+{
+  "schema": "SOURCE_CLOSURE_MANIFEST_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T15:41:14+0800",
+  "task": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_SOURCE_CLOSURE_TASK_20261027_1501.md",
+  "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_SOURCE_CLOSURE_20261027_1501.json",
+  "plan_schema": "EXACT_ORIGINAL_GENERATOR_AND_RCID_CLOSURE_R1",
+  "scope": "exactly ONE named path for the SAM role; no recursion, wildcard, fallback root, import closure, body search or execution",
+  "limits": {
+    "max_bytes_per_file": 2097152,
+    "max_total_bytes": 8388608,
+    "bytes_read": 29975,
+    "files_captured": 1
+  },
+  "status_counts": {
+    "CAPTURED": 1
+  },
+  "records": [
+    {
+      "seq": 1,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\run_unattended_catchup_r1.py",
+      "source_absence_claim_allowed": false,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T19:08:57Z",
+      "line_endings": {
+        "crlf": 698,
+        "lf_total": 698,
+        "lone_lf": 0
+      },
+      "ordinary_auth_constructs_observed": 0,
+      "ordinary_auth_note": "import/auth() calls without quoted secret arguments are ordinary code and were NOT treated as secrets",
+      "status": "CAPTURED",
+      "bytes": 29975,
+      "raw_sha256": "9416691f21c2a7c702d4703576b7a929592af446f144fc6c8d10ce2bb6b6e353",
+      "captured_relative_path": "bodies/0001_run_unattended_catchup_r1.py",
+      "local_readback_match": true,
+      "role_observation": "returned as the exact named source; whether it is a generator is not asserted here (name/header alone is not evidence)"
+    }
+  ],
+  "preserved_prior": {
+    "collector_attempt3": "exit 2 retained partial; NOT rerun",
+    "chain_source_001": "13 captured + 1 REUSED_HUB_BODY; not repeated",
+    "v1_v2_failures": "preserved"
+  },
+  "boundary": "a source body is not historical execution proof; a missing exact path is not absence of business data"
+}
