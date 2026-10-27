@@ -1,0 +1,35 @@
+{
+  "schema": "CONTROL_SCRIPT_INVOCATION_R1",
+  "contract_id": "WATCHDOG_CONTROL_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "argv": [
+    "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_watchdog_control\\watchdog_control.py",
+    "--role",
+    "SAM",
+    "--allow-sam-stop",
+    "--out",
+    "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\watchdog_control_001"
+  ],
+  "cwd": "E:\\BLACKBOX",
+  "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+  "literal_exit_code": 0,
+  "exit_code_source": "literal process returncode reported by the invoking session",
+  "started_at_cn": "2026-10-27T08:05:20.492915+00:00",
+  "invocations": 1,
+  "retried": false,
+  "stdout_bytes": 0,
+  "stderr_bytes": 0,
+  "stream_retention_note": "The control script printed nothing: both streams were empty. Raw .txt stream files are NOT shipped for this invocation because the process was invoked directly in a separate session and produced no bytes to retain. No zero-byte file was fabricated to imply a capture. The authoritative record of this run is the script's own RESULT.json, which it wrote itself, plus this invocation receipt.",
+  "session_note": "The parent Cursor terminal session had been returning no output for every command; the invocation was therefore made from a separate agent session. No terminal restart, no process kill and no environment change was performed.",
+  "gate_that_permitted_this_run": {
+    "policy_controls_ran": 10,
+    "passed": 10,
+    "skipped": 0,
+    "literal_exit_code": 0,
+    "detail": "POLICY_CONTROLS_LEDGER.json + WATCHDOG_POLICY_CONTROLS_STDERR.txt"
+  }
+}
