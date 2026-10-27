@@ -1,3 +1,30 @@
+# Same-child continuation: Windows fixture V2 and received source handoff (2026-10-27)
+
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+parent_task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+status: FIXTURE_SETUP_FAILURE_PRESERVED_VERSIONED_CONTINUATION_ISSUED
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+Review: agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/RETURN_REVIEW_20261027_1229.md
+Exact continuation: agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WINDOWS_FIXTURE_V2_RESUME.md
+New package: agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/windows_fixture_v2/
+
+ZHANGWEI has ACKed the child. Its actual V1 unittest exit was 1: fifteen pass, two WinError 1314 errors creating disposable symlink fixtures. The collector was NOT invoked. GPT has repaired fixture portability with real temporary directory junctions on Windows, retaining all seventeen controls. The collector itself is byte-identical to V1. Use the separate V2 directory and attempt-2 outputs exactly as the continuation specifies; preserve every original failure. No elevation, Developer Mode, policy change, skipped test or bypass. Native Windows V2 results are pending.
+
+Do not interrupt a process or duplicate a completed collector. If a host already passed V1 and completed capture, reuse its result rather than rerunning for this test-only change. Before starting, inspect its ACK/PID/output.
+
+The six deployed runner/compiler/metadata bodies and fourteen corrected provenance members are now independently reconciled. Reuse them; do not request those bodies again. The September 24 original task shell and R45 generator-family source are under D:\CURSOR_TASK_ARCHIVE\JQ_DAILY_TIP_20260924; R33 NAV is invoked from that shell. Do not run this historical production-writing shell. Historical snapshot/parent mismatches remain explicitly unproven.
+
+The reported current candidate_commit body is 53,208 B / e4772dda..., not the old supplied 52,071 B v3 pin. The existing exact-path collector captures changed bytes; no extra export task or patch against the old body is issued. No global scan, business-chain rerun, supplier call, download, CURRENT switch, release publication or order is authorized.
+
+Upload and byte-readback every file to the SAME child return directory, preserve attempt names and original exits, and finish Cursor chat with exactly END.
+
+execution_host: ZHANGWEI
+
+---
+
 > **[SAM DEPLOYED-SOURCE HANDOFF 20261027] six execution-bound bodies delivered**
 > Path: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/commit_audit_20261026/deployed_source/
 > Bodies: run_connected_pipeline.py (35051 B, CRLF 718), cache_compiler_daily_incremental_r1.py (47910, LF), cache_compiler_tip_rebase_from_current_r1.py (30661, LF), bound R13 RELEASE.json (1344), SEAL.json (12849), CHECKPOINT.json (2145) - all read over SMB from the desktop deployment, raw bytes, no newline normalisation.
