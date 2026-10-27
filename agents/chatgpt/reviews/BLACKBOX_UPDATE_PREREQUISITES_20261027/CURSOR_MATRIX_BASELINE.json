@@ -1,0 +1,3025 @@
+{
+  "schema": "BLACKBOX_PER_DATASET_PREREQUISITE_BASELINE_V1",
+  "source_ref": "d77aeb026323465de8d500d90758643b97f82fca",
+  "counts": {
+    "NOT_BOUND": 40,
+    "NOT_APPLICABLE": 12,
+    "UNRESOLVED": 2
+  },
+  "datasets": [
+    {
+      "dataset_id": "PRICE_STOCK_DAILY",
+      "title_en": "A-share stock daily OHLCV (raw and cleaned)",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [
+        {
+          "product": "STOCK_DAILY_PIT_R1",
+          "n_parquet": 13,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 13,
+            "n_files_measured": 13,
+            "rows_measured": 17030241,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "money",
+              "signal_date",
+              "data_date",
+              "asset_type",
+              "price_adj_tag",
+              "asof_rule",
+              "pit_status",
+              "source_version",
+              "known_at"
+            ],
+            "columns_union_n": 16,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        },
+        {
+          "product": "STOCK_DAILY_RAW_PIT_R1",
+          "n_parquet": 13,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 13,
+            "n_files_measured": 13,
+            "rows_measured": 12351786,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "money",
+              "signal_date",
+              "data_date",
+              "asset_type",
+              "price_adj_tag",
+              "asof_rule",
+              "pit_status",
+              "source_version",
+              "known_at"
+            ],
+            "columns_union_n": 16,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "A_STOCK_ETF_INDEX_DAILY",
+      "existing_writer_callable": {
+        "callable": "download_universe_daily",
+        "span": "L124-144",
+        "line_span": [
+          124,
+          144
+        ],
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+        "bytes": 19649,
+        "lines": 500,
+        "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+        "retained_source": "R05 delivery source_bodies/post_seal_daily_download_r8.py (byte-identical to live path E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py, same measured sha256)"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P2_stock_daily",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-08-06",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\stock_ohlcv_daily",
+          "status": "MEASURED",
+          "observed_min": "2026-06-15",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_STOCK_1M",
+      "title_en": "A-share stock 1-minute bars",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P7_stock_raw_none_replacement_1m",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-08-05",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A\u80a1_stock_1m",
+          "status": "MEASURED",
+          "observed_min": "2026-09-11",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_STOCK_5M",
+      "title_en": "PRICE_STOCK_5M dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P7_stock_minute_raw_none_replacement_5m",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-08-05",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A\u80a1_stock_5m",
+          "status": "MEASURED",
+          "observed_min": "2026-09-08",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_STOCK_30M",
+      "title_en": "PRICE_STOCK_30M dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P7_stock_minute",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-02",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A\u80a1_stock_30m",
+          "status": "MEASURED",
+          "observed_min": "2026-09-11",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_STOCK_60M",
+      "title_en": "PRICE_STOCK_60M dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P7_stock_minute",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-02",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\A\u80a1_stock_60m",
+          "status": "MEASURED",
+          "observed_min": "2026-09-10",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_ETF_DAILY",
+      "title_en": "ETF daily OHLCV",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [
+        {
+          "product": "ETF_DAILY_PIT_R1",
+          "n_parquet": 1,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 1,
+            "n_files_measured": 1,
+            "rows_measured": 63204,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2026-07-30",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "money",
+              "signal_date",
+              "data_date",
+              "asset_type",
+              "price_adj_tag",
+              "asof_rule",
+              "pit_status",
+              "source_version",
+              "known_at"
+            ],
+            "columns_union_n": 16,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        },
+        {
+          "product": "FUND_DAILY_PIT_R1",
+          "n_parquet": 0,
+          "measurement": {
+            "mode": "EMPTY",
+            "n_files_total": 0
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "A_STOCK_ETF_INDEX_DAILY",
+      "existing_writer_callable": {
+        "callable": "download_universe_daily",
+        "span": "L124-144",
+        "line_span": [
+          124,
+          144
+        ],
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+        "bytes": 19649,
+        "lines": 500,
+        "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+        "retained_source": "R05 delivery source_bodies/post_seal_daily_download_r8.py (byte-identical to live path E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py, same measured sha256)"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P8_etf_fund",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_daily",
+          "status": "MEASURED",
+          "observed_min": "2026-07-30",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_ETF_1M",
+      "title_en": "ETF 1-minute bars",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_1m",
+          "status": "MEASURED",
+          "observed_min": "2026-09-17",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_ETF_5M",
+      "title_en": "PRICE_ETF_5M dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_5m",
+          "status": "MEASURED",
+          "observed_min": "2026-09-10",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_ETF_30M",
+      "title_en": "PRICE_ETF_30M dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_30m",
+          "status": "MEASURED",
+          "observed_min": "2025-02-28",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_ETF_60M",
+      "title_en": "PRICE_ETF_60M dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4_fund_etf_raw_none",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\price\\ETF_60m",
+          "status": "MEASURED",
+          "observed_min": "2025-02-28",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_INDEX_DAILY",
+      "title_en": "Index daily OHLCV",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [
+        {
+          "product": "INDEX_DAILY_R1",
+          "n_parquet": 22,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 22,
+            "n_files_measured": 22,
+            "rows_measured": 2802889,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2005-01-04",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "money",
+              "signal_date",
+              "data_date",
+              "asset_type",
+              "price_adj_tag",
+              "asof_rule",
+              "pit_status",
+              "source_version",
+              "known_at"
+            ],
+            "columns_union_n": 16,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "A_STOCK_ETF_INDEX_DAILY",
+      "existing_writer_callable": {
+        "callable": "download_universe_daily",
+        "span": "L124-144",
+        "line_span": [
+          124,
+          144
+        ],
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+        "bytes": 19649,
+        "lines": 500,
+        "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+        "retained_source": "R05 delivery source_bodies/post_seal_daily_download_r8.py (byte-identical to live path E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py, same measured sha256)"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P3_index",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_daily",
+          "status": "MEASURED",
+          "observed_min": "2026-07-30",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CACHE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u56de\u6d4b\u7f13\u5b58\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+          "status": "MEASURED_RELEASE_ROOT_ONLY",
+          "observed_min": "2005-01-04",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "PRICE_INDEX_MINUTE",
+      "title_en": "Index minute bars",
+      "supplier": "JQData",
+      "source_api": "get_price",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P3_index_minute",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": null,
+          "status": "ROOT_ABSENT",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "CALENDAR_CN_EXCHANGE",
+      "title_en": "China exchange trading calendar",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "A_STOCK_ETF_INDEX_DAILY",
+      "existing_writer_callable": {
+        "callable": "download_universe_daily",
+        "span": "L124-144",
+        "line_span": [
+          124,
+          144
+        ],
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+        "bytes": 19649,
+        "lines": 500,
+        "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+        "retained_source": "R05 delivery source_bodies/post_seal_daily_download_r8.py (byte-identical to live path E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py, same measured sha256)"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P0_meta",
+          "status": "MEASURED",
+          "observed_min": "2014-01-01",
+          "observed_max": "2026-08-10",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
+          "status": "MEASURED",
+          "observed_min": "2014-01-01",
+          "observed_max": "2026-09-02",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "SECURITY_MASTER",
+      "title_en": "Security master (type, name, listing window)",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "SECURITY_MASTER_SNAPSHOT_R1",
+          "n_parquet": 1,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 1,
+            "n_files_measured": 1,
+            "rows_measured": 5208,
+            "time_column": "end_date",
+            "time_role": "PERIOD_END_REFERENCE",
+            "min": "2200-01-01",
+            "max": "2200-01-01",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "code",
+              "display_name",
+              "name",
+              "start_date",
+              "end_date",
+              "type"
+            ],
+            "columns_union_n": 6,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "A_STOCK_ETF_INDEX_DAILY",
+      "existing_writer_callable": {
+        "callable": "download_universe_daily",
+        "span": "L124-144",
+        "line_span": [
+          124,
+          144
+        ],
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+        "bytes": 19649,
+        "lines": 500,
+        "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+        "retained_source": "R05 delivery source_bodies/post_seal_daily_download_r8.py (byte-identical to live path E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py, same measured sha256)"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P0_meta",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\security_master",
+          "status": "MEASURED",
+          "observed_min": "2026-07-02",
+          "observed_max": "2200-01-01",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "ADJUST_FACTOR",
+      "title_en": "Adjustment factor plane",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "ADJUST_FACTOR_PIT_R1",
+          "n_parquet": 13,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 13,
+            "n_files_measured": 13,
+            "rows_measured": 12266026,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "factor"
+            ],
+            "columns_union_n": 4,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "B_ADJUSTMENT_FACTOR",
+      "existing_writer_callable": {
+        "callable": "download_adjust_factor_day",
+        "span": "L102-147",
+        "line_span": [
+          102,
+          147
+        ],
+        "source_path": "E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\aux_billboard_adjust_index_minute_r15.py",
+        "bytes": 10815,
+        "lines": 295,
+        "sha256": "767c73c7a5c17e017d4274c57071725e0a59c1eef39194e795edff8dce57a3cc",
+        "retained_source": "live path E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1\\aux_billboard_adjust_index_minute_r15.py; additionally pinned in R10 producer/fq delivery CANDIDATE_BODIES"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P1_adjust_factor",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\adjust_factor",
+          "status": "MEASURED",
+          "observed_min": "2026-08-10",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "TRADABLE_STATUS",
+      "title_en": "Tradable / limit / pause status",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "STOCK_TRADEABILITY_PIT_R1",
+          "n_parquet": 4,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 4,
+            "n_files_measured": 4,
+            "rows_measured": 249858,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2026-07-13",
+            "max": "2026-09-03",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "is_st",
+              "paused",
+              "high_limit",
+              "low_limit",
+              "signal_date",
+              "data_date",
+              "asset_type",
+              "asof_rule",
+              "pit_status",
+              "product_id",
+              "source_cleaning_release"
+            ],
+            "columns_union_n": 19,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "C_RAW_NONE_MINUTE",
+      "existing_writer_callable": {
+        "declared_entry": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\jq_download_execution_r1.py",
+          "sha256": "bcbfd68d04402ce9e3156da276c2e4fc2d53c23987e891d647bac3c31ea69815",
+          "bytes": 130769,
+          "reachable": false,
+          "why": "two unconditional module-top guards: L1-L14 and L16-L29. Each executes 'if __name__ != \"__main__\": raise SystemExit(0)' then prints BLOCKED and raises SystemExit(1). Therefore importing the module raises SystemExit(0) before any definition executes, and running it exits 1. All 57 callables below the guards, including run_t7 L2644-2729, are present text but unreachable by design."
+        },
+        "reachable_writer_present": {
+          "path": "E:\\BLACKBOX\\\u811a\u672c\\p7_guarded_1m_download.py",
+          "bytes": 27862,
+          "sha256": "9fd0b3060c73086b955205277bd8ae09c2ef39ebd91adf34af6908cdaaacefc6",
+          "callable": "module-level guarded download loop (sibling body: p7_guarded_5m_download.py, 30585 bytes, sha256 b324a19a895a763efea7d0b4dc844367a838dd23e8d98cd3cfe016f27d58514f)",
+          "retained_source": "PRESENT_ON_DISK_NOT_PREVIOUSLY_PINNED",
+          "evidence_grade": "CALLABLE_PRESENT"
+        },
+        "universe_call": "jq.get_all_securities-derived queue (stock_codes per batch) at L296-L299",
+        "actual_supplier_call": {
+          "api": "jqdatasdk.get_price",
+          "line_span": [
+            305,
+            315
+          ],
+          "invocation_arguments": "get_price(stock_codes, start_date=f'{year}-01-01', end_date=min(f'{year}-12-31', today) or f'{year}-12-31', frequency='1m', fields=['open','close','high','low','volume','money'], skip_paused=True, fq=None, count=None)"
+        }
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P2_security_state",
+          "status": "MEASURED",
+          "observed_min": "2026-07-31",
+          "observed_max": "2026-09-03",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\stock_limit_pause_status",
+          "status": "MEASURED",
+          "observed_min": "2026-07-13",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "INDEX_COMPONENTS",
+      "title_en": "Index constituents",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "INDEX_CONSTITUENT_PIT_R1",
+          "n_parquet": 1,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 1,
+            "n_files_measured": 1,
+            "rows_measured": 2592719,
+            "time_column": "announcement_date",
+            "time_role": "EVENT_REFERENCE",
+            "min": null,
+            "max": null,
+            "stats_missing_files": 1,
+            "columns_sample": [
+              "canonical_index_id",
+              "index_code",
+              "constituent_code",
+              "constituent_asset_type",
+              "announcement_date",
+              "announcement_ts",
+              "effective_from",
+              "effective_to",
+              "available_from_ts",
+              "weight",
+              "weight_date",
+              "source_provider",
+              "source_api",
+              "source_date",
+              "source_version",
+              "revision_id",
+              "ingested_at",
+              "pit_status",
+              "pit_ok",
+              "current_backfill",
+              "notes"
+            ],
+            "columns_union_n": 21,
+            "range_basis": "NO_TIME_COLUMN_IN_SAMPLED_SCHEMAS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "A_STOCK_ETF_INDEX_DAILY",
+      "existing_writer_callable": {
+        "callable": "download_universe_daily",
+        "span": "L124-144",
+        "line_span": [
+          124,
+          144
+        ],
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+        "bytes": 19649,
+        "lines": 500,
+        "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+        "retained_source": "R05 delivery source_bodies/post_seal_daily_download_r8.py (byte-identical to live path E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py, same measured sha256)"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P3_index",
+          "status": "MEASURED",
+          "observed_min": "2026-08-12",
+          "observed_max": "2026-08-12",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_components",
+          "status": "MEASURED",
+          "observed_min": "2014-12-31",
+          "observed_max": "2026-07-30",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "INDEX_WEIGHTS",
+      "title_en": "Index weights (component code preserved; historical backtest ineligible)",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "INDEX_WEIGHT_PIT_R1",
+          "n_parquet": 16,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 16,
+            "n_files_measured": 16,
+            "rows_measured": 61064,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2026-08-31",
+            "max": "2026-08-31",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "index_code",
+              "component_code",
+              "date",
+              "weight",
+              "display_name",
+              "query_date",
+              "data_asof",
+              "discovery_asof",
+              "available_at",
+              "transform_version",
+              "source_snapshot_date",
+              "weight_effective_asof",
+              "snapshot_asof",
+              "source_latest_asof",
+              "source_latest_verified",
+              "inheritance_reason",
+              "pit_valid_from",
+              "known_at_contract",
+              "coverage_status",
+              "source"
+            ],
+            "columns_union_n": 21,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "A_STOCK_ETF_INDEX_DAILY",
+      "existing_writer_callable": {
+        "callable": "download_universe_daily",
+        "span": "L124-144",
+        "line_span": [
+          124,
+          144
+        ],
+        "source_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\r05_delivery\\source_bodies\\post_seal_daily_download_r8.py",
+        "bytes": 19649,
+        "lines": 500,
+        "sha256": "e4081da69c0a68924bdacdd94d8c4880941db9c71e097ea4dd97dda7923569e2",
+        "retained_source": "R05 delivery source_bodies/post_seal_daily_download_r8.py (byte-identical to live path E:\\BLACKBOX\\\u4efb\u52a1\\BLACKBOX_POST_SEAL_FRESHNESS_DAILY_AND_MINUTE_R8_R1\\post_seal_daily_download_r8.py, same measured sha256)"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P3_index",
+          "status": "MEASURED",
+          "observed_min": "2026-08-31",
+          "observed_max": "2026-08-31",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\index_weights",
+          "status": "MEASURED",
+          "observed_min": "2014-12-31",
+          "observed_max": "2026-06-30",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "INDUSTRY_CONCEPT",
+      "title_en": "INDUSTRY_CONCEPT dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "SW_L1_MEMBERSHIP_PIT_R1",
+          "n_parquet": 14,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 14,
+            "n_files_measured": 14,
+            "rows_measured": 25175590,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "industry_code",
+              "industry_name",
+              "error",
+              "taxonomy",
+              "signal_date",
+              "data_date",
+              "asof_rule",
+              "pit_status",
+              "source",
+              "taxonomy_version",
+              "no_current_backfill",
+              "no_ffill_membership"
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        },
+        {
+          "product": "SW_L2_MEMBERSHIP_PIT_R1",
+          "n_parquet": 14,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 14,
+            "n_files_measured": 14,
+            "rows_measured": 25150932,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "industry_code",
+              "industry_name",
+              "error",
+              "taxonomy",
+              "signal_date",
+              "data_date",
+              "asof_rule",
+              "pit_status",
+              "source",
+              "taxonomy_version",
+              "no_current_backfill",
+              "no_ffill_membership"
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        },
+        {
+          "product": "SW_L3_MEMBERSHIP_PIT_R1",
+          "n_parquet": 14,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 14,
+            "n_files_measured": 14,
+            "rows_measured": 25128580,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "date",
+              "code",
+              "industry_code",
+              "industry_name",
+              "error",
+              "taxonomy",
+              "signal_date",
+              "data_date",
+              "asof_rule",
+              "pit_status",
+              "source",
+              "taxonomy_version",
+              "no_current_backfill",
+              "no_ffill_membership"
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P5_attributes_events",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept",
+          "status": "MEASURED",
+          "observed_min": "2004-02-09",
+          "observed_max": "2021-12-11",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "INDUSTRY_CONCEPT_EVENTS",
+      "title_en": "INDUSTRY_CONCEPT_EVENTS dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P5_attributes_events",
+          "status": "MEASURED",
+          "observed_min": "2004-02-09",
+          "observed_max": "2026-07-01",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\industry_concept_events",
+          "status": "MEASURED",
+          "observed_min": "2004-02-09",
+          "observed_max": "2026-07-01",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "BILLBOARD",
+      "title_en": "BILLBOARD dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "BILLBOARD_DAILY_PIT_R1",
+          "n_parquet": 14,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 14,
+            "n_files_measured": 14,
+            "rows_measured": 3910164,
+            "time_column": "day",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-08-13",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "code",
+              "day",
+              "direction",
+              "rank",
+              "abnormal_code",
+              "abnormal_name",
+              "sales_depart_name",
+              "buy_value",
+              "buy_rate",
+              "sell_value",
+              "sell_rate",
+              "total_value",
+              "net_value",
+              "amount",
+              "event_date",
+              "announcement_date",
+              "effective_known_at",
+              "known_at",
+              "pit_policy"
+            ],
+            "columns_union_n": 19,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P5_attributes_events",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\billboard",
+          "status": "MEASURED",
+          "observed_min": "2026-08-10",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "XR_XD",
+      "title_en": "Ex-rights / ex-dividend events",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "CORP_XR_XD_EVENT_PIT_R1",
+          "n_parquet": 50,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 50,
+            "n_files_measured": 50,
+            "rows_measured": 615461,
+            "time_column": "effective_date",
+            "time_role": "EFFECTIVE_FROM",
+            "min": "2006-03-30",
+            "max": "2026-08-20",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "id",
+              "company_id",
+              "company_name",
+              "code",
+              "report_date",
+              "bonus_type",
+              "board_plan_pub_date",
+              "board_plan_bonusnote",
+              "distributed_share_base_board",
+              "shareholders_plan_pub_date",
+              "shareholders_plan_bonusnote",
+              "distributed_share_base_shareholders",
+              "implementation_pub_date",
+              "implementation_bonusnote",
+              "distributed_share_base_implement",
+              "dividend_ratio",
+              "transfer_ratio",
+              "bonus_ratio_rmb",
+              "bonus_ratio_usd",
+              "bonus_ratio_hkd",
+              "at_bonus_ratio_rmb",
+              "exchange_rate",
+              "dividend_number",
+              "transfer_number"
+            ],
+            "columns_union_n": 56,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P5_attributes_events",
+          "status": "MEASURED",
+          "observed_min": "2006-01-05",
+          "observed_max": "2026-07-15",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\xr_xd",
+          "status": "MEASURED",
+          "observed_min": "2006-01-05",
+          "observed_max": "2026-07-15",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "CORPORATE_REFERENCE",
+      "title_en": "CORPORATE_REFERENCE dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P5_attributes_events",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\events\\corporate_reference",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "SHAREHOLDER_TOP10",
+      "title_en": "SHAREHOLDER_TOP10 dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "CORP_SHAREHOLDER_TOP10_PIT_R1",
+          "n_parquet": 16,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 16,
+            "n_files_measured": 16,
+            "rows_measured": 5677185,
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2006-01-05",
+            "max": "2026-08-11",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "id",
+              "company_name",
+              "company_id",
+              "code",
+              "end_date",
+              "pub_date",
+              "change_reason_id",
+              "change_reason",
+              "shareholder_rank",
+              "shareholder_name",
+              "shareholder_name_en",
+              "shareholder_id",
+              "shareholder_class_id",
+              "shareholder_class",
+              "share_number",
+              "share_ratio",
+              "sharesnature_id",
+              "sharesnature",
+              "share_pledge_freeze",
+              "share_pledge",
+              "share_freeze",
+              "stock_code",
+              "observation_date",
+              "publication_date"
+            ],
+            "columns_union_n": 35,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P5_attributes_events",
+          "status": "MEASURED",
+          "observed_min": "2006-01-05",
+          "observed_max": "2026-09-03",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_top10",
+          "status": "MEASURED",
+          "observed_min": "2026-09-03",
+          "observed_max": "2026-09-03",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "SHAREHOLDER_FLOATING_TOP10",
+      "title_en": "SHAREHOLDER_FLOATING_TOP10 dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "CORP_SHAREHOLDER_FLOATING_TOP10_PIT_R1",
+          "n_parquet": 16,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 16,
+            "n_files_measured": 16,
+            "rows_measured": 5571119,
+            "time_column": "pub_date",
+            "time_role": "ANNOUNCEMENT_TIME",
+            "min": "2006-01-19",
+            "max": "2026-08-11",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "id",
+              "company_id",
+              "company_name",
+              "code",
+              "end_date",
+              "pub_date",
+              "change_reason_id",
+              "change_reason",
+              "shareholder_rank",
+              "shareholder_id",
+              "shareholder_name",
+              "shareholder_name_en",
+              "shareholder_class_id",
+              "shareholder_class",
+              "share_number",
+              "share_ratio",
+              "sharesnature_id",
+              "sharesnature",
+              "stock_code",
+              "observation_date",
+              "publication_date",
+              "pit_valid_from",
+              "pit_policy_id",
+              "source_table"
+            ],
+            "columns_union_n": 32,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P5_attributes_events",
+          "status": "MEASURED",
+          "observed_min": "2006-01-19",
+          "observed_max": "2026-09-03",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\shareholder_floating_top10",
+          "status": "MEASURED",
+          "observed_min": "2026-09-03",
+          "observed_max": "2026-09-03",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "VALUATION",
+      "title_en": "Valuation metrics",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "VALUATION_PIT_R1",
+          "n_parquet": 3,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 3,
+            "n_files_measured": 3,
+            "rows_measured": 444084,
+            "time_column": "date",
+            "time_role": "EVENT_TIME",
+            "min": "2018-06-28",
+            "max": "2026-09-24",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "code",
+              "date",
+              "pe_ratio",
+              "pb_ratio",
+              "ps_ratio",
+              "pcf_ratio",
+              "capitalization",
+              "market_cap",
+              "circulating_cap",
+              "circulating_market_cap",
+              "turnover_ratio",
+              "pe_ratio_lyr",
+              "signal_date",
+              "data_date",
+              "product_id",
+              "asof_rule",
+              "pit_status"
+            ],
+            "columns_union_n": 17,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P6_factor_reference",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\factor\\valuation",
+          "status": "MEASURED",
+          "observed_min": "2018-06-28",
+          "observed_max": "2026-09-24",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FINANCE_PIT",
+      "title_en": "Point-in-time financial statements",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [
+        {
+          "product": "FINANCIAL_INDICATOR_PIT_R1",
+          "n_parquet": 14,
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 14,
+            "n_files_measured": 14,
+            "rows_measured": 374350,
+            "time_column": "statDate",
+            "time_role": "REPORT_PERIOD",
+            "min": "2014-03-31",
+            "max": "2026-06-30",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "id",
+              "code",
+              "statDate",
+              "pubDate",
+              "eps",
+              "adjusted_profit",
+              "operating_profit",
+              "value_change_profit",
+              "roe",
+              "inc_return",
+              "roa",
+              "net_profit_margin",
+              "gross_profit_margin",
+              "expense_to_total_revenue",
+              "operation_profit_to_total_revenue",
+              "net_profit_to_total_revenue",
+              "operating_expense_to_total_revenue",
+              "ga_expense_to_total_revenue",
+              "financing_expense_to_total_revenue",
+              "operating_profit_to_profit",
+              "invesment_profit_to_profit",
+              "adjusted_profit_to_profit",
+              "goods_sale_and_service_to_revenue",
+              "ocf_to_revenue"
+            ],
+            "columns_union_n": 38,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P3_finance_pit",
+          "status": "MEASURED",
+          "observed_min": "2014-03-31",
+          "observed_max": "2026-06-30",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fundamentals",
+          "status": "MEASURED",
+          "observed_min": "2014-03-31",
+          "observed_max": "2026-06-30",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "MTSS",
+      "title_en": "MTSS dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "\u89c1 raw plane",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P5_attributes_events",
+          "status": "MEASURED",
+          "observed_min": "2010-03-31",
+          "observed_max": "2020-07-13",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FUND_ETF_NAV",
+      "title_en": "Fund and ETF NAV / premium plane",
+      "supplier": "JQData",
+      "source_api": "get_extras / finance.run_query",
+      "cache_products": [
+        {
+          "product": "FUND_NAV_PIT_R1",
+          "n_parquet": 5980,
+          "measurement": {
+            "mode": "STRATIFIED_SAMPLE(103/5980)",
+            "n_files_total": 5980,
+            "n_files_measured": 103,
+            "rows_measured": 357213,
+            "time_column": "day",
+            "time_role": "EVENT_TIME",
+            "min": "2014-01-02",
+            "max": "2026-07-29",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "day",
+              "code",
+              "unit_net_value",
+              "acc_net_value"
+            ],
+            "columns_union_n": 13,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          }
+        }
+      ],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4_fund_etf\\fund_etf_nav",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-12-31",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_NAV",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "ETF_SHARE",
+      "title_en": "ETF_SHARE dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_extras / finance.run_query",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4_fund_etf",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-10",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\ETF_SHARE",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-10",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "OPEN_FUND",
+      "title_en": "OPEN_FUND dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_extras / finance.run_query",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4b_fund_expand",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-06-26",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\open_fund",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "QDII",
+      "title_en": "QDII dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_extras / finance.run_query",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4b_fund_expand",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-06-26",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\QDII",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FUND_OTHER",
+      "title_en": "FUND_OTHER dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_extras / finance.run_query",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4b_fund_expand",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-06-26",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\other",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-07-29",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FUND_TRACKING_INDEX_MAPPING",
+      "title_en": "FUND_TRACKING_INDEX_MAPPING dataset (supplier: JQData); identifier and lineage preserved",
+      "supplier": "JQData",
+      "source_api": "get_extras / finance.run_query",
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_official_raw\\P4_fund_etf",
+          "status": "MEASURED",
+          "observed_min": "2004-11-25",
+          "observed_max": "2026-06-30",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        },
+        "CLEAN": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u6e05\u6d17\u6210\u54c1\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\fund\\fund_tracking_index_mapping",
+          "status": "MEASURED",
+          "observed_min": "2004-11-25",
+          "observed_max": "2026-06-30",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FACTOR_260_DICTIONARY",
+      "title_en": "Factor 260 dictionary metadata",
+      "supplier": "JQData",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "FACTOR_DICTIONARY": {
+          "registered_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_inventory_CURRENT.csv",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FACTOR_260_SEMANTICS",
+      "title_en": "Factor 260 semantics metadata",
+      "supplier": "JQData",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "FACTOR_DICTIONARY": {
+          "registered_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_field_semantics_CURRENT.csv",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FACTOR_260_FORMULA",
+      "title_en": "Factor 260 formula metadata",
+      "supplier": "JQData",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "FACTOR_DICTIONARY": {
+          "registered_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_formula_CURRENT.csv",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FACTOR_260_PIT_RULES",
+      "title_en": "Factor 260 point-in-time rules",
+      "supplier": "JQData",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "FACTOR_DICTIONARY": {
+          "registered_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_pit_rules_CURRENT.json",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FACTOR_260_CLEANING_RULES",
+      "title_en": "Factor 260 cleaning rules",
+      "supplier": "JQData",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "FACTOR_DICTIONARY": {
+          "registered_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_cleaning_rules_CURRENT.json",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FACTOR_260_ENGINE_MAPPING",
+      "title_en": "Factor 260 engine mapping",
+      "supplier": "JQData",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "FACTOR_DICTIONARY": {
+          "registered_root": "E:\\BLACKBOX_ENGINES\\backtest_lab\\02_blackbox_jq_compat_engine\\rule_library\\blackbox_current_dictionary_R1\\factor_260_engine_mapping_CURRENT.csv",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FACTOR_VALUE",
+      "title_en": "Factor value plane (permission-blocked in R01 evidence)",
+      "supplier": "JQData",
+      "source_api": "get_factor_values",
+      "cache_products": [],
+      "existing_cursor_state": "UNRESOLVED",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "FACTOR_VALUE": {
+          "registered_root": null,
+          "status": "ROOT_ABSENT",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "STRATEGY_OUTPUT",
+      "title_en": "Strategy output plane (not an input)",
+      "supplier": "BLACKBOX_INTERNAL",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "STRATEGY_OUTPUT": {
+          "registered_root": "E:\\BLACKBOX\\\u7814\u7a76\u7cfb\u7edf\\CURRENT",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "TS_CBOND_R1",
+      "title_en": "TS_CBOND_R1 dataset (supplier: Tushare); identifier and lineage preserved",
+      "supplier": "Tushare",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\\u9014\u65bd\u53ef\u8f6c\u503a\u5b98\u65b9\u539f\u59cb_R1",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "TS_CBOND_R2",
+      "title_en": "TS_CBOND_R2 dataset (supplier: Tushare); identifier and lineage preserved",
+      "supplier": "Tushare",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "D_FINANCE_EVENT_REFERENCE",
+      "existing_writer_callable": {
+        "path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_acquisition_finance_adapter_r1.py",
+        "bytes": 10130,
+        "sha256": "9d14fddeef03629186f92565ecddd753c8f08c212f4cc04387d5ea05344f707a",
+        "callable_name": "fetch_finance_paginated",
+        "span": "L94-176",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\\u9014\u65bd\u53ef\u8f6c\u503a\u5b98\u65b9\u539f\u59cb_R2",
+          "status": "PRODUCT_DIR_UNRESOLVED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "EXTERNAL_DICT_EVIDENCE",
+      "title_en": "EXTERNAL_DICT_EVIDENCE dataset (supplier: Friend_JQData/Tushare); identifier and lineage preserved",
+      "supplier": "Friend_JQData/Tushare",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "E_EXTERNAL_EVIDENCE",
+      "existing_writer_callable": {
+        "callable": "main",
+        "span": "L1716-1878",
+        "line_span": [
+          1716,
+          1878
+        ],
+        "source_path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_external_evidence_materialization_r2.py",
+        "bytes": 83448,
+        "lines": 1882,
+        "sha256": "028f301c5d9e6a11f87cc420e51d83bfa713faf75e620df3bc67b3e96ce1d3b0",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "EVIDENCE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u5916\u90e8\u8865\u5145\u53ea\u8bfb",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "EXTERNAL_EVIDENCE_PLANE",
+      "title_en": "EXTERNAL_EVIDENCE_PLANE dataset (supplier: MULTI_EXTERNAL); identifier and lineage preserved",
+      "supplier": "MULTI_EXTERNAL",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "E_EXTERNAL_EVIDENCE",
+      "existing_writer_callable": {
+        "callable": "main",
+        "span": "L1716-1878",
+        "line_span": [
+          1716,
+          1878
+        ],
+        "source_path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_external_evidence_materialization_r2.py",
+        "bytes": 83448,
+        "lines": 1882,
+        "sha256": "028f301c5d9e6a11f87cc420e51d83bfa713faf75e620df3bc67b3e96ce1d3b0",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "EVIDENCE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u5916\u90e8\u8bc1\u636e",
+          "status": "MEASURED",
+          "observed_min": "19901201",
+          "observed_max": "20260904",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "US_MARKET",
+      "title_en": "US_MARKET dataset (supplier: EXTERNAL); identifier and lineage preserved",
+      "supplier": "EXTERNAL",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "E_EXTERNAL_EVIDENCE",
+      "existing_writer_callable": {
+        "callable": "main",
+        "span": "L1716-1878",
+        "line_span": [
+          1716,
+          1878
+        ],
+        "source_path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_external_evidence_materialization_r2.py",
+        "bytes": 83448,
+        "lines": 1882,
+        "sha256": "028f301c5d9e6a11f87cc420e51d83bfa713faf75e620df3bc67b3e96ce1d3b0",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "EVIDENCE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u7f8e\u56fd\u5e02\u573a",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "TUSHARE_INDEX_WEIGHT_ADAPTER",
+      "title_en": "TUSHARE_INDEX_WEIGHT_ADAPTER dataset (supplier: Tushare); identifier and lineage preserved",
+      "supplier": "Tushare",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_BOUND",
+      "existing_writer_row_id": "E_EXTERNAL_EVIDENCE",
+      "existing_writer_callable": {
+        "callable": "main",
+        "span": "L1716-1878",
+        "line_span": [
+          1716,
+          1878
+        ],
+        "source_path": "E:\\BLACKBOX\\\u811a\u672c\\blackbox_external_evidence_materialization_r2.py",
+        "bytes": 83448,
+        "lines": 1882,
+        "sha256": "028f301c5d9e6a11f87cc420e51d83bfa713faf75e620df3bc67b3e96ce1d3b0",
+        "evidence_grade": "CALLABLE_PRESENT"
+      },
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "EVIDENCE": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_reference_dictionary\\19_tushare_index_weight_adapter_lock",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "LEGACY_JQ_RAW_CN",
+      "title_en": "LEGACY_JQ_RAW_CN dataset (supplier: VARIOUS); identifier and lineage preserved",
+      "supplier": "VARIOUS",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb",
+          "status": "MEASURED",
+          "observed_min": "2016-07-31",
+          "observed_max": "2026-04-07",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "EXPERIMENTAL_WINDOW_RAW",
+      "title_en": "EXPERIMENTAL_WINDOW_RAW dataset (supplier: VARIOUS); identifier and lineage preserved",
+      "supplier": "VARIOUS",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\JQData_9999_WINDOW_FULL_RAW_20260325_20260501",
+          "status": "EMPTY_DIRECTORY",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": null,
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "STRATEGY_DATA_PLANE_ADDITIONS",
+      "title_en": "STRATEGY_DATA_PLANE_ADDITIONS dataset (supplier: VARIOUS); identifier and lineage preserved",
+      "supplier": "VARIOUS",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\strategy_data_plane_additions",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2026-08-14",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "FORENSIC_CANARY",
+      "title_en": "FORENSIC_CANARY dataset (supplier: VARIOUS); identifier and lineage preserved",
+      "supplier": "VARIOUS",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\_forensic_canary",
+          "status": "MEASURED",
+          "observed_min": null,
+          "observed_max": null,
+          "range_basis": "NO_TIME_COLUMN_IN_SAMPLED_SCHEMAS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "EXPERIMENT_CANARY",
+      "title_en": "EXPERIMENT_CANARY dataset (supplier: VARIOUS); identifier and lineage preserved",
+      "supplier": "VARIOUS",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "NOT_APPLICABLE",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {
+        "RAW": {
+          "registered_root": "E:\\BLACKBOX\\\u6570\u636e\\\u539f\u59cb\u53ea\u8bfb\\\u8bd5\u9a8c",
+          "status": "MEASURED",
+          "observed_min": "2014-01-02",
+          "observed_max": "2024-12-30",
+          "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS",
+          "not_a_complete_unit_cursor": true
+        }
+      },
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    },
+    {
+      "dataset_id": "UNDETERMINED_SCOPE",
+      "title_en": "UNDETERMINED_SCOPE dataset (supplier: VARIOUS); identifier and lineage preserved",
+      "supplier": "VARIOUS",
+      "source_api": null,
+      "cache_products": [],
+      "existing_cursor_state": "UNRESOLVED",
+      "existing_writer_row_id": null,
+      "existing_writer_callable": null,
+      "existing_last_demonstrated_complete_unit": null,
+      "existing_layer_evidence": {},
+      "new_start": null,
+      "new_end": null,
+      "binding_owner": "GPT",
+      "local_evidence_refs": [],
+      "disposition": "UNRESOLVED_UNTIL_PRODUCT_SPECIFIC_REVIEW",
+      "baseline_source": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json"
+    }
+  ],
+  "no_universal_start": true,
+  "all_rows_need_not_be_resolved_before_a_separate_independent_scope_can_be_considered": true,
+  "not_an_acquisition_contract": true
+}
