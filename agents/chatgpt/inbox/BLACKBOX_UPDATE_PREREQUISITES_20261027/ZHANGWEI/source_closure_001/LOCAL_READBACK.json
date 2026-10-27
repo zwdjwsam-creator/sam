@@ -1,28 +1,33 @@
 {
   "schema": "BLACKBOX_CLOSURE_LOCAL_READBACK_R1",
-  "recorded_at_cn": "2026-10-27T15:38:26+0800",
-  "supersedes_within_same_delivery": {
-    "reason": "the first version listed only SOURCE_MANIFEST.json, missing HANDOFF_NOTES.md which was authored after it; the requirement is to read back every export",
-    "first_version_file_count": 1,
-    "first_version_paths": [
-      "SOURCE_MANIFEST.json"
-    ],
-    "this_is_a_new_document_not_an_overwrite_of_another_attempt": true
-  },
+  "execution_host": "ZHANGWEI",
+  "recorded_at_cn": "2026-10-27T15:41:17+0800",
+  "scope": "every receipt file present in this folder, excluding this document",
   "files": [
     {
-      "path": "HANDOFF_NOTES.md",
+      "name": "SOURCE_MANIFEST.json",
+      "bytes": 4462,
+      "sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b"
+    },
+    {
+      "name": "HANDOFF_NOTES.md",
       "bytes": 4284,
       "sha256": "9cbb6f06151af1ed298175c3d32d75a34fa2754022f1f12c6ee93e94ca9e514a"
     },
     {
-      "path": "SOURCE_MANIFEST.json",
-      "bytes": 4462,
-      "sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b"
+      "name": "DELIVERY_MANIFEST.json",
+      "bytes": 3616,
+      "sha256": "8bd40ced98f2cf667e5f2794ee7e0d2bb5dbc5a7860561dd8a60693f90a28efb"
+    },
+    {
+      "name": "UPLOAD_READBACK.json",
+      "bytes": 2245,
+      "sha256": "36ceecb1861287b03abd9fbdcd874e9e7a9c49c37835220a702525a854e77892"
     }
   ],
-  "file_count": 2,
+  "file_count": 4,
   "all_re_read_ok": true,
+  "excludes_self_by_construction": "this document cannot list its own hash without a cyclic rewrite; it is verified after upload by re-fetching it from the HUB and comparing bytes",
   "empty_directories": {
     "bodies": {
       "exists": true,
