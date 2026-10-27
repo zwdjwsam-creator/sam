@@ -1,3 +1,23 @@
+# Parent routing: V3 full-summary continuation (2026-10-27)
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+execution_host: ZHANGWEI
+notebook_evidence_host: SAM
+status: V3_CHILD_TASKS_PUBLISHED_NATIVE_OUTCOMES_PENDING
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+Full conclusion and reviewed V3 contract: agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/FULL_SUMMARY_AND_V3_EXECUTION_20261027.md
+Both child outboxes contain the complete English summary and exact role execution contract:
+- agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027.md
+- agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md
+
+Native23 gate (original17 plus6) precedes any unchanged collector execution. Reviewer Linux success is not Windows acceptance. Preserve V1/V2 failures, inspect existing ACK/PID/results, do not duplicate or stop a process, and do not automatically retry a failed attempt3. Production/data/credential boundaries remain closed. Upload/readback every file; final Cursor response exactly END.
+
+---
+
 # Owner-requested action: continue V2 and return evidence (2026-10-27)
 
 task_id: BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027
