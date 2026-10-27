@@ -1,0 +1,86 @@
+{
+  "schema": "BLACKBOX_CLOSURE_DELIVERY_MANIFEST_R1",
+  "execution_host": "ZHANGWEI",
+  "hostname": "ZHANGWEI",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "return_dir": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/source_closure_001",
+  "delivered_at_cn": "2026-10-27T15:37:58+0800",
+  "delivery_status": "BOTH_RCID_FILES_MATCH_ORIGINALS_NO_DUPLICATE_UPLOADED",
+  "source_snapshot": "5e4a4b0e5d2439e86eeeb121f33f6489ab462920",
+  "records_total": 2,
+  "reference_receipts": 2,
+  "changed_bodies": 0,
+  "duplicates_uploaded": 0,
+  "bodies_dir_file_count": 0,
+  "identities": [
+    {
+      "live_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\RCID_PRODUCT_CONTRACT_R1.json",
+      "bytes": 3471,
+      "sha256": "fad8dd56393accd5ffa857dab8e5b13be49744bede9bf412f9307bb0416d51b8",
+      "raw_bytes_equal_to_original": true,
+      "hub_original_path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/desktop_rcid_v3/RCID_PRODUCT_CONTRACT_R1.json",
+      "hub_original_blob_sha": "5795ad5c54ab8c0fb365abdf034eda05f71eaba5"
+    },
+    {
+      "live_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\rcid\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019.json",
+      "bytes": 1145,
+      "sha256": "2c3388de421895969c0811270da560f6415d2d18adf61839d3966d065737e6d4",
+      "raw_bytes_equal_to_original": true,
+      "hub_original_path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/desktop_rcid_v3/RELEASE_CONTENT_ID_BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019.json",
+      "hub_original_blob_sha": "1c594ad959155b009ab8540256e993ed52f11eeb"
+    }
+  ],
+  "read_drift_detected": false,
+  "within_limits": {
+    "per_file_cap": 2097152,
+    "total_cap": 8388608,
+    "total_bytes_read": 4616,
+    "within": true
+  },
+  "delivered": [
+    {
+      "name": "SOURCE_MANIFEST.json",
+      "bytes": 4462,
+      "sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b",
+      "remote_git_blob": "fe4203efe513a405912c8f2581db4dca8285dcd9",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "HANDOFF_NOTES.md",
+      "bytes": 4284,
+      "sha256": "9cbb6f06151af1ed298175c3d32d75a34fa2754022f1f12c6ee93e94ca9e514a",
+      "remote_git_blob": "cc3ac953f2581ec0ad23abbbca01232409c681b8",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "LOCAL_READBACK.json",
+      "bytes": 329,
+      "sha256": "3dc1226ce9effde7d238df5cfc92bace25c6223482ed72d85ea580a22c8737f0",
+      "remote_git_blob": "8164594c5be13b266f48ba6529cc588fc90a0f00",
+      "readback_byte_equal": true
+    }
+  ],
+  "prior_attempts_preserved": {
+    "files_checked": 15,
+    "all_unchanged": true
+  },
+  "not_uploaded_and_why": [
+    {
+      "item": "bodies/*",
+      "reason": "zero files changed; both matched existing originals so uploading would be a duplicate"
+    },
+    {
+      "item": "two live RCID metadata bodies",
+      "reason": "byte-identical to pinned originals; the contract requires a reference receipt only"
+    }
+  ],
+  "foundation_acceptance": false,
+  "acquisition_authorized": false,
+  "current_switch_allowed": false,
+  "order_allowed": false,
+  "credential_contents_read": false,
+  "business_modules_imported": false,
+  "fixture_or_collector_rerun": false
+}
