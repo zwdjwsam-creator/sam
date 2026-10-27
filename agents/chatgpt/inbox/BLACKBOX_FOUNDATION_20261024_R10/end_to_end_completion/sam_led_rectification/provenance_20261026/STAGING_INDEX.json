@@ -1,97 +1,78 @@
 {
-  "schema": "PROVENANCE_STAGING_R1",
-  "staging": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R10_SAM_LED_RECTIFICATION_20261025\\provenance_staging",
+  "schema": "PROVENANCE_STAGING_R2",
+  "regenerated_at_cn": "2026-10-27T12:26:50+0800",
+  "note": "R2 fixes the stale R1 index: R1 listed 13 entries, omitted RELEASE_PROVENANCE_R33_R45.md and recorded FULL_CHAIN_RUN_LINES.txt as 4475 B while the file is 7621 B (it was regenerated with key markers).",
   "files": [
     {
-      "rel": "r45_generator/clean_switch_r1.py",
-      "status": "COPIED",
-      "from": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\clean_switch_r1.py",
-      "bytes": 8874,
-      "sha256": "cd33d827cecf169f14ccc8f8b4b6503c2217e4c51e3ae11430ce536f1d0d521a"
-    },
-    {
-      "rel": "r45_generator/_run_full_chain.ps1",
-      "status": "COPIED",
-      "from": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\_run_full_chain.ps1",
-      "bytes": 2914,
-      "sha256": "cc13e0bb53d74a774f0d0d337eafc3b4f8fc224b943df9620947a776869a9015"
-    },
-    {
-      "rel": "r45_generator/CLEANING_SWITCH.json",
-      "status": "COPIED",
-      "from": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\CLEANING_SWITCH.json",
-      "bytes": 1137,
-      "sha256": "895cfe1f1dad60f2ac55bc04184932c581858eb41a47d5391f7a7430cc67d766"
-    },
-    {
-      "rel": "r45_generator/TASK_CONTROL.json",
-      "status": "COPIED",
-      "from": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\00_CONTROL\\TASK_CONTROL.json",
-      "bytes": 521,
-      "sha256": "3857c3c9999d55fc8aede520ff27bb354c2e43bfdca957f5df10740e3902c384"
-    },
-    {
-      "rel": "r45_generator/DOWNLOAD_CONTRACT.json",
-      "status": "COPIED",
-      "from": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\03_DOWNLOAD_CONTRACTS\\DOWNLOAD_CONTRACT.json",
-      "bytes": 1026,
-      "sha256": "d187f34852f49b9e9c65b59dc8e1015534f3220848681c2754e0e10256dbae9f"
-    },
-    {
-      "rel": "r45_generator/DOWNLOAD_ACCEPTANCE.json",
-      "status": "COPIED",
-      "from": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\10_ACCEPTANCE\\DOWNLOAD_ACCEPTANCE.json",
-      "bytes": 674,
-      "sha256": "1a79041d96cc63ed444faa188feefe014fe716101ffb7af8d20344df2a6f8ef8"
-    },
-    {
-      "rel": "r45_generator/COMPLETION_STATUS.json",
-      "status": "COPIED",
-      "from": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\COMPLETION_STATUS.json",
-      "bytes": 568,
-      "sha256": "3157272734d67ee18bfc565055f8d980f3c1d5e3985e91d4057aa9690cebc704"
-    },
-    {
-      "rel": "r45_generator/RESULT.json",
-      "status": "COPIED",
-      "from": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\qa\\RESULT.json",
-      "bytes": 2267,
-      "sha256": "2b26a80ea260696ac1bc12fc59b255f74168ca08a5bdb44597636688322b8d77"
-    },
-    {
-      "rel": "r33_acceptance/RULES_RECEIPT.json",
-      "status": "COPIED",
-      "from": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1\\qa\\RULES_RECEIPT.json",
-      "bytes": 142,
-      "sha256": "201c31357e18861140f26a3bccaf547d91464261d5836f9c28472f81647d45ca"
-    },
-    {
-      "rel": "r33_acceptance/DOWNLOAD_RECEIPT.json",
-      "status": "COPIED",
-      "from": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1\\qa\\DOWNLOAD_RECEIPT.json",
-      "bytes": 737,
-      "sha256": "061e41b7f69ec3e336503e285a05b0ea5cad9f20bd550eaa3247587aefe65961"
-    },
-    {
       "rel": "r33_acceptance/CLEAN_CACHE_RECEIPT.json",
-      "status": "COPIED",
-      "from": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1\\qa\\CLEAN_CACHE_RECEIPT.json",
       "bytes": 555,
       "sha256": "7b4b2edc839926c1dcb2814513f7b50e27c6295f78d26ed0048fd05eb42a409f"
     },
     {
+      "rel": "r33_acceptance/DOWNLOAD_RECEIPT.json",
+      "bytes": 737,
+      "sha256": "061e41b7f69ec3e336503e285a05b0ea5cad9f20bd550eaa3247587aefe65961"
+    },
+    {
       "rel": "r33_acceptance/INVENTORY_RECEIPT.json",
-      "status": "COPIED",
-      "from": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1\\qa\\INVENTORY_RECEIPT.json",
       "bytes": 1448,
       "sha256": "9c96fbc058193ba2725a7fa193a7a39cfd938f8d03ec7be2785a28f9ae4e0e94"
     },
     {
+      "rel": "r33_acceptance/RULES_RECEIPT.json",
+      "bytes": 142,
+      "sha256": "201c31357e18861140f26a3bccaf547d91464261d5836f9c28472f81647d45ca"
+    },
+    {
+      "rel": "r45_generator/_run_full_chain.ps1",
+      "bytes": 2914,
+      "sha256": "cc13e0bb53d74a774f0d0d337eafc3b4f8fc224b943df9620947a776869a9015"
+    },
+    {
+      "rel": "r45_generator/clean_switch_r1.py",
+      "bytes": 8874,
+      "sha256": "cd33d827cecf169f14ccc8f8b4b6503c2217e4c51e3ae11430ce536f1d0d521a"
+    },
+    {
+      "rel": "r45_generator/CLEANING_SWITCH.json",
+      "bytes": 1137,
+      "sha256": "895cfe1f1dad60f2ac55bc04184932c581858eb41a47d5391f7a7430cc67d766"
+    },
+    {
+      "rel": "r45_generator/COMPLETION_STATUS.json",
+      "bytes": 568,
+      "sha256": "3157272734d67ee18bfc565055f8d980f3c1d5e3985e91d4057aa9690cebc704"
+    },
+    {
+      "rel": "r45_generator/DOWNLOAD_ACCEPTANCE.json",
+      "bytes": 674,
+      "sha256": "1a79041d96cc63ed444faa188feefe014fe716101ffb7af8d20344df2a6f8ef8"
+    },
+    {
+      "rel": "r45_generator/DOWNLOAD_CONTRACT.json",
+      "bytes": 1026,
+      "sha256": "d187f34852f49b9e9c65b59dc8e1015534f3220848681c2754e0e10256dbae9f"
+    },
+    {
       "rel": "r45_generator/FULL_CHAIN_RUN_LINES.txt",
-      "status": "GENERATED",
-      "bytes": 4475,
-      "sha256": "b1c16b570e04c0d82edd7fd93928df8a5a692eac8fd1062a1ee6ca810e66c8d6",
-      "note": "extracted RUN/invocation lines only; the 206KB log itself is NOT copied"
+      "bytes": 7621,
+      "sha256": "a93943bad853657fd30ecf6b8f2daa1a48a7441958156ed02527f8209bc7b509"
+    },
+    {
+      "rel": "r45_generator/RESULT.json",
+      "bytes": 2267,
+      "sha256": "2b26a80ea260696ac1bc12fc59b255f74168ca08a5bdb44597636688322b8d77"
+    },
+    {
+      "rel": "r45_generator/TASK_CONTROL.json",
+      "bytes": 521,
+      "sha256": "3857c3c9999d55fc8aede520ff27bb354c2e43bfdca957f5df10740e3902c384"
+    },
+    {
+      "rel": "RELEASE_PROVENANCE_R33_R45.md",
+      "bytes": 13897,
+      "sha256": "0f1a34240b75192d7d3d30a9134fdb86bf6e5d9a71dfe76748bd441babc68246"
     }
-  ]
+  ],
+  "count": 14
 }
