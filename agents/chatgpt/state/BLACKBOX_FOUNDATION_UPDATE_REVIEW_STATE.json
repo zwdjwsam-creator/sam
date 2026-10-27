@@ -3,8 +3,8 @@
   "repository": "zwdjwsam-creator/sam",
   "branch": "main",
   "execution_host": "ZHANGWEI",
-  "last_reviewed_at": "2026-10-27T07:42:36.127Z",
-  "phase": "DESKTOP_RCID_METADATA_PINS_CLOSED_SAM_EXACT_SOURCE_ACKED_PENDING",
+  "last_reviewed_at": "2026-10-27T07:59:36.224Z",
+  "phase": "OWNER_AUTHORIZED_SAM_EXACT_WATCHDOG_CONTROL_NATIVE_RESULTS_PENDING",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -19,7 +19,9 @@
     "notebook_provenance_lookup_authorized": true,
     "selected_future_acquisition_executor": "ZHANGWEI",
     "data_plane_baseline_host": "ZHANGWEI",
-    "cross_host_current_sync_allowed": false
+    "cross_host_current_sync_allowed": false,
+    "sam_exact_legacy_watchdog_control_allowed": true,
+    "desktop_process_or_task_mutation_allowed": false
   },
   "reviewed_source_blobs": [
     {
@@ -2506,6 +2508,61 @@
       "path": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/source_closure_001/UPLOAD_READBACK.json",
       "blob_sha": "85be42c4183602f1f35b6560d0d6a752b6cc53d4",
       "review_scope": "Owner baseline ACK and exact desktop metadata comparison receipts/originals read; source identities closed, not full content/acquisition acceptance."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/watchdog_control.py",
+      "blob_sha": "5cff0234e93963529552b00c1525d33a9b92cfe4",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/test_watchdog_control.py",
+      "blob_sha": "ca9c4c3db088c44f2012449a4b3319030bac2417",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/REVIEW_AND_TASK.md",
+      "blob_sha": "e5405b198ebd9f00e57d85302cf06ccf44bf472c",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/OFFLINE_TEST_RECEIPT.json",
+      "blob_sha": "4dae55b9a081ff8bbc0c3dd747cdeefff03af596",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/PACKAGE.json",
+      "blob_sha": "e49818acb1e3ddf9cd865b202a959d1e83009ded",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027.md",
+      "blob_sha": "d27203ed6c5ef766d14ba05c0c2148310690eaae",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md",
+      "blob_sha": "128ac6b859c5e2e5f645653063d3cb3af757e3c0",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/inbox/INBOX_FOR_NOTEBOOK.md",
+      "blob_sha": "e4d10aafaff4ad3d0944afaf379225d232dae1f6",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/inbox/INBOX_FOR_DESKTOP.md",
+      "blob_sha": "a7a5d8eab6a23bafe193285938a03534b3c1aa18",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/desktop/inbox/INBOX_FOR_DESKTOP.md",
+      "blob_sha": "2c7c300fced55f097afd4af8b1996af7bc367e84",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
+    },
+    {
+      "path": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md",
+      "blob_sha": "e780c8f6e53081b7b5ac936cb210367d55efe523",
+      "review_scope": "Owner-authorized exact watcher-control code/task,10 offline controls, exact publication readback; native outcome pending."
     }
   ],
   "observed_r10_capture_blobs": [
@@ -2619,7 +2676,7 @@
     {
       "task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
       "path": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md",
-      "task_blob_sha": "1405e052f70eca944c41311b946bedb0dbd544d9",
+      "task_blob_sha": "e780c8f6e53081b7b5ac936cb210367d55efe523",
       "ack_status": "DESKTOP_V3_INSTALL_REPORTED_INDEPENDENT_REVIEW_REJECTED",
       "outcome": "EXACT_DEPLOYED_DESKTOP_HANDOFF_CLOSED_CAPTURED_V3_BUSINESS_DEFECTS_REPRODUCED_SAM_CHAIN_SOURCE_PENDING",
       "dispatch_id": "SAM_LED_DESKTOP_RECTIFICATION_20261025",
@@ -2629,12 +2686,12 @@
       "task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
       "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027.md",
       "execution_host": "SAM",
-      "task_blob_sha": "930a4b660d10be224ab45804648ad85739247080",
+      "task_blob_sha": "d27203ed6c5ef766d14ba05c0c2148310690eaae",
       "ack_status": "V3_FINAL_DELIVERY_VERIFIED_ORDERING_DEVIATION_RETAINED",
       "outcome": "OWNER_BASELINE_ACKNOWLEDGED_EXACT_CATCHUP_BODY_NOT_YET_DELIVERED",
       "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
       "ack_blob_sha": "c6ea6244a23973d5f5729b599266d591345fe3a8",
-      "latest_continuation": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_SOURCE_CLOSURE_TASK_20261027_1501.md",
+      "latest_continuation": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/REVIEW_AND_TASK.md",
       "owner_baseline_summary": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/OWNER_ZHANGWEI_BASELINE_SUMMARY_20261027.txt",
       "selected_future_executor": "ZHANGWEI",
       "owner_baseline_ack_blob": "798d9732ca56014208869805788d910ef2343f50"
@@ -2643,12 +2700,12 @@
       "task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
       "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md",
       "execution_host": "ZHANGWEI",
-      "task_blob_sha": "f03ca68f1fbaa8fec055bf2e43c841c74149dee2",
+      "task_blob_sha": "128ac6b859c5e2e5f645653063d3cb3af757e3c0",
       "ack_status": "V3_ACK_ACTUAL_COMMANDS_AND_FINAL_DELIVERY_VERIFIED",
       "outcome": "TWO_LIVE_RCID_METADATA_IDENTITIES_MATCH_EXISTING_ORIGINALS_NO_DUPLICATE_BODIES",
       "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
       "ack_blob_sha": "58af377f1e705a3f8ddc8fd638f7eac2f8a6f99a",
-      "latest_continuation": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_SOURCE_CLOSURE_TASK_20261027_1501.md",
+      "latest_continuation": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/REVIEW_AND_TASK.md",
       "latest_review": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/DESKTOP_V3_CAPTURE_REVIEW_20261027_1339.md",
       "owner_baseline_summary": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/OWNER_ZHANGWEI_BASELINE_SUMMARY_20261027.txt",
       "selected_future_executor": "ZHANGWEI"
@@ -2656,13 +2713,13 @@
   ],
   "issued_task_ids_this_run": [],
   "pending_outcomes": [
-    "SAM already-ACKed one exact catchup source body and receipts; no repeated dispatch or source search.",
-    "GPT exact business-contract/identity/transaction and daily request-key/date repairs using now-complete desktop pins plus original chain sources; meaningful offline checks before executable repair contract.",
-    "Separately authorize applicable scoped acquisition/cleaning on ZHANGWEI only, bound to its actual state and all relevant existing-data/calendar/cursor/exclusion/completed-session/supplier availability rules, without circular unperformed update/CURRENT/V4 requirements.",
-    "Audit actual subsequent authorized acquisition/cleaning conservation, fields/keys/temporal/PIT/provenance/generation and receipts."
+    "SAM native watcher-control ACK/test/intent/before-after/action receipts; exact matched launchers disabled and watcher PIDs stopped only under owner scope, or retained partial failures.",
+    "ZHANGWEI read-only runtime/three-directory filename/control-file receipts; no desktop stop or data write.",
+    "GPT review actual new source closure and business-code repair/acquisition prerequisites, using registered existing RAW/Clean/cache/history evidence before absence/duplicate decisions.",
+    "Future Stage2 only on ZHANGWEI under separately reviewed scoped supplier/range/quota/receipt/Cleaning/PIT contract, followed by conservation/coverage/generation review."
   ],
-  "next_action": "No new local task. Preserve and await SAM's in-progress exact-source handoff; use already-closed desktop identities for GPT repair work. Do not re-request identical bodies or rerun collector.",
-  "notify_user": false,
+  "next_action": "Await new exact watchdog-control receipts; do not repeat active/completed runs, broaden stops, execute the catchup chain or authorize acquisition from this audit.",
+  "notify_user": true,
   "observed_r10_directory_entries": [
     {
       "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/R10_COMMAND_AND_EXIT_LEDGER.json",
@@ -2841,17 +2898,71 @@
     }
   ],
   "last_poll": {
-    "reviewed_tree_sha": "801318f01ee1c20c84381ef15f6ec930f1900d42",
-    "new_host_evidence": true,
+    "reviewed_tree_sha": "3d82769e56d35b6d411b5daf2d534fb1b6720d42",
+    "owner_new_stop_authorization": true,
+    "contract_id": "WATCHDOG_CONTROL_20261027",
     "new_child_task_issued": false,
-    "new_executable_task_issued": false,
+    "same_child_native_control_contract_issued": true,
+    "offline_controls": 10,
+    "native_control_executed_by_gpt": false,
     "new_acquisition_task_issued": false,
-    "owner_baseline_ack": {
-      "SAM": true,
-      "ZHANGWEI": "CLOSURE_ACK_PRESENT_BASELINE_ACK_NOT_OBSERVED"
-    },
-    "desktop_live_metadata_reuse_pins_verified": 2,
-    "sam_generator_body_delivered": false,
+    "gpt_write_readbacks": [
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/watchdog_control.py",
+        "blob_sha": "5cff0234e93963529552b00c1525d33a9b92cfe4",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/test_watchdog_control.py",
+        "blob_sha": "ca9c4c3db088c44f2012449a4b3319030bac2417",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/REVIEW_AND_TASK.md",
+        "blob_sha": "e5405b198ebd9f00e57d85302cf06ccf44bf472c",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/OFFLINE_TEST_RECEIPT.json",
+        "blob_sha": "4dae55b9a081ff8bbc0c3dd747cdeefff03af596",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/PACKAGE.json",
+        "blob_sha": "e49818acb1e3ddf9cd865b202a959d1e83009ded",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027.md",
+        "blob_sha": "d27203ed6c5ef766d14ba05c0c2148310690eaae",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md",
+        "blob_sha": "128ac6b859c5e2e5f645653063d3cb3af757e3c0",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/inbox/INBOX_FOR_NOTEBOOK.md",
+        "blob_sha": "e4d10aafaff4ad3d0944afaf379225d232dae1f6",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/inbox/INBOX_FOR_DESKTOP.md",
+        "blob_sha": "a7a5d8eab6a23bafe193285938a03534b3c1aa18",
+        "readback_match": true
+      },
+      {
+        "path": "agents/desktop/inbox/INBOX_FOR_DESKTOP.md",
+        "blob_sha": "2c7c300fced55f097afd4af8b1996af7bc367e84",
+        "readback_match": true
+      },
+      {
+        "path": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md",
+        "blob_sha": "e780c8f6e53081b7b5ac936cb210367d55efe523",
+        "readback_match": true
+      }
+    ],
     "do_not_treat_gpt_writes_as_new_local_evidence": true
   },
   "observed_end_to_end_entries": [
@@ -2954,12 +3065,13 @@
   ],
   "latest_owner_constraint": "Owner explicitly authorized SAM original BLACKBOX Cursor to rectify desktop E drive directly, reuse prior scan, deliver documents/manual and hand off to ZHANGWEI for independent verification. This supersedes the previous judgment-only/no-task constraint. Existing canonical dispatch is already published; do not duplicate or restart it.",
   "findings_this_run": [
-    "SAM OWNER_BASELINE_ACK explicitly acknowledges ZHANGWEI as sole future acquisition executor/actual data-plane baseline, retains SAM historical state and confirms one exact catchup-source handoff pending. This is actual acknowledgment, not publication.",
-    "Desktop exact two-file closure receipts compared with pinned HUB originals: contract3471 bytes/fad8dd56393accd5ffa857dab8e5b13be49744bede9bf412f9307bb0416d51b8, sidefile1145 bytes/2c3388de421895969c0811270da560f6415d2d18adf61839d3966d065737e6d4. Original raw bytes and Git blobs independently match receipt pins; three upload receipt payloads independently match bytes/SHA256/blob.",
-    "Actual contract/sidefile bodies read:51 declared products,10 formal required,36 junctions; sidefile complete=true while junction_content_proven=false. Identity handoff is closed, not business/content admission. No repeated metadata or candidate_commit export.",
-    "Delivery manifest's stated receipt_dependency_order does not describe the actual LOCAL_READBACK/UPLOAD_READBACK references; actual LOCAL lists only source/notes, UPLOAD lists source/notes/local. No actual self/cyclic hash demonstrated. Current upload receipt does not list final DELIVERY_MANIFEST; preserve this reporting limitation without invalidating independently pinned source identities or rerunning any process.",
-    "Only one SAM exact run_unattended_catchup body remains in the existing closure. ACK describes intended work, not delivered source; do not duplicate, stop or restart its session or add a source scope. No new task issued.",
-    "No fixture, collector, business module, supplier/credential/quota/current/release/order action. Existing v3 business defects and product-specific acquisition prerequisites remain unaccepted."
+    "Read new attached TXT locally. Owner expressly authorizes conditional SAM watcher/planned automation stop; this changes prior no-stop boundary only for exact legacy scope.",
+    "GPT authored stdlib native audit/control package. Ten Linux policy/mocked-subprocess tests pass, actual exit0; native Windows scheduler/permission behavior not yet executed. Package published after checks.",
+    "SAM command may disable only scheduled tasks whose EVERY action directly binds to three known archive watcher scripts/known catchup driver, and stop only exact watcher PowerShell PIDs with creation/command identity recheck. No Stop-ScheduledTask/driver/child-tree/unrelated/desktop kill, no task deletion/elevation.",
+    "ZHANGWEI command is read-only process/task metadata plus three nonrecursive RAW filename/size/mtime listings matching20260924. No Parquet read/hash, absence/duplicate or quota conclusion from names. Both roles read only TARGET_END and FINAL_STATUS exact small controls where available.",
+    "Raw global command-line/action metadata stays in memory and is not exported/hashed. Unknown/mixed/encoded actions and drift are report-only; intent records precede mutations. Partial/errors/remaining matched targets stop without automatic retry.",
+    "Source-inspected catchup defaults/window/date-aligned PASS/retry mechanics summarized without claiming historical26 exact failures, live automation, duplicate observations, actual target or supplier absence. No date/EMPTY/exclusion/factor policy delegated.",
+    "Both existing child task outboxes and notebook/desktop/parent routes updated and exactly read back. Native outcome/ACK pending; task publication is not actual stop. No new acquisition/data/current/release/order authorization."
   ],
   "observed_sam_handoff_entries": [
     {
@@ -3456,9 +3568,16 @@
     "Actual contract/sidefile bodies read:51 declared products,10 formal required,36 junctions; sidefile complete=true while junction_content_proven=false. Identity handoff is closed, not business/content admission. No repeated metadata or candidate_commit export.",
     "Delivery manifest's stated receipt_dependency_order does not describe the actual LOCAL_READBACK/UPLOAD_READBACK references; actual LOCAL lists only source/notes, UPLOAD lists source/notes/local. No actual self/cyclic hash demonstrated. Current upload receipt does not list final DELIVERY_MANIFEST; preserve this reporting limitation without invalidating independently pinned source identities or rerunning any process.",
     "Only one SAM exact run_unattended_catchup body remains in the existing closure. ACK describes intended work, not delivered source; do not duplicate, stop or restart its session or add a source scope. No new task issued.",
-    "No fixture, collector, business module, supplier/credential/quota/current/release/order action. Existing v3 business defects and product-specific acquisition prerequisites remain unaccepted."
+    "No fixture, collector, business module, supplier/credential/quota/current/release/order action. Existing v3 business defects and product-specific acquisition prerequisites remain unaccepted.",
+    "Read new attached TXT locally. Owner expressly authorizes conditional SAM watcher/planned automation stop; this changes prior no-stop boundary only for exact legacy scope.",
+    "GPT authored stdlib native audit/control package. Ten Linux policy/mocked-subprocess tests pass, actual exit0; native Windows scheduler/permission behavior not yet executed. Package published after checks.",
+    "SAM command may disable only scheduled tasks whose EVERY action directly binds to three known archive watcher scripts/known catchup driver, and stop only exact watcher PowerShell PIDs with creation/command identity recheck. No Stop-ScheduledTask/driver/child-tree/unrelated/desktop kill, no task deletion/elevation.",
+    "ZHANGWEI command is read-only process/task metadata plus three nonrecursive RAW filename/size/mtime listings matching20260924. No Parquet read/hash, absence/duplicate or quota conclusion from names. Both roles read only TARGET_END and FINAL_STATUS exact small controls where available.",
+    "Raw global command-line/action metadata stays in memory and is not exported/hashed. Unknown/mixed/encoded actions and drift are report-only; intent records precede mutations. Partial/errors/remaining matched targets stop without automatic retry.",
+    "Source-inspected catchup defaults/window/date-aligned PASS/retry mechanics summarized without claiming historical26 exact failures, live automation, duplicate observations, actual target or supplier absence. No date/EMPTY/exclusion/factor policy delegated.",
+    "Both existing child task outboxes and notebook/desktop/parent routes updated and exactly read back. Native outcome/ACK pending; task publication is not actual stop. No new acquisition/data/current/release/order authorization."
   ],
-  "previous_phase": "OWNER_SELECTED_ZHANGWEI_BASELINE_EXISTING_EXACT_SOURCE_CLOSURE_PENDING",
+  "previous_phase": "DESKTOP_RCID_METADATA_PINS_CLOSED_SAM_EXACT_SOURCE_ACKED_PENDING",
   "owner_requested_source_handoff": {
     "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
     "execution_host": "SAM",
@@ -3506,5 +3625,28 @@
     "desktop_actual_candidate_commit": "53208/e4772dda captured and reviewed",
     "desktop_live_rcid_contract": "3471/fad8dd56 matches pinned original5795ad5c",
     "desktop_live_committed_rcid_sidefile": "1145/2c3388de matches pinned original1c594ad9"
+  },
+  "owner_watchdog_authorization": {
+    "source": "Owner explicitly permits stopping notebook watchdog/planned automation after reading attached TXT.",
+    "host": "SAM",
+    "contract_id": "WATCHDOG_CONTROL_20261027",
+    "permitted": "Disable exact legacy scheduled launchers; stop only three proven archive watcher PowerShell processes after revalidation.",
+    "desktop_stop_disable_allowed": false,
+    "delete_task_allowed": false,
+    "stop_business_driver_or_children_allowed": false,
+    "terminal_restart_allowed": false,
+    "acquisition_authorized": false
+  },
+  "same_child_control_contract_issued_this_run": {
+    "contract_id": "WATCHDOG_CONTROL_20261027",
+    "reviewed_code": true,
+    "offline_controls": 10,
+    "actual_test_exit": 0,
+    "native_execution_observed": false,
+    "role_actions": {
+      "SAM": "exact authorized watcher stop and launcher disable",
+      "ZHANGWEI": "read-only metadata audit"
+    },
+    "return_folder": "watchdog_control_001"
   }
 }
