@@ -1,0 +1,55 @@
+{
+  "schema": "EXACT_ORIGINAL_GENERATOR_AND_RCID_CLOSURE_R1",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "ZHANGWEI",
+  "evidence_peer_host": "SAM",
+  "source_snapshot": "5e4a4b0e5d2439e86eeeb121f33f6489ab462920",
+  "roles": {
+    "SAM": {
+      "exact_paths": [
+        "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\run_unattended_catchup_r1.py"
+      ],
+      "local_output": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\source_closure_001"
+    },
+    "ZHANGWEI": {
+      "exact_paths": [
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\RCID_PRODUCT_CONTRACT_R1.json",
+        "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\rcid\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019.json"
+      ],
+      "local_output": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\ZHANGWEI\\source_closure_001",
+      "reused_originals": [
+        {
+          "repository_path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/desktop_rcid_v3/RCID_PRODUCT_CONTRACT_R1.json",
+          "blob_sha": "5795ad5c54ab8c0fb365abdf034eda05f71eaba5",
+          "rule": "Compare live raw bytes to this existing HUB original. Matching bytes require live-path/length/hash/reference receipt only; do not upload a duplicate."
+        },
+        {
+          "repository_path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/desktop_rcid_v3/RELEASE_CONTENT_ID_BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019.json",
+          "blob_sha": "1c594ad959155b009ab8540256e993ed52f11eeb",
+          "rule": "Compare live raw bytes to this existing HUB original. Matching bytes require live-path/length/hash/reference receipt only; do not upload a duplicate."
+        }
+      ]
+    }
+  },
+  "limits": {
+    "max_bytes_per_file": 2097152,
+    "max_total_bytes": 8388608,
+    "search": false,
+    "recursive": false,
+    "reparse_traversal": false,
+    "business_import_or_execution": false
+  },
+  "rule": "Use existing file tools only. Before exporting/hashing a named source, withhold it entirely if it embeds literal credentials: path plus BLOCKED_SECRET_LITERAL, no source/secret-derived digest or excerpt. Do not open credential files. This is not an auth/password investigation.",
+  "status_rule": "Exact missing/unreadable paths are gaps, not data absence. No fallback source or glob. Preserve drift/limit failures. No retry of fixture or collector.",
+  "receipts": [
+    "SOURCE_MANIFEST.json",
+    "permitted_new_or_changed_raw_bodies_only",
+    "LOCAL_READBACK.json",
+    "HANDOFF_NOTES.md",
+    "UPLOAD_READBACK.json"
+  ],
+  "return_roots": {
+    "SAM": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/SAM/source_closure_001/",
+    "ZHANGWEI": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/source_closure_001/"
+  }
+}
