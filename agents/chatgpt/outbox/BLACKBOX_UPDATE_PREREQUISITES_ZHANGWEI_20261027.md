@@ -1,3 +1,25 @@
+# Active R4 continuation: exact reviewed empty slots (ZHANGWEI only)
+
+task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS
+execution_host: ZHANGWEI
+status: READY_NATIVE_77_GATE_THEN_ONE_GUARDED_CONTINUATION
+ORDER_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+CLEANING_ALLOWED=false
+
+Full exact task: agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS.md
+Package: agents/chatgpt/reviews/BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS/
+Stage13 files, verify12 payloads, ACK_R4 and readback BEFORE native77/no skips/literal exit0; only then one foreground --execute with actual OS exit captured. Preserve R3 and do not rerun it. Existing R4 active/completed evidence prevents duplicate execution.
+
+R3 native63 gate passed. Its one run stopped before auth on the reviewer-added directory guard: zero supplier calls, cumulative quota still5320. RUN_R3 discloses structurally derived exit2, not captured OS exit. Four old-source-declared fund slots and one measured P2/none_adj layout slot may pass only while exact ordinary non-reparse paths remain zero-entry including hidden and stable. Unknown directories, even empty, and nonempty/link/drift/read failures still block. Do not delete or move slots; emptiness is not absence evidence.
+
+Reuse pinned old80/calendar/first stock universe without refetch. New exclusive R4 output only; original700000 cumulative cap includes5320, remaining maximum694680 subject measured balance/reserve. No local patch, dependency change, cleaning, CURRENT, watcher or SAM action. Original sources and failed outcomes remain unchanged.
+
+Reviewer77/77 passed in both pandas3.0.3/pyarrow24 and pandas2.2.3/pyarrow26. Native Windows gate/ACK/execution remain pending. Return to the existing R1/ZHANGWEI folder using _R4 names, locally and remotely read back every file, then exactly END.
+
+---
+# Prior material below is historical; older execution commands are superseded by the R4 task above.
+
 # Active owner-authorized R3 continuation (ZHANGWEI only)
 
 task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R3_CODE_DTYPE
