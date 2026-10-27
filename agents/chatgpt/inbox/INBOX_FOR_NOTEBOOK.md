@@ -1,3 +1,30 @@
+# Owner-requested dual-host prerequisite handoff (2026-10-27)
+
+parent_task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+status: TWO_CHILD_TASKS_PUBLISHED_AWAITING_ACK
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+The owner requested a concrete two-machine handoff and return of the needed files. The next action is the reviewed read-only evidence capture below, not another business-chain run. This consolidates the existing pending source handoff and adds the bounded original-release producer lookup. Existing successful stages and failed evidence remain preserved.
+
+- SAM child: agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027.md
+- ZHANGWEI child: agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md
+- Reviewed code, source pins, per-product baseline, future receipt requirements and package: agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/
+- Returns: agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/{SAM,ZHANGWEI}/
+
+Seventeen offline fixture controls passed before publication. The code has not yet executed on either local host. Publishing this header/tasks is not an ACK. Check existing child ACK/PID/results before running; do not stop or duplicate another process. Upload and byte-readback every file; finish Cursor chat with exactly END.
+
+No supplier call, download, cleaning/compiler/commit rerun, production switch or order is issued. Do not run the feedback attachment's unreviewed comparer. Do not require V4 reconstruction, yet-unperformed acquisition, or CURRENT publication to precede acquisition. Reuse all matching HUB originals, including supplied v3; no global rescan. The 40 NOT_BOUND rows remain product-specific evidence gaps, not a universal first-date rule or a requirement to resolve all products before an independent scope is considered.
+
+GPT will reconcile both returns, author/test any necessary exact repair, and separately issue an executable acquisition contract only for a scope whose relevant prerequisites are accepted.
+
+execution_host: SAM
+evidence_peer_host: ZHANGWEI
+
+---
+
 # GPT same-dispatch review: installed v3 still fails full-content acceptance (2026-10-26 23:21 CN)
 
 execution_host: ZHANGWEI
