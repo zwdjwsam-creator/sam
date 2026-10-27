@@ -1,0 +1,120 @@
+--- R3/acquire_daily.py
++++ R4/acquire_daily.py
+@@ -13,8 +13,8 @@
+ from pathlib import Path
+ 
+ CN = timezone(timedelta(hours=8))
+-TASK = 'BLACKBOX_RAW_NONE_INCREMENT_20261027_R3_CODE_DTYPE'
+-OUTPUT_NAME = 'BLACKBOX_RAW_NONE_INCREMENT_20261027_R3'
++TASK = 'BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS'
++OUTPUT_NAME = 'BLACKBOX_RAW_NONE_INCREMENT_20261027_R4'
+ INHERITED_SPEND = 5320
+ LOWER = date(2026, 9, 24)  # observed coverage boundary, not a universal historical start
+ UPPER = date(2026, 10, 27)
+@@ -116,7 +116,7 @@
+ 
+ def put(path, obj):
+     path = Path(path)
+-    if not path.stem.endswith('_R3'):path=path.with_name(path.stem+'_R3'+path.suffix)
++    if not path.stem.endswith('_R4'):path=path.with_name(path.stem+'_R4'+path.suffix)
+     path.parent.mkdir(parents=True, exist_ok=True)
+     b = (json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False, default=str)+'\n').encode('utf-8')
+     with path.open('xb') as f:
+@@ -389,14 +389,55 @@
+     # Metadata freshness only for already registered paths: no repeat Parquet inventory.
+     # A new data file/directory or changed existing price file is a blocker, never absence evidence.
+     coverage_docs=[docs[f'COVERAGE_{k}.json'] for k in ['stock','etf','index']]
+-    check_registered_freshness(coverage_docs)
++    freshness=check_registered_freshness(coverage_docs,root)
+     return {'source_root':str(source),'references':refs,'calendar':calendar,'plan':plan,'stock_codes':codes,
+        'retained_batch':{'path':str(raw),'bytes':15544,'sha256':pins['raw/stock/2026-09-28_00000.parquet'],
+            'product':'stock','date':str(day),'codes':codes[:80],'quality':quality,'serialization':serialization,
+            'original_dtype_evidence':'code reconstructed from retained pandas metadata, not a second supplier response'},
+-       'coverage_reused':True}
+-
+-def check_registered_freshness(documents):
++       'coverage_reused':True,'registered_freshness':freshness}
++
++def load_slot_policy(root):
++    """Package-pinned reviewer classifications, not discovery or supplier-absence policy."""
++    policy=json.loads(Path(__file__).with_name('EMPTY_SLOT_POLICY.json').read_text())
++    require(policy['schema']=='BLACKBOX_REVIEWED_EMPTY_SLOTS_R1','SLOT_POLICY_SCHEMA')
++    require(policy['unknown_directory_action']=='BLOCK','SLOT_POLICY_UNKNOWN_ACTION')
++    result={}
++    for row in policy['slots']:
++        rel=Path(row['relative_path'])
++        require(not rel.is_absolute() and '..' not in rel.parts,'SLOT_POLICY_PATH')
++        require(str(rel).replace('\\','/').startswith('数据/原始只读/JQData_9999_official_raw/'),'SLOT_POLICY_ROOT')
++        path=root/rel
++        require(path not in result,'SLOT_POLICY_DUPLICATE')
++        require(row['classification'] in {'DECLARED_EMPTY_SLOT','REVIEWED_EMPTY_LAYOUT_SLOT'},'SLOT_POLICY_CLASS')
++        result[path]=row
++    require(len(result)==5,'SLOT_POLICY_COUNT')
++    return result
++
++def check_reviewed_empty_slot(path, policy):
++    """Accept only an exact reviewed ordinary directory, still zero-entry including hidden."""
++    require(path in policy,'REGISTERED_DIRECTORY_SET_UNPROVEN')
++    row=policy[path]
++    before=path.lstat()
++    require(not path.is_symlink() and not getattr(path,'is_junction',lambda:False)()
++            and not (getattr(before,'st_file_attributes',0)&0x400),'REVIEWED_SLOT_REPARSE_UNPROVEN')
++    require(path.is_dir(),'REVIEWED_SLOT_NOT_DIRECTORY')
++    require_allowed_read(path.resolve(strict=True))
++    require(path.resolve(strict=True)==path.absolute(),'REVIEWED_SLOT_TARGET_DRIFT')
++    with os.scandir(path) as scan:
++        first=next(scan,None)
++    require(first is None,'REVIEWED_SLOT_BECAME_NONEMPTY')
++    after=path.lstat()
++    ident=lambda s:(s.st_dev,s.st_ino,s.st_size,s.st_mtime_ns,s.st_ctime_ns,getattr(s,'st_file_attributes',0))
++    require(ident(before)==ident(after),'REVIEWED_SLOT_CHANGED_DURING_CHECK')
++    return {'path':str(path),'classification':row['classification'],'entries_including_hidden':0,
++            'declaration_evidence':row['declaration_evidence'],'current_empty_evidence':row['current_empty_evidence'],
++            'mtime_ns':after.st_mtime_ns,'ctime_ns':after.st_ctime_ns,
++            'historical_creator_proven':False,'source_absence_claim':False}
++
++def check_registered_freshness(documents, root=None):
++    root=Path(r'E:\BLACKBOX') if root is None else root
++    slot_policy=load_slot_policy(root)
++    slot_receipts=[]
+     records={}
+     for doc in documents:
+         for row in doc['records']:records.setdefault(row['path'],row)
+@@ -409,7 +450,9 @@
+         children=list(parent.iterdir())
+         require({c.name for c in children if c.suffix.lower()=='.parquet' and c.is_file()}==expected,
+                 'REGISTERED_FILE_SET_DRIFT')
+-        require(not any(c.is_dir() and c not in ancestors for c in children),'REGISTERED_DIRECTORY_SET_UNPROVEN')
++        for child in children:
++            if child.is_dir() and child not in ancestors:
++                slot_receipts.append(check_reviewed_empty_slot(child,slot_policy))
+         require(not any(c.suffix.lower() in {'.csv','.h5','.hdf5','.pkl','.arrow','.feather'} for c in children if c.is_file()),
+                 'REGISTERED_NEW_FORMAT_UNPROVEN')
+     import pyarrow.parquet as pq
+@@ -419,6 +462,8 @@
+             st=path.stat();require(st.st_size==row['bytes'] and st.st_mtime_ns==row['mtime_ns'],'REGISTERED_PRICE_FILE_DRIFT')
+         else:
+             require(pq.read_schema(path).names==row['columns'],'REGISTERED_NONPRICE_SCHEMA_DRIFT')
++    return {'policy':'EXACT_REVIEWED_EMPTY_SLOTS_ONLY','slots':slot_receipts,
++            'registered_files':len(records),'source_absence_claim':False}
+ 
+ def check_execution_location(root,out):
+     require(platform.system()=='Windows' and platform.node().upper()=='ZHANGWEI','WRONG_HOST')
+@@ -476,7 +521,7 @@
+                     args={'security':chunk,'start_date':str(day),'end_date':str(day),'frequency':'daily','fields':FIELDS,
+                           'skip_paused':False,'fill_paused':True,'fq':None,'panel':False}
+                     response,num=supplier.call('get_price',args)
+-                    batch=out/'raw'/product/f'{day}_{start:05d}_R3.parquet'
++                    batch=out/'raw'/product/f'{day}_{start:05d}_R4.parquet'
+                     batch.parent.mkdir(parents=True,exist_ok=True)
+                     require(not batch.exists(),'RAW_REPLAY_COLLISION')
+                     # Preserve failed responses too: no normalization, no dedup, no fill before byte storage.
+@@ -485,7 +530,7 @@
+                     try:
+                         code_info=validate_code_column(response['code'],set(chunk),product)
+                     except Exception as error:
+-                        failed=out/'rejected'/product/f'{day}_{start:05d}_R3.parquet'
++                        failed=out/'rejected'/product/f'{day}_{start:05d}_R4.parquet'
+                         failed.parent.mkdir(parents=True,exist_ok=True);response.to_parquet(failed,index=None)
+                         put(out/'quality'/f'{product}_{day}_{start:05d}_FAILED.json',
+                             {'request':num,'rejected_raw':str(failed),'error_type':type(error).__name__,
