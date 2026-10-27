@@ -1,0 +1,2887 @@
+{
+  "schema": "FORENSIC_LOG_MARKERS_R1",
+  "task_id": "BLACKBOX_FORENSIC_READONLY_SAM_20261027_R1",
+  "parent_dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "dispatch_id": "BLACKBOX_FORENSIC_READONLY_20261027_R1",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T16:45:26+0800",
+  "scope": "exactly two named log files; read-only; only contract-listed literal tokens; no execution, no recursion, no other folder probed",
+  "primary_tokens": [
+    "REUSE_TIP_DIR",
+    "CHAIN_EXIT",
+    "RETRY_DAY",
+    "RESUME_FROM_",
+    "SKIP_CLEAN_SWITCH",
+    "JQ_TRADE_DAYS_FALLBACK",
+    "ALL_CAUGHT_UP"
+  ],
+  "disambiguation_tokens": [
+    "NO_SEALABLE_BUT_BEHIND_TARGET",
+    "ASOF_MISMATCH",
+    "UNATTENDED_START",
+    "DAY_PASS",
+    "DAY_FAIL",
+    "FATAL",
+    "FULL_CHAIN_PASS",
+    "START FULL_CHAIN",
+    "CLEAN_DONE",
+    "FUND_NAV"
+  ],
+  "caps": {
+    "per_source_bytes": 2097152,
+    "total_bytes": 4194304,
+    "max_matching_lines": 500,
+    "max_excerpt_bytes": 131072
+  },
+  "limit_events": [],
+  "partial_limit": false,
+  "sources": [
+    {
+      "source": "UNATTENDED",
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\UNATTENDED.log",
+      "exists": true,
+      "status": "READ",
+      "size_bytes": 71629,
+      "total_lines": 604,
+      "bytes_read": 71629,
+      "source_absence_claim_allowed": false,
+      "sha256_of_read_bytes": "e1ce6a5d0b6237065ed6083ad76b419c9511c2423138e4e6bf75cb968ebc1e06",
+      "event_counts": {
+        "REUSE_TIP_DIR": 105,
+        "CHAIN_EXIT": 108,
+        "RETRY_DAY": 82,
+        "RESUME_FROM_": 0,
+        "SKIP_CLEAN_SWITCH": 0,
+        "JQ_TRADE_DAYS_FALLBACK": 0,
+        "ALL_CAUGHT_UP": 1
+      },
+      "disambiguation_counts": {
+        "NO_SEALABLE_BUT_BEHIND_TARGET": 0,
+        "ASOF_MISMATCH": 0,
+        "UNATTENDED_START": 18,
+        "DAY_PASS": 9,
+        "DAY_FAIL": 36,
+        "FATAL": 3,
+        "FULL_CHAIN_PASS": 0,
+        "START FULL_CHAIN": 0,
+        "CLEAN_DONE": 0,
+        "FUND_NAV": 53
+      },
+      "first_last": {
+        "CHAIN_EXIT": {
+          "first": {
+            "line_no": 5,
+            "timestamp": "2026-09-17T14:49:30",
+            "text": "[2026-09-17T14:49:30+08:00] CHAIN_EXIT 2026-09-10 rc=1"
+          },
+          "last": {
+            "line_no": 601,
+            "timestamp": "2026-09-25T04:07:28",
+            "text": "[2026-09-25T04:07:28+08:00] CHAIN_EXIT 2026-09-24 rc=0"
+          },
+          "count": 108
+        },
+        "REUSE_TIP_DIR": {
+          "first": {
+            "line_no": 7,
+            "timestamp": "2026-09-17T14:50:30",
+            "text": "[2026-09-17T14:50:30+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+          },
+          "last": {
+            "line_no": 599,
+            "timestamp": "2026-09-25T03:48:38",
+            "text": "[2026-09-25T03:48:38+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+          },
+          "count": 105
+        },
+        "RETRY_DAY": {
+          "first": {
+            "line_no": 21,
+            "timestamp": "2026-09-17T14:57:22",
+            "text": "[2026-09-17T14:57:22+08:00] RETRY_DAY 2026-09-10 attempt=2"
+          },
+          "last": {
+            "line_no": 598,
+            "timestamp": "2026-09-25T03:48:38",
+            "text": "[2026-09-25T03:48:38+08:00] RETRY_DAY 2026-09-24 attempt=6"
+          },
+          "count": 82
+        },
+        "ALL_CAUGHT_UP": {
+          "first": {
+            "line_no": 604,
+            "timestamp": "2026-09-25T04:07:33",
+            "text": "[2026-09-25T04:07:33+08:00] ALL_CAUGHT_UP"
+          },
+          "last": {
+            "line_no": 604,
+            "timestamp": "2026-09-25T04:07:33",
+            "text": "[2026-09-25T04:07:33+08:00] ALL_CAUGHT_UP"
+          },
+          "count": 1
+        }
+      },
+      "matched_lines": 296,
+      "redacted_lines": 0,
+      "excerpt_bytes": 19695
+    },
+    {
+      "source": "FULL_CHAIN",
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\FULL_CHAIN.log",
+      "exists": true,
+      "status": "READ",
+      "size_bytes": 206466,
+      "total_lines": 1868,
+      "bytes_read": 206466,
+      "source_absence_claim_allowed": false,
+      "sha256_of_read_bytes": "b3917f28f0b1fed6494a0d1f43c936160709ab64090e7020acfba2c15e838640",
+      "event_counts": {
+        "REUSE_TIP_DIR": 0,
+        "CHAIN_EXIT": 0,
+        "RETRY_DAY": 0,
+        "RESUME_FROM_": 1,
+        "SKIP_CLEAN_SWITCH": 1,
+        "JQ_TRADE_DAYS_FALLBACK": 0,
+        "ALL_CAUGHT_UP": 0
+      },
+      "disambiguation_counts": {
+        "NO_SEALABLE_BUT_BEHIND_TARGET": 0,
+        "ASOF_MISMATCH": 0,
+        "UNATTENDED_START": 0,
+        "DAY_PASS": 0,
+        "DAY_FAIL": 0,
+        "FATAL": 0,
+        "FULL_CHAIN_PASS": 1,
+        "START FULL_CHAIN": 26,
+        "CLEAN_DONE": 1,
+        "FUND_NAV": 1
+      },
+      "first_last": {
+        "RESUME_FROM_": {
+          "first": {
+            "line_no": 1352,
+            "timestamp": "2026-09-25T03:48:40",
+            "text": "[2026-09-25T03:48:40+08:00] RESUME_FROM_CACHE tip=2026-09-24"
+          },
+          "last": {
+            "line_no": 1352,
+            "timestamp": "2026-09-25T03:48:40",
+            "text": "[2026-09-25T03:48:40+08:00] RESUME_FROM_CACHE tip=2026-09-24"
+          },
+          "count": 1
+        },
+        "SKIP_CLEAN_SWITCH": {
+          "first": {
+            "line_no": 1353,
+            "timestamp": "2026-09-25T03:48:40",
+            "text": "[2026-09-25T03:48:40+08:00] SKIP_CLEAN_SWITCH clean_already=2026-09-24"
+          },
+          "last": {
+            "line_no": 1353,
+            "timestamp": "2026-09-25T03:48:40",
+            "text": "[2026-09-25T03:48:40+08:00] SKIP_CLEAN_SWITCH clean_already=2026-09-24"
+          },
+          "count": 1
+        }
+      },
+      "matched_lines": 2,
+      "redacted_lines": 0,
+      "excerpt_bytes": 130
+    }
+  ],
+  "matched_lines_total": 298,
+  "lines": [
+    {
+      "source": "UNATTENDED",
+      "line_no": 5,
+      "timestamp": "2026-09-17T14:49:30",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-17T14:49:30+08:00] CHAIN_EXIT 2026-09-10 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 7,
+      "timestamp": "2026-09-17T14:50:30",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-17T14:50:30+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 9,
+      "timestamp": "2026-09-17T14:52:34",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-17T14:52:34+08:00] CHAIN_EXIT 2026-09-10 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 17,
+      "timestamp": "2026-09-17T14:56:15",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-17T14:56:15+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 19,
+      "timestamp": "2026-09-17T14:56:22",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-17T14:56:22+08:00] CHAIN_EXIT 2026-09-10 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 21,
+      "timestamp": "2026-09-17T14:57:22",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-17T14:57:22+08:00] RETRY_DAY 2026-09-10 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 22,
+      "timestamp": "2026-09-17T14:57:22",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-17T14:57:22+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 24,
+      "timestamp": "2026-09-17T14:57:38",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-17T14:57:38+08:00] CHAIN_EXIT 2026-09-10 rc=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 26,
+      "timestamp": "2026-09-17T14:59:08",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-17T14:59:08+08:00] RETRY_DAY 2026-09-10 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 27,
+      "timestamp": "2026-09-17T14:59:08",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-17T14:59:08+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 29,
+      "timestamp": "2026-09-17T14:59:15",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-17T14:59:15+08:00] CHAIN_EXIT 2026-09-10 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 42,
+      "timestamp": "2026-09-18T06:01:18",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:01:18+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 46,
+      "timestamp": "2026-09-18T06:02:06",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:02:06+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 48,
+      "timestamp": "2026-09-18T06:02:12",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T06:02:12+08:00] CHAIN_EXIT 2026-09-10 rc=4294967295"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 50,
+      "timestamp": "2026-09-18T06:03:12",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-18T06:03:12+08:00] RETRY_DAY 2026-09-10 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 51,
+      "timestamp": "2026-09-18T06:03:12",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:03:12+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 53,
+      "timestamp": "2026-09-18T06:03:18",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T06:03:18+08:00] CHAIN_EXIT 2026-09-10 rc=4294967295"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 57,
+      "timestamp": "2026-09-18T06:03:50",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:03:50+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 61,
+      "timestamp": "2026-09-18T06:03:59",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:03:59+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 63,
+      "timestamp": "2026-09-18T06:04:05",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T06:04:05+08:00] CHAIN_EXIT 2026-09-10 rc=4294967295"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 67,
+      "timestamp": "2026-09-18T06:04:56",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:04:56+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 71,
+      "timestamp": "2026-09-18T06:07:58",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:07:58+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 75,
+      "timestamp": "2026-09-18T06:08:24",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:08:24+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 77,
+      "timestamp": "2026-09-18T06:15:48",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T06:15:48+08:00] CHAIN_EXIT 2026-09-10 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 79,
+      "timestamp": "2026-09-18T06:16:48",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-18T06:16:48+08:00] RETRY_DAY 2026-09-10 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 80,
+      "timestamp": "2026-09-18T06:16:48",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:16:48+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 82,
+      "timestamp": "2026-09-18T06:17:48",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T06:17:48+08:00] CHAIN_EXIT 2026-09-10 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 84,
+      "timestamp": "2026-09-18T06:19:18",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-18T06:19:18+08:00] RETRY_DAY 2026-09-10 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 85,
+      "timestamp": "2026-09-18T06:19:18",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:19:18+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 87,
+      "timestamp": "2026-09-18T06:53:14",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T06:53:14+08:00] CHAIN_EXIT 2026-09-10 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 89,
+      "timestamp": "2026-09-18T06:55:14",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-18T06:55:14+08:00] RETRY_DAY 2026-09-10 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 90,
+      "timestamp": "2026-09-18T06:55:14",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T06:55:14+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 92,
+      "timestamp": "2026-09-18T06:58:38",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T06:58:38+08:00] CHAIN_EXIT 2026-09-10 rc=4294967295"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 96,
+      "timestamp": "2026-09-18T07:01:02",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T07:01:02+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 98,
+      "timestamp": "2026-09-18T07:01:05",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T07:01:05+08:00] CHAIN_EXIT 2026-09-10 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 100,
+      "timestamp": "2026-09-18T07:02:05",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-18T07:02:05+08:00] RETRY_DAY 2026-09-10 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 101,
+      "timestamp": "2026-09-18T07:02:05",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T07:02:05+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 103,
+      "timestamp": "2026-09-18T07:02:07",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T07:02:07+08:00] CHAIN_EXIT 2026-09-10 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 105,
+      "timestamp": "2026-09-18T07:02:18",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T07:02:18+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 108,
+      "timestamp": "2026-09-18T07:02:21",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T07:02:21+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 110,
+      "timestamp": "2026-09-18T07:06:16",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T07:06:16+08:00] CHAIN_EXIT 2026-09-10 rc=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 112,
+      "timestamp": "2026-09-18T07:07:17",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-18T07:07:17+08:00] RETRY_DAY 2026-09-10 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 113,
+      "timestamp": "2026-09-18T07:07:17",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T07:07:17+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260910"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 119,
+      "timestamp": "2026-09-18T07:33:09",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T07:33:09+08:00] CHAIN_EXIT 2026-09-11 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 121,
+      "timestamp": "2026-09-18T07:34:09",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-18T07:34:09+08:00] RETRY_DAY 2026-09-11 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 122,
+      "timestamp": "2026-09-18T07:34:09",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T07:34:09+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260911"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 124,
+      "timestamp": "2026-09-18T07:34:58",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-18T07:34:58+08:00] CHAIN_EXIT 2026-09-11 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 126,
+      "timestamp": "2026-09-18T07:36:28",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-18T07:36:28+08:00] RETRY_DAY 2026-09-11 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 127,
+      "timestamp": "2026-09-18T07:36:28",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-18T07:36:28+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260911"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 131,
+      "timestamp": "2026-09-24T07:27:20",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T07:27:20+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260911"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 135,
+      "timestamp": "2026-09-24T07:33:17",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T07:33:17+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260911"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 137,
+      "timestamp": "2026-09-24T08:22:34",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T08:22:34+08:00] CHAIN_EXIT 2026-09-11 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 142,
+      "timestamp": "2026-09-24T09:11:07",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T09:11:07+08:00] CHAIN_EXIT 2026-09-14 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 144,
+      "timestamp": "2026-09-24T09:12:07",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T09:12:07+08:00] RETRY_DAY 2026-09-14 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 145,
+      "timestamp": "2026-09-24T09:12:07",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T09:12:07+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260914"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 147,
+      "timestamp": "2026-09-24T09:29:58",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T09:29:58+08:00] CHAIN_EXIT 2026-09-14 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 152,
+      "timestamp": "2026-09-24T10:10:46",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T10:10:46+08:00] CHAIN_EXIT 2026-09-15 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 154,
+      "timestamp": "2026-09-24T10:11:46",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T10:11:46+08:00] RETRY_DAY 2026-09-15 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 155,
+      "timestamp": "2026-09-24T10:11:46",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T10:11:46+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260915"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 157,
+      "timestamp": "2026-09-24T10:25:12",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T10:25:12+08:00] CHAIN_EXIT 2026-09-15 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 162,
+      "timestamp": "2026-09-24T10:28:30",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T10:28:30+08:00] CHAIN_EXIT 2026-09-16 rc=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 164,
+      "timestamp": "2026-09-24T10:29:30",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T10:29:30+08:00] RETRY_DAY 2026-09-16 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 165,
+      "timestamp": "2026-09-24T10:29:30",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T10:29:30+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260916"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 167,
+      "timestamp": "2026-09-24T11:14:33",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T11:14:33+08:00] CHAIN_EXIT 2026-09-16 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 169,
+      "timestamp": "2026-09-24T11:16:03",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T11:16:03+08:00] RETRY_DAY 2026-09-16 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 170,
+      "timestamp": "2026-09-24T11:16:03",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T11:16:03+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260916"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 172,
+      "timestamp": "2026-09-24T11:34:17",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T11:34:17+08:00] CHAIN_EXIT 2026-09-16 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 177,
+      "timestamp": "2026-09-24T11:36:38",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T11:36:38+08:00] CHAIN_EXIT 2026-09-17 rc=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 179,
+      "timestamp": "2026-09-24T11:37:38",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T11:37:38+08:00] RETRY_DAY 2026-09-17 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 180,
+      "timestamp": "2026-09-24T11:37:38",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T11:37:38+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260917"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 182,
+      "timestamp": "2026-09-24T11:42:13",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T11:42:13+08:00] CHAIN_EXIT 2026-09-17 rc=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 184,
+      "timestamp": "2026-09-24T11:43:43",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T11:43:43+08:00] RETRY_DAY 2026-09-17 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 185,
+      "timestamp": "2026-09-24T11:43:43",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T11:43:43+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260917"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 187,
+      "timestamp": "2026-09-24T11:50:30",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T11:50:30+08:00] CHAIN_EXIT 2026-09-17 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 189,
+      "timestamp": "2026-09-24T11:52:30",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T11:52:30+08:00] RETRY_DAY 2026-09-17 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 190,
+      "timestamp": "2026-09-24T11:52:30",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T11:52:30+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260917"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 192,
+      "timestamp": "2026-09-24T12:45:23",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T12:45:23+08:00] CHAIN_EXIT 2026-09-17 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 194,
+      "timestamp": "2026-09-24T12:47:53",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T12:47:53+08:00] RETRY_DAY 2026-09-17 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 195,
+      "timestamp": "2026-09-24T12:47:53",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T12:47:53+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260917"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 197,
+      "timestamp": "2026-09-24T12:48:36",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T12:48:36+08:00] CHAIN_EXIT 2026-09-17 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 199,
+      "timestamp": "2026-09-24T12:51:36",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T12:51:36+08:00] RETRY_DAY 2026-09-17 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 200,
+      "timestamp": "2026-09-24T12:51:36",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T12:51:36+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260917"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 202,
+      "timestamp": "2026-09-24T12:52:24",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T12:52:24+08:00] CHAIN_EXIT 2026-09-17 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 204,
+      "timestamp": "2026-09-24T12:55:54",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T12:55:54+08:00] RETRY_DAY 2026-09-17 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 205,
+      "timestamp": "2026-09-24T12:55:54",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T12:55:54+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260917"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 207,
+      "timestamp": "2026-09-24T12:56:15",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T12:56:15+08:00] CHAIN_EXIT 2026-09-17 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 214,
+      "timestamp": "2026-09-24T13:44:34",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T13:44:34+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 216,
+      "timestamp": "2026-09-24T13:45:34",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T13:45:34+08:00] RETRY_DAY 2026-09-18 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 217,
+      "timestamp": "2026-09-24T13:45:34",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T13:45:34+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 219,
+      "timestamp": "2026-09-24T13:45:49",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T13:45:49+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 221,
+      "timestamp": "2026-09-24T13:47:19",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T13:47:19+08:00] RETRY_DAY 2026-09-18 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 222,
+      "timestamp": "2026-09-24T13:47:19",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T13:47:19+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 224,
+      "timestamp": "2026-09-24T13:47:32",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T13:47:32+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 226,
+      "timestamp": "2026-09-24T13:49:32",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T13:49:32+08:00] RETRY_DAY 2026-09-18 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 227,
+      "timestamp": "2026-09-24T13:49:32",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T13:49:32+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 229,
+      "timestamp": "2026-09-24T13:49:48",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T13:49:48+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 231,
+      "timestamp": "2026-09-24T13:52:18",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T13:52:18+08:00] RETRY_DAY 2026-09-18 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 232,
+      "timestamp": "2026-09-24T13:52:18",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T13:52:18+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 234,
+      "timestamp": "2026-09-24T13:53:11",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T13:53:11+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 236,
+      "timestamp": "2026-09-24T13:56:11",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T13:56:11+08:00] RETRY_DAY 2026-09-18 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 237,
+      "timestamp": "2026-09-24T13:56:11",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T13:56:11+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 239,
+      "timestamp": "2026-09-24T13:56:46",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T13:56:46+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 241,
+      "timestamp": "2026-09-24T14:00:16",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:00:16+08:00] RETRY_DAY 2026-09-18 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 242,
+      "timestamp": "2026-09-24T14:00:16",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:00:16+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 244,
+      "timestamp": "2026-09-24T14:00:32",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:00:32+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 248,
+      "timestamp": "2026-09-24T14:10:32",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:10:32+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 250,
+      "timestamp": "2026-09-24T14:11:16",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:11:16+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 252,
+      "timestamp": "2026-09-24T14:12:16",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:12:16+08:00] RETRY_DAY 2026-09-18 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 253,
+      "timestamp": "2026-09-24T14:12:16",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:12:16+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 255,
+      "timestamp": "2026-09-24T14:12:51",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:12:51+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 257,
+      "timestamp": "2026-09-24T14:14:21",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:14:21+08:00] RETRY_DAY 2026-09-18 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 258,
+      "timestamp": "2026-09-24T14:14:21",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:14:21+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 260,
+      "timestamp": "2026-09-24T14:14:53",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:14:53+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 262,
+      "timestamp": "2026-09-24T14:16:53",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:16:53+08:00] RETRY_DAY 2026-09-18 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 263,
+      "timestamp": "2026-09-24T14:16:53",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:16:53+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 265,
+      "timestamp": "2026-09-24T14:17:28",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:17:28+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 267,
+      "timestamp": "2026-09-24T14:19:58",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:19:58+08:00] RETRY_DAY 2026-09-18 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 268,
+      "timestamp": "2026-09-24T14:19:58",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:19:58+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 270,
+      "timestamp": "2026-09-24T14:20:13",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:20:13+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 272,
+      "timestamp": "2026-09-24T14:23:13",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:23:13+08:00] RETRY_DAY 2026-09-18 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 273,
+      "timestamp": "2026-09-24T14:23:13",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:23:13+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 275,
+      "timestamp": "2026-09-24T14:24:04",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:24:04+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 277,
+      "timestamp": "2026-09-24T14:27:34",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:27:34+08:00] RETRY_DAY 2026-09-18 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 278,
+      "timestamp": "2026-09-24T14:27:34",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:27:34+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 280,
+      "timestamp": "2026-09-24T14:28:00",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:28:00+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 284,
+      "timestamp": "2026-09-24T14:38:00",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:38:00+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 286,
+      "timestamp": "2026-09-24T14:38:32",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:38:32+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 288,
+      "timestamp": "2026-09-24T14:39:32",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:39:32+08:00] RETRY_DAY 2026-09-18 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 289,
+      "timestamp": "2026-09-24T14:39:32",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:39:32+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 291,
+      "timestamp": "2026-09-24T14:40:07",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:40:07+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 293,
+      "timestamp": "2026-09-24T14:41:37",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:41:37+08:00] RETRY_DAY 2026-09-18 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 294,
+      "timestamp": "2026-09-24T14:41:37",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:41:37+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 296,
+      "timestamp": "2026-09-24T14:42:13",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:42:13+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 298,
+      "timestamp": "2026-09-24T14:44:13",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:44:13+08:00] RETRY_DAY 2026-09-18 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 299,
+      "timestamp": "2026-09-24T14:44:13",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:44:13+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 301,
+      "timestamp": "2026-09-24T14:44:28",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:44:28+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 303,
+      "timestamp": "2026-09-24T14:46:58",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:46:58+08:00] RETRY_DAY 2026-09-18 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 304,
+      "timestamp": "2026-09-24T14:46:58",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:46:58+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 306,
+      "timestamp": "2026-09-24T14:47:15",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:47:15+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 308,
+      "timestamp": "2026-09-24T14:50:15",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:50:15+08:00] RETRY_DAY 2026-09-18 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 309,
+      "timestamp": "2026-09-24T14:50:15",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:50:15+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 311,
+      "timestamp": "2026-09-24T14:51:02",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:51:02+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 313,
+      "timestamp": "2026-09-24T14:54:32",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T14:54:32+08:00] RETRY_DAY 2026-09-18 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 314,
+      "timestamp": "2026-09-24T14:54:32",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T14:54:32+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 316,
+      "timestamp": "2026-09-24T14:55:09",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T14:55:09+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 320,
+      "timestamp": "2026-09-24T15:05:09",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:05:09+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 322,
+      "timestamp": "2026-09-24T15:05:42",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:05:42+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 324,
+      "timestamp": "2026-09-24T15:06:42",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:06:42+08:00] RETRY_DAY 2026-09-18 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 325,
+      "timestamp": "2026-09-24T15:06:42",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:06:42+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 327,
+      "timestamp": "2026-09-24T15:07:24",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:07:24+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 329,
+      "timestamp": "2026-09-24T15:08:54",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:08:54+08:00] RETRY_DAY 2026-09-18 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 330,
+      "timestamp": "2026-09-24T15:08:54",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:08:54+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 332,
+      "timestamp": "2026-09-24T15:09:22",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:09:22+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 334,
+      "timestamp": "2026-09-24T15:11:22",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:11:22+08:00] RETRY_DAY 2026-09-18 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 335,
+      "timestamp": "2026-09-24T15:11:22",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:11:22+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 337,
+      "timestamp": "2026-09-24T15:11:36",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:11:36+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 339,
+      "timestamp": "2026-09-24T15:14:06",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:14:06+08:00] RETRY_DAY 2026-09-18 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 340,
+      "timestamp": "2026-09-24T15:14:06",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:14:06+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 342,
+      "timestamp": "2026-09-24T15:14:35",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:14:35+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 344,
+      "timestamp": "2026-09-24T15:17:35",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:17:35+08:00] RETRY_DAY 2026-09-18 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 345,
+      "timestamp": "2026-09-24T15:17:35",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:17:35+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 347,
+      "timestamp": "2026-09-24T15:18:06",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:18:06+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 349,
+      "timestamp": "2026-09-24T15:21:36",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:21:36+08:00] RETRY_DAY 2026-09-18 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 350,
+      "timestamp": "2026-09-24T15:21:36",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:21:36+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 352,
+      "timestamp": "2026-09-24T15:22:03",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:22:03+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 356,
+      "timestamp": "2026-09-24T15:32:03",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:32:03+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 358,
+      "timestamp": "2026-09-24T15:32:40",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:32:40+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 360,
+      "timestamp": "2026-09-24T15:33:40",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:33:40+08:00] RETRY_DAY 2026-09-18 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 361,
+      "timestamp": "2026-09-24T15:33:40",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:33:40+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 363,
+      "timestamp": "2026-09-24T15:34:17",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:34:17+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 365,
+      "timestamp": "2026-09-24T15:35:47",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:35:47+08:00] RETRY_DAY 2026-09-18 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 366,
+      "timestamp": "2026-09-24T15:35:47",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:35:47+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 368,
+      "timestamp": "2026-09-24T15:36:23",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:36:23+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 370,
+      "timestamp": "2026-09-24T15:38:23",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:38:23+08:00] RETRY_DAY 2026-09-18 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 371,
+      "timestamp": "2026-09-24T15:38:23",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:38:23+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 373,
+      "timestamp": "2026-09-24T15:38:36",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:38:36+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 375,
+      "timestamp": "2026-09-24T15:41:06",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:41:06+08:00] RETRY_DAY 2026-09-18 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 376,
+      "timestamp": "2026-09-24T15:41:06",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:41:06+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 378,
+      "timestamp": "2026-09-24T15:41:59",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:41:59+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 380,
+      "timestamp": "2026-09-24T15:44:59",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:44:59+08:00] RETRY_DAY 2026-09-18 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 381,
+      "timestamp": "2026-09-24T15:44:59",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:44:59+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 383,
+      "timestamp": "2026-09-24T15:45:33",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:45:33+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 385,
+      "timestamp": "2026-09-24T15:49:03",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T15:49:03+08:00] RETRY_DAY 2026-09-18 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 386,
+      "timestamp": "2026-09-24T15:49:03",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:49:03+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 388,
+      "timestamp": "2026-09-24T15:49:16",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:49:16+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 392,
+      "timestamp": "2026-09-24T15:59:16",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T15:59:16+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 394,
+      "timestamp": "2026-09-24T15:59:33",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T15:59:33+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 396,
+      "timestamp": "2026-09-24T16:00:33",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T16:00:33+08:00] RETRY_DAY 2026-09-18 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 397,
+      "timestamp": "2026-09-24T16:00:33",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T16:00:33+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 399,
+      "timestamp": "2026-09-24T16:00:48",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T16:00:48+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 401,
+      "timestamp": "2026-09-24T16:02:18",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T16:02:18+08:00] RETRY_DAY 2026-09-18 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 402,
+      "timestamp": "2026-09-24T16:02:18",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T16:02:18+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 404,
+      "timestamp": "2026-09-24T16:02:59",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T16:02:59+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 406,
+      "timestamp": "2026-09-24T16:04:59",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T16:04:59+08:00] RETRY_DAY 2026-09-18 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 407,
+      "timestamp": "2026-09-24T16:04:59",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T16:04:59+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 409,
+      "timestamp": "2026-09-24T16:05:50",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T16:05:50+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 411,
+      "timestamp": "2026-09-24T16:08:20",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T16:08:20+08:00] RETRY_DAY 2026-09-18 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 412,
+      "timestamp": "2026-09-24T16:08:20",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T16:08:20+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 414,
+      "timestamp": "2026-09-24T16:08:49",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T16:08:49+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 416,
+      "timestamp": "2026-09-24T16:11:49",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T16:11:49+08:00] RETRY_DAY 2026-09-18 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 417,
+      "timestamp": "2026-09-24T16:11:49",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T16:11:49+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 419,
+      "timestamp": "2026-09-24T16:12:29",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T16:12:29+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 421,
+      "timestamp": "2026-09-24T16:15:59",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T16:15:59+08:00] RETRY_DAY 2026-09-18 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 422,
+      "timestamp": "2026-09-24T16:15:59",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T16:15:59+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 424,
+      "timestamp": "2026-09-24T16:16:48",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T16:16:48+08:00] CHAIN_EXIT 2026-09-18 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 429,
+      "timestamp": "2026-09-24T16:18:38",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T16:18:38+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260918"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 431,
+      "timestamp": "2026-09-24T16:35:14",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T16:35:14+08:00] CHAIN_EXIT 2026-09-18 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 436,
+      "timestamp": "2026-09-24T17:16:41",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T17:16:41+08:00] CHAIN_EXIT 2026-09-21 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 438,
+      "timestamp": "2026-09-24T17:17:41",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T17:17:41+08:00] RETRY_DAY 2026-09-21 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 439,
+      "timestamp": "2026-09-24T17:17:41",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T17:17:41+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260921"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 441,
+      "timestamp": "2026-09-24T17:36:34",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T17:36:34+08:00] CHAIN_EXIT 2026-09-21 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 446,
+      "timestamp": "2026-09-24T18:20:11",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T18:20:11+08:00] CHAIN_EXIT 2026-09-22 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 448,
+      "timestamp": "2026-09-24T18:21:11",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T18:21:11+08:00] RETRY_DAY 2026-09-22 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 449,
+      "timestamp": "2026-09-24T18:21:11",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T18:21:11+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260922"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 451,
+      "timestamp": "2026-09-24T18:36:59",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T18:36:59+08:00] CHAIN_EXIT 2026-09-22 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 456,
+      "timestamp": "2026-09-24T19:18:33",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T19:18:33+08:00] CHAIN_EXIT 2026-09-23 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 458,
+      "timestamp": "2026-09-24T19:19:33",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T19:19:33+08:00] RETRY_DAY 2026-09-23 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 459,
+      "timestamp": "2026-09-24T19:19:33",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T19:19:33+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260923"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 461,
+      "timestamp": "2026-09-24T21:42:33",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T21:42:33+08:00] CHAIN_EXIT 2026-09-23 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 467,
+      "timestamp": "2026-09-24T21:43:25",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T21:43:25+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 469,
+      "timestamp": "2026-09-24T21:44:25",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T21:44:25+08:00] RETRY_DAY 2026-09-24 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 470,
+      "timestamp": "2026-09-24T21:44:25",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T21:44:25+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 472,
+      "timestamp": "2026-09-24T21:59:30",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T21:59:30+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 474,
+      "timestamp": "2026-09-24T22:01:00",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T22:01:00+08:00] RETRY_DAY 2026-09-24 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 475,
+      "timestamp": "2026-09-24T22:01:00",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T22:01:00+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 477,
+      "timestamp": "2026-09-24T22:06:06",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T22:06:06+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 479,
+      "timestamp": "2026-09-24T22:08:06",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T22:08:06+08:00] RETRY_DAY 2026-09-24 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 480,
+      "timestamp": "2026-09-24T22:08:06",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T22:08:06+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 482,
+      "timestamp": "2026-09-24T22:23:11",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T22:23:11+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 484,
+      "timestamp": "2026-09-24T22:25:42",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T22:25:42+08:00] RETRY_DAY 2026-09-24 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 485,
+      "timestamp": "2026-09-24T22:25:42",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T22:25:42+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 487,
+      "timestamp": "2026-09-24T22:30:46",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T22:30:46+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 489,
+      "timestamp": "2026-09-24T22:33:46",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T22:33:46+08:00] RETRY_DAY 2026-09-24 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 490,
+      "timestamp": "2026-09-24T22:33:46",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T22:33:46+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 492,
+      "timestamp": "2026-09-24T22:43:52",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T22:43:52+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 494,
+      "timestamp": "2026-09-24T22:47:22",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T22:47:22+08:00] RETRY_DAY 2026-09-24 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 495,
+      "timestamp": "2026-09-24T22:47:22",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T22:47:22+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 497,
+      "timestamp": "2026-09-24T22:52:28",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T22:52:28+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 502,
+      "timestamp": "2026-09-24T23:02:28",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T23:02:28+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 504,
+      "timestamp": "2026-09-24T23:17:33",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T23:17:33+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 506,
+      "timestamp": "2026-09-24T23:18:33",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T23:18:33+08:00] RETRY_DAY 2026-09-24 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 507,
+      "timestamp": "2026-09-24T23:18:33",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T23:18:33+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 509,
+      "timestamp": "2026-09-24T23:28:38",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T23:28:38+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 511,
+      "timestamp": "2026-09-24T23:30:09",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T23:30:09+08:00] RETRY_DAY 2026-09-24 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 512,
+      "timestamp": "2026-09-24T23:30:09",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T23:30:09+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 514,
+      "timestamp": "2026-09-24T23:35:14",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T23:35:14+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 516,
+      "timestamp": "2026-09-24T23:37:14",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T23:37:14+08:00] RETRY_DAY 2026-09-24 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 517,
+      "timestamp": "2026-09-24T23:37:14",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T23:37:14+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 519,
+      "timestamp": "2026-09-24T23:42:18",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T23:42:18+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 521,
+      "timestamp": "2026-09-24T23:44:48",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-24T23:44:48+08:00] RETRY_DAY 2026-09-24 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 522,
+      "timestamp": "2026-09-24T23:44:48",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-24T23:44:48+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 524,
+      "timestamp": "2026-09-24T23:59:54",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-24T23:59:54+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 526,
+      "timestamp": "2026-09-25T00:02:54",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T00:02:54+08:00] RETRY_DAY 2026-09-24 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 527,
+      "timestamp": "2026-09-25T00:02:54",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T00:02:54+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 529,
+      "timestamp": "2026-09-25T00:17:59",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T00:17:59+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 531,
+      "timestamp": "2026-09-25T00:21:29",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T00:21:29+08:00] RETRY_DAY 2026-09-24 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 532,
+      "timestamp": "2026-09-25T00:21:29",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T00:21:29+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 534,
+      "timestamp": "2026-09-25T00:36:35",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T00:36:35+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 538,
+      "timestamp": "2026-09-25T00:46:35",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T00:46:35+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 540,
+      "timestamp": "2026-09-25T00:46:39",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T00:46:39+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 542,
+      "timestamp": "2026-09-25T00:47:39",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T00:47:39+08:00] RETRY_DAY 2026-09-24 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 543,
+      "timestamp": "2026-09-25T00:47:39",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T00:47:39+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 545,
+      "timestamp": "2026-09-25T00:47:43",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T00:47:43+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 547,
+      "timestamp": "2026-09-25T00:49:13",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T00:49:13+08:00] RETRY_DAY 2026-09-24 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 548,
+      "timestamp": "2026-09-25T00:49:13",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T00:49:13+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 550,
+      "timestamp": "2026-09-25T01:04:19",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T01:04:19+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 552,
+      "timestamp": "2026-09-25T01:06:19",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T01:06:19+08:00] RETRY_DAY 2026-09-24 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 553,
+      "timestamp": "2026-09-25T01:06:19",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T01:06:19+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 555,
+      "timestamp": "2026-09-25T01:16:25",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T01:16:25+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 557,
+      "timestamp": "2026-09-25T01:18:55",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T01:18:55+08:00] RETRY_DAY 2026-09-24 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 558,
+      "timestamp": "2026-09-25T01:18:55",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T01:18:55+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 560,
+      "timestamp": "2026-09-25T01:29:01",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T01:29:01+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 562,
+      "timestamp": "2026-09-25T01:32:01",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T01:32:01+08:00] RETRY_DAY 2026-09-24 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 563,
+      "timestamp": "2026-09-25T01:32:01",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T01:32:01+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 565,
+      "timestamp": "2026-09-25T01:42:06",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T01:42:06+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 567,
+      "timestamp": "2026-09-25T01:45:36",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T01:45:36+08:00] RETRY_DAY 2026-09-24 attempt=7"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 568,
+      "timestamp": "2026-09-25T01:45:36",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T01:45:36+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 570,
+      "timestamp": "2026-09-25T02:00:42",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T02:00:42+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 574,
+      "timestamp": "2026-09-25T02:10:42",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T02:10:42+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 576,
+      "timestamp": "2026-09-25T02:25:48",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T02:25:48+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 578,
+      "timestamp": "2026-09-25T02:26:48",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T02:26:48+08:00] RETRY_DAY 2026-09-24 attempt=2"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 579,
+      "timestamp": "2026-09-25T02:26:48",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T02:26:48+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 581,
+      "timestamp": "2026-09-25T02:41:54",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T02:41:54+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 583,
+      "timestamp": "2026-09-25T02:43:24",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T02:43:24+08:00] RETRY_DAY 2026-09-24 attempt=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 584,
+      "timestamp": "2026-09-25T02:43:24",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T02:43:24+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 586,
+      "timestamp": "2026-09-25T02:43:39",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T02:43:39+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 588,
+      "timestamp": "2026-09-25T02:45:39",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T02:45:39+08:00] RETRY_DAY 2026-09-24 attempt=4"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 589,
+      "timestamp": "2026-09-25T02:45:39",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T02:45:39+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 591,
+      "timestamp": "2026-09-25T02:58:49",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T02:58:49+08:00] CHAIN_EXIT 2026-09-24 rc=1"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 593,
+      "timestamp": "2026-09-25T03:01:19",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T03:01:19+08:00] RETRY_DAY 2026-09-24 attempt=5"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 594,
+      "timestamp": "2026-09-25T03:01:19",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T03:01:19+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 596,
+      "timestamp": "2026-09-25T03:45:38",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T03:45:38+08:00] CHAIN_EXIT 2026-09-24 rc=3"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 598,
+      "timestamp": "2026-09-25T03:48:38",
+      "tokens": [
+        "RETRY_DAY"
+      ],
+      "text": "[2026-09-25T03:48:38+08:00] RETRY_DAY 2026-09-24 attempt=6"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 599,
+      "timestamp": "2026-09-25T03:48:38",
+      "tokens": [
+        "REUSE_TIP_DIR"
+      ],
+      "text": "[2026-09-25T03:48:38+08:00] REUSE_TIP_DIR D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 601,
+      "timestamp": "2026-09-25T04:07:28",
+      "tokens": [
+        "CHAIN_EXIT"
+      ],
+      "text": "[2026-09-25T04:07:28+08:00] CHAIN_EXIT 2026-09-24 rc=0"
+    },
+    {
+      "source": "UNATTENDED",
+      "line_no": 604,
+      "timestamp": "2026-09-25T04:07:33",
+      "tokens": [
+        "ALL_CAUGHT_UP"
+      ],
+      "text": "[2026-09-25T04:07:33+08:00] ALL_CAUGHT_UP"
+    },
+    {
+      "source": "FULL_CHAIN",
+      "line_no": 1352,
+      "timestamp": "2026-09-25T03:48:40",
+      "tokens": [
+        "RESUME_FROM_"
+      ],
+      "text": "[2026-09-25T03:48:40+08:00] RESUME_FROM_CACHE tip=2026-09-24"
+    },
+    {
+      "source": "FULL_CHAIN",
+      "line_no": 1353,
+      "timestamp": "2026-09-25T03:48:40",
+      "tokens": [
+        "SKIP_CLEAN_SWITCH"
+      ],
+      "text": "[2026-09-25T03:48:40+08:00] SKIP_CLEAN_SWITCH clean_already=2026-09-24"
+    }
+  ],
+  "redaction_policy": "credential-shaped fragments replaced with <REDACTED...>; the remainder of each line is byte-faithful. Redacted lines are flagged.",
+  "full_logs_uploaded": false,
+  "boundaries": {
+    "executed_anything": false,
+    "read_pid_files": false,
+    "read_credentials": false,
+    "read_parquet": false,
+    "probed_other_folders": false
+  }
+}
