@@ -1,3 +1,23 @@
+# Current task: V3 attempt3 with complete summary (2026-10-27)
+
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+execution_host: ZHANGWEI
+status: V3_TASK_PUBLISHED_NOT_LOCAL_ACK
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+Read the full summary and exact execution contract at:
+agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md
+
+GPT repaired V2's argument quoting and raw-error handling. The collector remains byte-identical. Reviewer Linux 23/23 pass (original17 unchanged plus6 regressions), NOT native Windows acceptance. Both existing V1/V2 failures stay failed and preserved.
+
+Inspect local active/completed/failed attempt3 results first; never interrupt or duplicate a process. Verify all11 payloads in the NEW windows_fixture_v3 package. Run the native23 gate once; only full success permits the unchanged collector to exclusive capture_003. SAM then performs the existing fourteen-source handoff and one-directory filename index only if its gate permits. Preserve raw outputs and literal exits. No automatic fourth attempt or locally invented repair/diagnostic script.
+
+Upload/read back EVERY file, including manifest/readback receipt, and finish Cursor chat with exactly END. No password work, authentication, quota, download, CURRENT, release or order.
+
+---
+
 # Owner-requested action: continue V2 and return evidence (2026-10-27)
 
 task_id: BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027
