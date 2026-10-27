@@ -1,0 +1,94 @@
+{
+  "schema": "DELIVERY_MANIFEST_ATTEMPT2_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "attempt": 2,
+  "variant": "WINDOWS_JUNCTION_FIXTURES_NO_ELEVATION",
+  "generated_at_cn": "2026-10-27T13:13:21+0800",
+  "status": "ATTEMPT2_BLOCKED_AT_FIXTURE_GATE_COLLECTION_NOT_RUN",
+  "gate": {
+    "tests_total": 17,
+    "passed": 15,
+    "errors": 2,
+    "process_exit_code": 1,
+    "stdout_bytes": 0,
+    "stderr_bytes": 5253
+  },
+  "collector_run": "NOT_RUN",
+  "capture_002_present": false,
+  "chain_source_001_present": false,
+  "chain_source_001_reason": "EXACT_CHAIN_SOURCE_PLAN is gated on a passing 17/17 V2 gate; a host/output failure stops the handoff, so it was not started",
+  "root_cause_summary": "V2 fixture passes one pre-quoted command string as a single argv element to cmd.exe; list2cmdline escapes the inner quotes and mklink rejects the paths. Passing tokens separately creates a real junction on the same host, same unelevated account, same volume.",
+  "not_a_privilege_failure": true,
+  "files": [
+    {
+      "name": "ACK_V2.json",
+      "bytes": 2965,
+      "sha256": "b36b62891687f49d49d306adc5761c024e3d401f74431c044de129e943b4d8d7"
+    },
+    {
+      "name": "COMMAND_LEDGER_ATTEMPT2.json",
+      "bytes": 7830,
+      "sha256": "847669a3eee1b5c1cbf838255987da0f7a055f807042f9b7e891fa8a62c5412f"
+    },
+    {
+      "name": "STAGE_VERIFY_V2.json",
+      "bytes": 1790,
+      "sha256": "ecda4d214527e0cbb785fc6a38fd3083d7e11a5000a92901de0f2b6ebaafbf86"
+    },
+    {
+      "name": "JUNCTION_FIXTURE_DIAGNOSTIC_V2.json",
+      "bytes": 5160,
+      "sha256": "9b9b0248a332043bc9c4191044eeb4a83e998b957543d44c745ac20b3919c1b6"
+    },
+    {
+      "name": "FIXTURE_CONTROLS_ATTEMPT2_LEDGER.json",
+      "bytes": 1264,
+      "sha256": "ec725b66c901294f9c36a0293eacc092ee7dc737da55015e32bbe2a302119913"
+    },
+    {
+      "name": "FIXTURE_CONTROLS_ATTEMPT2_STDOUT.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "FIXTURE_CONTROLS_ATTEMPT2_STDERR.txt",
+      "bytes": 5319,
+      "sha256": "6c92febbe0fc575f63b99e51548c5e893bb0b5f792df8677e63eda3f532ff854"
+    },
+    {
+      "name": "REPORT_ATTEMPT2.md",
+      "bytes": 7562,
+      "sha256": "d7f375055b862b6657b9e1f66e72f1055f40bbd278bdd02b88027108b6588e2d"
+    }
+  ],
+  "count": 8,
+  "v1_preserved": [
+    "ACK.json",
+    "COMMAND_LEDGER.json",
+    "CURSOR_EVIDENCE_APPENDIX.json",
+    "DELIVERY_MANIFEST.json",
+    "FACTOR_EVIDENCE_NOTE.md",
+    "FIXTURE_CONTROLS_LEDGER.json",
+    "FIXTURE_CONTROLS_STDERR.txt",
+    "FIXTURE_CONTROLS_STDOUT.txt",
+    "R15_UNIT_EVIDENCE.json",
+    "RELEASE_PRODUCER_MAP.json",
+    "REPORT.md",
+    "UPLOAD_READBACK.json"
+  ],
+  "v1_note": "no V1 file was modified, overwritten or restated as passed",
+  "excluded_from_this_manifest": {
+    "DELIVERY_MANIFEST_ATTEMPT2.json": "self",
+    "UPLOAD_READBACK_ATTEMPT2.json": "readback receipt; verified after upload without self-hash",
+    "COLLECTOR_ATTEMPT2_STDOUT.txt": "not produced - collector never invoked; empty files would falsely imply a run with no output",
+    "COLLECTOR_ATTEMPT2_STDERR.txt": "same"
+  },
+  "authority": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false
+  }
+}
