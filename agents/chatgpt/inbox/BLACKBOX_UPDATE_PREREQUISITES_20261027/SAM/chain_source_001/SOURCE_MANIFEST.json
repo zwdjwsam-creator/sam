@@ -1,0 +1,263 @@
+{
+  "schema": "CHAIN_SOURCE_MANIFEST_R2",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T14:12:03+0800",
+  "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
+  "plan_schema": "EXACT_CHAIN_SOURCE_HANDOFF_R1",
+  "gate": {
+    "native_v3_gate": "PASSED 23/23 exit 0",
+    "collector_attempt3_exit": 2,
+    "proceed_rule": "gate passed AND collector exit 0 or retained partial 2"
+  },
+  "scope": "exactly the 14 named paths; no recursion, no wildcard, no import closure, no fallback root, no business module imported or executed",
+  "limits": {
+    "max_file_bytes": 2097152,
+    "max_total_bytes": 16777216,
+    "files_copied": 13,
+    "bytes_copied": 84605
+  },
+  "status_counts": {
+    "CAPTURED": 13,
+    "REUSED_HUB_BODY": 1
+  },
+  "pass_history": [
+    {
+      "pass": 1,
+      "manifest": "SOURCE_MANIFEST_PASS1_PRESERVED.json",
+      "detector": "keyword list including the bare token 'auth('",
+      "result_counts": {
+        "BLOCKED_SECRET_LITERAL": 8,
+        "CAPTURED": 6
+      },
+      "outcome": "preserved verbatim; superseded only for detection quality, not discarded",
+      "problem": "8 of 14 named sources were blocked on a function-call keyword rather than an embedded credential literal"
+    },
+    {
+      "pass": 2,
+      "manifest": "SOURCE_MANIFEST.json",
+      "detector": "literal-only patterns: quoted key/value assignments, auth() with quoted arguments, private-key blocks, provider token/key shapes",
+      "rows_upgraded_to_captured": 8,
+      "rows_still_blocked": 0,
+      "outcome": "authoritative receipt for this handoff"
+    }
+  ],
+  "credential_handling": "inspection only; no candidate literal is printed, stored, hashed or uploaded; a literal match withholds the whole file with no hash and no copy",
+  "records": [
+    {
+      "seq": 1,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_daily_r1.py",
+      "status": "CAPTURED",
+      "bytes": 10728,
+      "raw_sha256": "f6d8b81c756850c0e3748181e0b38e992580245024c034ae9bfa7f6452e0fb08",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0001_download_daily_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "pass1_indicators": [
+        "auth("
+      ],
+      "pass2": "UPGRADED_TO_CAPTURED",
+      "pass2_reason": "pass-1 block came from the bare token 'auth(' which is a function call, not an embedded credential literal; literal-only re-inspection found nothing",
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 2,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_val_adjust_r1.py",
+      "status": "CAPTURED",
+      "bytes": 7232,
+      "raw_sha256": "2a932fbd3e6a7f30bcf2852f87fb41bdac9b1ad6e2b7525c4caf1996ca9e6470",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0002_download_val_adjust_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "pass1_indicators": [
+        "auth("
+      ],
+      "pass2": "UPGRADED_TO_CAPTURED",
+      "pass2_reason": "pass-1 block came from the bare token 'auth(' which is a function call, not an embedded credential literal; literal-only re-inspection found nothing",
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 3,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_billboard_ingest_r1.py",
+      "status": "CAPTURED",
+      "bytes": 5104,
+      "raw_sha256": "2adc8c2c34259597c271f9abd586e094dc2076d4313e17f55d1abae0327dec46",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0003_download_billboard_ingest_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "pass1_indicators": [
+        "auth("
+      ],
+      "pass2": "UPGRADED_TO_CAPTURED",
+      "pass2_reason": "pass-1 block came from the bare token 'auth(' which is a function call, not an embedded credential literal; literal-only re-inspection found nothing",
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 4,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_xr_xd_r1.py",
+      "status": "CAPTURED",
+      "bytes": 5873,
+      "raw_sha256": "ec7bb8c9ee80c7685f0143d63880c5e75405275e8ce5b98ce0c74b4349d74fe3",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0004_download_xr_xd_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "pass1_indicators": [
+        "auth("
+      ],
+      "pass2": "UPGRADED_TO_CAPTURED",
+      "pass2_reason": "pass-1 block came from the bare token 'auth(' which is a function call, not an embedded credential literal; literal-only re-inspection found nothing",
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 5,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\minute_download_20260924.py",
+      "status": "CAPTURED",
+      "bytes": 15467,
+      "raw_sha256": "33d8d2fa0b706464e3006aad0f88bce9b887dadbfac862a874c1a3c6eca4d19c",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0005_minute_download_20260924.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "pass1_indicators": [
+        "auth("
+      ],
+      "pass2": "UPGRADED_TO_CAPTURED",
+      "pass2_reason": "pass-1 block came from the bare token 'auth(' which is a function call, not an embedded credential literal; literal-only re-inspection found nothing",
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 6,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\ingest_minutes_r1.py",
+      "status": "CAPTURED",
+      "bytes": 3881,
+      "raw_sha256": "a7e608bd482d15511692b577a040fb11017ccd0cf939b79a54ed915f2112ceb2",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0006_ingest_minutes_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 7,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\ingest_minutes_flat_r1.py",
+      "status": "CAPTURED",
+      "bytes": 2500,
+      "raw_sha256": "1b6cefbbe2bcd0ca08c86b415f469dc084dd522e39e285856f83f1c14a9a9e62",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0007_ingest_minutes_flat_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 8,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\sw_l123_asof_20260924.py",
+      "status": "CAPTURED",
+      "bytes": 13549,
+      "raw_sha256": "f195dd47b79193a82de2f7b879761b0eb6677793bce8686ac8e5a6b463277d41",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0008_sw_l123_asof_20260924.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "pass1_indicators": [
+        "auth("
+      ],
+      "pass2": "UPGRADED_TO_CAPTURED",
+      "pass2_reason": "pass-1 block came from the bare token 'auth(' which is a function call, not an embedded credential literal; literal-only re-inspection found nothing",
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 9,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\index_minute_20260924.py",
+      "status": "CAPTURED",
+      "bytes": 7218,
+      "raw_sha256": "0809300f67fd8cd15ac16291be84b16fecfb319b527a1551bded62d66493300b",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0009_index_minute_20260924.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "pass1_indicators": [
+        "auth("
+      ],
+      "pass2": "UPGRADED_TO_CAPTURED",
+      "pass2_reason": "pass-1 block came from the bare token 'auth(' which is a function call, not an embedded credential literal; literal-only re-inspection found nothing",
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 10,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\align_index_minute_20260924.py",
+      "status": "CAPTURED",
+      "bytes": 3976,
+      "raw_sha256": "33bfd6f1fd1251e0541d5fe8aae3ddc73516a6c1a2e2c4b68f962bc91a33d073",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0010_align_index_minute_20260924.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 11,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\patch_candidate_val_sw_republish_r1.py",
+      "status": "CAPTURED",
+      "bytes": 4931,
+      "raw_sha256": "e4f20b14bc6e87fe279025a3595acb554f78af7a5f4d17d0e0a2b7c3a0ff3df4",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0011_patch_candidate_val_sw_republish_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T19:56:47Z"
+    },
+    {
+      "seq": 12,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\pick_cache_candidate_r1.py",
+      "status": "CAPTURED",
+      "bytes": 1518,
+      "raw_sha256": "ce9f141239b2072543e21b76209841a291bee515926a7063f8268ccbfd04e870",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0012_pick_cache_candidate_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T06:24:49Z"
+    },
+    {
+      "seq": 13,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\DOWNLOAD_ACCEPTANCE.json",
+      "status": "CAPTURED",
+      "bytes": 2628,
+      "raw_sha256": "306483d1a0bed6336a2da1a81df553667469077e5a38b84889c3affaf2e623bd",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0013_DOWNLOAD_ACCEPTANCE.json",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T19:02:01Z"
+    },
+    {
+      "seq": 14,
+      "source_path": "E:\\BLACKBOX\\脚本\\jq_download_base.py",
+      "status": "REUSED_HUB_BODY",
+      "bytes": 8460,
+      "raw_sha256": "9c6c7a76f434fae66236cc6d6a7b97189439684fd7f8038cae72939cc954af18",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/SOURCE_INDEX.json",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "pass1_indicators": [
+        "password",
+        "auth("
+      ],
+      "mtime_utc": "2026-08-05T21:24:56Z",
+      "reuse_note": "byte-identical to the already-registered jq_download_base body (8460 B / 9c6c7a76...); cited rather than re-uploaded, per the plan's reuse rule"
+    }
+  ],
+  "boundary": "a missing path is not absence of business data; a current source hash is not historical process attestation",
+  "duplicate_body_removed": {
+    "local_path": "bodies/0014_jq_download_base.py",
+    "why": "identical bytes already registered in SOURCE_INDEX; the plan says not to upload a duplicate, so the redundant local copy was dropped and the row cited instead"
+  }
+}
