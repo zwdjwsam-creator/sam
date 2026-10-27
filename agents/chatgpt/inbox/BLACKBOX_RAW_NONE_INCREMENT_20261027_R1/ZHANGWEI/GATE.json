@@ -1,0 +1,43 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_GATE_RECEIPT_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R1",
+  "host": "ZHANGWEI",
+  "role": "ZHANGWEI",
+  "argv": [
+    "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "C:\\LAN_SHARE_REPORT\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\\package",
+    "-p",
+    "test_*.py",
+    "-v"
+  ],
+  "argv_one_line": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 -m unittest discover -s C:\\LAN_SHARE_REPORT\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\\package -p test_*.py -v",
+  "cwd": "C:\\LAN_SHARE_REPORT\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\\package",
+  "interpreter": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+  "started_cn": "2026-10-27T18:07:55+0800",
+  "finished_cn": "2026-10-27T18:07:57+0800",
+  "actual_exit_code": 1,
+  "stdout_bytes": 0,
+  "stderr_bytes": 4139,
+  "tests_ran": 27,
+  "tests_declared": 27,
+  "passed": 26,
+  "failures": 1,
+  "errors": 0,
+  "skips": 0,
+  "result_line": "FAILED (failures=1)",
+  "ran_line": "Ran 27 tests in 0.347s",
+  "gate_required": "27/27, zero errors/failures/skips, literal exit 0",
+  "gate_passed": false,
+  "failed_test": "test_acquire_daily.Keys.test_real_parquet_and_footer",
+  "consequence": "per contract the success gates are conjunctive, so acquire_daily.py --execute was NOT run",
+  "streams": {
+    "stdout": "GATE_STDOUT.txt",
+    "stderr": "GATE_STDERR.txt"
+  }
+}
