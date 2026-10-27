@@ -1,0 +1,227 @@
+{
+  "schema": "BLACKBOX_PREREQ_DELIVERY_MANIFEST_ATTEMPT2_R1",
+  "execution_host": "ZHANGWEI",
+  "hostname": "ZHANGWEI",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "return_dir": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI",
+  "delivered_at_cn": "2026-10-27T13:11:21+0800",
+  "delivery_status": "ATTEMPT2_STOPPED_AT_FIXTURE_CONTROLS_COLLECTOR_NOT_RUN",
+  "controls": {
+    "ran": true,
+    "exit": 1,
+    "total": 17,
+    "passed": 15,
+    "errored": 2,
+    "phase": "fixture_construction",
+    "error": "JUNCTION_FIXTURE_CREATION_FAILED"
+  },
+  "collector_invoked": false,
+  "capture_002_created": false,
+  "third_attempt_launched": false,
+  "delivered": [
+    {
+      "name": "ACK_V2.json",
+      "role": "ack_v2",
+      "bytes": 2960,
+      "sha256": "000f9448ee2b94c452149d976048d1011a5735027dde55407557f9e5e04794cc",
+      "remote_git_blob": "c90f1bc1fac9acc2740cce647102095f5f908558",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "COMMAND_LEDGER_ATTEMPT2.json",
+      "role": "ledger_attempt2",
+      "bytes": 11671,
+      "sha256": "caff989eb4607677d29a58d1d04a827614ace707516a98e93a1f1ad314c25faf",
+      "remote_git_blob": "0c75b7f7394ace0e87828af40e4975cf435fb70c",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "FIXTURE_CONTROLS_ATTEMPT2_STDOUT.txt",
+      "role": "literal_stdout_attempt2",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "FIXTURE_CONTROLS_ATTEMPT2_STDERR.txt",
+      "role": "literal_stderr_attempt2",
+      "bytes": 3861,
+      "sha256": "b769fac278c3c1d7f7b88493f26924db31abffb694d5855642563e409d355e11",
+      "remote_git_blob": "4142ccbc009829a4fb1a4ba6a4348498b2e5abc2",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "JUNCTION_CALL_PROBE.json",
+      "role": "fixture_diagnosis",
+      "bytes": 3279,
+      "sha256": "ded4a378c5310753843c75cb7883812ce4dd7113f103ff2aa5fb04540fc65036",
+      "remote_git_blob": "925d01b7a6cb942f945f6e46d25695c03e862ffe",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "STAGE_VERIFY_V2.json",
+      "role": "package_verification_v2",
+      "bytes": 4129,
+      "sha256": "6441711ff9dbf37910e1e366d4d5415696b641ee142200d070b78ea8a5c40faf",
+      "remote_git_blob": "38e874db7eb6b5c3f28350cf39d7943f26ab6bc8",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "COLLECTOR_ATTEMPT2_NOT_RUN.json",
+      "role": "collector_not_run",
+      "bytes": 1076,
+      "sha256": "234411d95fe019b67dff3fa6c0b6f885779c673b6df355bc0c020cf41e582a69",
+      "remote_git_blob": "60a7d25229dc83e886c8f4105e7bdbd89c335a17",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "REPORT_ATTEMPT2.md",
+      "role": "report_attempt2",
+      "bytes": 6844,
+      "sha256": "94d080ad9bc961749db1ac15207ef4fdcc81e5d2b44c90dfc043fcbcff0f9499",
+      "remote_git_blob": "996c2ea7dd8697622a66a48755d4947d084c8f0b",
+      "readback_byte_equal": true
+    }
+  ],
+  "not_delivered_and_why": [
+    {
+      "name": "COLLECTOR_ATTEMPT2_STDOUT.txt",
+      "reason": "no collector process started; an empty file would be indistinguishable from a silent run, so it is deliberately absent"
+    },
+    {
+      "name": "COLLECTOR_ATTEMPT2_STDERR.txt",
+      "reason": "same as above"
+    },
+    {
+      "name": "capture_002/",
+      "reason": "gate not met; never created"
+    }
+  ],
+  "v1_evidence": {
+    "files_checked": 11,
+    "all_remote_blobs_unchanged_after_this_upload": true,
+    "before": {
+      "ACK.json": {
+        "name": "ACK.json",
+        "sha": "58af377f1e705a3f8ddc8fd638f7eac2f8a6f99a",
+        "size": 2404
+      },
+      "COMMAND_LEDGER.json": {
+        "name": "COMMAND_LEDGER.json",
+        "sha": "05e0a9a97a219a43aedee144df5acd445715247a",
+        "size": 5720
+      },
+      "FIXTURE_CONTROLS_STDOUT.txt": {
+        "name": "FIXTURE_CONTROLS_STDOUT.txt",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      "FIXTURE_CONTROLS_STDERR.txt": {
+        "name": "FIXTURE_CONTROLS_STDERR.txt",
+        "sha": "8aa08438c294d23d2782b4e19eccd243c3e5efe4",
+        "size": 4119
+      },
+      "ENV_PRIVILEGE_PROBE.json": {
+        "name": "ENV_PRIVILEGE_PROBE.json",
+        "sha": "bb92dd72ff71a35ab69bff62b9bcdaa1cfe38955",
+        "size": 2707
+      },
+      "STAGE_VERIFY.json": {
+        "name": "STAGE_VERIFY.json",
+        "sha": "8e383a0b01978f57d4243cc21bfe9a4a37293a54",
+        "size": 5359
+      },
+      "EXECUTION_BINDINGS.json": {
+        "name": "EXECUTION_BINDINGS.json",
+        "sha": "c0775ad412c48861ff201300044103e7d6ff998f",
+        "size": 27803
+      },
+      "CLEANING_TRANSFORM_BINDING.json": {
+        "name": "CLEANING_TRANSFORM_BINDING.json",
+        "sha": "668c9c4a23f1a8c138f6448e4094744231abfe02",
+        "size": 10932
+      },
+      "FACTOR_SPLICE_EVIDENCE.json": {
+        "name": "FACTOR_SPLICE_EVIDENCE.json",
+        "sha": "5bdde8ff6fafa38ec79f4ce51b78da8ad7a4a5a1",
+        "size": 6573
+      },
+      "PREREQUISITE_DELTA.json": {
+        "name": "PREREQUISITE_DELTA.json",
+        "sha": "98ed1f49d7d1733e7b4438ae0638276ccefe4a2f",
+        "size": 10388
+      },
+      "REPORT.md": {
+        "name": "REPORT.md",
+        "sha": "513b584b69cd930e92d3d1e1da8a387f45d9fbb0",
+        "size": 9844
+      }
+    },
+    "after": {
+      "ACK.json": {
+        "name": "ACK.json",
+        "sha": "58af377f1e705a3f8ddc8fd638f7eac2f8a6f99a",
+        "size": 2404
+      },
+      "COMMAND_LEDGER.json": {
+        "name": "COMMAND_LEDGER.json",
+        "sha": "05e0a9a97a219a43aedee144df5acd445715247a",
+        "size": 5720
+      },
+      "FIXTURE_CONTROLS_STDOUT.txt": {
+        "name": "FIXTURE_CONTROLS_STDOUT.txt",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      "FIXTURE_CONTROLS_STDERR.txt": {
+        "name": "FIXTURE_CONTROLS_STDERR.txt",
+        "sha": "8aa08438c294d23d2782b4e19eccd243c3e5efe4",
+        "size": 4119
+      },
+      "ENV_PRIVILEGE_PROBE.json": {
+        "name": "ENV_PRIVILEGE_PROBE.json",
+        "sha": "bb92dd72ff71a35ab69bff62b9bcdaa1cfe38955",
+        "size": 2707
+      },
+      "STAGE_VERIFY.json": {
+        "name": "STAGE_VERIFY.json",
+        "sha": "8e383a0b01978f57d4243cc21bfe9a4a37293a54",
+        "size": 5359
+      },
+      "EXECUTION_BINDINGS.json": {
+        "name": "EXECUTION_BINDINGS.json",
+        "sha": "c0775ad412c48861ff201300044103e7d6ff998f",
+        "size": 27803
+      },
+      "CLEANING_TRANSFORM_BINDING.json": {
+        "name": "CLEANING_TRANSFORM_BINDING.json",
+        "sha": "668c9c4a23f1a8c138f6448e4094744231abfe02",
+        "size": 10932
+      },
+      "FACTOR_SPLICE_EVIDENCE.json": {
+        "name": "FACTOR_SPLICE_EVIDENCE.json",
+        "sha": "5bdde8ff6fafa38ec79f4ce51b78da8ad7a4a5a1",
+        "size": 6573
+      },
+      "PREREQUISITE_DELTA.json": {
+        "name": "PREREQUISITE_DELTA.json",
+        "sha": "98ed1f49d7d1733e7b4438ae0638276ccefe4a2f",
+        "size": 10388
+      },
+      "REPORT.md": {
+        "name": "REPORT.md",
+        "sha": "513b584b69cd930e92d3d1e1da8a387f45d9fbb0",
+        "size": 9844
+      }
+    },
+    "local_ledger_restored_from_remote_blob": true,
+    "local_ledger_bytes": 5720,
+    "local_ledger_sha256": "657e1f7cb296d7eb3012a2ec242eff42edb55ff1e869c1acb42d131ad792f976"
+  },
+  "acquisition_authorized": false,
+  "current_switch_allowed": false,
+  "order_allowed": false,
+  "foundation_acceptance": false
+}
