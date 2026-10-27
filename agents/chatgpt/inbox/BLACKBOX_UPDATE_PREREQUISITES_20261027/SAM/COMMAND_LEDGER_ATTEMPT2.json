@@ -1,0 +1,176 @@
+{
+  "schema": "COMMAND_LEDGER_ATTEMPT2_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T13:12:37+0800",
+  "attempts": [
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_R1",
+      "tag": "FIXTURE_CONTROLS",
+      "argv": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package",
+        "-p",
+        "test_collect_prerequisites.py",
+        "-v"
+      ],
+      "argv_joined": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 -m unittest discover -s C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package -p test_collect_prerequisites.py -v",
+      "cwd": "E:\\BLACKBOX",
+      "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "hostname": "SAM",
+      "started_at_cn": "2026-10-27T12:38:50+0800",
+      "ended_at_cn": "2026-10-27T12:39:05+0800",
+      "elapsed_sec": 15.485,
+      "exit_code": 1,
+      "exit_code_source": "subprocess.run returncode (literal process exit, not derived from artifacts)",
+      "stdout_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\FIXTURE_CONTROLS_STDOUT.txt",
+      "stderr_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\FIXTURE_CONTROLS_STDERR.txt",
+      "stdout_bytes": 0,
+      "stderr_bytes": 4137,
+      "attempt": 1,
+      "package": "package (V1, symlink fixtures)",
+      "gate_outcome": "FAILED 15/17; 2 setup errors os.symlink WinError 1314",
+      "retained_unchanged": true
+    },
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_R1",
+      "tag": "FIXTURE_CONTROLS_ATTEMPT2",
+      "argv": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v2",
+        "-p",
+        "test_collect_prerequisites.py",
+        "-v"
+      ],
+      "argv_joined": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 -m unittest discover -s C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v2 -p test_collect_prerequisites.py -v",
+      "cwd": "E:\\BLACKBOX",
+      "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "hostname": "SAM",
+      "started_at_cn": "2026-10-27T13:10:39+0800",
+      "ended_at_cn": "2026-10-27T13:10:44+0800",
+      "elapsed_sec": 4.134,
+      "exit_code": 1,
+      "exit_code_source": "subprocess.run returncode (literal process exit, not derived from artifacts)",
+      "stdout_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\FIXTURE_CONTROLS_ATTEMPT2_STDOUT.txt",
+      "stderr_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\logs\\FIXTURE_CONTROLS_ATTEMPT2_STDERR.txt",
+      "stdout_bytes": 0,
+      "stderr_bytes": 5253,
+      "attempt": 2,
+      "package": "package_windows_fixture_v2 (junction fixtures)",
+      "gate_outcome": "FAILED 15/17; 2 setup errors JUNCTION_FIXTURE_CREATION_FAILED",
+      "retained_unchanged": true
+    },
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_R1",
+      "attempt": 2,
+      "kind": "COLLECTOR",
+      "tag": "COLLECTOR_ATTEMPT2_NOT_RUN",
+      "argv": null,
+      "argv_joined": null,
+      "cwd": null,
+      "executable": null,
+      "hostname": null,
+      "started_at_cn": null,
+      "ended_at_cn": null,
+      "elapsed_sec": null,
+      "exit_code": null,
+      "exit_code_source": "NOT_APPLICABLE - command deliberately not invoked",
+      "stdout_path": null,
+      "stderr_path": null,
+      "not_run_reason": "Attempt-2 controls failed 2/17. Resume doc: 'Exit 0 and all seventeen pass are required before collection.' No bypass permitted, so capture_002 was never requested."
+    },
+    {
+      "schema": "COMMAND_LEDGER_ENTRY_R1",
+      "attempt": 2,
+      "kind": "CHAIN_SOURCE_HANDOFF",
+      "tag": "CHAIN_SOURCE_001_NOT_RUN",
+      "argv": null,
+      "argv_joined": null,
+      "cwd": null,
+      "executable": null,
+      "hostname": null,
+      "started_at_cn": null,
+      "ended_at_cn": null,
+      "elapsed_sec": null,
+      "exit_code": null,
+      "exit_code_source": "NOT_APPLICABLE - command deliberately not invoked",
+      "stdout_path": null,
+      "stderr_path": null,
+      "not_run_reason": "EXACT_CHAIN_SOURCE_PLAN is gated on 'After seventeen V2 controls pass'. They did not pass, and a host/output failure stops the handoff. chain_source_001 was therefore not created."
+    }
+  ],
+  "staging_verification": {
+    "schema": "STAGE_VERIFY_V2_R1",
+    "payloads_verified": 10,
+    "all_match": true,
+    "collector_unchanged": true,
+    "collector_sha_expected": "3e20395ef19dec1a81b4d81c5112f4f5dcc00de09c146d7076c6267f7dc96858",
+    "detail_file": "STAGE_VERIFY_V2.json"
+  },
+  "junction_diagnostic": {
+    "detail_file": "JUNCTION_FIXTURE_DIAGNOSTIC_V2.json",
+    "variant_matrix": [
+      {
+        "variant": "A_exact_v2_invocation",
+        "returncode": 1,
+        "link_created": false,
+        "is_junction": false,
+        "stderr_gbk": "文件名、目录名或卷标语法不正确。\r\n",
+        "command_form": "list argv with one pre-quoted command string (EXACTLY the V2 fixture form); list2cmdline -> cmd.exe /d /c \"mklink /J \\\"C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_e81f5cko\\root\\view\\\" \\\"C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_e81f5cko\\outside\\\"\""
+      },
+      {
+        "variant": "B_separate_argv",
+        "returncode": 0,
+        "link_created": true,
+        "is_junction": true,
+        "stderr_gbk": "",
+        "command_form": "cmd /c with separate argv tokens"
+      },
+      {
+        "variant": "C_shell_true_quoted",
+        "returncode": 0,
+        "link_created": true,
+        "is_junction": true,
+        "stderr_gbk": "",
+        "command_form": "shell=True with quoted string"
+      },
+      {
+        "variant": "D_shell_true_unquoted",
+        "returncode": 0,
+        "link_created": true,
+        "is_junction": true,
+        "stderr_gbk": "",
+        "command_form": "shell=True unquoted"
+      }
+    ],
+    "verdict": {
+      "fixture_can_create_junction_on_this_host": true,
+      "exact_v2_form_succeeds": false,
+      "root_cause": "The V2 fixture passes the whole command as ONE list element to cmd.exe. subprocess.list2cmdline then wraps it in quotes and escapes the inner quotes as \\\", which cmd.exe/mklink does not parse, so mklink reports 'The filename, directory name, or volume label syntax is incorrect.' Passing the tokens as separate argv elements works.",
+      "not_a_privilege_failure": "Variant B creates a real junction on the same host, same unelevated account, same C: temp volume, in the same run.",
+      "secondary_defect": "In the fixture, subprocess.run(..., text=True) decodes the child's GBK error text as UTF-8; the reader thread raises UnicodeDecodeError and stderr becomes None, so the raised message is a TypeError ('can only concatenate str (not \"NoneType\") to str') and the real diagnostic is lost.",
+      "collector_status": "NOT_RUN - gate did not pass and no bypass is permitted"
+    }
+  },
+  "environment_notes": {
+    "elevation": "unelevated (SAM\\ThinkPad)",
+    "developer_mode": "not enabled (unchanged by this attempt)",
+    "policy_change": "none",
+    "test_or_collector_edit": "none"
+  }
+}
