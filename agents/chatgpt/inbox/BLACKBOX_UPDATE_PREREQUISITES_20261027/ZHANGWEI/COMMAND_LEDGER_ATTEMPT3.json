@@ -1,0 +1,103 @@
+{
+  "schema": "BLACKBOX_PREREQ_COMMAND_LEDGER_ATTEMPT3_R1",
+  "execution_host": "ZHANGWEI",
+  "hostname": "ZHANGWEI",
+  "written_at_cn": "2026-10-27T13:36:01.060+0800",
+  "dispatcher_python": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+  "dispatcher_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "rows": [
+    {
+      "attempt": 3,
+      "label": "native_gate_23_tests_attempt3",
+      "argv": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3",
+      "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "hostname": "ZHANGWEI",
+      "platform_node": "ZHANGWEI",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "started_at_cn": "2026-10-27T13:36:00.632+0800",
+      "ended_at_cn": "2026-10-27T13:36:01.053+0800",
+      "duration_sec": 0.42,
+      "actual_process_exit_code": 0,
+      "timed_out": false,
+      "raw_stdout_file": "FIXTURE_CONTROLS_ATTEMPT3_STDOUT.txt",
+      "raw_stderr_file": "FIXTURE_CONTROLS_ATTEMPT3_STDERR.txt",
+      "stdout_bytes": 0,
+      "stderr_bytes": 3080,
+      "stdout_is_valid_utf8": true,
+      "stderr_is_valid_utf8": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bb59cf1aa162a0da9f2cb1c29dde4eea8f26889ec6641b41d960ca6243324de6",
+      "test_counts": {
+        "ok": 23,
+        "fail": 0,
+        "error": 0,
+        "skip": 0,
+        "ran_line": "Ran 23 tests in 0.248s",
+        "verdict_line": "OK"
+      }
+    },
+    {
+      "attempt": 3,
+      "label": "collect_prerequisites_ZHANGWEI_capture_003",
+      "argv": [
+        "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3\\collect_prerequisites.py",
+        "--role",
+        "ZHANGWEI",
+        "--out",
+        "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\ZHANGWEI\\capture_003"
+      ],
+      "cwd": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3",
+      "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "hostname": "ZHANGWEI",
+      "platform_node": "ZHANGWEI",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "started_at_cn": "2026-10-27T13:36:01.295+0800",
+      "ended_at_cn": "2026-10-27T13:36:01.495+0800",
+      "duration_sec": 0.199,
+      "actual_process_exit_code": 0,
+      "timed_out": false,
+      "raw_stdout_file": "COLLECTOR_ATTEMPT3_STDOUT.txt",
+      "raw_stderr_file": "COLLECTOR_ATTEMPT3_STDERR.txt",
+      "stdout_bytes": 98,
+      "stderr_bytes": 0,
+      "stdout_is_valid_utf8": true,
+      "stderr_is_valid_utf8": true,
+      "stdout_sha256": "537ff250e4260712de5b5a54dd7422b640f2ba52e39b101f9182e24afeacf9c3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "gate_requirement": "ALL 23 tests, zero failures/errors/skips, actual exit 0",
+  "gate_counts": {
+    "ok": 23,
+    "fail": 0,
+    "error": 0,
+    "skip": 0,
+    "ran_line": "Ran 23 tests in 0.248s",
+    "verdict_line": "OK"
+  },
+  "collector_invoked": true,
+  "prior_attempts_preserved": {
+    "attempt_1": "COMMAND_LEDGER.json (exit 1, fixture os.symlink WinError 1314)",
+    "attempt_2": "COMMAND_LEDGER_ATTEMPT2.json (exit 1, JUNCTION_FIXTURE_CREATION_FAILED)"
+  },
+  "third_attempt_launched": true,
+  "no_fourth_attempt_planned": true,
+  "outcome": "ATTEMPT3_COLLECTOR_EXIT_0",
+  "exit_code_interpretation": "bounded capture completed; NOT foundation/acquisition acceptance"
+}
