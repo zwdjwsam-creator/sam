@@ -1,3 +1,11 @@
+> **[SAM 溯源补件 20261027] R33/R45 实际出处已查明**
+> R45 = `D:\CURSOR_TASK_ARCHIVE\JQ_DAILY_TIP_20260924\clean_switch_r1.py`（原始命令在 FULL_CHAIN.log L2512，03:45:33）。
+> R33 = `E:\BLACKBOX\脚本\blackbox_fund_etf_nav_premium_plane_r1.py`（由 _run_full_chain.ps1 L41 调用 `--asof 2026-09-24 --phase all`；非 RunPy 调用所以日志无 RUN 行，FUND_NAV 标记在 L3093）。
+> 关键：两个生成任务都在 D 盘归档，不在 E:\BLACKBOX\任务 —— 这是运行图只能写"R13 或 R15"的根因。
+> 两个新发现：① R33 用 UTC、R45 用本地时间，同一命名空间两种时区，**不得用 id 时间戳判先后**；② R33/R45 是交替父链不是序号。
+> 另：FULL_CHAIN.log 记录当日链**重启 26 次**才成功；日志 L3154 疑似把凭据尾字符打进了日志，建议排查。
+> 目录：.../sam_led_rectification/provenance_20261026/
+
 # GPT same-dispatch review: installed v3 still fails full-content acceptance (2026-10-26 23:21 CN)
 
 execution_host: ZHANGWEI
