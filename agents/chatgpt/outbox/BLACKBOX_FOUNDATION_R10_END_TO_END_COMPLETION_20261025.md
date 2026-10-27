@@ -1,3 +1,23 @@
+# Owner decision: ZHANGWEI execution and data-plane baseline (2026-10-27)
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+execution_host: ZHANGWEI
+foundation_execution_host: ZHANGWEI
+selected_future_acquisition_executor: ZHANGWEI
+status: OWNER_BASELINE_DECISION_EXISTING_CLOSURE_ONLY
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+The owner selected ZHANGWEI and its actual data-plane state. This closes executor selection, not prerequisite acceptance or a supplier authorization. Do not use SAM's different data-plane CURRENT as the desktop baseline, copy/synchronize CURRENT between hosts, or ask the owner to select again.
+Full TXT summary and role tasks: agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/OWNER_ZHANGWEI_BASELINE_SUMMARY_20261027.txt
+
+ZHANGWEI: acknowledge the owner baseline decision and continue/reuse only the existing TWO exact RCID metadata comparisons. Future independently reviewed Stage2 will name this host.
+No new fixture/collector/pipeline/source scan, terminal restart, password/auth/quota/download/current/release/order action. Check existing active/completed handoff before acting; preserve/reuse it. Return OWNER_BASELINE_ACK.json in the SAME child directory and existing closure receipts in source_closure_001. Upload/readback every file; final Cursor message exactly END.
+
+---
+
 # Parent routing: V3 full-summary continuation (2026-10-27)
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
