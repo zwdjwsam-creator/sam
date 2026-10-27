@@ -1,0 +1,72 @@
+{
+  "schema": "UPDATE_PREREQUISITES_ACK_V3_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host_expected": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T14:06:29+0800",
+  "attempt": 3,
+  "ack_refers_to": "COMPLETED_NATIVE_GATE_AND_PENDING_COLLECTOR",
+  "ack_meaning": "This ACK records the actual state at upload time: the V3 native gate has already been executed once and passed; the collector has NOT run and capture_003 does not exist. It is not a running-process claim.",
+  "disclosed_ordering_deviation": {
+    "rule": "The V3 contract asks for ACK_V3.json to be uploaded before executing.",
+    "actual_order": "The 23-test native gate was executed first; this ACK is being uploaded afterwards and before the collector.",
+    "why": "The parent Cursor shell session became wedged by an earlier backgrounded process and returned no output for every subsequent command, including `echo`. The gate had to be executed through a separate agent session to make any progress.",
+    "not_hidden": "The gate result is reported with its literal process facts and is not backdated or restated as having followed this ACK.",
+    "effect_on_evidence": "None on the gate's own bytes/exit; the ordering is disclosed for review."
+  },
+  "package_verification": {
+    "package_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3",
+    "files_on_disk": 12,
+    "payloads_declared": 11,
+    "payloads_verified": 11,
+    "all_match": true,
+    "package_schema": "BLACKBOX_REVIEWED_READ_ONLY_PACKAGE_V3",
+    "package_variant": "SEPARATE_ARGV_RAW_BYTES_UNICODE_SPACE_FIXTURES",
+    "collector_sha256": "3e20395ef19dec1a81b4d81c5112f4f5dcc00de09c146d7076c6267f7dc96858",
+    "collector_unchanged_vs_v1_v2": true,
+    "detail": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\STAGE_VERIFY_V3.json"
+  },
+  "native_gate": {
+    "command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 -m unittest discover -s C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3 -p test_*.py -v",
+    "tests_expected": 23,
+    "tests_run": 23,
+    "result": "OK",
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "exit_code": 0,
+    "exit_code_source": "subprocess.run returncode of the child, captured byte-faithfully",
+    "started_at_cn": "2026-10-27T14:02:48+0800",
+    "ended_at_cn": "2026-10-27T14:02:51+0800",
+    "elapsed_sec": 2.278,
+    "stdout_bytes": 0,
+    "stderr_bytes": 3080,
+    "stream_encoding": "both streams valid UTF-8; written verbatim, no .bin/.hex needed",
+    "arithmetic_note": "18 test functions from test_collect_prerequisites.Checks plus 5 from test_windows_junction_fixture.JunctionInvocationChecks were observed reporting ok; the unittest summary line states Ran 23 tests / OK, and that summary is the authoritative count.",
+    "gate_passed": true
+  },
+  "process_observations": {
+    "collector_already_active": false,
+    "collector_active_evidence": "no python.exe command line matching collect_prerequisites or capture_00 was observed before the gate in the session that could still enumerate processes; HUB absence of a report is explicitly NOT used as proof of absence",
+    "capture_003_exists": false,
+    "capture_003_check": "verified immediately before the gate by a recursive glob of SAM\\**\\capture_003 which returned 0 entries; also refused by the staging guard",
+    "prior_attempts_preserved": {
+      "attempt_1": "15/17, exit 1, os.symlink WinError 1314, collector NOT_RUN",
+      "attempt_2": "15/17, exit 1, mklink malformed-argv, collector NOT_RUN",
+      "policy": "both remain failed and untouched; no V1/V2 file is modified or restated as passed"
+    }
+  },
+  "next_action": "Run the unchanged collector exactly once: collect_prerequisites.py --role SAM --out C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\SAM\\capture_003, then, only if its exit is 0 or retained-partial 2, perform the separately bounded chain_source_001 fourteen-source handoff.",
+  "authority_boundaries": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "writes_to_E_BLACKBOX": false,
+    "supplier_call_or_quota_probe": false,
+    "credential_contents_read": false,
+    "download": false,
+    "current_or_release_write": false
+  }
+}
