@@ -1,0 +1,60 @@
+{
+  "schema": "BLACKBOX_UPDATE_PREREQUISITES_ACK_V1",
+  "ack_at_cn": "2026-10-27T12:28:23+0800",
+  "execution_host": "ZHANGWEI",
+  "hostname": "ZHANGWEI",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "workspace": "E:\\BLACKBOX",
+  "preserved_engines": "E:\\BLACKBOX_ENGINES",
+  "stage": "ACK_ONLY_BEFORE_EXECUTION",
+  "collector_already_active": false,
+  "collector_active_check": {
+    "method": "Win32_Process query for python.exe command lines",
+    "matches_for_collect_prerequisites": 0,
+    "observed_unrelated_python": 3,
+    "note": "litellm router + two AUTOHUB watchdog ticks; none is this collector"
+  },
+  "previous_ack_or_run_for_this_child": null,
+  "return_dir_prior_state": "ABSENT",
+  "package_staged": {
+    "dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package",
+    "package_json_bytes": 1771,
+    "payloads": 9,
+    "all_bytes_and_sha256_match": true,
+    "evidence": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\STAGE_VERIFY.json"
+  },
+  "interpreter": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+  "interpreter_version": "3.12.10",
+  "write_boundary": {
+    "writes_confined_to": [
+      "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027"
+    ],
+    "no_writes_to_E_BLACKBOX": true,
+    "no_writes_to_E_BLACKBOX_ENGINES": true
+  },
+  "authorizations_acknowledged": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false
+  },
+  "intended_steps": [
+    "run 17 fixture controls via unittest discover (once)",
+    "if controls pass, run collect_prerequisites.py --role ZHANGWEI --out capture_001 (once)",
+    "author four role summaries from read-only local sources",
+    "upload evidence + readback, then END"
+  ],
+  "will_not_do": [
+    "supplier login/call/quota probe",
+    "new market-data download",
+    "production or candidate cleaning/compiler execution",
+    "commit/emit/rebind",
+    "CURRENT or rule change",
+    "strategy execution",
+    "global inventory or full-library hashes",
+    "deletion, rollback, format",
+    "invoke scope_refresh, research_os status, data-plane default, original R15 main, or the attachment's unreviewed comparer",
+    "read/copy/upload/hash credential contents"
+  ]
+}
