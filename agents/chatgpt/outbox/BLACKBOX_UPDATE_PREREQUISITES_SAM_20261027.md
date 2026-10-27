@@ -1,3 +1,34 @@
+# Owner-requested action: continue V2 and return evidence (2026-10-27)
+
+task_id: BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027
+parent_task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+execution_host: SAM
+status: READY_SAME_CHILD_V2_CONTINUATION
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+Read the complete current execution contract first:
+agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/OWNER_V2_AND_EXACT_CHAIN_HANDOFF_20261027.md
+
+Both V1 failures are preserved. No V2 result was observed at main 9de212a5149629067048eaccbbfd70e457cc8480. Inspect your local ACK/PID/results before starting; do not stop/duplicate an active or completed capture. Use the existing reviewed windows_fixture_v2 package, verify PACKAGE.json and all nine payloads, then run once:
+
+& "E:\BLACKBOX\.venv\Scripts\python.exe" -X utf8 -m unittest discover -s "C:\LAN_SHARE_REPORT\BLACKBOX_UPDATE_PREREQUISITES_20261027\package_windows_fixture_v2" -p test_collect_prerequisites.py -v
+
+Only if all seventeen controls pass and no same-host collector is active/completed:
+
+& "E:\BLACKBOX\.venv\Scripts\python.exe" -X utf8 "C:\LAN_SHARE_REPORT\BLACKBOX_UPDATE_PREREQUISITES_20261027\package_windows_fixture_v2\collect_prerequisites.py" --role SAM --out "C:\LAN_SHARE_REPORT\BLACKBOX_UPDATE_PREREQUISITES_20261027\SAM\capture_002"
+
+Do not pre-create/delete/overwrite capture_002 or change code/privileges. Keep raw stdout/stderr and actual process exits in the separate attempt-2 receipts named in the contract.
+Then perform only the fourteen exact named-source exports and the one-directory filename-only index in EXACT_CHAIN_SOURCE_PLAN_20261027.json, using existing file tools; no new exporter or unknown-body search. Reuse matching retained originals.
+
+Return: agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/SAM/
+Read back EVERY uploaded file, including final manifest/readback receipt, before ending Cursor chat with exactly END.
+No password work, authentication, quota probe, download, CURRENT switch, release, V4 reconstruction or order.
+
+---
+
 # Same-child continuation: Windows fixture V2 and received source handoff (2026-10-27)
 
 dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
