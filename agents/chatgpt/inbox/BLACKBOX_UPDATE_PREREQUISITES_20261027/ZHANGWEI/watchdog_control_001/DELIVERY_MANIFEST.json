@@ -1,0 +1,147 @@
+{
+  "schema": "BLACKBOX_WATCHDOG_DELIVERY_MANIFEST_R1",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "contract_id": "WATCHDOG_CONTROL_20261027",
+  "host": "ZHANGWEI",
+  "role": "ZHANGWEI",
+  "delivered_at_cn": "2026-10-27T16:01:50+0800",
+  "return_dir": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/watchdog_control_001",
+  "delivery_status": "COMPLETED_BOUNDED_NO_DESKTOP_MUTATION",
+  "result_json_sha256": "d132ae44bb853b72f32c96a4edbeb18651e1196a51b5307aa6f38d8f18ff2692",
+  "result_json_bytes": 8627,
+  "result_json_byte_untouched": true,
+  "script_status": "COMPLETED_BOUNDED",
+  "script_exit": 0,
+  "actions_taken": [],
+  "intent_files": {
+    "count": 0,
+    "reason": "the script wrote no INTENT file because zero actions were taken; an absent INTENT file here means no action was proposed, not a missing export"
+  },
+  "desktop_task_before_after": {
+    "before": [
+      {
+        "TaskPath": "\\",
+        "TaskName": "AUTOHUB_LOCAL_WATCHDOG_ZHANGWEI",
+        "Enabled": true,
+        "State": "Running",
+        "proven_kind": null
+      }
+    ],
+    "after": [
+      {
+        "TaskPath": "\\",
+        "TaskName": "AUTOHUB_LOCAL_WATCHDOG_ZHANGWEI",
+        "Enabled": true,
+        "State": "Running",
+        "proven_kind": null
+      }
+    ],
+    "identical": true,
+    "interpretation": "AUTOHUB_LOCAL_WATCHDOG_ZHANGWEI was already enabled and running before and after; proven_kind is null so it is NOT proven to be the archive watcher and correctly was not touched"
+  },
+  "watcher_processes": {
+    "before": [],
+    "after": [],
+    "count": 0,
+    "pids_and_creation_times": [],
+    "reason": "no process matched the exact watcher identity; nothing to report"
+  },
+  "control_files": [
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\TARGET_END.txt",
+      "status": "UNRESOLVED",
+      "reason": "FileNotFoundError"
+    },
+    {
+      "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\FINAL_STATUS.json",
+      "status": "UNRESOLVED",
+      "reason": "FileNotFoundError"
+    }
+  ],
+  "raw_filename_metadata": [
+    {
+      "directory": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+      "matches_returned": 10,
+      "distinct_gap_dates": [
+        "incremen"
+      ],
+      "distinct_gap_date_count": 1,
+      "bytes_listed": 3107483,
+      "contents_read": false,
+      "source_absence_claim_allowed": false,
+      "limit_marker": null
+    },
+    {
+      "directory": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P3_index",
+      "matches_returned": 13,
+      "distinct_gap_dates": [
+        "incremen"
+      ],
+      "distinct_gap_date_count": 1,
+      "bytes_listed": 120574,
+      "contents_read": false,
+      "source_absence_claim_allowed": false,
+      "limit_marker": null
+    },
+    {
+      "directory": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P4_fund_etf_raw_none\\fund_etf_price_daily",
+      "matches_returned": 13,
+      "distinct_gap_dates": [
+        "incremen"
+      ],
+      "distinct_gap_date_count": 1,
+      "bytes_listed": 1333028,
+      "contents_read": false,
+      "source_absence_claim_allowed": false,
+      "limit_marker": "ENTRY_CAP"
+    }
+  ],
+  "errors_and_gaps": [
+    {
+      "item": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\TARGET_END.txt",
+      "status": "UNRESOLVED",
+      "reason": "FileNotFoundError",
+      "meaning": "absent on this host; explicit gap, not data absence"
+    },
+    {
+      "item": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\FINAL_STATUS.json",
+      "status": "UNRESOLVED",
+      "reason": "FileNotFoundError",
+      "meaning": "absent on this host; explicit gap, not data absence"
+    },
+    {
+      "item": "P4 fund_etf_price_daily listing",
+      "status": "LIMIT_REACHED",
+      "limit_marker": "ENTRY_CAP",
+      "meaning": "the directory holds 14,024 immediate files, so the 10,000 entry cap was hit; the 13 returned 20260924 matches are a PARTIAL view in enumeration order and cannot establish full coverage or absence for this directory"
+    }
+  ],
+  "no_claims": [
+    "data absence",
+    "duplicate rows",
+    "deletion or deduplication",
+    "SAM watcher state",
+    "any applied change on the desktop"
+  ],
+  "receipt_chain": {
+    "acyclic": true,
+    "A_ACK.json": "references nothing built later",
+    "B_PACKAGE_VERIFICATION.json": "references nothing built later",
+    "C_POLICY_TEST.*_COMMAND.*_RESULT.json": "raw measured streams",
+    "D_REPORT.md": "references A-C",
+    "E_DELIVERY_MANIFEST.json": "references A-D",
+    "F_UPLOAD_READBACK.json": "references A-E",
+    "G_LOCAL_READBACK.json": "references A-F; no document references G"
+  },
+  "not_uploaded_and_why": [
+    {
+      "item": "raw in-memory global process/task metadata",
+      "reason": "RESULT.json sets raw_command_lines_exported=false; exporting it is forbidden"
+    },
+    {
+      "item": "the 14,024-entry P4 directory listing",
+      "reason": "only bounded 20260924 filename matches are in scope"
+    }
+  ],
+  "credentials_read": false
+}
