@@ -1,0 +1,36 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_R2_RUN_RECEIPT_R1",
+  "repair_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R1_TIMESTAMP_R2",
+  "host": "ZHANGWEI",
+  "role": "ZHANGWEI",
+  "argv": [
+    "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "C:\\LAN_SHARE_REPORT\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\\package_timestamp_r2\\acquire_daily.py",
+    "--execute"
+  ],
+  "argv_one_line": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 C:\\LAN_SHARE_REPORT\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\\package_timestamp_r2\\acquire_daily.py --execute",
+  "interpreter": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+  "script": "C:\\LAN_SHARE_REPORT\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\\package_timestamp_r2\\acquire_daily.py",
+  "started_cn": "2026-10-27T18:46:28+0800",
+  "finished_cn": "2026-10-27T18:47:01+0800",
+  "actual_exit_code": 2,
+  "exit_meaning": "exit 2 = blocker/partial retained; upload and stop without retry, per the contract",
+  "executed_once": true,
+  "retry_performed": false,
+  "preconditions": {
+    "gate_39_passed": true,
+    "package_verified": true,
+    "e_output_absent_before": true
+  },
+  "e_output_existed_before": false,
+  "e_output_exists_after": true,
+  "stdout_bytes": 0,
+  "stderr_bytes": 0,
+  "streams": {
+    "stdout": "RUN_R2_STDOUT.txt",
+    "stderr": "RUN_R2_STDERR.txt"
+  },
+  "note": "both streams are legitimately empty; the script reports through RESULT.json and receipts/ rather than console output"
+}
