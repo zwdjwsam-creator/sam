@@ -1,3 +1,23 @@
+# Active continuation: timestamp R2 repair (ZHANGWEI only)
+
+task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R1
+repair_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R1_TIMESTAMP_R2
+execution_host: ZHANGWEI
+status: READY_NATIVE_39_GATE_THEN_ONE_GUARDED_RUN
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+Read and execute the complete reviewed continuation:
+agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1_TIMESTAMP_R2.md
+
+Original native gate failed26/27, exit1. The acquisition was NOT_RUN; supplier calls0, no E: staging. Preserve all12 original return files and the first package. Stage the NEW7-file package_timestamp_r2, verify6 payloads, ACK first, run39/39 controls once. Only literal exit0 with zero failures/errors/skips permits the single inherited --execute command. Do not duplicate an active/completed acquisition or remove an existing output. The original700,000 quota ceiling is unchanged, not replenished. Return all native/source/serialization/quality receipts to the existing task's timestamp_r2 subdirectory; exact local/HUB readback of every file is mandatory, final Cursor message exactly END.
+
+GPT patched both the fixture and actual readback helper; no blanket dtype relaxation. Lossless exact-value seconds-to-milliseconds representation only; other fields/timezones/index/values stay strict. Do not modify dependencies or code locally. No CURRENT, production cleaning, desktop watchdog mutation or historical-chain action.
+
+This header supersedes prior package/native27-gate instructions below. Keep them as historical evidence; do not rerun the failed package.
+
+---
+
 # Bounded RAW_NONE forward increment: desktop execution contract
 
 Reviewed package: agents/chatgpt/reviews/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/
