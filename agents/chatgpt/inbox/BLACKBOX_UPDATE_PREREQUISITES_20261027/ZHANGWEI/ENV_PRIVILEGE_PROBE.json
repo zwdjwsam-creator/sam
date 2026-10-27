@@ -1,0 +1,71 @@
+{
+  "schema": "BLACKBOX_SYMLINK_PRIVILEGE_PROBE_R1",
+  "execution_host": "ZHANGWEI",
+  "measured_at_cn": "2026-10-27T12:28:46.273+0800",
+  "why": "two of the seventeen fixture controls failed while constructing their disposable fixtures, at os.symlink; this probe isolates the host cause from the delivered code",
+  "identity": {
+    "user": "ZHANGWEI\\Admin",
+    "IsElevated": false
+  },
+  "developer_mode": {
+    "registry_key": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AppModelUnlock",
+    "present": false,
+    "meaning": "Developer Mode is off, so symlink creation needs elevation"
+  },
+  "symlink_evaluation": {
+    "local_to_local": "ENABLED",
+    "local_to_remote": "ENABLED",
+    "remote_to_local": "DISABLED",
+    "remote_to_remote": "DISABLED",
+    "meaning": "the filesystem policy permits local symlinks; permission is the blocker"
+  },
+  "live_attempt": {
+    "symbolic_link": {
+      "result": "FAIL",
+      "os_error": "WinError 1314",
+      "message_cn": "此操作需要管理员权限。",
+      "message_en": "This operation requires administrator privileges."
+    },
+    "junction": {
+      "result": "OK",
+      "meaning": "directory junctions need no elevation on this host"
+    }
+  },
+  "failing_tests": [
+    {
+      "test": "test_cycle_link_not_followed_and_disclosed",
+      "file": "test_collect_prerequisites.py",
+      "line": 63,
+      "statement": "t.mkdir(); (t/'loop').symlink_to(t, target_is_directory=True)",
+      "phase": "fixture construction"
+    },
+    {
+      "test": "test_external_link_blocked",
+      "file": "test_collect_prerequisites.py",
+      "line": 47,
+      "statement": "(self.root/'x.py').symlink_to(outside)",
+      "phase": "fixture construction"
+    }
+  ],
+  "passed": 15,
+  "errored": 2,
+  "total": 17,
+  "classification": "HOST_ENVIRONMENT_PRIVILEGE_NOT_HELD",
+  "not_classified_as": [
+    "collector defect (the collector never ran)",
+    "test defect (the failing statement is fixture setup, not an assertion)",
+    "source/data defect"
+  ],
+  "unblock_options_not_executed": [
+    "run the same unmodified package under an elevated context that holds SeCreateSymbolicLinkPrivilege",
+    "enable Developer Mode on this host, then re-run the same unmodified package",
+    "a GPT-authored reviewed fixture variant that builds fixtures with junctions instead of symlinks (junction creation succeeds here); this requires a new reviewed package, which this host will not author unilaterally"
+  ],
+  "actions_taken": {
+    "tests_modified": false,
+    "code_modified": false,
+    "retried": false,
+    "collector_invoked": false,
+    "elevation_attempted": false
+  }
+}
