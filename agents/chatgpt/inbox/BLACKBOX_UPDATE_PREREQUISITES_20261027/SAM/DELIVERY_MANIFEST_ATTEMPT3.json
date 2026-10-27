@@ -1,0 +1,222 @@
+{
+  "schema": "DELIVERY_MANIFEST_ATTEMPT3_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "attempt": 3,
+  "variant": "SEPARATE_ARGV_RAW_BYTES_UNICODE_SPACE_FIXTURES",
+  "generated_at_cn": "2026-10-27T14:24:43+0800",
+  "status": "GATE_PASSED_COLLECTOR_EXIT2_PARTIAL_CHAIN_SOURCE_COMPLETE",
+  "gate": {
+    "tests_total": 23,
+    "passed": 23,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "process_exit_code": 0
+  },
+  "collector": {
+    "ran": true,
+    "exit_code": 2,
+    "meaning": "retained partial / unresolved evidence, uploaded unchanged, not rerun"
+  },
+  "capture_003_present": true,
+  "chain_source_001": {
+    "present": true,
+    "captured": 13,
+    "reused_hub_body": 1,
+    "unresolved": 0,
+    "pass1_preserved": "chain_source_001/SOURCE_MANIFEST_PASS1_PRESERVED.json",
+    "pass_note": "pass 1 over-blocked on the bare token 'auth('; pass 2 used literal-only detection; nothing discarded"
+  },
+  "generator_directory_index": "chain_source_001/GENERATOR_DIRECTORY_INDEX.json",
+  "files": [
+    {
+      "remote_path": "ACK_V3.json",
+      "bytes": 4574,
+      "sha256": "7239eaae6fa86cd0ffc629515f1470756ed7a38c1465e494255c0ca021ff264d"
+    },
+    {
+      "remote_path": "STAGE_VERIFY_V3.json",
+      "bytes": 2617,
+      "sha256": "eaaf0de70c2f15d31742cdcf6cb24abd64523d7c04d507645c3aebda91d2c72e"
+    },
+    {
+      "remote_path": "COMMAND_LEDGER_ATTEMPT3.json",
+      "bytes": 5974,
+      "sha256": "c47630af4fb3a0914e3512b14f9c168d7e4340c3b104a8643ded5abecb8e56cd"
+    },
+    {
+      "remote_path": "FIXTURE_CONTROLS_ATTEMPT3_STDOUT.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "remote_path": "FIXTURE_CONTROLS_ATTEMPT3_STDERR.txt",
+      "bytes": 3080,
+      "sha256": "bb3101a3ea1298b6dbbbe8d9bc6e06929e2629fb931bf1320a33aeac0983b635"
+    },
+    {
+      "remote_path": "COLLECTOR_ATTEMPT3_STDOUT.txt",
+      "bytes": 92,
+      "sha256": "df25b04b1692b5b8bc5d1ed7e32ea2d43b99fbbb735a98c2b8820d8597fd742c"
+    },
+    {
+      "remote_path": "COLLECTOR_ATTEMPT3_STDERR.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "remote_path": "COLLECTOR_ATTEMPT3_LEDGER.json",
+      "bytes": 1818,
+      "sha256": "00ff1e0ef0117122261960095618c0baaf6fe0c6e52744e1d8650ec7a5b3df47"
+    },
+    {
+      "remote_path": "REPORT_ATTEMPT3.md",
+      "bytes": 5786,
+      "sha256": "ad81ac769df106385aa1de98d61ed1c8210a548308ecee1b210a5daa734460b4"
+    },
+    {
+      "remote_path": "capture_003/COLLECTION.json",
+      "bytes": 31336,
+      "sha256": "a0c98de47782c059f968b50b1e8d91896bef6a005849b4b27c42a4606a46c23c"
+    },
+    {
+      "remote_path": "capture_003/DELIVERY_MANIFEST.json",
+      "bytes": 932,
+      "sha256": "be28e8ba738f15202ab853d0cfb9860d6e631940330f1535e02167e6dc052551"
+    },
+    {
+      "remote_path": "capture_003/LOCAL_READBACK.json",
+      "bytes": 438,
+      "sha256": "6aec352c68db5c7ffadc040cbfc3d8d33e45fbce5ff5c2cb5bfdd9881ea6ce58"
+    },
+    {
+      "remote_path": "capture_003/bodies/0004.json",
+      "bytes": 17435,
+      "sha256": "382d520d37939e3348a9e64020ba15ec61abf4d4df3547e651f95696aea73711"
+    },
+    {
+      "remote_path": "capture_003/bodies/0005.json",
+      "bytes": 12440,
+      "sha256": "cc11c9e3f98c28b915e0c2992362b67802bde9184a680870b6a1c11aaf07f63c"
+    },
+    {
+      "remote_path": "capture_003/bodies/0006.json",
+      "bytes": 10376,
+      "sha256": "4cdb8b5d12ae5b1d7ddba019eeeabe129b8f36be1e4cb18098a61325bdb1ea6e"
+    },
+    {
+      "remote_path": "capture_003/bodies/0020.json",
+      "bytes": 268,
+      "sha256": "38b8d3c48131d200591d3a0eac051545b99c75abd2120e5f76eb630758e5b044"
+    },
+    {
+      "remote_path": "capture_003/bodies/0021.json",
+      "bytes": 121,
+      "sha256": "df9d8d1588a9562d9e6a99d2f5de1aa3ae96a3b0b32c3def6260fda5ddeaf02b"
+    },
+    {
+      "remote_path": "chain_source_001/SOURCE_MANIFEST.json",
+      "bytes": 12465,
+      "sha256": "4fceaae61963ce49e1fb601bdc4faa1cb2ae49144750a0d0cfb10e23ba3cf380"
+    },
+    {
+      "remote_path": "chain_source_001/SOURCE_MANIFEST_PASS1_PRESERVED.json",
+      "bytes": 9115,
+      "sha256": "3ef7dfe0ae6cd7a9e29885b0a0322ab0dda8cbdca858e4207d83b7d161e58a43"
+    },
+    {
+      "remote_path": "chain_source_001/GENERATOR_DIRECTORY_INDEX.json",
+      "bytes": 2699,
+      "sha256": "5528db7b6b8036654639f2c5818170bbe8d2cd752ababdbfd61300e4c115d31b"
+    },
+    {
+      "remote_path": "chain_source_001/HANDOFF_NOTES.md",
+      "bytes": 4550,
+      "sha256": "dd3346d3d804ce8ecd41450088a413a2183ae64bd596e99529c83c0a501b51cc"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0001_download_daily_r1.py",
+      "bytes": 10728,
+      "sha256": "f6d8b81c756850c0e3748181e0b38e992580245024c034ae9bfa7f6452e0fb08"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0002_download_val_adjust_r1.py",
+      "bytes": 7232,
+      "sha256": "2a932fbd3e6a7f30bcf2852f87fb41bdac9b1ad6e2b7525c4caf1996ca9e6470"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0003_download_billboard_ingest_r1.py",
+      "bytes": 5104,
+      "sha256": "2adc8c2c34259597c271f9abd586e094dc2076d4313e17f55d1abae0327dec46"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0004_download_xr_xd_r1.py",
+      "bytes": 5873,
+      "sha256": "ec7bb8c9ee80c7685f0143d63880c5e75405275e8ce5b98ce0c74b4349d74fe3"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0005_minute_download_20260924.py",
+      "bytes": 15467,
+      "sha256": "33d8d2fa0b706464e3006aad0f88bce9b887dadbfac862a874c1a3c6eca4d19c"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0006_ingest_minutes_r1.py",
+      "bytes": 3881,
+      "sha256": "a7e608bd482d15511692b577a040fb11017ccd0cf939b79a54ed915f2112ceb2"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0007_ingest_minutes_flat_r1.py",
+      "bytes": 2500,
+      "sha256": "1b6cefbbe2bcd0ca08c86b415f469dc084dd522e39e285856f83f1c14a9a9e62"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0008_sw_l123_asof_20260924.py",
+      "bytes": 13549,
+      "sha256": "f195dd47b79193a82de2f7b879761b0eb6677793bce8686ac8e5a6b463277d41"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0009_index_minute_20260924.py",
+      "bytes": 7218,
+      "sha256": "0809300f67fd8cd15ac16291be84b16fecfb319b527a1551bded62d66493300b"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0010_align_index_minute_20260924.py",
+      "bytes": 3976,
+      "sha256": "33bfd6f1fd1251e0541d5fe8aae3ddc73516a6c1a2e2c4b68f962bc91a33d073"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0011_patch_candidate_val_sw_republish_r1.py",
+      "bytes": 4931,
+      "sha256": "e4f20b14bc6e87fe279025a3595acb554f78af7a5f4d17d0e0a2b7c3a0ff3df4"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0012_pick_cache_candidate_r1.py",
+      "bytes": 1518,
+      "sha256": "ce9f141239b2072543e21b76209841a291bee515926a7063f8268ccbfd04e870"
+    },
+    {
+      "remote_path": "chain_source_001/bodies/0013_DOWNLOAD_ACCEPTANCE.json",
+      "bytes": 2628,
+      "sha256": "306483d1a0bed6336a2da1a81df553667469077e5a38b84889c3affaf2e623bd"
+    },
+    {
+      "remote_path": "chain_source_001/UPLOAD_READBACK.json",
+      "bytes": 7159,
+      "sha256": "ce95181c0deff67d85a5fd7102d605c35bb9cfd49d2628f0570cc4b4dad811f0"
+    }
+  ],
+  "count": 35,
+  "excluded_from_this_manifest": {
+    "DELIVERY_MANIFEST_ATTEMPT3.json": "self",
+    "UPLOAD_READBACK_ATTEMPT3.json": "readback receipt, verified after upload without self-hash"
+  },
+  "v1_v2_preserved": true,
+  "authority": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false
+  }
+}
