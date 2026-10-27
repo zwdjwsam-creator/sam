@@ -3,8 +3,8 @@
   "repository": "zwdjwsam-creator/sam",
   "branch": "main",
   "execution_host": "ZHANGWEI",
-  "last_reviewed_at": "2026-10-26T15:21:00Z",
-  "phase": "INSTALLED_V3_REJECTED_FULL_CONTENT_AND_CHECKPOINT_FAILURES",
+  "last_reviewed_at": "2026-10-27T04:23:54.320Z",
+  "phase": "DUAL_HOST_PREREQUISITE_CAPTURE_AWAITING_ACK",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -14,7 +14,9 @@
     "acquisition_task_issued": false,
     "local_code_repair_authorized": true,
     "existing_data_candidate_transform_authorized": true,
-    "offline_original_engine_execution_authorized": true
+    "offline_original_engine_execution_authorized": true,
+    "bounded_metadata_capture_authorized": true,
+    "notebook_provenance_lookup_authorized": true
   },
   "reviewed_source_blobs": [
     {
@@ -1351,6 +1353,116 @@
       "path": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/INSTALLED_V3_REVIEW_20261026_2321.md",
       "blob_sha": "85600694ba1905fa43f12cc9aaa9c8d6b8dfb52d",
       "review_scope": "GPT review written and exact readback verified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json",
+      "blob_sha": "d104f247d4923e1d2debdc71654a1f861e6d6486",
+      "review_scope": "Existing pinned source/contract evidence reused for the owner-requested dual-host prerequisite handoff; no new supplier or data completeness certification."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/CANDIDATE_CHECKPOINT_BINDINGS.json",
+      "blob_sha": "09aa40afb1375c61ec0d4fc23424301a3c09eb38",
+      "review_scope": "Existing pinned source/contract evidence reused for the owner-requested dual-host prerequisite handoff; no new supplier or data completeness certification."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/evidence/R15_CLEANING_REPLAY.json",
+      "blob_sha": "d44852f2dde0f9e99b7c197b50454f037a2b3a7e",
+      "review_scope": "Existing pinned source/contract evidence reused for the owner-requested dual-host prerequisite handoff; no new supplier or data completeness certification."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/FOUNDATION_RUNTIME_MAP.md",
+      "blob_sha": "ba84b0d1e4c3878f837c4a92366490a2904c110d",
+      "review_scope": "Existing pinned source/contract evidence reused for the owner-requested dual-host prerequisite handoff; no new supplier or data completeness certification."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/SOURCE_WORKFLOW_HANDOFF.md",
+      "blob_sha": "d878cfd9cce986be9b6ec29b656b41386b8fbd7e",
+      "review_scope": "Existing pinned source/contract evidence reused for the owner-requested dual-host prerequisite handoff; no new supplier or data completeness certification."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/source_workflow_sam/source_supplement/SUPPLEMENT_INDEX.json",
+      "blob_sha": "a92842c770a57f619376fcf873f202b618eeab87",
+      "review_scope": "Existing pinned source/contract evidence reused for the owner-requested dual-host prerequisite handoff; no new supplier or data completeness certification."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/collect_prerequisites.py",
+      "blob_sha": "3113e93b8c65afed0593599b609a7cd4ac5c4180",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/test_collect_prerequisites.py",
+      "blob_sha": "5ae6ca07efd05b066d88d3f2316b2495f786f984",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/CAPTURE_PLAN.json",
+      "blob_sha": "72826d261ff4e7e185b2ebb17dc131d667ccd047",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/KNOWN_HUB_BODIES.json",
+      "blob_sha": "70b863fd32d4c3821434651ae61fb4528f4e11c1",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/CURSOR_MATRIX_BASELINE.json",
+      "blob_sha": "b46ca24b41903a536ab402e5a09bd161edcd0e63",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/ACQUISITION_RECEIPT_REQUIREMENTS.json",
+      "blob_sha": "1af259a2ff63440718079d04df8e73b74f947dee",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/SOURCE_PINS.json",
+      "blob_sha": "5ee55392cef6464a02c26ac3ea3769b34b6df7be",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/REVIEW.md",
+      "blob_sha": "02041a9e5b738fbb324a75a36e789524eefb2962",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/OFFLINE_TEST_RECEIPT.json",
+      "blob_sha": "d826d29273fd167e799da7db3ec1c3c0e5a0b15a",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/PACKAGE.json",
+      "blob_sha": "0425f12d37727a4dd743ef924bdd2c5a3aed68b5",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027.md",
+      "blob_sha": "fdd7c9f31e591d2c370390cde8dce41df989ebcd",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md",
+      "blob_sha": "1391584dad74b31fb0750e0ffdc6886118842af9",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/outbox/BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025.md",
+      "blob_sha": "635d3fe6dd1687b2f2bc11aa6778178d902ecbdc",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/inbox/INBOX_FOR_DESKTOP.md",
+      "blob_sha": "760e6b3338271c8293bdae40b48b115952e2aba8",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/chatgpt/inbox/INBOX_FOR_NOTEBOOK.md",
+      "blob_sha": "cd1d122c30ec62159485d543697aabe953e558b0",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
+    },
+    {
+      "path": "agents/desktop/inbox/INBOX_FOR_DESKTOP.md",
+      "blob_sha": "41cd4a0386e783431eb289b8b2ef9ddd3a0f71b0",
+      "review_scope": "GPT-authored task/review/code or pointer amendment; exact content read back after publication. No local execution or ACK."
     }
   ],
   "observed_r10_capture_blobs": [
@@ -1469,15 +1581,37 @@
       "outcome": "UNHASHED_LINKS_UNREADABLE_COMPLETE_FRESH_INCOMPLETE_COMMIT_AND_MUTABLE_CHECKPOINT",
       "dispatch_id": "SAM_LED_DESKTOP_RECTIFICATION_20261025",
       "latest_review": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/INSTALLED_V3_REVIEW_20261026_2321.md"
+    },
+    {
+      "task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+      "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027.md",
+      "execution_host": "SAM",
+      "task_blob_sha": "fdd7c9f31e591d2c370390cde8dce41df989ebcd",
+      "ack_status": "NOT_OBSERVED",
+      "outcome": "PUBLISHED_READ_ONLY_EVIDENCE_CAPTURE_NOT_EXECUTED",
+      "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025"
+    },
+    {
+      "task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
+      "path": "agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md",
+      "execution_host": "ZHANGWEI",
+      "task_blob_sha": "1391584dad74b31fb0750e0ffdc6886118842af9",
+      "ack_status": "NOT_OBSERVED",
+      "outcome": "PUBLISHED_READ_ONLY_EVIDENCE_CAPTURE_NOT_EXECUTED",
+      "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025"
     }
   ],
-  "issued_task_ids_this_run": [],
-  "pending_outcomes": [
-    "Same outstanding execution-bound runner/two compiler/RELEASE/SEAL/CHECKPOINT handoff; exact installed-v3 source now provided, do not request again.",
-    "GPT precise repair against execution-bound sources; immutable checkpoint, validated declared scope and linked byte coverage with meaningful failure controls.",
-    "Desktop affected-only verification, then applicable acquisition/cleaning prerequisites before scoped download; no strategy reconstruction prerequisite."
+  "issued_task_ids_this_run": [
+    "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+    "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027"
   ],
-  "next_action": "Reuse exact v3 52071-byte body and existing metadata; complete remaining same handoff without duplicate collection. GPT authors/offline-checks repair before executable instruction.",
+  "pending_outcomes": [
+    "SAM ACK and bounded release-producer map, retained unit/universe/checkpoint/calendar/exclusion receipts and per-product evidence appendix.",
+    "ZHANGWEI ACK and exact execution-bound runner/compilers/cleaning wrapper plus bound RELEASE/SEAL/CHECKPOINT and retained invocation/transform/factor evidence.",
+    "GPT joint review and necessary exact offline-checked repair or separately scoped acquisition contract; no V4 reconstruction or unperformed acquisition/publication as circular prerequisites.",
+    "After separately authorized acquisition/cleaning, audit input-output conservation, fields/keys/provenance/PIT and receipts, and deliver a concise consolidated final file."
+  ],
+  "next_action": "Await only new child ACKs/results; reuse the reviewed package and existing originals. Do not duplicate collection or restart a process on unchanged input.",
   "notify_user": true,
   "observed_r10_directory_entries": [
     {
@@ -1657,19 +1791,13 @@
     }
   ],
   "last_poll": {
-    "reviewed_tree_sha": "941f72b3d8b68166202685a90d4c8fe9c1f048c5",
-    "comparison_base_sha": "cb362efa20cc1d3786d5f2a52d522dd16456b4e9",
-    "new_v3_delivery_verified": true,
-    "manifest_members_match": 11,
-    "reviewer_python_control_flow_executed": true,
-    "pyarrow_metadata_stand_in": true,
-    "ntfs_test": false,
-    "material_new_acceptance": false,
-    "reported_live_install": true,
-    "actual_v3_source_supplied": true,
-    "new_execution_task_issued": false,
-    "review_path": "agents/chatgpt/reviews/BLACKBOX_FOUNDATION_R10_END_TO_END_20261025/INSTALLED_V3_REVIEW_20261026_2321.md",
-    "remaining_execution_bound_handoff_pending": true
+    "reviewed_tree_sha": "d77aeb026323465de8d500d90758643b97f82fca",
+    "owner_requested_dispatch": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+    "new_read_only_child_tasks_issued": true,
+    "new_acquisition_task_issued": false,
+    "local_ack_observed": false,
+    "offline_controls": 17,
+    "windows_execution_claimed": false
   },
   "observed_end_to_end_entries": [
     {
@@ -1771,11 +1899,13 @@
   ],
   "latest_owner_constraint": "Owner explicitly authorized SAM original BLACKBOX Cursor to rectify desktop E drive directly, reuse prior scan, deliver documents/manual and hand off to ZHANGWEI for independent verification. This supersedes the previous judgment-only/no-task constraint. Existing canonical dispatch is already published; do not duplicate or restart it.",
   "findings_this_run": [
-    "New desktop_rcid_v3 eleven payloads hash/length verified. Reported v3 installed23:10:40; COMMIT hash reported unchanged.",
-    "Independent isolated Linux control-flow fixtures reproduce seven defects; pyarrow metadata and reparse stand-ins explicit, not NTFS/Parquet QA.",
-    "No full content proof:36 links path-hashed; UNREADABLE errors swallowed. Incomplete fresh commit and differing-rcid label repair allowed; failed swap invalidates old checkpoint binding.",
-    "verify MISMATCH can set content_identity_verified=true. Frozen scope derives from tested disk; hash not recomputed.",
-    "No acquisition, pipeline rerun, rollback/deletion or executable repair issued. Same task and three inbox pointers exact readback verified."
+    "Owner requested concrete tasks for SAM and ZHANGWEI; new attachment read and useful R15 per-unit/provenance direction incorporated without executing its unreviewed comparison code.",
+    "Existing DATASET_STATE has 40 NOT_BOUND, 12 NOT_APPLICABLE, 2 UNRESOLVED rows. Per-product matrix preserves these and null future ranges; all rows need not be resolved before an independent scope is considered.",
+    "Seventeen standard-library collector fixture controls pass on reviewer Linux; no NTFS, supplier or Windows business-pipeline test claimed.",
+    "Published and individually read back nine reviewed payloads, package and two host-specific child tasks; canonical task and host pointers updated by latest-SHA reads.",
+    "R15 originals and supplied v3 are reused by byte identity; SAM receives a bounded release-producer lookup, ZHANGWEI completes the same execution-bound source/metadata handoff. No global inventory or business rerun.",
+    "Forward request/returned-key and applicable page/exhaustion/universe receipts required; counts alone do not prove completeness. Factor uncertainty is scoped to dependent adjusted uses.",
+    "No Stage 2 acquisition task, supplier call, production CURRENT switch, release publication or order authorized. No local ACK/result observed."
   ],
   "observed_sam_handoff_entries": [
     {
@@ -2214,5 +2344,6 @@
     "No full content proof:36 links path-hashed; UNREADABLE errors swallowed. Incomplete fresh commit and differing-rcid label repair allowed; failed swap invalidates old checkpoint binding.",
     "verify MISMATCH can set content_identity_verified=true. Frozen scope derives from tested disk; hash not recomputed.",
     "No acquisition, pipeline rerun, rollback/deletion or executable repair issued. Same task and three inbox pointers exact readback verified."
-  ]
+  ],
+  "previous_phase": "INSTALLED_V3_REJECTED_FULL_CONTENT_AND_CHECKPOINT_FAILURES"
 }
