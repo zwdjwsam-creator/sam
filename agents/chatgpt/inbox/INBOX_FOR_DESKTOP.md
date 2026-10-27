@@ -1,3 +1,30 @@
+# Owner-requested dual-host prerequisite handoff (2026-10-27)
+
+parent_task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+status: TWO_CHILD_TASKS_PUBLISHED_AWAITING_ACK
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+The owner requested a concrete two-machine handoff and return of the needed files. The next action is the reviewed read-only evidence capture below, not another business-chain run. This consolidates the existing pending source handoff and adds the bounded original-release producer lookup. Existing successful stages and failed evidence remain preserved.
+
+- SAM child: agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027.md
+- ZHANGWEI child: agents/chatgpt/outbox/BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027.md
+- Reviewed code, source pins, per-product baseline, future receipt requirements and package: agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/
+- Returns: agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/{SAM,ZHANGWEI}/
+
+Seventeen offline fixture controls passed before publication. The code has not yet executed on either local host. Publishing this header/tasks is not an ACK. Check existing child ACK/PID/results before running; do not stop or duplicate another process. Upload and byte-readback every file; finish Cursor chat with exactly END.
+
+No supplier call, download, cleaning/compiler/commit rerun, production switch or order is issued. Do not run the feedback attachment's unreviewed comparer. Do not require V4 reconstruction, yet-unperformed acquisition, or CURRENT publication to precede acquisition. Reuse all matching HUB originals, including supplied v3; no global rescan. The 40 NOT_BOUND rows remain product-specific evidence gaps, not a universal first-date rule or a requirement to resolve all products before an independent scope is considered.
+
+GPT will reconcile both returns, author/test any necessary exact repair, and separately issue an executable acquisition contract only for a scope whose relevant prerequisites are accepted.
+
+execution_host: ZHANGWEI
+evidence_peer_host: SAM
+
+---
+
 > **[SAM 溯源补件 20261027] R33/R45 实际出处已查明**
 > R45 = `D:\CURSOR_TASK_ARCHIVE\JQ_DAILY_TIP_20260924\clean_switch_r1.py`（原始命令在 FULL_CHAIN.log L2512，03:45:33）。
 > R33 = `E:\BLACKBOX\脚本\blackbox_fund_etf_nav_premium_plane_r1.py`（由 _run_full_chain.ps1 L41 调用 `--asof 2026-09-24 --phase all`；非 RunPy 调用所以日志无 RUN 行，FUND_NAV 标记在 L3093）。
