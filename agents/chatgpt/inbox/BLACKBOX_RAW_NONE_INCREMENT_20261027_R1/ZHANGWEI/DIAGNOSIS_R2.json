@@ -1,0 +1,76 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_R2_BLOCKER_DIAGNOSIS_R1",
+  "repair_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R1_TIMESTAMP_R2",
+  "host": "ZHANGWEI",
+  "role": "ZHANGWEI",
+  "recorded_at_cn": "2026-10-27T18:50:00+0800",
+  "blocker": {
+    "status": "BLOCKED_PRESERVE_PARTIAL",
+    "error_type": "Blocked",
+    "reason": "ROUNDTRIP_NON_TIMESTAMP_DTYPE_CHANGE",
+    "raised_at": "acquire_daily.py verify_parquet_roundtrip() -> restore() require()",
+    "message": "ROUNDTRIP_NON_TIMESTAMP_DTYPE_CHANGE"
+  },
+  "where_it_stopped": {
+    "product": "stock",
+    "date": "2026-09-28",
+    "batch_index": 0,
+    "codes_in_batch": 80,
+    "raw_written_before_verification": "raw/stock/2026-09-28_00000.parquet",
+    "raw_bytes": 15544,
+    "meaning": "the write happened, then the read-back dtype audit rejected the frame; the batch file is preserved"
+  },
+  "root_cause": {
+    "column": "code",
+    "supplier_dtype": "object",
+    "stored_readback_dtype": "str",
+    "why": "jqdatasdk builds the response via pd.DataFrame(OrderedDict(data)) and the 'code' column remains object dtype. pyarrow writes it as physical 'string'; pandas 3.0 reads physical string back as the new 'str' StringDtype, which is a different dtype than object. Every other column round-trips identically.",
+    "evidence": [
+      "written parquet pandas metadata records code numpy_type='object', pandas_type='unicode'",
+      "physical type of code in the stored file is 'string' (object-sourced), whereas a native pandas 'str' column writes as 'large_string'",
+      "read-back of the stored file yields code dtype 'str'",
+      "controlled replay of verify_parquet_roundtrip with ONLY code cast to object raises the identical ROUNDTRIP_NON_TIMESTAMP_DTYPE_CHANGE",
+      "time is datetime64[ns] on both sides, so this is NOT the R2 timestamp issue and the s->ms allowance is not involved"
+    ],
+    "not_caused_by": [
+      "the R2 timestamp repair (time round-trips as ns on both sides)",
+      "value corruption (all 14 columns are present and value-equal)",
+      "the index (int64 on both sides)",
+      "paused (float64 on both sides; an int64 paused would have been written as physical int64, not double)"
+    ]
+  },
+  "why_the_reviewer_39_controls_did_not_catch_it": "the 39 controls build their fixtures with a pandas 'str' code column (or an already-StringDtype column), which writes as large_string and round-trips as str. The real supplier column is object dtype, a case the fixtures do not model, so the offline suite is not a superset of the live dtype surface",
+  "assessment": "this is the same class of defect as R1: an exact-dtype in-memory equality assertion placed after the supplier call and after the raw write, where the storage layer legitimately represents a string column differently. The R2 fix addressed the timestamp unit only and left the string representation unhandled",
+  "data_quality": {
+    "rows": 80,
+    "columns": 14,
+    "raw_parquet_preserved": true,
+    "quota_spent_on_this_batch": 80,
+    "batch_is_usable_if_the_string_rule_is_accepted": true
+  },
+  "not_done_deliberately": [
+    "did not retry acquire_daily.py (contract: exit 2 -> upload and stop)",
+    "did not patch acquire_daily.py or the tests (no local patches allowed)",
+    "did not downgrade pandas, substitute the interpreter or force object dtype",
+    "did not log in again for a dtype experiment",
+    "did not delete or overwrite the R1 failure evidence"
+  ],
+  "options_for_reviewer": [
+    {
+      "id": "A",
+      "description": "extend the admitted representation rule from 'timestamp s->ms only' to also admit 'object <-> str' for the code column, with an exact-value and null-mask comparison before cast-back, and record the rule in every batch receipt",
+      "touches_production_code": true
+    },
+    {
+      "id": "B",
+      "description": "make the write representation-stable for strings too, e.g. declare the column as string on write or cast code to a declared dtype before writing, so the in-memory frame and the read-back agree",
+      "touches_production_code": true
+    },
+    {
+      "id": "C",
+      "description": "add a 40th control that builds its fixture from an object-dtype code column, so the offline suite models the real supplier surface",
+      "touches_production_code": false
+    }
+  ],
+  "recommendation": "C alone would only convert this live blocker into a failing control; A or B is still required. My preference is B plus C: fix the representation at the write boundary and add the missing fixture so the class of defect cannot recur silently. Note the contract itself demands both 'preserve original dtype metadata' and 'verify dtypes on read-back', which no storage layer can satisfy for every pandas string dtype without an explicit declared rule"
+}
