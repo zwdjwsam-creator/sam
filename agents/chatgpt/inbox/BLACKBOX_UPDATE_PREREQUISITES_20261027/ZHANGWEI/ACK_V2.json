@@ -1,0 +1,74 @@
+{
+  "schema": "BLACKBOX_UPDATE_PREREQUISITES_ACK_V2",
+  "ack_at_cn": "2026-10-27T13:09:56+0800",
+  "execution_host": "ZHANGWEI",
+  "hostname": "ZHANGWEI",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "ack_scope": {
+    "refers_to_staging": true,
+    "refers_to_a_running_process": false,
+    "refers_to_completion": "ATTEMPT2_CONTROLS_COMPLETED_WITH_FAILURE",
+    "explicitly_not": "not an acknowledgement of foundation or acquisition acceptance"
+  },
+  "existing_child_state_before_this_attempt": {
+    "v1_ack_present": true,
+    "v1_collector_invoked": false,
+    "capture_001_exists": false,
+    "capture_002_exists": false,
+    "same_host_collector_processes": 0
+  },
+  "staged_package": {
+    "dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v2",
+    "hub_source": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/windows_fixture_v2",
+    "package_json_bytes": 1713,
+    "package_json_sha256": "ff23420ef72ced578c1d44145735266b307951b8da29e0465f7ddec41d8e16d6",
+    "payloads": 9,
+    "all_bytes_and_sha256_match": true,
+    "collector_source_identical_to_v1": true,
+    "evidence": "STAGE_VERIFY_V2.json"
+  },
+  "controls_result": {
+    "ran": true,
+    "exit": 1,
+    "total": 17,
+    "passed": 15,
+    "errored": 2,
+    "failed_in_phase": "fixture_construction",
+    "both_errors": "JUNCTION_FIXTURE_CREATION_FAILED",
+    "literal_output": [
+      "FIXTURE_CONTROLS_ATTEMPT2_STDOUT.txt",
+      "FIXTURE_CONTROLS_ATTEMPT2_STDERR.txt"
+    ]
+  },
+  "collector": {
+    "invoked": false,
+    "reason": "the seventeen-control gate was not met; instructions forbid proceeding and forbid a bypass",
+    "capture_002_created": false
+  },
+  "third_attempt_launched": false,
+  "fixture_diagnosis": {
+    "verdict": "FIXTURE_CALL_QUOTING_DEFECT_NOT_HOST_POLICY",
+    "one_line": "the host can create junctions without elevation; the shipped call passes an already-quoted command as a single argv element, so Python re-quotes it and cmd.exe rejects the resulting paths",
+    "evidence": "JUNCTION_CALL_PROBE.json",
+    "same_process_same_second": {
+      "shipped_form_junction_created": false,
+      "separate_argv_junction_created": true,
+      "shell_true_junction_created": true
+    }
+  },
+  "actions_not_taken": [
+    "did not edit the reviewed test or collector",
+    "did not elevate, enable Developer Mode or alter system policy",
+    "did not skip, relax or stub either assertion",
+    "did not launch a third attempt",
+    "did not pre-create or delete capture_002",
+    "did not overwrite any V1 file"
+  ],
+  "authorizations_acknowledged": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false
+  }
+}
