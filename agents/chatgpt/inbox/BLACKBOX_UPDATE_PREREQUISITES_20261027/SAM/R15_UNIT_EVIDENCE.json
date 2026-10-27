@@ -1,0 +1,165 @@
+{
+  "schema": "UPDATE_PREREQUISITES_SAM_RETURN_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "generated_at_cn": "2026-10-27T12:46:00+0800",
+  "collector_run": "NOT_RUN",
+  "collector_not_run_reason": "fixture gate failed 2/17 (Windows symlink privilege); dispatch rule 'A failed test stops collection' applied literally",
+  "evidence_basis": "read directly from the retained R15 task directory; this is existing retained evidence, not a new acquisition and not a collector output",
+  "task_dir": "E:\\BLACKBOX\\任务\\BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1",
+  "request_contract": {
+    "source_API": "jqdatasdk.get_price",
+    "fq": null,
+    "fq_literal": "None",
+    "price_basis": "RAW_NONE",
+    "fields": [
+      "open",
+      "close",
+      "high",
+      "low",
+      "volume",
+      "money"
+    ],
+    "skip_paused": true,
+    "panel": false,
+    "dates": [
+      "2026-08-10"
+    ],
+    "exchanges": [
+      "XSHG",
+      "XSHE"
+    ],
+    "mutate_sealed_r2": false,
+    "mutate_CURRENT": false
+  },
+  "task_control": {
+    "task": "BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1",
+    "parent_release": "BLACKBOX_FORMAL_CLEANING_R14_ASOF_20260807_20260809_082152",
+    "started_at": "2026-08-10T16:43:40+00:00",
+    "hand_stage": "FULL_DATA_UPDATE_R15"
+  },
+  "acceptance_counts": {
+    "status": "PASS",
+    "unit_total": 19,
+    "unit_done": 16,
+    "unit_fail": 0,
+    "unit_legal_empty": 3,
+    "finance_asof": "2026-08-10",
+    "quota_start": 197783456,
+    "quota_end": 197722946,
+    "index_daily_main7": "NO_GAP",
+    "generated_at": "2026-08-10T16:56:44+00:00"
+  },
+  "download_units": {
+    "count": 16,
+    "result_status_histogram": {
+      "SUCCESS": 16
+    },
+    "retained_per_unit_keys": [
+      "R4_source_candidate_status",
+      "asset",
+      "attempt_count",
+      "code_count",
+      "domain_id",
+      "elapsed_s",
+      "end_date",
+      "exchange",
+      "file_sha256",
+      "fq",
+      "frequency",
+      "out_path",
+      "repair_unit_id",
+      "request_end_time",
+      "request_start_time",
+      "requested_code_count",
+      "result_status",
+      "returned_code_count",
+      "returned_row_count",
+      "row_count",
+      "start_date",
+      "trade_date",
+      "universe_count"
+    ],
+    "short_batch_examples": [
+      {
+        "repair_unit_id": "RU_A股_stock_5m_XSHE_5m_2026-08-10",
+        "requested_code_count": 2895,
+        "returned_code_count": 2894,
+        "returned_row_count": 138912,
+        "attempt_count": 1
+      },
+      {
+        "repair_unit_id": "RU_A股_stock_1m_XSHE_1m_2026-08-10",
+        "requested_code_count": 2895,
+        "returned_code_count": 2894,
+        "returned_row_count": 694560,
+        "attempt_count": 1
+      },
+      {
+        "repair_unit_id": "RU_A股_stock_30m_XSHE_30m_2026-08-10",
+        "requested_code_count": 2895,
+        "returned_code_count": 2894,
+        "returned_row_count": 23152,
+        "attempt_count": 1
+      },
+      {
+        "repair_unit_id": "RU_A股_stock_60m_XSHE_60m_2026-08-10",
+        "requested_code_count": 2895,
+        "returned_code_count": 2894,
+        "returned_row_count": 11576,
+        "attempt_count": 1
+      },
+      {
+        "repair_unit_id": "RU_ETF_5m_XSHG_5m_2026-08-10",
+        "requested_code_count": 893,
+        "returned_code_count": 892,
+        "returned_row_count": 42816,
+        "attempt_count": 1
+      },
+      {
+        "repair_unit_id": "RU_ETF_1m_XSHG_1m_2026-08-10",
+        "requested_code_count": 893,
+        "returned_code_count": 892,
+        "returned_row_count": 214080,
+        "attempt_count": 1
+      }
+    ]
+  },
+  "legal_empty_rule": {
+    "status_value_used": "LEGAL_EMPTY",
+    "applies_to": "finance quarters not yet disclosed at the run date",
+    "example_rows": [
+      "FUND_income_2026q3",
+      "FUND_balance_2026q3",
+      "FUND_cash_flow_2026q3"
+    ],
+    "reference": "10_ACCEPTANCE/DOWNLOAD_ACCEPTANCE.json unit.status == LEGAL_EMPTY",
+    "not_claimed": "this is a retained local rule as recorded; no arbitrary tolerance or key alias is asserted here"
+  },
+  "retained_vs_unknown": {
+    "retained": [
+      "per-unit requested/returned code counts",
+      "returned_row_count",
+      "attempt_count",
+      "request window start/end timestamps",
+      "out_path",
+      "file_sha256",
+      "row_count",
+      "code_count",
+      "quota before/after",
+      "legal-empty classification",
+      "index_daily_main7 verdict"
+    ],
+    "UNKNOWN": [
+      "vendor page size / offset / next-page token",
+      "terminal-page exhaustion flag",
+      "declared query cap",
+      "requested universe list as sent",
+      "supplier-side completeness certificate"
+    ],
+    "why": "the retained batch recorded the answer, not the request envelope; requested/returned counts alone cannot certify completeness"
+  },
+  "no_rerun": "no R15 main, no download, no cleaning, no compiler was executed for this file"
+}
