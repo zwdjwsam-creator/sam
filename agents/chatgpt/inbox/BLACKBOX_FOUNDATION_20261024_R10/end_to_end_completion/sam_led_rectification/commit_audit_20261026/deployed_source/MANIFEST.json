@@ -1,0 +1,90 @@
+{
+  "schema": "DEPLOYED_SOURCE_HANDOFF_R1",
+  "generated_at_cn": "2026-10-27T12:20:58+0800",
+  "provenance": "read over SMB from the DESKTOP deployment, raw bytes, no newline normalisation",
+  "desktop_commit": {
+    "seq": 4,
+    "commit_id": "572619c945d48f1b14f41c6f8c94b66dbacab00da4303366bcf2687ff8ec0876",
+    "release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+    "release_root": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019",
+    "checkpoint_path": "E:\\BLACKBOX\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\572619c945d48f1b\\CHECKPOINT.json",
+    "release_content_id": null
+  },
+  "requested_by": "DESKTOP_COMMIT_AUDIT_REVIEW_20261026_1909 (seven bodies); INSTALLED_V3_REVIEW_20261026_2321 closes body #1",
+  "bodies": [
+    {
+      "role": "1_candidate_commit(candidate_commit.py)",
+      "status": "SATISFIED_ALREADY_UPLOADED",
+      "deployed_bytes": 53208,
+      "deployed_sha256": "e4772ddaa25f58e0a303c7353247b9fdac6d18ca6531cfa062f16906899ed2ff",
+      "note": "v3 already supplied at 52,071 B / 7573eff5...; do not re-upload, referenced by path+SHA only"
+    },
+    {
+      "role": "2_runner/run_connected_pipeline.py",
+      "remote_source": "\\\\192.168.100.1\\BLACKBOX_DEST\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\tools\\run_connected_pipeline.py",
+      "status": "COPIED",
+      "bytes": 35051,
+      "crlf": 718,
+      "lf_only": 0,
+      "bom": false,
+      "sha256": "6bea0313483b1847ec24ba2ffd3a174c69eda7ba40fed968caaa1bc94715ae6f"
+    },
+    {
+      "role": "3_compiler/cache_compiler_daily_incremental_r1.py",
+      "remote_source": "\\\\192.168.100.1\\BLACKBOX_DEST\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_daily_incremental_r1.py",
+      "status": "COPIED",
+      "bytes": 47910,
+      "crlf": 0,
+      "lf_only": 1156,
+      "bom": false,
+      "sha256": "a887f7c7498bc5738d3a433da9c655684dc7d9c2403aa36e3c37142437a86c53"
+    },
+    {
+      "role": "4_compiler/cache_compiler_tip_rebase_from_current_r1.py",
+      "remote_source": "\\\\192.168.100.1\\BLACKBOX_DEST\\任务\\BLACKBOX_BACKTEST_CACHE_COMPILER_R1\\cache_compiler_tip_rebase_from_current_r1.py",
+      "status": "COPIED",
+      "bytes": 30661,
+      "crlf": 0,
+      "lf_only": 719,
+      "bom": false,
+      "sha256": "094eb6ef32194c3289a644226ffd6e49a504db86bb5300b8a1eb33f5d37782c3"
+    },
+    {
+      "role": "5_metadata/RELEASE.json",
+      "remote_source": "\\\\192.168.100.1\\BLACKBOX_DEST\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019\\RELEASE.json",
+      "status": "COPIED",
+      "bytes": 1344,
+      "crlf": 29,
+      "lf_only": 0,
+      "bom": false,
+      "sha256": "158dd9ddd290370d06cd36d890aaee6325c36b8180b201b24d68b43a76a13a9c"
+    },
+    {
+      "role": "6_metadata/SEAL.json",
+      "remote_source": "\\\\192.168.100.1\\BLACKBOX_DEST\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_out\\releases\\BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20261026_181019\\SEAL.json",
+      "status": "COPIED",
+      "bytes": 12849,
+      "crlf": 410,
+      "lf_only": 0,
+      "bom": false,
+      "sha256": "b79ed73cdf095e62ac3c27e9c48fed2d95158ca7e354a4d298d3dc1091d1e362"
+    },
+    {
+      "role": "7_metadata/CHECKPOINT.json",
+      "remote_source": "\\\\192.168.100.1\\BLACKBOX_DEST\\_OPS\\FOUNDATION_RECOVERY_20261024\\end_to_end_completion\\candidate\\cc_commit\\versions\\572619c945d48f1b\\CHECKPOINT.json",
+      "status": "COPIED",
+      "bytes": 2145,
+      "crlf": 52,
+      "lf_only": 0,
+      "bom": false,
+      "sha256": "7efc277999009999f849643e81981b4869d34cca5c77eac503d75a245ae2bbec"
+    }
+  ],
+  "explicitly_not_included": [
+    "candidate_commit.py current body (v3, already supplied, referenced by SHA only)",
+    "the 20,732-byte legacy candidate_commit.py (backup; referenced by SHA only)",
+    "the 13,930-byte changed_code historical snapshot (must not overwrite live module)",
+    "any market data, parquet, credential or CURRENT file"
+  ],
+  "historical_execution_identity": "UNKNOWN (no literal process command/exit ledger retained)"
+}
