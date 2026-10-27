@@ -1,0 +1,122 @@
+{
+  "schema": "BLACKBOX_PREREQ_DELIVERY_MANIFEST_R1",
+  "execution_host": "ZHANGWEI",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "return_dir": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI",
+  "delivered_at_cn": "2026-10-27T12:33:33+0800",
+  "delivery_status": "STOPPED_AT_FIXTURE_CONTROLS_COLLECTOR_NOT_RUN",
+  "delivered": [
+    {
+      "name": "ACK.json",
+      "role": "ack",
+      "bytes": 2404,
+      "sha256": "ee40241cef25e4291e6103c90dd10fa3a74181584770f1d4a3fcd9a6667e67bc",
+      "remote_git_blob": "58af377f1e705a3f8ddc8fd638f7eac2f8a6f99a",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "COMMAND_LEDGER.json",
+      "role": "ledger",
+      "bytes": 5720,
+      "sha256": "657e1f7cb296d7eb3012a2ec242eff42edb55ff1e869c1acb42d131ad792f976",
+      "remote_git_blob": "05e0a9a97a219a43aedee144df5acd445715247a",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "FIXTURE_CONTROLS_STDOUT.txt",
+      "role": "literal_stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "FIXTURE_CONTROLS_STDERR.txt",
+      "role": "literal_stderr",
+      "bytes": 4119,
+      "sha256": "b30993dce23f314adf2683e12d08485b6b33882877045e07ce8c25bc0df5b4d2",
+      "remote_git_blob": "8aa08438c294d23d2782b4e19eccd243c3e5efe4",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "ENV_PRIVILEGE_PROBE.json",
+      "role": "blocker_probe",
+      "bytes": 2707,
+      "sha256": "ceee59ab15bd797cf831cdad1436d8ea108c4454a552cf80dd87610824fc54d1",
+      "remote_git_blob": "bb92dd72ff71a35ab69bff62b9bcdaa1cfe38955",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "STAGE_VERIFY.json",
+      "role": "package_verification",
+      "bytes": 5359,
+      "sha256": "5dc59239282120ed206360dfd7bc12354d0dc7e95821dd18c16b31a5ef7dcb58",
+      "remote_git_blob": "8e383a0b01978f57d4243cc21bfe9a4a37293a54",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "EXECUTION_BINDINGS.json",
+      "role": "role_summary_1",
+      "bytes": 27803,
+      "sha256": "3e4655965ec500d860ac0378012772c1d29331462c40ded8e3a942582865c3e3",
+      "remote_git_blob": "c0775ad412c48861ff201300044103e7d6ff998f",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "CLEANING_TRANSFORM_BINDING.json",
+      "role": "role_summary_2",
+      "bytes": 1840,
+      "sha256": "32c2ad1cda282f5efcede1181cd096075d59e74b349aad3da364b2a6bbb427b6",
+      "remote_git_blob": "d62485cc805313dd758ae4f71656d381c3f6428a",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "FACTOR_SPLICE_EVIDENCE.json",
+      "role": "role_summary_3",
+      "bytes": 6573,
+      "sha256": "e72488baf65f744e9b03d0a194d77c6d45f96b31f3f7b011b19b53b91286c685",
+      "remote_git_blob": "5bdde8ff6fafa38ec79f4ce51b78da8ad7a4a5a1",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "PREREQUISITE_DELTA.json",
+      "role": "role_summary_4",
+      "bytes": 10388,
+      "sha256": "d61702cc8c2996464b00017c0950b0db7bf84a61afde95d6fdf4d4f7a298eeb9",
+      "remote_git_blob": "98ed1f49d7d1733e7b4438ae0638276ccefe4a2f",
+      "readback_byte_equal": true
+    },
+    {
+      "name": "REPORT.md",
+      "role": "report",
+      "bytes": 9844,
+      "sha256": "79a5bba7dd39a9a0f0762a90c00394cdb65883a07c0eae5a3c992560a743b369",
+      "remote_git_blob": "513b584b69cd930e92d3d1e1da8a387f45d9fbb0",
+      "readback_byte_equal": true
+    }
+  ],
+  "not_delivered_because_collection_stopped": [
+    {
+      "name": "capture_001/COLLECTION.json",
+      "reason": "collector not run"
+    },
+    {
+      "name": "capture_001/DELIVERY_MANIFEST.json",
+      "reason": "collector not run"
+    },
+    {
+      "name": "capture_001/LOCAL_READBACK.json",
+      "reason": "collector not run"
+    },
+    {
+      "name": "capture_001/bodies/*",
+      "reason": "copying new/changed bodies IS the collection step the stop condition forbids; the 15 differing bodies are hashed and named in EXECUTION_BINDINGS.json but their bytes are not uploaded here"
+    }
+  ],
+  "role_summaries_disclosure": "the four role summaries were authored from direct reads of the named local text/JSON/source files, because reading them is explicitly allowed. They are NOT collector output and every field that requires collected bodies is marked UNKNOWN_NOT_READ_IN_THIS_PASS or NOT_AVAILABLE_FIXTURE_CONTROLS_FAILED",
+  "no_acquisition": true,
+  "no_current_switch": true,
+  "order_allowed": false
+}
