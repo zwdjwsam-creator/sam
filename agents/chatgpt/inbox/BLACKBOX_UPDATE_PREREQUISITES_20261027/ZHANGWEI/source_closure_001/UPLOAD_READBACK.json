@@ -2,46 +2,48 @@
   "schema": "BLACKBOX_CLOSURE_UPLOAD_READBACK_R1",
   "execution_host": "ZHANGWEI",
   "return_dir": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/source_closure_001",
-  "verified_at_cn": "2026-10-27T15:39:24+0800",
-  "method": "each file was uploaded, re-fetched and compared byte-for-byte and by SHA256 with the intended local bytes; the remote git blob id is recorded; prior-attempt blobs were fetched before and after to prove no overwrite",
+  "verified_at_cn": "2026-10-27T15:41:17+0800",
+  "method": "each payload was uploaded, re-fetched and compared byte-for-byte and by SHA256 against the intended local bytes; the remote git blob id is recorded; prior-attempt blobs were fetched before and after to prove no overwrite occurred",
   "files": [
     {
-      "remote_path": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/source_closure_001/SOURCE_MANIFEST.json",
+      "name": "SOURCE_MANIFEST.json",
       "bytes": 4462,
       "sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b",
       "remote_bytes": 4462,
       "remote_sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b",
       "remote_git_blob": "fe4203efe513a405912c8f2581db4dca8285dcd9",
       "state": "ALREADY_SAME",
-      "readback_byte_equal": true,
-      "sha256_equal": true
+      "readback_byte_equal": true
     },
     {
-      "remote_path": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/source_closure_001/HANDOFF_NOTES.md",
+      "name": "HANDOFF_NOTES.md",
       "bytes": 4284,
       "sha256": "9cbb6f06151af1ed298175c3d32d75a34fa2754022f1f12c6ee93e94ca9e514a",
       "remote_bytes": 4284,
       "remote_sha256": "9cbb6f06151af1ed298175c3d32d75a34fa2754022f1f12c6ee93e94ca9e514a",
       "remote_git_blob": "cc3ac953f2581ec0ad23abbbca01232409c681b8",
       "state": "ALREADY_SAME",
-      "readback_byte_equal": true,
-      "sha256_equal": true
+      "readback_byte_equal": true
     },
     {
-      "remote_path": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/source_closure_001/LOCAL_READBACK.json",
-      "bytes": 1120,
-      "sha256": "05bedd06bfd28699eef5c0894f310d3d7d0e4302d3461b0c307cac94c3f15b32",
-      "remote_bytes": 1120,
-      "remote_sha256": "05bedd06bfd28699eef5c0894f310d3d7d0e4302d3461b0c307cac94c3f15b32",
-      "remote_git_blob": "c4756cf6f0a0da308149000a892ae0779a7e8104",
+      "name": "DELIVERY_MANIFEST.json",
+      "bytes": 3616,
+      "sha256": "8bd40ced98f2cf667e5f2794ee7e0d2bb5dbc5a7860561dd8a60693f90a28efb",
+      "remote_bytes": 3616,
+      "remote_sha256": "8bd40ced98f2cf667e5f2794ee7e0d2bb5dbc5a7860561dd8a60693f90a28efb",
+      "remote_git_blob": "8898a0fec3e77355cbbaae3b130557a48ef4eff6",
       "state": "NEW",
-      "readback_byte_equal": true,
-      "sha256_equal": true
+      "readback_byte_equal": true
     }
   ],
   "file_count": 3,
   "all_readback_byte_equal": true,
   "all_sha256_equal": true,
+  "prior_attempt_files_checked": 15,
   "prior_attempts_unchanged": true,
-  "self_hash_not_embedded": "this receipt does not contain its own hash and is not rewritten to include it; it is verified separately"
+  "self_hash_not_embedded": true,
+  "supersession_within_same_delivery": {
+    "reason": "the earlier DELIVERY_MANIFEST/UPLOAD_READBACK were built in memory by the uploader and never persisted locally, so 'every result file is read back locally' was not met; this rebuild persists all receipts and orders them acyclically",
+    "no_earlier_attempt_overwritten": true
+  }
 }
