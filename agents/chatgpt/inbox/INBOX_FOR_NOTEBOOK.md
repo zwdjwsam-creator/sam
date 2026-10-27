@@ -1,3 +1,27 @@
+# Current owner-authorized legacy watcher task (SAM, 2026-10-27)
+
+task_id: BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+execution_host: SAM
+foundation_execution_host: ZHANGWEI
+contract_id: WATCHDOG_CONTROL_20261027
+status: READY_BOUNDED_NATIVE_CONTROL
+SAM_EXACT_WATCHER_STOP_ALLOWED=true
+DESKTOP_STOP_OR_DISABLE_ALLOWED=false
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+Owner explicitly permits stopping proven notebook legacy watchers/planned automation. Read the complete reviewed contract first:
+agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/REVIEW_AND_TASK.md
+Package (all5 files;4 payloads verified against PACKAGE.json): agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/
+
+SAM: --allow-sam-stop only on actual SAM. Disable only exact proven legacy scheduled launchers and stop only the three allowlisted watcher PowerShell processes. No Stop-ScheduledTask, Python-driver kill, child-tree kill, unknown target or terminal restart.
+Inspect/reuse existing ACK/PID/results; exclusive watchdog_control_001 output, no delete/overwrite/retry. Native permissions/errors remain measured outcomes, no elevation or local code edits. Return every intent/result/log/actual exit and upload/readback receipt to the SAME child watchdog_control_001 folder. Finish Cursor chat with exactly END.
+No business/data/credential/supplier action or historical chain execution.
+
+---
+
 # Owner decision: ZHANGWEI execution and data-plane baseline (2026-10-27)
 
 task_id: BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027
