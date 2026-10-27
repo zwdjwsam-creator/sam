@@ -1,0 +1,86 @@
+{
+  "schema": "JUNCTION_FIXTURE_DIAGNOSTIC_V2_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T13:12:10+0800",
+  "scope": "read-only probes; no test/collector/policy/privilege modification; each temp directory removed after its variant",
+  "variants": [
+    {
+      "variant": "A_exact_v2_invocation",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "mklink /J \"C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_e81f5cko\\root\\view\" \"C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_e81f5cko\\outside\""
+      ],
+      "shell": false,
+      "command_form": "list argv with one pre-quoted command string (EXACTLY the V2 fixture form); list2cmdline -> cmd.exe /d /c \"mklink /J \\\"C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_e81f5cko\\root\\view\\\" \\\"C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_e81f5cko\\outside\\\"\"",
+      "returncode": 1,
+      "stdout_utf8": "",
+      "stderr_gbk": "文件名、目录名或卷标语法不正确。\r\n",
+      "stderr_utf8_default": "�ļ�����Ŀ¼��������﷨����ȷ��\r\n",
+      "link_created": false,
+      "is_junction": false
+    },
+    {
+      "variant": "B_separate_argv",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "mklink",
+        "/J",
+        "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_r0ll6y3o\\root\\view",
+        "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_r0ll6y3o\\outside"
+      ],
+      "shell": false,
+      "command_form": "cmd /c with separate argv tokens",
+      "returncode": 0,
+      "stdout_utf8": "Ϊ C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_r0ll6y3o\\root\\view <<===>> C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_r0ll6y3o\\outside ����������\r\n",
+      "stderr_gbk": "",
+      "stderr_utf8_default": "Ϊ C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_r0ll6y3o\\root\\view <<===>> C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_r0ll6y3o\\outside ����������\r\n",
+      "link_created": true,
+      "is_junction": true
+    },
+    {
+      "variant": "C_shell_true_quoted",
+      "argv": "mklink /J \"C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_8_h3logm\\root\\view\" \"C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_8_h3logm\\outside\"",
+      "shell": true,
+      "command_form": "shell=True with quoted string",
+      "returncode": 0,
+      "stdout_utf8": "Ϊ C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_8_h3logm\\root\\view <<===>> C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_8_h3logm\\outside ����������\r\n",
+      "stderr_gbk": "",
+      "stderr_utf8_default": "Ϊ C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_8_h3logm\\root\\view <<===>> C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_8_h3logm\\outside ����������\r\n",
+      "link_created": true,
+      "is_junction": true
+    },
+    {
+      "variant": "D_shell_true_unquoted",
+      "argv": "mklink /J C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_u0mqqmvw\\root\\view C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_u0mqqmvw\\outside",
+      "shell": true,
+      "command_form": "shell=True unquoted",
+      "returncode": 0,
+      "stdout_utf8": "Ϊ C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_u0mqqmvw\\root\\view <<===>> C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_u0mqqmvw\\outside ����������\r\n",
+      "stderr_gbk": "",
+      "stderr_utf8_default": "Ϊ C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_u0mqqmvw\\root\\view <<===>> C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v2diag_u0mqqmvw\\outside ����������\r\n",
+      "link_created": true,
+      "is_junction": true
+    }
+  ],
+  "environment": {
+    "os_name": "nt",
+    "drive_of_temp": "C:",
+    "developer_mode_regkey": "checked separately; see REPORT_ATTEMPT2",
+    "junction_via_mklink_without_elevation": true,
+    "isjunction_after_separate_argv": true
+  },
+  "verdict": {
+    "fixture_can_create_junction_on_this_host": true,
+    "exact_v2_form_succeeds": false,
+    "root_cause": "The V2 fixture passes the whole command as ONE list element to cmd.exe. subprocess.list2cmdline then wraps it in quotes and escapes the inner quotes as \\\", which cmd.exe/mklink does not parse, so mklink reports 'The filename, directory name, or volume label syntax is incorrect.' Passing the tokens as separate argv elements works.",
+    "not_a_privilege_failure": "Variant B creates a real junction on the same host, same unelevated account, same C: temp volume, in the same run.",
+    "secondary_defect": "In the fixture, subprocess.run(..., text=True) decodes the child's GBK error text as UTF-8; the reader thread raises UnicodeDecodeError and stderr becomes None, so the raised message is a TypeError ('can only concatenate str (not \"NoneType\") to str') and the real diagnostic is lost.",
+    "collector_status": "NOT_RUN - gate did not pass and no bypass is permitted"
+  }
+}
