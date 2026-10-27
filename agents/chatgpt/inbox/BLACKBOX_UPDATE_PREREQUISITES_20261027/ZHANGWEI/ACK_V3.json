@@ -1,0 +1,82 @@
+{
+  "schema": "BLACKBOX_UPDATE_PREREQUISITES_ACK_V3",
+  "ack_at_cn": "2026-10-27T13:35:27+0800",
+  "execution_host": "ZHANGWEI",
+  "hostname": "ZHANGWEI",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "ack_kind": {
+    "refers_to_staging": true,
+    "refers_to_a_running_process": false,
+    "refers_to_completion": false,
+    "note": "this ACK is published before execution, as the V3 contract requires; publication of the ACK is not acceptance and not a result"
+  },
+  "existing_child_state_observed_before_this_attempt": {
+    "v1_ack_present": true,
+    "v2_ack_present": true,
+    "v1_collector_invoked": false,
+    "v2_collector_invoked": false,
+    "capture_001_exists": false,
+    "capture_002_exists": false,
+    "capture_003_exists": false,
+    "same_host_collector_processes": 0,
+    "matching_active_process": "NONE_OBSERVED",
+    "already_passing_capture": "NONE",
+    "v1_v2_files_left_intact": true
+  },
+  "package_verification_scope": {
+    "hub_dir": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/windows_fixture_v3",
+    "hub_file_count": 12,
+    "declared_payloads": 11,
+    "staged_files_including_package": 12,
+    "missing_from_staging": [],
+    "extra_in_staging": [],
+    "package_json_bytes": 2191,
+    "package_json_sha256": "39d6faf1418ceffe5e06ecd4b8974642b35a58d6a46d714b13a661c1a651018c",
+    "all_bytes_and_sha256_match": true,
+    "collector_source_identical_to_prior_packages": true,
+    "collector_sha256": "3e20395ef19dec1a81b4d81c5112f4f5dcc00de09c146d7076c6267f7dc96858",
+    "evidence": "STAGE_VERIFY_V3.json",
+    "not_verified_by_this_ack": "the AST identity of the seventeen original test bodies and the Linux 23/23 result are taken from the package review, not re-derived here"
+  },
+  "gate_to_be_run": {
+    "command": [
+      "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "cwd": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v3",
+    "required": "ALL 23 tests, zero failures/errors/skips, actual process exit 0",
+    "will_not": [
+      "reduce the gate to the two previously failing tests",
+      "edit any package file",
+      "elevate",
+      "enable Developer Mode",
+      "alter system policy",
+      "improvise an extra diagnostic script",
+      "skip or stub a control"
+    ]
+  },
+  "actual_next_action": {
+    "step_1": "run the native 23-test gate once and retain raw stdout/stderr, argv, cwd, executable, hostname, start/end and the literal returncode",
+    "step_2_conditional": "only if the gate passes all 23 with no skip: run the unchanged collector once with --role ZHANGWEI --out capture_003, never pre-creating or deleting that directory",
+    "step_3": "upload attempt-3 receipts, read back every file, then finish with END",
+    "no_fourth_attempt_planned": true
+  },
+  "boundaries_acknowledged": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "no_password_or_credential_work": true,
+    "no_download_current_switch_release_or_order": true
+  }
+}
