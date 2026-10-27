@@ -1,0 +1,55 @@
+{
+  "schema": "UPDATE_PREREQUISITES_ACK_V2_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host_expected": "SAM",
+  "generated_at_cn": "2026-10-27T13:10:18+0800",
+  "hostname": "SAM",
+  "ack_refers_to": "STAGING_AND_PENDING_EXECUTION",
+  "ack_meaning": "This ACK records that attempt 2 (windows_fixture_v2) is staged and about to run once. It is NOT a running-process claim and NOT a completion claim.",
+  "attempt_2_authorised_by": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WINDOWS_FIXTURE_V2_RESUME.md + OWNER_V2_AND_EXACT_CHAIN_HANDOFF_20261027.md",
+  "v1_preserved": {
+    "fixture_controls_exit": 1,
+    "passed": 15,
+    "errors": 2,
+    "error_cause": "os.symlink -> OSError WinError 1314 (no SeCreateSymbolicLinkPrivilege, Developer Mode off, unelevated)",
+    "collector_run": "NOT_RUN",
+    "evidence_files": [
+      "FIXTURE_CONTROLS_LEDGER.json",
+      "FIXTURE_CONTROLS_STDOUT.txt",
+      "FIXTURE_CONTROLS_STDERR.txt",
+      "REPORT.md"
+    ],
+    "note": "all V1 files remain untouched; none is overwritten or restated as passed"
+  },
+  "collector_already_active": false,
+  "collector_already_active_evidence": "Win32_Process scan for python.exe with 'collect_prerequisites' or 'capture_00' in the command line returned no rows at ACK time; SAM/capture_002 and SAM/chain_source_001 both absent locally.",
+  "package_staged": true,
+  "package_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package_windows_fixture_v2",
+  "package_verify": {
+    "schema": "BLACKBOX_REVIEWED_READ_ONLY_PACKAGE_V2",
+    "payloads_expected": 9,
+    "payloads_verified": 9,
+    "all_match": true,
+    "collector_sha256": "3e20395ef19dec1a81b4d81c5112f4f5dcc00de09c146d7076c6267f7dc96858",
+    "collector_unchanged_vs_v1": true,
+    "detail": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\STAGE_VERIFY_V2.json"
+  },
+  "planned_steps": [
+    "run the 17 controls once from package_windows_fixture_v2 (junction fixtures, no elevation)",
+    "if and only if 17/17 pass: run the unchanged collector once, --role SAM --out SAM\\capture_002",
+    "if collector exit 2: also perform the separately bounded chain_source_001 named-source handoff",
+    "upload attempt-2 receipts with attempt-2 names and byte-readback every payload"
+  ],
+  "fixture_privilege_note": "No elevation, no Developer Mode, no system policy change, no test edit. Fixtures now use cmd.exe mklink /J on a C: temp directory.",
+  "authority_boundaries": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "writes_to_E_BLACKBOX": false,
+    "supplier_call_or_quota_probe": false,
+    "credential_contents_read": false,
+    "collector_attempts_so_far": 0
+  }
+}
