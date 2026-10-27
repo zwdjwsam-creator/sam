@@ -1,3 +1,23 @@
+# Current execution task: desktop RAW_NONE staging (2026-10-27)
+
+task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R1
+execution_host: ZHANGWEI
+status: READY_FOR_ONE_NATIVE_GATE_AND_ONE_GUARDED_RUN
+SUPPLIER_ACTION_ALLOWED=ONLY_AS_BOUND_IN_THE_REVIEWED_TASK
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+DESKTOP_STOP_OR_DISABLE_ALLOWED=false
+
+Owner requested dispatch after the evidence review. Execute only the complete reviewed task:
+agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1.md
+
+Package: agents/chatgpt/reviews/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/
+All six files must be staged; verify PACKAGE.json's five payloads. Reviewer controls:27/27 passed offline, including real Parquet roundtrip; native execution and supplier results are pending. ACK before the native gate. Native27/27 exit0 is required before the single guarded --execute command. Existing output/running or completed task means reuse/report, never restart or delete. This is append-only staging, not production RAW or CURRENT. Upload/readback every receipt before the final Cursor response exactly END.
+
+The old watcher control and source/log handoffs are already completed in their bounded scopes. Do not replay their historical READY blocks below. This task supersedes earlier no-supplier routing only for its specifically bound endpoints/date range/host; all other restrictions remain.
+
+---
+
 # Owner authorization update: exact notebook legacy watcher control (2026-10-27)
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
