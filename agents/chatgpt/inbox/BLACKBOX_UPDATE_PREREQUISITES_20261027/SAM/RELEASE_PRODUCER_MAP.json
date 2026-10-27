@@ -1,0 +1,110 @@
+{
+  "schema": "UPDATE_PREREQUISITES_SAM_RETURN_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "generated_at_cn": "2026-10-27T12:46:00+0800",
+  "collector_run": "NOT_RUN",
+  "collector_not_run_reason": "fixture gate failed 2/17 (Windows symlink privilege); dispatch rule 'A failed test stops collection' applied literally",
+  "scope_note": "The bounded lookup root E:\\BLACKBOX\\任务 named in this dispatch was NOT searched, because the fixture gate failed before the collector ran. In-scope candidate_task_directory for either id is therefore NOT_DONE, not NONE. The producer evidence below comes from a separate already-completed read-only provenance task under the same parent, retained in HUB.",
+  "grades_used": {
+    "EXECUTION_BOUND": "a retained record ties the actual run to this output (log line + artefact whose own timestamp/id matches)",
+    "GENERATOR_SOURCE": "the body that constructs the id is in hand, but no retained record ties a specific run to this output",
+    "REFERENCE_ONLY": "the id appears in a consumer/registry record only",
+    "UNKNOWN": "no evidence retained"
+  },
+  "releases": [
+    {
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+      "grade": "EXECUTION_BOUND",
+      "candidate_task_directory": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924",
+      "candidate_task_directory_scope": "OUTSIDE the authorized lookup root (E:\\BLACKBOX\\任务). Disclosed as already-retained evidence, not as a result of this dispatch's bounded lookup.",
+      "generator_body": {
+        "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\clean_switch_r1.py",
+        "bytes": 8874,
+        "sha256": "cd33d827cecf169f14ccc8f8b4b6503c2217e4c51e3ae11430ce536f1d0d521a",
+        "constructs": "release_id = f\"BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_{ts}\"",
+        "ts_function": "ts_stamp() = datetime.now().strftime('%Y%m%d_%H%M%S')  [local +0800]"
+      },
+      "execution_binding": {
+        "record": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\FULL_CHAIN.log line 2512",
+        "line": "[2026-09-25T03:45:33+08:00] RUN D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\clean_switch_r1.py",
+        "corroboration": "CLEANING_SWITCH.json created_at = 2026-09-24T19:45:37+00:00 (= 03:45:37 +0800, 4 s after the RUN line) and its release_id equals the target id character-for-character",
+        "orchestrator": "_run_full_chain.ps1 line 30 calls RunPy \"$d\\clean_switch_r1.py\"; RunPy logs the RUN line and exits on rc!=0"
+      },
+      "referenced_records": [
+        {
+          "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\CLEANING_SWITCH.json",
+          "bytes": 1137,
+          "sha256": "895cfe1f1dad60f2ac55bc04184932c581858eb41a47d5391f7a7430cc67d766",
+          "carries": "release_id / seal_id / created_at / parent_release_id / switch_reason / release_content_root_sha256"
+        },
+        {
+          "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\00_CONTROL\\TASK_CONTROL.json",
+          "bytes": 521,
+          "sha256": "3857c3c9999d55fc8aede520ff27bb354c2e43bfdca957f5df10740e3902c384"
+        },
+        {
+          "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\COMPLETION_STATUS.json",
+          "bytes": 568,
+          "sha256": "3157272734d67ee18bfc565055f8d980f3c1d5e3985e91d4057aa9690cebc704"
+        },
+        {
+          "path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\qa\\RESULT.json",
+          "bytes": 2267,
+          "sha256": "2b26a80ea260696ac1bc12fc59b255f74168ca08a5bdb44597636688322b8d77"
+        }
+      ],
+      "not_claimed": "No historical argv beyond the log's RUN line; no environment, no stdout of clean_switch_r1.py itself beyond what FULL_CHAIN.log captured via Tee-Object."
+    },
+    {
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "grade": "EXECUTION_BOUND",
+      "candidate_task_directory": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1",
+      "candidate_task_directory_scope": "inside the authorized lookup root; a first-level directory whose name contains FUND_ETF_NAV_PREMIUM",
+      "generator_body": {
+        "path": "E:\\BLACKBOX\\脚本\\blackbox_fund_etf_nav_premium_plane_r1.py",
+        "bytes": 31204,
+        "sha256": "8e5b360ce0dad95012a94def38dd6b77c7ee71cbb729964c24432b0856c96b11",
+        "sha256_provenance": "as pinned in the earlier SAM source handoff SOURCE_INDEX; not re-hashed by this run",
+        "constructs": "clean_id = f\"BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_{ASOF}_{build_ts}\"",
+        "ts_function": "now_ts() = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')  [UTC]"
+      },
+      "execution_binding": {
+        "record": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\_run_full_chain.ps1 lines 41-42, corroborated by FULL_CHAIN.log lines 3093 and 3204-3230",
+        "invocation": "& $py -u \"E:\\BLACKBOX\\脚本\\blackbox_fund_etf_nav_premium_plane_r1.py\" --asof 2026-09-24 --phase all 2>&1 | Tee-Object -FilePath $log -Append",
+        "corroboration": "FULL_CHAIN.log L3093 marker '[2026-09-25T03:56:55+08:00] FUND_NAV' precedes the phase output echoed into the same log at L3204-3230, which contains clean_release_id = the target id and probed_at 2026-09-25T04:04:43+0800",
+        "why_no_RUN_line": "this call is not made through RunPy, so no 'RUN ' prefix is logged; absence of a RUN line is not absence of execution"
+      },
+      "referenced_records": [
+        {
+          "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1\\qa\\CLEAN_CACHE_RECEIPT.json",
+          "bytes": 555,
+          "sha256": "7b4b2edc839926c1dcb2814513f7b50e27c6295f78d26ed0048fd05eb42a409f"
+        },
+        {
+          "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1\\qa\\DOWNLOAD_RECEIPT.json",
+          "bytes": 737,
+          "sha256": "061e41b7f69ec3e336503e285a05b0ea5cad9f20bd550eaa3247587aefe65961"
+        },
+        {
+          "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1\\qa\\INVENTORY_RECEIPT.json",
+          "bytes": 1448,
+          "sha256": "9c96fbc058193ba2725a7fa193a7a39cfd938f8d03ec7be2785a28f9ae4e0e94"
+        },
+        {
+          "path": "E:\\BLACKBOX\\任务\\BLACKBOX_FUND_ETF_NAV_PREMIUM_PLANE_R1\\qa\\RULES_RECEIPT.json",
+          "bytes": 142,
+          "sha256": "201c31357e18861140f26a3bccaf547d91464261d5836f9c28472f81647d45ca"
+        }
+      ],
+      "not_claimed": "The generated-name pattern alone would not attest the historical invocation; the binding above rests on the retained log markers and the echoed phase output, not on the name."
+    }
+  ],
+  "cross_release_notes": [
+    "Naming is not a sequence: R45(parent)=R33(09-23), R33(09-24)(parent)=R45(09-24). They are two separate product lines (FUND_NAV vs DAILY_TIP), so a higher number is not later.",
+    "Timestamp bases differ: R45 embeds local +0800, R33 embeds UTC. Reading order from the id strings alone is wrong by 8 hours; use created_at/sealed_at/log time.",
+    "Both producer sites sit outside E:\\BLACKBOX\\任务 for R45 (D: archive) and partly outside for R33 (the invoking orchestrator). This is why an E:\\BLACKBOX-only runtime map could not name them."
+  ]
+}
