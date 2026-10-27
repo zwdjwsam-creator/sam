@@ -1,3 +1,9 @@
+# Superseded execution command: preserve prior outcomes, do not rerun
+
+Only the reviewed R4 continuation may now be executed on ZHANGWEI: agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS.md . Check existing R4 activity/results first. Its package requires the native77 gate and a new exclusive R4 output. R1/R2/R3 are retained historical evidence; none may be replayed, overwritten or erased. No cleaning/CURRENT/release/order.
+
+---
+
 # Active owner-authorized R3 continuation (ZHANGWEI only)
 
 task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R3_CODE_DTYPE
