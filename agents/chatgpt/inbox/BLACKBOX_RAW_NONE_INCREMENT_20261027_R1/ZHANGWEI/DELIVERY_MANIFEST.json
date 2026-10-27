@@ -1,0 +1,77 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_DELIVERY_MANIFEST_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R1",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "host": "ZHANGWEI",
+  "role": "ZHANGWEI",
+  "delivered_at_cn": "2026-10-27T18:09:30+0800",
+  "return_dir": "agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI",
+  "delivery_status": "GATE_FAILED_EXECUTION_WITHHELD_EVIDENCE_PRESERVED",
+  "exit_semantics": "this is a retained blocker for reviewer action; the task's own exit-2 convention for 'blocker/partial retained, upload and stop'",
+  "gate": {
+    "exit": 1,
+    "ran": 27,
+    "passed": 26,
+    "failed": 1,
+    "failed_test": "test_acquire_daily.Keys.test_real_parquet_and_footer"
+  },
+  "script_written_jsons": {
+    "count": 0,
+    "reason": "acquire_daily.py never ran, so it wrote no BASELINE/COVERAGE/receipt JSON; an absent script product is the measured outcome of a withheld execution, not a missing export"
+  },
+  "intent_or_quality_files": {
+    "count": 0,
+    "reason": "no batch was ever requested"
+  },
+  "files": [
+    "ACK.json",
+    "PACKAGE_VERIFY.json",
+    "GATE.json",
+    "GATE_STDOUT.txt",
+    "GATE_STDERR.txt",
+    "EXECUTION_BLOCKED.json",
+    "ENV.json",
+    "DIAGNOSIS.json",
+    "REPORT.md",
+    "DELIVERY_MANIFEST.json",
+    "UPLOAD_READBACK.json",
+    "LOCAL_READBACK.json"
+  ],
+  "not_delivered_and_why": [
+    {
+      "item": "E: staging output tree",
+      "reason": "not created; contract forbids pre-creating it and the gate failed"
+    },
+    {
+      "item": "script-produced BASELINE/COVERAGE JSON",
+      "reason": "acquire_daily.py was never executed"
+    },
+    {
+      "item": "quota measurement receipt",
+      "reason": "zero supplier calls, therefore no quota was consumed or measured"
+    }
+  ],
+  "boundary_compliance": {
+    "e_blacbox_written": false,
+    "production_raw_written": false,
+    "current_switched": false,
+    "supplier_calls": 0,
+    "credential_read": false,
+    "cleaning": "NONE",
+    "retry": false,
+    "local_patch_of_package": false,
+    "interpreter_substitution": false,
+    "pandas_downgrade": false
+  },
+  "receipt_chain": {
+    "acyclic": true,
+    "A_ACK.json": "references nothing built later",
+    "B_PACKAGE_VERIFY.json": "references nothing built later",
+    "C_GATE_and_streams": "raw measured output",
+    "D_EXECUTION_BLOCKED_ENV_DIAGNOSIS": "reference A-C facts",
+    "E_REPORT.md": "references A-D",
+    "F_DELIVERY_MANIFEST.json": "references A-E",
+    "G_UPLOAD_READBACK.json": "references A-F",
+    "H_LOCAL_READBACK.json": "references A-G; referenced by nothing"
+  }
+}
