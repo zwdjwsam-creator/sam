@@ -1,0 +1,20 @@
+{
+  "phase": "inventory",
+  "checks": {
+    "inventory_refresh_exit": 0,
+    "inventory_mentions_nav": true,
+    "cache_product_ready": true,
+    "cache_release": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+    "asof": "2026-09-24",
+    "catalog_has_product": true,
+    "stdout_tail": "{\n  \"final_status\": \"PASS\",\n  \"json\": \"E:\\\\BLACKBOX\\\\运行\\\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.json\",\n  \"md\": \"E:\\\\BLACKBOX\\\\运行\\\\BLACKBOX_FULL_DATA_INVENTORY_CURRENT.md\",\n  \"mdc\": \"E:\\\\BLACKBOX\\\\.cursor\\\\rules\\\\blackbox_data_inventory_top_ssot.mdc\",\n  \"generated_at_cn\": \"2026-09-25T04:06:41+0800\",\n  \"schema_version\": \"1.2.0\",\n  \"self_contained\": true,\n  \"current_release\": \"BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\",\n  \"raw_files\": 358699,\n  \"raw_gib\": 114.69,\n  \"index_minute_732_status\": \"DONE\",\n  \"index_minute_732_coverage_pct\": 100.0,\n  \"index_minute_align_release\": \"BLACKBOX_INDEX_MINUTE_ALIGN_R1_ASOF_20260924_20260925_033441\",\n  \"index_minute_align_pass\": true,\n  \"index_minute_align_parquet\": 31480\n}\n",
+    "stderr_tail": ""
+  },
+  "omissions": {
+    "P4b_open_fund_still_deferred": true,
+    "etf_premium_materialized_table": false,
+    "note": "溢价为派生非独立下载表；P4b 仍 DEFERRED；FUND_NAV tip 必须在 cache"
+  },
+  "PASS": true,
+  "at": "2026-09-25T04:06:42+0800"
+}
