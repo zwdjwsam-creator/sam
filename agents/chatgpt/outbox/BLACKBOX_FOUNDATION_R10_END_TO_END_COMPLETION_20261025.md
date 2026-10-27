@@ -1,3 +1,23 @@
+# Owner authorization update: exact notebook legacy watcher control (2026-10-27)
+
+task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
+dispatch_id: BLACKBOX_UPDATE_PREREQUISITES_20261027
+execution_host: ZHANGWEI
+notebook_evidence_host: SAM
+contract_id: WATCHDOG_CONTROL_20261027
+SAM_EXACT_WATCHER_STOP_ALLOWED=true
+DESKTOP_STOP_OR_DISABLE_ALLOWED=false
+NEW_DATA_ACQUISITION_AUTHORIZED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+The owner now expressly permits stopping proven SAM legacy watchdog processes and disabling their exact scheduled launchers. This supersedes earlier no-stop prose ONLY for the new reviewed allowlisted scope.
+Canonical contract/package: agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/WATCHDOG_CONTROL_20261027/REVIEW_AND_TASK.md
+Both existing child outboxes contain the complete contract. SAM may use its role command with --allow-sam-stop; ZHANGWEI is read-only. No Stop-ScheduledTask, ordinary Python/business-driver kill, child-tree kill, unrelated stop, terminal restart, data write or supplier action. Disable task state, do not delete tasks; retain identities/previous enabled state and mutation intent receipts before action. Unknown/drifting targets are report-only.
+Ten reviewer Linux policy controls passed; actual native permission/outcome remains pending. No task publication is an ACK or actual stop. Check existing output/process before running once, preserve failures and upload/readback every file, then final Cursor response exactly END.
+
+---
+
 # Owner decision: ZHANGWEI execution and data-plane baseline (2026-10-27)
 
 task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
