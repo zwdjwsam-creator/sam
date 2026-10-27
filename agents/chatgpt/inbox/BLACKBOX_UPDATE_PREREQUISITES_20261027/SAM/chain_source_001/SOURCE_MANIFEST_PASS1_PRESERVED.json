@@ -1,0 +1,222 @@
+{
+  "schema": "CHAIN_SOURCE_MANIFEST_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host": "SAM",
+  "hostname": "SAM",
+  "generated_at_cn": "2026-10-27T14:11:10+0800",
+  "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
+  "plan_schema": "EXACT_CHAIN_SOURCE_HANDOFF_R1",
+  "gate": {
+    "native_v3_gate": "PASSED 23/23 exit 0",
+    "collector_attempt3_exit": 2,
+    "proceed_rule": "gate passed AND collector exit 0 or retained partial 2"
+  },
+  "scope": "exactly the 14 named paths; no recursion, no wildcard, no import closure, no fallback root, no business module imported or executed",
+  "limits": {
+    "max_file_bytes": 2097152,
+    "max_total_bytes": 16777216,
+    "files_copied": 6,
+    "bytes_copied": 19434
+  },
+  "status_counts": {
+    "BLOCKED_SECRET_LITERAL": 8,
+    "CAPTURED": 6
+  },
+  "records": [
+    {
+      "seq": 1,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_daily_r1.py",
+      "status": "BLOCKED_SECRET_LITERAL",
+      "bytes": null,
+      "raw_sha256": null,
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": null,
+      "local_readback_match": null,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "blocked_reason": "credential-like literal detected during source inspection",
+      "detected_indicators": [
+        "auth("
+      ]
+    },
+    {
+      "seq": 2,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_val_adjust_r1.py",
+      "status": "BLOCKED_SECRET_LITERAL",
+      "bytes": null,
+      "raw_sha256": null,
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": null,
+      "local_readback_match": null,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "blocked_reason": "credential-like literal detected during source inspection",
+      "detected_indicators": [
+        "auth("
+      ]
+    },
+    {
+      "seq": 3,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_billboard_ingest_r1.py",
+      "status": "BLOCKED_SECRET_LITERAL",
+      "bytes": null,
+      "raw_sha256": null,
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": null,
+      "local_readback_match": null,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "blocked_reason": "credential-like literal detected during source inspection",
+      "detected_indicators": [
+        "auth("
+      ]
+    },
+    {
+      "seq": 4,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\download_xr_xd_r1.py",
+      "status": "BLOCKED_SECRET_LITERAL",
+      "bytes": null,
+      "raw_sha256": null,
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": null,
+      "local_readback_match": null,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "blocked_reason": "credential-like literal detected during source inspection",
+      "detected_indicators": [
+        "auth("
+      ]
+    },
+    {
+      "seq": 5,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\minute_download_20260924.py",
+      "status": "BLOCKED_SECRET_LITERAL",
+      "bytes": null,
+      "raw_sha256": null,
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": null,
+      "local_readback_match": null,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "blocked_reason": "credential-like literal detected during source inspection",
+      "detected_indicators": [
+        "auth("
+      ]
+    },
+    {
+      "seq": 6,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\ingest_minutes_r1.py",
+      "status": "CAPTURED",
+      "bytes": 3881,
+      "raw_sha256": "a7e608bd482d15511692b577a040fb11017ccd0cf939b79a54ed915f2112ceb2",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0006_ingest_minutes_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 7,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\ingest_minutes_flat_r1.py",
+      "status": "CAPTURED",
+      "bytes": 2500,
+      "raw_sha256": "1b6cefbbe2bcd0ca08c86b415f469dc084dd522e39e285856f83f1c14a9a9e62",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0007_ingest_minutes_flat_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 8,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\sw_l123_asof_20260924.py",
+      "status": "BLOCKED_SECRET_LITERAL",
+      "bytes": null,
+      "raw_sha256": null,
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": null,
+      "local_readback_match": null,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "blocked_reason": "credential-like literal detected during source inspection",
+      "detected_indicators": [
+        "auth("
+      ]
+    },
+    {
+      "seq": 9,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\index_minute_20260924.py",
+      "status": "BLOCKED_SECRET_LITERAL",
+      "bytes": null,
+      "raw_sha256": null,
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": null,
+      "local_readback_match": null,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "blocked_reason": "credential-like literal detected during source inspection",
+      "detected_indicators": [
+        "auth("
+      ]
+    },
+    {
+      "seq": 10,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\align_index_minute_20260924.py",
+      "status": "CAPTURED",
+      "bytes": 3976,
+      "raw_sha256": "33bfd6f1fd1251e0541d5fe8aae3ddc73516a6c1a2e2c4b68f962bc91a33d073",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0010_align_index_minute_20260924.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T13:42:38Z"
+    },
+    {
+      "seq": 11,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\code\\patch_candidate_val_sw_republish_r1.py",
+      "status": "CAPTURED",
+      "bytes": 4931,
+      "raw_sha256": "e4f20b14bc6e87fe279025a3595acb554f78af7a5f4d17d0e0a2b7c3a0ff3df4",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0011_patch_candidate_val_sw_republish_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T19:56:47Z"
+    },
+    {
+      "seq": 12,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_TIP_CATCHUP_UNATTENDED_R1\\pick_cache_candidate_r1.py",
+      "status": "CAPTURED",
+      "bytes": 1518,
+      "raw_sha256": "ce9f141239b2072543e21b76209841a291bee515926a7063f8268ccbfd04e870",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0012_pick_cache_candidate_r1.py",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T06:24:49Z"
+    },
+    {
+      "seq": 13,
+      "source_path": "D:\\CURSOR_TASK_ARCHIVE\\JQ_DAILY_TIP_20260924\\DOWNLOAD_ACCEPTANCE.json",
+      "status": "CAPTURED",
+      "bytes": 2628,
+      "raw_sha256": "306483d1a0bed6336a2da1a81df553667469077e5a38b84889c3affaf2e623bd",
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": "bodies/0013_DOWNLOAD_ACCEPTANCE.json",
+      "local_readback_match": true,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "mtime_utc": "2026-09-24T19:02:01Z"
+    },
+    {
+      "seq": 14,
+      "source_path": "E:\\BLACKBOX\\脚本\\jq_download_base.py",
+      "status": "BLOCKED_SECRET_LITERAL",
+      "bytes": null,
+      "raw_sha256": null,
+      "git_blob_sha_if_known": null,
+      "reused_hub_reference_or_captured_relative_path": null,
+      "local_readback_match": null,
+      "current_snapshot_not_historical_execution_attestation": true,
+      "blocked_reason": "credential-like literal detected during source inspection",
+      "detected_indicators": [
+        "password",
+        "auth("
+      ]
+    }
+  ],
+  "boundary": "a missing path is not absence of business data; a current source hash is not historical process attestation"
+}
