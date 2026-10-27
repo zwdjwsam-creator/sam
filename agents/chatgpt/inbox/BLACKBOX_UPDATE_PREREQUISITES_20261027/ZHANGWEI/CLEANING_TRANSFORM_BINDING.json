@@ -1,52 +1,263 @@
 {
   "schema": "BLACKBOX_CLEANING_TRANSFORM_BINDING_R1",
   "execution_host": "ZHANGWEI",
-  "captured_at_cn": "2026-10-27T12:30:28+0800",
-  "evidence_mode": "DIRECT_READ_ONLY",
+  "hostname": "ZHANGWEI",
+  "captured_at_cn": "2026-10-27T12:34:06+0800",
+  "evidence_mode": "DIRECT_READ_ONLY_AST_AND_TEXT",
   "collector_evidence": "NOT_AVAILABLE_FIXTURE_CONTROLS_FAILED",
-  "method": "ast.parse only; the original main was never imported or executed",
-  "target_functions": [
-    "ingest_item",
-    "load_staging",
-    "seal_release"
-  ],
-  "callsites_by_body": {
-    "run_r15_cleaning_replay.py": {
-      "load_staging": [
-        {
-          "line": 450,
-          "col": 13,
-          "args": 0,
-          "kwargs": []
-        }
-      ],
-      "seal_release": [
-        {
-          "line": 505,
-          "col": 11,
-          "args": 4,
-          "kwargs": []
-        }
-      ],
-      "ingest_item": [
-        {
-          "line": 498,
-          "col": 23,
-          "args": 2,
-          "kwargs": []
-        }
-      ]
-    },
-    "run_connected_pipeline.py": {},
-    "run_original_compiler_candidate.py": {}
+  "method": "ast.parse plus source reading only; the original R15 module was never imported or executed in this pass. Byte/value semantics below are read from the wrapper body and from the retained replay receipt, not re-measured",
+  "current_wrapper": {
+    "path": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/candidate/run_r15_cleaning_replay.py",
+    "pin": {
+      "bytes": 29825,
+      "sha256": "f2c858e4875a5a6de55f2b5cfdf46c08f83fad992c25e5897f19e6ec77804044"
+    }
   },
-  "current_wrapper": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/candidate/run_r15_cleaning_replay.py",
-  "retained_replay_receipt": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/evidence/R15_CLEANING_REPLAY.json",
-  "staging_selectors": "UNKNOWN_NOT_READ_IN_THIS_PASS",
-  "source_to_clean_rel_mapping": "UNKNOWN_NOT_READ_IN_THIS_PASS",
-  "byte_placement_vs_value_transform": "UNKNOWN_NOT_READ_IN_THIS_PASS",
-  "exclusions": "UNKNOWN_NOT_READ_IN_THIS_PASS",
-  "align_pit_handling": "UNKNOWN_NOT_READ_IN_THIS_PASS",
-  "writable_destinations_visible": "UNKNOWN_NOT_READ_IN_THIS_PASS",
-  "why_unknown": "the collector did not run, so body-level classification (REUSED/NEW) and any byte-range evidence the plan expects are absent; stating UNKNOWN rather than inferring from filenames"
+  "original_bodies_used_untouched": [
+    {
+      "path": "任务/BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1/formal_cleaning_r15_build_and_seal_r1.py",
+      "pin": {
+        "bytes": 14196,
+        "sha256": "5ee6b3b4795c56ce178b7d6cbe581f6391fbbc817a9c677a94a09ca5023f992d"
+      }
+    },
+    {
+      "path": "任务/BLACKBOX_FULL_DATA_UPDATE_R15_20260810_R1/r15_antileak_and_ssot_r1.py",
+      "pin": {
+        "bytes": 5883,
+        "sha256": "d1a4ff2a174f9219068bb60e5804c47b7e707458626115ae9b9c9b350c9de0ab"
+      }
+    }
+  ],
+  "callsites_ast": {
+    "load_staging": {
+      "line": 450,
+      "args": 0,
+      "form": "loaded = mod.load_staging()"
+    },
+    "ingest_item": {
+      "line": 498,
+      "args": 2,
+      "form": "results.extend(mod.ingest_item(item, release_root))"
+    },
+    "seal_release": {
+      "line": 505,
+      "args": 4,
+      "form": "seal = mod.seal_release(release_root, rid, f\"{rid}_SEAL\", results)"
+    },
+    "additional_original_entrypoint": {
+      "name": "ingest_minute_staging",
+      "line": 501,
+      "args": 1,
+      "form": "minute_results = mod.ingest_minute_staging(release_root)",
+      "note": "not in the three named targets but present and called; recorded so the minute path is not mistaken for something this wrapper re-implements"
+    }
+  },
+  "no_callsites_found_in": [
+    {
+      "path": "tools/run_connected_pipeline.py",
+      "result": "0 callsites for load_staging / ingest_item / seal_release"
+    },
+    {
+      "path": "tools/run_original_compiler_candidate.py",
+      "result": "0 callsites for load_staging / ingest_item / seal_release"
+    }
+  ],
+  "staging_selectors": {
+    "source_root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P2_stock_daily",
+    "retained_units": [
+      "stock_daily__incremental_gap_20260831_20260831__full__20260831_155057.parquet",
+      "stock_daily__incremental_gap_20260901_20260901__full__20260901_161813.parquet"
+    ],
+    "retained_unit_count": 2,
+    "manifest_written_by_wrapper": "<root>/08_DAILY_SOURCE_HANDOFF/STAGING_MANIFEST.json, built by build_staging() from the two RETAINED names",
+    "manifest_consumed_by": "the original mod.load_staging()",
+    "hard_block": "HARD_BLOCK if a retained batch is missing at the source path",
+    "per_item_fields": [
+      "unit_id",
+      "domain_id",
+      "status",
+      "raw_path",
+      "stage_path",
+      "clean_rel",
+      "file_sha256",
+      "rows",
+      "max_time",
+      "as_of",
+      "trade_days_in_file"
+    ]
+  },
+  "source_to_clean_rel_mapping": {
+    "rule": "clean_rel = f\"price/stock_ohlcv_daily/{name}\" where name is the retained parquet basename",
+    "domain_id": "stock_ohlcv_daily",
+    "shape": "flat 1:1 per staged file; not a date- or code-partitioned mapping in this body"
+  },
+  "byte_placement_versus_value_transform": {
+    "separation_is_explicit_in_the_body": true,
+    "byte_placement": {
+      "mechanism": "carry-forward of the sealed parent standard tree: a junction is recreated as a junction to the same target (zero copy), a real directory is created and recursed, a real file is hard-linked",
+      "modes": [
+        {
+          "flag": "--full-carry-forward",
+          "method": "FULL_REAL_MATERIALIZE_RESOLVE_JUNCTIONS_BRANCH_CYCLE_GUARD"
+        },
+        {
+          "flag": "--no-carry-forward",
+          "method": "skipped, standard/ created empty"
+        },
+        {
+          "flag": "(default)",
+          "method": "SELECTED_SUBTREES_COMPILER_INPUTS_ONLY",
+          "observed": {
+            "files_linked": 371,
+            "files_copied": 0,
+            "gate_ok": true
+          }
+        }
+      ],
+      "why_not_the_original_hardlink_tree": "rglob follows reparse points; production standard has ~32-release junction chains plus a real junction cycle, so the original never terminates (observed: 25 min CPU spin, 0 bytes produced)",
+      "fail_closed": "if the materialised source/destination file sets differ the wrapper writes MATERIALIZE_INCOMPLETE.json and raises SystemExit; a partial materialisation was observed to drop 12 r2_repair files and collapse 2026-07-03..07-10 to 19 codes"
+    },
+    "value_transform": {
+      "mechanism": "the ORIGINAL R15 function bodies perform the value transform; the wrapper only injects paths and orders the calls",
+      "injected_attributes": [
+        "ROOT",
+        "RELEASES",
+        "CURRENT",
+        "MINUTE_STAGING",
+        "CLEANING_AS_OF",
+        "PARENT_ID",
+        "PARENT_SEAL"
+      ],
+      "call_order": [
+        "load_staging",
+        "carry-forward",
+        "assert_no_junction_on_write_path",
+        "ingest_item x N",
+        "ingest_minute_staging",
+        "seal_release",
+        "antileak_check",
+        "amend_ssot (conditional)"
+      ],
+      "bounded_proof": "the retained replay receipt records replayed_bytes_match_retained = True for the two retained units; that is bounded evidence, not proof of every transformation"
+    }
+  },
+  "exclusions": {
+    "materialised_subtrees": [
+      "price/stock_ohlcv_daily",
+      "price/ETF_daily",
+      "reference/index_daily",
+      "factor/valuation"
+    ],
+    "not_materialised": "the minute products (~1e5 files); the remaining top-level children stay as junctions to the same targets",
+    "hard_link_safety_precheck": "refuses to start if any target clean_rel already exists in the production parent standard root, unless carry-forward is explicitly disabled",
+    "junction_guard": "assert_no_junction_on_write_path(release_root) before ingest"
+  },
+  "align_pit_handling": {
+    "in_this_wrapper": {
+      "CLEANING_AS_OF": "injected as asof",
+      "finance_asof / daily_asof": "set equal to asof in the candidate pointer"
+    },
+    "in_the_original_bodies": "date alignment and look-ahead gating live inside the R15 ingest/seal and antileak bodies, which this pass did not re-implement and did not step through",
+    "observed_gate_values": {
+      "antileak.asof_aligned": true,
+      "antileak.overall_pass": true,
+      "antileak.index_pit_overall_pass": true
+    },
+    "status": "OBSERVED_TRUE_ON_THE_RETAINED_UNITS_ONLY"
+  },
+  "potentially_writable_destinations_visible": [
+    {
+      "destination": "<candidate root>/CANDIDATE_CLEANING_POINTER.json",
+      "class": "CANDIDATE_CONTROL",
+      "production_write": false,
+      "note": "pointer records CURRENT_WRITE=NONE_CANDIDATE_ONLY"
+    },
+    {
+      "destination": "<candidate root>/CANDIDATE_SSOT.json",
+      "class": "CANDIDATE_CONTROL_COPY",
+      "production_write": false,
+      "note": "a copy of production SSOT; amend_ssot is redirected to this copy"
+    },
+    {
+      "destination": "<releases>/<rid>/standard/...",
+      "class": "CANDIDATE_RELEASE_TREE",
+      "production_write": false
+    },
+    {
+      "destination": "<releases>/<rid>/MATERIALIZE_INCOMPLETE.json",
+      "class": "CANDIDATE_FAILURE_ARTIFACT",
+      "production_write": false
+    },
+    {
+      "destination": "<releases>/<rid>/RELEASE.json",
+      "class": "CANDIDATE_RELEASE_METADATA",
+      "production_write": false,
+      "note": "self-declares PRODUCTION_CURRENT_WRITE=NONE, switch_current=NOT_CALLED, patch_hand=NOT_CALLED"
+    },
+    {
+      "destination": "<TASK>/evidence/r15_acceptance (antileak OUT)",
+      "class": "TASK_EVIDENCE",
+      "production_write": false
+    },
+    {
+      "destination": "production standard inodes reached through hard links",
+      "class": "SHARED_INODE_WRITE_THROUGH_RISK",
+      "production_write": "CONDITIONAL",
+      "why": "carry-forward hard-links real files, so a candidate path shares an inode with production. The only operation that could reach a shared inode is place_file, which does unlink then link and never an in-place write. The wrapper makes this provable rather than assumed with the pre-check plus before/after production sampling",
+      "observed": {
+        "production_current_untouched": true,
+        "production_ssot_untouched": true,
+        "production_sample_inodes_untouched": true,
+        "sample_before_equals_after": true,
+        "prod_pointer_before_equals_after": true
+      }
+    },
+    {
+      "destination": "production CURRENT cleaning pointer",
+      "class": "PRODUCTION_READ_ONLY",
+      "production_write": false,
+      "note": "only read and hashed"
+    },
+    {
+      "destination": "production SSOT (HAND full data update scope R1)",
+      "class": "PRODUCTION_READ_ONLY",
+      "production_write": false,
+      "note": "only read and copied"
+    }
+  ],
+  "never_called_by_this_wrapper": [
+    "switch_current (production CURRENT)",
+    "patch_hand (production HAND)"
+  ],
+  "retained_replay_citations": {
+    "path": "_OPS/FOUNDATION_RECOVERY_20261024/end_to_end_completion/evidence/R15_CLEANING_REPLAY.json",
+    "pin": {
+      "bytes": 26449,
+      "sha256": "e389116f16aa8ecdbac900574af9bc8439507f7d7f6232218789fd5be980187b"
+    },
+    "gate_result": "PASS",
+    "all_18_gates_true": true,
+    "not_claimed_by_that_receipt": [
+      "production CURRENT not switched (switch_current not called)",
+      "production HAND not patched (patch_hand not called)",
+      "the replay proves the R15 functions run on the retained batches, not that the original vendor download returned them",
+      "antileak/SSOT here validate the candidate tree only"
+    ]
+  },
+  "confidence_and_limits": {
+    "high_confidence": [
+      "callsite lines and arities",
+      "clean_rel rule",
+      "carry-forward modes",
+      "exclusion set",
+      "writable destination inventory",
+      "never-called list"
+    ],
+    "not_established": [
+      "the internal value transforms of the original ingest/seal/antileak bodies were not stepped through in this pass",
+      "no byte-range or row-level transform certificate was produced because the collector did not run",
+      "which code an earlier process executed remains UNKNOWN; current source hashes are not an execution certificate"
+    ]
+  }
 }
