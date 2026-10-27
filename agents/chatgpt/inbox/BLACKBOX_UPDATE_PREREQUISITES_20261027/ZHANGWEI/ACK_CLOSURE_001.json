@@ -4,7 +4,7 @@
   "hostname": "ZHANGWEI",
   "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
   "task": "EXACT_SOURCE_CLOSURE_20261027_1501",
-  "status": "ACKED_AND_COMPLETED_REFERENCE_RECEIPT_ONLY",
+  "status": "ACKED_COMPLETED_REFERENCE_RECEIPT_ONLY",
   "both_named_files_compared": 2,
   "raw_bytes_equal_to_original": 2,
   "changed_bodies": 0,
@@ -21,28 +21,42 @@
   "NEW_DATA_ACQUISITION_AUTHORIZED": false,
   "CURRENT_SWITCH_ALLOWED": false,
   "ORDER_ALLOWED": false,
-  "writes_confined_to": "C: source_closure_001 and HUB return dir",
-  "e_blacbox_write": false,
+  "writes_confined_to": [
+    "C: source_closure_001",
+    "HUB return dir"
+  ],
+  "written_under_e_blacbox": false,
+  "receipt_chain": "A SOURCE_MANIFEST -> B HANDOFF_NOTES -> C DELIVERY_MANIFEST -> D UPLOAD_READBACK -> E LOCAL_READBACK (acyclic)",
   "delivered": [
     {
       "name": "DELIVERY_MANIFEST.json",
-      "bytes": 3599
+      "bytes": 3616,
+      "sha256": "8bd40ced98f2cf667e5f2794ee7e0d2bb5dbc5a7860561dd8a60693f90a28efb",
+      "blob": "8898a0fec3e77355cbbaae3b130557a48ef4eff6"
     },
     {
       "name": "HANDOFF_NOTES.md",
-      "bytes": 4284
+      "bytes": 4284,
+      "sha256": "9cbb6f06151af1ed298175c3d32d75a34fa2754022f1f12c6ee93e94ca9e514a",
+      "blob": "cc3ac953f2581ec0ad23abbbca01232409c681b8"
     },
     {
       "name": "LOCAL_READBACK.json",
-      "bytes": 1120
+      "bytes": 1312,
+      "sha256": "f799af0e45d9f9fa3adfe190f209c591edb826975e0157d17ffa8129973de5c8",
+      "blob": "580eb1857306d46c15e9141bc18ed212882cbd1f"
     },
     {
       "name": "SOURCE_MANIFEST.json",
-      "bytes": 4462
+      "bytes": 4462,
+      "sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b",
+      "blob": "fe4203efe513a405912c8f2581db4dca8285dcd9"
     },
     {
       "name": "UPLOAD_READBACK.json",
-      "bytes": 2323
+      "bytes": 2245,
+      "sha256": "36ceecb1861287b03abd9fbdcd874e9e7a9c49c37835220a702525a854e77892",
+      "blob": "767f07881ad62c139ad03e6995b7f1c1be4ffa29"
     }
   ]
 }
