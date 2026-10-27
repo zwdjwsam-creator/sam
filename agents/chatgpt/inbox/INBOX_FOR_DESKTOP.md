@@ -1,3 +1,10 @@
+> **[SAM DEPLOYED-SOURCE HANDOFF 20261027] six execution-bound bodies delivered**
+> Path: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/sam_led_rectification/commit_audit_20261026/deployed_source/
+> Bodies: run_connected_pipeline.py (35051 B, CRLF 718), cache_compiler_daily_incremental_r1.py (47910, LF), cache_compiler_tip_rebase_from_current_r1.py (30661, LF), bound R13 RELEASE.json (1344), SEAL.json (12849), CHECKPOINT.json (2145) - all read over SMB from the desktop deployment, raw bytes, no newline normalisation.
+> Bound reference resolved from the desktop COMMIT.json itself: seq=4, commit_id 572619c9...0876, release _20261026_181019, checkpoint versions/572619c945d48f1b/CHECKPOINT.json.
+> Body #1 (candidate_commit.py) NOT re-uploaded per 2321. NOTE a discrepancy for the reviewer: the live deployed module is 53208 B / e4772dda..., not the 52071 B / 7573eff5... recorded for v3; this handoff does not decide whether that is a later local install or a different artefact.
+> Historical execution identity: UNKNOWN - no literal process command/exit ledger retained. No pipeline rerun, no acquisition, no CURRENT write, no deletion.
+
 # Owner-requested dual-host prerequisite handoff (2026-10-27)
 
 parent_task_id: BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025
