@@ -1,0 +1,308 @@
+{
+  "schema": "BLACKBOX_RAW_NONE_R4_DIAGNOSIS_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS",
+  "at_cn": "2026-10-27T20:07:57+0800",
+  "status": "BLOCKED_PRESERVE_PARTIAL",
+  "os_exit_code": 2,
+  "reason": "LIVE_BAR_NULL",
+  "is_host_defect": false,
+  "is_rule_defect": false,
+  "summary": "The reviewed EMPTY_SLOT policy worked: the run cleared the freshness guard and began real acquisition. It then stopped on a single-vendor observation inconsistency in one stock on one session, exactly where the contract requires a stop rather than a local fill.",
+  "control": {
+    "file": "C:\\LAN_SHARE_REPORT\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R4_EMPTY_SLOTS\\package\\acquire_daily.py",
+    "line": "169",
+    "code": "require(raw.loc[live,['open','high','low','close','volume','money']].notna().all().all(), 'LIVE_BAR_NULL')",
+    "meaning": "For a row the supplier marks paused=0, all six price/volume fields must be non-null. Local fill is forbidden, so the only compliant response is to stop."
+  },
+  "failed_batch": {
+    "request_number": 1114,
+    "raw_path": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R4\\raw\\stock\\2026-10-27_03360_R4.parquet",
+    "raw_bytes": 15489,
+    "raw_sha256": "fb1a0ccb4918e6035d7e6a3695d6fbac6cbf9818c3ea2ca01bcf7928b2e8b2c7",
+    "rows": 80,
+    "columns": [
+      "time",
+      "code",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "money",
+      "paused",
+      "high_limit",
+      "low_limit",
+      "avg",
+      "pre_close",
+      "factor"
+    ],
+    "status": "BLOCKED_PRESERVED",
+    "preserved": true
+  },
+  "violation": {
+    "rows_flagged": 1,
+    "rows": [
+      {
+        "code": "600621.XSHG",
+        "paused": 0.0,
+        "open": null,
+        "high": null,
+        "low": null,
+        "close": 14.9,
+        "volume": 0.0,
+        "money": 0.0,
+        "null_fields": [
+          "open",
+          "high",
+          "low"
+        ]
+      }
+    ],
+    "per_column_null_counts_in_batch": {
+      "time": 0,
+      "code": 0,
+      "open": 1,
+      "high": 1,
+      "low": 1,
+      "close": 0,
+      "volume": 0,
+      "money": 0,
+      "paused": 0,
+      "high_limit": 0,
+      "low_limit": 0,
+      "avg": 0,
+      "pre_close": 0,
+      "factor": 0
+    }
+  },
+  "code_history_600621_XSHG": [
+    {
+      "date": "2026-09-28",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 13.67,
+      "high": 13.89,
+      "low": 13.56,
+      "close": 13.58,
+      "volume": 18644823.0,
+      "money": 256052279.39
+    },
+    {
+      "date": "2026-09-29",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 13.45,
+      "high": 13.64,
+      "low": 13.37,
+      "close": 13.45,
+      "volume": 14326048.0,
+      "money": 193379340.4
+    },
+    {
+      "date": "2026-09-30",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 13.55,
+      "high": 13.56,
+      "low": 13.27,
+      "close": 13.37,
+      "volume": 12396263.0,
+      "money": 165849839.97
+    },
+    {
+      "date": "2026-10-08",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 13.32,
+      "high": 13.41,
+      "low": 13.08,
+      "close": 13.16,
+      "volume": 11222103.0,
+      "money": 148343774.51
+    },
+    {
+      "date": "2026-10-09",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 13.23,
+      "high": 14.48,
+      "low": 13.16,
+      "close": 14.48,
+      "volume": 50073504.0,
+      "money": 702519114.56
+    },
+    {
+      "date": "2026-10-12",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 14.47,
+      "high": 15.26,
+      "low": 14.35,
+      "close": 14.76,
+      "volume": 77685578.0,
+      "money": 1149559222.4
+    },
+    {
+      "date": "2026-10-13",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 14.58,
+      "high": 15.67,
+      "low": 14.57,
+      "close": 14.78,
+      "volume": 78619544.0,
+      "money": 1187537466.72
+    },
+    {
+      "date": "2026-10-14",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 14.49,
+      "high": 15.39,
+      "low": 14.49,
+      "close": 14.95,
+      "volume": 72078271.0,
+      "money": 1073068588.38
+    },
+    {
+      "date": "2026-10-15",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 14.79,
+      "high": 15.69,
+      "low": 14.6,
+      "close": 15.42,
+      "volume": 90410388.0,
+      "money": 1369170372.27
+    },
+    {
+      "date": "2026-10-16",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 15.01,
+      "high": 15.12,
+      "low": 14.52,
+      "close": 14.76,
+      "volume": 61509529.0,
+      "money": 909044549.92
+    },
+    {
+      "date": "2026-10-19",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 14.73,
+      "high": 14.8,
+      "low": 14.41,
+      "close": 14.49,
+      "volume": 40255973.0,
+      "money": 586312383.51
+    },
+    {
+      "date": "2026-10-20",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 14.47,
+      "high": 14.51,
+      "low": 14.11,
+      "close": 14.23,
+      "volume": 35582806.0,
+      "money": 507420948.05
+    },
+    {
+      "date": "2026-10-21",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 14.1,
+      "high": 14.4,
+      "low": 13.77,
+      "close": 13.92,
+      "volume": 32863538.0,
+      "money": 463123230.67
+    },
+    {
+      "date": "2026-10-22",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 13.98,
+      "high": 15.0,
+      "low": 13.92,
+      "close": 14.34,
+      "volume": 66473046.0,
+      "money": 966011885.94
+    },
+    {
+      "date": "2026-10-23",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": 14.09,
+      "high": 15.22,
+      "low": 13.79,
+      "close": 14.9,
+      "volume": 84069699.0,
+      "money": 1231179448.53
+    },
+    {
+      "date": "2026-10-26",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 1.0,
+      "open": 14.9,
+      "high": 14.9,
+      "low": 14.9,
+      "close": 14.9,
+      "volume": 0.0,
+      "money": 0.0
+    },
+    {
+      "date": "2026-10-27",
+      "present": true,
+      "code_in_batch": true,
+      "paused": 0.0,
+      "open": null,
+      "high": null,
+      "low": null,
+      "close": 14.9,
+      "volume": 0.0,
+      "money": 0.0
+    }
+  ],
+  "interpretation": "On 2026-10-26 the vendor returned paused=1 with every price pinned to 14.90 and volume/money zero. On 2026-10-27 it returned paused=0 with close still 14.90, volume and money zero, but open/high/low null. That is a suspended-then-reopened session the vendor has not fully populated, not a hole in coverage, not a supplier outage and not a local defect. The 43 batches already fetched for 2026-10-27 are valid; only this one batch is short of the contract.",
+  "what_was_not_done": [
+    "No local fill of open/high/low.",
+    "No fq or factor substitution.",
+    "No skipped row.",
+    "No retry of the batch.",
+    "No deletion of the rejected raw bytes.",
+    "No advance to ETF or index."
+  ],
+  "coverage_consequence": {
+    "stock_sessions_full": 16,
+    "stock_sessions_partial": 1,
+    "stock_batches_done_on_last_day": 43,
+    "stock_batches_remaining_on_last_day": 23,
+    "etf_sessions_not_attempted": 17,
+    "index_sessions_not_attempted": 17
+  },
+  "reviewer_resolution_options": [
+    "A) Add an explicit observation state for this shape (paused=0, volume=0, money=0, close present, open/high/low null) recorded as RESUME_NO_OPEN_NO_TRADE and accepted as vendor truth, without filling any value.",
+    "B) Isolate the single offending security per session, keep the other 79 rows of the batch, and mark that code as a per-code supplier gap in coverage rather than stopping the product.",
+    "C) Defer 2026-10-27 to a later run after the vendor settles, and continue ETF/index for the other 16 sessions in the meantime.",
+    "D) Keep the current hard stop and treat any such row as a blocking vendor defect."
+  ],
+  "recommendation": "B plus A: isolate per code, record the exact observation state, and never fill. That keeps 5,223 of 5,224 codes productive on the last session and still writes the vendor inconsistency as first-class evidence instead of losing the whole batch."
+}
