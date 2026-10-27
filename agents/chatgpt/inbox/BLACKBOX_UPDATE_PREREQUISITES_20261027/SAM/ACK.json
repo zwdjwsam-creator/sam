@@ -1,0 +1,35 @@
+{
+  "schema": "UPDATE_PREREQUISITES_ACK_R1",
+  "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_SAM_20261027",
+  "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
+  "execution_host_expected": "SAM",
+  "acked_at_cn": "2026-10-27T12:37:50+0800",
+  "collector_already_active": false,
+  "collector_already_active_evidence": "GET agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/SAM -> HTTP 404 at ack time; no prior ACK, PID, capture_001 or result exists for this host. ZHANGWEI sibling folder does exist (13 entries) and belongs to the other host; it is not touched.",
+  "package_staged": true,
+  "package_dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_UPDATE_PREREQUISITES_20261027\\package",
+  "package_verify": {
+    "payloads": 9,
+    "all_match": true,
+    "verified_against": "PACKAGE.json files[]",
+    "detail": "STAGE_VERIFY.json"
+  },
+  "planned_steps": [
+    "stage 10 package files unchanged and verify 9 payloads vs PACKAGE.json (DONE before this ACK)",
+    "run the 17 fixture controls once via unittest discover",
+    "run collector --role SAM --out ...\\SAM\\capture_001 exactly once, preserving its literal exit",
+    "produce RELEASE_PRODUCER_MAP.json, R15_UNIT_EVIDENCE.json, CURSOR_EVIDENCE_APPENDIX.json, FACTOR_EVIDENCE_NOTE.md",
+    "upload every file and byte-readback each one"
+  ],
+  "authority_boundaries": {
+    "NEW_DATA_ACQUISITION_AUTHORIZED": false,
+    "CURRENT_SWITCH_ALLOWED": false,
+    "ORDER_ALLOWED": false,
+    "writes_to_E_BLACKBOX": false,
+    "supplier_call_or_quota_probe": false,
+    "credential_contents_read": false
+  },
+  "notes": "This ACK is not an execution result and not an acceptance. Task publication is not an ACK; this file is.",
+  "hostname": "SAM"
+}
