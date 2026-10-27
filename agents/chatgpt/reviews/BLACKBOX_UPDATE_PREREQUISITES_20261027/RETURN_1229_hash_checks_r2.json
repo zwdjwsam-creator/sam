@@ -1,0 +1,121 @@
+{
+  "git_blobs_match": 23,
+  "deployed": [
+    {
+      "role": "2_runner/run_connected_pipeline.py",
+      "bytes_match": true,
+      "hash_match": true
+    },
+    {
+      "role": "3_compiler/cache_compiler_daily_incremental_r1.py",
+      "bytes_match": true,
+      "hash_match": true
+    },
+    {
+      "role": "4_compiler/cache_compiler_tip_rebase_from_current_r1.py",
+      "bytes_match": true,
+      "hash_match": true
+    },
+    {
+      "role": "5_metadata/RELEASE.json",
+      "bytes_match": true,
+      "hash_match": true
+    },
+    {
+      "role": "6_metadata/SEAL.json",
+      "bytes_match": true,
+      "hash_match": true
+    },
+    {
+      "role": "7_metadata/CHECKPOINT.json",
+      "bytes_match": true,
+      "hash_match": true
+    }
+  ],
+  "provenance": [
+    {
+      "rel": "r45_generator/clean_switch_r1.py",
+      "declared_bytes": 8874,
+      "actual_bytes": 8874,
+      "match": true
+    },
+    {
+      "rel": "r45_generator/_run_full_chain.ps1",
+      "declared_bytes": 2914,
+      "actual_bytes": 2914,
+      "match": true
+    },
+    {
+      "rel": "r45_generator/CLEANING_SWITCH.json",
+      "declared_bytes": 1137,
+      "actual_bytes": 1137,
+      "match": true
+    },
+    {
+      "rel": "r45_generator/TASK_CONTROL.json",
+      "declared_bytes": 521,
+      "actual_bytes": 521,
+      "match": true
+    },
+    {
+      "rel": "r45_generator/DOWNLOAD_CONTRACT.json",
+      "declared_bytes": 1026,
+      "actual_bytes": 1026,
+      "match": true
+    },
+    {
+      "rel": "r45_generator/DOWNLOAD_ACCEPTANCE.json",
+      "declared_bytes": 674,
+      "actual_bytes": 674,
+      "match": true
+    },
+    {
+      "rel": "r45_generator/COMPLETION_STATUS.json",
+      "declared_bytes": 568,
+      "actual_bytes": 568,
+      "match": true
+    },
+    {
+      "rel": "r45_generator/RESULT.json",
+      "declared_bytes": 2267,
+      "actual_bytes": 2267,
+      "match": true
+    },
+    {
+      "rel": "r33_acceptance/RULES_RECEIPT.json",
+      "declared_bytes": 142,
+      "actual_bytes": 142,
+      "match": true
+    },
+    {
+      "rel": "r33_acceptance/DOWNLOAD_RECEIPT.json",
+      "declared_bytes": 737,
+      "actual_bytes": 737,
+      "match": true
+    },
+    {
+      "rel": "r33_acceptance/CLEAN_CACHE_RECEIPT.json",
+      "declared_bytes": 555,
+      "actual_bytes": 555,
+      "match": true
+    },
+    {
+      "rel": "r33_acceptance/INVENTORY_RECEIPT.json",
+      "declared_bytes": 1448,
+      "actual_bytes": 1448,
+      "match": true
+    },
+    {
+      "rel": "r45_generator/FULL_CHAIN_RUN_LINES.txt",
+      "declared_bytes": 4475,
+      "actual_bytes": 7621,
+      "match": false
+    }
+  ],
+  "provenance_r2": {
+    "index_blob": "7c560d436ea431378634c4f6f42ff552ac8f1dda",
+    "members": 14,
+    "all_bytes_and_sha256_match": true,
+    "old_r1_mismatch_preserved": true
+  }
+}
