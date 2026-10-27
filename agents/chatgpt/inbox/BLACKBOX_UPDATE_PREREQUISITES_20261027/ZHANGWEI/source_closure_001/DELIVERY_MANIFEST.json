@@ -5,9 +5,10 @@
   "dispatch_id": "BLACKBOX_UPDATE_PREREQUISITES_20261027",
   "child_task_id": "BLACKBOX_UPDATE_PREREQUISITES_ZHANGWEI_20261027",
   "parent_task_id": "BLACKBOX_FOUNDATION_R10_END_TO_END_COMPLETION_20261025",
+  "task": "EXACT_SOURCE_CLOSURE_20261027_1501",
   "return_dir": "agents/chatgpt/inbox/BLACKBOX_UPDATE_PREREQUISITES_20261027/ZHANGWEI/source_closure_001",
-  "delivered_at_cn": "2026-10-27T15:39:19+0800",
-  "delivery_status": "BOTH_RCID_FILES_MATCH_ORIGINALS_NO_DUPLICATE_UPLOADED",
+  "delivered_at_cn": "2026-10-27T15:40:14+0800",
+  "delivery_status": "BOTH_RCID_FILES_MATCH_ORIGINALS_REFERENCE_RECEIPT_ONLY",
   "source_snapshot": "5e4a4b0e5d2439e86eeeb121f33f6489ab462920",
   "records_total": 2,
   "reference_receipts": 2,
@@ -39,41 +40,35 @@
     "total_bytes_read": 4616,
     "within": true
   },
-  "delivered": [
+  "receipt_dependency_order": {
+    "acyclic": true,
+    "A_SOURCE_MANIFEST.json": "references nothing built later",
+    "B_HANDOFF_NOTES.md": "references nothing built later",
+    "C_DELIVERY_MANIFEST.json": "references A, B",
+    "D_UPLOAD_READBACK.json": "references A, B, C",
+    "E_LOCAL_READBACK.json": "references A, B, C, D; no document references E",
+    "note": "no receipt embeds its own or a successor's hash, so no cyclic rewrite is required"
+  },
+  "payload_identities_ab": [
     {
       "name": "SOURCE_MANIFEST.json",
       "bytes": 4462,
-      "sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b",
-      "remote_git_blob": "fe4203efe513a405912c8f2581db4dca8285dcd9",
-      "readback_byte_equal": true
+      "sha256": "83cfae30a8b77b610b3d85fa2f8416a4b3d486d89b248aaf0c00f93fade9fc8b"
     },
     {
       "name": "HANDOFF_NOTES.md",
       "bytes": 4284,
-      "sha256": "9cbb6f06151af1ed298175c3d32d75a34fa2754022f1f12c6ee93e94ca9e514a",
-      "remote_git_blob": "cc3ac953f2581ec0ad23abbbca01232409c681b8",
-      "readback_byte_equal": true
-    },
-    {
-      "name": "LOCAL_READBACK.json",
-      "bytes": 1120,
-      "sha256": "05bedd06bfd28699eef5c0894f310d3d7d0e4302d3461b0c307cac94c3f15b32",
-      "remote_git_blob": "c4756cf6f0a0da308149000a892ae0779a7e8104",
-      "readback_byte_equal": true
+      "sha256": "9cbb6f06151af1ed298175c3d32d75a34fa2754022f1f12c6ee93e94ca9e514a"
     }
   ],
-  "prior_attempts_preserved": {
-    "files_checked": 15,
-    "all_unchanged": true
-  },
   "not_uploaded_and_why": [
     {
       "item": "bodies/*",
-      "reason": "zero files changed; both matched existing originals so uploading would be a duplicate"
+      "reason": "zero files changed; both named files matched existing originals, so uploading would be a duplicate"
     },
     {
-      "item": "two live RCID metadata bodies",
-      "reason": "byte-identical to pinned originals; the contract requires a reference receipt only"
+      "item": "the two live RCID metadata bodies",
+      "reason": "byte-identical to pinned originals; contract requires a reference receipt only"
     }
   ],
   "foundation_acceptance": false,
@@ -82,5 +77,6 @@
   "order_allowed": false,
   "credential_contents_read": false,
   "business_modules_imported": false,
-  "fixture_or_collector_rerun": false
+  "fixture_or_collector_rerun": false,
+  "written_under_e_blacbox": false
 }
