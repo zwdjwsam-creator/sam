@@ -1,0 +1,63 @@
+{
+  "schema": "BLACKBOX_R5_OFFLINE_CONTROLS_R1",
+  "tests": 125,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "actual_os_exit": 0,
+  "scope": "OFFLINE_SYNTHETIC_MODELS_AND_REAL_RETAINED_FAILED_PARQUET_ONLY",
+  "windows_branch_executed_by_gpt": false,
+  "supplier_calls": 0,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "pandas": "3.0.3",
+  "numpy": "2.3.5",
+  "pyarrow": "24.0.0",
+  "argv": [
+    "python",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "-v",
+    "test_acquire_daily",
+    "test_r3_code_and_reuse",
+    "test_r4_empty_slots",
+    "test_r5_resume"
+  ],
+  "environment_note": "Existing r3_testenv site-packages used through PYTHONPATH with current Python; no package install or native environment mutation.",
+  "prior_interpreter_locator_attempt": {
+    "actual_os_exit": 127,
+    "reason": "Old venv python executable unavailable",
+    "tests_run": 0,
+    "supplier_calls": 0
+  },
+  "metadata_join_model": {
+    "scope": "ACTUAL_PINNED_R4_METADATA_JOIN_WITH_EXPLICIT_SYNTHETIC_ACCEPTED_RAW_STANDINS",
+    "actual_failed_raw_used": true,
+    "native_1097_raw_bodies_verified_here": false,
+    "remaining": 1784,
+    "admitted_including_old79": 87027,
+    "quarantined": 1,
+    "read_only_references": 4461,
+    "exit": 0
+  },
+  "streams": {
+    "OFFLINE_STDOUT.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "OFFLINE_STDERR.txt": {
+      "bytes": 13762,
+      "sha256": "fe452956cdaac14eaf608266bfe0a87a9a2db43683fa5fca841c68c3556a0c91"
+    }
+  },
+  "executed_code_sha256": {
+    "acquire_daily.py": "d5576231c3f712d64b4dc7b6d25f827503f1ab0835db5fbe43787277a3f1210e",
+    "acquire_r5.py": "4d7cdeffda9e19e2dbb4231e9b69d030bb49b7e51574d19806de58f8e346a327",
+    "precheck_r5.py": "6f56231fe4e8cee46570ca8718337d7ad38bbc48a41907060f284ebb2e95098a",
+    "test_acquire_daily.py": "f5fa0a03cd07996a7d5f0c52024821b5337dcdc1d75845a91c95cedbaf155a3d",
+    "test_r3_code_and_reuse.py": "99bc0ee36a1374f718c61c77f7a3e5c3e36faf5d930711904989bd95f9500c9f",
+    "test_r4_empty_slots.py": "59a064d0065babefe6082470e3fe8ef6c95c5f9d2392901ed85cb38e8c549b78",
+    "test_r5_resume.py": "55c1dae76fbd4525d633b4f1535510a29e70c1bda190085a7fec71edce09e9cf"
+  }
+}
