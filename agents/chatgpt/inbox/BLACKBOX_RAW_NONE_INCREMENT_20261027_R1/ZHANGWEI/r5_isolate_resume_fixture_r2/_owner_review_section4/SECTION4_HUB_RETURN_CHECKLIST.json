@@ -1,0 +1,513 @@
+{
+  "schema": "BLACKBOX_R5_HUB_RETURN_CHECKLIST_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
+  "dispatch_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2",
+  "host": "ZHANGWEI",
+  "delivery_root": "agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/r5_isolate_resume_fixture_r2",
+  "note_numbering": "TASK.md has 7 sections; section 4 = Exactly one continuation command, only after both gates; the file return list is the 7th section (Results, uploads and END). Both are listed here.",
+  "remote_root_file_count": 20,
+  "remote_staging_blob_count": 1309,
+  "section4": [
+    {
+      "id": "4.1",
+      "clause": "Upload/read back GATE_R5.json and its raw streams before execution",
+      "evidence_on_hub": [
+        "GATE_R5.json",
+        "PREFLIGHT_RUN_R5.json",
+        "PREFLIGHT_STDOUT_R5.txt",
+        "PREFLIGHT_STDERR_R5.txt",
+        "TESTS_RUN_R5.json",
+        "TESTS_STDOUT_R5.txt",
+        "TESTS_STDERR_R5.txt",
+        "WRAPPER_RUN_R5.json"
+      ],
+      "fact": "gate 在 execute 前生成并上传；execute 起始时 gate 年龄 21 秒",
+      "gap": "WRAPPER_RUN_R5.json（wrapper 自身 real exit 回执）是交付结束后补录的，provenance 已写在文件里"
+    },
+    {
+      "id": "4.2",
+      "clause": "Then run once, attached and waited for, exact argv",
+      "evidence_on_hub": [
+        "EXECUTE_RUN_R5.json"
+      ],
+      "fact": "argv 逐字一致；run_count=1 retry=false attached_and_waited=true actual_os_exit=0 elapsed_ms=150308",
+      "gap": null
+    },
+    {
+      "id": "4.3",
+      "clause": "Do NOT run acquire_daily.py --execute; no other business entry or historical PS1",
+      "evidence_on_hub": [
+        "EXECUTE_RUN_R5.json (acquire_daily_execute_run=false)",
+        "REPORT_R5.md"
+      ],
+      "fact": "acquire_daily_execute_run=false；本次只执行 acquire_r5.py 一次",
+      "gap": "无独立进程审计日志；只是自我声明 + 唯一一次 execute 回执"
+    },
+    {
+      "id": "4.4",
+      "clause": "Entry independently verifies bound source/rules, raw gate outputs/actual exits, package identities; gate freshness 6h",
+      "evidence_on_hub": [
+        "GATE_R5.json",
+        "ACK_R5.json",
+        "BASELINE_R5.json(gate 段)",
+        "EXECUTE_RUN_R5.json"
+      ],
+      "fact": "gate 内 rule_bindings=10 条、preflight exit 0、tests 128/128；execute 时 gate 21 秒新",
+      "gap": null
+    },
+    {
+      "id": "4.5",
+      "clause": "Preserve failed output; never restart into another directory or clear a collision",
+      "evidence_on_hub": [
+        "EXECUTE_RUN_R5.json (run_count=1, retry=false)",
+        "REPORT_R5.md"
+      ],
+      "fact": "本次无失败、无重跑；上一包（ISOLATE_RESUME 首包）失败原件仍完整保留，未覆盖",
+      "gap": null
+    },
+    {
+      "id": "4.6",
+      "clause": "Before auth: recheck four production pointer hashes + original 10 R1 pins, calendar/plan, price-file metadata freshness; reuse R04-R10; 5 empty slots only",
+      "evidence_on_hub": [
+        "BASELINE_R5.json (values 四指针 + gate.rule_bindings 10 条)",
+        "PLAN_R5.json",
+        "REUSE_MANIFEST_R5.json"
+      ],
+      "fact": "BASELINE.values 四个 CURRENT 指针键齐全；PLAN 带 51 天日历；REUSE r1/r4 复用清单在",
+      "gap": "没有单独的“登录前校验回执”文件；校验结果只体现在 BASELINE/PLAN/REUSE 内容与 exit0。空槽 5 个的检查也无独立落盘"
+    },
+    {
+      "id": "4.7",
+      "clause": "Verify R4 3363 metadata + 1098 raw against pinned length/SHA; revalidate 1097 accepted Parquets",
+      "evidence_on_hub": [
+        "REUSE_MANIFEST_R5.json (r4 段)",
+        "PARQUET_MANIFEST_R5.json"
+      ],
+      "fact": "r4 段记录 references/days/last_universe/remaining/expected_by_day",
+      "gap": "3363/1098/1097 三个计数没有单独汇总字段落到 HUB（明细在 reuse 清单里），需 GPT 侧自行点数"
+    },
+    {
+      "id": "4.8",
+      "clause": "Recheck 15489-byte failed raw SHA; exactly 79 admitted + 1 isolated 600621.XSHG/2026-10-27; no raw copy/refetch",
+      "evidence_on_hub": [
+        "ADMISSION_R5.json (2026-10-27_03360_R4.parquet 条目)",
+        "QUARANTINE_R5.json",
+        "RESULT_R5.json"
+      ],
+      "fact": "ADMISSION 批次条目直接写着 path=`...\\2026-10-27_03360_R4.parquet`、bytes=15489、sha256=`fb1a0ccb…`、admitted=79、quarantined=1；隔离行 600621.XSHG；RESULT quarantined_rows=1 status=RAW_STAGED_UNREVIEWED",
+      "gap": null
+    },
+    {
+      "id": "4.9",
+      "clause": "10-27 universe 5224, 42 accepted batches + 1 failed batch 3440 codes; difference 1784 = 23 batches (22x80+24)",
+      "evidence_on_hub": [
+        "PLAN_R5.json (stock_remaining / stock_batches)",
+        "ADMISSION_R5.json (10-27 stock 新采批次)"
+      ],
+      "fact": "PLAN stock_batches=23、stock_remaining=1784 条；ADMISSION 里 10-27 stock 新采批次 = 23 批 1784 码（22×80+24=1784 逐条可点）",
+      "gap": null
+    }
+  ],
+  "return_list": [
+    {
+      "item": "ACK",
+      "files": [
+        "ACK_R5.json"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "package verification",
+      "files": [
+        "PACKAGE_VERIFY_R5.json"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "precheck wrapper raw stdout/stderr/real exit",
+      "files": [
+        "WRAPPER_RUN_R5.json",
+        "WRAPPER_STDOUT_R5.txt",
+        "WRAPPER_STDERR_R5.txt"
+      ],
+      "status": "RETURNED (exit 回执事后补录)"
+    },
+    {
+      "item": "native preflight raw stdout/stderr/real exit",
+      "files": [
+        "PREFLIGHT_RUN_R5.json",
+        "PREFLIGHT_STDOUT_R5.txt",
+        "PREFLIGHT_STDERR_R5.txt"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "native tests raw stdout/stderr/real exit",
+      "files": [
+        "TESTS_RUN_R5.json",
+        "TESTS_STDOUT_R5.txt",
+        "TESTS_STDERR_R5.txt"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "GATE_R5.json",
+      "files": [
+        "GATE_R5.json"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "attached execution argv/raw streams/real exit",
+      "files": [
+        "EXECUTE_RUN_R5.json",
+        "EXECUTE_STDOUT_R5.txt",
+        "EXECUTE_STDERR_R5.txt"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "R5 staging JSON outputs",
+      "files": [
+        "staging_output/ (RESULT/BASELINE/PLAN/SDK/REUSE_MANIFEST/ADMISSION/QUARANTINE/COVERAGE/per-date coverage/universes/receipts/quality)"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "zero-byte streams kept as real zero-byte",
+      "files": [
+        "PREFLIGHT_STDERR_R5.txt",
+        "TESTS_STDOUT_R5.txt",
+        "WRAPPER_STDOUT_R5.txt",
+        "WRAPPER_STDERR_R5.txt",
+        "EXECUTE_STDOUT_R5.txt",
+        "EXECUTE_STDERR_R5.txt"
+      ],
+      "status": "RETURNED (6 个 0 B，sha e3b0…)"
+    },
+    {
+      "item": "Parquet list path/length/SHA256 (local only)",
+      "files": [
+        "PARQUET_MANIFEST_R5.json"
+      ],
+      "status": "RETURNED (405 个 / 6378681 B)"
+    },
+    {
+      "item": "COVERAGE enum + admitted/quarantined/unacquired sets",
+      "files": [
+        "COVERAGE_R5.json",
+        "staging_output/coverage/*.json",
+        "QUARANTINE_R5.json",
+        "ADMISSION_R5.json"
+      ],
+      "status": "RETURNED (51/51 ACQUIRED)"
+    },
+    {
+      "item": "acyclic DELIVERY_MANIFEST_R5.json",
+      "files": [
+        "DELIVERY_MANIFEST_R5.json"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "LOCAL_READBACK_R5.json",
+      "files": [
+        "LOCAL_READBACK_R5.json"
+      ],
+      "status": "RETURNED"
+    },
+    {
+      "item": "UPLOAD_READBACK_R5.json byte-for-byte",
+      "files": [
+        "UPLOAD_READBACK_R5.json"
+      ],
+      "status": "RETURNED (1328/1328 BYTE_EQUAL)"
+    },
+    {
+      "item": "END",
+      "files": [
+        "REPORT_R5.md"
+      ],
+      "status": "RETURNED"
+    }
+  ],
+  "control_files": [
+    {
+      "name": "ACK_R5.json",
+      "bytes": 9422,
+      "sha256": "0d2fc8c29a1128a36f89e2fc0b7aee1c51374651392b91e638001403262dde48",
+      "on_hub": true,
+      "remote_blob": "33e366cfa1d6af12968970ad4fcf722d1f8108a9",
+      "remote_size": 9422,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "PACKAGE_VERIFY_R5.json",
+      "bytes": 9365,
+      "sha256": "1089563e81e0c29639d733860a75c67821469eb528cf29f89b4e827f68d37627",
+      "on_hub": true,
+      "remote_blob": "444e02acee59652556b6a3a44974594eb1eea6a0",
+      "remote_size": 9365,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "GATE_R5.json",
+      "bytes": 5106,
+      "sha256": "5dfe90ab183a3d2408f850c35bf507778a0ebb7a2a028af0eef8f75fdd33b2dd",
+      "on_hub": true,
+      "remote_blob": "a73fc20109d0bde29e5a4bce8f5044831b5986c7",
+      "remote_size": 5106,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "WRAPPER_RUN_R5.json",
+      "bytes": 3011,
+      "sha256": "bf661648d874b0a7cb1cd1e58d72fa40ecc0a9ad5d94e9c4698b41b12ee4cf6a",
+      "on_hub": true,
+      "remote_blob": "23c3cac28a69e23ad8854afe6a2301a3cab74264",
+      "remote_size": 3011,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "WRAPPER_STDOUT_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "on_hub": true,
+      "remote_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_size": 0,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "WRAPPER_STDERR_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "on_hub": true,
+      "remote_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_size": 0,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "PREFLIGHT_RUN_R5.json",
+      "bytes": 659,
+      "sha256": "7d806232adafd155c1031b7204112ddba45ca15d4be027db8df37274ad7f01d4",
+      "on_hub": true,
+      "remote_blob": "11601b1ffd21860dbc9877363c8d2bf8740c8bb8",
+      "remote_size": 659,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "PREFLIGHT_STDOUT_R5.txt",
+      "bytes": 1157,
+      "sha256": "81ecb2b27c183e00b853e301cd591d51d135f1d4220eda8025621797ec1a0224",
+      "on_hub": true,
+      "remote_blob": "3b3d69a75d128972f66f5dd2290f3ce62a318a80",
+      "remote_size": 1157,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "PREFLIGHT_STDERR_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "on_hub": true,
+      "remote_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_size": 0,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "TESTS_RUN_R5.json",
+      "bytes": 684,
+      "sha256": "ef1d231a3ab69cb97799d226c148e6db893c48aeed2438697f2961d31afd72aa",
+      "on_hub": true,
+      "remote_blob": "b85db2f874534c63897936eaeaec2d02c1fad8eb",
+      "remote_size": 684,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "TESTS_STDOUT_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "on_hub": true,
+      "remote_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_size": 0,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "TESTS_STDERR_R5.txt",
+      "bytes": 14363,
+      "sha256": "d68c7ce207d7e662f160e73e9a0b374389fef537408ff37a41f6370325973399",
+      "on_hub": true,
+      "remote_blob": "41ccb1dc105c0885fb6b3103e45932c37a29dc42",
+      "remote_size": 14363,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "EXECUTE_RUN_R5.json",
+      "bytes": 2075,
+      "sha256": "10155653b5ad18c8bd397b4bd5682af7e134c364ee47a75a346e5a94c5004bb4",
+      "on_hub": true,
+      "remote_blob": "f9df4f2cae103ead37984c42c27dbe71fbb76e31",
+      "remote_size": 2075,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "EXECUTE_STDOUT_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "on_hub": true,
+      "remote_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_size": 0,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "EXECUTE_STDERR_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "on_hub": true,
+      "remote_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_size": 0,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "PARQUET_MANIFEST_R5.json",
+      "bytes": 164981,
+      "sha256": "048709d11368b340843f40466027cbedde571bc3b213da2ffd2f6787f5a7c0e6",
+      "on_hub": true,
+      "remote_blob": "7b4566f546e09c403a22295ff09da3bff5e440c3",
+      "remote_size": 164981,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "REPORT_R5.md",
+      "bytes": 8756,
+      "sha256": "5fd652eaaa625a109754637e68e7a8737de69634c495059f42bdd9d8bf04087b",
+      "on_hub": true,
+      "remote_blob": "9741072ea88cd8090fc94ed00dd0e8e6238ca684",
+      "remote_size": 8756,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "DELIVERY_MANIFEST_R5.json",
+      "bytes": 241636,
+      "sha256": "4397c14f4f37ff70215c4d12e5927cc65d03fce30dbb5e62e9b8be472891a5f3",
+      "on_hub": true,
+      "remote_blob": "23bd18a5e2b773d15e15dc274278819de298e915",
+      "remote_size": 241636,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "LOCAL_READBACK_R5.json",
+      "bytes": 283195,
+      "sha256": "20f36bcd1b87fda82a026dd025aeb2a378077d7ec12f847b306f8de21b71bfb3",
+      "on_hub": true,
+      "remote_blob": "8b9c56d1278938e369403bf0e6860240a806103b",
+      "remote_size": 283195,
+      "readback_byte_equal": true
+    },
+    {
+      "name": "UPLOAD_READBACK_R5.json",
+      "bytes": 622711,
+      "sha256": "7c19eb8087826a7e09c5db8570f9cd57025c22435b0cec4004cc3581a5b52a94",
+      "on_hub": true,
+      "remote_blob": "d407d0064d6826d2d5f0806ef8a6dd8a74bea1d6",
+      "remote_size": 622711,
+      "readback_byte_equal": true
+    }
+  ],
+  "staging_groups": [
+    {
+      "group": "ADMISSION_R5.json",
+      "files": 1,
+      "bytes": 8282830,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "BASELINE_R5.json",
+      "files": 1,
+      "bytes": 14028,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "COVERAGE_R5.json",
+      "files": 1,
+      "bytes": 22738,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "PLAN_R5.json",
+      "files": 1,
+      "bytes": 34558,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "QUARANTINE_R5.json",
+      "files": 1,
+      "bytes": 1188,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "RESULT_R5.json",
+      "files": 1,
+      "bytes": 568,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "REUSE_MANIFEST_R5.json",
+      "files": 1,
+      "bytes": 3682285,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "SDK_R5.json",
+      "files": 1,
+      "bytes": 971,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "staging_output/coverage",
+      "files": 35,
+      "bytes": 657978,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "staging_output/quality",
+      "files": 405,
+      "bytes": 5504333,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "staging_output/receipts",
+      "files": 844,
+      "bytes": 955915,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    },
+    {
+      "group": "staging_output/universes",
+      "files": 17,
+      "bytes": 3710307,
+      "on_hub": true,
+      "readback": "see UPLOAD_READBACK"
+    }
+  ],
+  "totals": {
+    "control_files": 20,
+    "staging_files": 1309,
+    "staging_bytes": 22867699,
+    "content_files": 1326
+  },
+  "findings": [
+    "WRAPPER_RUN_R5.json 缺失 → 已于交付结束后补录并回读（provenance 写在文件内，未改 gate/streams/exit）",
+    "第一次刷新账本时 UPLOAD_READBACK 抢在上传前抓取，DELIVERY_MANIFEST/LOCAL_READBACK 两行曾为 False，已后置复核为 True",
+    "4.6/4.7 没有单独的“登录前校验回执”文件，证据只在 BASELINE/PLAN/REUSE 的内容里（4.8/4.9 已在 ADMISSION 批次条目里可直接点数）"
+  ]
+}
