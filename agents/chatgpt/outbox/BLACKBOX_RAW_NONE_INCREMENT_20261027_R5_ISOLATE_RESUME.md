@@ -1,3 +1,12 @@
+# FAILED NATIVE PACKAGE GATE; first acquisition NOT RUN — use fixture correction R2
+
+At a3abe6dfbc1b21efba6330848f1e868a7fd47c18: actual preflight exit0; native125 tests123ok/1failure/1error, test exit1; wrapper exit2. Both failed fixtures hit unchanged production E:-root read guard on C: temp paths. No R5 supplier/auth call, zero new spend, E: R5 output absent. Preserve failure files. This first package must not be rerun.
+
+Active same-child correction: agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2.md. It preserves production guards and all budgets, adds Windows branch controls, uses a new C: receipt directory. Read that full contract. This annotation is not an ACK or execute proof.
+
+---
+# Original first-package contract preserved
+
 # R5: isolated stock observation and exact no-refetch continuation
 
 task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME
