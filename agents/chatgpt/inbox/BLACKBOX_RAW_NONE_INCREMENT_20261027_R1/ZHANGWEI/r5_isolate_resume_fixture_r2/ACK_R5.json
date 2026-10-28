@@ -179,6 +179,15 @@
   },
   "coverage_enum_note": "ACQUIRED/PARTIAL_BLOCKED/NOT_ATTEMPTED are per-product/per-date coverage states only. Execution states such as NOT_RUN, PARTIAL_BLOCKED and RAW_STAGED_UNREVIEWED are preserved verbatim in their own receipts and never rewritten to fit a coverage enum.",
   "package_verification_file": "PACKAGE_VERIFY_R5.json",
-  "upload_readback_completed": false,
-  "upload_readback_note": "Set true only in the final local ACK after that exact version is uploaded and read back byte-for-byte; no self-hash is embedded."
+  "upload_readback_completed": true,
+  "upload_readback_note": "Set true only in the final local ACK after that exact version is uploaded and read back byte-for-byte; no self-hash is embedded.",
+  "upload_readback_evidence": {
+    "ack_v1_sha256": "4fe55c1c998aa669f64b8cadbcc98e77f0e628ca326ff9458d7578619bfbd024",
+    "ack_v1_blob": "ee1dee5c183bd1279678e80577e95dde3076e220",
+    "ack_v1_byte_equal": true,
+    "package_verify_blob": "444e02acee59652556b6a3a44974594eb1eea6a0",
+    "package_verify_byte_equal": true,
+    "method": "v1 uploaded to the authorised new return folder and independently re-fetched; decoded bytes equal local bytes; then this final version is written, uploaded and re-fetched before either command",
+    "self_hash_embedded": false
+  }
 }
