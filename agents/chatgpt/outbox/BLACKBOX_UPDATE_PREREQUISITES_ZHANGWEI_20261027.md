@@ -1,3 +1,16 @@
+# Owner requested pickup — existing R5 fixture R2, no duplicate execution
+
+execution_host: ZHANGWEI
+SAM: HOLD
+Active task: agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2.md
+
+Read the owner pickup/4-point clarification header in that task before acting. Existing24-file package and all hashes remain unchanged. The unproved sixth-slot count is not a new blocker/search request. Test-only permission seam has no production bypass parameter. Verify23 payloads plus PACKAGE identity without self hashes. Coverage enums do not replace actual execution states.
+
+Check whether the same corrected task is active/completed first; preserve/upload/reuse, never stop or duplicate it. If unstarted, follow its exact ACK/readback -> original ACQUISITION preflight ->128 native controls -> one acquire_r5.py --execute after actual two-gate success. No rerun of old125 package or acquire_daily.py --execute. Same175858 inherited/new150000/cumulative700000, fixed dates through10-27, no Cleaning/CURRENT/watchdog/orders. Return to r5_isolate_resume_fixture_r2, byte-read back every artifact, exactly END. Publication is not native ACK or execution.
+
+---
+# Prior routing history; this same active task remains authoritative
+
 # Active R5 fixture correction R2 — same acquisition child
 
 execution_host: ZHANGWEI
