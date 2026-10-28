@@ -1,0 +1,78 @@
+{
+  "schema": "BLACKBOX_R5_WRAPPER_RUN_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
+  "dispatch_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2",
+  "host": "ZHANGWEI",
+  "argv": [
+    "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_ISOLATE_RESUME_FIXTURE_R2_20261028\\package\\precheck_r5.py"
+  ],
+  "cwd": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_ISOLATE_RESUME_FIXTURE_R2_20261028\\package",
+  "run_count": 1,
+  "retry": false,
+  "attached_and_waited": true,
+  "capture": "external Start-Process -Wait with separate -RedirectStandardOutput and -RedirectStandardError, not the wrapper internal buffers",
+  "actual_os_exit": 0,
+  "elapsed_ms": 6046,
+  "timeout": false,
+  "stdout": {
+    "name": "WRAPPER_STDOUT_R5.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "name": "WRAPPER_STDERR_R5.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "literal_stdout": "",
+  "literal_stderr": "",
+  "inner_preflight": {
+    "actual_os_exit": 0,
+    "stdout": {
+      "name": "PREFLIGHT_STDOUT_R5.txt",
+      "bytes": 1157,
+      "sha256": "81ecb2b27c183e00b853e301cd591d51d135f1d4220eda8025621797ec1a0224"
+    },
+    "stderr": {
+      "name": "PREFLIGHT_STDERR_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "verdict": "PASS"
+  },
+  "inner_tests": {
+    "actual_os_exit": 0,
+    "ran": 128,
+    "ok": 128,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "stderr": {
+      "name": "TESTS_STDERR_R5.txt",
+      "bytes": 14363,
+      "sha256": "d68c7ce207d7e662f160e73e9a0b374389fef537408ff37a41f6370325973399"
+    },
+    "verdict": "OK"
+  },
+  "gate_written": true,
+  "gate_path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_ISOLATE_RESUME_FIXTURE_R2_20261028\\GATE_R5.json",
+  "gate_sha256": "5dfe90ab183a3d2408f850c35bf507778a0ebb7a2a028af0eef8f75fdd33b2dd",
+  "supplier_calls": 0,
+  "quota_spent": 0,
+  "sdk_imported": false,
+  "auth_attempted": false,
+  "e_output_created_before_execute": false,
+  "provenance": {
+    "recorded_at": "2026-10-28T13:36:13.704540+00:00",
+    "authored": "after the run, from the same external Start-Process invocation that produced the captured streams",
+    "why": "The Results-uploads-and-END clause requires the precheck wrapper own real exit. The wrapper exit 0 and its elapsed time were observed externally at run time, but no separate external-capture receipt had been written before the delivery closed; this file records that already-observed fact.",
+    "affects_gate": false,
+    "gate_unaffected_because": "GATE_R5.json was written by the wrapper itself from the two inner real exits and is unchanged; this receipt is an external duplicate capture of the enclosing process only.",
+    "gate_rewritten": false,
+    "streams_rewritten": false,
+    "exit_converted": false
+  }
+}
