@@ -1,0 +1,80 @@
+{
+  "schema": "BLACKBOX_RAW_BODY_HANDOFF_ACK_R1",
+  "task_id": "BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028",
+  "parent_task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
+  "execution_host": "ZHANGWEI",
+  "host_match": true,
+  "acked_at_utc": "2026-10-28T14:16:41.339614+00:00",
+  "return_path": "agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/raw_parquet_handoff_001",
+  "duplicate_check": {
+    "return_path_exists_before": false,
+    "local_output_preexisting": false,
+    "prior_run_of_this_task": false,
+    "action": "NO_DUPLICATE_NEW_RUN"
+  },
+  "package_identity": {
+    "dir": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028\\package",
+    "package_json_sha256": "67b861ef67df268258943fa2d281d296804c1decbc085d14f1ce687b11e0e8bc",
+    "payload_files": 7,
+    "all_payload_pins_verified": true,
+    "staged_identical_to_received": true
+  },
+  "plan_identity": {
+    "path_in_package": "RAW_TRANSFER_PLAN.json",
+    "sha256": "82338957d522ccb9c0f6aed6c5693711764cf97b9795feb408736cb0b1f477bd",
+    "rows": 1504,
+    "capture": 1502,
+    "reuse_hub_body": 2,
+    "capture_bytes": 23448612,
+    "source_roots": {
+      "R1": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1",
+      "R4": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R4",
+      "R5": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R5"
+    }
+  },
+  "boundaries": {
+    "supplier_calls_allowed": false,
+    "supplier_calls_planned": 0,
+    "cleaning_allowed": false,
+    "current_switch_allowed": false,
+    "order_allowed": false,
+    "write_on_E_allowed": false,
+    "output_root": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028",
+    "source_immutable": true,
+    "no_sdk_or_business_import": true,
+    "no_local_code_patch": true,
+    "no_rule_or_hand_edit": true,
+    "no_cleanup_or_process_action": true,
+    "no_secret_logging": true,
+    "no_glob_walk_or_sixth_slot": true,
+    "only_planned_paths_read": true,
+    "no_rerun_of_R4_R5_or_128_gate": true
+  },
+  "preparatory_pin_checks": {
+    "E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py": {
+      "expected": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+      "actual": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+      "match": true
+    },
+    "E:\\BLACKBOX\\脚本\\_base.py": {
+      "expected": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+      "actual": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+      "match": true
+    }
+  },
+  "must_read": {
+    "kernel": ".cursor/rules/BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+    "manifest": "契约/必读/MUST_READ_MANIFEST_CURRENT.json",
+    "manifest_status": "ACTIVE",
+    "task_class": "DATA",
+    "data_class_files": [
+      "BOOTSTRAP",
+      "DATA_ACCESS"
+    ],
+    "bodies_read": [
+      "契约/必读/BLACKBOX_BOOTSTRAP_MUST_READ.md",
+      "契约/必读/BLACKBOX_DATA_ACCESS_MUST_READ.md"
+    ]
+  },
+  "error_or_none": null
+}
