@@ -1,3 +1,11 @@
+# CLOSED: Stage A handoff and native preflight accepted within scope
+
+Reviewed19 returned blobs at a489979af7519b51996f038b9046b4631c8d1463;6 exact bodies, original preflight/collector actual exit0. No supplier call, no retrospective R4 acceptance. Do not rerun this handoff.
+Next active reviewed task: agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME.md. Follow its own preflight/tests/ACK/one-execution contract; this old Stage A text does not authorize another capture.
+
+---
+# Historical Stage A instruction preserved
+
 # R5 Stage A: exact host-rule binding, no acquisition
 
 task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_RULE_BINDING_A
