@@ -1,3 +1,20 @@
+# Active owner-requested R5 Stage A: exact rule/preflight binding, zero supplier calls
+
+execution_host: ZHANGWEI
+SUPPLIER_CALLS_ALLOWED=false
+CLEANING_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+Task: agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_RULE_BINDING_A.md
+Package: agents/chatgpt/reviews/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_RULE_BINDING_A/
+Verify6 package files/5 payloads; ACK and readback before commands. Check exact live preflight/_base hashes against task pins; matching sources permit one ACQUISITION preflight with raw streams/actual exit, then one bounded6-file source capture. Drift means no changed-source execution, capture only. No global scan or invented sixth slot. HAND_READ=NOT_SUFFICIENT is an unconditional statement in pinned source that HAND alone is insufficient, not a failed manual-read test.
+
+Stage A is source/preflight handoff only; the final R5 acquisition package/B gate/execute command has NOT been released. Preserve all R1/R2/R3/R4 data and receipts; no redundant failed-batch export, no R4 rerun, no supplier auth/quota/download. Return to existing R1/ZHANGWEI/r5_rule_binding_A, read every local/remote artifact, exactly END. SAM HOLD. Owner requested150000 R5 cap, cumulative175858 already spent, candidate isolation/reuse rules remain pending GPT code/rule review, not native implementation.
+
+---
+# Prior material below is historical; do not execute superseded capture/acquisition commands.
+
 # R4 execution completed; exact failed-body handoff only, no R4 replay or R5 acquisition
 
 execution_host: ZHANGWEI
