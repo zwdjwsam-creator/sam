@@ -1,0 +1,35 @@
+test_exact_raw_read_only (test_r5_resume.ReuseAndCoverage.test_exact_raw_read_only) ... ERROR
+test_failed_hash_corruption_refused (test_r5_resume.ReuseAndCoverage.test_failed_hash_corruption_refused) ... FAIL
+
+======================================================================
+ERROR: test_exact_raw_read_only (test_r5_resume.ReuseAndCoverage.test_exact_raw_read_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/89c630574873/r5_work/continuation/test_r5_resume.py", line 100, in test_exact_raw_read_only
+    self.assertEqual(r.read_exact(f,{'bytes':15489,'sha256':r.FAILED_SHA}),fixture())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/89c630574873/r5_work/continuation/acquire_r5.py", line 43, in read_exact
+    a.require_allowed_read(path.resolve(strict=True))
+  File "/workspace/scratch/89c630574873/r5_work/continuation/acquire_daily.py", line 207, in require_allowed_read
+    require(os.name!='nt' or allowed_windows_path(str(physical)), 'EXTERNAL_LINK_TARGET')
+  File "/workspace/scratch/89c630574873/r5_work/continuation/acquire_daily.py", line 38, in require
+    raise Blocked(code)
+acquire_daily.Blocked: EXTERNAL_LINK_TARGET
+
+======================================================================
+FAIL: test_failed_hash_corruption_refused (test_r5_resume.ReuseAndCoverage.test_failed_hash_corruption_refused)
+----------------------------------------------------------------------
+acquire_daily.Blocked: EXTERNAL_LINK_TARGET
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/89c630574873/r5_work/continuation/test_r5_resume.py", line 96, in test_failed_hash_corruption_refused
+    with self.assertRaisesRegex(a.Blocked,'IDENTITY_DRIFT'):r.read_exact(f,{'bytes':15489,'sha256':r.FAILED_SHA})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "IDENTITY_DRIFT" does not match "EXTERNAL_LINK_TARGET"
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=1, errors=1)
