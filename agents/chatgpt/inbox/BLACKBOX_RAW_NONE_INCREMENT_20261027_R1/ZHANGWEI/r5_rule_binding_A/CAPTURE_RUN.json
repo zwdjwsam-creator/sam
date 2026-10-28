@@ -1,0 +1,57 @@
+{
+  "schema": "BLACKBOX_R5_CAPTURE_RUN_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_RULE_BINDING_A",
+  "host": "ZHANGWEI",
+  "utc": "2026-10-28T10:35:20.629056+00:00",
+  "collector": {
+    "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_RULE_BINDING_20261028\\package\\capture_rules.py",
+    "bytes": 2471,
+    "sha256": "1155922293075129b3e38455c6e84ebef0468c3ccc0763530551237be886c788"
+  },
+  "argv": [
+    "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_RULE_BINDING_20261028\\package\\capture_rules.py"
+  ],
+  "argv_extra_args": [],
+  "run_count": 1,
+  "retry": false,
+  "capture_001_preexisted": false,
+  "capture_001_precreated": false,
+  "actual_os_exit": 0,
+  "elapsed_ms": 1012,
+  "stdout": {
+    "path": "run_capture/STDOUT.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": "run_capture/STDERR.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "path": "capture_001/RULE_BODIES.json",
+    "bytes": 55850,
+    "sha256": "50379bcdf5b94c67aef6010de52b387074a62a4f76e250aee5fba54336ffe6f7"
+  },
+  "exit_semantics": "exit0 = exact-body handoff only; not R5 B-gate, not supplier execution",
+  "supplier_calls": 0,
+  "quota_spent": 0,
+  "module_imported_from_target": false,
+  "source_written": false,
+  "six_exact_inputs_present_on_host": 6,
+  "reviewer_statement_three_missing": {
+    "as_measured_on_ZHANGWEI": 0,
+    "note": "All six exact inputs exist locally; reviewer saw the zip bundle, not this host."
+  },
+  "six_slot_count": {
+    "value": "UNBOUND_COUNT_CLAIM",
+    "reason": "No sixth-slot directory path appears in any existing report; the number six here is only the collector exact-input count. Original 5-slot policy unchanged."
+  },
+  "etf_wording": {
+    "status": "UNRESOLVED_BY_STAGE_A",
+    "note": "Contradictory ETF wording in TASK.md retained as unresolved for GPT; Stage A takes no position."
+  }
+}
