@@ -1,0 +1,278 @@
+{
+  "sha256": {
+    "数据/清洗成品/CURRENT_CLEANING_RELEASE.json": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+    "数据/回测缓存/CURRENT_CACHE_RELEASE.json": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json": "574842e7802be26d648d5aa2f6d91a9b4c208744e3ecf9f146e02ece41387d89",
+    "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json": "8a492440257170577a5c96f66bfd81e3b93fc6dc58e547cc3acd4c7baaf3fe9b"
+  },
+  "values": {
+    "数据/清洗成品/CURRENT_CLEANING_RELEASE.json": {
+      "release_id": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "seal_id": "SEAL_R33_FUND_NAV_20260924_200439",
+      "sealed": true,
+      "cleaning_as_of": "2026-09-24",
+      "finance_asof": "2026-09-24",
+      "daily_asof": "2026-09-24",
+      "standard_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard",
+      "quarantine_root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_quarantine",
+      "ledger_path": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534\\_control\\cleaning_ledger.sqlite",
+      "release_content_root_sha256": "966e92d0e1ba820c028cc4e7f1369815600efde6ce4c0c9e338b173e7f36b431",
+      "created_at": "2026-09-25T04:04:43+0800",
+      "parent_release_id": "BLACKBOX_FORMAL_CLEANING_R45_DAILY_TIP_ASOF_20260924_20260925_034534",
+      "switch_reason": "USER_AUTHORIZED_FUND_ETF_NAV_PREMIUM_PLANE_R1",
+      "finance_asof_note": "PIT cutoff carried from R33_FUND_NAV; daily tip 2026-09-24 only",
+      "FUND_NAV_TIP": true
+    },
+    "数据/回测缓存/CURRENT_CACHE_RELEASE.json": {
+      "cache_release_id": "BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+      "release_root": "E:\\BLACKBOX\\数据\\回测缓存\\releases\\BLACKBOX_CACHE_R1_FUND_NAV_PIT_ASOF_20260924_20260924_200439",
+      "published_at": "2026-09-24T19:56:46+00:00",
+      "published_at_cn": "2026-09-25T04:04:43+0800",
+      "asof": "2026-09-24",
+      "schema_version": "1.0.0",
+      "build_version": "TIP_REBASE_FROM_CURRENT_R1",
+      "source_cleaning_release": "BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439",
+      "parent_release_id": "BLACKBOX_CACHE_R1_TIP_REBASE_ASOF_20260924_20260925_034907",
+      "mode": "tip_fund_nav_pit",
+      "FORMAL_DAILY_PUBLISH": "TIP_REBASE_ONLY",
+      "CANARY_CURRENT_PUBLISH": "STRUCTURALLY_FORBIDDEN",
+      "anti_lookahead_pass": true,
+      "sw_l1_status": "READY_INTEGRATED",
+      "sw_l2_status": "READY_INTEGRATED",
+      "sw_l3_status": "READY_INTEGRATED",
+      "valuation_status": "READY",
+      "stock_2026_date_max": "2026-09-24",
+      "raw_pit_2026_date_max": "2026-09-24",
+      "formal_required_missing": [],
+      "INDEX_DAILY_R1": "NON_BLOCKING_KNOWN_EXCEPTION",
+      "FINANCE_PIT_DELTA_ROWS": 0,
+      "FINANCE_FORMAL_INHERIT": "ALLOWED",
+      "LEGACY_TARGET_IGNORED": false,
+      "notes": [
+        "Formal daily candidate (tip-rebase). CURRENT switch only via publish gate.",
+        "Canary mode cannot write CURRENT",
+        "FUND_NAV_PIT_R1 tip added; premium derived from NAV+close; whole-table FUND_NET_VALUE forbidden"
+      ],
+      "patched_val_sw_at": "2026-09-24T19:56:54+00:00",
+      "FUND_NAV_PIT_R1": "READY"
+    },
+    "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json": {
+      "schema_version": "1.0.0",
+      "manifest_id": "DAILY_DATA_MANIFEST_20260924",
+      "CN_RESEARCH_DATE": "2026-09-24",
+      "BUILD_TIME": "2026-10-25T14:55:38+0800",
+      "PATH_MAP": "E:\\BLACKBOX\\研究系统\\数据平面\\CONFIG\\DATA_PLANE_PATH_MAP.json",
+      "JQ": {
+        "lane": "A_JQ_INCREMENTAL",
+        "MODE": "VERIFY_ONLY",
+        "SOURCE_ASOF": "2026-09-24",
+        "CLEAN_ASOF": "2026-09-24",
+        "CACHE_ASOF": "2026-09-24",
+        "PIT_PASS": true,
+        "STATUS": "PASS",
+        "reason_code": "ALL_EQUAL",
+        "FIXED_PATHS": {
+          "scope": "E:\\BLACKBOX\\运行\\BLACKBOX_FULL_DATA_UPDATE_SCOPE_CURRENT.json",
+          "cleaning": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+          "cache": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json"
+        }
+      },
+      "T_EXTERNAL": {
+        "lane": "B_T_EXTERNAL_INCREMENTAL",
+        "MODE": "VERIFY_ONLY",
+        "SOURCE_ASOF": "20260924",
+        "ALIGN_PASS": true,
+        "STATUS": "PASS",
+        "FINAL_STATUS": "EXTERNAL_EVIDENCE_MATERIALIZATION_PARTIAL",
+        "FIXED_PATHS": {
+          "root": "E:\\BLACKBOX\\数据\\外部证据",
+          "final": "E:\\BLACKBOX\\数据\\外部证据\\CURRENT\\EXTERNAL_EVIDENCE_MATERIALIZATION_FINAL.json"
+        },
+        "JQ_CANONICAL_IMMUTABLE_FROM_T": true
+      },
+      "GLOBAL_SELLSIDE": {
+        "lane": "C_GLOBAL_SELLSIDE_INCREMENTAL",
+        "MODE": "VERIFY_ONLY",
+        "DISCOVERY_ASOF": "2026-09-25",
+        "NEW_REPORTS": 17,
+        "MS_STATUS": "METADATA_CAPTURED",
+        "GS_STATUS": "METADATA_CAPTURED",
+        "CLSA_STATUS": "METADATA_CAPTURED",
+        "STATUS": "PASS",
+        "FIXED_PATHS": {
+          "product_root": "E:\\BLACKBOX\\数据\\研究报告",
+          "raw_ms": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\MORGAN_STANLEY",
+          "raw_gs": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\GOLDMAN_SACHS",
+          "raw_clsa": "E:\\BLACKBOX\\数据\\研究报告\\原始只读\\CLSA_METADATA",
+          "daily_incremental": "E:\\BLACKBOX\\数据\\研究报告\\日增量",
+          "current": "E:\\BLACKBOX\\数据\\研究报告\\CURRENT\\SELLSIDE_DAILY_INCREMENTAL_CURRENT.json"
+        }
+      },
+      "DOMESTIC_RESEARCH": {
+        "lane": "D_DOMESTIC_RESEARCH_NEWS_INCREMENTAL",
+        "DISCOVERY_ASOF": "2026-09-24",
+        "NEW_REPORTS": 4,
+        "NEW_EVENTS": 26,
+        "STATUS": "PASS",
+        "FIXED_PATHS": {
+          "domestic_sellside": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方",
+          "domestic_news": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻",
+          "sellside_current": "E:\\BLACKBOX\\数据\\研究报告\\国内卖方\\CURRENT\\DOMESTIC_SELLSIDE_CURRENT.json",
+          "news_current": "E:\\BLACKBOX\\数据\\研究报告\\国内新闻\\CURRENT\\DOMESTIC_NEWS_CURRENT.json"
+        }
+      },
+      "US_NEWS": {
+        "lane": "E_US_NEWS_INCREMENTAL",
+        "DISCOVERY_ASOF": "2026-09-24",
+        "US_MARKET_DATE": "2026-09-24",
+        "CN_RESEARCH_DATE": "2026-09-25",
+        "NEW_EVENTS": 8,
+        "DOMAIN_COUNTS": {
+          "L1_MACRO_RATES": 4,
+          "L1_TRADE_GEOPOLITICS": 1,
+          "L1_HEALTHCARE_PHARMA": 1,
+          "L1_AI_TECH_INFRA": 1,
+          "L1_ENERGY_POWER": 1
+        },
+        "STATUS": "PASS",
+        "ACQUISITION_MODE": "RSS_API",
+        "PRODUCT": "US_L1_IMPORTANT_NEWS",
+        "FIXED_PATHS": {
+          "root": "E:\\BLACKBOX\\数据\\美国市场\\新闻",
+          "current": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\CURRENT\\US_NEWS_CURRENT.json",
+          "important_news_csv": "E:\\BLACKBOX\\数据\\美国市场\\新闻\\CURRENT\\US_IMPORTANT_NEWS_CURRENT.csv",
+          "taxonomy": "E:\\BLACKBOX\\数据\\美国市场\\CONFIG\\US_L1_TAXONOMY.json"
+        }
+      },
+      "US_MARKET": {
+        "lane": "F_US_MARKET_STATE_INCREMENTAL",
+        "US_MARKET_DATE": "2026-09-24",
+        "CN_RESEARCH_DATE": "2026-09-25",
+        "SESSION_STATE": "CLOSE_COLLECTED",
+        "OPEN_READY": true,
+        "CLOSE_READY": true,
+        "STATUS": "PASS",
+        "ACQUISITION_MODE": "YFINANCE_API",
+        "PRODUCTS": [
+          "US_OPEN_STATE",
+          "US_CLOSE_STATE",
+          "US_FINE_GRAINED_SNAPSHOT",
+          "TOP_REAL_FLOW_SECTORS",
+          "TOP_PRICE_ACCEPTANCE_SECTORS",
+          "FINE_GRAINED_LEADERSHIP_TABLE",
+          "A_SHARE_MAPPING_PRIOR",
+          "ONE_LINE_CONCLUSION"
+        ],
+        "US_FINE_GRAINED_STATUS": "PASS",
+        "A_SHARE_MAPPING_PRIOR_STATUS": "PASS",
+        "FIXED_PATHS": {
+          "root": "E:\\BLACKBOX\\数据\\美国市场\\市场状态",
+          "current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_MARKET_STATE_CURRENT.json",
+          "open_current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_OPEN_STATE_CURRENT.json",
+          "close_current": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_CLOSE_STATE_CURRENT.json",
+          "alignment": "E:\\BLACKBOX\\数据\\美国市场\\市场状态\\CURRENT\\US_TO_CN_SESSION_ALIGNMENT.csv",
+          "fine_grained_current": "E:\\BLACKBOX\\运行\\BLACKBOX_US_MARKET_FINE_GRAINED_FLOW_PROFIT_POOL_CURRENT.json",
+          "fine_grained_root": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池",
+          "mapping_prior_current": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池\\CURRENT\\A_SHARE_MAPPING_PRIOR_CURRENT.json",
+          "snapshot_current": "E:\\BLACKBOX\\数据\\美国市场\\细粒度利润池\\CURRENT\\US_FINE_GRAINED_SNAPSHOT_CURRENT.json"
+        }
+      },
+      "ALL_LANES_READY": "YES",
+      "DEGRADED_LANES": [],
+      "DAILY_INCREMENTAL_READY": "YES",
+      "DATA_GENERATION_ID": "DG1-373cf01dd3e066bd6a21c74154b8e3606b8ede05dffa91ffd4338a225db1811b",
+      "MANIFEST_SEMANTIC_SHA256": "373cf01dd3e066bd6a21c74154b8e3606b8ede05dffa91ffd4338a225db1811b",
+      "DATA_GENERATION_ID_ISSUER": "DATA_PLANE"
+    },
+    "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json": {
+      "schema_version": "1.0.0",
+      "BUILD_TIME": "2026-10-25T14:55:38+0800",
+      "CN_RESEARCH_DATE": "2026-09-24",
+      "DAILY_INCREMENTAL_READY": "YES",
+      "PATH_MAP": "E:\\BLACKBOX\\研究系统\\数据平面\\CONFIG\\DATA_PLANE_PATH_MAP.json",
+      "manifest_current": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+      "input_pack_current": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_RESEARCH_INPUT_PACK_CURRENT.json",
+      "DATA_GENERATION_ID": "DG1-373cf01dd3e066bd6a21c74154b8e3606b8ede05dffa91ffd4338a225db1811b",
+      "DATA_MANIFEST_ID": "DAILY_DATA_MANIFEST_20260924"
+    }
+  },
+  "gate": {
+    "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_ISOLATE_RESUME_FIXTURE_R2_20261028\\GATE_R5.json",
+    "sha256": "5dfe90ab183a3d2408f850c35bf507778a0ebb7a2a028af0eef8f75fdd33b2dd",
+    "actual_preflight_exit": 0,
+    "actual_test_exit": 0,
+    "tests": 128,
+    "rule_bindings": [
+      {
+        "relative_path": "契约/必读/BLACKBOX_ACQUISITION_MUST_READ.md",
+        "raw_bytes": 2467,
+        "raw_sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+        "binding_sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+        "hash_mode": "RAW_BYTES"
+      },
+      {
+        "relative_path": ".cursor/rules/blackbox_jq_incremental_download_hand_rule.mdc",
+        "raw_bytes": 2008,
+        "raw_sha256": "4de93c0737b527996e4928412427954ac0e5a75b6816bb08595de2381e03a54b",
+        "binding_sha256": "4de93c0737b527996e4928412427954ac0e5a75b6816bb08595de2381e03a54b",
+        "hash_mode": "RAW_BYTES"
+      },
+      {
+        "relative_path": "运行/BLACKBOX_JQ_INCREMENTAL_DOWNLOAD_RULE_CURRENT.json",
+        "raw_bytes": 9100,
+        "raw_sha256": "2084f9683f1aa8385daf720565021631a0ac1d66ee1a52f241b252107782fa4a",
+        "binding_sha256": "2084f9683f1aa8385daf720565021631a0ac1d66ee1a52f241b252107782fa4a",
+        "hash_mode": "RAW_BYTES"
+      },
+      {
+        "relative_path": "脚本/blackbox_must_read_preflight_r1.py",
+        "raw_bytes": 11767,
+        "raw_sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+        "binding_sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+        "hash_mode": "RAW_BYTES"
+      },
+      {
+        "relative_path": "脚本/_base.py",
+        "raw_bytes": 11800,
+        "raw_sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+        "binding_sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+        "hash_mode": "RAW_BYTES"
+      },
+      {
+        "relative_path": "契约/必读/MUST_READ_MANIFEST_CURRENT.json",
+        "raw_bytes": 2943,
+        "raw_sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08",
+        "binding_sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08",
+        "hash_mode": "RAW_BYTES"
+      },
+      {
+        "relative_path": ".cursor/rules/BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+        "raw_bytes": 1167,
+        "raw_sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+        "binding_sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+        "hash_mode": "UNIVERSAL_NEWLINE_UTF8_TEXT"
+      },
+      {
+        "relative_path": "契约/必读/BLACKBOX_BOOTSTRAP_MUST_READ.md",
+        "raw_bytes": 1570,
+        "raw_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+        "binding_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+        "hash_mode": "UNIVERSAL_NEWLINE_UTF8_TEXT"
+      },
+      {
+        "relative_path": ".cursor/rules/blackbox_download_must_clean_antileak.mdc",
+        "raw_bytes": 2594,
+        "raw_sha256": "5b065d52318ffc0aced20eff669b15b0137cbfef60f8b3e3942be434d746614b",
+        "binding_sha256": "5b065d52318ffc0aced20eff669b15b0137cbfef60f8b3e3942be434d746614b",
+        "hash_mode": "UNIVERSAL_NEWLINE_UTF8_TEXT"
+      },
+      {
+        "relative_path": "契约/必读/BLACKBOX_DATA_ACCESS_MUST_READ.md",
+        "raw_bytes": 6911,
+        "raw_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+        "binding_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+        "hash_mode": "UNIVERSAL_NEWLINE_UTF8_TEXT"
+      }
+    ]
+  }
+}
