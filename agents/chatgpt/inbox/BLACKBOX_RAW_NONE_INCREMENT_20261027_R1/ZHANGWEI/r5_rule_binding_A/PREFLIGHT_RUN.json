@@ -1,0 +1,85 @@
+{
+  "schema": "BLACKBOX_R5_PREFLIGHT_RUN_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_RULE_BINDING_A",
+  "host": "ZHANGWEI",
+  "utc": "2026-10-28T10:35:20.629056+00:00",
+  "phase": "preparatory_source_identity",
+  "source_identity": {
+    "preflight": {
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py",
+      "expected_sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+      "raw_live_sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+      "match": true
+    },
+    "_base.py": {
+      "path": "E:\\BLACKBOX\\脚本\\_base.py",
+      "expected_sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+      "raw_live_sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+      "match": true
+    }
+  },
+  "identity_decision": "SOURCE_IDENTITY_MATCH",
+  "executed": true,
+  "run_count": 1,
+  "retry": false,
+  "argv": [
+    "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py",
+    "--task-class",
+    "ACQUISITION"
+  ],
+  "flags_absent": [
+    "--acceptance",
+    "--write-manifest",
+    "repair"
+  ],
+  "project_cwd": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_RULE_BINDING_20261028",
+  "actual_os_exit": 0,
+  "elapsed_ms": 1020,
+  "stdout": {
+    "path": "run_preflight/STDOUT.txt",
+    "bytes": 1157,
+    "sha256": "81ecb2b27c183e00b853e301cd591d51d135f1d4220eda8025621797ec1a0224"
+  },
+  "stderr": {
+    "path": "run_preflight/STDERR.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "parsed": {
+    "MUST_READ_PRECHECK": "PASS",
+    "TASK_CLASS": "ACQUISITION",
+    "KERNEL_SHA256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+    "KERNEL_STATUS": "VERIFIED",
+    "KERNEL_BYTES": 1167,
+    "HAND_READ": "NOT_SUFFICIENT",
+    "AUTHORITY_READY": "YES",
+    "TASK_EXECUTION": "ALLOWED",
+    "TASK_EXECUTION_FORBIDDEN": "FALSE",
+    "rules_loaded": {
+      "BOOTSTRAP": {
+        "expected_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+        "actual_sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+        "status": "VERIFIED"
+      },
+      "DATA_ACCESS": {
+        "expected_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+        "actual_sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+        "status": "VERIFIED"
+      },
+      "ACQUISITION": {
+        "expected_sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+        "actual_sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+        "status": "VERIFIED"
+      }
+    }
+  },
+  "hand_read_semantics": "HAND_READ=NOT_SUFFICIENT is unconditional output computed after ok; it is not a failed manual-reading test and not a preflight failure. Preflight verdict is MUST_READ_PRECHECK=PASS with exit 0.",
+  "no_substitute_claim": "This run does not retroactively validate R4 and is not a substitute for package tests.",
+  "supplier_calls": 0,
+  "quota_spent": 0,
+  "business_execution": false,
+  "source_rewritten": false
+}
