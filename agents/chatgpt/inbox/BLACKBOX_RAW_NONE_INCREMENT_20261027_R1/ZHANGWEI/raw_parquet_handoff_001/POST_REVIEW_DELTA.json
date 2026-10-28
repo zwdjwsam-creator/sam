@@ -1,0 +1,98 @@
+{
+  "schema": "BLACKBOX_RAW_BODY_HANDOFF_POST_REVIEW_DELTA_R1",
+  "task_id": "BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028",
+  "host": "ZHANGWEI",
+  "review_reference": {
+    "review_file": "agents/chatgpt/reviews/BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028/RAW_BODY_DECODE_REVIEW_20261028.md",
+    "reviewed_snapshot_commit": "f9341ec274d2f344cfcfb2140c6ce548ab696a3d",
+    "reviewed_snapshot_time_utc": "2026-10-28T14:55:21Z"
+  },
+  "why_this_file_exists": "The review was pinned at 2026-10-28T14:55Z. Three delivery files were superseded afterwards, and one of the review observations is therefore about a state that no longer exists. This note records the delta explicitly instead of leaving the review and the repository disagreeing silently. Nothing submitted to the capture run was altered; the capture archives, streams, exits and ACK are byte-identical to what the review decoded.",
+  "changed_after_review": [
+    {
+      "path": "DELIVERY_MANIFEST.json",
+      "before": {
+        "bytes": 3728,
+        "content_file_count": 17,
+        "declares_REPORT_md": false
+      },
+      "after": {
+        "bytes": 3872,
+        "content_file_count": 18,
+        "declares_REPORT_md": true,
+        "sha256": "8ab7be692dd33dc46d1c63b63cf7a734a2c2189141fc32ec7cc51e76ad1c9303"
+      },
+      "reason": "The first manifest omitted REPORT.md from its own declared set, so the report it shipped was not covered by the manifest. That is a defect in the manifest, not in the capture. REPORT.md was added as an 18th content file and the two readback companions were regenerated from disk."
+    },
+    {
+      "path": "LOCAL_READBACK.json",
+      "before": {
+        "rows": 18
+      },
+      "after": {
+        "rows": 19,
+        "sha256": "d548e1371905046ec940515a78483618763f2a344e838ae7a9783036979f186b"
+      },
+      "reason": "Regenerated because the manifest now covers REPORT.md."
+    },
+    {
+      "path": "REPORT.md",
+      "before": {
+        "bytes": 7388
+      },
+      "after": {
+        "bytes": 9382,
+        "sha256": "9e6958810a6f30046579ded9e458a826eb06d7df0f961d5fc76b1a6fe309feb3"
+      },
+      "reason": "Added the transport notes and a self-reported-gaps section: the curl-vs-urllib upload path, the unreachable diagnostic blob, and the fact that archive readback used raw.githubusercontent Range rather than git/blobs."
+    },
+    {
+      "path": "UPLOAD_READBACK.json",
+      "before": {
+        "present_in_snapshot": false
+      },
+      "after": {
+        "present": true,
+        "bytes": 11764,
+        "verified_count": 20,
+        "all_byte_equal": true,
+        "sha256": "d85d11dc7516455631db2d4a2e4778fb5ea5786c965a7498b8e2e7cc7949c5ec"
+      },
+      "reason": "This is the file the review records as \"has not yet arrived\". It arrived at commit 2abe2886c878, 2026-10-28T17:06Z, about two hours after the reviewed snapshot, and is now present and byte-verified against the local copy."
+    }
+  ],
+  "unchanged_since_review": [
+    "ACK_RAW_BODY.json",
+    "PACKAGE_VERIFY.json",
+    "PREFLIGHT_RUN.json",
+    "PREFLIGHT_STDOUT.txt",
+    "PREFLIGHT_STDERR.txt",
+    "TESTS_RUN.json",
+    "TESTS_STDOUT.txt",
+    "TESTS_STDERR.txt",
+    "CAPTURE_RUN.json",
+    "CAPTURE_STDOUT.txt",
+    "CAPTURE_STDERR.txt",
+    "capture_001/RAW_BODY_MANIFEST.json",
+    "capture_001/raw_part_001.zip",
+    "capture_001/raw_part_002.zip",
+    "capture_001/raw_part_003.zip",
+    "capture_001/raw_part_004.zip",
+    "INDEPENDENT_VERIFY.json"
+  ],
+  "correction_to_a_review_observation": {
+    "review_text_says": "the18 content-file identities declared by the delivery manifest match actual bytes",
+    "actual_at_reviewed_snapshot": "The manifest at f9341ec2 declared content_file_count=17 and did not include REPORT.md. So the phrase \"18 content-file identities\" does not match that snapshot; at that commit the manifest covered 17 files.",
+    "current_state": "The manifest now declares 18 content files including REPORT.md, and all 18 match actual bytes. The archives themselves are unchanged, so the 1502-member decode and the 117461 = 117460 + 1 row conservation the review reports are unaffected.",
+    "not_claiming": "No correction is implied to the decode results themselves."
+  },
+  "left_untouched": {
+    "capture_rerun": false,
+    "capture_archives_rewritten": false,
+    "upload_interrupted": false,
+    "duplicate_task_issued": false,
+    "old_receipts_rewritten": false,
+    "old_receipts_retrodating": false,
+    "review_files_modified": false
+  }
+}
