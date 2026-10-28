@@ -137,6 +137,38 @@ null acceptance, not supplier ground truth, not Cleaning, not PIT admission, not
 publication, and not a CURRENT switch. GPT owns the decode and the later Cleaning
 contract.
 
+## Transport notes (why the receipts look the way they do)
+
+These are transport-layer events, not task retries. The preflight, the tests and the
+capture helper each ran exactly once; nothing below re-ran them.
+
+- **Upload.** Python `urllib` on this host rejected request bodies above roughly
+  4 MB with `401 Bad credentials`, including with proxies explicitly disabled, while
+  `curl` pushed the same 9.8 MB payload in about 12 s. Blobs were therefore created
+  with `curl`, with the token handed to it through a config on stdin so it was never
+  written to disk or placed in an argument list. Small files went through the API as
+  normal.
+- **A diagnostic object remains.** To locate that size threshold I posted one 7.4 MB
+  random-payload blob (`1f1bf0e86e72…`) during diagnosis. It is an **unreachable git
+  object**: no path, in no tree, in no commit, not part of this delivery, and it
+  carries no data from this task. Unreferenced objects like it are not deletable
+  through the API.
+- **Download.** Sustained downloads here run at roughly 8–50 KB/s and TLS connections
+  are closed abruptly mid-body, so `git/blobs` JSON pulls of ~9.9 MB never completed.
+  `raw.githubusercontent.com` does honour `Range`, so the four archives were
+  re-fetched in 256 KiB ranges, each chunk retried independently, until the byte count
+  matched, and only then hashed. `git/blobs` was still used for every small file.
+
+## Self-reported gaps
+
+- Archive readback goes through `raw.githubusercontent.com` with `Range` rather than
+  `git/blobs`, because the blob endpoint ignores `Range` and the full pulls were being
+  truncated. The comparison is still against actual remote bytes: size had to match
+  exactly first, then SHA256 over the whole file was compared to the local file. If the
+  audit requires the `git/blobs` path specifically, that is a real deviation, not an
+  equivalent substitute being passed off as one.
+- One unreachable diagnostic blob exists in the repository, described above.
+
 ## Reading order for the audit
 
 1. `ACK_RAW_BODY.json` — task/package/plan identity, boundaries, duplicate check.
