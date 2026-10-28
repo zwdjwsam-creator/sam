@@ -1,0 +1,19 @@
+# Native R5 fixture R2 gate review — bounded acceptance only
+
+input_commit: fbff36ed1f6b18d4a80c9f1b0fea8cc51d10fdda
+execution_host: ZHANGWEI
+active_dispatch_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2
+parent_acquisition_task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME
+decision: ORIGINAL_NATIVE_PREFLIGHT_AND128_PACKAGE_CONTROLS_ACCEPTED_BOUNDED_ONLY
+
+The latest11 return blobs were independently fetched and their Git blob identities reproduced. The gate's ACK SHA256 matches the returned ACK bytes. All10 rule bindings match the reviewed RULE_PINS, including original preflight/_base/current Manifest identities. The native23 payload hash/length statements reconcile to the reviewed PACKAGE manifest, whose SHA256 is183d765869f407a9be557c2b48429ebb9acb7ced047af23893d1fd3284820b20. The reviewed24 HUB package files remain unchanged. These are native identity receipts reconciled to GPT-reviewed bytes, not direct remote access to desktop files.
+
+Literal original ACQUISITION preflight stdout is PASS/VERIFIED and matches its raw stream pin; recorded actual waited OS exit0, no timeout. It finished2026-10-28 20:14:11.574930+08:00 before tests began20:14:11.580313+08:00. The required test argv is unchanged. Raw stderr contains128 individual ok results, Ran128 and literal OK, no skip/failure/error; recorded actual OS exit0. Tests finished20:14:16.622135+08:00. The two previously blocked fixture tests and all3 added Windows guard-code controls are explicitly present and ok. Individual run receipts equal the gate's run records; every raw stream length/SHA256 matches. ACK timestamp precedes these commands; its last visible remote commit 3d02f390d3a323372b914ab7c6041e3e81a38e12 at 2026-10-28T12:14:00Z is separately checked against the preflight start. The native platform is Windows as reported by ACK.
+
+Accepted scope: the original host rule-preflight and corrected128-control package gate. This closes the two C:-temp fixture failures for this native gate without changing production path restrictions. It does not erase the earlier125 failed outcomes or R4 preflight omission. HAND_READ fixed informational semantics and the unproved sixth-slot count are unchanged; no new inventory or policy is required.
+
+The currently visible return is still a partial/in-progress delivery: no WRAPPER_RUN actual outer exit receipt, acquisition invocation/result, R5 data/admission/conservation/coverage/quota outputs, or final delivery/readback manifests are present at this input commit. Empty wrapper streams are not an exit-code certificate. The missing final files are pending evidence, not proof of a stopped, failed, completed or never-started acquisition. Do not infer current spend remains175858 without a real acquisition outcome. The previously established175858 is the inherited ledger, and the task's new150000/cumulative700000 ceilings remain unchanged.
+
+No new execution command, retry, hold, source request, sixth-slot search, supplier probe or process stop is issued. The existing contract already permits exactly one acquisition after both actual gates and all retained-data/baseline/freshness gates pass locally. Let that task proceed or return its preserved outcome without duplication. The gate does not certify R4 retained raw-cell revalidation, the remaining1784 stock request set, ETF/index acquisition, partial-failure accounting or complete product coverage; those actual receipts remain required.
+
+No cleaning, align/PIT, cache, generation, non-regression, publication, CURRENT or orders accepted. No updated formal data product is claimed. After final results, audit source rows = admitted + quarantined/rejected, and expected keys = accounted-for keys + unacquired keys, by product/date/key, dictionary/provenance/time and quota before the separate reviewed Cleaning task. Keep the automation/task active while these outcomes remain pending; do not create another task from this review.
