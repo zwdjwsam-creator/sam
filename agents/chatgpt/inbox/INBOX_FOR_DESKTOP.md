@@ -1,3 +1,25 @@
+# Active: exact existing RAW Parquet body handoff — zero supplier calls
+
+execution_host: ZHANGWEI
+SAM: HOLD
+SUPPLIER_CALLS_ALLOWED=false
+CLEANING_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+ORDER_ALLOWED=false
+
+Task: agents/chatgpt/outbox/BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028.md
+Package: agents/chatgpt/reviews/BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028/
+8 files/7 payloads,10 offline controls exit0. PACKAGE SHA25667b861ef67df268258943fa2d281d296804c1decbc085d14f1ce687b11e0e8bc.
+
+Owner requested full raw-body delivery for independent GPT decoding. Exact1504-source plan only: transfer1502 previously unuploaded bodies (R5 405+R4 accepted1097),23448612bytes; verify/reuse existing R1first80 and R4failed80 HUB bodies without duplicate upload. No re-download, quota/login probe, new source inventory, sixth-slot request or RAW rewrite. R5 acquisition already finished; do NOT rerun acquire_r5/acquire_daily or old acquisition gates.
+
+Check existing ACK/result/process before acting, no duplicate/stop. Follow exact task: package/ACK upload+byte readback; original DATA preflight then10 native byte/ZIP controls, then one capture_raw.py. OutputC: only, plan-bound originalsE: read-only, ZIP<=8MiB, complete CRC/member SHA readback. Do not precreate capture_001. Upload every archive/result and byte-read back every remote file through blobs when Contents omits large content. Return to agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/raw_parquet_handoff_001/, exactly END.
+
+Cleaning section is requirements preparation only, not execution authorization. Original-engine code/value/dictionary/PIT review and candidate offline controls precede a separately issued Cleaning command. No CURRENT/publication/orders/watchdog actions. Task publication is not native ACK or execution.
+
+---
+# Previous routing history; completed R5 acquisition must not be replayed
+
 # Owner requested pickup — existing R5 fixture R2, no duplicate execution
 
 execution_host: ZHANGWEI
