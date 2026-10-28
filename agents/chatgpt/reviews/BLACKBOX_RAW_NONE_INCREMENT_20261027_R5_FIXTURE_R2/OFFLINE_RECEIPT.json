@@ -1,0 +1,73 @@
+{
+  "schema": "BLACKBOX_R5_FIXTURE_R2_OFFLINE_CONTROLS_R1",
+  "dispatch_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2",
+  "parent_task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
+  "tests": 128,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "actual_os_exit": 0,
+  "scope": "ORIGINAL_WINDOWS_GUARD_CODE_WITH_OS_NAME_PROXY_PLUS_FULL_OFFLINE_SUITE",
+  "windows_native_execution_by_gpt": false,
+  "supplier_calls": 0,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "pandas": "3.0.3",
+  "numpy": "2.3.5",
+  "pyarrow": "24.0.0",
+  "argv": [
+    "python",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "-v",
+    "test_acquire_daily",
+    "test_r3_code_and_reuse",
+    "test_r4_empty_slots",
+    "test_r5_resume"
+  ],
+  "before_correction": {
+    "original_two_tests_unchanged": true,
+    "windows_policy_proxy": true,
+    "actual_os_exit": 1,
+    "failures": 1,
+    "errors": 1,
+    "diagnostic": "EXTERNAL_LINK_TARGET",
+    "native_os_proof": false
+  },
+  "production_diff": "ONLY C: control directory constants in acquire_r5.py and precheck_r5.py; all business and production guard code unchanged",
+  "native_first_attempt": {
+    "tests": 125,
+    "actual_test_os_exit": 1,
+    "wrapper_actual_os_exit": 2,
+    "acquisition": "NOT_RUN",
+    "quota_spent": 0
+  },
+  "streams": {
+    "OFFLINE_STDOUT.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "OFFLINE_STDERR.txt": {
+      "bytes": 14230,
+      "sha256": "eb9e57562bda2c5a1f7a84688626918000ce63aa4872d1bdc3b63fb49b1afca8"
+    },
+    "BEFORE_WINDOWS_POLICY_STDOUT.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "BEFORE_WINDOWS_POLICY_STDERR.txt": {
+      "bytes": 2187,
+      "sha256": "14ba36e098e9d67ee1ac4035bec1122fca754176658e3ccbacac1a259236080c"
+    }
+  },
+  "executed_code_sha256": {
+    "acquire_daily.py": "d5576231c3f712d64b4dc7b6d25f827503f1ab0835db5fbe43787277a3f1210e",
+    "acquire_r5.py": "695c77d297a06111b8448e38ebaf2ffaf0cc504c6c472bd766a26d4e5a280c7e",
+    "precheck_r5.py": "9e7cce53ad876d40cb5becfb029103c4d79fcb1e8c95431fdd4d7601ad8ed60c",
+    "test_acquire_daily.py": "f5fa0a03cd07996a7d5f0c52024821b5337dcdc1d75845a91c95cedbaf155a3d",
+    "test_r3_code_and_reuse.py": "99bc0ee36a1374f718c61c77f7a3e5c3e36faf5d930711904989bd95f9500c9f",
+    "test_r4_empty_slots.py": "59a064d0065babefe6082470e3fe8ef6c95c5f9d2392901ed85cb38e8c549b78",
+    "test_r5_resume.py": "086c354ce621586827be840c6131dd7c68a7abcf59a014b2d8352588c56766b9"
+  }
+}
