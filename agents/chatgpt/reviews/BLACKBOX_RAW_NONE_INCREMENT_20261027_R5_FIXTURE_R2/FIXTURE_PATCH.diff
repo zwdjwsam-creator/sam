@@ -1,0 +1,79 @@
+--- R5/acquire_r5.py
++++ R5_FIXTURE_R2/acquire_r5.py
+@@ -20,7 +20,7 @@
+ 
+ TASK='BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME'
+ OUTPUT_NAME='BLACKBOX_RAW_NONE_INCREMENT_20261027_R5'
+-CONTROL=Path(r'C:\LAN_SHARE_REPORT\BLACKBOX_R5_ISOLATE_RESUME_20261028')
++CONTROL=Path(r'C:\LAN_SHARE_REPORT\BLACKBOX_R5_ISOLATE_RESUME_FIXTURE_R2_20261028')
+ INHERITED=175858
+ NEW_CAP=150000
+ FAILED_REL='raw/stock/2026-10-27_03360_R4.parquet'
+--- R5/precheck_r5.py
++++ R5_FIXTURE_R2/precheck_r5.py
+@@ -14,7 +14,7 @@
+ import acquire_daily as a
+ 
+ TASK='BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME'
+-CONTROL=Path(r'C:\LAN_SHARE_REPORT\BLACKBOX_R5_ISOLATE_RESUME_20261028')
++CONTROL=Path(r'C:\LAN_SHARE_REPORT\BLACKBOX_R5_ISOLATE_RESUME_FIXTURE_R2_20261028')
+ 
+ def write_exact(path,data):
+     with path.open('xb') as f:f.write(data);f.flush();os.fsync(f.fileno())
+--- R5/test_r5_resume.py
++++ R5_FIXTURE_R2/test_r5_resume.py
+@@ -93,11 +93,18 @@
+     def test_failed_hash_corruption_refused(self):
+         with tempfile.TemporaryDirectory() as d:
+             f=Path(d)/'body';f.write_bytes(fixture()+b'x')
+-            with self.assertRaisesRegex(a.Blocked,'IDENTITY_DRIFT'):r.read_exact(f,{'bytes':15489,'sha256':r.FAILED_SHA})
++            # This fixture tests byte identity, not the host's E: read permission.
++            # Replace only that permission seam for this exact temporary file;
++            # the unchanged Windows guard is exercised separately below.
++            with patch.object(a,'require_allowed_read') as policy:
++                with self.assertRaisesRegex(a.Blocked,'IDENTITY_DRIFT'):r.read_exact(f,{'bytes':15489,'sha256':r.FAILED_SHA})
++                policy.assert_called_once_with(f.resolve(strict=True))
+     def test_exact_raw_read_only(self):
+         with tempfile.TemporaryDirectory() as d:
+             f=Path(d)/'body';f.write_bytes(fixture());s=f.stat()
+-            self.assertEqual(r.read_exact(f,{'bytes':15489,'sha256':r.FAILED_SHA}),fixture())
++            with patch.object(a,'require_allowed_read') as policy:
++                self.assertEqual(r.read_exact(f,{'bytes':15489,'sha256':r.FAILED_SHA}),fixture())
++                policy.assert_called_once_with(f.resolve(strict=True))
+             self.assertEqual(f.stat().st_mtime_ns,s.st_mtime_ns)
+     def test_remaining_1784_batches(self):
+         u=[f'{n:06d}.XSHG' for n in range(5224)];left=r.validate_remaining(u,u[:3440])
+@@ -135,6 +142,33 @@
+         bindings=json.loads(Path(__file__).with_name('R4_BINDINGS.json').read_bytes())
+         self.assertEqual(len(bindings['raw']),1098);self.assertEqual(len(bindings['metadata']),3363)
+         self.assertEqual(bindings['raw'][r.FAILED_REL],{'bytes':15489,'sha256':r.FAILED_SHA})
++
++class WindowsReadPolicy(unittest.TestCase):
++    @staticmethod
++    def native_guard():
++        # Execute the real production function's code with an explicit Windows
++        # OS-name proxy. Do not mutate global os.name (which changes pathlib).
++        return types.FunctionType(a.require_allowed_read.__code__,
++            dict(a.require_allowed_read.__globals__,os=types.SimpleNamespace(name='nt')))
++    def test_real_windows_guard_fixed_roots_and_sibling_boundary(self):
++        guard=self.native_guard()
++        for value in [r'E:\BLACKBOX\STAGING\fixture',r'E:\BLACKBOX_ENGINES\fixture',r'\\?\E:\BLACKBOX\STAGING\fixture']:
++            guard(value)
++        for value in [r'C:\Users\Admin\AppData\Local\Temp\fixture',r'E:\BLACKBOX_EVIL\fixture',r'F:\BLACKBOX\fixture']:
++            with self.assertRaisesRegex(a.Blocked,'EXTERNAL_LINK_TARGET'):guard(value)
++    def test_real_windows_guard_refuses_external_temp_before_read_admission(self):
++        with tempfile.TemporaryDirectory() as d:
++            f=Path(d)/'body';f.write_bytes(fixture());before=f.stat().st_mtime_ns
++            with patch.object(a,'require_allowed_read',self.native_guard()):
++                with self.assertRaisesRegex(a.Blocked,'EXTERNAL_LINK_TARGET'):
++                    r.read_exact(f,{'bytes':15489,'sha256':r.FAILED_SHA})
++            self.assertEqual(f.stat().st_mtime_ns,before)
++    def test_external_path_not_hidden_by_corrupt_hash(self):
++        with tempfile.TemporaryDirectory() as d:
++            f=Path(d)/'body';f.write_bytes(fixture()+b'x')
++            with patch.object(a,'require_allowed_read',self.native_guard()):
++                with self.assertRaisesRegex(a.Blocked,'EXTERNAL_LINK_TARGET'):
++                    r.read_exact(f,{'bytes':15489,'sha256':r.FAILED_SHA})
+ 
+ class FakeJQ:
+     def __init__(self):self.spare=200000000;self.calls=[]
