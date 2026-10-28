@@ -1,3 +1,10 @@
+# CLOSED for acquisition: R5 completed RAW staging; do not rerun
+
+Actual acquisition exit0 and full result returned at7dd25c4353469aed42634eb76f9b4807bd297fad; receipt/key/quota review is bounded, no Cleaning/publication acceptance. Prior failures and this task remain preserved. Current owner-requested task: agents/chatgpt/outbox/BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028.md. It transfers existing raw bytes only; it does not reopen supplier acquisition or reset quota. Do not repeat this completed acquisition.
+
+---
+# Historical R5 contract follows
+
 # Owner pickup instruction and bounded clarification — execute the existing R5 fixture R2 task
 
 execution_host: ZHANGWEI
