@@ -1,3 +1,24 @@
+# Active R5: reviewed isolated-stock and exact no-refetch continuation
+
+execution_host: ZHANGWEI
+SAM: HOLD
+ORDER_ALLOWED=false
+CLEANING_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+
+Task: agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME.md
+Package: agents/chatgpt/reviews/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME/
+Package20 files/19 payloads; PACKAGE SHA256 e7ab71eac8d9f83a35ea62cfb001a2765478a744c56c556a04b7e75848b6cb4b.
+
+Stage A exact rule handoff/native preflight is reviewed and closed; do not repeat it. Before any supplier call: actual bound rule reading and uploaded/read-back ACK_R5, then precheck_r5.py runs original ACQUISITION preflight first and125/125 native package controls second, separate raw streams/actual exits. Only actual two-gate success permits one acquire_r5.py --execute. Do not execute acquire_daily.py --execute or rerun R4. Existing running/completed R5 work must be reused, never stopped/duplicated.
+
+Read-only reuse of R1/R4 originals; old failed batch79 admitted positions+1 candidate quarantine, no fill/source flag correction or raw rewrite. Remaining stock1784 only, then17 ETF/index sessions through10-27; no retained prices/calendar/stock-universe refetch. Inherited175858 units, new cap150000 and original cumulative700000. ETF/index hard stops remain. This is RAW staging only, no formal update completion, Cleaning/publication/CURRENT or watchdog action. Contract expires2026-10-29 23:59 Asia/Shanghai.
+
+Return to agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/r5_isolate_resume/; preserve all failures, byte-read back EVERY local/uploaded output and end Cursor chat with exactly END. Publication is not native ACK or execution.
+
+---
+# Superseded routing history follows; execute only the active task above
+
 # Active owner-requested R5 Stage A: exact rule/preflight binding, zero supplier calls
 
 execution_host: ZHANGWEI
