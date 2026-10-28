@@ -1,3 +1,24 @@
+# Active R5 fixture correction R2 — same acquisition child
+
+execution_host: ZHANGWEI
+SAM: HOLD
+ORDER_ALLOWED=false
+CLEANING_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+
+Task: agents/chatgpt/outbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2.md
+Package: agents/chatgpt/reviews/BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2/
+24 files/23 payloads; PACKAGE SHA256183d765869f407a9be557c2b48429ebb9acb7ced047af23893d1fd3284820b20.
+
+First R5 preflight passed; native125 controls had123ok/1failure/1error due system-temp fixture path rejection. Wrapper exit2, no acquire_r5 execute, no new quota. Preserve old C: folder and r5_isolate_resume/ byte-for-byte. Do NOT rerun old package or Stage A/R4.
+
+Corrected fixtures use a documented permission seam only for byte tests; three new controls execute original Windows path-guard code. Production guard/read/admission/price/quota logic unchanged. New C: control directory only prevents receipt collisions. Fresh original ACQUISITION preflight must precede128/128 native controls with actual exit0/no skip, then exactly one first R5 acquisition execute if no active/completed execution/output. ACK/readback before commands. No E: fixture writes, local patch, interpreter/dependency change or cleanup.
+
+Same1784 stock remainder then17 ETF/index dates through10-27, same raw pins, retained79+1 positions, no re-download. Inherited175858 remains; new cap150000 and cumulative700000 do not reset. No Cleaning/CURRENT/watchdog/orders. All details and exact commands in task. Return only to agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/r5_isolate_resume_fixture_r2/, read every uploaded file back as bytes, exactly END. Publication is not ACK or execution. SAM does nothing.
+
+---
+# Superseded route history; execute only the active correction above
+
 # Active R5: reviewed isolated-stock and exact no-refetch continuation
 
 execution_host: ZHANGWEI
