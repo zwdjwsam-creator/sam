@@ -1,3 +1,5 @@
+> CLOSED FOR EXECUTION — 2026-10-29: Exact body handoff and final readbacks reviewed. Do not rerun capture or supplier acquisition. See agents/chatgpt/reviews/BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028/FINAL_HANDOFF_REVIEW_20261029.md. Await a separately authored and tested candidate task; this closure authorizes no Cleaning, CURRENT, publication or orders.
+
 # Exact R5 raw-Parquet body handoff for independent GPT decoding
 
 task_id: BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028
