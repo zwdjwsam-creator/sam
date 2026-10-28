@@ -1,3 +1,30 @@
+# Owner pickup instruction and bounded clarification — execute the existing R5 fixture R2 task
+
+execution_host: ZHANGWEI
+active_dispatch_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2
+parent_acquisition_task_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME
+SAM: HOLD
+ORDER_ALLOWED=false
+CLEANING_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+
+The owner explicitly asked GPT to send this task to the local AI. This is pickup/clarification of the SAME existing dispatch, not another acquisition round or another execution allowance. No corrected-R2 return files were observed at reviewed main commit32cbb2f7ee8de28a0a122cfd77a9abcf72518c2f; that does not prove there is no local running process. First perform the existing duplicate checks. If already running/completed, preserve it and upload/reuse its evidence; do not restart, stop or duplicate it.
+
+Four review clarifications, with no new gate/test/source search:
+1. Only5 exact empty slots are evidenced. The alleged sixth slot is UNBOUND_COUNT_CLAIM, already disclosed in Stage A. No exact path is missing from an authorized handoff. Do not search globally, invent a sixth path, expand the empty-directory policy or block this task merely because that unproved count has no path. An actually encountered unknown directory still triggers the existing production guard.
+2. The reviewed read_exact has no bypass-policy argument. The permission seam is confined to unittest patch contexts; the production entry has no switch or branch enabling it. Source review already resolved this question. Verify unchanged package identities and run all128 prescribed native controls; do not invent another control or alter the production guard.
+3. Verify all23 payload files PLUS the identity of PACKAGE.json itself. ACK binds the corrected PACKAGE SHA256183d765869f407a9be557c2b48429ebb9acb7ced047af23893d1fd3284820b20 and required rule identities; use the prescribed package-verification companion. No self-hash cycle, extra ACK format or package modification is required.
+4. ACQUIRED/PARTIAL_BLOCKED/NOT_ATTEMPTED are per-product/per-date COVERAGE states only. Preserve true execution states such as NOT_RUN, PARTIAL_BLOCKED and RAW_STAGED_UNREVIEWED in their original receipts. Never rewrite an execution result just to fit a coverage enum.
+
+Use the reviewed24-file package unchanged. Its packaged TASK.md/hash stays unchanged; do NOT copy this outbox-only header into any payload. Follow the complete contract below: upload/read back ACK first; fresh original ACQUISITION host preflight, then all128 native controls with actual exit0/no skip. Only after BOTH real gates pass, run the one acquire_r5.py --execute command in the existing corrected C: package path. Do NOT run acquire_daily.py --execute or the old125-test package. If any gate fails, preserve/upload it and stop without supplier calls or local repairs.
+
+Existing fixed scope remains: retained80 and failed79+1 position references, no old-price/calendar/stock-universe replay,1784 unrequested stock codes on10-27 then17 ETF/index sessions through10-27 only. Same inherited175858/new150000/cumulative700000 quota constraints. No local price/status/factor/PIT invention, Cleaning, publication, CURRENT switch, rule edit, watchdog or terminal action. All old failed outcomes remain unchanged.
+
+Return all new results to agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/r5_isolate_resume_fixture_r2/. Read every local/uploaded output back byte-for-byte, then finish Cursor chat with exactly END. Task publication is not ACK or execution proof.
+
+---
+# Existing complete corrected execution contract (unchanged below)
+
 # Corrected R5 fixture dispatch R2 — same acquisition child, no spent-budget reset
 
 dispatch_id: BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_FIXTURE_R2
