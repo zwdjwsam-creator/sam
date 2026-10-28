@@ -1,0 +1,42 @@
+{
+  "schema": "BLACKBOX_R5_NOT_RUN_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
+  "host": "ZHANGWEI",
+  "utc": "2026-10-28T11:08:41.803579+00:00",
+  "GATE_R5.json": {
+    "status": "NOT_RUN",
+    "reason": "precheck_r5.py returned actual OS exit 2 (TESTS_EXIT_NONZERO_OR_TIMEOUT); the wrapper writes GATE_R5.json only when both preflight and all 125 controls succeed. No file was created, not even partially."
+  },
+  "acquire_r5_execute": {
+    "status": "NOT_RUN",
+    "reason": "Second gate never existed. TASK.md forbids the execute command unless actual preflight exit0 and literal PASS/VERIFIED plus 125/125 controls with real OS exit0. Executing now would be an unauthorised supplier call.",
+    "command_withheld": "& E:\\BLACKBOX\\.venv\\Scripts\\python.exe -X utf8 C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_ISOLATE_RESUME_20261028\\package\\acquire_r5.py --execute"
+  },
+  "E_output": {
+    "path": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R5",
+    "status": "NOT_CREATED",
+    "verified_after_run": true
+  },
+  "supplier_calls": {
+    "status": "NOT_MADE",
+    "count": 0
+  },
+  "quota_spent": {
+    "value": 0,
+    "inherited_unchanged": 175858
+  },
+  "sdk_import_by_acquire_r5": {
+    "status": "NOT_REACHED"
+  },
+  "login": {
+    "status": "NOT_REACHED"
+  },
+  "retry": {
+    "status": "NOT_PERFORMED",
+    "reason": "AUTO_RETRY_ALLOWED=false and a failing control set must be preserved, not rerun."
+  },
+  "stage_A_capture": {
+    "status": "NOT_RERUN",
+    "reason": "Explicitly forbidden by the dispatch."
+  }
+}
