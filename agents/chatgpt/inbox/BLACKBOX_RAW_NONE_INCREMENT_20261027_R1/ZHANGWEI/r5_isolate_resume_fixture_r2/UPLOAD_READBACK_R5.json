@@ -6,14 +6,186 @@
   "delivery_root": "agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/r5_isolate_resume_fixture_r2",
   "method": "independent re-fetch per file: staging files via git/blobs/{sha}, control files via Contents API; both base64 decoded and byte-compared. Git hashes alone were not accepted.",
   "verified_count": 1328,
-  "all_byte_equal": false,
-  "mismatched": [
-    "DELIVERY_MANIFEST_R5.json",
-    "LOCAL_READBACK_R5.json"
-  ],
+  "all_byte_equal": true,
+  "mismatched": [],
   "self_hash_absent": true,
   "note_late_addition": "WRAPPER_RUN_R5.json was added after the first delivery closed and is verified here on the same terms as every other file.",
   "files": [
+    {
+      "path": "ACK_R5.json",
+      "bytes": 9422,
+      "sha256": "0d2fc8c29a1128a36f89e2fc0b7aee1c51374651392b91e638001403262dde48",
+      "remote_git_blob": "33e366cfa1d6af12968970ad4fcf722d1f8108a9",
+      "remote_sha256": "0d2fc8c29a1128a36f89e2fc0b7aee1c51374651392b91e638001403262dde48",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "DELIVERY_MANIFEST_R5.json",
+      "bytes": 241636,
+      "sha256": "4397c14f4f37ff70215c4d12e5927cc65d03fce30dbb5e62e9b8be472891a5f3",
+      "remote_git_blob": "23bd18a5e2b773d15e15dc274278819de298e915",
+      "remote_sha256": "4397c14f4f37ff70215c4d12e5927cc65d03fce30dbb5e62e9b8be472891a5f3",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file",
+      "reverified_after_upload": true,
+      "note": "first fetch raced the upload of this file; this is the post-upload re-fetch"
+    },
+    {
+      "path": "EXECUTE_RUN_R5.json",
+      "bytes": 2075,
+      "sha256": "10155653b5ad18c8bd397b4bd5682af7e134c364ee47a75a346e5a94c5004bb4",
+      "remote_git_blob": "f9df4f2cae103ead37984c42c27dbe71fbb76e31",
+      "remote_sha256": "10155653b5ad18c8bd397b4bd5682af7e134c364ee47a75a346e5a94c5004bb4",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "EXECUTE_STDERR_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "EXECUTE_STDOUT_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "GATE_R5.json",
+      "bytes": 5106,
+      "sha256": "5dfe90ab183a3d2408f850c35bf507778a0ebb7a2a028af0eef8f75fdd33b2dd",
+      "remote_git_blob": "a73fc20109d0bde29e5a4bce8f5044831b5986c7",
+      "remote_sha256": "5dfe90ab183a3d2408f850c35bf507778a0ebb7a2a028af0eef8f75fdd33b2dd",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "LOCAL_READBACK_R5.json",
+      "bytes": 283195,
+      "sha256": "20f36bcd1b87fda82a026dd025aeb2a378077d7ec12f847b306f8de21b71bfb3",
+      "remote_git_blob": "8b9c56d1278938e369403bf0e6860240a806103b",
+      "remote_sha256": "20f36bcd1b87fda82a026dd025aeb2a378077d7ec12f847b306f8de21b71bfb3",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file",
+      "reverified_after_upload": true,
+      "note": "first fetch raced the upload of this file; this is the post-upload re-fetch"
+    },
+    {
+      "path": "PACKAGE_VERIFY_R5.json",
+      "bytes": 9365,
+      "sha256": "1089563e81e0c29639d733860a75c67821469eb528cf29f89b4e827f68d37627",
+      "remote_git_blob": "444e02acee59652556b6a3a44974594eb1eea6a0",
+      "remote_sha256": "1089563e81e0c29639d733860a75c67821469eb528cf29f89b4e827f68d37627",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "PARQUET_MANIFEST_R5.json",
+      "bytes": 164981,
+      "sha256": "048709d11368b340843f40466027cbedde571bc3b213da2ffd2f6787f5a7c0e6",
+      "remote_git_blob": "7b4566f546e09c403a22295ff09da3bff5e440c3",
+      "remote_sha256": "048709d11368b340843f40466027cbedde571bc3b213da2ffd2f6787f5a7c0e6",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "PREFLIGHT_RUN_R5.json",
+      "bytes": 659,
+      "sha256": "7d806232adafd155c1031b7204112ddba45ca15d4be027db8df37274ad7f01d4",
+      "remote_git_blob": "11601b1ffd21860dbc9877363c8d2bf8740c8bb8",
+      "remote_sha256": "7d806232adafd155c1031b7204112ddba45ca15d4be027db8df37274ad7f01d4",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "PREFLIGHT_STDERR_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "PREFLIGHT_STDOUT_R5.txt",
+      "bytes": 1157,
+      "sha256": "81ecb2b27c183e00b853e301cd591d51d135f1d4220eda8025621797ec1a0224",
+      "remote_git_blob": "3b3d69a75d128972f66f5dd2290f3ce62a318a80",
+      "remote_sha256": "81ecb2b27c183e00b853e301cd591d51d135f1d4220eda8025621797ec1a0224",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "REPORT_R5.md",
+      "bytes": 8756,
+      "sha256": "5fd652eaaa625a109754637e68e7a8737de69634c495059f42bdd9d8bf04087b",
+      "remote_git_blob": "9741072ea88cd8090fc94ed00dd0e8e6238ca684",
+      "remote_sha256": "5fd652eaaa625a109754637e68e7a8737de69634c495059f42bdd9d8bf04087b",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "TESTS_RUN_R5.json",
+      "bytes": 684,
+      "sha256": "ef1d231a3ab69cb97799d226c148e6db893c48aeed2438697f2961d31afd72aa",
+      "remote_git_blob": "b85db2f874534c63897936eaeaec2d02c1fad8eb",
+      "remote_sha256": "ef1d231a3ab69cb97799d226c148e6db893c48aeed2438697f2961d31afd72aa",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "TESTS_STDERR_R5.txt",
+      "bytes": 14363,
+      "sha256": "d68c7ce207d7e662f160e73e9a0b374389fef537408ff37a41f6370325973399",
+      "remote_git_blob": "41ccb1dc105c0885fb6b3103e45932c37a29dc42",
+      "remote_sha256": "d68c7ce207d7e662f160e73e9a0b374389fef537408ff37a41f6370325973399",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "TESTS_STDOUT_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "WRAPPER_RUN_R5.json",
+      "bytes": 3011,
+      "sha256": "bf661648d874b0a7cb1cd1e58d72fa40ecc0a9ad5d94e9c4698b41b12ee4cf6a",
+      "remote_git_blob": "23c3cac28a69e23ad8854afe6a2301a3cab74264",
+      "remote_sha256": "bf661648d874b0a7cb1cd1e58d72fa40ecc0a9ad5d94e9c4698b41b12ee4cf6a",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "WRAPPER_STDERR_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "WRAPPER_STDOUT_R5.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "readback_byte_equal": true,
+      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
+    },
     {
       "path": "staging_output/ADMISSION_R5.json",
       "bytes": 8282830,
@@ -29,6 +201,60 @@
       "sha256": "3be2be7b0f616358765ba5a9441055ac43eb15ef50bd5667f8f4d72c381fefed",
       "remote_git_blob": "fde36dcee9d21af49f2bb2d1c62eb3349407d9e0",
       "remote_sha256": "3be2be7b0f616358765ba5a9441055ac43eb15ef50bd5667f8f4d72c381fefed",
+      "readback_byte_equal": true,
+      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "staging_output/COVERAGE_R5.json",
+      "bytes": 22738,
+      "sha256": "a4635f5b06b971884efc0a9e785b010d3712cd729223d81f9099c38aa04a61ae",
+      "remote_git_blob": "6254fb30be8adc4aa6ebc69815cc99e67dffcd2c",
+      "remote_sha256": "a4635f5b06b971884efc0a9e785b010d3712cd729223d81f9099c38aa04a61ae",
+      "readback_byte_equal": true,
+      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "staging_output/PLAN_R5.json",
+      "bytes": 34558,
+      "sha256": "76377db95c679879c3595458a8e17f6dc2ebdef78befafa8e28bc9e597ce893b",
+      "remote_git_blob": "a89047d0438cce36d3aae11928050b1e15dd01a6",
+      "remote_sha256": "76377db95c679879c3595458a8e17f6dc2ebdef78befafa8e28bc9e597ce893b",
+      "readback_byte_equal": true,
+      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "staging_output/QUARANTINE_R5.json",
+      "bytes": 1188,
+      "sha256": "41a6890364b5b69e6db3c0bf1a1381b7645cdddcafaaf0ab9f810ede2a7046ed",
+      "remote_git_blob": "84dba4087340a25ffa4fb147a42a8ba73ae06641",
+      "remote_sha256": "41a6890364b5b69e6db3c0bf1a1381b7645cdddcafaaf0ab9f810ede2a7046ed",
+      "readback_byte_equal": true,
+      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "staging_output/RESULT_R5.json",
+      "bytes": 568,
+      "sha256": "fb8aaa95b700bc0fe15d11f582f12990a73c3786efe9d8bb1397170f5c173f48",
+      "remote_git_blob": "9c6c4416f7af22d4549b13feedea20bf8080759e",
+      "remote_sha256": "fb8aaa95b700bc0fe15d11f582f12990a73c3786efe9d8bb1397170f5c173f48",
+      "readback_byte_equal": true,
+      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "staging_output/REUSE_MANIFEST_R5.json",
+      "bytes": 3682285,
+      "sha256": "26b7ac093a989b296e64cc3836e7384fa8a0d762858d23d61c8072398ce1c735",
+      "remote_git_blob": "c02e0fed7e89b50a1ed55eb333276c3041a1e922",
+      "remote_sha256": "26b7ac093a989b296e64cc3836e7384fa8a0d762858d23d61c8072398ce1c735",
+      "readback_byte_equal": true,
+      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
+    },
+    {
+      "path": "staging_output/SDK_R5.json",
+      "bytes": 971,
+      "sha256": "4b40914a46446c8b651a3cfae9787aee0aaaeea29c39c5dbff741f8bd8d9e89b",
+      "remote_git_blob": "004e4e1b778c86bda4d59264f7b215490fc2264b",
+      "remote_sha256": "4b40914a46446c8b651a3cfae9787aee0aaaeea29c39c5dbff741f8bd8d9e89b",
       "readback_byte_equal": true,
       "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
     },
@@ -344,24 +570,6 @@
       "sha256": "3000dea3478e2541a5155766ad818180826cc0d154025540eb6ed86c5ae97d2b",
       "remote_git_blob": "5bd63883675f38ce5e0ccb33b7678c165f9d5a3f",
       "remote_sha256": "3000dea3478e2541a5155766ad818180826cc0d154025540eb6ed86c5ae97d2b",
-      "readback_byte_equal": true,
-      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "staging_output/COVERAGE_R5.json",
-      "bytes": 22738,
-      "sha256": "a4635f5b06b971884efc0a9e785b010d3712cd729223d81f9099c38aa04a61ae",
-      "remote_git_blob": "6254fb30be8adc4aa6ebc69815cc99e67dffcd2c",
-      "remote_sha256": "a4635f5b06b971884efc0a9e785b010d3712cd729223d81f9099c38aa04a61ae",
-      "readback_byte_equal": true,
-      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "staging_output/PLAN_R5.json",
-      "bytes": 34558,
-      "sha256": "76377db95c679879c3595458a8e17f6dc2ebdef78befafa8e28bc9e597ce893b",
-      "remote_git_blob": "a89047d0438cce36d3aae11928050b1e15dd01a6",
-      "remote_sha256": "76377db95c679879c3595458a8e17f6dc2ebdef78befafa8e28bc9e597ce893b",
       "readback_byte_equal": true,
       "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
     },
@@ -4007,15 +4215,6 @@
       "sha256": "30b5f02454bb7034ecc8127fec5ce517c0e2b933ad9c89aa0edd2a471eb97885",
       "remote_git_blob": "7c228ff7bab945aa331a79c168896018a68e4bab",
       "remote_sha256": "30b5f02454bb7034ecc8127fec5ce517c0e2b933ad9c89aa0edd2a471eb97885",
-      "readback_byte_equal": true,
-      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "staging_output/QUARANTINE_R5.json",
-      "bytes": 1188,
-      "sha256": "41a6890364b5b69e6db3c0bf1a1381b7645cdddcafaaf0ab9f810ede2a7046ed",
-      "remote_git_blob": "84dba4087340a25ffa4fb147a42a8ba73ae06641",
-      "remote_sha256": "41a6890364b5b69e6db3c0bf1a1381b7645cdddcafaaf0ab9f810ede2a7046ed",
       "readback_byte_equal": true,
       "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
     },
@@ -11616,33 +11815,6 @@
       "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
     },
     {
-      "path": "staging_output/RESULT_R5.json",
-      "bytes": 568,
-      "sha256": "fb8aaa95b700bc0fe15d11f582f12990a73c3786efe9d8bb1397170f5c173f48",
-      "remote_git_blob": "9c6c4416f7af22d4549b13feedea20bf8080759e",
-      "remote_sha256": "fb8aaa95b700bc0fe15d11f582f12990a73c3786efe9d8bb1397170f5c173f48",
-      "readback_byte_equal": true,
-      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "staging_output/REUSE_MANIFEST_R5.json",
-      "bytes": 3682285,
-      "sha256": "26b7ac093a989b296e64cc3836e7384fa8a0d762858d23d61c8072398ce1c735",
-      "remote_git_blob": "c02e0fed7e89b50a1ed55eb333276c3041a1e922",
-      "remote_sha256": "26b7ac093a989b296e64cc3836e7384fa8a0d762858d23d61c8072398ce1c735",
-      "readback_byte_equal": true,
-      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "staging_output/SDK_R5.json",
-      "bytes": 971,
-      "sha256": "4b40914a46446c8b651a3cfae9787aee0aaaeea29c39c5dbff741f8bd8d9e89b",
-      "remote_git_blob": "004e4e1b778c86bda4d59264f7b215490fc2264b",
-      "remote_sha256": "4b40914a46446c8b651a3cfae9787aee0aaaeea29c39c5dbff741f8bd8d9e89b",
-      "readback_byte_equal": true,
-      "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
       "path": "staging_output/universes/etf_2026-09-28_R5.json",
       "bytes": 216272,
       "sha256": "a0537edb443d19b0f7c2deb40201cf6bb750f2bd4d51b9db8107e5ebc76cd001",
@@ -11794,177 +11966,6 @@
       "remote_sha256": "4100c8d62241b140f53b164183d8544b999c42c6e109d24b35b32367535cc5f6",
       "readback_byte_equal": true,
       "method": "git/blobs/{sha} fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "ACK_R5.json",
-      "bytes": 9422,
-      "sha256": "0d2fc8c29a1128a36f89e2fc0b7aee1c51374651392b91e638001403262dde48",
-      "remote_git_blob": "33e366cfa1d6af12968970ad4fcf722d1f8108a9",
-      "remote_sha256": "0d2fc8c29a1128a36f89e2fc0b7aee1c51374651392b91e638001403262dde48",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "PACKAGE_VERIFY_R5.json",
-      "bytes": 9365,
-      "sha256": "1089563e81e0c29639d733860a75c67821469eb528cf29f89b4e827f68d37627",
-      "remote_git_blob": "444e02acee59652556b6a3a44974594eb1eea6a0",
-      "remote_sha256": "1089563e81e0c29639d733860a75c67821469eb528cf29f89b4e827f68d37627",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "GATE_R5.json",
-      "bytes": 5106,
-      "sha256": "5dfe90ab183a3d2408f850c35bf507778a0ebb7a2a028af0eef8f75fdd33b2dd",
-      "remote_git_blob": "a73fc20109d0bde29e5a4bce8f5044831b5986c7",
-      "remote_sha256": "5dfe90ab183a3d2408f850c35bf507778a0ebb7a2a028af0eef8f75fdd33b2dd",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "WRAPPER_RUN_R5.json",
-      "bytes": 3011,
-      "sha256": "bf661648d874b0a7cb1cd1e58d72fa40ecc0a9ad5d94e9c4698b41b12ee4cf6a",
-      "remote_git_blob": "23c3cac28a69e23ad8854afe6a2301a3cab74264",
-      "remote_sha256": "bf661648d874b0a7cb1cd1e58d72fa40ecc0a9ad5d94e9c4698b41b12ee4cf6a",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "WRAPPER_STDOUT_R5.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "WRAPPER_STDERR_R5.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "PREFLIGHT_RUN_R5.json",
-      "bytes": 659,
-      "sha256": "7d806232adafd155c1031b7204112ddba45ca15d4be027db8df37274ad7f01d4",
-      "remote_git_blob": "11601b1ffd21860dbc9877363c8d2bf8740c8bb8",
-      "remote_sha256": "7d806232adafd155c1031b7204112ddba45ca15d4be027db8df37274ad7f01d4",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "PREFLIGHT_STDOUT_R5.txt",
-      "bytes": 1157,
-      "sha256": "81ecb2b27c183e00b853e301cd591d51d135f1d4220eda8025621797ec1a0224",
-      "remote_git_blob": "3b3d69a75d128972f66f5dd2290f3ce62a318a80",
-      "remote_sha256": "81ecb2b27c183e00b853e301cd591d51d135f1d4220eda8025621797ec1a0224",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "PREFLIGHT_STDERR_R5.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "TESTS_RUN_R5.json",
-      "bytes": 684,
-      "sha256": "ef1d231a3ab69cb97799d226c148e6db893c48aeed2438697f2961d31afd72aa",
-      "remote_git_blob": "b85db2f874534c63897936eaeaec2d02c1fad8eb",
-      "remote_sha256": "ef1d231a3ab69cb97799d226c148e6db893c48aeed2438697f2961d31afd72aa",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "TESTS_STDOUT_R5.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "TESTS_STDERR_R5.txt",
-      "bytes": 14363,
-      "sha256": "d68c7ce207d7e662f160e73e9a0b374389fef537408ff37a41f6370325973399",
-      "remote_git_blob": "41ccb1dc105c0885fb6b3103e45932c37a29dc42",
-      "remote_sha256": "d68c7ce207d7e662f160e73e9a0b374389fef537408ff37a41f6370325973399",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "EXECUTE_RUN_R5.json",
-      "bytes": 2075,
-      "sha256": "10155653b5ad18c8bd397b4bd5682af7e134c364ee47a75a346e5a94c5004bb4",
-      "remote_git_blob": "f9df4f2cae103ead37984c42c27dbe71fbb76e31",
-      "remote_sha256": "10155653b5ad18c8bd397b4bd5682af7e134c364ee47a75a346e5a94c5004bb4",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "EXECUTE_STDOUT_R5.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "EXECUTE_STDERR_R5.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-      "remote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "PARQUET_MANIFEST_R5.json",
-      "bytes": 164981,
-      "sha256": "048709d11368b340843f40466027cbedde571bc3b213da2ffd2f6787f5a7c0e6",
-      "remote_git_blob": "7b4566f546e09c403a22295ff09da3bff5e440c3",
-      "remote_sha256": "048709d11368b340843f40466027cbedde571bc3b213da2ffd2f6787f5a7c0e6",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "REPORT_R5.md",
-      "bytes": 8756,
-      "sha256": "5fd652eaaa625a109754637e68e7a8737de69634c495059f42bdd9d8bf04087b",
-      "remote_git_blob": "9741072ea88cd8090fc94ed00dd0e8e6238ca684",
-      "remote_sha256": "5fd652eaaa625a109754637e68e7a8737de69634c495059f42bdd9d8bf04087b",
-      "readback_byte_equal": true,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "DELIVERY_MANIFEST_R5.json",
-      "bytes": 241636,
-      "sha256": "4397c14f4f37ff70215c4d12e5927cc65d03fce30dbb5e62e9b8be472891a5f3",
-      "remote_git_blob": "0e65c3df5af064b617521f4f87f2bad0a48a2b1b",
-      "remote_sha256": "02925dc0a6477b9ffa685e75b2f63e77def53ca8e04d53fc6ad7b09540e2edd2",
-      "readback_byte_equal": false,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
-    },
-    {
-      "path": "LOCAL_READBACK_R5.json",
-      "bytes": 283195,
-      "sha256": "20f36bcd1b87fda82a026dd025aeb2a378077d7ec12f847b306f8de21b71bfb3",
-      "remote_git_blob": "e52e6fe82ad1eb45ad026652666d0529b7552a5e",
-      "remote_sha256": "107a4024d45f37a0eb63155d272a845f6f154e78bee08cb64049d0d52b8b648c",
-      "readback_byte_equal": false,
-      "method": "Contents API fetched, base64 decoded, byte-compared to the local file"
     }
   ]
 }
