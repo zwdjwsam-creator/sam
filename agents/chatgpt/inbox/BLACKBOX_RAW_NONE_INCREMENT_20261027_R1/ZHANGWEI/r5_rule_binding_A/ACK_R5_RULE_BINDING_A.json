@@ -1,0 +1,159 @@
+{
+  "schema": "BLACKBOX_R5_STAGE_A_ACK_R1",
+  "task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_RULE_BINDING_A",
+  "host": "ZHANGWEI",
+  "utc": "2026-10-28T10:33:15.224363Z",
+  "stage": "A_ONLY",
+  "authorization": {
+    "supplier_calls": false,
+    "b_gate": false,
+    "e_output": false,
+    "cleaning": false,
+    "current_switch": false,
+    "order": false,
+    "trade": false
+  },
+  "ack": "Stage A rule binding only. No supplier/quota/auth call, no B-gate, no E: staging output, no cleaning, no CURRENT switch, no order/trade.",
+  "preexisting_check": {
+    "ACK_absent": true,
+    "result_absent": true,
+    "capture_001_absent": true,
+    "E_R5_staging_absent": true,
+    "no_stop_no_duplicate": true
+  },
+  "package": {
+    "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_RULE_BINDING_20261028\\package",
+    "file_count": 6,
+    "payload_count": 5,
+    "payloads_verified": 5,
+    "package_json_is_manifest_not_payload": true,
+    "files": {
+      "capture_rules.py": {
+        "declared_bytes": 2471,
+        "actual_bytes": 2471,
+        "declared_sha256": "1155922293075129b3e38455c6e84ebef0468c3ccc0763530551237be886c788",
+        "actual_sha256": "1155922293075129b3e38455c6e84ebef0468c3ccc0763530551237be886c788",
+        "bytes_match": true,
+        "sha256_match": true,
+        "local_readback_equal": true,
+        "remote_blob": "6d2716bb445bd6b3db06ad59e496cce998750588"
+      },
+      "test_capture_rules.py": {
+        "declared_bytes": 1702,
+        "actual_bytes": 1702,
+        "declared_sha256": "86d45876b227f662e7594bda8bb385592b0d55a700761ce6a1e1d6009387acdf",
+        "actual_sha256": "86d45876b227f662e7594bda8bb385592b0d55a700761ce6a1e1d6009387acdf",
+        "bytes_match": true,
+        "sha256_match": true,
+        "local_readback_equal": true,
+        "remote_blob": "748bd63364efdb10cee5a4e901e7089e48f1c93c"
+      },
+      "OFFLINE_STDOUT.txt": {
+        "declared_bytes": 0,
+        "actual_bytes": 0,
+        "declared_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes_match": true,
+        "sha256_match": true,
+        "local_readback_equal": true,
+        "remote_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      "OFFLINE_STDERR.txt": {
+        "declared_bytes": 627,
+        "actual_bytes": 627,
+        "declared_sha256": "4e6085e8c1038e63c07c7842baef79cc310a390ab043677bfc3c60772408a2aa",
+        "actual_sha256": "4e6085e8c1038e63c07c7842baef79cc310a390ab043677bfc3c60772408a2aa",
+        "bytes_match": true,
+        "sha256_match": true,
+        "local_readback_equal": true,
+        "remote_blob": "f2c333ee05fe980c9cde57c05686c0062be5110a"
+      },
+      "TASK.md": {
+        "declared_bytes": 7212,
+        "actual_bytes": 7212,
+        "declared_sha256": "9cc562e4a83e257e02f3c1e9b57789bbffe06a99e535f65b146ae2829cebefd9",
+        "actual_sha256": "9cc562e4a83e257e02f3c1e9b57789bbffe06a99e535f65b146ae2829cebefd9",
+        "bytes_match": true,
+        "sha256_match": true,
+        "local_readback_equal": true,
+        "remote_blob": "9954bdac3d5b0111b6f2836dc1d5321e4984fce0"
+      }
+    }
+  },
+  "source_identity": {
+    "preflight": {
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py",
+      "expected": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+      "actual": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+      "match": true
+    },
+    "_base.py": {
+      "path": "E:\\BLACKBOX\\脚本\\_base.py",
+      "expected": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+      "actual": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+      "match": true
+    }
+  },
+  "six_exact_inputs": {
+    "count_claimed_by_reviewer": 6,
+    "present_on_host": 6,
+    "absent": [],
+    "note": "Reviewer stated three originals missing from the zip; on ZHANGWEI all six exist. Reported as measured, not as dispute.",
+    "paths": {
+      "契约/必读/BLACKBOX_ACQUISITION_MUST_READ.md": {
+        "relative_path": "契约/必读/BLACKBOX_ACQUISITION_MUST_READ.md",
+        "status": "PRESENT",
+        "bytes": 2467,
+        "sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+        "mtime_ns": 1792107046223960900,
+        "ino": 281474978005430,
+        "cap_ok": true
+      },
+      ".cursor/rules/blackbox_jq_incremental_download_hand_rule.mdc": {
+        "relative_path": ".cursor/rules/blackbox_jq_incremental_download_hand_rule.mdc",
+        "status": "PRESENT",
+        "bytes": 2008,
+        "sha256": "4de93c0737b527996e4928412427954ac0e5a75b6816bb08595de2381e03a54b",
+        "mtime_ns": 1792241388333579800,
+        "ino": 281474978859466,
+        "cap_ok": true
+      },
+      "运行/BLACKBOX_JQ_INCREMENTAL_DOWNLOAD_RULE_CURRENT.json": {
+        "relative_path": "运行/BLACKBOX_JQ_INCREMENTAL_DOWNLOAD_RULE_CURRENT.json",
+        "status": "PRESENT",
+        "bytes": 9100,
+        "sha256": "2084f9683f1aa8385daf720565021631a0ac1d66ee1a52f241b252107782fa4a",
+        "mtime_ns": 1792061878824594700,
+        "ino": 281474977216041,
+        "cap_ok": true
+      },
+      "脚本/blackbox_must_read_preflight_r1.py": {
+        "relative_path": "脚本/blackbox_must_read_preflight_r1.py",
+        "status": "PRESENT",
+        "bytes": 11767,
+        "sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+        "mtime_ns": 1792098266946070500,
+        "ino": 281474977774782,
+        "cap_ok": true
+      },
+      "脚本/_base.py": {
+        "relative_path": "脚本/_base.py",
+        "status": "PRESENT",
+        "bytes": 11800,
+        "sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+        "mtime_ns": 1792076428567498500,
+        "ino": 281474977561438,
+        "cap_ok": true
+      },
+      "契约/必读/MUST_READ_MANIFEST_CURRENT.json": {
+        "relative_path": "契约/必读/MUST_READ_MANIFEST_CURRENT.json",
+        "status": "PRESENT",
+        "bytes": 2943,
+        "sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08",
+        "mtime_ns": 1792098267001520600,
+        "ino": 281474977774783,
+        "cap_ok": true
+      }
+    }
+  }
+}
