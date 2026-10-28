@@ -1,0 +1,12 @@
+# Final handoff receipts and correction — 2026-10-29
+
+Task: BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028. Host: ZHANGWEI.
+Snapshot: 0b35a32f89db3b351cb479e5d1994069b40cb5ef.
+
+The final native UPLOAD_READBACK.json is now present. Independently fetched the five new/changed original blobs, verified Git identities and every declared length/SHA256 against actual returned bytes. Native upload ledger20 entries and local ledger19 entries reconcile. Formal delivery21 files =18 content + DELIVERY_MANIFEST + LOCAL_READBACK + UPLOAD_READBACK. POST_REVIEW_DELTA.json is a separate22nd evidence file. Its self-hash is not introduced into the formal delivery.
+
+Correction to GPT RAW_BODY_DECODE_REVIEW_20261028.md: its phrase "the18 content-file identities" was wrong for the pinned earlier snapshot f9341ec2. That manifest actually declared17 files and omitted REPORT.md. GPT checked the declared entries but misstated the count. The later manifest now declares18 including REPORT.md. Preserve the old review/snapshot as history; this note explicitly corrects it. The three superseded files are DELIVERY_MANIFEST.json, LOCAL_READBACK.json and REPORT.md. The17 core files, all four archives, capture streams/exits, ACK and exact raw manifest remain byte-identical. Independent1504-body decoding and117461=117460+1 conservation are unaffected; no repeat decoding/capture/supplier call is warranted solely for these metadata changes.
+
+The four archives were natively read back as complete ranged downloads followed by final byte count and SHA256, rather than the initially named Git blobs endpoint. This satisfies the actual-byte verification objective; it is not a tree-hash-only substitute. No new vendor request or permission expansion follows. Native reports one unreachable random diagnostic Git blob outside the task's exact payload scope. This extra probe is recorded as a scope deviation, not an accepted payload or reusable authorization; do not repeat it or attempt repository cleanup.
+
+Decision: exact raw-body handoff is technically accepted within its read-only scope. A Cursor final END message is not inferred from a repository file. Close the execution command against replay; no new native command is issued here. The remaining work is GPT-authored/tested scoped candidate Cleaning bound to actual original dictionaries, clean_rel/consumer transformations and applicable availability/PIT evidence. Previous R15 limitations, all7RCID publication defects and no-CURRENT/no-order boundaries remain. This handoff acceptance is not Cleaning or formal release acceptance.
