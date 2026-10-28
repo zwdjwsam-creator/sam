@@ -151,6 +151,15 @@
     "action": "no stop, no duplicate, no replay of R4 or Stage A"
   },
   "package_verification_file": "PACKAGE_VERIFY_R5.json",
-  "upload_readback_completed": false,
-  "upload_readback_note": "Set to true only in the final local ACK after that exact version is uploaded and remotely read back byte-for-byte; no self-hash is embedded."
+  "upload_readback_completed": true,
+  "upload_readback_note": "Set to true only in the final local ACK after that exact version is uploaded and remotely read back byte-for-byte; no self-hash is embedded.",
+  "upload_readback_evidence": {
+    "ack_v1_sha256": "a72ee36c970af108ea49e63dfec0660cf803ab01653794107636ce587f29a031",
+    "ack_v1_blob": "a16cbc7ab4",
+    "ack_v1_byte_equal": true,
+    "package_verify_blob": "533b3dc8bb",
+    "package_verify_byte_equal": true,
+    "method": "v1 uploaded to the authorised return folder and re-fetched; base64 decoded bytes equal local bytes; then this final version is written, uploaded and re-fetched before either command",
+    "self_hash_embedded": false
+  }
 }
