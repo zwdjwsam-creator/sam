@@ -1,0 +1,48 @@
+{
+  "status": "OWNER_REVIEW_DRAFT_NO_NATIVE_EXECUTION",
+  "execution_actor": "GPT_DESK_ONLY",
+  "execution_host": "ZHANGWEI_REFERENCE_ONLY",
+  "local_command": null,
+  "backtest_admission": false,
+  "calendar_extension": false,
+  "orders_allowed": false,
+  "sample": "002270.XSHE/2026-10-15",
+  "task": "Compare one exact already-downloaded stock-day to public exchange daily statistics, preserving displayed units and scope.",
+  "data_proved_so_far": "Original15545-byte RAW batch SHA158937b474c53184087ef5a05968ba36e5b81a4348f49ed66cf5cad77fa6763f, physical row68 and candidate public fields match exactly.",
+  "official_reference_retrieved": false,
+  "unit_anchor_status": "NOT_COMPLETED",
+  "binding_status": "NOT_ESTABLISHED",
+  "public_attempts": [
+    {
+      "url": "https://www.szse.cn/market/stock/indicator/index.html",
+      "result": "Timeout via public web retrieval"
+    },
+    {
+      "url": "https://www.szse.cn/market/stock/list/index.html",
+      "result": "Timeout via public web retrieval"
+    },
+    {
+      "request": "Official-domain search for002270/2026-10-15 exact volume and amount",
+      "result": "No matching official stock-day quote with explicit unit labels retrieved"
+    }
+  ],
+  "required_reference_fields": [
+    "exact security/code namespace",
+    "trade date2026-10-15",
+    "volume displayed value and original unit label",
+    "amount displayed value,currency and original unit label",
+    "numeric precision and documented rounding where applicable",
+    "auction/block/post-close/full-session inclusion scope",
+    "unadjusted/adjustment convention",
+    "exact public source URL/export identity and retrieval time"
+  ],
+  "comparison_contract": [
+    "No JQ/vendor login,SDK/API calls,quota or paid-entitlement probe.",
+    "No third-party rounded quote substitutes for the requested exchange anchor.",
+    "Convert only according to stated units; do not choose a multiplier to force equality.",
+    "Unbound reporting precision or differing trade/session scope prevents exact match certification; preserve any mismatch.",
+    "One matching sample establishes a bounded sample/product observation; do not apply it to other endpoints,CDRs,funds or indices.",
+    "A later concrete read-only public-source handoff must be reviewed before local AI is activated; this draft has no executable command."
+  ],
+  "source_originals_preserved": true
+}

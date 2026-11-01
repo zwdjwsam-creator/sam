@@ -3,8 +3,8 @@
   "repository": "zwdjwsam-creator/sam",
   "branch": "main",
   "execution_host": "ZHANGWEI",
-  "last_reviewed_at": "2026-11-01T14:47:58.353Z",
-  "phase": "A_INPUT_BINDINGS_REVIEW_DRAFT_PUBLISHED_NO_NATIVE_TASK",
+  "last_reviewed_at": "2026-11-01T15:12:37.596Z",
+  "phase": "A_SUPPLEMENT_REVIEW_DRAFT_PUBLISHED_UNIT_ANCHOR_PENDING_NO_NATIVE_TASK",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -30,7 +30,9 @@
     "current_read_only_task": null,
     "backtest_admission": false,
     "historical_calendar_read_only_capture": false,
-    "calendar_policy_extension_authorized": false
+    "calendar_policy_extension_authorized": false,
+    "mechanics_only_design_with_CA_unresolved": true,
+    "native_mechanics_execution_allowed": false
   },
   "reviewed_source_blobs": [
     {
@@ -4408,6 +4410,42 @@
       "blob_sha": "338ee712d355f99aebc705d5bb81686303c0461a",
       "bytes": 31668,
       "review_scope": "A unit/lot/event desk binding review; source labels treated as evidence, not execution authority. Exact prior R04/R07/R10 bodies reused."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_INPUT_BINDINGS_REVIEW_20261101/REVIEW_DRAFT.txt",
+      "blob_sha": "e2d3321782320583a310591f8606bb32a90600a1",
+      "bytes": 10959,
+      "review_scope": "A five-requirement supplement source/contract review; four local desk source/binding bodies equal the published bytes. No native execution."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_INPUT_BINDINGS_REVIEW_20261101/SMOKE_LOT_ASSUMPTIONS_PROPOSAL.json",
+      "blob_sha": "db6f26d329579d2d294e22468ea301e46138d40d",
+      "bytes": 3688,
+      "review_scope": "A five-requirement supplement source/contract review; four local desk source/binding bodies equal the published bytes. No native execution."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/p4_consumer.py",
+      "blob_sha": "991b4c8b41fdcfbe8b71dbe88be470a69364091e",
+      "bytes": 8780,
+      "review_scope": "A five-requirement supplement source/contract review; four local desk source/binding bodies equal the published bytes. No native execution."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/INPUT_PINS.json",
+      "blob_sha": "4ca6696951fc072962b446bec38059be39d06b26",
+      "bytes": 7823,
+      "review_scope": "A five-requirement supplement source/contract review; four local desk source/binding bodies equal the published bytes. No native execution."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101/candidate_adapter.py",
+      "blob_sha": "c7d078bdd8ef867c5bea6b9176337ba62788bedf",
+      "bytes": 24432,
+      "review_scope": "A five-requirement supplement source/contract review; four local desk source/binding bodies equal the published bytes. No native execution."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101/bindings.json",
+      "blob_sha": "537fa50cbfb1f141a08af277423f1d033a543c10",
+      "bytes": 4087,
+      "review_scope": "A five-requirement supplement source/contract review; four local desk source/binding bodies equal the published bytes. No native execution."
     }
   ],
   "observed_r10_capture_blobs": [
@@ -4749,16 +4787,24 @@
       "ack_status": "NOT_APPLICABLE_NO_NATIVE_TASK",
       "native_execution_allowed": false,
       "orders_allowed": false
+    },
+    {
+      "task_id": "BLACKBOX_A_SUPPLEMENT_REVIEW_20261101",
+      "execution_actor": "GPT_DESK_ONLY",
+      "path": "agents/chatgpt/outbox/BLACKBOX_A_SUPPLEMENT_REVIEW_20261101.txt",
+      "outcome": "REVIEW_DRAFT_NO_NATIVE_COMMAND",
+      "ack_status": "NOT_APPLICABLE_NO_NATIVE_TASK",
+      "native_execution_allowed": false
     }
   ],
   "issued_task_ids_this_run": [],
   "pending_outcomes": [
-    "Owner review of the concrete smoke-only quantity/profile/outward-tick conventions; design approval does not activate a run. The689009 CDR remains held pending instrument units/policy-scope clarity.",
-    "Exact primary get_price stock fq=None absolute unit definition remains missing; current docs region-blocked, canonical rows blank. No scaling guess, supplier probe or fill implementation.",
-    "Complete window corporate-action identities remain unresolved.002270 public issuer ex-date10-15 is one verified case, not a census. Resolve exact membership of registered XR_XD/Corp PIT files from retained indexes, then submit a finite read-only extraction draft with before/after source snapshots; no current native task.",
-    "P1 calendar extension is deferred until historical price admission consideration. B/P1/P2/P3 remain closed. Research/backtest,CURRENT/release,7 RCID defects and orders remain unaccepted."
+    "Exact public-exchange002270/2026-10-15 volume/amount row with original unit labels,precision/trading scope and source identity remains unretrieved; raw batch/candidate values are verified but absolute unit anchor is NOT_COMPLETED. Do not use third-party rounded figures or infer scaling to force equality.",
+    "Owner review of explicit T+1 actual-field/regime contract and mechanics-only artifact boundary; no executable quote reader/fill model/native command. Missing/nonfinite/mismatched/unknown or unsupported unlimited requested quote still blocks.",
+    "Implementation notice049 fields are read from issuer original PDF via a disclosed mirror; historical availability timestamp/rawPDF byte identity,event revision census and full CA coverage remain unknown. Gross dividend is not universally net cash or actual posting proof.",
+    "Future mechanics task,if separately specified/tested,may carry NOT_PERFORMANCE+CA_UNRESOLVED only; NAV/return/performance outputs null,unknown CA adjustments null. This never bypasses units,identity,clock,policy/CDR,T+1/status gates. Calendar extension deferred; local AI HOLD; ORDER_ALLOWED=false."
   ],
-  "next_action": "Await owner review of A drafts and continue finite evidence binding from existing registers/primary documents only. Do not activate a local task, fill model, calendar extension or backtest from review publication.",
+  "next_action": "Await supplement review and resolve the exact official unit-reference input without native/supplier action or scaling guesses; preserve HOLD until a complete reviewed/tested bounded task exists.",
   "notify_user": true,
   "observed_r10_directory_entries": [
     {
@@ -5125,14 +5171,14 @@
     "1098 price calls+16 dated universe calls=1114; summed measured quota170538, plus prior5320=175858 cumulative of700000. Newly fetched86948 includes rejected80; accepted new86868 plus retained80. Last day43fetched vs42accepted/3360rows;23batches unrequested. ETF/index NOT_ATTEMPTED.",
     "Exact failed15489-byte batch fb1a0ccb... has not been uploaded; native report identifies600621 paused0/nullOHL/close14.9/zero volume-money. No fill or code-policy relaxation. GPT exact-body helper5 offline controls pass; one precise read-only source handoff published, not R5 acquisition."
   ],
-  "latest_owner_constraint": "Prioritize A: unit evidence, finite smoke lot assumptions/security scope and16-date corporate-action evidence for HUB owner review. Defer P1 calendar extension until historical price admission. Future native source reads require uploaded before/after identity/stat snapshots. English HUB prose; no backtest,CURRENT/release or orders.",
+  "latest_owner_constraint": "Owner approves finite smoke quantity/tick/cap/302132 exception/CDR hold and5bp outward rounding with price-bucket actual-slippage reports. Require exact00227010-15 exchange unit anchor,T+1 actual-field/regime source,original implementation notice,and NOT_PERFORMANCE/CA_UNRESOLVED mechanics-only draft. Calendar expansion deferred; local AI HOLD; no backtest,CURRENT/release or orders.",
   "findings_this_run": [
-    "A review drafts authored and desk checked; no native task/ACK/command.25 actual offline assertions passed; all15 selected existing source blobs verified literally.",
-    "Original field dictionary already delivered has no unit column; four relevant canonical official_unit cells are blank.83422 positive rows support relative price/amount/volume consistency, but simultaneous100x scaling of both fields also passes; absolute units remain unproved.",
-    "Actual5227 code universe contains302132.XSHE and689009.XSHG. Issuer evidence resolves a draft-only302132 ChiNext exception; SSE listing identifies689009 as CDR, requiring a separate unit/policy hold rather than pretending all stock-volume units are ordinary shares.",
-    "RAW64/CLEAN62 XR_XD files and CACHE50 Corp event files are registered; report_date axis is not ex-date and family54 batch count is not XR-only. No source absence/download determination or invented event list.",
-    "Issuer2026-053 primary PDF confirms002270 ex-date2026-10-15 in supplied scope. Three indexed primary-company table dates remain leads only; dynamic-page/original-notice verification incomplete. Complete event census stays unresolved.",
-    "Calendar extension explicitly deferred. Future native contracts must upload measured before/after fullhash/stat identities; all new HUB prose English. B and all old successful tasks remain closed without replay."
+    "Owner's five requests incorporated into a new English HUB review supplement; no local task or ACK issued.24 source/arithmetic assertions actual exit0, not a model acceptance.",
+    "One exact original15545-byte source/physical row68 for00227010-15 independently verified and compared to candidate:volume14076869,money254286654.36. Official explicit-unit daily quote remains unavailable after public-site timeouts; unit binding not forced.",
+    "Original issuer2026-049 notice read via Sina PDF mirror:2.60CNY/10shares,gross233018612.06,record10-14,ex/ordinary-agent payment10-15,dated10-09,no bonus/transfer. Exchange-hosted052 corroborates0.26 and049. No exact PIT timestamp or PDF-byte pin claimed.",
+    "Primary SSE2026 notice corrects old universalST5percent assumption; execution model must use actual T+1 field provenance and separately bound regime,not board percentages. Unknown/unsupported limit sessions remain blockers.",
+    "Outward rounding design approved; Decimal examples show5bp at20CNY,20bp at5CNY,50bp at2CNY; report actual slippage and recheck bands after rounding. CA_UNRESOLVED allows mechanics design only, not financial performance or source-gate bypass.",
+    "Prior22 writes independently reconciled from Git commit:20review files+one outbox+one state. Nine named topics were not a complete artifact count."
   ],
   "observed_sam_handoff_entries": [
     {
@@ -5638,7 +5684,7 @@
     "Source-inspected catchup defaults/window/date-aligned PASS/retry mechanics summarized without claiming historical26 exact failures, live automation, duplicate observations, actual target or supplier absence. No date/EMPTY/exclusion/factor policy delegated.",
     "Both existing child task outboxes and notebook/desktop/parent routes updated and exactly read back. Native outcome/ACK pending; task publication is not actual stop. No new acquisition/data/current/release/order authorization."
   ],
-  "previous_phase": "HISTORICAL_CALENDAR_FREEZE_ACCEPTED_CLOSED_NO_NATIVE_TASK",
+  "previous_phase": "A_INPUT_BINDINGS_REVIEW_DRAFT_PUBLISHED_NO_NATIVE_TASK",
   "owner_requested_source_handoff": {
     "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
     "execution_host": "SAM",
@@ -11198,7 +11244,7 @@
     "core_autocrlf_true_fixture_byte_equal": true,
     "reviewed_state_blob_sha": "2827c6683b73864ac8050347e68a942a3d2ce4d1"
   },
-  "gpt_work_item_id": "BLACKBOX_A_INPUT_BINDINGS_REVIEW_20261101",
+  "gpt_work_item_id": "BLACKBOX_A_SUPPLEMENT_REVIEW_20261101",
   "p4_real_data_consumer_20261101": {
     "task_id": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
     "actor": "GPT_OFFLINE_ONLY",
@@ -11661,7 +11707,7 @@
     "execution_host": "ZHANGWEI_REFERENCE_ONLY",
     "native_command": null,
     "native_task_issued": false,
-    "unit_binding": "NOT_ESTABLISHED",
+    "unit_binding": "NOT_ESTABLISHED_EXACT_OFFICIAL_SAMPLE_REFERENCE_PENDING",
     "unit_evidence": "Four stock canonical official_unit cells blank; original field dictionary already on HUB SHA7599640e56e1701ce6a6abb952e567174a6fde77ce02ed57bbf055b7dfadddd8; ratio check leaves common absolute scale ambiguous.",
     "sample_scope": {
       "stock_rows": 88811,
@@ -11696,6 +11742,76 @@
     "final_actual_exit": 0,
     "source_blob_identities_verified": 15,
     "calendar_extension": "DEFERRED_BY_OWNER",
+    "orders_allowed": false,
+    "design_parts_owner_approved": true,
+    "latest_supplement": "agents/chatgpt/reviews/BLACKBOX_A_SUPPLEMENT_REVIEW_20261101/REVIEW_SUPPLEMENT.txt"
+  },
+  "a_supplement_review_20261101": {
+    "status": "OWNER_REVIEW_DRAFT_NO_NATIVE_EXECUTION",
+    "review_root": "agents/chatgpt/reviews/BLACKBOX_A_SUPPLEMENT_REVIEW_20261101/",
+    "outbox_path": "agents/chatgpt/outbox/BLACKBOX_A_SUPPLEMENT_REVIEW_20261101.txt",
+    "source_snapshot": "2fa8752fd0b819e274e336818d7b38c69d351851",
+    "state_base_blob_sha": "a51fb80b432472ca95479fa2a46134b2ff27689d",
+    "native_command": null,
+    "native_task_issued": false,
+    "owner_design_approvals": {
+      "quantity_profiles_and_test_cap": true,
+      "exact_302132_exception": true,
+      "CDR689009_held": true,
+      "outward_5bp_tick_rounding": true,
+      "actual_slippage_by_price_bucket_required": true,
+      "CA_unresolved_mechanics_design": true,
+      "all_local_execution_still_held": true
+    },
+    "official_quote_anchor": {
+      "stock": "002270.XSHE",
+      "date": "2026-10-15",
+      "raw_source_bytes": 15545,
+      "raw_source_sha256": "158937b474c53184087ef5a05968ba36e5b81a4348f49ed66cf5cad77fa6763f",
+      "physical_row_position": 68,
+      "volume": 14076869,
+      "money": 254286654.36,
+      "original_to_candidate_fields_equal": true,
+      "official_reference": null,
+      "comparison_status": "NOT_COMPLETED_PUBLIC_EXCHANGE_QUERY_TIMEOUT",
+      "absolute_units_established": false
+    },
+    "T_plus_1_limits": {
+      "source": "Actual execution-day high_limit/low_limit fields from independently reviewed replay reader; no prefix/percentage derivation",
+      "regime_binding": "PENDING",
+      "unknown_or_unlimited_unsupported": "BLOCK_REQUESTED_QUOTE_BATCH_NO_REPAIR_OR_ROW_DROP",
+      "reader_implemented": false
+    },
+    "ST_correction": "Do not use universal mainboardST5percent in2026window; primary SSE notice changes5to10from2026-07-06, Shenzhen issuer example10percent from07-07. No universal cap reconstruction.",
+    "Huaming_implementation_notice": {
+      "issuer_notice": "2026-049",
+      "primary_document_host": "Sina PDF mirror of issuer original notice",
+      "gross_per10shares_CNY": "2.60",
+      "gross_per_share_CNY": "0.26",
+      "record_date": "2026-10-14",
+      "ex_date": "2026-10-15",
+      "ordinary_agent_disclosed_payment_date": "2026-10-15",
+      "issuer_date": "2026-10-09",
+      "no_bonus_no_capitalization_explicit": true,
+      "exact_historical_available_at": null,
+      "raw_PDF_sha256": null,
+      "event_RAW_admission": false
+    },
+    "checks": {
+      "actual_exit": 0,
+      "assertions": 24,
+      "source_and_arithmetic_only": true,
+      "fill_model_implemented": false
+    },
+    "prior_write_count": {
+      "commit": "2fa8752fd0b819e274e336818d7b38c69d351851",
+      "total": 22,
+      "review_files": 20,
+      "outbox": 1,
+      "state": 1
+    },
+    "calendar_extension": "DEFERRED",
+    "backtest_admission": false,
     "orders_allowed": false
   }
 }

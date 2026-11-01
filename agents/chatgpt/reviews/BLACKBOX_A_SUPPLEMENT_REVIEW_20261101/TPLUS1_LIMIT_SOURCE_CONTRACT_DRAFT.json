@@ -1,0 +1,36 @@
+{
+  "status": "OWNER_REVIEW_DRAFT_NO_NATIVE_EXECUTION",
+  "execution_actor": "GPT_DESK_ONLY",
+  "execution_host": "ZHANGWEI_REFERENCE_ONLY",
+  "local_command": null,
+  "backtest_admission": false,
+  "calendar_extension": false,
+  "orders_allowed": false,
+  "binding_status": "DESIGN_SPECIFIED_EXECUTION_READER_AND_REGIME_EVIDENCE_PENDING",
+  "existing_design_reference": "BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/EXECUTION_MODEL_DRAFT.txt section4 already requires execution-day limits; this supplement makes provenance,regime and failures explicit.",
+  "price_source": "Exact high_limit/low_limit fields on the actual T+1 security/date RAW_NONE quote, bound through source fullSHA,physical row position and coherent generation/manifest. Never compute execution prices/bands from board prefixes or a T-day percentage.",
+  "purpose_separation": {
+    "signal": "P4-visible data only at the09:00 decision event",
+    "execution_quote": "Separately reviewed T+1 daily-open replay context; not known-at09:00 signal information and not an actual auction/liquidity certificate"
+  },
+  "required_evidence": [
+    "same T+1 code/date/open/paused/volume/money/high_limit/low_limit provenance",
+    "absolute price/volume/money units",
+    "independently bound security/date limit regime and listing/relisting/status evidence",
+    "explicit semantics for any zero/infinity/null/sentinel in supplier quote fields"
+  ],
+  "regime_handling": {
+    "LIMITED": "Validate finite positive ordered bounds,units and quote identity; preserve raw values, do not repair.",
+    "UNKNOWN": "BLOCKED_INPUT; whole requested-quote batch stops, no row dropping.",
+    "KNOWN_UNLIMITED_OR_UNREVIEWED_NO_LIMIT_REPRESENTATION": "BLOCKED_UNSUPPORTED_REGIME; this bounded-band model does not interpret sentinel values as real caps or assume a percentage. Keep order/quote/failure receipts."
+  },
+  "ST_and_IPO": "Do not apply the old universal mainboard ST5% assertion to this2026 window. Primary SSE2026 notice changes5to10from07-06; primary SZSE issuer2026-067 reports10after07-07. New listings can have no-limit initial sessions, but do not count weekdays or invent a listing-date exemption. Missing regime evidence blocks execution.",
+  "bad_values": "Missing/nonfinite/inverted bounds or an open outside the bound regime block input. No price fill,band clipping,factor arithmetic,T-day fallback or in-place mutation.",
+  "band_nonfills": {
+    "buy": "Open or adverse tick-rounded model price at/above actual T+1 upper bound gives NO_FILL_LIMIT_UP.",
+    "sell": "Open or adverse tick-rounded model price at/below actual T+1 lower bound gives NO_FILL_LIMIT_DOWN."
+  },
+  "corporate_actions": "Ex-dividend reference changes mean yesterday close/bands cannot substitute. The00227010-15 actual caps19.82/16.22 are observed fields, not reconstructed replacements.",
+  "CA_UNRESOLVED_does_not_bypass_this_contract": true,
+  "quote_reader_implemented": false
+}

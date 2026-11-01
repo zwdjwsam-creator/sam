@@ -1,0 +1,67 @@
+{
+  "purpose": "DECIMAL_DESK_ILLUSTRATION_ONLY_NO_FILL_MODEL",
+  "configured_bps": "5",
+  "tick_CNY": ".01",
+  "examples": [
+    {
+      "quote_CNY": "20",
+      "unrounded_buy": "20.0100",
+      "unrounded_sell": "19.9900",
+      "rounded_buy": "20.01",
+      "rounded_sell": "19.99",
+      "effective_buy_bps": "5.0000",
+      "effective_sell_bps": "5.0000"
+    },
+    {
+      "quote_CNY": "5",
+      "unrounded_buy": "5.0025",
+      "unrounded_sell": "4.9975",
+      "rounded_buy": "5.01",
+      "rounded_sell": "4.99",
+      "effective_buy_bps": "20.000",
+      "effective_sell_bps": "20.000"
+    },
+    {
+      "quote_CNY": "2",
+      "unrounded_buy": "2.0010",
+      "unrounded_sell": "1.9990",
+      "rounded_buy": "2.01",
+      "rounded_sell": "1.99",
+      "effective_buy_bps": "50.000",
+      "effective_sell_bps": "50.000"
+    },
+    {
+      "quote_CNY": "17.87",
+      "unrounded_buy": "17.878935",
+      "unrounded_sell": "17.861065",
+      "rounded_buy": "17.88",
+      "rounded_sell": "17.86",
+      "effective_buy_bps": "5.595970900951315053161723559",
+      "effective_sell_bps": "5.595970900951315053161723559"
+    }
+  ],
+  "price_bucket_proposal": [
+    "0<price<=2",
+    "2<price<=5",
+    "5<price<=20",
+    "price>20"
+  ],
+  "dividend_total_CNY": "233018612.06",
+  "limit_diagnostic_only": {
+    "previous_close": "18.28",
+    "gross_dividend": "0.26",
+    "reference_after_dividend": "18.02",
+    "actual_reported_high_limit": "19.82",
+    "actual_reported_low_limit": "16.22",
+    "may_generate_or_replace_bands": false
+  },
+  "volume_cap_illustration_only": {
+    "IF_units_bound_and_signal_date": "2026-10-15",
+    "prospective_execution_date": "2026-10-16",
+    "0.5_percent_of_that_prior_day_volume": "70384.3450",
+    "separate_smoke_order_cap": 10000,
+    "uses_execution_day_full_volume_for_sizing": false
+  },
+  "backtest_run": false,
+  "orders_allowed": false
+}
