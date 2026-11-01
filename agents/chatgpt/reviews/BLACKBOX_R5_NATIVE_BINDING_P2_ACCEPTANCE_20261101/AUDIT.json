@@ -1,0 +1,398 @@
+{
+  "task_id": "BLACKBOX_R5_NATIVE_BINDING_P2_20261101",
+  "verdict": "ACCEPTED_BOUNDED_NATIVE_BINDING_HANDOFF_ONLY",
+  "checks_passed": 99,
+  "checks": [
+    "exact_return_file_count_14",
+    "git_body_identity:ACK.json",
+    "git_body_identity:DELIVERY_MANIFEST.json",
+    "git_body_identity:OUTER.stderr.txt",
+    "git_body_identity:OUTER.stdout.txt",
+    "git_body_identity:OUTER_RUN.json",
+    "git_body_identity:PACKAGE_VERIFY.json",
+    "git_body_identity:REPORT.md",
+    "git_body_identity:RUN_ONCE.json",
+    "git_body_identity:UPLOAD_READBACK.json",
+    "git_body_identity:capture_001/ENVIRONMENT_AND_BODIES.json",
+    "git_body_identity:capture_001/LOCAL_READBACK.json",
+    "git_body_identity:capture_001/PREFLIGHT_RUN.json",
+    "git_body_identity:capture_001/preflight.stderr.txt",
+    "git_body_identity:capture_001/preflight.stdout.txt",
+    "receipt_set:DELIVERY_MANIFEST.json",
+    "receipt_hash:ACK.json",
+    "receipt_hash:PACKAGE_VERIFY.json",
+    "receipt_hash:OUTER.stdout.txt",
+    "receipt_hash:OUTER.stderr.txt",
+    "receipt_hash:OUTER_RUN.json",
+    "receipt_hash:RUN_ONCE.json",
+    "receipt_hash:capture_001/ENVIRONMENT_AND_BODIES.json",
+    "receipt_hash:capture_001/PREFLIGHT_RUN.json",
+    "receipt_hash:capture_001/preflight.stdout.txt",
+    "receipt_hash:capture_001/preflight.stderr.txt",
+    "receipt_hash:capture_001/LOCAL_READBACK.json",
+    "receipt_hash:REPORT.md",
+    "declared_delivery_bytes",
+    "closed_return_set",
+    "receipt_set:UPLOAD_READBACK.json",
+    "receipt_hash:ACK.json",
+    "remote_blob:ACK.json",
+    "receipt_hash:PACKAGE_VERIFY.json",
+    "remote_blob:PACKAGE_VERIFY.json",
+    "receipt_hash:OUTER.stdout.txt",
+    "remote_blob:OUTER.stdout.txt",
+    "receipt_hash:OUTER.stderr.txt",
+    "remote_blob:OUTER.stderr.txt",
+    "receipt_hash:OUTER_RUN.json",
+    "remote_blob:OUTER_RUN.json",
+    "receipt_hash:RUN_ONCE.json",
+    "remote_blob:RUN_ONCE.json",
+    "receipt_hash:capture_001/ENVIRONMENT_AND_BODIES.json",
+    "remote_blob:capture_001/ENVIRONMENT_AND_BODIES.json",
+    "receipt_hash:capture_001/PREFLIGHT_RUN.json",
+    "remote_blob:capture_001/PREFLIGHT_RUN.json",
+    "receipt_hash:capture_001/preflight.stdout.txt",
+    "remote_blob:capture_001/preflight.stdout.txt",
+    "receipt_hash:capture_001/preflight.stderr.txt",
+    "remote_blob:capture_001/preflight.stderr.txt",
+    "receipt_hash:capture_001/LOCAL_READBACK.json",
+    "remote_blob:capture_001/LOCAL_READBACK.json",
+    "receipt_hash:REPORT.md",
+    "remote_blob:REPORT.md",
+    "receipt_hash:DELIVERY_MANIFEST.json",
+    "remote_blob:DELIVERY_MANIFEST.json",
+    "receipt_set:capture_001/LOCAL_READBACK.json",
+    "receipt_hash:capture_001/ENVIRONMENT_AND_BODIES.json",
+    "receipt_hash:capture_001/preflight.stderr.txt",
+    "receipt_hash:capture_001/preflight.stdout.txt",
+    "receipt_hash:capture_001/PREFLIGHT_RUN.json",
+    "readback_self_observed_by_GPT",
+    "three_literal_empty_streams",
+    "package_external_identity",
+    "package_payload:capture_environment.py",
+    "package_payload:test_capture_environment.py",
+    "package_payload:OFFLINE_STDOUT.txt",
+    "package_payload:OFFLINE_STDERR.txt",
+    "package_payload:OFFLINE_RESULT.json",
+    "package_payload:REVIEW.md",
+    "executed_collector_source_pin",
+    "17_body_completion",
+    "exact_source_allowlist",
+    "decoded_body:E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+    "decoded_body:E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+    "decoded_body:E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+    "decoded_body:E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+    "decoded_body:E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py",
+    "decoded_body:E:\\BLACKBOX\\脚本\\_base.py",
+    "decoded_body:E:\\BLACKBOX\\.cursor\\rules\\BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+    "decoded_body:E:\\BLACKBOX\\契约\\必读\\MUST_READ_MANIFEST_CURRENT.json",
+    "decoded_body:E:\\BLACKBOX\\契约\\必读\\BLACKBOX_BOOTSTRAP_MUST_READ.md",
+    "decoded_body:E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+    "decoded_body:E:\\BLACKBOX\\契约\\必读\\BLACKBOX_ACQUISITION_MUST_READ.md",
+    "decoded_body:E:\\BLACKBOX\\契约\\必读\\BLACKBOX_FACTOR_RESEARCH_MUST_READ.md",
+    "decoded_body:E:\\BLACKBOX\\契约\\必读\\BLACKBOX_BACKTEST_MUST_READ.md",
+    "decoded_body:E:\\BLACKBOX\\契约\\必读\\BLACKBOX_QMT_MUST_READ.md",
+    "decoded_body:E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\\CALENDAR.json",
+    "decoded_body:E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+    "decoded_body:E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+    "embedded_pin:脚本/blackbox_must_read_preflight_r1.py",
+    "embedded_pin:脚本/_base.py",
+    "source_body_bytes_57240",
+    "actual_returned_process_receipts",
+    "receipt_time_order",
+    "exact_preflight_argv",
+    "literal_gate_output_preserved",
+    "HAND_READ_annotation_source_present"
+  ],
+  "files": [
+    {
+      "path": "ACK.json",
+      "sha": "7243f5abcfbdcb7f9afe5e0c5d4c441cd4776c4e",
+      "size": 11009
+    },
+    {
+      "path": "DELIVERY_MANIFEST.json",
+      "sha": "eaae811fde3513cdc9b49fb6552b3861b0e4222b",
+      "size": 2532
+    },
+    {
+      "path": "OUTER.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0
+    },
+    {
+      "path": "OUTER.stdout.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0
+    },
+    {
+      "path": "OUTER_RUN.json",
+      "sha": "dc49b6e49657c84808944d81a7dc8d4d0211539c",
+      "size": 1467
+    },
+    {
+      "path": "PACKAGE_VERIFY.json",
+      "sha": "a6f6c8eaa37194ae9c79ebc22baa3c613255b3da",
+      "size": 2653
+    },
+    {
+      "path": "REPORT.md",
+      "sha": "e04aedc720bf20a58381213f6932f7e497059a46",
+      "size": 9930
+    },
+    {
+      "path": "RUN_ONCE.json",
+      "sha": "351211e1324d7d0ef546b52a4bb082d07b8d9650",
+      "size": 95
+    },
+    {
+      "path": "UPLOAD_READBACK.json",
+      "sha": "6e4969ae6ee884426f113351c39d2b11959b431b",
+      "size": 4879
+    },
+    {
+      "path": "capture_001/ENVIRONMENT_AND_BODIES.json",
+      "sha": "a73905e0ddc5c098d35228ea2f8f23d273056894",
+      "size": 81155
+    },
+    {
+      "path": "capture_001/LOCAL_READBACK.json",
+      "sha": "a8ef5d339e1439b7d830b2060c7670f21d828848",
+      "size": 718
+    },
+    {
+      "path": "capture_001/PREFLIGHT_RUN.json",
+      "sha": "12fc38880cda24b8329af5822eb97ea9c28c4263",
+      "size": 352
+    },
+    {
+      "path": "capture_001/preflight.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0
+    },
+    {
+      "path": "capture_001/preflight.stdout.txt",
+      "sha": "fbaa6e91784fa491def535d11adcc2a2414ba878",
+      "size": 870
+    }
+  ],
+  "source_bodies": [
+    {
+      "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "bytes": 1160,
+      "sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128"
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+      "bytes": 1531,
+      "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564"
+    },
+    {
+      "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+      "bytes": 5596,
+      "sha256": "574842e7802be26d648d5aa2f6d91a9b4c208744e3ecf9f146e02ece41387d89"
+    },
+    {
+      "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+      "bytes": 625,
+      "sha256": "8a492440257170577a5c96f66bfd81e3b93fc6dc58e547cc3acd4c7baaf3fe9b"
+    },
+    {
+      "path": "E:\\BLACKBOX\\脚本\\blackbox_must_read_preflight_r1.py",
+      "bytes": 11767,
+      "sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217"
+    },
+    {
+      "path": "E:\\BLACKBOX\\脚本\\_base.py",
+      "bytes": 11800,
+      "sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258"
+    },
+    {
+      "path": "E:\\BLACKBOX\\.cursor\\rules\\BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+      "bytes": 1167,
+      "sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a"
+    },
+    {
+      "path": "E:\\BLACKBOX\\契约\\必读\\MUST_READ_MANIFEST_CURRENT.json",
+      "bytes": 2943,
+      "sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08"
+    },
+    {
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_BOOTSTRAP_MUST_READ.md",
+      "bytes": 1570,
+      "sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406"
+    },
+    {
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_DATA_ACCESS_MUST_READ.md",
+      "bytes": 6911,
+      "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8"
+    },
+    {
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_ACQUISITION_MUST_READ.md",
+      "bytes": 2467,
+      "sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6"
+    },
+    {
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_FACTOR_RESEARCH_MUST_READ.md",
+      "bytes": 1100,
+      "sha256": "a1d5fb341da930304f833c72445007f6dbbda9cf9d83907cb4816ee9f7a173c4"
+    },
+    {
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_BACKTEST_MUST_READ.md",
+      "bytes": 1326,
+      "sha256": "c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37"
+    },
+    {
+      "path": "E:\\BLACKBOX\\契约\\必读\\BLACKBOX_QMT_MUST_READ.md",
+      "bytes": 691,
+      "sha256": "210336d5e8e41ff742fd1084eb5deb43e0d621a51ddb2d2e56a4cff0b6eb4d31"
+    },
+    {
+      "path": "E:\\BLACKBOX\\STAGING\\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\\CALENDAR.json",
+      "bytes": 914,
+      "sha256": "ab00fa8c597c9b01977cc060a202371d2de73a6a32b8a4fe6cc533a705d056d9"
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\02_domain_schema\\domain_schema_contract.csv",
+      "bytes": 4182,
+      "sha256": "6367c574c27b7ddbb7a926e4899f59502f3febc76a4cf2b0092998d275458146"
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_reference_dictionary\\20_unified_data_schema_contract_freeze_full_R1\\04_pit_schema\\pit_schema_contract.csv",
+      "bytes": 1490,
+      "sha256": "1e62d187b6417b875f42a9b9b45fc616b3ac1d375c88f6d77116488c783e253b"
+    }
+  ],
+  "native_runtime": {
+    "host": "ZHANGWEI",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "executable": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "pandas": {
+        "version": "3.0.3",
+        "location": "E:\\BLACKBOX\\.venv\\Lib\\site-packages"
+      },
+      "pyarrow": {
+        "version": "24.0.0",
+        "location": "E:\\BLACKBOX\\.venv\\Lib\\site-packages"
+      },
+      "numpy": {
+        "version": "2.5.4",
+        "location": "E:\\BLACKBOX\\.venv\\Lib\\site-packages"
+      }
+    }
+  },
+  "current_pointer_observations": [
+    {
+      "path": "E:\\BLACKBOX\\数据\\清洗成品\\CURRENT_CLEANING_RELEASE.json",
+      "sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+      "declared_dates": {
+        "cleaning_as_of": "2026-09-24",
+        "daily_asof": "2026-09-24"
+      }
+    },
+    {
+      "path": "E:\\BLACKBOX\\数据\\回测缓存\\CURRENT_CACHE_RELEASE.json",
+      "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+      "declared_dates": {
+        "asof": "2026-09-24"
+      }
+    },
+    {
+      "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_MANIFEST_CURRENT.json",
+      "sha256": "574842e7802be26d648d5aa2f6d91a9b4c208744e3ecf9f146e02ece41387d89",
+      "declared_dates": {
+        "CN_RESEARCH_DATE": "2026-09-24"
+      }
+    },
+    {
+      "path": "E:\\BLACKBOX\\研究系统\\数据平面\\CURRENT\\DAILY_DATA_PLANE_CURRENT.json",
+      "sha256": "8a492440257170577a5c96f66bfd81e3b93fc6dc58e547cc3acd4c7baaf3fe9b",
+      "declared_dates": {
+        "CN_RESEARCH_DATE": "2026-09-24"
+      }
+    }
+  ],
+  "calendar": {
+    "supplier": "JQData",
+    "request": 1,
+    "returned": [
+      "2026-09-24",
+      "2026-09-28",
+      "2026-09-29",
+      "2026-09-30",
+      "2026-10-08",
+      "2026-10-09",
+      "2026-10-12",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-26",
+      "2026-10-27"
+    ],
+    "completed_session_candidates": [
+      "2026-09-28",
+      "2026-09-29",
+      "2026-09-30",
+      "2026-10-08",
+      "2026-10-09",
+      "2026-10-12",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-26",
+      "2026-10-27"
+    ],
+    "clock_cn": "2026-10-27T18:47:00.612545+08:00",
+    "completion_boundary": "CN cash-market auction/post-close session ended by 15:30; actual supplier response separately measured"
+  },
+  "dictionary_price_row": {
+    "domain": "price_fq_factor",
+    "target_table_name": "stock_daily",
+    "primary_keys": "symbol+trade_date",
+    "time_key": "trade_date",
+    "pit_visible_key": "",
+    "required_fields": "['symbol', 'trade_date', 'open', 'high', 'low', 'close', 'volume', 'money', 'factor', 'high_limit', 'low_limit', 'paused']",
+    "optional_fields": "[]",
+    "forbidden_fields": "[]",
+    "can_enter_clean": "True",
+    "clean_action": "jqdata_native_load",
+    "expected_row_scale": "10K/symbol"
+  },
+  "pit_price_row": {
+    "domain": "price_fq_factor",
+    "report_period_field": "none",
+    "visible_date_field": "trade_date",
+    "trade_date_field": "trade_date",
+    "effective_date_field": "",
+    "forbidden_visible_date_fields": "none",
+    "pit_rule": "行情日频PIT: trade_date索引",
+    "lookahead_risk": "false",
+    "notes": ""
+  },
+  "literal_outer_exit": 0,
+  "literal_preflight_exit": 0,
+  "native_unit_tests": "NOT_RUN_BY_CONTRACT",
+  "pre_post_original_identity": "REPORTED_AND_EXECUTED_REVIEWED_CODE_PATH; second reads not separately uploaded",
+  "process_inventory_audit": "NOT_PERFORMED",
+  "chat_END": "OWNER_SUPPLIED_CLOSING_CHAT; not inferred from repository fields",
+  "cleaning_authorized": false,
+  "p1_activated": false,
+  "orders_allowed": false,
+  "next": "GPT-native-adapter repairs and separately approved presumed-availability policy; no new local task issued",
+  "source_snapshot": "24216a07e7fed96093e4934b68ddfddf493b03ad",
+  "calendar_successor_boundary": "2026-10-27 successor unresolved in captured calendar; no extrapolation",
+  "current_vs_20261027_baseline": "all four raw SHA256 values match prior accepted baseline"
+}

@@ -1,3 +1,9 @@
+# CLOSED — P2 bounded handoff independently accepted; do not rerun
+
+GPT reviewed the returned 14 files and 17 exact bodies at snapshot 24216a07e7fed96093e4934b68ddfddf493b03ad. Acceptance: ACCEPTED_BOUNDED_NATIVE_BINDING_HANDOFF_ONLY. Native metadata/runtime binding and original DATA preflight are accepted within this scope. No native cleaning, P1 activation, acquisition, CURRENT, backtest admission or orders are authorized. See agents/chatgpt/reviews/BLACKBOX_R5_NATIVE_BINDING_P2_ACCEPTANCE_20261101/REVIEW.md. Historical instructions below are closed, not a new run command.
+
+---
+
 # P2: exact native runtime and read-only source binding handoff
 
 task_id=BLACKBOX_R5_NATIVE_BINDING_P2_20261101
