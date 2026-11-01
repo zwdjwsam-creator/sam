@@ -1,0 +1,71 @@
+BLACKBOX 股票日线推定可得规则 P1（批准版）
+policy_id: BLACKBOX_DAILY_AVAILABILITY_PRESUMPTION_P1
+revision: R2_STOCK_ONLY_20261101
+status: OWNER_APPROVED_POLICY_ONLY
+批准日期：2026-11-01（Asia/Shanghai）
+批准方式：当前用户在本聊天明确表示“P1签字”。本记录不模拟手写签名。
+
+一、用途和事实边界
+仅用于历史回测和因子研究的显式建模假设，不用于实盘、模拟盘下单、实时信号或券商接口。
+T+1 09:00不是供应商实测发布时间，不是已证明的保守上界，不保证消除全部前视偏差。
+历史可得性事实仍为NOT_ESTABLISHED；假设层可标PRESUMED，不得标OBSERVED、VERIFIED或historical_pit=ESTABLISHED。
+采用本政策不会关闭后续真实证据收集，也不把现有候选提升为正式产品。
+
+二、日历和时区
+时区固定Asia/Shanghai，输出必须带+08:00。拒绝无时区决策时刻。
+日历v1为供应商JQData返回的冻结文件：
+E:\BLACKBOX\STAGING\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\CALENDAR.json
+bytes=914
+sha256=ab00fa8c597c9b01977cc060a202371d2de73a6a32b8a4fe6cc533a705d056d9
+它不是交易所原件。仅按其returned交易日序列查找严格后继交易日，不由数据行、文件名、周几或节假日文字推算。
+数据日不在冻结日历或不存在后继交易日，一律UNRESOLVED，不放行该日假设层读取。
+示例：09-24→09-28；09-30→10-08；10-26→10-27；10-27→UNRESOLVED。
+R5的09-28至10-26这16个数据日具备日历后继计算条件；10-27暂不具备。具备计算条件不等于原生清洗或回测已准入。
+09-24之前的历史段未被本日历覆盖，本政策暂不适用。不能由本次未收集到历史日历就断言E:不存在历史日历；将来只复用已有登记证据定位并冻结确切日历，不全盘重扫、不私自调用供应商。
+
+三、推定可得规则
+适用交易日T的获准字段，推定从冻结日历的下一个交易日09:00:00+08:00起可见。
+仅当模拟decision_time≥presumed_available_at时返回该行；UNRESOLVED不得返回为可用数据。
+T日完整日线不能用于T日收盘成交或更早的信号。T+1开盘价不能进入T+1开盘前信号；它作为模拟执行价格须由独立执行模型读取，并核验成交约束。
+T日20:00与T+1 09:00对隔夜决策不等价，不在本政策中互换。
+
+四、产品和字段范围
+仅限JQ命名空间、RAW_NONE不复权、股票日线、原已审XSHG/XSHE证券范围。不能凭正则擅自扩大或缩小原已审证券全集。
+ETF、指数及其他domain在各自字典和消费约束完成前不适用本政策。复权价、复权派生、ETF净值、分钟线、财务、成分股、行业等不得类推。
+按原字段语义绑定及未绑定表逐项确定假设层可读字段；保留源14列的原值。
+factor不进入P1可读字段：假设层拒绝请求该字段，或另以UNRESOLVED元数据标识，不能参与信号或复权计算。不得为此删除或改写RAW/native候选中的factor原值。
+字典12个required_fields与源14列的差异为：time/code对应trade_date/symbol，另有avg、pre_close两个源补充字段。字段来源已明确；补充字段仍须独立语义/null/单位绑定后才可在假设层开放。
+不把“12个required”误作“只准保留12列”，不把factor排除误作改写原字典required_fields。
+pit_schema_contract中的lookahead_risk=false和trade_date索引都不是历史可得性证据，本政策不依赖其风险声明放行。
+
+五、修订假设
+revision_assumption=PRESUMED_UNCHANGED，含义是模拟假设所用采集值等于推定可得时刻的值；这不是已证事实。
+真实采集时刻原样记录，不拿它、补采时间、文件时间、清洗或上传时间冒充历史可得时刻。
+以后可以记录capture_observed_at，只证明本方在该时刻观察到该值，不证明供应商真实首发时间、无历史修订或数据真值。
+若发现实际发布晚于推定时刻、事后修订或适用范围冲突，受影响范围降为UNRESOLVED，保留旧结果并披露，不静默覆盖。
+
+六、观测状态与回测执行
+消费者必须读取并保留paused、volume、money及适用限价/缺值等状态。paused=1不得模拟成交；paused=0也不保证可成交。
+192行paused=1原观测保留，不自动删除；两个paused=0零量ETF不属于本股票政策范围，不能据标记推断可交易。
+600621.XSHG/2026-10-27原隔离行仍排除；本政策不修价、不改paused、不撤销隔离、不生成复权因子。
+read_price_frame仅做八字段值投影，不能执行这些消费限制；改造并验收前不得作为P1回测入口。
+无成交/限价/缺价时不得自行填价或为达成成交而绕开约束。
+
+七、独立假设层与身份
+原RAW/native候选任何字节不变。新增append-only辅助层，稳定键为原产品/time/code及源身份，绑定候选generation、候选manifest、原行provenance、政策正文摘要和冻结日历摘要。
+逐行至少记录availability_basis=PRESUMED_T1_PREOPEN、presumed_available_at或UNRESOLVED原因、revision_assumption、policy_id/revision、policy_body_sha256、calendar_sha256及源/候选身份。
+不得用实际采集时刻填补缺失后继日，不得给UNRESOLVED伪造时间。
+政策摘要只覆盖本文件明确标识的POLICY_BODY UTF-8字节段；不在政策正文中包含自身摘要值，避免自指哈希。外部批准回执记录摘要，不是整件TXT自哈希。
+
+八、读取用途与准入
+拟实现BACKTEST_DAILY_T1与FACTOR_RESEARCH_T1两个用途，只在政策批准/摘要、日历、源与候选identity、状态约束全部验证后按decision_time筛选。
+现有candidate reader的禁止列表不因本文件自动修改。原生清洗、适配器、PIT辅助层及消费者代码尚须编写、离线检查和独立验收。
+SAME_DAY_EOD、LIVE及订单能力没有启用开关；ORDER_ALLOWED=false。
+回测/研究报告须在首页声明“可得时间为推定（P1），历史值未修订亦为假设”；结果不代表实盘可实现收益。
+允许受审候选通过独立研究入口使用，不要求为研究先切CURRENT；但该入口必须有等价身份/状态/完整性准入，不能以候选路径绕过数据准入。
+
+九、批准不等于本机执行
+本次批准的是上述建模政策，可以据此继续GPT离线实现和测试；不授权本地AI开始清洗、拉取数据或回测。
+不授权供应商/登录/配额探测、CURRENT/Cache切换、正式发布、调度/看门狗、HAND修改、安装库/换解释器、覆盖/删除原件、全局重扫或交易。
+后续本机操作必须由GPT给出完整受审代码与具体范围、测试、一次执行约束、回执/回读要求和命令；本地AI不得自行实施政策。
+P2已结案，不重跑。七项RCID发布缺陷不因本政策关闭。其他阶段保持各自授权和验收边界。

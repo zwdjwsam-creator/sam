@@ -4,7 +4,7 @@
   "branch": "main",
   "execution_host": "ZHANGWEI",
   "last_reviewed_at": "2026-10-28T17:13:36.442Z",
-  "phase": "P2_NATIVE_BINDING_ACCEPTED_NATIVE_CLEANING_IMPLEMENTATION_PENDING",
+  "phase": "P1_POLICY_APPROVED_NATIVE_FIXTURE_TEST_AWAITING_ACK",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -9101,7 +9101,7 @@
     "bytes": 38242,
     "classification": "CONSOLIDATED_REPORT_NOT_EXECUTION_AUTHORIZATION"
   },
-  "active_task_id": null,
+  "active_task_id": "BLACKBOX_P1_NATIVE_TEST_20261101",
   "raw_parquet_handoff_dispatch": {
     "task_id": "BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028",
     "parent_task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
@@ -9737,6 +9737,41 @@
     "review_artifacts": "agents/chatgpt/reviews/BLACKBOX_R5_NATIVE_BINDING_P2_ACCEPTANCE_20261101/",
     "cleaning_authorized": false,
     "p1_activated": false,
+    "orders_allowed": false
+  },
+  "p1_policy_approval_20261101": {
+    "status": "OWNER_APPROVED_POLICY_ONLY",
+    "approval_basis": "Owner explicitly approved the corrected P1 policy and then requested HUB task publication.",
+    "policy_id": "BLACKBOX_DAILY_AVAILABILITY_PRESUMPTION_P1",
+    "revision": "R2_STOCK_ONLY_20261101",
+    "policy_body_sha256": "31dee3a67f7674db25b0ba4d56c169c941e28f857b8656454b6006401938f884",
+    "product_scope": "STOCK_RAW_NONE_XSHG_XSHE_ONLY",
+    "factor": "NOT_EXPOSED_BY_P1_VIEW",
+    "calendar_terminal_day": "2026-10-27_UNRESOLVED",
+    "historical_pit": "NOT_ESTABLISHED",
+    "orders_allowed": false
+  },
+  "p1_native_test_dispatch_20261101": {
+    "task_id": "BLACKBOX_P1_NATIVE_TEST_20261101",
+    "status": "ISSUED_AWAITING_ACK",
+    "execution_host": "ZHANGWEI",
+    "source_snapshot": "6161bff0b925d1a310a6d0ee82b9f07fa3f7638f",
+    "reviewed_state_blob_sha": "f98a087b58ae26c5145d9d5c6c0bb215013e9da8",
+    "outbox": "agents/chatgpt/outbox/BLACKBOX_P1_NATIVE_TEST_20261101.md",
+    "reviews": "agents/chatgpt/reviews/BLACKBOX_P1_NATIVE_TEST_20261101/",
+    "gpt_offline_tests": 20,
+    "gpt_offline_actual_exit": 0,
+    "scope": "C: fixture conformance and frozen-calendar date-only plan; zero native price reads",
+    "native_execution_observed": false,
+    "pending": [
+      "ACK and byte verification",
+      "One native fixture test run and date plan",
+      "GPT independent review",
+      "Native price-cleaning and actual-data admission remain pending"
+    ],
+    "cleaning_authorized": false,
+    "supplier_authorized": false,
+    "current_switch_authorized": false,
     "orders_allowed": false
   }
 }
