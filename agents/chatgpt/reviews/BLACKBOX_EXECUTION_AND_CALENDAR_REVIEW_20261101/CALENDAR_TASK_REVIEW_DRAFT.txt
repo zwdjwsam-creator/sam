@@ -1,0 +1,54 @@
+BLACKBOX_HISTORICAL_CALENDAR_FREEZE_REVIEW_20261101
+Status: DRAFT_REVIEW_ONLY / NOT_DISPATCHED
+Execution host after a separate reviewed dispatch: ZHANGWEI
+Native command: NONE
+ORDER_ALLOWED=false
+
+1. Exact source and evidence
+
+The previous CALENDAR_DESK_REVIEW registered two calendar roots, not a runnable file list. No directory listing or guessed filename is authorized. GPT reused existing R07 ledger L01, blob338ee712d355f99aebc705d5bb81686303c0461a, to identify this SINGLE already registered original beneath the desk review's RAW root:
+
+E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P0_meta\calendar_cn_exchange\calendar_cn_exchange_v2_asof_20260924\CALENDAR_TRADE_DAYS.parquet
+
+The old ledger observed3097 trade days,2014-01-02..2026-09-24 and SHA256 prefix d044d628279d48c1. These are historical evidence, not a fresh host measurement or a full hash. The task would calculate current exact bytes/full SHA256 and retain both observations; a changed prefix stops and preserves the newly observed identity. It must never re-pin locally.
+
+The exact-path addendum records the parent-root and original ledger provenance. CLEAN root and competing bare-root calendars are NOT read in this draft. No scan/glob/rglob/walk/list of source directories, no search for a newer asof, no alternate path or schema alias. Parent-component lstat checks are allowed solely to reject symlink/junction/reparse traversal.
+
+2. Allowed action after approval, not now
+
+Read the one original as bytes, calculate length/SHA256, read its physical Parquet schema and exact trade_date column, and export an ordered ISO day sequence with physical row positions. Export is a derived sequence, not an original Parquet/body copy. Do not copy/backup/link/migrate/modify/delete the source. Reject ordinal/int axes, null days, duplicates, unordered rows, non-midnight timestamp and unbound timezone; never deduplicate, sort-repair, infer a day or normalize an ordinal. No supplier/calendar endpoint, network login, entitlement probe or price read.
+
+The source is re-read byte-for-byte after extraction and file identity/size/mtime are rechecked. Resource cap64MiB is a capture limit, not a historical date bound. If the explicit schema differs from trade_date, stop with schema/source identity for GPT; do not invent a fallback column. Captured sequence completeness and policy admission remain false pending GPT review.
+
+Original pinned DATA preflight and its rule dependencies are the only operational E: reads beyond that single calendar file. The later executor must read the applicable KERNEL/BOOTSTRAP/DATA_ACCESS/manifest rules, require actual preflight0 and literal PASS, and preserve HAND_READ=NOT_SUFFICIENT as the known annotation. Rules/preflight are not modified. This operational exception is stated explicitly for review; it does not expand the data-file allowlist.
+
+3. Append-only derived outputs and single execution
+
+Proposed new capture root:
+C:\LAN_SHARE_REPORT\BLACKBOX_HISTORICAL_CALENDAR_FREEZE_REVIEW_20261101
+Proposed new outer-receipt root:
+C:\LAN_SHARE_REPORT\BLACKBOX_HISTORICAL_CALENDAR_FREEZE_REVIEW_20261101_OUTER
+A separately pinned package would be staged outside those two new run roots. No existing directory, marker or receipt is deleted or overwritten. The outer RUN_ONCE marker survives deletion of the inner capture result; all existing-root collisions stop without retry.
+
+The reviewed outer launcher would record the child's literal streams, actual OS exit and UTC interval programmatically. Child preflight is separately captured. A successful inner capture writes SOURCE_IDENTITY.json, TRADE_DAY_SEQUENCE.json, CAPTURE_RESULT.json and LOCAL_READBACK.json after preflight receipts. Failures retain FAILED.json and any original stream/identity evidence without a completion result. A schema/hash/source-drift failure never triggers a new path, second run or supplier call.
+
+Draft native and outer entries reject status DRAFT_REVIEW_ONLY before native E: access or C: creation. They require a later GPT-issued APPROVED_NATIVE_DISPATCH contract. The local AI may not change that status, pins, schema or source constant. This is why publishing code for review is not task dispatch.
+
+4. Test and exit contract
+
+Eighteen offline synthetic controls passed with actual process exit0; none read E:. They cover exact date/string/timestamp extraction, ordinal/alias/null/duplicate/order/intraday rejection, reparse rejection, unchanged source and derived-only outputs, prefix drift, source mutation, output overwrite refusal, source-directory refusal and both draft entry locks. These fixtures are not evidence of a native calendar snapshot.
+
+Proposed native exit0 = FROZEN_OBSERVATION_AWAITING_GPT only; exit2 = retained capture failure; exit4 = review/host/entry guard refusal. Other nonzero exit or interruption is failure/unknown, never converted to PASS. Current review status forbids all native invocations. No executable desktop command is published.
+
+5. Return requirements for a later separately approved dispatch
+
+Proposed return:
+agents/chatgpt/inbox/BLACKBOX_HISTORY_CALENDAR_FREEZE_20261101/ZHANGWEI/
+
+Return actual source/schema/sequence/receipt/streams/failure files, plus REPORT, DELIVERY_MANIFEST and UPLOAD_READBACK. ACK/package verification and its upload/readback must precede the single launch under the future complete dispatch. Retain empty streams as empty. Hash original source bytes and derived output bytes separately; no original Parquet upload. Manifests avoid self-hash loops; upload/read back every file including the final readback file before ending Cursor chat with exactly END. Record fixed Git commit/blob identities and actual transport outcomes; no diagnostic probe writes or improvised fallback.
+
+GPT must independently compare sequence, raw-file identity, physical types, dates/order, old prefix and before/after identity. No automatic merge with calendar v1 or CURRENT, no inference of missing sessions from min/max, no P1 historical extension, no10-27 successor fabrication. The historical file may stop at09-24; it is not silently treated as a current calendar.
+
+6. Approval status
+
+This code/contract/test/receipt bundle is submitted to HUB review only. It is NOT in the desktop outbox and no local task is active. After review, GPT must publish a concrete approved-byte package/ACK/single-command contract before local execution; current draft files must not be edited locally to activate them. Backtest, CURRENT/release, supplier and orders remain closed.

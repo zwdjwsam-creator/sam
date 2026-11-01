@@ -3,8 +3,8 @@
   "repository": "zwdjwsam-creator/sam",
   "branch": "main",
   "execution_host": "ZHANGWEI",
-  "last_reviewed_at": "2026-11-01T13:37:03.024Z",
-  "phase": "P4_GPT_OFFLINE_CONSUMER_IMPLEMENTED_VALUE_AUDITED_NOT_ACTIVATED",
+  "last_reviewed_at": "2026-11-01T13:58:06.796Z",
+  "phase": "P4_OWNER_OFFLINE_REVIEW_ACCEPTED_EXECUTION_MODEL_AND_CALENDAR_DRAFTS_IN_REVIEW",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -4023,6 +4023,21 @@
       "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/CANDIDATE_CHECKPOINT_BINDINGS.json",
       "blob_sha": "09aa40afb1375c61ec0d4fc23424301a3c09eb38",
       "review_scope": "P4 bounded historical-calendar desk review; roots/footer statistics only, not frozen-body or completeness acceptance."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/p4_consumer.py",
+      "blob_sha": "991b4c8b41fdcfbe8b71dbe88be470a69364091e",
+      "review_scope": "P4 failure semantics / exact historical calendar path desk binding; no source scan or native task."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/CALENDAR_DESK_REVIEW.json",
+      "blob_sha": "4864ef0941ef2fc109f200885dac05c8b5eddc7c",
+      "review_scope": "P4 failure semantics / exact historical calendar path desk binding; no source scan or native task."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/LAYER_SEARCH_AND_BINDING_LEDGER.json",
+      "blob_sha": "338ee712d355f99aebc705d5bb81686303c0461a",
+      "review_scope": "P4 failure semantics / exact historical calendar path desk binding; no source scan or native task."
     }
   ],
   "observed_r10_capture_blobs": [
@@ -4342,16 +4357,14 @@
       "latest_review": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/CODE_MANIFEST.json"
     }
   ],
-  "issued_task_ids_this_run": [
-    "BLACKBOX_P4_REAL_DATA_P1_CONSUMER"
-  ],
+  "issued_task_ids_this_run": [],
   "pending_outcomes": [
-    "P4 GPT offline implementation/value tests are complete. A separate real-data consumer/admission review is still required before research/backtest activation; no native ACK or execution is pending for this GPT-only work item.",
-    "Execution/fill/valuation model requires a separate concrete reviewed contract and owner approval. No execution-day prices, limits, liquidity or fills may be inferred from the prior daily bar.",
-    "Historical calendar roots are registered, but full day-list/body identities are not supplied by the selected register rows. Resolve exact existing evidence by desk review; no global rescan or supplier request.",
-    "Normative units/types, ETF/index domain binding, actual historical availability, CURRENT overlap/non-regression/coherent release and7 RCID defects remain unaccepted. 10-27 P1 staysUNRESOLVED."
+    "A awaits owner review/approval of the concrete execution model, stale-position valuation and hypothetical fee/quantity/slippage parameters. Approving the design alone will not activate backtests.",
+    "B awaits HUB code/contract/receipt review. Only after that review may GPT issue a separately pinned single-run native task; draft entrypoints currently reject. Do not start local work from a reviews path.",
+    "The exact calendar remains an old registered observation until a later approved freeze returns actual bytes/full SHA/date sequence for GPT audit. No P1 calendar extension or10-27 successor inference.",
+    "Research/backtest, current-shard non-regression/coherent release and7 RCID defects remain unaccepted. ORDER_ALLOWED=false."
   ],
-  "next_action": "Review the new P4 code/admission boundary and prepare a separate execution-model contract without inventing fills or enabling backtests; desk-bind precise historical calendar bodies from existing inventories. Any native task remains forbidden until separately reviewed and specifically authorized.",
+  "next_action": "Review A with owner and B in HUB; preserve draft-only status. After B review, prepare the complete concrete native dispatch under the existing conditional read-only authorization. No additional signature or broad scan is requested.",
   "notify_user": true,
   "observed_r10_directory_entries": [
     {
@@ -4531,10 +4544,13 @@
     }
   ],
   "last_poll": {
-    "head": "06d0196c2e56f918eedf0c26987f7c6288c1e1e5",
-    "at": "2026-11-01T13:37:03.024Z",
-    "new_gpt_offline_work_item": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
-    "new_native_task_issued": false
+    "head": "6b957f401d542dca9382c49f61205facdb5463c3",
+    "at": "2026-11-01T13:58:06.796Z",
+    "new_native_task_issued": false,
+    "review_drafts": [
+      "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/EXECUTION_MODEL_DRAFT.txt",
+      "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TASK_REVIEW_DRAFT.txt"
+    ]
   },
   "observed_end_to_end_entries": [
     {
@@ -4717,11 +4733,11 @@
   ],
   "latest_owner_constraint": "Explicit owner request to implement/dispatch R5 one-shot staging continuation;150000 new cap and700000 cumulative; no Cleaning/CURRENT/orders. Final acquisition package must await independently bound rules/source semantics, no native invented policies.",
   "findings_this_run": [
-    "Published requested P4 GPT-offline HUB task and completed code/tests; no desktop command or ACK requested.",
-    "18 final real-candidate tests actual exit0; independent RAW audit actual exit0 compares83588 rows, all11 public values, mandatory state/provenance and independently recomputed times.",
-    "88811 stock candidate rows split83588 presumed/16 dates and5223 unresolved10-27; paused stock172/ETF20/index0. No ETF/index or factor/avg/pre_close exposure.",
-    "Registered RAW/CLEAN historical calendar-layer evidence exists before09-24; inspected records give roots/statistics but no complete P1-admitted frozen-body bytes/hash. No source-absence claim or local scan.",
-    "Interface purpose restricted toOFFLINE_P1_CONSUMER_AUDIT, all rows execution_allowed=false. No native/backtest/research/CURRENT/release/order admission."
+    "Owner approved P4 offline review, while maintaining no backtest/CURRENT/release/order permission.",
+    "Actual P4 null/missing-state behavior is whole-call rejection, no partial outputs; missing_price never true on successful output. No P4 code change.",
+    "A: drafted explicit future execution model including execution-day limits, non-fills, suspension valuation and fee/slippage assumptions, pending owner approval.",
+    "B: exact original calendar located from already registered R07 ledger L01 beneath P4 RAW root; no scan or schema/path invention. Code/outer capture/receipt draft and18 synthetic controls actual exit0 published only in reviews; no outbox/native command.",
+    "Neither draft has been activated; no original/source/CURRENT file changed or supplier call made."
   ],
   "observed_sam_handoff_entries": [
     {
@@ -5227,7 +5243,7 @@
     "Source-inspected catchup defaults/window/date-aligned PASS/retry mechanics summarized without claiming historical26 exact failures, live automation, duplicate observations, actual target or supplier absence. No date/EMPTY/exclusion/factor policy delegated.",
     "Both existing child task outboxes and notebook/desktop/parent routes updated and exactly read back. Native outcome/ACK pending; task publication is not actual stop. No new acquisition/data/current/release/order authorization."
   ],
-  "previous_phase": "P3_ACCEPTED_BOUNDED_NATIVE_CANDIDATE_AND_HANDOFF_GPT_P1_IMPLEMENTATION_PENDING",
+  "previous_phase": "P4_GPT_OFFLINE_CONSUMER_IMPLEMENTED_VALUE_AUDITED_NOT_ACTIVATED",
   "owner_requested_source_handoff": {
     "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
     "execution_host": "SAM",
@@ -11058,6 +11074,101 @@
     "supplier_calls": 0,
     "current_switch_allowed": false,
     "release_allowed": false,
+    "orders_allowed": false,
+    "owner_review_status": "OWNER_ACCEPTED_OFFLINE_REVIEW_ONLY_NO_BACKTEST_ACTIVATION",
+    "owner_review_basis": "Current owner message: P4 reviewed and agreed; backtest/CURRENT/release remain closed."
+  },
+  "p4_error_semantics_20261101": {
+    "behavior": "WHOLE_CALL_REJECTED_NO_PARTIAL_RESULT_NO_BAD_ROW_DROPPING",
+    "missing_price": "ALWAYS_FALSE_ON_SUCCESS; true input is rejected as STATE_TAMPER",
+    "quality_checks_before_availability_filter": true,
+    "policy_or_code_changed": false,
+    "source_blob": "991b4c8b41fdcfbe8b71dbe88be470a69364091e",
+    "review_path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/P4_FAILURE_SEMANTICS.md"
+  },
+  "execution_model_draft_20261101": {
+    "status": "DRAFT_PENDING_OWNER_APPROVAL",
+    "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/EXECUTION_MODEL_DRAFT.txt",
+    "scope": "Stock-only hypothetical daily-open approximation; separate from P1 availability",
+    "held_position_valuation": "Proposed last previously admitted visible valid close, STALE_VALUATION_CARRY, no source fill or trade. Missing prior mark => NAV_UNRESOLVED.",
+    "fee_numbers_are": "PROPOSED_FIXED_HYPOTHETICAL_SCENARIO_NOT_REAL_STATUTORY_RATES",
+    "native_command": null,
+    "backtest_admission": false,
     "orders_allowed": false
-  }
+  },
+  "historical_calendar_freeze_review_20261101": {
+    "status": "DRAFT_HUB_REVIEW_ONLY_NOT_DISPATCHED",
+    "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TASK_REVIEW_DRAFT.txt",
+    "contract_path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_FREEZE_CONTRACT.json",
+    "source_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
+    "source_evidence": {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/LAYER_SEARCH_AND_BINDING_LEDGER.json",
+      "blob_sha": "338ee712d355f99aebc705d5bb81686303c0461a",
+      "entry": "L01"
+    },
+    "known_sha256_prefix": "d044d628279d48c1",
+    "full_sha256": "NOT_YET_MEASURED",
+    "source_data_files_allowed": 1,
+    "source_directory_enumeration_allowed": false,
+    "original_body_copy_allowed": false,
+    "native_command": null,
+    "offline_tests": 18,
+    "actual_offline_exit": 0,
+    "tests_read_E": false,
+    "entrypoints_locked_by_draft_status": true,
+    "native_execution_observed": false,
+    "source_data_reads_after_dispatch": "One exact original only; original pinned DATA preflight/rule dependencies separately declared for review",
+    "calendar_policy_activation": false,
+    "orders_allowed": false
+  },
+  "reviewed_ab_artifacts_20261101": [
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_EXACT_PATH_ADDENDUM.json",
+      "blob_sha": "21c027f57448629ed792ef3250b8945959f30cd9"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_FREEZE_CONTRACT.json",
+      "blob_sha": "eae197a03b488a9b6a3e24df1d8b27a7cf76639b"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TASK_REVIEW_DRAFT.txt",
+      "blob_sha": "605f4eb37a977c4969b8b3cee66f186f853ddc67"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TEST.stderr.txt",
+      "blob_sha": "0548305e18cac40e7afd10c293fc74d3c34d235f"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TEST.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TEST_PROCESS.json",
+      "blob_sha": "97a30c86006803a3bc15fbfdbf73da7535957dc9"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/EXECUTION_MODEL_DRAFT.txt",
+      "blob_sha": "9eadc9ddc3b9e77157b69005d921baf11503c118"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/P4_FAILURE_SEMANTICS.md",
+      "blob_sha": "28a16f417caa297644737abd204fcf4535b1ed04"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/REVIEW_MANIFEST.json",
+      "blob_sha": "12271685d1d24ca8ee2a0ea32bcae4b9c21ec10b"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/freeze_calendar.py",
+      "blob_sha": "b5f997f28401625dd0366d1dcb9f1a1960ca442b"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/launch_calendar.py",
+      "blob_sha": "0cae0a9688653e0bf17d70b3d5b25680850a9a28"
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/test_calendar.py",
+      "blob_sha": "4677c9c5c4df35a392009c64f9b0c76d406c3e47"
+    }
+  ]
 }

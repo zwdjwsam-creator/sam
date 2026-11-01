@@ -1,0 +1,73 @@
+BLACKBOX_EXECUTION_MODEL_REVIEW_DRAFT_20261101
+Status: DRAFT_PENDING_OWNER_APPROVAL
+Execution host for any future reviewed task: ZHANGWEI
+Native command: NONE
+Backtest/research admission, supplier calls, CURRENT/release and orders: NOT AUTHORIZED
+ORDER_ALLOWED=false
+
+1. Scope and prerequisites
+
+This draft proposes a stock-only RAW_NONE daily opening-price approximation for a future pipeline smoke test, not proof of executable historical returns. It is separate from POLICY_P1 R2 and changes no policy bytes. P4's offline code review is accepted by the owner; that is not permission to run a backtest.
+
+A future implementation must independently bind the approved policy/calendar, candidate generation/manifest, source-row provenance, security-specific dated trading-unit/settlement rules, execution-day quotes and an approved fee schedule. Missing bindings stop the run. No old strategy reconstruction, new source discovery or acquisition is a prerequisite to approving this design; any later data collection has its own contract.
+
+2. Signal and execution chronology
+
+The signal uses only P4-visible information at decision_time, which must carry +08:00 and be no earlier than the presumed availability of the data used. The proposed decision event is09:00 on the strict next frozen-calendar trading session after signal data dayT. No successor/calendar gap/UNRESOLVED means no usable signal row. No later daily field can enter the signal.
+
+The proposed simulated fill event is that session's official opening-price replay event, labeled HYPOTHETICAL_DAILY_OPEN, never an observed supplier publication time. It must use an independently reviewed execution-quote reader; this draft does not bypass P4 by opening RAW/candidate files directly. Execution-day open/limits/status are only execution replay inputs, not pre-open signal features. The quote's date/code/source generation must match the actual simulated execution session.
+
+Positive full-day volume does not prove opening liquidity. The model is an explicit approximation, not an actual-auction fill certificate. Full-day volume/money may be used only as an ex-post impossible-trade veto when zero, never to infer the opening quantity available or to generate the prior signal. If this approximation is not approved, the default is BLOCKED_EXECUTION_MODEL, not a different fill rule.
+
+3. Proposed fill price and quantity
+
+For an otherwise eligible buy, proposed modeled_price=open*(1+0.0005); sell=open*(1-0.0005):5bp adverse slippage per side. The original quote is preserved, and modeled price/assumption are separate ledger fields. No close/high/low/VWAP/avg/pre_close substitution, no price fill and no adjustment-factor arithmetic. Tick rounding requires an approved dated security-rule table and must remain adverse; no universal tick/lot is invented.
+
+As a declared simulation cap, proposed order quantity may not exceed0.5% of the most recent P4-visible prior-session volume, then must satisfy that security's dated minimum/unit constraints and available cash/settled shares. This is a prior-information-based sizing assumption, not a measurement of opening liquidity. No approved prior volume or unit rule means BLOCKED_INPUT. No short sale, borrowing, margin, sell of unsettled shares, negative cash or implicit residual liquidation. Unfilled DAY orders expire with explicit reason; no silent next-day retry or automatic enlarged order.
+
+4. Execution-day limits, suspension, zero activity and data errors
+
+Use the execution day's own high_limit/low_limit; never T day's limits for T+1. No hardcoded5/10/20/30 percent rule. Unknown/missing/nonfinite/inverted limits, missing quote or invalid status is BLOCKED_INPUT and stops the run rather than dropping the row or filling another price.
+
+For a buy, open>=high_limit or the adverse modeled buy price reaching/exceeding high_limit yields NO_FILL_LIMIT_UP. For a sell, open<=low_limit or modeled sell price reaching/below low_limit yields NO_FILL_LIMIT_DOWN. Do not clip the modeled price back inside the band to create a fill. Opposite-side eligibility at a band does not certify available liquidity; all other controls still apply.
+
+Observed execution-day paused=1 yields NO_FILL_PAUSED. Zero volume OR zero money yields NO_FILL_ZERO_ACTIVITY. paused=0 is not a fill guarantee. These are explicit market-condition non-fills, not dataset corruption. No fill means no trading fee. Missing/invalid required status is a run-stopping data error, not a silently removed order. All reasons, rejected quantities and unfilled orders remain conserved in the execution ledger.
+
+5. Mandatory held-position valuation during suspension
+
+A paused position stays in the holdings ledger; quantity is not removed, set to zero or automatically sold. Proposed valuation-only rule: carry the last previously admitted valid closing mark that was actually visible under the chosen valuation as-of/P1 clock, with its source date, availability time and full provenance. An observed paused-day supplier-filled price is not automatically a new independent valuation mark.
+
+The carried mark is labeled STALE_VALUATION_CARRY, with age, original mark time/date and affected quantity/value disclosed. It is never sent to the fill function and never written back as a source-price repair. P4 may still expose the paused observation, but it grants no valuation/trading permission by itself.
+
+No prior valid visible mark means NAV_UNRESOLVED and a blocked complete portfolio result: do not substitute zero, cost, pre_close, a future quote or drop the position. At a valuation timestamp, a same-day close that is not yet P1-visible cannot be used. A single initial portfolio therefore needs its own pinned opening positions/cash/last-mark ledger. Resumption permits a new mark only when its genuine source state and policy visibility satisfy the reviewed rules. Carrying a stale mark may produce zero marked movement during suspension; it is not a claim that economic risk or loss was zero.
+
+Corporate actions/cash dividends/quantity changes require separately bound dated records; no factor=1 shortcut or unproved total-return claim. An unmodeled material corporate action blocks the relevant performance conclusion.
+
+6. Proposed fee assumptions for owner approval
+
+These numbers are a proposed fixed hypothetical simulation scenario, NOT assertions of current statutory/broker/exchange fees. No actual money moves. Historical research must either use a separately pinned effective-date fee table, or explicitly disclose an owner-approved fixed-fee sensitivity scenario.
+
+- Commission, each side:3bp of executed consideration, minimum CNY5 per order per day. Proposed convention: commission includes broker/exchange/handling items; do not add the same component twice.
+- Sell-side tax surrogate:5bp; buy-side surrogate:0.
+- Transfer-cost surrogate, each side:0.1bp.
+- Adverse slippage:5bp each side, included in modeled fill price, not charged again as a cash fee.
+- Cash fees round half-up to CNY0.01 per component per order/day. No fee for unfilled/cancelled quantity. Partial fills, if later admitted, aggregate by order/day before the commission minimum; no repeated minimum per fill.
+- The fee ledger separately records quoted consideration, modeled consideration, commission, tax surrogate, transfer surrogate and cash delta. Negative cash after fees blocks the order.
+
+The owner may approve/change this scenario. It cannot be described as actual historical taxes/commissions. Before a genuine historical research run, all effective-date schedules and claimed fee coverage must be explicitly bound or the result remains a hypothetical cost scenario.
+
+7. Acceptance tests and receipts required before any later run
+
+Test chronology/future-data contamination, T vsT+1 band substitution, exact boundary prices, adverse slippage crossing a band, paused/zero-activity non-fills, missing/invalid-state whole-run failure, settled inventory/cash, dated unit/tick rules, commission minimum/rounding/no double charging, and quantity/cash conservation.
+
+Valuation tests must include an existing100-share holding with a previously visible CNY10 mark: suspension retains100 shares and a CNY1000 stale valuation, creates no sale and no new price observation. Missing prior mark blocks complete NAV. A price visible only after valuation_time cannot supply the mark. Include resumption, multiple suspended days and a partially valued portfolio; never report complete NAV by dropping unresolved positions.
+
+Future receipts must distinguish actual process exits, data gates, order outcomes, valuation uncertainty and fee assumptions. Require independent input/output/order/position/cash/fee conservation and generation/provenance binding. The actual18 P4 tests do not substitute for execution-model tests. A separately reviewed complete native task would be needed; this draft has no command or run allowance.
+
+8. Items awaiting owner approval
+
+A1: daily-open hypothetical approximation and5bp adverse slippage.
+A2:0.5% prior-visible volume sizing cap, subject to separately bound security rules.
+A3: last-visible-valid-mark suspension valuation with mandatory stale labeling and NAV_UNRESOLVED on missing marks.
+A4: the fixed hypothetical fee scenario, or replacement by a dated verified fee table.
+Approval of the design alone does not activate backtests, research, CURRENT, publication, suppliers or orders.
