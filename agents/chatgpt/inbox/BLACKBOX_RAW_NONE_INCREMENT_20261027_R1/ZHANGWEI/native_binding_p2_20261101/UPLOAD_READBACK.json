@@ -1,0 +1,138 @@
+{
+  "schema": "BLACKBOX_P2_UPLOAD_READBACK_R1",
+  "task_id": "BLACKBOX_R5_NATIVE_BINDING_P2_20261101",
+  "execution_host": "ZHANGWEI",
+  "return_root": "agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/native_binding_p2_20261101/",
+  "repo": "zwdjwsam-creator/sam",
+  "branch": "main",
+  "acyclic": true,
+  "excludes_itself": true,
+  "note": "Lists only files uploaded before this one; its own final readback is recorded in the closing chat message, never inside itself.",
+  "declared_file_count": 13,
+  "all_byte_equal": true,
+  "zero_byte_files_preserved": [
+    "OUTER.stdout.txt",
+    "OUTER.stderr.txt",
+    "capture_001/preflight.stderr.txt"
+  ],
+  "zero_byte_note": "For encoding=none the exact blob body was obtained and compared; a zero-byte file is byte-equal only when the remote body is empty.",
+  "files": [
+    {
+      "path": "ACK.json",
+      "bytes": 11009,
+      "sha256": "c19acab598308a7a13a95a65166ffe9aa3c87a873342d0f46e5f347b4c54966b",
+      "state": "ALREADY_SAME",
+      "remote_bytes": 11009,
+      "remote_git_blob": "7243f5abcfbdcb7f9afe5e0c5d4c441cd4776c4e",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "PACKAGE_VERIFY.json",
+      "bytes": 2653,
+      "sha256": "a492e3d244d0ef73ffb20e778ba9fad0e55e4007d46c1601b51c4ba97a9bfd4f",
+      "state": "ALREADY_SAME",
+      "remote_bytes": 2653,
+      "remote_git_blob": "a6f6c8eaa37194ae9c79ebc22baa3c613255b3da",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "OUTER.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "state": "NEW",
+      "remote_bytes": 0,
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "OUTER.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "state": "NEW",
+      "remote_bytes": 0,
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "OUTER_RUN.json",
+      "bytes": 1467,
+      "sha256": "31d85f250ca8a8f36ebae308c6576f4f71c6bd3a2f4818c4a186c564cba95ca4",
+      "state": "NEW",
+      "remote_bytes": 1467,
+      "remote_git_blob": "dc49b6e49657c84808944d81a7dc8d4d0211539c",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "RUN_ONCE.json",
+      "bytes": 95,
+      "sha256": "377c672d9545620836c1547ff4fb841a0e4486a35fb9131c27cc4412ada70ecf",
+      "state": "NEW",
+      "remote_bytes": 95,
+      "remote_git_blob": "351211e1324d7d0ef546b52a4bb082d07b8d9650",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "capture_001/ENVIRONMENT_AND_BODIES.json",
+      "bytes": 81155,
+      "sha256": "b38d311887218aa8099399a7d4f7ede5253f4dba8d96e14575bc8171e3475987",
+      "state": "NEW",
+      "remote_bytes": 81155,
+      "remote_git_blob": "a73905e0ddc5c098d35228ea2f8f23d273056894",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "capture_001/PREFLIGHT_RUN.json",
+      "bytes": 352,
+      "sha256": "afd7c9d564268031eaef614b385fa5e621a23e510422f639f2c3f0cac20340f5",
+      "state": "NEW",
+      "remote_bytes": 352,
+      "remote_git_blob": "12fc38880cda24b8329af5822eb97ea9c28c4263",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "capture_001/preflight.stdout.txt",
+      "bytes": 870,
+      "sha256": "e37ceaa5a1177e431cf356b29d978d00a8dc6c552675b865b7c6bee7c7826ceb",
+      "state": "NEW",
+      "remote_bytes": 870,
+      "remote_git_blob": "fbaa6e91784fa491def535d11adcc2a2414ba878",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "capture_001/preflight.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "state": "NEW",
+      "remote_bytes": 0,
+      "remote_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "capture_001/LOCAL_READBACK.json",
+      "bytes": 718,
+      "sha256": "4a4b21c6078b2bd02dd7df45c82c7b2d06436d01ed10bbdbb4c403b8b6e2dd6c",
+      "state": "NEW",
+      "remote_bytes": 718,
+      "remote_git_blob": "a8ef5d339e1439b7d830b2060c7670f21d828848",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 9930,
+      "sha256": "e8e0299622eb7e134cc1f87ff46c5b33c8444ee6965739da50cd635182dc410d",
+      "state": "NEW",
+      "remote_bytes": 9930,
+      "remote_git_blob": "e04aedc720bf20a58381213f6932f7e497059a46",
+      "readback_byte_equal": true
+    },
+    {
+      "path": "DELIVERY_MANIFEST.json",
+      "bytes": 2532,
+      "sha256": "440d2179be67207aac77316a6b915486b67330715cc219da25ddd5e040e2346c",
+      "state": "NEW",
+      "remote_bytes": 2532,
+      "remote_git_blob": "eaae811fde3513cdc9b49fb6552b3861b0e4222b",
+      "readback_byte_equal": true
+    }
+  ]
+}
