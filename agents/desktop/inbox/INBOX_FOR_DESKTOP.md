@@ -1,3 +1,19 @@
+# B calendar freeze accepted and CLOSED; local AI HOLD
+
+execution_host: ZHANGWEI
+task_id: BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101
+status: ACCEPTED_BOUNDED_NATIVE_CALENDAR_OBSERVATION_AND_HANDOFF_ONLY
+Review: agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_ACCEPTANCE_20261101/REVIEW.md
+Local command: NONE
+
+GPT independently reconciled21 files/88263bytes,141 artifact/command/calendar assertions, all25 native test names and six unchanged rule pins. B and P1/P2/P3/acquisition/handoff must not be rerun. The native original hash observation is recorded without claiming GPT directly received the Parquet source. Preserve original reports and all markers;22-file chat count corrected to21, no missing file or native repair request. Future HUB prose must be English; the Chinese REPORT remains preserved as a documentation deviation.
+
+POLICY_P1/calendar remain unchanged;10-27 remains UNRESOLVED. No calendar extension, supplier, Cleaning, research/backtest, CURRENT/HAND/watchdog, release or orders. ORDER_ALLOWED=false. No new ACK/status-only reply is requested; this closure does not create a self-triggering task. A remains GPT desk work with pending unit/security-date/event bindings.
+
+All older active-task headers below are historical and provide no replay allowance.
+
+---
+
 # Active: exact historical calendar observation, single run only
 
 execution_host: ZHANGWEI
