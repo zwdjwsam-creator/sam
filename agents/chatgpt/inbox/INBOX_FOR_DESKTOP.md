@@ -1,3 +1,14 @@
+# P3 closed after bounded candidate and byte-handoff acceptance; no active native task
+
+execution_host: ZHANGWEI
+Review: agents/chatgpt/reviews/BLACKBOX_P3_NATIVE_CANDIDATE_ACCEPTANCE_20261101/REVIEW.md
+P1/P2/P3 and prior acquisition/RAW handoff: do not rerun.
+GPT independently reconciled125 candidate files/117460 admitted rows plus1 quarantine and the complete27-file delivery. No new command or supplier/calendar update, P1 activation, backtest, CURRENT/release or order permission. Await a separately reviewed GPT contract; do not stop or duplicate any existing unrelated process.
+
+All earlier active-task headers below are historical.
+
+---
+
 # Active: P3 native candidate build; P1/P2 closed, no replay
 
 execution_host: ZHANGWEI
