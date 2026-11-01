@@ -1,0 +1,58 @@
+BLACKBOX_P4_REAL_DATA_P1_CONSUMER
+execution_actor: GPT_OFFLINE_ONLY
+execution_host: ZHANGWEI (reference target only; native execution NOT AUTHORIZED)
+status: GPT_OFFLINE_IMPLEMENTED_AND_VALUE_AUDITED_NOT_ACTIVATED
+local_command: NONE
+ORDER_ALLOWED=false
+SUPPLIER_CALLS_ALLOWED=false
+BACKTEST_ADMISSION_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+RELEASE_ALLOWED=false
+
+1. Exact assignment and ownership
+
+The owner requested this GPT-owned offline work item on HUB. It is not a local-AI pickup/execution task. GPT implemented the consumer, ran meaningful real-candidate tests, and published their literal outcomes with this task. No native ACK, staging, rerun, supplier login, disk scan or new local report is requested. Local AI remains HOLD. P1/P2/P3 remain closed and cannot be replayed. This task does not require reconstructing an old strategy or changing production routes.
+
+Artifacts:
+agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/
+
+2. Frozen inputs
+
+Accepted P3 final byte snapshot: d7b790660f4bdc92c3b3ff6906e7d42a8c5a282f.
+P3 generation: P3_R5_C0C7EB71218FB8EE679D8D9727D99A45E829FC1E765359B2ED7BAD3CA146DF9B.
+P3 MANIFEST SHA256: 6984f606af60230b7bfc444dbd926e141a7dbe54a1bf63d3ccc1eeb3d4a7be41.
+POLICY_P1 R2_STOCK_ONLY_20261101 body SHA256:31dee3a67f7674db25b0ba4d56c169c941e28f857b8656454b6006401938f884.
+Frozen supplier-calendar SHA256:ab00fa8c597c9b01977cc060a202371d2de73a6a32b8a4fe6cc533a705d056d9.
+The policy is the whole6982-byte UTF-8/no-BOM/LF file, including its final LF; no normalization or repinning.
+INPUT_PINS.json records all6 archive byte identities and exact SOURCES/EXCLUSIONS digests. Original approval bytes are pinned too. Source bytes are reused from the already handed-off originals; no re-download or additional RAW upload.
+
+3. Implemented consumer contract
+
+The sole supported public interface is Consumer.select/availability over these pinned accepted inputs, not the internal row-selection test helper. All calls revalidate immutable input identities; policy, approval, calendar, archive, manifest, generation and provenance mismatches stop without repair or fallback. All125 candidate members are manifest-bound and checked; source data is read-only.
+
+Only accepted stock rows from the exact P3 identity are eligible. ETF/index requests are rejected. factor,avg,pre_close requests are rejected while their originals stay unchanged. Duplicate keys, missing/invalid status fields, null/nonfinite source prices/states and a quarantined key are rejected. Source time is validated as the exact daily midnight timestamp before representing the API date as ISO YYYY-MM-DD; no value rescaling, price filling, factor calculation, status correction or invented source date is performed.
+
+Only a decision_time with explicit UTC+08:00 offset is accepted. Next-session09:00 is derived from the frozen returned calendar sequence. No matching day or strict successor means UNRESOLVED with no timestamp. Select returns only rows with established P1 presumption <= decision_time; it never exposes10-27 as available. Rows beyond/pre-dating the frozen calendar cannot gain inferred availability.
+
+Every selected row unconditionally includes paused,volume,money,high_limit,low_limit,missing_price,execution_allowed=false, plus policy/calendar/availability labels and full candidate/source-file/SHA/physical/output row provenance. A caller cannot omit state inputs to bypass validation or request only price to remove output states. paused=0 is never a fill guarantee. Paused observations remain readable as observations without a valuation or trading permission. No execution/fill function exists; all execution_allowed states are false. Forging that flag is rejected. A separate reviewed execution model is still required.
+
+The only enabled purpose is OFFLINE_P1_CONSUMER_AUDIT. BACKTEST_DAILY_T1,FACTOR_RESEARCH_T1,LIVE,TRADE and other purposes remain denied pending their separate admission. Availability is always explicitly PRESUMED_T1_PREOPEN/PRESUMED_UNCHANGED with historical_pit=NOT_ESTABLISHED; no historical supplier release time is asserted. Consumer output is an in-memory independent sidecar/view; no E: sidecar is written or production reader patched.
+
+4. Meaningful checks completed by GPT
+
+Runtime pins:pandas3.0.3,pyarrow24.0.0,numpy2.5.4. This is GPT Linux offline execution, not native Windows acceptance.
+Tests include actual complete candidate loading/selection; exact field/state/source propagation; T+1 boundary and pre-boundary; timezone-naive/non-+08 rejection; ETF/index and prohibited fields/purposes; mandatory states; null/missing/forged state; duplicate key; all actual stock-paused observations;10-27/out-of-calendar null availability;600621 quarantine exclusion; actual public-entry policy/archive/approval corruption rejection. No skip is allowed.
+
+An independent audit reads stock rows directly from the pinned original RAW handoff (not the P4 output or its decoder), recomputes calendar times with standard datetime, and compares every eligible key, public value, mandatory state and original physical position. Test counts/process exits and measured scope are published as artifacts, not inferred from wrapper booleans.
+
+Measured scope:88811 stock candidate rows =83588 PRESUMED rows across16 data dates09-28..10-26 +5223 UNRESOLVED rows on10-27. The192 paused observations split into172 stock,20 ETF,0 index. Of the stock observations,166 are within the16 resolved dates and6 remain on10-27. No cause for per-date row-count variation is invented. The single quarantined600621 row remains outside the accepted stock candidate.
+
+5. Historical-calendar desk result
+
+CALENDAR_DESK_REVIEW.json cites exact already registered HUB blobs. They register RAW and CLEAN calendar layers predating09-24, with roots/schema/footer statistics. They do not provide the exact full frozen day-list bytes and original file SHA256 needed to replace the current P1 calendar. Those metadata bounds are not completeness or current-host existence certificates. This is not a finding that historical calendars are absent. No E: search, source copy or supplier request occurred. History is not limited to16 physical database days:16 is this P1 interface's current presumed-date window, not the entire database history.
+
+6. Review and permission boundary
+
+GPT offline code and value verification are complete for this work item. Real-data research/backtest admission, native installation/activation, separate execution-model contract, historical-calendar extension, formal dictionary unit/type bindings, CURRENT merge/non-regression/coherent-generation and7 RCID publication defects remain unaccepted. Existing historical routes and engines have not been recertified or declared absent. No P4 native command is provided or implied by publication.
+
+Deliverables are the code, exact input pins,18-test real-data suite with actual process receipts/literal stdout/stderr, independent RAW audit and actual exit, per-date/paused scope statistics, the bounded historical-calendar desk review and a reviewed-file identity manifest. GPT reads back every HUB write. Any future local execution must have its own complete reviewed code/contract, exact tests/exits/receipts and append-only destination; authorized uploads must all be read back before a Cursor chat ends with exactly END. That future requirement is not an execution allowance in this task.

@@ -1,3 +1,15 @@
+# P4 is GPT offline work only; no active native task
+
+Work item: agents/chatgpt/outbox/BLACKBOX_P4_REAL_DATA_P1_CONSUMER.txt
+Code and results: agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/
+execution_actor: GPT_OFFLINE_ONLY
+execution_host: ZHANGWEI (reference target only)
+local_command: NONE
+
+GPT completed the offline consumer and real-data value/state/provenance tests. Local AI must not stage, execute, rerun, query a supplier or scan disks for this work item. P1/P2/P3 remain closed. No native ACK/result is requested. Research/backtest, P1 activation, CURRENT/release and orders remain unadmitted. Older active-task headers below are historical, not replay allowances.
+
+---
+
 # P3 closed after bounded candidate and byte-handoff acceptance; no active native task
 
 execution_host: ZHANGWEI

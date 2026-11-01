@@ -3,8 +3,8 @@
   "repository": "zwdjwsam-creator/sam",
   "branch": "main",
   "execution_host": "ZHANGWEI",
-  "last_reviewed_at": "2026-11-01T13:18:53.473Z",
-  "phase": "P3_ACCEPTED_BOUNDED_NATIVE_CANDIDATE_AND_HANDOFF_GPT_P1_IMPLEMENTATION_PENDING",
+  "last_reviewed_at": "2026-11-01T13:37:03.024Z",
+  "phase": "P4_GPT_OFFLINE_CONSUMER_IMPLEMENTED_VALUE_AUDITED_NOT_ACTIVATED",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -4013,6 +4013,16 @@
       "path": "agents/chatgpt/reviews/BLACKBOX_P1_NATIVE_TEST_20261101/APPROVAL.json",
       "blob_sha": "d4908f9d117060db6a9a612d950792874dda40b5",
       "review_scope": "Exact whole-file policy-byte contract, unchanged raw-file SHA and loader; no activation."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json",
+      "blob_sha": "d104f247d4923e1d2debdc71654a1f861e6d6486",
+      "review_scope": "P4 bounded historical-calendar desk review; roots/footer statistics only, not frozen-body or completeness acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/CANDIDATE_CHECKPOINT_BINDINGS.json",
+      "blob_sha": "09aa40afb1375c61ec0d4fc23424301a3c09eb38",
+      "review_scope": "P4 bounded historical-calendar desk review; roots/footer statistics only, not frozen-body or completeness acceptance."
     }
   ],
   "observed_r10_capture_blobs": [
@@ -4319,14 +4329,29 @@
       "return_path": "agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/p3_native_candidate_20261101/",
       "latest_review": "agents/chatgpt/reviews/BLACKBOX_P3_NATIVE_CANDIDATE_ACCEPTANCE_20261101/REVIEW.md",
       "replay_allowed": false
+    },
+    {
+      "task_id": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
+      "execution_actor": "GPT_OFFLINE_ONLY",
+      "execution_host": "ZHANGWEI_REFERENCE_ONLY",
+      "path": "agents/chatgpt/outbox/BLACKBOX_P4_REAL_DATA_P1_CONSUMER.txt",
+      "task_blob_sha": "5d4774a6f0262bc3ffffea594bc6661067ab72c0",
+      "outcome": "GPT_OFFLINE_IMPLEMENTED_AND_VALUE_AUDITED_NOT_ACTIVATED",
+      "native_execution_allowed": false,
+      "ack_status": "NOT_APPLICABLE_NO_NATIVE_TASK",
+      "latest_review": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/CODE_MANIFEST.json"
     }
   ],
-  "issued_task_ids_this_run": [],
-  "pending_outcomes": [
-    "GPT offline consumer work must close supplemental-field eligibility, actual P3 generation/provenance binding, stock-only/factor/unresolved-date denial and mandatory observation/execution safeguards before any native task. No repeat signature or P1/P2/P3 run.",
-    "Formal units/types and ETF/index normative bindings, actual historical PIT, current-shard overlap/coherent-generation/non-regression and seven RCID publication defects remain unclosed. No new supplier call, date extension, CURRENT/release/backtest or orders authorized."
+  "issued_task_ids_this_run": [
+    "BLACKBOX_P4_REAL_DATA_P1_CONSUMER"
   ],
-  "next_action": "Continue GPT-owned offline real-data consumer implementation under the approved policy and exact-byte contract. Do not re-pin mismatches or open a candidate research bypass. No native task until separately completed reviewed code/tests/contract.",
+  "pending_outcomes": [
+    "P4 GPT offline implementation/value tests are complete. A separate real-data consumer/admission review is still required before research/backtest activation; no native ACK or execution is pending for this GPT-only work item.",
+    "Execution/fill/valuation model requires a separate concrete reviewed contract and owner approval. No execution-day prices, limits, liquidity or fills may be inferred from the prior daily bar.",
+    "Historical calendar roots are registered, but full day-list/body identities are not supplied by the selected register rows. Resolve exact existing evidence by desk review; no global rescan or supplier request.",
+    "Normative units/types, ETF/index domain binding, actual historical availability, CURRENT overlap/non-regression/coherent release and7 RCID defects remain unaccepted. 10-27 P1 staysUNRESOLVED."
+  ],
+  "next_action": "Review the new P4 code/admission boundary and prepare a separate execution-model contract without inventing fills or enabling backtests; desk-bind precise historical calendar bodies from existing inventories. Any native task remains forbidden until separately reviewed and specifically authorized.",
   "notify_user": true,
   "observed_r10_directory_entries": [
     {
@@ -4506,10 +4531,10 @@
     }
   ],
   "last_poll": {
-    "head": "d7b790660f4bdc92c3b3ff6906e7d42a8c5a282f",
-    "at": "2026-11-01T10:40:44.617Z",
-    "new_task_issued": false,
-    "p3_closed": true
+    "head": "06d0196c2e56f918eedf0c26987f7c6288c1e1e5",
+    "at": "2026-11-01T13:37:03.024Z",
+    "new_gpt_offline_work_item": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
+    "new_native_task_issued": false
   },
   "observed_end_to_end_entries": [
     {
@@ -4692,10 +4717,11 @@
   ],
   "latest_owner_constraint": "Explicit owner request to implement/dispatch R5 one-shot staging continuation;150000 new cap and700000 cumulative; no Cleaning/CURRENT/orders. Final acquisition package must await independently bound rules/source semantics, no native invented policies.",
   "findings_this_run": [
-    "Resolved P1 hash scope to all6982 bytes of standalone POLICY_BODY.txt, UTF-8 no BOM, LF-only, exactly one final LF, no normalization or marker extraction.",
-    "Twenty new offline actual-loader/Git attribute checks pass with actual exit0; newline/BOM/wrapping/tamper variants stop without rewriting or re-pinning.",
-    "Added only an exact-path text/eol=lf root attribute. Signed body/hash and closed packages unchanged. No native task, old suite rerun or activation.",
-    "Independent candidate research entry remains conditional on equivalent applicable admission checks; signed section numbers replace obsolete draft rule numbering."
+    "Published requested P4 GPT-offline HUB task and completed code/tests; no desktop command or ACK requested.",
+    "18 final real-candidate tests actual exit0; independent RAW audit actual exit0 compares83588 rows, all11 public values, mandatory state/provenance and independently recomputed times.",
+    "88811 stock candidate rows split83588 presumed/16 dates and5223 unresolved10-27; paused stock172/ETF20/index0. No ETF/index or factor/avg/pre_close exposure.",
+    "Registered RAW/CLEAN historical calendar-layer evidence exists before09-24; inspected records give roots/statistics but no complete P1-admitted frozen-body bytes/hash. No source-absence claim or local scan.",
+    "Interface purpose restricted toOFFLINE_P1_CONSUMER_AUDIT, all rows execution_allowed=false. No native/backtest/research/CURRENT/release/order admission."
   ],
   "observed_sam_handoff_entries": [
     {
@@ -5201,7 +5227,7 @@
     "Source-inspected catchup defaults/window/date-aligned PASS/retry mechanics summarized without claiming historical26 exact failures, live automation, duplicate observations, actual target or supplier absence. No date/EMPTY/exclusion/factor policy delegated.",
     "Both existing child task outboxes and notebook/desktop/parent routes updated and exactly read back. Native outcome/ACK pending; task publication is not actual stop. No new acquisition/data/current/release/order authorization."
   ],
-  "previous_phase": "P3_NATIVE_CONTENT_RECONCILED_DELIVERY_CLOSURE_PENDING",
+  "previous_phase": "P3_ACCEPTED_BOUNDED_NATIVE_CANDIDATE_AND_HANDOFF_GPT_P1_IMPLEMENTATION_PENDING",
   "owner_requested_source_handoff": {
     "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
     "execution_host": "SAM",
@@ -10696,9 +10722,12 @@
       "replay_allowed": false
     },
     "REAL_DATA_P1_CONSUMER": {
-      "status": "NOT_IMPLEMENTED_NOT_ACCEPTED_NOT_ACTIVATED",
-      "supplement_fields": "avg/pre_close remain denied until binding; fixture field list alone is not admission",
-      "execution_guard": "pending reviewed code; select() is not a fill/paused guard"
+      "status": "GPT_OFFLINE_IMPLEMENTED_AND_VALUE_AUDITED_NOT_ACTIVATED",
+      "work_item": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
+      "scope": "Pinned P3 stock-only offline audit interface",
+      "public_fields": "11 source fields; factor/avg/pre_close denied",
+      "execution_guard": "All execution_allowed=false; no fill function; future execution model still separate",
+      "backtest_admission": false
     },
     "labels_are_display_only": true,
     "reviewed_sources": [
@@ -10757,5 +10786,278 @@
     "actual_offline_process_exit": 0,
     "core_autocrlf_true_fixture_byte_equal": true,
     "reviewed_state_blob_sha": "2827c6683b73864ac8050347e68a942a3d2ce4d1"
+  },
+  "gpt_work_item_id": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
+  "p4_real_data_consumer_20261101": {
+    "task_id": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
+    "actor": "GPT_OFFLINE_ONLY",
+    "execution_host": "ZHANGWEI_REFERENCE_ONLY",
+    "status": "GPT_OFFLINE_IMPLEMENTED_VALUE_AUDITED_NOT_ACTIVATED",
+    "source_snapshot": "06d0196c2e56f918eedf0c26987f7c6288c1e1e5",
+    "reviewed_state_blob_sha": "14666616f63bfc5e36a1c01051cc4d0adca1630e",
+    "outbox": {
+      "path": "agents/chatgpt/outbox/BLACKBOX_P4_REAL_DATA_P1_CONSUMER.txt",
+      "blob_sha": "5d4774a6f0262bc3ffffea594bc6661067ab72c0"
+    },
+    "review_root": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/",
+    "files": [
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/CALENDAR_DESK_REVIEW.json",
+        "blob_sha": "4864ef0941ef2fc109f200885dac05c8b5eddc7c"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/CODE_MANIFEST.json",
+        "blob_sha": "fae835c50fa6d031f7d6637d0b253155d0cb62fb"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/DATE_PLAN.json",
+        "blob_sha": "c0abf7a5983109962073fc228f30147c4ebb4b87"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/FINAL_PROCESS.json",
+        "blob_sha": "9d8136585b720e2a36e5560832ab4c0b79cb48a0"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/FINAL_TEST.stderr.txt",
+        "blob_sha": "0eaff48f6f14300186e502e792a095e028aeea5e"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/FINAL_TEST.stdout.txt",
+        "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/INDEPENDENT.stderr.txt",
+        "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/INDEPENDENT.stdout.txt",
+        "blob_sha": "2eb94af4a2403ba68bc9f7b97701a06acc929427"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/INDEPENDENT_AUDIT.json",
+        "blob_sha": "a66e9512b9f47e2baad2fe8d24f96b169f599d73"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/INDEPENDENT_PROCESS.json",
+        "blob_sha": "6c509493604ac99a6bc83a79a12eba2a1288a21d"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/INPUT_PINS.json",
+        "blob_sha": "4ca6696951fc072962b446bec38059be39d06b26"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/PROCESS.json",
+        "blob_sha": "60f4b3e21b5d332b797af7a073bff017be13403d"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/REAL_SCOPE.json",
+        "blob_sha": "e31f2f639edf39dd45feeb86b2458ca286f2d4b2"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/TASK.txt",
+        "blob_sha": "5d4774a6f0262bc3ffffea594bc6661067ab72c0"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/TEST.stderr.txt",
+        "blob_sha": "f95559a55ec524f40f5012c687a5cdcf5606a94b"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/TEST.stdout.txt",
+        "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/independent_audit.py",
+        "blob_sha": "dffe4444b4a47f66006187c14e26544e69831546"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/p4_consumer.py",
+        "blob_sha": "991b4c8b41fdcfbe8b71dbe88be470a69364091e"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/run_final.py",
+        "blob_sha": "1642ffb351c24ffc42d7a7a31f793f98b049d475"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/run_offline.py",
+        "blob_sha": "c8e69985ac2c39b58a18ef1ea5a53fcef156d8b1"
+      },
+      {
+        "path": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/test_p4.py",
+        "blob_sha": "e4c2f8b95a6314484898b1dca69a18a4b6cf5cd0"
+      }
+    ],
+    "final_tests": 18,
+    "final_actual_process_exit": 0,
+    "independent_audit_actual_exit": 0,
+    "scope": {
+      "stock_rows": 88811,
+      "stock_date_counts": {
+        "2026-09-28": 5222,
+        "2026-09-29": 5223,
+        "2026-09-30": 5224,
+        "2026-10-08": 5224,
+        "2026-10-09": 5224,
+        "2026-10-12": 5224,
+        "2026-10-13": 5225,
+        "2026-10-14": 5225,
+        "2026-10-15": 5226,
+        "2026-10-16": 5226,
+        "2026-10-19": 5224,
+        "2026-10-20": 5224,
+        "2026-10-21": 5224,
+        "2026-10-22": 5225,
+        "2026-10-23": 5224,
+        "2026-10-26": 5224,
+        "2026-10-27": 5223
+      },
+      "paused_by_product": {
+        "etf": 20,
+        "index": 0,
+        "stock": 172
+      },
+      "PRESUMED_rows": 83588,
+      "UNRESOLVED_rows": 5223,
+      "resolved_dates": [
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26"
+      ],
+      "unresolved_dates": [
+        "2026-10-27"
+      ],
+      "backtest_admission": false,
+      "execution_allowed": false
+    },
+    "independent_raw_audit": {
+      "audit": "INDEPENDENT_RAW_TO_P4_VALUE_STATE_PROVENANCE_AND_DATETIME",
+      "rows_compared": 83588,
+      "all_public_fields_exact": true,
+      "all_mandatory_states_exact": true,
+      "all_raw_source_positions_exact": true,
+      "all_presumed_times_independently_recomputed": true,
+      "exact_keys_equal": true,
+      "stock_paused_measured": 172,
+      "stock_rows_total": 88811,
+      "stock_dates_returned": 16,
+      "unresolved_stock_rows": 5223,
+      "backtest_run": false,
+      "native_execution": false,
+      "orders_allowed": false
+    },
+    "calendar_desk": {
+      "scope": "GPT_DESK_ONLY_EXISTING_REGISTERED_HUB_EVIDENCE_NO_LOCAL_SCAN",
+      "reviewed_snapshot": "06d0196c2e56f918eedf0c26987f7c6288c1e1e5",
+      "source_records": [
+        {
+          "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json",
+          "blob_sha": "d104f247d4923e1d2debdc71654a1f861e6d6486",
+          "json_path": "datasets[dataset_id=CALENDAR_CN_EXCHANGE]"
+        },
+        {
+          "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/CANDIDATE_CHECKPOINT_BINDINGS.json",
+          "blob_sha": "09aa40afb1375c61ec0d4fc23424301a3c09eb38",
+          "json_path": "blocked_bindings[dataset_id=CALENDAR_CN_EXCHANGE]"
+        }
+      ],
+      "historical_calendar_sources_registered": true,
+      "entries": [
+        {
+          "layer": "RAW",
+          "host_baseline": "Registered ZHANGWEI E: paths in R13 evidence; no new host observation",
+          "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange",
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 66,
+            "n_files_measured": 66,
+            "rows_measured": 241463,
+            "time_column": "calendar_date",
+            "time_role": "CALENDAR_AXIS",
+            "min": "2014-01-01",
+            "max": "2026-08-10",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "calendar_date",
+              "is_trade_day",
+              "previous_trade_date",
+              "next_trade_date"
+            ],
+            "columns_union_n": 14,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          },
+          "whole_original_file_sha256": "NOT_SUPPLIED_BY_THIS_REGISTER_ROW",
+          "full_frozen_day_list": "NOT_PRESENT_IN_THIS_REGISTER_ROW",
+          "admitted_as_P1_calendar": false
+        },
+        {
+          "layer": "CLEAN",
+          "host_baseline": "Registered ZHANGWEI E: paths in R13 evidence; no new host observation",
+          "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
+          "measurement": {
+            "mode": "FULL_FOOTER",
+            "n_files_total": 2,
+            "n_files_measured": 2,
+            "rows_measured": 7725,
+            "time_column": "calendar_date",
+            "time_role": "CALENDAR_AXIS",
+            "min": "2014-01-01",
+            "max": "2026-09-02",
+            "stats_missing_files": 0,
+            "columns_sample": [
+              "calendar_date",
+              "is_trade_day",
+              "previous_trade_date",
+              "next_trade_date",
+              "days_since_previous_trade_day",
+              "days_to_next_trade_day"
+            ],
+            "columns_union_n": 7,
+            "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+          },
+          "whole_original_file_sha256": "NOT_SUPPLIED_BY_THIS_REGISTER_ROW",
+          "full_frozen_day_list": "NOT_PRESENT_IN_THIS_REGISTER_ROW",
+          "admitted_as_P1_calendar": false
+        }
+      ],
+      "registered_r3_bounds": {
+        "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+        "observed_start": "2014-01-02",
+        "observed_end": "2026-09-24",
+        "declared_range": null,
+        "scope_undefined": false,
+        "watermark": {
+          "start": "2014-01-02",
+          "end": "2026-09-24"
+        },
+        "n_files_indexed": 2,
+        "increment_cursor": null,
+        "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+      },
+      "checkpoint_conclusion": "BLOCKED_NO_RETAINED_BATCH refers to writer/cursor evidence, not source absence",
+      "conclusion": "Historical calendar-layer evidence predating2026-09-24 exists in the registers. These selected records provide layer roots, schema/date statistics and HUB blob identities, not a complete P1-admitted immutable calendar-body identity/list. They cannot replace the current frozen914-byte P1 calendar or extend its policy coverage.",
+      "coverage_claim_limit": "Outer min/max footer statistics do not prove a complete sequence or resolve schema/holiday disagreements. No claim that E: lacks another historical calendar. No disk search, supplier call, start-date invention or calendar extrapolation.",
+      "next_step": "Desk-bind an exact existing body/receipt from retained inventories if available; otherwise identify only the precise necessary original body in a separately reviewed read-only handoff. No new broad inventory or execution is authorized by this report."
+    },
+    "native_task_issued": false,
+    "native_command": null,
+    "backtest_admission": false,
+    "research_activation": false,
+    "p1_real_data_activation": false,
+    "supplier_calls": 0,
+    "current_switch_allowed": false,
+    "release_allowed": false,
+    "orders_allowed": false
   }
 }

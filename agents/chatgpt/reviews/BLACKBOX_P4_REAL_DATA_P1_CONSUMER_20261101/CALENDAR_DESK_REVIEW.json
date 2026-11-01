@@ -1,0 +1,93 @@
+{
+  "scope": "GPT_DESK_ONLY_EXISTING_REGISTERED_HUB_EVIDENCE_NO_LOCAL_SCAN",
+  "reviewed_snapshot": "06d0196c2e56f918eedf0c26987f7c6288c1e1e5",
+  "source_records": [
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/DATASET_STATE.json",
+      "blob_sha": "d104f247d4923e1d2debdc71654a1f861e6d6486",
+      "json_path": "datasets[dataset_id=CALENDAR_CN_EXCHANGE]"
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R10/end_to_end_completion/CANDIDATE_CHECKPOINT_BINDINGS.json",
+      "blob_sha": "09aa40afb1375c61ec0d4fc23424301a3c09eb38",
+      "json_path": "blocked_bindings[dataset_id=CALENDAR_CN_EXCHANGE]"
+    }
+  ],
+  "historical_calendar_sources_registered": true,
+  "entries": [
+    {
+      "layer": "RAW",
+      "host_baseline": "Registered ZHANGWEI E: paths in R13 evidence; no new host observation",
+      "root": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange",
+      "measurement": {
+        "mode": "FULL_FOOTER",
+        "n_files_total": 66,
+        "n_files_measured": 66,
+        "rows_measured": 241463,
+        "time_column": "calendar_date",
+        "time_role": "CALENDAR_AXIS",
+        "min": "2014-01-01",
+        "max": "2026-08-10",
+        "stats_missing_files": 0,
+        "columns_sample": [
+          "calendar_date",
+          "is_trade_day",
+          "previous_trade_date",
+          "next_trade_date"
+        ],
+        "columns_union_n": 14,
+        "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+      },
+      "whole_original_file_sha256": "NOT_SUPPLIED_BY_THIS_REGISTER_ROW",
+      "full_frozen_day_list": "NOT_PRESENT_IN_THIS_REGISTER_ROW",
+      "admitted_as_P1_calendar": false
+    },
+    {
+      "layer": "CLEAN",
+      "host_baseline": "Registered ZHANGWEI E: paths in R13 evidence; no new host observation",
+      "root": "E:\\BLACKBOX\\数据\\清洗成品\\releases\\BLACKBOX_FORMAL_CLEANING_R33_FUND_NAV_ASOF_20260924_20260924_200439\\standard\\reference\\calendar_cn_exchange",
+      "measurement": {
+        "mode": "FULL_FOOTER",
+        "n_files_total": 2,
+        "n_files_measured": 2,
+        "rows_measured": 7725,
+        "time_column": "calendar_date",
+        "time_role": "CALENDAR_AXIS",
+        "min": "2014-01-01",
+        "max": "2026-09-02",
+        "stats_missing_files": 0,
+        "columns_sample": [
+          "calendar_date",
+          "is_trade_day",
+          "previous_trade_date",
+          "next_trade_date",
+          "days_since_previous_trade_day",
+          "days_to_next_trade_day"
+        ],
+        "columns_union_n": 7,
+        "range_basis": "FOOTER_MIN_MAX_OUTER_BOUND_NOT_COMPLETENESS"
+      },
+      "whole_original_file_sha256": "NOT_SUPPLIED_BY_THIS_REGISTER_ROW",
+      "full_frozen_day_list": "NOT_PRESENT_IN_THIS_REGISTER_ROW",
+      "admitted_as_P1_calendar": false
+    }
+  ],
+  "registered_r3_bounds": {
+    "coverage_basis": "OBSERVED_PARQUET_TIME_STATISTICS",
+    "observed_start": "2014-01-02",
+    "observed_end": "2026-09-24",
+    "declared_range": null,
+    "scope_undefined": false,
+    "watermark": {
+      "start": "2014-01-02",
+      "end": "2026-09-24"
+    },
+    "n_files_indexed": 2,
+    "increment_cursor": null,
+    "note": "Coverage is the union of per-file time statistics, not filename tokens and not build timestamps. The cursor stays undefined until the updater publishes one."
+  },
+  "checkpoint_conclusion": "BLOCKED_NO_RETAINED_BATCH refers to writer/cursor evidence, not source absence",
+  "conclusion": "Historical calendar-layer evidence predating2026-09-24 exists in the registers. These selected records provide layer roots, schema/date statistics and HUB blob identities, not a complete P1-admitted immutable calendar-body identity/list. They cannot replace the current frozen914-byte P1 calendar or extend its policy coverage.",
+  "coverage_claim_limit": "Outer min/max footer statistics do not prove a complete sequence or resolve schema/holiday disagreements. No claim that E: lacks another historical calendar. No disk search, supplier call, start-date invention or calendar extrapolation.",
+  "next_step": "Desk-bind an exact existing body/receipt from retained inventories if available; otherwise identify only the precise necessary original body in a separately reviewed read-only handoff. No new broad inventory or execution is authorized by this report."
+}
