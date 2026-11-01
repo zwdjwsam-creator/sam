@@ -1,3 +1,17 @@
+# Active: P3 native candidate build; P1/P2 closed, no replay
+
+execution_host: ZHANGWEI
+Task: agents/chatgpt/outbox/BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101.txt
+Package: agents/chatgpt/reviews/BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101/
+Stage PACKAGE.json plus its12 declared payloads only (13 runtime files).
+PACKAGE SHA256 937b37a3e467dce0ba7684bbe33cadf65fb4e339b524eeb2b18c6529e4f51b65 (1930 bytes).
+
+Existing1504 originals only; exact physical-row admission and separate exclusive candidate. No supplier, P1 real-data activation, backtest, CURRENT, release or orders. First check this task's ACK/results/process; do not duplicate, stop or rerun anything. P1/P2 and RAW handoff/acquisition are closed. The full TXT contract specifies prepare ACK/upload/readback, then launch once. Original DATA preflight and all35 fixtures precede E: candidate construction. Return actual receipts and candidate ZIP bytes; read back every upload, then exactly END. Publication is not ACK/execution.
+
+Older headers below are historical and do not reopen closed tasks.
+
+---
+
 # Active: exact existing RAW Parquet body handoff — zero supplier calls
 
 execution_host: ZHANGWEI

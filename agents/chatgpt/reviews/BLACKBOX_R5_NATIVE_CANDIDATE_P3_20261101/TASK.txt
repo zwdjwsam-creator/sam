@@ -1,0 +1,126 @@
+BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101
+Execution host: ZHANGWEI
+Workspace: E:\BLACKBOX
+Status: ISSUED_FOR_ONE_NATIVE_CANDIDATE_BUILD, pending ACK and actual execution
+ORDER_ALLOWED=false
+SUPPLIER_CALLS_ALLOWED=false
+CURRENT_SWITCH_ALLOWED=false
+FORMAL_RELEASE_ALLOWED=false
+BACKTEST_ADMISSION_ALLOWED=false
+P1_REAL_DATA_ACTIVATION_ALLOWED=false
+
+1. Purpose and acceptance boundary
+
+P1 and P2 are accepted and closed. Do not rerun either. Their fixture/handoff acceptance is not real-price Cleaning or engine acceptance. This new task authorizes only the exact P3 implementation below: read existing originals, preserve their admitted values, construct a separate candidate, and return the candidate bytes to GPT for independent review. No old strategy reconstruction is required.
+
+This is candidate Cleaning with explicit semantic mapping, not a certificate of normative dictionary completeness. The existing CSV binds stock_daily keys and twelve required names; avg/pre_close are two additional source fields. Numeric units and normative physical types are not supplied by those CSVs. ETF/index normative product rows are not bound. Report these facts as UNBOUND, not invented defaults. ETF/index output is a native-value audit projection only. No source value, numeric unit, price basis, status, adjustment factor or availability timestamp is inferred or repaired.
+
+P1's owner-approved presumption remains separate. This task builds no P1 sidecar, enables no P1 consumer, and assigns no availability time. Actual historical PIT remains NOT_ESTABLISHED. The existing P1 calendar result remains sixteen PRESUMED dates and 2026-10-27 UNRESOLVED. This task does not extend the calendar or cover later dates. Seven RCID publication defects remain open.
+
+2. Duplicate checks and staging
+
+First read this task, the current review-state active_task_id, existing ACK/results for this task, and any already running instance with the exact launch_p3.py/run_p3.py command line. Check these fixed C: and E: locations only. Do not stop another process. A running/completed instance means preserve it and return/reuse its evidence; no second launch. P1/P2 and completed R5 acquisition are never restarted.
+
+Control root:
+C:\LAN_SHARE_REPORT\BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101
+Package:
+C:\LAN_SHARE_REPORT\BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101\package
+New exclusive candidate:
+E:\BLACKBOX\STAGING\BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101
+
+If candidate, result_001, ACK or any run marker already exists unexpectedly, do not remove, rename, repin or retry it. Report exact existing evidence to GPT. An existing result can be uploaded without executing anything again.
+
+Stage only PACKAGE.json and its twelve declared payloads, unchanged, from:
+agents/chatgpt/reviews/BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101/
+Use the exact publication commit containing this task, record that commit in REPORT, and verify the published PACKAGE.json length/SHA256 listed in REVIEW.md. Do not stage TASK.txt, REVIEW.md or offline audit files inside package. No line-ending conversion, encoding rewrite, dependency installation or code edit. Exact package set is thirteen files. Binary fixture generation occurs only inside the supplied tests; there is no original RAW re-upload or re-encoding.
+
+Runtime is fixed: E:\BLACKBOX\.venv\Scripts\python.exe, Python 3.12.10, pandas 3.0.3, pyarrow 24.0.0, numpy 2.5.4. A mismatch is STOP, not permission to install or upgrade.
+
+3. Read-only inputs and source identity
+
+The authoritative admitted positions are in the ORIGINAL:
+E:\BLACKBOX\STAGING\BLACKBOX_RAW_NONE_INCREMENT_20261027_R5\ADMISSION_R5.json
+Bytes 8282830; SHA256 7b7c471565a29da9a344d3d7eccb3fd6669edef9c0e3e41f6da87de240326e7c.
+
+Original reuse metadata:
+E:\BLACKBOX\STAGING\BLACKBOX_RAW_NONE_INCREMENT_20261027_R5\REUSE_MANIFEST_R5.json
+Bytes 3682285; SHA256 26b7ac093a989b296e64cc3836e7384fa8a0d762858d23d61c8072398ce1c735.
+
+GPT checked the entire original put() helper in acquire_r5.py, blob 498f7b9bc001a68dc544336aa283a985e29163e5: it automatically appends _R5 to stems, so these are also the actual E: original basenames. The call-site literals ADMISSION.json/REUSE_MANIFEST.json alone do not describe the final filenames. Do not create aliases or renamed E: copies.
+
+RAW_TRANSFER_PLAN.json in package pins all 1504 source files. All originals must be at their exact ADMISSION path beneath these three registered source prefixes:
+E:\BLACKBOX\STAGING\BLACKBOX_RAW_NONE_INCREMENT_20261027_R1\
+E:\BLACKBOX\STAGING\BLACKBOX_RAW_NONE_INCREMENT_20261027_R4\
+E:\BLACKBOX\STAGING\BLACKBOX_RAW_NONE_INCREMENT_20261027_R5\
+Read only the exact files enumerated by that plan/admission; no global inventory, fallback cache/layer search, source absence determination or download. Check length/SHA before every decode and reread every original after the build. Symlinks, junctions and reparse components are rejected. Do not copy price originals into C:, another RAW tree or a second upload.
+
+Two exact normative originals, read-only:
+E:\BLACKBOX\数据\原始只读\JQData_reference_dictionary\20_unified_data_schema_contract_freeze_full_R1\02_domain_schema\domain_schema_contract.csv
+4182 bytes; SHA256 6367c574c27b7ddbb7a926e4899f59502f3febc76a4cf2b0092998d275458146.
+E:\BLACKBOX\数据\原始只读\JQData_reference_dictionary\20_unified_data_schema_contract_freeze_full_R1\04_pit_schema\pit_schema_contract.csv
+1490 bytes; SHA256 1e62d187b6417b875f42a9b9b45fc616b3ac1d375c88f6d77116488c783e253b.
+Their package copies are fixture-only. Runtime semantic bindings use the exact E: originals.
+
+Read the applicable existing KERNEL, BOOTSTRAP and DATA_ACCESS must-read bodies and DATA manifest entry. Use original E:\BLACKBOX\脚本\blackbox_must_read_preflight_r1.py (SHA256 3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217) and E:\BLACKBOX\脚本\_base.py (SHA256 b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258). TASK_CLASS=DATA is the existing class already exercised by P1/P2, not a newly invented CLEANING class. The supplied launcher runs this original preflight before tests/data access. Require actual exit 0 and literal MUST_READ_PRECHECK = PASS. Preserve HAND_READ = NOT_SUFFICIENT literally as the original annotation; never rewrite it or reinterpret a nonzero process as PASS.
+
+The four exact CURRENT JSON paths and SHA256 values are embedded in run_p3.py. They are read/rechecked byte-for-byte only. Their accepted baseline declared 2026-09-24; this is not full shard coverage evidence. P3 does not read, merge or stack any CURRENT prices, so no overlap is consumed by a production consumer. Coverage and coherent-generation admission remain separate prerequisites before any future merge.
+
+4. Exact transformations and restrictions
+
+Physical row positions, zero based, control admission. __index_level_0__ never selects a row. Check it against physical order; a mismatch stops for GPT review. No sort, deduplication, silent row suppression, null-to-zero, price fill, paused/status change, rescaling, factor calculation or adjustment is allowed.
+
+Read all fourteen original fields. Preserve ns time/string/double Arrow schema and actual pandas restoration; log physical footer, Arrow schema/metadata digest and pandas dtypes for every source. Retain JQ .XSHG/.XSHE identities; no non-JQ aliases.
+
+For each of the 51 product/date cells, append admitted physical rows in source/admission order to its independent native Parquet. Duplicate product/time/code keys stop, they are not removed. For stock only, create a second reversible view mapping time -> trade_date and code -> symbol. Preserve all fourteen values. Exactly twelve names are normative required fields; avg/pre_close remain identified supplemental fields. The view is not a global rename of an original engine or a formal consumer admission.
+
+The single failed 80-row batch remains locked by original path, 15489 bytes, SHA256 fb1a0ccb4918e6035d7e6a3695d6fbac6cbf9818c3ea2ca01bcf7928b2e8b2c7, physical position 7 and exact null/value pattern. Preserve 600621.XSHG/2026-10-27 separately as quarantine; do not fill prices or change paused=0. Its 79 other positions remain admitted.
+
+Retain the 192 paused=1 rows and measure the OHLC=pre_close/volume=money=0 pattern separately. Those observations are not inferred trades or legal-suspension conclusions. Record other zero-volume rows and all null/factor states. Factor is copied only as RAW_NONE source evidence, never used to derive adjusted prices. The original eight-field consumer projection is audited offline for equality only; its lack of observation/tradability enforcement prevents engine/backtest admission.
+
+Require 117461 input = 117460 output + 1 quarantine; admitted stock 88811, ETF 28530, index 119. Report conservation and observation states per product/date, complete input identities and every output row's source SHA/physical position. Each candidate file is generation-bound. Generation binds exclusive output root, bindings, implementation and the complete runtime PACKAGE.json identity.
+
+5. Prepare ACK, then one execution
+
+Do not run any standalone tests or build commands. There are precisely two authorized new Python invocations, in this order, in the package working directory:
+
+A. Prepare once (no E: price reads or Cleaning):
+& 'E:\BLACKBOX\.venv\Scripts\python.exe' -B -X utf8 'C:\LAN_SHARE_REPORT\BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101\package\prepare_p3.py'
+
+This checks host/runtime and the complete package set and writes PACKAGE_VERIFY.json and ACK.json in the control root. Capture the preparation command's actual process exit and literal streams in REPORT. A nonzero preparation exit stops execution. Upload ACK.json and PACKAGE_VERIFY.json to the return path below and read both back byte-for-byte before invocation B. Task publication is not an ACK, and ACK is not execution proof.
+
+B. Launch once only after that upload/readback:
+& 'E:\BLACKBOX\.venv\Scripts\python.exe' -B -X utf8 'C:\LAN_SHARE_REPORT\BLACKBOX_R5_NATIVE_CANDIDATE_P3_20261101\package\launch_p3.py'
+
+The supplied outer launcher writes OUTER_RUN_ONCE.json outside result/candidate, captures actual inner outer-run exit immediately in OUTER_RUN.json and preserves both raw streams, including empty streams. run_p3.py independently writes RUN_ONCE.json before creating a result or candidate. Removing a result directory does not grant another run.
+
+The fixed order inside B is package/rule/CURRENT pins -> original DATA preflight -> all 35 P3 fixture tests (no skips) -> exact E: originals/semantic binding -> exclusive candidate -> 51 portable full-value cell hashes -> source/CURRENT recheck -> byte-verified ZIP handoff. Both nested exits must actually be zero before candidate construction. The fixture tests may create and remove only their own p3_owned_* temporary children under the new control-root fixtures_001 directory. They do not read E: prices. No native P1/P2 rerun occurs.
+
+Do not replace subprocess exits with booleans, repair a failing test locally, or bypass a guard. Exit 0 means BUILT_VALUE_PRESERVING_CANDIDATE_AWAITING_GPT only. Exit 2 from the P3 body means FAILED_RETAINED_NO_RETRY; other launcher/runtime exceptions or nonzero exits are failures, never mapped to success. Preserve partial E: output and every failed receipt. No automatic execution retries, alternate generation/root, marker deletion or resumed build. If interrupted/still running, do not duplicate or kill it just because a report is late.
+
+6. Candidate and receipt files
+
+Exactly 125 candidate files on success:
+51 native Parquets; 17 stock dictionary Parquets; 51 lineage JSON files; 1 original quarantine Parquet; SOURCES.json, EXCLUSIONS.json, RESULT.json, MANIFEST.json and BUILD_COMPLETE.json.
+The manifest covers 123 payload files; BUILD_COMPLETE binds its final manifest without a self-hash cycle. The build marker is structural candidate evidence, not GPT acceptance. C: P3_RESULT.json and the independent GPT review must agree before any later use.
+
+C: result_001 contains actual preflight/test command receipts with UTC intervals and literal streams; SEMANTIC_BINDINGS.json; PORTABLE_OBSERVED.json; P3_RESULT.json; CANDIDATE_BODY_DELIVERY.json; candidate_part_*.zip; and LOCAL_READBACK.json covering prior result files. No FAILED.json on success. On failure return all C: receipts that actually exist; leave E: partials unchanged and report their exact location, without inventing a finisher/packer.
+
+The supplied packer returns the 125 newly generated candidate files only in ZIP_STORED chunks no larger than 7500000 bytes. No compression/re-encoding of Parquet, no original RAW re-upload. Every member is reread and compared to the E: candidate bytes; receipt hashes and manifest bind the members. Native output Parquet byte equality to Linux is not assumed: 51 metadata-free full-value hashes must match the pinned expected tables. GPT will independently fetch/decode all returned candidate bodies and reconcile source values/lineage again.
+
+7. Transport, allowed writes, return, and closure
+
+Allowed writes are exclusive new package/control/receipts/owned-fixtures under the stated C: root, exclusive new files beneath the stated E: candidate root, and the exact new HUB return prefix. No other E: writes. In particular no originals, old states/seals, CURRENT, HAND, rules, registry, cache, scheduler, watchdog or preserved engine writes. Do not run R15 main/place_file/switch_current/patch_hand, acquire commands, supplier login/probe or strategy/trading entries.
+
+Transport may use the existing GitHub connector or authenticated GitHub Contents/Git Data REST calls with existing local noninteractive authentication. curl.exe is an explicitly allowed transport fallback for these same fixed GitHub endpoints and bodies; do not change a body, use another service, write diagnostic probe objects, create a release, or loosen TLS verification. Downloads must be commit-pinned; GitHub raw readback is allowed at the returned commit. A transport-only retry of the same byte-identical upload/read is allowed at most twice after the first attempt; this never authorizes another native execution. Re-read remote state/SHA before retrying a conflicting GitHub write. If the allowed transport cannot carry an existing archive, stop with exact transport receipts for GPT; do not repartition archives or improvise a new uploader. Never request, display, upload, persist into reports, or hash credentials/secret-derived content. No new credentials or entitlement probes.
+
+Return prefix:
+agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/p3_native_candidate_20261101/
+
+Upload ACK.json, PACKAGE_VERIFY.json, OUTER_RUN_ONCE.json, RUN_ONCE.json when present, OUTER_RUN.json and both OUTER streams when present, all actual result_001 files (including ZIPs and failures), and REPORT.md. REPORT must distinguish actual preparation/launcher/subprocess exits, start/end ordering, source recheck scope, preserved failures, package/publication commit, tasks not executed and exact untouched permissions. Do not claim a global OS/process audit from these targeted byte rechecks. Do not upload fixture scratch or a second package copy.
+
+Create DELIVERY_MANIFEST.json for the preceding returned files (not itself or UPLOAD_READBACK). Re-read every local file and every uploaded file, including zero-byte streams, and compare length/SHA256 and Git blob identity. Create UPLOAD_READBACK.json with these observations, then upload and read that file back too; record its own final byte/hash/blob observation in REPORT or final chat without a self-hash loop. Do not end with an unverified upload.
+
+Finish the Cursor chat with exactly:
+END
+
+GPT review remains pending until independently completed. No caller may reinterpret a wrapper success, full_goal flag, fixture PASS, candidate marker or this task publication as source truth, PIT acceptance, release admission or actual execution acknowledgment.
