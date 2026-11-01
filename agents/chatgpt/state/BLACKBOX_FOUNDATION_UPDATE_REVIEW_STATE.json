@@ -3,8 +3,8 @@
   "repository": "zwdjwsam-creator/sam",
   "branch": "main",
   "execution_host": "ZHANGWEI",
-  "last_reviewed_at": "2026-11-01T13:58:06.796Z",
-  "phase": "P4_OWNER_OFFLINE_REVIEW_ACCEPTED_EXECUTION_MODEL_AND_CALENDAR_DRAFTS_IN_REVIEW",
+  "last_reviewed_at": "2026-11-01T14:19:00Z",
+  "phase": "HISTORICAL_CALENDAR_FREEZE_ISSUED_AWAITING_NATIVE_ACK",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -22,11 +22,15 @@
     "cross_host_current_sync_allowed": false,
     "sam_exact_legacy_watchdog_control_allowed": true,
     "desktop_process_or_task_mutation_allowed": false,
-    "scoped_supplier_calls_authorized": true,
+    "scoped_supplier_calls_authorized": false,
     "conditional_future_publication_owner_authorization": true,
     "local_publication_contract_still_required": true,
     "exact_existing_raw_parquet_hub_transfer_allowed": true,
-    "raw_transfer_scope": "Owner requested dispatch of proposed next task. Exact1504 source plan:1502 new bodies23448612bytes,2existing HUB bodies referenced. No supplier call/E-write/Cleaning/CURRENT; original stay-local restriction amended only for these identified bytes."
+    "raw_transfer_scope": "Owner requested dispatch of proposed next task. Exact1504 source plan:1502 new bodies23448612bytes,2existing HUB bodies referenced. No supplier call/E-write/Cleaning/CURRENT; original stay-local restriction amended only for these identified bytes.",
+    "current_read_only_task": "BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101",
+    "backtest_admission": false,
+    "historical_calendar_read_only_capture": true,
+    "calendar_policy_extension_authorized": false
   },
   "reviewed_source_blobs": [
     {
@@ -4038,6 +4042,156 @@
       "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/LAYER_SEARCH_AND_BINDING_LEDGER.json",
       "blob_sha": "338ee712d355f99aebc705d5bb81686303c0461a",
       "review_scope": "P4 failure semantics / exact historical calendar path desk binding; no source scan or native task."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_EXACT_PATH_ADDENDUM.json",
+      "blob_sha": "21c027f57448629ed792ef3250b8945959f30cd9",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_FREEZE_CONTRACT.json",
+      "blob_sha": "eae197a03b488a9b6a3e24df1d8b27a7cf76639b",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TASK_REVIEW_DRAFT.txt",
+      "blob_sha": "605f4eb37a977c4969b8b3cee66f186f853ddc67",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TEST.stderr.txt",
+      "blob_sha": "0548305e18cac40e7afd10c293fc74d3c34d235f",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TEST.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TEST_PROCESS.json",
+      "blob_sha": "97a30c86006803a3bc15fbfdbf73da7535957dc9",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/EXECUTION_MODEL_DRAFT.txt",
+      "blob_sha": "9eadc9ddc3b9e77157b69005d921baf11503c118",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/P4_FAILURE_SEMANTICS.md",
+      "blob_sha": "28a16f417caa297644737abd204fcf4535b1ed04",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/REVIEW_MANIFEST.json",
+      "blob_sha": "12271685d1d24ca8ee2a0ea32bcae4b9c21ec10b",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/freeze_calendar.py",
+      "blob_sha": "b5f997f28401625dd0366d1dcb9f1a1960ca442b",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/launch_calendar.py",
+      "blob_sha": "0cae0a9688653e0bf17d70b3d5b25680850a9a28",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/test_calendar.py",
+      "blob_sha": "4677c9c5c4df35a392009c64f9b0c76d406c3e47",
+      "review_scope": "Production B code derived from owner-reviewed locked draft; independent source review before dispatch."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/CALENDAR_FREEZE_CONTRACT.json",
+      "blob_sha": "78665083f29e562cc0657b4a298655ce75845d0f",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/EXECUTION_INPUT_BINDING_STATUS.json",
+      "blob_sha": "679f7f679b477401bb85c41b863e942186e57974",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/EXECUTION_MODEL_OWNER_APPROVAL_ADDENDUM.txt",
+      "blob_sha": "41b201d888e1207faa571046d0c1665e846d4cd0",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/OFFLINE_PACKAGE_CHECK.json",
+      "blob_sha": "fd0b9be436fc26aaa23c76b2684cfe621fa7f18a",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/OFFLINE_TEST.stderr.txt",
+      "blob_sha": "b5c461091afe9f732de4311d911bc5465b44bb97",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/OFFLINE_TEST.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/OFFLINE_TEST_PROCESS.json",
+      "blob_sha": "cecd9e5c1f73dc1bac5b9270e6b0a57fa2d8aebd",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/PACKAGE.json",
+      "blob_sha": "9e12eb27278f5f0ebf18fea8fb0020d73ce29613",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/PUBLIC_DOC_ACCESS.json",
+      "blob_sha": "6f60c6e08bfe038dd994a08e0a5d9f40a394039d",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/REVIEW.md",
+      "blob_sha": "12ef784739099b4a0b0bc064917f25e71db52c38",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/RULE_PINS.json",
+      "blob_sha": "541d6413ef087cbf13122a63d1bdbdad897d8a74",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/TASK.txt",
+      "blob_sha": "09020e906ebe386d42b26bb102a0807674f56901",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/freeze_calendar.py",
+      "blob_sha": "ec0d39a833d946ac402f40894407a5e29adac33d",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/launch_calendar.py",
+      "blob_sha": "a22e4b3d743b142675577ab8ede95cd2b6ad5695",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/package_guard.py",
+      "blob_sha": "3dde39cbe49ab063e19f7fdd42e0947f1e9b5524",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/prepare_ack.py",
+      "blob_sha": "17eb0d99659b187fba6e448b50ed2788198d045b",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/test_calendar.py",
+      "blob_sha": "955fb69d3f5e8e5359b88679a6d3061e10a4de40",
+      "review_scope": "Authored and desk-reviewed production calendar contract/code/tests/addendum; GPT Linux25/25 exit0, native pending."
+    },
+    {
+      "path": "agents/chatgpt/inbox/INBOX_FOR_CHATGPT.md",
+      "blob_sha": "f71a852ca705325cdd27a67496dbf5c89d7cdb23",
+      "review_scope": "Latest pointer rechecked; no new source report or replay allowance."
     }
   ],
   "observed_r10_capture_blobs": [
@@ -4355,16 +4509,30 @@
       "native_execution_allowed": false,
       "ack_status": "NOT_APPLICABLE_NO_NATIVE_TASK",
       "latest_review": "agents/chatgpt/reviews/BLACKBOX_P4_REAL_DATA_P1_CONSUMER_20261101/CODE_MANIFEST.json"
+    },
+    {
+      "task_id": "BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101",
+      "execution_host": "ZHANGWEI",
+      "path": "agents/chatgpt/outbox/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101.txt",
+      "task_blob_sha": "09020e906ebe386d42b26bb102a0807674f56901",
+      "ack_status": "NOT_OBSERVED",
+      "outcome": "ISSUED_PENDING_NATIVE_SINGLE_RUN",
+      "return_path": "agents/chatgpt/inbox/BLACKBOX_HISTORY_CALENDAR_FREEZE_20261101/ZHANGWEI/",
+      "replay_allowed": false,
+      "supplier_calls_allowed": false,
+      "backtest_admission": false
     }
   ],
-  "issued_task_ids_this_run": [],
-  "pending_outcomes": [
-    "A awaits owner review/approval of the concrete execution model, stale-position valuation and hypothetical fee/quantity/slippage parameters. Approving the design alone will not activate backtests.",
-    "B awaits HUB code/contract/receipt review. Only after that review may GPT issue a separately pinned single-run native task; draft entrypoints currently reject. Do not start local work from a reviews path.",
-    "The exact calendar remains an old registered observation until a later approved freeze returns actual bytes/full SHA/date sequence for GPT audit. No P1 calendar extension or10-27 successor inference.",
-    "Research/backtest, current-shard non-regression/coherent release and7 RCID defects remain unaccepted. ORDER_ALLOWED=false."
+  "issued_task_ids_this_run": [
+    "BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101"
   ],
-  "next_action": "Review A with owner and B in HUB; preserve draft-only status. After B review, prepare the complete concrete native dispatch under the existing conditional read-only authorization. No additional signature or broad scan is requested.",
+  "pending_outcomes": [
+    "B: native ACK upload/readback, original DATA preflight,25 unchanged fixture tests, one exact-calendar observation and all literal command/source/rule/byte receipts, then independent GPT review.",
+    "GPT: compare calendar physical schema/source full identity/sequence/count/order/range, overlap09-24 and successor09-28 with separately pinned P1 calendar. No automatic coverage extension;10-27 remains UNRESOLVED.",
+    "A: complete identified volume/money unit and dated lot/tick/security/event evidence bindings before fill-model implementation; report event unknowns rather than assuming none. Fee base is modeled executed consideration.",
+    "Owner separate approval remains necessary for policy calendar extension and any later concrete backtest admission. CURRENT/release/non-regression and7 RCID defects remain unaccepted; ORDER_ALLOWED=false."
+  ],
+  "next_action": "Await same-task B native evidence without duplicate execution; continue A exact input binding desk work only. Review B returned frozen sequence before proposing any policy extension.",
   "notify_user": true,
   "observed_r10_directory_entries": [
     {
@@ -4731,13 +4899,12 @@
     "1098 price calls+16 dated universe calls=1114; summed measured quota170538, plus prior5320=175858 cumulative of700000. Newly fetched86948 includes rejected80; accepted new86868 plus retained80. Last day43fetched vs42accepted/3360rows;23batches unrequested. ETF/index NOT_ATTEMPTED.",
     "Exact failed15489-byte batch fb1a0ccb... has not been uploaded; native report identifies600621 paused0/nullOHL/close14.9/zero volume-money. No fill or code-policy relaxation. GPT exact-body helper5 offline controls pass; one precise read-only source handoff published, not R5 acquisition."
   ],
-  "latest_owner_constraint": "Explicit owner request to implement/dispatch R5 one-shot staging continuation;150000 new cap and700000 cumulative; no Cleaning/CURRENT/orders. Final acquisition package must await independently bound rules/source semantics, no native invented policies.",
+  "latest_owner_constraint": "A1-A4 execution-model design approved for16-date smoke scope only, pending units/security/date/corporate-action bindings; B exact historical calendar freeze approved for formal single-run dispatch. Research/backtest,CURRENT/release and orders remain closed.",
   "findings_this_run": [
-    "Owner approved P4 offline review, while maintaining no backtest/CURRENT/release/order permission.",
-    "Actual P4 null/missing-state behavior is whole-call rejection, no partial outputs; missing_price never true on successful output. No P4 code change.",
-    "A: drafted explicit future execution model including execution-day limits, non-fills, suspension valuation and fee/slippage assumptions, pending owner approval.",
-    "B: exact original calendar located from already registered R07 ledger L01 beneath P4 RAW root; no scan or schema/path invention. Code/outer capture/receipt draft and18 synthetic controls actual exit0 published only in reviews; no outbox/native command.",
-    "Neither draft has been activated; no original/source/CURRENT file changed or supplier call made."
+    "Owner A design and B dispatch review incorporated without opening backtests. B DATA class/dependencies verified in actual original manifest; single exact historical path and registered16hex prefix preserved.",
+    "Production adds package/host/rule/empty-fixture-directory receipt rejection checks; actual25 fixture tests and separate complete8-file package identity check passed on GPT Linux. Windows behavior is not yet observed.",
+    "Actual P3 stock scope88811rows/5227distinct codes; XSHG39425rows,XSHE49386rows; no other admitted namespace. Units/date rules/events remain unestablished; public JQ docs region-blocked, no workaround attempted.",
+    "Official SSE2026 notice confirms09-25..27 holiday and09-28 reopening, consistent with frozen P1 sequence; no weekday assumption or local source edits."
   ],
   "observed_sam_handoff_entries": [
     {
@@ -5243,7 +5410,7 @@
     "Source-inspected catchup defaults/window/date-aligned PASS/retry mechanics summarized without claiming historical26 exact failures, live automation, duplicate observations, actual target or supplier absence. No date/EMPTY/exclusion/factor policy delegated.",
     "Both existing child task outboxes and notebook/desktop/parent routes updated and exactly read back. Native outcome/ACK pending; task publication is not actual stop. No new acquisition/data/current/release/order authorization."
   ],
-  "previous_phase": "P4_GPT_OFFLINE_CONSUMER_IMPLEMENTED_VALUE_AUDITED_NOT_ACTIVATED",
+  "previous_phase": "P4_OWNER_OFFLINE_REVIEW_ACCEPTED_EXECUTION_MODEL_AND_CALENDAR_DRAFTS_IN_REVIEW",
   "owner_requested_source_handoff": {
     "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
     "execution_host": "SAM",
@@ -9432,7 +9599,7 @@
     "bytes": 38242,
     "classification": "CONSOLIDATED_REPORT_NOT_EXECUTION_AUTHORIZATION"
   },
-  "active_task_id": null,
+  "active_task_id": "BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101",
   "raw_parquet_handoff_dispatch": {
     "task_id": "BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028",
     "parent_task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
@@ -10803,7 +10970,7 @@
     "core_autocrlf_true_fixture_byte_equal": true,
     "reviewed_state_blob_sha": "2827c6683b73864ac8050347e68a942a3d2ce4d1"
   },
-  "gpt_work_item_id": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
+  "gpt_work_item_id": "A_MODEL_INPUT_BINDINGS_DESK_ONLY",
   "p4_real_data_consumer_20261101": {
     "task_id": "BLACKBOX_P4_REAL_DATA_P1_CONSUMER",
     "actor": "GPT_OFFLINE_ONLY",
@@ -11094,12 +11261,31 @@
     "fee_numbers_are": "PROPOSED_FIXED_HYPOTHETICAL_SCENARIO_NOT_REAL_STATUTORY_RATES",
     "native_command": null,
     "backtest_admission": false,
-    "orders_allowed": false
+    "orders_allowed": false,
+    "owner_approval": {
+      "status": "DESIGN_APPROVED_FOR16_DATE_SMOKE_ONLY",
+      "approved": [
+        "daily-open approximation/5bp per side",
+        "0.5% prior-visible volume cap conditional on units",
+        "stale holding valuation/NAV_UNRESOLVED",
+        "hypothetical fixed fee scenario"
+      ],
+      "fee_base": "executed quantity times modeled price including slippage",
+      "remaining_blockers": [
+        "dated security lot/tick/sell rules",
+        "precise volume/money unit source binding",
+        "dated corporate-action event evidence"
+      ],
+      "implementation_activated": false,
+      "backtest_admission": false,
+      "orders_allowed": false,
+      "addendum": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/EXECUTION_MODEL_OWNER_APPROVAL_ADDENDUM.txt"
+    }
   },
   "historical_calendar_freeze_review_20261101": {
-    "status": "DRAFT_HUB_REVIEW_ONLY_NOT_DISPATCHED",
-    "path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_TASK_REVIEW_DRAFT.txt",
-    "contract_path": "agents/chatgpt/reviews/BLACKBOX_EXECUTION_AND_CALENDAR_REVIEW_20261101/CALENDAR_FREEZE_CONTRACT.json",
+    "status": "FORMAL_DISPATCH_ISSUED_AWAITING_ACK",
+    "path": "agents/chatgpt/outbox/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101.txt",
+    "contract_path": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/CALENDAR_FREEZE_CONTRACT.json",
     "source_path": "E:\\BLACKBOX\\数据\\原始只读\\JQData_9999_official_raw\\P0_meta\\calendar_cn_exchange\\calendar_cn_exchange_v2_asof_20260924\\CALENDAR_TRADE_DAYS.parquet",
     "source_evidence": {
       "path": "agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/LAYER_SEARCH_AND_BINDING_LEDGER.json",
@@ -11111,15 +11297,25 @@
     "source_data_files_allowed": 1,
     "source_directory_enumeration_allowed": false,
     "original_body_copy_allowed": false,
-    "native_command": null,
-    "offline_tests": 18,
+    "native_command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -B -X utf8 C:\\LAN_SHARE_REPORT\\BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101_PACKAGE\\package\\launch_calendar.py",
+    "offline_tests": 25,
     "actual_offline_exit": 0,
     "tests_read_E": false,
-    "entrypoints_locked_by_draft_status": true,
+    "entrypoints_locked_by_draft_status": false,
     "native_execution_observed": false,
     "source_data_reads_after_dispatch": "One exact original only; original pinned DATA preflight/rule dependencies separately declared for review",
     "calendar_policy_activation": false,
-    "orders_allowed": false
+    "orders_allowed": false,
+    "task_id": "BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101",
+    "source_review_root": "agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/",
+    "production_guards": "Fixed package/ACK/host/runtime/rules and two exclusive persistent run roots; no replay",
+    "native_ack_observed": false,
+    "package_sha256": "0c2959a70c8d2c4e6db78143dd525ec1b46e246c6fa3ac5a9fedd579519782ec",
+    "package_bytes": 1267,
+    "runtime_files": 8,
+    "return_path": "agents/chatgpt/inbox/BLACKBOX_HISTORY_CALENDAR_FREEZE_20261101/ZHANGWEI/",
+    "reviewed_state_blob_sha": "16bf616b8933e6cc2c10a5cbecdf74b6933d0399",
+    "source_snapshot": "7cde25187428957f372e9a80d8967d660b53c9f3"
   },
   "reviewed_ab_artifacts_20261101": [
     {

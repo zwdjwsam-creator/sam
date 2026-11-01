@@ -1,3 +1,20 @@
+# Active: exact historical calendar observation, single run only
+
+execution_host: ZHANGWEI
+task_id: BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101
+Task: agents/chatgpt/outbox/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101.txt
+Reviewed package: agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/
+Stage only PACKAGE.json and seven declared payloads (eight runtime files).
+PACKAGE SHA256 0c2959a70c8d2c4e6db78143dd525ec1b46e246c6fa3ac5a9fedd579519782ec (1267 bytes).
+
+Owner reviewed and approved B. One exact R07-registered historical calendar only, six pinned operational files, DATA preflight then25 native fixtures then read-only freeze. No scan, supplier, price data, original-body copy, policy/calendar replacement, Cleaning, research/backtest, CURRENT/HAND/watchdog, release or orders. ORDER_ALLOWED=false. A execution-model design approval supplies no local command.
+
+First check same-task ACK/results/process; do not stop, duplicate or rerun existing work. Upload/read back ACK before the single launch command. Keep both persistent run roots and every failed/empty outcome. Upload all exact results and independently byte-read back every file, including the final receipt, before ending Cursor chat with exactly END. Native execution and GPT acceptance remain pending; task publication is neither ACK nor execution. P1/P2/P3 and prior acquisition/handoff remain closed with no replay.
+
+Earlier route headers below are historical and confer no new execution allowance.
+
+---
+
 # P4 is GPT offline work only; no active native task
 
 Work item: agents/chatgpt/outbox/BLACKBOX_P4_REAL_DATA_P1_CONSUMER.txt

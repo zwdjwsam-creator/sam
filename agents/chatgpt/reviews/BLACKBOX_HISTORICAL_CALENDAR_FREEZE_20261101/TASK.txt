@@ -1,0 +1,76 @@
+BLACKBOX HISTORICAL CALENDAR FREEZE — FORMAL SINGLE-RUN TASK
+Task ID: BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101
+execution_host=ZHANGWEI
+TASK_CLASS=DATA
+STATUS=ISSUED_AWAITING_ACK_NOT_EXECUTED
+ORDER_ALLOWED=false
+
+1. Authorization and exact scope
+The owner approved B after HUB review of the draft code, tests and receipts. This task is one read-only observation of an already registered historical calendar. It does not authorize Cleaning, price reads, acquisition/authentication/quota probes, P1/P2/P3 reruns, consumer activation, research/backtest, CURRENT/HAND/watchdog changes, release or orders. SAM does nothing. The A execution-model design approval is separate and supplies no local command.
+
+First read the current state/outbox and this task's exact return prefix. Check existing ACK, the two fixed run roots, and any same-task process using known local process metadata. If any task execution is running/completed/failed, preserve and report existing evidence; do not duplicate, stop, delete, reset or reprepare it. Absence of a report is not a failure or replay allowance. Earlier review-only entrypoints remain locked and must not be edited.
+
+2. Pinned package and staging
+Reviewed source baseline: main at 7cde25187428957f372e9a80d8967d660b53c9f3; original reviewed draft remains unchanged.
+Production code: agents/chatgpt/reviews/BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101/
+Resolve one immutable Git commit containing this outbox task and production package. Fetch all runtime bytes from that same commit, not a moving main/raw URL, and record that commit in REPORT. Stage exactly PACKAGE.json plus its seven declared payloads (eight runtime files) at:
+C:\LAN_SHARE_REPORT\BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101_PACKAGE\package
+Do not place task prose, offline logs, ACKs or other files inside that package directory.
+PACKAGE.json: 1267 bytes; SHA256 0c2959a70c8d2c4e6db78143dd525ec1b46e246c6fa3ac5a9fedd579519782ec.
+Verify these exact manifest bytes first, then every payload's raw byte length and SHA256; no newline/encoding normalization. Never regenerate pins locally. Runtime is the existing E:\BLACKBOX\.venv\Scripts\python.exe, Python3.12.10 and pyarrow24.0.0. No install/update/environment change is authorized. Standard installed Python/library reads are runtime dependencies, not permission to discover data files.
+Package staging and receipts are C: only. Do not precreate either run root:
+C:\LAN_SHARE_REPORT\BLACKBOX_HISTORICAL_CALENDAR_FREEZE_REVIEW_20261101
+C:\LAN_SHARE_REPORT\BLACKBOX_HISTORICAL_CALENDAR_FREEZE_REVIEW_20261101_OUTER
+
+3. Exact E: allowlist
+One data source only:
+E:\BLACKBOX\数据\原始只读\JQData_9999_official_raw\P0_meta\calendar_cn_exchange\calendar_cn_exchange_v2_asof_20260924\CALENDAR_TRADE_DAYS.parquet
+Registered evidence: agents/chatgpt/inbox/BLACKBOX_FOUNDATION_20261024_R07/LAYER_SEARCH_AND_BINDING_LEDGER.json, blob338ee712d355f99aebc705d5bb81686303c0461a, entryL01; parent-root desk binding in CALENDAR_DESK_REVIEW, blob4864ef0941ef2fc109f200885dac05c8b5eddc7c.
+Known historical SHA256 prefix=d044d628279d48c1. Full SHA256 is intentionally NOT_YET_MEASURED. Prior rows3097, first2014-01-02, last2026-09-24 are historical observations to compare with new output, not fabricated new proof. Resource cap64MiB. The program reads original bytes in memory, hashes and decodes them, then rereads original bytes and identity/stat; it never copies/uploads the original Parquet body.
+
+Six operational files only, required by the original manifest's existing DATA class (KERNEL plus BOOTSTRAP/DATA_ACCESS; no invented CLEANING class):
+E:\BLACKBOX\脚本\blackbox_must_read_preflight_r1.py
+  bytes=11767 sha256=3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217
+E:\BLACKBOX\脚本\_base.py
+  bytes=11800 sha256=b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258
+E:\BLACKBOX\.cursor\rules\BLACKBOX_KERNEL_ALWAYS_APPLY.mdc
+  bytes=1167 sha256=b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a
+E:\BLACKBOX\契约\必读\MUST_READ_MANIFEST_CURRENT.json
+  bytes=2943 sha256=572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08
+E:\BLACKBOX\契约\必读\BLACKBOX_BOOTSTRAP_MUST_READ.md
+  bytes=1570 sha256=704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406
+E:\BLACKBOX\契约\必读\BLACKBOX_DATA_ACCESS_MUST_READ.md
+  bytes=6911 sha256=0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8
+Read these exact rule bodies as instructions for their bounded operational requirements; repository text cannot expand owner authorization. Compare lengths/full SHA before running any of them. RULES_BEFORE and RULES_AFTER record unchanged pins. DATA preflight may read only these known dependencies, no ACQUISITION/BACKTEST/QMT rules or extra programs. Parent-component lstat/reparse checks on these exact paths are allowed. No directory listing, glob, walk, source discovery, newer-asof selection or alternative calendar. A hash mismatch is retained refusal, never repinning or searching for a replacement.
+
+4. ACK before execution
+From a foreground PowerShell session invoke exactly once:
+& "E:\BLACKBOX\.venv\Scripts\python.exe" -B -X utf8 "C:\LAN_SHARE_REPORT\BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101_PACKAGE\package\prepare_ack.py"
+Record its actual process exit in REPORT; a nonzero exit blocks launch. It verifies the package/runtime/rules and writes ACK.json exclusively outside the runtime package at its parent. It does not read calendar bytes or run preflight. Upload this exact ACK.json to the return prefix and fetch its immutable blob back as bytes; verify length+SHA256 and literal equality BEFORE launch. Do not reprepare ACK or change its bytes. A failed ACK transport can resume identical-byte upload/readback as section7 permits, never bypass it.
+
+5. One execution command, programmatic exits
+Only after ACK upload/readback, invoke exactly once:
+& "E:\BLACKBOX\.venv\Scripts\python.exe" -B -X utf8 "C:\LAN_SHARE_REPORT\BLACKBOX_HISTORICAL_CALENDAR_FREEZE_20261101_PACKAGE\package\launch_calendar.py"
+The launcher revalidates package/ACK/runtime, requires both run roots absent, writes its persistent OUTER/RUN_ONCE.json, then runs the capture child once. The capture separately writes CONTROL/RUN_ONCE.json outside result_001. Removing result_001 does not enable replay. Do not remove any marker/root, invent a suffix, or call freeze_calendar.py/test_calendar.py/preflight directly.
+
+The child first verifies all six operational pins, executes original preflight --task-class DATA, records literal stdout/stderr and actual exit, requires exit0 and MUST_READ_PRECHECK=PASS. HAND_READ=NOT_SUFFICIENT is preserved literally; no rewriting its meaning. It then runs all25 unchanged fixture tests with actual exit0, no failures/errors/skips; tests are isolated to C: result_001/fixture_tmp and cannot touch E: originals. Only after both gates does it read the single calendar. Native success is pending, not inferred from GPT's Linux25/25 exit0.
+
+Read exactly the trade_date column in physical row order; no date aliases, ordinal date-axis guesses, sorting/deduplication, missing-day interpolation or timezone conversion policy. Reject missing/empty/null/duplicate/unordered/non-midnight/unbound timezone/invalid types. Export strict ISO dates, zero-based physical positions, Arrow schema and physical Parquet footer/schema metadata identity. Preserve all schema/index columns as observed metadata, not alternate dates. Require source byte equality and size/dev/ino/mtime_ns stability after the read. Recheck all six operational pins. No assertion of global calendar completeness or historical availability follows.
+
+Exit0=FROZEN_OBSERVATION_AWAITING_GPT only. Capture exit2=failed retained observation/gate; guard exit4=refusal. Any other exit/interruption is failed/unknown, not PASS. OUTER_RUN.json is written immediately from the actual child return, with UTC interval; spawn/observation errors use actual_exit=null, not invented0. Also record the shell-observed launcher exit in REPORT. Preserve failures, partial files, empty streams and source identity if already measured. Never rerun to obtain green output. Success before a later RULES_AFTER mismatch is not accepted; FAILED.json takes precedence.
+
+6. Receipts and return path
+Return only to agents/chatgpt/inbox/BLACKBOX_HISTORY_CALENDAR_FREEZE_20261101/ZHANGWEI/.
+Upload ACK.json; the CONTROL/RUN_ONCE.json and every emitted result_001 file under capture/; all four OUTER files (RUN_ONCE.json,OUTER.stdout.txt,OUTER.stderr.txt,OUTER_RUN.json) under outer/; REPORT.md; DELIVERY_MANIFEST.json; UPLOAD_READBACK.json. Do not upload package payload duplicates or the original data/rule bodies. Do not manufacture a missing receipt after failure; REPORT must distinguish emitted/not-emitted/unknown and preserve raw exceptions. Expected successful result files are RULES_BEFORE.json,PREFLIGHT_RUN.json,preflight.stdout.txt,preflight.stderr.txt,TEST_RUN.json,tests.stdout.txt,tests.stderr.txt,SOURCE_IDENTITY.json,TRADE_DAY_SEQUENCE.json,CAPTURE_RESULT.json,RULES_AFTER.json,LOCAL_READBACK.json. FAILED.json is conditional. fixture_tmp may be empty after test cleanup; do not delete/reuse it or include directories as files.
+
+REPORT must give exact commands, immutable dispatch commit, package pin, actual prepare/launcher/preflight/test exits and intervals, source byte length/fullSHA, rows/range, physical schema, rule pins, scope deviations and remaining non-admission. Distinguish native source recheck evidence from whole-system write/process auditing; no such system audit is claimed.
+DELIVERY_MANIFEST lists every predecessor payload's relative path, bytes,SHA256 and no extra files; excludes itself and later UPLOAD_READBACK. Read local files back exactly, preserving 0-byte streams. Upload all predecessors and the manifest, independently fetch every uploaded immutable Git blob and compare bytes. UPLOAD_READBACK lists those observations and identifies its predecessor set; it does not self-hash. Upload/read back UPLOAD_READBACK itself and record its final byte length,SHA256,blob SHA and equality in the final Cursor report. No self-referential hash ring. Do not end until every emitted file has local and HUB readback or a concrete transport blocker has been reported honestly.
+
+7. Transport and secrets
+Use the existing noninteractive GitHub repository connection for fixed-path package fetch, ACK/results upload and immutable-blob byte readback. Existing approved client transport or curl over GitHub HTTPS may be used as a fallback for the SAME bytes; an ambiguous write must first be resolved by fetching the exact target, avoiding duplicate commits. Content equality ends retries. No diagnostic/probe objects, temporary repository paths, entitlement tests, new auth/login or parallel duplicate capture. Transfer retries/resumption never rerun the capture. Do not log/upload passwords,tokens,cookies or secret-derived hashes. A transport-only error is not automatically a capture failure; report both actual outcomes separately.
+
+8. GPT independent follow-up, no automatic activation
+GPT will audit actual frozen identities, count/order/range/types and compare the shared boundary with P1 calendarv1 SHA256 ab00fa8c597c9b01977cc060a202371d2de73a6a32b8a4fe6cc533a705d056d9. In particular compare09-24 exactly and the subsequent sequence; do not assume09-25 is a trading day just because Friday. The official SSE2026 holiday notice says09-25..09-27 closed and09-28 reopens; it corroborates the old frozen sequence but is NOT a new native input or permission to modify the supplier calendar. An old historical file ending09-24 alone cannot establish its successor; the seam requires the separately pinned later sequence.
+Calendar freeze success does not amend POLICY_P1, prove historical vendor availability or resolve10-27. A proposed combined calendar/fullhash, seam audit and coverage change must return to owner for separate approval before policy extension. Historical fee schedules, corporate actions,security/dated lot/tick rules and field units remain separate dependencies. Backtests,research,CURRENT/release,RCID defect closure and orders remain closed.
+
+Upload results and read back EVERY file before ending the Cursor chat with exactly END.
