@@ -1,0 +1,103 @@
+{
+  "status": "REVIEW_ONLY_NOT_AUTHORIZED_FOR_NATIVE_EXECUTION",
+  "execution_actor": "GPT_DESK_ONLY",
+  "execution_host": "ZHANGWEI_REFERENCE_ONLY",
+  "local_command": null,
+  "backtest_admission": false,
+  "calendar_extension": false,
+  "orders_allowed": false,
+  "approval_status": "PROPOSED_PENDING_OWNER_REVIEW_NOT_APPROVED",
+  "is_security_by_date_master": false,
+  "window": {
+    "data_first": "2026-09-28",
+    "data_last": "2026-10-26",
+    "prospective_execution_last": "2026-10-27"
+  },
+  "profiles": [
+    {
+      "profile_id": "SMOKE_SSE_MAIN",
+      "model_code_patterns": [
+        "600*.XSHG",
+        "601*.XSHG",
+        "603*.XSHG",
+        "605*.XSHG"
+      ],
+      "buy_min": 100,
+      "buy_increment": 100,
+      "sell_policy": "100-share blocks; a residual odd part may be sold in one order, never split",
+      "quote_tick_CNY": "0.01"
+    },
+    {
+      "profile_id": "SMOKE_SZSE_MAIN",
+      "model_code_patterns": [
+        "000*.XSHE",
+        "001*.XSHE",
+        "002*.XSHE",
+        "003*.XSHE"
+      ],
+      "buy_min": 100,
+      "buy_increment": 100,
+      "sell_policy": "100-share blocks; a residual odd part may be sold in one order, never split",
+      "quote_tick_CNY": "0.01"
+    },
+    {
+      "profile_id": "SMOKE_CHINEXT",
+      "model_code_patterns": [
+        "300*.XSHE",
+        "301*.XSHE"
+      ],
+      "exact_exception": [
+        "302132.XSHE"
+      ],
+      "buy_min": 100,
+      "buy_increment": 100,
+      "sell_policy": "100-share blocks; a residual odd part may be sold in one order, never split",
+      "quote_tick_CNY": "0.01"
+    },
+    {
+      "profile_id": "SMOKE_STAR",
+      "model_code_patterns": [
+        "688*.XSHG"
+      ],
+      "buy_min": 200,
+      "buy_increment": 1,
+      "sell_policy": "Minimum200 and increment1; settled holding below200 may only be sold in full",
+      "quote_tick_CNY": "0.01"
+    }
+  ],
+  "profile_counts": {
+    "SMOKE_SZSE_MAIN": 1495,
+    "SMOKE_CHINEXT": 1412,
+    "SMOKE_SSE_MAIN": 1702,
+    "SMOKE_STAR": 617,
+    "HOLD_CDR_UNIT_AND_POLICY_SCOPE": 1
+  },
+  "profile_rows_16dates": {
+    "SMOKE_SZSE_MAIN": 23916,
+    "SMOKE_CHINEXT": 22564,
+    "SMOKE_SSE_MAIN": 27220,
+    "SMOKE_STAR": 9872,
+    "HOLD_CDR_UNIT_AND_POLICY_SCOPE": 16
+  },
+  "all_5227_codes_model_routed": false,
+  "new_or_unknown_code_action": "BLOCK_UNMAPPED_SECURITY_NO_ALIAS_OR_PREFIX_GUESS",
+  "common_max_order_shares": 10000,
+  "max_order_is_synthetic_cap_not_exchange_maximum": true,
+  "quantity_adjustment": "Reject invalid requested quantity; do not silently round/clip the order. Approved cap0.5% remains conditional on units.",
+  "proposed_price_rounding": "After5bp adverse slippage, round upward for buys/downward for sells to0.01CNY using Decimal, record effective slippage, then recheck actual T+1 bands. This is a new smoke-model convention submitted for review, not part of the prior design approval.",
+  "source_code_rewrite_allowed": false,
+  "BSE_profile": null,
+  "BSE_in_admitted_namespaces": false,
+  "302132_exception_source": "Issuer2025-027 notice: code becomes302132 on2025-02-17, and2025-051 notice identifies ChiNext listing rules; original identifier remains302132.XSHE. No300114/302132 data merge is proposed.",
+  "activation_rule": "Even owner approval of these assumptions would not bind unknown units/events or activate a run; a later tested, reviewed execution contract is required.",
+  "blocked_exact_identifiers": [
+    {
+      "code": "689009.XSHG",
+      "reason": "HOLD_CDR_UNIT_AND_POLICY_SCOPE"
+    }
+  ],
+  "all_5227_codes_explicitly_accounted_for_including_hold": true,
+  "CDR_admitted": false,
+  "CDR_rows_preserved_in_candidate": 17,
+  "CDR_rows_in16_day_scope": 16
+}

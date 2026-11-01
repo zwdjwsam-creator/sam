@@ -1,0 +1,150 @@
+{
+  "status": "REVIEW_ONLY_NOT_AUTHORIZED_FOR_NATIVE_EXECUTION",
+  "execution_actor": "GPT_DESK_ONLY",
+  "execution_host": "ZHANGWEI_REFERENCE_ONLY",
+  "local_command": null,
+  "backtest_admission": false,
+  "calendar_extension": false,
+  "orders_allowed": false,
+  "binding_status": "NOT_ESTABLISHED",
+  "supplier": "JQData",
+  "callable": "get_price",
+  "product": "stock daily fq=None / RAW_NONE",
+  "source_generation": "P3_R5_C0C7EB71218FB8EE679D8D9727D99A45E829FC1E765359B2ED7BAD3CA146DF9B",
+  "candidate_mapping_only": {
+    "volume": {
+      "canonical": "traded_share_count",
+      "proposed_unit": "share for ordinary A shares only; CDR unit unresolved",
+      "proposed_multiplier": 1,
+      "usable_for_sizing": false
+    },
+    "money": {
+      "canonical": "turnover_amount",
+      "proposed_unit": "CNY",
+      "proposed_multiplier": 1,
+      "usable_for_cash_or_fees": false
+    }
+  },
+  "dictionary_evidence": [
+    {
+      "canonical_id": "JQFD-0019",
+      "jq_field_name": "volume",
+      "jq_api_or_domain": "get_price(fields=...)",
+      "official_meaning": "volume",
+      "official_unit": "",
+      "official_frequency_scope": "daily,1m,5m,15m,30m,60m",
+      "official_asset_scope": "stock",
+      "official_default_behavior": "",
+      "local_canonical_name": "volume",
+      "local_canonical_domain": "stock_limit_pause_status",
+      "source_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\jqdata_rule_library_current\\field_dictionary\\jqdata_field_dictionary_CURRENT.csv",
+      "source_hash": "sha256:7599640e56e1701ce6a6abb952e567174a6fde77ce02ed57bbf055b7dfadddd8",
+      "evidence_excerpt": "stock_limit_pause_status|get_price(fields=...)|volume|volume",
+      "canonical_status": "JQ_OFFICIAL_CANONICAL",
+      "source_trace_status": "traced",
+      "rule_library_active": true,
+      "formal_backtest_active": false,
+      "notes": ""
+    },
+    {
+      "canonical_id": "JQFD-0020",
+      "jq_field_name": "money",
+      "jq_api_or_domain": "get_price(fields=...)",
+      "official_meaning": "money",
+      "official_unit": "",
+      "official_frequency_scope": "daily,1m,5m,15m,30m,60m",
+      "official_asset_scope": "stock",
+      "official_default_behavior": "",
+      "local_canonical_name": "turnover_amount",
+      "local_canonical_domain": "stock_limit_pause_status",
+      "source_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\jqdata_rule_library_current\\field_dictionary\\jqdata_field_dictionary_CURRENT.csv",
+      "source_hash": "sha256:7599640e56e1701ce6a6abb952e567174a6fde77ce02ed57bbf055b7dfadddd8",
+      "evidence_excerpt": "stock_limit_pause_status|get_price(fields=...)|money|money",
+      "canonical_status": "JQ_OFFICIAL_CANONICAL",
+      "source_trace_status": "traced",
+      "rule_library_active": true,
+      "formal_backtest_active": false,
+      "notes": ""
+    },
+    {
+      "canonical_id": "JQFD-0082",
+      "jq_field_name": "volume",
+      "jq_api_or_domain": "get_price",
+      "official_meaning": "volume",
+      "official_unit": "",
+      "official_frequency_scope": "daily,1m,5m,15m,30m,60m",
+      "official_asset_scope": "stock",
+      "official_default_behavior": "",
+      "local_canonical_name": "volume",
+      "local_canonical_domain": "stock_ohlcv",
+      "source_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\jqdata_rule_library_current\\field_dictionary\\jqdata_field_dictionary_CURRENT.csv",
+      "source_hash": "sha256:7599640e56e1701ce6a6abb952e567174a6fde77ce02ed57bbf055b7dfadddd8",
+      "evidence_excerpt": "stock_ohlcv|get_price|volume|volume",
+      "canonical_status": "JQ_OFFICIAL_CANONICAL",
+      "source_trace_status": "traced",
+      "rule_library_active": true,
+      "formal_backtest_active": false,
+      "notes": ""
+    },
+    {
+      "canonical_id": "JQFD-0083",
+      "jq_field_name": "money",
+      "jq_api_or_domain": "get_price",
+      "official_meaning": "money",
+      "official_unit": "",
+      "official_frequency_scope": "daily,1m,5m,15m,30m,60m",
+      "official_asset_scope": "stock",
+      "official_default_behavior": "",
+      "local_canonical_name": "turnover_amount",
+      "local_canonical_domain": "stock_ohlcv",
+      "source_file": "E:\\BLACKBOX\\规则库\\data_dictionary\\jqdata_rule_library_current\\field_dictionary\\jqdata_field_dictionary_CURRENT.csv",
+      "source_hash": "sha256:7599640e56e1701ce6a6abb952e567174a6fde77ce02ed57bbf055b7dfadddd8",
+      "evidence_excerpt": "stock_ohlcv|get_price|money|money",
+      "canonical_status": "JQ_OFFICIAL_CANONICAL",
+      "source_trace_status": "traced",
+      "rule_library_active": true,
+      "formal_backtest_active": false,
+      "notes": ""
+    }
+  ],
+  "raw_original_field_dictionary_sha256": "7599640e56e1701ce6a6abb952e567174a6fde77ce02ed57bbf055b7dfadddd8",
+  "original_field_dictionary_already_on_HUB": true,
+  "finding": "All four relevant canonical official_unit cells are empty; the original field CSV has no unit column. Do not request an already delivered identical dictionary body again. Official labels do not establish absolute scales.",
+  "diagnostic": {
+    "proposed_share_CNY": {
+      "volume_multiplier": 1,
+      "money_multiplier": 1,
+      "rows_mean_inside_daily_range": 83422,
+      "rows_tested": 83422
+    },
+    "lot100_CNY": {
+      "volume_multiplier": 100,
+      "money_multiplier": 1,
+      "rows_mean_inside_daily_range": 0,
+      "rows_tested": 83422
+    },
+    "share_thousand_CNY": {
+      "volume_multiplier": 1,
+      "money_multiplier": 1000,
+      "rows_mean_inside_daily_range": 0,
+      "rows_tested": 83422
+    },
+    "both_scaled100": {
+      "volume_multiplier": 100,
+      "money_multiplier": 100,
+      "rows_mean_inside_daily_range": 83422,
+      "rows_tested": 83422
+    }
+  },
+  "diagnostic_limit": "Common scale changes to both fields leave money/volume unchanged. Range checks cannot prove absolute shares/CNY or turn an inferred mapping into a supplier contract.",
+  "required_missing_evidence": "An exact official get_price stock fq=None unit declaration stating absolute volume share count and money CNY multiplier, or an already retained primary source body with those definitions and byte identity. Do not substitute another supplier/endpoint, tick dictionary or a scaling probe.",
+  "public_access_status": "Canonical stock/JQData documentation endpoints are region-blocked from GPT. Legacy official API PDF supports quantity/amount meanings only; no bypass/login/vendor API call was attempted.",
+  "on_missing_or_conflicting_units": "BLOCK_MODEL_INPUT; no quantity, fee or fill calculation; preserve values and record gap",
+  "instrument_exception": {
+    "code": "689009.XSHG",
+    "instrument": "CDR",
+    "supplier_quantity_unit": "NOT_ESTABLISHED",
+    "policy_scope": "NEEDS_EXPLICIT_REVIEW",
+    "action": "Do not call receipt units ordinary shares, apply an underlying conversion ratio, or admit to fills from a stock type/suffix alone. Preserve raw candidate rows."
+  }
+}

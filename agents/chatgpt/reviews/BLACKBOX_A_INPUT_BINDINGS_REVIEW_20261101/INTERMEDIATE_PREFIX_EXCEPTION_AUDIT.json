@@ -1,0 +1,155 @@
+{
+  "scope": "GPT_DESK_ONLY_NO_NATIVE_TASK_OR_FILL_IMPLEMENTATION",
+  "checks": [
+    {
+      "name": "source_identity:jq_official_canonical_field_dictionary.json",
+      "passed": true
+    },
+    {
+      "name": "source_identity:jqdata_official_field_dictionary_CURRENT.csv",
+      "passed": true
+    },
+    {
+      "name": "source_identity:cn_a_exchange_trading_hard_rules_20260706_R1.json",
+      "passed": true
+    },
+    {
+      "name": "source_identity:cn_a_exchange_trading_hard_rules_date_switch_R1.json",
+      "passed": true
+    },
+    {
+      "name": "source_identity:cn_a_exchange_trading_hard_rules_registry.json",
+      "passed": true
+    },
+    {
+      "name": "source_identity:jq_official_asset_code_format_map.csv",
+      "passed": true
+    },
+    {
+      "name": "source_identity:DATASET_STATE.json",
+      "passed": true
+    },
+    {
+      "name": "source_identity:CANDIDATE_CHECKPOINT_BINDINGS.json",
+      "passed": true
+    },
+    {
+      "name": "four_stock_unit_rows_blank",
+      "passed": true
+    },
+    {
+      "name": "original_field_dictionary_already_available",
+      "passed": true
+    },
+    {
+      "name": "all_stock_rows_88811",
+      "passed": true
+    },
+    {
+      "name": "sixteen_prior_P1_dates",
+      "passed": true
+    },
+    {
+      "name": "83588_rows_for16_dates",
+      "passed": true
+    },
+    {
+      "name": "only_two_admitted_namespaces",
+      "passed": true
+    },
+    {
+      "name": "all_numeric_first_digits_036",
+      "passed": true
+    },
+    {
+      "name": "exact302132_exception_proposed",
+      "passed": true
+    },
+    {
+      "name": "all_codes_have_proposed_profile",
+      "passed": true
+    },
+    {
+      "name": "ratio_cannot_prove_absolute_common_scale",
+      "passed": true
+    },
+    {
+      "name": "legacy_rules_not_dated_lot_table",
+      "passed": true
+    },
+    {
+      "name": "registered_XR_layers_exist",
+      "passed": true
+    },
+    {
+      "name": "raw_axis_is_report_period",
+      "passed": true
+    },
+    {
+      "name": "cache_effective_axis_registered",
+      "passed": true
+    }
+  ],
+  "checks_passed": 22,
+  "stock_rows": 88811,
+  "stock_distinct_codes": 5227,
+  "stock_suffix_rows": {
+    "XSHE": 49386,
+    "XSHG": 39425
+  },
+  "smoke_rows": 83588,
+  "smoke_distinct_codes": 5227,
+  "proposed_profile_rows17dates": {
+    "SMOKE_SZSE_MAIN": 25410,
+    "SMOKE_CHINEXT": 23976,
+    "SMOKE_SSE_MAIN": 28919,
+    "SMOKE_STAR": 10506
+  },
+  "proposed_profile_unique_codes17dates": {
+    "SMOKE_SZSE_MAIN": 1495,
+    "SMOKE_CHINEXT": 1412,
+    "SMOKE_SSE_MAIN": 1702,
+    "SMOKE_STAR": 618
+  },
+  "proposed_profile_rows16dates": {
+    "SMOKE_SZSE_MAIN": 23916,
+    "SMOKE_CHINEXT": 22564,
+    "SMOKE_SSE_MAIN": 27220,
+    "SMOKE_STAR": 9888
+  },
+  "unmapped_codes": [],
+  "prefix_routing_is_proposal_not_master_fact": true,
+  "volume_money_binding_status": "NOT_ESTABLISHED",
+  "ratio_diagnostic": {
+    "proposed_share_CNY": {
+      "volume_multiplier": 1,
+      "money_multiplier": 1,
+      "rows_mean_inside_daily_range": 83422,
+      "rows_tested": 83422
+    },
+    "lot100_CNY": {
+      "volume_multiplier": 100,
+      "money_multiplier": 1,
+      "rows_mean_inside_daily_range": 0,
+      "rows_tested": 83422
+    },
+    "share_thousand_CNY": {
+      "volume_multiplier": 1,
+      "money_multiplier": 1000,
+      "rows_mean_inside_daily_range": 0,
+      "rows_tested": 83422
+    },
+    "both_scaled100": {
+      "volume_multiplier": 100,
+      "money_multiplier": 100,
+      "rows_mean_inside_daily_range": 83422,
+      "rows_tested": 83422
+    }
+  },
+  "ratio_diagnostic_is_unit_certificate": false,
+  "event_identities_established": false,
+  "event_symbol_register_count": 5227,
+  "native_command": null,
+  "calendar_extended": false,
+  "orders_allowed": false
+}

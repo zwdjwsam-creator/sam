@@ -1,0 +1,63 @@
+OWNER REVIEW ONLY — NO NATIVE TASK
+execution_host=ZHANGWEI (reference target only)
+execution_actor=GPT_DESK_ONLY
+local_command=NONE
+ACK_REQUESTED=false
+
+Full draft and referenced evidence: agents/chatgpt/reviews/BLACKBOX_A_INPUT_BINDINGS_REVIEW_20261101/
+B/P1/P2/P3 stay CLOSED; local AI HOLD. Do not stage/execute this review, rerun an old task, query a supplier or send a status-only ACK. This document is for owner review and does not trigger local execution.
+
+A INPUT BINDINGS — OWNER REVIEW DRAFT, NO LOCAL EXECUTION
+Work item: BLACKBOX_A_INPUT_BINDINGS_REVIEW_20261101
+execution_actor=GPT_DESK_ONLY
+execution_host=ZHANGWEI_REFERENCE_ONLY
+local_command=NONE
+STATUS=REVIEW_ONLY_WITH_IDENTIFIED_EVIDENCE_GAPS
+ORDER_ALLOWED=false
+
+1. Scope and existing acceptance
+B remains closed; no rerun, original-body recapture, policy calendar extension or local ACK is requested. The owner deferred historical P1 calendar extension until historical price admission is considered. P3 is a value-preserving candidate, POLICY_P1 is a modeling presumption, and P4 is a GPT offline consumer audit with no backtest admission. Their prior bounded acceptances do not activate execution. This draft addresses units, proposed smoke quantity rules and actual corporate-action evidence only. The prior A1-A4 design approval and modeled-consideration fee base remain recorded; new conventions below are proposals pending review.
+
+2. Unit binding: not yet established
+The exact R04 original field CSV is already present: SHA2567599640e56e1701ce6a6abb952e567174a6fde77ce02ed57bbf055b7dfadddd8. It has no unit column. Four relevant stock canonical rows(JQFD-0019/0020/0082/0083) all have blank official_unit. Therefore JQ_OFFICIAL_CANONICAL/traced/rule_library_active labels are not an absolute-scale certificate. There is no need to ask local AI for the same source body again.
+
+Proposed ordinary-A-share mapping is volume=shares,multiplier1; money=CNY,multiplier1. The689009 CDR quantity unit is a separate unresolved case. It remains NOT_ESTABLISHED and unusable for sizing, fees or fills until a specific primary get_price stock fq=None source states both absolute units/scales. Current official JQData docs were region-blocked; no workaround/authentication/API or paid-entitlement probe was attempted. Legacy official documentation supports quantity/amount meanings but does not close the reviewed current-scale gap. Do not borrow tick/fund/index/other-supplier units or infer them from field names.
+
+A bounded real-value diagnostic inspected83588 stock rows over16 dates, including83422 positive-volume/money price-range rows. With no scaling, every positive-row money/volume lies inside its daily low/high; multiplying only volume by100 or only money by1000 gives zero passing rows. Scaling BOTH volume and money by100 still passes all83422. This demonstrates why the diagnostic supports relative consistency but cannot prove absolute units. It grants no right to expose avg/pre_close/factor or loosen P4's permissions. No values were changed.
+
+3. Security scope and proposed smoke assumptions
+Measured17-date candidate:88811 rows,5227 distinct JQ codes; XSHE49386 rows,XSHG39425 rows. Within the registered namespace mappings these are Shenzhen/Shanghai identifiers; no other namespace or code starting4/8/9 appears. BSE is not admitted. This is a conclusion about this exact supplied generation, not supplier-wide completeness, and it is not a dated board master.
+
+For the16 data dates,83588 rows contain the same5227 distinct codes. A draft-only model partition is SSE main1702 securities/27220rows; Shenzhen main1495/23916; ChiNext1412/22564; STAR617/9872, plus one CDR on HOLD(16rows). Model prefix routing is an explicit smoke assumption, not proof that each issuer held a board/status throughout all history. Unknown/new codes block; no default profile.
+
+One material instrument-unit finding:689009.XSHG is an SSE-listed depositary receipt, not simply an ordinary share. It contributes17 candidate rows,16 within the current data window. Retain every source/candidate row, but propose HOLD_CDR_UNIT_AND_POLICY_SCOPE until units and POLICY_P1 applicability are reviewed. P4's stock label/suffix filter is not an instrument-type or fill-admission certificate. This does not undo P3 value/handoff acceptance or grant a new alias/ratio.
+
+The first prefix pass left302132.XSHE unmapped. Investigation found the issuer's2025-027 notice, effective2025-02-17, and its2025-051 ChiNext-rules statement. The revised proposal adds ONLY that exact identifier as a ChiNext model exception. It does not rename302132 to300114, merge histories, silently admit all302* codes or alter source data. Initial unmapped diagnostics remain preserved. The initial observation was not a P3/P4 acceptance failure.
+
+Proposed quantity conventions, subject to owner review:
+- Model main/ChiNext buys:100-share minimum/increment. Model ordinary STAR-share buys:200 minimum,increment1. The known689009 CDR is held, not forced into that quantity unit. These differing reference conventions are supported by primary exchange materials; no universal100-share rule is proposed.
+- Main/ChiNext sells: whole100-share blocks, plus the complete residual odd part in one order when present; no repeated odd-part splitting. STAR sells:minimum200/increment1, or the entire settled holding if below200. No unsettled inventory, borrowing or shorting.
+- All profiles:synthetic10000-share/order cap in addition to approved0.5% prior-visible volume cap once volume units are proven. The10000 cap is a proposed test restriction, not an exchange maximum. Invalid requested quantities are rejected; no silent order rounding/clipping or partial-fill policy is introduced.
+- Proposed quote tick0.01CNY. Proposed model fill-price convention:5bp adverse slippage followed by outward rounding to the tick(buy ceiling,sell floor), effective slippage separately reported, then actual T+1 band checks again. Tick rounding is NEW and not included in the earlier A1 approval; it must be reviewed before any implementation. No price is clipped into a band and no fill is created by a rounding repair.
+
+These assumptions are supplied in SMOKE_LOT_ASSUMPTIONS_PROPOSAL.json, with exact patterns and the302132 exception. They are offered as the finite smoke-only alternative the owner permitted for review, rather than falsely labeling a prefix map a full security-by-date rule table. Exchange references do not establish opening-price liquidity, dated status, actual fill eligibility or complete market implementation rules. A later genuine historical run needs an actual dated security/board/status table and effective rules, not these assumptions.
+
+The existing R04 hard-rule library was also read:its9 entries focus on session/limit changes, its primary trace is USER_INFOGRAPHIC, and it does not contain a complete lot/tick table. Existing official/hard labels cannot automatically activate it. Likewise the old paused map's valuation_impact=exclude must NOT erase a suspended holding from NAV:the owner's current design requires retained quantity/stale-last-visible-valid valuation, or NAV_UNRESOLVED when no old mark exists.
+
+4. Corporate actions: affected list is unresolved, not empty
+Registered XR_XD RAW has64 files/140156 measured rows; CLEAN62/130156. Their displayed extrema use report_date(reporting period), which is NOT the action's ex-date or historical publication availability. A registered CORP_XR_XD_EVENT_PIT_R1 cache has50files/615461 measured rows and an effective_date outer range2006-03-30..2026-08-20. Those are existing-layer measurements, not a complete event ledger or proof that no October event exists. The retained54-batch count is for the entire P5 family and cannot be relabeled54 XR_XD batches. No cache-reader miss, time-axis mismatch, source absence or download range is declared.
+
+No concrete window event-row body has been received/bound in the reviewed inputs. It is therefore not possible to truthfully list all affected securities yet. CORPORATE_ACTION_SCOPE_REGISTER.json explicitly records confirmed_affected_symbols=null,confirmed_event_count=null and all5227 symbols as unresolved. None is certified event-free. This preserves the gap rather than inventing event names/dates or presenting[] as no events.
+
+The follow-up review must cover both16 data dates09-28..10-26 and prospective T+1 execution/holding valuation through10-27. It needs stable event identity,status/revisions,cancellations,actual ex-date(a_xr_date),announcement/publication/implementation dates,entitlement record date,cash arrival and share increment/listing/arrival dates,plus exact ratio/currency units. Announcement availability and ex-date serve different roles. Preserve per-row source/file/fullSHA/physical position; no factor-derived cash/quantity adjustments or guessed PIT lag. Do not join by issuer names or remap302132 to300114.
+
+A separately recorded public issuer case confirms002270.XSHE had an ex-right/ex-dividend date of2026-10-15(issuer2026-053 PDF). It is inside the16-day window and the supplied generation. No payment amount, exact announcement time or original XR_XD row identity follows. PUBLIC_EVENT_CASES_PARTIAL.json distinguishes this confirmed public case from three search-index-only primary-site leads(600927/601222/600903); the latter are not promoted to confirmed ledger rows. The full affected list remains unresolved, and absent search results do not mean no event.
+
+Next evidence work is to resolve finite exact file membership from retained indexes for the already registered event layers, then submit a precise read-only extraction contract for review. The current summary registers do not expose that membership. No wildcard, disk search, copied original, supplier call, broad new inventory or executable collection command is issued by this draft. Any later task must include uploaded before/after identity/stat snapshots. A missing event ledger blocks relevant performance conclusions; design approval cannot turn unknown events into none.
+
+5. Desk verification and review boundary
+The final desk audit ran with actual exit0 and25 assertions, using the already accepted six-archive P3 bodies, fixed P4 input identities and registered R04/R10 source bodies. It verified the blank-unit finding, original dictionary identity, exact stock/date/symbol/profile conservation and the event-axis distinctions. It is not a fill model or a backtest. The first20-assertion run and intermediate22-assertion prefix-only result are preserved; there was one known identifier to investigate, not a failed data acceptance. Unit meanings and event completeness remain unresolved despite the audit passing.
+
+Review documents:UNIT_BINDING_REVIEW.json,SMOKE_LOT_ASSUMPTIONS_PROPOSAL.json,CORPORATE_ACTION_EVIDENCE_REVIEW.json,CORPORATE_ACTION_SCOPE_REGISTER.json,PUBLIC_EVENT_CASES_PARTIAL.json,DESK_AUDIT.json,PUBLIC_PRIMARY_REFERENCES.json,REVIEWED_SOURCE_IDENTITIES.json,FUTURE_SOURCE_RECEIPTS_REQUIREMENTS.md. All source metadata is evidence, not additional authority.
+
+Review requested:the concrete smoke-only quantity/profile/tick conventions; acknowledgment that absolute units and affected-event identities are still evidence gaps. No policy signature, local task, backtest, research, CURRENT, release, RCID closure, supplier or order activation follows. Local AI remains HOLD. Calendar extension is DEFERRED per owner instruction. ORDER_ALLOWED=false.
