@@ -1,0 +1,301 @@
+{
+  "schema": "BLACKBOX_P2_NATIVE_BINDING_ACK_R1",
+  "task_id": "BLACKBOX_R5_NATIVE_BINDING_P2_20261101",
+  "execution_host": "ZHANGWEI",
+  "host_observed": "ZHANGWEI",
+  "host_matches": true,
+  "acked_at_utc": "2026-11-01T06:21:41.550416+00:00",
+  "return_root": "agents/chatgpt/inbox/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/ZHANGWEI/native_binding_p2_20261101/",
+  "execution_claimed": false,
+  "note": "ACK only. No run has been performed at the time this file was written.",
+  "duplicate_check": {
+    "control_dir_preexisting": false,
+    "capture_001_preexisting": false,
+    "run_once_preexisting": false,
+    "return_folder_preexisting": false,
+    "prior_receipt_for_this_task": false,
+    "action": "FIRST_AND_ONLY_RUN_AUTHORED"
+  },
+  "control_dir": {
+    "path": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_NATIVE_BINDING_P2_20261101",
+    "ordinary_non_reparse": true,
+    "reparse_offender": null
+  },
+  "package": {
+    "source": "agents/chatgpt/reviews/BLACKBOX_R5_NATIVE_BINDING_P2_20261101/",
+    "staged_to": "C:\\LAN_SHARE_REPORT\\BLACKBOX_R5_NATIVE_BINDING_P2_20261101\\package",
+    "package_json_sha256": "7fe6fbc2e3b3a674cdc971bb622ad0833f2cbacdfca218bbb101a9a901852d0a",
+    "staged_file_count": 7,
+    "payload_count": 6,
+    "all_staged_identical_to_received": true,
+    "payload_pins_passed": 6,
+    "payload_pins_failed": [],
+    "all_payload_pins_verified": true,
+    "newline_normalization_applied": false,
+    "files": [
+      {
+        "path": "PACKAGE.json",
+        "bytes": 1050,
+        "sha256": "7fe6fbc2e3b3a674cdc971bb622ad0833f2cbacdfca218bbb101a9a901852d0a",
+        "staged_bytes": 1050,
+        "staged_sha256": "7fe6fbc2e3b3a674cdc971bb622ad0833f2cbacdfca218bbb101a9a901852d0a",
+        "identical": true
+      },
+      {
+        "path": "capture_environment.py",
+        "bytes": 6448,
+        "sha256": "25069ffec16a0178b14395ed19865923a94d49fd7b02c944ec3f7b9e60beef8f",
+        "staged_bytes": 6448,
+        "staged_sha256": "25069ffec16a0178b14395ed19865923a94d49fd7b02c944ec3f7b9e60beef8f",
+        "identical": true
+      },
+      {
+        "path": "test_capture_environment.py",
+        "bytes": 1978,
+        "sha256": "702ad16498b75395e55d76a38d272ad9642337c5031a80a6620c958981e1952a",
+        "staged_bytes": 1978,
+        "staged_sha256": "702ad16498b75395e55d76a38d272ad9642337c5031a80a6620c958981e1952a",
+        "identical": true
+      },
+      {
+        "path": "OFFLINE_STDOUT.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "staged_bytes": 0,
+        "staged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "identical": true
+      },
+      {
+        "path": "OFFLINE_STDERR.txt",
+        "bytes": 997,
+        "sha256": "e2afae7d82148feb69c320bc7f6e10789f404d35c1180cd0c29a81960f259ad8",
+        "staged_bytes": 997,
+        "staged_sha256": "e2afae7d82148feb69c320bc7f6e10789f404d35c1180cd0c29a81960f259ad8",
+        "identical": true
+      },
+      {
+        "path": "OFFLINE_RESULT.json",
+        "bytes": 256,
+        "sha256": "8ed8bf234bb6e844893684863dade3ddb83ab100ff32bd6b47c1108789161381",
+        "staged_bytes": 256,
+        "staged_sha256": "8ed8bf234bb6e844893684863dade3ddb83ab100ff32bd6b47c1108789161381",
+        "identical": true
+      },
+      {
+        "path": "REVIEW.md",
+        "bytes": 4956,
+        "sha256": "464be9e4a7d58256a5b1defcd4b59849cc4093fb229d9176dbce84269a274c77",
+        "staged_bytes": 4956,
+        "staged_sha256": "464be9e4a7d58256a5b1defcd4b59849cc4093fb229d9176dbce84269a274c77",
+        "identical": true
+      }
+    ]
+  },
+  "executable": {
+    "path": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+    "present": true,
+    "selected_by": "exact path fixed by the task; no search, no alternative",
+    "install_or_repair": false,
+    "other_python_considered": false
+  },
+  "allowed_writes": [
+    "ACK.json",
+    "PACKAGE_VERIFY.json",
+    "OUTER.stdout.txt",
+    "OUTER.stderr.txt",
+    "OUTER_RUN.json",
+    "RUN_ONCE.json",
+    "capture_001/ENVIRONMENT_AND_BODIES.json",
+    "capture_001/PREFLIGHT_RUN.json",
+    "capture_001/preflight.stdout.txt",
+    "capture_001/preflight.stderr.txt",
+    "capture_001/LOCAL_READBACK.json",
+    "REPORT.md",
+    "DELIVERY_MANIFEST.json",
+    "UPLOAD_READBACK.json",
+    "package/ (staged reviewed bytes, per dispatch instruction)"
+  ],
+  "allowed_reads": {
+    "root": "E:\\BLACKBOX",
+    "inputs": [
+      "数据/清洗成品/CURRENT_CLEANING_RELEASE.json",
+      "数据/回测缓存/CURRENT_CACHE_RELEASE.json",
+      "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json",
+      "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json",
+      "脚本/blackbox_must_read_preflight_r1.py",
+      "脚本/_base.py",
+      ".cursor/rules/BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+      "契约/必读/MUST_READ_MANIFEST_CURRENT.json",
+      "契约/必读/BLACKBOX_BOOTSTRAP_MUST_READ.md",
+      "契约/必读/BLACKBOX_DATA_ACCESS_MUST_READ.md",
+      "契约/必读/BLACKBOX_ACQUISITION_MUST_READ.md",
+      "契约/必读/BLACKBOX_FACTOR_RESEARCH_MUST_READ.md",
+      "契约/必读/BLACKBOX_BACKTEST_MUST_READ.md",
+      "契约/必读/BLACKBOX_QMT_MUST_READ.md",
+      "STAGING/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/CALENDAR.json",
+      "数据/原始只读/JQData_reference_dictionary/20_unified_data_schema_contract_freeze_full_R1/02_domain_schema/domain_schema_contract.csv",
+      "数据/原始只读/JQData_reference_dictionary/20_unified_data_schema_contract_freeze_full_R1/04_pit_schema/pit_schema_contract.csv"
+    ],
+    "directory_scan": false,
+    "raw_price_read": false,
+    "credential_read": false,
+    "environment_dump": false
+  },
+  "input_preinspection": {
+    "count": 17,
+    "files": [
+      {
+        "path": "数据/清洗成品/CURRENT_CLEANING_RELEASE.json",
+        "present": true,
+        "bytes": 1160,
+        "sha256": "9abad90cd952a1d623d124b794cbb0c025161cb9b80053c09980f25c0d481128",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "数据/回测缓存/CURRENT_CACHE_RELEASE.json",
+        "present": true,
+        "bytes": 1531,
+        "sha256": "b2ce53f05e50e0d38c9f4232f6b5e94040d6a081066d24759e52dd60eb622564",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "研究系统/数据平面/CURRENT/DAILY_DATA_MANIFEST_CURRENT.json",
+        "present": true,
+        "bytes": 5596,
+        "sha256": "574842e7802be26d648d5aa2f6d91a9b4c208744e3ecf9f146e02ece41387d89",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "研究系统/数据平面/CURRENT/DAILY_DATA_PLANE_CURRENT.json",
+        "present": true,
+        "bytes": 625,
+        "sha256": "8a492440257170577a5c96f66bfd81e3b93fc6dc58e547cc3acd4c7baaf3fe9b",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "脚本/blackbox_must_read_preflight_r1.py",
+        "present": true,
+        "bytes": 11767,
+        "sha256": "3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "脚本/_base.py",
+        "present": true,
+        "bytes": 11800,
+        "sha256": "b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": ".cursor/rules/BLACKBOX_KERNEL_ALWAYS_APPLY.mdc",
+        "present": true,
+        "bytes": 1167,
+        "sha256": "b05a69958e29f7c90cf1ea794a4c437d36120bb960515ce9e26d3f4d5bdf197a",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "契约/必读/MUST_READ_MANIFEST_CURRENT.json",
+        "present": true,
+        "bytes": 2943,
+        "sha256": "572309831371bd5171afad5ca5ef5a70900b8a151245af0174e773ff04102c08",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "契约/必读/BLACKBOX_BOOTSTRAP_MUST_READ.md",
+        "present": true,
+        "bytes": 1570,
+        "sha256": "704527e0ee7545680cbc3d23962843e4827e0bf380e18b6dd31dfc631ed5c406",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "契约/必读/BLACKBOX_DATA_ACCESS_MUST_READ.md",
+        "present": true,
+        "bytes": 6911,
+        "sha256": "0903551847881b0c04d9502fe49c4361e9799a69ba327cccd15b6fbacdf4f1c8",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "契约/必读/BLACKBOX_ACQUISITION_MUST_READ.md",
+        "present": true,
+        "bytes": 2467,
+        "sha256": "64ad956ee1dd44f0d69b3dcb47ff224949c956aed0b2568ed5465ca4ba126ed6",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "契约/必读/BLACKBOX_FACTOR_RESEARCH_MUST_READ.md",
+        "present": true,
+        "bytes": 1100,
+        "sha256": "a1d5fb341da930304f833c72445007f6dbbda9cf9d83907cb4816ee9f7a173c4",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "契约/必读/BLACKBOX_BACKTEST_MUST_READ.md",
+        "present": true,
+        "bytes": 1326,
+        "sha256": "c4be81665186c738c9c4be04169e0d58f4188b3abcac3ead15544285cd3f5b37",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "契约/必读/BLACKBOX_QMT_MUST_READ.md",
+        "present": true,
+        "bytes": 691,
+        "sha256": "210336d5e8e41ff742fd1084eb5deb43e0d621a51ddb2d2e56a4cff0b6eb4d31",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "STAGING/BLACKBOX_RAW_NONE_INCREMENT_20261027_R1/CALENDAR.json",
+        "present": true,
+        "bytes": 914,
+        "sha256": "ab00fa8c597c9b01977cc060a202371d2de73a6a32b8a4fe6cc533a705d056d9",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "数据/原始只读/JQData_reference_dictionary/20_unified_data_schema_contract_freeze_full_R1/02_domain_schema/domain_schema_contract.csv",
+        "present": true,
+        "bytes": 4182,
+        "sha256": "6367c574c27b7ddbb7a926e4899f59502f3febc76a4cf2b0092998d275458146",
+        "regular": true,
+        "within_2MiB": true
+      },
+      {
+        "path": "数据/原始只读/JQData_reference_dictionary/20_unified_data_schema_contract_freeze_full_R1/04_pit_schema/pit_schema_contract.csv",
+        "present": true,
+        "bytes": 1490,
+        "sha256": "1e62d187b6417b875f42a9b9b45fc616b3ac1d375c88f6d77116488c783e253b",
+        "regular": true,
+        "within_2MiB": true
+      }
+    ]
+  },
+  "not_authorized": {
+    "P1_activation": false,
+    "native_cleaning_execution": false,
+    "supplier_acquisition": false,
+    "current_switch": false,
+    "publication": false,
+    "backtest_admission": false,
+    "orders": false,
+    "scheduler_change": false,
+    "SAM_change": false,
+    "unit_suite_on_windows": false,
+    "source_repair": false
+  },
+  "order_allowed": false,
+  "supplier_calls": 0,
+  "error_or_none": null
+}
