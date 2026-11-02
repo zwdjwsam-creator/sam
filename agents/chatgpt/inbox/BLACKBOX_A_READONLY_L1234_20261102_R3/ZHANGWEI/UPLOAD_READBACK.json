@@ -1,0 +1,200 @@
+{
+  "ack_written": false,
+  "all_byte_equal": true,
+  "bind_attempted": false,
+  "capture_root_created": false,
+  "conditional_members_absent": 69,
+  "correction_of_prior_local_attribution": {
+    "agrees_with": "GPT R3 REVIEW.txt and CPYTHON_SOURCE_IDENTITIES.json: _execute_child applies list2cmdline BEFORE emitting subprocess.Popen",
+    "prior_claim": "R2: CPython emits two subprocess.Popen audit events per spawn on Windows, the second from _winapi.CreateProcess with a string argv",
+    "retained_consequence": "R2 guard still failed for the correct reason (isinstance(argv,(list,tuple)) is False for a string), but the two-event explanation was not evidence-based",
+    "scope": "LOCAL_SELF_CORRECTION_NOT_PART_OF_SEALED_DELIVERY",
+    "what_the_R3_trace_shows": "exactly one subprocess.Popen with argv_type=str and executable=None, plus one distinct _winapi.CreateProcess with argv_type=str",
+    "why_wrong": "The \"list\" entry in the R2 local probe was the probe script own sys.audit() simulation call, which the logging hook also recorded. It was never a real spawn event."
+  },
+  "delivery_commit": "1b7f65ec3d39835c0c4f49344fcbe2ae3a9540cb",
+  "dispatch_commit": "14a829e2d7026a4ccfad9c4b91e6dec50dc0d6e3",
+  "instrumentation_gap": "STARTUP_PROCESS.json audit_event_shapes records event name, argument_count, argv_type and executable_is_none, but NOT the literal audited command line, the policy pending value, or the reviewed vector, so the exact string divergence is not measured by this run",
+  "launch_attempted": false,
+  "measured_expectation": {
+    "list2cmdline_of_reviewed_argv": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -B -X utf8 -c print('READ_ONLY_STARTUP_PROBE_OK')",
+    "note": "computed locally with the pinned interpreter list2cmdline only; no process was spawned",
+    "reviewed_probe_argv": [
+      "E:\\BLACKBOX\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "-c",
+      "print('READ_ONLY_STARTUP_PROBE_OK')"
+    ]
+  },
+  "observations": [
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "startup/STARTUP.stdout.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "startup/STARTUP.stderr.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "1b72cbfb8bd5942a25fe72a3a79353200fd28da3",
+      "bytes": 603,
+      "path": "startup/STARTUP_PROCESS.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 603,
+      "sha256": "29ffd456f5b706f53429b0983c6ecbd57f19691682ca37723cb57e25bd2cc3a6"
+    },
+    {
+      "blob": "51d484d2e321da1077994529ae670586ef5520fb",
+      "bytes": 97,
+      "path": "control_logs/prepare.started.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 97,
+      "sha256": "4e9354ff1d7b2d380a0008b0cfc442066eabb4c3808c85117b0ebd36c7af5648"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/prepare.stdout.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "ca4a1be322da972a68070ceb3f179917b7682e5d",
+      "bytes": 37,
+      "path": "control_logs/prepare.stderr.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 37,
+      "sha256": "62504e0f9e12774d4f8a2cba5d23cd7e06f65838dcf4941cef905b1c45e67a83"
+    },
+    {
+      "blob": "fba7610c131987c27e7831e205a5d324f7c3062c",
+      "bytes": 341,
+      "path": "control_logs/prepare.process.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 341,
+      "sha256": "9209044edab42a9161bb7e5bc475d98d90a37e4bcdc15c10e559abe4d481244e"
+    },
+    {
+      "blob": "9ca7459816980be6e78f1530bca0728d9ffc640c",
+      "bytes": 213,
+      "path": "FIXTURE_STATUS.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 213,
+      "sha256": "016b59dd0658bb8997187d40e70ae0889f9689ee1d05431c669c6ed354104fce"
+    },
+    {
+      "blob": "c4e696c5fc0780db08c8bbddb1204cd762c35b5f",
+      "bytes": 507,
+      "path": "REPORT.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 507,
+      "sha256": "0e850cd64b6db2d3b0815b5a61ed48f6098c4e5bbbe25365b45bb6897a113665"
+    },
+    {
+      "blob": "fc99c262014331cc18f617a0b6f83abc18b77a05",
+      "bytes": 4130,
+      "path": "DELIVERY_MANIFEST.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 4130,
+      "sha256": "0467f4768ccaced41913c2f89e72a9ac01f87b77a36394383576225658994f6b"
+    },
+    {
+      "blob": "024720a2acf5b2e862370e4ed4ecc21fed8a55c0",
+      "bytes": 94,
+      "path": "control_logs/seal.started.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 94,
+      "sha256": "1c4af43cbfb6cb46606e74b927964cd99ff5dc6bdaecec720a22d1ab287bed3c"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/seal.stdout.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/seal.stderr.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "815e95f4932d51479aa0955b9197802b43379801",
+      "bytes": 343,
+      "path": "control_logs/seal.process.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 343,
+      "sha256": "63dfb2a1883a50e327084aa364433aa28e754da89c047aecd492fd6fc033594e"
+    },
+    {
+      "blob": "0589e5e4d2c26704b3dda6fa78d0470ac4286b64",
+      "bytes": 756,
+      "path": "control_logs/SEAL_CONTROL_MANIFEST.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 756,
+      "sha256": "179abb9d234f6d5ea09142f4c56c8f8033aab119d11c2c7940aa1459bdc4af0d"
+    }
+  ],
+  "observed_outcome": "PREPARE_BLOCKED_BY_NATIVE_STARTUP_PROBE",
+  "outer_root_created": false,
+  "package_sha256": "89e8311c8979a4dcb7940cb46e1d63d9c2a180e1a4361dc26dd8b66dd3ca832e",
+  "predecessor_count": 15,
+  "predecessor_roots_untouched": true,
+  "predecessors": [
+    "BLACKBOX_A_READONLY_L1234_20261102",
+    "BLACKBOX_A_READONLY_L1234_20261102_R2"
+  ],
+  "prepare_actual_exit": 4,
+  "prepare_stderr": "Blocked:NATIVE_STARTUP_PROBE_FAILED",
+  "probe_actual_child_exit": null,
+  "probe_audit_event_shapes": [
+    {
+      "argument_count": 4,
+      "argv_type": "str",
+      "event": "subprocess.Popen",
+      "executable_is_none": true
+    },
+    {
+      "argument_count": 3,
+      "argv_type": "str",
+      "event": "_winapi.CreateProcess",
+      "executable_is_none": true
+    }
+  ],
+  "probe_error": "UNREVIEWED_SUBPROCESS:COMMAND_LINE_NOT_REVIEWED",
+  "probe_error_type": "Safety",
+  "return_prefix": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI",
+  "self_hash": "excluded; this file does not hash itself",
+  "task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+  "unresolved_failures": []
+}
