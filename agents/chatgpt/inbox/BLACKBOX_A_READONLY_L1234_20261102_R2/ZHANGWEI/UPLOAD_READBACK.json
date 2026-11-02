@@ -1,0 +1,277 @@
+{
+  "ack_blob": "a7ebf071ae3d453d97e60a1ae0a6d7ae5fdf0eb8",
+  "ack_commit": "9278874dfdb318a9d99ecd9278b8250f8a5ed2d5",
+  "all_byte_equal": true,
+  "capture_root_created": false,
+  "conditional_members_absent": 55,
+  "delivery_commit": "39ee1672fe003e0eae1ecc7bd6767a04a1fd1002",
+  "diagnostics": {
+    "consequence": "launch cannot spawn run_capture.py, and the 57 native tests cannot spawn their 3 real-subprocess regressions either",
+    "event_1": {
+      "args": "(executable=<EXE>, args=<list argv>, cwd, env)",
+      "argv_type": "list",
+      "matches_whitelist": true
+    },
+    "event_2": {
+      "args": "(executable=None, args=<command-line string>)",
+      "argv_type": "str",
+      "matches_whitelist": false,
+      "source": "_winapi.CreateProcess"
+    },
+    "finding": "CPython on Windows raises the subprocess.Popen audit event TWICE per spawn",
+    "guard_behaviour": "isinstance(argv,(list,tuple)) is False for event_2, so guard raises Safety('UNREVIEWED_SUBPROCESS') for every spawn, including whitelisted ones",
+    "method": "read-only probe on C: replicating guard.audit_checker; no E: path opened, no package file modified, no data read",
+    "posix_note": "single Popen audit event on POSIX explains why GPT-host Linux tests passed while native Windows is blocked",
+    "r1_contrast": "R1 failed earlier at os.open(nul, O_RDWR) before reaching this event; R2 stdio fix is verified working in isolation",
+    "scope": "LOCAL_FORENSIC_OBSERVATION_NOT_PART_OF_SEALED_DELIVERY"
+  },
+  "dispatch_commit": "368cd8ad19e923b09454fc7cc5c669379a19f6e1",
+  "launch_actual_child_exit": null,
+  "observations": [
+    {
+      "blob": "a7ebf071ae3d453d97e60a1ae0a6d7ae5fdf0eb8",
+      "bytes": 2697,
+      "path": "ACK.json",
+      "put_state": "ALREADY_SAME",
+      "readback_byte_equal": true,
+      "remote_bytes": 2697,
+      "sha256": "6f68e12766f4912aa6a1f0e9fc5033f6d867b40941f8cc490cc4995f046a1133"
+    },
+    {
+      "blob": "e9f80566afd72121107f9d92ed498b9007574a3a",
+      "bytes": 406,
+      "path": "ACK_UPLOAD.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 406,
+      "sha256": "7e520465e65e79d6d93ff8c492eb800995b27c4a256f66c34b9f84065ce4d9fe"
+    },
+    {
+      "blob": "4d3b3285f8b18f890790bc8fad1bde72ccc55212",
+      "bytes": 97,
+      "path": "control_logs/prepare.started.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 97,
+      "sha256": "109cf3e8154014736708571d2b38d4cbccb3c81f184f26df365b0b15f70b46c7"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/prepare.stdout.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/prepare.stderr.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "051a4e4c648eaf138da0bd782eaa00499d8be7f2",
+      "bytes": 341,
+      "path": "control_logs/prepare.process.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 341,
+      "sha256": "24b78077240ebe83409eb924dafbfd1e838919942a84c9179655ee03137afad4"
+    },
+    {
+      "blob": "221e3186c9a7aadc27d673515ac9bc509054474b",
+      "bytes": 94,
+      "path": "control_logs/bind.started.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 94,
+      "sha256": "80e4ef82c9b0b3b674dc376e6573b03a3a4f2d9021d38230c0c06fad729cf022"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/bind.stdout.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/bind.stderr.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "1b6fa1df0f9c9df10b48ae638804c12446d06454",
+      "bytes": 441,
+      "path": "control_logs/bind.process.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 441,
+      "sha256": "d6215c8ecc1b0a5253392740b396c5703304df049fed6fd705b485f99ea7698e"
+    },
+    {
+      "blob": "4d494dbf26a244aca3ed60a4e2bcf0096b5f6d9f",
+      "bytes": 96,
+      "path": "control_logs/launch.started.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 96,
+      "sha256": "c190c1ce7243a08c36e6eb6f8c5a9175846821b011f03a2c93bf579284c2e9ec"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/launch.stdout.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/launch.stderr.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "34c2788b379b7ded7e53876ede6087e02790b7a4",
+      "bytes": 336,
+      "path": "control_logs/launch.process.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 336,
+      "sha256": "d32743b7a74ce5d4592043f1284d0b9c2efb0734f82a39e8c983dbd36efe23dd"
+    },
+    {
+      "blob": "a2e8ed2dada336c3da014a8f6005473c7cd70e5f",
+      "bytes": 159,
+      "path": "outer/RUN_ONCE.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 159,
+      "sha256": "7c49993f8d8876c107ad0731674171523d078c995097ecf75fc6a7fa82464160"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "outer/OUTER.stdout.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "outer/OUTER.stderr.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "97ce91ba2a8bca3397b2229597a0cebf581d880b",
+      "bytes": 347,
+      "path": "outer/OUTER_PROCESS.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 347,
+      "sha256": "534d563beda973ff2194dc4e47f46fdad47d859d95c0f050bfbc1c748d0a43a5"
+    },
+    {
+      "blob": "07f85a40b57f3bdd7dcfce571cf3b59de951514e",
+      "bytes": 213,
+      "path": "FIXTURE_STATUS.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 213,
+      "sha256": "455579d45a8299748c593a3acbdcdf70fe04188f953a2fa9ce240a9c72c1c0d7"
+    },
+    {
+      "blob": "3714e9a4decf67f81dbecfc6974f953ecc5fb454",
+      "bytes": 507,
+      "path": "REPORT.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 507,
+      "sha256": "b79344b1d35ac075cc2d3133f3a49c6243269f22f2081f4fe2e12036cfd48f5d"
+    },
+    {
+      "blob": "2fd6acd73bcc5f9f7eb9f96190cc4bc222e87afe",
+      "bytes": 5098,
+      "path": "DELIVERY_MANIFEST.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 5098,
+      "sha256": "9f258652116a1d459f5112892dc4cab84b1fe3aee340eee22e15a5f782a436e4"
+    },
+    {
+      "blob": "f92cf7b78fc6b9fb15f106c788044848f54f9a5a",
+      "bytes": 94,
+      "path": "control_logs/seal.started.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 94,
+      "sha256": "86d72b2851dc413131ab72738f16aedbf10cd54a922d9e849b7fb6550b4ae71b"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/seal.stdout.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "path": "control_logs/seal.stderr.txt",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "blob": "fa2db81081b3b73b8f550c877999fc39435b5c6f",
+      "bytes": 343,
+      "path": "control_logs/seal.process.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 343,
+      "sha256": "d28c7106589611a710e97b2ec542b6c1c33a000c9caa37c95f0f87a167b2efc9"
+    },
+    {
+      "blob": "933717089abe67f58948ab0e08023974d434c1cd",
+      "bytes": 756,
+      "path": "control_logs/SEAL_CONTROL_MANIFEST.json",
+      "put_state": "NEW",
+      "readback_byte_equal": true,
+      "remote_bytes": 756,
+      "sha256": "273a21ea9e7d956703b86aec22aa35936523b7c2e658cb783344418f754dcba9"
+    }
+  ],
+  "observed_outcome": "LAUNCH_CHILD_NEVER_SPAWNED_WRAPPER_EXCEPTION",
+  "package_sha256": "1095036df11b79ee5f1142ae2c984fc328b4e7f86d1dbebdf838f4c8670bb91e",
+  "predecessor_count": 26,
+  "predecessor_roots_untouched": true,
+  "predecessor_task": "BLACKBOX_A_READONLY_L1234_20261102",
+  "return_prefix": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI",
+  "reviewed_snapshot": "c25c06bb893a7d0902f83b8baccd42003afe47cc",
+  "self_hash": "excluded; this file does not hash itself",
+  "task_id": "BLACKBOX_A_READONLY_L1234_20261102_R2",
+  "unresolved_failures": [],
+  "wrapper_error": "UNREVIEWED_SUBPROCESS"
+}
