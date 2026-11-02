@@ -1,0 +1,37 @@
+G1/G2 DESK FINDINGS — PARTIAL EVIDENCE, NO ADMISSION
+execution_actor=GPT_DESK_ONLY
+execution_host=ZHANGWEI (future observation target only)
+local_command=NONE
+ORDER_ALLOWED=false
+
+G1: exchange exceptions in the hypothetical execution interval09-29..10-27
+An exchange-wide complete exception census has NOT been established. Web search hits, index snippets and unsuccessful opens cannot prove an empty set. The draft must not upgrade all remaining candidates to LIMITED on the strength of a few positive notices. The owner proposed SSE/SZSE/BSE desk coverage; BSE desk observations do not enlarge the XSHG/XSHE RAW universe.
+
+Confirmed primary body: SZSE-hosted issuer PDF002731, notice2026-113, signed2026-10-15 and hosted under2026-10-16. The issuer states that delisting-period trading starts2026-10-23; the first trading day has no price limit and subsequent trading days have10percent limits. Pages1-2 contain those statements. This is a positive dated exception candidate for002731.XSHE/2026-10-23, not proof that P3 contains that security/day, not an observed local join, not a completeness/PIT certificate and not an exact publication timestamp. PDF URL is in PUBLIC_EVIDENCE.json. Parsed primary body was read; original PDF bytes were not captured or SHA-pinned in this desk review. Formal ingestion needs byte identity and relevant timing evidence.
+
+Primary index/search-text lead: SZSE official notice dated2026-09-22 identifies301139, with delisting-period entry2026-09-30. The full official page repeatedly timed out; no further probes are required by this draft. Classify this as PRIMARY_SEARCH_TEXT_ONLY, pending full-body confirmation and rule binding before admission. No copied secondary report replaces the missing primary body. The current positive lead is material because09-30 lies inside the proposed execution interval.
+
+Other retained leads are not event determinations. SZSE's company-notice index surfaces termination/listing notices including002731,康佳 and瓦轴. A termination decision is not necessarily a delisting-period first trading day: voluntary termination may follow a different process. The candidate CNINFO康佳 PDF could not be opened; no event date or no-limit classification is adopted from it. Similarly a BSE rule-change notice effective10-26 is general regime law, not a per-security event. No SSE or BSE absence-of-events claim is made. Relisting, other exchange-designated exceptions and new listings still require finite source coverage and an explicit completeness basis; names or search silence cannot fill this gap.
+
+G2: exact acquired stock product and callable
+The exact R1/R4/R5 stock RAW acquisition code was read, not imported or run. R1 acquire_daily.py blobcfb69a501be4a18ca92bfdae4386c710e9da1a0c calls supplier.call('get_price',args); R4 acquire_daily.py blobca6f994ed415ea842aa7a774c25d6ebf73e53a57 and R5 acquire_r5.py blob498f7b9bc001a68dc544336aa283a985e29163e5 retain that endpoint. Explicit price parameters are frequency=daily, fq=None, skip_paused=False, fill_paused=True, panel=False; requested fields are the12 OHLC/quantity/status/limit/avg/pre_close/factor fields shown in source, while serialized code/time yield14 physical fields. Bind the exact source code and existing RAW generation receipts, not every product under a similarly named folder. Older SAM downloader observations with skip_paused=True do not override the newly acquired R1/R4/R5 contracts.
+
+The existing actual R1 SDK.json blobd40d2b8f623c11bc6ed7e9922d15c26b0d812f8d reports jqdatasdk1.9.8, get_price signature with default fq='pre', panel=True, and explicit executed price parameters fq=null,panel=false,skip_paused=false,fill_paused=true. Its reported get_price sourceSHA256 is9946b81b53eaa87581714923204853c916defcb0ff410ec0bd6b126c7258bdb4. That is a retained native receipt, not a new independent read of the SDK source body. The defaults do not replace explicit fq=None. SDK retries/availability or row values are not reexecuted here. Existing RAW handoff and P3 lineage are reused rather than re-downloaded.
+
+This establishes a concrete supplier/callable candidate binding for the exact acquired stock batches. It does not establish all absolute quantity/currency scaling or no-limit sentinel semantics. volume/money ratio consistency cannot resolve a common multiplier. A total distribution-base share count is not free float and does not prove supplier encoding.
+
+The production JQData documentation URL returned a geographic access restriction instead of the API definition. No login, proxy, alternate demo host, credential request, paid API or entitlement probe was used to bypass it. Search snippets on vendor demo domains are not accepted as current production definitions. A legacy JoinQuantAPI.pdf is an older cloud jqdata API reference, not a proved current local jqdatasdk1.9.8 contract. The phrases describing traded stock quantity and turnover amount alone do not explicitly pin shares versus scaled shares and CNY versus scaled CNY. Absolute unit admission remains NOT_ESTABLISHED. A complete publicly accessible, version/scope-compatible source definition or a precise independent official quote artifact remains a valid evidence route; an owner screenshot is a fallback, not the only possible proof. Do not ask for passwords/tokens/cookies or secret-derived hashes.
+
+Review of the proposed L1/L2/L3 wording
+1. IPO first five trading sessions includes day5. The attachment's less-than5 wording is corrected in the draft and pure model tests.
+2. Missing/ambiguous master, listing date, instrument type, validity or calendar must produce UNKNOWN, not a default LIMITED_CANDIDATE.
+3. Source-path registration and safe field profiling can be observed without first closing unit/regime admission; this is not circular smoke authorization.
+4. A direct observed sentinel value belongs to identified source rows only. No general vendor convention or exchange-wide exception completeness is inferred.
+5. New receipt writes require a separately bounded C: capture directory; fixed HUB upload/readback is a distinct transport phase from an offline source reader. The draft resolves the attachment's blanket no-network/HUB-upload conflict without allowing supplier traffic.
+6. A source root is not a member-level allowlist. The existing11-member SECURITY_MASTER metadata is insufficient for native opening or L3; no global inventory, drive scan or original replication is issued.
+
+Offline checks in this package
+The pure candidate/profile model has no disk reader or supplier integration. Its unittest streams and OS exit are supplied. Separate draft checks recompute catalogue joins, exact input blob/hash identities, calendar pairing, counts and no-dispatch flags. These checks do not establish actual ZHANGWEI file existence, master coverage, full reader safety, native runtime/preflight compatibility, supplier units, regime completeness or permission to run a smoke test. The final executable package will require its own source reader, exact pins and meaningful native controls before any command can be issued.
+
+Disposition
+READ_ONLY_CONTRACT_DRAFT_PUBLISHED; no native task ID, ACK or executable command issued. The proposal to use a scoped local reader is recorded; this draft keeps local execution waiting for a complete reviewed package. Existing task closures, original failures, seals, rollback and current policy are preserved. Supplier/download/research/backtest/CURRENT/release/calendar/order permissions remain closed. ORDER_ALLOWED=false.
