@@ -1,0 +1,51 @@
+[
+  {
+    "entry": "control.py",
+    "actual_exit": 4,
+    "stdout": "",
+    "stderr": "ValueError:HOST_RUNTIME_PACKAGE\n",
+    "scope": "EXPECTED_NONWINDOWS_HOST_REJECTION_NO_NATIVE_EXECUTION"
+  },
+  {
+    "entry": "prepare_ack.py",
+    "actual_exit": 4,
+    "stdout": "",
+    "stderr": "Blocked:HOST_ZHANGWEI_REQUIRED\n",
+    "scope": "EXPECTED_NONWINDOWS_HOST_REJECTION_NO_NATIVE_EXECUTION"
+  },
+  {
+    "entry": "bind_ack_upload.py",
+    "actual_exit": 4,
+    "stdout": "",
+    "stderr": "Blocked:HOST_ZHANGWEI_REQUIRED\n",
+    "scope": "EXPECTED_NONWINDOWS_HOST_REJECTION_NO_NATIVE_EXECUTION"
+  },
+  {
+    "entry": "launch.py",
+    "actual_exit": 4,
+    "stdout": "",
+    "stderr": "Blocked:HOST_ZHANGWEI_REQUIRED\n",
+    "scope": "EXPECTED_NONWINDOWS_HOST_REJECTION_NO_NATIVE_EXECUTION"
+  },
+  {
+    "entry": "run_capture.py",
+    "actual_exit": 4,
+    "stdout": "",
+    "stderr": "Blocked:HOST_ZHANGWEI_REQUIRED\n",
+    "scope": "EXPECTED_NONWINDOWS_HOST_REJECTION_NO_NATIVE_EXECUTION"
+  },
+  {
+    "entry": "preflight_worker.py",
+    "actual_exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/workspace/scratch/89c630574873/l1234_dispatch/preflight_worker.py\", line 4, in <module>\n    g.validate(True)\n  File \"/workspace/scratch/89c630574873/l1234_dispatch/guard.py\", line 44, in validate\n    o.need(os.name=='nt' and socket.gethostname().upper()=='ZHANGWEI','HOST_ZHANGWEI_REQUIRED')\n  File \"/workspace/scratch/89c630574873/l1234_dispatch/observe.py\", line 27, in need\n    if not v: raise Blocked(reason)\n              ^^^^^^^^^^^^^^^^^^^^^\nobserve.Blocked: HOST_ZHANGWEI_REQUIRED\n",
+    "scope": "EXPECTED_NONWINDOWS_HOST_REJECTION_NO_NATIVE_EXECUTION"
+  },
+  {
+    "entry": "seal_delivery.py",
+    "actual_exit": 4,
+    "stdout": "",
+    "stderr": "Blocked:HOST_ZHANGWEI_REQUIRED\n",
+    "scope": "EXPECTED_NONWINDOWS_HOST_REJECTION_NO_NATIVE_EXECUTION"
+  }
+]

@@ -1,0 +1,16 @@
+Verbatim excerpt from the first failed test run's tool output; not a complete reconstructed stream:
+
+FAIL: test_adjacent_10x_condition_is_strict (test_observe.ScaleTests.test_adjacent_10x_condition_is_strict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/89c630574873/l1234_dispatch/test_observe.py", line 137, in test_adjacent_10x_condition_is_strict
+    self.assertEqual(o.compare_scales(self.local,self.official,self.p)['status'],'UNRESOLVED')
+AssertionError: 'ORDER_OF_MAGNITUDE_ONLY' != 'UNRESOLVED'
+- ORDER_OF_MAGNITUDE_ONLY
++ UNRESOLVED
+
+
+----------------------------------------------------------------------
+Ran 46 tests in 0.355s
+
+FAILED (failures=1)
