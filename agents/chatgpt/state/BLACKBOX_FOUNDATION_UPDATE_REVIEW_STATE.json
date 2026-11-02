@@ -3,8 +3,8 @@
   "repository": "zwdjwsam-creator/sam",
   "branch": "main",
   "execution_host": "ZHANGWEI",
-  "last_reviewed_at": "2026-11-02T13:56:15.484Z",
-  "phase": "A_L1234_R3_EXACT_WINDOWS_SPAWN_REPAIR_DISPATCHED_R2_ZERO_OBSERVATIONS",
+  "last_reviewed_at": "2026-11-02T14:17:45.325Z",
+  "phase": "A_R3_PREPARE_FAILED_R4_LITERAL_STARTUP_DIAGNOSTIC_ONLY_DISPATCHED",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -27,7 +27,7 @@
     "local_publication_contract_still_required": true,
     "exact_existing_raw_parquet_hub_transfer_allowed": true,
     "raw_transfer_scope": "Owner requested dispatch of proposed next task. Exact1504 source plan:1502 new bodies23448612bytes,2existing HUB bodies referenced. No supplier call/E-write/Cleaning/CURRENT; original stay-local restriction amended only for these identified bytes.",
-    "current_read_only_task": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+    "current_read_only_task": "BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4",
     "backtest_admission": false,
     "historical_calendar_read_only_capture": false,
     "calendar_policy_extension_authorized": false,
@@ -61,6 +61,20 @@
       "audit_blanket_string_exemption_added": false,
       "source_writes_allowed": false,
       "supplier_calls_allowed": false,
+      "ORDER_ALLOWED": false
+    },
+    "read_only_startup_instrumentation_20261102": {
+      "source": "Owner's R3 failure report explicitly requests literal command/key/pending telemetry and venv/base-path clarification before deciding the exact repair.",
+      "task_id": "BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4",
+      "execution_host": "ZHANGWEI",
+      "one_fixed_print_child_attempt": true,
+      "ACK_REQUESTED": false,
+      "source_data_reads_allowed": false,
+      "source_writes_allowed": false,
+      "runtime_metadata_only": true,
+      "policy_relaxation_allowed": false,
+      "base_interpreter_execution_allowed": false,
+      "observer_L1234_allowed": false,
       "ORDER_ALLOWED": false
     }
   },
@@ -5071,6 +5085,201 @@
       "path": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102_R2.txt",
       "blob_sha": "78ee06d3f8fc6cf90b3f2181550e9758ab951837",
       "review_scope": "Original outstanding execution/ACK contract read; native failure returned; do not replay."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/DELIVERY_MANIFEST.json",
+      "blob_sha": "fc99c262014331cc18f617a0b6f83abc18b77a05",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/FIXTURE_STATUS.json",
+      "blob_sha": "9ca7459816980be6e78f1530bca0728d9ffc640c",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/REPORT.txt",
+      "blob_sha": "c4e696c5fc0780db08c8bbddb1204cd762c35b5f",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/UPLOAD_READBACK.json",
+      "blob_sha": "834e234505d7f67aaf71685a9ab6c048be0e9cc9",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/SEAL_CONTROL_MANIFEST.json",
+      "blob_sha": "0589e5e4d2c26704b3dda6fa78d0470ac4286b64",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/prepare.process.json",
+      "blob_sha": "fba7610c131987c27e7831e205a5d324f7c3062c",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/prepare.started.json",
+      "blob_sha": "51d484d2e321da1077994529ae670586ef5520fb",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/prepare.stderr.txt",
+      "blob_sha": "ca4a1be322da972a68070ceb3f179917b7682e5d",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/prepare.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/seal.process.json",
+      "blob_sha": "815e95f4932d51479aa0955b9197802b43379801",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/seal.started.json",
+      "blob_sha": "024720a2acf5b2e862370e4ed4ecc21fed8a55c0",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/seal.stderr.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/control_logs/seal.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/startup/STARTUP.stderr.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/startup/STARTUP.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/startup/STARTUP_PROCESS.json",
+      "blob_sha": "1b72cbfb8bd5942a25fe72a3a79353200fd28da3",
+      "review_scope": "Full immutable R3 failed prepare/seal receipt read and 79-assertion byte/blob/manifest audit; no data acceptance."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/observe.py",
+      "blob_sha": "c8d4279777bbccd5b11ec53d9418c69872211e8b",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/guard.py",
+      "blob_sha": "f28ee56f5ca43e6cdb0ac24fb5b811313cad7c62",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/prepare_ack.py",
+      "blob_sha": "072c88c4c3a1d9b3ec6199ccd3ba8660e70910c1",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/bind_ack_upload.py",
+      "blob_sha": "301198b8a4e4f892d31e5539c199265916b3d30b",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/launch.py",
+      "blob_sha": "c663c5bbba177f7e95738b8e9532771e7bda01ee",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/run_capture.py",
+      "blob_sha": "8557aa985b32ac1075efa44b61dfbce4978b6a10",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/preflight_worker.py",
+      "blob_sha": "a7b42c536a91704f1bf9fe073edcf412515ca81d",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/seal_delivery.py",
+      "blob_sha": "c0141fddc6991a38c6c4d9043bebd89cc243397c",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/control.py",
+      "blob_sha": "91c55ca9e9a05d5d65130571691a8856f5e4e5cc",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/test_observe.py",
+      "blob_sha": "e2d806f503f7b5b32c01721f8f4914440c4d64c4",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/INPUTS.json",
+      "blob_sha": "0841ad03d3a70444624c395d359337f6ce6ceb9c",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/RULE_PINS.json",
+      "blob_sha": "9fd154d4fa802ce8122551ab90ff48dd317405a1",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/PREFLIGHT_AUX_RULES.json",
+      "blob_sha": "d92142e46562d675f2acd09d8ee8901b2a6895b3",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/CONTRACT.json",
+      "blob_sha": "29778eb5f6e03c2041ea6ced9726404b55dcf8a9",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/L4_PREREGISTRATION.json",
+      "blob_sha": "5c392966bf58279db925d649cd21f820e9d15c78",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/subprocess_io.py",
+      "blob_sha": "52aca8f555ba45306f96ff797182e2e6caa53bb3",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/stdio_regression.py",
+      "blob_sha": "5d3dec7f66738573798fc173d109ef7b7f087b10",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/spawn_policy.py",
+      "blob_sha": "7ee413afd7fdbd027722c3c305d5cb0dafc1c5fd",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/startup_probe.py",
+      "blob_sha": "347b124da86eb882e6dc5abfedafc36e7945e17c",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/REVIEW.txt",
+      "blob_sha": "6c19403a4665aa0b6c267393325f28a52e091c4c",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/CPYTHON_SOURCE_IDENTITIES.json",
+      "blob_sha": "eefaac76bf7a5ba0155607370940615781edfe5d",
+      "review_scope": "Full R3 code/contracts read; exact policy retained and telemetry-only callback reviewed."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/PACKAGE.json",
+      "blob_sha": "e5ca4961ea3752b4fc8c804b1ec55431224d670f",
+      "review_scope": "R3 package digest and 19 original member pins independently verified."
+    },
+    {
+      "path": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102_R3.txt",
+      "blob_sha": "d086b092d575963b21a35c011157dedc04aa4980",
+      "review_scope": "R3 one-shot failure contract and no-ACK/no-later-phase disposition reviewed."
     }
   ],
   "observed_r10_capture_blobs": [
@@ -5200,7 +5409,12 @@
     "Pinned CPython3.12.10 source shows string-form Windows Popen followed by distinct WinAPI event; a preceding list event is not required. Local extra-event diagnostic remains unsealed report-level evidence.",
     "R3 exact serialized command equivalence and paired same-thread WinAPI validation passed70 actual GPT tests and upstream Windows-method modeling; no blanket string/prefix or device-write bypass.",
     "R3 native prepare must first pass one exact print-only audited child before ACK; only then ACK readback/binding and one observer launch. New fixed C roots only, R1/R2 preserved.",
-    "Source/data/admission semantics and all1156 source paths unchanged. Units/regime/lifecycle gates remain open; supplier/research/backtest/CURRENT/release/calendar/orders remain closed."
+    "Source/data/admission semantics and all1156 source paths unchanged. Units/regime/lifecycle gates remain open; supplier/research/backtest/CURRENT/release/calendar/orders remain closed.",
+    "R3 immutable failure return independently verified:16files/14846bytes,5 empty members,69 conditional absences;79assertions exit0. Prepare4/seal0; no ACK/bind/observer/data result.",
+    "Native R3 shape trace confirms one string Popen and distinct WinAPI event. With exact hook order, rejection occurred at low-level comparison; missing literals prevent cause determination.",
+    "Prior local double-Popen attribution retracted as synthetic-event contamination. Base-interpreter explanation remains a hypothesis; no normalization or base-executable bypass is authorized.",
+    "R4 is one fixed print-only diagnostic with full literal/key/pending/cwd/decision metadata and unchanged R3 spawn policy. No ACK or L1-L4 launch, even if its print child exits0.",
+    "70 prior tests and8 telemetry tests passed with complete actual logs; first GPT setup failure and second incomplete-summary output retained. GPT real collector exit0 is POSIX only, not native Windows acceptance."
   ],
   "outstanding_tasks": [
     {
@@ -5470,23 +5684,39 @@
       "path": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102_R3.txt",
       "execution_host": "ZHANGWEI",
       "parent_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R2",
-      "ack_status": "AWAITING_ACTUAL_NEW_ACK_AFTER_NATIVE_STARTUP_PROBE",
-      "outcome": "R3_PUBLISHED_ONLY_NO_NATIVE_EXECUTION_CLAIMED",
+      "ack_status": "NO_ACK_WRITTEN_NATIVE_PREPARE_FAILED",
+      "outcome": "FAILED_PREPARE_ZERO_OBSERVATIONS_DO_NOT_REPLAY",
       "return_path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/",
       "reviewed_package_sha256": "89e8311c8979a4dcb7940cb46e1d63d9c2a180e1a4361dc26dd8b66dd3ca832e",
-      "replay_allowed": false
+      "replay_allowed": false,
+      "native_observer_child_started": false,
+      "latest_continuation": "agents/chatgpt/outbox/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4.txt",
+      "latest_review": "agents/chatgpt/reviews/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4/REVIEW.txt"
+    },
+    {
+      "task_id": "BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4",
+      "path": "agents/chatgpt/outbox/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4.txt",
+      "execution_host": "ZHANGWEI",
+      "parent_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+      "ACK_REQUESTED": false,
+      "ack_status": "NOT_APPLICABLE_DIAGNOSTIC_ONLY_NO_ACK",
+      "outcome": "DIAGNOSTIC_ONLY_PUBLISHED_NOT_EXECUTED",
+      "return_path": "agents/chatgpt/inbox/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4/ZHANGWEI/",
+      "reviewed_package_sha256": "01d6573ec8c6aa9c2639674eef7d789befaac4d70725f27f770834b0a69014d5",
+      "replay_allowed": false,
+      "native_observer_execution_allowed": false
     }
   ],
   "issued_task_ids_this_run": [
-    "BLACKBOX_A_READONLY_L1234_20261102_R3"
+    "BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4"
   ],
   "pending_outcomes": [
-    "R3 native prepare startup stdout/stderr/process and event shapes; actual immutable ACK upload/readback and Git binding",
-    "R3 single launch: original DATA preflight,70 actual native tests, then exact L1/L2/L3/L4 reads if gates pass",
-    "Every R3 receipt and immutable byte readback for independent GPT review; do not treat publication or GPT model success as native execution",
-    "G1 complete dated exceptions/regime and absolute-unit/official-L4 reference bindings remain unresolved; no supplier, research/backtest, CURRENT, release, calendar extension or orders"
+    "R4 single native probe and seal results, including complete literal Popen/WinAPI commands, mapping keys, pending states, exact differences and loaded runtime/callable metadata",
+    "All R4 receipt payloads/manifests/empty streams and immutable upload readbacks for GPT review; no ACK requested",
+    "Determine the exact observed low-level command divergence before authoring any policy/launcher repair; base-interpreter hypothesis remains unverified",
+    "L1/L2/L3/L4 data work remains unexecuted; absolute units/T+1 regime/lifecycle bindings unresolved. No supplier/research/backtest/CURRENT/release/calendar/orders"
   ],
-  "next_action": "Await the one authorized R3 native preparation/ACK/execution/complete handoff; independently review literal receipts and observations. Do not retry R1/R2 or create another task on unchanged input.",
+  "next_action": "Await R4 diagnostic-only native result and complete readbacks, then review literal divergence before fixing spawn handling. Do not repeat R1/R2/R3 or issue another task on unchanged input.",
   "notify_user": true,
   "observed_r10_directory_entries": [
     {
@@ -5666,15 +5896,15 @@
     }
   ],
   "last_poll": {
-    "head": "e2292e2c2017e44e8b881d5b1610a03a2772a772",
-    "at": "2026-11-02T13:56:15.484Z",
+    "head": "21b2054453202088d750c9f8257c59a6b6ae6a1b",
+    "at": "2026-11-02T14:17:45.325Z",
     "new_native_task_issued": true,
     "issued_task_ids": [
-      "BLACKBOX_A_READONLY_L1234_20261102_R3"
+      "BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4"
     ],
-    "R2_failed_return_reviewed": true,
-    "new_native_ack_received": false,
-    "native_data_observations": 0,
+    "R3_failure_reviewed": true,
+    "R4_native_execution_observed": false,
+    "R4_ACK_REQUESTED": false,
     "inbox_pointer_blob_sha": "f71a852ca705325cdd27a67496dbf5c89d7cdb23",
     "r10_direct_entries_unchanged": 35,
     "end_to_end_direct_entries_unchanged": 33
@@ -5858,13 +6088,13 @@
     "1098 price calls+16 dated universe calls=1114; summed measured quota170538, plus prior5320=175858 cumulative of700000. Newly fetched86948 includes rejected80; accepted new86868 plus retained80. Last day43fetched vs42accepted/3360rows;23batches unrequested. ETF/index NOT_ATTEMPTED.",
     "Exact failed15489-byte batch fb1a0ccb... has not been uploaded; native report identifies600621 paused0/nullOHL/close14.9/zero volume-money. No fill or code-policy relaxation. GPT exact-body helper5 offline controls pass; one precise read-only source handoff published, not R5 acquisition."
   ],
-  "latest_owner_constraint": "Only the expressly approved finite read-only L1/L2/L3/L4 task may execute on ZHANGWEI with unmodified GPT code. Repair the reported startup defect in a new fixed package, preserve failed evidence, and require ACK/readbacks. No source writes, discovery, supplier calls, research/backtest, CURRENT, release, calendar extension or orders.",
+  "latest_owner_constraint": "Proceed with precise GPT-authored startup instrumentation and preserve all failed outcomes. Native R4 only attempts one fixed print child and records evidence; no command-equivalence relaxation or data execution without a further exact reviewed contract. ORDER_ALLOWED=false.",
   "findings_this_run": [
-    "R2 failed before observer spawn; 112 independent return assertions exit0 verified27 files/22212bytes,10 empty files and55 conditional absences. No native data observation or source absence claim.",
-    "Pinned CPython3.12.10 source shows string-form Windows Popen followed by distinct WinAPI event; a preceding list event is not required. Local extra-event diagnostic remains unsealed report-level evidence.",
-    "R3 exact serialized command equivalence and paired same-thread WinAPI validation passed70 actual GPT tests and upstream Windows-method modeling; no blanket string/prefix or device-write bypass.",
-    "R3 native prepare must first pass one exact print-only audited child before ACK; only then ACK readback/binding and one observer launch. New fixed C roots only, R1/R2 preserved.",
-    "Source/data/admission semantics and all1156 source paths unchanged. Units/regime/lifecycle gates remain open; supplier/research/backtest/CURRENT/release/calendar/orders remain closed."
+    "R3 immutable failure return independently verified:16files/14846bytes,5 empty members,69 conditional absences;79assertions exit0. Prepare4/seal0; no ACK/bind/observer/data result.",
+    "Native R3 shape trace confirms one string Popen and distinct WinAPI event. With exact hook order, rejection occurred at low-level comparison; missing literals prevent cause determination.",
+    "Prior local double-Popen attribution retracted as synthetic-event contamination. Base-interpreter explanation remains a hypothesis; no normalization or base-executable bypass is authorized.",
+    "R4 is one fixed print-only diagnostic with full literal/key/pending/cwd/decision metadata and unchanged R3 spawn policy. No ACK or L1-L4 launch, even if its print child exits0.",
+    "70 prior tests and8 telemetry tests passed with complete actual logs; first GPT setup failure and second incomplete-summary output retained. GPT real collector exit0 is POSIX only, not native Windows acceptance."
   ],
   "observed_sam_handoff_entries": [
     {
@@ -6370,7 +6600,7 @@
     "Source-inspected catchup defaults/window/date-aligned PASS/retry mechanics summarized without claiming historical26 exact failures, live automation, duplicate observations, actual target or supplier absence. No date/EMPTY/exclusion/factor policy delegated.",
     "Both existing child task outboxes and notebook/desktop/parent routes updated and exactly read back. Native outcome/ACK pending; task publication is not actual stop. No new acquisition/data/current/release/order authorization."
   ],
-  "previous_phase": "A_L1234_R2_REPAIR_DISPATCHED_AFTER_VERIFIED_PRESPAWN_FAILURE",
+  "previous_phase": "A_L1234_R3_EXACT_WINDOWS_SPAWN_REPAIR_DISPATCHED_R2_ZERO_OBSERVATIONS",
   "owner_requested_source_handoff": {
     "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
     "execution_host": "SAM",
@@ -10545,11 +10775,11 @@
     "cleaning_task_issued_this_request": false
   },
   "latest_user_report": {
-    "at": "2026-11-02T13:56:15.484Z",
-    "summary": "R2 launch failed Safety:UNREVIEWED_SUBPROCESS before observer spawn; user supplied local audit-shape diagnostic and requested a third precise corrected package.",
-    "evidence_snapshot": "e2292e2c2017e44e8b881d5b1610a03a2772a772"
+    "at": "2026-11-02T14:17:45.325Z",
+    "summary": "R3 prepare4 on instrumented startup probe; ACK absent, bind/launch not attempted, seal0. Requested full literal telemetry and clarification of unverified venv/base-executable hypothesis.",
+    "snapshot": "21b2054453202088d750c9f8257c59a6b6ae6a1b"
   },
-  "active_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+  "active_task_id": "BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4",
   "raw_parquet_handoff_dispatch": {
     "task_id": "BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028",
     "parent_task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
@@ -13120,7 +13350,7 @@
   },
   "a_readonly_l1234_r3_dispatch_20261102": {
     "task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
-    "status": "PUBLISHED_AWAITING_ACTUAL_NATIVE_STARTUP_ACK_AND_SINGLE_EXECUTION",
+    "status": "FAILED_PREPARE_HANDOFF_VERIFIED_ZERO_OBSERVATIONS_CLOSED_FOR_REPLAY",
     "predecessor": "BLACKBOX_A_READONLY_L1234_20261102_R2",
     "execution_host": "ZHANGWEI",
     "source_snapshot": "e2292e2c2017e44e8b881d5b1610a03a2772a772",
@@ -13138,9 +13368,9 @@
     "actual_offline_test_exit": 0,
     "Windows_upstream_method_model_exit": 0,
     "actual_GPT_startup_probe_exit": 0,
-    "actual_native_startup_probe_observed": false,
+    "actual_native_startup_probe_observed": true,
     "native_ack_observed": false,
-    "actual_native_execution_observed": false,
+    "actual_native_execution_observed": true,
     "native_observations": 0,
     "replay_allowed": false,
     "source_count": 1156,
@@ -13148,6 +13378,93 @@
     "source_discovery_allowed": false,
     "source_writes_allowed": false,
     "supplier_calls_allowed": false,
+    "backtest_research_admitted": false,
+    "current_switch_allowed": false,
+    "release_allowed": false,
+    "policy_calendar_extended": false,
+    "ORDER_ALLOWED": false,
+    "actual_native_prepare_exit": 4,
+    "actual_native_probe_child_exit": null,
+    "latest_review": "agents/chatgpt/reviews/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4/REVIEW.txt",
+    "next_task_id": "BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4"
+  },
+  "a_readonly_l1234_r3_failed_return_20261102": {
+    "status": "FAILED_PREPARE_HANDOFF_VERIFIED_ZERO_OBSERVATIONS_CLOSED_FOR_REPLAY",
+    "reviewed_snapshot": "21b2054453202088d750c9f8257c59a6b6ae6a1b",
+    "return_files": 16,
+    "return_bytes": 14846,
+    "empty_file_members": 5,
+    "conditional_absences": 69,
+    "independent_assertions": 79,
+    "actual_audit_exit": 0,
+    "prepare_exit": 4,
+    "seal_exit": 0,
+    "ACK_written": false,
+    "bind_attempted": false,
+    "launch_attempted": false,
+    "actual_probe_child_exit": null,
+    "native_observations": 0,
+    "original_data_tests_executed": 0,
+    "probe_error": "Safety:UNREVIEWED_SUBPROCESS:COMMAND_LINE_NOT_REVIEWED",
+    "native_event_shapes": [
+      {
+        "event": "subprocess.Popen",
+        "argument_count": 4,
+        "argv_type": "str",
+        "executable_is_none": true
+      },
+      {
+        "event": "_winapi.CreateProcess",
+        "argument_count": 3,
+        "argv_type": "str",
+        "executable_is_none": true
+      }
+    ],
+    "upload_readback_blob": "834e234505d7f67aaf71685a9ab6c048be0e9cc9",
+    "local_self_correction": "Local report retracts prior double-Popen attribution; its earlier list event was a synthetic sys.audit call, not native spawn. Preserved outside sealed-delivery scope.",
+    "established_inference": "With pinned hook order, Popen policy completed before subsequent WinAPI event; the literal rejected low-level command was not recorded.",
+    "base_interpreter_explanation": "UNVERIFIED_HYPOTHESIS_NOT_PERMISSION",
+    "review_path": "agents/chatgpt/reviews/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4/REVIEW.txt",
+    "ORDER_ALLOWED": false
+  },
+  "a_spawn_diagnostic_r4_dispatch_20261102": {
+    "task_id": "BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4",
+    "status": "PUBLISHED_DIAGNOSTIC_ONLY_AWAITING_SINGLE_NATIVE_PROBE_AND_HANDOFF",
+    "parent_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+    "execution_host": "ZHANGWEI",
+    "source_snapshot": "21b2054453202088d750c9f8257c59a6b6ae6a1b",
+    "state_base_blob_sha": "fc2f461fbefe0af56564b7c59f600c3f44cd6ddc",
+    "outbox_path": "agents/chatgpt/outbox/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4.txt",
+    "review_root": "agents/chatgpt/reviews/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4/",
+    "return_path": "agents/chatgpt/inbox/BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4/ZHANGWEI/",
+    "package_sha256": "01d6573ec8c6aa9c2639674eef7d789befaac4d70725f27f770834b0a69014d5",
+    "package_bytes": 1621,
+    "runtime_payload_files": 10,
+    "ACK_REQUESTED": false,
+    "native_phase_commands": [
+      "probe",
+      "seal"
+    ],
+    "native_command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -B -X utf8 C:\\LAN_SHARE_REPORT\\BLACKBOX_A_SPAWN_DIAGNOSTIC_20261102_R4_PACKAGE\\package\\control.py probe",
+    "spawn_policy_unchanged_from_R3": true,
+    "guard_write_network_enumeration_unchanged": true,
+    "telemetry_tests": 8,
+    "telemetry_actual_exit": 0,
+    "prior_tests": 70,
+    "prior_complete_test_actual_exit": 0,
+    "prior_complete_test_log": "BASE_TESTS_R3.stderr.txt",
+    "first_GPT_test_setup_failure_retained": true,
+    "second_GPT_test_incomplete_output_not_certified": true,
+    "actual_GPT_probe_child_exit": 0,
+    "actual_native_execution_observed": false,
+    "native_observations": 0,
+    "source_paths_to_read": 0,
+    "source_data_reads_allowed": false,
+    "source_writes_allowed": false,
+    "supplier_calls_allowed": false,
+    "observer_L1234_allowed": false,
+    "base_interpreter_execution_allowed": false,
+    "replay_allowed": false,
     "backtest_research_admitted": false,
     "current_switch_allowed": false,
     "release_allowed": false,
