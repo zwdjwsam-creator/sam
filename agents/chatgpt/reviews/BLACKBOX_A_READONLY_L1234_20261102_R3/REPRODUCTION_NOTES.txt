@@ -1,0 +1,12 @@
+GPT REVIEW CHECKS — NOT LOCAL EXECUTION COMMANDS
+The deployed runtime is ONLY the19 PACKAGE.json members plus PACKAGE.json. All other review files stay on the HUB; do not execute these review helpers on ZHANGWEI or expand the native package.
+
+OFFLINE_TEST_PROCESS.json records the real GPT-host command and exit. Its direct test_observe.py entry runs70 tests; do not substitute unittest module discovery, which bypasses the file's reviewed main setup. Native tests are already invoked by run_capture.py after the fixed preflight, with the fixed C: fixture root and exact process allowlist.
+
+For GPT-side reproduction, fetch R2 source/returns at SOURCE_BLOBS.json's immutable snapshot, preserving UTF-8 bytes. Rebuild r3_source_bundle.json with snapshot,runtime,returns,package as used by audit_return.py. runtime entries carry path,bytes,sha256,blob_sha,content; returns carry full path,sha,content; package carries the original PACKAGE.json content and sha. Materialize the17 original files and PACKAGE.json under l1234_r2_original/. RETURN_GIT_TIMING.json retains the fetched ACK/delivery commit timing. audit_return.py verifies hashes, manifests, returned sets, phase exits, absence accounting and ACK precedence without opening any local data source.
+
+For windows_branch_check.py, retrieve the two public source bodies using CPYTHON_SOURCE_IDENTITIES.json and verify full length/SHA256. Rebuild cpython_r3_evidence.json as {sources:[{content:<subprocess.py UTF-8 text>},{content:<_winapi.c UTF-8 text>}]} in that order. The checker extracts the upstream Windows method by AST; the exact method SHA is recorded in WINDOWS_BRANCH_CHECK.json. It uses a fake OS boundary and emits real sys.audit events. It does not prove native Windows spawning, installed stdlib identity or source-data access.
+
+check_scope.py compares the R2 originals with the R3 reviewed files, discounting only the fixed task namespace for the listed unchanged files. startup_probe_check.py runs the exact probe on a new GPT-only scratch root; its recorded success was POSIX, not Windows. The R3 native prepare will supply the first actual ZHANGWEI startup trace before ACK and source observations. Do not pre-run it, improvise another probe or delete a previous root.
+
+All stdout/stderr streams, including empty streams, and actual process exits are retained. Failed outcomes are not replaced by model success. Native R3 remains pending. ORDER_ALLOWED=false.

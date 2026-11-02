@@ -1,0 +1,17 @@
+{
+  "task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+  "fixed_before_this_review_computed_or_read_raw_aggregate_totals": true,
+  "dates": ["2026-09-29", "2026-10-15", "2026-10-26"],
+  "exchanges": ["XSHG", "XSHE"],
+  "fields": ["money", "volume"],
+  "scope": "Identified ordinary A-share physical daily rows only; exclude CDR, B shares, ETF/fund/index and unsupported exchanges. Preserve all anomalies and excluded totals separately; no silent deduplication or filling.",
+  "candidate_multipliers_applied_to_raw_sum_after_explicit_official_unit_normalization": [1, 100, 1000, 10000],
+  "within_relative_tolerance": "0.95 <= raw_sum * candidate / official_base_unit_total <= 1.05",
+  "other_candidates_separation": "For every other candidate, ratio <=0.1 or ratio >=10 for each required date/exchange/field cell",
+  "acceptance": "Exactly one candidate per field must satisfy all required date/exchange cells and the separation condition. Every required cell needs positive finite official total, explicit original unit/rounding/session/scope, complete compatible local coverage, and no unresolved duplicate/null/exclusion mismatch. Otherwise UNRESOLVED.",
+  "official_reference_disposition_at_preregistration": "NOT_BOUND",
+  "official_download_or_supplier_request_by_local_executor": false,
+  "result_kind": "ORDER_OF_MAGNITUDE_ONLY_NOT_FIELD_EQUALITY_OR_PRODUCT_UNIT_CERTIFICATE",
+  "unit_gate": "Never closes from L4 alone. Requires compatible G2 source definition, reconciled universe/session coverage and independent GPT review.",
+  "ORDER_ALLOWED": false
+}

@@ -3,8 +3,8 @@
   "repository": "zwdjwsam-creator/sam",
   "branch": "main",
   "execution_host": "ZHANGWEI",
-  "last_reviewed_at": "2026-11-02T13:06:44.691Z",
-  "phase": "A_L1234_R2_REPAIR_DISPATCHED_AFTER_VERIFIED_PRESPAWN_FAILURE",
+  "last_reviewed_at": "2026-11-02T13:56:15.484Z",
+  "phase": "A_L1234_R3_EXACT_WINDOWS_SPAWN_REPAIR_DISPATCHED_R2_ZERO_OBSERVATIONS",
   "authorization": {
     "conditional_incremental_acquisition": true,
     "continuation_beyond_ten_round_plan": true,
@@ -27,7 +27,7 @@
     "local_publication_contract_still_required": true,
     "exact_existing_raw_parquet_hub_transfer_allowed": true,
     "raw_transfer_scope": "Owner requested dispatch of proposed next task. Exact1504 source plan:1502 new bodies23448612bytes,2existing HUB bodies referenced. No supplier call/E-write/Cleaning/CURRENT; original stay-local restriction amended only for these identified bytes.",
-    "current_read_only_task": null,
+    "current_read_only_task": "BLACKBOX_A_READONLY_L1234_20261102_R3",
     "backtest_admission": false,
     "historical_calendar_read_only_capture": false,
     "calendar_policy_extension_authorized": false,
@@ -50,6 +50,18 @@
       "source_paths_changed": false,
       "audit_device_write_exemption_added": false,
       "ORDERS_ALLOWED": false
+    },
+    "read_only_l1234_windows_spawn_repair_20261102": {
+      "source": "Owner's R2 pre-spawn failure report and requested third corrected package within the expressly approved finite L1/L2/L3/L4 read-only task",
+      "predecessor": "BLACKBOX_A_READONLY_L1234_20261102_R2",
+      "repair_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+      "execution_host": "ZHANGWEI",
+      "prepare_fixed_print_only_startup_probe": true,
+      "source_paths_changed": false,
+      "audit_blanket_string_exemption_added": false,
+      "source_writes_allowed": false,
+      "supplier_calls_allowed": false,
+      "ORDER_ALLOWED": false
     }
   },
   "reviewed_source_blobs": [
@@ -4829,6 +4841,236 @@
       "path": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102.txt",
       "blob_sha": "c320a925f835b769e4545f0b4d851a86884a8b6b",
       "review_scope": "Exact immutable original source/task/package read for bounded stdio repair;not authority to expand execution scope."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/ACK.json",
+      "blob_sha": "a7ebf071ae3d453d97e60a1ae0a6d7ae5fdf0eb8",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/ACK_UPLOAD.json",
+      "blob_sha": "e9f80566afd72121107f9d92ed498b9007574a3a",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/DELIVERY_MANIFEST.json",
+      "blob_sha": "2fd6acd73bcc5f9f7eb9f96190cc4bc222e87afe",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/FIXTURE_STATUS.json",
+      "blob_sha": "07f85a40b57f3bdd7dcfce571cf3b59de951514e",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/REPORT.txt",
+      "blob_sha": "3714e9a4decf67f81dbecfc6974f953ecc5fb454",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/UPLOAD_READBACK.json",
+      "blob_sha": "0f2e80740251163230ae46ec75778cfe186dc02a",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/SEAL_CONTROL_MANIFEST.json",
+      "blob_sha": "933717089abe67f58948ab0e08023974d434c1cd",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/bind.process.json",
+      "blob_sha": "1b6fa1df0f9c9df10b48ae638804c12446d06454",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/bind.started.json",
+      "blob_sha": "221e3186c9a7aadc27d673515ac9bc509054474b",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/bind.stderr.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/bind.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/launch.process.json",
+      "blob_sha": "34c2788b379b7ded7e53876ede6087e02790b7a4",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/launch.started.json",
+      "blob_sha": "4d494dbf26a244aca3ed60a4e2bcf0096b5f6d9f",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/launch.stderr.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/launch.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/prepare.process.json",
+      "blob_sha": "051a4e4c648eaf138da0bd782eaa00499d8be7f2",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/prepare.started.json",
+      "blob_sha": "4d3b3285f8b18f890790bc8fad1bde72ccc55212",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/prepare.stderr.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/prepare.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/seal.process.json",
+      "blob_sha": "fa2db81081b3b73b8f550c877999fc39435b5c6f",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/seal.started.json",
+      "blob_sha": "f92cf7b78fc6b9fb15f106c788044848f54f9a5a",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/seal.stderr.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/control_logs/seal.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/outer/OUTER.stderr.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/outer/OUTER.stdout.txt",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/outer/OUTER_PROCESS.json",
+      "blob_sha": "97ce91ba2a8bca3397b2229597a0cebf581d880b",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/outer/RUN_ONCE.json",
+      "blob_sha": "a2e8ed2dada336c3da014a8f6005473c7cd70e5f",
+      "review_scope": "Full immutable R2 failure receipt read; byte/blob/manifest/exit audit; no source observation certified."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/observe.py",
+      "blob_sha": "620c459627437d0ca2281252e6343e7f865cb04e",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/guard.py",
+      "blob_sha": "c26034b86073edd5d054231488350f8047bf3b4f",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/prepare_ack.py",
+      "blob_sha": "502fcb86ea416ba91631ad238e72f40ae4ea732b",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/bind_ack_upload.py",
+      "blob_sha": "301198b8a4e4f892d31e5539c199265916b3d30b",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/launch.py",
+      "blob_sha": "c663c5bbba177f7e95738b8e9532771e7bda01ee",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/run_capture.py",
+      "blob_sha": "8557aa985b32ac1075efa44b61dfbce4978b6a10",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/preflight_worker.py",
+      "blob_sha": "a7b42c536a91704f1bf9fe073edcf412515ca81d",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/seal_delivery.py",
+      "blob_sha": "6fd241a2ca9a0575f43471c6d6cfe09bba0e6831",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/control.py",
+      "blob_sha": "aff18f8bf8fee07f26bc192d78ae24c8eea30bf2",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/test_observe.py",
+      "blob_sha": "22275799fb58c479d0e33f2d06d68448f3e8abda",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/INPUTS.json",
+      "blob_sha": "a37d0c5c7793f17e123cd912e7e2d10829c0bf09",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/RULE_PINS.json",
+      "blob_sha": "9fd154d4fa802ce8122551ab90ff48dd317405a1",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/PREFLIGHT_AUX_RULES.json",
+      "blob_sha": "d92142e46562d675f2acd09d8ee8901b2a6895b3",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/CONTRACT.json",
+      "blob_sha": "25d252b667cedc52aa0f8a059803aa4c09236158",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/L4_PREREGISTRATION.json",
+      "blob_sha": "f0da4c17bf688f06c602465b32e6e98e5ceb99cb",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/subprocess_io.py",
+      "blob_sha": "52aca8f555ba45306f96ff797182e2e6caa53bb3",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/stdio_regression.py",
+      "blob_sha": "5d3dec7f66738573798fc173d109ef7b7f087b10",
+      "review_scope": "Full original R2 code/contract read for precise Windows spawn repair and unchanged finite source scope."
+    },
+    {
+      "path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R2/PACKAGE.json",
+      "blob_sha": "6d2661512078c9bb4c184e50e6f6f3654d81e32a",
+      "review_scope": "Original R2 package digest and runtime membership verified."
+    },
+    {
+      "path": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102_R2.txt",
+      "blob_sha": "78ee06d3f8fc6cf90b3f2181550e9758ab951837",
+      "review_scope": "Original outstanding execution/ACK contract read; native failure returned; do not replay."
     }
   ],
   "observed_r10_capture_blobs": [
@@ -4953,7 +5195,12 @@
     "Published8 package files and full outbox,3 desktop routes and completed-R5 no-replay annotation; every write read back. First package readback saw transient stale ref, fresh pinned-commit read matched without another write. Publication is not native ACK/execution. No new collection budget or range created.",
     "Owner-supplied20261102 review direction addressed through non-executable read-only L1/L2/L3 contracts;17 historical refs+1122 stock refs retained, no master-root scan. IPO sessions1..5 inclusive; missing master/validity/calendar UNKNOWN, never default LIMITED. G1 primary positive002731/10-23 observed and301139/09-30 search-text lead; census incomplete. Exact acquired stock callable bound to get_price/SDK receipt; absolute units and sentinel meanings not admitted. No new native task, download, smoke, release or calendar change.",
     "Owner-approved executable read-only L1/L2/L3/L4 task issued with exact1156 paths and15 runtime members+PACKAGE.17 existing acquired stock universe lifecycle files remove the legacy unbound-master-root dependency for candidates only; no scan/new data.51 final fixtures and full1122-stock HUB-body profile actual exit0,88812physical=88811+1 quarantine, source/value positions preserved. Strict L4 preregistration fixed09-29/10-15/10-26 before aggregate inspection; official totals/session scope and G2 units remain open. Publication is not ACK/execution/admission.",
-    "Original L1234 native prepare0/bind0/launch2/seal0 return independently audited:27 blobs20775bytes,10empty streams,55conditional absences,117checks exit0. Popen null-device O_RDWR was blocked before capture child creation;zero native observations. GPT-authored stdio repaired via already opened read-only null handle at launch/capture/control, preserving all audit restrictions. New R2 package17payloads+PACKAGE,57 actual GPT fixtures exit0;native Windows outcome pending. Old task/package/markers/failure retained."
+    "Original L1234 native prepare0/bind0/launch2/seal0 return independently audited:27 blobs20775bytes,10empty streams,55conditional absences,117checks exit0. Popen null-device O_RDWR was blocked before capture child creation;zero native observations. GPT-authored stdio repaired via already opened read-only null handle at launch/capture/control, preserving all audit restrictions. New R2 package17payloads+PACKAGE,57 actual GPT fixtures exit0;native Windows outcome pending. Old task/package/markers/failure retained.",
+    "R2 failed before observer spawn; 112 independent return assertions exit0 verified27 files/22212bytes,10 empty files and55 conditional absences. No native data observation or source absence claim.",
+    "Pinned CPython3.12.10 source shows string-form Windows Popen followed by distinct WinAPI event; a preceding list event is not required. Local extra-event diagnostic remains unsealed report-level evidence.",
+    "R3 exact serialized command equivalence and paired same-thread WinAPI validation passed70 actual GPT tests and upstream Windows-method modeling; no blanket string/prefix or device-write bypass.",
+    "R3 native prepare must first pass one exact print-only audited child before ACK; only then ACK readback/binding and one observer launch. New fixed C roots only, R1/R2 preserved.",
+    "Source/data/admission semantics and all1156 source paths unchanged. Units/regime/lifecycle gates remain open; supplier/research/backtest/CURRENT/release/calendar/orders remain closed."
   ],
   "outstanding_tasks": [
     {
@@ -5209,23 +5456,37 @@
       "path": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102_R2.txt",
       "execution_host": "ZHANGWEI",
       "parent_task_id": "BLACKBOX_A_READONLY_L1234_20261102",
-      "ack_status": "AWAITING_ACTUAL_NEW_ACK",
-      "outcome": "R2_PUBLISHED_ONLY_NO_EXECUTION_CLAIMED",
+      "ack_status": "ACK_AND_FAILED_PRESPAWN_HANDOFF_VERIFIED",
+      "outcome": "FAILED_PRESPAWN_ZERO_OBSERVATIONS_DO_NOT_REPLAY",
       "return_path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R2/ZHANGWEI/",
       "reviewed_package_sha256": "1095036df11b79ee5f1142ae2c984fc328b4e7f86d1dbebdf838f4c8670bb91e",
+      "replay_allowed": false,
+      "latest_continuation": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102_R3.txt",
+      "native_observer_child_started": false,
+      "latest_review": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/REVIEW.txt"
+    },
+    {
+      "task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+      "path": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102_R3.txt",
+      "execution_host": "ZHANGWEI",
+      "parent_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R2",
+      "ack_status": "AWAITING_ACTUAL_NEW_ACK_AFTER_NATIVE_STARTUP_PROBE",
+      "outcome": "R3_PUBLISHED_ONLY_NO_NATIVE_EXECUTION_CLAIMED",
+      "return_path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/",
+      "reviewed_package_sha256": "89e8311c8979a4dcb7940cb46e1d63d9c2a180e1a4361dc26dd8b66dd3ca832e",
       "replay_allowed": false
     }
   ],
   "issued_task_ids_this_run": [
-    "BLACKBOX_A_READONLY_L1234_20261102_R2"
+    "BLACKBOX_A_READONLY_L1234_20261102_R3"
   ],
   "pending_outcomes": [
-    "R2 actual immutable ACK upload/readback and one fresh execution on the explicitly specified R2 roots",
-    "Native57-test result and real R2 source identity/L1/L2/L3/L4 observations; original task produced zero observations",
-    "All R2 return files and immutable byte readbacks before independent native acceptance",
-    "G1 completeness and source-compatible units/official L4 comparison scope remain open; no acquisition or research/backtest/current/release/order admission"
+    "R3 native prepare startup stdout/stderr/process and event shapes; actual immutable ACK upload/readback and Git binding",
+    "R3 single launch: original DATA preflight,70 actual native tests, then exact L1/L2/L3/L4 reads if gates pass",
+    "Every R3 receipt and immutable byte readback for independent GPT review; do not treat publication or GPT model success as native execution",
+    "G1 complete dated exceptions/regime and absolute-unit/official-L4 reference bindings remain unresolved; no supplier, research/backtest, CURRENT, release, calendar extension or orders"
   ],
-  "next_action": "Await R2 ACK and execution, without retrying or altering original failed task roots. Independently audit actual results; publication is not execution.",
+  "next_action": "Await the one authorized R3 native preparation/ACK/execution/complete handoff; independently review literal receipts and observations. Do not retry R1/R2 or create another task on unchanged input.",
   "notify_user": true,
   "observed_r10_directory_entries": [
     {
@@ -5405,14 +5666,18 @@
     }
   ],
   "last_poll": {
-    "head": "c25c06bb893a7d0902f83b8baccd42003afe47cc",
-    "at": "2026-11-02T13:06:44.693Z",
+    "head": "e2292e2c2017e44e8b881d5b1610a03a2772a772",
+    "at": "2026-11-02T13:56:15.484Z",
     "new_native_task_issued": true,
     "issued_task_ids": [
-      "BLACKBOX_A_READONLY_L1234_20261102_R2"
+      "BLACKBOX_A_READONLY_L1234_20261102_R3"
     ],
-    "old_failed_return_reviewed": true,
-    "new_native_ack_received": false
+    "R2_failed_return_reviewed": true,
+    "new_native_ack_received": false,
+    "native_data_observations": 0,
+    "inbox_pointer_blob_sha": "f71a852ca705325cdd27a67496dbf5c89d7cdb23",
+    "r10_direct_entries_unchanged": 35,
+    "end_to_end_direct_entries_unchanged": 33
   },
   "observed_end_to_end_entries": [
     {
@@ -5593,14 +5858,13 @@
     "1098 price calls+16 dated universe calls=1114; summed measured quota170538, plus prior5320=175858 cumulative of700000. Newly fetched86948 includes rejected80; accepted new86868 plus retained80. Last day43fetched vs42accepted/3360rows;23batches unrequested. ETF/index NOT_ATTEMPTED.",
     "Exact failed15489-byte batch fb1a0ccb... has not been uploaded; native report identifies600621 paused0/nullOHL/close14.9/zero volume-money. No fill or code-policy relaxation. GPT exact-body helper5 offline controls pass; one precise read-only source handoff published, not R5 acquisition."
   ],
-  "latest_owner_constraint": "Owner approves finite smoke quantity/tick/cap/302132 exception/CDR hold and5bp outward rounding with price-bucket actual-slippage reports. Require exact00227010-15 exchange unit anchor,T+1 actual-field/regime source,original implementation notice,and NOT_PERFORMANCE/CA_UNRESOLVED mechanics-only draft. Calendar expansion deferred; local AI HOLD; no backtest,CURRENT/release or orders.",
+  "latest_owner_constraint": "Only the expressly approved finite read-only L1/L2/L3/L4 task may execute on ZHANGWEI with unmodified GPT code. Repair the reported startup defect in a new fixed package, preserve failed evidence, and require ACK/readbacks. No source writes, discovery, supplier calls, research/backtest, CURRENT, release, calendar extension or orders.",
   "findings_this_run": [
-    "Owner's five requests incorporated into a new English HUB review supplement; no local task or ACK issued.24 source/arithmetic assertions actual exit0, not a model acceptance.",
-    "One exact original15545-byte source/physical row68 for00227010-15 independently verified and compared to candidate:volume14076869,money254286654.36. Official explicit-unit daily quote remains unavailable after public-site timeouts; unit binding not forced.",
-    "Original issuer2026-049 notice read via Sina PDF mirror:2.60CNY/10shares,gross233018612.06,record10-14,ex/ordinary-agent payment10-15,dated10-09,no bonus/transfer. Exchange-hosted052 corroborates0.26 and049. No exact PIT timestamp or PDF-byte pin claimed.",
-    "Primary SSE2026 notice corrects old universalST5percent assumption; execution model must use actual T+1 field provenance and separately bound regime,not board percentages. Unknown/unsupported limit sessions remain blockers.",
-    "Outward rounding design approved; Decimal examples show5bp at20CNY,20bp at5CNY,50bp at2CNY; report actual slippage and recheck bands after rounding. CA_UNRESOLVED allows mechanics design only, not financial performance or source-gate bypass.",
-    "Prior22 writes independently reconciled from Git commit:20review files+one outbox+one state. Nine named topics were not a complete artifact count."
+    "R2 failed before observer spawn; 112 independent return assertions exit0 verified27 files/22212bytes,10 empty files and55 conditional absences. No native data observation or source absence claim.",
+    "Pinned CPython3.12.10 source shows string-form Windows Popen followed by distinct WinAPI event; a preceding list event is not required. Local extra-event diagnostic remains unsealed report-level evidence.",
+    "R3 exact serialized command equivalence and paired same-thread WinAPI validation passed70 actual GPT tests and upstream Windows-method modeling; no blanket string/prefix or device-write bypass.",
+    "R3 native prepare must first pass one exact print-only audited child before ACK; only then ACK readback/binding and one observer launch. New fixed C roots only, R1/R2 preserved.",
+    "Source/data/admission semantics and all1156 source paths unchanged. Units/regime/lifecycle gates remain open; supplier/research/backtest/CURRENT/release/calendar/orders remain closed."
   ],
   "observed_sam_handoff_entries": [
     {
@@ -6106,7 +6370,7 @@
     "Source-inspected catchup defaults/window/date-aligned PASS/retry mechanics summarized without claiming historical26 exact failures, live automation, duplicate observations, actual target or supplier absence. No date/EMPTY/exclusion/factor policy delegated.",
     "Both existing child task outboxes and notebook/desktop/parent routes updated and exactly read back. Native outcome/ACK pending; task publication is not actual stop. No new acquisition/data/current/release/order authorization."
   ],
-  "previous_phase": "A_INPUT_BINDINGS_REVIEW_DRAFT_PUBLISHED_NO_NATIVE_TASK",
+  "previous_phase": "A_L1234_R2_REPAIR_DISPATCHED_AFTER_VERIFIED_PRESPAWN_FAILURE",
   "owner_requested_source_handoff": {
     "plan": "agents/chatgpt/reviews/BLACKBOX_UPDATE_PREREQUISITES_20261027/EXACT_CHAIN_SOURCE_PLAN_20261027.json",
     "execution_host": "SAM",
@@ -6116,15 +6380,7 @@
     "actual_execution_observed": false,
     "gate_update": "V3 native all23/no skips/actual exit0; collector0 or preserved partial2"
   },
-  "same_child_supplement_issued_this_run": {
-    "contract": "EXACT_SOURCE_CLOSURE_20261027_1501",
-    "paths": 3,
-    "roles": {
-      "SAM": 1,
-      "ZHANGWEI": 2
-    },
-    "executable_business_code_issued": false
-  },
+  "same_child_supplement_issued_this_run": false,
   "owner_execution_baseline_decision": {
     "selected_host": "ZHANGWEI",
     "selected_future_acquisition_executor": "ZHANGWEI",
@@ -10289,13 +10545,11 @@
     "cleaning_task_issued_this_request": false
   },
   "latest_user_report": {
-    "library_file_id": "libfile_73e8712eb844819187134797a018f74b",
-    "filename": "BLACKBOX_R1_R5_Latest_Report_20261028.txt",
-    "updated_for_snapshot": "7dd25c4353469aed42634eb76f9b4807bd297fad",
-    "bytes": 38242,
-    "classification": "CONSOLIDATED_REPORT_NOT_EXECUTION_AUTHORIZATION"
+    "at": "2026-11-02T13:56:15.484Z",
+    "summary": "R2 launch failed Safety:UNREVIEWED_SUBPROCESS before observer spawn; user supplied local audit-shape diagnostic and requested a third precise corrected package.",
+    "evidence_snapshot": "e2292e2c2017e44e8b881d5b1610a03a2772a772"
   },
-  "active_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R2",
+  "active_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
   "raw_parquet_handoff_dispatch": {
     "task_id": "BLACKBOX_R5_PARQUET_BODY_HANDOFF_20261028",
     "parent_task_id": "BLACKBOX_RAW_NONE_INCREMENT_20261027_R5_ISOLATE_RESUME",
@@ -12787,7 +13041,7 @@
   },
   "a_readonly_l1234_r2_dispatch_20261102": {
     "task_id": "BLACKBOX_A_READONLY_L1234_20261102_R2",
-    "status": "PUBLISHED_AWAITING_ACTUAL_ACK_NOT_EXECUTED",
+    "status": "FAILED_PRESPAWN_HANDOFF_VERIFIED_ZERO_OBSERVATIONS_CLOSED_FOR_REPLAY",
     "predecessor": "BLACKBOX_A_READONLY_L1234_20261102",
     "execution_host": "ZHANGWEI",
     "source_snapshot": "c25c06bb893a7d0902f83b8baccd42003afe47cc",
@@ -12809,10 +13063,88 @@
     "audit_write_modes_still_blocked": true,
     "source_count": 1156,
     "business_semantics_changed": false,
+    "native_ack_observed": true,
+    "actual_native_execution_observed": true,
+    "native_observations": 0,
+    "replay_allowed": false,
+    "source_discovery_allowed": false,
+    "source_writes_allowed": false,
+    "supplier_calls_allowed": false,
+    "backtest_research_admitted": false,
+    "current_switch_allowed": false,
+    "release_allowed": false,
+    "policy_calendar_extended": false,
+    "ORDER_ALLOWED": false,
+    "actual_native_control_exits": [
+      0,
+      0,
+      2,
+      0
+    ],
+    "native_observer_child_started": false,
+    "native_fixture_tests_executed": 0,
+    "latest_review": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/REVIEW.txt",
+    "next_task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3"
+  },
+  "a_readonly_l1234_r2_failed_return_20261102": {
+    "status": "FAILED_PRESPAWN_HANDOFF_VERIFIED_ZERO_OBSERVATIONS_CLOSED_FOR_REPLAY",
+    "reviewed_snapshot": "e2292e2c2017e44e8b881d5b1610a03a2772a772",
+    "return_files": 27,
+    "return_bytes": 22212,
+    "empty_file_members": 10,
+    "empty_stream_pairs": 5,
+    "conditional_absences": 55,
+    "independent_assertions": 112,
+    "actual_audit_exit": 0,
+    "phase_exits": [
+      0,
+      0,
+      2,
+      0
+    ],
+    "actual_observer_child_exit": null,
+    "native_observer_child_started": false,
+    "native_observations": 0,
+    "native_fixture_tests_executed": 0,
+    "ack_blob": "a7ebf071ae3d453d97e60a1ae0a6d7ae5fdf0eb8",
+    "ack_git_commit": "9278874dfdb318a9d99ecd9278b8250f8a5ed2d5",
+    "ack_git_time": "2026-11-02T13:21:10Z",
+    "launch_start_utc": "2026-11-02T13:21:36.135801+00:00",
+    "launch_error": "Safety:UNREVIEWED_SUBPROCESS",
+    "upload_readback_blob": "0f2e80740251163230ae46ec75778cfe186dc02a",
+    "diagnostics_scope": "LOCAL_FORENSIC_OBSERVATION_NOT_PART_OF_SEALED_DELIVERY; reported double-Popen summary is not an independently supplied raw trace",
+    "upstream_source_finding": "CPython3.12.10 Windows Popen may be string-only; separate _winapi.CreateProcess event. No universal two-Popen assertion.",
+    "extra_wrong_bind_path_attempts": "Reported only; no separate literal receipts. Do not recreate.",
+    "review_path": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/REVIEW.txt",
+    "ORDER_ALLOWED": false
+  },
+  "a_readonly_l1234_r3_dispatch_20261102": {
+    "task_id": "BLACKBOX_A_READONLY_L1234_20261102_R3",
+    "status": "PUBLISHED_AWAITING_ACTUAL_NATIVE_STARTUP_ACK_AND_SINGLE_EXECUTION",
+    "predecessor": "BLACKBOX_A_READONLY_L1234_20261102_R2",
+    "execution_host": "ZHANGWEI",
+    "source_snapshot": "e2292e2c2017e44e8b881d5b1610a03a2772a772",
+    "state_base_blob_sha": "3898ca55bb4749dfa31f5a6d52bfcb2d5f160b1e",
+    "outbox_path": "agents/chatgpt/outbox/BLACKBOX_A_READONLY_L1234_20261102_R3.txt",
+    "review_root": "agents/chatgpt/reviews/BLACKBOX_A_READONLY_L1234_20261102_R3/",
+    "return_path": "agents/chatgpt/inbox/BLACKBOX_A_READONLY_L1234_20261102_R3/ZHANGWEI/",
+    "package_sha256": "89e8311c8979a4dcb7940cb46e1d63d9c2a180e1a4361dc26dd8b66dd3ca832e",
+    "package_bytes": 2974,
+    "runtime_payload_files": 19,
+    "ACK_REQUESTED": true,
+    "native_command": "E:\\BLACKBOX\\.venv\\Scripts\\python.exe -B -X utf8 C:\\LAN_SHARE_REPORT\\BLACKBOX_A_READONLY_L1234_20261102_R3_PACKAGE\\package\\control.py launch",
+    "repair_scope": "Exact reviewed argv/full Windows command-line equivalence; executable/cwd/env checks and same-thread paired WinAPI event; fixed native prepare-time print-only startup receipt before ACK",
+    "offline_tests": 70,
+    "actual_offline_test_exit": 0,
+    "Windows_upstream_method_model_exit": 0,
+    "actual_GPT_startup_probe_exit": 0,
+    "actual_native_startup_probe_observed": false,
     "native_ack_observed": false,
     "actual_native_execution_observed": false,
     "native_observations": 0,
     "replay_allowed": false,
+    "source_count": 1156,
+    "business_semantics_changed": false,
     "source_discovery_allowed": false,
     "source_writes_allowed": false,
     "supplier_calls_allowed": false,
