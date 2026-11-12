@@ -23,9 +23,9 @@ The R5 review cites the official SSE/SZSE 2026 holiday schedules. The SSE notice
 Stage these exact files from the reviewed folder into:
 C:\LAN_SHARE_REPORT\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_20261112_R1_PACKAGE\package\
 
-- capture_registered_layer_metadata_r1.py — 13,169 bytes; SHA256 96d4627aab0525bb3d65de503e0f6f137eedb940f5b09f2bd01a632ebcd74c1c
-- test_capture_registered_layer_metadata_r1.py — 5,573 bytes; SHA256 313a2ecc8642ff6bfb12fa75010bf0acd0f4cef20c4b42e6e9f29f139ac2c5a0
-- PACKAGE.json — 711 bytes; SHA256 b40b405471daddf555ab41e298f3006b6fba65aea17963392ae51788a0732e0d
+- capture_registered_layer_metadata_r1.py — 13,128 bytes; SHA256 f40b762e97cefee39d6746fcf2c6f4d380ff537b0089a87071ba0825f8bf049c
+- test_capture_registered_layer_metadata_r1.py — 5,564 bytes; SHA256 a205813cd4640dc02879eef2dffc6d65acd3d785d7ffe48bc8f8c74d2ad64cc4
+- PACKAGE.json — 711 bytes; SHA256 2c6fb962e3fae26bc1b44eb618b71d1c20ede4ebca8dfce258818adc5465142d
 
 Do not edit, patch, reformat or regenerate these files. Verify byte counts and SHA256 before execution. If any package pin differs, stop and return the mismatch.
 
