@@ -48,6 +48,7 @@ Issue one read-only ZHANGWEI metadata-capture task. This is not R6 acquisition a
 - capture_registered_layer_metadata_r1.py: c988acb7d89bbf11919065c830e264e2a95f3b7c
 - test_capture_registered_layer_metadata_r1.py: 5d733ec7145e2090ca8845321021eec1a1a40f95
 - PACKAGE.json (corrected): ca50a94ebcd8beddd4c9f391f2d450edd3df567a
+- Outbox task: c2d564ba1f7d8be970a76e9818cd9cf9a58e55be
 
 ## Reviewed source blobs
 
