@@ -29,6 +29,30 @@ C:\LAN_SHARE_REPORT\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_20261112_R1_PACK
 
 Do not edit, patch, reformat or regenerate these files. Verify byte counts and SHA256 before execution. If any package pin differs, stop and return the mismatch.
 
+Create the fresh C: package root and package subdirectory only after confirming the root does not exist:
+
+    $root = 'C:\LAN_SHARE_REPORT\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_20261112_R1_PACKAGE'
+    if (Test-Path -LiteralPath $root) { throw 'STOP_EXISTING_PACKAGE_ROOT' }
+    New-Item -ItemType Directory -Path $root -ErrorAction Stop | Out-Null
+    $pkgDir = Join-Path $root 'package'
+    New-Item -ItemType Directory -Path $pkgDir -ErrorAction Stop | Out-Null
+
+After staging the three files, run this exact package-pin verification in PowerShell:
+
+    $pins = @(
+      @{ Path = (Join-Path $pkgDir 'capture_registered_layer_metadata_r1.py'); Bytes = 13128; Sha256 = 'f40b762e97cefee39d6746fcf2c6f4d380ff537b0089a87071ba0825f8bf049c' },
+      @{ Path = (Join-Path $pkgDir 'test_capture_registered_layer_metadata_r1.py'); Bytes = 5564; Sha256 = 'a205813cd4640dc02879eef2dffc6d65acd3d785d7ffe48bc8f8c74d2ad64cc4' },
+      @{ Path = (Join-Path $pkgDir 'PACKAGE.json'); Bytes = 711; Sha256 = '2c6fb962e3fae26bc1b44eb618b71d1c20ede4ebca8dfce258818adc5465142d' }
+    )
+    foreach ($p in $pins) {
+      $item = Get-Item -LiteralPath $p.Path -ErrorAction Stop
+      $hash = (Get-FileHash -LiteralPath $p.Path -Algorithm SHA256).Hash.ToLowerInvariant()
+      if ($item.Length -ne $p.Bytes -or $hash -ne $p.Sha256) {
+        throw ("PACKAGE_PIN_MISMATCH: " + $p.Path + " bytes=" + $item.Length + " sha256=" + $hash)
+      }
+    }
+
+
 The fixed output root is:
 C:\LAN_SHARE_REPORT\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_20261112_R1_PACKAGE\
 
