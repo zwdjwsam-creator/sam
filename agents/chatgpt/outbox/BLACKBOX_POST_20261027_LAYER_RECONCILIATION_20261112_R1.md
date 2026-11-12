@@ -64,21 +64,31 @@ The measured ZHANGWEI interpreter is:
 E:\BLACKBOX\.venv\Scripts\python.exe
 Python 3.12.10, Windows x64.
 
-Before running the preflight, verify these exact local source pins:
-- E:\BLACKBOX\脚本\blackbox_must_read_preflight_r1.py — 11,767 bytes; SHA256 3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217
-- E:\BLACKBOX\脚本\_base.py — 11,800 bytes; SHA256 b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258
+Before running the preflight, verify these exact local source pins in PowerShell:
+
+    $pf = 'E:\BLACKBOX\脚本\blackbox_must_read_preflight_r1.py'
+    $base = 'E:\BLACKBOX\脚本\_base.py'
+    $pfItem = Get-Item -LiteralPath $pf -ErrorAction Stop
+    $pfHash = (Get-FileHash -LiteralPath $pf -Algorithm SHA256).Hash.ToLowerInvariant()
+    $baseItem = Get-Item -LiteralPath $base -ErrorAction Stop
+    $baseHash = (Get-FileHash -LiteralPath $base -Algorithm SHA256).Hash.ToLowerInvariant()
+    if ($pfItem.Length -ne 11767 -or $pfHash -ne '3bb85023387ce976aaf03694073936b0da5b5ef710f80f6284e8347f067fe217') { throw 'PREFLIGHT_SOURCE_PIN_MISMATCH' }
+    if ($baseItem.Length -ne 11800 -or $baseHash -ne 'b8cc60746f92dc63049e8e6b6b6f39c6553dd98b69374b9f797d49b2654f2258') { throw 'PREFLIGHT_BASE_PIN_MISMATCH' }
 
 If either pin differs or either file is absent, stop. Do not repair or replace the preflight.
 
 Run the package's 12 offline tests first, from the package directory. Capture stdout, stderr and the literal OS exit. Required command:
 
-    & 'E:\BLACKBOX\.venv\Scripts\python.exe' -B -X utf8 -m unittest -v test_capture_registered_layer_metadata_r1
+    Set-Location -LiteralPath $pkgDir
+    & 'E:\BLACKBOX\.venv\Scripts\python.exe' -B -X utf8 -m unittest -v test_capture_registered_layer_metadata_r1 1> (Join-Path $root 'TESTS.stdout.txt') 2> (Join-Path $root 'TESTS.stderr.txt')
+    $testExit = $LASTEXITCODE
 
 If the actual exit is nonzero or the suite does not report 12 tests passed, stop before the metadata capture.
 
 Then run the pinned read-only must-read preflight once. Capture stdout, stderr, JSON and literal OS exit. Required command:
 
-    & 'E:\BLACKBOX\.venv\Scripts\python.exe' -B -X utf8 'E:\BLACKBOX\脚本\blackbox_must_read_preflight_r1.py' --task-class DATA --json
+    & 'E:\BLACKBOX\.venv\Scripts\python.exe' -B -X utf8 'E:\BLACKBOX\脚本\blackbox_must_read_preflight_r1.py' --task-class DATA --json 1> (Join-Path $root 'PREFLIGHT.stdout.txt') 2> (Join-Path $root 'PREFLIGHT.stderr.txt')
+    $preflightExit = $LASTEXITCODE
 
 Proceed only if the actual exit is 0 and the JSON reports:
 - MUST_READ_PRECHECK = PASS
@@ -92,7 +102,8 @@ Otherwise stop and return the exact failure. Do not bypass, edit rules, or retry
 
 After ACK, package-pin verification, tests and preflight all pass, run the capture exactly once, from the package directory:
 
-    & 'E:\BLACKBOX\.venv\Scripts\python.exe' -B -X utf8 'C:\LAN_SHARE_REPORT\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_20261112_R1_PACKAGE\package\capture_registered_layer_metadata_r1.py'
+    & 'E:\BLACKBOX\.venv\Scripts\python.exe' -B -X utf8 'C:\LAN_SHARE_REPORT\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_20261112_R1_PACKAGE\package\capture_registered_layer_metadata_r1.py' 1> 'C:\LAN_SHARE_REPORT\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_20261112_R1_PACKAGE\CAPTURE.stdout.txt' 2> 'C:\LAN_SHARE_REPORT\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_20261112_R1_PACKAGE\CAPTURE.stderr.txt'
+    $captureExit = $LASTEXITCODE
 
 Capture stdout, stderr, start/end UTC, cwd, exact argv and literal OS exit in OUTER_RUN.json. Do not retry under any circumstances. The script itself creates RUN_ONCE.json and the delivery folder, reads only its fixed allowlist, and writes only beneath the C: output root.
 
