@@ -33,15 +33,21 @@ Historical CURRENT-pointer hashes are recorded as comparison baselines only. A c
 ## Code and offline verification
 
 Package:
-- capture_registered_layer_metadata_r1.py — 13,169 bytes; SHA256 96d4627aab0525bb3d65de503e0f6f137eedb940f5b09f2bd01a632ebcd74c1c
-- test_capture_registered_layer_metadata_r1.py — 5,573 bytes; SHA256 313a2ecc8642ff6bfb12fa75010bf0acd0f4cef20c4b42e6e9f29f139ac2c5a0
-- PACKAGE.json — 711 bytes; SHA256 b40b405471daddf555ab41e298f3006b6fba65aea17963392ae51788a0732e0d
+- capture_registered_layer_metadata_r1.py — 13,128 bytes; SHA256 f40b762e97cefee39d6746fcf2c6f4d380ff537b0089a87071ba0825f8bf049c
+- test_capture_registered_layer_metadata_r1.py — 5,564 bytes; SHA256 a205813cd4640dc02879eef2dffc6d65acd3d785d7ffe48bc8f8c74d2ad64cc4
+- PACKAGE.json — 711 bytes; SHA256 2c6fb962e3fae26bc1b44eb618b71d1c20ede4ebca8dfce258818adc5465142d
 
-Offline fixture tests: 12/12 passed, process exit 0. Tests cover exact byte capture/readback, literal date extraction, CSV row preservation, exact-path misses, immutable versus historical SHA semantics, per-file/total size caps, invalid JSON retention, fixed allowlist uniqueness, no recursive/network APIs, and one-shot replay blocking. These are model-side offline tests, not a claim of ZHANGWEI native execution.
+Offline fixture tests on the authored source: 12/12 passed, process exit 0. The exact GitHub-readback package hashes are recorded above; the native task re-runs the exact pinned package on ZHANGWEI before capture. Tests cover exact byte capture/readback, literal date extraction, CSV row preservation, exact-path misses, immutable versus historical SHA semantics, per-file/total size caps, invalid JSON retention, fixed allowlist uniqueness, no recursive/network APIs, and one-shot replay blocking. These are model-side offline tests, not a claim of ZHANGWEI native execution.
 
 ## Decision
 
 Issue one read-only ZHANGWEI metadata-capture task. This is not R6 acquisition and not Cleaning. It authorizes no supplier calls, credential reads, Parquet reads, E: writes, CURRENT switch, release, backtest, money movement or orders. The returned metadata must be independently reviewed before any row-level coverage or acquisition decision.
+
+## Published file blob pins
+
+- capture_registered_layer_metadata_r1.py: c988acb7d89bbf11919065c830e264e2a95f3b7c
+- test_capture_registered_layer_metadata_r1.py: 5d733ec7145e2090ca8845321021eec1a1a40f95
+- PACKAGE.json (corrected): ca50a94ebcd8beddd4c9f391f2d450edd3df567a
 
 ## Reviewed source blobs
 
