@@ -46,7 +46,17 @@ Exact paths to test, without wildcard or directory enumeration:
 
 Do not inspect any other path, search another root, enumerate a directory, or follow an alias.
 
-## 3. Process check — first operation
+## 3. Receipt root and ACK — before local inspection
+
+Use this exact task-owned receipt root on C::
+
+`C:\\LAN_SHARE_REPORT\\BLACKBOX_POST_20261027_LAYER_RECONCILIATION_R1_STATUS_ONLY_20261115\\`
+
+Check the root with literal `Test-Path -LiteralPath`. If it already exists, stop and preserve the collision; do not delete, rename, reuse, or choose another path. If absent, create it once with `New-Item -ItemType Directory -Path $receiptRoot -ErrorAction Stop`. Create no other local directory.
+
+Create `ACK.json` in this root with this task ID, parent task ID, host, UTC time, and `status=ACKNOWLEDGED_STATUS_ONLY_NO_PARENT_EXECUTION`. Upload it to the return path and read it back byte-for-byte before any local process query. If upload or readback fails, preserve the failure and stop without inspecting local R1 state.
+
+## 4. Process check — first local inspection
 
 Run this exact PowerShell query once. It reads process metadata only and filters to Python processes whose command line names the parent task. Do not terminate or interact with any returned process.
 
@@ -70,7 +80,7 @@ If one or more matching processes are returned:
 
 If no matching process is returned, continue with the exact-path checks below. A process miss does not prove that R1 never ran.
 
-## 4. Exact-path checks and package-pin measurement
+## 5. Exact-path checks and package-pin measurement
 
 For every exact path in §2, record `exists`, `length`, `LastWriteTimeUtc`, and file/directory type using literal `Test-Path -LiteralPath` and `Get-Item -LiteralPath`. Do not list directory contents.
 
@@ -103,7 +113,7 @@ If no matching process is active, read only these exact text receipts when prese
 
 Preserve the literal contents and literal exit values. Do not infer that a pin mismatch was actually encountered by the executor unless a native command receipt proves that check ran and stopped. Do not infer capture completion from file presence alone.
 
-## 5. Required status classification
+## 6. Required status classification
 
 Use only the first applicable classification, and explain its evidence:
 
@@ -117,7 +127,7 @@ Use only the first applicable classification, and explain its evidence:
 
 Do not create a status that implies successful R1 completion unless the exact native receipts establish it.
 
-## 6. Forbidden actions
+## 7. Forbidden actions
 
 - Do not run the parent R1 task, its tests, preflight, or capture script.
 - Do not stage or recreate the parent R1 package.
@@ -129,12 +139,13 @@ Do not create a status that implies successful R1 completion unless the exact na
 - Do not touch the independent R4 diagnostic.
 - No Cleaning, alignment, PIT transformation, Compiler, backtest, engine start, CURRENT switch, release, publication, money movement, or order.
 
-## 7. Return contract
+## 8. Return contract
 
-Create only these two new local receipt files in a fresh task-owned temporary directory on C::
+Create only these additional local receipt files in the exact root from §3:
 
 - `STATUS.json`
 - `REPORT.md`
+- `UPLOAD_READBACK.json` (generated after the other receipt uploads)
 
 Do not create or modify any parent R1 files. The receipt must contain:
 - this task ID and parent task ID;
@@ -147,16 +158,16 @@ Do not create or modify any parent R1 files. The receipt must contain:
 
 Do not include secrets or credential contents. Do not upload parent package copies.
 
-Upload both receipts to:
+Upload `STATUS.json` and `REPORT.md` to:
 `agents/chatgpt/inbox/BLACKBOX_POST_20261027_LAYER_RECONCILIATION_R1_STATUS_ONLY_20261115/ZHANGWEI/`
 
-Read back both uploaded files and compare exact bytes and SHA256. Upload `UPLOAD_READBACK.json` last, read it back too, and verify its own bytes/SHA256 against the local copy. If any upload or readback fails, preserve the failure and report it; do not claim completion.
+Read back `ACK.json`, `STATUS.json`, and `REPORT.md` and compare exact bytes and SHA256. Generate `UPLOAD_READBACK.json` with the actual remote blob/commit identities and every comparison, upload it last, read it back too, and verify its own bytes/SHA256 against the local copy. If any upload or readback fails, preserve the failure and report it; do not claim completion.
 
 Do not end the Cursor chat until all required uploads and readbacks are complete. Then end the Cursor chat with exactly:
 
 `END`
 
-## 8. GPT review boundary
+## 9. GPT review boundary
 
 This status receipt only resolves whether the already-issued parent task is observed running, completed, stopped, partially staged, or unobserved at the exact location. It does not authorize a new metadata capture, supplier probe, data acquisition, Cleaning, source-absence conclusion, CURRENT switch, release, engine admission, or order.
 
